@@ -1,30 +1,30 @@
-<p data-astro-cid-c6i3vrlz="">HTTP caching is conceptually simple: if the response to a request is in the cache, serve it, and if not, pull it from your origin, put it in the cache, and return it. When the response is old, you repeat the process. This is called cache revalidation. If you are worried about too many requests going to your origin at once, you protect it with a <a href="https://developers.cloudflare.com/cache/concepts/revalidation" target="_blank" rel="noopener noreferrer"><u>cache lock</u></a>: a small program, possibly distinct from your cache, that indicates if a request is already going to your origin. This is called request collapsing.</p>
-<p data-astro-cid-c6i3vrlz="">In this blog post, we dive into how cache revalidation works, and present a new approach based on probability. For every request going to the origin, we simulate a die roll. If it’s 6, the request can go to the origin. Otherwise, it stays stale to protect our origin from being overloaded. To see how this is built and optimised, read on.</p>
-<h2 data-astro-cid-c6i3vrlz="">Background</h2>
-<p data-astro-cid-c6i3vrlz="">Let's take the example of an online image library. When a client requests an image, the service first checks its cache to see if the resource is present. If it is, it returns it. If it is not, the image server processes the request, places the response into the cache for a day, and returns it. When the cache expires, the process is repeated.</p>
+<p data-astro-cid-t7az6eu7="">HTTP caching is conceptually simple: if the response to a request is in the cache, serve it, and if not, pull it from your origin, put it in the cache, and return it. When the response is old, you repeat the process. This is called cache revalidation. If you are worried about too many requests going to your origin at once, you protect it with a <a href="https://developers.cloudflare.com/cache/concepts/revalidation" target="_blank" rel="noopener noreferrer"><u>cache lock</u></a>: a small program, possibly distinct from your cache, that indicates if a request is already going to your origin. This is called request collapsing.</p>
+<p data-astro-cid-t7az6eu7="">In this blog post, we dive into how cache revalidation works, and present a new approach based on probability. For every request going to the origin, we simulate a die roll. If it’s 6, the request can go to the origin. Otherwise, it stays stale to protect our origin from being overloaded. To see how this is built and optimised, read on.</p>
+<h2 data-astro-cid-t7az6eu7="">Background</h2>
+<p data-astro-cid-t7az6eu7="">Let's take the example of an online image library. When a client requests an image, the service first checks its cache to see if the resource is present. If it is, it returns it. If it is not, the image server processes the request, places the response into the cache for a day, and returns it. When the cache expires, the process is repeated.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="128" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48HAZ3N3Q9WTX713RYSDT9.png&amp;w=715&amp;h=128&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48HAZ3N3Q9WTX713RYSDT9.png&amp;w=640&amp;h=115&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48HAZ3N3Q9WTX713RYSDT9.png&amp;w=715&amp;h=128&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48HAZ3N3Q9WTX713RYSDT9.png&amp;w=750&amp;h=134&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48HAZ3N3Q9WTX713RYSDT9.png&amp;w=828&amp;h=148&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48HAZ3N3Q9WTX713RYSDT9.png&amp;w=1080&amp;h=193&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48HAZ3N3Q9WTX713RYSDT9.png&amp;w=1280&amp;h=229&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48HAZ3N3Q9WTX713RYSDT9.png&amp;w=1430&amp;h=256&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2639 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48HAZ3N3Q9WTX713RYSDT9.png&amp;w=1048&amp;h=188&amp;f=webp" data-lightbox-width="1048" data-lightbox-height="188" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="128" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-c6i3vrlz=""><em>Figure 1: Uncached request goes to the origin</em></p>
+<p data-astro-cid-t7az6eu7=""><em>Figure 1: Uncached request goes to the origin</em></p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="128" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46MJT7EY8V9X9D6YT5CNJB.png&amp;w=715&amp;h=128&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46MJT7EY8V9X9D6YT5CNJB.png&amp;w=640&amp;h=115&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46MJT7EY8V9X9D6YT5CNJB.png&amp;w=715&amp;h=128&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46MJT7EY8V9X9D6YT5CNJB.png&amp;w=750&amp;h=134&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46MJT7EY8V9X9D6YT5CNJB.png&amp;w=828&amp;h=148&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46MJT7EY8V9X9D6YT5CNJB.png&amp;w=1080&amp;h=193&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46MJT7EY8V9X9D6YT5CNJB.png&amp;w=1280&amp;h=229&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46MJT7EY8V9X9D6YT5CNJB.png&amp;w=1430&amp;h=256&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2639 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46MJT7EY8V9X9D6YT5CNJB.png&amp;w=1048&amp;h=188&amp;f=webp" data-lightbox-width="1048" data-lightbox-height="188" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="128" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-c6i3vrlz=""><em>Figure 2: Cached request stops at the cache</em></p>
-<p data-astro-cid-c6i3vrlz="">And this is where things get complex. The image of a cat might be quite popular. Let's say it's requested 10 times per second. Let’s also assume the image server cannot handle more than 1 request per second. After a day, the cache expires. 10 requests hit the service. Given there are no up-to-date items in cache, these 10 requests are going to go directly to the image server. This problem is known as <a href="https://en.wikipedia.org/wiki/Cache_stampede" target="_blank" rel="noopener noreferrer"><u>cache stampede</u></a>. When the image server sees these 10 requests all happening at the same time, it gets overloaded.</p>
+<p data-astro-cid-t7az6eu7=""><em>Figure 2: Cached request stops at the cache</em></p>
+<p data-astro-cid-t7az6eu7="">And this is where things get complex. The image of a cat might be quite popular. Let's say it's requested 10 times per second. Let’s also assume the image server cannot handle more than 1 request per second. After a day, the cache expires. 10 requests hit the service. Given there are no up-to-date items in cache, these 10 requests are going to go directly to the image server. This problem is known as <a href="https://en.wikipedia.org/wiki/Cache_stampede" target="_blank" rel="noopener noreferrer"><u>cache stampede</u></a>. When the image server sees these 10 requests all happening at the same time, it gets overloaded.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="124" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CNKY6JHB0H9KC39VHPFS.png&amp;w=715&amp;h=124&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CNKY6JHB0H9KC39VHPFS.png&amp;w=640&amp;h=111&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CNKY6JHB0H9KC39VHPFS.png&amp;w=715&amp;h=124&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CNKY6JHB0H9KC39VHPFS.png&amp;w=750&amp;h=130&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CNKY6JHB0H9KC39VHPFS.png&amp;w=828&amp;h=144&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CNKY6JHB0H9KC39VHPFS.png&amp;w=1080&amp;h=187&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CNKY6JHB0H9KC39VHPFS.png&amp;w=1280&amp;h=222&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CNKY6JHB0H9KC39VHPFS.png&amp;w=1430&amp;h=248&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2639 4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CNKY6JHB0H9KC39VHPFS.png&amp;w=1200&amp;h=208&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="208" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="124" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-c6i3vrlz=""><em>Figure 3: Image server overloaded upon cache expiration. This can happen to one or multiple users, across locations.</em></p>
-<p data-astro-cid-c6i3vrlz="">This all stops if the cache gets populated, as it can handle a lot more requests than the origin.</p>
+<p data-astro-cid-t7az6eu7=""><em>Figure 3: Image server overloaded upon cache expiration. This can happen to one or multiple users, across locations.</em></p>
+<p data-astro-cid-t7az6eu7="">This all stops if the cache gets populated, as it can handle a lot more requests than the origin.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="116" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S85C6392AVAKJASF5824.png&amp;w=715&amp;h=116&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S85C6392AVAKJASF5824.png&amp;w=640&amp;h=104&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S85C6392AVAKJASF5824.png&amp;w=715&amp;h=116&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S85C6392AVAKJASF5824.png&amp;w=750&amp;h=122&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S85C6392AVAKJASF5824.png&amp;w=828&amp;h=134&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S85C6392AVAKJASF5824.png&amp;w=1080&amp;h=175&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S85C6392AVAKJASF5824.png&amp;w=1280&amp;h=208&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S85C6392AVAKJASF5824.png&amp;w=1430&amp;h=232&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2639 5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S85C6392AVAKJASF5824.png&amp;w=1180&amp;h=192&amp;f=webp" data-lightbox-width="1180" data-lightbox-height="192" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="116" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-c6i3vrlz=""><em>Figure 4: Cache is populated and can handle the load. The image server is healthy again.</em></p>
-<p data-astro-cid-c6i3vrlz="">In the following sections, we build this image service, see how it can prevent cache stampede with a cache lock, then dive into probabilistic cache revalidation, and its optimisation.</p>
-<h2 data-astro-cid-c6i3vrlz="">Setup</h2>
-<p data-astro-cid-c6i3vrlz="">Let's write this image service. We need an image, a server, and a cache. For the image we're going to use a picture of <a href="https://files.research.cloudflare.com/images/cat.jpg" target="_blank" rel="noopener noreferrer"><u>my cat</u></a>, Cloudflare Workers for the server, and the Cloudflare Cache API for caching.</p>
-<p data-astro-cid-c6i3vrlz="">Note to the reader: On purpose, we aren’t using <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>Cloudflare KV</u></a> or <a href="https://developers.cloudflare.com/cache" target="_blank" rel="noopener noreferrer"><u>Cloudflare CDN Cache</u></a>, because they already solve our cache validation problem by using a cache lock.</p>
+<p data-astro-cid-t7az6eu7=""><em>Figure 4: Cache is populated and can handle the load. The image server is healthy again.</em></p>
+<p data-astro-cid-t7az6eu7="">In the following sections, we build this image service, see how it can prevent cache stampede with a cache lock, then dive into probabilistic cache revalidation, and its optimisation.</p>
+<h2 data-astro-cid-t7az6eu7="">Setup</h2>
+<p data-astro-cid-t7az6eu7="">Let's write this image service. We need an image, a server, and a cache. For the image we're going to use a picture of <a href="https://files.research.cloudflare.com/images/cat.jpg" target="_blank" rel="noopener noreferrer"><u>my cat</u></a>, Cloudflare Workers for the server, and the Cloudflare Cache API for caching.</p>
+<p data-astro-cid-t7az6eu7="">Note to the reader: On purpose, we aren’t using <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>Cloudflare KV</u></a> or <a href="https://developers.cloudflare.com/cache" target="_blank" rel="noopener noreferrer"><u>Cloudflare CDN Cache</u></a>, because they already solve our cache validation problem by using a cache lock.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> cache </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> caches.default</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> CACHE_KEY</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'https://cache.local/'</span><span class="sk-24292e-fff">)</span></span>
@@ -81,9 +81,9 @@
 		})
 	});
 </script>
-<p data-astro-cid-c6i3vrlz=""><em>Codeblock 1: Image server with a non-collapsing cache</em></p>
-<h2 data-astro-cid-c6i3vrlz="">Expectation about cache revalidation</h2>
-<p data-astro-cid-c6i3vrlz="">The image service is receiving 10 requests per second, and it caches images for a day. It's reasonable to assume we would like to start revalidating the cache 5 minutes before it expires. The code evolves as follows:</p>
+<p data-astro-cid-t7az6eu7=""><em>Codeblock 1: Image server with a non-collapsing cache</em></p>
+<h2 data-astro-cid-t7az6eu7="">Expectation about cache revalidation</h2>
+<p data-astro-cid-t7az6eu7="">The image service is receiving 10 requests per second, and it caches images for a day. It's reasonable to assume we would like to start revalidating the cache 5 minutes before it expires. The code evolves as follows:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> cache </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> caches.default</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> CACHE_KEY</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'https://cache.local/'</span><span class="sk-24292e-fff">)</span></span>
@@ -137,17 +137,17 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz=""><em>Codeblock 2: Image server with early-revalidation and a non-collapsing cache</em></p>
-<p data-astro-cid-c6i3vrlz="">That code works, and we can now revalidate 5 minutes in advance of cache expiration. However, instead of fetching the image from the origin server at expiration time, all requests are going to be made 5 minutes in advance, and that does not solve our cache stampede problem. This happens no matter if requests are coming to a single location or not, given the code above does not collapse requests.</p>
-<p data-astro-cid-c6i3vrlz="">To solve our cache stampede problem, we need the revalidation process to not send too many requests at the same time. Ideally, we would like only one request to be sent between <code>expiration - 5min</code> and <code>expiration</code>.</p>
-<h2 data-astro-cid-c6i3vrlz="">The usual solution: a cache lock</h2>
-<p data-astro-cid-c6i3vrlz="">To make sure there is only one request at a time going to the origin server, the solution that's usually deployed is a cache lock. The idea is that for a specific item, a cat picture in our case, requests to the origin try to obtain a lock. The request obtaining the lock can go to the origin, the others will serve stale content.</p>
-<p data-astro-cid-c6i3vrlz="">The lock has two methods: <code>try_lock</code> and <code>unlock</code>.</p>
+<p data-astro-cid-t7az6eu7=""><em>Codeblock 2: Image server with early-revalidation and a non-collapsing cache</em></p>
+<p data-astro-cid-t7az6eu7="">That code works, and we can now revalidate 5 minutes in advance of cache expiration. However, instead of fetching the image from the origin server at expiration time, all requests are going to be made 5 minutes in advance, and that does not solve our cache stampede problem. This happens no matter if requests are coming to a single location or not, given the code above does not collapse requests.</p>
+<p data-astro-cid-t7az6eu7="">To solve our cache stampede problem, we need the revalidation process to not send too many requests at the same time. Ideally, we would like only one request to be sent between <code>expiration - 5min</code> and <code>expiration</code>.</p>
+<h2 data-astro-cid-t7az6eu7="">The usual solution: a cache lock</h2>
+<p data-astro-cid-t7az6eu7="">To make sure there is only one request at a time going to the origin server, the solution that's usually deployed is a cache lock. The idea is that for a specific item, a cat picture in our case, requests to the origin try to obtain a lock. The request obtaining the lock can go to the origin, the others will serve stale content.</p>
+<p data-astro-cid-t7az6eu7="">The lock has two methods: <code>try_lock</code> and <code>unlock</code>.</p>
 <ul>
 	<li><code>try_lock</code> if the lock is free, take it and return <code>true</code>. If not, return <code>false</code>.</li>
 	<li><code>unlock</code> releases the lock.</li>
 </ul>
-<p data-astro-cid-c6i3vrlz="">Such a lock can be implemented as a <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc" target="_blank" rel="noopener noreferrer"><u>Cloudflare RPC service</u></a>:</p>
+<p data-astro-cid-t7az6eu7="">Such a lock can be implemented as a <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc" target="_blank" rel="noopener noreferrer"><u>Cloudflare RPC service</u></a>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { WorkerEntrypoint } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'cloudflare:workers'</span></span>
 <span class="line"></span>
@@ -171,8 +171,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz=""><em>Codeblock 3: Lock service implemented with a Durable Object</em></p>
-<p data-astro-cid-c6i3vrlz="">That service can then be used as a cache lock.</p>
+<p data-astro-cid-t7az6eu7=""><em>Codeblock 3: Lock service implemented with a Durable Object</em></p>
+<p data-astro-cid-t7az6eu7="">That service can then be used as a cache lock.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// CACHE_LOCK is an instantiation of the above binding</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Assuming the above is deployed as a worker with name `lock`</span></span>
@@ -199,22 +199,22 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz=""><em>Codeblock 4: Image server with early-revalidation and a cache using a cache-lock</em></p>
-<p data-astro-cid-c6i3vrlz="">Now you might say "Et voilà. No need for probabilities and mathematics. Peak engineering has triumphed." And you might be right, in most cases. That's why cache locks are so <a href="https://developers.cloudflare.com/cache/concepts/revalidation" target="_blank" rel="noopener noreferrer"><u>predominant</u></a>: they are conceptually simple, deterministic for the same key, and scale well with predictable resource usage.</p>
-<p data-astro-cid-c6i3vrlz="">On the other hand, cache locks add latency and fallibility. To take ownership of a lock, cache revalidation has to contact the lock service. This service is shared across different processes, possibly different machines in different locations. Requests therefore take time. In addition, this service might be unavailable. Probabilistic cache revalidation does not suffer from these, given it does not reach out to an external service but rolls a die with the local randomness generator. It does so at the cost of not guaranteeing the number of requests going to the origin server: maybe zero for an extended period, maybe more than one. On average, this is going to be fine. But there can be border cases, similar to how one can roll a die 10 times and get 10 sixes. It’s unlikely, but not unrealistic, and certain services need that certainty. In the following sections, we dissect this approach.</p>
-<h2 data-astro-cid-c6i3vrlz="">First dive into probabilities given a stable request rate</h2>
-<p data-astro-cid-c6i3vrlz="">A first approach is to reduce the number of requests going to the origin server. Instead of always sending a request to revalidate, we are going to send 1 out of 10. This means that instead of sending 10 requests per second when the cache is invalidated, we send 1 per second.</p>
-<p data-astro-cid-c6i3vrlz="">Because we don't have a lock, we do that with probabilities. We set the probability of sending a request to the origin to be $mp=\frac{1}{10}m$. With a rate $mrm$ of 10 requests per second, after 1 second, the expectancy of a request being sent to the origin is $m1-(1-p)^{10}=65\%m$. We draw the evolution of the function $mE(r, t)=1-(1-p)^{r \times t}m$ representing the expectancy of a request being sent to the server over time.</p>
+<p data-astro-cid-t7az6eu7=""><em>Codeblock 4: Image server with early-revalidation and a cache using a cache-lock</em></p>
+<p data-astro-cid-t7az6eu7="">Now you might say "Et voilà. No need for probabilities and mathematics. Peak engineering has triumphed." And you might be right, in most cases. That's why cache locks are so <a href="https://developers.cloudflare.com/cache/concepts/revalidation" target="_blank" rel="noopener noreferrer"><u>predominant</u></a>: they are conceptually simple, deterministic for the same key, and scale well with predictable resource usage.</p>
+<p data-astro-cid-t7az6eu7="">On the other hand, cache locks add latency and fallibility. To take ownership of a lock, cache revalidation has to contact the lock service. This service is shared across different processes, possibly different machines in different locations. Requests therefore take time. In addition, this service might be unavailable. Probabilistic cache revalidation does not suffer from these, given it does not reach out to an external service but rolls a die with the local randomness generator. It does so at the cost of not guaranteeing the number of requests going to the origin server: maybe zero for an extended period, maybe more than one. On average, this is going to be fine. But there can be border cases, similar to how one can roll a die 10 times and get 10 sixes. It’s unlikely, but not unrealistic, and certain services need that certainty. In the following sections, we dissect this approach.</p>
+<h2 data-astro-cid-t7az6eu7="">First dive into probabilities given a stable request rate</h2>
+<p data-astro-cid-t7az6eu7="">A first approach is to reduce the number of requests going to the origin server. Instead of always sending a request to revalidate, we are going to send 1 out of 10. This means that instead of sending 10 requests per second when the cache is invalidated, we send 1 per second.</p>
+<p data-astro-cid-t7az6eu7="">Because we don't have a lock, we do that with probabilities. We set the probability of sending a request to the origin to be $mp=\frac{1}{10}m$. With a rate $mrm$ of 10 requests per second, after 1 second, the expectancy of a request being sent to the origin is $m1-(1-p)^{10}=65\%m$. We draw the evolution of the function $mE(r, t)=1-(1-p)^{r \times t}m$ representing the expectancy of a request being sent to the server over time.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="429" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MN67S5R9HRNEW0811GKS.jpg&amp;w=715&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MN67S5R9HRNEW0811GKS.jpg&amp;w=640&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MN67S5R9HRNEW0811GKS.jpg&amp;w=715&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MN67S5R9HRNEW0811GKS.jpg&amp;w=750&amp;h=450&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MN67S5R9HRNEW0811GKS.jpg&amp;w=828&amp;h=497&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MN67S5R9HRNEW0811GKS.jpg&amp;w=1080&amp;h=648&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MN67S5R9HRNEW0811GKS.jpg&amp;w=1280&amp;h=768&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MN67S5R9HRNEW0811GKS.jpg&amp;w=1430&amp;h=858&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2639 6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MN67S5R9HRNEW0811GKS.jpg&amp;w=1000&amp;h=600&amp;f=webp" data-lightbox-width="1000" data-lightbox-height="600" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="429" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-c6i3vrlz=""><em>Figure 5: Revalidation time $mE(t)m$ with $mr=10m$ and $mp=\frac{1}{10}m$. At time $mtm$, $mE(t)m$ is the probability that an early revalidation occurred.</em></p>
-<p data-astro-cid-c6i3vrlz="">The graph moves very quickly towards $m1m$. This means we might still have space to reduce the number of requests going to our origin server. We can set a lower probability, such as $mp_2=\frac{1}{500}m$ (1 request every 5 seconds on average). The graph looks as follows:</p>
+<p data-astro-cid-t7az6eu7=""><em>Figure 5: Revalidation time $mE(t)m$ with $mr=10m$ and $mp=\frac{1}{10}m$. At time $mtm$, $mE(t)m$ is the probability that an early revalidation occurred.</em></p>
+<p data-astro-cid-t7az6eu7="">The graph moves very quickly towards $m1m$. This means we might still have space to reduce the number of requests going to our origin server. We can set a lower probability, such as $mp_2=\frac{1}{500}m$ (1 request every 5 seconds on average). The graph looks as follows:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="429" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49B1FS1B82V0W6JNKYSZMD.jpg&amp;w=715&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49B1FS1B82V0W6JNKYSZMD.jpg&amp;w=640&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49B1FS1B82V0W6JNKYSZMD.jpg&amp;w=715&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49B1FS1B82V0W6JNKYSZMD.jpg&amp;w=750&amp;h=450&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49B1FS1B82V0W6JNKYSZMD.jpg&amp;w=828&amp;h=497&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49B1FS1B82V0W6JNKYSZMD.jpg&amp;w=1080&amp;h=648&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49B1FS1B82V0W6JNKYSZMD.jpg&amp;w=1280&amp;h=768&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49B1FS1B82V0W6JNKYSZMD.jpg&amp;w=1430&amp;h=858&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2639 7" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49B1FS1B82V0W6JNKYSZMD.jpg&amp;w=1000&amp;h=600&amp;f=webp" data-lightbox-width="1000" data-lightbox-height="600" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="429" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-c6i3vrlz=""><em>Figure 6: Revalidation time $mE(t)m$ with $mr=10m$ and $mp=\frac{1}{500}m$.</em></p>
-<p data-astro-cid-c6i3vrlz="">This looks great. Let's implement it.</p>
+<p data-astro-cid-t7az6eu7=""><em>Figure 6: Revalidation time $mE(t)m$ with $mr=10m$ and $mp=\frac{1}{500}m$.</em></p>
+<p data-astro-cid-t7az6eu7="">This looks great. Let's implement it.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> CACHE_REVALIDATION_INTERVAL_IN_S</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-ffc799"> 300</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> CACHE_REVALIDATION_PROBABILITY</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">500</span></span>
@@ -236,100 +236,100 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz=""><em>Codeblock 5: Image server with early-revalidation and a probabilistic cache using uniform distribution</em></p>
-<p data-astro-cid-c6i3vrlz="">That's it. If the cache is not close to expiration, we don't revalidate. If the cache is expired, we revalidate. Otherwise, we revalidate based on a probability.</p>
-<h2 data-astro-cid-c6i3vrlz="">Adaptive cache revalidation</h2>
-<p data-astro-cid-c6i3vrlz="">Until now, we assumed the picture of the cat received a stable request rate. However, for a real service, this does not necessarily hold. For instance, if instead of 10 requests per second, imagine the service receives only 1. The expectancy function does not look as good. After 5 minutes (300s), $mE(r=1, t=300)=45\%m$. On the other hand, if the image service is receiving 10,000 requests per second, $mE(r=10000, t = 300) \approx 100\%m$, but our server receives on average $m10000 \times \frac{1}{500} = 20m$ requests per second. It would be ideal to design a probability function that would adapt to the request rate.</p>
-<p data-astro-cid-c6i3vrlz="">That function would return a low probability when expiration time is far in the future, and increase over time such that the cache is revalidated before it expires. It would cap the request rate going to the origin server.</p>
-<p data-astro-cid-c6i3vrlz="">Let’s design the variation of probability $mpm$ over 5 minutes. When far from the expiration, the probability to revalidate should be low. This should help match the high request rate. For example, with a request rate of 10k requests per second, we would like the revalidation probability $mpm$ to be $m\frac{1}{100000}m$. This ensures the request rates seen by our server are going to be low on average, at about 1 request every 10 seconds. As time passes, we increase this probability to allow for revalidation even at a lower request rate.</p>
-<div class="emdash-table-wrapper" data-astro-cid-d7axpwdr="">
-	<table class="emdash-table" style="min-width: 288px;" data-astro-cid-d7axpwdr="">
-		<thead data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+<p data-astro-cid-t7az6eu7=""><em>Codeblock 5: Image server with early-revalidation and a probabilistic cache using uniform distribution</em></p>
+<p data-astro-cid-t7az6eu7="">That's it. If the cache is not close to expiration, we don't revalidate. If the cache is expired, we revalidate. Otherwise, we revalidate based on a probability.</p>
+<h2 data-astro-cid-t7az6eu7="">Adaptive cache revalidation</h2>
+<p data-astro-cid-t7az6eu7="">Until now, we assumed the picture of the cat received a stable request rate. However, for a real service, this does not necessarily hold. For instance, if instead of 10 requests per second, imagine the service receives only 1. The expectancy function does not look as good. After 5 minutes (300s), $mE(r=1, t=300)=45\%m$. On the other hand, if the image service is receiving 10,000 requests per second, $mE(r=10000, t = 300) \approx 100\%m$, but our server receives on average $m10000 \times \frac{1}{500} = 20m$ requests per second. It would be ideal to design a probability function that would adapt to the request rate.</p>
+<p data-astro-cid-t7az6eu7="">That function would return a low probability when expiration time is far in the future, and increase over time such that the cache is revalidated before it expires. It would cap the request rate going to the origin server.</p>
+<p data-astro-cid-t7az6eu7="">Let’s design the variation of probability $mpm$ over 5 minutes. When far from the expiration, the probability to revalidate should be low. This should help match the high request rate. For example, with a request rate of 10k requests per second, we would like the revalidation probability $mpm$ to be $m\frac{1}{100000}m$. This ensures the request rates seen by our server are going to be low on average, at about 1 request every 10 seconds. As time passes, we increase this probability to allow for revalidation even at a lower request rate.</p>
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 288px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Time to expiration $mtm$ (in s)</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Revalidation probability $mpm$</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Target request rate $mrm$ (in rps)</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>300</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1/100000</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>10000</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>240</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1/10000</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1000</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>180</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1/1000</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>100</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>120</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1/100</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>10</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>60</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1/10</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>-</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-c6i3vrlz=""><em>Table 1: Variation of revalidation probability over time</em></p>
-<p data-astro-cid-c6i3vrlz="">For each of these intervals, there is a high likelihood that a request rate $mrm$ will trigger a cache revalidation, and low likelihood that a lower request rate will trigger it. If it does, it's ok.</p>
-<p data-astro-cid-c6i3vrlz="">We can update our revalidation function as follows:</p>
+<p data-astro-cid-t7az6eu7=""><em>Table 1: Variation of revalidation probability over time</em></p>
+<p data-astro-cid-t7az6eu7="">For each of these intervals, there is a high likelihood that a request rate $mrm$ will trigger a cache revalidation, and low likelihood that a lower request rate will trigger it. If it does, it's ok.</p>
+<p data-astro-cid-t7az6eu7="">We can update our revalidation function as follows:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> CACHE_REVALIDATION_INTERVAL_IN_S</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-ffc799"> 300</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> CACHE_REVALIDATION_PROBABILITY_PER_MIN</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> [</span><span class="sk-005cc5-ffc799">1</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">100_000</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">1</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">10_000</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">1</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">1000</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">1</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">100</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">1</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">10</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">]</span></span>
@@ -352,22 +352,22 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz=""><em>Codeblock 6: Image server with early-revalidation and a probabilistic cache using piecewise uniform distribution</em></p>
-<h2 data-astro-cid-c6i3vrlz="">Optimal cache stampede solution</h2>
-<p data-astro-cid-c6i3vrlz="">There seems to be a lot of decisions going on here. To solve this, we can reference an academic paper written by A Vattani, T Chierichetti, and K Lowenstein in 2015 called <a href="https://cseweb.ucsd.edu/~avattani/papers/cache_stampede.pdf" target="_blank" rel="noopener noreferrer"><u>Optimal Probabilistic Cache Stampede Prevention</u></a>. If you read it, you'll recognise that what we have been discussing until now is close to what the paper presents. For instance, both the cache revalidation algorithm structure and the early revalidation function look similar.</p>
+<p data-astro-cid-t7az6eu7=""><em>Codeblock 6: Image server with early-revalidation and a probabilistic cache using piecewise uniform distribution</em></p>
+<h2 data-astro-cid-t7az6eu7="">Optimal cache stampede solution</h2>
+<p data-astro-cid-t7az6eu7="">There seems to be a lot of decisions going on here. To solve this, we can reference an academic paper written by A Vattani, T Chierichetti, and K Lowenstein in 2015 called <a href="https://cseweb.ucsd.edu/~avattani/papers/cache_stampede.pdf" target="_blank" rel="noopener noreferrer"><u>Optimal Probabilistic Cache Stampede Prevention</u></a>. If you read it, you'll recognise that what we have been discussing until now is close to what the paper presents. For instance, both the cache revalidation algorithm structure and the early revalidation function look similar.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="374" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44FYHAJZ941H1RTEW9J1XD.png&amp;w=715&amp;h=374&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44FYHAJZ941H1RTEW9J1XD.png&amp;w=640&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44FYHAJZ941H1RTEW9J1XD.png&amp;w=715&amp;h=374&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44FYHAJZ941H1RTEW9J1XD.png&amp;w=750&amp;h=392&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44FYHAJZ941H1RTEW9J1XD.png&amp;w=828&amp;h=433&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44FYHAJZ941H1RTEW9J1XD.png&amp;w=1080&amp;h=565&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44FYHAJZ941H1RTEW9J1XD.png&amp;w=1280&amp;h=670&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44FYHAJZ941H1RTEW9J1XD.png&amp;w=1430&amp;h=748&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2639 8" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44FYHAJZ941H1RTEW9J1XD.png&amp;w=850&amp;h=445&amp;f=webp" data-lightbox-width="850" data-lightbox-height="445" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="374" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-c6i3vrlz=""><em>Figure 7: Probabilistic early expiration of a cache item as defined by Figure 2 of Optimal Probabilistic Cache Stampede Prevention paper. In our case, $m\mathcal{D}=300m$</em></p>
-<p data-astro-cid-c6i3vrlz="">One takeaway from the paper is that instead of discretization, with a probability from 0 to 60s, then from 60s to 120s, …, the probability function can be continuous. Instead of a fixed $mpm$, there is a function $mp(t)m$ of time $mtm$.</p>
-<p data-astro-cid-c6i3vrlz="">$mp(t)=e^{-\lambda (expiry-t)}, \text{ with } expiry=300, \text{ and } t \in [0, 300]m$</p>
-<p data-astro-cid-c6i3vrlz="">We call $m\lambdam$ the steepness parameter, and set it to $m\frac{1}{300}m$, $m300m$ being our early expiration gap.</p>
-<p data-astro-cid-c6i3vrlz="">The expectancy over time is $mE(r, t)=1-e^{-rλt}m$. This leads to the expectancy below for various request rates. You can note that when $mr=1m$, there is not a $m100%m$ chance that the request will be revalidated before expiry.</p>
+<p data-astro-cid-t7az6eu7=""><em>Figure 7: Probabilistic early expiration of a cache item as defined by Figure 2 of Optimal Probabilistic Cache Stampede Prevention paper. In our case, $m\mathcal{D}=300m$</em></p>
+<p data-astro-cid-t7az6eu7="">One takeaway from the paper is that instead of discretization, with a probability from 0 to 60s, then from 60s to 120s, …, the probability function can be continuous. Instead of a fixed $mpm$, there is a function $mp(t)m$ of time $mtm$.</p>
+<p data-astro-cid-t7az6eu7="">$mp(t)=e^{-\lambda (expiry-t)}, \text{ with } expiry=300, \text{ and } t \in [0, 300]m$</p>
+<p data-astro-cid-t7az6eu7="">We call $m\lambdam$ the steepness parameter, and set it to $m\frac{1}{300}m$, $m300m$ being our early expiration gap.</p>
+<p data-astro-cid-t7az6eu7="">The expectancy over time is $mE(r, t)=1-e^{-rλt}m$. This leads to the expectancy below for various request rates. You can note that when $mr=1m$, there is not a $m100%m$ chance that the request will be revalidated before expiry.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="429" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468NF1SWWAJNN3B9AJ9MRJ.jpg&amp;w=715&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468NF1SWWAJNN3B9AJ9MRJ.jpg&amp;w=640&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468NF1SWWAJNN3B9AJ9MRJ.jpg&amp;w=715&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468NF1SWWAJNN3B9AJ9MRJ.jpg&amp;w=750&amp;h=450&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468NF1SWWAJNN3B9AJ9MRJ.jpg&amp;w=828&amp;h=497&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468NF1SWWAJNN3B9AJ9MRJ.jpg&amp;w=1080&amp;h=648&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468NF1SWWAJNN3B9AJ9MRJ.jpg&amp;w=1280&amp;h=768&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468NF1SWWAJNN3B9AJ9MRJ.jpg&amp;w=1430&amp;h=858&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2639 9" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468NF1SWWAJNN3B9AJ9MRJ.jpg&amp;w=1000&amp;h=600&amp;f=webp" data-lightbox-width="1000" data-lightbox-height="600" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="429" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-c6i3vrlz=""><em>Figure 8: Revalidation time $mE(t)m$ for multiple $mrm$ with an exponential distribution.</em></p>
-<p data-astro-cid-c6i3vrlz="">This leads to the final code snippet:</p>
+<p data-astro-cid-t7az6eu7=""><em>Figure 8: Revalidation time $mE(t)m$ for multiple $mrm$ with an exponential distribution.</em></p>
+<p data-astro-cid-t7az6eu7="">This leads to the final code snippet:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> CACHE_REVALIDATION_INTERVAL_IN_S</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-ffc799"> 300</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> REVALIDATION_STEEPNESS</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">300</span></span>
@@ -390,8 +390,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz=""><em>Codeblock 7: Image server with early-revalidation and a probabilistic cache using exponential distribution</em></p>
-<p data-astro-cid-c6i3vrlz="">And that's it. Given <code>Date.now()</code> has a granularity, and is not continuous, it would also be possible to discretise these functions, even though the gains are minimal. This is what we have done in a <a href="https://github.com/cloudflare/privacypass-issuer/blob/main/src/cache.ts#L60-L103" target="_blank" rel="noopener noreferrer"><u>production worker implementation</u></a>, where the number of requests is important. It is a service that benefits from caching for performance consideration, and that cannot use built-in <a href="https://developers.cloudflare.com/workers/runtime-apis/cache" target="_blank" rel="noopener noreferrer"><u>stale-while-revalidate</u></a> from within Cloudflare workers. Probabilistic cache stampede prevention is well-suited here, as no new component has to be built, and it performs well at different request rates.</p>
-<h2 data-astro-cid-c6i3vrlz="">Conclusion</h2>
-<p data-astro-cid-c6i3vrlz="">We have seen how to solve cache stampede without a lock, its implementation, and why it is optimal. In the real world, you likely will not encounter this issue: either because it’s good enough to optimize your origin service to serve more requests, or because you can leverage a CDN cache. In fact, most HTTP caches provide an API that follows <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control" target="_blank" rel="noopener noreferrer"><u>Cache Control</u></a>, and likely have all the tools you need. This primitive is also built into certain products, such as <a href="https://developers.cloudflare.com/kv/platform/limits" target="_blank" rel="noopener noreferrer"><u>Cloudflare KV</u></a>.</p>
-<p data-astro-cid-c6i3vrlz="">If you have not done so, you can go and experiment with all the code snippets presented in this blog on the Cloudflare Workers Playground at <a href="https://cloudflareworkers.com" target="_blank" rel="noopener noreferrer"><u>cloudflareworkers.com</u></a>.</p>
+<p data-astro-cid-t7az6eu7=""><em>Codeblock 7: Image server with early-revalidation and a probabilistic cache using exponential distribution</em></p>
+<p data-astro-cid-t7az6eu7="">And that's it. Given <code>Date.now()</code> has a granularity, and is not continuous, it would also be possible to discretise these functions, even though the gains are minimal. This is what we have done in a <a href="https://github.com/cloudflare/privacypass-issuer/blob/main/src/cache.ts#L60-L103" target="_blank" rel="noopener noreferrer"><u>production worker implementation</u></a>, where the number of requests is important. It is a service that benefits from caching for performance consideration, and that cannot use built-in <a href="https://developers.cloudflare.com/workers/runtime-apis/cache" target="_blank" rel="noopener noreferrer"><u>stale-while-revalidate</u></a> from within Cloudflare workers. Probabilistic cache stampede prevention is well-suited here, as no new component has to be built, and it performs well at different request rates.</p>
+<h2 data-astro-cid-t7az6eu7="">Conclusion</h2>
+<p data-astro-cid-t7az6eu7="">We have seen how to solve cache stampede without a lock, its implementation, and why it is optimal. In the real world, you likely will not encounter this issue: either because it’s good enough to optimize your origin service to serve more requests, or because you can leverage a CDN cache. In fact, most HTTP caches provide an API that follows <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control" target="_blank" rel="noopener noreferrer"><u>Cache Control</u></a>, and likely have all the tools you need. This primitive is also built into certain products, such as <a href="https://developers.cloudflare.com/kv/platform/limits" target="_blank" rel="noopener noreferrer"><u>Cloudflare KV</u></a>.</p>
+<p data-astro-cid-t7az6eu7="">If you have not done so, you can go and experiment with all the code snippets presented in this blog on the Cloudflare Workers Playground at <a href="https://cloudflareworkers.com" target="_blank" rel="noopener noreferrer"><u>cloudflareworkers.com</u></a>.</p>

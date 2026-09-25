@@ -1,521 +1,521 @@
-<p data-astro-cid-c6i3vrlz="">With more and more platforms taking the <a href="https://www.cloudflare.com/learning/ddos/how-to-prevent-ddos-attacks" target="_blank" rel="noopener noreferrer">necessary precautions against DDoS attacks</a> like integrating DDoS mitigation services and increasing bandwidth at weak points, Layer 3 and 4 attacks are just not as effective anymore. For Cloudflare, we have fully automated Layer 3/4 based protections with our internal platform, <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep">Gatebot</a>. In the last 6 months we have seen a large upward trend of Layer 7 based DDoS attacks. The key difference to these attacks is they are no longer focused on using huge payloads (volumetric attacks), but based on Requests per Second to exhaust server resources (CPU, Disk and Memory). On a regular basis we see attacks that are over 1 million requests per second. The graph below shows the number of Layer 7 attacks Cloudflare has monitored, which is trending up. On average seeing around 160 attacks a day, with some days spiking up to over 1000 attacks.</p>
-<p data-astro-cid-c6i3vrlz="">A year ago, Cloudflare released <a href="https://blog.cloudflare.com/rate-limiting">Rate Limiting</a>, and it is proving to be a hugely effective tool for customers to protect their web applications and <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api" target="_blank" rel="noopener noreferrer">APIs</a> from all sorts of attacks, from “low and slow” DDoS attacks, through to bot-based attacks, such as credential stuffing and content scraping. We’re pleased about the success our customers are seeing with Rate Limiting and are excited to announce additional capabilities to give our customers further control.</p>
-<h3 data-astro-cid-c6i3vrlz="">So what’s changing?</h3>
-<p data-astro-cid-c6i3vrlz="">There are times when you clearly know that traffic is malicious. In cases like this, our existing Block action is proving effective for our customers. But there are times when it is not the best option, and causes a negative user experience. Rather than risk a false negative, customers often want to challenge a client to ensure they are who they represent themselves to be, which is in most situations, human not a bot.</p>
-<p data-astro-cid-c6i3vrlz=""><strong>Firstly</strong>, to help customers more accurately identify the traffic, we are adding Cloudflare JavaScript Challenge, and Google reCAPTCHA (Challenge) mitigation actions to the UI and API for Pro and Business plans. The existing Block and Simulate actions still exist. As a reminder, to test any rule, deploying in Simulate means that you will not be charged for any requests. This is a great way to test your new rules to make sure they have been configured correctly.</p>
+<p data-astro-cid-t7az6eu7="">With more and more platforms taking the <a href="https://www.cloudflare.com/learning/ddos/how-to-prevent-ddos-attacks" target="_blank" rel="noopener noreferrer">necessary precautions against DDoS attacks</a> like integrating DDoS mitigation services and increasing bandwidth at weak points, Layer 3 and 4 attacks are just not as effective anymore. For Cloudflare, we have fully automated Layer 3/4 based protections with our internal platform, <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep">Gatebot</a>. In the last 6 months we have seen a large upward trend of Layer 7 based DDoS attacks. The key difference to these attacks is they are no longer focused on using huge payloads (volumetric attacks), but based on Requests per Second to exhaust server resources (CPU, Disk and Memory). On a regular basis we see attacks that are over 1 million requests per second. The graph below shows the number of Layer 7 attacks Cloudflare has monitored, which is trending up. On average seeing around 160 attacks a day, with some days spiking up to over 1000 attacks.</p>
+<p data-astro-cid-t7az6eu7="">A year ago, Cloudflare released <a href="https://blog.cloudflare.com/rate-limiting">Rate Limiting</a>, and it is proving to be a hugely effective tool for customers to protect their web applications and <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api" target="_blank" rel="noopener noreferrer">APIs</a> from all sorts of attacks, from “low and slow” DDoS attacks, through to bot-based attacks, such as credential stuffing and content scraping. We’re pleased about the success our customers are seeing with Rate Limiting and are excited to announce additional capabilities to give our customers further control.</p>
+<h3 data-astro-cid-t7az6eu7="">So what’s changing?</h3>
+<p data-astro-cid-t7az6eu7="">There are times when you clearly know that traffic is malicious. In cases like this, our existing Block action is proving effective for our customers. But there are times when it is not the best option, and causes a negative user experience. Rather than risk a false negative, customers often want to challenge a client to ensure they are who they represent themselves to be, which is in most situations, human not a bot.</p>
+<p data-astro-cid-t7az6eu7=""><strong>Firstly</strong>, to help customers more accurately identify the traffic, we are adding Cloudflare JavaScript Challenge, and Google reCAPTCHA (Challenge) mitigation actions to the UI and API for Pro and Business plans. The existing Block and Simulate actions still exist. As a reminder, to test any rule, deploying in Simulate means that you will not be charged for any requests. This is a great way to test your new rules to make sure they have been configured correctly.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="698" height="741" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48G1PFJTA6P5GEHNBXWPZC.png&amp;w=698&amp;h=741&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48G1PFJTA6P5GEHNBXWPZC.png&amp;w=640&amp;h=679&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48G1PFJTA6P5GEHNBXWPZC.png&amp;w=698&amp;h=741&amp;f=webp&amp;fit=cover&amp;position=center 698w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48G1PFJTA6P5GEHNBXWPZC.png&amp;w=750&amp;h=796&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48G1PFJTA6P5GEHNBXWPZC.png&amp;w=828&amp;h=879&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48G1PFJTA6P5GEHNBXWPZC.png&amp;w=1080&amp;h=1147&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48G1PFJTA6P5GEHNBXWPZC.png&amp;w=1280&amp;h=1359&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48G1PFJTA6P5GEHNBXWPZC.png&amp;w=1396&amp;h=1482&amp;f=webp&amp;fit=cover&amp;position=center 1396w" alt="Screen-Shot-2018-05-21-at-10.36.39-AM" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48G1PFJTA6P5GEHNBXWPZC.png&amp;w=698&amp;h=741&amp;f=webp" data-lightbox-width="698" data-lightbox-height="741" data-astro-cid-7nvefuv6="true" sizes="(min-width: 698px) 698px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="698" height="741" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-c6i3vrlz=""><strong>Secondly</strong>, we’re making Rate Limiting more dynamically scalable. A new feature has been added which allows Rate Limiting to count on Origin Response Headers for Business and Enterprise customers. The way this feature works is by matching attributes which are returned by the Origin to Cloudflare.</p>
-<h3 data-astro-cid-c6i3vrlz="">The new capabilities - in action!</h3>
-<p data-astro-cid-c6i3vrlz="">One of the things that really drives our innovation is solving the real problems we hear from customers every day. With that, we wanted to provide some real world examples of these new capabilities in action.</p>
-<p data-astro-cid-c6i3vrlz="">Each of the use cases have Basic and Advanced implementation options. After some testing, we found that tiering rate limits is an extremely effective solution against repeat offenders.</p>
-<p data-astro-cid-c6i3vrlz=""><strong>Credential Stuffing Protection</strong> for Login Pages and APIs. The best way to build applications is to utilise the standardized Status Codes. For example, if I fail to authenticate against an endpoint or a website, I should receive a “401” or “403”. Generally speaking a user to a website will often get their password wrong three times before selecting the “I forgot my password” option. Most Credential Stuff bots will try thousands of times cycling through many usernames and password combinations to see what works.</p>
-<p data-astro-cid-c6i3vrlz="">Here are some example rate limits which you can configure to protect your application from credential stuffing.</p>
-<p data-astro-cid-c6i3vrlz=""><strong>Basic</strong>:Cloudflare offers a “Protect My Login” feature out the box. Enter the URL for your login page and Cloudflare will create a rule such that clients that attempt to log in more than 5 times in 5 minutes will be blocked for 15 minutes.</p>
+<p data-astro-cid-t7az6eu7=""><strong>Secondly</strong>, we’re making Rate Limiting more dynamically scalable. A new feature has been added which allows Rate Limiting to count on Origin Response Headers for Business and Enterprise customers. The way this feature works is by matching attributes which are returned by the Origin to Cloudflare.</p>
+<h3 data-astro-cid-t7az6eu7="">The new capabilities - in action!</h3>
+<p data-astro-cid-t7az6eu7="">One of the things that really drives our innovation is solving the real problems we hear from customers every day. With that, we wanted to provide some real world examples of these new capabilities in action.</p>
+<p data-astro-cid-t7az6eu7="">Each of the use cases have Basic and Advanced implementation options. After some testing, we found that tiering rate limits is an extremely effective solution against repeat offenders.</p>
+<p data-astro-cid-t7az6eu7=""><strong>Credential Stuffing Protection</strong> for Login Pages and APIs. The best way to build applications is to utilise the standardized Status Codes. For example, if I fail to authenticate against an endpoint or a website, I should receive a “401” or “403”. Generally speaking a user to a website will often get their password wrong three times before selecting the “I forgot my password” option. Most Credential Stuff bots will try thousands of times cycling through many usernames and password combinations to see what works.</p>
+<p data-astro-cid-t7az6eu7="">Here are some example rate limits which you can configure to protect your application from credential stuffing.</p>
+<p data-astro-cid-t7az6eu7=""><strong>Basic</strong>:Cloudflare offers a “Protect My Login” feature out the box. Enter the URL for your login page and Cloudflare will create a rule such that clients that attempt to log in more than 5 times in 5 minutes will be blocked for 15 minutes.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="358" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KFKHZDVCHWR85WAKANF9.png&amp;w=715&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KFKHZDVCHWR85WAKANF9.png&amp;w=640&amp;h=320&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KFKHZDVCHWR85WAKANF9.png&amp;w=715&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KFKHZDVCHWR85WAKANF9.png&amp;w=750&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KFKHZDVCHWR85WAKANF9.png&amp;w=828&amp;h=415&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KFKHZDVCHWR85WAKANF9.png&amp;w=1080&amp;h=541&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KFKHZDVCHWR85WAKANF9.png&amp;w=1280&amp;h=641&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KFKHZDVCHWR85WAKANF9.png&amp;w=1430&amp;h=716&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Screen-Shot-2018-05-21-at-10.36.47-AM" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KFKHZDVCHWR85WAKANF9.png&amp;w=946&amp;h=474&amp;f=webp" data-lightbox-width="946" data-lightbox-height="474" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="358" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-c6i3vrlz="">With the new Challenge capabilities of Rate Limiting, you can customize the response parameters for log in to more closely match the behavior pattern for bots you see on your site through a custom-built rule.</p>
-<p data-astro-cid-c6i3vrlz="">Logging in four times in one minute is hard - I type fast, but couldn’t even do this. If I’m seeing this pattern in my logs, it is likely a bot. I can now create a Rate Limiting rule based on the following criteria:</p>
-<div class="emdash-table-wrapper" data-astro-cid-d7axpwdr="">
-	<table class="emdash-table" style="min-width: 576px;" data-astro-cid-d7axpwdr="">
-		<thead data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+<p data-astro-cid-t7az6eu7="">With the new Challenge capabilities of Rate Limiting, you can customize the response parameters for log in to more closely match the behavior pattern for bots you see on your site through a custom-built rule.</p>
+<p data-astro-cid-t7az6eu7="">Logging in four times in one minute is hard - I type fast, but couldn’t even do this. If I’m seeing this pattern in my logs, it is likely a bot. I can now create a Rate Limiting rule based on the following criteria:</p>
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 576px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>RuleID</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>URL</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Count</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Timeframe</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Matching Criteria</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Action</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>/login</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>4</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1 minute</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Method: POST<br>Status Code: 401,403</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Challenge</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-c6i3vrlz="">With this new rule, if someone tries to log in four times within a minute, they will be thrown a challenge. My regular human users will likely never hit it, but if they do - the challenge insures they can still access the site.</p>
-<p data-astro-cid-c6i3vrlz=""><strong>Advanced</strong>:<br>And sometimes bots are just super persistent in their attacks. We can tier rules together to tackle repeat offenders. For example, instead of creating just a single rule, we can create a series of rules which can be tiered to protect against persistent threats:</p>
-<div class="emdash-table-wrapper" data-astro-cid-d7axpwdr="">
-	<table class="emdash-table" style="min-width: 576px;" data-astro-cid-d7axpwdr="">
-		<thead data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+<p data-astro-cid-t7az6eu7="">With this new rule, if someone tries to log in four times within a minute, they will be thrown a challenge. My regular human users will likely never hit it, but if they do - the challenge insures they can still access the site.</p>
+<p data-astro-cid-t7az6eu7=""><strong>Advanced</strong>:<br>And sometimes bots are just super persistent in their attacks. We can tier rules together to tackle repeat offenders. For example, instead of creating just a single rule, we can create a series of rules which can be tiered to protect against persistent threats:</p>
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 576px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>RuleID</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>URL</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Count</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Timeframe</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Matching Criteria</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Action</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>/login</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>4</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1 minute</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Method: POST<br>Status Code: 401,403</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>JavaScript Challenge</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>/login</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>10</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>5 minutes</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Method: POST<br>Status Code: 401,403</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Challenge</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>3</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>/login</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>20</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1 hour</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Method: POST<br>Status Code: 401,403</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Block for 1 day</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-c6i3vrlz="">With this type of tiering, any genuine users that are just having a hard time remembering their login details whilst also being extremely fast typers will not be fully blocked. Instead, they will first be given out automated JavaScript challenge followed by a traditional CAPTCHA if they hit the next limit. This is a much more user-friendly approach while still securing your login endpoints.</p>
-<h4 data-astro-cid-c6i3vrlz="">Time-based Firewall</h4>
-<p data-astro-cid-c6i3vrlz="">Our IP Firewall is a powerful feature to block problematic IP addresses from accessing your app. Particularly this is related to repeated abuse, or based on IP Reputation or Threat Intelligence feeds that are integrated at the origin level.</p>
-<p data-astro-cid-c6i3vrlz="">While the IP firewall is powerful, maintaining and managing a list of IP addresses which are currently being blocked can be cumbersome. It becomes more complicated if you want to allow blocked IP addresses to “age out” if bad behavior stops after a period of time. This often requires authoring and managing a script and multiple API calls to Cloudflare.</p>
-<p data-astro-cid-c6i3vrlz="">The new Rate Limiting Origin Headers feature makes this all so much easier. You can now configure your origin to respond with a Header to trigger a Rate-Limit. To make this happen, we need to generate a Header at the Origin, which is then added to the response to Cloudflare. As we are matching on a static header, we can set a severity level based on the content of the Header. For example, if it was a repeat offender, you could respond with High as the Header value, which could Block for a longer period.</p>
-<p data-astro-cid-c6i3vrlz="">Create a Rate Limiting rule based on the following criteria:</p>
-<div class="emdash-table-wrapper" data-astro-cid-d7axpwdr="">
-	<table class="emdash-table" style="min-width: 576px;" data-astro-cid-d7axpwdr="">
-		<thead data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+<p data-astro-cid-t7az6eu7="">With this type of tiering, any genuine users that are just having a hard time remembering their login details whilst also being extremely fast typers will not be fully blocked. Instead, they will first be given out automated JavaScript challenge followed by a traditional CAPTCHA if they hit the next limit. This is a much more user-friendly approach while still securing your login endpoints.</p>
+<h4 data-astro-cid-t7az6eu7="">Time-based Firewall</h4>
+<p data-astro-cid-t7az6eu7="">Our IP Firewall is a powerful feature to block problematic IP addresses from accessing your app. Particularly this is related to repeated abuse, or based on IP Reputation or Threat Intelligence feeds that are integrated at the origin level.</p>
+<p data-astro-cid-t7az6eu7="">While the IP firewall is powerful, maintaining and managing a list of IP addresses which are currently being blocked can be cumbersome. It becomes more complicated if you want to allow blocked IP addresses to “age out” if bad behavior stops after a period of time. This often requires authoring and managing a script and multiple API calls to Cloudflare.</p>
+<p data-astro-cid-t7az6eu7="">The new Rate Limiting Origin Headers feature makes this all so much easier. You can now configure your origin to respond with a Header to trigger a Rate-Limit. To make this happen, we need to generate a Header at the Origin, which is then added to the response to Cloudflare. As we are matching on a static header, we can set a severity level based on the content of the Header. For example, if it was a repeat offender, you could respond with High as the Header value, which could Block for a longer period.</p>
+<p data-astro-cid-t7az6eu7="">Create a Rate Limiting rule based on the following criteria:</p>
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 576px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>RuleID</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>URL</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Count</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Timeframe</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Matching Criteria</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Action</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>*</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1 second</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Method: _ALL_<br>Header: X-CF-Block = low</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Block for 5 minutes</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>*</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1 second</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Method: _ALL_<br>Header: X-CF-Block = medium</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Block for 15 minutes</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>3</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>*</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1 second</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Method: _ALL_<br>Header: X-CF-Block = high</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Block for 60 minutes</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-c6i3vrlz="">Once that Rate-Limit has been created, Cloudflare’s Rate-Limiting will then kick-in immediately when that Header is received.</p>
-<h4 data-astro-cid-c6i3vrlz="">Enumeration Attacks</h4>
-<p data-astro-cid-c6i3vrlz="">Enumeration attacks are proving to be increasingly popular and pesky to mitigate. With enumeration attacks, attackers identify an expensive operation in your app and hammer at it to tie up resources and slow or crash your app. For example, an app that offers the ability to look up a user profile requires a database lookup to validate whether the user exists. In an enumeration attack, attackers will send a random set of characters to that endpoint in quick succession, causing the database to ground to a halt.</p>
-<p data-astro-cid-c6i3vrlz="">Rate Limiting to the rescue!</p>
-<p data-astro-cid-c6i3vrlz="">One of our customers was hit with a huge enumeration attack on their platform earlier this year, where the aggressors were trying to do exactly what we described above, in an attempt to overload their database platform. Their Rate Limiting configuration blocked over 100,000,000 bad requests during the 6-hour attack.</p>
+<p data-astro-cid-t7az6eu7="">Once that Rate-Limit has been created, Cloudflare’s Rate-Limiting will then kick-in immediately when that Header is received.</p>
+<h4 data-astro-cid-t7az6eu7="">Enumeration Attacks</h4>
+<p data-astro-cid-t7az6eu7="">Enumeration attacks are proving to be increasingly popular and pesky to mitigate. With enumeration attacks, attackers identify an expensive operation in your app and hammer at it to tie up resources and slow or crash your app. For example, an app that offers the ability to look up a user profile requires a database lookup to validate whether the user exists. In an enumeration attack, attackers will send a random set of characters to that endpoint in quick succession, causing the database to ground to a halt.</p>
+<p data-astro-cid-t7az6eu7="">Rate Limiting to the rescue!</p>
+<p data-astro-cid-t7az6eu7="">One of our customers was hit with a huge enumeration attack on their platform earlier this year, where the aggressors were trying to do exactly what we described above, in an attempt to overload their database platform. Their Rate Limiting configuration blocked over 100,000,000 bad requests during the 6-hour attack.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="419" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V6K968FM4R4Q99GVG9H9.png&amp;w=715&amp;h=419&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V6K968FM4R4Q99GVG9H9.png&amp;w=640&amp;h=375&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V6K968FM4R4Q99GVG9H9.png&amp;w=715&amp;h=419&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V6K968FM4R4Q99GVG9H9.png&amp;w=750&amp;h=440&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V6K968FM4R4Q99GVG9H9.png&amp;w=828&amp;h=485&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V6K968FM4R4Q99GVG9H9.png&amp;w=1080&amp;h=633&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V6K968FM4R4Q99GVG9H9.png&amp;w=1280&amp;h=750&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V6K968FM4R4Q99GVG9H9.png&amp;w=1430&amp;h=838&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Screen-Shot-2018-05-21-at-10.36.57-AM" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V6K968FM4R4Q99GVG9H9.png&amp;w=989&amp;h=579&amp;f=webp" data-lightbox-width="989" data-lightbox-height="579" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="419" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-c6i3vrlz="">When a query is sent to the app, and the user is not found, the app serves a 404 (page not found). A very basic approach is to set a rate limit for 404s. If a user crosses a threshold of 404’s in a period of time, set the app to challenge the user to prove themselves to be a real person.</p>
-<div class="emdash-table-wrapper" data-astro-cid-d7axpwdr="">
-	<table class="emdash-table" style="min-width: 576px;" data-astro-cid-d7axpwdr="">
-		<thead data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+<p data-astro-cid-t7az6eu7="">When a query is sent to the app, and the user is not found, the app serves a 404 (page not found). A very basic approach is to set a rate limit for 404s. If a user crosses a threshold of 404’s in a period of time, set the app to challenge the user to prove themselves to be a real person.</p>
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 576px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>RuleID</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>URL</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Count</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Timeframe</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Matching Criteria</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Action</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>*</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>10</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1 minute</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Method: GET<br>Status Code: 404</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Challenge</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-c6i3vrlz="">To catch repeat offenders, you can tier the tier Rate Limits:</p>
-<div class="emdash-table-wrapper" data-astro-cid-d7axpwdr="">
-	<table class="emdash-table" style="min-width: 576px;" data-astro-cid-d7axpwdr="">
-		<thead data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+<p data-astro-cid-t7az6eu7="">To catch repeat offenders, you can tier the tier Rate Limits:</p>
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 576px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>RuleID</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>URL</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Count</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Timeframe</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Matching Criteria</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Action</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>/public/profile*</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>10</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1 minute</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Method: GET<br>Status Code: 404</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>JavaScript Challenge</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>/public/profile*</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>25</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1 minute</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Method: GET<br>Status Code: 200</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Challenge</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>3</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>/public/profile*</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>50</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>10 minutes</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Method: GET<br>Status Code: 200, 404</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Block for 4 hours</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-c6i3vrlz="">With this type of tiered defense in place, it means that you can “caution” an offender with a JavaScript challenge or Challenge (Google Captcha), and then “block” them if they continue.</p>
-<h4 data-astro-cid-c6i3vrlz="">Content Scraping</h4>
-<p data-astro-cid-c6i3vrlz="">Increasingly, content owners are wrestling with content scraping - malicious bots copying copyrighted images or assets and redistributing or reusing them. For example, we work with an <a href="https://www.cloudflare.com/ecommerce" target="_blank" rel="noopener noreferrer">eCommerce store</a> that uses copyrighted images and their images are appearing elsewhere on the web without their consent. Rate Limiting can help!</p>
-<p data-astro-cid-c6i3vrlz="">In their app, each page displays 4 copyrighted images, 1 which is actual size, and 3 which are thumbnails. By looking at logs and user patterns, they determined that most users, at a stretch, would never view more than 10–15 products in a minute, which would equate to 40–60 loads from the images store.</p>
-<p data-astro-cid-c6i3vrlz="">They chose to tier their Rate Limiting rules to prevent end users from getting unnecessarily blocked when they were browsing heavily. To <a href="https://www.cloudflare.com/learning/ai/how-to-prevent-web-scraping" target="_blank" rel="noopener noreferrer">block malicious attempts at content scraping</a> can be quite simple, however it does require some forward planning. Placing the rate limit on the right URL is key to insure you are placing the rule on exactly what you are trying to protect and not the broader content. Here’s an example set of rate limits this customer set to protect their images:</p>
-<div class="emdash-table-wrapper" data-astro-cid-d7axpwdr="">
-	<table class="emdash-table" style="min-width: 576px;" data-astro-cid-d7axpwdr="">
-		<thead data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+<p data-astro-cid-t7az6eu7="">With this type of tiered defense in place, it means that you can “caution” an offender with a JavaScript challenge or Challenge (Google Captcha), and then “block” them if they continue.</p>
+<h4 data-astro-cid-t7az6eu7="">Content Scraping</h4>
+<p data-astro-cid-t7az6eu7="">Increasingly, content owners are wrestling with content scraping - malicious bots copying copyrighted images or assets and redistributing or reusing them. For example, we work with an <a href="https://www.cloudflare.com/ecommerce" target="_blank" rel="noopener noreferrer">eCommerce store</a> that uses copyrighted images and their images are appearing elsewhere on the web without their consent. Rate Limiting can help!</p>
+<p data-astro-cid-t7az6eu7="">In their app, each page displays 4 copyrighted images, 1 which is actual size, and 3 which are thumbnails. By looking at logs and user patterns, they determined that most users, at a stretch, would never view more than 10–15 products in a minute, which would equate to 40–60 loads from the images store.</p>
+<p data-astro-cid-t7az6eu7="">They chose to tier their Rate Limiting rules to prevent end users from getting unnecessarily blocked when they were browsing heavily. To <a href="https://www.cloudflare.com/learning/ai/how-to-prevent-web-scraping" target="_blank" rel="noopener noreferrer">block malicious attempts at content scraping</a> can be quite simple, however it does require some forward planning. Placing the rate limit on the right URL is key to insure you are placing the rule on exactly what you are trying to protect and not the broader content. Here’s an example set of rate limits this customer set to protect their images:</p>
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 576px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>RuleID</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>URL</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Count</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Timeframe</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Matching Criteria</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Action</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>/img/thumbs/*</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>10</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1 minute</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Method: GET<br>Status Code: 404</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Challenge</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>/img/thumbs/*</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>25</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1 minute</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Method: GET<br>Status Code: 200</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Challenge</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>3</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>/img/*</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>75</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1 minute</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Method: GET<br>Status Code: 200</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Block for 4 hours</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>4</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>/img/*</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>5</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1 minute</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Method: GET<br>Status Code: 403, 404</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Challenge</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-c6i3vrlz="">As we can see here, rules 1 and 2 are counting based on the number of requests to each endpoint. Rule 3 is counting based on all hits to the image store, and if it gets above 75 requests, the user will be blocked for 4 hours. Finally, to avoid any enumeration or bots guessing image names and numbers, we are counting on 404 and 403s and challenging if we see unusual spikes.</p>
-<h3 data-astro-cid-c6i3vrlz="">One more thing ... more rules, <em>totally rules!</em></h3>
-<p data-astro-cid-c6i3vrlz="">We want to ensure you have the rules you need to secure your app. To do that, we are increasing the number of available rules for Pro and Business, for no additional charge.</p>
+<p data-astro-cid-t7az6eu7="">As we can see here, rules 1 and 2 are counting based on the number of requests to each endpoint. Rule 3 is counting based on all hits to the image store, and if it gets above 75 requests, the user will be blocked for 4 hours. Finally, to avoid any enumeration or bots guessing image names and numbers, we are counting on 404 and 403s and challenging if we see unusual spikes.</p>
+<h3 data-astro-cid-t7az6eu7="">One more thing ... more rules, <em>totally rules!</em></h3>
+<p data-astro-cid-t7az6eu7="">We want to ensure you have the rules you need to secure your app. To do that, we are increasing the number of available rules for Pro and Business, for no additional charge.</p>
 <ul>
 	<li>Pro plans increase from 3 to 10 rules</li>
 	<li>Business plans increase from 3 to 15 rules</li>
 </ul>
-<p data-astro-cid-c6i3vrlz="">As always, Cloudflare only charges for good traffic - requests that are allowed through Rate Limiting, not blocked. For more information click <a href="https://support.cloudflare.com/hc/en-us/articles/115000272247-Billing-for-Cloudflare-Rate-Limiting" target="_blank" rel="noopener noreferrer">here</a>.</p>
-<p data-astro-cid-c6i3vrlz="">The Rate-Limiting feature can be enabled within the Firewall tab on the Dashboard, or by visiting: <a href="https://www.cloudflare.com/a/firewall" target="_blank" rel="noopener noreferrer">cloudflare.com/a/firewall</a></p>
+<p data-astro-cid-t7az6eu7="">As always, Cloudflare only charges for good traffic - requests that are allowed through Rate Limiting, not blocked. For more information click <a href="https://support.cloudflare.com/hc/en-us/articles/115000272247-Billing-for-Cloudflare-Rate-Limiting" target="_blank" rel="noopener noreferrer">here</a>.</p>
+<p data-astro-cid-t7az6eu7="">The Rate-Limiting feature can be enabled within the Firewall tab on the Dashboard, or by visiting: <a href="https://www.cloudflare.com/a/firewall" target="_blank" rel="noopener noreferrer">cloudflare.com/a/firewall</a></p>

@@ -1,9 +1,9 @@
-<p data-astro-cid-c6i3vrlz="">We want our digital data to be safe. We want to visit websites, send bank details, type passwords, sign documents online, login into remote computers, encrypt data before storing it in databases and be sure that nobody can tamper with it. Cryptography can provide a high degree of data security, but we need to protect cryptographic keys.</p>
-<p data-astro-cid-c6i3vrlz="">At the same time, we can’t have our key written somewhere securely and just access it occasionally. Quite the opposite, it’s involved in every request where we do crypto-operations. If a site supports TLS, then the private key is used to establish each connection.</p>
-<p data-astro-cid-c6i3vrlz="">Unfortunately cryptographic keys sometimes leak and when it happens, it is a big problem. Many leaks happen because of software bugs and security vulnerabilities. In this post we will learn how the Linux kernel can help protect cryptographic keys from a whole class of potential security vulnerabilities: memory access violations.</p>
-<h3 data-astro-cid-c6i3vrlz="">Memory access violations</h3>
-<p data-astro-cid-c6i3vrlz="">According to the <a href="https://www.nsa.gov/Press-Room/News-Highlights/Article/Article/3215760/nsa-releases-guidance-on-how-to-protect-against-software-memory-safety-issues" target="_blank" rel="noopener noreferrer">NSA</a>, around 70% of vulnerabilities in both Microsoft's and Google's code were related to memory safety issues. One of the consequences of incorrect memory accesses is leaking security data (including cryptographic keys). Cryptographic keys are just some (mostly random) data stored in memory, so they may be subject to memory leaks like any other in-memory data. The below example shows how a cryptographic key may accidentally leak via stack memory reuse:</p>
-<p data-astro-cid-c6i3vrlz="">broken.c</p>
+<p data-astro-cid-t7az6eu7="">We want our digital data to be safe. We want to visit websites, send bank details, type passwords, sign documents online, login into remote computers, encrypt data before storing it in databases and be sure that nobody can tamper with it. Cryptography can provide a high degree of data security, but we need to protect cryptographic keys.</p>
+<p data-astro-cid-t7az6eu7="">At the same time, we can’t have our key written somewhere securely and just access it occasionally. Quite the opposite, it’s involved in every request where we do crypto-operations. If a site supports TLS, then the private key is used to establish each connection.</p>
+<p data-astro-cid-t7az6eu7="">Unfortunately cryptographic keys sometimes leak and when it happens, it is a big problem. Many leaks happen because of software bugs and security vulnerabilities. In this post we will learn how the Linux kernel can help protect cryptographic keys from a whole class of potential security vulnerabilities: memory access violations.</p>
+<h3 data-astro-cid-t7az6eu7="">Memory access violations</h3>
+<p data-astro-cid-t7az6eu7="">According to the <a href="https://www.nsa.gov/Press-Room/News-Highlights/Article/Article/3215760/nsa-releases-guidance-on-how-to-protect-against-software-memory-safety-issues" target="_blank" rel="noopener noreferrer">NSA</a>, around 70% of vulnerabilities in both Microsoft's and Google's code were related to memory safety issues. One of the consequences of incorrect memory accesses is leaking security data (including cryptographic keys). Cryptographic keys are just some (mostly random) data stored in memory, so they may be subject to memory leaks like any other in-memory data. The below example shows how a cryptographic key may accidentally leak via stack memory reuse:</p>
+<p data-astro-cid-t7az6eu7="">broken.c</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;stdio.h&gt;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;stdint.h&gt;</span></span>
@@ -51,7 +51,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-c6i3vrlz="">Compile and run our program:</p>
+<p data-astro-cid-t7az6eu7="">Compile and run our program:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> broken</span><span class="sk-032f62-99ffe4"> broken.c</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./broken</span><span class="sk-24292e-fff"> </span></span>
@@ -62,20 +62,20 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">Oops, we printed the secret key in the “fyi” logger instead of the intended log message! There are two problems with the code above:</p>
+<p data-astro-cid-t7az6eu7="">Oops, we printed the secret key in the “fyi” logger instead of the intended log message! There are two problems with the code above:</p>
 <ul>
 	<li>we didn’t securely destroy the key in our pseudo-encryption function (by overwriting the key data with zeroes, for example), when we finished using it</li>
 	<li>our buggy logging function has access to any memory within our process</li>
 </ul>
-<p data-astro-cid-c6i3vrlz="">And while we can probably easily fix the first problem with some additional code, the second problem is the inherent result of how software runs inside the operating system.</p>
-<p data-astro-cid-c6i3vrlz="">Each process is given a block of contiguous virtual memory by the operating system. It allows the kernel to share limited computer resources among several simultaneously running processes. This approach is called <a href="https://en.wikipedia.org/wiki/Virtual_memory" target="_blank" rel="noopener noreferrer">virtual memory management</a>. Inside the virtual memory a process has its own address space and doesn’t have access to the memory of other processes, but it can access any memory within its address space. In our example we are interested in a piece of process memory called the stack.</p>
-<p data-astro-cid-c6i3vrlz="">The stack consists of stack frames. A stack frame is dynamically allocated space for the currently running function. It contains the function’s local variables, arguments and return address. When compiling a function the compiler calculates how much memory needs to be allocated and requests a stack frame of this size. Once a function finishes execution the stack frame is marked as free and can be used again. A stack frame is a logical block, it doesn’t provide any boundary checks, it’s not erased, just marked as free. Additionally, the virtual memory is a contiguous block of addresses. Both of these statements give the possibility for malware/buggy code to access data from anywhere within virtual memory.</p>
-<p data-astro-cid-c6i3vrlz="">The stack of our program <code>broken.c</code> will look like:</p>
+<p data-astro-cid-t7az6eu7="">And while we can probably easily fix the first problem with some additional code, the second problem is the inherent result of how software runs inside the operating system.</p>
+<p data-astro-cid-t7az6eu7="">Each process is given a block of contiguous virtual memory by the operating system. It allows the kernel to share limited computer resources among several simultaneously running processes. This approach is called <a href="https://en.wikipedia.org/wiki/Virtual_memory" target="_blank" rel="noopener noreferrer">virtual memory management</a>. Inside the virtual memory a process has its own address space and doesn’t have access to the memory of other processes, but it can access any memory within its address space. In our example we are interested in a piece of process memory called the stack.</p>
+<p data-astro-cid-t7az6eu7="">The stack consists of stack frames. A stack frame is dynamically allocated space for the currently running function. It contains the function’s local variables, arguments and return address. When compiling a function the compiler calculates how much memory needs to be allocated and requests a stack frame of this size. Once a function finishes execution the stack frame is marked as free and can be used again. A stack frame is a logical block, it doesn’t provide any boundary checks, it’s not erased, just marked as free. Additionally, the virtual memory is a contiguous block of addresses. Both of these statements give the possibility for malware/buggy code to access data from anywhere within virtual memory.</p>
+<p data-astro-cid-t7az6eu7="">The stack of our program <code>broken.c</code> will look like:</p>
 <div id="html-block-k14" class="html-block"><img src="https://imagedelivery.net/52R3oh4H-57qkVChwuo3Ag/3526edee-ce7e-4f98-a2bf-ff1efd2fc800/public" alt=""></div>
-<p data-astro-cid-c6i3vrlz="">At the beginning we have a stack frame of the main function. Further, the <code>main()</code> function calls <code>encrypt()</code> which will be placed on the stack immediately below the <code>main()</code> (the code stack grows downwards). Inside <code>encrypt()</code> the compiler requests 8 bytes for the <code>key</code> variable (7 bytes of data + C-null character). When <code>encrypt()</code> finishes execution, the same memory addresses are taken by <code>log_completion()</code>. Inside the <code>log_completion()</code> the compiler allocates eight bytes for the <code>msg</code> variable. Accidentally, it was put on the stack at the same place where our private key was stored before. The memory for <code>msg</code> was only allocated, but not initialized, the data from the previous function left as is.</p>
-<p data-astro-cid-c6i3vrlz="">Additionally, to the code bugs, programming languages provide unsafe functions known for the safe-memory vulnerabilities. For example, for C such functions are <code>printf()</code>, <code>strcpy()</code>, <code>gets()</code>. The function <code>printf()</code> doesn’t check how many arguments must be passed to replace all placeholders in the format string. The function arguments are placed on the stack above the function stack frame, <code>printf()</code> fetches arguments according to the numbers and type of placeholders, easily going off its arguments and accessing data from the stack frame of the previous function.</p>
-<p data-astro-cid-c6i3vrlz="">The NSA advises us to use safety-memory languages like Python, Go, Rust. But will it completely protect us?</p>
-<p data-astro-cid-c6i3vrlz="">The Python compiler will definitely check boundaries in many cases for you and notify with an error:</p>
+<p data-astro-cid-t7az6eu7="">At the beginning we have a stack frame of the main function. Further, the <code>main()</code> function calls <code>encrypt()</code> which will be placed on the stack immediately below the <code>main()</code> (the code stack grows downwards). Inside <code>encrypt()</code> the compiler requests 8 bytes for the <code>key</code> variable (7 bytes of data + C-null character). When <code>encrypt()</code> finishes execution, the same memory addresses are taken by <code>log_completion()</code>. Inside the <code>log_completion()</code> the compiler allocates eight bytes for the <code>msg</code> variable. Accidentally, it was put on the stack at the same place where our private key was stored before. The memory for <code>msg</code> was only allocated, but not initialized, the data from the previous function left as is.</p>
+<p data-astro-cid-t7az6eu7="">Additionally, to the code bugs, programming languages provide unsafe functions known for the safe-memory vulnerabilities. For example, for C such functions are <code>printf()</code>, <code>strcpy()</code>, <code>gets()</code>. The function <code>printf()</code> doesn’t check how many arguments must be passed to replace all placeholders in the format string. The function arguments are placed on the stack above the function stack frame, <code>printf()</code> fetches arguments according to the numbers and type of placeholders, easily going off its arguments and accessing data from the stack frame of the previous function.</p>
+<p data-astro-cid-t7az6eu7="">The NSA advises us to use safety-memory languages like Python, Go, Rust. But will it completely protect us?</p>
+<p data-astro-cid-t7az6eu7="">The Python compiler will definitely check boundaries in many cases for you and notify with an error:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&gt;&gt;&gt;</span><span class="sk-005cc5-ffc799"> print</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"x: </span><span class="sk-005cc5-ffc799">{}</span><span class="sk-032f62-99ffe4">, y: </span><span class="sk-005cc5-ffc799">{}</span><span class="sk-032f62-99ffe4">, </span><span class="sk-005cc5-ffc799">{}</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">.format(</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">))</span></span>
 <span class="line"><span class="sk-24292e-fff">Traceback (most recent call last):</span></span>
@@ -86,19 +86,19 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">However, this is a quote from one of 36 (for now) <a href="https://www.cvedetails.com/vulnerability-list/vendor_id-10210/opov-1/Python.html" target="_blank" rel="noopener noreferrer">vulnerabilities</a>:</p>
-<blockquote data-astro-cid-c6i3vrlz=""><em>Python 2.7.14 is vulnerable to a Heap-Buffer-Overflow as well as a Heap-Use-After-Free.</em></blockquote>
-<p data-astro-cid-c6i3vrlz="">Golang has its own list of <a href="https://www.cvedetails.com/vulnerability-list/vendor_id-14185/opov-1/Golang.html" target="_blank" rel="noopener noreferrer">overflow vulnerabilities</a>, and has an <a href="https://pkg.go.dev/unsafe" target="_blank" rel="noopener noreferrer">unsafe package</a>. The name of the package speaks for itself, usual rules and checks don’t work inside this package.</p>
-<h3 data-astro-cid-c6i3vrlz="">Heartbleed</h3>
-<p data-astro-cid-c6i3vrlz="">In 2014, the Heartbleed bug was discovered. The (at the time) most used cryptography library OpenSSL leaked private keys. We experienced it <a href="https://blog.cloudflare.com/answering-the-critical-question-can-you-get-private-ssl-keys-using-heartbleed">too</a>.</p>
-<h3 data-astro-cid-c6i3vrlz="">Mitigation</h3>
-<p data-astro-cid-c6i3vrlz="">So memory bugs are a fact of life, and we can’t really fully protect ourselves from them. But, given the fact that cryptographic keys are much more valuable than the other data, can we do better protecting the keys at least?</p>
-<p data-astro-cid-c6i3vrlz="">As we already said, a memory address space is normally associated with a process. And two different processes don’t share memory by default, so are naturally isolated from each other. Therefore, a potential memory bug in one of the processes will not accidentally leak a cryptographic key from another process. The security of ssh-agent builds on this principle. There are always two processes involved: a client/requester and the <a href="https://linux.die.net/man/1/ssh-agent" target="_blank" rel="noopener noreferrer">agent</a>.</p>
-<blockquote data-astro-cid-c6i3vrlz=""><em>The agent will never send a private key over its request channel. Instead, operations that require a private key will be performed by the agent, and the result will be returned to the requester. This way, private keys are not exposed to clients using the agent.</em></blockquote>
-<p data-astro-cid-c6i3vrlz="">A requester is usually a network-facing process and/or processing untrusted input. Therefore, the requester is much more likely to be susceptible to memory-related vulnerabilities but in this scheme it would never have access to cryptographic keys (because keys reside in a separate process address space) and, thus, can never leak them.</p>
-<p data-astro-cid-c6i3vrlz="">At Cloudflare, we employ the same principle in <a href="https://blog.cloudflare.com/heartbleed-revisited">Keyless SSL</a>. Customer private keys are stored in an isolated environment and protected from Internet-facing connections.</p>
-<h3 data-astro-cid-c6i3vrlz="">Linux Kernel Key Retention Service</h3>
-<p data-astro-cid-c6i3vrlz="">The client/requester and agent approach provides better protection for secrets or cryptographic keys, but it brings some drawbacks:</p>
+<p data-astro-cid-t7az6eu7="">However, this is a quote from one of 36 (for now) <a href="https://www.cvedetails.com/vulnerability-list/vendor_id-10210/opov-1/Python.html" target="_blank" rel="noopener noreferrer">vulnerabilities</a>:</p>
+<blockquote data-astro-cid-t7az6eu7=""><em>Python 2.7.14 is vulnerable to a Heap-Buffer-Overflow as well as a Heap-Use-After-Free.</em></blockquote>
+<p data-astro-cid-t7az6eu7="">Golang has its own list of <a href="https://www.cvedetails.com/vulnerability-list/vendor_id-14185/opov-1/Golang.html" target="_blank" rel="noopener noreferrer">overflow vulnerabilities</a>, and has an <a href="https://pkg.go.dev/unsafe" target="_blank" rel="noopener noreferrer">unsafe package</a>. The name of the package speaks for itself, usual rules and checks don’t work inside this package.</p>
+<h3 data-astro-cid-t7az6eu7="">Heartbleed</h3>
+<p data-astro-cid-t7az6eu7="">In 2014, the Heartbleed bug was discovered. The (at the time) most used cryptography library OpenSSL leaked private keys. We experienced it <a href="https://blog.cloudflare.com/answering-the-critical-question-can-you-get-private-ssl-keys-using-heartbleed">too</a>.</p>
+<h3 data-astro-cid-t7az6eu7="">Mitigation</h3>
+<p data-astro-cid-t7az6eu7="">So memory bugs are a fact of life, and we can’t really fully protect ourselves from them. But, given the fact that cryptographic keys are much more valuable than the other data, can we do better protecting the keys at least?</p>
+<p data-astro-cid-t7az6eu7="">As we already said, a memory address space is normally associated with a process. And two different processes don’t share memory by default, so are naturally isolated from each other. Therefore, a potential memory bug in one of the processes will not accidentally leak a cryptographic key from another process. The security of ssh-agent builds on this principle. There are always two processes involved: a client/requester and the <a href="https://linux.die.net/man/1/ssh-agent" target="_blank" rel="noopener noreferrer">agent</a>.</p>
+<blockquote data-astro-cid-t7az6eu7=""><em>The agent will never send a private key over its request channel. Instead, operations that require a private key will be performed by the agent, and the result will be returned to the requester. This way, private keys are not exposed to clients using the agent.</em></blockquote>
+<p data-astro-cid-t7az6eu7="">A requester is usually a network-facing process and/or processing untrusted input. Therefore, the requester is much more likely to be susceptible to memory-related vulnerabilities but in this scheme it would never have access to cryptographic keys (because keys reside in a separate process address space) and, thus, can never leak them.</p>
+<p data-astro-cid-t7az6eu7="">At Cloudflare, we employ the same principle in <a href="https://blog.cloudflare.com/heartbleed-revisited">Keyless SSL</a>. Customer private keys are stored in an isolated environment and protected from Internet-facing connections.</p>
+<h3 data-astro-cid-t7az6eu7="">Linux Kernel Key Retention Service</h3>
+<p data-astro-cid-t7az6eu7="">The client/requester and agent approach provides better protection for secrets or cryptographic keys, but it brings some drawbacks:</p>
 <ul>
 	<li>we need to develop and maintain two different programs instead of one</li>
 	<li>we also need to design a well-defined-interface for communication between the two processes</li>
@@ -106,31 +106,31 @@
 	<li>we might need to authenticate and support ACLs between the processes, as we don’t want any requester on our system to be able to use our cryptographic keys stored inside the agent</li>
 	<li>we need to ensure the agent process is up and running, when working with the client/requester process</li>
 </ul>
-<p data-astro-cid-c6i3vrlz="">What if we replace the agent process with the Linux kernel itself?</p>
+<p data-astro-cid-t7az6eu7="">What if we replace the agent process with the Linux kernel itself?</p>
 <ul>
 	<li>it is already running on our system (otherwise our software would not work)</li>
 	<li>it has a well-defined interface for communication (system calls)</li>
 	<li>it can enforce various ACLs on kernel objects</li>
 	<li>and it runs in a separate address space!</li>
 </ul>
-<p data-astro-cid-c6i3vrlz="">Fortunately, the <a href="https://www.kernel.org/doc/html/v6.0/security/keys/core.html" target="_blank" rel="noopener noreferrer">Linux Kernel Key Retention Service</a> can perform all the functions of a typical agent process and probably even more!</p>
-<p data-astro-cid-c6i3vrlz="">Initially it was designed for kernel services like dm-crypt/ecryptfs, but later was opened to use by userspace programs. It gives us some advantages:</p>
+<p data-astro-cid-t7az6eu7="">Fortunately, the <a href="https://www.kernel.org/doc/html/v6.0/security/keys/core.html" target="_blank" rel="noopener noreferrer">Linux Kernel Key Retention Service</a> can perform all the functions of a typical agent process and probably even more!</p>
+<p data-astro-cid-t7az6eu7="">Initially it was designed for kernel services like dm-crypt/ecryptfs, but later was opened to use by userspace programs. It gives us some advantages:</p>
 <ul>
 	<li>the keys are stored outside the process address space</li>
 	<li>the well-defined-interface and the communication layer is implemented via syscalls</li>
 	<li>the keys are kernel objects and so have associated permissions and ACLs</li>
 	<li>the keys lifecycle can be implicitly bound to the process lifecycle</li>
 </ul>
-<p data-astro-cid-c6i3vrlz="">The Linux Kernel Key Retention Service operates with two types of entities: keys and keyrings, where a keyring is a key of a special type. If we put it into analogy with files and directories, we can say a key is a file and a keyring is a directory. Moreover, they represent a key hierarchy similar to a filesystem tree hierarchy: keyrings reference keys and other keyrings, but only keys can hold the actual cryptographic material similar to files holding the actual data.</p>
-<p data-astro-cid-c6i3vrlz="">Keys have types. The type of key determines which operations can be performed over the keys. For example, keys of user and logon types can hold arbitrary blobs of data, but logon keys can never be read back into userspace, they are exclusively used by the in-kernel services.</p>
-<p data-astro-cid-c6i3vrlz="">For the purposes of using the kernel instead of an agent process the most interesting type of keys is the <a href="https://man7.org/linux/man-pages/man7/asymmetric.7.html" target="_blank" rel="noopener noreferrer">asymmetric type</a>. It can hold a private key inside the kernel and provides the ability for the allowed applications to either decrypt or sign some data with the key. Currently, only RSA keys are supported, but work is underway to add <a href="https://www.cloudflare.com/learning/dns/dnssec/ecdsa-and-dnssec" target="_blank" rel="noopener noreferrer">ECDSA key support</a>.</p>
-<p data-astro-cid-c6i3vrlz="">While keys are responsible for safeguarding the cryptographic material inside the kernel, keyrings determine key lifetime and shared access. In its simplest form, when a particular keyring is destroyed, all the keys that are linked only to that keyring are securely destroyed as well. We can create custom keyrings manually, but probably one the most powerful features of the service are the “special keyrings”.</p>
-<p data-astro-cid-c6i3vrlz="">These keyrings are created implicitly by the kernel and their lifetime is bound to the lifetime of a different kernel object, like a process or a user. (Currently there are four categories of “implicit” <a href="https://man7.org/linux/man-pages/man7/keyrings.7.html" target="_blank" rel="noopener noreferrer">keyrings</a>), but for the purposes of this post we’re interested in two most widely used ones: process keyrings and user keyrings.</p>
-<p data-astro-cid-c6i3vrlz="">User keyring lifetime is bound to the existence of a particular user and this keyring is shared between all the processes of the same UID. Thus, one process, for example, can store a key in a user keyring and another process running as the same user can retrieve/use the key. When the UID is removed from the system, all the keys (and other keyrings) under the associated user keyring will be securely destroyed by the kernel.</p>
-<p data-astro-cid-c6i3vrlz="">Process keyrings are bound to some processes and may be of three types differing in semantics: process, thread and session. A process keyring is bound and private to a particular process. Thus, any code within the process can store/use keys in the keyring, but other processes (even with the same user id or child processes) cannot get access. And when the process dies, the keyring and the associated keys are securely destroyed. Besides the advantage of storing our secrets/keys in an isolated address space, the process keyring gives us the guarantee that the keys will be destroyed regardless of the reason for the process termination: even if our application crashed hard without being given an opportunity to execute any clean up code - our keys will still be securely destroyed by the kernel.</p>
-<p data-astro-cid-c6i3vrlz="">A thread keyring is similar to a process keyring, but it is private and bound to a particular thread. For example, we can build a multithreaded web server, which can serve TLS connections using multiple private keys, and we can be sure that connections/code in one thread can never use a private key, which is associated with another thread (for example, serving a different domain name).</p>
-<p data-astro-cid-c6i3vrlz="">A session keyring makes its keys available to the current process and all its children. It is destroyed when the topmost process terminates and child processes can store/access keys, while the topmost process exists. It is mostly useful in shell and interactive environments, when we employ the <a href="https://man7.org/linux/man-pages/man1/keyctl.1.html" target="_blank" rel="noopener noreferrer">keyctl tool</a> to access the Linux Kernel Key Retention Service, rather than using the kernel system call interface. In the shell, we generally can’t use the process keyring as every executed command creates a new process. Thus, if we add a key to the process keyring from the command line - that key will be immediately destroyed, because the “adding” process terminates, when the command finishes executing. Let’s actually confirm this with <code>[bpftrace](https://github.com/iovisor/bpftrace)</code>.</p>
-<p data-astro-cid-c6i3vrlz="">In one terminal we will trace the <code>[user_destroy](https://elixir.bootlin.com/linux/v5.19.17/source/security/keys/user_defined.c#L146)</code> function, which is responsible for deleting a user key:</p>
+<p data-astro-cid-t7az6eu7="">The Linux Kernel Key Retention Service operates with two types of entities: keys and keyrings, where a keyring is a key of a special type. If we put it into analogy with files and directories, we can say a key is a file and a keyring is a directory. Moreover, they represent a key hierarchy similar to a filesystem tree hierarchy: keyrings reference keys and other keyrings, but only keys can hold the actual cryptographic material similar to files holding the actual data.</p>
+<p data-astro-cid-t7az6eu7="">Keys have types. The type of key determines which operations can be performed over the keys. For example, keys of user and logon types can hold arbitrary blobs of data, but logon keys can never be read back into userspace, they are exclusively used by the in-kernel services.</p>
+<p data-astro-cid-t7az6eu7="">For the purposes of using the kernel instead of an agent process the most interesting type of keys is the <a href="https://man7.org/linux/man-pages/man7/asymmetric.7.html" target="_blank" rel="noopener noreferrer">asymmetric type</a>. It can hold a private key inside the kernel and provides the ability for the allowed applications to either decrypt or sign some data with the key. Currently, only RSA keys are supported, but work is underway to add <a href="https://www.cloudflare.com/learning/dns/dnssec/ecdsa-and-dnssec" target="_blank" rel="noopener noreferrer">ECDSA key support</a>.</p>
+<p data-astro-cid-t7az6eu7="">While keys are responsible for safeguarding the cryptographic material inside the kernel, keyrings determine key lifetime and shared access. In its simplest form, when a particular keyring is destroyed, all the keys that are linked only to that keyring are securely destroyed as well. We can create custom keyrings manually, but probably one the most powerful features of the service are the “special keyrings”.</p>
+<p data-astro-cid-t7az6eu7="">These keyrings are created implicitly by the kernel and their lifetime is bound to the lifetime of a different kernel object, like a process or a user. (Currently there are four categories of “implicit” <a href="https://man7.org/linux/man-pages/man7/keyrings.7.html" target="_blank" rel="noopener noreferrer">keyrings</a>), but for the purposes of this post we’re interested in two most widely used ones: process keyrings and user keyrings.</p>
+<p data-astro-cid-t7az6eu7="">User keyring lifetime is bound to the existence of a particular user and this keyring is shared between all the processes of the same UID. Thus, one process, for example, can store a key in a user keyring and another process running as the same user can retrieve/use the key. When the UID is removed from the system, all the keys (and other keyrings) under the associated user keyring will be securely destroyed by the kernel.</p>
+<p data-astro-cid-t7az6eu7="">Process keyrings are bound to some processes and may be of three types differing in semantics: process, thread and session. A process keyring is bound and private to a particular process. Thus, any code within the process can store/use keys in the keyring, but other processes (even with the same user id or child processes) cannot get access. And when the process dies, the keyring and the associated keys are securely destroyed. Besides the advantage of storing our secrets/keys in an isolated address space, the process keyring gives us the guarantee that the keys will be destroyed regardless of the reason for the process termination: even if our application crashed hard without being given an opportunity to execute any clean up code - our keys will still be securely destroyed by the kernel.</p>
+<p data-astro-cid-t7az6eu7="">A thread keyring is similar to a process keyring, but it is private and bound to a particular thread. For example, we can build a multithreaded web server, which can serve TLS connections using multiple private keys, and we can be sure that connections/code in one thread can never use a private key, which is associated with another thread (for example, serving a different domain name).</p>
+<p data-astro-cid-t7az6eu7="">A session keyring makes its keys available to the current process and all its children. It is destroyed when the topmost process terminates and child processes can store/access keys, while the topmost process exists. It is mostly useful in shell and interactive environments, when we employ the <a href="https://man7.org/linux/man-pages/man1/keyctl.1.html" target="_blank" rel="noopener noreferrer">keyctl tool</a> to access the Linux Kernel Key Retention Service, rather than using the kernel system call interface. In the shell, we generally can’t use the process keyring as every executed command creates a new process. Thus, if we add a key to the process keyring from the command line - that key will be immediately destroyed, because the “adding” process terminates, when the command finishes executing. Let’s actually confirm this with <code>[bpftrace](https://github.com/iovisor/bpftrace)</code>.</p>
+<p data-astro-cid-t7az6eu7="">In one terminal we will trace the <code>[user_destroy](https://elixir.bootlin.com/linux/v5.19.17/source/security/keys/user_defined.c#L146)</code> function, which is responsible for deleting a user key:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> bpftrace</span><span class="sk-005cc5-99ffe4"> -e</span><span class="sk-032f62-99ffe4"> 'kprobe:user_destroy { printf("destroying key %d\n", ((struct key *)arg0)-&gt;serial) }'</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Att</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -139,7 +139,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">And in another terminal let’s try to add a key to the process keyring:</p>
+<p data-astro-cid-t7az6eu7="">And in another terminal let’s try to add a key to the process keyring:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> keyctl</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> user</span><span class="sk-032f62-99ffe4"> mykey</span><span class="sk-032f62-99ffe4"> hunter2</span><span class="sk-032f62-99ffe4"> @p</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">742524855</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -148,7 +148,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">Going back to the first terminal we can immediately see:</p>
+<p data-astro-cid-t7az6eu7="">Going back to the first terminal we can immediately see:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">…</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Attaching</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> probe...</span></span>
@@ -158,7 +158,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">And we can confirm the key is not available by trying to access it:</p>
+<p data-astro-cid-t7az6eu7="">And we can confirm the key is not available by trying to access it:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> keyctl</span><span class="sk-032f62-99ffe4"> print</span><span class="sk-005cc5-ffc799"> 742524855</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">keyctl_read_alloc:</span><span class="sk-032f62-99ffe4"> Required</span><span class="sk-032f62-99ffe4"> key</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> available</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -167,13 +167,13 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">So in the above example, the key “mykey” was added to the process keyring of the subshell executing <code>keyctl add user mykey hunter2 @p</code>. But since the subshell process terminated the moment the command was executed, both its process keyring and the added key were destroyed.</p>
-<p data-astro-cid-c6i3vrlz="">Instead, the session keyring allows our interactive commands to add keys to our current shell environment and subsequent commands to consume them. The keys will still be securely destroyed, when our main shell process terminates (likely, when we log out from the system).</p>
-<p data-astro-cid-c6i3vrlz="">So by selecting the appropriate keyring type we can ensure the keys will be securely destroyed, when not needed. Even if the application crashes! This is a very brief introduction, but it will allow you to play with our examples, for the whole context, please, reach the <a href="https://www.kernel.org/doc/html/v5.8/security/keys/core.html" target="_blank" rel="noopener noreferrer">official documentation</a>.</p>
-<h3 data-astro-cid-c6i3vrlz="">Replacing the ssh-agent with the Linux Kernel Key Retention Service</h3>
-<p data-astro-cid-c6i3vrlz="">We gave a long description of how we can replace two isolated processes with the Linux Kernel Retention Service. It’s time to put our words into code. We talked about ssh-agent as well, so it will be a good exercise to replace our private key stored in memory of the agent with an in-kernel one. We picked the most popular SSH implementation <a href="https://github.com/openssh/openssh-portable.git" target="_blank" rel="noopener noreferrer">OpenSSH</a> as our target.</p>
-<p data-astro-cid-c6i3vrlz="">Some minor changes need to be added to the code to add functionality to retrieve a key from the kernel:</p>
-<p data-astro-cid-c6i3vrlz="">openssh.patch</p>
+<p data-astro-cid-t7az6eu7="">So in the above example, the key “mykey” was added to the process keyring of the subshell executing <code>keyctl add user mykey hunter2 @p</code>. But since the subshell process terminated the moment the command was executed, both its process keyring and the added key were destroyed.</p>
+<p data-astro-cid-t7az6eu7="">Instead, the session keyring allows our interactive commands to add keys to our current shell environment and subsequent commands to consume them. The keys will still be securely destroyed, when our main shell process terminates (likely, when we log out from the system).</p>
+<p data-astro-cid-t7az6eu7="">So by selecting the appropriate keyring type we can ensure the keys will be securely destroyed, when not needed. Even if the application crashes! This is a very brief introduction, but it will allow you to play with our examples, for the whole context, please, reach the <a href="https://www.kernel.org/doc/html/v5.8/security/keys/core.html" target="_blank" rel="noopener noreferrer">official documentation</a>.</p>
+<h3 data-astro-cid-t7az6eu7="">Replacing the ssh-agent with the Linux Kernel Key Retention Service</h3>
+<p data-astro-cid-t7az6eu7="">We gave a long description of how we can replace two isolated processes with the Linux Kernel Retention Service. It’s time to put our words into code. We talked about ssh-agent as well, so it will be a good exercise to replace our private key stored in memory of the agent with an in-kernel one. We picked the most popular SSH implementation <a href="https://github.com/openssh/openssh-portable.git" target="_blank" rel="noopener noreferrer">OpenSSH</a> as our target.</p>
+<p data-astro-cid-t7az6eu7="">Some minor changes need to be added to the code to add functionality to retrieve a key from the kernel:</p>
+<p data-astro-cid-t7az6eu7="">openssh.patch</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">diff</span><span class="sk-005cc5-99ffe4"> --git</span><span class="sk-032f62-99ffe4"> a/ssh-rsa.c</span><span class="sk-032f62-99ffe4"> b/ssh-rsa.c</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">index</span><span class="sk-032f62-99ffe4"> 6516ddc1..797739bb</span><span class="sk-005cc5-ffc799"> 100644</span></span>
@@ -380,7 +380,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">We need to download and patch OpenSSH from the latest git as the above patch won’t work on the latest release (<code>V_9_1_P1</code> at the time of this writing):</p>
+<p data-astro-cid-t7az6eu7="">We need to download and patch OpenSSH from the latest git as the above patch won’t work on the latest release (<code>V_9_1_P1</code> at the time of this writing):</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> clone</span><span class="sk-032f62-99ffe4"> https://github.com/openssh/openssh-portable.git</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">…</span></span>
@@ -394,7 +394,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">Now compile and build the patched OpenSSH</p>
+<p data-astro-cid-t7az6eu7="">Now compile and build the patched OpenSSH</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> autoreconf</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./configure</span><span class="sk-005cc5-99ffe4"> --with-libs=-lkeyutils</span><span class="sk-005cc5-99ffe4"> --disable-pkcs11</span></span>
@@ -406,8 +406,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">Note that we instruct the build system to additionally link with <code>[libkeyutils](https://man7.org/linux/man-pages/man3/keyctl.3.html)</code>, which provides convenient wrappers to access the Linux Kernel Key Retention Service. Additionally, we had to disable PKCS11 support as the code has a function with the same name as in `libkeyutils`, so there is a naming conflict. There might be a better fix for this, but it is out of scope for this post.</p>
-<p data-astro-cid-c6i3vrlz="">Now that we have the patched OpenSSH - let’s test it. Firstly, we need to generate a new SSH RSA key that we will use to access the system. Because the Linux kernel only supports private keys in the PKCS8 format, we’ll use it from the start (instead of the default OpenSSH format):</p>
+<p data-astro-cid-t7az6eu7="">Note that we instruct the build system to additionally link with <code>[libkeyutils](https://man7.org/linux/man-pages/man3/keyctl.3.html)</code>, which provides convenient wrappers to access the Linux Kernel Key Retention Service. Additionally, we had to disable PKCS11 support as the code has a function with the same name as in `libkeyutils`, so there is a naming conflict. There might be a better fix for this, but it is out of scope for this post.</p>
+<p data-astro-cid-t7az6eu7="">Now that we have the patched OpenSSH - let’s test it. Firstly, we need to generate a new SSH RSA key that we will use to access the system. Because the Linux kernel only supports private keys in the PKCS8 format, we’ll use it from the start (instead of the default OpenSSH format):</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./ssh-keygen</span><span class="sk-005cc5-99ffe4"> -b</span><span class="sk-005cc5-ffc799"> 4096</span><span class="sk-005cc5-99ffe4"> -m</span><span class="sk-032f62-99ffe4"> PKCS8</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Generating</span><span class="sk-032f62-99ffe4"> public/private</span><span class="sk-032f62-99ffe4"> rsa</span><span class="sk-032f62-99ffe4"> key</span><span class="sk-032f62-99ffe4"> pair.</span></span>
@@ -417,8 +417,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">Normally, we would be using `ssh-add` to add this key to our ssh agent. In our case we need to use a replacement script, which would add the key to our current session keyring:</p>
-<p data-astro-cid-c6i3vrlz="">ssh-add-keyring.sh</p>
+<p data-astro-cid-t7az6eu7="">Normally, we would be using `ssh-add` to add this key to our ssh agent. In our case we need to use a replacement script, which would add the key to our current session keyring:</p>
+<p data-astro-cid-t7az6eu7="">ssh-add-keyring.sh</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">#/bin/bash -e</span></span>
 <span class="line"></span>
@@ -506,7 +506,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">Depending on how our kernel was compiled, we might also need to load some kernel modules for asymmetric private key support:</p>
+<p data-astro-cid-t7az6eu7="">Depending on how our kernel was compiled, we might also need to load some kernel modules for asymmetric private key support:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> modprobe</span><span class="sk-032f62-99ffe4"> pkcs8_key_parser</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./ssh-add-keyring.sh</span><span class="sk-032f62-99ffe4"> ~/.ssh/id_rsa</span><span class="sk-032f62-99ffe4"> myssh</span><span class="sk-032f62-99ffe4"> @s</span></span>
@@ -517,8 +517,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">Finally, our private ssh key is added to the current session keyring with the name “myssh”. In addition, the <code>ssh-add-keyring.sh</code> will create a pseudo-private key file in <code>~/.ssh/id_rsa_keyring</code>, which needs to be passed to the main <code>ssh</code> process. It is a pseudo-private key, because it doesn’t have any sensitive cryptographic material. Instead, it only has the “myssh” identifier in a native OpenSSH format. If we use multiple SSH keys, we have to tell the main <code>ssh</code> process somehow which in-kernel key name should be requested from the system.</p>
-<p data-astro-cid-c6i3vrlz="">Before we start testing it, let’s make sure our SSH server (running locally) will accept the newly generated key as a valid authentication:</p>
+<p data-astro-cid-t7az6eu7="">Finally, our private ssh key is added to the current session keyring with the name “myssh”. In addition, the <code>ssh-add-keyring.sh</code> will create a pseudo-private key file in <code>~/.ssh/id_rsa_keyring</code>, which needs to be passed to the main <code>ssh</code> process. It is a pseudo-private key, because it doesn’t have any sensitive cryptographic material. Instead, it only has the “myssh” identifier in a native OpenSSH format. If we use multiple SSH keys, we have to tell the main <code>ssh</code> process somehow which in-kernel key name should be requested from the system.</p>
+<p data-astro-cid-t7az6eu7="">Before we start testing it, let’s make sure our SSH server (running locally) will accept the newly generated key as a valid authentication:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> ~/.ssh/id_rsa.pub</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-032f62-99ffe4"> ~/.ssh/authorized_keys</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -526,7 +526,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">Now we can try to SSH into the system:</p>
+<p data-astro-cid-t7az6eu7="">Now we can try to SSH into the system:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> SSH_AUTH_SOCK=""</span><span class="sk-032f62-99ffe4"> ./ssh</span><span class="sk-005cc5-99ffe4"> -i</span><span class="sk-032f62-99ffe4"> ~/.ssh/id_rsa_keyring</span><span class="sk-032f62-99ffe4"> localhost</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">The</span><span class="sk-032f62-99ffe4"> authenticity</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> host</span><span class="sk-032f62-99ffe4"> 'localhost (::1)'</span><span class="sk-032f62-99ffe4"> can't be established.</span></span>
@@ -541,9 +541,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">It worked! Notice that we’re resetting the `SSH_AUTH_SOCK` environment variable to make sure we don’t use any keys from an ssh-agent running on the system. Still the login flow does not request any password for our private key, the key itself is resident of the kernel address space, and we reference it using its serial for signature operations.</p>
-<h3 data-astro-cid-c6i3vrlz="">User or session keyring?</h3>
-<p data-astro-cid-c6i3vrlz="">In the example above, we set up our SSH private key into the session keyring. We can check if it is there:</p>
+<p data-astro-cid-t7az6eu7="">It worked! Notice that we’re resetting the `SSH_AUTH_SOCK` environment variable to make sure we don’t use any keys from an ssh-agent running on the system. Still the login flow does not request any password for our private key, the key itself is resident of the kernel address space, and we reference it using its serial for signature operations.</p>
+<h3 data-astro-cid-t7az6eu7="">User or session keyring?</h3>
+<p data-astro-cid-t7az6eu7="">In the example above, we set up our SSH private key into the session keyring. We can check if it is there:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> keyctl</span><span class="sk-032f62-99ffe4"> show</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Session</span><span class="sk-032f62-99ffe4"> Keyring</span></span>
@@ -555,7 +555,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">We might have used user keyring as well. What is the difference? Currently, the “myssh” key lifetime is limited to the current login session. That is, if we log out and login again, the key will be gone, and we would have to run the <code>ssh-add-keyring.sh</code> script again. Similarly, if we log in to a second terminal, we won’t see this key:</p>
+<p data-astro-cid-t7az6eu7="">We might have used user keyring as well. What is the difference? Currently, the “myssh” key lifetime is limited to the current login session. That is, if we log out and login again, the key will be gone, and we would have to run the <code>ssh-add-keyring.sh</code> script again. Similarly, if we log in to a second terminal, we won’t see this key:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> keyctl</span><span class="sk-032f62-99ffe4"> show</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Session</span><span class="sk-032f62-99ffe4"> Keyring</span></span>
@@ -566,7 +566,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">Notice that the serial number of the session keyring <code>_ses</code> in the second terminal is different. A new keyring was created and &nbsp;“myssh” key along with the previous session keyring doesn’t exist anymore:</p>
+<p data-astro-cid-t7az6eu7="">Notice that the serial number of the session keyring <code>_ses</code> in the second terminal is different. A new keyring was created and &nbsp;“myssh” key along with the previous session keyring doesn’t exist anymore:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> SSH_AUTH_SOCK=""</span><span class="sk-032f62-99ffe4"> ./ssh</span><span class="sk-005cc5-99ffe4"> -i</span><span class="sk-032f62-99ffe4"> ~/.ssh/id_rsa_keyring</span><span class="sk-032f62-99ffe4"> localhost</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Load</span><span class="sk-032f62-99ffe4"> key</span><span class="sk-032f62-99ffe4"> "/home/ignat/.ssh/id_rsa_keyring":</span><span class="sk-032f62-99ffe4"> key</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> found</span></span>
@@ -576,7 +576,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">If instead we tell <code>ssh-add-keyring.sh</code> to load the private key into the user keyring (replace <code>@s</code> with <code>@u</code> in the command line parameters), it will be available and accessible from both login sessions. In this case, during logout and re-login, the same key will be presented. Although, this has a security downside - any process running as our user id will be able to access and use the key.</p>
-<h3 data-astro-cid-c6i3vrlz="">Summary</h3>
-<p data-astro-cid-c6i3vrlz="">In this post we learned about one of the most common ways that data, including highly valuable cryptographic keys, can leak. We talked about some real examples, which impacted many users around the world, including Cloudflare. Finally, we learned how the Linux Kernel Retention Service can help us to protect our cryptographic keys and secrets.</p>
-<p data-astro-cid-c6i3vrlz="">We also introduced a working patch for OpenSSH to use this cool feature of the Linux kernel, so you can easily try it yourself. There are still many Linux Kernel Key Retention Service features left untold, which might be a topic for another blog post. Stay tuned!</p>
+<p data-astro-cid-t7az6eu7="">If instead we tell <code>ssh-add-keyring.sh</code> to load the private key into the user keyring (replace <code>@s</code> with <code>@u</code> in the command line parameters), it will be available and accessible from both login sessions. In this case, during logout and re-login, the same key will be presented. Although, this has a security downside - any process running as our user id will be able to access and use the key.</p>
+<h3 data-astro-cid-t7az6eu7="">Summary</h3>
+<p data-astro-cid-t7az6eu7="">In this post we learned about one of the most common ways that data, including highly valuable cryptographic keys, can leak. We talked about some real examples, which impacted many users around the world, including Cloudflare. Finally, we learned how the Linux Kernel Retention Service can help us to protect our cryptographic keys and secrets.</p>
+<p data-astro-cid-t7az6eu7="">We also introduced a working patch for OpenSSH to use this cool feature of the Linux kernel, so you can easily try it yourself. There are still many Linux Kernel Key Retention Service features left untold, which might be a topic for another blog post. Stay tuned!</p>

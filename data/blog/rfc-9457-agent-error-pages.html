@@ -1,14 +1,14 @@
-<p data-astro-cid-c6i3vrlz="">AI agents are no longer experiments. They are production infrastructure, making billions of HTTP requests per day, navigating the web, calling APIs, and orchestrating complex workflows.</p>
-<p data-astro-cid-c6i3vrlz="">But when these agents hit an error, they still receive the same HTML error pages we built for browsers: hundreds of lines of markup, CSS, and copy designed for human eyes. Those pages give agents clues, not instructions, and waste time and tokens. That gap is the opportunity to give agents instructions, not obstacles.</p>
-<p data-astro-cid-c6i3vrlz="">Starting today, Cloudflare returns <a href="https://www.rfc-editor.org/rfc/rfc9457" target="_blank" rel="noopener noreferrer">RFC 9457</a>-compliant structured Markdown and JSON error payloads to AI agents, replacing heavyweight HTML pages with machine-readable instructions.</p>
-<p data-astro-cid-c6i3vrlz="">That means when an agent sends <code>Accept: text/markdown</code>, <code>Accept: application/json</code>, or <code>Accept: application/problem+json</code> and encounters a Cloudflare error, we return one semantic contract in a structured format instead of HTML. And it comes complete with actionable guidance. (This builds on our recent <a href="https://blog.cloudflare.com/markdown-for-agents" target="_blank" rel="noopener noreferrer">Markdown for Agents</a> release.)</p>
-<p data-astro-cid-c6i3vrlz="">So instead of being told only "You were blocked," the agent will read: "You were rate-limited — wait 30 seconds and retry with exponential backoff." Instead of just "Access denied," the agent will be instructed: "This block is intentional: do not retry, contact the site owner."</p>
-<p data-astro-cid-c6i3vrlz="">These responses are not just clearer — they are dramatically more efficient. Structured error responses cut payload size and token usage by more than 98% versus HTML, measured against a live 1015 ('rate-limit') error response. For agents that hit multiple errors in a workflow, the savings compound quickly.</p>
-<p data-astro-cid-c6i3vrlz="">This is live across the Cloudflare network, automatically. Site owners do not need to configure anything. Browsers keep getting the same HTML experience as before.</p>
-<p data-astro-cid-c6i3vrlz="">These are not just error pages. They are instructions for the agentic web.</p>
-<h3 data-astro-cid-c6i3vrlz="">What agents see today</h3>
-<p data-astro-cid-c6i3vrlz="">When an agent receives a Cloudflare-generated error, it usually means Cloudflare is enforcing customer policy or returning a platform response on the customer's behalf — not that Cloudflare is down. These responses are triggered when a request cannot be served as-is, such as invalid host or DNS routing, customer-defined access controls (WAF, geo, ASN, or bot rules), or edge-enforced limits like rate limiting. In short, Cloudflare is acting as the customer's routing and security layer, and the response explains why the request was blocked or could not proceed.</p>
-<p data-astro-cid-c6i3vrlz="">Today, those responses are rendered as HTML designed for humans:</p>
+<p data-astro-cid-t7az6eu7="">AI agents are no longer experiments. They are production infrastructure, making billions of HTTP requests per day, navigating the web, calling APIs, and orchestrating complex workflows.</p>
+<p data-astro-cid-t7az6eu7="">But when these agents hit an error, they still receive the same HTML error pages we built for browsers: hundreds of lines of markup, CSS, and copy designed for human eyes. Those pages give agents clues, not instructions, and waste time and tokens. That gap is the opportunity to give agents instructions, not obstacles.</p>
+<p data-astro-cid-t7az6eu7="">Starting today, Cloudflare returns <a href="https://www.rfc-editor.org/rfc/rfc9457" target="_blank" rel="noopener noreferrer">RFC 9457</a>-compliant structured Markdown and JSON error payloads to AI agents, replacing heavyweight HTML pages with machine-readable instructions.</p>
+<p data-astro-cid-t7az6eu7="">That means when an agent sends <code>Accept: text/markdown</code>, <code>Accept: application/json</code>, or <code>Accept: application/problem+json</code> and encounters a Cloudflare error, we return one semantic contract in a structured format instead of HTML. And it comes complete with actionable guidance. (This builds on our recent <a href="https://blog.cloudflare.com/markdown-for-agents" target="_blank" rel="noopener noreferrer">Markdown for Agents</a> release.)</p>
+<p data-astro-cid-t7az6eu7="">So instead of being told only "You were blocked," the agent will read: "You were rate-limited — wait 30 seconds and retry with exponential backoff." Instead of just "Access denied," the agent will be instructed: "This block is intentional: do not retry, contact the site owner."</p>
+<p data-astro-cid-t7az6eu7="">These responses are not just clearer — they are dramatically more efficient. Structured error responses cut payload size and token usage by more than 98% versus HTML, measured against a live 1015 ('rate-limit') error response. For agents that hit multiple errors in a workflow, the savings compound quickly.</p>
+<p data-astro-cid-t7az6eu7="">This is live across the Cloudflare network, automatically. Site owners do not need to configure anything. Browsers keep getting the same HTML experience as before.</p>
+<p data-astro-cid-t7az6eu7="">These are not just error pages. They are instructions for the agentic web.</p>
+<h3 data-astro-cid-t7az6eu7="">What agents see today</h3>
+<p data-astro-cid-t7az6eu7="">When an agent receives a Cloudflare-generated error, it usually means Cloudflare is enforcing customer policy or returning a platform response on the customer's behalf — not that Cloudflare is down. These responses are triggered when a request cannot be served as-is, such as invalid host or DNS routing, customer-defined access controls (WAF, geo, ASN, or bot rules), or edge-enforced limits like rate limiting. In short, Cloudflare is acting as the customer's routing and security layer, and the response explains why the request was blocked or could not proceed.</p>
+<p data-astro-cid-t7az6eu7="">Today, those responses are rendered as HTML designed for humans:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;!</span><span class="sk-22863a-ffc799">DOCTYPE</span><span class="sk-6f42c1-ffc799"> html</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">html</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
@@ -46,81 +46,81 @@
 		})
 	});
 </script>
-<p data-astro-cid-c6i3vrlz="">To an agent, this is garbage. It cannot determine what error occurred, why it was blocked, or whether retrying will help. Even if it parses the HTML, the content describes the error but doesn't tell the agent — or the human, for that matter — what to do next.</p>
-<p data-astro-cid-c6i3vrlz="">If you're an agent developer and you wanted to handle Cloudflare errors gracefully, your options were limited. For Cloudflare-generated errors, structured responses existed only in configuration-dependent paths, not as a consistent default for agents.</p>
-<p data-astro-cid-c6i3vrlz="">Custom Error Rules can customize many Cloudflare errors, including some 1xxx cases. But they depend on per-site configuration, so they cannot serve as a universal agent contract across the web. Cloudflare sits in front of the request path. That means we can define a default machine response: retry or stop, wait and back off, escalate or reroute. Error pages stop being decoration and become execution instructions.</p>
-<h3 data-astro-cid-c6i3vrlz="">What we did</h3>
-<p data-astro-cid-c6i3vrlz="">Cloudflare now returns RFC 9457-compliant structured responses for all 1xxx-class error paths — Cloudflare's platform error codes for edge-side failures like DNS resolution issues, access denials, and rate limits. Both formats are live: <code>Accept: text/markdown</code> returns Markdown, <code>Accept: application/json</code> returns JSON, and <code>Accept: application/problem+json</code> returns JSON with the <code>application/problem+json</code> content type.</p>
-<p data-astro-cid-c6i3vrlz="">This covers all 1xxx-class errors today. The same contract will extend to Cloudflare-generated 4xx and 5xx errors next.</p>
-<p data-astro-cid-c6i3vrlz="">Markdown responses have two parts:</p>
+<p data-astro-cid-t7az6eu7="">To an agent, this is garbage. It cannot determine what error occurred, why it was blocked, or whether retrying will help. Even if it parses the HTML, the content describes the error but doesn't tell the agent — or the human, for that matter — what to do next.</p>
+<p data-astro-cid-t7az6eu7="">If you're an agent developer and you wanted to handle Cloudflare errors gracefully, your options were limited. For Cloudflare-generated errors, structured responses existed only in configuration-dependent paths, not as a consistent default for agents.</p>
+<p data-astro-cid-t7az6eu7="">Custom Error Rules can customize many Cloudflare errors, including some 1xxx cases. But they depend on per-site configuration, so they cannot serve as a universal agent contract across the web. Cloudflare sits in front of the request path. That means we can define a default machine response: retry or stop, wait and back off, escalate or reroute. Error pages stop being decoration and become execution instructions.</p>
+<h3 data-astro-cid-t7az6eu7="">What we did</h3>
+<p data-astro-cid-t7az6eu7="">Cloudflare now returns RFC 9457-compliant structured responses for all 1xxx-class error paths — Cloudflare's platform error codes for edge-side failures like DNS resolution issues, access denials, and rate limits. Both formats are live: <code>Accept: text/markdown</code> returns Markdown, <code>Accept: application/json</code> returns JSON, and <code>Accept: application/problem+json</code> returns JSON with the <code>application/problem+json</code> content type.</p>
+<p data-astro-cid-t7az6eu7="">This covers all 1xxx-class errors today. The same contract will extend to Cloudflare-generated 4xx and 5xx errors next.</p>
+<p data-astro-cid-t7az6eu7="">Markdown responses have two parts:</p>
 <ul>
 	<li>YAML frontmatter for machine-readable fields</li>
 	<li>prose sections for explicit guidance (<code>What happened</code> and <code>What you should do</code>)</li>
 </ul>
-<p data-astro-cid-c6i3vrlz="">JSON responses carry the same fields as a flat object.</p>
-<p data-astro-cid-c6i3vrlz="">The YAML frontmatter is the critical layer for automation. It lets an agent extract stable keys without scraping HTML or guessing intent from copy. Fields like <code>error_code</code>, <code>error_name</code>, and <code>error_category</code> let the agent classify the failure. <code>retryable</code> and <code>retry_after</code> drive backoff logic. <code>owner_action_required</code> tells the agent whether to keep trying or escalate. <code>ray_id</code>, <code>timestamp</code>, and <code>zone</code> make logs and support handoffs deterministic.</p>
-<p data-astro-cid-c6i3vrlz="">The schema is stable by design, so agents can implement durable control flow without chasing presentation changes.</p>
-<p data-astro-cid-c6i3vrlz="">That stability is not a Cloudflare invention. <a href="https://www.rfc-editor.org/rfc/rfc9457" target="_blank" rel="noopener noreferrer">RFC 9457 — Problem Details for HTTP APIs</a> defines a standard JSON shape for reporting errors over HTTP, so clients can parse error responses without knowing the specific API in advance. Our JSON responses follow this shape, which means any HTTP client that understands Problem Details can parse the base members without Cloudflare-specific code:</p>
-<div class="emdash-table-wrapper" data-astro-cid-d7axpwdr="">
-	<table class="emdash-table" style="min-width: 192px;" data-astro-cid-d7axpwdr="">
-		<thead data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+<p data-astro-cid-t7az6eu7="">JSON responses carry the same fields as a flat object.</p>
+<p data-astro-cid-t7az6eu7="">The YAML frontmatter is the critical layer for automation. It lets an agent extract stable keys without scraping HTML or guessing intent from copy. Fields like <code>error_code</code>, <code>error_name</code>, and <code>error_category</code> let the agent classify the failure. <code>retryable</code> and <code>retry_after</code> drive backoff logic. <code>owner_action_required</code> tells the agent whether to keep trying or escalate. <code>ray_id</code>, <code>timestamp</code>, and <code>zone</code> make logs and support handoffs deterministic.</p>
+<p data-astro-cid-t7az6eu7="">The schema is stable by design, so agents can implement durable control flow without chasing presentation changes.</p>
+<p data-astro-cid-t7az6eu7="">That stability is not a Cloudflare invention. <a href="https://www.rfc-editor.org/rfc/rfc9457" target="_blank" rel="noopener noreferrer">RFC 9457 — Problem Details for HTTP APIs</a> defines a standard JSON shape for reporting errors over HTTP, so clients can parse error responses without knowing the specific API in advance. Our JSON responses follow this shape, which means any HTTP client that understands Problem Details can parse the base members without Cloudflare-specific code:</p>
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 192px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>RFC 9457 member</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>What it contains</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>type</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>A URI pointing to Cloudflare's documentation for the specific error code</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>status</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>The HTTP status code (matching the actual response status)</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>title</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>A short, human-readable summary of the problem</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>detail</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>A human-readable explanation specific to this occurrence</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>instance</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>The Ray ID identifying this specific error occurrence</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-c6i3vrlz="">The operational fields — <code>error_code</code>, <code>error_category</code>, <code>retryable</code>, <code>retry_after</code>, <code>owner_action_required</code>, and more — are RFC 9457 extension members. Clients that don't recognize them simply ignore them.</p>
-<p data-astro-cid-c6i3vrlz="">This is network-wide and additive. Site owners do not need to configure anything. Browsers keep receiving HTML unless clients explicitly ask for Markdown or JSON.</p>
-<h3 data-astro-cid-c6i3vrlz="">What the response looks like</h3>
-<p data-astro-cid-c6i3vrlz="">Here is what a rate-limit error (<code>1015</code>) looks like in JSON:</p>
+<p data-astro-cid-t7az6eu7="">The operational fields — <code>error_code</code>, <code>error_category</code>, <code>retryable</code>, <code>retry_after</code>, <code>owner_action_required</code>, and more — are RFC 9457 extension members. Clients that don't recognize them simply ignore them.</p>
+<p data-astro-cid-t7az6eu7="">This is network-wide and additive. Site owners do not need to configure anything. Browsers keep receiving HTML unless clients explicitly ask for Markdown or JSON.</p>
+<h3 data-astro-cid-t7az6eu7="">What the response looks like</h3>
+<p data-astro-cid-t7az6eu7="">Here is what a rate-limit error (<code>1015</code>) looks like in JSON:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1015/"</span><span class="sk-24292e-fff">,</span></span>
@@ -146,7 +146,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">The same error in Markdown, optimized for model-first workflows:</p>
+<p data-astro-cid-t7az6eu7="">The same error in Markdown, optimized for model-first workflows:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">---</span></span>
 <span class="line"><span class="sk-22863a-ffc799">error_code</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1015</span></span>
@@ -185,234 +185,234 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">Both formats give an agent everything it needs to decide and act: classify the error, choose retry behavior, and determine whether escalation is required. This is what a default machine contract looks like — not per-site configuration, but network-wide behavior. The contrast is explicit across error families: a transient error like <code>1015</code> says wait and retry, while intentional blocks like <code>1020</code> or geographic restrictions like <code>1009</code> tell the agent not to retry and to escalate instead.</p>
-<h3 data-astro-cid-c6i3vrlz="">One contract, two formats</h3>
-<p data-astro-cid-c6i3vrlz="">The core value is not format choice. It is semantic stability.</p>
-<p data-astro-cid-c6i3vrlz="">Agents need deterministic answers to operational questions: retry or not, how long to wait, and whether to escalate. Cloudflare exposes one policy contract across two wire formats. Whether a client consumes Markdown or JSON, the operational meaning is identical: same error identity, same retry/backoff signals, same escalation guidance.</p>
-<p data-astro-cid-c6i3vrlz="">Clients that send <code>Accept: application/problem+json</code> get <code>application/problem+json; charset=utf-8</code> back — useful for HTTP client libraries that dispatch on media type. Clients that send <code>Accept: application/json</code> get <code>application/json; charset=utf-8</code> — same body, safe default for existing consumers.</p>
-<h3 data-astro-cid-c6i3vrlz="">Size reduction and token efficiency</h3>
-<p data-astro-cid-c6i3vrlz="">That contract is also dramatically smaller than what it replaces. Cloudflare HTML error pages are browser-oriented and heavy, while structured responses are compact by design.</p>
-<p data-astro-cid-c6i3vrlz="">Measured comparison for <code>1015</code>:</p>
-<div class="emdash-table-wrapper" data-astro-cid-d7axpwdr="">
-	<table class="emdash-table" style="min-width: 480px;" data-astro-cid-d7axpwdr="">
-		<thead data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+<p data-astro-cid-t7az6eu7="">Both formats give an agent everything it needs to decide and act: classify the error, choose retry behavior, and determine whether escalation is required. This is what a default machine contract looks like — not per-site configuration, but network-wide behavior. The contrast is explicit across error families: a transient error like <code>1015</code> says wait and retry, while intentional blocks like <code>1020</code> or geographic restrictions like <code>1009</code> tell the agent not to retry and to escalate instead.</p>
+<h3 data-astro-cid-t7az6eu7="">One contract, two formats</h3>
+<p data-astro-cid-t7az6eu7="">The core value is not format choice. It is semantic stability.</p>
+<p data-astro-cid-t7az6eu7="">Agents need deterministic answers to operational questions: retry or not, how long to wait, and whether to escalate. Cloudflare exposes one policy contract across two wire formats. Whether a client consumes Markdown or JSON, the operational meaning is identical: same error identity, same retry/backoff signals, same escalation guidance.</p>
+<p data-astro-cid-t7az6eu7="">Clients that send <code>Accept: application/problem+json</code> get <code>application/problem+json; charset=utf-8</code> back — useful for HTTP client libraries that dispatch on media type. Clients that send <code>Accept: application/json</code> get <code>application/json; charset=utf-8</code> — same body, safe default for existing consumers.</p>
+<h3 data-astro-cid-t7az6eu7="">Size reduction and token efficiency</h3>
+<p data-astro-cid-t7az6eu7="">That contract is also dramatically smaller than what it replaces. Cloudflare HTML error pages are browser-oriented and heavy, while structured responses are compact by design.</p>
+<p data-astro-cid-t7az6eu7="">Measured comparison for <code>1015</code>:</p>
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 480px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Payload</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Bytes</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Tokens (cl100k_base)</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Size vs HTML</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Token vs HTML</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>HTML response</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>46,645</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>14,252</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>—</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>—</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Markdown response</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>798</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>221</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>58.5x less</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>64.5x less</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>JSON response</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>970</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>256</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>48.1x less</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>55.7x less</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-c6i3vrlz="">Both structured formats deliver a ~98% reduction in size and tokens versus HTML. For agents, size translates directly into token cost — when an agent hits multiple errors in one run, these savings compound into lower model spend and faster recovery loops.</p>
-<h3 data-astro-cid-c6i3vrlz="">Ten categories, clear actions</h3>
-<p data-astro-cid-c6i3vrlz="">Every <code>1xxx</code> error is mapped to an <code>error_category</code>. That turns error handling into routing logic instead of brittle per-page parsing.</p>
-<div class="emdash-table-wrapper" data-astro-cid-d7axpwdr="">
-	<table class="emdash-table" style="min-width: 288px;" data-astro-cid-d7axpwdr="">
-		<thead data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+<p data-astro-cid-t7az6eu7="">Both structured formats deliver a ~98% reduction in size and tokens versus HTML. For agents, size translates directly into token cost — when an agent hits multiple errors in one run, these savings compound into lower model spend and faster recovery loops.</p>
+<h3 data-astro-cid-t7az6eu7="">Ten categories, clear actions</h3>
+<p data-astro-cid-t7az6eu7="">Every <code>1xxx</code> error is mapped to an <code>error_category</code>. That turns error handling into routing logic instead of brittle per-page parsing.</p>
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 288px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Category</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>What it means</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>What the agent should do</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>access_denied</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Intentional block: IP, ASN, geo, firewall rule</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Do not retry. Contact site owner if unexpected.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>rate_limit</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Request rate exceeded</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Back off. Retry after retry_after seconds.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>dns</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>DNS resolution failure at the origin</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Do not retry. Report to site owner.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>config</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Configuration error: CNAME, tunnel, host routing</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Do not retry (usually). Report to site owner.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>tls</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>TLS version or cipher mismatch</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Fix TLS client settings. Do not retry as-is.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>legal</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>DMCA or regulatory block</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Do not retry. This is a legal restriction.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>worker</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Cloudflare Workers runtime error</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Do not retry. Site owner must fix the script.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>rewrite</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Invalid URL rewrite output</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Do not retry. Site owner must fix the rule.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>snippet</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Cloudflare Snippets error</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Do not retry. Site owner must fix Snippets config.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>unsupported</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Unsupported method or deprecated feature</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Change the request. Do not retry as-is.</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-c6i3vrlz="">Two fields make this operationally useful for agents:</p>
+<p data-astro-cid-t7az6eu7="">Two fields make this operationally useful for agents:</p>
 <ul>
 	<li><code>retryable</code> answers whether a retry can succeed</li>
 	<li><code>owner_action_required</code> answers whether the problem must be escalated</li>
 </ul>
-<p data-astro-cid-c6i3vrlz="">You can replace brittle "if status == 429 then maybe retry" heuristics with explicit control flow. Parse the frontmatter once, then branch on stable fields. A simple pattern is:</p>
+<p data-astro-cid-t7az6eu7="">You can replace brittle "if status == 429 then maybe retry" heuristics with explicit control flow. Parse the frontmatter once, then branch on stable fields. A simple pattern is:</p>
 <ul>
 	<li>if <code>retryable</code> is <code>true</code>, wait <code>retry_after</code> and retry</li>
 	<li>if <code>owner_action_required</code> is <code>true</code>, stop and escalate</li>
 	<li>otherwise, fail fast without hammering the site</li>
 </ul>
-<p data-astro-cid-c6i3vrlz="">Here is a minimal Python example using that pattern:</p>
+<p data-astro-cid-t7az6eu7="">Here is a minimal Python example using that pattern:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> time</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> yaml</span></span>
@@ -446,10 +446,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">This is the key shift: agents are no longer inferring intent from HTML copy. They are executing explicit policy from structured fields.</p>
-<h3 data-astro-cid-c6i3vrlz="">How to use it</h3>
-<p data-astro-cid-c6i3vrlz="">Send <code>Accept: text/markdown</code>, <code>Accept: application/json</code>, or <code>Accept: application/problem+json</code>.</p>
-<p data-astro-cid-c6i3vrlz="">For quick testing, you can hit any Cloudflare-proxied domain directly at <code>/cdn-cgi/error/1015</code> (or replace <code>1015</code> with another <code>1xxx</code> code).</p>
+<p data-astro-cid-t7az6eu7="">This is the key shift: agents are no longer inferring intent from HTML copy. They are executing explicit policy from structured fields.</p>
+<h3 data-astro-cid-t7az6eu7="">How to use it</h3>
+<p data-astro-cid-t7az6eu7="">Send <code>Accept: text/markdown</code>, <code>Accept: application/json</code>, or <code>Accept: application/problem+json</code>.</p>
+<p data-astro-cid-t7az6eu7="">For quick testing, you can hit any Cloudflare-proxied domain directly at <code>/cdn-cgi/error/1015</code> (or replace <code>1015</code> with another <code>1xxx</code> code).</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">s </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">compressed </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">H</span><span class="sk-032f62-99ffe4"> "Accept: text/markdown"</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-6f42c1-ffc799">A</span><span class="sk-032f62-99ffe4"> "TestAgent/1.0"</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-6f42c1-ffc799">H</span><span class="sk-032f62-99ffe4"> "Accept-Encoding: gzip, deflate"</span><span class="sk-032f62-99ffe4"> "&lt;YOUR_DOMAIN&gt;/cdn-cgi/error/1015"</span></span>
 <span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -458,7 +458,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">Example with another error code:</p>
+<p data-astro-cid-t7az6eu7="">Example with another error code:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">s </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">compressed </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">H</span><span class="sk-032f62-99ffe4"> "Accept: text/markdown"</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-6f42c1-ffc799">A</span><span class="sk-032f62-99ffe4"> "TestAgent/1.0"</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-6f42c1-ffc799">H</span><span class="sk-032f62-99ffe4"> "Accept-Encoding: gzip, deflate"</span><span class="sk-032f62-99ffe4"> "&lt;YOUR_DOMAIN&gt;/cdn-cgi/error/1020"</span></span>
 <span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -467,7 +467,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">JSON example:</p>
+<p data-astro-cid-t7az6eu7="">JSON example:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl -s --compressed -H </span><span class="sk-032f62-99ffe4">"Accept: application/json"</span><span class="sk-24292e-fff"> -A </span><span class="sk-032f62-99ffe4">"TestAgent/1.0"</span><span class="sk-24292e-fff"> -H </span><span class="sk-032f62-99ffe4">"Accept-Encoding: gzip, deflate"</span><span class="sk-032f62-99ffe4"> "&lt;YOUR_DOMAIN&gt;/cdn-cgi/error/1015"</span><span class="sk-24292e-fff"> | jq .</span></span>
 <span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -476,7 +476,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">RFC 9457 Problem Details example:</p>
+<p data-astro-cid-t7az6eu7="">RFC 9457 Problem Details example:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">s </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">compressed </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">H</span><span class="sk-032f62-99ffe4"> "Accept: application/problem+json"</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-6f42c1-ffc799">A</span><span class="sk-032f62-99ffe4"> "TestAgent/1.0"</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-6f42c1-ffc799">H</span><span class="sk-032f62-99ffe4"> "Accept-Encoding: gzip, deflate"</span><span class="sk-032f62-99ffe4"> "&lt;YOUR_DOMAIN&gt;/cdn-cgi/error/1015"</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-24292e-fff"> jq </span><span class="sk-d73a49-a0a0a0">.</span></span>
 <span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -485,107 +485,107 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">The behavior is deterministic — the first explicit structured type wins:</p>
-<div class="emdash-table-wrapper" data-astro-cid-d7axpwdr="">
-	<table class="emdash-table" style="min-width: 192px;" data-astro-cid-d7axpwdr="">
-		<thead data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+<p data-astro-cid-t7az6eu7="">The behavior is deterministic — the first explicit structured type wins:</p>
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 192px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Accept header</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Response</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>application/json</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>JSON</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>application/json; charset=utf-8</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>JSON</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>application/problem+json</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>JSON (application/problem+json content type)</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>application/json, text/markdown;q=0.9</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>JSON</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>application/json, text/markdown</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>JSON (equal q, first-listed wins)</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>text/markdown</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Markdown</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>text/markdown, application/json</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Markdown (equal q, first-listed wins)</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>text/markdown, */*</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Markdown</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>text/*</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Markdown</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>*/*</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>HTML (default)</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-c6i3vrlz="">Wildcard-only requests (<code>*/*</code>) do not signal a structured preference; clients must explicitly request Markdown or JSON.</p>
-<p data-astro-cid-c6i3vrlz="">If the request succeeds, you get normal origin content. The header only affects Cloudflare-generated error responses.</p>
-<h3 data-astro-cid-c6i3vrlz="">Real-world use cases</h3>
-<p data-astro-cid-c6i3vrlz="">There are a number of situations where structured error responses help immediately:</p>
+<p data-astro-cid-t7az6eu7="">Wildcard-only requests (<code>*/*</code>) do not signal a structured preference; clients must explicitly request Markdown or JSON.</p>
+<p data-astro-cid-t7az6eu7="">If the request succeeds, you get normal origin content. The header only affects Cloudflare-generated error responses.</p>
+<h3 data-astro-cid-t7az6eu7="">Real-world use cases</h3>
+<p data-astro-cid-t7az6eu7="">There are a number of situations where structured error responses help immediately:</p>
 <ol>
 	<li>Agent blocked by WAF rule (<code>1020</code>). The agent parses <code>error_code</code>, records <code>ray_id</code>, and stops retrying. It can escalate with useful context instead of looping.</li>
 	<li>MCP (Model Context Protocol) tool hitting geo restriction (<code>1009</code>). The tool gets a clear, machine-readable reason, returns it to the orchestrator, and the workflow can choose an alternate path or notify the user.</li>
@@ -593,9 +593,9 @@
 	<li>Developer debugging with <code>curl</code>. The developer can reproduce exactly what the agent sees, including frontmatter and guidance, without reverse-engineering HTML.</li>
 	<li>HTTP client libraries that understand RFC 9457. Any client that dispatches on <code>application/problem+json</code> or parses Problem Details objects can handle Cloudflare errors without Cloudflare-specific code.</li>
 </ol>
-<p data-astro-cid-c6i3vrlz="">In each case, the outcome is the same: less guessing, fewer wasted retries, lower model cost, and faster recovery.</p>
-<h3 data-astro-cid-c6i3vrlz="">Try it now</h3>
-<p data-astro-cid-c6i3vrlz="">Send a structured <code>Accept</code> header and test against any Cloudflare-proxied domain:</p>
+<p data-astro-cid-t7az6eu7="">In each case, the outcome is the same: less guessing, fewer wasted retries, lower model cost, and faster recovery.</p>
+<h3 data-astro-cid-t7az6eu7="">Try it now</h3>
+<p data-astro-cid-t7az6eu7="">Send a structured <code>Accept</code> header and test against any Cloudflare-proxied domain:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">s </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">compressed </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">H</span><span class="sk-032f62-99ffe4"> "Accept: text/markdown"</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-6f42c1-ffc799">A</span><span class="sk-032f62-99ffe4"> "TestAgent/1.0"</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-6f42c1-ffc799">H</span><span class="sk-032f62-99ffe4"> "Accept-Encoding: gzip, deflate"</span><span class="sk-032f62-99ffe4"> "&lt;YOUR_DOMAIN&gt;/cdn-cgi/error/1015"</span></span>
 <span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -620,7 +620,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">Error pages are the first conversation between Cloudflare and an agent. This launch makes that conversation structured, standards-compliant, and cheap to process.</p>
-<p data-astro-cid-c6i3vrlz="">To make this work across the web, agent runtimes should default to explicit structured <code>Accept</code> headers, not bare <code>*/*</code>. Use <code>Accept: text/markdown, */*</code> for model-first workflows and <code>Accept: application/json, */*</code> for typed control flow. If you maintain an agent framework, SDK, or browser automation stack, ship this default and treat bare <code>*/*</code> as legacy fallback.</p>
-<p data-astro-cid-c6i3vrlz="">And it is only the first layer. We are building the rest of the agent stack on top of it: <a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer"><u>AI Gateway</u></a> for routing, controls, and observability; <a href="https://www.cloudflare.com/developer-platform/products/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a> for inference; and the identity, security, and access primitives agents will need to operate safely at Internet scale.</p>
-<p data-astro-cid-c6i3vrlz="">Cloudflare is helping our customers deliver content in agent-friendly ways, and this is just the start. If you're building or operating agents, start at <a href="http://agents.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>agents.cloudflare.com</u></a>.</p>
+<p data-astro-cid-t7az6eu7="">Error pages are the first conversation between Cloudflare and an agent. This launch makes that conversation structured, standards-compliant, and cheap to process.</p>
+<p data-astro-cid-t7az6eu7="">To make this work across the web, agent runtimes should default to explicit structured <code>Accept</code> headers, not bare <code>*/*</code>. Use <code>Accept: text/markdown, */*</code> for model-first workflows and <code>Accept: application/json, */*</code> for typed control flow. If you maintain an agent framework, SDK, or browser automation stack, ship this default and treat bare <code>*/*</code> as legacy fallback.</p>
+<p data-astro-cid-t7az6eu7="">And it is only the first layer. We are building the rest of the agent stack on top of it: <a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer"><u>AI Gateway</u></a> for routing, controls, and observability; <a href="https://www.cloudflare.com/developer-platform/products/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a> for inference; and the identity, security, and access primitives agents will need to operate safely at Internet scale.</p>
+<p data-astro-cid-t7az6eu7="">Cloudflare is helping our customers deliver content in agent-friendly ways, and this is just the start. If you're building or operating agents, start at <a href="http://agents.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>agents.cloudflare.com</u></a>.</p>

@@ -1,18 +1,18 @@
-<p data-astro-cid-nalcf22a="">It is no secret that at CloudFlare we put a great effort into accelerating our customers' websites. One way to do it is to reduce the size of the images on the website. This is what our <a href="https://blog.cloudflare.com/introducing-polish-automatic-image-optimizati">Polish</a> product is for. It takes various images and makes them smaller using open source tools, such as jpegtran, gifsicle and pngcrush.</p>
-<p data-astro-cid-nalcf22a="">However those tools are computationally expensive, and making them go faster, makes our servers go faster, and subsequently our customers' websites as well.</p>
-<p data-astro-cid-nalcf22a="">Recently, I noticed that we spent ten times as much time "polishing" jpeg images as we do when polishing pngs.</p>
-<p data-astro-cid-nalcf22a="">We already improved the performance of <a href="https://github.com/cloudflare/pngcrush" target="_blank" rel="noopener noreferrer">pngcrush</a> by using our supercharged version of <a href="https://blog.cloudflare.com/cloudflare-fights-cancer">zlib</a>. So it was time to look what can be done for jpegtran (part of the <a href="http://www.ijg.org" target="_blank" rel="noopener noreferrer">libjpeg</a> distribution).</p>
-<h3 data-astro-cid-nalcf22a="">Quick profiling</h3>
-<p data-astro-cid-nalcf22a="">To get fast results I usually use the Linux perf utility. It gives a nice, if simple, view of the hotspots in the code. I used this image for my benchmark.</p>
-<p data-astro-cid-nalcf22a=""><a href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="noopener noreferrer">CC BY 4.0</a> <a href="http://www.eso.org/public/products/print_posters/print_poster_0025" target="_blank" rel="noopener noreferrer">image</a> by <a href="http://www.eso.org" target="_blank" rel="noopener noreferrer">ESO</a></p>
-<p data-astro-cid-nalcf22a=""><code>perf record ./jpegtran -outfile /dev/null -progressive -optimise -copy none test.jpeg</code></p>
-<p data-astro-cid-nalcf22a="">And we get:</p>
-<p data-astro-cid-nalcf22a=""><code>perf report54.90% lt-jpegtran libjpeg.so.9.1.0 [.] encode_mcu_AC_refine28.58% lt-jpegtran libjpeg.so.9.1.0 [.] encode_mcu_AC_first</code></p>
-<p data-astro-cid-nalcf22a="">Wow. That is 83.5% of the time spent in just two functions! A quick look suggested that both functions deal with Huffman coding of the jpeg image. That is a fairly simple compression technique where frequently occurring characters are replaced with short encodings, and rare characters get longer encodings.</p>
-<p data-astro-cid-nalcf22a="">The time elapsed for the tested file was 6 seconds.</p>
-<h3 data-astro-cid-nalcf22a="">Where to start?</h3>
-<p data-astro-cid-nalcf22a="">First let's look at the most used function, <em>encode_mcu_AC_refine</em>. It is the heaviest function, and therefore optimizing it would benefit us the most.</p>
-<p data-astro-cid-nalcf22a="">The function has two loops. The first loop:</p>
+<p data-astro-cid-t7az6eu7="">It is no secret that at CloudFlare we put a great effort into accelerating our customers' websites. One way to do it is to reduce the size of the images on the website. This is what our <a href="https://blog.cloudflare.com/introducing-polish-automatic-image-optimizati">Polish</a> product is for. It takes various images and makes them smaller using open source tools, such as jpegtran, gifsicle and pngcrush.</p>
+<p data-astro-cid-t7az6eu7="">However those tools are computationally expensive, and making them go faster, makes our servers go faster, and subsequently our customers' websites as well.</p>
+<p data-astro-cid-t7az6eu7="">Recently, I noticed that we spent ten times as much time "polishing" jpeg images as we do when polishing pngs.</p>
+<p data-astro-cid-t7az6eu7="">We already improved the performance of <a href="https://github.com/cloudflare/pngcrush" target="_blank" rel="noopener noreferrer">pngcrush</a> by using our supercharged version of <a href="https://blog.cloudflare.com/cloudflare-fights-cancer">zlib</a>. So it was time to look what can be done for jpegtran (part of the <a href="http://www.ijg.org" target="_blank" rel="noopener noreferrer">libjpeg</a> distribution).</p>
+<h3 data-astro-cid-t7az6eu7="">Quick profiling</h3>
+<p data-astro-cid-t7az6eu7="">To get fast results I usually use the Linux perf utility. It gives a nice, if simple, view of the hotspots in the code. I used this image for my benchmark.</p>
+<p data-astro-cid-t7az6eu7=""><a href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="noopener noreferrer">CC BY 4.0</a> <a href="http://www.eso.org/public/products/print_posters/print_poster_0025" target="_blank" rel="noopener noreferrer">image</a> by <a href="http://www.eso.org" target="_blank" rel="noopener noreferrer">ESO</a></p>
+<p data-astro-cid-t7az6eu7=""><code>perf record ./jpegtran -outfile /dev/null -progressive -optimise -copy none test.jpeg</code></p>
+<p data-astro-cid-t7az6eu7="">And we get:</p>
+<p data-astro-cid-t7az6eu7=""><code>perf report54.90% lt-jpegtran libjpeg.so.9.1.0 [.] encode_mcu_AC_refine28.58% lt-jpegtran libjpeg.so.9.1.0 [.] encode_mcu_AC_first</code></p>
+<p data-astro-cid-t7az6eu7="">Wow. That is 83.5% of the time spent in just two functions! A quick look suggested that both functions deal with Huffman coding of the jpeg image. That is a fairly simple compression technique where frequently occurring characters are replaced with short encodings, and rare characters get longer encodings.</p>
+<p data-astro-cid-t7az6eu7="">The time elapsed for the tested file was 6 seconds.</p>
+<h3 data-astro-cid-t7az6eu7="">Where to start?</h3>
+<p data-astro-cid-t7az6eu7="">First let's look at the most used function, <em>encode_mcu_AC_refine</em>. It is the heaviest function, and therefore optimizing it would benefit us the most.</p>
+<p data-astro-cid-t7az6eu7="">The function has two loops. The first loop:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">k</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> cinfo</span><span class="sk-24292e-fff">-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">Ss</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">k</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> Se</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">k++</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    temp</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> (*block)[natural_order[k]];</span></span>
@@ -46,11 +46,11 @@
 		})
 	});
 </script>
-<p data-astro-cid-nalcf22a="">This loop iterates over one array (<em>natural_order</em>), reads indices that it uses to read from *<em>block</em> into <em>temp</em>, computes the absolute value of <em>temp</em>, and shifts it to the right by some value. In addition it keeps the <em>EOB</em> variable pointing to the last value of the index for which <em>temp</em> was <em>1</em>.</p>
-<p data-astro-cid-nalcf22a="">Generally looping over an array is the schoolbook exercise for SIMD (Single Instruction Multiple Data) instructions, however in this case we have two problems: 1) Indirect indices are hard for SIMD 2) Keeping the <em>EOB</em> value updated.</p>
-<h3 data-astro-cid-nalcf22a="">Optimizing</h3>
-<p data-astro-cid-nalcf22a="">The first problem can not be solved on the function level. While Haswell introduced the new Gather instructions, that allow loading data using indices, those instructions are still slow, and more importantly they operate only on 32-bit and 64-bit values. We are dealing with 16-bit values here.</p>
-<p data-astro-cid-nalcf22a="">Our only option is therefore to load all the values sequentially. One SIMD XMM register is 128-bits wide and can hold eight 16-bit integers, therefore we will load eight values each iteration of the loop. (Note: we could also choose to use 256-bit wide YMM registers here, but that would only work on the newest CPUs, while gaining little performance).</p>
+<p data-astro-cid-t7az6eu7="">This loop iterates over one array (<em>natural_order</em>), reads indices that it uses to read from *<em>block</em> into <em>temp</em>, computes the absolute value of <em>temp</em>, and shifts it to the right by some value. In addition it keeps the <em>EOB</em> variable pointing to the last value of the index for which <em>temp</em> was <em>1</em>.</p>
+<p data-astro-cid-t7az6eu7="">Generally looping over an array is the schoolbook exercise for SIMD (Single Instruction Multiple Data) instructions, however in this case we have two problems: 1) Indirect indices are hard for SIMD 2) Keeping the <em>EOB</em> value updated.</p>
+<h3 data-astro-cid-t7az6eu7="">Optimizing</h3>
+<p data-astro-cid-t7az6eu7="">The first problem can not be solved on the function level. While Haswell introduced the new Gather instructions, that allow loading data using indices, those instructions are still slow, and more importantly they operate only on 32-bit and 64-bit values. We are dealing with 16-bit values here.</p>
+<p data-astro-cid-t7az6eu7="">Our only option is therefore to load all the values sequentially. One SIMD XMM register is 128-bits wide and can hold eight 16-bit integers, therefore we will load eight values each iteration of the loop. (Note: we could also choose to use 256-bit wide YMM registers here, but that would only work on the newest CPUs, while gaining little performance).</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">    __m128i</span><span class="sk-032f62-99ffe4"> x1</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> _mm_setzero_si128</span><span class="sk-24292e-fff">(); </span><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> Load</span><span class="sk-005cc5-ffc799"> 8</span><span class="sk-032f62-99ffe4"> 16-bit</span><span class="sk-032f62-99ffe4"> values</span><span class="sk-032f62-99ffe4"> sequentially</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    x1</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> _mm_insert_epi16</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">x1,</span><span class="sk-24292e-fff"> (*block)</span><span class="sk-032f62-99ffe4">[natural_order[k+0]],</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">);</span></span>
@@ -66,8 +66,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">What you see above are intrinsic functions. Such intrinsics usually map to a specific CPU instruction. By using intrinsics we can integrate high performance code inside a C function, without writing assembly code. Usually they give more than enough flexibility and performance. The <em>__m128i</em> type corresponds to a 128-bit XMM register.</p>
-<p data-astro-cid-nalcf22a="">Performing the transformation is straightforward:</p>
+<p data-astro-cid-t7az6eu7="">What you see above are intrinsic functions. Such intrinsics usually map to a specific CPU instruction. By using intrinsics we can integrate high performance code inside a C function, without writing assembly code. Usually they give more than enough flexibility and performance. The <em>__m128i</em> type corresponds to a 128-bit XMM register.</p>
+<p data-astro-cid-t7az6eu7="">Performing the transformation is straightforward:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">    x1</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> _mm_abs_epi16</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">x1</span><span class="sk-24292e-fff">);        </span><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> Get</span><span class="sk-032f62-99ffe4"> absolute</span><span class="sk-032f62-99ffe4"> value</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> 16-bit</span><span class="sk-032f62-99ffe4"> integers</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    x1</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> _mm_srli_epi16</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">x1,</span><span class="sk-032f62-99ffe4"> Al</span><span class="sk-24292e-fff">);   </span><span class="sk-6f42c1-ffc799">//</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-032f62-99ffe4"> 16-bit</span><span class="sk-032f62-99ffe4"> integers</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> Al</span><span class="sk-032f62-99ffe4"> bits</span></span>
@@ -77,9 +77,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">As you can see we only need two instructions to perform the simple transformation on eight values, and no branch is required as a bonus.</p>
-<p data-astro-cid-nalcf22a="">The next tricky part is to update <em>EOB</em>, so it points to the last nonzero index. For that we need to find the index of the highest nonzero value inside <em>x1</em>, and if there is one update <em>EOB</em> accordingly.</p>
-<p data-astro-cid-nalcf22a="">We can easily compare all the values inside x1 to one:</p>
+<p data-astro-cid-t7az6eu7="">As you can see we only need two instructions to perform the simple transformation on eight values, and no branch is required as a bonus.</p>
+<p data-astro-cid-t7az6eu7="">The next tricky part is to update <em>EOB</em>, so it points to the last nonzero index. For that we need to find the index of the highest nonzero value inside <em>x1</em>, and if there is one update <em>EOB</em> accordingly.</p>
+<p data-astro-cid-t7az6eu7="">We can easily compare all the values inside x1 to one:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">    x1</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> _mm_cmpeq_epi16</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">x1,</span><span class="sk-032f62-99ffe4"> _mm_set1_epi16</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">1</span><span class="sk-24292e-fff">));  </span><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> Compare</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-005cc5-ffc799"> 1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -87,7 +87,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">The result of this operation is a mask. For all equal values all bits are set to 1 and for all non-equal values all bits are cleared to 0. However, how do we find the highest index whose bits are all ones? Well, there is an instruction that extracts the top bit of each byte inside an <em>__m128i</em> value, and puts it into a regular integer. From there we can find the index by finding the top set bit in that integer:</p>
+<p data-astro-cid-t7az6eu7="">The result of this operation is a mask. For all equal values all bits are set to 1 and for all non-equal values all bits are cleared to 0. However, how do we find the highest index whose bits are all ones? Well, there is an instruction that extracts the top bit of each byte inside an <em>__m128i</em> value, and puts it into a regular integer. From there we can find the index by finding the top set bit in that integer:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">    unsigned</span><span class="sk-032f62-99ffe4"> int</span><span class="sk-032f62-99ffe4"> idx</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> _mm_movemask_epi8</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">x1</span><span class="sk-24292e-fff">);        </span><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> Extract</span><span class="sk-032f62-99ffe4"> byte</span><span class="sk-032f62-99ffe4"> mask</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    EOB</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> idx?</span><span class="sk-032f62-99ffe4"> k</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-ffc799"> 16</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> __builtin_clz</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">idx</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">/2</span><span class="sk-032f62-99ffe4"> :</span><span class="sk-032f62-99ffe4"> EOB</span><span class="sk-24292e-fff">;  </span><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> Compute</span><span class="sk-032f62-99ffe4"> index</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -96,10 +96,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">That is it. EOB will be updated correctly.</p>
-<p data-astro-cid-nalcf22a="">What does that simple optimization give us? Running jpegtran again shows that the same image now takes 5.2 seconds! That is a 1.15x speedup right there. But no reason to stop now.</p>
-<h3 data-astro-cid-nalcf22a="">Keep going</h3>
-<p data-astro-cid-nalcf22a="">Next the loop iterates over the array we just prepared (<em>absvalues</em>). At the beginning of the loop we see:</p>
+<p data-astro-cid-t7az6eu7="">That is it. EOB will be updated correctly.</p>
+<p data-astro-cid-t7az6eu7="">What does that simple optimization give us? Running jpegtran again shows that the same image now takes 5.2 seconds! That is a 1.15x speedup right there. But no reason to stop now.</p>
+<h3 data-astro-cid-t7az6eu7="">Keep going</h3>
+<p data-astro-cid-t7az6eu7="">Next the loop iterates over the array we just prepared (<em>absvalues</em>). At the beginning of the loop we see:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> ((temp </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> absvalues[k]) </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-24292e-fff">      r++;</span></span>
@@ -110,7 +110,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">So it simply skips all the 0 values in the array, until it finds a nonzero value. Is it worth optimizing? Running a quick test, I found out that it is common to have long sequences of zero values. And iterating over them individually can be expensive. Let's try our previous method of finding the top nonzero element in an array here:</p>
+<p data-astro-cid-t7az6eu7="">So it simply skips all the 0 values in the array, until it finds a nonzero value. Is it worth optimizing? Running a quick test, I found out that it is common to have long sequences of zero values. And iterating over them individually can be expensive. Let's try our previous method of finding the top nonzero element in an array here:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">    __m128i</span><span class="sk-032f62-99ffe4"> t</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> _mm_loadu_si128</span><span class="sk-24292e-fff">((</span><span class="sk-6f42c1-ffc799">__m128i*</span><span class="sk-24292e-fff">)&amp;</span><span class="sk-6f42c1-ffc799">absvalues[k]</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    t</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> _mm_cmpeq_epi16</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">t,</span><span class="sk-032f62-99ffe4"> _mm_setzero_si128</span><span class="sk-24292e-fff">()); </span><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> Compare</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-005cc5-ffc799"> 0</span></span>
@@ -131,14 +131,14 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">What do we get now? Our test image now takes only 3.7 seconds. We are already at 1.62x speedup.</p>
-<p data-astro-cid-nalcf22a="">And what does perf show?</p>
-<p data-astro-cid-nalcf22a=""><code>45.94% lt-jpegtran libjpeg.so.9.1.0 [.] encode_mcu_AC_first28.73% lt-jpegtran libjpeg.so.9.1.0 [.] encode_mcu_AC_refine</code></p>
-<p data-astro-cid-nalcf22a="">We can see that the tables have turned. Now <em>encode_mcu_AC_first</em> is the slower function of the two, and takes almost 50% of the time.</p>
-<h3 data-astro-cid-nalcf22a="">Moar optimizations!</h3>
-<p data-astro-cid-nalcf22a="">Looking at <em>encode_mcu_AC_first</em> we see one loop, that performs similar operations as the function we already optimized. Why not reuse the optimizations we already know are good?</p>
-<p data-astro-cid-nalcf22a="">We shall split the one big loop into two smaller loops, one would perform the required transformations, and store them into auxiliary arrays, the other would read those values skipping the zero entries.</p>
-<p data-astro-cid-nalcf22a="">Note that transformations are a little different now:</p>
+<p data-astro-cid-t7az6eu7="">What do we get now? Our test image now takes only 3.7 seconds. We are already at 1.62x speedup.</p>
+<p data-astro-cid-t7az6eu7="">And what does perf show?</p>
+<p data-astro-cid-t7az6eu7=""><code>45.94% lt-jpegtran libjpeg.so.9.1.0 [.] encode_mcu_AC_first28.73% lt-jpegtran libjpeg.so.9.1.0 [.] encode_mcu_AC_refine</code></p>
+<p data-astro-cid-t7az6eu7="">We can see that the tables have turned. Now <em>encode_mcu_AC_first</em> is the slower function of the two, and takes almost 50% of the time.</p>
+<h3 data-astro-cid-t7az6eu7="">Moar optimizations!</h3>
+<p data-astro-cid-t7az6eu7="">Looking at <em>encode_mcu_AC_first</em> we see one loop, that performs similar operations as the function we already optimized. Why not reuse the optimizations we already know are good?</p>
+<p data-astro-cid-t7az6eu7="">We shall split the one big loop into two smaller loops, one would perform the required transformations, and store them into auxiliary arrays, the other would read those values skipping the zero entries.</p>
+<p data-astro-cid-t7az6eu7="">Note that transformations are a little different now:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">temp</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">      temp</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-99ffe4"> -temp</span><span class="sk-24292e-fff">;</span></span>
@@ -153,7 +153,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">The equivalent for SIMD would be:</p>
+<p data-astro-cid-t7az6eu7="">The equivalent for SIMD would be:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">    __m128i</span><span class="sk-032f62-99ffe4"> neg</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> _mm_cmpgt_epi16</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">_mm_setzero_si128</span><span class="sk-24292e-fff">(), x1);</span><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> Negative</span><span class="sk-032f62-99ffe4"> mask</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    x1</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> _mm_abs_epi16</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">x1</span><span class="sk-24292e-fff">);                                </span><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> Absolute</span><span class="sk-032f62-99ffe4"> value</span></span>
@@ -165,13 +165,13 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">And skipping zero values is performed in the same manner as before.</p>
-<p data-astro-cid-nalcf22a="">Measuring the performance now gives as 2.65 seconds for the test image! And that is 2.25X faster than the original jpegtran.</p>
-<h3 data-astro-cid-nalcf22a="">Conclusions</h3>
-<p data-astro-cid-nalcf22a="">Let's take a final look at the perf output:</p>
-<p data-astro-cid-nalcf22a=""><code>40.78% lt-jpegtran libjpeg.so.9.1.0 [.] encode_mcu_AC_refine26.01% lt-jpegtran libjpeg.so.9.1.0 [.] encode_mcu_AC_first</code></p>
-<p data-astro-cid-nalcf22a="">We can see that the two functions we optimized still take a significant portion of the execution. But now it is just 67% of the entire program. If you are asking yourself how we got 2.25X speedup with those functions going from 83.5% to 67%, read about the <a href="https://en.wikipedia.org/wiki/Potato_paradox" target="_blank" rel="noopener noreferrer">Potato Paradox</a>.</p>
-<p data-astro-cid-nalcf22a="">It is definitely worth making further optimizations here. But it might be better looking outside the functions into how the data is arranged and passed around.</p>
-<p data-astro-cid-nalcf22a="">The bottom line is: optimizing code is fun, and using SIMD instructions can give you significant boost. Such as in this case.</p>
-<p data-astro-cid-nalcf22a="">We at CloudFlare make sure that our servers run at top notch performance, so our customers' websites do as well!.</p>
-<p data-astro-cid-nalcf22a="">You can find the final code on our GitHub repository: <a href="https://github.com/cloudflare/jpegtran" target="_blank" rel="noopener noreferrer">https://github.com/cloudflare/jpegtran</a></p>
+<p data-astro-cid-t7az6eu7="">And skipping zero values is performed in the same manner as before.</p>
+<p data-astro-cid-t7az6eu7="">Measuring the performance now gives as 2.65 seconds for the test image! And that is 2.25X faster than the original jpegtran.</p>
+<h3 data-astro-cid-t7az6eu7="">Conclusions</h3>
+<p data-astro-cid-t7az6eu7="">Let's take a final look at the perf output:</p>
+<p data-astro-cid-t7az6eu7=""><code>40.78% lt-jpegtran libjpeg.so.9.1.0 [.] encode_mcu_AC_refine26.01% lt-jpegtran libjpeg.so.9.1.0 [.] encode_mcu_AC_first</code></p>
+<p data-astro-cid-t7az6eu7="">We can see that the two functions we optimized still take a significant portion of the execution. But now it is just 67% of the entire program. If you are asking yourself how we got 2.25X speedup with those functions going from 83.5% to 67%, read about the <a href="https://en.wikipedia.org/wiki/Potato_paradox" target="_blank" rel="noopener noreferrer">Potato Paradox</a>.</p>
+<p data-astro-cid-t7az6eu7="">It is definitely worth making further optimizations here. But it might be better looking outside the functions into how the data is arranged and passed around.</p>
+<p data-astro-cid-t7az6eu7="">The bottom line is: optimizing code is fun, and using SIMD instructions can give you significant boost. Such as in this case.</p>
+<p data-astro-cid-t7az6eu7="">We at CloudFlare make sure that our servers run at top notch performance, so our customers' websites do as well!.</p>
+<p data-astro-cid-t7az6eu7="">You can find the final code on our GitHub repository: <a href="https://github.com/cloudflare/jpegtran" target="_blank" rel="noopener noreferrer">https://github.com/cloudflare/jpegtran</a></p>

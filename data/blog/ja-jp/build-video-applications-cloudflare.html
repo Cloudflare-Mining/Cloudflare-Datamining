@@ -1,11 +1,11 @@
-<p data-astro-cid-byeekcgh="">歴史的に、動画アプリケーションの構築は非常に難しいものでした。動画の録画、エンコード、そして再生の裏には多くの複雑な技術があります。幸いなことに、<a href="https://www.cloudflare.com/ja-jp/products/cloudflare-stream" target="_blank" rel="noopener noreferrer">Cloudflare Stream</a>ではすべての難しい部分を取り除くことで、カスタム動画やストリーミングアプリケーションを簡単に構築できます。Cloudflare Stream、Access、Pages、Workersを組み合わせた、非常に少ないコードで高性能の動画アプリケーションを作成する方法を見てみましょう。</p>
-<p data-astro-cid-byeekcgh="">本日は、<a href="https://cloudflare.tv/live" target="_blank" rel="noopener noreferrer">Cloudflare TV</a>で放映された動画アプリケーションを構築していきます。ユーザー認証機能のほか、管理者が制作済みの動画をアップロードしたり、新しいコンテンツをライブ配信する機能を盛り込みます。Cloudflareサービスを使用して、YouTubeやTwitch用に自分のコンテンツを制作できることを想像してみてく</p>
-<p data-astro-cid-byeekcgh="">ださい！</p>
+<p data-astro-cid-t7az6eu7="">歴史的に、動画アプリケーションの構築は非常に難しいものでした。動画の録画、エンコード、そして再生の裏には多くの複雑な技術があります。幸いなことに、<a href="https://www.cloudflare.com/ja-jp/products/cloudflare-stream" target="_blank" rel="noopener noreferrer">Cloudflare Stream</a>ではすべての難しい部分を取り除くことで、カスタム動画やストリーミングアプリケーションを簡単に構築できます。Cloudflare Stream、Access、Pages、Workersを組み合わせた、非常に少ないコードで高性能の動画アプリケーションを作成する方法を見てみましょう。</p>
+<p data-astro-cid-t7az6eu7="">本日は、<a href="https://cloudflare.tv/live" target="_blank" rel="noopener noreferrer">Cloudflare TV</a>で放映された動画アプリケーションを構築していきます。ユーザー認証機能のほか、管理者が制作済みの動画をアップロードしたり、新しいコンテンツをライブ配信する機能を盛り込みます。Cloudflareサービスを使用して、YouTubeやTwitch用に自分のコンテンツを制作できることを想像してみてく</p>
+<p data-astro-cid-t7az6eu7="">ださい！</p>
 <div id="html-block-kd" class="html-block">
 	<div style="padding-top:36.09550561797753%"><iframe src="https://iframe.videodelivery.net/116d621e621e7884791a88307c8bcc7e?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F116d621e621e7884791a88307c8bcc7e%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
 </div>
-<h3 data-astro-cid-byeekcgh=""><strong>動画のリストを取得する</strong></h3>
-<p data-astro-cid-byeekcgh="">アプリケーションのメインページに、すべての動画のリストを表示したいと思います。動画はCloudflare Streamでアップロードと保存を実現しますが、それについては後で詳しく説明します！このコードは、「傾向」動画やユーザーごとに選択された動画のみを表示するように変更できます。今のところ、検索APIを使用し、空の文字列を渡してすべてを返します。</p>
+<h3 data-astro-cid-t7az6eu7=""><strong>動画のリストを取得する</strong></h3>
+<p data-astro-cid-t7az6eu7="">アプリケーションのメインページに、すべての動画のリストを表示したいと思います。動画はCloudflare Streamでアップロードと保存を実現しますが、それについては後で詳しく説明します！このコードは、「傾向」動画やユーザーごとに選択された動画のみを表示するように変更できます。今のところ、検索APIを使用し、空の文字列を渡してすべてを返します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { getSignedStreamId } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "../../src/cfStream"</span></span>
 <span class="line"></span>
@@ -90,13 +90,13 @@
 		})
 	});
 </script>
-<p data-astro-cid-byeekcgh="">各動画を確認し、非公開の動画を除外して、サムネイルのURL、ID、作成日など、必要なメタデータを抽出します。</p>
-<h3 data-astro-cid-byeekcgh=""><strong>動画の再生</strong></h3>
-<p data-astro-cid-byeekcgh="">ユーザーがアプリケーションから動画を再生できるようにするには、動画を公開にするか、リクエストごとに署名する必要があります。動画を公開としてマークすると、このプロセスが簡単になります。しかし、動画へのアクセスを制御したい理由はたくさんあります。再生する前にユーザーにログインさせたり、何らかの方法でアクセスを制限する場合は、動画をプライベートとしてマークし、署名付きURLを使用してアクセスを制御します。動画の保護に関する詳細については、<a href="https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream" target="_blank" rel="noopener noreferrer">こちら</a>をご覧ください。</p>
-<p data-astro-cid-byeekcgh="">アプリケーションをローカルでテストしている場合、または1日あたりのリクエストの予測数が10,000未満の場合は、/tokenエンドポイントを呼び出して署名付きトークンを生成します。1日あたりのリクエスト予測数が10,000以上の場合は、ここで行うように、<a href="https://jwt.io" target="_blank" rel="noopener noreferrer">JSON Webトークン</a>を使用して自分のトークンに署名してください。</p>
-<h3 data-astro-cid-byeekcgh=""><strong>ユーザーが動画をアップロードできるようにする</strong></h3>
-<p data-astro-cid-byeekcgh="">次のステップは、ユーザーが動画をアップロードできる管理ページを作成することです。ユーザーによるアップロードを可能にするためのドキュメントは、 <a href="https://developers.cloudflare.com/stream/uploading-videos/direct-creator-uploads" target="_blank" rel="noopener noreferrer">こちら</a>にあります。</p>
-<p data-astro-cid-byeekcgh="">このプロセスは、Cloudflare Stream APIを使用すると簡単になります。<a href="https://developers.cloudflare.com/api/tokens/create" target="_blank" rel="noopener noreferrer">APIトークン</a>とアカウントIDを使用して、一意の1回限りのアップロード用のURLを生成します。トークンにStream:Edit権限があることを確認してください。アプリケーションからのすべてのPOSTリクエストをフックし、生成されたアップロード用URLを返します。</p>
+<p data-astro-cid-t7az6eu7="">各動画を確認し、非公開の動画を除外して、サムネイルのURL、ID、作成日など、必要なメタデータを抽出します。</p>
+<h3 data-astro-cid-t7az6eu7=""><strong>動画の再生</strong></h3>
+<p data-astro-cid-t7az6eu7="">ユーザーがアプリケーションから動画を再生できるようにするには、動画を公開にするか、リクエストごとに署名する必要があります。動画を公開としてマークすると、このプロセスが簡単になります。しかし、動画へのアクセスを制御したい理由はたくさんあります。再生する前にユーザーにログインさせたり、何らかの方法でアクセスを制限する場合は、動画をプライベートとしてマークし、署名付きURLを使用してアクセスを制御します。動画の保護に関する詳細については、<a href="https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream" target="_blank" rel="noopener noreferrer">こちら</a>をご覧ください。</p>
+<p data-astro-cid-t7az6eu7="">アプリケーションをローカルでテストしている場合、または1日あたりのリクエストの予測数が10,000未満の場合は、/tokenエンドポイントを呼び出して署名付きトークンを生成します。1日あたりのリクエスト予測数が10,000以上の場合は、ここで行うように、<a href="https://jwt.io" target="_blank" rel="noopener noreferrer">JSON Webトークン</a>を使用して自分のトークンに署名してください。</p>
+<h3 data-astro-cid-t7az6eu7=""><strong>ユーザーが動画をアップロードできるようにする</strong></h3>
+<p data-astro-cid-t7az6eu7="">次のステップは、ユーザーが動画をアップロードできる管理ページを作成することです。ユーザーによるアップロードを可能にするためのドキュメントは、 <a href="https://developers.cloudflare.com/stream/uploading-videos/direct-creator-uploads" target="_blank" rel="noopener noreferrer">こちら</a>にあります。</p>
+<p data-astro-cid-t7az6eu7="">このプロセスは、Cloudflare Stream APIを使用すると簡単になります。<a href="https://developers.cloudflare.com/api/tokens/create" target="_blank" rel="noopener noreferrer">APIトークン</a>とアカウントIDを使用して、一意の1回限りのアップロード用のURLを生成します。トークンにStream:Edit権限があることを確認してください。アプリケーションからのすべてのPOSTリクエストをフックし、生成されたアップロード用URLを返します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-6f42c1-ffc799"> cfTeamsAccessAuthMiddleware</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-24292e-fff"> ({</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">data</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">next</span><span class="sk-24292e-fff">}) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    try</span><span class="sk-24292e-fff"> {</span></span>
@@ -125,7 +125,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">管理ページには、ユーザーが自分のコンピュータから動画をドラッグアンドドロップまたはアップロードできるフォームが含まれています。ログインしたユーザーがアップロードのフォームで[送信]を押すと、アプリケーションは一意のURLを生成し、そこに<a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData" target="_blank" rel="noopener noreferrer">FormData</a>を投稿します。このコードは、動画共有サイトの構築や、ユーザー生成コンテンツを可能にするアプリケーションとうまく機能します。</p>
+<p data-astro-cid-t7az6eu7="">管理ページには、ユーザーが自分のコンピュータから動画をドラッグアンドドロップまたはアップロードできるフォームが含まれています。ログインしたユーザーがアップロードのフォームで[送信]を押すと、アプリケーションは一意のURLを生成し、そこに<a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData" target="_blank" rel="noopener noreferrer">FormData</a>を投稿します。このコードは、動画共有サイトの構築や、ユーザー生成コンテンツを可能にするアプリケーションとうまく機能します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> getOneTimeUploadUrl</span><span class="sk-24292e-fff">() {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> res</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'/api/admin/videos'</span><span class="sk-24292e-fff">, {method: </span><span class="sk-032f62-99ffe4">'POST'</span><span class="sk-24292e-fff">, headers: {</span><span class="sk-032f62-99ffe4">'accept'</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'application/json'</span><span class="sk-24292e-fff">}})</span></span>
@@ -151,10 +151,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-byeekcgh=""><strong>Stream Liveを使ったリアルタイム動画の追加</strong></h3>
-<p data-astro-cid-byeekcgh=""><a href="https://blog.cloudflare.com/ja-jp/stream-live-ja-jp">Stream Live</a>をすでにご紹介した手法と組み合わせて使用して、アプリケーションにライブストリーミングセクションを追加することもできます。ログインしたユーザーが配信を開始し、他のログインしたユーザー、さらには一般のユーザーがリアルタイムでそれを視聴できるようにすることができます！配信内容は自動的にアカウントに保存されるため、アプリケーションのメインセクションで配信が終了した直後に表示されます。</p>
-<h3 data-astro-cid-byeekcgh=""><strong>ミドルウェアを使用してアプリを保護する</strong></h3>
-<p data-astro-cid-byeekcgh="">認証されたすべてのページをこのミドルウェア関数の背後に配置します。リクエストヘッダーをチェックして、ユーザーが有効な認証済みユーザーのEメールを送信していることを確認します。</p>
+<h3 data-astro-cid-t7az6eu7=""><strong>Stream Liveを使ったリアルタイム動画の追加</strong></h3>
+<p data-astro-cid-t7az6eu7=""><a href="https://blog.cloudflare.com/ja-jp/stream-live-ja-jp">Stream Live</a>をすでにご紹介した手法と組み合わせて使用して、アプリケーションにライブストリーミングセクションを追加することもできます。ログインしたユーザーが配信を開始し、他のログインしたユーザー、さらには一般のユーザーがリアルタイムでそれを視聴できるようにすることができます！配信内容は自動的にアカウントに保存されるため、アプリケーションのメインセクションで配信が終了した直後に表示されます。</p>
+<h3 data-astro-cid-t7az6eu7=""><strong>ミドルウェアを使用してアプリを保護する</strong></h3>
+<p data-astro-cid-t7az6eu7="">認証されたすべてのページをこのミドルウェア関数の背後に配置します。リクエストヘッダーをチェックして、ユーザーが有効な認証済みユーザーのEメールを送信していることを確認します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-6f42c1-ffc799"> cfTeamsAccessAuthMiddleware</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-24292e-fff"> ({</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">data</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">next</span><span class="sk-24292e-fff">}) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    try</span><span class="sk-24292e-fff"> {</span></span>
@@ -183,10 +183,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-byeekcgh=""><strong>すべてをPagesと一緒にまとめる</strong></h3>
-<p data-astro-cid-byeekcgh="">私たちにはログインフローを制御するCloudflare Accessがあります。Stream APIを使用して、動画のアップロード、表示、視聴を管理します。フェッチリクエストの管理とAPI呼び出しの処理には、<a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Workers</a>を使用します。今度は、<a href="https://pages.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Pages</a>使用してすべてを結び付ける番です！</p>
-<p data-astro-cid-byeekcgh="">Pagesは、静的Webサイトをデプロイしてホストする簡単な方法を提供します。しかし今では、PagesはWorkersプラットフォームとシームレスに統合されています (発表記事へのリンク)。この新しい統合により、このアプリケーション全体を単一の読み取り可能なリポジトリにデプロイできます。</p>
-<h3 data-astro-cid-byeekcgh=""><strong>アクセスを制御する</strong></h3>
-<p data-astro-cid-byeekcgh="">アプリケーションによっては公開した方がよいもの、機密データが含まれているため特定のユーザーに制限する必要があるものがあります。メインページはこのアプリケーション用に公開になっており、管理ページを従業員に制限するために<a href="https://www.cloudflare.com/ja-jp/teams/access" target="_blank" rel="noopener noreferrer">Cloudflare Access</a>を使用しました。内部学習サービスを構築している場合、または新しいサイトをベータ版で立ち上げたい場合でも、Accessを使用してアプリケーション全体を簡単に保護できます。</p>
-<p data-astro-cid-byeekcgh="">ユーザーが<a href="https://cf-pages-stream.pages.dev" target="_blank" rel="noopener noreferrer">デモサイト</a>の管理リンクをクリックすると、メールアドレスの入力を求められます。有効なCloudflareメールを入力すると、アプリケーションはアクセスコードを送信します。入力しない場合、そのページにアクセスできなくなります。</p>
-<p data-astro-cid-byeekcgh=""><a href="https://github.com/cloudflare/pages-stream-demo" target="_blank" rel="noopener noreferrer">ソースコード</a>を確認して、今すぐ動画アプリケーションの構築を始めましょう！</p>
+<h3 data-astro-cid-t7az6eu7=""><strong>すべてをPagesと一緒にまとめる</strong></h3>
+<p data-astro-cid-t7az6eu7="">私たちにはログインフローを制御するCloudflare Accessがあります。Stream APIを使用して、動画のアップロード、表示、視聴を管理します。フェッチリクエストの管理とAPI呼び出しの処理には、<a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Workers</a>を使用します。今度は、<a href="https://pages.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Pages</a>使用してすべてを結び付ける番です！</p>
+<p data-astro-cid-t7az6eu7="">Pagesは、静的Webサイトをデプロイしてホストする簡単な方法を提供します。しかし今では、PagesはWorkersプラットフォームとシームレスに統合されています (発表記事へのリンク)。この新しい統合により、このアプリケーション全体を単一の読み取り可能なリポジトリにデプロイできます。</p>
+<h3 data-astro-cid-t7az6eu7=""><strong>アクセスを制御する</strong></h3>
+<p data-astro-cid-t7az6eu7="">アプリケーションによっては公開した方がよいもの、機密データが含まれているため特定のユーザーに制限する必要があるものがあります。メインページはこのアプリケーション用に公開になっており、管理ページを従業員に制限するために<a href="https://www.cloudflare.com/ja-jp/teams/access" target="_blank" rel="noopener noreferrer">Cloudflare Access</a>を使用しました。内部学習サービスを構築している場合、または新しいサイトをベータ版で立ち上げたい場合でも、Accessを使用してアプリケーション全体を簡単に保護できます。</p>
+<p data-astro-cid-t7az6eu7="">ユーザーが<a href="https://cf-pages-stream.pages.dev" target="_blank" rel="noopener noreferrer">デモサイト</a>の管理リンクをクリックすると、メールアドレスの入力を求められます。有効なCloudflareメールを入力すると、アプリケーションはアクセスコードを送信します。入力しない場合、そのページにアクセスできなくなります。</p>
+<p data-astro-cid-t7az6eu7=""><a href="https://github.com/cloudflare/pages-stream-demo" target="_blank" rel="noopener noreferrer">ソースコード</a>を確認して、今すぐ動画アプリケーションの構築を始めましょう！</p>

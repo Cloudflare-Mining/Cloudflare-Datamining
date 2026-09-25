@@ -1,21 +1,21 @@
-<p data-astro-cid-nalcf22a="">Internally our DDoS mitigation team is sometimes called "the packet droppers". When other teams build exciting products to do smart things with the traffic that passes through our network, we take joy in discovering novel ways of discarding it.</p>
+<p data-astro-cid-t7az6eu7="">Internally our DDoS mitigation team is sometimes called "the packet droppers". When other teams build exciting products to do smart things with the traffic that passes through our network, we take joy in discovering novel ways of discarding it.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="573" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4933TPWMCZPP282RERAYNH.jpg&amp;w=715&amp;h=573&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4933TPWMCZPP282RERAYNH.jpg&amp;w=640&amp;h=513&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4933TPWMCZPP282RERAYNH.jpg&amp;w=715&amp;h=573&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4933TPWMCZPP282RERAYNH.jpg&amp;w=750&amp;h=601&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4933TPWMCZPP282RERAYNH.jpg&amp;w=828&amp;h=664&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4933TPWMCZPP282RERAYNH.jpg&amp;w=1080&amp;h=866&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4933TPWMCZPP282RERAYNH.jpg&amp;w=1280&amp;h=1026&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4933TPWMCZPP282RERAYNH.jpg&amp;w=1430&amp;h=1146&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="38464589350_d00908ee98_b" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4933TPWMCZPP282RERAYNH.jpg&amp;w=1024&amp;h=820&amp;f=webp" data-lightbox-width="1024" data-lightbox-height="820" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="573" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-nalcf22a=""><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/beegee49/38464589350" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/beegee49" target="_blank" rel="noopener noreferrer">Brian Evans</a></p>
-<p data-astro-cid-nalcf22a="">Being able to quickly discard packets is very important to withstand DDoS attacks.</p>
-<p data-astro-cid-nalcf22a="">Dropping packets hitting our servers, as simple as it sounds, can be done on multiple layers. Each technique has its advantages and limitations. In this blog post we'll review all the techniques we tried thus far.</p>
-<h3 data-astro-cid-nalcf22a="">Test bench</h3>
-<p data-astro-cid-nalcf22a="">To illustrate the relative performance of the methods we'll show some numbers. The benchmarks are synthetic, so take the numbers with a grain of salt. We'll use one of our Intel servers, with a 10Gbps network card. The hardware details aren't too important, since the tests are prepared to show the operating system, not hardware, limitations.</p>
-<p data-astro-cid-nalcf22a="">Our testing setup is prepared as follows:</p>
+<p data-astro-cid-t7az6eu7=""><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/beegee49/38464589350" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/beegee49" target="_blank" rel="noopener noreferrer">Brian Evans</a></p>
+<p data-astro-cid-t7az6eu7="">Being able to quickly discard packets is very important to withstand DDoS attacks.</p>
+<p data-astro-cid-t7az6eu7="">Dropping packets hitting our servers, as simple as it sounds, can be done on multiple layers. Each technique has its advantages and limitations. In this blog post we'll review all the techniques we tried thus far.</p>
+<h3 data-astro-cid-t7az6eu7="">Test bench</h3>
+<p data-astro-cid-t7az6eu7="">To illustrate the relative performance of the methods we'll show some numbers. The benchmarks are synthetic, so take the numbers with a grain of salt. We'll use one of our Intel servers, with a 10Gbps network card. The hardware details aren't too important, since the tests are prepared to show the operating system, not hardware, limitations.</p>
+<p data-astro-cid-t7az6eu7="">Our testing setup is prepared as follows:</p>
 <ul>
 	<li>We transmit a large number of tiny UDP packets, reaching 14Mpps (millions packets per second).</li>
 	<li>This traffic is directed towards a single CPU on a target server.</li>
 	<li>We measure the number of packets handled by the kernel on that one CPU.</li>
 </ul>
-<p data-astro-cid-nalcf22a="">We're not trying to maximize userspace application speed, nor packet throughput - instead, we're trying to specifically show kernel bottlenecks.</p>
-<p data-astro-cid-nalcf22a="">The synthetic traffic is prepared to put maximum stress on conntrack - it uses random source IP and port fields. Tcpdump will show it like this:</p>
+<p data-astro-cid-t7az6eu7="">We're not trying to maximize userspace application speed, nor packet throughput - instead, we're trying to specifically show kernel bottlenecks.</p>
+<p data-astro-cid-t7az6eu7="">The synthetic traffic is prepared to put maximum stress on conntrack - it uses random source IP and port fields. Tcpdump will show it like this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> tcpdump</span><span class="sk-005cc5-99ffe4"> -ni</span><span class="sk-032f62-99ffe4"> vlan100</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> dst</span><span class="sk-032f62-99ffe4"> port</span><span class="sk-005cc5-ffc799"> 1234</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">IP</span><span class="sk-005cc5-ffc799"> 198.18.40.55.32059</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 198.18.0.12.1234:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 16</span></span>
@@ -51,7 +51,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-nalcf22a="">On the target side all of the packets are going to be forwarded to exactly one RX queue, therefore one CPU. We do this with hardware flow steering:</p>
+<p data-astro-cid-t7az6eu7="">On the target side all of the packets are going to be forwarded to exactly one RX queue, therefore one CPU. We do this with hardware flow steering:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ethtool</span><span class="sk-005cc5-99ffe4"> -N</span><span class="sk-032f62-99ffe4"> ext0</span><span class="sk-032f62-99ffe4"> flow-type</span><span class="sk-032f62-99ffe4"> udp4</span><span class="sk-032f62-99ffe4"> dst-ip</span><span class="sk-005cc5-ffc799"> 198.18.0.12</span><span class="sk-032f62-99ffe4"> dst-port</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-032f62-99ffe4"> action</span><span class="sk-005cc5-ffc799"> 2</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -59,7 +59,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">Benchmarking is always hard. When preparing the tests we learned that having any active raw sockets destroys performance. It's obvious in hindsight, but easy to miss. Before running any tests remember to make sure you don't have any stale <code>tcpdump</code> process running. This is how to check it, showing a bad process active:</p>
+<p data-astro-cid-t7az6eu7="">Benchmarking is always hard. When preparing the tests we learned that having any active raw sockets destroys performance. It's obvious in hindsight, but easy to miss. Before running any tests remember to make sure you don't have any stale <code>tcpdump</code> process running. This is how to check it, showing a bad process active:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ss</span><span class="sk-005cc5-99ffe4"> -A</span><span class="sk-032f62-99ffe4"> raw,packet_raw</span><span class="sk-005cc5-99ffe4"> -l</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">cat</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Netid</span><span class="sk-032f62-99ffe4">  State</span><span class="sk-032f62-99ffe4">      Recv-Q</span><span class="sk-032f62-99ffe4"> Send-Q</span><span class="sk-032f62-99ffe4"> Local</span><span class="sk-032f62-99ffe4"> Address:Port</span></span>
@@ -69,7 +69,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">Finally, we are going to disable the Intel Turbo Boost feature on the machine:</p>
+<p data-astro-cid-t7az6eu7="">Finally, we are going to disable the Intel Turbo Boost feature on the machine:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">echo</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sudo</span><span class="sk-032f62-99ffe4"> tee</span><span class="sk-032f62-99ffe4"> /sys/devices/system/cpu/intel_pstate/no_turbo</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -77,12 +77,12 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">While Turbo Boost is nice and increases throughput by at least 20%, it also drastically worsens the standard deviation in our tests. With turbo enabled we had ±1.5% deviation in our numbers. With Turbo off this falls down to manageable 0.25%.</p>
+<p data-astro-cid-t7az6eu7="">While Turbo Boost is nice and increases throughput by at least 20%, it also drastically worsens the standard deviation in our tests. With turbo enabled we had ±1.5% deviation in our numbers. With Turbo off this falls down to manageable 0.25%.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="437" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q2J9WXZN92WQMNRJT9F3.jpeg&amp;w=715&amp;h=437&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q2J9WXZN92WQMNRJT9F3.jpeg&amp;w=640&amp;h=391&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q2J9WXZN92WQMNRJT9F3.jpeg&amp;w=715&amp;h=437&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q2J9WXZN92WQMNRJT9F3.jpeg&amp;w=750&amp;h=458&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q2J9WXZN92WQMNRJT9F3.jpeg&amp;w=828&amp;h=506&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q2J9WXZN92WQMNRJT9F3.jpeg&amp;w=1080&amp;h=660&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q2J9WXZN92WQMNRJT9F3.jpeg&amp;w=1280&amp;h=782&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q2J9WXZN92WQMNRJT9F3.jpeg&amp;w=1430&amp;h=874&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="layers" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q2J9WXZN92WQMNRJT9F3.jpeg&amp;w=1280&amp;h=782&amp;f=webp" data-lightbox-width="1280" data-lightbox-height="782" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="437" class="pt-portable-image-media"></div>
 </figure>
-<h4 data-astro-cid-nalcf22a="">Step 1. Dropping packets in application</h4>
-<p data-astro-cid-nalcf22a="">Let's start with the idea of delivering packets to an application and ignoring them in userspace code. For the test setup, let's make sure our iptables don't affect the performance:</p>
+<h4 data-astro-cid-t7az6eu7="">Step 1. Dropping packets in application</h4>
+<p data-astro-cid-t7az6eu7="">Let's start with the idea of delivering packets to an application and ignoring them in userspace code. For the test setup, let's make sure our iptables don't affect the performance:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">iptables</span><span class="sk-005cc5-99ffe4"> -I</span><span class="sk-032f62-99ffe4"> PREROUTING</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> mangle</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-005cc5-ffc799"> 198.18.0.12</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-005cc5-99ffe4"> --dport</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> ACCEPT</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">iptables</span><span class="sk-005cc5-99ffe4"> -I</span><span class="sk-032f62-99ffe4"> PREROUTING</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> raw</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-005cc5-ffc799"> 198.18.0.12</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-005cc5-99ffe4"> --dport</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> ACCEPT</span></span>
@@ -92,7 +92,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">The application code is a simple loop, receiving data and immediately discarding it in the userspace:</p>
+<p data-astro-cid-t7az6eu7="">The application code is a simple loop, receiving data and immediately discarding it in the userspace:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">s</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> socket.socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">AF_INET,</span><span class="sk-032f62-99ffe4"> SOCK_DGRAM</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">s.bind((</span><span class="sk-6f42c1-ffc799">"0.0.0.0"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-24292e-fff">))</span></span>
@@ -103,7 +103,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a=""><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/recvmmsg-loop.c" target="_blank" rel="noopener noreferrer">We prepared the code</a>, to run it:</p>
+<p data-astro-cid-t7az6eu7=""><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/recvmmsg-loop.c" target="_blank" rel="noopener noreferrer">We prepared the code</a>, to run it:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./dropping-packets/recvmmsg-loop</span></span>
 <span class="line"><span class="sk-24292e-fff">packets</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">171261</span><span class="sk-24292e-fff"> bytes</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1940176</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -112,7 +112,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">This setup allows the kernel to receive a meagre 175kpps from the hardware receive queue, as measured by <code>ethtool</code> and using our simple <a href="https://blog.cloudflare.com/three-little-tools-mmsum-mmwatch-mmhistogram"><code>mmwatch</code> tool</a>:</p>
+<p data-astro-cid-t7az6eu7="">This setup allows the kernel to receive a meagre 175kpps from the hardware receive queue, as measured by <code>ethtool</code> and using our simple <a href="https://blog.cloudflare.com/three-little-tools-mmsum-mmwatch-mmhistogram"><code>mmwatch</code> tool</a>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mmwatch</span><span class="sk-032f62-99ffe4"> 'ethtool -S ext0|grep rx_2'</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> rx2_packets:</span><span class="sk-032f62-99ffe4"> 174.0k/s</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -121,7 +121,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">The hardware technically gets 14Mpps off the wire, but it's impossible to pass it all to a single RX queue handled by only one CPU core doing kernel work. <code>mpstat</code> confirms this:</p>
+<p data-astro-cid-t7az6eu7="">The hardware technically gets 14Mpps off the wire, but it's impossible to pass it all to a single RX queue handled by only one CPU core doing kernel work. <code>mpstat</code> confirms this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> watch</span><span class="sk-032f62-99ffe4"> 'mpstat -u -I SUM -P ALL 1 1|egrep -v Aver'</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">01:32:05</span><span class="sk-032f62-99ffe4"> PM</span><span class="sk-032f62-99ffe4">  CPU</span><span class="sk-032f62-99ffe4">    %usr</span><span class="sk-032f62-99ffe4">   %nice</span><span class="sk-032f62-99ffe4">    %sys</span><span class="sk-032f62-99ffe4"> %iowait</span><span class="sk-032f62-99ffe4">    %irq</span><span class="sk-032f62-99ffe4">   %soft</span><span class="sk-032f62-99ffe4">  %steal</span><span class="sk-032f62-99ffe4">  %guest</span><span class="sk-032f62-99ffe4">  %gnice</span><span class="sk-032f62-99ffe4">   %idle</span></span>
@@ -134,8 +134,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">As you can see application code is not a bottleneck, using 27% sys + 2% userspace on CPU #1, while network SOFTIRQ on CPU #2 uses 100% resources.</p>
-<p data-astro-cid-nalcf22a="">By the way, using <code>recvmmsg(2)</code> is important. In these post-Spectre days, syscalls got more expensive and indeed, we run kernel 4.14 with KPTI and retpolines:</p>
+<p data-astro-cid-t7az6eu7="">As you can see application code is not a bottleneck, using 27% sys + 2% userspace on CPU #1, while network SOFTIRQ on CPU #2 uses 100% resources.</p>
+<p data-astro-cid-t7az6eu7="">By the way, using <code>recvmmsg(2)</code> is important. In these post-Spectre days, syscalls got more expensive and indeed, we run kernel 4.14 with KPTI and retpolines:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> tail</span><span class="sk-005cc5-99ffe4"> -n</span><span class="sk-032f62-99ffe4"> +1</span><span class="sk-032f62-99ffe4"> /sys/devices/system/cpu/vulnerabilities/</span><span class="sk-005cc5-a0a0a0">*</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">==</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">/sys/devices/system/cpu/vulnerabilities/meltdown</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">==</span></span>
@@ -151,8 +151,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4 data-astro-cid-nalcf22a="">Step 2. Slaughter conntrack</h4>
-<p data-astro-cid-nalcf22a="">We specifically designed the test - by choosing random source IP and ports - to put stress on the conntrack layer. This can be verified by looking at number of conntrack entries, which during the test is reaching the maximum:</p>
+<h4 data-astro-cid-t7az6eu7="">Step 2. Slaughter conntrack</h4>
+<p data-astro-cid-t7az6eu7="">We specifically designed the test - by choosing random source IP and ports - to put stress on the conntrack layer. This can be verified by looking at number of conntrack entries, which during the test is reaching the maximum:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> conntrack</span><span class="sk-005cc5-99ffe4"> -C</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">2095202</span></span>
@@ -164,7 +164,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">You can also observe conntrack shouting in <code>dmesg</code>:</p>
+<p data-astro-cid-t7az6eu7="">You can also observe conntrack shouting in <code>dmesg</code>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[4029612.456673] nf_conntrack: nf_conntrack: table full, dropping packet</span></span>
 <span class="line"><span class="sk-24292e-fff">[4029612.465787] nf_conntrack: nf_conntrack: table full, dropping packet</span></span>
@@ -174,7 +174,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">To speed up our tests let's disable it:</p>
+<p data-astro-cid-t7az6eu7="">To speed up our tests let's disable it:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">iptables</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> raw</span><span class="sk-005cc5-99ffe4"> -I</span><span class="sk-032f62-99ffe4"> PREROUTING</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-005cc5-ffc799"> 198.18.0.12</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-005cc5-99ffe4"> -m</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-005cc5-99ffe4"> --dport</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> NOTRACK</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -182,7 +182,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">And rerun the tests:</p>
+<p data-astro-cid-t7az6eu7="">And rerun the tests:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./dropping-packets/recvmmsg-loop</span></span>
 <span class="line"><span class="sk-24292e-fff">packets</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">331008</span><span class="sk-24292e-fff"> bytes</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">5296128</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -191,11 +191,11 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">This instantly bumps the application receive performance to 333kpps. Hurray!</p>
-<p data-astro-cid-nalcf22a="">PS. With SO_BUSY_POLL we can bump the numbers to 470k pps, but this is a subject for another time.</p>
-<h4 data-astro-cid-nalcf22a="">Step 3. BPF drop on a socket</h4>
-<p data-astro-cid-nalcf22a="">Going further, why deliver packets to userspace application at all? While this technique is uncommon, we can attach a classical BPF filter to a SOCK_DGRAM socket with <code>setsockopt(SO_ATTACH_FILTER)</code> and program the filter to discard packets in kernel space.</p>
-<p data-astro-cid-nalcf22a=""><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/bpf-drop.c" target="_blank" rel="noopener noreferrer">See the code</a>, to run it:</p>
+<p data-astro-cid-t7az6eu7="">This instantly bumps the application receive performance to 333kpps. Hurray!</p>
+<p data-astro-cid-t7az6eu7="">PS. With SO_BUSY_POLL we can bump the numbers to 470k pps, but this is a subject for another time.</p>
+<h4 data-astro-cid-t7az6eu7="">Step 3. BPF drop on a socket</h4>
+<p data-astro-cid-t7az6eu7="">Going further, why deliver packets to userspace application at all? While this technique is uncommon, we can attach a classical BPF filter to a SOCK_DGRAM socket with <code>setsockopt(SO_ATTACH_FILTER)</code> and program the filter to discard packets in kernel space.</p>
+<p data-astro-cid-t7az6eu7=""><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/bpf-drop.c" target="_blank" rel="noopener noreferrer">See the code</a>, to run it:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./bpf-drop</span></span>
 <span class="line"><span class="sk-24292e-fff">packets</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff"> bytes</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -204,9 +204,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">With drops in BPF (both Classical as well as extended eBPF have similar performance) we process roughly 512kpps. All of them get dropped in the BPF filter while still in software interrupt mode, which saves us CPU needed to wake up the userspace application.</p>
-<h4 data-astro-cid-nalcf22a="">Step 4. iptables DROP after routing</h4>
-<p data-astro-cid-nalcf22a="">As a next step we can simply drop packets in the iptables firewall INPUT chain by adding rule like this:</p>
+<p data-astro-cid-t7az6eu7="">With drops in BPF (both Classical as well as extended eBPF have similar performance) we process roughly 512kpps. All of them get dropped in the BPF filter while still in software interrupt mode, which saves us CPU needed to wake up the userspace application.</p>
+<h4 data-astro-cid-t7az6eu7="">Step 4. iptables DROP after routing</h4>
+<p data-astro-cid-t7az6eu7="">As a next step we can simply drop packets in the iptables firewall INPUT chain by adding rule like this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">iptables</span><span class="sk-005cc5-99ffe4"> -I</span><span class="sk-032f62-99ffe4"> INPUT</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-005cc5-ffc799"> 198.18.0.12</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-005cc5-99ffe4"> --dport</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> DROP</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -214,8 +214,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">Remember we disabled conntrack already with <code>-j NOTRACK</code>. These two rules give us 608kpps.</p>
-<p data-astro-cid-nalcf22a="">The numbers in iptables counters:</p>
+<p data-astro-cid-t7az6eu7="">Remember we disabled conntrack already with <code>-j NOTRACK</code>. These two rules give us 608kpps.</p>
+<p data-astro-cid-t7az6eu7="">The numbers in iptables counters:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mmwatch</span><span class="sk-032f62-99ffe4"> 'iptables -L -v -n -x | head'</span></span>
 <span class="line"></span>
@@ -227,9 +227,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">600kpps is not bad, but we can do better!</p>
-<h4 data-astro-cid-nalcf22a="">Step 5. iptables DROP in PREROUTING</h4>
-<p data-astro-cid-nalcf22a="">An even faster technique is to drop packets before they get routed. This rule can do this:</p>
+<p data-astro-cid-t7az6eu7="">600kpps is not bad, but we can do better!</p>
+<h4 data-astro-cid-t7az6eu7="">Step 5. iptables DROP in PREROUTING</h4>
+<p data-astro-cid-t7az6eu7="">An even faster technique is to drop packets before they get routed. This rule can do this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">iptables</span><span class="sk-005cc5-99ffe4"> -I</span><span class="sk-032f62-99ffe4"> PREROUTING</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> raw</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-005cc5-ffc799"> 198.18.0.12</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-005cc5-99ffe4"> --dport</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> DROP</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -237,12 +237,12 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">This produces whopping 1.688mpps.</p>
-<p data-astro-cid-nalcf22a="">This is quite a significant jump in performance, I don't fully understand it. Either our routing layer is unusually complex or there is a bug in our server configuration.</p>
-<p data-astro-cid-nalcf22a="">In any case - "raw" iptables table is definitely way faster.</p>
-<h4 data-astro-cid-nalcf22a="">Step 6. nftables DROP before CONNTRACK</h4>
-<p data-astro-cid-nalcf22a="">Iptables is considered passé these days. The new kid in town is nftables. See this <a href="https://www.youtube.com/watch?v=9Zr8XqdET1c" target="_blank" rel="noopener noreferrer">video for a technical explanation why</a> nftables is superior. Nftables promises to be faster than gray haired iptables for many reasons, among them is a rumor that retpolines (aka: no speculation for indirect jumps) hurt iptables quite badly.</p>
-<p data-astro-cid-nalcf22a="">Since this article is not about comparing the nftables vs iptables speed, let's try only the fastest drop I could came up with:</p>
+<p data-astro-cid-t7az6eu7="">This produces whopping 1.688mpps.</p>
+<p data-astro-cid-t7az6eu7="">This is quite a significant jump in performance, I don't fully understand it. Either our routing layer is unusually complex or there is a bug in our server configuration.</p>
+<p data-astro-cid-t7az6eu7="">In any case - "raw" iptables table is definitely way faster.</p>
+<h4 data-astro-cid-t7az6eu7="">Step 6. nftables DROP before CONNTRACK</h4>
+<p data-astro-cid-t7az6eu7="">Iptables is considered passé these days. The new kid in town is nftables. See this <a href="https://www.youtube.com/watch?v=9Zr8XqdET1c" target="_blank" rel="noopener noreferrer">video for a technical explanation why</a> nftables is superior. Nftables promises to be faster than gray haired iptables for many reasons, among them is a rumor that retpolines (aka: no speculation for indirect jumps) hurt iptables quite badly.</p>
+<p data-astro-cid-t7az6eu7="">Since this article is not about comparing the nftables vs iptables speed, let's try only the fastest drop I could came up with:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">nft</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> table</span><span class="sk-032f62-99ffe4"> netdev</span><span class="sk-032f62-99ffe4"> filter</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">nft</span><span class="sk-005cc5-99ffe4"> --</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> chain</span><span class="sk-032f62-99ffe4"> netdev</span><span class="sk-032f62-99ffe4"> filter</span><span class="sk-032f62-99ffe4"> input</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> type</span><span class="sk-032f62-99ffe4"> filter</span><span class="sk-032f62-99ffe4"> hook</span><span class="sk-032f62-99ffe4"> ingress</span><span class="sk-032f62-99ffe4"> device</span><span class="sk-032f62-99ffe4"> vlan100</span><span class="sk-032f62-99ffe4"> priority</span><span class="sk-005cc5-99ffe4"> -500</span><span class="sk-005cc5-a0a0a0"> \;</span><span class="sk-032f62-99ffe4"> policy</span><span class="sk-032f62-99ffe4"> accept</span><span class="sk-005cc5-a0a0a0"> \;</span><span class="sk-032f62-99ffe4"> }</span></span>
@@ -253,7 +253,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">The counters can be seen with this command:</p>
+<p data-astro-cid-t7az6eu7="">The counters can be seen with this command:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mmwatch</span><span class="sk-032f62-99ffe4"> 'nft --handle list chain netdev filter input'</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">table</span><span class="sk-032f62-99ffe4"> netdev</span><span class="sk-032f62-99ffe4"> filter</span><span class="sk-032f62-99ffe4"> {</span></span>
@@ -268,10 +268,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">Nftables "ingress" hook yields around 1.53mpps. This is slightly slower than iptables in the PREROUTING layer. This is puzzling - theoretically "ingress" happens before PREROUTING, so should be faster.</p>
-<p data-astro-cid-nalcf22a="">In our test nftables was slightly slower than iptables, but not by much. Nftables is still better :P</p>
-<h4 data-astro-cid-nalcf22a="">Step 7. tc ingress handler DROP</h4>
-<p data-astro-cid-nalcf22a="">A somewhat surprising fact is that a tc (traffic control) ingress hook happens before even PREROUTING. tc makes it possible to select packets based on basic criteria and indeed - action drop - them. The syntax is rather hacky, so it's recommended to <a href="https://github.com/netoptimizer/network-testing/blob/master/bin/tc_ingress_drop.sh" target="_blank" rel="noopener noreferrer">use this script</a> to set it up. We need a tiny bit more complex tc match, here is the command line:</p>
+<p data-astro-cid-t7az6eu7="">Nftables "ingress" hook yields around 1.53mpps. This is slightly slower than iptables in the PREROUTING layer. This is puzzling - theoretically "ingress" happens before PREROUTING, so should be faster.</p>
+<p data-astro-cid-t7az6eu7="">In our test nftables was slightly slower than iptables, but not by much. Nftables is still better :P</p>
+<h4 data-astro-cid-t7az6eu7="">Step 7. tc ingress handler DROP</h4>
+<p data-astro-cid-t7az6eu7="">A somewhat surprising fact is that a tc (traffic control) ingress hook happens before even PREROUTING. tc makes it possible to select packets based on basic criteria and indeed - action drop - them. The syntax is rather hacky, so it's recommended to <a href="https://github.com/netoptimizer/network-testing/blob/master/bin/tc_ingress_drop.sh" target="_blank" rel="noopener noreferrer">use this script</a> to set it up. We need a tiny bit more complex tc match, here is the command line:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">tc</span><span class="sk-032f62-99ffe4"> qdisc</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> vlan100</span><span class="sk-032f62-99ffe4"> ingress</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">tc</span><span class="sk-032f62-99ffe4"> filter</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> vlan100</span><span class="sk-032f62-99ffe4"> parent</span><span class="sk-032f62-99ffe4"> ffff:</span><span class="sk-032f62-99ffe4"> prio</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-032f62-99ffe4"> protocol</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> u32</span><span class="sk-032f62-99ffe4"> match</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> protocol</span><span class="sk-005cc5-ffc799"> 17</span><span class="sk-005cc5-ffc799"> 0xff</span><span class="sk-032f62-99ffe4"> match</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> dport</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-005cc5-ffc799"> 0xffff</span><span class="sk-032f62-99ffe4"> match</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> dst</span><span class="sk-032f62-99ffe4"> 198.18.0.0/24</span><span class="sk-032f62-99ffe4"> flowid</span><span class="sk-032f62-99ffe4"> 1:1</span><span class="sk-032f62-99ffe4"> action</span><span class="sk-032f62-99ffe4"> drop</span></span>
@@ -281,7 +281,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">We can verify it:</p>
+<p data-astro-cid-t7az6eu7="">We can verify it:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mmwatch</span><span class="sk-032f62-99ffe4"> 'tc -s filter  show dev vlan100  ingress'</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">filter</span><span class="sk-032f62-99ffe4"> parent</span><span class="sk-032f62-99ffe4"> ffff:</span><span class="sk-032f62-99ffe4"> protocol</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> pref</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-032f62-99ffe4"> u32</span><span class="sk-24292e-fff"> </span></span>
@@ -301,16 +301,16 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">A tc ingress hook with u32 match allows us to drop 1.8mpps on a single CPU. This is brilliant!</p>
-<p data-astro-cid-nalcf22a="">But we can go even faster...</p>
-<h4 data-astro-cid-nalcf22a="">Step 8. XDP_DROP</h4>
-<p data-astro-cid-nalcf22a="">Finally, the ultimate weapon is XDP - <a href="https://prototype-kernel.readthedocs.io/en/latest/networking/XDP" target="_blank" rel="noopener noreferrer">eXpress Data Path</a>. With XDP we can run eBPF code in the context of a network driver. Most importantly, this is before the <code>skbuff</code> memory allocation, allowing great speeds.</p>
-<p data-astro-cid-nalcf22a="">Usually XDP projects have two parts:</p>
+<p data-astro-cid-t7az6eu7="">A tc ingress hook with u32 match allows us to drop 1.8mpps on a single CPU. This is brilliant!</p>
+<p data-astro-cid-t7az6eu7="">But we can go even faster...</p>
+<h4 data-astro-cid-t7az6eu7="">Step 8. XDP_DROP</h4>
+<p data-astro-cid-t7az6eu7="">Finally, the ultimate weapon is XDP - <a href="https://prototype-kernel.readthedocs.io/en/latest/networking/XDP" target="_blank" rel="noopener noreferrer">eXpress Data Path</a>. With XDP we can run eBPF code in the context of a network driver. Most importantly, this is before the <code>skbuff</code> memory allocation, allowing great speeds.</p>
+<p data-astro-cid-t7az6eu7="">Usually XDP projects have two parts:</p>
 <ul>
 	<li>the eBPF code loaded into the kernel context</li>
 	<li>the userspace loader, which loads the code onto the right network card and manages it</li>
 </ul>
-<p data-astro-cid-nalcf22a="">Writing the loader is pretty hard, so instead we can use the <a href="https://cilium.readthedocs.io/en/latest/bpf/#iproute2" target="_blank" rel="noopener noreferrer">new <code>iproute2</code> feature</a> and load the code with this trivial command:</p>
+<p data-astro-cid-t7az6eu7="">Writing the loader is pretty hard, so instead we can use the <a href="https://cilium.readthedocs.io/en/latest/bpf/#iproute2" target="_blank" rel="noopener noreferrer">new <code>iproute2</code> feature</a> and load the code with this trivial command:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ip</span><span class="sk-032f62-99ffe4"> link</span><span class="sk-032f62-99ffe4"> set</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> ext0</span><span class="sk-032f62-99ffe4"> xdp</span><span class="sk-032f62-99ffe4"> obj</span><span class="sk-032f62-99ffe4"> xdp-drop-ebpf.o</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -318,8 +318,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">Tadam!</p>
-<p data-astro-cid-nalcf22a="">The source code for <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/xdp-drop-ebpf.c" target="_blank" rel="noopener noreferrer">the loaded eBPF XDP program is available here</a>. The program parses IP packets and looks for desired characteristics: IP transport, UDP protocol, desired target subnet and destination port:</p>
+<p data-astro-cid-t7az6eu7="">Tadam!</p>
+<p data-astro-cid-t7az6eu7="">The source code for <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/xdp-drop-ebpf.c" target="_blank" rel="noopener noreferrer">the loaded eBPF XDP program is available here</a>. The program parses IP packets and looks for desired characteristics: IP transport, UDP protocol, desired target subnet and destination port:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>if (h_proto == htons(ETH_P_IP)) {</span></span>
 <span class="line"><span>    if (iph-&gt;protocol == IPPROTO_UDP</span></span>
@@ -333,7 +333,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">XDP program needs to be compiled with modern <code>clang</code> that can emit BPF bytecode. After this we can load and verify the running XDP program:</p>
+<p data-astro-cid-t7az6eu7="">XDP program needs to be compiled with modern <code>clang</code> that can emit BPF bytecode. After this we can load and verify the running XDP program:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> link</span><span class="sk-032f62-99ffe4"> show</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> ext0</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">4:</span><span class="sk-032f62-99ffe4"> ext0:</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">BROADCAST,MULTICAST,UP,LOWER_U</span><span class="sk-24292e-fff">P</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> mtu</span><span class="sk-005cc5-ffc799"> 1500</span><span class="sk-032f62-99ffe4"> xdp</span><span class="sk-032f62-99ffe4"> qdisc</span><span class="sk-032f62-99ffe4"> fq</span><span class="sk-032f62-99ffe4"> state</span><span class="sk-032f62-99ffe4"> UP</span><span class="sk-032f62-99ffe4"> mode</span><span class="sk-032f62-99ffe4"> DEFAULT</span><span class="sk-032f62-99ffe4"> group</span><span class="sk-032f62-99ffe4"> default</span><span class="sk-032f62-99ffe4"> qlen</span><span class="sk-005cc5-ffc799"> 1000</span></span>
@@ -344,7 +344,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">And see the numbers in <code>ethtool -S</code> network card statistics:</p>
+<p data-astro-cid-t7az6eu7="">And see the numbers in <code>ethtool -S</code> network card statistics:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mmwatch</span><span class="sk-032f62-99ffe4"> 'ethtool -S ext0|egrep "rx"|egrep -v ": 0"|egrep -v "cache|csum"'</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">     rx_out_of_buffer:</span><span class="sk-032f62-99ffe4">     4.4m/s</span></span>
@@ -355,26 +355,26 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">Whooa! With XDP we can drop 10 million packets per second on a single CPU.</p>
+<p data-astro-cid-t7az6eu7="">Whooa! With XDP we can drop 10 million packets per second on a single CPU.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="536" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FBFH8X2AMB97Z5RHK4T8.jpg&amp;w=715&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FBFH8X2AMB97Z5RHK4T8.jpg&amp;w=640&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FBFH8X2AMB97Z5RHK4T8.jpg&amp;w=715&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FBFH8X2AMB97Z5RHK4T8.jpg&amp;w=750&amp;h=562&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FBFH8X2AMB97Z5RHK4T8.jpg&amp;w=828&amp;h=621&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FBFH8X2AMB97Z5RHK4T8.jpg&amp;w=1080&amp;h=810&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FBFH8X2AMB97Z5RHK4T8.jpg&amp;w=1280&amp;h=960&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FBFH8X2AMB97Z5RHK4T8.jpg&amp;w=1430&amp;h=1072&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="225821241_ed5da2da91_o" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FBFH8X2AMB97Z5RHK4T8.jpg&amp;w=800&amp;h=600&amp;f=webp" data-lightbox-width="800" data-lightbox-height="600" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="536" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-nalcf22a=""><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/afiler/225821241" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/afiler" target="_blank" rel="noopener noreferrer">Andrew Filer</a></p>
-<h3 data-astro-cid-nalcf22a="">Summary</h3>
-<p data-astro-cid-nalcf22a="">We repeated the these for both IPv4 and IPv6 and prepared this chart:</p>
+<p data-astro-cid-t7az6eu7=""><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/afiler/225821241" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/afiler" target="_blank" rel="noopener noreferrer">Andrew Filer</a></p>
+<h3 data-astro-cid-t7az6eu7="">Summary</h3>
+<p data-astro-cid-t7az6eu7="">We repeated the these for both IPv4 and IPv6 and prepared this chart:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="429" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453D8DP1M8VG19PH4SC793.png&amp;w=715&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453D8DP1M8VG19PH4SC793.png&amp;w=640&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453D8DP1M8VG19PH4SC793.png&amp;w=715&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453D8DP1M8VG19PH4SC793.png&amp;w=750&amp;h=450&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453D8DP1M8VG19PH4SC793.png&amp;w=828&amp;h=497&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453D8DP1M8VG19PH4SC793.png&amp;w=1080&amp;h=648&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453D8DP1M8VG19PH4SC793.png&amp;w=1280&amp;h=768&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453D8DP1M8VG19PH4SC793.png&amp;w=1430&amp;h=858&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="How to drop 10 million packets per second" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453D8DP1M8VG19PH4SC793.png&amp;w=1500&amp;h=900&amp;f=webp" data-lightbox-width="1500" data-lightbox-height="900" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="429" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-nalcf22a="">Generally speaking in our setup IPv6 had slightly lower performance. Remember that IPv6 packets are slightly larger, so some performance difference is unavoidable.</p>
-<p data-astro-cid-nalcf22a="">Linux has numerous hooks that can be used to filter packets, each with different performance and ease of use characteristics.</p>
-<p data-astro-cid-nalcf22a="">For DDoS purporses, it may totally be reasonable to just receive the packets in the application and process them in userspace. Properly tuned applications can get pretty decent numbers.</p>
-<p data-astro-cid-nalcf22a="">For DDoS attacks with random/spoofed source IP's, it might be worthwhile disabling conntrack to gain some speed. Be careful though - there are attacks for which conntrack is very helpful.</p>
-<p data-astro-cid-nalcf22a="">In other circumstances it may make sense to integrate the Linux firewall into the DDoS mitigation pipeline. In such cases, remember to put the mitigations in a "-t raw PREROUTING" layer, since it's significantly faster than "filter" table.</p>
-<p data-astro-cid-nalcf22a="">For even more demanding workloads, we always have XDP. And boy, it is powerful. Here is the same chart as above, but including XDP:</p>
+<p data-astro-cid-t7az6eu7="">Generally speaking in our setup IPv6 had slightly lower performance. Remember that IPv6 packets are slightly larger, so some performance difference is unavoidable.</p>
+<p data-astro-cid-t7az6eu7="">Linux has numerous hooks that can be used to filter packets, each with different performance and ease of use characteristics.</p>
+<p data-astro-cid-t7az6eu7="">For DDoS purporses, it may totally be reasonable to just receive the packets in the application and process them in userspace. Properly tuned applications can get pretty decent numbers.</p>
+<p data-astro-cid-t7az6eu7="">For DDoS attacks with random/spoofed source IP's, it might be worthwhile disabling conntrack to gain some speed. Be careful though - there are attacks for which conntrack is very helpful.</p>
+<p data-astro-cid-t7az6eu7="">In other circumstances it may make sense to integrate the Linux firewall into the DDoS mitigation pipeline. In such cases, remember to put the mitigations in a "-t raw PREROUTING" layer, since it's significantly faster than "filter" table.</p>
+<p data-astro-cid-t7az6eu7="">For even more demanding workloads, we always have XDP. And boy, it is powerful. Here is the same chart as above, but including XDP:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="429" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458T4042BPK00TS1Q9EMWJ.png&amp;w=715&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458T4042BPK00TS1Q9EMWJ.png&amp;w=640&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458T4042BPK00TS1Q9EMWJ.png&amp;w=715&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458T4042BPK00TS1Q9EMWJ.png&amp;w=750&amp;h=450&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458T4042BPK00TS1Q9EMWJ.png&amp;w=828&amp;h=497&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458T4042BPK00TS1Q9EMWJ.png&amp;w=1080&amp;h=648&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458T4042BPK00TS1Q9EMWJ.png&amp;w=1280&amp;h=768&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458T4042BPK00TS1Q9EMWJ.png&amp;w=1430&amp;h=858&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="numbers-xdp-1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458T4042BPK00TS1Q9EMWJ.png&amp;w=1500&amp;h=900&amp;f=webp" data-lightbox-width="1500" data-lightbox-height="900" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="429" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-nalcf22a="">If you want to reproduce these numbers, <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/README.md" target="_blank" rel="noopener noreferrer">see the README where we documented everything</a>.</p>
-<p data-astro-cid-nalcf22a="">Here at Cloudflare we are using... almost all of these techniques. Some of the userspace tricks are integrated with our applications. The iptables layer is managed by <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep">our Gatebot DDoS pipeline</a>. Finally, we are working on replacing our proprietary kernel offload solution with XDP.</p>
-<p data-astro-cid-nalcf22a="">Want to help us drop more packets? We're hiring for many roles, including packet droppers, systems engineers and more!</p>
-<p data-astro-cid-nalcf22a=""><em>Special thanks to <a href="https://twitter.com/JesperBrouer" target="_blank" rel="noopener noreferrer">Jesper Dangaard Brouer</a> for helping with this work.</em></p>
+<p data-astro-cid-t7az6eu7="">If you want to reproduce these numbers, <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/README.md" target="_blank" rel="noopener noreferrer">see the README where we documented everything</a>.</p>
+<p data-astro-cid-t7az6eu7="">Here at Cloudflare we are using... almost all of these techniques. Some of the userspace tricks are integrated with our applications. The iptables layer is managed by <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep">our Gatebot DDoS pipeline</a>. Finally, we are working on replacing our proprietary kernel offload solution with XDP.</p>
+<p data-astro-cid-t7az6eu7="">Want to help us drop more packets? We're hiring for many roles, including packet droppers, systems engineers and more!</p>
+<p data-astro-cid-t7az6eu7=""><em>Special thanks to <a href="https://twitter.com/JesperBrouer" target="_blank" rel="noopener noreferrer">Jesper Dangaard Brouer</a> for helping with this work.</em></p>

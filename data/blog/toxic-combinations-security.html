@@ -1,40 +1,40 @@
-<p data-astro-cid-c6i3vrlz="">At 3 AM, a single IP requested a login page. Harmless. But then, across several hosts and paths, the same source began appending <code>?debug=true</code> — the sign of an attacker probing the environment to assess the technology stack and plan a breach.</p>
-<p data-astro-cid-c6i3vrlz="">Minor misconfigurations, overlooked firewall events, or request anomalies feel harmless on their own. But when these small signals converge, they can explode into security incidents known as “toxic combinations.” These are exploits where an attacker discovers and compounds many minor issues — such as a debug flag left on a web application or an unauthenticated application path — to breach systems or exfiltrate data.</p>
-<p data-astro-cid-c6i3vrlz="">Cloudflare’s network observes requests to your stack, and as a result, has the data to identify these toxic combinations as they form. In this post, we’ll show you how we surface these signals from our application security data. We’ll go over the most common types of toxic combinations and the dangerous vulnerabilities they present. We will also provide details on how you can use this intelligence to identify and address weaknesses in your stack.&nbsp;</p>
-<h2 data-astro-cid-c6i3vrlz="">How we define toxic combinations</h2>
-<p data-astro-cid-c6i3vrlz="">You could define a "toxic combination" in a few different ways, but here is a practical one based on how we look at our own datasets. Most web attacks eventually scale through automation; once an attacker finds a viable exploit, they'll usually script it into a bot to finish the job. <strong>By looking at the intersection of bot traffic, specific application paths, request anomalies and misconfigurations, we can spot a potential breach.</strong> We use this framework to reason through millions of requests per second.&nbsp;</p>
-<p data-astro-cid-c6i3vrlz="">While point defenses like Web Application Firewalls (WAF), bot detection, and API protection have evolved to incorporate behavioral patterns and reputation signals, they still primarily focus on evaluating the risk of an individual request. In contrast, Cloudflare’s detections for "toxic combinations" shift the lens toward the broader intent, analyzing the confluence of context surrounding multiple signals to identify a brewing incident.</p>
+<p data-astro-cid-t7az6eu7="">At 3 AM, a single IP requested a login page. Harmless. But then, across several hosts and paths, the same source began appending <code>?debug=true</code> — the sign of an attacker probing the environment to assess the technology stack and plan a breach.</p>
+<p data-astro-cid-t7az6eu7="">Minor misconfigurations, overlooked firewall events, or request anomalies feel harmless on their own. But when these small signals converge, they can explode into security incidents known as “toxic combinations.” These are exploits where an attacker discovers and compounds many minor issues — such as a debug flag left on a web application or an unauthenticated application path — to breach systems or exfiltrate data.</p>
+<p data-astro-cid-t7az6eu7="">Cloudflare’s network observes requests to your stack, and as a result, has the data to identify these toxic combinations as they form. In this post, we’ll show you how we surface these signals from our application security data. We’ll go over the most common types of toxic combinations and the dangerous vulnerabilities they present. We will also provide details on how you can use this intelligence to identify and address weaknesses in your stack.&nbsp;</p>
+<h2 data-astro-cid-t7az6eu7="">How we define toxic combinations</h2>
+<p data-astro-cid-t7az6eu7="">You could define a "toxic combination" in a few different ways, but here is a practical one based on how we look at our own datasets. Most web attacks eventually scale through automation; once an attacker finds a viable exploit, they'll usually script it into a bot to finish the job. <strong>By looking at the intersection of bot traffic, specific application paths, request anomalies and misconfigurations, we can spot a potential breach.</strong> We use this framework to reason through millions of requests per second.&nbsp;</p>
+<p data-astro-cid-t7az6eu7="">While point defenses like Web Application Firewalls (WAF), bot detection, and API protection have evolved to incorporate behavioral patterns and reputation signals, they still primarily focus on evaluating the risk of an individual request. In contrast, Cloudflare’s detections for "toxic combinations" shift the lens toward the broader intent, analyzing the confluence of context surrounding multiple signals to identify a brewing incident.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="160" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GXN170NR3TYP9ZKBHFZ7.png&amp;w=715&amp;h=160&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GXN170NR3TYP9ZKBHFZ7.png&amp;w=640&amp;h=143&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GXN170NR3TYP9ZKBHFZ7.png&amp;w=715&amp;h=160&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GXN170NR3TYP9ZKBHFZ7.png&amp;w=750&amp;h=168&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GXN170NR3TYP9ZKBHFZ7.png&amp;w=828&amp;h=185&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GXN170NR3TYP9ZKBHFZ7.png&amp;w=1080&amp;h=242&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GXN170NR3TYP9ZKBHFZ7.png&amp;w=1280&amp;h=286&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GXN170NR3TYP9ZKBHFZ7.png&amp;w=1430&amp;h=320&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3130 Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GXN170NR3TYP9ZKBHFZ7.png&amp;w=1920&amp;h=430&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="430" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="160" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-c6i3vrlz=""><sup><em>Toxic combinations as contextualized detections</em></sup></p>
-<p data-astro-cid-c6i3vrlz="">That shift in perspective matters because many real incidents have no obvious exploit payload, no clean signatures, and no single event that screams “attack.” So, in what follows, we combine the following context to construct several toxic combinations:</p>
+<p data-astro-cid-t7az6eu7=""><sup><em>Toxic combinations as contextualized detections</em></sup></p>
+<p data-astro-cid-t7az6eu7="">That shift in perspective matters because many real incidents have no obvious exploit payload, no clean signatures, and no single event that screams “attack.” So, in what follows, we combine the following context to construct several toxic combinations:</p>
 <ul>
 	<li><strong>Bot signals</strong></li>
 	<li><strong>Application paths</strong>, especially sensitivity ones: admin, debug, metrics, search, payment flows</li>
 	<li><strong>Anomalies</strong> including: unexpected http codes, geo jumps, identity mismatch, high ID churn, rate-limit evasion (distributed IPs doing the same thing), request or success rate spikes&nbsp;</li>
 	<li><strong>Vulnerabilities or misconfigurations</strong>: missing session cookies or auth headers, predictable identifiers</li>
 </ul>
-<h2 data-astro-cid-c6i3vrlz="">Examples of toxic combinations on popular application stacks</h2>
-<p data-astro-cid-c6i3vrlz="">We looked at a 24-hour window of Cloudflare data to see how often these patterns actually appear in popular application stacks. As shown in the table below, about 11% of the hosts we analyzed were susceptible to these combinations, skewed by vulnerable WordPress websites. Excluding WordPress sites, only 0.25% of hosts show signs of exploitable toxic combinations. While rare, they represent hosts that are vulnerable to compromise.</p>
-<p data-astro-cid-c6i3vrlz="">To make sense of the data, we broke it down into three stages of an attack:</p>
+<h2 data-astro-cid-t7az6eu7="">Examples of toxic combinations on popular application stacks</h2>
+<p data-astro-cid-t7az6eu7="">We looked at a 24-hour window of Cloudflare data to see how often these patterns actually appear in popular application stacks. As shown in the table below, about 11% of the hosts we analyzed were susceptible to these combinations, skewed by vulnerable WordPress websites. Excluding WordPress sites, only 0.25% of hosts show signs of exploitable toxic combinations. While rare, they represent hosts that are vulnerable to compromise.</p>
+<p data-astro-cid-t7az6eu7="">To make sense of the data, we broke it down into three stages of an attack:</p>
 <ul>
 	<li><strong>Estimated hosts probed:</strong> This is the "wide net." It counts unique hosts where we saw HTTP requests targeting specific sensitive paths (like <code>/wp-admin</code>).</li>
 	<li><strong>Estimated hosts filtered by toxic combination:</strong> Here, we narrowed the list down to the specific hosts that actually met our criteria for a toxic combination.</li>
 	<li><strong>Estimated reachable hosts:</strong> Unique hosts that responded successfully to an exploit attempt—the "smoking gun" of an attack. A simple <code>200 OK</code> response (such as one triggered by appending <code>?debug=true</code>) could be a false positive. We validated paths to filter out noise caused by authenticated paths that require credentials despite the 200 status code, redirects that mask the true exploit path, and origin misconfigurations that serve success codes for unreachable paths.</li>
 </ul>
-<p data-astro-cid-c6i3vrlz="">In the next sections, we’ll dig into the specific findings and the logic behind the combinations that drove them. The detection queries provided are necessary but not sufficient without testing for reachability; it is possible that the findings might be false positives. In some cases, <a href="https://www.cloudflare.com/application-services/products/log-explorer" target="_blank" rel="noopener noreferrer"><u>Cloudflare Log Explorer</u></a> allows these queries to be executed on unsampled Cloudflare logs.&nbsp;</p>
-<p data-astro-cid-c6i3vrlz=""><code>Table 1. Summary of Toxic Combinations</code></p>
+<p data-astro-cid-t7az6eu7="">In the next sections, we’ll dig into the specific findings and the logic behind the combinations that drove them. The detection queries provided are necessary but not sufficient without testing for reachability; it is possible that the findings might be false positives. In some cases, <a href="https://www.cloudflare.com/application-services/products/log-explorer" target="_blank" rel="noopener noreferrer"><u>Cloudflare Log Explorer</u></a> allows these queries to be executed on unsampled Cloudflare logs.&nbsp;</p>
+<p data-astro-cid-t7az6eu7=""><code>Table 1. Summary of Toxic Combinations</code></p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="150" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R0QQCK6PYQDM3YZNBQRA.png&amp;w=715&amp;h=150&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R0QQCK6PYQDM3YZNBQRA.png&amp;w=640&amp;h=134&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R0QQCK6PYQDM3YZNBQRA.png&amp;w=715&amp;h=150&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R0QQCK6PYQDM3YZNBQRA.png&amp;w=750&amp;h=157&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R0QQCK6PYQDM3YZNBQRA.png&amp;w=828&amp;h=174&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R0QQCK6PYQDM3YZNBQRA.png&amp;w=1080&amp;h=227&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R0QQCK6PYQDM3YZNBQRA.png&amp;w=1280&amp;h=269&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R0QQCK6PYQDM3YZNBQRA.png&amp;w=1430&amp;h=300&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3130 Image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R0QQCK6PYQDM3YZNBQRA.png&amp;w=1920&amp;h=403&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="403" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="150" class="pt-portable-image-media"></div>
 </figure>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="270" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DFZ3546XCW8NQG2MMXNF.png&amp;w=715&amp;h=270&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DFZ3546XCW8NQG2MMXNF.png&amp;w=640&amp;h=242&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DFZ3546XCW8NQG2MMXNF.png&amp;w=715&amp;h=270&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DFZ3546XCW8NQG2MMXNF.png&amp;w=750&amp;h=283&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DFZ3546XCW8NQG2MMXNF.png&amp;w=828&amp;h=313&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DFZ3546XCW8NQG2MMXNF.png&amp;w=1080&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DFZ3546XCW8NQG2MMXNF.png&amp;w=1280&amp;h=483&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DFZ3546XCW8NQG2MMXNF.png&amp;w=1430&amp;h=540&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3130 Image 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DFZ3546XCW8NQG2MMXNF.png&amp;w=1920&amp;h=725&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="725" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="270" class="pt-portable-image-media"></div>
 </figure>
-<h2 data-astro-cid-c6i3vrlz="">Probing of sensitive administrative endpoints across multiple application hosts</h2>
-<h3 data-astro-cid-c6i3vrlz=""><strong>What did we detect?&nbsp;</strong></h3>
-<p data-astro-cid-c6i3vrlz="">We observed automated tools scanning common administrative login pages — like WordPress admin panels (/wp-admin), database managers, and server dashboards. A templatized version of the query, executable in <a href="https://www.cloudflare.com/application-services/products/log-explorer" target="_blank" rel="noopener noreferrer"><u>Cloudflare Log Explorer</u></a>, is below:</p>
+<h2 data-astro-cid-t7az6eu7="">Probing of sensitive administrative endpoints across multiple application hosts</h2>
+<h3 data-astro-cid-t7az6eu7=""><strong>What did we detect?&nbsp;</strong></h3>
+<p data-astro-cid-t7az6eu7="">We observed automated tools scanning common administrative login pages — like WordPress admin panels (/wp-admin), database managers, and server dashboards. A templatized version of the query, executable in <a href="https://www.cloudflare.com/application-services/products/log-explorer" target="_blank" rel="noopener noreferrer"><u>Cloudflare Log Explorer</u></a>, is below:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">SELECT</span></span>
 <span class="line"><span class="sk-24292e-fff">  clientRequestHTTPHost,</span></span>
@@ -75,67 +75,67 @@
 		})
 	});
 </script>
-<h3 data-astro-cid-c6i3vrlz=""><strong>Why is this serious?</strong></h3>
-<p data-astro-cid-c6i3vrlz="">Publicly accessible admin panels can enable <a href="https://www.cloudflare.com/learning/bots/brute-force-attack" target="_blank" rel="noopener noreferrer"><u>brute force attacks</u></a>. If successful, an attacker can further compromise the host by adding it to a botnet that probes additional websites for similar vulnerability. In addition, this toxic combination can lead to:</p>
+<h3 data-astro-cid-t7az6eu7=""><strong>Why is this serious?</strong></h3>
+<p data-astro-cid-t7az6eu7="">Publicly accessible admin panels can enable <a href="https://www.cloudflare.com/learning/bots/brute-force-attack" target="_blank" rel="noopener noreferrer"><u>brute force attacks</u></a>. If successful, an attacker can further compromise the host by adding it to a botnet that probes additional websites for similar vulnerability. In addition, this toxic combination can lead to:</p>
 <ul>
 	<li><strong>Exploit scanning:</strong> Attackers identify the specific software version you're running (like Tomcat or WordPress) and launch targeted exploits for known vulnerabilities (CVEs).</li>
 	<li><strong>User enumeration:</strong> Many admin panels accidentally reveal valid usernames, which helps attackers craft more convincing phishing or login attacks.</li>
 </ul>
-<h3 data-astro-cid-c6i3vrlz=""><strong>What evidence supports it?</strong></h3>
-<p data-astro-cid-c6i3vrlz="">Toxic combination of bots automation and exposed management interfaces like<strong>: /wp-admin/</strong>,<strong> /admin/</strong>,<strong> /administrator/</strong>, <strong>/actuator/*</strong>,<strong> /_search/</strong>,<strong> /phpmyadmin/</strong>,<strong> /manager/html/</strong>, and<strong> /app/kibana/</strong>.</p>
-<div class="emdash-table-wrapper" data-astro-cid-d7axpwdr="">
-	<table class="emdash-table" style="min-width: 288px;" data-astro-cid-d7axpwdr="">
-		<thead data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+<h3 data-astro-cid-t7az6eu7=""><strong>What evidence supports it?</strong></h3>
+<p data-astro-cid-t7az6eu7="">Toxic combination of bots automation and exposed management interfaces like<strong>: /wp-admin/</strong>,<strong> /admin/</strong>,<strong> /administrator/</strong>, <strong>/actuator/*</strong>,<strong> /_search/</strong>,<strong> /phpmyadmin/</strong>,<strong> /manager/html/</strong>, and<strong> /app/kibana/</strong>.</p>
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 288px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Ingredient</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Signal</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Description</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Bot activity</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Bot Score &lt; 30</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Bot signatures typical of vulnerability scanners</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Anomaly</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Repeated Probing</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Unusual hits on admin endpoints</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Vulnerability</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Publicly accessible endpoint</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Successful requests to admin endpoints</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<h3 data-astro-cid-c6i3vrlz=""><strong>How do I mitigate this finding?</strong></h3>
+<h3 data-astro-cid-t7az6eu7=""><strong>How do I mitigate this finding?</strong></h3>
 <ol>
 	<li><strong>Implement <a href="https://www.cloudflare.com/sase/products/access" target="_blank" rel="noopener noreferrer"><u>Zero Trust Access</u></a></strong>.<strong>&nbsp;</strong></li>
 	<li>If for any reason the endpoint has to remain public, implement<strong> <a href="https://www.cloudflare.com/application-services/products/turnstile" target="_blank" rel="noopener noreferrer"><u>a challenge platform to add friction to bots</u></a></strong>.</li>
@@ -144,9 +144,9 @@
 	<li><strong>Deploy geo-blocking:</strong> If your administrators only operate from specific countries, block all traffic to these sensitive paths coming from outside those regions.</li>
 	<li><strong>Enforce multi-factor authentication (MFA):</strong> Ensure every administrative entry point requires a second factor; a password alone is not enough to stop a dedicated crawler.</li>
 </ol>
-<h2 data-astro-cid-c6i3vrlz="">Unauthenticated public API endpoints allowing mass data exposure via predictable identifiers</h2>
-<h3 data-astro-cid-c6i3vrlz=""><strong>What did we detect?&nbsp;</strong></h3>
-<p data-astro-cid-c6i3vrlz="">We found API endpoints that are accessible to anyone on the Internet without a password or login (see <a href="https://owasp.org/API-Security/editions/2023/en/0xa2-broken-authentication" target="_blank" rel="noopener noreferrer"><u>OWASP: API2:2023 – Broken Authentication</u></a>). Even worse, the way it identifies records (using simple, predictable ID numbers,see <a href="https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization" target="_blank" rel="noopener noreferrer"><u>OWASP: API1:2023- Broken Object Level Authorization</u></a>) allows anyone to simply "count" through your database — making it much simpler for attackers to enumerate and “scrape” your business records, without even visiting your website directly.</p>
+<h2 data-astro-cid-t7az6eu7="">Unauthenticated public API endpoints allowing mass data exposure via predictable identifiers</h2>
+<h3 data-astro-cid-t7az6eu7=""><strong>What did we detect?&nbsp;</strong></h3>
+<p data-astro-cid-t7az6eu7="">We found API endpoints that are accessible to anyone on the Internet without a password or login (see <a href="https://owasp.org/API-Security/editions/2023/en/0xa2-broken-authentication" target="_blank" rel="noopener noreferrer"><u>OWASP: API2:2023 – Broken Authentication</u></a>). Even worse, the way it identifies records (using simple, predictable ID numbers,see <a href="https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization" target="_blank" rel="noopener noreferrer"><u>OWASP: API1:2023- Broken Object Level Authorization</u></a>) allows anyone to simply "count" through your database — making it much simpler for attackers to enumerate and “scrape” your business records, without even visiting your website directly.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">SELECT</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  uniqExact</span><span class="sk-24292e-fff">(clientRequestHTTPHost) </span><span class="sk-005cc5-fff">AS</span><span class="sk-24292e-fff"> unique_host_count</span></span>
@@ -166,101 +166,101 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-c6i3vrlz=""><strong>Why is this serious?</strong></h3>
-<p data-astro-cid-c6i3vrlz="">This is a "zero-exploit" vulnerability, meaning an attacker doesn't need to be a hacker to steal your data; they just need to change a number in a web link. This leads to:</p>
+<h3 data-astro-cid-t7az6eu7=""><strong>Why is this serious?</strong></h3>
+<p data-astro-cid-t7az6eu7="">This is a "zero-exploit" vulnerability, meaning an attacker doesn't need to be a hacker to steal your data; they just need to change a number in a web link. This leads to:</p>
 <ul>
 	<li><strong>Mass Data Exposure:</strong> Large-scale scraping of your entire customer dataset.</li>
 	<li><strong>Secondary Attacks:</strong> Stolen data is used for targeted phishing or account takeovers.</li>
 	<li><strong>Regulatory Risk:</strong> Severe privacy violations (GDPR/CCPA) due to exposing sensitive PII.</li>
 	<li><strong>Fraud:</strong> Competitors or malicious actors gaining insight into your business volume and customer base.</li>
 </ul>
-<h3 data-astro-cid-c6i3vrlz=""><strong>What evidence supports it?</strong></h3>
-<p data-astro-cid-c6i3vrlz="">Toxic combination of missing security controls and automation targeting particular API endpoints.</p>
-<div class="emdash-table-wrapper" data-astro-cid-d7axpwdr="">
-	<table class="emdash-table" style="min-width: 288px;" data-astro-cid-d7axpwdr="">
-		<thead data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+<h3 data-astro-cid-t7az6eu7=""><strong>What evidence supports it?</strong></h3>
+<p data-astro-cid-t7az6eu7="">Toxic combination of missing security controls and automation targeting particular API endpoints.</p>
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 288px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Ingredient</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Signal</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Description</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Bot activity</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Bot Score &lt; 30</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>High volume of requests from a single client fingerprint iterating through different IDs.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Anomaly</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>High Cardinality of tid</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>A single visitor accessing hundreds or thousands of unique resource IDs in a short window.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Anomaly</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Stable Response Size</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Consistent JSON structures and file sizes, indicating successful data retrieval for each guessed ID.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Vulnerability</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Missing Auth Signals</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Requests lack session cookies, Bearer tokens, or Authorization headers entirely.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Misconfiguration</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Predictable Identifiers</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>The tid parameter uses low-entropy, predictable integers (e.g., 1001, 1002, 1003).</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-c6i3vrlz="">While the query checked for bot score and predictable identifiers, signals like high cardinality, stable response sizes and missing authentication were tested on a sample of traffic matching the query.&nbsp;</p>
-<h3 data-astro-cid-c6i3vrlz=""><strong>How do I mitigate this finding?</strong></h3>
+<p data-astro-cid-t7az6eu7="">While the query checked for bot score and predictable identifiers, signals like high cardinality, stable response sizes and missing authentication were tested on a sample of traffic matching the query.&nbsp;</p>
+<h3 data-astro-cid-t7az6eu7=""><strong>How do I mitigate this finding?</strong></h3>
 <ol>
 	<li><strong>Enforce authentication:</strong> Immediately require a valid session or API key for the affected endpoint. Do not allow "Anonymous" access to data containing PII or business secrets.</li>
 	<li><strong>Implement authorization (IDOR check):</strong> Ensure the backend checks that the authenticated user actually has permission to view the specific <code>tid</code> they are requesting.</li>
 	<li><strong>Use UUIDs:</strong> Replace predictable, sequential integer IDs with long, random strings (UUIDs) to make "guessing" identifiers computationally impossible.</li>
 	<li><strong>Deploy API Shield:</strong> Enable Cloudflare <a href="https://blog.cloudflare.com/api-abuse-detection" target="_blank" rel="noopener noreferrer"><u>API Shield</u></a> with features like <strong>Schema Validation</strong> (to block unexpected inputs) and <strong>BOLA Detection</strong>.</li>
 </ol>
-<h2 data-astro-cid-c6i3vrlz="">Debug parameter probing revealing system details</h2>
-<h3 data-astro-cid-c6i3vrlz=""><strong>What did we detect?&nbsp;</strong></h3>
-<p data-astro-cid-c6i3vrlz="">We found evidence of <code>debug=true</code> appended to web paths to reveal system details. A templatized version of the query, executable in <a href="https://www.cloudflare.com/application-services/products/log-explorer" target="_blank" rel="noopener noreferrer"><u>Cloudflare Log Explorer</u></a>, is below:</p>
+<h2 data-astro-cid-t7az6eu7="">Debug parameter probing revealing system details</h2>
+<h3 data-astro-cid-t7az6eu7=""><strong>What did we detect?&nbsp;</strong></h3>
+<p data-astro-cid-t7az6eu7="">We found evidence of <code>debug=true</code> appended to web paths to reveal system details. A templatized version of the query, executable in <a href="https://www.cloudflare.com/application-services/products/log-explorer" target="_blank" rel="noopener noreferrer"><u>Cloudflare Log Explorer</u></a>, is below:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">SELECT</span></span>
 <span class="line"><span class="sk-24292e-fff">  clientRequestHTTPHost,</span></span>
@@ -282,100 +282,100 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-c6i3vrlz=""><strong>Why is this serious?</strong></h3>
-<p data-astro-cid-c6i3vrlz="">While this doesn't steal data instantly, it provides an attacker with a high-definition map of your internal infrastructure. This "reconnaissance" makes their next attack much more likely to succeed because they can see:</p>
+<h3 data-astro-cid-t7az6eu7=""><strong>Why is this serious?</strong></h3>
+<p data-astro-cid-t7az6eu7="">While this doesn't steal data instantly, it provides an attacker with a high-definition map of your internal infrastructure. This "reconnaissance" makes their next attack much more likely to succeed because they can see:</p>
 <ul>
 	<li><strong>Hidden data fields:</strong> Sensitive internal information that isn't supposed to be visible to users.</li>
 	<li><strong>Technology stack details:</strong> Specific software versions and server types, allowing them to look up known vulnerabilities for those exact versions.</li>
 	<li><strong>Logic hints:</strong> Error messages or stack traces that explain exactly how your code works, helping them find ways to break it.</li>
 </ul>
-<h3 data-astro-cid-c6i3vrlz=""><strong>What evidence supports it?</strong></h3>
-<p data-astro-cid-c6i3vrlz="">Toxic combination of automated probing and misconfigured diagnostic flags targeting the <strong>Multiple Hosts and Application Paths.</strong></p>
-<div class="emdash-table-wrapper" data-astro-cid-d7axpwdr="">
-	<table class="emdash-table" style="min-width: 288px;" data-astro-cid-d7axpwdr="">
-		<thead data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+<h3 data-astro-cid-t7az6eu7=""><strong>What evidence supports it?</strong></h3>
+<p data-astro-cid-t7az6eu7="">Toxic combination of automated probing and misconfigured diagnostic flags targeting the <strong>Multiple Hosts and Application Paths.</strong></p>
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 288px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Ingredient</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Signal</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Description</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Bot activity</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Bot Score &lt; 30</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Vulnerability scanner activity</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Anomaly</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Response Size Increase</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Significant jumps in data volume when a debug flag is toggled, indicating details or stack traces are being leaked. Add these additional conditions, if needed:SELECTAVG(edgeResponseBytes) AS avg_payload_size,&nbsp;WHEREedgeResponseBytes &gt; {{your baseline response size}}</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Anomaly</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Repeated Path Probing</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Rapid-fire requests across diverse endpoints (e.g., /api, /login, /search) specifically testing for the same diagnostic triggers. Add these conditions, if needed:<br><br>SELECTAPPROX_DISTINCT(clientRequestPath) AS unique_endpoints_tested&nbsp;HAVING&nbsp;unique_endpoints_tested &gt; 1</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Misconfiguration</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Debug Parameter Allowed</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>The presence of active "debug," "test," or "dev" flags in production URLs that change application behavior.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Vulnerability</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Schema disclosure</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>The appearance of internal-only JSON fields or "Firebase-style" .json dumps that reveal the underlying structure.</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-c6i3vrlz="">While the query checked for bot score and paths with debug parameters, signals like repeated probing, response sizes and schema disclosure were tested on a sample of traffic matching the query.&nbsp;</p>
-<h3 data-astro-cid-c6i3vrlz=""><strong>How do I mitigate this finding?</strong></h3>
+<p data-astro-cid-t7az6eu7="">While the query checked for bot score and paths with debug parameters, signals like repeated probing, response sizes and schema disclosure were tested on a sample of traffic matching the query.&nbsp;</p>
+<h3 data-astro-cid-t7az6eu7=""><strong>How do I mitigate this finding?</strong></h3>
 <ol>
 	<li><strong>Disable debugging in production:</strong> Ensure that all "debug" or "development" environment variables are strictly set to <code>false</code> in your production deployment configurations.</li>
 	<li><strong>Filter parameters at the edge:</strong> Use your <a href="https://blog.cloudflare.com/wildcard-rules" target="_blank" rel="noopener noreferrer"><u>WAF</u></a> or API Gateway to strip out known debug parameters (like <code>?debug=</code>, <code>?test=</code>,<code> ?trace=</code>) before they ever reach your application servers.</li>
 	<li><strong>Sanitize error responses:</strong> Configure your web servers (Nginx, Apache, etc.) to show generic error pages instead of detailed stack traces or internal system messages.</li>
 	<li><strong>Audit firebase/DB rules:</strong> If you are using Firebase or similar NoSQL databases, ensure that /<code>.json</code> path access is restricted via strict security rules, so public users cannot dump the entire schema or data.</li>
 </ol>
-<h2 data-astro-cid-c6i3vrlz="">Publicly exposed monitoring endpoints providing internal infrastructure visibility</h2>
-<h3 data-astro-cid-c6i3vrlz=""><strong>What did we detect?&nbsp;</strong></h3>
-<p data-astro-cid-c6i3vrlz="">We discovered "health check" and monitoring dashboards are visible to the entire Internet. Specifically, paths like <code>/actuator/metrics</code> are responding to anyone who asks. A templatized version of the query, executable in <a href="https://www.cloudflare.com/application-services/products/log-explorer" target="_blank" rel="noopener noreferrer"><u>Cloudflare Log Explorer</u></a>, is below::</p>
+<h2 data-astro-cid-t7az6eu7="">Publicly exposed monitoring endpoints providing internal infrastructure visibility</h2>
+<h3 data-astro-cid-t7az6eu7=""><strong>What did we detect?&nbsp;</strong></h3>
+<p data-astro-cid-t7az6eu7="">We discovered "health check" and monitoring dashboards are visible to the entire Internet. Specifically, paths like <code>/actuator/metrics</code> are responding to anyone who asks. A templatized version of the query, executable in <a href="https://www.cloudflare.com/application-services/products/log-explorer" target="_blank" rel="noopener noreferrer"><u>Cloudflare Log Explorer</u></a>, is below::</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">SELECT</span></span>
 <span class="line"><span class="sk-24292e-fff">  clientRequestHTTPHost,</span></span>
@@ -394,99 +394,99 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz=""><strong>Why is this serious?</strong></p>
-<p data-astro-cid-c6i3vrlz="">While these endpoints don't usually leak customer passwords directly, they provide the "blueprints" for a sophisticated attack. Exposure leads to:</p>
+<p data-astro-cid-t7az6eu7=""><strong>Why is this serious?</strong></p>
+<p data-astro-cid-t7az6eu7="">While these endpoints don't usually leak customer passwords directly, they provide the "blueprints" for a sophisticated attack. Exposure leads to:</p>
 <ul>
 	<li><strong>Strategic timing:</strong> Attackers can monitor your CPU and memory usage in real-time to launch a <a href="https://www.cloudflare.com/learning/ddos/glossary/denial-of-service" target="_blank" rel="noopener noreferrer"><u>Denial of Service (DoS) attack</u></a> exactly when your systems are already stressed.</li>
 	<li><strong>Infrastructure mapping:</strong> These logs often reveal the names of internal services, dependencies, and version numbers, helping attackers find known vulnerabilities to exploit.</li>
 	<li><strong>Exploitation chaining:</strong> Information about thread counts and environment hints can be used to bypass security layers or escalate privileges within your network.</li>
 </ul>
-<h3 data-astro-cid-c6i3vrlz=""><strong>What evidence supports it?</strong></h3>
-<p data-astro-cid-c6i3vrlz="">Toxic combination of misconfigured access controls and automated reconnaissance targeting the <strong>Asset/Path: /actuator/metrics, /actuator/prometheus, and /health</strong>.</p>
-<div class="emdash-table-wrapper" data-astro-cid-d7axpwdr="">
-	<table class="emdash-table" style="min-width: 288px;" data-astro-cid-d7axpwdr="">
-		<thead data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+<h3 data-astro-cid-t7az6eu7=""><strong>What evidence supports it?</strong></h3>
+<p data-astro-cid-t7az6eu7="">Toxic combination of misconfigured access controls and automated reconnaissance targeting the <strong>Asset/Path: /actuator/metrics, /actuator/prometheus, and /health</strong>.</p>
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 288px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Ingredient</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Signal</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Description</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Bot activity</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Bot Score &lt; 30</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Automated scanning tools are systematically checking for specific paths</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Anomaly</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Monitoring Fingerprint</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>The response body matches known formats (Prometheus, Micrometer, or Spring Boot), confirming the system is leaking live data.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Anomaly</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>HTTP 200 Status</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Successful data retrieval from endpoints that should ideally return a 403 Forbidden or 404 Not Found to the public.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Misconfiguration</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Public Monitoring Path</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Public accessibility of internal-only endpoints like /actuator/* that are intended for private observability.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Vulnerability</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Missing Auth</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>These endpoints are reachable without a session token, API key, or IP-based restriction.</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<h3 data-astro-cid-c6i3vrlz=""><strong>How do I mitigate this finding?</strong></h3>
+<h3 data-astro-cid-t7az6eu7=""><strong>How do I mitigate this finding?</strong></h3>
 <ol>
 	<li><strong>Restrict access via WAF:</strong> Immediately create a <a href="https://blog.cloudflare.com/wildcard-rules" target="_blank" rel="noopener noreferrer"><u>firewall rule</u></a> to block any external traffic requesting paths containing <code>/actuator/</code> or <code>/prometheus</code>.</li>
 	<li><strong>Bind to localhost:</strong> Reconfigure your application frameworks to only serve these monitoring endpoints on <code>localhost</code> (127.0.0.1) or a private management network.</li>
 	<li><strong>Enforce basic auth:</strong> If these must be accessed over the web, ensure they are protected by strong authentication (at a minimum, complex Basic Auth or mTLS).</li>
 	<li><strong>Disable unnecessary endpoints:</strong> In Spring Boot or similar frameworks, disable any "Actuator" features that are not strictly required for production monitoring.</li>
 </ol>
-<h2 data-astro-cid-c6i3vrlz="">Unauthenticated search endpoints allowing direct index dumping</h2>
-<h3 data-astro-cid-c6i3vrlz=""><strong>What did we detect?&nbsp;</strong></h3>
-<p data-astro-cid-c6i3vrlz="">Search endpoints (like Elasticsearch or OpenSearch) that are usually meant for internal use are wide open to the public. The templatized query is:</p>
+<h2 data-astro-cid-t7az6eu7="">Unauthenticated search endpoints allowing direct index dumping</h2>
+<h3 data-astro-cid-t7az6eu7=""><strong>What did we detect?&nbsp;</strong></h3>
+<p data-astro-cid-t7az6eu7="">Search endpoints (like Elasticsearch or OpenSearch) that are usually meant for internal use are wide open to the public. The templatized query is:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">SELECT</span></span>
 <span class="line"><span class="sk-24292e-fff">  clientRequestHTTPHost,</span></span>
@@ -505,100 +505,100 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-c6i3vrlz=""><strong>Why is this serious?</strong></h3>
-<p data-astro-cid-c6i3vrlz="">This is a critical vulnerability because it requires zero technical skill to exploit, yet the damage is extensive:</p>
+<h3 data-astro-cid-t7az6eu7=""><strong>Why is this serious?</strong></h3>
+<p data-astro-cid-t7az6eu7="">This is a critical vulnerability because it requires zero technical skill to exploit, yet the damage is extensive:</p>
 <ul>
 	<li><strong>Mass data theft:</strong> Attackers can "dump" entire indices, stealing millions of records in minutes.</li>
 	<li><strong>Internal reconnaissance:</strong> By viewing your "indices" (the list of what you store), attackers can identify other high-value targets within your network.</li>
 	<li><strong>Data sabotage:</strong> Depending on the setup, an attacker might not just read data — they could potentially modify or delete your entire search index, causing a massive service outage.</li>
 </ul>
-<h3 data-astro-cid-c6i3vrlz=""><strong>What evidence supports it?</strong></h3>
-<p data-astro-cid-c6i3vrlz="">We are seeing a toxic combination of misconfigured exposure and automated traffic and data enumeration targeting <strong>&nbsp;/_search, /_cat/indices, and /_cluster/health</strong>.</p>
-<div class="emdash-table-wrapper" data-astro-cid-d7axpwdr="">
-	<table class="emdash-table" style="min-width: 288px;" data-astro-cid-d7axpwdr="">
-		<thead data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+<h3 data-astro-cid-t7az6eu7=""><strong>What evidence supports it?</strong></h3>
+<p data-astro-cid-t7az6eu7="">We are seeing a toxic combination of misconfigured exposure and automated traffic and data enumeration targeting <strong>&nbsp;/_search, /_cat/indices, and /_cluster/health</strong>.</p>
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 288px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Ingredient</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Signal</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Description</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Bot activity</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Bot Score &lt; 30</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>High-velocity automation signatures attempting to paginate through large datasets and "scrape" the entire index.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Anomaly</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Unexpected&nbsp; Response Size</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Large JSON response sizes consistent with bulk data retrieval rather than simple status checks.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Anomaly</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Repeated Query Patterns</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Systematic "enumeration" behavior where the attacker is cycling through every possible index name to find sensitive data.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Vulnerability</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>/_search or /_cat/ Patterns</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Direct exposure of administrative and query-level paths that should never be reachable via a public URL.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Misconfiguration</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>HTTP 200 Status</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>The endpoint is actively fulfilling requests from unauthorized external IPs instead of rejecting them at the network or application level.</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-c6i3vrlz="">While the query checked for bot score and paths, signals like repeated query patterns, response sizes, and schema disclosure were tested on a sample of traffic matching the query.&nbsp;</p>
-<h3 data-astro-cid-c6i3vrlz=""><strong>How do I mitigate this finding?</strong></h3>
+<p data-astro-cid-t7az6eu7="">While the query checked for bot score and paths, signals like repeated query patterns, response sizes, and schema disclosure were tested on a sample of traffic matching the query.&nbsp;</p>
+<h3 data-astro-cid-t7az6eu7=""><strong>How do I mitigate this finding?</strong></h3>
 <ol>
 	<li><strong>Restrict network access:</strong> Immediately update your Firewall/Security Groups to ensure that search ports (e.g., 9200, 9300) and paths are only accessible from specific internal IP addresses.</li>
 	<li><strong>Enable authentication:</strong> Turn on "Security" features for your search cluster (like Shield or Search Guard) to require valid credentials for every API call.</li>
 	<li><strong>WAF blocking:</strong> Deploy a WAF rule to immediately block any request containing <code>/_search</code>, <code>/_cat</code>, or <code>/_cluster</code> coming from the public Internet.</li>
 	<li><strong>Audit for data loss:</strong> Review your database logs for large "Scroll" or "Search" queries from unknown IPs to determine exactly how much data was exfiltrated.</li>
 </ol>
-<h2 data-astro-cid-c6i3vrlz="">Successful SQL injection attempt on application paths&nbsp;</h2>
-<h3 data-astro-cid-c6i3vrlz=""><strong>What did we detect?&nbsp;</strong></h3>
-<p data-astro-cid-c6i3vrlz="">We’ve identified attackers who sent a malicious request—specifically a <a href="https://www.cloudflare.com/learning/security/threats/sql-injection" target="_blank" rel="noopener noreferrer"><u>SQL injection</u></a> designed to trick databases. A templatized version of the query, executable in <a href="https://www.cloudflare.com/application-services/products/log-explorer" target="_blank" rel="noopener noreferrer"><u>Cloudflare Log Explorer</u></a>, is below:</p>
+<h2 data-astro-cid-t7az6eu7="">Successful SQL injection attempt on application paths&nbsp;</h2>
+<h3 data-astro-cid-t7az6eu7=""><strong>What did we detect?&nbsp;</strong></h3>
+<p data-astro-cid-t7az6eu7="">We’ve identified attackers who sent a malicious request—specifically a <a href="https://www.cloudflare.com/learning/security/threats/sql-injection" target="_blank" rel="noopener noreferrer"><u>SQL injection</u></a> designed to trick databases. A templatized version of the query, executable in <a href="https://www.cloudflare.com/application-services/products/log-explorer" target="_blank" rel="noopener noreferrer"><u>Cloudflare Log Explorer</u></a>, is below:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">SELECT</span></span>
 <span class="line"><span class="sk-24292e-fff">  clientRequestHTTPHost,</span></span>
@@ -618,239 +618,239 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-c6i3vrlz=""><strong>Why is this serious?</strong></h3>
-<p data-astro-cid-c6i3vrlz="">This is the "quiet path" to a data breach. Because the system returned a successful status code (<strong>HTTP 200</strong>), these attacks often blend in with legitimate traffic. If left unaddressed, an attacker can:</p>
+<h3 data-astro-cid-t7az6eu7=""><strong>Why is this serious?</strong></h3>
+<p data-astro-cid-t7az6eu7="">This is the "quiet path" to a data breach. Because the system returned a successful status code (<strong>HTTP 200</strong>), these attacks often blend in with legitimate traffic. If left unaddressed, an attacker can:</p>
 <ul>
 	<li><strong>Refine their methods:</strong> Use trial and error to find the exact payload that bypasses your filters.</li>
 	<li><strong>Exfiltrate data:</strong> Slowly drain database contents or leak sensitive secrets (like API keys) passed in URLs.</li>
 	<li><strong>Stay invisible:</strong> Most automated alerts look for "denied" attempts; a "successful" exploit is much harder to spot in a sea of logs.</li>
 </ul>
-<h3 data-astro-cid-c6i3vrlz=""><strong>What evidence supports it?</strong></h3>
-<p data-astro-cid-c6i3vrlz="">We are seeing a toxic combination of automated bot signals, anomalies and application-layer vulnerabilities targeting many application paths.</p>
-<div class="emdash-table-wrapper" data-astro-cid-d7axpwdr="">
-	<table class="emdash-table" style="min-width: 288px;" data-astro-cid-d7axpwdr="">
-		<thead data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+<h3 data-astro-cid-t7az6eu7=""><strong>What evidence supports it?</strong></h3>
+<p data-astro-cid-t7az6eu7="">We are seeing a toxic combination of automated bot signals, anomalies and application-layer vulnerabilities targeting many application paths.</p>
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 288px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Ingredient</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Signal</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Description</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Bot</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Bot Score &lt; 30</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>High probability of automated traffic; signatures and timing consistent with exploit scripts.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Anomaly</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>HTTP 200 on sensitive path</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Successful responses returning from a login endpoint that should have triggered a WAF block.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Anomaly</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Repeated Mutations</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>High-frequency variations of the same request, indicating an attacker "tuning" their payload.</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Vulnerability</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Suspicious Query Patterns</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Use of SLEEP commands and time-based patterns designed to probe database responsiveness.</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<h3 data-astro-cid-c6i3vrlz=""><strong>How do I mitigate this finding?</strong></h3>
+<h3 data-astro-cid-t7az6eu7=""><strong>How do I mitigate this finding?</strong></h3>
 <ol>
 	<li><strong>Immediate virtual patching:</strong> Update your WAF rules to specifically block the SQL patterns identified (e.g., time-based probes).</li>
 	<li><strong>Sanitize inputs:</strong> Review the backend code for this path to ensure it uses prepared statements or parameterized queries.</li>
 	<li><strong>Remediate secret leakage:</strong> Move any sensitive data from URL parameters to the request body or headers. Rotate any keys flagged as leaked.</li>
 	<li><strong>Audit logs:</strong> Check database logs for the timeframe of the "HTTP 200" responses to see if any data was successfully extracted.</li>
 </ol>
-<h2 data-astro-cid-c6i3vrlz="">Examples of toxic combinations on payment flows</h2>
-<p data-astro-cid-c6i3vrlz="">Card testing and card draining are some of the most common fraud tactics. An attacker might buy a large batch of credit cards from the dark web. Then, to verify how many cards are still valid, they might test the card on a website by making small transactions. Once validated, they might use such cards to make purchases, such as gift cards, on popular shopping destinations.&nbsp;</p>
-<h2 data-astro-cid-c6i3vrlz="">Suspected card testing on payment flows</h2>
-<h3 data-astro-cid-c6i3vrlz="">What did we detect?</h3>
-<p data-astro-cid-c6i3vrlz="">On payment flows (<code>/payment</code>, <code>/checkou</code>t, <code>/cart)</code>, we found certain hours of the day when either the hourly request volume from bots or hourly payment success ratio spiked by more than <strong>3 standard deviations</strong> from their hourly baselines over the prior 30 days. This could be related to card testing where an attacker is trying to validate lots of stolen credits. Of course, marketing campaigns might cause request spikes while payment outages might cause sudden drops in success ratios.</p>
+<h2 data-astro-cid-t7az6eu7="">Examples of toxic combinations on payment flows</h2>
+<p data-astro-cid-t7az6eu7="">Card testing and card draining are some of the most common fraud tactics. An attacker might buy a large batch of credit cards from the dark web. Then, to verify how many cards are still valid, they might test the card on a website by making small transactions. Once validated, they might use such cards to make purchases, such as gift cards, on popular shopping destinations.&nbsp;</p>
+<h2 data-astro-cid-t7az6eu7="">Suspected card testing on payment flows</h2>
+<h3 data-astro-cid-t7az6eu7="">What did we detect?</h3>
+<p data-astro-cid-t7az6eu7="">On payment flows (<code>/payment</code>, <code>/checkou</code>t, <code>/cart)</code>, we found certain hours of the day when either the hourly request volume from bots or hourly payment success ratio spiked by more than <strong>3 standard deviations</strong> from their hourly baselines over the prior 30 days. This could be related to card testing where an attacker is trying to validate lots of stolen credits. Of course, marketing campaigns might cause request spikes while payment outages might cause sudden drops in success ratios.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="230" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E4642P1VE62JM87W0SMT.png&amp;w=715&amp;h=230&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E4642P1VE62JM87W0SMT.png&amp;w=640&amp;h=206&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E4642P1VE62JM87W0SMT.png&amp;w=715&amp;h=230&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E4642P1VE62JM87W0SMT.png&amp;w=750&amp;h=241&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E4642P1VE62JM87W0SMT.png&amp;w=828&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E4642P1VE62JM87W0SMT.png&amp;w=1080&amp;h=347&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E4642P1VE62JM87W0SMT.png&amp;w=1280&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E4642P1VE62JM87W0SMT.png&amp;w=1430&amp;h=460&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3130 Image 4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E4642P1VE62JM87W0SMT.png&amp;w=1920&amp;h=617&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="617" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="230" class="pt-portable-image-media"></div>
 </figure>
-<h3 data-astro-cid-c6i3vrlz="">Why is this serious?</h3>
-<p data-astro-cid-c6i3vrlz="">Payment success ratio drops coinciding with request spikes, in the absence of marketing campaigns or payment outages or other factors, <strong>could</strong> mean bots are in the middle of a massive card-testing run.</p>
-<h3 data-astro-cid-c6i3vrlz="">What evidence supports it?</h3>
-<p data-astro-cid-c6i3vrlz="">We used a combination of bot signals and anomalies on <code>/payment</code>, <code>/checkout</code>, <code>/cart</code>:</p>
-<div class="emdash-table-wrapper" data-astro-cid-d7axpwdr="">
-	<table class="emdash-table" style="min-width: 288px;" data-astro-cid-d7axpwdr="">
-		<thead data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+<h3 data-astro-cid-t7az6eu7="">Why is this serious?</h3>
+<p data-astro-cid-t7az6eu7="">Payment success ratio drops coinciding with request spikes, in the absence of marketing campaigns or payment outages or other factors, <strong>could</strong> mean bots are in the middle of a massive card-testing run.</p>
+<h3 data-astro-cid-t7az6eu7="">What evidence supports it?</h3>
+<p data-astro-cid-t7az6eu7="">We used a combination of bot signals and anomalies on <code>/payment</code>, <code>/checkout</code>, <code>/cart</code>:</p>
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 288px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Ingredient</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Signal</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Description</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Bot</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Bot Score &lt; 30</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>High probability of automated traffic rather than humans making mistakes</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Anomaly</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Volume Z-Score &gt; 3.0, calculated from request volume baseline for a given hour based on the past 30 days and evaluated each hour. This factors daily seasonality as well.&nbsp;</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Scaling Event: The attacker is testing a batch of cards</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Anomaly</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Success ratio Z &gt; 3.0, calculated from success ratio baseline for a given hour based on the past 30 days and evaluated each hour. This factors daily seasonality as well.&nbsp;</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Sudden drops in success ratio may mean cards being declined as they are reported lost or stolen</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<h3 data-astro-cid-c6i3vrlz="">How do I mitigate this?</h3>
-<p data-astro-cid-c6i3vrlz="">Use the 30-day payment paths hourly request volume baseline as the hourly rate limit for all requests with bot scores &lt; 30 on payment paths.&nbsp;&nbsp;</p>
-<h2 data-astro-cid-c6i3vrlz="">Suspected card draining on payment flows</h2>
-<h3 data-astro-cid-c6i3vrlz="">What did we detect?</h3>
-<p data-astro-cid-c6i3vrlz="">On payment flows (<code>/</code>payment, <code>/checkout</code>, <code>/cart)</code>, we found certain hours of the day when either the hourly request volume from humans (or bots impersonating humans) or hourly payment success ratio spiked by more than <strong>3 standard deviations</strong> from their hourly baselines over the prior 30 days. This could be related to card draining where an attacker (either humans or bots impersonating humans) is trying to purchase goods using valid but stolen credits. Of course, marketing campaigns might also cause request and success ratio spikes, so additional context in the form of typical payment requests from a given IP address is essential context, as shown in the figure.</p>
+<h3 data-astro-cid-t7az6eu7="">How do I mitigate this?</h3>
+<p data-astro-cid-t7az6eu7="">Use the 30-day payment paths hourly request volume baseline as the hourly rate limit for all requests with bot scores &lt; 30 on payment paths.&nbsp;&nbsp;</p>
+<h2 data-astro-cid-t7az6eu7="">Suspected card draining on payment flows</h2>
+<h3 data-astro-cid-t7az6eu7="">What did we detect?</h3>
+<p data-astro-cid-t7az6eu7="">On payment flows (<code>/</code>payment, <code>/checkout</code>, <code>/cart)</code>, we found certain hours of the day when either the hourly request volume from humans (or bots impersonating humans) or hourly payment success ratio spiked by more than <strong>3 standard deviations</strong> from their hourly baselines over the prior 30 days. This could be related to card draining where an attacker (either humans or bots impersonating humans) is trying to purchase goods using valid but stolen credits. Of course, marketing campaigns might also cause request and success ratio spikes, so additional context in the form of typical payment requests from a given IP address is essential context, as shown in the figure.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="326" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453S4N4K9F7XDQ81X8X46B.png&amp;w=715&amp;h=326&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453S4N4K9F7XDQ81X8X46B.png&amp;w=640&amp;h=292&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453S4N4K9F7XDQ81X8X46B.png&amp;w=715&amp;h=326&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453S4N4K9F7XDQ81X8X46B.png&amp;w=750&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453S4N4K9F7XDQ81X8X46B.png&amp;w=828&amp;h=378&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453S4N4K9F7XDQ81X8X46B.png&amp;w=1080&amp;h=492&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453S4N4K9F7XDQ81X8X46B.png&amp;w=1280&amp;h=584&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453S4N4K9F7XDQ81X8X46B.png&amp;w=1430&amp;h=652&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3130 Image 5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453S4N4K9F7XDQ81X8X46B.png&amp;w=1920&amp;h=875&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="875" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="326" class="pt-portable-image-media"></div>
 </figure>
-<h3 data-astro-cid-c6i3vrlz="">Why is this serious?</h3>
-<p data-astro-cid-c6i3vrlz="">Payment success ratio spikes coinciding with request spikes and high density of requests per IP address, in the absence of marketing campaigns or payment outages or other factors, <strong>could</strong> mean humans (or bots pretending to be humans) are making fraudulent purchases. Every successful transaction here could be a direct revenue loss or a chargeback in the making.</p>
-<h3 data-astro-cid-c6i3vrlz="">What evidence supports it?</h3>
-<p data-astro-cid-c6i3vrlz="">We used a combination of bot signals and anomalies on <code>/payment</code>, <code>/checkout</code>, <code>/cart</code>:</p>
-<div class="emdash-table-wrapper" data-astro-cid-d7axpwdr="">
-	<table class="emdash-table" style="min-width: 288px;" data-astro-cid-d7axpwdr="">
-		<thead data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+<h3 data-astro-cid-t7az6eu7="">Why is this serious?</h3>
+<p data-astro-cid-t7az6eu7="">Payment success ratio spikes coinciding with request spikes and high density of requests per IP address, in the absence of marketing campaigns or payment outages or other factors, <strong>could</strong> mean humans (or bots pretending to be humans) are making fraudulent purchases. Every successful transaction here could be a direct revenue loss or a chargeback in the making.</p>
+<h3 data-astro-cid-t7az6eu7="">What evidence supports it?</h3>
+<p data-astro-cid-t7az6eu7="">We used a combination of bot signals and anomalies on <code>/payment</code>, <code>/checkout</code>, <code>/cart</code>:</p>
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 288px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Ingredient</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Signal</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Description</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Bot</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Bot Score &gt;= 30</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>High probability of human traffic which is expected to be allowed</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Anomaly</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Volume Z-Score &gt; 3.0, calculated from request volume baseline for a given hour based on the past 30 days and evaluated each hour. This factors daily seasonality as well.&nbsp;</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>The attacker is making purchases at higher rates than normal shoppers</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Anomaly</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Success ratio Z &gt; 3.0, calculated from success ratio baseline for a given hour based on the past 30 days and evaluated each hour. This factors daily seasonality as well.&nbsp;</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Sudden increases in success ratio may mean valid cards being approved for purchase</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Anomaly</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>IP density &gt; 5, calculated from payment requests per IP in any given hour divided by the average payment requests for that hour based on the past 30 days&nbsp;</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Humans with 5X more purchases than typical humans in the past 30 days is a red flag</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Anomaly</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>JA4 diversity &lt; 0.1, calculated from JA4s per payment requests in any given hour</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>JA4s with unusual hourly purchases are likely bots pretending to be humans</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<h3 data-astro-cid-c6i3vrlz="">How do I mitigate this?</h3>
-<p data-astro-cid-c6i3vrlz=""><strong>Identity-Based Rate Limiting:</strong> Use IP density to implement rate limits for requests with bot score &gt;=30 on payment endpoints.</p>
-<p data-astro-cid-c6i3vrlz=""><strong>Monitor success ratio:</strong> Alert on any hour when the <strong>success ratio</strong> for "human" traffic, with bot score &gt;=30 on payment endpoints, deviates by more than 3 standard deviations from its 30-day baseline.</p>
-<p data-astro-cid-c6i3vrlz=""><strong>Challenge:</strong> If a high bot score request (likely human) hits <code>payment flows</code> more than 3 times in 10 minutes, trigger a challenge to slow them down</p>
-<h2 data-astro-cid-c6i3vrlz="">What’s next: detections in the dashboard, AI-powered remediation&nbsp;</h2>
-<p data-astro-cid-c6i3vrlz="">We are currently working on integrating these "toxic combination" detections directly into the Security Insights dashboard to provide immediate visibility for such risks. Our roadmap includes building AI-assisted remediation paths — where the dashboard doesn't just show you a toxic combination, but proposes the specific WAF rule or <a href="https://blog.cloudflare.com/api-abuse-detection" target="_blank" rel="noopener noreferrer"><u>API Shield</u></a> configuration required to neutralize it.</p>
-<p data-astro-cid-c6i3vrlz="">We would love to have you try our Security Insights featuring toxic combinations. You can <a href="https://www.cloudflare.com/lp/toxic-combinations-security" target="_blank" rel="noopener noreferrer"><u>join the waitlist here</u></a>.&nbsp;</p>
+<h3 data-astro-cid-t7az6eu7="">How do I mitigate this?</h3>
+<p data-astro-cid-t7az6eu7=""><strong>Identity-Based Rate Limiting:</strong> Use IP density to implement rate limits for requests with bot score &gt;=30 on payment endpoints.</p>
+<p data-astro-cid-t7az6eu7=""><strong>Monitor success ratio:</strong> Alert on any hour when the <strong>success ratio</strong> for "human" traffic, with bot score &gt;=30 on payment endpoints, deviates by more than 3 standard deviations from its 30-day baseline.</p>
+<p data-astro-cid-t7az6eu7=""><strong>Challenge:</strong> If a high bot score request (likely human) hits <code>payment flows</code> more than 3 times in 10 minutes, trigger a challenge to slow them down</p>
+<h2 data-astro-cid-t7az6eu7="">What’s next: detections in the dashboard, AI-powered remediation&nbsp;</h2>
+<p data-astro-cid-t7az6eu7="">We are currently working on integrating these "toxic combination" detections directly into the Security Insights dashboard to provide immediate visibility for such risks. Our roadmap includes building AI-assisted remediation paths — where the dashboard doesn't just show you a toxic combination, but proposes the specific WAF rule or <a href="https://blog.cloudflare.com/api-abuse-detection" target="_blank" rel="noopener noreferrer"><u>API Shield</u></a> configuration required to neutralize it.</p>
+<p data-astro-cid-t7az6eu7="">We would love to have you try our Security Insights featuring toxic combinations. You can <a href="https://www.cloudflare.com/lp/toxic-combinations-security" target="_blank" rel="noopener noreferrer"><u>join the waitlist here</u></a>.&nbsp;</p>

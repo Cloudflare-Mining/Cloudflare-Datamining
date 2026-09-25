@@ -1,9 +1,9 @@
-<p data-astro-cid-c6i3vrlz="">Over the coming months, Cloudflare Workers will start to roll out built-in compatibility with Node.js core APIs as part of an effort to support increased compatibility across JavaScript runtimes.</p>
-<p data-astro-cid-c6i3vrlz="">We are happy to announce today that the first of these Node.js APIs – <code>AsyncLocalStorage</code>, <code>EventEmitter</code>, <code>Buffer</code>, <code>assert</code>, and parts of <code>util</code> – are now available for use. These APIs are provided directly by the <a href="https://github.com/cloudflare/workerd" target="_blank" rel="noopener noreferrer">open-source Cloudflare Workers runtime</a>, with no need to bundle polyfill implementations into your own code.</p>
-<p data-astro-cid-c6i3vrlz="">These new APIs are available today — start using them by enabling the <code>nodejs_compat</code> <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates" target="_blank" rel="noopener noreferrer">compatibility flag</a> in your Workers.</p>
-<h3 data-astro-cid-c6i3vrlz="">Async Context Tracking with the AsyncLocalStorage API</h3>
-<p data-astro-cid-c6i3vrlz="">The <code>AsyncLocalStorage</code> API provides a way to track context across asynchronous operations. It allows you to pass a value through your program, even across multiple layers of asynchronous code, without having to pass a context value between operations.</p>
-<p data-astro-cid-c6i3vrlz="">Consider an example where we want to add debug logging that works through multiple layers of an application, where each log contains the ID of the current request. Without AsyncLocalStorage, it would be necessary to explicitly pass the request ID down through every function call that might invoke the logging function:</p>
+<p data-astro-cid-t7az6eu7="">Over the coming months, Cloudflare Workers will start to roll out built-in compatibility with Node.js core APIs as part of an effort to support increased compatibility across JavaScript runtimes.</p>
+<p data-astro-cid-t7az6eu7="">We are happy to announce today that the first of these Node.js APIs – <code>AsyncLocalStorage</code>, <code>EventEmitter</code>, <code>Buffer</code>, <code>assert</code>, and parts of <code>util</code> – are now available for use. These APIs are provided directly by the <a href="https://github.com/cloudflare/workerd" target="_blank" rel="noopener noreferrer">open-source Cloudflare Workers runtime</a>, with no need to bundle polyfill implementations into your own code.</p>
+<p data-astro-cid-t7az6eu7="">These new APIs are available today — start using them by enabling the <code>nodejs_compat</code> <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates" target="_blank" rel="noopener noreferrer">compatibility flag</a> in your Workers.</p>
+<h3 data-astro-cid-t7az6eu7="">Async Context Tracking with the AsyncLocalStorage API</h3>
+<p data-astro-cid-t7az6eu7="">The <code>AsyncLocalStorage</code> API provides a way to track context across asynchronous operations. It allows you to pass a value through your program, even across multiple layers of asynchronous code, without having to pass a context value between operations.</p>
+<p data-astro-cid-t7az6eu7="">Consider an example where we want to add debug logging that works through multiple layers of an application, where each log contains the ID of the current request. Without AsyncLocalStorage, it would be necessary to explicitly pass the request ID down through every function call that might invoke the logging function:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> logWithId</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">id</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">state</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-24292e-fff">  console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`${</span><span class="sk-24292e-fff">id</span><span class="sk-032f62-99ffe4">} - ${</span><span class="sk-24292e-fff">state</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
@@ -53,7 +53,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-c6i3vrlz="">While this approach works, it can be cumbersome to coordinate correctly, especially as the complexity of an application grows. Using <code>AsyncLocalStorage</code> this becomes significantly easier by eliminating the need to explicitly pass the context around. Our application functions (<code>doSomething</code> and <code>doSomethingElse</code> in this case) never need to know about the request ID at all while the <code>logWithId</code> function does exactly what we need it to:</p>
+<p data-astro-cid-t7az6eu7="">While this approach works, it can be cumbersome to coordinate correctly, especially as the complexity of an application grows. Using <code>AsyncLocalStorage</code> this becomes significantly easier by eliminating the need to explicitly pass the context around. Our application functions (<code>doSomething</code> and <code>doSomethingElse</code> in this case) never need to know about the request ID at all while the <code>logWithId</code> function does exactly what we need it to:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { AsyncLocalStorage } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:async_hooks'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -88,9 +88,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">With the <code>nodejs_compat</code> <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates" target="_blank" rel="noopener noreferrer">compatibility flag</a> enabled, import statements are used to access specific APIs. The Workers implementation of these APIs requires the use of the node: specifier prefix that was introduced recently in Node.js (e.g. <code>node:async_hooks</code>, <code>node:events</code>, etc)</p>
-<p data-astro-cid-c6i3vrlz="">We implement <a href="https://github.com/wintercg/proposal-common-minimum-api/blob/main/asynclocalstorage.md" target="_blank" rel="noopener noreferrer">a subset</a> of the <code>AsyncLocalStorage</code> API in order to keep things as simple as possible. Specifically, we've chosen not to support the <code>enterWith()</code> and <code>disable()</code> APIs that are found in Node.js implementation simply because they make async context tracking more brittle and error prone.</p>
-<p data-astro-cid-c6i3vrlz="">Conceptually, at any given moment within a worker, there is a current "Asynchronous Context Frame", which consists of a map of storage cells, each holding a store value for a specific <code>AsyncLocalStorage</code> instance. Calling <code>asyncLocalStorage.run(...)</code> causes a new frame to be created, inheriting the storage cells of the current frame, but using the newly provided store value for the cell associated with <code>asyncLocalStorage</code>.</p>
+<p data-astro-cid-t7az6eu7="">With the <code>nodejs_compat</code> <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates" target="_blank" rel="noopener noreferrer">compatibility flag</a> enabled, import statements are used to access specific APIs. The Workers implementation of these APIs requires the use of the node: specifier prefix that was introduced recently in Node.js (e.g. <code>node:async_hooks</code>, <code>node:events</code>, etc)</p>
+<p data-astro-cid-t7az6eu7="">We implement <a href="https://github.com/wintercg/proposal-common-minimum-api/blob/main/asynclocalstorage.md" target="_blank" rel="noopener noreferrer">a subset</a> of the <code>AsyncLocalStorage</code> API in order to keep things as simple as possible. Specifically, we've chosen not to support the <code>enterWith()</code> and <code>disable()</code> APIs that are found in Node.js implementation simply because they make async context tracking more brittle and error prone.</p>
+<p data-astro-cid-t7az6eu7="">Conceptually, at any given moment within a worker, there is a current "Asynchronous Context Frame", which consists of a map of storage cells, each holding a store value for a specific <code>AsyncLocalStorage</code> instance. Calling <code>asyncLocalStorage.run(...)</code> causes a new frame to be created, inheriting the storage cells of the current frame, but using the newly provided store value for the cell associated with <code>asyncLocalStorage</code>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> als1</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> AsyncLocalStorage</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> als2</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> AsyncLocalStorage</span><span class="sk-24292e-fff">();</span></span>
@@ -122,7 +122,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">Whenever an asynchronous operation is initiated in JavaScript, for example, creating a new JavaScript promise, scheduling a timer, etc, the current frame is captured and associated with that operation, allowing the store values at the moment the operation was initialized to be propagated and restored as needed.</p>
+<p data-astro-cid-t7az6eu7="">Whenever an asynchronous operation is initiated in JavaScript, for example, creating a new JavaScript promise, scheduling a timer, etc, the current frame is captured and associated with that operation, allowing the store values at the moment the operation was initialized to be propagated and restored as needed.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> als</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> AsyncLocalStorage</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> p1</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> als.run</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">123,</span><span class="sk-24292e-fff"> () =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> {</span></span>
@@ -147,7 +147,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">Note that for unhandled promise rejections, the "<code>unhandledrejection</code>" event will automatically propagate the context that is associated with the promise that was rejected. This behavior is different from other types of events emitted by <code>EventTarget</code> implementations, which will propagate whichever frame is current when the event is emitted.</p>
+<p data-astro-cid-t7az6eu7="">Note that for unhandled promise rejections, the "<code>unhandledrejection</code>" event will automatically propagate the context that is associated with the promise that was rejected. This behavior is different from other types of events emitted by <code>EventTarget</code> implementations, which will propagate whichever frame is current when the event is emitted.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> asyncLocalStorage</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> AsyncLocalStorage</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"></span>
@@ -164,7 +164,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">Workers can use the <code>AsyncLocalStorage.snapshot()</code> method to create their own objects that capture and propagate the context:</p>
+<p data-astro-cid-t7az6eu7="">Workers can use the <code>AsyncLocalStorage.snapshot()</code> method to create their own objects that capture and propagate the context:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> asyncLocalStorage</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> AsyncLocalStorage</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"></span>
@@ -188,11 +188,11 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">For more, refer to the <a href="https://nodejs.org/dist/latest-v18.x/docs/api/async_context.html#class-asynclocalstorage" target="_blank" rel="noopener noreferrer">Node.js documentation</a> about the <code>AsyncLocalStorage</code> API.</p>
-<p data-astro-cid-c6i3vrlz="">There is currently an effort underway to add a new <a href="https://github.com/tc39/proposal-async-context" target="_blank" rel="noopener noreferrer">AsyncContext</a> mechanism (inspired by <code>AsyncLocalStorage</code>) to the JavaScript language itself. While it is still early days for the TC-39 proposal, there is good reason to expect it to progress through the committee. Once it does, we look forward to being able to make it available in the Cloudflare Workers platform. We expect our implementation of <code>AsyncLocalStorage</code> to be compatible with this new API.</p>
-<p data-astro-cid-c6i3vrlz="">The proposal for AsyncContext provides an excellent set of examples and <a href="https://github.com/tc39/proposal-async-context#motivation" target="_blank" rel="noopener noreferrer">description of the motivation</a> of why async context tracking is useful.</p>
-<h3 data-astro-cid-c6i3vrlz="">Events with EventEmitter</h3>
-<p data-astro-cid-c6i3vrlz="">The EventEmitter API is one of the most fundamental Node.js APIs and is critical to supporting many other higher level APIs, including streams, crypto, net, and more. An EventEmitter is an object that emits named events that cause listeners to be called.</p>
+<p data-astro-cid-t7az6eu7="">For more, refer to the <a href="https://nodejs.org/dist/latest-v18.x/docs/api/async_context.html#class-asynclocalstorage" target="_blank" rel="noopener noreferrer">Node.js documentation</a> about the <code>AsyncLocalStorage</code> API.</p>
+<p data-astro-cid-t7az6eu7="">There is currently an effort underway to add a new <a href="https://github.com/tc39/proposal-async-context" target="_blank" rel="noopener noreferrer">AsyncContext</a> mechanism (inspired by <code>AsyncLocalStorage</code>) to the JavaScript language itself. While it is still early days for the TC-39 proposal, there is good reason to expect it to progress through the committee. Once it does, we look forward to being able to make it available in the Cloudflare Workers platform. We expect our implementation of <code>AsyncLocalStorage</code> to be compatible with this new API.</p>
+<p data-astro-cid-t7az6eu7="">The proposal for AsyncContext provides an excellent set of examples and <a href="https://github.com/tc39/proposal-async-context#motivation" target="_blank" rel="noopener noreferrer">description of the motivation</a> of why async context tracking is useful.</p>
+<h3 data-astro-cid-t7az6eu7="">Events with EventEmitter</h3>
+<p data-astro-cid-t7az6eu7="">The EventEmitter API is one of the most fundamental Node.js APIs and is critical to supporting many other higher level APIs, including streams, crypto, net, and more. An EventEmitter is an object that emits named events that cause listeners to be called.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { EventEmitter } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:events'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -207,7 +207,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">The <a href="https://github.com/cloudflare/workerd/blob/main/src/node/internal/events.ts" target="_blank" rel="noopener noreferrer">implementation</a> in the Workers runtime fully supports the entire Node.js EventEmitter API including the captureRejections option that allows improved handling of async functions as event handlers:</p>
+<p data-astro-cid-t7az6eu7="">The <a href="https://github.com/cloudflare/workerd/blob/main/src/node/internal/events.ts" target="_blank" rel="noopener noreferrer">implementation</a> in the Workers runtime fully supports the entire Node.js EventEmitter API including the captureRejections option that allows improved handling of async functions as event handlers:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> emitter</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> EventEmitter</span><span class="sk-24292e-fff">({ captureRejections: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff"> });</span></span>
 <span class="line"><span class="sk-24292e-fff">emitter.</span><span class="sk-6f42c1-ffc799">on</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'hello'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-e36209-fff">args</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
@@ -221,9 +221,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">Please refer to the Node.js documentation for more details on the use of the <code>EventEmitter</code> API: <a href="https://nodejs.org/dist/latest-v19.x/docs/api/events.html#events" target="_blank" rel="noopener noreferrer">https://nodejs.org/dist/latest-v19.x/docs/api/events.html#events</a>.</p>
-<h3 data-astro-cid-c6i3vrlz="">Buffer</h3>
-<p data-astro-cid-c6i3vrlz="">The <code>Buffer</code> API in Node.js predates the introduction of the standard TypedArray and DataView APIs in JavaScript by many years and has persisted as one of the most commonly used Node.js APIs for manipulating binary data. Today, every Buffer instance extends from the standard Uint8Array class but adds a range of unique capabilities such as built-in base64 and hex encoding/decoding, byte-order manipulation, and encoding-aware substring searching.</p>
+<p data-astro-cid-t7az6eu7="">Please refer to the Node.js documentation for more details on the use of the <code>EventEmitter</code> API: <a href="https://nodejs.org/dist/latest-v19.x/docs/api/events.html#events" target="_blank" rel="noopener noreferrer">https://nodejs.org/dist/latest-v19.x/docs/api/events.html#events</a>.</p>
+<h3 data-astro-cid-t7az6eu7="">Buffer</h3>
+<p data-astro-cid-t7az6eu7="">The <code>Buffer</code> API in Node.js predates the introduction of the standard TypedArray and DataView APIs in JavaScript by many years and has persisted as one of the most commonly used Node.js APIs for manipulating binary data. Today, every Buffer instance extends from the standard Uint8Array class but adds a range of unique capabilities such as built-in base64 and hex encoding/decoding, byte-order manipulation, and encoding-aware substring searching.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Buffer } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:buffer'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -238,7 +238,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">Because a Buffer extends from Uint8Array, it can be used in any workers API that currently accepts Uint8Array, such as creating a new Response:</p>
+<p data-astro-cid-t7az6eu7="">Because a Buffer extends from Uint8Array, it can be used in any workers API that currently accepts Uint8Array, such as creating a new Response:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(Buffer.</span><span class="sk-6f42c1-ffc799">from</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"hello world"</span><span class="sk-24292e-fff">));</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -246,7 +246,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">Or interacting with streams:</p>
+<p data-astro-cid-t7az6eu7="">Or interacting with streams:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> writable</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> getWritableStreamSomehow</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> writer</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> writable.</span><span class="sk-6f42c1-ffc799">getWriter</span><span class="sk-24292e-fff">();</span></span>
@@ -256,9 +256,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">Please refer to the Node.js documentation for more details on the use of the Buffer API: <a href="https://nodejs.org/dist/latest-v19.x/docs/api/buffer.html" target="_blank" rel="noopener noreferrer">https://nodejs.org/dist/latest-v19.x/docs/api/buffer.html</a>.</p>
-<h3 data-astro-cid-c6i3vrlz="">Assertions</h3>
-<p data-astro-cid-c6i3vrlz="">The assert module in Node.js provides a number of useful assertions that are useful when building tests.</p>
+<p data-astro-cid-t7az6eu7="">Please refer to the Node.js documentation for more details on the use of the Buffer API: <a href="https://nodejs.org/dist/latest-v19.x/docs/api/buffer.html" target="_blank" rel="noopener noreferrer">https://nodejs.org/dist/latest-v19.x/docs/api/buffer.html</a>.</p>
+<h3 data-astro-cid-t7az6eu7="">Assertions</h3>
+<p data-astro-cid-t7az6eu7="">The assert module in Node.js provides a number of useful assertions that are useful when building tests.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">  strictEqual,</span></span>
@@ -283,11 +283,11 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">In the Workers implementation of assert, all assertions run in what Node.js calls the "<a href="https://nodejs.org/dist/latest-v19.x/docs/api/assert.html#strict-assertion-mode" target="_blank" rel="noopener noreferrer">strict assertion mode</a>", which means that non-strict methods behave like their corresponding strict methods. For instance, <code>deepEqual()</code> will behave like <code>deepStrictEqual()</code>.</p>
-<p data-astro-cid-c6i3vrlz="">Please refer to the Node.js documentation for more details on the use of the assertion API: <a href="https://nodejs.org/dist/latest-v19.x/docs/api/assert.html" target="_blank" rel="noopener noreferrer">https://nodejs.org/dist/latest-v19.x/docs/api/assert.html</a>.</p>
-<h3 data-astro-cid-c6i3vrlz="">Promisify/Callbackify</h3>
-<p data-astro-cid-c6i3vrlz="">The <code>promisify</code> and callbackify APIs in Node.js provide a means of bridging between a Promise-based programming model and a callback-based model.</p>
-<p data-astro-cid-c6i3vrlz="">The <code>promisify</code> method allows taking a Node.js-style callback function and converting it into a Promise-returning async function:</p>
+<p data-astro-cid-t7az6eu7="">In the Workers implementation of assert, all assertions run in what Node.js calls the "<a href="https://nodejs.org/dist/latest-v19.x/docs/api/assert.html#strict-assertion-mode" target="_blank" rel="noopener noreferrer">strict assertion mode</a>", which means that non-strict methods behave like their corresponding strict methods. For instance, <code>deepEqual()</code> will behave like <code>deepStrictEqual()</code>.</p>
+<p data-astro-cid-t7az6eu7="">Please refer to the Node.js documentation for more details on the use of the assertion API: <a href="https://nodejs.org/dist/latest-v19.x/docs/api/assert.html" target="_blank" rel="noopener noreferrer">https://nodejs.org/dist/latest-v19.x/docs/api/assert.html</a>.</p>
+<h3 data-astro-cid-t7az6eu7="">Promisify/Callbackify</h3>
+<p data-astro-cid-t7az6eu7="">The <code>promisify</code> and callbackify APIs in Node.js provide a means of bridging between a Promise-based programming model and a callback-based model.</p>
+<p data-astro-cid-t7az6eu7="">The <code>promisify</code> method allows taking a Node.js-style callback function and converting it into a Promise-returning async function:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { promisify } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:util'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -307,7 +307,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">Similarly, callbackify converts a Promise-returning async function into a Node.js-style callback function:</p>
+<p data-astro-cid-t7az6eu7="">Similarly, callbackify converts a Promise-returning async function into a Node.js-style callback function:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { callbackify } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:util'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -325,10 +325,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">Together these utilities make it easy to properly handle all of the generally tricky nuances involved with properly bridging between callbacks and promises.</p>
-<p data-astro-cid-c6i3vrlz="">Please refer to the Node.js documentation for more information on how to use these APIs: <a href="https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utilcallbackifyoriginal" target="_blank" rel="noopener noreferrer">https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utilcallbackifyoriginal</a>, <a href="https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utilpromisifyoriginal" target="_blank" rel="noopener noreferrer">https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utilpromisifyoriginal</a>.</p>
-<h3 data-astro-cid-c6i3vrlz="">Type brand-checking with util.types</h3>
-<p data-astro-cid-c6i3vrlz="">The util.types API provides a reliable and generally more efficient way of checking that values are instances of various built-in types.</p>
+<p data-astro-cid-t7az6eu7="">Together these utilities make it easy to properly handle all of the generally tricky nuances involved with properly bridging between callbacks and promises.</p>
+<p data-astro-cid-t7az6eu7="">Please refer to the Node.js documentation for more information on how to use these APIs: <a href="https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utilcallbackifyoriginal" target="_blank" rel="noopener noreferrer">https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utilcallbackifyoriginal</a>, <a href="https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utilpromisifyoriginal" target="_blank" rel="noopener noreferrer">https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utilpromisifyoriginal</a>.</p>
+<h3 data-astro-cid-t7az6eu7="">Type brand-checking with util.types</h3>
+<p data-astro-cid-t7az6eu7="">The util.types API provides a reliable and generally more efficient way of checking that values are instances of various built-in types.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { types } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:util'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -349,6 +349,6 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">Please refer to the Node.js documentation for more information on how to use the type check APIs: <a href="https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utiltypes" target="_blank" rel="noopener noreferrer">https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utiltypes</a>. The workers implementation currently does not provide implementations of the <code>util.types.isExternal()</code>, <code>util.types.isProxy()</code>, <code>util.types.isKeyObject()</code>, or <code>util.type.isWebAssemblyCompiledModule()</code> APIs.</p>
-<h3 data-astro-cid-c6i3vrlz="">What's next</h3>
-<p data-astro-cid-c6i3vrlz="">Keep your eyes open for more Node.js core APIs coming to Cloudflare Workers soon! We currently have implementations of the string decoder, streams and crypto APIs in active development. These will be introduced into the workers runtime incrementally over time and any worker using the <code>nodejs_compat</code> compatibility flag will automatically pick up the new modules as they are added.</p>
+<p data-astro-cid-t7az6eu7="">Please refer to the Node.js documentation for more information on how to use the type check APIs: <a href="https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utiltypes" target="_blank" rel="noopener noreferrer">https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utiltypes</a>. The workers implementation currently does not provide implementations of the <code>util.types.isExternal()</code>, <code>util.types.isProxy()</code>, <code>util.types.isKeyObject()</code>, or <code>util.type.isWebAssemblyCompiledModule()</code> APIs.</p>
+<h3 data-astro-cid-t7az6eu7="">What's next</h3>
+<p data-astro-cid-t7az6eu7="">Keep your eyes open for more Node.js core APIs coming to Cloudflare Workers soon! We currently have implementations of the string decoder, streams and crypto APIs in active development. These will be introduced into the workers runtime incrementally over time and any worker using the <code>nodejs_compat</code> compatibility flag will automatically pick up the new modules as they are added.</p>

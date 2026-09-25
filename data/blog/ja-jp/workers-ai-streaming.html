@@ -1,9 +1,9 @@
-<p data-astro-cid-nalcf22a="">Workers AIは、Cloudflareのグローバルネットワーク上で動作するサーバーレスGPU駆動の推論プラットフォームです。Workersとシームレスに連携し、開発者が数分で強力でスケーラブルなAIアプリを構築できるようにする、既製モデルの増加し続けるカタログを提供しています。すでに開発者がWorkers AIを使用して驚くべきことを成し遂げており、プラットフォームを拡大し続ける中で彼らがどのようなことをするかを見るのが楽しみです。そのために、今日は以下、いくつかの最も要望の多かった新機能であるすべての<a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model" target="_blank" rel="noopener noreferrer">大規模言語モデル</a>（LLM）に対するストリーミング応答、より大きなコンテキストとシーケンスウィンドウ、そして完全な精度の<a href="https://developers.cloudflare.com/workers-ai/models/llm" target="_blank" rel="noopener noreferrer">Llama-2</a>モデルのバリアントを発表できることを嬉しく思います。</p>
-<p data-astro-cid-nalcf22a="">もし以前にChatGPTをご使用されたことがあれば、トークン単位でレスポンスが流れてくるレスポンスストリーミングの利点はよくご存知でしょう。LLMは内部的には、推論を繰り返すプロセスを用いてレスポンスを逐次生成することで動作します。LLMモデルの完全な出力は、基本的に数百から数千の個々の予測タスクのシーケンスです。このため、トークンの生成には数ミリ秒しかかかりませんが、完全なレスポンスの生成には数秒単位で時間がかかります。良いニュースは、最初のトークンが生成されたらすぐにレスポンスを表示し始め、レスポンスが完了するまでトークンを追加していくことができるということです。これにより、エンドユーザーのエクスペリエンスが大幅に向上します。生成されたテキストを段階的に表示することで、即座に応答するだけでなく、エンドユーザーがテキストを読んで解釈する時間をも確保できます。</p>
-<p data-astro-cid-nalcf22a="">本日より、カタログ内の人気モデルである<a href="https://developers.cloudflare.com/workers-ai/models/llm" target="_blank" rel="noopener noreferrer">Llama-2モデル</a>を含む、どのLLMモデルに対してもレスポンスストリーミングを利用できるようになりました。動作方法は以下の通りです。</p>
-<h3 data-astro-cid-nalcf22a="">サーバー送信イベント：ブラウザAPIの中での小さな宝石</h3>
-<p data-astro-cid-nalcf22a=""><a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events" target="_blank" rel="noopener noreferrer">サーバー送信イベント</a>は使いやすく、サーバーサイドで実装が簡単で、標準化されており、多くのプラットフォームでネイティブにまたはポリフィルとして広く利用可能です。サーバー送信イベントは、サーバーからの更新ストリームを処理するニッチな用途を満たし、イベントストリームを処理するためにそれ以外に必要なボイラープレートコードを排除します。</p>
-<p data-astro-cid-nalcf22a="">.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-lt9p{background-color:#F3F3F3;text-align:left;vertical-align:top} .tg .tg-9qck{background-color:#F3F3F3;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+<p data-astro-cid-t7az6eu7="">Workers AIは、Cloudflareのグローバルネットワーク上で動作するサーバーレスGPU駆動の推論プラットフォームです。Workersとシームレスに連携し、開発者が数分で強力でスケーラブルなAIアプリを構築できるようにする、既製モデルの増加し続けるカタログを提供しています。すでに開発者がWorkers AIを使用して驚くべきことを成し遂げており、プラットフォームを拡大し続ける中で彼らがどのようなことをするかを見るのが楽しみです。そのために、今日は以下、いくつかの最も要望の多かった新機能であるすべての<a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model" target="_blank" rel="noopener noreferrer">大規模言語モデル</a>（LLM）に対するストリーミング応答、より大きなコンテキストとシーケンスウィンドウ、そして完全な精度の<a href="https://developers.cloudflare.com/workers-ai/models/llm" target="_blank" rel="noopener noreferrer">Llama-2</a>モデルのバリアントを発表できることを嬉しく思います。</p>
+<p data-astro-cid-t7az6eu7="">もし以前にChatGPTをご使用されたことがあれば、トークン単位でレスポンスが流れてくるレスポンスストリーミングの利点はよくご存知でしょう。LLMは内部的には、推論を繰り返すプロセスを用いてレスポンスを逐次生成することで動作します。LLMモデルの完全な出力は、基本的に数百から数千の個々の予測タスクのシーケンスです。このため、トークンの生成には数ミリ秒しかかかりませんが、完全なレスポンスの生成には数秒単位で時間がかかります。良いニュースは、最初のトークンが生成されたらすぐにレスポンスを表示し始め、レスポンスが完了するまでトークンを追加していくことができるということです。これにより、エンドユーザーのエクスペリエンスが大幅に向上します。生成されたテキストを段階的に表示することで、即座に応答するだけでなく、エンドユーザーがテキストを読んで解釈する時間をも確保できます。</p>
+<p data-astro-cid-t7az6eu7="">本日より、カタログ内の人気モデルである<a href="https://developers.cloudflare.com/workers-ai/models/llm" target="_blank" rel="noopener noreferrer">Llama-2モデル</a>を含む、どのLLMモデルに対してもレスポンスストリーミングを利用できるようになりました。動作方法は以下の通りです。</p>
+<h3 data-astro-cid-t7az6eu7="">サーバー送信イベント：ブラウザAPIの中での小さな宝石</h3>
+<p data-astro-cid-t7az6eu7=""><a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events" target="_blank" rel="noopener noreferrer">サーバー送信イベント</a>は使いやすく、サーバーサイドで実装が簡単で、標準化されており、多くのプラットフォームでネイティブにまたはポリフィルとして広く利用可能です。サーバー送信イベントは、サーバーからの更新ストリームを処理するニッチな用途を満たし、イベントストリームを処理するためにそれ以外に必要なボイラープレートコードを排除します。</p>
+<p data-astro-cid-t7az6eu7="">.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-lt9p{background-color:#F3F3F3;text-align:left;vertical-align:top} .tg .tg-9qck{background-color:#F3F3F3;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
 <div id="html-block-ko" class="html-block">
 	<style>
 		#html-block-ko .tg {
@@ -88,9 +88,9 @@
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-nalcf22a="">使いやすい</p>
-<p data-astro-cid-nalcf22a="">ストリーミング</p>
-<p data-astro-cid-nalcf22a="">双方向</p>
+<p data-astro-cid-t7az6eu7="">使いやすい</p>
+<p data-astro-cid-t7az6eu7="">ストリーミング</p>
+<p data-astro-cid-t7az6eu7="">双方向</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">"https://api.cloudflare.com/client/v4/accounts/&lt;account&gt;/ai/run/@cf/meta/llama-2-7b-chat-int8"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
@@ -136,7 +136,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-nalcf22a="">フェッチ</p>
+<p data-astro-cid-t7az6eu7="">フェッチ</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Ai } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/ai"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
@@ -156,7 +156,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">✅</p>
+<p data-astro-cid-t7az6eu7="">✅</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> source</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> EventSource</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/worker-endpoint"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff">source.</span><span class="sk-6f42c1-ffc799">onmessage</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">event</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
@@ -174,17 +174,17 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">サーバー送信イベント</p>
-<p data-astro-cid-nalcf22a="">✅</p>
+<p data-astro-cid-t7az6eu7="">サーバー送信イベント</p>
+<p data-astro-cid-t7az6eu7="">✅</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="287" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW486D9K9N6S5H4F87S32P8S.gif" alt="BLOG-2167 Embedded Image - MMUM6H" width="715" height="287" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-nalcf22a="">✅</p>
-<p data-astro-cid-nalcf22a="">Websockets</p>
-<p data-astro-cid-nalcf22a="">✅</p>
-<p data-astro-cid-nalcf22a="">✅</p>
-<p data-astro-cid-nalcf22a="">フェッチ、サーバー送信イベント、およびWebSocketsを比較</p>
+<p data-astro-cid-t7az6eu7="">✅</p>
+<p data-astro-cid-t7az6eu7="">Websockets</p>
+<p data-astro-cid-t7az6eu7="">✅</p>
+<p data-astro-cid-t7az6eu7="">✅</p>
+<p data-astro-cid-t7az6eu7="">フェッチ、サーバー送信イベント、およびWebSocketsを比較</p>
 <div id="html-block-k1h" class="html-block">
 	<style>
 		#html-block-k1h .tg {
@@ -249,26 +249,26 @@
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-nalcf22a="">Workers AIのテキスト生成モデルでサーバー送信イベントを使用するには、リクエストの入力で"stream"パラメータをtrueに設定します。これにより、レスポンスのフォーマットと<code>mime-type</code>が<code>text/event-stream</code>に変更されます。</p>
-<p data-astro-cid-nalcf22a="">以下は、<a href="https://developers.cloudflare.com/workers-ai/get-started/rest-api" target="_blank" rel="noopener noreferrer">REST API</a>を使用してストリーミングを行う例です：</p>
-<p data-astro-cid-nalcf22a="">以下は、Workerスクリプトを使用した例です：</p>
-<p data-astro-cid-nalcf22a="">このWorkerからの出力イベントストリームをブラウザページで消費する場合、クライアントサイドのJavaScriptは次のようになります：</p>
-<p data-astro-cid-nalcf22a="">このシンプルなコードは、簡単なHTMLページだけでなく、Reactや他のWebフレームワークを使用した複雑なSPAにも利用できます。</p>
-<p data-astro-cid-nalcf22a="">これにより、ユーザーにとってはページが逐次的に更新されるため、全体のレスポンスシーケンスが生成されるまでスピナーで待つのではなく、よりインタラクティブな体験が得られます。<a href="https://ai.cloudflare.com" target="_blank" rel="noopener noreferrer">ai.cloudflare.com</a>でストリーミングをお試しください。</p>
-<p data-astro-cid-nalcf22a="">Workers AIは、<a href="https://developers.cloudflare.com/workers-ai/models/llm" target="_blank" rel="noopener noreferrer">Llama-2</a>モデルおよび将来的にカタログに追加するすべてのLLMモデルに対して、テキストのストリーミング応答をサポートしています。</p>
-<p data-astro-cid-nalcf22a="">しかし、それだけではありません。</p>
-<h3 data-astro-cid-nalcf22a="">高い精度、より長いコンテキストおよびシーケンスの長さ</h3>
-<p data-astro-cid-nalcf22a="">Workers AIの発売後、コミュニティから寄せられたもう1つの主要な要望は、Llama-2モデルでのより長い質問と回答のサポートでした。LLMの用語では、これはコンテキストの長さ（予測を行う前にモデルが入力として受け取るトークンの数）とシーケンスの長さ（モデルがレスポンスで生成するトークンの数）の増加につながります。</p>
-<p data-astro-cid-nalcf22a="">その要望にお応えすべく、ストリーミングと連動して、今日はカタログにより高い16ビットのフルプレシジョンなLlama-2バリアントを追加し、既存の8ビットバージョンのコンテキストとシーケンスの長さを増やしています。</p>
-<p data-astro-cid-nalcf22a="">.tg {border-collapse:collapse;border-spacing:0;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-9qck{background-color:#F3F3F3;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
-<p data-astro-cid-nalcf22a="">モデル</p>
-<p data-astro-cid-nalcf22a="">コンテキストの長さ（入力）</p>
-<p data-astro-cid-nalcf22a="">シーケンスの長さ（出力）</p>
-<p data-astro-cid-nalcf22a="">@cf/meta/llama-2-7b-chat-int8</p>
-<p data-astro-cid-nalcf22a="">2048（以前は768）</p>
-<p data-astro-cid-nalcf22a="">1800（以前は256）</p>
-<p data-astro-cid-nalcf22a="">@cf/meta/llama-2-7b-chat-fp16</p>
-<p data-astro-cid-nalcf22a="">3072</p>
-<p data-astro-cid-nalcf22a="">2500</p>
-<p data-astro-cid-nalcf22a="">ストリーミング、高い精度、およびより長いコンテキストとシーケンスの長さは、大規模言語モデルをWorkers AIで使用することにより、より良いユーザーエクスペリエンスを提供し、新しい、より豊かなアプリを可能にします。</p>
-<p data-astro-cid-nalcf22a="">より詳細な情報やオプションについては、Workers AIの<a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer">開発者ドキュメント</a>をご確認ください。Workers AIに関する質問やフィードバックがあれば、ぜひ<a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflareコミュニティ</a>または<a href="https://discord.gg/cloudflaredev" target="_blank" rel="noopener noreferrer">Cloudflare Discord</a>でお知らせください。機械学習やサーバーレスAIにご興味をお持ちの場合、Cloudflare Workers AIチームは、当社のネットワーク上で高速で低遅延の推論タスクを実行できるようにする、グローバル規模のプラットフォームとツールを構築しています。よろしければ<a href="https://www.cloudflare.com/careers/jobs" target="_blank" rel="noopener noreferrer">求人情報ページ</a>をご確認ください。</p>
+<p data-astro-cid-t7az6eu7="">Workers AIのテキスト生成モデルでサーバー送信イベントを使用するには、リクエストの入力で"stream"パラメータをtrueに設定します。これにより、レスポンスのフォーマットと<code>mime-type</code>が<code>text/event-stream</code>に変更されます。</p>
+<p data-astro-cid-t7az6eu7="">以下は、<a href="https://developers.cloudflare.com/workers-ai/get-started/rest-api" target="_blank" rel="noopener noreferrer">REST API</a>を使用してストリーミングを行う例です：</p>
+<p data-astro-cid-t7az6eu7="">以下は、Workerスクリプトを使用した例です：</p>
+<p data-astro-cid-t7az6eu7="">このWorkerからの出力イベントストリームをブラウザページで消費する場合、クライアントサイドのJavaScriptは次のようになります：</p>
+<p data-astro-cid-t7az6eu7="">このシンプルなコードは、簡単なHTMLページだけでなく、Reactや他のWebフレームワークを使用した複雑なSPAにも利用できます。</p>
+<p data-astro-cid-t7az6eu7="">これにより、ユーザーにとってはページが逐次的に更新されるため、全体のレスポンスシーケンスが生成されるまでスピナーで待つのではなく、よりインタラクティブな体験が得られます。<a href="https://ai.cloudflare.com" target="_blank" rel="noopener noreferrer">ai.cloudflare.com</a>でストリーミングをお試しください。</p>
+<p data-astro-cid-t7az6eu7="">Workers AIは、<a href="https://developers.cloudflare.com/workers-ai/models/llm" target="_blank" rel="noopener noreferrer">Llama-2</a>モデルおよび将来的にカタログに追加するすべてのLLMモデルに対して、テキストのストリーミング応答をサポートしています。</p>
+<p data-astro-cid-t7az6eu7="">しかし、それだけではありません。</p>
+<h3 data-astro-cid-t7az6eu7="">高い精度、より長いコンテキストおよびシーケンスの長さ</h3>
+<p data-astro-cid-t7az6eu7="">Workers AIの発売後、コミュニティから寄せられたもう1つの主要な要望は、Llama-2モデルでのより長い質問と回答のサポートでした。LLMの用語では、これはコンテキストの長さ（予測を行う前にモデルが入力として受け取るトークンの数）とシーケンスの長さ（モデルがレスポンスで生成するトークンの数）の増加につながります。</p>
+<p data-astro-cid-t7az6eu7="">その要望にお応えすべく、ストリーミングと連動して、今日はカタログにより高い16ビットのフルプレシジョンなLlama-2バリアントを追加し、既存の8ビットバージョンのコンテキストとシーケンスの長さを増やしています。</p>
+<p data-astro-cid-t7az6eu7="">.tg {border-collapse:collapse;border-spacing:0;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-9qck{background-color:#F3F3F3;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+<p data-astro-cid-t7az6eu7="">モデル</p>
+<p data-astro-cid-t7az6eu7="">コンテキストの長さ（入力）</p>
+<p data-astro-cid-t7az6eu7="">シーケンスの長さ（出力）</p>
+<p data-astro-cid-t7az6eu7="">@cf/meta/llama-2-7b-chat-int8</p>
+<p data-astro-cid-t7az6eu7="">2048（以前は768）</p>
+<p data-astro-cid-t7az6eu7="">1800（以前は256）</p>
+<p data-astro-cid-t7az6eu7="">@cf/meta/llama-2-7b-chat-fp16</p>
+<p data-astro-cid-t7az6eu7="">3072</p>
+<p data-astro-cid-t7az6eu7="">2500</p>
+<p data-astro-cid-t7az6eu7="">ストリーミング、高い精度、およびより長いコンテキストとシーケンスの長さは、大規模言語モデルをWorkers AIで使用することにより、より良いユーザーエクスペリエンスを提供し、新しい、より豊かなアプリを可能にします。</p>
+<p data-astro-cid-t7az6eu7="">より詳細な情報やオプションについては、Workers AIの<a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer">開発者ドキュメント</a>をご確認ください。Workers AIに関する質問やフィードバックがあれば、ぜひ<a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflareコミュニティ</a>または<a href="https://discord.gg/cloudflaredev" target="_blank" rel="noopener noreferrer">Cloudflare Discord</a>でお知らせください。機械学習やサーバーレスAIにご興味をお持ちの場合、Cloudflare Workers AIチームは、当社のネットワーク上で高速で低遅延の推論タスクを実行できるようにする、グローバル規模のプラットフォームとツールを構築しています。よろしければ<a href="https://www.cloudflare.com/careers/jobs" target="_blank" rel="noopener noreferrer">求人情報ページ</a>をご確認ください。</p>

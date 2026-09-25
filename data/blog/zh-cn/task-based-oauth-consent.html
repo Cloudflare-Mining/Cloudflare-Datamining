@@ -1,17 +1,17 @@
-<p data-astro-cid-c6i3vrlz="">自六月以来，开发人员已在 Cloudflare 上创建了数千个<a href="https://blog.cloudflare.com/oauth-for-all" target="_blank" rel="noopener noreferrer"><u>第三方 OAuth 应用</u></a>，至今授权次数已超过一百万次。</p>
-<p data-astro-cid-c6i3vrlz="">OAuth 实现了委托访问。它允许应用代表用户执行操作，而无需用户处理长期有效的凭据或交出密码。当应用能够以少量权限范围描述其访问需求时，这一模型运作良好。</p>
-<p data-astro-cid-c6i3vrlz="">开发人员将 OAuth 用于 SaaS 集成、内部工具、CLI 工具以及 AI 代理。随着时间推移，我们的权限模型已变得更加精细，以便更好地划定这些不同工作流的权限边界。这对安全性大有裨益，但也使纯粹的全有或全无授权同意页面愈发难以为继。</p>
-<p data-astro-cid-c6i3vrlz="">Cloudflare OAuth 已允许客户端请求其已配置权限范围的子集。但一旦客户端发出请求，用户就无法在授权同意页面上进一步缩小范围。对于授权同意页面上的用户而言，体验仍然是全有或全无。如果应用请求的访问权限超出用户愿意授予的范围，用户只有两个选择：批准全部请求，或直接拒绝。</p>
+<p data-astro-cid-t7az6eu7="">自六月以来，开发人员已在 Cloudflare 上创建了数千个<a href="https://blog.cloudflare.com/oauth-for-all" target="_blank" rel="noopener noreferrer"><u>第三方 OAuth 应用</u></a>，至今授权次数已超过一百万次。</p>
+<p data-astro-cid-t7az6eu7="">OAuth 实现了委托访问。它允许应用代表用户执行操作，而无需用户处理长期有效的凭据或交出密码。当应用能够以少量权限范围描述其访问需求时，这一模型运作良好。</p>
+<p data-astro-cid-t7az6eu7="">开发人员将 OAuth 用于 SaaS 集成、内部工具、CLI 工具以及 AI 代理。随着时间推移，我们的权限模型已变得更加精细，以便更好地划定这些不同工作流的权限边界。这对安全性大有裨益，但也使纯粹的全有或全无授权同意页面愈发难以为继。</p>
+<p data-astro-cid-t7az6eu7="">Cloudflare OAuth 已允许客户端请求其已配置权限范围的子集。但一旦客户端发出请求，用户就无法在授权同意页面上进一步缩小范围。对于授权同意页面上的用户而言，体验仍然是全有或全无。如果应用请求的访问权限超出用户愿意授予的范围，用户只有两个选择：批准全部请求，或直接拒绝。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="448" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01M0E1GFZ6DDW8NXR685SD3CB9.gif" alt="BLOG-3481 3.gif" width="715" height="448" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-c6i3vrlz="">MCP 服务器就是一个典型例子。MCP 服务器可能会请求一组宽泛的权限，因为理论上 AI 代理可能用到所有这些权限。但大多数用户并不希望 AI 代理拥有如此广泛的访问权限。在此功能推出之前，处理这一问题的唯一方式，是让应用开发人员在将用户引导至我们的授权同意流程之前，自行构建一个自定义权限范围选择页面。</p>
-<p data-astro-cid-c6i3vrlz="">今天，我们正式推出 OAuth 权限范围自定义功能。客户端所有者在配置 OAuth 客户端时，可以将特定权限范围标记为可选，从而让用户能够在授权时仅授予应用所请求访问权限的一个更窄子集。</p>
-<p data-astro-cid-c6i3vrlz="">OAuth 规范已允许授权服务器授予比请求范围更窄的权限范围集合。我们在这一灵活性基础上加以构建，使其能够为每个现有应用干净利落地运作。</p>
-<h2 data-astro-cid-c6i3vrlz=""><strong>更多掌控权，而不令用户不知所措</strong></h2>
-<p data-astro-cid-c6i3vrlz="">引入权限范围选择功能的目标，是为注重安全的用户提供更大的灵活性，让其能够针对自身使用场景做出正确选择——同时不将授权同意页面变成冗长的权限范围清单。</p>
-<p data-astro-cid-c6i3vrlz="">借助权限范围自定义功能：&nbsp;</p>
+<p data-astro-cid-t7az6eu7="">MCP 服务器就是一个典型例子。MCP 服务器可能会请求一组宽泛的权限，因为理论上 AI 代理可能用到所有这些权限。但大多数用户并不希望 AI 代理拥有如此广泛的访问权限。在此功能推出之前，处理这一问题的唯一方式，是让应用开发人员在将用户引导至我们的授权同意流程之前，自行构建一个自定义权限范围选择页面。</p>
+<p data-astro-cid-t7az6eu7="">今天，我们正式推出 OAuth 权限范围自定义功能。客户端所有者在配置 OAuth 客户端时，可以将特定权限范围标记为可选，从而让用户能够在授权时仅授予应用所请求访问权限的一个更窄子集。</p>
+<p data-astro-cid-t7az6eu7="">OAuth 规范已允许授权服务器授予比请求范围更窄的权限范围集合。我们在这一灵活性基础上加以构建，使其能够为每个现有应用干净利落地运作。</p>
+<h2 data-astro-cid-t7az6eu7=""><strong>更多掌控权，而不令用户不知所措</strong></h2>
+<p data-astro-cid-t7az6eu7="">引入权限范围选择功能的目标，是为注重安全的用户提供更大的灵活性，让其能够针对自身使用场景做出正确选择——同时不将授权同意页面变成冗长的权限范围清单。</p>
+<p data-astro-cid-t7az6eu7="">借助权限范围自定义功能：&nbsp;</p>
 <ul>
 	<li>开发人员可以将 OAuth 客户端上的特定权限范围标记为必选或可选</li>
 	<li>在授权时，用户可以从请求的权限范围集合中取消勾选可选权限范围</li>
@@ -22,13 +22,13 @@
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="448" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01M0E1GG62H7P75CGY2P2Q4CWW.gif" alt="BLOG-3481 4.gif" width="715" height="448" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
 </figure>
-<h2 data-astro-cid-c6i3vrlz=""><strong>权限范围限定于授权请求</strong></h2>
-<p data-astro-cid-c6i3vrlz="">一个重要细节是：必选和可选权限范围仅针对特定授权流程中所请求的权限范围进行评估，而不是根据客户端配置的所有权限范围进行评估。这一点至关重要，因为 OAuth 客户端并非总是请求其配置的全部权限范围。</p>
-<p data-astro-cid-c6i3vrlz="">例如，某客户端可能配置了 <a href="http://user-details.read" target="_blank" rel="noopener noreferrer"><u>user-details.read</u></a>、workers-scripts.write、workers-kv-storage.write 和 <u><a href="http://zone.read" target="_blank" rel="noopener noreferrer">zone.read</a> </u>权限，同时将 workers-kv-storage.write 和 <a href="http://zone.read" target="_blank" rel="noopener noreferrer"><u>zone.read</u></a> 标记为可选。如果该客户端发起授权流程并请求全部四个权限范围，授权同意页面将对所有四个权限范围进行评估。在这种情况下，<a href="http://user-details.read" target="_blank" rel="noopener noreferrer"><u>user-details.read</u></a> 和 workers-scripts.write 仍是必需权限，但用户可以选择是否授予 workers-kv-storage.write 和 <a href="http://zone.read" target="_blank" rel="noopener noreferrer"><u>zone.read</u></a> 权限。</p>
-<p data-astro-cid-c6i3vrlz="">但是，如果该客户端稍后仅请求 workers-scripts.write 和 <a href="http://zone.read" target="_blank" rel="noopener noreferrer"><u>zone.read</u></a> 权限，则该授权流程仅考虑这两个权限范围。<a href="http://user-details.read" target="_blank" rel="noopener noreferrer"><u>user-details.read</u></a> 和 workers-kv-storage.write 将不会显示，也不会强制执行，因为它们不在请求范围之列。</p>
-<p data-astro-cid-c6i3vrlz="">这使授权同意页面聚焦于当前任务，而非应用可能请求的所有功能。这也意味着现有 OAuth 客户端的行为默认保持不变：如果客户端未选择启用可选权限范围，授权流程将维持原状。</p>
-<h2 data-astro-cid-c6i3vrlz=""><strong>配置 OAuth 客户端以使用可选权限范围</strong></h2>
-<p data-astro-cid-c6i3vrlz="">开发人员可以在配置 OAuth 客户端时选择启用权限范围自定义功能。权限范围的配置方式与现在相同，客户端现在还可以额外指定哪些权限范围为可选：</p>
+<h2 data-astro-cid-t7az6eu7=""><strong>权限范围限定于授权请求</strong></h2>
+<p data-astro-cid-t7az6eu7="">一个重要细节是：必选和可选权限范围仅针对特定授权流程中所请求的权限范围进行评估，而不是根据客户端配置的所有权限范围进行评估。这一点至关重要，因为 OAuth 客户端并非总是请求其配置的全部权限范围。</p>
+<p data-astro-cid-t7az6eu7="">例如，某客户端可能配置了 <a href="http://user-details.read" target="_blank" rel="noopener noreferrer"><u>user-details.read</u></a>、workers-scripts.write、workers-kv-storage.write 和 <u><a href="http://zone.read" target="_blank" rel="noopener noreferrer">zone.read</a> </u>权限，同时将 workers-kv-storage.write 和 <a href="http://zone.read" target="_blank" rel="noopener noreferrer"><u>zone.read</u></a> 标记为可选。如果该客户端发起授权流程并请求全部四个权限范围，授权同意页面将对所有四个权限范围进行评估。在这种情况下，<a href="http://user-details.read" target="_blank" rel="noopener noreferrer"><u>user-details.read</u></a> 和 workers-scripts.write 仍是必需权限，但用户可以选择是否授予 workers-kv-storage.write 和 <a href="http://zone.read" target="_blank" rel="noopener noreferrer"><u>zone.read</u></a> 权限。</p>
+<p data-astro-cid-t7az6eu7="">但是，如果该客户端稍后仅请求 workers-scripts.write 和 <a href="http://zone.read" target="_blank" rel="noopener noreferrer"><u>zone.read</u></a> 权限，则该授权流程仅考虑这两个权限范围。<a href="http://user-details.read" target="_blank" rel="noopener noreferrer"><u>user-details.read</u></a> 和 workers-kv-storage.write 将不会显示，也不会强制执行，因为它们不在请求范围之列。</p>
+<p data-astro-cid-t7az6eu7="">这使授权同意页面聚焦于当前任务，而非应用可能请求的所有功能。这也意味着现有 OAuth 客户端的行为默认保持不变：如果客户端未选择启用可选权限范围，授权流程将维持原状。</p>
+<h2 data-astro-cid-t7az6eu7=""><strong>配置 OAuth 客户端以使用可选权限范围</strong></h2>
+<p data-astro-cid-t7az6eu7="">开发人员可以在配置 OAuth 客户端时选择启用权限范围自定义功能。权限范围的配置方式与现在相同，客户端现在还可以额外指定哪些权限范围为可选：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-032f62-99ffe4">"https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/oauth_clients"</span><span class="sk-24292e-fff"> \</span></span>
 <span class="line"><span class="sk-24292e-fff">  --request POST \</span></span>
@@ -80,18 +80,18 @@
 		})
 	});
 </script>
-<p data-astro-cid-c6i3vrlz="">在上述示例中，客户端可以请求全部四个权限范围，但用户在授权同意时只能取消 <code>workers-kv-storage.write</code> 和 <code>zone.read</code> 这两个权限范围。<code>user-details.read</code> 和 <code>workers-scripts.write</code> 一旦包含在授权请求中，将保持为必选。</p>
-<p data-astro-cid-c6i3vrlz="">如果该客户端后续仅请求 <code>workers-scripts.write</code> 和 <code>zone.read</code> 权限，则该授权流程仅考虑这两个权限范围。<code>user-details.read</code> 和 <code>workers-kv-storage.write</code> 将不会显示，也不会强制执行，因为它们不在请求范围之列。</p>
+<p data-astro-cid-t7az6eu7="">在上述示例中，客户端可以请求全部四个权限范围，但用户在授权同意时只能取消 <code>workers-kv-storage.write</code> 和 <code>zone.read</code> 这两个权限范围。<code>user-details.read</code> 和 <code>workers-scripts.write</code> 一旦包含在授权请求中，将保持为必选。</p>
+<p data-astro-cid-t7az6eu7="">如果该客户端后续仅请求 <code>workers-scripts.write</code> 和 <code>zone.read</code> 权限，则该授权流程仅考虑这两个权限范围。<code>user-details.read</code> 和 <code>workers-kv-storage.write</code> 将不会显示，也不会强制执行，因为它们不在请求范围之列。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="448" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01M0E1GGSR29T7ZF75ZW9YSZSZ.gif" alt="BLOG-3481 5.gif" width="715" height="448" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
 </figure>
-<h2 data-astro-cid-c6i3vrlz=""><strong>在开发时考虑部分授权的情况</strong></h2>
-<p data-astro-cid-c6i3vrlz="">当用户取消勾选任何可选权限范围并完成授权流程后，生成的访问令牌将只包含其同意授予的权限范围。对开发人员而言，这意味着在交换授权码之后，需要检查实际授予的权限范围集合，而不能假定所有被请求的权限范围均已获批。</p>
-<p data-astro-cid-c6i3vrlz="">一个能够优雅处理较窄授权的应用——例如，一个在其获得的任意权限范围子集内正常运作的 AI 代理——会让用户更放心地授权。仅请求必要的权限并将其余权限标记为可选，这是向用户表明应用尊重其访问决策的良好信号。</p>
-<h2 data-astro-cid-c6i3vrlz=""><strong>覆盖每款产品的权限范围</strong></h2>
-<p data-astro-cid-c6i3vrlz="">未来几周内，我们将扩展账户和区域级别的角色体系，覆盖几乎所有 Cloudflare 产品。这意味着将有更多 API 令牌角色、账户成员选项以及 OAuth 权限范围，让客户能够以恰当的访问级别保护其工作负载。</p>
-<h2 data-astro-cid-c6i3vrlz=""><strong>立即使用可选权限范围构建</strong></h2>
-<p data-astro-cid-c6i3vrlz="">通过可选 OAuth 权限范围，让开发人员和用户能够更精细地限制访问权限，是朝着在 Cloudflare 上实现更灵活、更可信的授权同意体验迈出的重要一步。借助可选权限范围，开发人员可以构建更细粒度的授权流程，用户也能对其批准的内容拥有更多掌控权。</p>
-<p data-astro-cid-c6i3vrlz="">如需开始使用第三方 OAuth，请参阅我们的<a href="https://developers.cloudflare.com/fundamentals/oauth" target="_blank" rel="noopener noreferrer"><u>文档</u></a>，或直接前往仪表板中的 OAuth 应用页面，<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Foauth-clients" target="_blank" rel="noopener noreferrer"><u>创建您的第一个 OAuth 应用</u></a>。</p>
-<h2 data-astro-cid-c6i3vrlz=""><strong>感谢我们出色的实习生</strong></h2>
-<p data-astro-cid-c6i3vrlz="">此功能是我们在 <a href="https://blog.cloudflare.com/cloudflare-1111-intern-program" target="_blank" rel="noopener noreferrer"><u>1111 名实习生</u></a>的协助下构建的众多功能之一。祝贺 Miller Vargas 和 José Enrique Rodriguez 在此项目中做出的卓越贡献。Miller 是德克萨斯大学奥斯汀分校计算机科学与数学专业的大四学生；José 是墨西哥泛美大学工程学、数据智能与网络安全专业的大四学生。</p>
+<h2 data-astro-cid-t7az6eu7=""><strong>在开发时考虑部分授权的情况</strong></h2>
+<p data-astro-cid-t7az6eu7="">当用户取消勾选任何可选权限范围并完成授权流程后，生成的访问令牌将只包含其同意授予的权限范围。对开发人员而言，这意味着在交换授权码之后，需要检查实际授予的权限范围集合，而不能假定所有被请求的权限范围均已获批。</p>
+<p data-astro-cid-t7az6eu7="">一个能够优雅处理较窄授权的应用——例如，一个在其获得的任意权限范围子集内正常运作的 AI 代理——会让用户更放心地授权。仅请求必要的权限并将其余权限标记为可选，这是向用户表明应用尊重其访问决策的良好信号。</p>
+<h2 data-astro-cid-t7az6eu7=""><strong>覆盖每款产品的权限范围</strong></h2>
+<p data-astro-cid-t7az6eu7="">未来几周内，我们将扩展账户和区域级别的角色体系，覆盖几乎所有 Cloudflare 产品。这意味着将有更多 API 令牌角色、账户成员选项以及 OAuth 权限范围，让客户能够以恰当的访问级别保护其工作负载。</p>
+<h2 data-astro-cid-t7az6eu7=""><strong>立即使用可选权限范围构建</strong></h2>
+<p data-astro-cid-t7az6eu7="">通过可选 OAuth 权限范围，让开发人员和用户能够更精细地限制访问权限，是朝着在 Cloudflare 上实现更灵活、更可信的授权同意体验迈出的重要一步。借助可选权限范围，开发人员可以构建更细粒度的授权流程，用户也能对其批准的内容拥有更多掌控权。</p>
+<p data-astro-cid-t7az6eu7="">如需开始使用第三方 OAuth，请参阅我们的<a href="https://developers.cloudflare.com/fundamentals/oauth" target="_blank" rel="noopener noreferrer"><u>文档</u></a>，或直接前往仪表板中的 OAuth 应用页面，<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Foauth-clients" target="_blank" rel="noopener noreferrer"><u>创建您的第一个 OAuth 应用</u></a>。</p>
+<h2 data-astro-cid-t7az6eu7=""><strong>感谢我们出色的实习生</strong></h2>
+<p data-astro-cid-t7az6eu7="">此功能是我们在 <a href="https://blog.cloudflare.com/cloudflare-1111-intern-program" target="_blank" rel="noopener noreferrer"><u>1111 名实习生</u></a>的协助下构建的众多功能之一。祝贺 Miller Vargas 和 José Enrique Rodriguez 在此项目中做出的卓越贡献。Miller 是德克萨斯大学奥斯汀分校计算机科学与数学专业的大四学生；José 是墨西哥泛美大学工程学、数据智能与网络安全专业的大四学生。</p>

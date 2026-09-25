@@ -1,11 +1,11 @@
-<p data-astro-cid-nalcf22a=""><em>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</em></p>
-<p data-astro-cid-nalcf22a="">大量のデータを扱うとき、簡単な概要を把握するのが役立ちます。これはまさにSQLで集約が提供するものです。「GROUP クエリ」と呼ばれる集約は全体像が示されるため、膨大な量のデータからインサイトを素早く得ることができます。</p>
-<p data-astro-cid-nalcf22a="">Cloudflareのサーバーレス分散型分析クエリエンジンである<a href="https://blog.cloudflare.com/r2-sql-deep-dive" target="_blank" rel="noopener noreferrer"><u>R2 SQL</u></a>での集約対応を発表できることを嬉しく思います。R2 SQLは、<a href="https://developers.cloudflare.com/r2/data-catalog" target="_blank" rel="noopener noreferrer"><u>R2データカタログ</u></a>に格納されたデータに対してSQLクエリを実行することができます。集約により、<a href="https://developers.cloudflare.com/r2-sql" target="_blank" rel="noopener noreferrer"><u>R2 SQL</u></a>のユーザーはデータの重要な傾向や変化を見極め、レポートを作成し、ログの異常を発見することができます。</p>
-<p data-astro-cid-nalcf22a="">このリリースは、すでにサポートされているフィルタクエリに基づいており、分析ワークロードの基盤となり、ユーザーが<a href="https://parquet.apache.org" target="_blank" rel="noopener noreferrer"><u>Apache Parquet</u></a>ファイルの干し草の山から針を見つけることができるようになります。</p>
-<p data-astro-cid-nalcf22a="">この記事では、集約の有用性と特異性を解き放ち、R2データカタログに保存された膨大な量のデータに対するクエリーの実行をサポートするために、どのようにR2SQLを拡張したかを掘り下げます。</p>
-<h2 data-astro-cid-nalcf22a="">分析における集約の重要性</h2>
-<p data-astro-cid-nalcf22a="">集約（「クエリ別グループ」）で、元データの短い要約を生成します。</p>
-<p data-astro-cid-nalcf22a="">集約の一般的な使用例は、レポートの生成です。「売上」と呼ばれる表を想像してみてください。これには、ある企業のさまざまな国と部門の全売上の履歴データが含まれています。この集計クエリを使って、部門別の売上高に関するレポートを簡単に作成することができます。</p>
+<p data-astro-cid-t7az6eu7=""><em>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</em></p>
+<p data-astro-cid-t7az6eu7="">大量のデータを扱うとき、簡単な概要を把握するのが役立ちます。これはまさにSQLで集約が提供するものです。「GROUP クエリ」と呼ばれる集約は全体像が示されるため、膨大な量のデータからインサイトを素早く得ることができます。</p>
+<p data-astro-cid-t7az6eu7="">Cloudflareのサーバーレス分散型分析クエリエンジンである<a href="https://blog.cloudflare.com/r2-sql-deep-dive" target="_blank" rel="noopener noreferrer"><u>R2 SQL</u></a>での集約対応を発表できることを嬉しく思います。R2 SQLは、<a href="https://developers.cloudflare.com/r2/data-catalog" target="_blank" rel="noopener noreferrer"><u>R2データカタログ</u></a>に格納されたデータに対してSQLクエリを実行することができます。集約により、<a href="https://developers.cloudflare.com/r2-sql" target="_blank" rel="noopener noreferrer"><u>R2 SQL</u></a>のユーザーはデータの重要な傾向や変化を見極め、レポートを作成し、ログの異常を発見することができます。</p>
+<p data-astro-cid-t7az6eu7="">このリリースは、すでにサポートされているフィルタクエリに基づいており、分析ワークロードの基盤となり、ユーザーが<a href="https://parquet.apache.org" target="_blank" rel="noopener noreferrer"><u>Apache Parquet</u></a>ファイルの干し草の山から針を見つけることができるようになります。</p>
+<p data-astro-cid-t7az6eu7="">この記事では、集約の有用性と特異性を解き放ち、R2データカタログに保存された膨大な量のデータに対するクエリーの実行をサポートするために、どのようにR2SQLを拡張したかを掘り下げます。</p>
+<h2 data-astro-cid-t7az6eu7="">分析における集約の重要性</h2>
+<p data-astro-cid-t7az6eu7="">集約（「クエリ別グループ」）で、元データの短い要約を生成します。</p>
+<p data-astro-cid-t7az6eu7="">集約の一般的な使用例は、レポートの生成です。「売上」と呼ばれる表を想像してみてください。これには、ある企業のさまざまな国と部門の全売上の履歴データが含まれています。この集計クエリを使って、部門別の売上高に関するレポートを簡単に作成することができます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">SELECT</span><span class="sk-24292e-fff"> department, </span><span class="sk-005cc5-ffc799">sum</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-ffc799">value</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> sales</span></span>
@@ -33,8 +33,8 @@
 		})
 	});
 </script>
-<p data-astro-cid-nalcf22a=""><br>「GROUP BY」文を使用することで、テーブル行をバケットに分割することができます。各バケットには、特定の部署に対応するラベルが付いています。バケットが満杯になると、各バケットの全行の「合計（value）」を計算し、対応する部門で行われる売上の総量を求めることができます。</p>
-<p data-astro-cid-nalcf22a="">レポートによっては、量が最も多い部門だけに関心があるかもしれません。そこで登場するのが「ORDER BY」文です。</p>
+<p data-astro-cid-t7az6eu7=""><br>「GROUP BY」文を使用することで、テーブル行をバケットに分割することができます。各バケットには、特定の部署に対応するラベルが付いています。バケットが満杯になると、各バケットの全行の「合計（value）」を計算し、対応する部門で行われる売上の総量を求めることができます。</p>
+<p data-astro-cid-t7az6eu7="">レポートによっては、量が最も多い部門だけに関心があるかもしれません。そこで登場するのが「ORDER BY」文です。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">SELECT</span><span class="sk-24292e-fff"> department, </span><span class="sk-005cc5-ffc799">sum</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-ffc799">value</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> sales</span></span>
@@ -46,8 +46,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">ここでは、すべての部門バケットを合計売上高で降順にソートし、上位10件のみを返すようにクエリーエンジンに指示しています。</p>
-<p data-astro-cid-nalcf22a="">最後に、異常をフィルタリングすることに関心があるかもしれません。たとえば、売上合計が5件を超える部門のみをレポートに含めたい場合があります。「HAVING」ステートメントを使うことで、簡単にそれを行うことができます。</p>
+<p data-astro-cid-t7az6eu7="">ここでは、すべての部門バケットを合計売上高で降順にソートし、上位10件のみを返すようにクエリーエンジンに指示しています。</p>
+<p data-astro-cid-t7az6eu7="">最後に、異常をフィルタリングすることに関心があるかもしれません。たとえば、売上合計が5件を超える部門のみをレポートに含めたい場合があります。「HAVING」ステートメントを使うことで、簡単にそれを行うことができます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">SELECT</span><span class="sk-24292e-fff"> department, </span><span class="sk-005cc5-ffc799">sum</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-ffc799">value</span><span class="sk-24292e-fff">), </span><span class="sk-005cc5-ffc799">count</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> sales</span></span>
@@ -60,26 +60,26 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">ここでは、クエリに新しい集計関数「count(*)」を追加しています。これは、各バケットの最終行数を計算するものです。これは、各部門の売上数に直接対応するため、「HAVING」ステートメントに予測条件を追加し、5行以上のバケットのみを残りするようにしました。</p>
-<h2 data-astro-cid-nalcf22a="">集約には2つのアプローチがあります：早い段階での計算</h2>
-<p data-astro-cid-nalcf22a="">集計クエリには、どこにも保存されていない列を参照することができるという興味深い特性があります。「sum(value)」について考えてみましょう。このカラムは、R2に保存されたParquetファイルから取得される「部署」列とは異なり、クエリーエンジンによってその場で計算されます。この微妙な違いは、「sum」、「count」などの集計を参照するクエリは、2つのフェーズに分割する必要があることを意味します。</p>
-<p data-astro-cid-nalcf22a="">最初のフェーズは、新しい列を計算します。「ORDER BY」文を使って「count(*)」列でデータをソートしたり、「HAVING」文を使って行をフィルタリングする場合は、この列の値を知る必要があります。「count(*)」などの列の値が把握できたら、残りのクエリ実行に移ることができます。</p>
-<p data-astro-cid-nalcf22a="">クエリがHAVINGまたはORDER BY”で集約関数を参照せず、“SELECT”でそれらを使用している場合、騙すことができることに注意してください。集計関数の値は最後まで必要ないため、ユーザーに返す前に、それらを部分的に計算し、結果を統合することができます。</p>
-<p data-astro-cid-nalcf22a="">2つのアプローチの重要な違いは、集約関数を事前に、後で追加の計算を行う場合、その場で、ユーザーが必要とする結果を反復的に構築することもできるのです。</p>
-<p data-astro-cid-nalcf22a="">まず、その場で結果を構築していきます。これは「スキャッター集約」と呼ばれるテクニックです。そしてその上に、集計関数の上で「HAVING」や「ORDER BY」などの追加の計算を実行できる「シャッフル集約」を導入します。</p>
-<h2 data-astro-cid-nalcf22a="">スキャッター集約</h2>
-<p data-astro-cid-nalcf22a="">「HAVING」と「ORDER BY」を使用しない集約クエリは、フィルタクエリに似た方法で実行できます。フィルタクエリの場合、R2 SQLはクエリ実行のコーディネーターとなるノードを1つ選択します。このノードはクエリを分析し、R2データカタログを参照して、どのParquet行グループにクエリに関連するデータが含まれているかを把握します。Parquetの各行グループは、単一のコンピューティングノードが処理できる比較的小さな作業を表します。コーディネーターノードは多くのWorkerノードに作業を分散し、結果を収集してユーザーに返します。</p>
-<p data-astro-cid-nalcf22a="">集約されたクエリを実行するために、すべて同じ手順に従い、Workerノード間で小さな作業を分散します。しかし今回は、「WHERE」ステートメントの前提条件に基づいて行をフィルタリングするだけでなく、Workerノードは<strong>事前集約</strong>も計算します。</p>
-<p data-astro-cid-nalcf22a="">プリ集約は、集約の中間状態を表します。これは、データのサブセット上で部分的に計算された集計関数を表すデータの不完全な断片です。複数の事前集約を結合して、集約関数の最終値を計算することができます。集約関数を事前集約に分割することで、集約の計算を水平にスケールすることができ、Cloudflareのネットワークにある膨大な計算リソースを活用することができます。</p>
+<p data-astro-cid-t7az6eu7="">ここでは、クエリに新しい集計関数「count(*)」を追加しています。これは、各バケットの最終行数を計算するものです。これは、各部門の売上数に直接対応するため、「HAVING」ステートメントに予測条件を追加し、5行以上のバケットのみを残りするようにしました。</p>
+<h2 data-astro-cid-t7az6eu7="">集約には2つのアプローチがあります：早い段階での計算</h2>
+<p data-astro-cid-t7az6eu7="">集計クエリには、どこにも保存されていない列を参照することができるという興味深い特性があります。「sum(value)」について考えてみましょう。このカラムは、R2に保存されたParquetファイルから取得される「部署」列とは異なり、クエリーエンジンによってその場で計算されます。この微妙な違いは、「sum」、「count」などの集計を参照するクエリは、2つのフェーズに分割する必要があることを意味します。</p>
+<p data-astro-cid-t7az6eu7="">最初のフェーズは、新しい列を計算します。「ORDER BY」文を使って「count(*)」列でデータをソートしたり、「HAVING」文を使って行をフィルタリングする場合は、この列の値を知る必要があります。「count(*)」などの列の値が把握できたら、残りのクエリ実行に移ることができます。</p>
+<p data-astro-cid-t7az6eu7="">クエリがHAVINGまたはORDER BY”で集約関数を参照せず、“SELECT”でそれらを使用している場合、騙すことができることに注意してください。集計関数の値は最後まで必要ないため、ユーザーに返す前に、それらを部分的に計算し、結果を統合することができます。</p>
+<p data-astro-cid-t7az6eu7="">2つのアプローチの重要な違いは、集約関数を事前に、後で追加の計算を行う場合、その場で、ユーザーが必要とする結果を反復的に構築することもできるのです。</p>
+<p data-astro-cid-t7az6eu7="">まず、その場で結果を構築していきます。これは「スキャッター集約」と呼ばれるテクニックです。そしてその上に、集計関数の上で「HAVING」や「ORDER BY」などの追加の計算を実行できる「シャッフル集約」を導入します。</p>
+<h2 data-astro-cid-t7az6eu7="">スキャッター集約</h2>
+<p data-astro-cid-t7az6eu7="">「HAVING」と「ORDER BY」を使用しない集約クエリは、フィルタクエリに似た方法で実行できます。フィルタクエリの場合、R2 SQLはクエリ実行のコーディネーターとなるノードを1つ選択します。このノードはクエリを分析し、R2データカタログを参照して、どのParquet行グループにクエリに関連するデータが含まれているかを把握します。Parquetの各行グループは、単一のコンピューティングノードが処理できる比較的小さな作業を表します。コーディネーターノードは多くのWorkerノードに作業を分散し、結果を収集してユーザーに返します。</p>
+<p data-astro-cid-t7az6eu7="">集約されたクエリを実行するために、すべて同じ手順に従い、Workerノード間で小さな作業を分散します。しかし今回は、「WHERE」ステートメントの前提条件に基づいて行をフィルタリングするだけでなく、Workerノードは<strong>事前集約</strong>も計算します。</p>
+<p data-astro-cid-t7az6eu7="">プリ集約は、集約の中間状態を表します。これは、データのサブセット上で部分的に計算された集計関数を表すデータの不完全な断片です。複数の事前集約を結合して、集約関数の最終値を計算することができます。集約関数を事前集約に分割することで、集約の計算を水平にスケールすることができ、Cloudflareのネットワークにある膨大な計算リソースを活用することができます。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="674" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BPPXJKC47WPRR8TQZR5H.png&amp;w=715&amp;h=674&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BPPXJKC47WPRR8TQZR5H.png&amp;w=640&amp;h=603&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BPPXJKC47WPRR8TQZR5H.png&amp;w=715&amp;h=674&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BPPXJKC47WPRR8TQZR5H.png&amp;w=750&amp;h=707&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BPPXJKC47WPRR8TQZR5H.png&amp;w=828&amp;h=781&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BPPXJKC47WPRR8TQZR5H.png&amp;w=1080&amp;h=1018&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BPPXJKC47WPRR8TQZR5H.png&amp;w=1280&amp;h=1207&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BPPXJKC47WPRR8TQZR5H.png&amp;w=1430&amp;h=1348&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3082 Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BPPXJKC47WPRR8TQZR5H.png&amp;w=1920&amp;h=1811&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1811" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="674" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-nalcf22a="">例えば、「count(*)」の事前集計は、データのサブセットの行数を表す数値です。最終的な「count(*)」の計算は、これらの数字を加算するのと同じくらい簡単です。「avg(値)」の事前集計は、「合計(値)」と「カウント(*)」の2つの数値で構成されています。「avg(value)」の値は、すべての「sum(value)」値を足し合わせ、すべての「count(*)」値を足し合わせ、最後に1つの数字を他の数字で割ることによって計算できます。</p>
-<p data-astro-cid-nalcf22a="">ワーカーノードは事前集計の計算を終えると、結果をコーディネーターノードにストリーミングします。コーディネーターノードは、すべての結果を収集し、事前集約から集計関数の最終値を計算し、結果をユーザーに返します。</p>
-<h2 data-astro-cid-nalcf22a="">寄せ集めの限界を超えたシャッフル</h2>
-<p data-astro-cid-nalcf22a="">スキャッターギャンブルは、コーディネーターがWorkerから小さな部分的な状態をマージすることで最終結果を計算できる場合、非常に効率的です。<code>SELECT sum(sales) FROM orders</code>のようなクエリーを実行すると、コーディネーターは各workerから単一の数字を受け取り、それらを合計します。R2に存在するデータの量に関係なく、コーディネーターのメモリフットプリントは無視できます。</p>
-<p data-astro-cid-nalcf22a="">しかし、クエリが集計の<em>結果</em>に基づいてソートやフィルタリングを必要とする場合、この方法は非効率になります。売上高の上位2つの部門を見つけるクエリーについて考えてみましょう。</p>
+<p data-astro-cid-t7az6eu7="">例えば、「count(*)」の事前集計は、データのサブセットの行数を表す数値です。最終的な「count(*)」の計算は、これらの数字を加算するのと同じくらい簡単です。「avg(値)」の事前集計は、「合計(値)」と「カウント(*)」の2つの数値で構成されています。「avg(value)」の値は、すべての「sum(value)」値を足し合わせ、すべての「count(*)」値を足し合わせ、最後に1つの数字を他の数字で割ることによって計算できます。</p>
+<p data-astro-cid-t7az6eu7="">ワーカーノードは事前集計の計算を終えると、結果をコーディネーターノードにストリーミングします。コーディネーターノードは、すべての結果を収集し、事前集約から集計関数の最終値を計算し、結果をユーザーに返します。</p>
+<h2 data-astro-cid-t7az6eu7="">寄せ集めの限界を超えたシャッフル</h2>
+<p data-astro-cid-t7az6eu7="">スキャッターギャンブルは、コーディネーターがWorkerから小さな部分的な状態をマージすることで最終結果を計算できる場合、非常に効率的です。<code>SELECT sum(sales) FROM orders</code>のようなクエリーを実行すると、コーディネーターは各workerから単一の数字を受け取り、それらを合計します。R2に存在するデータの量に関係なく、コーディネーターのメモリフットプリントは無視できます。</p>
+<p data-astro-cid-t7az6eu7="">しかし、クエリが集計の<em>結果</em>に基づいてソートやフィルタリングを必要とする場合、この方法は非効率になります。売上高の上位2つの部門を見つけるクエリーについて考えてみましょう。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">SELECT</span><span class="sk-24292e-fff"> department, </span><span class="sk-005cc5-ffc799">sum</span><span class="sk-24292e-fff">(sales)</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> sales</span></span>
@@ -91,35 +91,35 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">グローバルトップ2を正しく判断するには、データセット全体の各部門の合計売上を知る必要があります。データは基盤となるParquetファイル全体にランダムに効果的に分散されるため、特定の部門の売上が多くの異なるWorkerに分割される可能性があります。同じ部署は、個々の労働者の売上が低い場合があり、ローカルトップ2リストから除外すれば、それらの労働者の合計売上がグローバルでは最高売上になります。</p>
-<p data-astro-cid-nalcf22a="">次の図は、このクエリに対して分散型収集アプローチが機能しないことを示しています。「Dept A」はグローバルなセールスリーダーですが、売上が従業員全体に均等に行き渡るため、ローカルのトップ2リストにランクインせず、コーディネーターから破棄されてしまいます。</p>
+<p data-astro-cid-t7az6eu7="">グローバルトップ2を正しく判断するには、データセット全体の各部門の合計売上を知る必要があります。データは基盤となるParquetファイル全体にランダムに効果的に分散されるため、特定の部門の売上が多くの異なるWorkerに分割される可能性があります。同じ部署は、個々の労働者の売上が低い場合があり、ローカルトップ2リストから除外すれば、それらの労働者の合計売上がグローバルでは最高売上になります。</p>
+<p data-astro-cid-t7az6eu7="">次の図は、このクエリに対して分散型収集アプローチが機能しないことを示しています。「Dept A」はグローバルなセールスリーダーですが、売上が従業員全体に均等に行き渡るため、ローカルのトップ2リストにランクインせず、コーディネーターから破棄されてしまいます。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="674" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463ZP69R3N5R25QG4E9T0V.png&amp;w=715&amp;h=674&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463ZP69R3N5R25QG4E9T0V.png&amp;w=640&amp;h=603&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463ZP69R3N5R25QG4E9T0V.png&amp;w=715&amp;h=674&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463ZP69R3N5R25QG4E9T0V.png&amp;w=750&amp;h=707&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463ZP69R3N5R25QG4E9T0V.png&amp;w=828&amp;h=781&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463ZP69R3N5R25QG4E9T0V.png&amp;w=1080&amp;h=1018&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463ZP69R3N5R25QG4E9T0V.png&amp;w=1280&amp;h=1207&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463ZP69R3N5R25QG4E9T0V.png&amp;w=1430&amp;h=1348&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3082 Image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463ZP69R3N5R25QG4E9T0V.png&amp;w=1920&amp;h=1811&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1811" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="674" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-nalcf22a="">したがって、クエリのグローバル集計による順序の結果がある場合、コーディネーターはWorkerからの事前フィルタリングされた結果に依存することはできません。分類する前に、<em>全</em>ワーカーから<em>各部門</em>の合計カウントをリクエストして、グローバル合計を計算する必要があります。IPアドレスやユーザーIDのような高カーディナリティ列でグループ化している場合、コーディネーターは何百万行もの行を取り込んでマージしなければならないため、単一のノードでリソースのボトルネックが発生します。</p>
-<p data-astro-cid-nalcf22a="">これを解決するためには、最終的な集計が行われる前に、特定のグループのデータを同じ場所に配置する方法である<strong>シャッフル</strong>が必要になります。</p>
-<h3 data-astro-cid-nalcf22a="">集計データのシャッフル</h3>
-<p data-astro-cid-nalcf22a="">そこで、ランダムなデータ分散の問題を解決するために、<strong>シャッフルステージ</strong>を導入しました。コーディネーターに結果を送信する代わりに、Workerは互いに直接データを交換し、グループ化キーに基づいて行を同じ場所に配置します。</p>
-<p data-astro-cid-nalcf22a="">このルーティングは、<strong>決定論的なハッシュ分割</strong>に依存しています。Workerが行を処理する際、<code>GROUP BY</code>列をハッシュし、宛先Workerを識別します。このハッシュは決定性があるため、クラスター内のすべてのworkerが個別に特定のデータの送信先に同意します。「Engineering」ハッシュがWorker 5に送信された場合、すべてのWorkerは「Engineering」行をWorker 5にルーティングすることを知っています。中央レジストリは不要です。</p>
-<p data-astro-cid-nalcf22a="">下図は、この流れを示したものです。「Dept A」がWorkers 1、2、3上で始まることに注目してください。ハッシュ関数は「Dept A」をWorker 1にマッピングするため、すべてのWorkerはそれらの行を同じ宛先にルーティングします。</p>
+<p data-astro-cid-t7az6eu7="">したがって、クエリのグローバル集計による順序の結果がある場合、コーディネーターはWorkerからの事前フィルタリングされた結果に依存することはできません。分類する前に、<em>全</em>ワーカーから<em>各部門</em>の合計カウントをリクエストして、グローバル合計を計算する必要があります。IPアドレスやユーザーIDのような高カーディナリティ列でグループ化している場合、コーディネーターは何百万行もの行を取り込んでマージしなければならないため、単一のノードでリソースのボトルネックが発生します。</p>
+<p data-astro-cid-t7az6eu7="">これを解決するためには、最終的な集計が行われる前に、特定のグループのデータを同じ場所に配置する方法である<strong>シャッフル</strong>が必要になります。</p>
+<h3 data-astro-cid-t7az6eu7="">集計データのシャッフル</h3>
+<p data-astro-cid-t7az6eu7="">そこで、ランダムなデータ分散の問題を解決するために、<strong>シャッフルステージ</strong>を導入しました。コーディネーターに結果を送信する代わりに、Workerは互いに直接データを交換し、グループ化キーに基づいて行を同じ場所に配置します。</p>
+<p data-astro-cid-t7az6eu7="">このルーティングは、<strong>決定論的なハッシュ分割</strong>に依存しています。Workerが行を処理する際、<code>GROUP BY</code>列をハッシュし、宛先Workerを識別します。このハッシュは決定性があるため、クラスター内のすべてのworkerが個別に特定のデータの送信先に同意します。「Engineering」ハッシュがWorker 5に送信された場合、すべてのWorkerは「Engineering」行をWorker 5にルーティングすることを知っています。中央レジストリは不要です。</p>
+<p data-astro-cid-t7az6eu7="">下図は、この流れを示したものです。「Dept A」がWorkers 1、2、3上で始まることに注目してください。ハッシュ関数は「Dept A」をWorker 1にマッピングするため、すべてのWorkerはそれらの行を同じ宛先にルーティングします。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="622" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZD7B5A4ZRR0NG4HHEKV4.png&amp;w=715&amp;h=622&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZD7B5A4ZRR0NG4HHEKV4.png&amp;w=640&amp;h=557&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZD7B5A4ZRR0NG4HHEKV4.png&amp;w=715&amp;h=622&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZD7B5A4ZRR0NG4HHEKV4.png&amp;w=750&amp;h=652&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZD7B5A4ZRR0NG4HHEKV4.png&amp;w=828&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZD7B5A4ZRR0NG4HHEKV4.png&amp;w=1080&amp;h=940&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZD7B5A4ZRR0NG4HHEKV4.png&amp;w=1280&amp;h=1114&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZD7B5A4ZRR0NG4HHEKV4.png&amp;w=1430&amp;h=1244&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3082 Image 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZD7B5A4ZRR0NG4HHEKV4.png&amp;w=1920&amp;h=1671&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1671" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="622" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-nalcf22a="">集計をシャッフルすると、正しい結果が得られます。しかし、この全面的な交換はタイミングの依存関係を生み出します。Worker 3がデータの送信を完了する前に、Worker 1が「Dept A」の最終合計を計算し始めた場合、結果は不完全になります。</p>
-<p data-astro-cid-nalcf22a="">これに対処するために、当社では厳格な<strong>同期バリア</strong>を適用しています。コーディネーターはクラスター全体の進行状況を追跡し、Workerは発信データをバッファリングし、<a href="https://grpc.io" target="_blank" rel="noopener noreferrer"><u>gRPC</u></a>ストリーム経由でピアにフラッシュします。すべてのWorkerが入力ファイルの処理が完了したことを確認してからシャッフルバッファを消去すると、コーディネーターは続行するコマンドを発行します。このバリアにより、次のステージが開始された時に、各Workerのデータセットが完全かつ正確であることを保証します。</p>
-<h3 data-astro-cid-nalcf22a="">ローカルファイリング</h3>
-<p data-astro-cid-nalcf22a="">同期バリアが取り去られると、すべてのworkerは割り当てられたグループの完全なデータセットを保持するようになります。Worker 1は「Dept A」の売上記録の100%を持ち、最終的な合計を確実に計算できるようになりました。</p>
-<p data-astro-cid-nalcf22a="">これにより、コーディネーターに負担をかけるのではなく、フィルタリングやソートのような計算ロジックをworkerにプッシュすることができます。例えば、クエリに<code>HAVING count(*) &gt; 5</code>が含まれている場合、Workerは集約直後にこの基準を満たさないグループを除外できます。</p>
-<p data-astro-cid-nalcf22a="">この段階の終了時に、各Workerは所有するグループに対してソートされた最終的な結果のストリームを生成します。</p>
-<h3 data-astro-cid-nalcf22a="">ストリーミングマージ</h3>
-<p data-astro-cid-nalcf22a="">パズルの最後のピースは、コーディネーターです。分散型収集モデルでは、コーディネーターがデータセット全体の集計とソートという費用のかかるタスクを担当しました。シャッフルモデルでは、その役割は変わります。</p>
-<p data-astro-cid-nalcf22a="">Workerはすでに最終的な集計を計算し、ローカルでソートしているため、コーディネーターは<strong>k-wayマージ</strong>を実行するだけで済みます。すべてのWorkerにストリームを開き、結果を行ごとに読み込んでいきます。各workerからの現在の行を比較し、ソート順に基づいて「winner」を選択し、ユーザーに送信されるクエリ結果に追加します。</p>
-<p data-astro-cid-nalcf22a="">このアプローチは、特に<code>LIMIT</code>クエリに強力なアプローチとなります。ユーザーが上位10の部署を要求すると、コーディネーターは上位10の項目を見つけるまでストリームを統合し、その後すぐに処理を停止します。残りの数百万行をロードまたはマージする必要はなく、計算リソースを過剰に消費することなく、運用の規模を拡大できます。</p>
-<h2 data-astro-cid-nalcf22a="">膨大なデータセットを処理するための強力なエンジン</h2>
-<p data-astro-cid-nalcf22a="">集約の追加により、<a href="https://developers.cloudflare.com/r2-sql/?cf_target_id=84F4CFDF79EFE12291D34EF36907F300" target="_blank" rel="noopener noreferrer"><u>R2 SQL</u></a>は、データのフィルタリングに優れたツールから、膨大なデータセットのデータ処理が可能な強力なエンジンに変貌します。これは、スクレイピング、シャッフルなどの分散型実行戦略を実装することで実現します。Cloudflareのグローバルな計算能力とネットワークの規模を使って、データがある場所にコンピューティングをプッシュすることができるのです。</p>
-<p data-astro-cid-nalcf22a="">レポートの作成、大量のログの異常の監視、単にデータの傾向を見極めるなど、複雑なOLAPインフラストラクチャの管理やR2からのデータ移動にかかるオーバーヘッドなしに、そのすべてをCloudflareの開発者プラットフォーム内で簡単にできるようになりました。</p>
-<h2 data-astro-cid-nalcf22a="">今すぐお試しください！</h2>
-<p data-astro-cid-nalcf22a="">R2 SQLの集約のサポートは、本日よりご利用いただけます。これらの新機能を、R2 Data Catalogのデータでどのように活用するか、楽しみにしています。</p>
+<p data-astro-cid-t7az6eu7="">集計をシャッフルすると、正しい結果が得られます。しかし、この全面的な交換はタイミングの依存関係を生み出します。Worker 3がデータの送信を完了する前に、Worker 1が「Dept A」の最終合計を計算し始めた場合、結果は不完全になります。</p>
+<p data-astro-cid-t7az6eu7="">これに対処するために、当社では厳格な<strong>同期バリア</strong>を適用しています。コーディネーターはクラスター全体の進行状況を追跡し、Workerは発信データをバッファリングし、<a href="https://grpc.io" target="_blank" rel="noopener noreferrer"><u>gRPC</u></a>ストリーム経由でピアにフラッシュします。すべてのWorkerが入力ファイルの処理が完了したことを確認してからシャッフルバッファを消去すると、コーディネーターは続行するコマンドを発行します。このバリアにより、次のステージが開始された時に、各Workerのデータセットが完全かつ正確であることを保証します。</p>
+<h3 data-astro-cid-t7az6eu7="">ローカルファイリング</h3>
+<p data-astro-cid-t7az6eu7="">同期バリアが取り去られると、すべてのworkerは割り当てられたグループの完全なデータセットを保持するようになります。Worker 1は「Dept A」の売上記録の100%を持ち、最終的な合計を確実に計算できるようになりました。</p>
+<p data-astro-cid-t7az6eu7="">これにより、コーディネーターに負担をかけるのではなく、フィルタリングやソートのような計算ロジックをworkerにプッシュすることができます。例えば、クエリに<code>HAVING count(*) &gt; 5</code>が含まれている場合、Workerは集約直後にこの基準を満たさないグループを除外できます。</p>
+<p data-astro-cid-t7az6eu7="">この段階の終了時に、各Workerは所有するグループに対してソートされた最終的な結果のストリームを生成します。</p>
+<h3 data-astro-cid-t7az6eu7="">ストリーミングマージ</h3>
+<p data-astro-cid-t7az6eu7="">パズルの最後のピースは、コーディネーターです。分散型収集モデルでは、コーディネーターがデータセット全体の集計とソートという費用のかかるタスクを担当しました。シャッフルモデルでは、その役割は変わります。</p>
+<p data-astro-cid-t7az6eu7="">Workerはすでに最終的な集計を計算し、ローカルでソートしているため、コーディネーターは<strong>k-wayマージ</strong>を実行するだけで済みます。すべてのWorkerにストリームを開き、結果を行ごとに読み込んでいきます。各workerからの現在の行を比較し、ソート順に基づいて「winner」を選択し、ユーザーに送信されるクエリ結果に追加します。</p>
+<p data-astro-cid-t7az6eu7="">このアプローチは、特に<code>LIMIT</code>クエリに強力なアプローチとなります。ユーザーが上位10の部署を要求すると、コーディネーターは上位10の項目を見つけるまでストリームを統合し、その後すぐに処理を停止します。残りの数百万行をロードまたはマージする必要はなく、計算リソースを過剰に消費することなく、運用の規模を拡大できます。</p>
+<h2 data-astro-cid-t7az6eu7="">膨大なデータセットを処理するための強力なエンジン</h2>
+<p data-astro-cid-t7az6eu7="">集約の追加により、<a href="https://developers.cloudflare.com/r2-sql/?cf_target_id=84F4CFDF79EFE12291D34EF36907F300" target="_blank" rel="noopener noreferrer"><u>R2 SQL</u></a>は、データのフィルタリングに優れたツールから、膨大なデータセットのデータ処理が可能な強力なエンジンに変貌します。これは、スクレイピング、シャッフルなどの分散型実行戦略を実装することで実現します。Cloudflareのグローバルな計算能力とネットワークの規模を使って、データがある場所にコンピューティングをプッシュすることができるのです。</p>
+<p data-astro-cid-t7az6eu7="">レポートの作成、大量のログの異常の監視、単にデータの傾向を見極めるなど、複雑なOLAPインフラストラクチャの管理やR2からのデータ移動にかかるオーバーヘッドなしに、そのすべてをCloudflareの開発者プラットフォーム内で簡単にできるようになりました。</p>
+<h2 data-astro-cid-t7az6eu7="">今すぐお試しください！</h2>
+<p data-astro-cid-t7az6eu7="">R2 SQLの集約のサポートは、本日よりご利用いただけます。これらの新機能を、R2 Data Catalogのデータでどのように活用するか、楽しみにしています。</p>
 <ul>
 	<li><strong>開始する:</strong> 集約クエリの実行に関する例と構文ガイドについては、<a href="https://developers.cloudflare.com/r2-sql/sql-reference" target="_blank" rel="noopener noreferrer"><u>ドキュメント</u></a>をご覧ください。</li>
 	<li><strong>会話に参加する：</strong>質問、フィードバック、または構築しているものを共有したい場合は、Cloudflare <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>Developer Discord</u></a>に参加してください。</li>

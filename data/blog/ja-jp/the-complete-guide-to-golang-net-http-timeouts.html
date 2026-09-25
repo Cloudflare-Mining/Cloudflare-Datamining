@@ -1,18 +1,18 @@
-<p data-astro-cid-nalcf22a="">GoでHTTPサーバーまたはクライアントを書くとき、タイムアウトは、最も間違えやすく、そして最も軽微な間違えです。選択する対象が数多くあり、間違えても、ネットワークの不具合やプロセスがハングアップするまで、長い間、何の影響もありません。</p>
-<p data-astro-cid-nalcf22a="">HTTPは複雑な多段階プロトコルであるため、タイムアウトには万能な解決策はありません。ストリーミングエンドポイントと JSON API と<a href="https://en.wikipedia.org/wiki/Comet_%28programming%29" target="_blank" rel="noopener noreferrer">Comet</a>エンドポイントを考えてみてください。確かに、デフォルトは多くの場合、あなたが望むものではありません。</p>
-<p data-astro-cid-nalcf22a="">この記事では、お客様がタイムアウトを適用する必要があるかもしれないさまざまな段階を取り出し、サーバーとクライアント側の両方で、これを行う色々な方法を見ていきます。</p>
-<h3 data-astro-cid-nalcf22a="">SetDeadline</h3>
-<p data-astro-cid-nalcf22a="">まず、タイムアウトを実装するためにGoが公開するネットワークプリミティブの「期限」について知る必要があります。</p>
-<p data-astro-cid-nalcf22a=""><a href="https://golang.org/pkg/net/#Conn" target="_blank" rel="noopener noreferrer">net.Conn</a>のSet[Read|Write]Deadline(time.Time)メソッドで公開されているように、期限は絶対時間で、期限に達するとすべてのI/O操作がタイムアウトエラーで失敗します。</p>
-<p data-astro-cid-nalcf22a="">**期限はタイムアウトではありません。**一度セットされると、ずっと機能したままになります（または SetDeadlineに次の呼び出しがくるまで)、その間接続が使用されているか、どのように使用されているかは関係ありません。ですから、 SetDeadlineを使ってタイムアウトを構築するには、_すべての_読み/書き操作の前にそれを呼び出す必要があります。</p>
-<p data-astro-cid-nalcf22a="">お客様は、おそらく自らSetDeadlineを呼び出したいとは考えないはずです。代わりにnet/httpに、より高いレベルのタイムアウトを使って呼び出してもらうことになるでしょう。しかし、すべてのタイムアウトは期限付きで実装され、データが送受信されるたびにリセットわけではないことに注意してください。</p>
-<h3 data-astro-cid-nalcf22a="">サーバーのタイムアウト</h3>
-<p data-astro-cid-nalcf22a=""><em>ブログ記事<a href="https://blog.cloudflare.com/exposing-go-on-the-internet">「So you want to expose Go on the Internet」（Goをインターネットで公開する）</a></em> <em>では、サーバータイムアウトに関する情報を多く扱っており、特に、HTTP/2 とGo 1.7のバグについての詳細な説明をしています。</em></p>
+<p data-astro-cid-t7az6eu7="">GoでHTTPサーバーまたはクライアントを書くとき、タイムアウトは、最も間違えやすく、そして最も軽微な間違えです。選択する対象が数多くあり、間違えても、ネットワークの不具合やプロセスがハングアップするまで、長い間、何の影響もありません。</p>
+<p data-astro-cid-t7az6eu7="">HTTPは複雑な多段階プロトコルであるため、タイムアウトには万能な解決策はありません。ストリーミングエンドポイントと JSON API と<a href="https://en.wikipedia.org/wiki/Comet_%28programming%29" target="_blank" rel="noopener noreferrer">Comet</a>エンドポイントを考えてみてください。確かに、デフォルトは多くの場合、あなたが望むものではありません。</p>
+<p data-astro-cid-t7az6eu7="">この記事では、お客様がタイムアウトを適用する必要があるかもしれないさまざまな段階を取り出し、サーバーとクライアント側の両方で、これを行う色々な方法を見ていきます。</p>
+<h3 data-astro-cid-t7az6eu7="">SetDeadline</h3>
+<p data-astro-cid-t7az6eu7="">まず、タイムアウトを実装するためにGoが公開するネットワークプリミティブの「期限」について知る必要があります。</p>
+<p data-astro-cid-t7az6eu7=""><a href="https://golang.org/pkg/net/#Conn" target="_blank" rel="noopener noreferrer">net.Conn</a>のSet[Read|Write]Deadline(time.Time)メソッドで公開されているように、期限は絶対時間で、期限に達するとすべてのI/O操作がタイムアウトエラーで失敗します。</p>
+<p data-astro-cid-t7az6eu7="">**期限はタイムアウトではありません。**一度セットされると、ずっと機能したままになります（または SetDeadlineに次の呼び出しがくるまで)、その間接続が使用されているか、どのように使用されているかは関係ありません。ですから、 SetDeadlineを使ってタイムアウトを構築するには、_すべての_読み/書き操作の前にそれを呼び出す必要があります。</p>
+<p data-astro-cid-t7az6eu7="">お客様は、おそらく自らSetDeadlineを呼び出したいとは考えないはずです。代わりにnet/httpに、より高いレベルのタイムアウトを使って呼び出してもらうことになるでしょう。しかし、すべてのタイムアウトは期限付きで実装され、データが送受信されるたびにリセットわけではないことに注意してください。</p>
+<h3 data-astro-cid-t7az6eu7="">サーバーのタイムアウト</h3>
+<p data-astro-cid-t7az6eu7=""><em>ブログ記事<a href="https://blog.cloudflare.com/exposing-go-on-the-internet">「So you want to expose Go on the Internet」（Goをインターネットで公開する）</a></em> <em>では、サーバータイムアウトに関する情報を多く扱っており、特に、HTTP/2 とGo 1.7のバグについての詳細な説明をしています。</em></p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="209" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KV4YB9Z53KA9MP6BJY5K.png&amp;w=715&amp;h=209&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KV4YB9Z53KA9MP6BJY5K.png&amp;w=640&amp;h=187&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KV4YB9Z53KA9MP6BJY5K.png&amp;w=715&amp;h=209&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KV4YB9Z53KA9MP6BJY5K.png&amp;w=750&amp;h=219&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KV4YB9Z53KA9MP6BJY5K.png&amp;w=828&amp;h=242&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KV4YB9Z53KA9MP6BJY5K.png&amp;w=1080&amp;h=316&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KV4YB9Z53KA9MP6BJY5K.png&amp;w=1280&amp;h=374&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KV4YB9Z53KA9MP6BJY5K.png&amp;w=1430&amp;h=418&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="HTTP server phases" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KV4YB9Z53KA9MP6BJY5K.png&amp;w=1920&amp;h=562&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="562" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="209" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-nalcf22a="">インターネットに公開されるHTTP サーバーが、クライアント接続でタイムアウトを実行することは重要です。タイムアウトが実行されなければ、クライアントが非常に遅かったり消えたりして、ファイル記述子の漏えいにつながる可能性があり、最終的に次のようなエラーが生じることになります。</p>
+<p data-astro-cid-t7az6eu7="">インターネットに公開されるHTTP サーバーが、クライアント接続でタイムアウトを実行することは重要です。タイムアウトが実行されなければ、クライアントが非常に遅かったり消えたりして、ファイル記述子の漏えいにつながる可能性があり、最終的に次のようなエラーが生じることになります。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">http:</span><span class="sk-032f62-99ffe4"> Accept</span><span class="sk-032f62-99ffe4"> error:</span><span class="sk-032f62-99ffe4"> accept</span><span class="sk-032f62-99ffe4"> tcp</span><span class="sk-24292e-fff"> [::]:80: accept4: too many open files; </span><span class="sk-6f42c1-ffc799">retrying</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> 5ms</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -38,7 +38,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-nalcf22a=""><code>http: Accept error: accept tcp [::]:80: accept4: too many open files; retrying in 5ms</code></p>
+<p data-astro-cid-t7az6eu7=""><code>http: Accept error: accept tcp [::]:80: accept4: too many open files; retrying in 5ms</code></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">srv </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-d73a49-a0a0a0"> &amp;</span><span class="sk-6f42c1-ffc799">http</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">Server</span><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-24292e-fff">    ReadTimeout: </span><span class="sk-005cc5-ffc799">5</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff"> time.Second,</span></span>
@@ -50,26 +50,26 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a=""><code>http.Server</code>では、 <code>ReadTimeout</code>と <code>WriteTimeout</code>の2つのタイムアウトが公開されています。この二つを設定するには、サーバーを明示的に使用して行います。</p>
-<p data-astro-cid-nalcf22a=""><code>ReadTimeout</code>は、接続が許可されてからリクエスト本文が完全に読まれるまでの時間をカバーします（本文を読む場合、読まない場合はヘッダーの終わりまで）。これは<a href="https://github.com/golang/go/blob/3ba31558d1bca8ae6d2f03209b4cae55381175b3/src/net/http/server.go#L750" target="_blank" rel="noopener noreferrer">「許可」した直後に</a> <code>SetReadDedline</code>を呼び出すことで <code>net/http</code>で実装されます。</p>
-<p data-astro-cid-nalcf22a=""><code>WriteTimeout</code>は、通常、リクエストヘッダーの読み込みが完了した後から応答書き込みの最後（ServeHttpの有効期間）までの時間をカバーします。 <code>readRequest</code>の最後に <code>SetWriteDeadline</code>を呼び出すことでこれを行います。</p>
-<p data-astro-cid-nalcf22a="">ただし、接続がHTTPSの場合、<a href="https://github.com/golang/go/blob/3ba31558d1bca8ae6d2f03209b4cae55381175b3/src/net/http/server.go#L1477-L1483" target="_blank" rel="noopener noreferrer">「許可」の直後に</a> <code>SetWriteDeadline</code>が呼び出されます。これは、TLSハンドシェイクの一部として書かれたパケットをカバーするためです。やっかいなことに、これは（この場合のみ） <code>WriteTimeout</code>に最終的にヘッダーの読み込みと最初のバイトの待ち時間が含まれることを意味します。</p>
-<p data-astro-cid-nalcf22a="">信頼できないクライアントやネットワークを処理する場合は、両方のタイムアウトを設定する必要があります。これにより、書き込みや読み取りが遅くなることでクライアントの接続が断たれないようにするのです。</p>
-<p data-astro-cid-nalcf22a="">最後に、 <a href="https://golang.org/pkg/net/http/#TimeoutHandler" target="_blank" rel="noopener noreferrer"><code>http.TimeoutHandler</code></a>があります。これは、サーバーパラメーターではなく、ハンドラーラッパーで、 &nbsp;<code>ServeHTTP</code>の呼び出しの最大時間を制限するものです。これは、応答をバッファリングし、期限を超えた場合は、_504 Gateway Timeout_を送信します。1.6では壊れていましたが、1.6.2では修正されたことに注意してください。</p>
-<h4 data-astro-cid-nalcf22a="">http.ListenAndServeのやり方は間違っている</h4>
-<p data-astro-cid-nalcf22a="">ちなみに、これは <code>http.Server</code>を <code>http.ListenAndServe</code>、 &nbsp;<code>http.ListenAndServeTLS</code>、 &nbsp;<code>http.Serve</code>のようにバイパスさせるパッケージレベルの利便性はパブリックインターネットサーバーには適さないという意味です。</p>
-<p data-astro-cid-nalcf22a="">これらの機能は、デフォルトでタイムアウト値をオフのままにし、これを有効にする方法もないため、これらの機能を使用すると、すぐに接続がリークし、ファイル記述子が不足します。私自身、少なくとも6回はこのミスを経験しました。</p>
-<p data-astro-cid-nalcf22a="">その代わりに、数段落前で示したように、 <code>ReadTimeout</code>と <code>WriteTimeout</code>でhttp.Serverインスタンスを作って、その対応するメソッドを使用します。</p>
-<h4 data-astro-cid-nalcf22a=""><strong>ストリーミングについて</strong></h4>
-<p data-astro-cid-nalcf22a="">非常にやっかいなことに、 <code>ServeHTTP</code>から <code>net.Conn</code>の基盤となるものにアクセスする方法がないため、応答をストリームしようとするサーバーが、 <code>WriteTimeout</code>を取り消さざるを得なくなります（これが、デフォルトで0になっている理由とも関係しているかもしれません）。その理由は、 <code>net.Conn</code>アクセスがなければ、各「Write（書き込み）」が、適切なアイドル（完全ではない）タイムアウトを実装する前に、 <code>SetWriteDeadline</code>を呼び出す方法がないためです。</p>
-<p data-astro-cid-nalcf22a="">また、ブロックされた <code>ResponseWriter.Write</code>をキャンセルする方法もありません。それは、 <code>ResponseWriter.Close</code> （インターフェイスのアップグレードを介してアクセス可能）が、同時書き込みを解除するように文書化されていないためです。したがって、 <code>Timer</code>を使って手動でタイムアウトを構築する方法もないのです。</p>
-<p data-astro-cid-nalcf22a="">残念ながら、これはストリーミングサーバーが低速なクライアントから身を守ることができないことを意味します。</p>
-<p data-astro-cid-nalcf22a="">私は<a href="https://github.com/golang/go/issues/16100" target="_blank" rel="noopener noreferrer">問題とともにいくつかの提案をあげておりますので</a>、そちらで、ぜひフィードバックをお願いします。</p>
+<p data-astro-cid-t7az6eu7=""><code>http.Server</code>では、 <code>ReadTimeout</code>と <code>WriteTimeout</code>の2つのタイムアウトが公開されています。この二つを設定するには、サーバーを明示的に使用して行います。</p>
+<p data-astro-cid-t7az6eu7=""><code>ReadTimeout</code>は、接続が許可されてからリクエスト本文が完全に読まれるまでの時間をカバーします（本文を読む場合、読まない場合はヘッダーの終わりまで）。これは<a href="https://github.com/golang/go/blob/3ba31558d1bca8ae6d2f03209b4cae55381175b3/src/net/http/server.go#L750" target="_blank" rel="noopener noreferrer">「許可」した直後に</a> <code>SetReadDedline</code>を呼び出すことで <code>net/http</code>で実装されます。</p>
+<p data-astro-cid-t7az6eu7=""><code>WriteTimeout</code>は、通常、リクエストヘッダーの読み込みが完了した後から応答書き込みの最後（ServeHttpの有効期間）までの時間をカバーします。 <code>readRequest</code>の最後に <code>SetWriteDeadline</code>を呼び出すことでこれを行います。</p>
+<p data-astro-cid-t7az6eu7="">ただし、接続がHTTPSの場合、<a href="https://github.com/golang/go/blob/3ba31558d1bca8ae6d2f03209b4cae55381175b3/src/net/http/server.go#L1477-L1483" target="_blank" rel="noopener noreferrer">「許可」の直後に</a> <code>SetWriteDeadline</code>が呼び出されます。これは、TLSハンドシェイクの一部として書かれたパケットをカバーするためです。やっかいなことに、これは（この場合のみ） <code>WriteTimeout</code>に最終的にヘッダーの読み込みと最初のバイトの待ち時間が含まれることを意味します。</p>
+<p data-astro-cid-t7az6eu7="">信頼できないクライアントやネットワークを処理する場合は、両方のタイムアウトを設定する必要があります。これにより、書き込みや読み取りが遅くなることでクライアントの接続が断たれないようにするのです。</p>
+<p data-astro-cid-t7az6eu7="">最後に、 <a href="https://golang.org/pkg/net/http/#TimeoutHandler" target="_blank" rel="noopener noreferrer"><code>http.TimeoutHandler</code></a>があります。これは、サーバーパラメーターではなく、ハンドラーラッパーで、 &nbsp;<code>ServeHTTP</code>の呼び出しの最大時間を制限するものです。これは、応答をバッファリングし、期限を超えた場合は、_504 Gateway Timeout_を送信します。1.6では壊れていましたが、1.6.2では修正されたことに注意してください。</p>
+<h4 data-astro-cid-t7az6eu7="">http.ListenAndServeのやり方は間違っている</h4>
+<p data-astro-cid-t7az6eu7="">ちなみに、これは <code>http.Server</code>を <code>http.ListenAndServe</code>、 &nbsp;<code>http.ListenAndServeTLS</code>、 &nbsp;<code>http.Serve</code>のようにバイパスさせるパッケージレベルの利便性はパブリックインターネットサーバーには適さないという意味です。</p>
+<p data-astro-cid-t7az6eu7="">これらの機能は、デフォルトでタイムアウト値をオフのままにし、これを有効にする方法もないため、これらの機能を使用すると、すぐに接続がリークし、ファイル記述子が不足します。私自身、少なくとも6回はこのミスを経験しました。</p>
+<p data-astro-cid-t7az6eu7="">その代わりに、数段落前で示したように、 <code>ReadTimeout</code>と <code>WriteTimeout</code>でhttp.Serverインスタンスを作って、その対応するメソッドを使用します。</p>
+<h4 data-astro-cid-t7az6eu7=""><strong>ストリーミングについて</strong></h4>
+<p data-astro-cid-t7az6eu7="">非常にやっかいなことに、 <code>ServeHTTP</code>から <code>net.Conn</code>の基盤となるものにアクセスする方法がないため、応答をストリームしようとするサーバーが、 <code>WriteTimeout</code>を取り消さざるを得なくなります（これが、デフォルトで0になっている理由とも関係しているかもしれません）。その理由は、 <code>net.Conn</code>アクセスがなければ、各「Write（書き込み）」が、適切なアイドル（完全ではない）タイムアウトを実装する前に、 <code>SetWriteDeadline</code>を呼び出す方法がないためです。</p>
+<p data-astro-cid-t7az6eu7="">また、ブロックされた <code>ResponseWriter.Write</code>をキャンセルする方法もありません。それは、 <code>ResponseWriter.Close</code> （インターフェイスのアップグレードを介してアクセス可能）が、同時書き込みを解除するように文書化されていないためです。したがって、 <code>Timer</code>を使って手動でタイムアウトを構築する方法もないのです。</p>
+<p data-astro-cid-t7az6eu7="">残念ながら、これはストリーミングサーバーが低速なクライアントから身を守ることができないことを意味します。</p>
+<p data-astro-cid-t7az6eu7="">私は<a href="https://github.com/golang/go/issues/16100" target="_blank" rel="noopener noreferrer">問題とともにいくつかの提案をあげておりますので</a>、そちらで、ぜひフィードバックをお願いします。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="193" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW451114VD7S5MBSQ8QYV9VA.png&amp;w=715&amp;h=193&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW451114VD7S5MBSQ8QYV9VA.png&amp;w=640&amp;h=173&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW451114VD7S5MBSQ8QYV9VA.png&amp;w=715&amp;h=193&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW451114VD7S5MBSQ8QYV9VA.png&amp;w=750&amp;h=202&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW451114VD7S5MBSQ8QYV9VA.png&amp;w=828&amp;h=224&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW451114VD7S5MBSQ8QYV9VA.png&amp;w=1080&amp;h=292&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW451114VD7S5MBSQ8QYV9VA.png&amp;w=1280&amp;h=346&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW451114VD7S5MBSQ8QYV9VA.png&amp;w=1430&amp;h=386&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="HTTP Client phases" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW451114VD7S5MBSQ8QYV9VA.png&amp;w=1920&amp;h=518&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="518" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="193" class="pt-portable-image-media"></div>
 </figure>
-<h3 data-astro-cid-nalcf22a="">クライアントのタイムアウト</h3>
-<p data-astro-cid-nalcf22a="">クライアント側のタイムアウトは、使用するタイムアウトによって、より簡単になる場合もあれば、はるかに複雑になる場合もありますが、リソースの漏えいやフリーズを防止するためにも同様に重要です。</p>
+<h3 data-astro-cid-t7az6eu7="">クライアントのタイムアウト</h3>
+<p data-astro-cid-t7az6eu7="">クライアント側のタイムアウトは、使用するタイムアウトによって、より簡単になる場合もあれば、はるかに複雑になる場合もありますが、リソースの漏えいやフリーズを防止するためにも同様に重要です。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">c </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-d73a49-a0a0a0"> &amp;</span><span class="sk-6f42c1-ffc799">http</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">Client</span><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-24292e-fff">    Timeout: </span><span class="sk-005cc5-ffc799">15</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff"> time.Second,</span></span>
@@ -80,9 +80,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">最も使いやすいのは、<a href="https://golang.org/pkg/net/http/#Client" target="_blank" rel="noopener noreferrer">http.Client</a>の <code>Timeout</code>フィールドです。これはダイアルから（接続が再利用されていない場合）本文の読み込みまで、交換（exchange）全体をカバーするものです。</p>
-<p data-astro-cid-nalcf22a="">上記のサーバー側のケースと同様に、 <code>http.Get</code>のようなパッケージレベルの機能は<a href="https://golang.org/pkg/net/http/#DefaultClient" target="_blank" rel="noopener noreferrer">クライアントをタイムアウトなしで使用するため</a>、オープンなインターネットでの使用は危険です。</p>
-<p data-astro-cid-nalcf22a="">他にもきめ細かな制御があり、お客様側で設定できるタイムアウトは他にも多くあります。</p>
+<p data-astro-cid-t7az6eu7="">最も使いやすいのは、<a href="https://golang.org/pkg/net/http/#Client" target="_blank" rel="noopener noreferrer">http.Client</a>の <code>Timeout</code>フィールドです。これはダイアルから（接続が再利用されていない場合）本文の読み込みまで、交換（exchange）全体をカバーするものです。</p>
+<p data-astro-cid-t7az6eu7="">上記のサーバー側のケースと同様に、 <code>http.Get</code>のようなパッケージレベルの機能は<a href="https://golang.org/pkg/net/http/#DefaultClient" target="_blank" rel="noopener noreferrer">クライアントをタイムアウトなしで使用するため</a>、オープンなインターネットでの使用は危険です。</p>
+<p data-astro-cid-t7az6eu7="">他にもきめ細かな制御があり、お客様側で設定できるタイムアウトは他にも多くあります。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">c</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">http.Client</span><span class="sk-032f62-99ffe4">{</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    Transport:</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">http.Transport</span><span class="sk-032f62-99ffe4">{</span></span>
@@ -107,12 +107,12 @@
 	<li>HTTP.Transport.ExpectContinueTimeoutは、「_Expect:100-continue」を含む_リクエストヘッダーを送信してから本文を送信する許可を受けるまでの間、クライアントが待機する時間を制限します。1.6でこれを設定すると、<a href="https://github.com/golang/go/issues/14391" target="_blank" rel="noopener noreferrer">HTTP/2が無効になる</a>こと注意してください。(DefaultTransport<a href="https://github.com/golang/go/commit/406752b640fcc56a9287b8454564cffe2f0021c1#diff-6951e7593bfb1e773c9121df44df1c36R179" target="_blank" rel="noopener noreferrer">は、1.6.2から特別なケースになっています</a>)。</li>
 	<li>c := &amp;http.Client{<br>Transport: &amp;http.Transport{<br>Dial: (&amp;net.Dialer{<br>Timeout: 30 * time.Second,<br>KeepAlive: 30 * time.Second,<br>}).Dial,<br>TLSHandshakeTimeout: 10 * time.Second,<br>ResponseHeaderTimeout: 10 * time.Second,<br>ExpectContinueTimeout: 1 * time.Second,<br>}<br>}</li>
 </ul>
-<p data-astro-cid-nalcf22a="">私が知る限り、リクエストを送信するのにかかる時間を具体的に制限する方法はありません。リクエスト本文の読み取りにかかる時間は、time.Timerで手動でコントロールすることができます。これは、クライアントメソッドが返された後の出来事だからです（リクエストをキャンセルする方法については、以下を参照してください）。</p>
-<p data-astro-cid-nalcf22a="">最後に、新しい1.7にはhttp.Transport.IdleConnTimeoutがあります。これは、クライアントリクエストのブロッキングフェーズを制御するものではありませんが、アイドル接続が、接続プールで待機する時間を制御します。</p>
-<p data-astro-cid-nalcf22a="">デフォルトでは、クライアントはリダイレクトに従うことに留意してください。 &nbsp;<code>http.Client.Timeout</code>には、リダイレクト後に費やされるすべての時間が含まれますが、詳細なタイムアウトはリクエストごとに固有です。これは、 http.Transport がリダイレクトの概念をもたない下位レベルのシステムのためです。</p>
-<h4 data-astro-cid-nalcf22a=""><strong>キャンセルとコンテキスト</strong></h4>
-<p data-astro-cid-nalcf22a=""><code>net/http</code>では、クライアントリクエストを取り消す方法が2つあります。 Request.Cancelと、1.7の新機能、Contextです。</p>
-<p data-astro-cid-nalcf22a="">Request.Cancelはオプショナルなチャネルで、設定してから閉じると、まるで Request.Timeout が選択されたように、リクエストが停止されます。（これらは実際に同じメカニズムで実装されますが、この記事を書いている間に、1.7で <a href="https://github.com/golang/go/issues/16094" target="_blank" rel="noopener noreferrer">バグを1つみつけました</a>。そのバグでは、すべてのキャンセルがタイムアウトエラーとして返されます。）</p>
+<p data-astro-cid-t7az6eu7="">私が知る限り、リクエストを送信するのにかかる時間を具体的に制限する方法はありません。リクエスト本文の読み取りにかかる時間は、time.Timerで手動でコントロールすることができます。これは、クライアントメソッドが返された後の出来事だからです（リクエストをキャンセルする方法については、以下を参照してください）。</p>
+<p data-astro-cid-t7az6eu7="">最後に、新しい1.7にはhttp.Transport.IdleConnTimeoutがあります。これは、クライアントリクエストのブロッキングフェーズを制御するものではありませんが、アイドル接続が、接続プールで待機する時間を制御します。</p>
+<p data-astro-cid-t7az6eu7="">デフォルトでは、クライアントはリダイレクトに従うことに留意してください。 &nbsp;<code>http.Client.Timeout</code>には、リダイレクト後に費やされるすべての時間が含まれますが、詳細なタイムアウトはリクエストごとに固有です。これは、 http.Transport がリダイレクトの概念をもたない下位レベルのシステムのためです。</p>
+<h4 data-astro-cid-t7az6eu7=""><strong>キャンセルとコンテキスト</strong></h4>
+<p data-astro-cid-t7az6eu7=""><code>net/http</code>では、クライアントリクエストを取り消す方法が2つあります。 Request.Cancelと、1.7の新機能、Contextです。</p>
+<p data-astro-cid-t7az6eu7="">Request.Cancelはオプショナルなチャネルで、設定してから閉じると、まるで Request.Timeout が選択されたように、リクエストが停止されます。（これらは実際に同じメカニズムで実装されますが、この記事を書いている間に、1.7で <a href="https://github.com/golang/go/issues/16094" target="_blank" rel="noopener noreferrer">バグを1つみつけました</a>。そのバグでは、すべてのキャンセルがタイムアウトエラーとして返されます。）</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">package</span><span class="sk-6f42c1-ffc799"> main</span></span>
 <span class="line"></span>
@@ -161,9 +161,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">より細かいタイムアウトの設定を行うには、 <code>Request.Cancel</code>と <code>time.Timer</code>を使用することができます。これならストリーミングが許可され、本文からデータを読み込むたびに、期限が引き伸ばされます。</p>
-<p data-astro-cid-nalcf22a="">上記の例では、5秒のタイムアウトをリクエストを実行するフェーズに設定していますが、8ラウンドで本文を読み取るのに少なくとも8秒間を費やし、そのたびに2秒のタイムアウトが必要になります。このようにしながら、途切れることなく、ストリーミングを永久に続けることができます。本文のデータの受信に2秒以上かかる場合は、io.CopyNが「 <code>net/http: request canceled</code>」を返します。</p>
-<p data-astro-cid-nalcf22a="">1.7では、contextパッケージはスタンダードライブラリに進化しています。そこでは <a href="https://blog.golang.org/context" target="_blank" rel="noopener noreferrer">コンテキストに関する情報がたくさんあります</a>が、ここでコンテキストは、Request.Cancelに代わるもので、非推奨であることを理解してください。</p>
+<p data-astro-cid-t7az6eu7="">より細かいタイムアウトの設定を行うには、 <code>Request.Cancel</code>と <code>time.Timer</code>を使用することができます。これならストリーミングが許可され、本文からデータを読み込むたびに、期限が引き伸ばされます。</p>
+<p data-astro-cid-t7az6eu7="">上記の例では、5秒のタイムアウトをリクエストを実行するフェーズに設定していますが、8ラウンドで本文を読み取るのに少なくとも8秒間を費やし、そのたびに2秒のタイムアウトが必要になります。このようにしながら、途切れることなく、ストリーミングを永久に続けることができます。本文のデータの受信に2秒以上かかる場合は、io.CopyNが「 <code>net/http: request canceled</code>」を返します。</p>
+<p data-astro-cid-t7az6eu7="">1.7では、contextパッケージはスタンダードライブラリに進化しています。そこでは <a href="https://blog.golang.org/context" target="_blank" rel="noopener noreferrer">コンテキストに関する情報がたくさんあります</a>が、ここでコンテキストは、Request.Cancelに代わるもので、非推奨であることを理解してください。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">ctx, cancel </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-24292e-fff"> context.</span><span class="sk-6f42c1-ffc799">WithCancel</span><span class="sk-24292e-fff">(context.</span><span class="sk-6f42c1-ffc799">TODO</span><span class="sk-24292e-fff">())</span></span>
 <span class="line"><span class="sk-24292e-fff">timer </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-24292e-fff"> time.</span><span class="sk-6f42c1-ffc799">AfterFunc</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">5</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">time.Second, </span><span class="sk-d73a49-a0a0a0">func</span><span class="sk-24292e-fff">() {</span></span>
@@ -180,7 +180,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">コンテキストを使ってリクエストをキャンセルするには、 <code>context.WithCancel</code>で、新しいコンテキストと <code>cancel()</code>機能を入手して、 <code>Request.WithContext</code>と結び付けられているリクエストを作成します。リクエストをキャンセルしたい場合には、 &nbsp;<code>cancel()</code>を呼び出すことで、コンテキストをキャンセルします。 （キャンセルチャネルを閉じる代わりにこれを行います）。</p>
-<p data-astro-cid-nalcf22a="">コンテキストには利点があり、親コンテキスト（我々が<code>context.WithCancel</code>に送信したもの）がキャンセルされると、我々の分もキャンセルされ、コマンドがパイプライン全体に伝達されます。</p>
-<p data-astro-cid-nalcf22a="">これでおしまいです。読者のみなさまの<code>ReadDeadline</code>を超過していないといいのですが!</p>
-<p data-astro-cid-nalcf22a="">もし、Goスタンダードライブラリに関する詳細情報などにご関心がおありでしたら、<a href="https://www.cloudflare.com/ja-jp/careers" target="_blank" rel="noopener noreferrer">当社では新しい人材を、ロンドン、オースティン（TX）、シャンペーン（IL）、サンフランシスコ、シンガポールで募集中です。</a></p>
+<p data-astro-cid-t7az6eu7="">コンテキストを使ってリクエストをキャンセルするには、 <code>context.WithCancel</code>で、新しいコンテキストと <code>cancel()</code>機能を入手して、 <code>Request.WithContext</code>と結び付けられているリクエストを作成します。リクエストをキャンセルしたい場合には、 &nbsp;<code>cancel()</code>を呼び出すことで、コンテキストをキャンセルします。 （キャンセルチャネルを閉じる代わりにこれを行います）。</p>
+<p data-astro-cid-t7az6eu7="">コンテキストには利点があり、親コンテキスト（我々が<code>context.WithCancel</code>に送信したもの）がキャンセルされると、我々の分もキャンセルされ、コマンドがパイプライン全体に伝達されます。</p>
+<p data-astro-cid-t7az6eu7="">これでおしまいです。読者のみなさまの<code>ReadDeadline</code>を超過していないといいのですが!</p>
+<p data-astro-cid-t7az6eu7="">もし、Goスタンダードライブラリに関する詳細情報などにご関心がおありでしたら、<a href="https://www.cloudflare.com/ja-jp/careers" target="_blank" rel="noopener noreferrer">当社では新しい人材を、ロンドン、オースティン（TX）、シャンペーン（IL）、サンフランシスコ、シンガポールで募集中です。</a></p>

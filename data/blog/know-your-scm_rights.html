@@ -1,13 +1,13 @@
-<p data-astro-cid-nalcf22a="">As TLS 1.3 was ratified earlier <a href="https://blog.cloudflare.com/rfc-8446-aka-tls-1-3">this year</a>, I was recollecting how we got started with it here at Cloudflare. We made the decision to be early adopters of <a href="https://blog.cloudflare.com/introducing-tls-1-3">TLS 1.3</a> a little over two years ago. It was a very important decision, and we took it very seriously.</p>
-<p data-astro-cid-nalcf22a="">It is no secret that Cloudflare uses <a href="https://blog.cloudflare.com/end-of-the-road-for-cloudflare-nginx">nginx</a> to handle user traffic. A little less known fact, is that we have several instances of nginx running. I won’t go into detail, but there is one instance whose job is to accept connections on port 443, and proxy them to another instance of nginx that actually handles the requests. It has pretty limited functionality otherwise. We fondly call it nginx-ssl.</p>
-<p data-astro-cid-nalcf22a="">Back then we were using OpenSSL for TLS and Crypto in nginx, but OpenSSL (and BoringSSL) had yet to announce a timeline for TLS 1.3 support, therefore we had to implement our own TLS 1.3 stack. Obviously we wanted an implementation that would not affect any customer or client that would not enable TLS 1.3. We also needed something that we could iterate on quickly, because the spec was very fluid back then, and also something that we can release frequently without worrying about the rest of the Cloudflare stack.</p>
-<p data-astro-cid-nalcf22a="">The obvious solution was to implement it on top of OpenSSL. The OpenSSL version we were using was 1.0.2, but not only were we looking ahead to replace it with version 1.1.0 or with <a href="https://blog.cloudflare.com/make-ssl-boring-again">BoringSSL</a> (which we eventually did), it was so ingrained in our stack and so fragile that we wouldn’t be able to achieve our stated goals, without risking serious bugs.</p>
-<p data-astro-cid-nalcf22a="">Instead, Filippo Valsorda and Brendan McMillion suggested that the easier path would be to implement TLS 1.3 on top of the Go TLS library and make a Go replica of nginx-ssl (go-ssl). Go is very easy to iterate and prototype, with a powerful standard library, and we had a great pool of Go talent to use, so it made a lot of sense. Thus <a href="https://github.com/cloudflare/tls-tris" target="_blank" rel="noopener noreferrer">tls-tris</a> was born.</p>
-<p data-astro-cid-nalcf22a="">The question remained how would we have Go handle only TLS 1.3 while letting nginx handling all prior versions of TLS?</p>
-<p data-astro-cid-nalcf22a="">And herein lies the problem. Both TLS 1.3 and older versions of TLS communicate on port 443, and it is common knowledge that only one application can listen on a given TCP port, and that application is nginx, that would still handle the bulk of the TLS traffic. We could pipe all the TCP data into another connection in Go, effectively creating an additional proxy layer, but where is the fun in that? Also it seemed a little inefficient.</p>
-<h2 data-astro-cid-nalcf22a="">Meet SCM_RIGHTS</h2>
-<p data-astro-cid-nalcf22a="">So how do you make two different processes, written in two different programming languages, share the same TCP socket?</p>
-<p data-astro-cid-nalcf22a="">Fortunately, Linux (or rather UNIX) provides us with just the tool that we need. You can use UNIX-domain sockets to pass file descriptors between applications, and like everything else in UNIX connections are files.Looking at <code>man 7 unix</code> we see the following:</p>
+<p data-astro-cid-t7az6eu7="">As TLS 1.3 was ratified earlier <a href="https://blog.cloudflare.com/rfc-8446-aka-tls-1-3">this year</a>, I was recollecting how we got started with it here at Cloudflare. We made the decision to be early adopters of <a href="https://blog.cloudflare.com/introducing-tls-1-3">TLS 1.3</a> a little over two years ago. It was a very important decision, and we took it very seriously.</p>
+<p data-astro-cid-t7az6eu7="">It is no secret that Cloudflare uses <a href="https://blog.cloudflare.com/end-of-the-road-for-cloudflare-nginx">nginx</a> to handle user traffic. A little less known fact, is that we have several instances of nginx running. I won’t go into detail, but there is one instance whose job is to accept connections on port 443, and proxy them to another instance of nginx that actually handles the requests. It has pretty limited functionality otherwise. We fondly call it nginx-ssl.</p>
+<p data-astro-cid-t7az6eu7="">Back then we were using OpenSSL for TLS and Crypto in nginx, but OpenSSL (and BoringSSL) had yet to announce a timeline for TLS 1.3 support, therefore we had to implement our own TLS 1.3 stack. Obviously we wanted an implementation that would not affect any customer or client that would not enable TLS 1.3. We also needed something that we could iterate on quickly, because the spec was very fluid back then, and also something that we can release frequently without worrying about the rest of the Cloudflare stack.</p>
+<p data-astro-cid-t7az6eu7="">The obvious solution was to implement it on top of OpenSSL. The OpenSSL version we were using was 1.0.2, but not only were we looking ahead to replace it with version 1.1.0 or with <a href="https://blog.cloudflare.com/make-ssl-boring-again">BoringSSL</a> (which we eventually did), it was so ingrained in our stack and so fragile that we wouldn’t be able to achieve our stated goals, without risking serious bugs.</p>
+<p data-astro-cid-t7az6eu7="">Instead, Filippo Valsorda and Brendan McMillion suggested that the easier path would be to implement TLS 1.3 on top of the Go TLS library and make a Go replica of nginx-ssl (go-ssl). Go is very easy to iterate and prototype, with a powerful standard library, and we had a great pool of Go talent to use, so it made a lot of sense. Thus <a href="https://github.com/cloudflare/tls-tris" target="_blank" rel="noopener noreferrer">tls-tris</a> was born.</p>
+<p data-astro-cid-t7az6eu7="">The question remained how would we have Go handle only TLS 1.3 while letting nginx handling all prior versions of TLS?</p>
+<p data-astro-cid-t7az6eu7="">And herein lies the problem. Both TLS 1.3 and older versions of TLS communicate on port 443, and it is common knowledge that only one application can listen on a given TCP port, and that application is nginx, that would still handle the bulk of the TLS traffic. We could pipe all the TCP data into another connection in Go, effectively creating an additional proxy layer, but where is the fun in that? Also it seemed a little inefficient.</p>
+<h2 data-astro-cid-t7az6eu7="">Meet SCM_RIGHTS</h2>
+<p data-astro-cid-t7az6eu7="">So how do you make two different processes, written in two different programming languages, share the same TCP socket?</p>
+<p data-astro-cid-t7az6eu7="">Fortunately, Linux (or rather UNIX) provides us with just the tool that we need. You can use UNIX-domain sockets to pass file descriptors between applications, and like everything else in UNIX connections are files.Looking at <code>man 7 unix</code> we see the following:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">   Ancillary</span><span class="sk-032f62-99ffe4"> messages</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">       Ancillary</span><span class="sk-032f62-99ffe4">  data</span><span class="sk-032f62-99ffe4">  is</span><span class="sk-032f62-99ffe4">  sent</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> received</span><span class="sk-032f62-99ffe4"> using</span><span class="sk-032f62-99ffe4"> sendmsg</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">2</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">and</span><span class="sk-032f62-99ffe4"> recvmsg</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">2</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">.</span></span>
@@ -45,8 +45,8 @@
 		})
 	});
 </script>
-<blockquote data-astro-cid-nalcf22a="">Technically you do not send “file descriptors”. The “file descriptors” you handle in the code are simply indices into the processes' local file descriptor table, which in turn points into the OS' open file table, that finally points to the vnode representing the file. Thus the “file descriptor” observed by the other process will most likely have a different numeric value, despite pointing to the same file.</blockquote>
-<p data-astro-cid-nalcf22a="">We can also check <code>man 3 cmsg</code> as suggested, to find a handy example on how to use SCM_RIGHTS:</p>
+<blockquote data-astro-cid-t7az6eu7="">Technically you do not send “file descriptors”. The “file descriptors” you handle in the code are simply indices into the processes' local file descriptor table, which in turn points into the OS' open file table, that finally points to the vnode representing the file. Thus the “file descriptor” observed by the other process will most likely have a different numeric value, despite pointing to the same file.</blockquote>
+<p data-astro-cid-t7az6eu7="">We can also check <code>man 3 cmsg</code> as suggested, to find a handy example on how to use SCM_RIGHTS:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">   struct</span><span class="sk-24292e-fff"> msghdr msg </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff"> };</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">   struct</span><span class="sk-24292e-fff"> cmsghdr </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">cmsg;</span></span>
@@ -71,10 +71,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">And that is what we decided to use. We let OpenSSL read the “Client Hello” message from an established TCP connection. If the “Client Hello” indicated TLS version 1.3, we would use SCM_RIGHTS to send it to the Go process. The Go process would in turn try to parse the rest of the “Client Hello”, if it were successful it would proceed with TLS 1.3 connection, and upon failure it would give the file descriptor back to OpenSSL, to handle regularly.</p>
-<p data-astro-cid-nalcf22a="">So how exactly do you implement something like that?</p>
-<p data-astro-cid-nalcf22a="">Since in our case we established that the C process will listen for TCP connections, our other process will have to listen on a UNIX socket, for connections C will want to forward.</p>
-<p data-astro-cid-nalcf22a="">For example in Go:</p>
+<p data-astro-cid-t7az6eu7="">And that is what we decided to use. We let OpenSSL read the “Client Hello” message from an established TCP connection. If the “Client Hello” indicated TLS version 1.3, we would use SCM_RIGHTS to send it to the Go process. The Go process would in turn try to parse the rest of the “Client Hello”, if it were successful it would proceed with TLS 1.3 connection, and upon failure it would give the file descriptor back to OpenSSL, to handle regularly.</p>
+<p data-astro-cid-t7az6eu7="">So how exactly do you implement something like that?</p>
+<p data-astro-cid-t7az6eu7="">Since in our case we established that the C process will listen for TCP connections, our other process will have to listen on a UNIX socket, for connections C will want to forward.</p>
+<p data-astro-cid-t7az6eu7="">For example in Go:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">type</span><span class="sk-6f42c1-ffc799"> scmListener</span><span class="sk-d73a49-a0a0a0"> struct</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	*</span><span class="sk-6f42c1-ffc799">net</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">UnixListener</span></span>
@@ -119,7 +119,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">Then in the C process, for each connection we want to pass, we will connect to that socket first:</p>
+<p data-astro-cid-t7az6eu7="">Then in the C process, for each connection we want to pass, we will connect to that socket first:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">int</span><span class="sk-6f42c1-ffc799"> connect_unix</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"><span class="sk-24292e-fff">{</span></span>
@@ -143,7 +143,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">To actually pass a file descriptor we utilize the example from <code>man 3 cmsg</code>:</p>
+<p data-astro-cid-t7az6eu7="">To actually pass a file descriptor we utilize the example from <code>man 3 cmsg</code>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">int</span><span class="sk-6f42c1-ffc799"> send_fd</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">int</span><span class="sk-e36209-fff"> unix_sock</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">int</span><span class="sk-e36209-fff"> fd</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">{</span></span>
@@ -174,7 +174,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">Then to receive the file descriptor in Go:</p>
+<p data-astro-cid-t7az6eu7="">Then to receive the file descriptor in Go:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">func</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">c </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-6f42c1-ffc799">scmConn</span><span class="sk-24292e-fff">) </span><span class="sk-6f42c1-ffc799">ReadFD</span><span class="sk-24292e-fff">() (</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-6f42c1-ffc799">os</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">File</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">error</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-24292e-fff">	msg, oob </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-6f42c1-ffc799"> make</span><span class="sk-24292e-fff">([]</span><span class="sk-d73a49-a0a0a0">byte</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">), </span><span class="sk-6f42c1-ffc799">make</span><span class="sk-24292e-fff">([]</span><span class="sk-d73a49-a0a0a0">byte</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">128</span><span class="sk-24292e-fff">)</span></span>
@@ -210,9 +210,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h2 data-astro-cid-nalcf22a="">Rust</h2>
-<p data-astro-cid-nalcf22a="">We can also do this in Rust, although the standard library in Rust does not yet support UNIX sockets, but it does let you address the C library via the <a href="https://rust-lang.github.io/libc/x86_64-unknown-linux-gnu/libc" target="_blank" rel="noopener noreferrer">libc</a> crate. Warning, unsafe code ahead!</p>
-<p data-astro-cid-nalcf22a="">First we want to implement some UNIX socket functionality in Rust:</p>
+<h2 data-astro-cid-t7az6eu7="">Rust</h2>
+<p data-astro-cid-t7az6eu7="">We can also do this in Rust, although the standard library in Rust does not yet support UNIX sockets, but it does let you address the C library via the <a href="https://rust-lang.github.io/libc/x86_64-unknown-linux-gnu/libc" target="_blank" rel="noopener noreferrer">libc</a> crate. Warning, unsafe code ahead!</p>
+<p data-astro-cid-t7az6eu7="">First we want to implement some UNIX socket functionality in Rust:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">use</span><span class="sk-6f42c1-ffc799"> libc</span><span class="sk-d73a49-a0a0a0">::*</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">use</span><span class="sk-6f42c1-ffc799"> std</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">io</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">prelude</span><span class="sk-d73a49-a0a0a0">::*</span><span class="sk-24292e-fff">;</span></span>
@@ -299,7 +299,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">And the code to extract the file desciptor:</p>
+<p data-astro-cid-t7az6eu7="">And the code to extract the file desciptor:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">#[repr(</span><span class="sk-6f42c1-ffc799">C</span><span class="sk-24292e-fff">)]</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">pub</span><span class="sk-d73a49-a0a0a0"> struct</span><span class="sk-6f42c1-ffc799"> ScmCmsgHeader</span><span class="sk-24292e-fff"> {</span></span>
@@ -351,12 +351,12 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h2 data-astro-cid-nalcf22a="">Conclusion</h2>
-<p data-astro-cid-nalcf22a="">SCM_RIGHTS is a very powerful tool that can be used for many purposes. In our case we used to to introduce a new service in a non-obtrusive fashion. Other uses may be:</p>
+<h2 data-astro-cid-t7az6eu7="">Conclusion</h2>
+<p data-astro-cid-t7az6eu7="">SCM_RIGHTS is a very powerful tool that can be used for many purposes. In our case we used to to introduce a new service in a non-obtrusive fashion. Other uses may be:</p>
 <ul>
 	<li>A/B testing</li>
 	<li>Phasing out of an old C based service in favor of new Go or Rust one</li>
 	<li>Passing connections from a privileged process to an unprivileged one</li>
 </ul>
-<p data-astro-cid-nalcf22a="">And more</p>
-<p data-astro-cid-nalcf22a="">You can find the full example <a href="https://github.com/vkrasnov/scm_sample" target="_blank" rel="noopener noreferrer">here</a>.</p>
+<p data-astro-cid-t7az6eu7="">And more</p>
+<p data-astro-cid-t7az6eu7="">You can find the full example <a href="https://github.com/vkrasnov/scm_sample" target="_blank" rel="noopener noreferrer">here</a>.</p>

@@ -1,14 +1,14 @@
-<p data-astro-cid-byeekcgh="">Au cours des douze derniers mois, nous avons parlé de la nouvelle référence en matière de chiffrement sur Internet : la cryptographie post-quantique. Durant la Semaine anniversaire, l'année dernière, nous avons annoncé que notre <a href="https://blog.cloudflare.com/fr-fr/post-quantum-for-all-fr-fr">version bêta de Kyber était disponible à des fins de test</a>, et que <a href="https://blog.cloudflare.com/fr-fr/post-quantum-tunnel-fr-fr">Cloudflare Tunnel</a> pouvait être mis en œuvre avec la cryptographie post-quantique. Au début de l'année, nous avons clairement indiqué que nous estimons que cette technologie fondamentale devait être <a href="https://blog.cloudflare.com/fr-fr/post-quantum-crypto-should-be-free-fr-fr">accessible à tous, gratuitement et pour toujours</a>.</p>
-<p data-astro-cid-byeekcgh="">Aujourd'hui, nous avons franchi une étape importante, après six ans et <a href="https://blog.cloudflare.com/searchresults/#q=post%20quantum%20crypto&amp;sort=relevancy&amp;f:@customer_facing_source=%5BBlog%5D&amp;f:@language=%5BEnglish%5D">31 articles de blog</a> : nous lançons le déploiement de la prise en charge de la cryptographie post-quantique <a href="https://blog.cloudflare.com/post-quantum-to-origins">en disponibilité générale</a>1 pour nos clients, nos services et nos systèmes internes ; nous le décrivons plus en détail ci-dessous. Ce déploiement inclut des produits tels que <a href="https://blog.cloudflare.com/post-quantum-to-origins">Pingora</a> pour la connectivité aux serveurs d'origine, 1.1.1.1, R2, le routage intelligent Argo, Snippets et bien d'autres.</p>
-<p data-astro-cid-byeekcgh="">Il s'agit d'une étape importante pour Internet. Nous ne savons pas encore quand les ordinateurs quantiques deviendront suffisamment puissants pour briser la cryptographie actuelle, mais les avantages qu'offre l'adoption de la cryptographie post-quantique sont aujourd'hui manifestes. <a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment">Des connexions rapides et une sécurité pérenne</a> sont désormais possibles, grâce aux progrès accomplis par Cloudflare, Google, Mozilla, NIST (National Institute of Standards and Technology) des États-Unis, Internet Engineering Task Force et de nombreuses institutions universitaires.</p>
-<p data-astro-cid-byeekcgh="">Qu'entend-on par « disponibilité générale » ? En octobre 2022, <a href="https://blog.cloudflare.com/fr-fr/post-quantum-for-all-fr-fr">nous avons déployé X25519+Kyber sous forme de version bêta pour l'ensemble des sites web et API</a> servis par l'intermédiaire de Cloudflare. Cependant, un tango se danse à deux, et une connexion n'est donc sécurisée que si le navigateur prend également en charge la cryptographie post-quantique. À partir d'août 2023, <a href="https://blog.chromium.org/2023/08/protecting-chrome-traffic-with-hybrid.html" target="_blank" rel="noopener noreferrer">Chrome</a> activera progressivement <em>X25519+Kyber</em>, par défaut.</p>
+<p data-astro-cid-t7az6eu7="">Au cours des douze derniers mois, nous avons parlé de la nouvelle référence en matière de chiffrement sur Internet : la cryptographie post-quantique. Durant la Semaine anniversaire, l'année dernière, nous avons annoncé que notre <a href="https://blog.cloudflare.com/fr-fr/post-quantum-for-all-fr-fr">version bêta de Kyber était disponible à des fins de test</a>, et que <a href="https://blog.cloudflare.com/fr-fr/post-quantum-tunnel-fr-fr">Cloudflare Tunnel</a> pouvait être mis en œuvre avec la cryptographie post-quantique. Au début de l'année, nous avons clairement indiqué que nous estimons que cette technologie fondamentale devait être <a href="https://blog.cloudflare.com/fr-fr/post-quantum-crypto-should-be-free-fr-fr">accessible à tous, gratuitement et pour toujours</a>.</p>
+<p data-astro-cid-t7az6eu7="">Aujourd'hui, nous avons franchi une étape importante, après six ans et <a href="https://blog.cloudflare.com/searchresults/#q=post%20quantum%20crypto&amp;sort=relevancy&amp;f:@customer_facing_source=%5BBlog%5D&amp;f:@language=%5BEnglish%5D">31 articles de blog</a> : nous lançons le déploiement de la prise en charge de la cryptographie post-quantique <a href="https://blog.cloudflare.com/post-quantum-to-origins">en disponibilité générale</a>1 pour nos clients, nos services et nos systèmes internes ; nous le décrivons plus en détail ci-dessous. Ce déploiement inclut des produits tels que <a href="https://blog.cloudflare.com/post-quantum-to-origins">Pingora</a> pour la connectivité aux serveurs d'origine, 1.1.1.1, R2, le routage intelligent Argo, Snippets et bien d'autres.</p>
+<p data-astro-cid-t7az6eu7="">Il s'agit d'une étape importante pour Internet. Nous ne savons pas encore quand les ordinateurs quantiques deviendront suffisamment puissants pour briser la cryptographie actuelle, mais les avantages qu'offre l'adoption de la cryptographie post-quantique sont aujourd'hui manifestes. <a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment">Des connexions rapides et une sécurité pérenne</a> sont désormais possibles, grâce aux progrès accomplis par Cloudflare, Google, Mozilla, NIST (National Institute of Standards and Technology) des États-Unis, Internet Engineering Task Force et de nombreuses institutions universitaires.</p>
+<p data-astro-cid-t7az6eu7="">Qu'entend-on par « disponibilité générale » ? En octobre 2022, <a href="https://blog.cloudflare.com/fr-fr/post-quantum-for-all-fr-fr">nous avons déployé X25519+Kyber sous forme de version bêta pour l'ensemble des sites web et API</a> servis par l'intermédiaire de Cloudflare. Cependant, un tango se danse à deux, et une connexion n'est donc sécurisée que si le navigateur prend également en charge la cryptographie post-quantique. À partir d'août 2023, <a href="https://blog.chromium.org/2023/08/protecting-chrome-traffic-with-hybrid.html" target="_blank" rel="noopener noreferrer">Chrome</a> activera progressivement <em>X25519+Kyber</em>, par défaut.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="187" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D4QRSEAHGYB4E88VZSAB.png&amp;w=715&amp;h=187&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D4QRSEAHGYB4E88VZSAB.png&amp;w=640&amp;h=167&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D4QRSEAHGYB4E88VZSAB.png&amp;w=715&amp;h=187&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D4QRSEAHGYB4E88VZSAB.png&amp;w=750&amp;h=196&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D4QRSEAHGYB4E88VZSAB.png&amp;w=828&amp;h=217&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D4QRSEAHGYB4E88VZSAB.png&amp;w=1080&amp;h=282&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D4QRSEAHGYB4E88VZSAB.png&amp;w=1280&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D4QRSEAHGYB4E88VZSAB.png&amp;w=1430&amp;h=374&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Connections involved when a user visits an uncached page on a website served through Cloudflare: 1. browser to edge; 2. internal connection(s); and 3. edge to customer origin server. " loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D4QRSEAHGYB4E88VZSAB.png&amp;w=1920&amp;h=501&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="501" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="187" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-byeekcgh="">La requête de l'utilisateur est acheminée sur le réseau de Cloudflare (2). Nous avons amélioré un grand nombre de nos connexions internes afin d'utiliser la cryptographie post-quantique, et nous prévoyons de finaliser l'amélioration de toutes nos connexions internes d'ici fin 2024. La dernière liaison demeure donc la connexion (3) entre Cloudflare et le <em>serveur d'origine</em>.</p>
-<p data-astro-cid-byeekcgh="">Nous sommes heureux d'annoncer que <strong>nous déployons la prise en charge de X25519+Kyber en disponibilité générale pour la plupart des connexions entrantes et sortantes</strong> dans le cadre d'une utilisation comprenant les <em>serveurs d'origine</em> et les commandes <code>fetch()</code> de <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a>.</p>
-<p data-astro-cid-byeekcgh="">.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+<p data-astro-cid-t7az6eu7="">La requête de l'utilisateur est acheminée sur le réseau de Cloudflare (2). Nous avons amélioré un grand nombre de nos connexions internes afin d'utiliser la cryptographie post-quantique, et nous prévoyons de finaliser l'amélioration de toutes nos connexions internes d'ici fin 2024. La dernière liaison demeure donc la connexion (3) entre Cloudflare et le <em>serveur d'origine</em>.</p>
+<p data-astro-cid-t7az6eu7="">Nous sommes heureux d'annoncer que <strong>nous déployons la prise en charge de X25519+Kyber en disponibilité générale pour la plupart des connexions entrantes et sortantes</strong> dans le cadre d'une utilisation comprenant les <em>serveurs d'origine</em> et les commandes <code>fetch()</code> de <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a>.</p>
+<p data-astro-cid-t7az6eu7="">.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
 <div id="html-block-k1k" class="html-block">
 	<style>
 		#html-block-k1k .tg {
@@ -78,10 +78,10 @@
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-byeekcgh="">Plan</p>
-<p data-astro-cid-byeekcgh="">Prise en charge des connexions sortantes post-quantiques</p>
-<p data-astro-cid-byeekcgh="">Gratuit</p>
-<p data-astro-cid-byeekcgh="">Début du déploiement. Objectif : 100 % d'ici fin octobre.</p>
+<p data-astro-cid-t7az6eu7="">Plan</p>
+<p data-astro-cid-t7az6eu7="">Prise en charge des connexions sortantes post-quantiques</p>
+<p data-astro-cid-t7az6eu7="">Gratuit</p>
+<p data-astro-cid-t7az6eu7="">Début du déploiement. Objectif : 100 % d'ici fin octobre.</p>
 <div id="html-block-k1t" class="html-block">
 	<table>
 		<thead>
@@ -183,8 +183,8 @@
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-byeekcgh="">Pro et Business</p>
-<p data-astro-cid-byeekcgh="">Objectif : 100 % d'ici la fin de l'année.</p>
+<p data-astro-cid-t7az6eu7="">Pro et Business</p>
+<p data-astro-cid-t7az6eu7="">Objectif : 100 % d'ici la fin de l'année.</p>
 <div id="html-block-k1y" class="html-block">
 	<table>
 		<thead>
@@ -226,61 +226,61 @@
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-byeekcgh="">Enterprise</p>
-<p data-astro-cid-byeekcgh="">Le déploiement commencera en février 2024. 100 % d'ici mars 2024.</p>
-<p data-astro-cid-byeekcgh="">Nous transmettrons régulièrement à nos clients Enterprise des informations supplémentaires au cours des six prochains mois, afin de les aider à se préparer au déploiement. Les clients des offres Pro, Business et Enterprise peuvent ignorer le déploiement et s'inscrire dès aujourd'hui dans leur zone, ou se désinscrire à l'avance via une API, décrite dans <a href="https://blog.cloudflare.com/post-quantum-to-origins">l'article de blog associé</a>. Avant le déploiement pour les clients de l'offre Enterprise en février 2024, nous ajouterons une option de désinscription au tableau de bord.</p>
-<p data-astro-cid-byeekcgh="">Si vous êtes impatient(e) de vous lancer maintenant, <a href="https://blog.cloudflare.com/post-quantum-to-origins">consultez notre article de blog contenant les informations techniques détaillées et activez la prise en charge de la cryptographie post-quantique via l'API</a>.</p>
-<h3 data-astro-cid-byeekcgh="">Qu'est-ce qui est inclus et qu'est-ce qui va suivre ?</h3>
-<p data-astro-cid-byeekcgh="">Avec une amélioration de cette ampleur, nous voulions d'abord prioriser les produits les plus utilisés, puis étendre le déploiement pour prendre en charge les scénarios d'utilisation particuliers. Cette approche nous a conduits à inclure les produits et systèmes suivants dans ce déploiement :</p>
-<p data-astro-cid-byeekcgh="">1.1.1.1</p>
-<p data-astro-cid-byeekcgh="">AMP (Accelerated Mobile Pages)</p>
-<p data-astro-cid-byeekcgh="">Passerelle API Gateway</p>
-<p data-astro-cid-byeekcgh="">Routage intelligent Argo</p>
-<p data-astro-cid-byeekcgh="">Auto Minify</p>
-<p data-astro-cid-byeekcgh="">Optimisation automatique de plateforme</p>
-<p data-astro-cid-byeekcgh="">Échanges signés automatiques</p>
-<p data-astro-cid-byeekcgh="">Trafic sortant de Cloudflare</p>
-<p data-astro-cid-byeekcgh="">Cloudflare Images</p>
-<p data-astro-cid-byeekcgh="">Ensemble de règles de Cloudflare</p>
-<p data-astro-cid-byeekcgh="">Cloudflare Snippets</p>
-<p data-astro-cid-byeekcgh="">Cloudflare Tunnel</p>
-<p data-astro-cid-byeekcgh="">Pages d'erreur personnalisée</p>
-<p data-astro-cid-byeekcgh="">Surveillance fondée sur les flux</p>
-<p data-astro-cid-byeekcgh="">Contrôles d’intégrité</p>
-<p data-astro-cid-byeekcgh="">Hermes</p>
-<p data-astro-cid-byeekcgh="">Host Head Checker</p>
-<p data-astro-cid-byeekcgh="">Magic Firewall</p>
-<p data-astro-cid-byeekcgh="">Magic Network Monitoring</p>
-<p data-astro-cid-byeekcgh="">Journalisation des erreurs réseau</p>
-<p data-astro-cid-byeekcgh="">Project Flame</p>
-<p data-astro-cid-byeekcgh="">Quicksilver</p>
-<p data-astro-cid-byeekcgh="">R2 Storage</p>
-<p data-astro-cid-byeekcgh="">Request Tracer</p>
-<p data-astro-cid-byeekcgh="">Rocket Loader</p>
-<p data-astro-cid-byeekcgh="">Speed sur le tableau de bord de Cloudflare</p>
-<p data-astro-cid-byeekcgh="">SSL/TLS</p>
-<p data-astro-cid-byeekcgh="">Traffic Manager</p>
-<p data-astro-cid-byeekcgh="">Pare-feu WAF, règles gérées</p>
-<p data-astro-cid-byeekcgh="">Waiting Room</p>
-<p data-astro-cid-byeekcgh="">Web Analytics</p>
-<p data-astro-cid-byeekcgh="">Si un produit ou un service que vous utilisez ne figure pas dans cette liste, c'est que le déploiement de la cryptographie post-quantique n'a pas encore débuté pour ce produit. Nous travaillons activement au déploiement de la cryptographie post-quantique pour tous nos produits et services, notamment nos produits Zero Trust. Jusqu'à ce que tous nos systèmes prennent en charge la cryptographie post-quantique, nous publierons un article de blog proposant des informations mises à jour à l'occasion de chaque Innovation Week. Cet article présentera les produits pour lesquels nous avons déployé la cryptographie post-quantique, ceux qui en bénéficieront prochainement et ceux pour lesquels la prise en charge est encore à l'horizon.</p>
-<p data-astro-cid-byeekcgh="">Voici les produits pour lesquels nous développons la prise en charge de la cryptographie post-quantique :</p>
-<p data-astro-cid-byeekcgh="">Cloudflare Gateway</p>
-<p data-astro-cid-byeekcgh="">DNS Cloudflare</p>
-<p data-astro-cid-byeekcgh="">Service d'équilibrage de charge de Cloudflare</p>
-<p data-astro-cid-byeekcgh="">Cloudflare Access</p>
-<p data-astro-cid-byeekcgh="">Always Online</p>
-<p data-astro-cid-byeekcgh="">Zaraz</p>
-<p data-astro-cid-byeekcgh="">Journalisation</p>
-<p data-astro-cid-byeekcgh="">D1</p>
-<p data-astro-cid-byeekcgh="">Cloudflare Workers</p>
-<p data-astro-cid-byeekcgh="">Cloudflare WARP</p>
-<p data-astro-cid-byeekcgh="">Gestion des bots</p>
-<h3 data-astro-cid-byeekcgh="">Pourquoi maintenant ?</h3>
-<p data-astro-cid-byeekcgh="">Comme nous l'avons annoncé plus tôt cette année, la cryptographie post-quantique sera incluse gratuitement dans tous les produits et services Cloudflare compatibles. La meilleure technologie de chiffrement devrait être accessible à tous, gratuitement, afin de contribuer à la protection de la confidentialité et des droits de l'homme dans le monde entier.</p>
-<p data-astro-cid-byeekcgh="">Comme nous <a href="https://blog.cloudflare.com/fr-fr/post-quantum-crypto-should-be-free-fr-fr">l'avons indiqué</a> en mars dernier :</p>
-<p data-astro-cid-byeekcgh=""><em>«Ce qui était autrefois une frontière expérimentale est devenu le substrat sous-jacent de la société moderne. Il est présent dans nos infrastructures les plus critiques, à l'image des réseaux électriques, des hôpitaux, des aéroports et des banques. Nous lui confions nos souvenirs les plus précieux. Nous lui confions nos secrets. C'est pourquoi l'Internet doit être privé par défaut, et doit également être sécurisé par défaut.»</em></p>
-<p data-astro-cid-byeekcgh="">Nos travaux sur la cryptographie post-quantique sont motivés par la théorie selon laquelle les ordinateurs quantiques, capables de briser la cryptographie conventionnelle, sont à l'origine d'un problème comparable à celui du bug de l'an 2000. Nous savons qu'il y aura, à l'avenir, un problème qui pourrait avoir des répercussions catastrophiques sur les utilisateurs, les entreprises et même les États-nations. La différence, cette fois, c'est que nous ne connaissons pas la date et l'heure auxquelles se produira cette véritable rupture du paradigme informatique. Pire encore, tout trafic capturé aujourd'hui pourrait être déchiffré à l'avenir. Nous devons donc nous préparer dès aujourd'hui à cette menace.</p>
-<p data-astro-cid-byeekcgh="">Nous sommes impatients de voir tous les utilisateurs adopter la cryptographie post-quantique sur leurs systèmes. Pour suivre les derniers développements du déploiement de la cryptographie post-quantique et de la prise en charge de clients/serveurs tiers, consultez <a href="https://pq.cloudflareresearch.com" target="_blank" rel="noopener noreferrer">pq.cloudflareresearch.com</a> et suivez ce blog.</p>
-<p data-astro-cid-byeekcgh="">***</p>
-<p data-astro-cid-byeekcgh=""><sup>1</sup>Nous utilisons une <a href="https://datatracker.ietf.org/doc/draft-tls-westerbaan-xyber768d00" target="_blank" rel="noopener noreferrer">version préliminaire</a> de Kyber, le choix de l'institut NIST pour les accords de clé post-quantique. Kyber n'a pas été finalisé ; nous nous attendons à la publication d'une norme définitive en 2024, sous le nom « ML-KEM ». Nous l'adopterons alors rapidement, tout en mettant fin à la prise en charge de X25519Kyber768Draft00.</p>
+<p data-astro-cid-t7az6eu7="">Enterprise</p>
+<p data-astro-cid-t7az6eu7="">Le déploiement commencera en février 2024. 100 % d'ici mars 2024.</p>
+<p data-astro-cid-t7az6eu7="">Nous transmettrons régulièrement à nos clients Enterprise des informations supplémentaires au cours des six prochains mois, afin de les aider à se préparer au déploiement. Les clients des offres Pro, Business et Enterprise peuvent ignorer le déploiement et s'inscrire dès aujourd'hui dans leur zone, ou se désinscrire à l'avance via une API, décrite dans <a href="https://blog.cloudflare.com/post-quantum-to-origins">l'article de blog associé</a>. Avant le déploiement pour les clients de l'offre Enterprise en février 2024, nous ajouterons une option de désinscription au tableau de bord.</p>
+<p data-astro-cid-t7az6eu7="">Si vous êtes impatient(e) de vous lancer maintenant, <a href="https://blog.cloudflare.com/post-quantum-to-origins">consultez notre article de blog contenant les informations techniques détaillées et activez la prise en charge de la cryptographie post-quantique via l'API</a>.</p>
+<h3 data-astro-cid-t7az6eu7="">Qu'est-ce qui est inclus et qu'est-ce qui va suivre ?</h3>
+<p data-astro-cid-t7az6eu7="">Avec une amélioration de cette ampleur, nous voulions d'abord prioriser les produits les plus utilisés, puis étendre le déploiement pour prendre en charge les scénarios d'utilisation particuliers. Cette approche nous a conduits à inclure les produits et systèmes suivants dans ce déploiement :</p>
+<p data-astro-cid-t7az6eu7="">1.1.1.1</p>
+<p data-astro-cid-t7az6eu7="">AMP (Accelerated Mobile Pages)</p>
+<p data-astro-cid-t7az6eu7="">Passerelle API Gateway</p>
+<p data-astro-cid-t7az6eu7="">Routage intelligent Argo</p>
+<p data-astro-cid-t7az6eu7="">Auto Minify</p>
+<p data-astro-cid-t7az6eu7="">Optimisation automatique de plateforme</p>
+<p data-astro-cid-t7az6eu7="">Échanges signés automatiques</p>
+<p data-astro-cid-t7az6eu7="">Trafic sortant de Cloudflare</p>
+<p data-astro-cid-t7az6eu7="">Cloudflare Images</p>
+<p data-astro-cid-t7az6eu7="">Ensemble de règles de Cloudflare</p>
+<p data-astro-cid-t7az6eu7="">Cloudflare Snippets</p>
+<p data-astro-cid-t7az6eu7="">Cloudflare Tunnel</p>
+<p data-astro-cid-t7az6eu7="">Pages d'erreur personnalisée</p>
+<p data-astro-cid-t7az6eu7="">Surveillance fondée sur les flux</p>
+<p data-astro-cid-t7az6eu7="">Contrôles d’intégrité</p>
+<p data-astro-cid-t7az6eu7="">Hermes</p>
+<p data-astro-cid-t7az6eu7="">Host Head Checker</p>
+<p data-astro-cid-t7az6eu7="">Magic Firewall</p>
+<p data-astro-cid-t7az6eu7="">Magic Network Monitoring</p>
+<p data-astro-cid-t7az6eu7="">Journalisation des erreurs réseau</p>
+<p data-astro-cid-t7az6eu7="">Project Flame</p>
+<p data-astro-cid-t7az6eu7="">Quicksilver</p>
+<p data-astro-cid-t7az6eu7="">R2 Storage</p>
+<p data-astro-cid-t7az6eu7="">Request Tracer</p>
+<p data-astro-cid-t7az6eu7="">Rocket Loader</p>
+<p data-astro-cid-t7az6eu7="">Speed sur le tableau de bord de Cloudflare</p>
+<p data-astro-cid-t7az6eu7="">SSL/TLS</p>
+<p data-astro-cid-t7az6eu7="">Traffic Manager</p>
+<p data-astro-cid-t7az6eu7="">Pare-feu WAF, règles gérées</p>
+<p data-astro-cid-t7az6eu7="">Waiting Room</p>
+<p data-astro-cid-t7az6eu7="">Web Analytics</p>
+<p data-astro-cid-t7az6eu7="">Si un produit ou un service que vous utilisez ne figure pas dans cette liste, c'est que le déploiement de la cryptographie post-quantique n'a pas encore débuté pour ce produit. Nous travaillons activement au déploiement de la cryptographie post-quantique pour tous nos produits et services, notamment nos produits Zero Trust. Jusqu'à ce que tous nos systèmes prennent en charge la cryptographie post-quantique, nous publierons un article de blog proposant des informations mises à jour à l'occasion de chaque Innovation Week. Cet article présentera les produits pour lesquels nous avons déployé la cryptographie post-quantique, ceux qui en bénéficieront prochainement et ceux pour lesquels la prise en charge est encore à l'horizon.</p>
+<p data-astro-cid-t7az6eu7="">Voici les produits pour lesquels nous développons la prise en charge de la cryptographie post-quantique :</p>
+<p data-astro-cid-t7az6eu7="">Cloudflare Gateway</p>
+<p data-astro-cid-t7az6eu7="">DNS Cloudflare</p>
+<p data-astro-cid-t7az6eu7="">Service d'équilibrage de charge de Cloudflare</p>
+<p data-astro-cid-t7az6eu7="">Cloudflare Access</p>
+<p data-astro-cid-t7az6eu7="">Always Online</p>
+<p data-astro-cid-t7az6eu7="">Zaraz</p>
+<p data-astro-cid-t7az6eu7="">Journalisation</p>
+<p data-astro-cid-t7az6eu7="">D1</p>
+<p data-astro-cid-t7az6eu7="">Cloudflare Workers</p>
+<p data-astro-cid-t7az6eu7="">Cloudflare WARP</p>
+<p data-astro-cid-t7az6eu7="">Gestion des bots</p>
+<h3 data-astro-cid-t7az6eu7="">Pourquoi maintenant ?</h3>
+<p data-astro-cid-t7az6eu7="">Comme nous l'avons annoncé plus tôt cette année, la cryptographie post-quantique sera incluse gratuitement dans tous les produits et services Cloudflare compatibles. La meilleure technologie de chiffrement devrait être accessible à tous, gratuitement, afin de contribuer à la protection de la confidentialité et des droits de l'homme dans le monde entier.</p>
+<p data-astro-cid-t7az6eu7="">Comme nous <a href="https://blog.cloudflare.com/fr-fr/post-quantum-crypto-should-be-free-fr-fr">l'avons indiqué</a> en mars dernier :</p>
+<p data-astro-cid-t7az6eu7=""><em>«Ce qui était autrefois une frontière expérimentale est devenu le substrat sous-jacent de la société moderne. Il est présent dans nos infrastructures les plus critiques, à l'image des réseaux électriques, des hôpitaux, des aéroports et des banques. Nous lui confions nos souvenirs les plus précieux. Nous lui confions nos secrets. C'est pourquoi l'Internet doit être privé par défaut, et doit également être sécurisé par défaut.»</em></p>
+<p data-astro-cid-t7az6eu7="">Nos travaux sur la cryptographie post-quantique sont motivés par la théorie selon laquelle les ordinateurs quantiques, capables de briser la cryptographie conventionnelle, sont à l'origine d'un problème comparable à celui du bug de l'an 2000. Nous savons qu'il y aura, à l'avenir, un problème qui pourrait avoir des répercussions catastrophiques sur les utilisateurs, les entreprises et même les États-nations. La différence, cette fois, c'est que nous ne connaissons pas la date et l'heure auxquelles se produira cette véritable rupture du paradigme informatique. Pire encore, tout trafic capturé aujourd'hui pourrait être déchiffré à l'avenir. Nous devons donc nous préparer dès aujourd'hui à cette menace.</p>
+<p data-astro-cid-t7az6eu7="">Nous sommes impatients de voir tous les utilisateurs adopter la cryptographie post-quantique sur leurs systèmes. Pour suivre les derniers développements du déploiement de la cryptographie post-quantique et de la prise en charge de clients/serveurs tiers, consultez <a href="https://pq.cloudflareresearch.com" target="_blank" rel="noopener noreferrer">pq.cloudflareresearch.com</a> et suivez ce blog.</p>
+<p data-astro-cid-t7az6eu7="">***</p>
+<p data-astro-cid-t7az6eu7=""><sup>1</sup>Nous utilisons une <a href="https://datatracker.ietf.org/doc/draft-tls-westerbaan-xyber768d00" target="_blank" rel="noopener noreferrer">version préliminaire</a> de Kyber, le choix de l'institut NIST pour les accords de clé post-quantique. Kyber n'a pas été finalisé ; nous nous attendons à la publication d'une norme définitive en 2024, sous le nom « ML-KEM ». Nous l'adopterons alors rapidement, tout en mettant fin à la prise en charge de X25519Kyber768Draft00.</p>

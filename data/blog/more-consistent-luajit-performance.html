@@ -1,7 +1,7 @@
-<p data-astro-cid-nalcf22a=""><sub><em>This is a guest post by <a href="http://tratt.net/laurie" target="_blank" rel="noopener noreferrer">Laurence Tratt</a>, who is a programmer and Reader in Software Development in the <a href="http://www.kcl.ac.uk/nms/depts/informatics" target="_blank" rel="noopener noreferrer">Department of Informatics</a> at <a href="http://www.kcl.ac.uk" target="_blank" rel="noopener noreferrer">King's College London</a> where he leads the <a href="http://soft-dev.org" target="_blank" rel="noopener noreferrer">Software Development Team</a>. He is also an <a href="http://soft-dev.org/projects/lecture" target="_blank" rel="noopener noreferrer">EPSRC Fellow</a>.</em></sub></p>
-<p data-astro-cid-nalcf22a="">A year ago I wrote about <a href="https://blog.cloudflare.com/helping-to-make-luajit-faster" target="_blank" rel="noopener noreferrer">a project that Cloudflare were funding at King's College London to help improve LuaJIT</a>. Our twelve months is now up. How did we do?</p>
-<p data-astro-cid-nalcf22a="">The first thing that happened is that I was lucky to employ a LuaJIT expert, Thomas Fransham, to work on the project. His deep knowledge about LuaJIT was crucial to getting things up and running – 12 months might sound like a long time, but it soon whizzes by!</p>
-<p data-astro-cid-nalcf22a="">The second thing that happened was that we realised that the current state of Lua benchmarking was not good enough for anyone to reliably tell if they'd improved LuaJIT performance or not. Different Lua implementations had different benchmark suites, mostly on the small side, and not easily compared. Although it wasn't part of our original plan, we thus put a lot of effort into creating a larger benchmark suite. This sounds like a trivial job, but it isn't. Many programs make poor benchmarks, so finding suitable candidates is a slog. Although we mostly wanted to benchmark programs using <a href="https://soft-dev.org/src/krun" target="_blank" rel="noopener noreferrer">Krun</a> (see <a href="https://tratt.net/laurie/blog/entries/why_arent_more_users_more_happy_with_our_vms_part_1.html" target="_blank" rel="noopener noreferrer">this blog post</a> for indirect pointers as to why), we're well aware that most people need a quicker, easier way of benchmarking their Lua implementation(s). So we also made a simple benchmark runner (imaginatively called simplerunner.lua) that does that job. Here's an example of it in use:</p>
+<p data-astro-cid-t7az6eu7=""><sub><em>This is a guest post by <a href="http://tratt.net/laurie" target="_blank" rel="noopener noreferrer">Laurence Tratt</a>, who is a programmer and Reader in Software Development in the <a href="http://www.kcl.ac.uk/nms/depts/informatics" target="_blank" rel="noopener noreferrer">Department of Informatics</a> at <a href="http://www.kcl.ac.uk" target="_blank" rel="noopener noreferrer">King's College London</a> where he leads the <a href="http://soft-dev.org" target="_blank" rel="noopener noreferrer">Software Development Team</a>. He is also an <a href="http://soft-dev.org/projects/lecture" target="_blank" rel="noopener noreferrer">EPSRC Fellow</a>.</em></sub></p>
+<p data-astro-cid-t7az6eu7="">A year ago I wrote about <a href="https://blog.cloudflare.com/helping-to-make-luajit-faster" target="_blank" rel="noopener noreferrer">a project that Cloudflare were funding at King's College London to help improve LuaJIT</a>. Our twelve months is now up. How did we do?</p>
+<p data-astro-cid-t7az6eu7="">The first thing that happened is that I was lucky to employ a LuaJIT expert, Thomas Fransham, to work on the project. His deep knowledge about LuaJIT was crucial to getting things up and running – 12 months might sound like a long time, but it soon whizzes by!</p>
+<p data-astro-cid-t7az6eu7="">The second thing that happened was that we realised that the current state of Lua benchmarking was not good enough for anyone to reliably tell if they'd improved LuaJIT performance or not. Different Lua implementations had different benchmark suites, mostly on the small side, and not easily compared. Although it wasn't part of our original plan, we thus put a lot of effort into creating a larger benchmark suite. This sounds like a trivial job, but it isn't. Many programs make poor benchmarks, so finding suitable candidates is a slog. Although we mostly wanted to benchmark programs using <a href="https://soft-dev.org/src/krun" target="_blank" rel="noopener noreferrer">Krun</a> (see <a href="https://tratt.net/laurie/blog/entries/why_arent_more_users_more_happy_with_our_vms_part_1.html" target="_blank" rel="noopener noreferrer">this blog post</a> for indirect pointers as to why), we're well aware that most people need a quicker, easier way of benchmarking their Lua implementation(s). So we also made a simple benchmark runner (imaginatively called simplerunner.lua) that does that job. Here's an example of it in use:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ lua simplerunner.lua</span></span>
 <span class="line"><span>Running luacheck: ..............................</span></span>
@@ -31,3745 +31,3745 @@
 		})
 	});
 </script>
-<p data-astro-cid-nalcf22a="">Even though it's a simple benchmark runner, we couldn't help but try and nudge the quality of benchmarking up a little bit. In essence, the runner runs each separate benchmark in a new sub-process; and within that sub-process it runs each benchmark in a loop a number of times (what we call <em>in-process iterations</em>). Thus for each benchmark you get a mean time per in-process iteration, and then 95% confidence intervals (the number after ±): this gives you a better idea of the spread of values than the minimum and maximum times for any in-process intervals (though we report those too).</p>
-<p data-astro-cid-nalcf22a="">The third thing we set out to do was to understand the relative performance of the various Lua implementations out there now. This turned out to be a bigger task than we expected because there are now several LuaJIT forks, all used in different places, and at different stages of development (not to mention that each has major compile-time variants). We eventually narrowed things down to the <a href="https://github.com/LuaJIT/LuaJIT" target="_blank" rel="noopener noreferrer">original LuaJIT repository</a> and <a href="https://github.com/raptorjit/raptorjit" target="_blank" rel="noopener noreferrer">RaptorJIT</a>. We than ran an experiment (based on a slightly extended version of the methodology from our <a href="https://soft-dev.org/pubs/html/barrett_bolz-tereick_killick_mount_tratt__virtual_machine_warmup_blows_hot_and_cold_v6" target="_blank" rel="noopener noreferrer">VM warmup paper</a>), with with 1500 “process executions” (i.e. separate, new VM processes) and 1500 “in-process iterations” (i.e. the benchmark in a for loop within one VM process). Here are the benchmark results for the original version of LuaJIT:</p>
-<h2 data-astro-cid-nalcf22a="">Results for luaJIT</h2>
-<p data-astro-cid-nalcf22a=""><strong>Symbol key:</strong> bad inconsistent, flat, good inconsistent, no steady state, slowdown, warmup.</p>
-<div class="emdash-table-wrapper" data-astro-cid-pe7l3wzl="">
-	<table class="emdash-table" style="min-width: 480px;" data-astro-cid-pe7l3wzl="">
-		<thead data-astro-cid-pe7l3wzl="">
-			<tr data-astro-cid-pe7l3wzl="">
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+<p data-astro-cid-t7az6eu7="">Even though it's a simple benchmark runner, we couldn't help but try and nudge the quality of benchmarking up a little bit. In essence, the runner runs each separate benchmark in a new sub-process; and within that sub-process it runs each benchmark in a loop a number of times (what we call <em>in-process iterations</em>). Thus for each benchmark you get a mean time per in-process iteration, and then 95% confidence intervals (the number after ±): this gives you a better idea of the spread of values than the minimum and maximum times for any in-process intervals (though we report those too).</p>
+<p data-astro-cid-t7az6eu7="">The third thing we set out to do was to understand the relative performance of the various Lua implementations out there now. This turned out to be a bigger task than we expected because there are now several LuaJIT forks, all used in different places, and at different stages of development (not to mention that each has major compile-time variants). We eventually narrowed things down to the <a href="https://github.com/LuaJIT/LuaJIT" target="_blank" rel="noopener noreferrer">original LuaJIT repository</a> and <a href="https://github.com/raptorjit/raptorjit" target="_blank" rel="noopener noreferrer">RaptorJIT</a>. We than ran an experiment (based on a slightly extended version of the methodology from our <a href="https://soft-dev.org/pubs/html/barrett_bolz-tereick_killick_mount_tratt__virtual_machine_warmup_blows_hot_and_cold_v6" target="_blank" rel="noopener noreferrer">VM warmup paper</a>), with with 1500 “process executions” (i.e. separate, new VM processes) and 1500 “in-process iterations” (i.e. the benchmark in a for loop within one VM process). Here are the benchmark results for the original version of LuaJIT:</p>
+<h2 data-astro-cid-t7az6eu7="">Results for luaJIT</h2>
+<p data-astro-cid-t7az6eu7=""><strong>Symbol key:</strong> bad inconsistent, flat, good inconsistent, no steady state, slowdown, warmup.</p>
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 480px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Benchmark</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Classification</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Steady iteration (#)</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Steady iteration (s)</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Steady performance (s)</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-pe7l3wzl="">
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>array3d</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(2.0, 624.3)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.042<br>(0.040, 80.206)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12863<br>±0.000558</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>binarytrees</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12564<br>±0.000532</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>bounce</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12795<br>±0.000272</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>capnproto_decode</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(11, 4)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(1.0, 45.3)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.132<br>(0.000, 5.999)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.13458<br>±0.028466</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>capnproto_encode</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(14, 1)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>155.0<br>(52.8, 280.6)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>34.137<br>(11.476, 57.203)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.21698<br>±0.014541</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>collisiondetector</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(12, 2, 1)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>coroutine_ring</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.10667<br>±0.001527</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>deltablue</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(10, 5)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>84.0<br>(1.0, 1022.9)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>8.743<br>(0.000, 106.802)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.10328<br>±0.003195</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>euler14</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>60.0<br>(60.0, 83.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>5.537<br>(5.483, 7.680)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.09180<br>±0.000742</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>fannkuch_redux</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12093<br>±0.001502</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>fasta</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12099<br>±0.000376</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>havlak</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(9, 4, 2)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>heapsort</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1.01917<br>±0.015674</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>jsonlua_decode</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.11279<br>±0.012664</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>jsonlua_encode</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12798<br>±0.001761</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>knucleotide</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.11662<br>±0.000810</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>life</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(12, 3)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>luacheck</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1.00901<br>±0.089779</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>luacheck_parser</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(13, 2)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>244.0<br>(1.0, 652.2)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>33.998<br>(0.000, 90.759)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.09434<br>±0.012888</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>luafun</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>54.0<br>(12.4, 70.6)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>9.015<br>(1.935, 11.587)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.16571<br>±0.004918</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>mandelbrot</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(11, 4)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1.0<br>(1.0, 29.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000<br>(0.000, 9.750)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.34443<br>±0.000119</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>mandelbrot_bit</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(9, 6)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>md5</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.11279<br>±0.000040</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>meteor</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>16.0<br>(2.0, 18.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>3.398<br>(0.284, 3.840)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.21935<br>±0.003935</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>moonscript</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>28.0<br>(13.1, 423.3)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>4.468<br>(2.039, 68.212)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.16175<br>±0.001569</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>nbody</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.16024<br>±0.002790</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>nsieve</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(2.0, 2.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.189<br>(0.188, 0.189)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.17904<br>±0.000641</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>nsieve_bit</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>4.0<br>(3.4, 5.3)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.272<br>(0.219, 0.386)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.08758<br>±0.000054</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>partialsums</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(2.0, 2.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.160<br>(0.160, 0.163)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.14802<br>±0.002044</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>pidigits</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(11, 4)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1.0<br>(1.0, 2.3)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000<br>(0.000, 0.174)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12689<br>±0.002132</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>queens</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(14, 1)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1.0<br>(1.0, 294.4)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000<br>(0.000, 35.052)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.11838<br>±0.000751</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>quicksort</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(8, 7)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>3.0<br>(2.0, 4.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.600<br>(0.315, 0.957)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.31117<br>±0.067395</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>radixsort</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12732<br>±0.000403</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>ray</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(11, 4)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1.0<br>(1.0, 355.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000<br>(0.000, 110.833)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.30961<br>±0.003990</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>recursive_ack</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.11975<br>±0.000653</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>recursive_fib</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.23064<br>±0.028968</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>resty_json</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(14, 1)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1.0<br>(1.0, 250.3)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000<br>(0.000, 20.009)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.07336<br>±0.002629</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>revcomp</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.11403<br>±0.001754</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>richards</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(8, 7)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(1.0, 2.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.133<br>(0.000, 0.152)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.13625<br>±0.010223</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>scimark_fft</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(2.0, 4.7)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.140<br>(0.140, 0.483)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12653<br>±0.000823</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>scimark_lu</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.11547<br>±0.000308</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>scimark_sor</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12108<br>±0.000053</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>scimark_sparse</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12342<br>±0.000585</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>series</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(2.0, 2.3)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.347<br>(0.347, 0.451)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.33400<br>±0.003217</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>spectralnorm</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.13987<br>±0.000001</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>table_cmpsort</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(13, 2)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>10.0<br>(1.0, 10.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1.984<br>(0.000, 1.989)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.22174<br>±0.007836</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-nalcf22a=""><sub>Results for luaJIT</sub></p>
-<p data-astro-cid-nalcf22a="">There’s a lot more data here than you’d see in traditional benchmarking methodologies (which only show you an approximation of the “steady perf (s)” column), so let me give a quick rundown. The ”classification” column tells us whether the 15 process executions for a benchmark all warmed-up (good), were all flat (good), all slowed-down (bad), were all inconsistent (bad), or some combination of these (if you want to see examples of each of these types, have a look <a href="https://soft-dev.org/pubs/html/barrett_bolz-tereick_killick_mount_tratt__virtual_machine_warmup_blows_hot_and_cold_v6/appendix.html#x1-35000C" target="_blank" rel="noopener noreferrer">here</a>). “Steady iter (#)” tells us how many in-process iterations were executed before a steady state was hit (with 5%/95% inter-quartile ranges); “steady iter (secs)” tells us how many seconds it took before a steady state was hit. Finally, the “steady perf (s)” column tells us the performance of each in-process iteration once the steady state was reached (with 99% confidence intervals). For all numeric columns, lower numbers are better.</p>
-<p data-astro-cid-nalcf22a="">Here are the benchmark results for for RaptorJIT:</p>
-<h2 data-astro-cid-nalcf22a="">Results for RaptorJIT</h2>
-<p data-astro-cid-nalcf22a=""><strong>Symbol key:</strong> bad inconsistent, flat, good inconsistent, no steady state, slowdown, warmup.</p>
-<div class="emdash-table-wrapper" data-astro-cid-pe7l3wzl="">
-	<table class="emdash-table" style="min-width: 480px;" data-astro-cid-pe7l3wzl="">
-		<thead data-astro-cid-pe7l3wzl="">
-			<tr data-astro-cid-pe7l3wzl="">
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+<p data-astro-cid-t7az6eu7=""><sub>Results for luaJIT</sub></p>
+<p data-astro-cid-t7az6eu7="">There’s a lot more data here than you’d see in traditional benchmarking methodologies (which only show you an approximation of the “steady perf (s)” column), so let me give a quick rundown. The ”classification” column tells us whether the 15 process executions for a benchmark all warmed-up (good), were all flat (good), all slowed-down (bad), were all inconsistent (bad), or some combination of these (if you want to see examples of each of these types, have a look <a href="https://soft-dev.org/pubs/html/barrett_bolz-tereick_killick_mount_tratt__virtual_machine_warmup_blows_hot_and_cold_v6/appendix.html#x1-35000C" target="_blank" rel="noopener noreferrer">here</a>). “Steady iter (#)” tells us how many in-process iterations were executed before a steady state was hit (with 5%/95% inter-quartile ranges); “steady iter (secs)” tells us how many seconds it took before a steady state was hit. Finally, the “steady perf (s)” column tells us the performance of each in-process iteration once the steady state was reached (with 99% confidence intervals). For all numeric columns, lower numbers are better.</p>
+<p data-astro-cid-t7az6eu7="">Here are the benchmark results for for RaptorJIT:</p>
+<h2 data-astro-cid-t7az6eu7="">Results for RaptorJIT</h2>
+<p data-astro-cid-t7az6eu7=""><strong>Symbol key:</strong> bad inconsistent, flat, good inconsistent, no steady state, slowdown, warmup.</p>
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 480px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Benchmark</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Classification</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Steady iteration (#)</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Steady iteration (s)</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Steady performance (s)</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-pe7l3wzl="">
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>array3d</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(12, 3)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1.0<br>(1.0, 76.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000<br>(0.000, 9.755)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.13026<br>±0.000216</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>binarytrees</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>24.0<br>(24.0, 24.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.792<br>(2.786, 2.810)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.11960<br>±0.000762</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>bounce</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.13865<br>±0.000978</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>capnproto_encode</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.11818<br>±0.002599</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>collisiondetector</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(2.0, 2.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.167<br>(0.167, 0.169)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.11583<br>±0.001498</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>coroutine_ring</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.14645<br>±0.000752</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>deltablue</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.10658<br>±0.001063</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>euler14</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(12, 3)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1.0<br>(1.0, 51.4)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000<br>(0.000, 5.655)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.11195<br>±0.000093</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>fannkuch_redux</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12437<br>±0.000029</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>fasta</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.11967<br>±0.000313</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>havlak</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.21013<br>±0.002469</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>heapsort</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1.39055<br>±0.002386</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>jsonlua_decode</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.13994<br>±0.001207</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>jsonlua_encode</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.13581<br>±0.001411</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>knucleotide</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.13035<br>±0.000445</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>life</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.28412<br>±0.000599</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>luacheck</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.99735<br>±0.006095</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>luacheck_parser</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.07745<br>±0.002296</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>luafun</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>28.0<br>(28.0, 28.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>4.879<br>(4.861, 4.904)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.17864<br>±0.001222</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>mandelbrot</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.34166<br>±0.000067</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>mandelbrot_bit</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.21577<br>±0.000024</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>md5</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.09548<br>±0.000037</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>meteor</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(2.0, 3.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.273<br>(0.269, 0.493)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.21464<br>±0.002170</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>nbody</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(14, 1)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1.0<br>(1.0, 1.9)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000<br>(0.000, 0.160)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.17695<br>±0.002226</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>nsieve</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(2.0, 2.6)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.180<br>(0.179, 0.282)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.16982<br>±0.000862</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>nsieve_bit</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>4.0<br>(3.7, 5.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.273<br>(0.247, 0.361)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.08780<br>±0.000233</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>partialsums</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(2.0, 2.3)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.161<br>(0.160, 0.207)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.14860<br>±0.001611</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>pidigits</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(8, 7)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>5.0<br>(1.0, 6.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.516<br>(0.000, 0.646)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12766<br>±0.000032</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>queens</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(14, 1)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(1.7, 2.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.162<br>(0.113, 0.162)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.15853<br>±0.000231</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>quicksort</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(2.0, 2.3)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.278<br>(0.278, 0.361)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.27183<br>±0.000469</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>radixsort</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12621<br>±0.000757</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>ray</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.35530<br>±0.000984</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>recursive_ack</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(14, 1)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1.0<br>(1.0, 19.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000<br>(0.000, 2.562)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.14228<br>±0.000616</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>recursive_fib</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.28989<br>±0.000033</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>resty_json</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.07534<br>±0.000595</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>revcomp</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.11684<br>±0.002139</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>richards</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(2.0, 3.2)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.171<br>(0.170, 0.369)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.16559<br>±0.000342</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>scimark_fft</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(2.0, 10.3)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.141<br>(0.141, 1.195)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12709<br>±0.000102</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>scimark_lu</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12733<br>±0.000159</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>scimark_sor</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.13297<br>±0.000005</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>scimark_sparse</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.13082<br>±0.000490</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>series</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(2.0, 2.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.347<br>(0.347, 0.348)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.33390<br>±0.000869</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>spectralnorm</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.13989<br>±0.000003</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>table_cmpsort</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>10.0<br>(10.0, 10.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1.945<br>(1.935, 1.967)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.22008<br>±0.001852</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-nalcf22a=""><sub>Results for RaptorJIT</sub></p>
-<p data-astro-cid-nalcf22a="">We quickly found it difficult to compare so many numbers at once, so as part of this project we built a stats differ that can compare one set of benchmarks with another. Here's the result of comparing the original version of LuaJIT with RaptorJIT:</p>
-<h2 data-astro-cid-nalcf22a="">Results for Normal vs. RaptorJIT</h2>
-<p data-astro-cid-nalcf22a=""><strong>Symbol key:</strong> bad inconsistent, flat, good inconsistent, no steady state, slowdown, warmup.<br><strong>Diff against previous results:</strong> improved worsened different unchanged.</p>
-<div class="emdash-table-wrapper" data-astro-cid-pe7l3wzl="">
-	<table class="emdash-table" style="min-width: 672px;" data-astro-cid-pe7l3wzl="">
-		<thead data-astro-cid-pe7l3wzl="">
-			<tr data-astro-cid-pe7l3wzl="">
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+<p data-astro-cid-t7az6eu7=""><sub>Results for RaptorJIT</sub></p>
+<p data-astro-cid-t7az6eu7="">We quickly found it difficult to compare so many numbers at once, so as part of this project we built a stats differ that can compare one set of benchmarks with another. Here's the result of comparing the original version of LuaJIT with RaptorJIT:</p>
+<h2 data-astro-cid-t7az6eu7="">Results for Normal vs. RaptorJIT</h2>
+<p data-astro-cid-t7az6eu7=""><strong>Symbol key:</strong> bad inconsistent, flat, good inconsistent, no steady state, slowdown, warmup.<br><strong>Diff against previous results:</strong> improved worsened different unchanged.</p>
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 672px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Benchmark</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Classification</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Steady iteration (#)</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Steady iteration variation</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Steady iteration (s)</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Steady performance (s)</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Steady performance<br>variation (s)</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-pe7l3wzl="">
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>array3d</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(12, 3)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1.0<br>(1.0, 76.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(1.0, 76.0)<br>was: (2.0, 624.3)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000<br>(0.000, 9.755)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.13026<br>δ=0.00163<br>±0.000215</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000215<br>was: 0.000557</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>binarytrees</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>24.0<br>(24.0, 24.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.792<br>(2.786, 2.810)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.11960<br>δ=-0.00603<br>±0.000762</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>bounce</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.13865<br>δ=0.01070<br>±0.000978</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>capnproto_encode</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.11818<br>δ=-0.09880<br>±0.002599</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>collisiondetector</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(2.0, 2.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.167<br>(0.167, 0.169)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.11583<br>±0.001498</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>coroutine_ring</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.14645<br>δ=0.03978<br>±0.000751</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>deltablue</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.10658<br>±0.001063</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.001063<br>was: 0.003195</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>euler14</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(12, 3)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1.0<br>δ=-59.0<br>(1.0, 51.4)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(1.0, 51.4)<br>was: (60.0, 83.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000<br>δ=-5.537<br>(0.000, 5.655)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.11195<br>δ=0.02015<br>±0.000093</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000093<br>was: 0.000743</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>fannkuch_redux</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12437<br>δ=0.00344<br>±0.000029</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>fasta</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.11967<br>δ=-0.00132<br>±0.000313</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>havlak</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.21013<br>±0.002442</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>heapsort</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1.39055<br>δ=0.37138<br>±0.002379</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>jsonlua_decode</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.13994<br>δ=0.02715<br>±0.001207</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>jsonlua_encode</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.13581<br>δ=0.00783<br>±0.001409</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>knucleotide</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.13035<br>δ=0.01373<br>±0.000446</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>life</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.28412<br>±0.000599</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>luacheck</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.99735<br>±0.006094</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.006094<br>was: 0.089779</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>luacheck_parser</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.07745<br>δ=-0.01688<br>±0.002281</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>luafun</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>28.0<br>(28.0, 28.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>4.879<br>(4.861, 4.904)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.17864<br>δ=0.01293<br>±0.001222</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.001222<br>was: 0.004918</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>mandelbrot</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.34166<br>δ=-0.00278<br>±0.000067</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>mandelbrot_bit</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.21577<br>±0.000024</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>md5</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.09548<br>δ=-0.01731<br>±0.000037</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>meteor</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(2.0, 3.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(2.0, 3.0)<br>was: (2.0, 18.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.273<br>(0.269, 0.493)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.21464<br>±0.002170</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.002170<br>was: 0.003935</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>nbody</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(14, 1)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1.0<br>(1.0, 1.9)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000<br>(0.000, 0.160)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.17695<br>δ=0.01671<br>±0.002226</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>nsieve</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(2.0, 2.6)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(2.0, 2.6)<br>was: (2.0, 2.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.180<br>(0.179, 0.282)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.16982<br>δ=-0.00922<br>±0.000862</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000862<br>was: 0.000640</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>nsieve_bit</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>4.0<br>(3.7, 5.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(3.7, 5.0)<br>was: (3.4, 5.3)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.273<br>(0.247, 0.361)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.08780<br>±0.000233</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000233<br>was: 0.000054</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>partialsums</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(2.0, 2.3)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(2.0, 2.3)<br>was: (2.0, 2.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.161<br>(0.160, 0.207)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.14860<br>±0.001611</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.001611<br>was: 0.002044</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>pidigits</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(8, 7)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>5.0<br>(1.0, 6.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(1.0, 6.0)<br>was: (1.0, 2.3)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.516<br>(0.000, 0.646)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12766<br>±0.000032</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000032<br>was: 0.002132</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>queens</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(14, 1)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(1.7, 2.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(1.7, 2.0)<br>was: (1.0, 294.4)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.162<br>(0.113, 0.162)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.15853<br>δ=0.04015<br>±0.000231</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000231<br>was: 0.000751</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>quicksort</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(2.0, 2.3)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(2.0, 2.3)<br>was: (2.0, 4.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.278<br>(0.278, 0.361)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.27183<br>±0.000469</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000469<br>was: 0.067395</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>radixsort</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12621<br>±0.000757</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000757<br>was: 0.000403</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>ray</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.35530<br>δ=0.04568<br>±0.000983</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>recursive_ack</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(14, 1)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1.0<br>(1.0, 19.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000<br>(0.000, 2.562)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.14228<br>δ=0.02253<br>±0.000616</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>recursive_fib</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.28989<br>δ=0.05925<br>±0.000033</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>resty_json</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.07534<br>±0.000595</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000595<br>was: 0.002629</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>revcomp</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.11684<br>±0.002139</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.002139<br>was: 0.001754</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>richards</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(2.0, 3.2)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(2.0, 3.2)<br>was: (1.0, 2.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.171<br>(0.170, 0.369)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.16559<br>δ=0.02935<br>±0.000342</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000342<br>was: 0.010223</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>scimark_fft</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(2.0, 10.3)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(2.0, 10.3)<br>was: (2.0, 4.7)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.141<br>(0.141, 1.195)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12709<br>±0.000102</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000102<br>was: 0.000823</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>scimark_lu</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12733<br>δ=0.01186<br>±0.000159</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>scimark_sor</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.13297<br>δ=0.01189<br>±0.000005</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>scimark_sparse</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.13082<br>δ=0.00740<br>±0.000490</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>series</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(2.0, 2.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.347<br>(0.347, 0.348)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.33390<br>±0.000869</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000869<br>was: 0.003217</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>spectralnorm</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.13989<br>δ=0.00002<br>±0.000003</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>table_cmpsort</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>10.0<br>(10.0, 10.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1.945<br>(1.935, 1.967)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.22008<br>±0.001852</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.001852<br>was: 0.007836</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-nalcf22a=""><sub>Results for Normal vs. RaptorJIT</sub></p>
-<p data-astro-cid-nalcf22a="">In essence, green cells mean that RaptorJIT is better than LuaJIT; red cells mean that LuaJIT is better than RaptorJIT; yellow means they're different in a way that can't be compared; and white/grey means they're statistically equivalent. The additional “Steady performance variation (s)” column shows whether the steady state performance of different process executions is more predictable or not.</p>
-<p data-astro-cid-nalcf22a="">The simple conclusion to draw from this is that there isn't a simple conclusion to draw from it: the two VMs are sometimes better than each other with no clear pattern. Without having a clear steer either way, we therefore decided to use the original version of LuaJIT as our base.</p>
-<p data-astro-cid-nalcf22a="">One of the things that became very clear from our benchmarking is that LuaJIT is highly non-deterministic – indeed, it's the most non-deterministic VM I've seen. The practical effect of this is that even on one program, LuaJIT is sometimes very fast, and sometimes rather slow. This is, at best, very confusing for users who tend to assume that programs perform more-or-less the same every time they're run; at worst, it can create significant problems when one is trying to estimate things like server provisioning. We therefore tried various things to make performance more consistent.</p>
-<p data-astro-cid-nalcf22a="">The most promising approach we alighted upon is what we ended up calling “separate counters”. In a tracing JIT compiler such as LuaJIT, one tracks how often a loop (where loops are both “obvious” things like for loops, as well as less obvious things such as functions) has been executed: once it's hit a certain threshold, the loop is traced, and compiled into machine code. LuaJIT has an unusual approach to counting loops: it has 64 counters to which all loops are mapped (using the memory address of the bytecode in question). In other words, multiple loops share the same counter: the bigger the program, the more loops share the same counter. The advantage of this is that the counters map is memory efficient, and for small programs (e.g. the common LuaJIT benchmarks) it can be highly effective. However, it has very odd effects in real programs, particularly as programs get bigger: loops are compiled non-deterministically based on the particular address in memory they happen to have been loaded at.</p>
-<p data-astro-cid-nalcf22a="">We therefore altered LuaJIT so that each loop and each function has its own counter, stored in the bytecode to make memory reads/writes more cache friendly. The diff from normal LuaJIT to the separate counters version is as follows:</p>
-<h2 data-astro-cid-nalcf22a="">Results for Normal vs. Counters</h2>
-<p data-astro-cid-nalcf22a=""><strong>Symbol key:</strong> bad inconsistent, flat, good inconsistent, no steady state, slowdown, warmup.<br><strong>Diff against previous results:</strong> improved worsened different unchanged.</p>
-<div class="emdash-table-wrapper" data-astro-cid-pe7l3wzl="">
-	<table class="emdash-table" style="min-width: 672px;" data-astro-cid-pe7l3wzl="">
-		<thead data-astro-cid-pe7l3wzl="">
-			<tr data-astro-cid-pe7l3wzl="">
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+<p data-astro-cid-t7az6eu7=""><sub>Results for Normal vs. RaptorJIT</sub></p>
+<p data-astro-cid-t7az6eu7="">In essence, green cells mean that RaptorJIT is better than LuaJIT; red cells mean that LuaJIT is better than RaptorJIT; yellow means they're different in a way that can't be compared; and white/grey means they're statistically equivalent. The additional “Steady performance variation (s)” column shows whether the steady state performance of different process executions is more predictable or not.</p>
+<p data-astro-cid-t7az6eu7="">The simple conclusion to draw from this is that there isn't a simple conclusion to draw from it: the two VMs are sometimes better than each other with no clear pattern. Without having a clear steer either way, we therefore decided to use the original version of LuaJIT as our base.</p>
+<p data-astro-cid-t7az6eu7="">One of the things that became very clear from our benchmarking is that LuaJIT is highly non-deterministic – indeed, it's the most non-deterministic VM I've seen. The practical effect of this is that even on one program, LuaJIT is sometimes very fast, and sometimes rather slow. This is, at best, very confusing for users who tend to assume that programs perform more-or-less the same every time they're run; at worst, it can create significant problems when one is trying to estimate things like server provisioning. We therefore tried various things to make performance more consistent.</p>
+<p data-astro-cid-t7az6eu7="">The most promising approach we alighted upon is what we ended up calling “separate counters”. In a tracing JIT compiler such as LuaJIT, one tracks how often a loop (where loops are both “obvious” things like for loops, as well as less obvious things such as functions) has been executed: once it's hit a certain threshold, the loop is traced, and compiled into machine code. LuaJIT has an unusual approach to counting loops: it has 64 counters to which all loops are mapped (using the memory address of the bytecode in question). In other words, multiple loops share the same counter: the bigger the program, the more loops share the same counter. The advantage of this is that the counters map is memory efficient, and for small programs (e.g. the common LuaJIT benchmarks) it can be highly effective. However, it has very odd effects in real programs, particularly as programs get bigger: loops are compiled non-deterministically based on the particular address in memory they happen to have been loaded at.</p>
+<p data-astro-cid-t7az6eu7="">We therefore altered LuaJIT so that each loop and each function has its own counter, stored in the bytecode to make memory reads/writes more cache friendly. The diff from normal LuaJIT to the separate counters version is as follows:</p>
+<h2 data-astro-cid-t7az6eu7="">Results for Normal vs. Counters</h2>
+<p data-astro-cid-t7az6eu7=""><strong>Symbol key:</strong> bad inconsistent, flat, good inconsistent, no steady state, slowdown, warmup.<br><strong>Diff against previous results:</strong> improved worsened different unchanged.</p>
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 672px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Benchmark</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Classification</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Steady iteration (#)</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Steady iteration variation</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Steady iteration (s)</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Steady performance (s)</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Steady performance<br>variation (s)</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-pe7l3wzl="">
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>array3d</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>binarytrees</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12462<br>±0.004058</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.004058<br>was: 0.000532</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>bounce</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(14, 1)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1.0<br>(1.0, 5.8)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000<br>(0.000, 0.603)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12515<br>δ=-0.00280<br>±0.000278</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>capnproto_decode</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(9, 6)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1.0<br>(1.0, 24.9)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(1.0, 24.9)<br>was: (1.0, 45.3)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000<br>(0.000, 3.692)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.15042<br>±0.003797</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.003797<br>was: 0.028466</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>capnproto_encode</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>230.0<br>(56.0, 467.6)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(56.0, 467.6)<br>was: (52.8, 280.6)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>28.411<br>(6.667, 55.951)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.11838<br>δ=-0.09860<br>±0.001960</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.001960<br>was: 0.014541</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>collisiondetector</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(13, 2)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>coroutine_ring</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.10680<br>±0.003151</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.003151<br>was: 0.001527</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>deltablue</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>149.0<br>(149.0, 274.5)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(149.0, 274.5)<br>was: (1.0, 1022.9)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>15.561<br>(15.430, 28.653)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.10159<br>±0.001083</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.001083<br>was: 0.003195</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>euler14</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>61.0<br>(61.0, 68.3)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(61.0, 68.3)<br>was: (60.0, 83.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>5.650<br>(5.592, 6.356)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.09216<br>±0.000159</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000159<br>was: 0.000743</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>fannkuch_redux</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.11976<br>±0.000012</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000012<br>was: 0.001502</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>fasta</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12200<br>δ=0.00100<br>±0.000597</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>havlak</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>heapsort</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1.04378<br>δ=0.02461<br>±0.000789</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>jsonlua_decode</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12648<br>δ=0.01370<br>±0.000556</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>jsonlua_encode</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12860<br>±0.000879</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000879<br>was: 0.001761</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>knucleotide</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.11710<br>±0.000541</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000541<br>was: 0.000811</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>life</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(9, 3, 2, 1)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>luacheck</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1.00299<br>±0.004778</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.004778<br>was: 0.089781</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>luacheck_parser</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(12, 2, 1)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>luafun</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>69.0<br>(69.0, 69.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>11.481<br>(11.331, 11.522)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.16770<br>±0.001564</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.001564<br>was: 0.004918</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>mandelbrot</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(14, 1)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>mandelbrot_bit</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.21695<br>±0.000142</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>md5</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.11155<br>δ=-0.00124<br>±0.000043</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>meteor</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(13, 2)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>14.0<br>(1.0, 15.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(1.0, 15.0)<br>was: (2.0, 18.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.855<br>(0.000, 3.045)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.21606<br>±0.004651</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.004651<br>was: 0.003935</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>moonscript</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>63.0<br>(17.7, 184.1)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(17.7, 184.1)<br>was: (13.1, 423.3)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>10.046<br>(2.763, 29.739)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.15999<br>±0.001405</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.001405<br>was: 0.001568</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>nbody</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.15898<br>±0.001676</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.001676<br>was: 0.002790</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>nsieve</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(2.0, 2.6)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(2.0, 2.6)<br>was: (2.0, 2.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.189<br>(0.188, 0.297)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.17875<br>±0.001266</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.001266<br>was: 0.000641</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>nsieve_bit</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>4.0<br>(2.0, 6.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(2.0, 6.0)<br>was: (3.4, 5.3)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.271<br>(0.097, 0.446)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.08726<br>δ=-0.00032<br>±0.000202</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000202<br>was: 0.000054</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>partialsums</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(2.0, 2.9)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(2.0, 2.9)<br>was: (2.0, 2.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.161<br>(0.161, 0.295)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.14916<br>±0.000081</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000081<br>was: 0.002044</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>pidigits</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(2.0, 4.3)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(2.0, 4.3)<br>was: (1.0, 2.3)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.130<br>(0.130, 0.425)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12666<br>±0.000122</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000122<br>was: 0.002133</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>queens</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(10, 5)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1.0<br>(1.0, 2.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(1.0, 2.0)<br>was: (1.0, 294.4)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000<br>(0.000, 0.127)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12484<br>δ=0.00646<br>±0.000317</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000317<br>was: 0.000751</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>quicksort</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(2.0, 2.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.299<br>(0.298, 0.304)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.44880<br>δ=0.13763<br>±0.020477</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.020477<br>was: 0.067395</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>radixsort</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12644<br>±0.000864</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000864<br>was: 0.000403</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>ray</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.30901<br>±0.002140</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.002140<br>was: 0.004022</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>recursive_ack</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.11958<br>±0.000510</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000510<br>was: 0.000653</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>recursive_fib</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.22864<br>±0.000266</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000266<br>was: 0.028968</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>resty_json</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(12, 2, 1)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>revcomp</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.11550<br>±0.002553</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.002553<br>was: 0.001753</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>richards</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(14, 1)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(1.7, 2.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(1.7, 2.0)<br>was: (1.0, 2.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.150<br>(0.105, 0.150)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.14572<br>±0.000324</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000324<br>was: 0.010223</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>scimark_fft</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(2.0, 10.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(2.0, 10.0)<br>was: (2.0, 4.7)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.140<br>(0.140, 1.153)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12639<br>±0.000343</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000343<br>was: 0.000823</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>scimark_lu</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(11, 4)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1.0<br>(1.0, 45.3)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000<br>(0.000, 5.122)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.11546<br>±0.000132</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000132<br>was: 0.000308</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>scimark_sor</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12105<br>±0.000148</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>scimark_sparse</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.12315<br>±0.000728</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000728<br>was: 0.000585</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>series</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.0<br>(2.0, 2.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.347<br>(0.347, 0.348)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.33394<br>±0.000645</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000645<br>was: 0.003217</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>spectralnorm</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.13985<br>δ=-0.00003<br>±0.000007</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>table_cmpsort</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>(13, 1, 1)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1.0<br>(1.0, 10.0)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.000<br>(0.000, 2.005)</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.21828<br>±0.003289</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.003289<br>was: 0.007836</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-nalcf22a=""><sub>Results for Normal vs. Counters</sub></p>
-<p data-astro-cid-nalcf22a="">In this case we’re particularly interested in the “steady performance variation (s)” column, which shows whether benchmarks have predictable steady state performance. The results are fairly clear: steady counters are, overall, a clear improvement. As you might expect, this is not a pure win, because it changes the order in which traces are made. This has several effects, including delaying some loops to be traced later than was previously the case, because counters do not hit the required threshold as quickly. </p>
-<p data-astro-cid-nalcf22a="">This disadvantages some programs, particularly small deterministic benchmarks where loops are highly stable. In such cases, the earlier you trace the better. However, in my opinion, such programs are given undue weight when performance is considered. It’s no secret that some of the benchmarks regularly used to benchmark LuaJIT are <em>highly</em> optimised for LuaJIT as it stands; any changes to LuaJIT stand a good chance of degrading their performance. However, overall we feel that the overall gain in consistency, particularly for larger programs, is worth it. There's a <a href="https://github.com/lua-users-foundation/LuaJIT/pull/6" target="_blank" rel="noopener noreferrer">pull request against the Lua Foundation's fork of LuaJIT</a> which applies this idea to a mainstream fork of LuaJIT.</p>
-<p data-astro-cid-nalcf22a="">We then started looking at various programs that showed odd performance. One problem in particular showed up in more than one benchmark. Here's a standard example:</p>
-<p data-astro-cid-nalcf22a="">Collisiondetector, Normal, Bencher9, Proc. exec. #12 (no steady state)</p>
-<p data-astro-cid-nalcf22a="">The problem – and it doesn't happen on every process execution, just to make it more fun – is that there are points where the benchmark slows down by over 10% for multiple in-process iterations (e.g. in this process execution, at in-process iterations 930-ish and 1050-ish). We tried over 25 separate ways to work out what was causing this — even building an instrumentation system to track what LuaJIT is doing — but in the end it turned out to be related to LuaJIT's Garbage Collector – sort of. When we moved from the 32-bit to 64-bit GC, the odd performance went away.</p>
-<p data-astro-cid-nalcf22a="">As such, we don’t think that the 64-bit GC “solves” the problem: however, it changes the way that pointers are encoded (doubling in size), which causes the code generator to emit a different style of code, such that the problem seems to go away. Nevertheless, this did make us reevaluate LuaJIT's GC. Tom then started work on implementing Mike Pall's <a href="http://wiki.luajit.org/New-Garbage-Collector" target="_blank" rel="noopener noreferrer">suggestion for a new GC for LuaJIT</a> (based partly on Tom's previous work and also that of Peter Cawley). He has enough implemented to run most small, and some large, programs, but it needs more work to finish it off, at which point evaluating it against the existing Lua GCs will be fascinating!</p>
-<p data-astro-cid-nalcf22a="">So, did we achieve everything we wanted to in 12 months? Inevitably the answer is yes and no. We did a lot more benchmarking than we expected; we've been able to make a lot of programs (particularly large programs) have more consistent performance; and we've got a fair way down the road of implementing a new GC. To whoever takes on further LuaJIT work – best of luck, and I look forward to seeing your results!</p>
-<p data-astro-cid-nalcf22a=""><strong>Acknowledgements:</strong> Sarah Mount implemented the stats differ; Edd Barrett implemented Krun and answered many questions on it.</p>
+<p data-astro-cid-t7az6eu7=""><sub>Results for Normal vs. Counters</sub></p>
+<p data-astro-cid-t7az6eu7="">In this case we’re particularly interested in the “steady performance variation (s)” column, which shows whether benchmarks have predictable steady state performance. The results are fairly clear: steady counters are, overall, a clear improvement. As you might expect, this is not a pure win, because it changes the order in which traces are made. This has several effects, including delaying some loops to be traced later than was previously the case, because counters do not hit the required threshold as quickly. </p>
+<p data-astro-cid-t7az6eu7="">This disadvantages some programs, particularly small deterministic benchmarks where loops are highly stable. In such cases, the earlier you trace the better. However, in my opinion, such programs are given undue weight when performance is considered. It’s no secret that some of the benchmarks regularly used to benchmark LuaJIT are <em>highly</em> optimised for LuaJIT as it stands; any changes to LuaJIT stand a good chance of degrading their performance. However, overall we feel that the overall gain in consistency, particularly for larger programs, is worth it. There's a <a href="https://github.com/lua-users-foundation/LuaJIT/pull/6" target="_blank" rel="noopener noreferrer">pull request against the Lua Foundation's fork of LuaJIT</a> which applies this idea to a mainstream fork of LuaJIT.</p>
+<p data-astro-cid-t7az6eu7="">We then started looking at various programs that showed odd performance. One problem in particular showed up in more than one benchmark. Here's a standard example:</p>
+<p data-astro-cid-t7az6eu7="">Collisiondetector, Normal, Bencher9, Proc. exec. #12 (no steady state)</p>
+<p data-astro-cid-t7az6eu7="">The problem – and it doesn't happen on every process execution, just to make it more fun – is that there are points where the benchmark slows down by over 10% for multiple in-process iterations (e.g. in this process execution, at in-process iterations 930-ish and 1050-ish). We tried over 25 separate ways to work out what was causing this — even building an instrumentation system to track what LuaJIT is doing — but in the end it turned out to be related to LuaJIT's Garbage Collector – sort of. When we moved from the 32-bit to 64-bit GC, the odd performance went away.</p>
+<p data-astro-cid-t7az6eu7="">As such, we don’t think that the 64-bit GC “solves” the problem: however, it changes the way that pointers are encoded (doubling in size), which causes the code generator to emit a different style of code, such that the problem seems to go away. Nevertheless, this did make us reevaluate LuaJIT's GC. Tom then started work on implementing Mike Pall's <a href="http://wiki.luajit.org/New-Garbage-Collector" target="_blank" rel="noopener noreferrer">suggestion for a new GC for LuaJIT</a> (based partly on Tom's previous work and also that of Peter Cawley). He has enough implemented to run most small, and some large, programs, but it needs more work to finish it off, at which point evaluating it against the existing Lua GCs will be fascinating!</p>
+<p data-astro-cid-t7az6eu7="">So, did we achieve everything we wanted to in 12 months? Inevitably the answer is yes and no. We did a lot more benchmarking than we expected; we've been able to make a lot of programs (particularly large programs) have more consistent performance; and we've got a fair way down the road of implementing a new GC. To whoever takes on further LuaJIT work – best of luck, and I look forward to seeing your results!</p>
+<p data-astro-cid-t7az6eu7=""><strong>Acknowledgements:</strong> Sarah Mount implemented the stats differ; Edd Barrett implemented Krun and answered many questions on it.</p>

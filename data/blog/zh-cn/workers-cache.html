@@ -1,10 +1,10 @@
-<p data-astro-cid-c6i3vrlz="">今天我们将推出 <strong>Workers Cache</strong>：这是一个<a href="https://developers.cloudflare.com/cache/how-to/tiered-cache" target="_blank" rel="noopener noreferrer"><u>分层缓存</u></a>，它位于您的 Worker 前端，只需一行 Wrangler 配置以及您已熟悉的 Cache-Control 标头即可进行配置。</p>
-<p data-astro-cid-c6i3vrlz="">启用 Workers 缓存后，所有发送到您 Worker 的<a href="https://www.rfc-editor.org/rfc/rfc9110.html#section-9.2.3" target="_blank" rel="noopener noreferrer"><u>可缓存</u></a>请求都会首先命中 Cloudflare 的缓存。如果有最新缓存的响应，Cloudflare 会直接将其返回，您的 Worker 不会运行，您也无需为此支付 CPU 时间。如果未命中缓存，您的 Worker 会运行，如果响应可缓存，Cloudflare 会将其存储以备下一个请求使用。来自全球任何位置的下一个请求都可以直接从缓存中获取服务。</p>
+<p data-astro-cid-t7az6eu7="">今天我们将推出 <strong>Workers Cache</strong>：这是一个<a href="https://developers.cloudflare.com/cache/how-to/tiered-cache" target="_blank" rel="noopener noreferrer"><u>分层缓存</u></a>，它位于您的 Worker 前端，只需一行 Wrangler 配置以及您已熟悉的 Cache-Control 标头即可进行配置。</p>
+<p data-astro-cid-t7az6eu7="">启用 Workers 缓存后，所有发送到您 Worker 的<a href="https://www.rfc-editor.org/rfc/rfc9110.html#section-9.2.3" target="_blank" rel="noopener noreferrer"><u>可缓存</u></a>请求都会首先命中 Cloudflare 的缓存。如果有最新缓存的响应，Cloudflare 会直接将其返回，您的 Worker 不会运行，您也无需为此支付 CPU 时间。如果未命中缓存，您的 Worker 会运行，如果响应可缓存，Cloudflare 会将其存储以备下一个请求使用。来自全球任何位置的下一个请求都可以直接从缓存中获取服务。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="162" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PJQBRBQRQ825JD7MPFD6.png&amp;w=715&amp;h=162&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PJQBRBQRQ825JD7MPFD6.png&amp;w=640&amp;h=145&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PJQBRBQRQ825JD7MPFD6.png&amp;w=715&amp;h=162&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PJQBRBQRQ825JD7MPFD6.png&amp;w=750&amp;h=170&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PJQBRBQRQ825JD7MPFD6.png&amp;w=828&amp;h=188&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PJQBRBQRQ825JD7MPFD6.png&amp;w=1080&amp;h=245&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PJQBRBQRQ825JD7MPFD6.png&amp;w=1280&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PJQBRBQRQ825JD7MPFD6.png&amp;w=1430&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3262 image1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PJQBRBQRQ825JD7MPFD6.png&amp;w=1920&amp;h=436&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="436" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="162" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-c6i3vrlz="">整个流程是一个配置块：</p>
+<p data-astro-cid-t7az6eu7="">整个流程是一个配置块：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "name"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "my-worker"</span><span class="sk-24292e-fff">,</span></span>
@@ -37,7 +37,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-c6i3vrlz="">之后，您可以通过在响应中设置标头，以 HTTP 一直希望的方式控制缓存：</p>
+<p data-astro-cid-t7az6eu7="">之后，您可以通过在响应中设置标头，以 HTTP 一直希望的方式控制缓存：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(body, {</span></span>
 <span class="line"><span class="sk-24292e-fff">  headers: {</span></span>
@@ -50,7 +50,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">当内容发生变化时，Worker 会清除自己的缓存：</p>
+<p data-astro-cid-t7az6eu7="">当内容发生变化时，Worker 会清除自己的缓存：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> ctx.cache.</span><span class="sk-6f42c1-ffc799">purge</span><span class="sk-24292e-fff">({ tags: [</span><span class="sk-032f62-99ffe4">"product:123"</span><span class="sk-24292e-fff">] });</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -58,37 +58,37 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">这就是整个 API。无需配置任何区域，无需设置任何规则引擎，无需提供单独的缓存，也无需登录任何其他产品。Worker 的代码就是配置界面，缓存会跟随 Worker 运行，无论它是在自定义域、<code>workers.dev</code>、在服务绑定后端、预览版还是<a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms" target="_blank" rel="noopener noreferrer"><u>Workers for Platforms</u></a> 租户中运行。一个 Worker，一个缓存，一次配置。</p>
-<p data-astro-cid-c6i3vrlz="">这只是表面层。底层技术非常强大：覆盖整个网络的分层缓存、完全支持 <a href="https://developers.cloudflare.com/changelog/post/2026-02-26-async-stale-while-revalidate" target="_blank" rel="noopener noreferrer"><u>stale-while-revalidate</u></a> 以确保过期响应不会阻塞用户，通过 <a href="https://developers.cloudflare.com/workers/cache/#content-negotiation-with-vary" target="_blank" rel="noopener noreferrer"><u>Vary</u></a> 进行内容协商，通过 <a href="https://developers.cloudflare.com/workers/runtime-apis/context/#props" target="_blank" rel="noopener noreferrer"><u>ctx.props</u></a> 接收多租户安全缓存键，按标签或路径前缀进行程序化清除；以及我们认为最关键的一点，在每个 Worker 入口点前端设置缓存，不仅仅是公共入口点，并且可以针对每个入口点单独控制缓存哪些入口点，不缓存哪些入口点。最后一点意味着您可以将缓存直接集成到应用架构：这是一系列入口点，缓存阶段可以插入您所需的任何位置，由入口点两端的代码进行配置。我们将在下文详细介绍相关信息。</p>
-<p data-astro-cid-c6i3vrlz="">Workers 缓存现已面向任何 Cloudflare 计划中的所有 Worker 开放，并可通过 Wrangler 使用。</p>
-<p data-astro-cid-c6i3vrlz="">这是我们一直以来希望 Workers 拥有的缓存 API。下文将阐述我们为什么花了这么长时间才推出此功能，它带来了哪些可能性，以及未来的发展方向。</p>
-<h2 data-astro-cid-c6i3vrlz="">为什么服务器端渲染的应用需要前置缓存</h2>
-<p data-astro-cid-c6i3vrlz="">我们在 2017 年<a href="https://blog.cloudflare.com/introducing-cloudflare-workers" target="_blank" rel="noopener noreferrer"><u>推出了 Workers</u></a>，当时的营销用语是：您可以在 Cloudflare 网络上运行代码，在请求到达源服务器之前对其进行转换。Worker 位于缓存与源服务器的<em>前端</em>：</p>
+<p data-astro-cid-t7az6eu7="">这就是整个 API。无需配置任何区域，无需设置任何规则引擎，无需提供单独的缓存，也无需登录任何其他产品。Worker 的代码就是配置界面，缓存会跟随 Worker 运行，无论它是在自定义域、<code>workers.dev</code>、在服务绑定后端、预览版还是<a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms" target="_blank" rel="noopener noreferrer"><u>Workers for Platforms</u></a> 租户中运行。一个 Worker，一个缓存，一次配置。</p>
+<p data-astro-cid-t7az6eu7="">这只是表面层。底层技术非常强大：覆盖整个网络的分层缓存、完全支持 <a href="https://developers.cloudflare.com/changelog/post/2026-02-26-async-stale-while-revalidate" target="_blank" rel="noopener noreferrer"><u>stale-while-revalidate</u></a> 以确保过期响应不会阻塞用户，通过 <a href="https://developers.cloudflare.com/workers/cache/#content-negotiation-with-vary" target="_blank" rel="noopener noreferrer"><u>Vary</u></a> 进行内容协商，通过 <a href="https://developers.cloudflare.com/workers/runtime-apis/context/#props" target="_blank" rel="noopener noreferrer"><u>ctx.props</u></a> 接收多租户安全缓存键，按标签或路径前缀进行程序化清除；以及我们认为最关键的一点，在每个 Worker 入口点前端设置缓存，不仅仅是公共入口点，并且可以针对每个入口点单独控制缓存哪些入口点，不缓存哪些入口点。最后一点意味着您可以将缓存直接集成到应用架构：这是一系列入口点，缓存阶段可以插入您所需的任何位置，由入口点两端的代码进行配置。我们将在下文详细介绍相关信息。</p>
+<p data-astro-cid-t7az6eu7="">Workers 缓存现已面向任何 Cloudflare 计划中的所有 Worker 开放，并可通过 Wrangler 使用。</p>
+<p data-astro-cid-t7az6eu7="">这是我们一直以来希望 Workers 拥有的缓存 API。下文将阐述我们为什么花了这么长时间才推出此功能，它带来了哪些可能性，以及未来的发展方向。</p>
+<h2 data-astro-cid-t7az6eu7="">为什么服务器端渲染的应用需要前置缓存</h2>
+<p data-astro-cid-t7az6eu7="">我们在 2017 年<a href="https://blog.cloudflare.com/introducing-cloudflare-workers" target="_blank" rel="noopener noreferrer"><u>推出了 Workers</u></a>，当时的营销用语是：您可以在 Cloudflare 网络上运行代码，在请求到达源服务器之前对其进行转换。Worker 位于缓存与源服务器的<em>前端</em>：</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="162" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PF2YHMWZB3JXDV3PK7FX.png&amp;w=715&amp;h=162&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PF2YHMWZB3JXDV3PK7FX.png&amp;w=640&amp;h=145&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PF2YHMWZB3JXDV3PK7FX.png&amp;w=715&amp;h=162&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PF2YHMWZB3JXDV3PK7FX.png&amp;w=750&amp;h=170&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PF2YHMWZB3JXDV3PK7FX.png&amp;w=828&amp;h=188&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PF2YHMWZB3JXDV3PK7FX.png&amp;w=1080&amp;h=245&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PF2YHMWZB3JXDV3PK7FX.png&amp;w=1280&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PF2YHMWZB3JXDV3PK7FX.png&amp;w=1430&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3262 image5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PF2YHMWZB3JXDV3PK7FX.png&amp;w=1920&amp;h=436&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="436" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="162" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-c6i3vrlz="">这正是我们当时所针对的使用场景的理想模型。如果您想在每个请求中添加标头、重写 URL、进行 A/B 测试，或在流量到达源服务器之前过滤流量，则将 Worker 置于缓存与源服务器的前端，您就可以完全控制缓存哪些内容，不缓存哪些内容。客户利用它构建了许多令人惊叹的应用。</p>
-<p data-astro-cid-c6i3vrlz="">但局面很快发生变化。Workers 逐渐不再是附加在源服务器上的组件，而是成为了<em>源</em>本身。<a href="https://developers.cloudflare.com/workers/framework-guides/web-apps/astro" target="_blank" rel="noopener noreferrer"><u>Astro</u></a>、<a href="https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start" target="_blank" rel="noopener noreferrer"><u>TanStack Start</u></a>、<a href="https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs" target="_blank" rel="noopener noreferrer"><u>Next.js</u></a>、<a href="https://developers.cloudflare.com/workers/framework-guides/web-apps/remix" target="_blank" rel="noopener noreferrer"><u>Remix</u></a> 和 <a href="https://developers.cloudflare.com/workers/framework-guides/web-apps/svelte" target="_blank" rel="noopener noreferrer"><u>SvelteKit</u></a> 等框架提供了 Cloudflare 适配器，可以将你的应用构建为 Worker。它们背后没有源服务器。Worker <em>就是</em>服务器。</p>
-<p data-astro-cid-c6i3vrlz="">Worker 成为源服务器之后，原始架构没有任何内容可以缓存。每个请求都会执行代码，即使响应与您一秒之前返回的响应每个字节完全相同。<a href="https://x.com/KentonVarda/status/1783996343813652801" target="_blank" rel="noopener noreferrer"><u>Workers 运行时速度快得足以处理每个请求</u></a>（我们经常运行每秒处理数千万个请求的服务器，而且毫不费力），但“快得足以处理每个请求”仍然会在每次页面加载时带来延迟，并在每次调用时增加 CPU 时间。因为在服务器端渲染的应用中，根据定义，每次页面加载都是一次渲染。</p>
-<p data-astro-cid-c6i3vrlz="">Workers 缓存颠覆了这种架构。Cloudflare 的缓存现在位于 Worker 的前端：</p>
+<p data-astro-cid-t7az6eu7="">这正是我们当时所针对的使用场景的理想模型。如果您想在每个请求中添加标头、重写 URL、进行 A/B 测试，或在流量到达源服务器之前过滤流量，则将 Worker 置于缓存与源服务器的前端，您就可以完全控制缓存哪些内容，不缓存哪些内容。客户利用它构建了许多令人惊叹的应用。</p>
+<p data-astro-cid-t7az6eu7="">但局面很快发生变化。Workers 逐渐不再是附加在源服务器上的组件，而是成为了<em>源</em>本身。<a href="https://developers.cloudflare.com/workers/framework-guides/web-apps/astro" target="_blank" rel="noopener noreferrer"><u>Astro</u></a>、<a href="https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start" target="_blank" rel="noopener noreferrer"><u>TanStack Start</u></a>、<a href="https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs" target="_blank" rel="noopener noreferrer"><u>Next.js</u></a>、<a href="https://developers.cloudflare.com/workers/framework-guides/web-apps/remix" target="_blank" rel="noopener noreferrer"><u>Remix</u></a> 和 <a href="https://developers.cloudflare.com/workers/framework-guides/web-apps/svelte" target="_blank" rel="noopener noreferrer"><u>SvelteKit</u></a> 等框架提供了 Cloudflare 适配器，可以将你的应用构建为 Worker。它们背后没有源服务器。Worker <em>就是</em>服务器。</p>
+<p data-astro-cid-t7az6eu7="">Worker 成为源服务器之后，原始架构没有任何内容可以缓存。每个请求都会执行代码，即使响应与您一秒之前返回的响应每个字节完全相同。<a href="https://x.com/KentonVarda/status/1783996343813652801" target="_blank" rel="noopener noreferrer"><u>Workers 运行时速度快得足以处理每个请求</u></a>（我们经常运行每秒处理数千万个请求的服务器，而且毫不费力），但“快得足以处理每个请求”仍然会在每次页面加载时带来延迟，并在每次调用时增加 CPU 时间。因为在服务器端渲染的应用中，根据定义，每次页面加载都是一次渲染。</p>
+<p data-astro-cid-t7az6eu7="">Workers 缓存颠覆了这种架构。Cloudflare 的缓存现在位于 Worker 的前端：</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="162" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PEZ2NYYNY6NGMJFCTJN6.png&amp;w=715&amp;h=162&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PEZ2NYYNY6NGMJFCTJN6.png&amp;w=640&amp;h=145&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PEZ2NYYNY6NGMJFCTJN6.png&amp;w=715&amp;h=162&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PEZ2NYYNY6NGMJFCTJN6.png&amp;w=750&amp;h=170&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PEZ2NYYNY6NGMJFCTJN6.png&amp;w=828&amp;h=188&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PEZ2NYYNY6NGMJFCTJN6.png&amp;w=1080&amp;h=245&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PEZ2NYYNY6NGMJFCTJN6.png&amp;w=1280&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PEZ2NYYNY6NGMJFCTJN6.png&amp;w=1430&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3262 image9" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PEZ2NYYNY6NGMJFCTJN6.png&amp;w=1920&amp;h=436&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="436" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="162" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-c6i3vrlz="">如果缓存命中，Worker 根本不会运行。Cloudflare 会返回已缓存的响应，您的 CPU 计费保持为零。如果缓存未命中，Worker 会运行一次，填充缓存，然后下一个请求（无论来自何处）都将从缓存中获取服务，而无需调用代码。</p>
-<p data-astro-cid-c6i3vrlz="">这是 Workers 服务器端渲染缺少的内容。过去，您不得不在两个不尽如人意的选项中做出选择：</p>
+<p data-astro-cid-t7az6eu7="">如果缓存命中，Worker 根本不会运行。Cloudflare 会返回已缓存的响应，您的 CPU 计费保持为零。如果缓存未命中，Worker 会运行一次，填充缓存，然后下一个请求（无论来自何处）都将从缓存中获取服务，而无需调用代码。</p>
+<p data-astro-cid-t7az6eu7="">这是 Workers 服务器端渲染缺少的内容。过去，您不得不在两个不尽如人意的选项中做出选择：</p>
 <ul>
 	<li><strong>在构建时预渲染所有内容</strong>（“静态网站生成”）。页面加载速度快，但每次更改都需要完全重建和重新部署。对于一个拥有几千页的文档网站，这需要 5-10 分钟。对于大型电子商务网站来说，情况更糟，每次执行任何操作时，构建版本都会运行。</li>
 	<li><strong>在每次请求时渲染每个页面。</strong>内容实时更新，但每次页面加载都会产生渲染成本，每个访客都遭受延迟。</li>
 </ul>
-<p data-astro-cid-c6i3vrlz="">Workers 缓存为您提供第三种选择：按需服务器端渲染，缓存已渲染的响应，并根据您选择的生存时间 (<a href="https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl" target="_blank" rel="noopener noreferrer"><u>TTL</u></a>) 刷新。首次请求新页面时，页面仍会渲染。在缓存过期之前，后续的每个请求都会像静态页面一样渲染。如果缓存过期，下一个请求会触发重新渲染，而使用 <code>stale-while-revalidate</code> 指令，即使是重新渲染的请求也不会等待。</p>
-<p data-astro-cid-c6i3vrlz="">您可以获得静态网站的速度，但不会耗费构建时间；以及获得服务器端渲染的新鲜度，而无需承担额外的成本。没有类似增量静态再生那样的框架专用机制。仅使用 HTTP 缓存，按照其设计初衷运行，位于原本设计为源服务器的代码前端。</p>
-<h2 data-astro-cid-c6i3vrlz=""><code>stale-while-revalidate</code> 指令让人感觉响应速度感觉非常快</h2>
-<p data-astro-cid-c6i3vrlz=""><a href="https://datatracker.ietf.org/doc/html/rfc5861#section-3" target="_blank" rel="noopener noreferrer"><u>stale-while-revalidate</u></a> 指令告诉 Cloudflare，当缓存的响应过期时，它可以立即提供过期的页面副本并<em>在后台刷新响应</em>。Cloudflare 今年早些时候<a href="https://developers.cloudflare.com/changelog/post/2026-02-26-async-stale-while-revalidate" target="_blank" rel="noopener noreferrer"><u>推出了对 stale-while-revalidate 的全面支持</u></a>，这个指令将“我们缓存您的 Worker”变成“您的 Worker 网站带来如同静态页面的体验。”</p>
-<p data-astro-cid-c6i3vrlz="">如果没有该指令，缓存条目过期后的第一个请求必须等待 Worker 从头开始渲染页面。用户会感受到这种延迟。因此，过期后的第一个请求会立即获得过期的页面（带有 <code>Cf-Cache-Status: UPDATING </code>标头），而 Worker 则在后台运行以重新填充缓存。每个用户，包括触发刷新操作的用户，都会获得缓存速度的响应。</p>
+<p data-astro-cid-t7az6eu7="">Workers 缓存为您提供第三种选择：按需服务器端渲染，缓存已渲染的响应，并根据您选择的生存时间 (<a href="https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl" target="_blank" rel="noopener noreferrer"><u>TTL</u></a>) 刷新。首次请求新页面时，页面仍会渲染。在缓存过期之前，后续的每个请求都会像静态页面一样渲染。如果缓存过期，下一个请求会触发重新渲染，而使用 <code>stale-while-revalidate</code> 指令，即使是重新渲染的请求也不会等待。</p>
+<p data-astro-cid-t7az6eu7="">您可以获得静态网站的速度，但不会耗费构建时间；以及获得服务器端渲染的新鲜度，而无需承担额外的成本。没有类似增量静态再生那样的框架专用机制。仅使用 HTTP 缓存，按照其设计初衷运行，位于原本设计为源服务器的代码前端。</p>
+<h2 data-astro-cid-t7az6eu7=""><code>stale-while-revalidate</code> 指令让人感觉响应速度感觉非常快</h2>
+<p data-astro-cid-t7az6eu7=""><a href="https://datatracker.ietf.org/doc/html/rfc5861#section-3" target="_blank" rel="noopener noreferrer"><u>stale-while-revalidate</u></a> 指令告诉 Cloudflare，当缓存的响应过期时，它可以立即提供过期的页面副本并<em>在后台刷新响应</em>。Cloudflare 今年早些时候<a href="https://developers.cloudflare.com/changelog/post/2026-02-26-async-stale-while-revalidate" target="_blank" rel="noopener noreferrer"><u>推出了对 stale-while-revalidate 的全面支持</u></a>，这个指令将“我们缓存您的 Worker”变成“您的 Worker 网站带来如同静态页面的体验。”</p>
+<p data-astro-cid-t7az6eu7="">如果没有该指令，缓存条目过期后的第一个请求必须等待 Worker 从头开始渲染页面。用户会感受到这种延迟。因此，过期后的第一个请求会立即获得过期的页面（带有 <code>Cf-Cache-Status: UPDATING </code>标头），而 Worker 则在后台运行以重新填充缓存。每个用户，包括触发刷新操作的用户，都会获得缓存速度的响应。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="479" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q07HWBQK4JMK83P95RYV.png&amp;w=715&amp;h=479&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q07HWBQK4JMK83P95RYV.png&amp;w=640&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q07HWBQK4JMK83P95RYV.png&amp;w=715&amp;h=479&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q07HWBQK4JMK83P95RYV.png&amp;w=750&amp;h=502&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q07HWBQK4JMK83P95RYV.png&amp;w=828&amp;h=555&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q07HWBQK4JMK83P95RYV.png&amp;w=1080&amp;h=724&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q07HWBQK4JMK83P95RYV.png&amp;w=1280&amp;h=858&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q07HWBQK4JMK83P95RYV.png&amp;w=1430&amp;h=958&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3262 image3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q07HWBQK4JMK83P95RYV.png&amp;w=1920&amp;h=1287&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1287" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="479" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-c6i3vrlz="">在实践中，这看起来是这样的：</p>
+<p data-astro-cid-t7az6eu7="">在实践中，这看起来是这样的：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0"> export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
@@ -108,18 +108,18 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">实现此功能的逻辑模型如下：</p>
+<p data-astro-cid-t7az6eu7="">实现此功能的逻辑模型如下：</p>
 <ul>
 	<li><strong>新鲜窗口</strong> (<code>max-age</code>)：Cloudflare 提供缓存响应。您的 Worker 不会运行。</li>
 	<li><strong>过期窗口</strong>（<code>stale-while-revalidate</code>）：Cloudflare 提供缓存响应。您的 Worker 在后台运行以刷新缓存。用户无需等待。</li>
 	<li><strong>在两个窗口之外</strong>：Cloudflare 运行您的 Worker 以生成新的响应，用户等待渲染。</li>
 </ul>
-<p data-astro-cid-c6i3vrlz="">您可以自行选择窗口。对于每隔几分钟更新一次的产品目录，<code>max-age=300</code>, <code>stale-while-revalidate=3600</code> 意味着访客几乎无需等待，同时您的 Worker 仍然会频繁运行，以保持内容新鲜。对于几乎从不更改的博客存档，<code>max-age=86400</code>, <code>stale-while-revalidate=2592000</code> 意味着您的 Worker 每个页面每天运行一次。</p>
-<p data-astro-cid-c6i3vrlz="">只有首次请求全新页面时，才会支付完整的渲染费用。之后，页面对访客而言就像静态输出一样，而 Worker 仍然负责页面的生成方式。</p>
-<h2 data-astro-cid-c6i3vrlz="">一个 URL，多种表现形式：<code>Vary</code> 发挥作用</h2>
-<p data-astro-cid-c6i3vrlz="">实际应用极少会向每个客户端返回同一字节。同一产品页面对浏览器可能是 HTML 格式，对于 API 客户端则可能是 JSON 格式。同一图像对于支持 WebP 的客户端可能是 WebP 格式，对于不支持 WebP 的客户端则可能是 JPEG 格式。同一主页可能会以英语、法语或日语返回，具体取决于用户。</p>
-<p data-astro-cid-c6i3vrlz="">不使用缓存很容易实现这一点，Worker 只需读取请求标头并返回正确的内容。而<em>使用</em>缓存通常会出现问题。大多数缓存提供两个糟糕的选择：要么不缓存具有多种表现形式的 URL，要么缓存一种表现形式并将其提供给所有用户。</p>
-<p data-astro-cid-c6i3vrlz="">Workers 缓存支持标准的 HTTP <code>Vary</code> 标头，这是解决该问题的正确方法。当 Worker 返回的响应包含 <code>Vary: Accept-Encoding</code>（或者 <code>Accept</code>，或 <code>Accept-Language</code> 或任何其他请求标头）时，Cloudflare 会根据这些标头的不同组合存储一个单独的缓存变体，并且仅返回存储值与传入请求匹配的变体。</p>
+<p data-astro-cid-t7az6eu7="">您可以自行选择窗口。对于每隔几分钟更新一次的产品目录，<code>max-age=300</code>, <code>stale-while-revalidate=3600</code> 意味着访客几乎无需等待，同时您的 Worker 仍然会频繁运行，以保持内容新鲜。对于几乎从不更改的博客存档，<code>max-age=86400</code>, <code>stale-while-revalidate=2592000</code> 意味着您的 Worker 每个页面每天运行一次。</p>
+<p data-astro-cid-t7az6eu7="">只有首次请求全新页面时，才会支付完整的渲染费用。之后，页面对访客而言就像静态输出一样，而 Worker 仍然负责页面的生成方式。</p>
+<h2 data-astro-cid-t7az6eu7="">一个 URL，多种表现形式：<code>Vary</code> 发挥作用</h2>
+<p data-astro-cid-t7az6eu7="">实际应用极少会向每个客户端返回同一字节。同一产品页面对浏览器可能是 HTML 格式，对于 API 客户端则可能是 JSON 格式。同一图像对于支持 WebP 的客户端可能是 WebP 格式，对于不支持 WebP 的客户端则可能是 JPEG 格式。同一主页可能会以英语、法语或日语返回，具体取决于用户。</p>
+<p data-astro-cid-t7az6eu7="">不使用缓存很容易实现这一点，Worker 只需读取请求标头并返回正确的内容。而<em>使用</em>缓存通常会出现问题。大多数缓存提供两个糟糕的选择：要么不缓存具有多种表现形式的 URL，要么缓存一种表现形式并将其提供给所有用户。</p>
+<p data-astro-cid-t7az6eu7="">Workers 缓存支持标准的 HTTP <code>Vary</code> 标头，这是解决该问题的正确方法。当 Worker 返回的响应包含 <code>Vary: Accept-Encoding</code>（或者 <code>Accept</code>，或 <code>Accept-Language</code> 或任何其他请求标头）时，Cloudflare 会根据这些标头的不同组合存储一个单独的缓存变体，并且仅返回存储值与传入请求匹配的变体。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
@@ -143,38 +143,38 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">一个 URL，两种缓存变体。发送 <code>Accept: image/webp,*/*</code> 的浏览器会获得 WebP 格式。发送 <code>Accept: image/jpeg</code> 的浏览器会获得 JPEG 格式。两者都来自缓存。Worker 会在首次请求时写入两种变体，之后这两种变体不再运行。</p>
-<p data-astro-cid-c6i3vrlz="">这是常用的 HTTP 内容协商标准，Workers 缓存按照 <a href="https://www.rfc-editor.org/rfc/rfc9110.html#name-vary" target="_blank" rel="noopener noreferrer"><u>RFC 9110</u></a> 和 <a href="https://www.rfc-editor.org/rfc/rfc9111.html#name-calculating-cache-keys-with" target="_blank" rel="noopener noreferrer"><u>RFC 9111</u></a> 所述的方式实现它。没有允许列表来定义哪些标头可以执行 <code>Vary</code> 操作。您列出所需的标头，Cloudflare 会根据这些标头的逐字值生成不同的变体。文档涵盖了<a href="https://developers.cloudflare.com/workers/cache/configuration/#vary" target="_blank" rel="noopener noreferrer"><u>各种特殊情况</u></a>：如何在网关 Worker 中通过规范化标头来控制变体的传播，为什么清除操作会使 URL 的所有变体一起失效，以及唯一一种会完全禁用缓存的情况 (<code>Vary: *</code>)。</p>
-<h2 data-astro-cid-c6i3vrlz="">这是 Worker 缓存，不是区域缓存</h2>
-<p data-astro-cid-c6i3vrlz="">在探讨这一切带来哪些可能实现的变化之前，有一个值得注意的命名概念转变。</p>
-<p data-astro-cid-c6i3vrlz="">Cloudflare 一直以来都有缓存。它是在区域级别配置：缓存规则、Page Rules、缓存文件扩展名列表、Cache Reserve、分层缓存拓扑、自定义缓存键。所有这些都是根据每个区域设置，过去，Worker 不得不适应该区域的配置或找到变通方法。</p>
-<p data-astro-cid-c6i3vrlz="">Workers 缓存则不同。这是 <strong>Worker 缓存</strong>，它属于 Worker，而不是某个区域。这会产生一系列重要影响：</p>
+<p data-astro-cid-t7az6eu7="">一个 URL，两种缓存变体。发送 <code>Accept: image/webp,*/*</code> 的浏览器会获得 WebP 格式。发送 <code>Accept: image/jpeg</code> 的浏览器会获得 JPEG 格式。两者都来自缓存。Worker 会在首次请求时写入两种变体，之后这两种变体不再运行。</p>
+<p data-astro-cid-t7az6eu7="">这是常用的 HTTP 内容协商标准，Workers 缓存按照 <a href="https://www.rfc-editor.org/rfc/rfc9110.html#name-vary" target="_blank" rel="noopener noreferrer"><u>RFC 9110</u></a> 和 <a href="https://www.rfc-editor.org/rfc/rfc9111.html#name-calculating-cache-keys-with" target="_blank" rel="noopener noreferrer"><u>RFC 9111</u></a> 所述的方式实现它。没有允许列表来定义哪些标头可以执行 <code>Vary</code> 操作。您列出所需的标头，Cloudflare 会根据这些标头的逐字值生成不同的变体。文档涵盖了<a href="https://developers.cloudflare.com/workers/cache/configuration/#vary" target="_blank" rel="noopener noreferrer"><u>各种特殊情况</u></a>：如何在网关 Worker 中通过规范化标头来控制变体的传播，为什么清除操作会使 URL 的所有变体一起失效，以及唯一一种会完全禁用缓存的情况 (<code>Vary: *</code>)。</p>
+<h2 data-astro-cid-t7az6eu7="">这是 Worker 缓存，不是区域缓存</h2>
+<p data-astro-cid-t7az6eu7="">在探讨这一切带来哪些可能实现的变化之前，有一个值得注意的命名概念转变。</p>
+<p data-astro-cid-t7az6eu7="">Cloudflare 一直以来都有缓存。它是在区域级别配置：缓存规则、Page Rules、缓存文件扩展名列表、Cache Reserve、分层缓存拓扑、自定义缓存键。所有这些都是根据每个区域设置，过去，Worker 不得不适应该区域的配置或找到变通方法。</p>
+<p data-astro-cid-t7az6eu7="">Workers 缓存则不同。这是 <strong>Worker 缓存</strong>，它属于 Worker，而不是某个区域。这会产生一系列重要影响：</p>
 <ul>
 	<li><strong>没有要管理的区域配置。</strong>缓存规则、缓存级别设置、文件扩展名列表、Page Rules 都不适用于 Workers 缓存。Worker 的 <code>Cache-Control</code> 标头就是配置。</li>
 	<li><strong>缓存跟随 Worker，而不是主机名。</strong>绑定到 <code>api.example.com</code>、<code>api.example.net</code> 以及通过服务绑定调用的 Worker 共享同一个缓存。无论请求来自哪个源，对 /users/42 的请求都会命中同一个缓存条目。</li>
 	<li><strong>缓存适用于 </strong><code>workers.dev</code><strong>。</strong>它适用<a href="https://developers.cloudflare.com/workers/configuration/previews" target="_blank" rel="noopener noreferrer"><u>预览版 URL</u></a>（每个预览版有各自的缓存，因此，测试更改不会影响生产环境）。它适用 <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms" target="_blank" rel="noopener noreferrer"><u>Workers for Platforms</u></a>（每个用户 Worker 有各自的缓存，与调度程序和其他租户隔离）。所有这些曾经在缓存中都处于次要地位。现在情况已经不同了。</li>
 	<li><strong>清除操作范围限定在 Worker 的入口点。</strong>如果调用 <code>ctx.cache.purge({ purgeEverything: true })</code>，则仅清除 Worker 入口点的缓存。不存在清空区域的其他内容的风险。不存在部署一个 Worker 导致另一个 Worker 数据失效的风险。</li>
 </ul>
-<p data-astro-cid-c6i3vrlz="">缓存相关的配置都在代码中完成：哪些路径需要更长的 TTL（根据路径进行分支并设置不同的 <code>max-age</code> 值）、哪些请求会绕过缓存（返回 <code>Cache-Control: private</code>）、缓存键如何构建（控制哪些内容进入 <code>ctx.props</code>，在网关 Worker 分发请求之前规范化 URL）。您已经编写的 Worker 就是配置界面。</p>
-<p data-astro-cid-c6i3vrlz="">完整文档详细介绍了这一点，请参阅 <a href="https://developers.cloudflare.com/workers/cache" target="_blank" rel="noopener noreferrer"><u>Workers 缓存：您的 Worker 缓存</u></a>。</p>
-<h2 data-astro-cid-c6i3vrlz="">两层结构，每个 Worker 各司其职，无需配置</h2>
-<p data-astro-cid-c6i3vrlz="">Workers 缓存<strong>默认按区域分层</strong>。共有两层：</p>
+<p data-astro-cid-t7az6eu7="">缓存相关的配置都在代码中完成：哪些路径需要更长的 TTL（根据路径进行分支并设置不同的 <code>max-age</code> 值）、哪些请求会绕过缓存（返回 <code>Cache-Control: private</code>）、缓存键如何构建（控制哪些内容进入 <code>ctx.props</code>，在网关 Worker 分发请求之前规范化 URL）。您已经编写的 Worker 就是配置界面。</p>
+<p data-astro-cid-t7az6eu7="">完整文档详细介绍了这一点，请参阅 <a href="https://developers.cloudflare.com/workers/cache" target="_blank" rel="noopener noreferrer"><u>Workers 缓存：您的 Worker 缓存</u></a>。</p>
+<h2 data-astro-cid-t7az6eu7="">两层结构，每个 Worker 各司其职，无需配置</h2>
+<p data-astro-cid-t7az6eu7="">Workers 缓存<strong>默认按区域分层</strong>。共有两层：</p>
 <ul>
 	<li><strong>底层缓存</strong>位于距离用户最近的 Cloudflare 数据中心。每个接收 Worker 流量的数据中心都有其各自的底层缓存。</li>
 	<li><strong>上层缓存</strong>聚合整个网络的填充缓存。上层缓存数量较少，当未命中缓存时，每个底层缓存会询问上层缓存。</li>
 </ul>
-<p data-astro-cid-c6i3vrlz="">请求首先到达底层缓存。如果命中，则提供响应，请求结束。如果未命中，则底层缓存会询问上层缓存。如果上层缓存命中，则返回响应，并在返回过程中将其存储在底层缓存中。只有当底层缓存和上层缓存都未命中时，Worker 才会实际运行，并且该运行生成的响应会同时存储在这两层缓存中。</p>
+<p data-astro-cid-t7az6eu7="">请求首先到达底层缓存。如果命中，则提供响应，请求结束。如果未命中，则底层缓存会询问上层缓存。如果上层缓存命中，则返回响应，并在返回过程中将其存储在底层缓存中。只有当底层缓存和上层缓存都未命中时，Worker 才会实际运行，并且该运行生成的响应会同时存储在这两层缓存中。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="197" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q4SPEBRGN7EB9KMD8V50.png&amp;w=715&amp;h=197&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q4SPEBRGN7EB9KMD8V50.png&amp;w=640&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q4SPEBRGN7EB9KMD8V50.png&amp;w=715&amp;h=197&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q4SPEBRGN7EB9KMD8V50.png&amp;w=750&amp;h=207&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q4SPEBRGN7EB9KMD8V50.png&amp;w=828&amp;h=228&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q4SPEBRGN7EB9KMD8V50.png&amp;w=1080&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q4SPEBRGN7EB9KMD8V50.png&amp;w=1280&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q4SPEBRGN7EB9KMD8V50.png&amp;w=1430&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3262 image2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q4SPEBRGN7EB9KMD8V50.png&amp;w=1920&amp;h=528&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="528" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="197" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-c6i3vrlz="">这一点至关重要，因为<strong>全球任何地方的第一个请求</strong>都会填充上层缓存。后续来自任何数据中心的请求均可直接从上层缓存处理，无需运行 Worker，即使该数据中心的底层缓存之前从未处理过该请求。缓存命中率远高于单一扁平缓存层，这正是 Worker 作为源服务器时所需的功能。</p>
-<p data-astro-cid-c6i3vrlz="">这与目前区域<a href="https://developers.cloudflare.com/cache/how-to/tiered-cache" target="_blank" rel="noopener noreferrer"><u>分层缓存</u></a>的拓扑结构相同，只是您无需进行任何配置。没有“为我的 Worker 服务器启用分层缓存”的对话框。每个已启用缓存的 Worker 都会免费获得分层缓存功能。</p>
-<p data-astro-cid-c6i3vrlz="">如果 Worker 使用 <a href="https://developers.cloudflare.com/workers/configuration/placement" target="_blank" rel="noopener noreferrer"><u>Smart Placement</u></a>，则缓存可与之顺利配合：首先查询所有层级的缓存，只有在二者都未命中的情况下，Smart Placement 才会将执行路由到靠近源服务器的位置。关于这些层如何交互，包括我们<a href="https://developers.cloudflare.com/workers/cache/#smart-placement-and-the-cache" target="_blank" rel="noopener noreferrer"><u>计划改进</u></a>的一些不足之处，将在文档中进行更详细的说明。</p>
-<h2 data-astro-cid-c6i3vrlz="">靠近用户<em>且</em>靠近数据运行应用</h2>
-<p data-astro-cid-c6i3vrlz="">Web 性能领域一直存在一个尚未完全解决的对立难题：您希望代码靠近用户运行（因为用户与服务器之间的往返在关键路径中），您也希望代码靠近数据运行（因为每个数据库查询也都是一次往返）。但是，选择其中之一，另一个就会变慢。</p>
-<p data-astro-cid-c6i3vrlz="">多年来，我们一直在努力兼顾两者。Cloudflare 网络将我们与全球约 95% 的互联网用户之间的延迟控制在 <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>50 毫秒以内</u></a>。<a href="https://blog.cloudflare.com/announcing-workers-smart-placement" target="_blank" rel="noopener noreferrer"><u>Smart Placement</u></a> 和 <a href="https://developers.cloudflare.com/changelog/post/2026-01-22-explicit-placement-hints" target="_blank" rel="noopener noreferrer"><u>Placement Hints</u></a> 让您可以将代码始终置于数据附近，无需考虑云区域。但直到现在，这两者仍然无法完美结合。您可以选择“靠近用户”或“靠近数据”，如果您希望自己的应用兼顾二者，则必须成为 Cloudflare 专家。<a href="https://sunilpai.dev/posts/spatial-compute" target="_blank" rel="noopener noreferrer"><u>我们知道，我们可以做得更好。</u></a></p>
-<p data-astro-cid-c6i3vrlz="">Workers 缓存正是弥合这一差距的关键。由于缓存属于 Worker 而不是区域，并且由于<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings" target="_blank" rel="noopener noreferrer"><u>服务绑定</u></a>以及 Workers 之间的 <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc" target="_blank" rel="noopener noreferrer"><u>ctx.exports</u></a> 调用通过缓存进行，因此，您可以将应用构建成一个 Worker 链（每个 Worker 都在其应该运行的位置运行），缓存是这些 Worker 的连接点。</p>
-<p data-astro-cid-c6i3vrlz="">架构如下：</p>
+<p data-astro-cid-t7az6eu7="">这一点至关重要，因为<strong>全球任何地方的第一个请求</strong>都会填充上层缓存。后续来自任何数据中心的请求均可直接从上层缓存处理，无需运行 Worker，即使该数据中心的底层缓存之前从未处理过该请求。缓存命中率远高于单一扁平缓存层，这正是 Worker 作为源服务器时所需的功能。</p>
+<p data-astro-cid-t7az6eu7="">这与目前区域<a href="https://developers.cloudflare.com/cache/how-to/tiered-cache" target="_blank" rel="noopener noreferrer"><u>分层缓存</u></a>的拓扑结构相同，只是您无需进行任何配置。没有“为我的 Worker 服务器启用分层缓存”的对话框。每个已启用缓存的 Worker 都会免费获得分层缓存功能。</p>
+<p data-astro-cid-t7az6eu7="">如果 Worker 使用 <a href="https://developers.cloudflare.com/workers/configuration/placement" target="_blank" rel="noopener noreferrer"><u>Smart Placement</u></a>，则缓存可与之顺利配合：首先查询所有层级的缓存，只有在二者都未命中的情况下，Smart Placement 才会将执行路由到靠近源服务器的位置。关于这些层如何交互，包括我们<a href="https://developers.cloudflare.com/workers/cache/#smart-placement-and-the-cache" target="_blank" rel="noopener noreferrer"><u>计划改进</u></a>的一些不足之处，将在文档中进行更详细的说明。</p>
+<h2 data-astro-cid-t7az6eu7="">靠近用户<em>且</em>靠近数据运行应用</h2>
+<p data-astro-cid-t7az6eu7="">Web 性能领域一直存在一个尚未完全解决的对立难题：您希望代码靠近用户运行（因为用户与服务器之间的往返在关键路径中），您也希望代码靠近数据运行（因为每个数据库查询也都是一次往返）。但是，选择其中之一，另一个就会变慢。</p>
+<p data-astro-cid-t7az6eu7="">多年来，我们一直在努力兼顾两者。Cloudflare 网络将我们与全球约 95% 的互联网用户之间的延迟控制在 <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>50 毫秒以内</u></a>。<a href="https://blog.cloudflare.com/announcing-workers-smart-placement" target="_blank" rel="noopener noreferrer"><u>Smart Placement</u></a> 和 <a href="https://developers.cloudflare.com/changelog/post/2026-01-22-explicit-placement-hints" target="_blank" rel="noopener noreferrer"><u>Placement Hints</u></a> 让您可以将代码始终置于数据附近，无需考虑云区域。但直到现在，这两者仍然无法完美结合。您可以选择“靠近用户”或“靠近数据”，如果您希望自己的应用兼顾二者，则必须成为 Cloudflare 专家。<a href="https://sunilpai.dev/posts/spatial-compute" target="_blank" rel="noopener noreferrer"><u>我们知道，我们可以做得更好。</u></a></p>
+<p data-astro-cid-t7az6eu7="">Workers 缓存正是弥合这一差距的关键。由于缓存属于 Worker 而不是区域，并且由于<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings" target="_blank" rel="noopener noreferrer"><u>服务绑定</u></a>以及 Workers 之间的 <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc" target="_blank" rel="noopener noreferrer"><u>ctx.exports</u></a> 调用通过缓存进行，因此，您可以将应用构建成一个 Worker 链（每个 Worker 都在其应该运行的位置运行），缓存是这些 Worker 的连接点。</p>
+<p data-astro-cid-t7az6eu7="">架构如下：</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="175" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PZ4QZ43FJQ0AN6JBXX45.png&amp;w=715&amp;h=175&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PZ4QZ43FJQ0AN6JBXX45.png&amp;w=640&amp;h=157&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PZ4QZ43FJQ0AN6JBXX45.png&amp;w=715&amp;h=175&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PZ4QZ43FJQ0AN6JBXX45.png&amp;w=750&amp;h=184&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PZ4QZ43FJQ0AN6JBXX45.png&amp;w=828&amp;h=203&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PZ4QZ43FJQ0AN6JBXX45.png&amp;w=1080&amp;h=264&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PZ4QZ43FJQ0AN6JBXX45.png&amp;w=1280&amp;h=313&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PZ4QZ43FJQ0AN6JBXX45.png&amp;w=1430&amp;h=350&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3262 image8" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PZ4QZ43FJQ0AN6JBXX45.png&amp;w=1920&amp;h=469&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="469" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="175" class="pt-portable-image-media"></div>
 </figure>
@@ -183,14 +183,14 @@
 	<li><strong>Worker B</strong> 由于 Smart Placement 或显式 Placement Hint 的帮助，在靠近数据的位置运行。它负责处理繁重的工作：服务器端渲染获取数据的页面、读取产品目录、生成搜索结果、聚合 API 以及执行昂贵的转换。</li>
 	<li><strong>Workers 缓存位于 Worker B 的前端。</strong>当 Worker A 通过服务绑定调用 Worker B 时，Cloudflare 首先检查 Worker B 的缓存。如果命中，Worker A 收到响应，而 Worker B 完全不会运行，这种情况下无需数据中心跳转、无需数据库查询、无需渲染工作。</li>
 </ul>
-<p data-astro-cid-c6i3vrlz="">缓存命中路径变为：用户 → 靠近用户的 Worker A → Worker B 的缓存命中 → 响应。只有在缓存未命中时，才会为数据跳转付费。您的热门页面以代码直接面向用户的速度运行，而冷门页面在执行时也能受益于靠近数据的运行。</p>
-<p data-astro-cid-c6i3vrlz="">无需进行任何特殊的架构设计，即可实现这一点。只需将您的应用编写成两个 Worker，通过服务绑定将其中一个 Worker 指向另一个 Worker，在 Worker B 的 <code>wrangler.jsonc</code> 文件中启用缓存，这样就完成了。</p>
+<p data-astro-cid-t7az6eu7="">缓存命中路径变为：用户 → 靠近用户的 Worker A → Worker B 的缓存命中 → 响应。只有在缓存未命中时，才会为数据跳转付费。您的热门页面以代码直接面向用户的速度运行，而冷门页面在执行时也能受益于靠近数据的运行。</p>
+<p data-astro-cid-t7az6eu7="">无需进行任何特殊的架构设计，即可实现这一点。只需将您的应用编写成两个 Worker，通过服务绑定将其中一个 Worker 指向另一个 Worker，在 Worker B 的 <code>wrangler.jsonc</code> 文件中启用缓存，这样就完成了。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="181" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PTK9M6K4BSNM3WA4JX26.png&amp;w=715&amp;h=181&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PTK9M6K4BSNM3WA4JX26.png&amp;w=640&amp;h=162&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PTK9M6K4BSNM3WA4JX26.png&amp;w=715&amp;h=181&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PTK9M6K4BSNM3WA4JX26.png&amp;w=750&amp;h=190&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PTK9M6K4BSNM3WA4JX26.png&amp;w=828&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PTK9M6K4BSNM3WA4JX26.png&amp;w=1080&amp;h=273&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PTK9M6K4BSNM3WA4JX26.png&amp;w=1280&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PTK9M6K4BSNM3WA4JX26.png&amp;w=1430&amp;h=362&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3262 image7" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PTK9M6K4BSNM3WA4JX26.png&amp;w=1920&amp;h=485&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="485" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="181" class="pt-portable-image-media"></div>
 </figure>
-<h2 data-astro-cid-c6i3vrlz="">默认支持多租户，并带有 <code>ctx.props</code> 属性</h2>
-<p data-astro-cid-c6i3vrlz="">如果您要缓存返回用户特定数据的 Worker，例如，为每个登录用户提供不同内容的 API，则需要一种方法来确保一个用户绝不会看到另一个用户的缓存响应。标准解决方案是“不缓存已经过身份验证的请求”，Cloudflare 的<a href="https://developers.cloudflare.com/cache/concepts/cache-responses/#bypass" target="_blank" rel="noopener noreferrer"><u>自动绕过</u></a> <code>Authorization </code>标头机制正是如此。但是，“不缓存任何内容”会完全失去性能优势。</p>
-<p data-astro-cid-c6i3vrlz="">Workers Cache 通过将调用方的 <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#ctxprops" target="_blank" rel="noopener noreferrer"><u>ctx.props</u></a> 属性作为缓存键的一部分，解决了这个问题。当一个 Worker 通过服务绑定调用另一个 Worker，并传递 <code>ctx.props</code>（包括用户 ID、租户 ID 或任何其他标识符）时，拥有不同 props 属性的调用方会获得单独的缓存条目。一个用户的响应绝不会泄露到另一个用户的缓存中。</p>
+<h2 data-astro-cid-t7az6eu7="">默认支持多租户，并带有 <code>ctx.props</code> 属性</h2>
+<p data-astro-cid-t7az6eu7="">如果您要缓存返回用户特定数据的 Worker，例如，为每个登录用户提供不同内容的 API，则需要一种方法来确保一个用户绝不会看到另一个用户的缓存响应。标准解决方案是“不缓存已经过身份验证的请求”，Cloudflare 的<a href="https://developers.cloudflare.com/cache/concepts/cache-responses/#bypass" target="_blank" rel="noopener noreferrer"><u>自动绕过</u></a> <code>Authorization </code>标头机制正是如此。但是，“不缓存任何内容”会完全失去性能优势。</p>
+<p data-astro-cid-t7az6eu7="">Workers Cache 通过将调用方的 <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#ctxprops" target="_blank" rel="noopener noreferrer"><u>ctx.props</u></a> 属性作为缓存键的一部分，解决了这个问题。当一个 Worker 通过服务绑定调用另一个 Worker，并传递 <code>ctx.props</code>（包括用户 ID、租户 ID 或任何其他标识符）时，拥有不同 props 属性的调用方会获得单独的缓存条目。一个用户的响应绝不会泄露到另一个用户的缓存中。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { WorkerEntrypoint } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "cloudflare:workers"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -216,16 +216,16 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">典型模式是在网关 Worker 中对请求进行身份验证，移除 <code>Authorization</code> 标头，将已验证用户的 ID 设置到 <code>ctx.props </code>中，然后调用缓存的后端 Worker。网关在每个请求上运行（为了进行身份验证，必须这样做），但昂贵的后端只有在尚未为该用户创建缓存条目时才运行。经过身份验证的 API 从“不可缓存”变为“已按用户缓存且完全安全”，缓存键负责执行隔离。文档在“<a href="https://developers.cloudflare.com/workers/cache/cache-keys/#multi-tenant-safety-with-ctxprops" target="_blank" rel="noopener noreferrer"><u>使用 ctx.props</u></a> 实现多租户安全性”以及“<a href="https://developers.cloudflare.com/workers/cache/examples/#per-user-authenticated-responses" target="_blank" rel="noopener noreferrer"><u>按用户已进行身份验证的响应</u></a>”示例中对此进行了详细介绍。</p>
-<p data-astro-cid-c6i3vrlz="">其他 CDN 要求您在正确性与命中率之间做出选择：要么使用每个用户的令牌来缓存数据，要么将每个请求发送回源服务器获取授权。Workers 缓存让您可以在边缘共享已缓存的 API 响应，同时保留每个请求的授权边界。我们目前尚未发现其他 CDN 为经过身份验证的多租户 API 提供这样的内置模型。我们为 Cloudflare 做到这一点感到非常自豪。</p>
-<h2 data-astro-cid-c6i3vrlz="">每个 Worker 入口点之间的缓存</h2>
-<p data-astro-cid-c6i3vrlz="">这是我们认为 Workers 缓存中最重要的突破，如果您将其理解为“恰好在 Worker 前端运行的 CDN 缓存”，那么这部分可能最难理解。</p>
-<p data-astro-cid-c6i3vrlz=""><strong>Workers 缓存位于每个 Worker 入口点前端</strong>：默认导出、每个已命名的 <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#named-entrypoints" target="_blank" rel="noopener noreferrer"><u>WorkerEntrypoint</u></a>，以及同一 Worker 中入口点之间通过 <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc" target="_blank" rel="noopener noreferrer"><u>ctx.exports</u></a> 进行的每一次调用。正是最后这一点改变了您可以构建的内容。</p>
-<p data-astro-cid-c6i3vrlz="">当一个入口点通过 <code>ctx.exports </code>调用另一个入口点时，缓存会像评估来自浏览器的请求同样的方式评估该调用。如果命中，则返回缓存的响应，被调用方不会运行。如果未命中，则被调用方运行，并将其响应存储在自己的缓存键下，由被调用方的入口点、路径、查询字符串和 <code>ctx.props</code> 作为键码。调用方仍然会在每一次请求时运行，但其传递给被调用方的任何内容都会独立地存储。</p>
-<p data-astro-cid-c6i3vrlz="">您可以决定每个入口点缓存哪些内容。在 Wrangler 配置中，<code>exports</code> 映射让您可以按名称为每个入口点启用或禁用缓存（“default”表示默认导出）。选择<strong>启用</strong>即可缓存入口点生成的响应；选择<strong>禁用</strong>即会使其在每次请求时运行。网关或路由器入口点（任何进行身份验证、标准化或分发的入口点）都应选择禁用，以便始终运行，并且决不会从缓存中提供其自身的输出。</p>
-<p data-astro-cid-c6i3vrlz="">这将为您提供可编排的基础组件。您可以将 Worker 编写成一系列小型入口点：身份验证、标准化、路由、昂贵的读取、数据层，并让 Workers 缓存插入您想要的位置。每个缓存的入口点都是一个记忆单元，拥有自己的键、生存时间以及用于清除缓存的专属标签命名空间。任何您想要配置的缓存信息，例如运行时间、基于的键值、失效时间，都可以使用普通 Worker 代码表示：调用哪个入口点、转发哪个请求、传递哪些 <code>ctx.props</code> 属性，以及设置哪些 <code>Cache-Control</code> 参数。</p>
-<p data-astro-cid-c6i3vrlz="">为了更具体地说明这一点，请看这个 Worker 示例，它完成了在其他平台难以同时实现的三项任务：对每个请求进行身份验证，在多租户安全的缓存键后面缓存昂贵的后端，以及在数据更改后使该缓存失效。</p>
-<p data-astro-cid-c6i3vrlz="">按入口点配置缓存。网关之所以必须在每次请求时运行，既是为了进行身份验证，也是因为已缓存的网关响应会跳过身份验证检查；因此，我们在默认入口点禁用缓存，并且只在内部入口点启用缓存：</p>
+<p data-astro-cid-t7az6eu7="">典型模式是在网关 Worker 中对请求进行身份验证，移除 <code>Authorization</code> 标头，将已验证用户的 ID 设置到 <code>ctx.props </code>中，然后调用缓存的后端 Worker。网关在每个请求上运行（为了进行身份验证，必须这样做），但昂贵的后端只有在尚未为该用户创建缓存条目时才运行。经过身份验证的 API 从“不可缓存”变为“已按用户缓存且完全安全”，缓存键负责执行隔离。文档在“<a href="https://developers.cloudflare.com/workers/cache/cache-keys/#multi-tenant-safety-with-ctxprops" target="_blank" rel="noopener noreferrer"><u>使用 ctx.props</u></a> 实现多租户安全性”以及“<a href="https://developers.cloudflare.com/workers/cache/examples/#per-user-authenticated-responses" target="_blank" rel="noopener noreferrer"><u>按用户已进行身份验证的响应</u></a>”示例中对此进行了详细介绍。</p>
+<p data-astro-cid-t7az6eu7="">其他 CDN 要求您在正确性与命中率之间做出选择：要么使用每个用户的令牌来缓存数据，要么将每个请求发送回源服务器获取授权。Workers 缓存让您可以在边缘共享已缓存的 API 响应，同时保留每个请求的授权边界。我们目前尚未发现其他 CDN 为经过身份验证的多租户 API 提供这样的内置模型。我们为 Cloudflare 做到这一点感到非常自豪。</p>
+<h2 data-astro-cid-t7az6eu7="">每个 Worker 入口点之间的缓存</h2>
+<p data-astro-cid-t7az6eu7="">这是我们认为 Workers 缓存中最重要的突破，如果您将其理解为“恰好在 Worker 前端运行的 CDN 缓存”，那么这部分可能最难理解。</p>
+<p data-astro-cid-t7az6eu7=""><strong>Workers 缓存位于每个 Worker 入口点前端</strong>：默认导出、每个已命名的 <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#named-entrypoints" target="_blank" rel="noopener noreferrer"><u>WorkerEntrypoint</u></a>，以及同一 Worker 中入口点之间通过 <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc" target="_blank" rel="noopener noreferrer"><u>ctx.exports</u></a> 进行的每一次调用。正是最后这一点改变了您可以构建的内容。</p>
+<p data-astro-cid-t7az6eu7="">当一个入口点通过 <code>ctx.exports </code>调用另一个入口点时，缓存会像评估来自浏览器的请求同样的方式评估该调用。如果命中，则返回缓存的响应，被调用方不会运行。如果未命中，则被调用方运行，并将其响应存储在自己的缓存键下，由被调用方的入口点、路径、查询字符串和 <code>ctx.props</code> 作为键码。调用方仍然会在每一次请求时运行，但其传递给被调用方的任何内容都会独立地存储。</p>
+<p data-astro-cid-t7az6eu7="">您可以决定每个入口点缓存哪些内容。在 Wrangler 配置中，<code>exports</code> 映射让您可以按名称为每个入口点启用或禁用缓存（“default”表示默认导出）。选择<strong>启用</strong>即可缓存入口点生成的响应；选择<strong>禁用</strong>即会使其在每次请求时运行。网关或路由器入口点（任何进行身份验证、标准化或分发的入口点）都应选择禁用，以便始终运行，并且决不会从缓存中提供其自身的输出。</p>
+<p data-astro-cid-t7az6eu7="">这将为您提供可编排的基础组件。您可以将 Worker 编写成一系列小型入口点：身份验证、标准化、路由、昂贵的读取、数据层，并让 Workers 缓存插入您想要的位置。每个缓存的入口点都是一个记忆单元，拥有自己的键、生存时间以及用于清除缓存的专属标签命名空间。任何您想要配置的缓存信息，例如运行时间、基于的键值、失效时间，都可以使用普通 Worker 代码表示：调用哪个入口点、转发哪个请求、传递哪些 <code>ctx.props</code> 属性，以及设置哪些 <code>Cache-Control</code> 参数。</p>
+<p data-astro-cid-t7az6eu7="">为了更具体地说明这一点，请看这个 Worker 示例，它完成了在其他平台难以同时实现的三项任务：对每个请求进行身份验证，在多租户安全的缓存键后面缓存昂贵的后端，以及在数据更改后使该缓存失效。</p>
+<p data-astro-cid-t7az6eu7="">按入口点配置缓存。网关之所以必须在每次请求时运行，既是为了进行身份验证，也是因为已缓存的网关响应会跳过身份验证检查；因此，我们在默认入口点禁用缓存，并且只在内部入口点启用缓存：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"my-worker"</span><span class="sk-24292e-fff">,</span></span>
@@ -308,18 +308,18 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">整套方案只有一个 Worker。一个源文件。一次部署。但有两个执行阶段，也就是在一个小型<code> exports </code>块中，关闭网关缓存，启用后端缓存，二者之间有一个缓存，它由用户键控，根据写入路径失效，并在后台刷新期间提供过期数据。缓存阶段并非附加组件。它是程序的一层，用代码编写。</p>
-<p data-astro-cid-c6i3vrlz="">由此组合形成的模式是开放的。同样的特征也适用于：</p>
+<p data-astro-cid-t7az6eu7="">整套方案只有一个 Worker。一个源文件。一次部署。但有两个执行阶段，也就是在一个小型<code> exports </code>块中，关闭网关缓存，启用后端缓存，二者之间有一个缓存，它由用户键控，根据写入路径失效，并在后台刷新期间提供过期数据。缓存阶段并非附加组件。它是程序的一层，用代码编写。</p>
+<p data-astro-cid-t7az6eu7="">由此组合形成的模式是开放的。同样的特征也适用于：</p>
 <ul>
 	<li><strong>缓存 Durable Object。</strong>将 Durable Object 包装在入口点之后，在响应中设置 <code>Cache-Control</code>，如果命中，则读取操作停止访问 Durable Object。写入操作直接写入 DO 并按标签清除缓存。DO 不会感知到正在进行缓存。</li>
 	<li><strong>在 </strong><code>Vary</code><strong> 之前标准化 </strong><code>Accept-Encoding</code>。外部入口点从 <code>request.cf.clientAcceptEncoding</code> 恢复原始编码（Cloudflare 前端会对其进行标准化处理以提高缓存效率），然后转发到随实际值而变化的已缓存入口点。命中率居高不下；客户端获得正确的编码。</li>
 	<li><strong>在缓存之前，移除跟踪参数。</strong>外部入口点会标准化 URL&nbsp;</li>
 </ul>
-<p data-astro-cid-c6i3vrlz="">或者在 <code>ctx.exports</code> 调用中使用 <code>cf.cacheKey </code>设置<a href="https://developers.cloudflare.com/workers/cache/cache-keys/#custom-cache-keys" target="_blank" rel="noopener noreferrer"><u>自定义缓存键</u></a>，因此，缓存的内部入口点只能看到标准的形式，而 <code>?utm_source=anything </code>会折叠到一个单独的缓存条目。</p>
-<p data-astro-cid-c6i3vrlz="">堆叠这些缓存。单个 Worker 可能拥有一个外部入口点用于身份验证和路由、一个标准化化入口点用于移除跟踪参数并恢复编码标头、一个缓存的入口点位于 Durable Object 前端，以及一个单独的已缓存入口点用于访问未经身份验证的公共 API，每个入口点通过一个缓存阶段连接，您无需配置，只需决定放置位置。<a href="https://developers.cloudflare.com/workers/cache/examples" target="_blank" rel="noopener noreferrer"><u>文档中的“示例”页面</u></a>完整演示了几个示例。</p>
-<p data-astro-cid-c6i3vrlz="">我们目前尚未发现其他平台能够做到这一点。CDN 缓存位于源服务器前面。函数平台运行函数。我们目前还没有发现其他平台可以在应用各部分之间提供这样一个缓存，该缓存位于单个可部署单元内部，并且每个缓存阶段由其两侧的代码进行配置。这就是 Workers 缓存的功能。而且，由于它可以与平台提供的其他各项功能（Smart Placement、Durable Objects、服务绑定、<code>ctx.props</code>、<code>ctx.exports</code>）结合，因此，您可以构建的模式是开放的。本文只涉及问题的表面，没有深入探究。</p>
-<h2 data-astro-cid-c6i3vrlz="">提供框架内一流支持</h2>
-<p data-astro-cid-c6i3vrlz="">如果使用 Astro 构建应用，Cloudflare 适配器会自动为您连接 Workers 缓存。只需将 <a href="https://docs.astro.build/en/guides/caching/#cloudflare" target="_blank" rel="noopener noreferrer"><u>cacheCloudflare 提供程序</u></a>添加到配置中：</p>
+<p data-astro-cid-t7az6eu7="">或者在 <code>ctx.exports</code> 调用中使用 <code>cf.cacheKey </code>设置<a href="https://developers.cloudflare.com/workers/cache/cache-keys/#custom-cache-keys" target="_blank" rel="noopener noreferrer"><u>自定义缓存键</u></a>，因此，缓存的内部入口点只能看到标准的形式，而 <code>?utm_source=anything </code>会折叠到一个单独的缓存条目。</p>
+<p data-astro-cid-t7az6eu7="">堆叠这些缓存。单个 Worker 可能拥有一个外部入口点用于身份验证和路由、一个标准化化入口点用于移除跟踪参数并恢复编码标头、一个缓存的入口点位于 Durable Object 前端，以及一个单独的已缓存入口点用于访问未经身份验证的公共 API，每个入口点通过一个缓存阶段连接，您无需配置，只需决定放置位置。<a href="https://developers.cloudflare.com/workers/cache/examples" target="_blank" rel="noopener noreferrer"><u>文档中的“示例”页面</u></a>完整演示了几个示例。</p>
+<p data-astro-cid-t7az6eu7="">我们目前尚未发现其他平台能够做到这一点。CDN 缓存位于源服务器前面。函数平台运行函数。我们目前还没有发现其他平台可以在应用各部分之间提供这样一个缓存，该缓存位于单个可部署单元内部，并且每个缓存阶段由其两侧的代码进行配置。这就是 Workers 缓存的功能。而且，由于它可以与平台提供的其他各项功能（Smart Placement、Durable Objects、服务绑定、<code>ctx.props</code>、<code>ctx.exports</code>）结合，因此，您可以构建的模式是开放的。本文只涉及问题的表面，没有深入探究。</p>
+<h2 data-astro-cid-t7az6eu7="">提供框架内一流支持</h2>
+<p data-astro-cid-t7az6eu7="">如果使用 Astro 构建应用，Cloudflare 适配器会自动为您连接 Workers 缓存。只需将 <a href="https://docs.astro.build/en/guides/caching/#cloudflare" target="_blank" rel="noopener noreferrer"><u>cacheCloudflare 提供程序</u></a>添加到配置中：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// astro.config.mjs</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { defineConfig } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "astro/config"</span><span class="sk-24292e-fff">;</span></span>
@@ -342,107 +342,107 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-c6i3vrlz="">适配器会启用缓存，在 Astro 生成的响应中设置正确的标头，附加用于使缓存失效的 <code>Cache-Tag </code>值，并提供 <code>cache.invalidate()</code> 辅助函数，用于在内容更改后清除标签。选择服务器端渲染的 Astro 页面会自动进入上述“渲染一次，缓存，后台刷新”流程，无需针对每个路由进行配置，也无需学习特定框架的运行时层。</p>
-<p data-astro-cid-c6i3vrlz="">我们将与其他框架的维护者合作，以实现相同的集成。如果您构建 Cloudflare 框架适配器，<a href="https://developers.cloudflare.com/workers/cache" target="_blank" rel="noopener noreferrer"><u>Workers 缓存 API</u></a> 正好适配您的需求，基于标头的配置、程序化清除，无需对平台特定的概念进行建模。</p>
-<h2 data-astro-cid-c6i3vrlz="">在与 Worker 相同的仪表板中查看缓存信息</h2>
-<p data-astro-cid-c6i3vrlz="">只有当您能够看到缓存的运行情况时，它才真正有用。<a href="https://developers.cloudflare.com/workers/observability" target="_blank" rel="noopener noreferrer"><u>Workers Observability 仪表板</u></a>现在会显示每次调用的缓存命中信息：</p>
+<p data-astro-cid-t7az6eu7="">适配器会启用缓存，在 Astro 生成的响应中设置正确的标头，附加用于使缓存失效的 <code>Cache-Tag </code>值，并提供 <code>cache.invalidate()</code> 辅助函数，用于在内容更改后清除标签。选择服务器端渲染的 Astro 页面会自动进入上述“渲染一次，缓存，后台刷新”流程，无需针对每个路由进行配置，也无需学习特定框架的运行时层。</p>
+<p data-astro-cid-t7az6eu7="">我们将与其他框架的维护者合作，以实现相同的集成。如果您构建 Cloudflare 框架适配器，<a href="https://developers.cloudflare.com/workers/cache" target="_blank" rel="noopener noreferrer"><u>Workers 缓存 API</u></a> 正好适配您的需求，基于标头的配置、程序化清除，无需对平台特定的概念进行建模。</p>
+<h2 data-astro-cid-t7az6eu7="">在与 Worker 相同的仪表板中查看缓存信息</h2>
+<p data-astro-cid-t7az6eu7="">只有当您能够看到缓存的运行情况时，它才真正有用。<a href="https://developers.cloudflare.com/workers/observability" target="_blank" rel="noopener noreferrer"><u>Workers Observability 仪表板</u></a>现在会显示每次调用的缓存命中信息：</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="351" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PNJ02ZEGQKCDR18RZXBG.png&amp;w=715&amp;h=351&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PNJ02ZEGQKCDR18RZXBG.png&amp;w=640&amp;h=314&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PNJ02ZEGQKCDR18RZXBG.png&amp;w=715&amp;h=351&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PNJ02ZEGQKCDR18RZXBG.png&amp;w=750&amp;h=368&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PNJ02ZEGQKCDR18RZXBG.png&amp;w=828&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PNJ02ZEGQKCDR18RZXBG.png&amp;w=1080&amp;h=530&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PNJ02ZEGQKCDR18RZXBG.png&amp;w=1280&amp;h=628&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PNJ02ZEGQKCDR18RZXBG.png&amp;w=1430&amp;h=702&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3262 image6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PNJ02ZEGQKCDR18RZXBG.png&amp;w=1920&amp;h=941&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="941" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="351" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-c6i3vrlz="">您可以查看每个 Worker 的：</p>
+<p data-astro-cid-t7az6eu7="">您可以查看每个 Worker 的：</p>
 <ul>
 	<li><strong>高速缓存命中率</strong>随时间的变化。启用缓存后，您希望看到数值上升的趋势。</li>
 	<li><strong>命中、未命中、更新、绕过</strong>次数的细分。如果命中率低，可以在这里找到原因：<code>BYPASS</code> 响应过多（因为某些程序正在设置 Cookie？）、<code>MISS </code>响应过多（因为缓存键的分区比预想的更多？），或是 <code>UPDATING</code> 响应过多（因为 <code>max-age </code>比流量间隔时间更短？）。</li>
 </ul>
-<p data-astro-cid-c6i3vrlz="">由于这些信息与 Worker 的其他可观测性（日志、异常、CPU 时间、请求计数）都在同一个仪表板中，因此，您不必在查看区域和 Worker 之间切换上下文就能了解正在发生的事情。</p>
-<h2 data-astro-cid-c6i3vrlz="">账单</h2>
-<p data-astro-cid-c6i3vrlz="">缓存命中不会运行 Worker，CPU 时间也不会计费。它们按标准 <a href="https://developers.cloudflare.com/workers/platform/pricing" target="_blank" rel="noopener noreferrer"><u>Workers 请求率</u></a>计费，与其他任何调用相同。缓存未命中与绕过会正常计费（请求 + CPU 时间），与不使用缓存时完全相同。</p>
-<div class="emdash-table-wrapper" data-astro-cid-d7axpwdr="">
-	<table class="emdash-table" style="min-width: 288px;" data-astro-cid-d7axpwdr="">
-		<thead data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+<p data-astro-cid-t7az6eu7="">由于这些信息与 Worker 的其他可观测性（日志、异常、CPU 时间、请求计数）都在同一个仪表板中，因此，您不必在查看区域和 Worker 之间切换上下文就能了解正在发生的事情。</p>
+<h2 data-astro-cid-t7az6eu7="">账单</h2>
+<p data-astro-cid-t7az6eu7="">缓存命中不会运行 Worker，CPU 时间也不会计费。它们按标准 <a href="https://developers.cloudflare.com/workers/platform/pricing" target="_blank" rel="noopener noreferrer"><u>Workers 请求率</u></a>计费，与其他任何调用相同。缓存未命中与绕过会正常计费（请求 + CPU 时间），与不使用缓存时完全相同。</p>
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 288px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Outcome</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Request charge</p>
 				</th>
-				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>CPU time charge</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-d7axpwdr="">
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>缓存 HIT（Worker 不运行）</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>标准费率</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>不计费</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>缓存 MISS（Worker 运行）</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>标准费率</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>计费</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>缓存 BYPASS（Worker 运行）</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>标准费率</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>计费</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>静态资产请求</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>标准费率</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>不计费</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-d7axpwdr="">
-				<td data-astro-cid-d7axpwdr="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Worker 之间的调用</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>标准费率</p>
 				</td>
-				<td data-astro-cid-d7axpwdr="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>如果 Worker 运行，则收费</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-c6i3vrlz="">没有单独的 Workers 缓存 SKU，也没有按 GB 计费的缓存存储费用。分层缓存、清除、<code>stale-while-revalidate</code> 以及上述分析功能均已包含。如果请求原本会触发 Worker 运行，但 Workers 缓存将其作为缓存命中处理，您仍需支付标准请求费用，但无需为请求的 CPU 时间付费。因此，缓存命中比在 Worker 中渲染相同响应的成本更低。</p>
-<p data-astro-cid-c6i3vrlz="">需要注意的是：启用缓存后，通常免费的请求（例如<a href="https://developers.cloudflare.com/workers/static-assets/billing-and-limitations" target="_blank" rel="noopener noreferrer"><u>静态资产请求</u></a> 以及通过服务绑定或 <code>ctx.exports</code><a href="https://developers.cloudflare.com/workers/platform/pricing/#service-bindings" target="_blank" rel="noopener noreferrer"><u> 进行的 Worker 之间的调用</u></a>）将按标准费率计费，因为这些请求现在都会查询 Worker 前端的缓存。</p>
-<h2 data-astro-cid-c6i3vrlz="">下一步</h2>
-<p data-astro-cid-c6i3vrlz="">我们接下来要做的事情：</p>
+<p data-astro-cid-t7az6eu7="">没有单独的 Workers 缓存 SKU，也没有按 GB 计费的缓存存储费用。分层缓存、清除、<code>stale-while-revalidate</code> 以及上述分析功能均已包含。如果请求原本会触发 Worker 运行，但 Workers 缓存将其作为缓存命中处理，您仍需支付标准请求费用，但无需为请求的 CPU 时间付费。因此，缓存命中比在 Worker 中渲染相同响应的成本更低。</p>
+<p data-astro-cid-t7az6eu7="">需要注意的是：启用缓存后，通常免费的请求（例如<a href="https://developers.cloudflare.com/workers/static-assets/billing-and-limitations" target="_blank" rel="noopener noreferrer"><u>静态资产请求</u></a> 以及通过服务绑定或 <code>ctx.exports</code><a href="https://developers.cloudflare.com/workers/platform/pricing/#service-bindings" target="_blank" rel="noopener noreferrer"><u> 进行的 Worker 之间的调用</u></a>）将按标准费率计费，因为这些请求现在都会查询 Worker 前端的缓存。</p>
+<h2 data-astro-cid-t7az6eu7="">下一步</h2>
+<p data-astro-cid-t7az6eu7="">我们接下来要做的事情：</p>
 <ul>
 	<li><strong>利用 Smart Placement 实现更智能的托管。</strong>目前，Cloudflare 会分别选择上层缓存和 Smart Placement 缓存目标。在完全未命中的情况下，请求可能会在 Cloudflare 各个位置之间往返两次：一次用于检查上层缓存，另一次用于在靠近数据的地方运行 Worker。我们正在努力协调这些选择，以便缓存未命中时，请求只需进行一次长途传输。</li>
 	<li><strong>提高响应大小限制。</strong>在发布初期，所有响应都遵循 <a href="https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#cacheable-size-limits" target="_blank" rel="noopener noreferrer"><u>Free 计划的可缓存大小限制</u></a> (512 MB)，无论账户类型是什么。这只是暂时的措施，一旦我们完成一些推广步骤，将执行每种计划的标准缓存限制。</li>
 	<li><strong>添加更多框架集成。</strong>Astro 具有<a href="https://docs.astro.build/en/guides/caching/#cloudflare" target="_blank" rel="noopener noreferrer"><u>内置的 Workers 缓存集成</u></a>。我们将与维护者合作，通过 <a href="https://vinext.dev" target="_blank" rel="noopener noreferrer"><u>Vinext</u></a> 将类似的集成添加到其他框架中，包括 <a href="https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start" target="_blank" rel="noopener noreferrer"><u>TanStack Start</u></a> 和 Next.js。</li>
 	<li><strong>开发用于标记缓存响应过期的 API。</strong>ctx.cache.purge() 会从缓存中移除匹配的响应。我们将开发 ctx.cache.invalidate() API，使匹配的响应表现为已过期，这样一来，即使 Worker 在后台刷新缓存，下一个请求仍然可以通过 stale-while-revalidate 快速获取过期的响应。</li>
 </ul>
-<h2 data-astro-cid-c6i3vrlz="">立即试用</h2>
-<p data-astro-cid-c6i3vrlz="">Workers 缓存现已面向所有计划中的每一个 Worker 开放。</p>
-<p data-astro-cid-c6i3vrlz="">若要开始使用，请将 <code>"cache": { "enabled": true } </code>添加到 <code>wrangler.jsonc</code> 文件，重新部署，然后开始设置 <code>Cache-Control</code> 标头。<a href="https://developers.cloudflare.com/workers/cache" target="_blank" rel="noopener noreferrer"><u>Workers 缓存文档</u></a>详细介绍了完整的功能，包括<a href="https://developers.cloudflare.com/workers/cache/#quickstart" target="_blank" rel="noopener noreferrer"><u>快速入门</u></a>、<a href="https://developers.cloudflare.com/workers/cache/cache-keys" target="_blank" rel="noopener noreferrer"><u>缓存键</u></a>、<a href="https://developers.cloudflare.com/workers/cache/purge" target="_blank" rel="noopener noreferrer"><u>清除</u></a>、<a href="https://developers.cloudflare.com/workers/cache/examples" target="_blank" rel="noopener noreferrer"><u>组合模式和示例</u></a>，以及<a href="https://developers.cloudflare.com/workers/cache/debugging" target="_blank" rel="noopener noreferrer"><u>调试</u></a>。</p>
-<p data-astro-cid-c6i3vrlz="">过去，Workers 在缓存的前端运行。现在，它们也可以在缓存后端运行。您可以根据需要，选择在任意一侧运行，或者通过服务绑定，在缓存两侧同时运行。</p>
-<p data-astro-cid-c6i3vrlz="">我们迫不及待想看到您构建的成果。</p>
+<h2 data-astro-cid-t7az6eu7="">立即试用</h2>
+<p data-astro-cid-t7az6eu7="">Workers 缓存现已面向所有计划中的每一个 Worker 开放。</p>
+<p data-astro-cid-t7az6eu7="">若要开始使用，请将 <code>"cache": { "enabled": true } </code>添加到 <code>wrangler.jsonc</code> 文件，重新部署，然后开始设置 <code>Cache-Control</code> 标头。<a href="https://developers.cloudflare.com/workers/cache" target="_blank" rel="noopener noreferrer"><u>Workers 缓存文档</u></a>详细介绍了完整的功能，包括<a href="https://developers.cloudflare.com/workers/cache/#quickstart" target="_blank" rel="noopener noreferrer"><u>快速入门</u></a>、<a href="https://developers.cloudflare.com/workers/cache/cache-keys" target="_blank" rel="noopener noreferrer"><u>缓存键</u></a>、<a href="https://developers.cloudflare.com/workers/cache/purge" target="_blank" rel="noopener noreferrer"><u>清除</u></a>、<a href="https://developers.cloudflare.com/workers/cache/examples" target="_blank" rel="noopener noreferrer"><u>组合模式和示例</u></a>，以及<a href="https://developers.cloudflare.com/workers/cache/debugging" target="_blank" rel="noopener noreferrer"><u>调试</u></a>。</p>
+<p data-astro-cid-t7az6eu7="">过去，Workers 在缓存的前端运行。现在，它们也可以在缓存后端运行。您可以根据需要，选择在任意一侧运行，或者通过服务绑定，在缓存两侧同时运行。</p>
+<p data-astro-cid-t7az6eu7="">我们迫不及待想看到您构建的成果。</p>

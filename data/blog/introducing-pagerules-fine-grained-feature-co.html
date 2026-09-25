@@ -1,53 +1,53 @@
-<p data-astro-cid-byeekcgh="">CloudFlare is provisioned by DNS. That means that, from the beginning, you've been able to turn CloudFlare on or off on a subdomain level. From the CloudFlare DNS Manager, you can toggle the little clouds next to your subdomains orange (on) or gray (off) in order to control whether traffic for that subdomain will pass through CloudFlare's proxy.</p>
-<p data-astro-cid-byeekcgh="">Often, however, users have wanted finer-grained control. For example, you may want to have a CloudFlare app like UserVoice added to your public-facing pages, but not appear on your private administrative areas of your website. Before today, that wasn't an option.</p>
-<h3 data-astro-cid-byeekcgh="">Introducing Page Rules</h3>
-<p data-astro-cid-byeekcgh="">Page Rules is a powerful new set of tools that allows you to control how CloudFlare works on your site on a page-by-page basis. The feature provides many of the most popular controls of HTACCESS with a user-friendly interface. Page Rules are now available for all users from the Settings menu next to each domain on the My Websites page. Over the next few days we'll be posting some tutorials on the CloudFlare Blog on various ways you can use Page Rules, but I wanted to start with the example above: how to turn a <a href="https://www.cloudflare.com/apps" target="_blank" rel="noopener noreferrer">CloudFlare app</a> like UserVoice off on the administrative portion of your website.</p>
-<h3 data-astro-cid-byeekcgh="">Using Page Rules to Control CloudFlare Features and Apps</h3>
-<p data-astro-cid-byeekcgh="">The first step to using Page Rules is to define a pattern that defines when the rule is triggered. These patterns can be simple, such as a single URL, or complicated including multiple wildcards. Imagine you have a content management system with a single administrative URL:</p>
+<p data-astro-cid-t7az6eu7="">CloudFlare is provisioned by DNS. That means that, from the beginning, you've been able to turn CloudFlare on or off on a subdomain level. From the CloudFlare DNS Manager, you can toggle the little clouds next to your subdomains orange (on) or gray (off) in order to control whether traffic for that subdomain will pass through CloudFlare's proxy.</p>
+<p data-astro-cid-t7az6eu7="">Often, however, users have wanted finer-grained control. For example, you may want to have a CloudFlare app like UserVoice added to your public-facing pages, but not appear on your private administrative areas of your website. Before today, that wasn't an option.</p>
+<h3 data-astro-cid-t7az6eu7="">Introducing Page Rules</h3>
+<p data-astro-cid-t7az6eu7="">Page Rules is a powerful new set of tools that allows you to control how CloudFlare works on your site on a page-by-page basis. The feature provides many of the most popular controls of HTACCESS with a user-friendly interface. Page Rules are now available for all users from the Settings menu next to each domain on the My Websites page. Over the next few days we'll be posting some tutorials on the CloudFlare Blog on various ways you can use Page Rules, but I wanted to start with the example above: how to turn a <a href="https://www.cloudflare.com/apps" target="_blank" rel="noopener noreferrer">CloudFlare app</a> like UserVoice off on the administrative portion of your website.</p>
+<h3 data-astro-cid-t7az6eu7="">Using Page Rules to Control CloudFlare Features and Apps</h3>
+<p data-astro-cid-t7az6eu7="">The first step to using Page Rules is to define a pattern that defines when the rule is triggered. These patterns can be simple, such as a single URL, or complicated including multiple wildcards. Imagine you have a content management system with a single administrative URL:</p>
 <ul>
 	<li><code>https://www.example.com/admin.php</code></li>
 </ul>
-<p data-astro-cid-byeekcgh="">If that is the only URL where you want <a href="https://www.cloudflare.com/apps" target="_blank" rel="noopener noreferrer">CloudFlare Apps</a> to be turned off, you can enter it in exactly that form as a new pattern. Then, below the pattern, toggle the "Apps" setting to "Off." It's as simple as that.</p>
+<p data-astro-cid-t7az6eu7="">If that is the only URL where you want <a href="https://www.cloudflare.com/apps" target="_blank" rel="noopener noreferrer">CloudFlare Apps</a> to be turned off, you can enter it in exactly that form as a new pattern. Then, below the pattern, toggle the "Apps" setting to "Off." It's as simple as that.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="500" height="83" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45CG35R6TTEPYM6KR9X9D6.png&amp;w=500&amp;h=83&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45CG35R6TTEPYM6KR9X9D6.png&amp;w=500&amp;h=83&amp;f=webp&amp;fit=cover&amp;position=center 500w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45CG35R6TTEPYM6KR9X9D6.png&amp;w=640&amp;h=106&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45CG35R6TTEPYM6KR9X9D6.png&amp;w=750&amp;h=125&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45CG35R6TTEPYM6KR9X9D6.png&amp;w=828&amp;h=137&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45CG35R6TTEPYM6KR9X9D6.png&amp;w=1000&amp;h=166&amp;f=webp&amp;fit=cover&amp;position=center 1000w" alt="Introducing Page Rules: Fine Grained Control over CloudFlare's Features" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45CG35R6TTEPYM6KR9X9D6.png&amp;w=500&amp;h=83&amp;f=webp" data-lightbox-width="500" data-lightbox-height="83" data-astro-cid-7nvefuv6="true" sizes="(min-width: 500px) 500px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="500" height="83" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<h3 data-astro-cid-byeekcgh="">Wildcard and Advanced Pattern Matching</h3>
-<p data-astro-cid-byeekcgh="">The pattern above will only match the following URL:</p>
+<h3 data-astro-cid-t7az6eu7="">Wildcard and Advanced Pattern Matching</h3>
+<p data-astro-cid-t7az6eu7="">The pattern above will only match the following URL:</p>
 <ul>
 	<li><code>https://www.example.com/admin.php</code></li>
 </ul>
-<p data-astro-cid-byeekcgh="">It will not match any of the following URLs:</p>
+<p data-astro-cid-t7az6eu7="">It will not match any of the following URLs:</p>
 <ul>
 	<li><code>http://www.example.com/admin.php</code> <em>[http ≠ https]</em></li>
 	<li><code>https://example.com/admin.php</code> <em>[missing www subdomain]</em></li>
 	<li><code>https://www.example.com/admin</code> <em>[admin ≠ admin.php]</em></li>
 </ul>
-<p data-astro-cid-byeekcgh="">You can make rules more flexible by including wildcards with the * character. For example, if you wanted the pattern to match all four of the above URLs, you could use a pattern like:</p>
+<p data-astro-cid-t7az6eu7="">You can make rules more flexible by including wildcards with the * character. For example, if you wanted the pattern to match all four of the above URLs, you could use a pattern like:</p>
 <ul>
 	<li><code>*example.com/admin*</code></li>
 </ul>
-<p data-astro-cid-byeekcgh="">A wildcard can represent <strong>zero or more</strong> characters and can be used anywhere in the pattern. So, for example, the following pattern:</p>
+<p data-astro-cid-t7az6eu7="">A wildcard can represent <strong>zero or more</strong> characters and can be used anywhere in the pattern. So, for example, the following pattern:</p>
 <ul>
 	<li><code>https://www.example.com/*b*/*</code></li>
 </ul>
-<p data-astro-cid-byeekcgh="">Would match:</p>
+<p data-astro-cid-t7az6eu7="">Would match:</p>
 <ul>
 	<li><code>https://www.example.com/blog/</code></li>
 	<li><code>https://www.example.com/blog/index.php</code></li>
 	<li><code>https://www.example.com/b/admin/folder/index.php</code></li>
 	<li><code>https://www.example.com/myblog/</code></li>
 </ul>
-<p data-astro-cid-byeekcgh="">But would not match:</p>
+<p data-astro-cid-t7az6eu7="">But would not match:</p>
 <ul>
 	<li><code>https://www.example.com/blog</code> <em>[missing the trailing slash]</em></li>
 	<li><code>https://www.example.com/sam/index.php</code> <em>[sam doesn't contain a "b"]</em></li>
 </ul>
-<p data-astro-cid-byeekcgh="">### Practical Example Many WordPress users want to disable CloudFlare Apps and performance features like Rocket Loader on their WordPress Admin panel while leaving them on for their public facing pages. To do this, for most default WordPress setups, you can now create a PageRule by defining the following rule:</p>
+<p data-astro-cid-t7az6eu7="">### Practical Example Many WordPress users want to disable CloudFlare Apps and performance features like Rocket Loader on their WordPress Admin panel while leaving them on for their public facing pages. To do this, for most default WordPress setups, you can now create a PageRule by defining the following rule:</p>
 <ul>
 	<li><code>*example.com/wp-admin*</code></li>
 </ul>
-<p data-astro-cid-byeekcgh="">Then toggle Apps and Performance to "off" then click the Add Rule button. As soon as the rule is in place, your WordPress admin pages will not have CloudFlare Apps like UserVoice included and will not be altered by features like Rocket Loader or AutoMinify.</p>
-<h3 data-astro-cid-byeekcgh="">Non-Trivial</h3>
-<p data-astro-cid-byeekcgh="">Making this work at our scale is non-trivial. To make sure it is fast, when you create a rule, it is compiled into machine code and pushed out to the edge of our network within a couple seconds. Every rule needs then needs to be checked with every request. Given that, under normal load, we're now processing well over 50,000 requests per second, we needed to put some limits on the number of rules per user. Free accounts include three (3) Page Rules per domain. If you need more, you can upgrade to a Pro account which includes twenty (20) Page Rules per domain.</p>
-<p data-astro-cid-byeekcgh="">Over the next few days, we'll be posting other powerful things you can do with Page Rules including how you can use it for advanced URL forwarding as well as ways that it can enable powerful new caching.</p>
+<p data-astro-cid-t7az6eu7="">Then toggle Apps and Performance to "off" then click the Add Rule button. As soon as the rule is in place, your WordPress admin pages will not have CloudFlare Apps like UserVoice included and will not be altered by features like Rocket Loader or AutoMinify.</p>
+<h3 data-astro-cid-t7az6eu7="">Non-Trivial</h3>
+<p data-astro-cid-t7az6eu7="">Making this work at our scale is non-trivial. To make sure it is fast, when you create a rule, it is compiled into machine code and pushed out to the edge of our network within a couple seconds. Every rule needs then needs to be checked with every request. Given that, under normal load, we're now processing well over 50,000 requests per second, we needed to put some limits on the number of rules per user. Free accounts include three (3) Page Rules per domain. If you need more, you can upgrade to a Pro account which includes twenty (20) Page Rules per domain.</p>
+<p data-astro-cid-t7az6eu7="">Over the next few days, we'll be posting other powerful things you can do with Page Rules including how you can use it for advanced URL forwarding as well as ways that it can enable powerful new caching.</p>

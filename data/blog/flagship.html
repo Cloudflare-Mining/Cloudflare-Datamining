@@ -1,9 +1,9 @@
-<p data-astro-cid-nalcf22a="">AI is writing more code than ever. AI-assisted contributions now account for a rapidly growing share of new code across the platform. Agentic coding tools like OpenCode and Claude Code are shipping entire features in minutes.</p>
-<p data-astro-cid-nalcf22a="">AI-generated code entering production is only going to accelerate. But the bigger shift isn't just speed — it's autonomy.</p>
-<p data-astro-cid-nalcf22a="">Today, an AI agent writes code and a human reviews, merges, and deploys it. Tomorrow, the agent does all of that itself. The question becomes: how do you let an agent ship to production without removing every safety net?</p>
-<p data-astro-cid-nalcf22a="">Feature flags are the answer. An agent writes a new code path behind a flag and deploys it — the flag is off, so nothing changes for users. The agent then enables the flag for itself or a small test cohort, exercises the feature in production, and observes the results. If metrics look good, it ramps the rollout. If something breaks, it disables the flag. The human doesn't need to be in the loop for every step — they set the boundaries, and the flag controls the blast radius.</p>
-<p data-astro-cid-nalcf22a="">This is the workflow feature flags were always building toward: not just decoupling deployment from release, but decoupling human attention from every stage of the shipping process. The agent moves fast because the flag makes it safe to move fast.</p>
-<p data-astro-cid-nalcf22a="">Today, we're announcing Flagship — Cloudflare's native feature flag service, built on <a href="https://openfeature.dev" target="_blank" rel="noopener noreferrer"><u>OpenFeature</u></a>, the CNCF open standard for feature flag evaluation. It works everywhere — Workers, Node.js, Bun, Deno, and the browser — but it's fastest on Workers, where flags are evaluated within the Cloudflare network. With the Flagship binding and OpenFeature, integration looks like this:</p>
+<p data-astro-cid-t7az6eu7="">AI is writing more code than ever. AI-assisted contributions now account for a rapidly growing share of new code across the platform. Agentic coding tools like OpenCode and Claude Code are shipping entire features in minutes.</p>
+<p data-astro-cid-t7az6eu7="">AI-generated code entering production is only going to accelerate. But the bigger shift isn't just speed — it's autonomy.</p>
+<p data-astro-cid-t7az6eu7="">Today, an AI agent writes code and a human reviews, merges, and deploys it. Tomorrow, the agent does all of that itself. The question becomes: how do you let an agent ship to production without removing every safety net?</p>
+<p data-astro-cid-t7az6eu7="">Feature flags are the answer. An agent writes a new code path behind a flag and deploys it — the flag is off, so nothing changes for users. The agent then enables the flag for itself or a small test cohort, exercises the feature in production, and observes the results. If metrics look good, it ramps the rollout. If something breaks, it disables the flag. The human doesn't need to be in the loop for every step — they set the boundaries, and the flag controls the blast radius.</p>
+<p data-astro-cid-t7az6eu7="">This is the workflow feature flags were always building toward: not just decoupling deployment from release, but decoupling human attention from every stage of the shipping process. The agent moves fast because the flag makes it safe to move fast.</p>
+<p data-astro-cid-t7az6eu7="">Today, we're announcing Flagship — Cloudflare's native feature flag service, built on <a href="https://openfeature.dev" target="_blank" rel="noopener noreferrer"><u>OpenFeature</u></a>, the CNCF open standard for feature flag evaluation. It works everywhere — Workers, Node.js, Bun, Deno, and the browser — but it's fastest on Workers, where flags are evaluated within the Cloudflare network. With the Flagship binding and OpenFeature, integration looks like this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> OpenFeature.</span><span class="sk-6f42c1-ffc799">setProviderAndWait</span><span class="sk-24292e-fff">(</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    new</span><span class="sk-6f42c1-ffc799"> FlagshipServerProvider</span><span class="sk-24292e-fff">({ binding: env.</span><span class="sk-005cc5-fff">FLAGS</span><span class="sk-24292e-fff"> })</span></span>
@@ -31,11 +31,11 @@
 		})
 	});
 </script>
-<h3 data-astro-cid-nalcf22a="">The problem with feature flags on Workers</h3>
-<p data-astro-cid-nalcf22a="">Many Cloudflare developers have resorted to the pragmatic workaround: hardcoding flag logic directly into their Workers. And honestly, it works well enough in the beginning. Workers deploy in seconds, so flipping a boolean in code and pushing it to production is fast enough for most situations.</p>
-<p data-astro-cid-nalcf22a="">But it doesn't stay simple. One hardcoded flag becomes ten. Ten becomes fifty, owned by different teams, with no central view of what's on or off. There's no audit trail — when something breaks, you're searching <code>git blame</code> to figure out who toggled what.</p>
-<h2 data-astro-cid-nalcf22a="">Network call to external services</h2>
-<p data-astro-cid-nalcf22a="">Another common pattern used on workers is to make an HTTP request to an external service in the following manner:</p>
+<h3 data-astro-cid-t7az6eu7="">The problem with feature flags on Workers</h3>
+<p data-astro-cid-t7az6eu7="">Many Cloudflare developers have resorted to the pragmatic workaround: hardcoding flag logic directly into their Workers. And honestly, it works well enough in the beginning. Workers deploy in seconds, so flipping a boolean in code and pushing it to production is fast enough for most situations.</p>
+<p data-astro-cid-t7az6eu7="">But it doesn't stay simple. One hardcoded flag becomes ten. Ten becomes fifty, owned by different teams, with no central view of what's on or off. There's no audit trail — when something breaks, you're searching <code>git blame</code> to figure out who toggled what.</p>
+<h2 data-astro-cid-t7az6eu7="">Network call to external services</h2>
+<p data-astro-cid-t7az6eu7="">Another common pattern used on workers is to make an HTTP request to an external service in the following manner:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"https://flags.example-service.com/v1/evaluate"</span><span class="sk-24292e-fff">, {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">      ...</span></span>
@@ -56,23 +56,23 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">That outbound request sits on the critical path of every single user request. It could add considerable latency depending on how far the user is from the flag service's region.</p>
-<p data-astro-cid-nalcf22a="">This is a strange situation. Your application runs at the edge, milliseconds from the user. But the feature flag check forces it to reach back across the Internet to another API before it can decide what to render.</p>
-<h2 data-astro-cid-nalcf22a="">Why local evaluation doesn't solve the problem</h2>
-<p data-astro-cid-nalcf22a="">Some feature flag services offer a "local evaluation" SDK. Instead of calling a remote API on every request, the SDK downloads the full set of flag rules into memory and evaluates them locally. No outbound request per evaluation and the flag decision happens in-process.</p>
-<p data-astro-cid-nalcf22a="">On Workers, none of these assumptions hold. There is no long-lived process: a Worker isolate can be created, serve a request, and be evicted between one request and the next. A new invocation could mean re-initializing the SDK from scratch.</p>
-<p data-astro-cid-nalcf22a="">On a serverless platform, you need a distribution primitive that's already at the edge, one where the caching is managed for you, reads are local, and you don't need a persistent connection to keep things up to date.</p>
-<p data-astro-cid-nalcf22a="">Cloudflare KV is a great primitive for this!</p>
-<h3 data-astro-cid-nalcf22a="">How Flagship works</h3>
-<p data-astro-cid-nalcf22a="">Flagship is built entirely on Cloudflare's infrastructure — Workers, Durable Objects, and KV. There are no external databases, no third-party services, and no centralized origin servers in the evaluation path.</p>
-<p data-astro-cid-nalcf22a="">When you create or update a flag, the control plane writes the change atomically to a <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Object</u></a> — a SQLite-backed, globally unique instance that serves as the source of truth for that app's flag configuration and changelog. Within seconds, the updated flag config is synced to <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>Workers KV</u></a>, Cloudflare's globally distributed key-value store, where it's replicated across Cloudflare's network.</p>
-<p data-astro-cid-nalcf22a="">When a request evaluates a flag, Flagship reads the flag config directly from KV at the edge — the same Cloudflare location already handling the request. The evaluation engine then runs right there in an <a href="https://developers.cloudflare.com/workers/reference/how-workers-works/#isolates" target="_blank" rel="noopener noreferrer"><u>isolate</u></a>: it matches the request context against the flag's targeting rules, resolves the rollout percentage, and returns a variation. Both the data and the logic live at the edge — nothing is sent elsewhere to be evaluated.</p>
+<p data-astro-cid-t7az6eu7="">That outbound request sits on the critical path of every single user request. It could add considerable latency depending on how far the user is from the flag service's region.</p>
+<p data-astro-cid-t7az6eu7="">This is a strange situation. Your application runs at the edge, milliseconds from the user. But the feature flag check forces it to reach back across the Internet to another API before it can decide what to render.</p>
+<h2 data-astro-cid-t7az6eu7="">Why local evaluation doesn't solve the problem</h2>
+<p data-astro-cid-t7az6eu7="">Some feature flag services offer a "local evaluation" SDK. Instead of calling a remote API on every request, the SDK downloads the full set of flag rules into memory and evaluates them locally. No outbound request per evaluation and the flag decision happens in-process.</p>
+<p data-astro-cid-t7az6eu7="">On Workers, none of these assumptions hold. There is no long-lived process: a Worker isolate can be created, serve a request, and be evicted between one request and the next. A new invocation could mean re-initializing the SDK from scratch.</p>
+<p data-astro-cid-t7az6eu7="">On a serverless platform, you need a distribution primitive that's already at the edge, one where the caching is managed for you, reads are local, and you don't need a persistent connection to keep things up to date.</p>
+<p data-astro-cid-t7az6eu7="">Cloudflare KV is a great primitive for this!</p>
+<h3 data-astro-cid-t7az6eu7="">How Flagship works</h3>
+<p data-astro-cid-t7az6eu7="">Flagship is built entirely on Cloudflare's infrastructure — Workers, Durable Objects, and KV. There are no external databases, no third-party services, and no centralized origin servers in the evaluation path.</p>
+<p data-astro-cid-t7az6eu7="">When you create or update a flag, the control plane writes the change atomically to a <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Object</u></a> — a SQLite-backed, globally unique instance that serves as the source of truth for that app's flag configuration and changelog. Within seconds, the updated flag config is synced to <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>Workers KV</u></a>, Cloudflare's globally distributed key-value store, where it's replicated across Cloudflare's network.</p>
+<p data-astro-cid-t7az6eu7="">When a request evaluates a flag, Flagship reads the flag config directly from KV at the edge — the same Cloudflare location already handling the request. The evaluation engine then runs right there in an <a href="https://developers.cloudflare.com/workers/reference/how-workers-works/#isolates" target="_blank" rel="noopener noreferrer"><u>isolate</u></a>: it matches the request context against the flag's targeting rules, resolves the rollout percentage, and returns a variation. Both the data and the logic live at the edge — nothing is sent elsewhere to be evaluated.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="442" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44T622S4KGFH89AERX7TVS.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44T622S4KGFH89AERX7TVS.png&amp;w=640&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44T622S4KGFH89AERX7TVS.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44T622S4KGFH89AERX7TVS.png&amp;w=750&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44T622S4KGFH89AERX7TVS.png&amp;w=828&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44T622S4KGFH89AERX7TVS.png&amp;w=1080&amp;h=668&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44T622S4KGFH89AERX7TVS.png&amp;w=1280&amp;h=791&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44T622S4KGFH89AERX7TVS.png&amp;w=1430&amp;h=884&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3237 image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44T622S4KGFH89AERX7TVS.png&amp;w=1920&amp;h=1186&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1186" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="442" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<h3 data-astro-cid-nalcf22a="">Using Flagship: the Worker binding</h3>
-<p data-astro-cid-nalcf22a="">For teams running Cloudflare Workers, Flagship offers a direct binding that evaluates flags inside the Workers runtime — no HTTP round-trip, no SDK overhead. Add the binding to your <code>wrangler.jsonc</code> and your Worker is connected:</p>
+<h3 data-astro-cid-t7az6eu7="">Using Flagship: the Worker binding</h3>
+<p data-astro-cid-t7az6eu7="">For teams running Cloudflare Workers, Flagship offers a direct binding that evaluates flags inside the Workers runtime — no HTTP round-trip, no SDK overhead. Add the binding to your <code>wrangler.jsonc</code> and your Worker is connected:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  "flagship"</span><span class="sk-24292e-fff">: [</span></span>
@@ -87,7 +87,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">That's it. Your account ID is inferred from your Cloudflare account, and the <code>app_id</code> ties the binding to a specific Flagship app. In your Worker, you just ask for a flag value:</p>
+<p data-astro-cid-t7az6eu7="">That's it. Your account ID is inferred from your Cloudflare account, and the <code>app_id</code> ties the binding to a specific Flagship app. In your Worker, you just ask for a flag value:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">) {</span></span>
@@ -108,10 +108,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">The binding supports typed accessors for every variation type - <code>getBooleanValue()</code>, <code>getStringValue()</code>, <code>getNumberValue()</code>, <code>getObjectValue()</code> - plus <code>*Details()</code> variants that return the resolved value alongside the matched variant and the reason it was selected. On evaluation errors, the default value is returned gracefully. On type mismatches, the binding throws an exception — that's a bug in your code, not a transient failure.</p>
-<h3 data-astro-cid-nalcf22a="">The SDK: OpenFeature-native</h3>
-<p data-astro-cid-nalcf22a="">Most feature flag SDKs come with their own interfaces and evaluation patterns. Over time, those become deeply embedded in your codebase — and switching providers means rewriting every call site.</p>
-<p data-astro-cid-nalcf22a="">We didn't want to build another one of those. Flagship is built on <a href="https://openfeature.dev" target="_blank" rel="noopener noreferrer">OpenFeature</a>, the CNCF open standard for feature flag evaluation. OpenFeature defines a common interface for flag evaluation across languages and providers — it's the same relationship that OpenTelemetry has to observability. You write your evaluation code once against the standard, and swap providers by changing a single line of configuration.</p>
+<p data-astro-cid-t7az6eu7="">The binding supports typed accessors for every variation type - <code>getBooleanValue()</code>, <code>getStringValue()</code>, <code>getNumberValue()</code>, <code>getObjectValue()</code> - plus <code>*Details()</code> variants that return the resolved value alongside the matched variant and the reason it was selected. On evaluation errors, the default value is returned gracefully. On type mismatches, the binding throws an exception — that's a bug in your code, not a transient failure.</p>
+<h3 data-astro-cid-t7az6eu7="">The SDK: OpenFeature-native</h3>
+<p data-astro-cid-t7az6eu7="">Most feature flag SDKs come with their own interfaces and evaluation patterns. Over time, those become deeply embedded in your codebase — and switching providers means rewriting every call site.</p>
+<p data-astro-cid-t7az6eu7="">We didn't want to build another one of those. Flagship is built on <a href="https://openfeature.dev" target="_blank" rel="noopener noreferrer">OpenFeature</a>, the CNCF open standard for feature flag evaluation. OpenFeature defines a common interface for flag evaluation across languages and providers — it's the same relationship that OpenTelemetry has to observability. You write your evaluation code once against the standard, and swap providers by changing a single line of configuration.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { OpenFeature } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> '@openfeature/server-sdk'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { FlagshipServerProvider } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> '@cloudflare/flagship/server'</span><span class="sk-24292e-fff">;</span></span>
@@ -137,7 +137,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">If you're running on Workers with the Flagship binding, you can pass it directly to the OpenFeature provider. The binding already carries your account context, so there's nothing to configure — authentication is implicit.</p>
+<p data-astro-cid-t7az6eu7="">If you're running on Workers with the Flagship binding, you can pass it directly to the OpenFeature provider. The binding already carries your account context, so there's nothing to configure — authentication is implicit.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { OpenFeature } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> '@openfeature/server-sdk'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { FlagshipProvider } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> '@cloudflare/flagship/server'</span><span class="sk-24292e-fff">;</span></span>
@@ -162,22 +162,22 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">Your evaluation code doesn't change — the OpenFeature interface is identical. But under the hood, Flagship evaluates flags through the binding instead of over HTTP. You get the portability of the standard with the performance of the binding.</p>
-<p data-astro-cid-nalcf22a="">A client-side provider is also available for browsers. It pre-fetches the flags you specify, caches them with a configurable TTL, and serves evaluations synchronously from that cache.</p>
-<h3 data-astro-cid-nalcf22a="">What you can do with Flagship</h3>
-<p data-astro-cid-nalcf22a="">Flagship supports the patterns you'd expect from a feature flag service and the ones that become critical when AI-generated code is landing in production daily.</p>
-<p data-astro-cid-nalcf22a="">Flag values can be boolean, strings, numbers, or full JSON objects — useful for configuration blocks, UI theme definitions, or routing users to different API versions without maintaining separate code paths.</p>
-<h4 data-astro-cid-nalcf22a="">Targeting Rules</h4>
-<p data-astro-cid-nalcf22a="">Each flag can have multiple rules, evaluated in priority order. The first rule that matches wins.</p>
-<p data-astro-cid-nalcf22a="">A rule consists of:</p>
+<p data-astro-cid-t7az6eu7="">Your evaluation code doesn't change — the OpenFeature interface is identical. But under the hood, Flagship evaluates flags through the binding instead of over HTTP. You get the portability of the standard with the performance of the binding.</p>
+<p data-astro-cid-t7az6eu7="">A client-side provider is also available for browsers. It pre-fetches the flags you specify, caches them with a configurable TTL, and serves evaluations synchronously from that cache.</p>
+<h3 data-astro-cid-t7az6eu7="">What you can do with Flagship</h3>
+<p data-astro-cid-t7az6eu7="">Flagship supports the patterns you'd expect from a feature flag service and the ones that become critical when AI-generated code is landing in production daily.</p>
+<p data-astro-cid-t7az6eu7="">Flag values can be boolean, strings, numbers, or full JSON objects — useful for configuration blocks, UI theme definitions, or routing users to different API versions without maintaining separate code paths.</p>
+<h4 data-astro-cid-t7az6eu7="">Targeting Rules</h4>
+<p data-astro-cid-t7az6eu7="">Each flag can have multiple rules, evaluated in priority order. The first rule that matches wins.</p>
+<p data-astro-cid-t7az6eu7="">A rule consists of:</p>
 <ul>
 	<li>Conditions that determine whether the rule applies to a given context</li>
 	<li>A flag variation to serve when the rule matches</li>
 	<li>An optional rollout for percentage-based delivery</li>
 	<li>A priority that determines evaluation order when multiple rules are present (lower number = higher priority)</li>
 </ul>
-<h4 data-astro-cid-nalcf22a="">Nested Logical Conditions</h4>
-<p data-astro-cid-nalcf22a="">Conditions can be composed using AND/OR logic, nested up to five levels deep. A single rule can express things like:</p>
+<h4 data-astro-cid-t7az6eu7="">Nested Logical Conditions</h4>
+<p data-astro-cid-t7az6eu7="">Conditions can be composed using AND/OR logic, nested up to five levels deep. A single rule can express things like:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">(plan </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-24292e-fff"> “enterprise” </span><span class="sk-005cc5-fff">AND</span><span class="sk-24292e-fff"> region </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-24292e-fff"> “us” ) </span><span class="sk-005cc5-fff">OR</span><span class="sk-24292e-fff"> (user</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">email</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">endsWith</span><span class="sk-24292e-fff">(“</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">cloudflare</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">com”))</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> serve (“premium”)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -186,26 +186,26 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">At the top level of a rule, multiple conditions are combined with implicit AND where all conditions must pass for the rule to match. Within each condition, you can nest AND/OR groups for more complex logic.</p>
-<h4 data-astro-cid-nalcf22a="">Flag Rollouts by Percentage</h4>
-<p data-astro-cid-nalcf22a="">Unlike <a href="https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments" target="_blank" rel="noopener noreferrer"><u>gradual deployments</u></a>, which split traffic between different uploaded versions of your Worker, feature flags let you roll out behavior by percentage within a single version that is serving 100% of traffic. </p>
-<p data-astro-cid-nalcf22a="">Any rule can include a percentage rollout. Instead of serving a variation to everyone who matches the conditions, you serve it to a percentage of them. </p>
-<p data-astro-cid-nalcf22a="">Rollouts use consistent hashing on the specified context attribute. The same attribute value (userId, for example) always hashes to the same bucket, so they won't flip between variations across requests. You can ramp from 5% to 10% to 50% to 100% of users, so those who were already in the rollout stay in it.</p>
-<h3 data-astro-cid-nalcf22a="">Built for what comes next</h3>
-<p data-astro-cid-nalcf22a="">AI-generated code entering production is only going to accelerate. Agentic workflows will push it further — agents that autonomously deploy, test, and iterate on code in production. The teams that thrive in this world won't be the ones shipping the fastest. They'll be the ones who can ship fast and still maintain control over what their users see, roll back in seconds when something breaks, and gradually expose new code paths with confidence.</p>
-<p data-astro-cid-nalcf22a="">That's what Flagship is built for:</p>
+<p data-astro-cid-t7az6eu7="">At the top level of a rule, multiple conditions are combined with implicit AND where all conditions must pass for the rule to match. Within each condition, you can nest AND/OR groups for more complex logic.</p>
+<h4 data-astro-cid-t7az6eu7="">Flag Rollouts by Percentage</h4>
+<p data-astro-cid-t7az6eu7="">Unlike <a href="https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments" target="_blank" rel="noopener noreferrer"><u>gradual deployments</u></a>, which split traffic between different uploaded versions of your Worker, feature flags let you roll out behavior by percentage within a single version that is serving 100% of traffic. </p>
+<p data-astro-cid-t7az6eu7="">Any rule can include a percentage rollout. Instead of serving a variation to everyone who matches the conditions, you serve it to a percentage of them. </p>
+<p data-astro-cid-t7az6eu7="">Rollouts use consistent hashing on the specified context attribute. The same attribute value (userId, for example) always hashes to the same bucket, so they won't flip between variations across requests. You can ramp from 5% to 10% to 50% to 100% of users, so those who were already in the rollout stay in it.</p>
+<h3 data-astro-cid-t7az6eu7="">Built for what comes next</h3>
+<p data-astro-cid-t7az6eu7="">AI-generated code entering production is only going to accelerate. Agentic workflows will push it further — agents that autonomously deploy, test, and iterate on code in production. The teams that thrive in this world won't be the ones shipping the fastest. They'll be the ones who can ship fast and still maintain control over what their users see, roll back in seconds when something breaks, and gradually expose new code paths with confidence.</p>
+<p data-astro-cid-t7az6eu7="">That's what Flagship is built for:</p>
 <ul>
 	<li><strong>Evaluation across region Earth,</strong> cached globally using K/V.</li>
 	<li><strong>A full audit trail.</strong> Every flag change is recorded with field-level diffs, so you know who changed what and when.</li>
 	<li><strong>Dashboard integration</strong>. Anyone on the team can toggle a flag or adjust a rollout without touching code.</li>
 	<li><strong>OpenFeature compatibility.</strong> Adopt Flagship without rewriting your evaluation code. Leave without rewriting it either.</li>
 </ul>
-<h3 data-astro-cid-nalcf22a="">Get started with Flagship</h3>
-<p data-astro-cid-nalcf22a="">Update, May 26, 2026: Flagship is now in <a href="https://developers.cloudflare.com/changelog/post/2026-05-26-public-beta" target="_blank" rel="noopener noreferrer">public beta</a>. You can start using it today from the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fflagship" target="_blank" rel="noopener noreferrer">Cloudflare dashboard</a>. We’ll share more details on pricing as we approach general availability.</p>
+<h3 data-astro-cid-t7az6eu7="">Get started with Flagship</h3>
+<p data-astro-cid-t7az6eu7="">Update, May 26, 2026: Flagship is now in <a href="https://developers.cloudflare.com/changelog/post/2026-05-26-public-beta" target="_blank" rel="noopener noreferrer">public beta</a>. You can start using it today from the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fflagship" target="_blank" rel="noopener noreferrer">Cloudflare dashboard</a>. We’ll share more details on pricing as we approach general availability.</p>
 <ul>
 	<li>Visit the<a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer"> <u>Cloudflare dashboard</u></a> to create your first Flagship app</li>
 	<li>Install the SDK: <code>npm i @cloudflare/flagship</code>; or use the Worker binding directly in your Worker</li>
 	<li>Read the <a href="https://developers.cloudflare.com/flagship/get-started" target="_blank" rel="noopener noreferrer"><u>documentation</u></a> for integration guides and API reference</li>
 	<li>Check out the <a href="https://github.com/cloudflare/flagship" target="_blank" rel="noopener noreferrer"><u>source code</u></a> for examples and to contribute</li>
 </ul>
-<p data-astro-cid-nalcf22a="">If you're currently hardcoding flags in your Workers, or evaluating flags through an external service that adds latency to every request, give Flagship a try. We'd love to hear what you build.</p>
+<p data-astro-cid-t7az6eu7="">If you're currently hardcoding flags in your Workers, or evaluating flags through an external service that adds latency to every request, give Flagship a try. We'd love to hear what you build.</p>

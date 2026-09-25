@@ -1,15 +1,15 @@
-<p data-astro-cid-nalcf22a="">Every <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>agent</u></a> needs search: Coding agents search millions of files across repos, or support agents search customer tickets and internal docs. The use cases are different, but the underlying problem is the same: get the right information to the model at the right time.</p>
-<p data-astro-cid-nalcf22a="">If you're building search yourself, you need a vector index, an indexing pipeline that parses and chunks your documents, and something to keep the index up to date when your data changes. If you also need keyword search, that's a separate index and fusion logic on top. And if each of your agents needs its own searchable context, you're setting all of that up per agent.&nbsp;</p>
-<p data-astro-cid-nalcf22a=""><a href="https://developers.cloudflare.com/ai-search" target="_blank" rel="noopener noreferrer"><u>AI Search</u></a> (formerly <a href="https://blog.cloudflare.com/introducing-autorag-on-cloudflare" target="_blank" rel="noopener noreferrer"><u>AutoRAG</u></a>) is the plug-and-play search primitive you need. You can dynamically create instances, give it your data, and search — from a Worker, the Agents SDK, or Wrangler CLI. Here's what we're shipping:</p>
+<p data-astro-cid-t7az6eu7="">Every <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>agent</u></a> needs search: Coding agents search millions of files across repos, or support agents search customer tickets and internal docs. The use cases are different, but the underlying problem is the same: get the right information to the model at the right time.</p>
+<p data-astro-cid-t7az6eu7="">If you're building search yourself, you need a vector index, an indexing pipeline that parses and chunks your documents, and something to keep the index up to date when your data changes. If you also need keyword search, that's a separate index and fusion logic on top. And if each of your agents needs its own searchable context, you're setting all of that up per agent.&nbsp;</p>
+<p data-astro-cid-t7az6eu7=""><a href="https://developers.cloudflare.com/ai-search" target="_blank" rel="noopener noreferrer"><u>AI Search</u></a> (formerly <a href="https://blog.cloudflare.com/introducing-autorag-on-cloudflare" target="_blank" rel="noopener noreferrer"><u>AutoRAG</u></a>) is the plug-and-play search primitive you need. You can dynamically create instances, give it your data, and search — from a Worker, the Agents SDK, or Wrangler CLI. Here's what we're shipping:</p>
 <ul>
 	<li><strong>Hybrid search</strong>. Enable both semantic and keyword matching in the same query. Vector search and BM25 run in parallel and results are fused. (The search on our blog is now powered by AI Search. <em>Try the magnifying glass icon to the top right.</em>)</li>
 	<li><strong>Built-in storage and index.</strong> New instances come with their own storage and vector index. Upload files directly to an instance via API and they're indexed. No R2 buckets to set up, no external data sources to connect first. The new <code>ai_search_namespaces</code> binding lets you create and delete instances at runtime from your Worker, so you can spin up one per agent, per customer, or per language without redeployment.</li>
 </ul>
-<p data-astro-cid-nalcf22a="">You can now also attach metadata to documents and use it to boost rankings at query time, and query across multiple instances in a single call.<strong>&nbsp;</strong></p>
-<p data-astro-cid-nalcf22a="">Now, let's look at what this means in practice.</p>
-<h2 data-astro-cid-nalcf22a="">In action: Customer Support Agent</h2>
-<p data-astro-cid-nalcf22a="">Let's walk through a support agent that searches for two kinds of knowledge: shared product docs, and per-customer history like past resolutions. The product docs are too large to fit in a context window, and each customer's history grows with every resolved issue, so the agent needs retrieval to find what's relevant.</p>
-<p data-astro-cid-nalcf22a="">Here's what that looks like with AI Search and the <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>. Start by scaffolding a project:</p>
+<p data-astro-cid-t7az6eu7="">You can now also attach metadata to documents and use it to boost rankings at query time, and query across multiple instances in a single call.<strong>&nbsp;</strong></p>
+<p data-astro-cid-t7az6eu7="">Now, let's look at what this means in practice.</p>
+<h2 data-astro-cid-t7az6eu7="">In action: Customer Support Agent</h2>
+<p data-astro-cid-t7az6eu7="">Let's walk through a support agent that searches for two kinds of knowledge: shared product docs, and per-customer history like past resolutions. The product docs are too large to fit in a context window, and each customer's history grows with every resolved issue, so the agent needs retrieval to find what's relevant.</p>
+<p data-astro-cid-t7az6eu7="">Here's what that looks like with AI Search and the <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>. Start by scaffolding a project:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> cloudflare@latest</span><span class="sk-005cc5-99ffe4"> --</span><span class="sk-005cc5-99ffe4"> --template</span><span class="sk-032f62-99ffe4"> cloudflare/agents-starter</span></span>
 <span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -36,7 +36,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-nalcf22a="">First, bind an AI Search namespace to your Worker:</p>
+<p data-astro-cid-t7az6eu7="">First, bind an AI Search namespace to your Worker:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// wrangler.jsonc </span></span>
 <span class="line"><span class="sk-24292e-fff">{</span></span>
@@ -56,13 +56,13 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">Let's say your shared product documentation lives in an R2 bucket called <code>product-doc</code>. You can create a one-off AI Search instance (named <code>product-knowledge</code>) backed by the bucket on the Cloudflare Dashboard within the <code>support</code> namespace:</p>
+<p data-astro-cid-t7az6eu7="">Let's say your shared product documentation lives in an R2 bucket called <code>product-doc</code>. You can create a one-off AI Search instance (named <code>product-knowledge</code>) backed by the bucket on the Cloudflare Dashboard within the <code>support</code> namespace:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="515" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=715&amp;h=515&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=640&amp;h=461&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=715&amp;h=515&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=750&amp;h=540&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=828&amp;h=596&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=1080&amp;h=778&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=1280&amp;h=922&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=1430&amp;h=1030&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3240 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=1014&amp;h=730&amp;f=webp" data-lightbox-width="1014" data-lightbox-height="730" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="515" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-nalcf22a="">That's your shared knowledge base, the docs every agent can reference.</p>
-<p data-astro-cid-nalcf22a="">When a customer comes back with a new issue, knowing what's already been tried saves everyone time. You can track this by creating an AI Search instance per customer. After each resolved issue, the agent saves a summary of what went wrong and how it was fixed. Over time, this builds up a searchable log of past resolutions. You can create instances dynamically using the namespace binding:</p>
+<p data-astro-cid-t7az6eu7="">That's your shared knowledge base, the docs every agent can reference.</p>
+<p data-astro-cid-t7az6eu7="">When a customer comes back with a new issue, knowing what's already been tried saves everyone time. You can track this by creating an AI Search instance per customer. After each resolved issue, the agent saves a summary of what went wrong and how it was fixed. Over time, this builds up a searchable log of past resolutions. You can create instances dynamically using the namespace binding:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// create a per-customer instance when they first show up </span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">SUPPORT_KB</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">({</span></span>
@@ -75,8 +75,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">Each instance gets its own built-in storage and vector index — powered by <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a> and <a href="https://www.cloudflare.com/developer-platform/products/vectorize" target="_blank" rel="noopener noreferrer"><u>Vectorize</u></a>. The instance starts empty and accumulates context over time. Next time the customer comes back, all of it is searchable.</p>
-<p data-astro-cid-nalcf22a="">Here's what the namespace looks like after a few customers:</p>
+<p data-astro-cid-t7az6eu7="">Each instance gets its own built-in storage and vector index — powered by <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a> and <a href="https://www.cloudflare.com/developer-platform/products/vectorize" target="_blank" rel="noopener noreferrer"><u>Vectorize</u></a>. The instance starts empty and accumulates context over time. Next time the customer comes back, all of it is searchable.</p>
+<p data-astro-cid-t7az6eu7="">Here's what the namespace looks like after a few customers:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>namespace: "support"</span></span>
 <span class="line"><span>├── product-knowledge     (R2 as source, shared across all agents)</span></span>
@@ -90,7 +90,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">Now the agent itself. It extends <code>AIChatAgent</code> from the Agents SDK and defines two tools. We're using <a href="https://blog.cloudflare.com/workers-ai-large-models" target="_blank" rel="noopener noreferrer"><u>Kimi K2.5</u></a> as the LLM via <a href="https://www.cloudflare.com/developer-platform/products/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>. The model decides when to call the tools based on the conversation:</p>
+<p data-astro-cid-t7az6eu7="">Now the agent itself. It extends <code>AIChatAgent</code> from the Agents SDK and defines two tools. We're using <a href="https://blog.cloudflare.com/workers-ai-large-models" target="_blank" rel="noopener noreferrer"><u>Kimi K2.5</u></a> as the LLM via <a href="https://www.cloudflare.com/developer-platform/products/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>. The model decides when to call the tools based on the conversation:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { AIChatAgent, </span><span class="sk-d73a49-a0a0a0">type</span><span class="sk-24292e-fff"> OnChatMessageOptions } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/ai-chat"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { createWorkersAI } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "workers-ai-provider"</span><span class="sk-24292e-fff">;</span></span>
@@ -210,24 +210,24 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">With this, the model decides when to search and when to save. When it searches, it queries <code>product-knowledge</code> and this customer's past resolutions together. When the issue is resolved, it saves a summary that's immediately searchable in future conversations.&nbsp;</p>
-<h2 data-astro-cid-nalcf22a="">How AI Search finds what you're looking for</h2>
-<p data-astro-cid-nalcf22a="">Under the hood, AI Search runs a multi-step retrieval pipeline, in which every step is configurable.</p>
-<h3 data-astro-cid-nalcf22a="">Hybrid Search: search that understands intent and matches terms</h3>
-<p data-astro-cid-nalcf22a="">Until now, AI Search only offered vector search. Vector search is great at understanding intent, but it can lose specifics. In a query "ERR_CONNECTION_REFUSED timeout," the embedding captures the broad concept of connection failures. But the user isn't looking for general networking docs. They're looking for the specific document that mentions “ERR_CONNECTION_REFUSED”. Vector search might return results about troubleshooting without ever surfacing the page that contains that exact error string.&nbsp;</p>
-<p data-astro-cid-nalcf22a="">Keyword search fills that gap. AI Search now supports BM25, one of the most widely used retrieval scoring functions. BM25 scores documents by how often your query terms appear, how rare those terms are across the entire corpus, and how long the document is. It rewards matches on specific terms, penalizes common filler words, and normalizes for document length. When you search "ERR_CONNECTION_REFUSED timeout", BM25 finds documents that actually contain "ERR_CONNECTION_REFUSED" as a term. However, BM25 may miss a page about “troubleshooting network connections” even though it may be describing the same problem. That's where vector search shines, and why you need both.</p>
-<p data-astro-cid-nalcf22a="">When you enable hybrid search, it runs vector and BM25 in parallel, fuses the results, and optionally reranks them:</p>
+<p data-astro-cid-t7az6eu7="">With this, the model decides when to search and when to save. When it searches, it queries <code>product-knowledge</code> and this customer's past resolutions together. When the issue is resolved, it saves a summary that's immediately searchable in future conversations.&nbsp;</p>
+<h2 data-astro-cid-t7az6eu7="">How AI Search finds what you're looking for</h2>
+<p data-astro-cid-t7az6eu7="">Under the hood, AI Search runs a multi-step retrieval pipeline, in which every step is configurable.</p>
+<h3 data-astro-cid-t7az6eu7="">Hybrid Search: search that understands intent and matches terms</h3>
+<p data-astro-cid-t7az6eu7="">Until now, AI Search only offered vector search. Vector search is great at understanding intent, but it can lose specifics. In a query "ERR_CONNECTION_REFUSED timeout," the embedding captures the broad concept of connection failures. But the user isn't looking for general networking docs. They're looking for the specific document that mentions “ERR_CONNECTION_REFUSED”. Vector search might return results about troubleshooting without ever surfacing the page that contains that exact error string.&nbsp;</p>
+<p data-astro-cid-t7az6eu7="">Keyword search fills that gap. AI Search now supports BM25, one of the most widely used retrieval scoring functions. BM25 scores documents by how often your query terms appear, how rare those terms are across the entire corpus, and how long the document is. It rewards matches on specific terms, penalizes common filler words, and normalizes for document length. When you search "ERR_CONNECTION_REFUSED timeout", BM25 finds documents that actually contain "ERR_CONNECTION_REFUSED" as a term. However, BM25 may miss a page about “troubleshooting network connections” even though it may be describing the same problem. That's where vector search shines, and why you need both.</p>
+<p data-astro-cid-t7az6eu7="">When you enable hybrid search, it runs vector and BM25 in parallel, fuses the results, and optionally reranks them:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="494" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=715&amp;h=494&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=640&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=715&amp;h=494&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=750&amp;h=518&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=828&amp;h=572&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=1080&amp;h=746&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=1280&amp;h=884&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=1430&amp;h=988&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3240 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=1920&amp;h=1327&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1327" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="494" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-nalcf22a="">Let's take a look at the new configurations for BM25, and how they come together.</p>
+<p data-astro-cid-t7az6eu7="">Let's take a look at the new configurations for BM25, and how they come together.</p>
 <ol>
 	<li><strong>Tokenizer </strong>controls how your documents are broken into matchable terms at index time. Porter stemmer (option: <code>porter</code>) stems words so "running" matches "run." Trigram (option: <code>trigram</code>) matches character substrings so "conf" matches "configuration." You can use porter for natural language content like docs, and trigram for code where partial matches matter.</li>
 	<li><strong>Keyword match mode </strong>controls which documents are candidates for BM25 scoring at query time. <code>AND</code> requires all query terms to appear in a document, OR includes anything with at least one match.</li>
 	<li><strong>Fusion </strong>controls how vector and keyword results are combined into the final list of results during query time. Reciprocal rank fusion (option: <code>rrf</code>) merges by rank position rather than score, which avoids comparing two incompatible scoring scales, whereas max fusion (option: <code>max</code>) takes the higher score.</li>
 	<li><strong>(Optional) Reranking </strong>adds a cross-encoder pass that re-scores results by evaluating the query and document together as a pair. It can help catch cases where a result has the right terms but isn't answering the question.&nbsp;</li>
 </ol>
-<p data-astro-cid-nalcf22a="">Every option has a sane default when omitted. You have the flexibility to configure what matters whenever you create a new instance:</p>
+<p data-astro-cid-t7az6eu7="">Every option has a sane default when omitted. You have the flexibility to configure what matters whenever you create a new instance:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> instance</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI_SEARCH</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">({</span></span>
 <span class="line"><span class="sk-24292e-fff">  id: </span><span class="sk-032f62-99ffe4">"my-instance"</span><span class="sk-24292e-fff">,</span></span>
@@ -248,9 +248,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-nalcf22a="">Boost relevance: surface what matters</h3>
-<p data-astro-cid-nalcf22a="">Retrieval gets you relevant results, but relevance alone isn't always enough. For example, in a news search, an article from last week and an article from three years ago might both be semantically relevant to "election results," but most users probably want the recent one. Boosting lets you layer business logic on top of retrieval by nudging rankings based on document metadata.</p>
-<p data-astro-cid-nalcf22a="">You can boost on timestamp (built in on every item) or any <a href="https://developers.cloudflare.com/ai-search/configuration/indexing/metadata" target="_blank" rel="noopener noreferrer"><u>custom metadata field</u></a> you define.</p>
+<h3 data-astro-cid-t7az6eu7="">Boost relevance: surface what matters</h3>
+<p data-astro-cid-t7az6eu7="">Retrieval gets you relevant results, but relevance alone isn't always enough. For example, in a news search, an article from last week and an article from three years ago might both be semantically relevant to "election results," but most users probably want the recent one. Boosting lets you layer business logic on top of retrieval by nudging rankings based on document metadata.</p>
+<p data-astro-cid-t7az6eu7="">You can boost on timestamp (built in on every item) or any <a href="https://developers.cloudflare.com/ai-search/configuration/indexing/metadata" target="_blank" rel="noopener noreferrer"><u>custom metadata field</u></a> you define.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// boost high priority docs</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> results</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> instance.</span><span class="sk-6f42c1-ffc799">search</span><span class="sk-24292e-fff">({</span></span>
@@ -267,9 +267,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-nalcf22a="">Cross-instance search: query across boundaries</h3>
-<p data-astro-cid-nalcf22a="">In the support agent example, product documentation and customer resolution history live in separate instances by design. But when the agent is answering a question, it needs context from both places at once. Without cross-instance search, you'd make two separate calls and merge the results yourself.</p>
-<p data-astro-cid-nalcf22a="">The namespace binding exposes a <code>search()</code> method that handles this for you. Pass an array of instance names and get one ranked list back:</p>
+<h3 data-astro-cid-t7az6eu7="">Cross-instance search: query across boundaries</h3>
+<p data-astro-cid-t7az6eu7="">In the support agent example, product documentation and customer resolution history live in separate instances by design. But when the agent is answering a question, it needs context from both places at once. Without cross-instance search, you'd make two separate calls and merge the results yourself.</p>
+<p data-astro-cid-t7az6eu7="">The namespace binding exposes a <code>search()</code> method that handles this for you. Pass an array of instance names and get one ranked list back:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> results</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">SUPPORT_KB</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">search</span><span class="sk-24292e-fff">({</span></span>
 <span class="line"><span class="sk-24292e-fff">  query: </span><span class="sk-032f62-99ffe4">"billing error"</span><span class="sk-24292e-fff">,</span></span>
@@ -283,11 +283,11 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">Results are merged and ranked across instances. The agent doesn't need to know or care that shared docs and customer resolution history live in separate places.&nbsp;</p>
-<h2 data-astro-cid-nalcf22a="">How AI Search instances work</h2>
-<p data-astro-cid-nalcf22a="">So far we've covered how AI Search finds the right results. Now let's look at how you can create and manage your search instances.</p>
-<p data-astro-cid-nalcf22a="">If you used AI Search before this release, you know the setup: create an R2 bucket, link it to an AI Search instance, AI search generates a service API token for you, and you manage the Vectorize index that gets provisioned on your account. Uploading an object requires you to write to R2 and then wait for a sync job to run to have the object indexed.</p>
-<p data-astro-cid-nalcf22a="">New instances created now work differently. When you call <code>create()</code>, the instance comes with its own storage and vector index built-in. You can upload a file, the file is sent to index immediately, and you can poll for indexing status all with one <code>uploadAndpoll()</code> API. Once completed, you can search the instance immediately, and there are no external dependencies to wire together.</p>
+<p data-astro-cid-t7az6eu7="">Results are merged and ranked across instances. The agent doesn't need to know or care that shared docs and customer resolution history live in separate places.&nbsp;</p>
+<h2 data-astro-cid-t7az6eu7="">How AI Search instances work</h2>
+<p data-astro-cid-t7az6eu7="">So far we've covered how AI Search finds the right results. Now let's look at how you can create and manage your search instances.</p>
+<p data-astro-cid-t7az6eu7="">If you used AI Search before this release, you know the setup: create an R2 bucket, link it to an AI Search instance, AI search generates a service API token for you, and you manage the Vectorize index that gets provisioned on your account. Uploading an object requires you to write to R2 and then wait for a sync job to run to have the object indexed.</p>
+<p data-astro-cid-t7az6eu7="">New instances created now work differently. When you call <code>create()</code>, the instance comes with its own storage and vector index built-in. You can upload a file, the file is sent to index immediately, and you can poll for indexing status all with one <code>uploadAndpoll()</code> API. Once completed, you can search the instance immediately, and there are no external dependencies to wire together.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> instance</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI_SEARCH</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"my-instance"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"></span>
@@ -308,9 +308,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">Each instance can also connect to one external data source (an R2 bucket or a website) and run on a sync schedule. It can exist alongside the provided built-in storage. In the support agent example, <code>product-knowledge</code> is backed by an R2 bucket for shared documentation, while each customer's instance uses built-in storage for context uploaded on the fly.</p>
-<h3 data-astro-cid-nalcf22a="">Namespaces: create search instances at runtime</h3>
-<p data-astro-cid-nalcf22a="">The <code>ai_search_namespaces</code> is a new binding you can leverage to dynamically create search instances at runtime. It replaces the previous <code>env.AI.autorag()</code> API, which accessed AI Search through the <code>AI</code> binding. The old bindings will continue to work using <a href="https://developers.cloudflare.com/workers/configuration/compatibility-dates" target="_blank" rel="noopener noreferrer"><u>Workers compatibility dates</u></a>.</p>
+<p data-astro-cid-t7az6eu7="">Each instance can also connect to one external data source (an R2 bucket or a website) and run on a sync schedule. It can exist alongside the provided built-in storage. In the support agent example, <code>product-knowledge</code> is backed by an R2 bucket for shared documentation, while each customer's instance uses built-in storage for context uploaded on the fly.</p>
+<h3 data-astro-cid-t7az6eu7="">Namespaces: create search instances at runtime</h3>
+<p data-astro-cid-t7az6eu7="">The <code>ai_search_namespaces</code> is a new binding you can leverage to dynamically create search instances at runtime. It replaces the previous <code>env.AI.autorag()</code> API, which accessed AI Search through the <code>AI</code> binding. The old bindings will continue to work using <a href="https://developers.cloudflare.com/workers/configuration/compatibility-dates" target="_blank" rel="noopener noreferrer"><u>Workers compatibility dates</u></a>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// wrangler.jsonc </span></span>
 <span class="line"><span class="sk-24292e-fff">{</span></span>
@@ -324,7 +324,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">The namespace binding gives you APIs like <code>create()</code>, <code>delete()</code>, <code>list()</code>, and <code>search()</code> at the namespace level. If you’re creating instances dynamically (e.g. per agent, per customer, per tenant), this is the binding to use.</p>
+<p data-astro-cid-t7az6eu7="">The namespace binding gives you APIs like <code>create()</code>, <code>delete()</code>, <code>list()</code>, and <code>search()</code> at the namespace level. If you’re creating instances dynamically (e.g. per agent, per customer, per tenant), this is the binding to use.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// create an instance </span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> instance</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI_SEARCH</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">({</span></span>
@@ -339,89 +339,89 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-nalcf22a="">Pricing for new instances</h3>
-<p data-astro-cid-nalcf22a="">New instances created as of today will get built-in storage and a vector index automatically.&nbsp;</p>
-<p data-astro-cid-nalcf22a="">These instances are free to use while AI Search is in open beta with the limits listed below. When using the website as a data source, website crawling using <a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>Browser Run (formerly Browser Rendering)</u></a> is also now a built-in service, meaning that you won’t be billed for it separately. After beta, the goal is to provide unified pricing for AI Search as a single service, rather than billing separately for each underlying component. Workers AI and <a href="https://www.cloudflare.com/developer-platform/products/ai-gateway" target="_blank" rel="noopener noreferrer"><u>AI Gateway</u></a> usage will continue to be billed separately.</p>
-<p data-astro-cid-nalcf22a="">We'll give at least 30 days notice and communicate pricing details before any billing begins.</p>
-<div class="emdash-table-wrapper" data-astro-cid-pe7l3wzl="">
-	<table class="emdash-table" style="min-width: 288px;" data-astro-cid-pe7l3wzl="">
-		<thead data-astro-cid-pe7l3wzl="">
-			<tr data-astro-cid-pe7l3wzl="">
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+<h3 data-astro-cid-t7az6eu7="">Pricing for new instances</h3>
+<p data-astro-cid-t7az6eu7="">New instances created as of today will get built-in storage and a vector index automatically.&nbsp;</p>
+<p data-astro-cid-t7az6eu7="">These instances are free to use while AI Search is in open beta with the limits listed below. When using the website as a data source, website crawling using <a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>Browser Run (formerly Browser Rendering)</u></a> is also now a built-in service, meaning that you won’t be billed for it separately. After beta, the goal is to provide unified pricing for AI Search as a single service, rather than billing separately for each underlying component. Workers AI and <a href="https://www.cloudflare.com/developer-platform/products/ai-gateway" target="_blank" rel="noopener noreferrer"><u>AI Gateway</u></a> usage will continue to be billed separately.</p>
+<p data-astro-cid-t7az6eu7="">We'll give at least 30 days notice and communicate pricing details before any billing begins.</p>
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 288px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Limit</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Workers Free</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Workers Paid</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-pe7l3wzl="">
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>AI Search instances per account</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>100</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>5,000</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Files per instance</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>100,000</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1M or 500K for hybrid search</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Max file size</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>4MB</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>4MB</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Queries per month</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>20,000</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Unlimited</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Maximum pages crawled per day</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>500</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Unlimited</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-nalcf22a=""><em>What about existing instances?</em>&nbsp;</p>
-<p data-astro-cid-nalcf22a="">If you created instances before this release, they continue to work exactly as they do today. Your R2 buckets, Vectorize indexes, and Browser Run usage remain on your account and are billed as before. We'll share migration details for existing instances soon.</p>
-<h2 data-astro-cid-nalcf22a="">Get started today</h2>
-<p data-astro-cid-nalcf22a="">Search is one of the most fundamental things an agent can do. With AI Search, you don't have to build the infrastructure to make it happen. Create an instance, give it your data, and let your agents search it.</p>
-<p data-astro-cid-nalcf22a="">Get started today by running this command to create your first instance:</p>
+<p data-astro-cid-t7az6eu7=""><em>What about existing instances?</em>&nbsp;</p>
+<p data-astro-cid-t7az6eu7="">If you created instances before this release, they continue to work exactly as they do today. Your R2 buckets, Vectorize indexes, and Browser Run usage remain on your account and are billed as before. We'll share migration details for existing instances soon.</p>
+<h2 data-astro-cid-t7az6eu7="">Get started today</h2>
+<p data-astro-cid-t7az6eu7="">Search is one of the most fundamental things an agent can do. With AI Search, you don't have to build the infrastructure to make it happen. Create an instance, give it your data, and let your agents search it.</p>
+<p data-astro-cid-t7az6eu7="">Get started today by running this command to create your first instance:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> ai-search</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> my-search</span></span>
 <span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -430,7 +430,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">Check out the <a href="https://developers.cloudflare.com/ai-search" target="_blank" rel="noopener noreferrer"><u>docs</u></a> and come tell us what you're building on the <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Developer Discord</u></a>.</p>
+<p data-astro-cid-t7az6eu7="">Check out the <a href="https://developers.cloudflare.com/ai-search" target="_blank" rel="noopener noreferrer"><u>docs</u></a> and come tell us what you're building on the <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Developer Discord</u></a>.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="176" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=715&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=640&amp;h=158&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=715&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=750&amp;h=185&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=828&amp;h=204&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=1080&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=1280&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=1430&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3240 4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=1920&amp;h=472&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="472" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="176" class="pt-portable-image-media"></div>
 </figure>

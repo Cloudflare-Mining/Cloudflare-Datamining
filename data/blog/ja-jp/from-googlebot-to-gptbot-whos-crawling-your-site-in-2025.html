@@ -1,142 +1,142 @@
-<p data-astro-cid-nalcf22a=""><a href="https://www.cloudflare.com/learning/bots/what-is-a-web-crawler" target="_blank" rel="noopener noreferrer"><u>Webクローラー</u></a>は新しいものではありません。<a href="https://en.wikipedia.org/wiki/World_Wide_Web_Wanderer" target="_blank" rel="noopener noreferrer"><u>World Wide Web Wanderer</u></a>は1993年にデビューしましたが、クローラーとインデクサーを本格的に使用した最初のWeb検索エンジンは<a href="https://en.wikipedia.org/wiki/JumpStation" target="_blank" rel="noopener noreferrer"><u>JumpStation</u></a>と<a href="https://en.wikipedia.org/wiki/WebCrawler" target="_blank" rel="noopener noreferrer"><u>WebCrawler</u></a>でした。クローラーは、インターネットの成功の基盤の1つである検索の一部です。主な目的は、インターネット全体のWebサイトのコンテンツにインデックスを付け、Webサイトが検索エンジンの結果に表示され、ユーザーを適切に誘導できるようにすることです。このブログ記事では、AIの台頭に伴い、新たに重要で複雑な役割を果たすようになったWebクローリングの最近の傾向を分析しています。</p>
-<p data-astro-cid-nalcf22a="">すべてのクローラーが同じというわけではありません。ボット、インターネット上でタスクを実行する自動スクリプトには、さまざまな形態があります。「<a href="https://www.cloudflare.com/learning/bots/how-to-manage-good-bots" target="_blank" rel="noopener noreferrer"><u>良性</u></a>」と見なされるもの（APIクライアント、Googlebotのような検索インデックス作成ボット、ヘルスチェックツールなど）や、「<a href="https://www.cloudflare.com/learning/bots/how-to-manage-good-bots" target="_blank" rel="noopener noreferrer"><u>悪性</u></a>」と見なされるもの（クレデンシャルスタッフィング、スパム、許可なくコンテンツをスクレイピングするものなど）です。実際、<a href="https://radar.cloudflare.com/traffic?dateRange=52w#bot-vs-human" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radarのデータ</u></a>によると、現在世界の世界のWebトラフィックの約30%がボットから来ており、場所によっては人間のインターネットトラフィックを超えています。</p>
-<p data-astro-cid-nalcf22a="">AIクローラーという新しいカテゴリーが近年登場しました。こうしたボットは、Web全体からデータを収集してAIモデルを訓練し、ツールや体験を改善する一方で、コンテンツの権利、無許可使用、インフラの過負荷といった<a href="https://en.wikipedia.org/wiki/Artificial_intelligence_and_copyright" target="_blank" rel="noopener noreferrer"><u>問題も引き起こします</u></a>。当社では、検索クローラーとAIクローラーの両方の成長を確認し、特定のAIクローラーを調査し、より広範なクローラーの使用状況を理解することを目指しました。</p>
-<p data-astro-cid-nalcf22a="">AIの急速な導入、コンテンツ権利に関する懸念の増大、データプライバシーに関する議論が進む中で、これはますます関連性を増しています。一部のサイトやクリエイターは、<code>robots.txt</code>や<a href="https://blog.cloudflare.com/bringing-ai-to-cloudflare/#enabling-dynamic-updates-for-the-ai-bot-rule" target="_blank" rel="noopener noreferrer"><u>ファイアウォールルール</u></a>のようなツールを使ってAIクローラーを制限またはブロックしようとしています。また、オランダのインディーズゲームメーカーで起業家の<a href="https://x.com/levelsio/status/1916626339924267319" target="_blank" rel="noopener noreferrer"><u>Pieter Levels</u></a>氏は、次のように受け入れています。「<em>AIクローラーは100%問題ありません…非常に重要なのはLLM[大規模言語モデル]のランキングの方です</em>」</p>
-<p data-astro-cid-nalcf22a="">クローラーにはさまざまな目的があることに留意することが重要です。たとえば、<code>facebookexternalhit</code>ボットは、Facebookが共有リンクのプレビューを生成する際にページコンテンツを取得するために使用しているため、この分析には含まれていません。ただし、この投稿では、Webサイトのコンテンツをインデックス化またはスクレイピングしているAIおよび検索クローラーにのみ焦点を当てています。</p>
-<h2 data-astro-cid-nalcf22a="">AIクローラーのみの視点</h2>
-<p data-astro-cid-nalcf22a="">まずは、<a href="https://radar.cloudflare.com/explorer?dataSet=ai.bots&amp;dt=12w" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar</u></a>で現在把握している、AI関連と明示されているクローラーに限定した「AIクローラーのみの視点」から始めましょう。これらを特定するために、主にLLM（大規模言語モデル）の訓練に使用されるAIクローラーへのアクセス管理に役立つオープンソースプロジェクトから派生した<a href="https://github.com/ai-robots-txt/ai.robots.txt/blob/main/robots.json" target="_blank" rel="noopener noreferrer"><u>リスト</u></a>を使用しています。また、<code>robots.txt</code>ファイルに何を記載すべきかに関するガイドラインも提供しています（これについては後述）。以下に示すデータは、クローラー名とHTTPリクエストのユーザーエージェントの文字列の照合に基づいています（この方法と、1件の例外を含む詳細については、ブログ記事の末尾に記載しています）。</p>
-<p data-astro-cid-nalcf22a="">AIクローラーの状況は、2024年5月から2025年5月の間に大きく変化しました。<code>GPTBot</code>（OpenAI）が5%から30%に急上昇し、支配的な存在となりました。また、<code>Meta-ExternalAgent</code>（Meta）が19%のシェアで強力な新規参入を果たしました。この成長は、以前のリーダーであった<code>Bytespider</code>の42%から7%への急落や、<code>ClaudeBot</code>や<code>Amazonbot</code>といった他のAIクローラーの減少によって生じたものです。当社のデータは、主要AIクローラーの序列が変化し、OpenAIとMetaの存在感がこの分野で急速に高まっていることを明確に示しています。</p>
-<p data-astro-cid-nalcf22a=""><strong>2024年5月</strong></p>
+<p data-astro-cid-t7az6eu7=""><a href="https://www.cloudflare.com/learning/bots/what-is-a-web-crawler" target="_blank" rel="noopener noreferrer"><u>Webクローラー</u></a>は新しいものではありません。<a href="https://en.wikipedia.org/wiki/World_Wide_Web_Wanderer" target="_blank" rel="noopener noreferrer"><u>World Wide Web Wanderer</u></a>は1993年にデビューしましたが、クローラーとインデクサーを本格的に使用した最初のWeb検索エンジンは<a href="https://en.wikipedia.org/wiki/JumpStation" target="_blank" rel="noopener noreferrer"><u>JumpStation</u></a>と<a href="https://en.wikipedia.org/wiki/WebCrawler" target="_blank" rel="noopener noreferrer"><u>WebCrawler</u></a>でした。クローラーは、インターネットの成功の基盤の1つである検索の一部です。主な目的は、インターネット全体のWebサイトのコンテンツにインデックスを付け、Webサイトが検索エンジンの結果に表示され、ユーザーを適切に誘導できるようにすることです。このブログ記事では、AIの台頭に伴い、新たに重要で複雑な役割を果たすようになったWebクローリングの最近の傾向を分析しています。</p>
+<p data-astro-cid-t7az6eu7="">すべてのクローラーが同じというわけではありません。ボット、インターネット上でタスクを実行する自動スクリプトには、さまざまな形態があります。「<a href="https://www.cloudflare.com/learning/bots/how-to-manage-good-bots" target="_blank" rel="noopener noreferrer"><u>良性</u></a>」と見なされるもの（APIクライアント、Googlebotのような検索インデックス作成ボット、ヘルスチェックツールなど）や、「<a href="https://www.cloudflare.com/learning/bots/how-to-manage-good-bots" target="_blank" rel="noopener noreferrer"><u>悪性</u></a>」と見なされるもの（クレデンシャルスタッフィング、スパム、許可なくコンテンツをスクレイピングするものなど）です。実際、<a href="https://radar.cloudflare.com/traffic?dateRange=52w#bot-vs-human" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radarのデータ</u></a>によると、現在世界の世界のWebトラフィックの約30%がボットから来ており、場所によっては人間のインターネットトラフィックを超えています。</p>
+<p data-astro-cid-t7az6eu7="">AIクローラーという新しいカテゴリーが近年登場しました。こうしたボットは、Web全体からデータを収集してAIモデルを訓練し、ツールや体験を改善する一方で、コンテンツの権利、無許可使用、インフラの過負荷といった<a href="https://en.wikipedia.org/wiki/Artificial_intelligence_and_copyright" target="_blank" rel="noopener noreferrer"><u>問題も引き起こします</u></a>。当社では、検索クローラーとAIクローラーの両方の成長を確認し、特定のAIクローラーを調査し、より広範なクローラーの使用状況を理解することを目指しました。</p>
+<p data-astro-cid-t7az6eu7="">AIの急速な導入、コンテンツ権利に関する懸念の増大、データプライバシーに関する議論が進む中で、これはますます関連性を増しています。一部のサイトやクリエイターは、<code>robots.txt</code>や<a href="https://blog.cloudflare.com/bringing-ai-to-cloudflare/#enabling-dynamic-updates-for-the-ai-bot-rule" target="_blank" rel="noopener noreferrer"><u>ファイアウォールルール</u></a>のようなツールを使ってAIクローラーを制限またはブロックしようとしています。また、オランダのインディーズゲームメーカーで起業家の<a href="https://x.com/levelsio/status/1916626339924267319" target="_blank" rel="noopener noreferrer"><u>Pieter Levels</u></a>氏は、次のように受け入れています。「<em>AIクローラーは100%問題ありません…非常に重要なのはLLM[大規模言語モデル]のランキングの方です</em>」</p>
+<p data-astro-cid-t7az6eu7="">クローラーにはさまざまな目的があることに留意することが重要です。たとえば、<code>facebookexternalhit</code>ボットは、Facebookが共有リンクのプレビューを生成する際にページコンテンツを取得するために使用しているため、この分析には含まれていません。ただし、この投稿では、Webサイトのコンテンツをインデックス化またはスクレイピングしているAIおよび検索クローラーにのみ焦点を当てています。</p>
+<h2 data-astro-cid-t7az6eu7="">AIクローラーのみの視点</h2>
+<p data-astro-cid-t7az6eu7="">まずは、<a href="https://radar.cloudflare.com/explorer?dataSet=ai.bots&amp;dt=12w" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar</u></a>で現在把握している、AI関連と明示されているクローラーに限定した「AIクローラーのみの視点」から始めましょう。これらを特定するために、主にLLM（大規模言語モデル）の訓練に使用されるAIクローラーへのアクセス管理に役立つオープンソースプロジェクトから派生した<a href="https://github.com/ai-robots-txt/ai.robots.txt/blob/main/robots.json" target="_blank" rel="noopener noreferrer"><u>リスト</u></a>を使用しています。また、<code>robots.txt</code>ファイルに何を記載すべきかに関するガイドラインも提供しています（これについては後述）。以下に示すデータは、クローラー名とHTTPリクエストのユーザーエージェントの文字列の照合に基づいています（この方法と、1件の例外を含む詳細については、ブログ記事の末尾に記載しています）。</p>
+<p data-astro-cid-t7az6eu7="">AIクローラーの状況は、2024年5月から2025年5月の間に大きく変化しました。<code>GPTBot</code>（OpenAI）が5%から30%に急上昇し、支配的な存在となりました。また、<code>Meta-ExternalAgent</code>（Meta）が19%のシェアで強力な新規参入を果たしました。この成長は、以前のリーダーであった<code>Bytespider</code>の42%から7%への急落や、<code>ClaudeBot</code>や<code>Amazonbot</code>といった他のAIクローラーの減少によって生じたものです。当社のデータは、主要AIクローラーの序列が変化し、OpenAIとMetaの存在感がこの分野で急速に高まっていることを明確に示しています。</p>
+<p data-astro-cid-t7az6eu7=""><strong>2024年5月</strong></p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="568" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462VJHMZ7FXECJXVEPJQ6W.png&amp;w=715&amp;h=568&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462VJHMZ7FXECJXVEPJQ6W.png&amp;w=640&amp;h=508&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462VJHMZ7FXECJXVEPJQ6W.png&amp;w=715&amp;h=568&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462VJHMZ7FXECJXVEPJQ6W.png&amp;w=750&amp;h=596&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462VJHMZ7FXECJXVEPJQ6W.png&amp;w=828&amp;h=658&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462VJHMZ7FXECJXVEPJQ6W.png&amp;w=1080&amp;h=858&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462VJHMZ7FXECJXVEPJQ6W.png&amp;w=1280&amp;h=1017&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462VJHMZ7FXECJXVEPJQ6W.png&amp;w=1430&amp;h=1136&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2841 Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462VJHMZ7FXECJXVEPJQ6W.png&amp;w=1600&amp;h=1270&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="1270" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="568" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-nalcf22a=""><strong>2025年5月</strong></p>
+<p data-astro-cid-t7az6eu7=""><strong>2025年5月</strong></p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="641" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NN9VM8X3B298N9YNTTJT.png&amp;w=715&amp;h=641&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NN9VM8X3B298N9YNTTJT.png&amp;w=640&amp;h=574&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NN9VM8X3B298N9YNTTJT.png&amp;w=715&amp;h=641&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NN9VM8X3B298N9YNTTJT.png&amp;w=750&amp;h=672&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NN9VM8X3B298N9YNTTJT.png&amp;w=828&amp;h=742&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NN9VM8X3B298N9YNTTJT.png&amp;w=1080&amp;h=968&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NN9VM8X3B298N9YNTTJT.png&amp;w=1280&amp;h=1148&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NN9VM8X3B298N9YNTTJT.png&amp;w=1430&amp;h=1282&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2841 Image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NN9VM8X3B298N9YNTTJT.png&amp;w=1600&amp;h=1434&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="1434" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="641" class="pt-portable-image-media"></div>
 </figure>
-<div class="emdash-table-wrapper" data-astro-cid-pe7l3wzl="">
-	<table class="emdash-table" style="min-width: 576px;" data-astro-cid-pe7l3wzl="">
-		<thead data-astro-cid-pe7l3wzl="">
-			<tr data-astro-cid-pe7l3wzl="">
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 576px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>ランク</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>ボット名</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>シェア（2024年5月）</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>ランク</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>ボット名</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>シェア（2025年5月）</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-pe7l3wzl="">
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Bytespider</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>42%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>GPTBot</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>30%</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>ClaudeBot</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>27%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>ClaudeBot</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>21%</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>3</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Amazonbot</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>21%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>3</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Meta-ExternalAgent</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>19%</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>4</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>GPTBot</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>5%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>4</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Amazonbot</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>11%</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>5</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Applebot</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>4.1%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>5</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Bytespider</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>7.2%</p>
 				</td>
 			</tr>
@@ -247,7 +247,7 @@
 		</table>
 	</div>
 </div>
-<p data-astro-cid-nalcf22a="">追加の文脈として、以下のリストには、上記のクローリングシェアが高いボットに関するさらなる情報が含まれています。この情報は、上述と同じオープンソースの<a href="https://github.com/ai-robots-txt/ai.robots.txt/blob/main/robots.json" target="_blank" rel="noopener noreferrer"><u>リスト</u></a>や<a href="https://platform.openai.com/docs/bots" target="_blank" rel="noopener noreferrer"><u>OpenAI</u></a>などの企業による、クローラーの使用方法を説明した出版物から得たものです。</p>
+<p data-astro-cid-t7az6eu7="">追加の文脈として、以下のリストには、上記のクローリングシェアが高いボットに関するさらなる情報が含まれています。この情報は、上述と同じオープンソースの<a href="https://github.com/ai-robots-txt/ai.robots.txt/blob/main/robots.json" target="_blank" rel="noopener noreferrer"><u>リスト</u></a>や<a href="https://platform.openai.com/docs/bots" target="_blank" rel="noopener noreferrer"><u>OpenAI</u></a>などの企業による、クローラーの使用方法を説明した出版物から得たものです。</p>
 <ul>
 	<li><strong>GPTBot</strong> – ChatGPTのような大規模な言語モデルの改善と訓練に使用されるOpenAIのクローラー。</li>
 	<li><strong>ClaudeBot</strong> – Claude AIアシスタントのトレーニングと更新のためのAnthropicのクローラーです。</li>
@@ -259,450 +259,450 @@
 	<li><strong>ChatGPT-User</strong> – ユーザーとのインタラクションに関連する、ChatGPTのAPIベースまたはブラウザの使用状況を示します。</li>
 	<li><strong>PerplexityBot</strong> – Perplexity.aiのクローラーで、リアルタイムのWebデータを利用してAI応答エンジンを強化します。</li>
 </ul>
-<p data-astro-cid-nalcf22a="">Webマスターは、<a href="https://www.cloudflare.com/learning/bots/what-is-robots-txt" target="_blank" rel="noopener noreferrer"><code><u>robots.txt</u></code></a>というファイルにルールを設定することで、これらのボットやクローラーが自分のコンテンツにアクセスするかどうかをクローラーオペレーターに通知できます。クローラーにどのページにアクセスすべきか、またはアクセスすべきでないかを伝えます。<a href="https://blog.cloudflare.com/ai-audit-enforcing-robots-txt" target="_blank" rel="noopener noreferrer"><u>近年見られるように</u></a>、クローラーが<code>robots.txt</code>ポリシーを遵守することは任意ですが、Cloudflareは<a href="https://blog.cloudflare.com/cloudflare-ai-audit-control-ai-content-crawlers" target="_blank" rel="noopener noreferrer"><u>AI Audit</u></a>のようなツールを発表し、コンテンツクリエイターがそれを強制できるようにしています。</p>
-<p data-astro-cid-nalcf22a="">これまで見てきたように、Webクローリングの状況は検索エンジンとAIの役割の融合によって急速に進化しています。AIは今や検索に深く統合されており、GoogleのAI OverviewやAI Modeに見られるだけでなく、Instagram上のMeta AIのようなソーシャルメディアプラットフォームにも見られます。それでは、これらのより広範なAI駆動型クロール活動を含めて、分析を広げましょう。</p>
-<h2 data-astro-cid-nalcf22a="">一般的なAIと検索クローリングの成長：+18%</h2>
-<p data-astro-cid-nalcf22a="">より広い視点で見ると、2025年の最初の数か月間に検索とAIクローラーの両方からのクローリングトラフィックが増加していることが明らかになります。顧客成長のバイアスを取り除くために、特定の週（<a href="http://radar.cloudflare.com/year-in-review" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar Year in Review</u></a>で使用した方法）を用いてトレンドを分析します。具体的には、2024年5月の第1週、2024年11月の任意の週、2025年4月の第1週が対象です。&nbsp;</p>
-<p data-astro-cid-nalcf22a="">この方法により、2024年5月から2025年5月にかけてAIと検索クローラーのトラフィックが18%増加したことがわかりました（各月の全期間を比較）。この期間中に追加されたCloudflareの新規顧客を含めると、増加率は48%に達しました。AIのピークと検索クローリングトラフィックは2025年4月に発生し、2024年5月と比較して32％増加しました。これにより、クローリングトラフィックが過去1年間で明らかに増加したことが確認されますが、その成長は常に一定ではないことも示されています。Googleは依然として支配的なプレーヤーであり、次のセクションで見るように、そのシェアも拡大しています。</p>
-<p data-astro-cid-nalcf22a="">次のグラフが示すように、クローリングトラフィックは2025年3月と4月に急増し、5月にはわずかに低下したものの、高い水準を維持しました。</p>
+<p data-astro-cid-t7az6eu7="">Webマスターは、<a href="https://www.cloudflare.com/learning/bots/what-is-robots-txt" target="_blank" rel="noopener noreferrer"><code><u>robots.txt</u></code></a>というファイルにルールを設定することで、これらのボットやクローラーが自分のコンテンツにアクセスするかどうかをクローラーオペレーターに通知できます。クローラーにどのページにアクセスすべきか、またはアクセスすべきでないかを伝えます。<a href="https://blog.cloudflare.com/ai-audit-enforcing-robots-txt" target="_blank" rel="noopener noreferrer"><u>近年見られるように</u></a>、クローラーが<code>robots.txt</code>ポリシーを遵守することは任意ですが、Cloudflareは<a href="https://blog.cloudflare.com/cloudflare-ai-audit-control-ai-content-crawlers" target="_blank" rel="noopener noreferrer"><u>AI Audit</u></a>のようなツールを発表し、コンテンツクリエイターがそれを強制できるようにしています。</p>
+<p data-astro-cid-t7az6eu7="">これまで見てきたように、Webクローリングの状況は検索エンジンとAIの役割の融合によって急速に進化しています。AIは今や検索に深く統合されており、GoogleのAI OverviewやAI Modeに見られるだけでなく、Instagram上のMeta AIのようなソーシャルメディアプラットフォームにも見られます。それでは、これらのより広範なAI駆動型クロール活動を含めて、分析を広げましょう。</p>
+<h2 data-astro-cid-t7az6eu7="">一般的なAIと検索クローリングの成長：+18%</h2>
+<p data-astro-cid-t7az6eu7="">より広い視点で見ると、2025年の最初の数か月間に検索とAIクローラーの両方からのクローリングトラフィックが増加していることが明らかになります。顧客成長のバイアスを取り除くために、特定の週（<a href="http://radar.cloudflare.com/year-in-review" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar Year in Review</u></a>で使用した方法）を用いてトレンドを分析します。具体的には、2024年5月の第1週、2024年11月の任意の週、2025年4月の第1週が対象です。&nbsp;</p>
+<p data-astro-cid-t7az6eu7="">この方法により、2024年5月から2025年5月にかけてAIと検索クローラーのトラフィックが18%増加したことがわかりました（各月の全期間を比較）。この期間中に追加されたCloudflareの新規顧客を含めると、増加率は48%に達しました。AIのピークと検索クローリングトラフィックは2025年4月に発生し、2024年5月と比較して32％増加しました。これにより、クローリングトラフィックが過去1年間で明らかに増加したことが確認されますが、その成長は常に一定ではないことも示されています。Googleは依然として支配的なプレーヤーであり、次のセクションで見るように、そのシェアも拡大しています。</p>
+<p data-astro-cid-t7az6eu7="">次のグラフが示すように、クローリングトラフィックは2025年3月と4月に急増し、5月にはわずかに低下したものの、高い水準を維持しました。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="233" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G0TZHXVMVVYYDDTZEYBB.png&amp;w=715&amp;h=233&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G0TZHXVMVVYYDDTZEYBB.png&amp;w=640&amp;h=209&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G0TZHXVMVVYYDDTZEYBB.png&amp;w=715&amp;h=233&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G0TZHXVMVVYYDDTZEYBB.png&amp;w=750&amp;h=244&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G0TZHXVMVVYYDDTZEYBB.png&amp;w=828&amp;h=270&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G0TZHXVMVVYYDDTZEYBB.png&amp;w=1080&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G0TZHXVMVVYYDDTZEYBB.png&amp;w=1280&amp;h=417&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G0TZHXVMVVYYDDTZEYBB.png&amp;w=1430&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2841 Image 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G0TZHXVMVVYYDDTZEYBB.png&amp;w=1920&amp;h=625&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="625" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="233" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-nalcf22a="">上記のクローリングチャートのパターンは、より広範な季節的パターンと一般的な人間のインターネットトラフィックパターンを反映しているようです。2024年、北半球では夏にトラフィックが減少し、8月と9月が最も活動が少ない月でした。そして、<a href="https://blog.cloudflare.com/from-deals-to-ddos-exploring-cyber-week-2024-internet-trends" target="_blank" rel="noopener noreferrer"><u>過去の分析</u></a>でも見られたように、ショッピングや季節的な習慣により人々がオンラインになる傾向のある11月には、インターネットトラフィック全体と同様に再び増加しました。&nbsp;</p>
-<h2 data-astro-cid-nalcf22a="">Googlebotのクローリングは1年間で96%増加</h2>
-<p data-astro-cid-nalcf22a="">Google検索のためにコンテンツをインデックス化する<a href="https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers" target="_blank" rel="noopener noreferrer"><code><u>Googlebot</u></code></a>は、この期間を通じて明らかにトップのクローラーであり、力強い成長を示しました。2024年5月から2025年5月の間で、Googlebotのクローリングは96%増加し、Googleによるクローリング活動の増加を反映しています。クローリングトラフィックのピークは2025年4月に記録され、2024年5月と比較して145%高い水準に達しました。また、Googleがこの時期に検索エンジンの変更を行い、<a href="https://ahrefs.com/blog/google-ai-overviews" target="_blank" rel="noopener noreferrer"><u>AI Overview</u></a>を検索エンジンでローンチしたことにも言及する必要があります。まず、2024年5月に米国で開始し、その後さらに多くの国でサービスを開始しました。</p>
+<p data-astro-cid-t7az6eu7="">上記のクローリングチャートのパターンは、より広範な季節的パターンと一般的な人間のインターネットトラフィックパターンを反映しているようです。2024年、北半球では夏にトラフィックが減少し、8月と9月が最も活動が少ない月でした。そして、<a href="https://blog.cloudflare.com/from-deals-to-ddos-exploring-cyber-week-2024-internet-trends" target="_blank" rel="noopener noreferrer"><u>過去の分析</u></a>でも見られたように、ショッピングや季節的な習慣により人々がオンラインになる傾向のある11月には、インターネットトラフィック全体と同様に再び増加しました。&nbsp;</p>
+<h2 data-astro-cid-t7az6eu7="">Googlebotのクローリングは1年間で96%増加</h2>
+<p data-astro-cid-t7az6eu7="">Google検索のためにコンテンツをインデックス化する<a href="https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers" target="_blank" rel="noopener noreferrer"><code><u>Googlebot</u></code></a>は、この期間を通じて明らかにトップのクローラーであり、力強い成長を示しました。2024年5月から2025年5月の間で、Googlebotのクローリングは96%増加し、Googleによるクローリング活動の増加を反映しています。クローリングトラフィックのピークは2025年4月に記録され、2024年5月と比較して145%高い水準に達しました。また、Googleがこの時期に検索エンジンの変更を行い、<a href="https://ahrefs.com/blog/google-ai-overviews" target="_blank" rel="noopener noreferrer"><u>AI Overview</u></a>を検索エンジンでローンチしたことにも言及する必要があります。まず、2024年5月に米国で開始し、その後さらに多くの国でサービスを開始しました。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="237" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VB51P2DFX2R8MJFA155J.png&amp;w=715&amp;h=237&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VB51P2DFX2R8MJFA155J.png&amp;w=640&amp;h=212&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VB51P2DFX2R8MJFA155J.png&amp;w=715&amp;h=237&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VB51P2DFX2R8MJFA155J.png&amp;w=750&amp;h=249&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VB51P2DFX2R8MJFA155J.png&amp;w=828&amp;h=274&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VB51P2DFX2R8MJFA155J.png&amp;w=1080&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VB51P2DFX2R8MJFA155J.png&amp;w=1280&amp;h=424&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VB51P2DFX2R8MJFA155J.png&amp;w=1430&amp;h=474&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2841 Image 4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VB51P2DFX2R8MJFA155J.png&amp;w=1920&amp;h=636&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="636" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="237" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-nalcf22a="">Google関連クローラーの日次データを見ると、下のグラフに示されているように、2つの傾向が際立っています。1つ目は、<a href="https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers" target="_blank" rel="noopener noreferrer"><code><u>Googlebot</u></code></a>と最近の<code>GoogleOther</code>（「調査開発」向けの<a href="https://searchengineland.com/google-launches-new-googlebot-named-googleother-395827" target="_blank" rel="noopener noreferrer"><u>2023年からのWebクローラー</u></a>）が、Googleによるクローリング活動の大部分を占めていることです。2つ目は、クローリングトラフィックの目に見える減少が2つありました。1つは2024年12月14日（Google検索<a href="https://status.search.google.com/incidents/V9nDKuo6nWKh2ThBALgA#:~:text=Incident%20began%20at%202024%2D12,Time" target="_blank" rel="noopener noreferrer"><u>アップデート</u></a>前後）、もう1つは2025年5月20日から5月28日にかけてでした。5月20日のトラフィック低下は、米国でのGoogle検索におけるAIモードの導入とほぼ同時期に発生しましたが、このタイミングは偶然かもしれません。</p>
+<p data-astro-cid-t7az6eu7="">Google関連クローラーの日次データを見ると、下のグラフに示されているように、2つの傾向が際立っています。1つ目は、<a href="https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers" target="_blank" rel="noopener noreferrer"><code><u>Googlebot</u></code></a>と最近の<code>GoogleOther</code>（「調査開発」向けの<a href="https://searchengineland.com/google-launches-new-googlebot-named-googleother-395827" target="_blank" rel="noopener noreferrer"><u>2023年からのWebクローラー</u></a>）が、Googleによるクローリング活動の大部分を占めていることです。2つ目は、クローリングトラフィックの目に見える減少が2つありました。1つは2024年12月14日（Google検索<a href="https://status.search.google.com/incidents/V9nDKuo6nWKh2ThBALgA#:~:text=Incident%20began%20at%202024%2D12,Time" target="_blank" rel="noopener noreferrer"><u>アップデート</u></a>前後）、もう1つは2025年5月20日から5月28日にかけてでした。5月20日のトラフィック低下は、米国でのGoogle検索におけるAIモードの導入とほぼ同時期に発生しましたが、このタイミングは偶然かもしれません。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="239" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A0EBQ7T2H37A8WQRAGTB.png&amp;w=715&amp;h=239&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A0EBQ7T2H37A8WQRAGTB.png&amp;w=640&amp;h=214&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A0EBQ7T2H37A8WQRAGTB.png&amp;w=715&amp;h=239&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A0EBQ7T2H37A8WQRAGTB.png&amp;w=750&amp;h=251&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A0EBQ7T2H37A8WQRAGTB.png&amp;w=828&amp;h=277&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A0EBQ7T2H37A8WQRAGTB.png&amp;w=1080&amp;h=361&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A0EBQ7T2H37A8WQRAGTB.png&amp;w=1280&amp;h=428&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A0EBQ7T2H37A8WQRAGTB.png&amp;w=1430&amp;h=478&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2841 Image 5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A0EBQ7T2H37A8WQRAGTB.png&amp;w=1920&amp;h=643&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="643" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="239" class="pt-portable-image-media"></div>
 </figure>
-<h2 data-astro-cid-nalcf22a="">上位20のAIおよび検索Webクローラーの内訳&nbsp;</h2>
-<p data-astro-cid-nalcf22a="">クローラーを総リクエスト数に占めるシェアによりランク付けすることで、特に検索とAIに焦点を当てたボットの中で、どのボットが勢力を増しているか、または勢力を失いつつあるのかをより明確に把握することができます。以下の表から、一部のAIボットは昨年以降急速に増加しています（増加は以前から始まっています）。その一方で、従来の検索クローラーの多くは横ばいまたはシェアを失いました（Bingとその<code>Bingbot</code>クローラーのケースのように）。主要な例外は<code>Googlebot</code>です。</p>
-<p data-astro-cid-nalcf22a="">次の表は、Cloudflareが2024年5月および2025年5月に観測した30以上のAIおよび検索クローラーの特定のコホートによって生成された全クローリングトラフィックに占める各クローラーのシェアを示しています。以下の表には、パーセンテージポイントの変化とリクエストの実数の増減も含まれています。クローラーは2025年5月のシェアによってランク付けされています。主なクローラーの変化には、<code>GPTBot</code>が急上昇（+305%）したのに対し、<code>Bytespider</code>は大幅に減少（-85%）しています。</p>
-<div class="emdash-table-wrapper" data-astro-cid-pe7l3wzl="">
-	<table class="emdash-table" style="min-width: 576px;" data-astro-cid-pe7l3wzl="">
-		<thead data-astro-cid-pe7l3wzl="">
-			<tr data-astro-cid-pe7l3wzl="">
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+<h2 data-astro-cid-t7az6eu7="">上位20のAIおよび検索Webクローラーの内訳&nbsp;</h2>
+<p data-astro-cid-t7az6eu7="">クローラーを総リクエスト数に占めるシェアによりランク付けすることで、特に検索とAIに焦点を当てたボットの中で、どのボットが勢力を増しているか、または勢力を失いつつあるのかをより明確に把握することができます。以下の表から、一部のAIボットは昨年以降急速に増加しています（増加は以前から始まっています）。その一方で、従来の検索クローラーの多くは横ばいまたはシェアを失いました（Bingとその<code>Bingbot</code>クローラーのケースのように）。主要な例外は<code>Googlebot</code>です。</p>
+<p data-astro-cid-t7az6eu7="">次の表は、Cloudflareが2024年5月および2025年5月に観測した30以上のAIおよび検索クローラーの特定のコホートによって生成された全クローリングトラフィックに占める各クローラーのシェアを示しています。以下の表には、パーセンテージポイントの変化とリクエストの実数の増減も含まれています。クローラーは2025年5月のシェアによってランク付けされています。主なクローラーの変化には、<code>GPTBot</code>が急上昇（+305%）したのに対し、<code>Bytespider</code>は大幅に減少（-85%）しています。</p>
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 576px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>ランク</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>ボット名</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>シェア<br>2024年5月</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>シェア<br>2025年5月</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Δパーセントポイントの変化</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>リクエストの実数の増加（2024年5月～2025年5月）</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-pe7l3wzl="">
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Googlebot</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>30%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>50%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>+20 pp</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>96%</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Bingbot</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>10%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>8.7%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>-1.3 pp</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2%</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>3</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>GPTBot</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.2%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>7.7%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>+5.5 pp</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>305%</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>4</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>ClaudeBot</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>11.7%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>5.4%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>-6.3 pp</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>-46%</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>5</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>GoogleOther</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>4.4%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>4.3%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>-0.1 pp</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>14%</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>6</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Amazonbot</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>7.6%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>4.2%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>-3.4 pp</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>-35%</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>7</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Googlebot-Image</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>4.5%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>3.3%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>-1.2 pp</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>-13%</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>8</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Bytespider</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>22.8%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.9%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>-19.8 pp</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>-85%</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>9</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Yandex</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.8%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2.2%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>-0.7 pp</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>-10%</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>10</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>ChatGPT-User</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.1%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1.3%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>+1.2 pp</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2,825%</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>11</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Applebot</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1.9%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1.2%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>-0.7 pp</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>-26%</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>12</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Timpibot</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.3%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.6%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>+0.3 pp</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>133%</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>13</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Baiduspider</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.5%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.4%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>-0.1 pp</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>7%</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>14</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>PerplexityBot</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>&lt;0.01%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.2%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>+0.2 pp</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>157.490%</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>15</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>DuckDuckBot</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.2%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.1%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>-0.1 pp</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>-16%</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>16</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>SeznamBot</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.1%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.1%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p><br></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>2%</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>17</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Yeti</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.1%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.1%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p><br></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>47%</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>18</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>coccocbot</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.1%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.1%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p><br></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>-3%</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>19</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Sogou</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.1%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.1%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p><br></p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>-22%</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>20</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Yahoo！ Slurp</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.1%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0.0%</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>-0.1 pp</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>-8%</p>
 				</td>
 			</tr>
@@ -947,26 +947,26 @@
 		</table>
 	</div>
 </div>
-<p data-astro-cid-nalcf22a="">このデータに基づくと、2024年5月～2025年5月にかけてWebクローリングに2つの大きな変化が起こりました。</p>
-<p data-astro-cid-nalcf22a=""><strong>1. 一部のAIクローラーが急上昇<br></strong><code>GPTBot</code>（OpenAI）はシェアが2.2%から7.7%に増加し（+5.5 pp）、リクエスト数は305%増加しました。これは、ChatGPTのような大規模言語モデルを訓練するためのデータ需要の高まりを浮き彫りにしています。<code>GPTBot</code>は、2024年5月時点で9位だったのが、2025年5月には3位にまで急上昇しました。</p>
-<p data-astro-cid-nalcf22a="">別のOpenAIクローラーである<code>ChatGPT-User</code>では、リクエスト数が2,825%急増し、シェアは1.3%に達しました。これは、Webコンテンツへのアクセスを伴うChatGPTユーザーアクティビティやAPIベースのインタラクションが大幅に増加したことを反映しています。<code>PerplexityBot</code>（Perplexity.ai）は、0.2%という小さなシェアにもかかわらず、リクエストの実数で157,490%という驚異的な増加率を記録しました。</p>
-<p data-astro-cid-nalcf22a="">一方、AIクローラーの中には急激な減少が見られたものもあります。<code>ClaudeBot</code>（Anthropic）は、全トラフィックに占めるシェアが11.7%から5.4%に低下し、リクエスト数は46%減少しました。<code>Bytespider</code>はリクエスト数が85%急減し、クローラーのシェアは2位から8位にまで転落しました（現在はわずか2.9%）。</p>
-<p data-astro-cid-nalcf22a=""><code>Amazonbot</code>と<code>Applebot</code>の両方がAIクローラーと見なされ、シェアとリクエストの実数の両方で減少が見られました（それぞれ–35％と–26％）。</p>
-<p data-astro-cid-nalcf22a=""><strong>2. Googleの支配力が拡大<br></strong><code>Googlebot</code>のシェアは30%から50%に上昇し、検索インデックス作成をサポートしましたが、AI関連の目的もある可能性があります（Google検索の新しいAI概要など）。そして、<code>GoogleOther</code>（<a href="https://searchengineland.com/google-launches-new-googlebot-named-googleother-395827" target="_blank" rel="noopener noreferrer"><u>2023年に導入されたクローラー</u></a>）でも、クローリングトラフィックが14%増加しました。<code>Googlebot-News</code>のように、上位20に入っていない他のGoogleクローラーも大幅に増加しています（リクエスト数が71%増）。Google関連のWebクローラーは、AIと検索の統合に多額の投資が行われている時期に、成長の明確な傾向を示しています。</p>
-<p data-astro-cid-nalcf22a="">また、検索カテゴリでは、<code>Bingbot</code>（Microsoft）のシェアが10%から8.7%にわずかに減少したものの（-1.3pps）、リクエストの実数は2%と控えめに増加しています。</p>
-<p data-astro-cid-nalcf22a="">これらの傾向は、WebクローリングがGoogleとOpenAIのボットによってますます支配されており、1年を通じた明確な変化を反映しています。Googleはまた、従来の検索とAI駆動型機能の両方をサポートするために、データ収集方法を調整しているようです。</p>
-<p data-astro-cid-nalcf22a="">また、注目すべきは、2025年5月現在でトップ20から脱却した<code>FriendlyCrawler</code>です（現在は35位）。2024年5月はシェア0.2%で14位でしたが、2025年5月までにリクエストが100%減少しました。このボットは、Webサイトのコンテンツにインデックスを付け、分析することで知られていますが、その所有者や<a href="https://imho.alex-kunz.com/2024/01/25/an-update-on-friendly-crawler" target="_blank" rel="noopener noreferrer"><u>目的</u></a>は不明です。通常、このようなクローラーは、検索結果、市場調査、または分析の改善に使用されます。</p>
-<h2 data-astro-cid-nalcf22a="">robots.txtとAIボット：GPTBotが2倍のリードを取る</h2>
-<p data-astro-cid-nalcf22a="">2025年6月6日時点の<a href="https://radar.cloudflare.com/ai-insights?dateStart=2025-05-30&amp;dateEnd=2025-06-06" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar</u></a>のデータによると、<em>robots.txt</em>ファイルを検出できた3,816のドメイン（<a href="https://radar.cloudflare.com/domains" target="_blank" rel="noopener noreferrer"><u>上位10,000</u></a>から）のうち、546のドメイン（約14%）が、特にAIボットを標的とした「allow（許可）」または「disallow（拒否）」の指示（完全または部分的）を含んでいました。</p>
-<p data-astro-cid-nalcf22a="">これは、多くのサイト運営者が<em>robots.txt</em>をAIクローラー管理にどの程度有効活用できているかが不透明であることを示しています。AIボットに特化して使用することを考えていないサイト運営者もいれば、特に新しい、または透明性の低いクローラーに対してAIボットが<em>robots.txt</em>のルールを遵守するかどうか不安に思うサイト運営者もいます。また、部分的なルールを使用してアクセスを微調整し、完全にオプトインまたはオプトアウトすることなく、可視性と保護のバランスを取ろうとするサイトもあります。</p>
-<p data-astro-cid-nalcf22a="">「非許可」ルールは「許可」ルールよりもはるかに頻繁に現れます。最も多くブロックされたボットは<code>GPTBot</code>で、312ドメインがこれを拒否しており（完全拒否250、部分拒否62）、次いで<code>CCBot</code>と<code>Google-Extended</code>が続きます。</p>
+<p data-astro-cid-t7az6eu7="">このデータに基づくと、2024年5月～2025年5月にかけてWebクローリングに2つの大きな変化が起こりました。</p>
+<p data-astro-cid-t7az6eu7=""><strong>1. 一部のAIクローラーが急上昇<br></strong><code>GPTBot</code>（OpenAI）はシェアが2.2%から7.7%に増加し（+5.5 pp）、リクエスト数は305%増加しました。これは、ChatGPTのような大規模言語モデルを訓練するためのデータ需要の高まりを浮き彫りにしています。<code>GPTBot</code>は、2024年5月時点で9位だったのが、2025年5月には3位にまで急上昇しました。</p>
+<p data-astro-cid-t7az6eu7="">別のOpenAIクローラーである<code>ChatGPT-User</code>では、リクエスト数が2,825%急増し、シェアは1.3%に達しました。これは、Webコンテンツへのアクセスを伴うChatGPTユーザーアクティビティやAPIベースのインタラクションが大幅に増加したことを反映しています。<code>PerplexityBot</code>（Perplexity.ai）は、0.2%という小さなシェアにもかかわらず、リクエストの実数で157,490%という驚異的な増加率を記録しました。</p>
+<p data-astro-cid-t7az6eu7="">一方、AIクローラーの中には急激な減少が見られたものもあります。<code>ClaudeBot</code>（Anthropic）は、全トラフィックに占めるシェアが11.7%から5.4%に低下し、リクエスト数は46%減少しました。<code>Bytespider</code>はリクエスト数が85%急減し、クローラーのシェアは2位から8位にまで転落しました（現在はわずか2.9%）。</p>
+<p data-astro-cid-t7az6eu7=""><code>Amazonbot</code>と<code>Applebot</code>の両方がAIクローラーと見なされ、シェアとリクエストの実数の両方で減少が見られました（それぞれ–35％と–26％）。</p>
+<p data-astro-cid-t7az6eu7=""><strong>2. Googleの支配力が拡大<br></strong><code>Googlebot</code>のシェアは30%から50%に上昇し、検索インデックス作成をサポートしましたが、AI関連の目的もある可能性があります（Google検索の新しいAI概要など）。そして、<code>GoogleOther</code>（<a href="https://searchengineland.com/google-launches-new-googlebot-named-googleother-395827" target="_blank" rel="noopener noreferrer"><u>2023年に導入されたクローラー</u></a>）でも、クローリングトラフィックが14%増加しました。<code>Googlebot-News</code>のように、上位20に入っていない他のGoogleクローラーも大幅に増加しています（リクエスト数が71%増）。Google関連のWebクローラーは、AIと検索の統合に多額の投資が行われている時期に、成長の明確な傾向を示しています。</p>
+<p data-astro-cid-t7az6eu7="">また、検索カテゴリでは、<code>Bingbot</code>（Microsoft）のシェアが10%から8.7%にわずかに減少したものの（-1.3pps）、リクエストの実数は2%と控えめに増加しています。</p>
+<p data-astro-cid-t7az6eu7="">これらの傾向は、WebクローリングがGoogleとOpenAIのボットによってますます支配されており、1年を通じた明確な変化を反映しています。Googleはまた、従来の検索とAI駆動型機能の両方をサポートするために、データ収集方法を調整しているようです。</p>
+<p data-astro-cid-t7az6eu7="">また、注目すべきは、2025年5月現在でトップ20から脱却した<code>FriendlyCrawler</code>です（現在は35位）。2024年5月はシェア0.2%で14位でしたが、2025年5月までにリクエストが100%減少しました。このボットは、Webサイトのコンテンツにインデックスを付け、分析することで知られていますが、その所有者や<a href="https://imho.alex-kunz.com/2024/01/25/an-update-on-friendly-crawler" target="_blank" rel="noopener noreferrer"><u>目的</u></a>は不明です。通常、このようなクローラーは、検索結果、市場調査、または分析の改善に使用されます。</p>
+<h2 data-astro-cid-t7az6eu7="">robots.txtとAIボット：GPTBotが2倍のリードを取る</h2>
+<p data-astro-cid-t7az6eu7="">2025年6月6日時点の<a href="https://radar.cloudflare.com/ai-insights?dateStart=2025-05-30&amp;dateEnd=2025-06-06" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar</u></a>のデータによると、<em>robots.txt</em>ファイルを検出できた3,816のドメイン（<a href="https://radar.cloudflare.com/domains" target="_blank" rel="noopener noreferrer"><u>上位10,000</u></a>から）のうち、546のドメイン（約14%）が、特にAIボットを標的とした「allow（許可）」または「disallow（拒否）」の指示（完全または部分的）を含んでいました。</p>
+<p data-astro-cid-t7az6eu7="">これは、多くのサイト運営者が<em>robots.txt</em>をAIクローラー管理にどの程度有効活用できているかが不透明であることを示しています。AIボットに特化して使用することを考えていないサイト運営者もいれば、特に新しい、または透明性の低いクローラーに対してAIボットが<em>robots.txt</em>のルールを遵守するかどうか不安に思うサイト運営者もいます。また、部分的なルールを使用してアクセスを微調整し、完全にオプトインまたはオプトアウトすることなく、可視性と保護のバランスを取ろうとするサイトもあります。</p>
+<p data-astro-cid-t7az6eu7="">「非許可」ルールは「許可」ルールよりもはるかに頻繁に現れます。最も多くブロックされたボットは<code>GPTBot</code>で、312ドメインがこれを拒否しており（完全拒否250、部分拒否62）、次いで<code>CCBot</code>と<code>Google-Extended</code>が続きます。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="549" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4802VBKJS46AW7GWNFVZ5N.png&amp;w=715&amp;h=549&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4802VBKJS46AW7GWNFVZ5N.png&amp;w=640&amp;h=491&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4802VBKJS46AW7GWNFVZ5N.png&amp;w=715&amp;h=549&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4802VBKJS46AW7GWNFVZ5N.png&amp;w=750&amp;h=576&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4802VBKJS46AW7GWNFVZ5N.png&amp;w=828&amp;h=636&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4802VBKJS46AW7GWNFVZ5N.png&amp;w=1080&amp;h=829&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4802VBKJS46AW7GWNFVZ5N.png&amp;w=1280&amp;h=983&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4802VBKJS46AW7GWNFVZ5N.png&amp;w=1430&amp;h=1098&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2841 Image 6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4802VBKJS46AW7GWNFVZ5N.png&amp;w=1600&amp;h=1228&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="1228" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="549" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-nalcf22a="">ただし、<code>GPTBot</code>は最も多くブロックされた一方で、最も多く明示的に許可されたAIボットでもあります。61のドメインがアクセスを許可しています（18は完全許可、43は部分許可）。それでも、AIボットをオープンに明示的に許可しているサイトはごくわずかで、許可されている場合でも通常は限定セクションに限られています。サイトのrobots.txtに記載されていないボットは、デフォルトで事実上許可されていることに注意してください。</p>
-<p data-astro-cid-nalcf22a="">AIクローリングが増えるにつれて、<em>robots.txt</em>のような受動的信号から、<a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf" target="_blank" rel="noopener noreferrer"><u>Webアプリケーションファイアウォール</u></a>のような能動的な防御手段へと移行するWebサイトが増えています。エコシステムは変化しており、強制力のある制御手段に重点が置かれるようになっています。</p>
-<p data-astro-cid-nalcf22a=""><em>注意：クローラートラフィックを分析する際、robots.txtファイルに記載されたユーザーエージェントトークン（AIクローラー向けのものなど）と、HTTPリクエストに含まれる実際のユーザーエージェント文字列を比較します。Google-Extendedなど、一部のrobots.txtトークンはユーザーエージェントの部分文字列ではないことに注意が必要です。<a href="https://www.rfc-editor.org/rfc/rfc9309.html#name-the-user-agent-line" target="_blank" rel="noopener noreferrer"><u>RFC 9309</u></a>に記載されているように、これらのトークンの目的の1つは、クローラーの目的を知らせることかもしれません。たとえば、Googleはrobots.txtでGoogle-Extendedを使用して、コンテンツがAIトレーニングに使用可能かどうかを確認しますが、トラフィック自体は依然としてGooglebotのような標準的なGoogleユーザーエージェントから発生します。このため、すべてのrobots.txtエントリがHTTPリクエストログで直接一致するとは限りません。</em></p>
-<h2 data-astro-cid-nalcf22a="">まとめ</h2>
-<p data-astro-cid-nalcf22a="">AIクローラーがインターネットを再構築する中で、Webサイトはオンラインプレゼンスを管理する際に、新たな課題と機会の両方に直面しています。</p>
-<p data-astro-cid-nalcf22a="">この分析は、WebクローリングにおけるAIの影響が増大していることを浮き彫りにし、従来の検索インデックス作成からAIモデルのトレーニング用データ収集への明確な移行を示しています。Googlebotの継続的な成長やAI特化型クローラーの急増などの詳細な統計は、この分野がどのように進化しているか、そしてそれがWebコンテンツアクセスの将来にどのような影響を与えるかを理解するための文脈を提供します。</p>
-<p data-astro-cid-nalcf22a=""><a href="https://blog.cloudflare.com/cloudflare-ai-audit-control-ai-content-crawlers" target="_blank" rel="noopener noreferrer"><u>Cloudflareも投資している</u></a>ように、より強力で強制力のあるブロッキング手法への移行という傾向は、今後WebサイトがAIシステムとのやり取りをどのように制御するかに大きな変化を示しています。</p>
+<p data-astro-cid-t7az6eu7="">ただし、<code>GPTBot</code>は最も多くブロックされた一方で、最も多く明示的に許可されたAIボットでもあります。61のドメインがアクセスを許可しています（18は完全許可、43は部分許可）。それでも、AIボットをオープンに明示的に許可しているサイトはごくわずかで、許可されている場合でも通常は限定セクションに限られています。サイトのrobots.txtに記載されていないボットは、デフォルトで事実上許可されていることに注意してください。</p>
+<p data-astro-cid-t7az6eu7="">AIクローリングが増えるにつれて、<em>robots.txt</em>のような受動的信号から、<a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf" target="_blank" rel="noopener noreferrer"><u>Webアプリケーションファイアウォール</u></a>のような能動的な防御手段へと移行するWebサイトが増えています。エコシステムは変化しており、強制力のある制御手段に重点が置かれるようになっています。</p>
+<p data-astro-cid-t7az6eu7=""><em>注意：クローラートラフィックを分析する際、robots.txtファイルに記載されたユーザーエージェントトークン（AIクローラー向けのものなど）と、HTTPリクエストに含まれる実際のユーザーエージェント文字列を比較します。Google-Extendedなど、一部のrobots.txtトークンはユーザーエージェントの部分文字列ではないことに注意が必要です。<a href="https://www.rfc-editor.org/rfc/rfc9309.html#name-the-user-agent-line" target="_blank" rel="noopener noreferrer"><u>RFC 9309</u></a>に記載されているように、これらのトークンの目的の1つは、クローラーの目的を知らせることかもしれません。たとえば、Googleはrobots.txtでGoogle-Extendedを使用して、コンテンツがAIトレーニングに使用可能かどうかを確認しますが、トラフィック自体は依然としてGooglebotのような標準的なGoogleユーザーエージェントから発生します。このため、すべてのrobots.txtエントリがHTTPリクエストログで直接一致するとは限りません。</em></p>
+<h2 data-astro-cid-t7az6eu7="">まとめ</h2>
+<p data-astro-cid-t7az6eu7="">AIクローラーがインターネットを再構築する中で、Webサイトはオンラインプレゼンスを管理する際に、新たな課題と機会の両方に直面しています。</p>
+<p data-astro-cid-t7az6eu7="">この分析は、WebクローリングにおけるAIの影響が増大していることを浮き彫りにし、従来の検索インデックス作成からAIモデルのトレーニング用データ収集への明確な移行を示しています。Googlebotの継続的な成長やAI特化型クローラーの急増などの詳細な統計は、この分野がどのように進化しているか、そしてそれがWebコンテンツアクセスの将来にどのような影響を与えるかを理解するための文脈を提供します。</p>
+<p data-astro-cid-t7az6eu7=""><a href="https://blog.cloudflare.com/cloudflare-ai-audit-control-ai-content-crawlers" target="_blank" rel="noopener noreferrer"><u>Cloudflareも投資している</u></a>ように、より強力で強制力のあるブロッキング手法への移行という傾向は、今後WebサイトがAIシステムとのやり取りをどのように制御するかに大きな変化を示しています。</p>

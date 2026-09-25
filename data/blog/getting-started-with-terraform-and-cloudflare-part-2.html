@@ -1,7 +1,7 @@
-<p data-astro-cid-nalcf22a=""><em> In <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1">Part 1 of Getting Started with Terraform</a>, we explained how Terraform lets developers store Cloudflare configuration in their own source code repository, institute change management processes that include code review, track their configuration versions and history over time, and easily roll back changes as needed.</em></p>
-<p data-astro-cid-nalcf22a=""><em>We covered <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#installingterraform">installing Terraform</a>, <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#helloworld">provider initialization</a>, <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#trackingchangehistory">storing configuration in git</a>, <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#applyingzonesettings">applying zone settings</a>, and <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#managingratelimits">managing rate limits</a>. This post continues the Cloudflare Terraform provider walkthrough with examples of <a href="https://blog.cloudflare.com/#addingloadbalancing">load balancing</a>, <a href="https://blog.cloudflare.com/#usingpagerules">page rules</a>, <a href="https://blog.cloudflare.com/#reviewingandrollingbackchanges">reviewing and rolling back configuration</a>, and <a href="https://blog.cloudflare.com/#importingexistingstateandconfiguration">importing state</a>.</em></p>
-<h3 data-astro-cid-nalcf22a="">Reviewing the current configuration</h3>
-<p data-astro-cid-nalcf22a="">Before we build on Part 1, let's quickly review what we configured in that post. Because our configuration is in git, we can easily view the current configuration and change history that got us to this point.</p>
+<p data-astro-cid-t7az6eu7=""><em> In <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1">Part 1 of Getting Started with Terraform</a>, we explained how Terraform lets developers store Cloudflare configuration in their own source code repository, institute change management processes that include code review, track their configuration versions and history over time, and easily roll back changes as needed.</em></p>
+<p data-astro-cid-t7az6eu7=""><em>We covered <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#installingterraform">installing Terraform</a>, <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#helloworld">provider initialization</a>, <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#trackingchangehistory">storing configuration in git</a>, <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#applyingzonesettings">applying zone settings</a>, and <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#managingratelimits">managing rate limits</a>. This post continues the Cloudflare Terraform provider walkthrough with examples of <a href="https://blog.cloudflare.com/#addingloadbalancing">load balancing</a>, <a href="https://blog.cloudflare.com/#usingpagerules">page rules</a>, <a href="https://blog.cloudflare.com/#reviewingandrollingbackchanges">reviewing and rolling back configuration</a>, and <a href="https://blog.cloudflare.com/#importingexistingstateandconfiguration">importing state</a>.</em></p>
+<h3 data-astro-cid-t7az6eu7="">Reviewing the current configuration</h3>
+<p data-astro-cid-t7az6eu7="">Before we build on Part 1, let's quickly review what we configured in that post. Because our configuration is in git, we can easily view the current configuration and change history that got us to this point.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> log</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">commit</span><span class="sk-032f62-99ffe4"> e1c38cf6f4230a48114ce7b747b77d6435d4646c</span></span>
@@ -56,11 +56,11 @@
 		})
 	});
 </script>
-<p data-astro-cid-nalcf22a="">We'll get into more detail about reviewing and rolling back to prior versions of configuration <a href="https://blog.cloudflare.com/#reviewingandrollingbackchanges">later in this post</a>, but for now let's review the current version.</p>
-<p data-astro-cid-nalcf22a="">In lines 1-4 below, we configured the Cloudflare Terraform provider. Initially we stored our email address and API key in the <code>cloudflare.tf</code> file, but for security reasons we removed them before committing to a git repository.</p>
-<p data-astro-cid-nalcf22a="">In lines 6-8, we define a <code>variable</code> that can be interpolated into <code>resources</code> definitions. Terraform can be used to mass configure multiple zones through the use of variables, as we'll explore in a future post.</p>
-<p data-astro-cid-nalcf22a="">Lines 10-16 tell Cloudflare to create a DNS <code>A</code> record for <code>www.${var.domain}</code> using IP address <code>203.0.113.10</code>. Later in this post, we'll explore adding a second web server and load balancing between the two origins.</p>
-<p data-astro-cid-nalcf22a="">Lines 18-26 apply zone-wide settings and lines 28-54 define a rate limiting rule to protect against credential stuffing and other brute force attacks.</p>
+<p data-astro-cid-t7az6eu7="">We'll get into more detail about reviewing and rolling back to prior versions of configuration <a href="https://blog.cloudflare.com/#reviewingandrollingbackchanges">later in this post</a>, but for now let's review the current version.</p>
+<p data-astro-cid-t7az6eu7="">In lines 1-4 below, we configured the Cloudflare Terraform provider. Initially we stored our email address and API key in the <code>cloudflare.tf</code> file, but for security reasons we removed them before committing to a git repository.</p>
+<p data-astro-cid-t7az6eu7="">In lines 6-8, we define a <code>variable</code> that can be interpolated into <code>resources</code> definitions. Terraform can be used to mass configure multiple zones through the use of variables, as we'll explore in a future post.</p>
+<p data-astro-cid-t7az6eu7="">Lines 10-16 tell Cloudflare to create a DNS <code>A</code> record for <code>www.${var.domain}</code> using IP address <code>203.0.113.10</code>. Later in this post, we'll explore adding a second web server and load balancing between the two origins.</p>
+<p data-astro-cid-t7az6eu7="">Lines 18-26 apply zone-wide settings and lines 28-54 define a rate limiting rule to protect against credential stuffing and other brute force attacks.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-005cc5-99ffe4"> -n</span><span class="sk-032f62-99ffe4"> cloudflare.tf</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">     1</span><span class="sk-032f62-99ffe4">	provider</span><span class="sk-032f62-99ffe4"> "cloudflare"</span><span class="sk-032f62-99ffe4"> {</span></span>
@@ -122,11 +122,11 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-nalcf22a="">Adding load balancing</h3>
-<p data-astro-cid-nalcf22a="">Thanks to the <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#managingratelimits">rate limiting set up in part 1</a>, our login page is protected against credential brute force attacks. Now it's time to focus on performance and reliability. Imagine organic traffic has grown for your web server, and this traffic is increasingly global. It’s time to spread these requests to your origin over multiple data centers.</p>
-<p data-astro-cid-nalcf22a="">Below we'll add a second origin for some basic round robining, and then use the <a href="https://www.cloudflare.com/load-balancing" target="_blank" rel="noopener noreferrer">Cloudflare Load Balancing</a> product to fail traffic over as needed. We'll then enhance our load balancing configuration through the use of "geo steering" to serve results from an origin server that is geographically closest to your end users.</p>
-<h4 data-astro-cid-nalcf22a="">1. Add another DNS record for <code>www</code></h4>
-<p data-astro-cid-nalcf22a="">To get started, we'll add a DNS record for a second web server, which is located in Asia. The IP address for this server is <code>198.51.100.15</code>.</p>
+<h3 data-astro-cid-t7az6eu7="">Adding load balancing</h3>
+<p data-astro-cid-t7az6eu7="">Thanks to the <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#managingratelimits">rate limiting set up in part 1</a>, our login page is protected against credential brute force attacks. Now it's time to focus on performance and reliability. Imagine organic traffic has grown for your web server, and this traffic is increasingly global. It’s time to spread these requests to your origin over multiple data centers.</p>
+<p data-astro-cid-t7az6eu7="">Below we'll add a second origin for some basic round robining, and then use the <a href="https://www.cloudflare.com/load-balancing" target="_blank" rel="noopener noreferrer">Cloudflare Load Balancing</a> product to fail traffic over as needed. We'll then enhance our load balancing configuration through the use of "geo steering" to serve results from an origin server that is geographically closest to your end users.</p>
+<h4 data-astro-cid-t7az6eu7="">1. Add another DNS record for <code>www</code></h4>
+<p data-astro-cid-t7az6eu7="">To get started, we'll add a DNS record for a second web server, which is located in Asia. The IP address for this server is <code>198.51.100.15</code>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> checkout</span><span class="sk-005cc5-99ffe4"> -b</span><span class="sk-032f62-99ffe4"> step5-loadbalance</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Switched</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> branch</span><span class="sk-032f62-99ffe4"> 'step5-loadbalance'</span></span>
@@ -145,9 +145,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">Note that while the name of the resource is different as Terraform resources of the same type must be uniquely named, the DNS name, i.e., what your customers will type in their browser, is the same: "www".</p>
-<h4 data-astro-cid-nalcf22a="">2. Preview and merge the changes</h4>
-<p data-astro-cid-nalcf22a="">Below we'll check the <code>terraform plan</code>, merge and apply the changes.</p>
+<p data-astro-cid-t7az6eu7="">Note that while the name of the resource is different as Terraform resources of the same type must be uniquely named, the DNS name, i.e., what your customers will type in their browser, is the same: "www".</p>
+<h4 data-astro-cid-t7az6eu7="">2. Preview and merge the changes</h4>
+<p data-astro-cid-t7az6eu7="">Below we'll check the <code>terraform plan</code>, merge and apply the changes.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> terraform</span><span class="sk-032f62-99ffe4"> plan</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-032f62-99ffe4"> "&lt;computed&gt;"</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">...</span></span>
@@ -186,8 +186,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4 data-astro-cid-nalcf22a="">3. Apply and verify the changes</h4>
-<p data-astro-cid-nalcf22a="">Let's add the second DNS record for <a href="http://www.example.com" target="_blank" rel="noopener noreferrer">www.example.com</a>:</p>
+<h4 data-astro-cid-t7az6eu7="">3. Apply and verify the changes</h4>
+<p data-astro-cid-t7az6eu7="">Let's add the second DNS record for <a href="http://www.example.com" target="_blank" rel="noopener noreferrer">www.example.com</a>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> terraform</span><span class="sk-032f62-99ffe4"> apply</span><span class="sk-005cc5-99ffe4"> --auto-approve</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">...</span></span>
@@ -212,7 +212,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">With the second DNS record in place, let's try making some requests to see where the traffic is served from:</p>
+<p data-astro-cid-t7az6eu7="">With the second DNS record in place, let's try making some requests to see where the traffic is served from:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-032f62-99ffe4"> https://www.example.com</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> 203.0.113.10!</span></span>
@@ -230,13 +230,13 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">As you can see above, there is no discernible pattern for which origin receives the request. When Cloudflare connects to an origin with multiple DNS records, one of the IP addresses is selected at random. If both of these IPs are in the same data center and sessions can be shared (i.e., it doesn't matter if the same user hops between origin servers), this may work fine. However, for anything more complicated such as origins in different geographies or active health checks, you're going to want to use Cloudflare's Load Balancing product.</p>
-<h4 data-astro-cid-nalcf22a="">4. Switch to using Cloudflare Load Balancing</h4>
-<p data-astro-cid-nalcf22a="">Before proceeding, make sure that your account is enabled for Load Balancing. If you're on an Enterprise plan, you should ask your Customer Success Manager to do this; otherwise, you can subscribe to Load Balancing within the Cloudflare Dashboard.</p>
-<p data-astro-cid-nalcf22a="">As described in the <a href="https://support.cloudflare.com/hc/en-us/articles/115000081911-Tutorial-How-to-Set-Up-Load-Balancing-Intelligent-Failover-on-Cloudflare" target="_blank" rel="noopener noreferrer">load balancing tutorial</a> on the Cloudflare Support site, you will need to do three things:</p>
-<blockquote data-astro-cid-nalcf22a="">i. Create a monitor to run health checks against your origin servers.<br>ii. Create a pool of one or more origin servers that will receive load balanced traffic.<br>iii. Create a load balancer with an external hostname, e.g., www.example.com, and one or more pools.<br>iv. Preview and merge the changes.<br>v. Test the changes.</blockquote>
-<h5 data-astro-cid-nalcf22a="">i. Define and create the health check ("monitor")</h5>
-<p data-astro-cid-nalcf22a="">To monitor our origins we're going to create a basic health check that makes a GET request to each origin on the URL <a href="https://www.example.com" target="_blank" rel="noopener noreferrer">https://www.example.com</a>. If the origin returns the 200/OK status code within 5 seconds, we'll consider it healthy. If it fails to do so three (3) times in a row, we'll consider it unhealthy. This health check will be run once per minute from several regions, and send an email notification to <a href="mailto:you@example.com">you@example.com</a> if any failures are detected.</p>
+<p data-astro-cid-t7az6eu7="">As you can see above, there is no discernible pattern for which origin receives the request. When Cloudflare connects to an origin with multiple DNS records, one of the IP addresses is selected at random. If both of these IPs are in the same data center and sessions can be shared (i.e., it doesn't matter if the same user hops between origin servers), this may work fine. However, for anything more complicated such as origins in different geographies or active health checks, you're going to want to use Cloudflare's Load Balancing product.</p>
+<h4 data-astro-cid-t7az6eu7="">4. Switch to using Cloudflare Load Balancing</h4>
+<p data-astro-cid-t7az6eu7="">Before proceeding, make sure that your account is enabled for Load Balancing. If you're on an Enterprise plan, you should ask your Customer Success Manager to do this; otherwise, you can subscribe to Load Balancing within the Cloudflare Dashboard.</p>
+<p data-astro-cid-t7az6eu7="">As described in the <a href="https://support.cloudflare.com/hc/en-us/articles/115000081911-Tutorial-How-to-Set-Up-Load-Balancing-Intelligent-Failover-on-Cloudflare" target="_blank" rel="noopener noreferrer">load balancing tutorial</a> on the Cloudflare Support site, you will need to do three things:</p>
+<blockquote data-astro-cid-t7az6eu7="">i. Create a monitor to run health checks against your origin servers.<br>ii. Create a pool of one or more origin servers that will receive load balanced traffic.<br>iii. Create a load balancer with an external hostname, e.g., www.example.com, and one or more pools.<br>iv. Preview and merge the changes.<br>v. Test the changes.</blockquote>
+<h5 data-astro-cid-t7az6eu7="">i. Define and create the health check ("monitor")</h5>
+<p data-astro-cid-t7az6eu7="">To monitor our origins we're going to create a basic health check that makes a GET request to each origin on the URL <a href="https://www.example.com" target="_blank" rel="noopener noreferrer">https://www.example.com</a>. If the origin returns the 200/OK status code within 5 seconds, we'll consider it healthy. If it fails to do so three (3) times in a row, we'll consider it unhealthy. This health check will be run once per minute from several regions, and send an email notification to <a href="mailto:you@example.com">you@example.com</a> if any failures are detected.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> checkout</span><span class="sk-032f62-99ffe4"> step5-loadbalance</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Switched</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> branch</span><span class="sk-032f62-99ffe4"> 'step5-loadbalance'</span></span>
@@ -259,9 +259,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h5 data-astro-cid-nalcf22a="">ii. Define and create the pool of origins</h5>
-<p data-astro-cid-nalcf22a="">We will call our pool "www-servers” and add two origins to it: <code>www-us</code> (<code>203.0.113.10</code>) and www-asia (<code>198.51.100.15</code>). For now, we'll skip any sort of <a href="https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions" target="_blank" rel="noopener noreferrer">geo routing</a>.</p>
-<p data-astro-cid-nalcf22a="">Note that we reference the monitor we added in the last step. When applying this confirmation, Terraform will figure out that it first needs to create the monitor so that it can look up the ID and provide to the pool we wish to create.</p>
+<h5 data-astro-cid-t7az6eu7="">ii. Define and create the pool of origins</h5>
+<p data-astro-cid-t7az6eu7="">We will call our pool "www-servers” and add two origins to it: <code>www-us</code> (<code>203.0.113.10</code>) and www-asia (<code>198.51.100.15</code>). For now, we'll skip any sort of <a href="https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions" target="_blank" rel="noopener noreferrer">geo routing</a>.</p>
+<p data-astro-cid-t7az6eu7="">Note that we reference the monitor we added in the last step. When applying this confirmation, Terraform will figure out that it first needs to create the monitor so that it can look up the ID and provide to the pool we wish to create.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-032f62-99ffe4"> cloudflare.tf</span><span class="sk-d73a49-a0a0a0"> &lt;&lt;</span><span class="sk-032f62-fff">'EOF'</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">resource "cloudflare_load_balancer_pool" "www-servers" {</span></span>
@@ -286,8 +286,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h5 data-astro-cid-nalcf22a="">iii. Define and create the load balancer</h5>
-<p data-astro-cid-nalcf22a="">Note that when you create a load balancer (LB), it will <a href="https://support.cloudflare.com/hc/en-us/articles/115004954407-How-Does-a-Load-Balancer-Interact-with-Existing-DNS-Records-" target="_blank" rel="noopener noreferrer">replace any existing DNS records with the same name</a>. For example, when we create the "<a href="http://www.example.com" target="_blank" rel="noopener noreferrer">www.example.com</a>" LB below, it will supersede the two www DNS records that you have previously defined. One benefit of leaving these DNS records in place is that if you temporarily disable load balancing, connections to this hostname will still be possible as shown above.</p>
+<h5 data-astro-cid-t7az6eu7="">iii. Define and create the load balancer</h5>
+<p data-astro-cid-t7az6eu7="">Note that when you create a load balancer (LB), it will <a href="https://support.cloudflare.com/hc/en-us/articles/115004954407-How-Does-a-Load-Balancer-Interact-with-Existing-DNS-Records-" target="_blank" rel="noopener noreferrer">replace any existing DNS records with the same name</a>. For example, when we create the "<a href="http://www.example.com" target="_blank" rel="noopener noreferrer">www.example.com</a>" LB below, it will supersede the two www DNS records that you have previously defined. One benefit of leaving these DNS records in place is that if you temporarily disable load balancing, connections to this hostname will still be possible as shown above.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-032f62-99ffe4"> cloudflare.tf</span><span class="sk-d73a49-a0a0a0"> &lt;&lt;</span><span class="sk-032f62-fff">'EOF'</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">resource "cloudflare_load_balancer" "www-lb" {</span></span>
@@ -304,8 +304,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h5 data-astro-cid-nalcf22a="">iv. Preview and merge the changes</h5>
-<p data-astro-cid-nalcf22a="">As usual, we take a look at the proposed plan before we apply any changes:</p>
+<h5 data-astro-cid-t7az6eu7="">iv. Preview and merge the changes</h5>
+<p data-astro-cid-t7az6eu7="">As usual, we take a look at the proposed plan before we apply any changes:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> terraform</span><span class="sk-032f62-99ffe4"> plan</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">...</span></span>
@@ -372,7 +372,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">The plan looks good so let's go ahead, merge it in, and apply it.</p>
+<p data-astro-cid-t7az6eu7="">The plan looks good so let's go ahead, merge it in, and apply it.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> cloudflare.tf</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> commit</span><span class="sk-005cc5-99ffe4"> -m</span><span class="sk-032f62-99ffe4"> "Step 5 - Create load balancer (LB) monitor, LB pool, and LB."</span></span>
@@ -440,8 +440,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h5 data-astro-cid-nalcf22a="">iv. Test the changes</h5>
-<p data-astro-cid-nalcf22a="">With load balancing in place, let's run those curl requests again to see where the traffic is served from:</p>
+<h5 data-astro-cid-t7az6eu7="">iv. Test the changes</h5>
+<p data-astro-cid-t7az6eu7="">With load balancing in place, let's run those curl requests again to see where the traffic is served from:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> i</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> {1..4}</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">do</span><span class="sk-6f42c1-ffc799"> curl</span><span class="sk-032f62-99ffe4"> https://www.example.com</span><span class="sk-24292e-fff"> &amp;&amp; </span><span class="sk-6f42c1-ffc799">sleep</span><span class="sk-005cc5-ffc799"> 5</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">done</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> 198.51.100.15!</span></span>
@@ -456,12 +456,12 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">Great, we're now seeing each request load balanced evenly across the two origins we defined.</p>
-<h3 data-astro-cid-nalcf22a="">Using page rules</h3>
-<p data-astro-cid-nalcf22a="">Earlier we configured zone settings that apply to all of example.com. Now we're going to add an exception to these settings by using <a href="https://www.cloudflare.com/features-page-rules" target="_blank" rel="noopener noreferrer">Page Rules</a>.</p>
-<p data-astro-cid-nalcf22a="">Specifically, we're going to turn increase the security level for a URL we know is expensive to render (and cannot be cached): <a href="https://www.example.com/expensive-db-call" target="_blank" rel="noopener noreferrer">https://www.example.com/expensive-db-call</a>. Additionally, we're going to add a redirect from the previous URL we used to host this page.</p>
-<h4 data-astro-cid-nalcf22a="">1. Create a new branch and append the page rule</h4>
-<p data-astro-cid-nalcf22a="">As usual, we'll create a new branch and append our configuration.</p>
+<p data-astro-cid-t7az6eu7="">Great, we're now seeing each request load balanced evenly across the two origins we defined.</p>
+<h3 data-astro-cid-t7az6eu7="">Using page rules</h3>
+<p data-astro-cid-t7az6eu7="">Earlier we configured zone settings that apply to all of example.com. Now we're going to add an exception to these settings by using <a href="https://www.cloudflare.com/features-page-rules" target="_blank" rel="noopener noreferrer">Page Rules</a>.</p>
+<p data-astro-cid-t7az6eu7="">Specifically, we're going to turn increase the security level for a URL we know is expensive to render (and cannot be cached): <a href="https://www.example.com/expensive-db-call" target="_blank" rel="noopener noreferrer">https://www.example.com/expensive-db-call</a>. Additionally, we're going to add a redirect from the previous URL we used to host this page.</p>
+<h4 data-astro-cid-t7az6eu7="">1. Create a new branch and append the page rule</h4>
+<p data-astro-cid-t7az6eu7="">As usual, we'll create a new branch and append our configuration.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> checkout</span><span class="sk-005cc5-99ffe4"> -b</span><span class="sk-032f62-99ffe4"> step6-pagerule</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Switched</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> branch</span><span class="sk-032f62-99ffe4"> 'step6-pagerule'</span></span>
@@ -495,8 +495,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4 data-astro-cid-nalcf22a="">2. Preview and merge the changes</h4>
-<p data-astro-cid-nalcf22a="">You know the drill: preview the changes Terraform is going to make and then merge them into the master branch.</p>
+<h4 data-astro-cid-t7az6eu7="">2. Preview and merge the changes</h4>
+<p data-astro-cid-t7az6eu7="">You know the drill: preview the changes Terraform is going to make and then merge them into the master branch.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> terraform</span><span class="sk-032f62-99ffe4"> plan</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">...</span></span>
@@ -569,7 +569,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">As expected, it can't be found. Let's apply the Page Rules, including the redirect that should fix this error.</p>
+<p data-astro-cid-t7az6eu7="">As expected, it can't be found. Let's apply the Page Rules, including the redirect that should fix this error.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> terraform</span><span class="sk-032f62-99ffe4"> apply</span><span class="sk-005cc5-99ffe4"> --auto-approve</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">...</span></span>
@@ -608,7 +608,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">With the Page Rules in place, let's try that call again, along with the <a href="https://blog.cloudflare.com/introducing-im-under-attack-mode">I'm Under Attack Mode</a> test:</p>
+<p data-astro-cid-t7az6eu7="">With the Page Rules in place, let's try that call again, along with the <a href="https://blog.cloudflare.com/introducing-im-under-attack-mode">I'm Under Attack Mode</a> test:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -vso</span><span class="sk-032f62-99ffe4"> /dev/null</span><span class="sk-032f62-99ffe4"> https://www.example.com/old-location.php</span><span class="sk-d73a49-a0a0a0"> 2&gt;&amp;1</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> "&lt; HTTP\|Location"</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> HTTP/1.1 301 Moved Permanently</span></span>
@@ -621,13 +621,13 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">Great, they work as expected! In the first case, the Cloudflare edge responds with a <code>301</code> redirecting the browser to the new location. In the second case it initially responds with a <code>503</code> (as it is consistent with the "I Am Under Attack” mode).</p>
-<h3 data-astro-cid-nalcf22a="">Reviewing and rolling back changes</h3>
-<p data-astro-cid-nalcf22a="">We've come a long way! Now it's time to tear it all down. Well, maybe just part of it.</p>
-<p data-astro-cid-nalcf22a="">Sometimes when you deploy configuration changes you later determine that they need to be rolled back. You could be performance testing a new configuration and want to revert to your previous configuration when done testing. Or maybe you fat-fingered an IP address and brought your entire site down (#hugops).</p>
-<p data-astro-cid-nalcf22a="">Either way, if you've determined you want to revert your configuration, all you need to do is check the desired branch out and ask Terraform to move your Cloudflare settings back in time. And note that if you accidentally brought your site down you should consider establishing a good strategy for peer reviewing pull requests (rather than merging directly to primary, as I do here for brevity)!</p>
-<h4 data-astro-cid-nalcf22a="">1. Reviewing your configuration history</h4>
-<p data-astro-cid-nalcf22a="">Before we figure out how far back in time we want to roll back, let's take a look at our (git) versioned history.</p>
+<p data-astro-cid-t7az6eu7="">Great, they work as expected! In the first case, the Cloudflare edge responds with a <code>301</code> redirecting the browser to the new location. In the second case it initially responds with a <code>503</code> (as it is consistent with the "I Am Under Attack” mode).</p>
+<h3 data-astro-cid-t7az6eu7="">Reviewing and rolling back changes</h3>
+<p data-astro-cid-t7az6eu7="">We've come a long way! Now it's time to tear it all down. Well, maybe just part of it.</p>
+<p data-astro-cid-t7az6eu7="">Sometimes when you deploy configuration changes you later determine that they need to be rolled back. You could be performance testing a new configuration and want to revert to your previous configuration when done testing. Or maybe you fat-fingered an IP address and brought your entire site down (#hugops).</p>
+<p data-astro-cid-t7az6eu7="">Either way, if you've determined you want to revert your configuration, all you need to do is check the desired branch out and ask Terraform to move your Cloudflare settings back in time. And note that if you accidentally brought your site down you should consider establishing a good strategy for peer reviewing pull requests (rather than merging directly to primary, as I do here for brevity)!</p>
+<h4 data-astro-cid-t7az6eu7="">1. Reviewing your configuration history</h4>
+<p data-astro-cid-t7az6eu7="">Before we figure out how far back in time we want to roll back, let's take a look at our (git) versioned history.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> log</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">commit</span><span class="sk-032f62-99ffe4"> d4fec164581bec44684a4d59bb80aec1f1da5a6e</span></span>
@@ -684,8 +684,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4 data-astro-cid-nalcf22a="">2. Examining specific historical changes</h4>
-<p data-astro-cid-nalcf22a="">To begin with, let's see what the last change we made was.</p>
+<h4 data-astro-cid-t7az6eu7="">2. Examining specific historical changes</h4>
+<p data-astro-cid-t7az6eu7="">To begin with, let's see what the last change we made was.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> show</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">commit</span><span class="sk-032f62-99ffe4"> d4fec164581bec44684a4d59bb80aec1f1da5a6e</span></span>
@@ -730,7 +730,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">Now let's look at the past few changes:</p>
+<p data-astro-cid-t7az6eu7="">Now let's look at the past few changes:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> log</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-005cc5-99ffe4"> -3</span></span>
 <span class="line"></span>
@@ -814,10 +814,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4 data-astro-cid-nalcf22a="">3. Redeploying the previous configuration</h4>
-<p data-astro-cid-nalcf22a="">Imagine that shortly after we <a href="https://blog.cloudflare.com/#usingpagerules">deployed the Page Rules</a>, we got a call from the Product team that manages this page: "The URL was only being used by one customer and is no longer needed, let's drop the security setting and redirect.”</p>
-<p data-astro-cid-nalcf22a="">While you could always edit the config file directly and delete those entries, it's easier to let git do it for us. To begin with, let's ask git to revert the last commit (without rewriting history).</p>
-<h5 data-astro-cid-nalcf22a="">i. Revert the branch to the previous commit</h5>
+<h4 data-astro-cid-t7az6eu7="">3. Redeploying the previous configuration</h4>
+<p data-astro-cid-t7az6eu7="">Imagine that shortly after we <a href="https://blog.cloudflare.com/#usingpagerules">deployed the Page Rules</a>, we got a call from the Product team that manages this page: "The URL was only being used by one customer and is no longer needed, let's drop the security setting and redirect.”</p>
+<p data-astro-cid-t7az6eu7="">While you could always edit the config file directly and delete those entries, it's easier to let git do it for us. To begin with, let's ask git to revert the last commit (without rewriting history).</p>
+<h5 data-astro-cid-t7az6eu7="">i. Revert the branch to the previous commit</h5>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> revert</span><span class="sk-032f62-99ffe4"> HEAD~1..HEAD</span></span>
 <span class="line"><span class="sk-24292e-fff">[master f9a6f7d] Revert </span><span class="sk-032f62-99ffe4">"Step 6 - Bug fix."</span></span>
@@ -842,8 +842,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h5 data-astro-cid-nalcf22a="">ii. Preview the changes</h5>
-<p data-astro-cid-nalcf22a="">As expected, Terraform is indicating it will remove the two Page Rules we just created.</p>
+<h5 data-astro-cid-t7az6eu7="">ii. Preview the changes</h5>
+<p data-astro-cid-t7az6eu7="">As expected, Terraform is indicating it will remove the two Page Rules we just created.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> terraform</span><span class="sk-032f62-99ffe4"> plan</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">...</span></span>
@@ -864,8 +864,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h5 data-astro-cid-nalcf22a="">iv. Apply the changes</h5>
-<p data-astro-cid-nalcf22a="">The changes look good, so let's ask Terraform to roll our Cloudflare configuration back.</p>
+<h5 data-astro-cid-t7az6eu7="">iv. Apply the changes</h5>
+<p data-astro-cid-t7az6eu7="">The changes look good, so let's ask Terraform to roll our Cloudflare configuration back.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> terraform</span><span class="sk-032f62-99ffe4"> apply</span><span class="sk-005cc5-99ffe4"> --auto-approve</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">...</span></span>
@@ -880,13 +880,13 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">Two resources destroyed, as expected. We've rolled back to the previous version.</p>
-<h3 data-astro-cid-nalcf22a="">Importing existing state and configuration</h3>
-<p data-astro-cid-nalcf22a="">An important point to understand about Terraform is that it is only able to manage configuration that it created, or was explicitly told about after the fact. The reason for this limitation is that Terraform relies on a local <a href="https://www.terraform.io/docs/state" target="_blank" rel="noopener noreferrer">state file</a> that maps the resource names defined in your configuration file, e.g., <code>cloudflare_load_balancer.www-lb</code> to the IDs generated by Cloudflare's API.</p>
-<p data-astro-cid-nalcf22a="">When Terraform makes calls to Cloudflare's API to create new resources, it persists those IDs to a state file; by default, the <code>terraform.tfstate</code> file in your directory is used, but this can be a remote location as will be discussed in a future blog post. These IDs are later looked up and refreshed when you call <code>terraform plan</code> and <code>terraform apply</code>.</p>
-<p data-astro-cid-nalcf22a="">If you've configured Cloudflare through other means, e.g., by logging into the Cloudflare Dashboard or making <code>curl</code> calls to <code>api.cloudflare.com</code>, Terraform does not (yet) have these resource IDs in the state file. To manage this preexisting configuration you will need to first i) reproduce the configuration in your config file and; ii) import resources one-by-one by providing their IDs and resource names.</p>
-<h4 data-astro-cid-nalcf22a="">1. Reviewing your current state file</h4>
-<p data-astro-cid-nalcf22a="">Before importing resources created by other means, let's take a look at how an existing DNS records is represented in the state file.</p>
+<p data-astro-cid-t7az6eu7="">Two resources destroyed, as expected. We've rolled back to the previous version.</p>
+<h3 data-astro-cid-t7az6eu7="">Importing existing state and configuration</h3>
+<p data-astro-cid-t7az6eu7="">An important point to understand about Terraform is that it is only able to manage configuration that it created, or was explicitly told about after the fact. The reason for this limitation is that Terraform relies on a local <a href="https://www.terraform.io/docs/state" target="_blank" rel="noopener noreferrer">state file</a> that maps the resource names defined in your configuration file, e.g., <code>cloudflare_load_balancer.www-lb</code> to the IDs generated by Cloudflare's API.</p>
+<p data-astro-cid-t7az6eu7="">When Terraform makes calls to Cloudflare's API to create new resources, it persists those IDs to a state file; by default, the <code>terraform.tfstate</code> file in your directory is used, but this can be a remote location as will be discussed in a future blog post. These IDs are later looked up and refreshed when you call <code>terraform plan</code> and <code>terraform apply</code>.</p>
+<p data-astro-cid-t7az6eu7="">If you've configured Cloudflare through other means, e.g., by logging into the Cloudflare Dashboard or making <code>curl</code> calls to <code>api.cloudflare.com</code>, Terraform does not (yet) have these resource IDs in the state file. To manage this preexisting configuration you will need to first i) reproduce the configuration in your config file and; ii) import resources one-by-one by providing their IDs and resource names.</p>
+<h4 data-astro-cid-t7az6eu7="">1. Reviewing your current state file</h4>
+<p data-astro-cid-t7az6eu7="">Before importing resources created by other means, let's take a look at how an existing DNS records is represented in the state file.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> terraform.tfstate</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> jq</span><span class="sk-032f62-99ffe4"> '.modules[].resources["cloudflare_record.www"]'</span></span>
 <span class="line"><span class="sk-24292e-fff">{</span></span>
@@ -926,7 +926,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">As shown in the above JSON, the <code>cloudflare_record</code> resource named "www" has a unique ID of <code>c38d3103767284e7cd14d5dad3ab8669</code>. This ID is what gets interpolated into the API call that Terraform makes to Cloudflare to pull the latest configuration during the plan stage, e.g.,</p>
+<p data-astro-cid-t7az6eu7="">As shown in the above JSON, the <code>cloudflare_record</code> resource named "www" has a unique ID of <code>c38d3103767284e7cd14d5dad3ab8669</code>. This ID is what gets interpolated into the API call that Terraform makes to Cloudflare to pull the latest configuration during the plan stage, e.g.,</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">GET</span><span class="sk-032f62-99ffe4"> https://api.cloudflare.com/client/v4/zones/:zone_id/dns_records/c38d3103767284e7cd14d5dad3ab8669</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -934,14 +934,14 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4 data-astro-cid-nalcf22a="">2. Importing existing Cloudflare resources</h4>
-<p data-astro-cid-nalcf22a="">To import an existing record, e.g., another DNS record, you need two things:</p>
+<h4 data-astro-cid-t7az6eu7="">2. Importing existing Cloudflare resources</h4>
+<p data-astro-cid-t7az6eu7="">To import an existing record, e.g., another DNS record, you need two things:</p>
 <ol>
 	<li>The unique identifier that Cloudflare uses to identify the record</li>
 	<li>The resource name to which you wish to map this identifier</li>
 </ol>
-<h5 data-astro-cid-nalcf22a="">i. Download IDs and configuration from api.cloudflare.com</h5>
-<p data-astro-cid-nalcf22a="">We start by making an API call to Cloudflare to enumerate the DNS records in our account. The output below has been filtered to show only MX records, as these are what we'll be importing.</p>
+<h5 data-astro-cid-t7az6eu7="">i. Download IDs and configuration from api.cloudflare.com</h5>
+<p data-astro-cid-t7az6eu7="">We start by making an API call to Cloudflare to enumerate the DNS records in our account. The output below has been filtered to show only MX records, as these are what we'll be importing.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-032f62-99ffe4"> https://api.cloudflare.com/client/v4/zones/</span><span class="sk-24292e-fff">$EXAMPLE_COM_ZONEID </span><span class="sk-005cc5-a0a0a0">\</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">       -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Email: you@example.com"</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: </span><span class="sk-24292e-fff">$CF_API_KEY</span><span class="sk-032f62-99ffe4">"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
@@ -1053,83 +1053,83 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h5 data-astro-cid-nalcf22a="">ii. Create Terraform configuration for existing records</h5>
-<p data-astro-cid-nalcf22a="">In the previous step, we found 5 MX records that we wish to add.</p>
-<div class="emdash-table-wrapper" data-astro-cid-pe7l3wzl="">
-	<table class="emdash-table" style="min-width: 288px;" data-astro-cid-pe7l3wzl="">
-		<thead data-astro-cid-pe7l3wzl="">
-			<tr data-astro-cid-pe7l3wzl="">
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+<h5 data-astro-cid-t7az6eu7="">ii. Create Terraform configuration for existing records</h5>
+<p data-astro-cid-t7az6eu7="">In the previous step, we found 5 MX records that we wish to add.</p>
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 288px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>ID</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Priority</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Content</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-pe7l3wzl="">
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>a96d72b3c6afe3077f9e9c677fb0a556</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>10</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>aspmx.lo.google.com</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>8ea8c36c8530ee01068c65c0ddc4379b</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>15</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>alt1.aspmx.l.google.com</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>ad0e9ff2479b13c5fbde77a02ea6fa2c</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>15</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>alt2.aspmx.l.google.com</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>ad6ee69519cd02a0155a56b6d64c278a</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>20</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>alt3.aspmx.l.google.com</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>baf6655f33738b7fd902630858878206</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>20</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>alt4.aspmx.l.google.com</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-nalcf22a="">Before importing, we need to create Terraform configuration and give each record a unique name that can be referenced during the import.</p>
+<p data-astro-cid-t7az6eu7="">Before importing, we need to create Terraform configuration and give each record a unique name that can be referenced during the import.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-032f62-99ffe4"> cloudflare.tf</span><span class="sk-d73a49-a0a0a0"> &lt;&lt;</span><span class="sk-032f62-fff">'EOF'</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">resource "cloudflare_record" "mx-10" {</span></span>
@@ -1173,8 +1173,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h5 data-astro-cid-nalcf22a="">iii. Import resources into Terraform state</h5>
-<p data-astro-cid-nalcf22a="">Before we import the records, let's look at what would happen if we ran a <code>terraform apply</code>.</p>
+<h5 data-astro-cid-t7az6eu7="">iii. Import resources into Terraform state</h5>
+<p data-astro-cid-t7az6eu7="">Before we import the records, let's look at what would happen if we ran a <code>terraform apply</code>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> terraform</span><span class="sk-032f62-99ffe4"> plan</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> Plan</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Plan:</span><span class="sk-005cc5-ffc799"> 5</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> add,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> change,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> destroy.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -1183,7 +1183,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">Terraform does not know that these records already exist on Cloudflare, so until the import completes it will attempt to create them as new records. Below we import them one-by-one, specifying the name of the resource and the <code>zoneName/resourceID</code> returned by api.cloudflare.com.</p>
+<p data-astro-cid-t7az6eu7="">Terraform does not know that these records already exist on Cloudflare, so until the import completes it will attempt to create them as new records. Below we import them one-by-one, specifying the name of the resource and the <code>zoneName/resourceID</code> returned by api.cloudflare.com.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> terraform</span><span class="sk-032f62-99ffe4"> import</span><span class="sk-032f62-99ffe4"> cloudflare_record.mx-10</span><span class="sk-032f62-99ffe4"> example.com/a96d72b3c6afe3077f9e9c677fb0a556</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">cloudflare_record.mx-10:</span><span class="sk-032f62-99ffe4"> Importing</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> ID</span><span class="sk-032f62-99ffe4"> "example.com/a96d72b3c6afe3077f9e9c677fb0a556"...</span></span>
@@ -1244,7 +1244,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">Now when we run <code>terraform plan</code> it no longer wants to (re-)create the above records.</p>
+<p data-astro-cid-t7az6eu7="">Now when we run <code>terraform plan</code> it no longer wants to (re-)create the above records.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> terraform</span><span class="sk-032f62-99ffe4"> plan</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> changes</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">No</span><span class="sk-032f62-99ffe4"> changes.</span><span class="sk-032f62-99ffe4"> Infrastructure</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> up-to-date.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -1253,6 +1253,6 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-nalcf22a="">Wrapping up</h3>
-<p data-astro-cid-nalcf22a="">That's it for today! We covered the <a href="https://blog.cloudflare.com/#addingloadbalancing">Load Balancing</a> and <a href="https://blog.cloudflare.com/#usingpagerules">Page Rules</a> resources, as well as demonstrated how to <a href="https://blog.cloudflare.com/#reviewingandrollingbackchanges">review and roll back configuration changes</a>, and <a href="https://blog.cloudflare.com/#importingexistingstateandconfiguration">import state</a>.</p>
-<p data-astro-cid-nalcf22a="">Stay tuned for future Terraform blog posts, where we plan to show how to manage state effectively in a group setting, go multi-cloud with Terraform, and much more.</p>
+<h3 data-astro-cid-t7az6eu7="">Wrapping up</h3>
+<p data-astro-cid-t7az6eu7="">That's it for today! We covered the <a href="https://blog.cloudflare.com/#addingloadbalancing">Load Balancing</a> and <a href="https://blog.cloudflare.com/#usingpagerules">Page Rules</a> resources, as well as demonstrated how to <a href="https://blog.cloudflare.com/#reviewingandrollingbackchanges">review and roll back configuration changes</a>, and <a href="https://blog.cloudflare.com/#importingexistingstateandconfiguration">import state</a>.</p>
+<p data-astro-cid-t7az6eu7="">Stay tuned for future Terraform blog posts, where we plan to show how to manage state effectively in a group setting, go multi-cloud with Terraform, and much more.</p>

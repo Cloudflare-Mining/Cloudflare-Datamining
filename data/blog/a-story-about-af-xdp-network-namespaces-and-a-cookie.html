@@ -1,140 +1,140 @@
-<p data-astro-cid-nalcf22a="">A crash in a development version of <a href="https://blog.cloudflare.com/announcing-flowtrackd">flowtrackd</a> (the daemon that powers our <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/tcp-protection" target="_blank" rel="noopener noreferrer">Advanced TCP Protection</a>) highlighted the fact that <a href="https://www.mankier.com/3/libxdp" target="_blank" rel="noopener noreferrer">libxdp</a> (and specifically the <a href="https://www.kernel.org/doc/html/latest/networking/af_xdp.html" target="_blank" rel="noopener noreferrer">AF_XDP</a> part) was not Linux <a href="https://man7.org/linux/man-pages/man7/network_namespaces.7.html" target="_blank" rel="noopener noreferrer">network namespace</a> aware.</p>
-<p data-astro-cid-nalcf22a="">This blogpost describes the debugging journey to find the bug, as well as a fix.</p>
-<p data-astro-cid-nalcf22a=""><a href="https://blog.cloudflare.com/announcing-flowtrackd">flowtrackd</a> is a volumetric denial of service defense mechanism that sits in the <a href="https://www.cloudflare.com/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a> customer’s data path and protects the network from complex randomized TCP floods. It does so by challenging TCP connection establishments and by verifying that TCP packets make sense in an ongoing flow.</p>
-<p data-astro-cid-nalcf22a="">It uses the Linux kernel <a href="https://www.kernel.org/doc/html/latest/networking/af_xdp.html" target="_blank" rel="noopener noreferrer">AF_XDP</a> feature to transfer packets from a network device in kernel space to a memory buffer in user space without going through the network stack. We use most of the helper functions of the <a href="https://github.com/libbpf/libbpf/tree/v0.8.0" target="_blank" rel="noopener noreferrer">C libbpf</a> with the <a href="https://github.com/libbpf/libbpf-sys" target="_blank" rel="noopener noreferrer">Rust bindings</a> to interact with AF_XDP.</p>
-<p data-astro-cid-nalcf22a="">In our setup, both the ingress and the egress network interfaces are in different network namespaces. When a packet is determined to be valid (after a challenge or under some thresholds), it is forwarded to the second network interface.</p>
-<p data-astro-cid-nalcf22a="">For the rest of this post the network setup will be the following:</p>
+<p data-astro-cid-t7az6eu7="">A crash in a development version of <a href="https://blog.cloudflare.com/announcing-flowtrackd">flowtrackd</a> (the daemon that powers our <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/tcp-protection" target="_blank" rel="noopener noreferrer">Advanced TCP Protection</a>) highlighted the fact that <a href="https://www.mankier.com/3/libxdp" target="_blank" rel="noopener noreferrer">libxdp</a> (and specifically the <a href="https://www.kernel.org/doc/html/latest/networking/af_xdp.html" target="_blank" rel="noopener noreferrer">AF_XDP</a> part) was not Linux <a href="https://man7.org/linux/man-pages/man7/network_namespaces.7.html" target="_blank" rel="noopener noreferrer">network namespace</a> aware.</p>
+<p data-astro-cid-t7az6eu7="">This blogpost describes the debugging journey to find the bug, as well as a fix.</p>
+<p data-astro-cid-t7az6eu7=""><a href="https://blog.cloudflare.com/announcing-flowtrackd">flowtrackd</a> is a volumetric denial of service defense mechanism that sits in the <a href="https://www.cloudflare.com/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a> customer’s data path and protects the network from complex randomized TCP floods. It does so by challenging TCP connection establishments and by verifying that TCP packets make sense in an ongoing flow.</p>
+<p data-astro-cid-t7az6eu7="">It uses the Linux kernel <a href="https://www.kernel.org/doc/html/latest/networking/af_xdp.html" target="_blank" rel="noopener noreferrer">AF_XDP</a> feature to transfer packets from a network device in kernel space to a memory buffer in user space without going through the network stack. We use most of the helper functions of the <a href="https://github.com/libbpf/libbpf/tree/v0.8.0" target="_blank" rel="noopener noreferrer">C libbpf</a> with the <a href="https://github.com/libbpf/libbpf-sys" target="_blank" rel="noopener noreferrer">Rust bindings</a> to interact with AF_XDP.</p>
+<p data-astro-cid-t7az6eu7="">In our setup, both the ingress and the egress network interfaces are in different network namespaces. When a packet is determined to be valid (after a challenge or under some thresholds), it is forwarded to the second network interface.</p>
+<p data-astro-cid-t7az6eu7="">For the rest of this post the network setup will be the following:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="185" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FP4QW4ZY92SYHM8H0J9K.png&amp;w=715&amp;h=185&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FP4QW4ZY92SYHM8H0J9K.png&amp;w=640&amp;h=166&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FP4QW4ZY92SYHM8H0J9K.png&amp;w=715&amp;h=185&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FP4QW4ZY92SYHM8H0J9K.png&amp;w=750&amp;h=194&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FP4QW4ZY92SYHM8H0J9K.png&amp;w=828&amp;h=214&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FP4QW4ZY92SYHM8H0J9K.png&amp;w=1080&amp;h=279&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FP4QW4ZY92SYHM8H0J9K.png&amp;w=1280&amp;h=331&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FP4QW4ZY92SYHM8H0J9K.png&amp;w=1430&amp;h=370&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="flowtrackd network setup" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FP4QW4ZY92SYHM8H0J9K.png&amp;w=1920&amp;h=497&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="497" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="185" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-nalcf22a="">e.g. eyeball packets arrive at the outer device in the root network namespace, they are picked up by flowtrackd and then forwarded to the inner device in the inner-ns namespace.</p>
-<h2 data-astro-cid-nalcf22a="">AF_XDP</h2>
-<p data-astro-cid-nalcf22a="">The kernel and the userspace share a memory buffer called the UMEM. This is where packet bytes are written to and read from.</p>
-<p data-astro-cid-nalcf22a="">The UMEM is split in contiguous equal-sized "frames" that are referenced by "descriptors" which are just offsets from the start address of the UMEM.</p>
+<p data-astro-cid-t7az6eu7="">e.g. eyeball packets arrive at the outer device in the root network namespace, they are picked up by flowtrackd and then forwarded to the inner device in the inner-ns namespace.</p>
+<h2 data-astro-cid-t7az6eu7="">AF_XDP</h2>
+<p data-astro-cid-t7az6eu7="">The kernel and the userspace share a memory buffer called the UMEM. This is where packet bytes are written to and read from.</p>
+<p data-astro-cid-t7az6eu7="">The UMEM is split in contiguous equal-sized "frames" that are referenced by "descriptors" which are just offsets from the start address of the UMEM.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="362" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H2A7J86WV8V348YPNQ2T.png&amp;w=715&amp;h=362&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H2A7J86WV8V348YPNQ2T.png&amp;w=640&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H2A7J86WV8V348YPNQ2T.png&amp;w=715&amp;h=362&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H2A7J86WV8V348YPNQ2T.png&amp;w=750&amp;h=380&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H2A7J86WV8V348YPNQ2T.png&amp;w=828&amp;h=419&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H2A7J86WV8V348YPNQ2T.png&amp;w=1080&amp;h=547&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H2A7J86WV8V348YPNQ2T.png&amp;w=1280&amp;h=648&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H2A7J86WV8V348YPNQ2T.png&amp;w=1430&amp;h=724&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="AF_XDP UMEM representation" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H2A7J86WV8V348YPNQ2T.png&amp;w=1920&amp;h=972&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="972" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="362" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-nalcf22a="">The interactions and synchronization between the kernel and userspace happen via a set of queues (circular buffers) as well as a socket from the AF_XDP family.</p>
-<p data-astro-cid-nalcf22a="">Most of the work is about managing the ownership of the descriptors. Which descriptors the kernel owns and which descriptors the userspace owns.</p>
-<p data-astro-cid-nalcf22a="">The interface provided for the ownership management are a set of queues:</p>
-<div class="emdash-table-wrapper" data-astro-cid-pe7l3wzl="">
-	<table class="emdash-table" style="min-width: 384px;" data-astro-cid-pe7l3wzl="">
-		<thead data-astro-cid-pe7l3wzl="">
-			<tr data-astro-cid-pe7l3wzl="">
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+<p data-astro-cid-t7az6eu7="">The interactions and synchronization between the kernel and userspace happen via a set of queues (circular buffers) as well as a socket from the AF_XDP family.</p>
+<p data-astro-cid-t7az6eu7="">Most of the work is about managing the ownership of the descriptors. Which descriptors the kernel owns and which descriptors the userspace owns.</p>
+<p data-astro-cid-t7az6eu7="">The interface provided for the ownership management are a set of queues:</p>
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 384px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Queue</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>User space</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Kernel space</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Content description</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-pe7l3wzl="">
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>COMPLETION</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Consumes</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Produces</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Frame descriptors that have successfully been transmitted</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>FILL</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Produces</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Consumes</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Frame descriptors ready to get new packet bytes written to</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>RX</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Consumes</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Produces</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Frame descriptors of a newly received packet</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>TX</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Produces</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Consumes</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>Frame descriptors to be transmitted</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-nalcf22a="">When the UMEM is created, a FILL and a COMPLETION queue are associated with it.</p>
-<p data-astro-cid-nalcf22a="">An RX and a TX queue are associated with the AF_XDP socket (abbreviated <strong>Xsk</strong>) at its creation. This particular socket is bound to a network device queue id. The userspace can then <code>poll()</code> on the socket to know when new descriptors are ready to be consumed from the RX queue and to let the kernel deal with the descriptors that were set on the TX queue by the application.</p>
-<p data-astro-cid-nalcf22a="">The last plumbing operation to be done to use AF_XDP is to load a BPF program attached with XDP on the network device we want to interact with and insert the Xsk file descriptor into a BPF map (of type XSKMAP). Doing so will enable the BPF program to redirect incoming packets (with the <code>bpf_redirect_map()</code> <a href="https://man7.org/linux/man-pages/man7/bpf-helpers.7.html" target="_blank" rel="noopener noreferrer">function</a>) to a specific socket that we created in userspace:</p>
+<p data-astro-cid-t7az6eu7="">When the UMEM is created, a FILL and a COMPLETION queue are associated with it.</p>
+<p data-astro-cid-t7az6eu7="">An RX and a TX queue are associated with the AF_XDP socket (abbreviated <strong>Xsk</strong>) at its creation. This particular socket is bound to a network device queue id. The userspace can then <code>poll()</code> on the socket to know when new descriptors are ready to be consumed from the RX queue and to let the kernel deal with the descriptors that were set on the TX queue by the application.</p>
+<p data-astro-cid-t7az6eu7="">The last plumbing operation to be done to use AF_XDP is to load a BPF program attached with XDP on the network device we want to interact with and insert the Xsk file descriptor into a BPF map (of type XSKMAP). Doing so will enable the BPF program to redirect incoming packets (with the <code>bpf_redirect_map()</code> <a href="https://man7.org/linux/man-pages/man7/bpf-helpers.7.html" target="_blank" rel="noopener noreferrer">function</a>) to a specific socket that we created in userspace:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="280" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y7VSRG9NWBHDQH60TA80.png&amp;w=715&amp;h=280&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y7VSRG9NWBHDQH60TA80.png&amp;w=640&amp;h=251&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y7VSRG9NWBHDQH60TA80.png&amp;w=715&amp;h=280&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y7VSRG9NWBHDQH60TA80.png&amp;w=750&amp;h=294&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y7VSRG9NWBHDQH60TA80.png&amp;w=828&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y7VSRG9NWBHDQH60TA80.png&amp;w=1080&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y7VSRG9NWBHDQH60TA80.png&amp;w=1280&amp;h=501&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y7VSRG9NWBHDQH60TA80.png&amp;w=1430&amp;h=560&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="AF_XDP BPF redirect map action" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y7VSRG9NWBHDQH60TA80.png&amp;w=1920&amp;h=751&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="751" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="280" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-nalcf22a="">Once everything has been allocated and strapped together, what I call "the descriptors dance" can start. While this has nothing to do with courtship behaviors it still requires a flawless execution:</p>
-<p data-astro-cid-nalcf22a="">When the kernel receives a packet (more specifically the device driver), it will write the packet bytes to a UMEM frame (from a descriptor that the userspace put in the FILL queue) and then insert the frame descriptor in the RX queue for the userspace to consume. The userspace can then read the packet bytes from the received descriptor, take a decision, and potentially send it back to the kernel for transmission by inserting the descriptor in the TX queue. The kernel can then transmit the content of the frame and put the descriptor from the TX to the COMPLETION queue. The userspace can then "recycle" this descriptor in the FILL or TX queue.</p>
-<p data-astro-cid-nalcf22a="">The overview of the queue interactions from the application perspective is represented on the following diagram (note that the queues contain descriptors that point to UMEM frames):</p>
+<p data-astro-cid-t7az6eu7="">Once everything has been allocated and strapped together, what I call "the descriptors dance" can start. While this has nothing to do with courtship behaviors it still requires a flawless execution:</p>
+<p data-astro-cid-t7az6eu7="">When the kernel receives a packet (more specifically the device driver), it will write the packet bytes to a UMEM frame (from a descriptor that the userspace put in the FILL queue) and then insert the frame descriptor in the RX queue for the userspace to consume. The userspace can then read the packet bytes from the received descriptor, take a decision, and potentially send it back to the kernel for transmission by inserting the descriptor in the TX queue. The kernel can then transmit the content of the frame and put the descriptor from the TX to the COMPLETION queue. The userspace can then "recycle" this descriptor in the FILL or TX queue.</p>
+<p data-astro-cid-t7az6eu7="">The overview of the queue interactions from the application perspective is represented on the following diagram (note that the queues contain descriptors that point to UMEM frames):</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="329" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FSC6WDSKQ99EH448GN4Z.png&amp;w=715&amp;h=329&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FSC6WDSKQ99EH448GN4Z.png&amp;w=640&amp;h=294&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FSC6WDSKQ99EH448GN4Z.png&amp;w=715&amp;h=329&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FSC6WDSKQ99EH448GN4Z.png&amp;w=750&amp;h=345&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FSC6WDSKQ99EH448GN4Z.png&amp;w=828&amp;h=381&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FSC6WDSKQ99EH448GN4Z.png&amp;w=1080&amp;h=497&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FSC6WDSKQ99EH448GN4Z.png&amp;w=1280&amp;h=589&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FSC6WDSKQ99EH448GN4Z.png&amp;w=1430&amp;h=658&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="flowtrackd interactions with AF_XDP queues" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FSC6WDSKQ99EH448GN4Z.png&amp;w=1920&amp;h=883&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="883" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="329" class="pt-portable-image-media"></div>
 </figure>
-<h2 data-astro-cid-nalcf22a="">flowtrackd I/O rewrite project</h2>
-<p data-astro-cid-nalcf22a="">To increase flowtrackd performance and to be able to scale with the growth of the Magic Transit product we decided to rewrite the I/O subsystem.</p>
-<p data-astro-cid-nalcf22a="">There will be a public blogpost about the technical aspects of the rewrite.</p>
-<p data-astro-cid-nalcf22a="">Prior to the rewrite, each customer had a dedicated flowtrackd instance (Unix process) that attached itself to dedicated network devices. A dedicated UMEM was created per network device (see schema on the left side below). The packets were copied from one UMEM to the other.</p>
-<p data-astro-cid-nalcf22a="">In this blogpost, we will only focus on the new usage of the <a href="https://www.kernel.org/doc/html/latest/networking/af_xdp.html#xdp-shared-umem-bind-flag" target="_blank" rel="noopener noreferrer">AF_XDP shared UMEM feature</a> which enables us to handle all customer accounts with a single flowtrackd instance per server and with a single shared UMEM (see schema on the right side below).</p>
+<h2 data-astro-cid-t7az6eu7="">flowtrackd I/O rewrite project</h2>
+<p data-astro-cid-t7az6eu7="">To increase flowtrackd performance and to be able to scale with the growth of the Magic Transit product we decided to rewrite the I/O subsystem.</p>
+<p data-astro-cid-t7az6eu7="">There will be a public blogpost about the technical aspects of the rewrite.</p>
+<p data-astro-cid-t7az6eu7="">Prior to the rewrite, each customer had a dedicated flowtrackd instance (Unix process) that attached itself to dedicated network devices. A dedicated UMEM was created per network device (see schema on the left side below). The packets were copied from one UMEM to the other.</p>
+<p data-astro-cid-t7az6eu7="">In this blogpost, we will only focus on the new usage of the <a href="https://www.kernel.org/doc/html/latest/networking/af_xdp.html#xdp-shared-umem-bind-flag" target="_blank" rel="noopener noreferrer">AF_XDP shared UMEM feature</a> which enables us to handle all customer accounts with a single flowtrackd instance per server and with a single shared UMEM (see schema on the right side below).</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="687" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47M6K6044JZ5KR1P0NE7YK.png&amp;w=715&amp;h=687&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47M6K6044JZ5KR1P0NE7YK.png&amp;w=640&amp;h=615&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47M6K6044JZ5KR1P0NE7YK.png&amp;w=715&amp;h=687&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47M6K6044JZ5KR1P0NE7YK.png&amp;w=750&amp;h=721&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47M6K6044JZ5KR1P0NE7YK.png&amp;w=828&amp;h=796&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47M6K6044JZ5KR1P0NE7YK.png&amp;w=1080&amp;h=1038&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47M6K6044JZ5KR1P0NE7YK.png&amp;w=1280&amp;h=1230&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47M6K6044JZ5KR1P0NE7YK.png&amp;w=1430&amp;h=1374&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="previous flowtrackd version next to the I/O rewrite one" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47M6K6044JZ5KR1P0NE7YK.png&amp;w=1600&amp;h=1537&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="1537" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="687" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-nalcf22a="">The Linux kernel documentation describes the additional plumbing steps to share a UMEM across multiple AF_XDP sockets:</p>
+<p data-astro-cid-t7az6eu7="">The Linux kernel documentation describes the additional plumbing steps to share a UMEM across multiple AF_XDP sockets:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="165" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XSGGAWGCG3RFS3JSAYT3.png&amp;w=715&amp;h=165&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XSGGAWGCG3RFS3JSAYT3.png&amp;w=640&amp;h=148&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XSGGAWGCG3RFS3JSAYT3.png&amp;w=715&amp;h=165&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XSGGAWGCG3RFS3JSAYT3.png&amp;w=750&amp;h=173&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XSGGAWGCG3RFS3JSAYT3.png&amp;w=828&amp;h=191&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XSGGAWGCG3RFS3JSAYT3.png&amp;w=1080&amp;h=249&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XSGGAWGCG3RFS3JSAYT3.png&amp;w=1280&amp;h=295&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XSGGAWGCG3RFS3JSAYT3.png&amp;w=1430&amp;h=330&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="XDP_SHARED_UMEM bind flag documentation" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XSGGAWGCG3RFS3JSAYT3.png&amp;w=1239&amp;h=286&amp;f=webp" data-lightbox-width="1239" data-lightbox-height="286" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="165" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-nalcf22a="">Followed by the instructions for our use case:</p>
+<p data-astro-cid-t7az6eu7="">Followed by the instructions for our use case:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="200" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JJ5ZJY1YK5HRRPR43SKC.png&amp;w=715&amp;h=200&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JJ5ZJY1YK5HRRPR43SKC.png&amp;w=640&amp;h=179&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JJ5ZJY1YK5HRRPR43SKC.png&amp;w=715&amp;h=200&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JJ5ZJY1YK5HRRPR43SKC.png&amp;w=750&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JJ5ZJY1YK5HRRPR43SKC.png&amp;w=828&amp;h=232&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JJ5ZJY1YK5HRRPR43SKC.png&amp;w=1080&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JJ5ZJY1YK5HRRPR43SKC.png&amp;w=1280&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JJ5ZJY1YK5HRRPR43SKC.png&amp;w=1430&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="shared UMEM use case documentation" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JJ5ZJY1YK5HRRPR43SKC.png&amp;w=1214&amp;h=339&amp;f=webp" data-lightbox-width="1214" data-lightbox-height="339" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="200" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-nalcf22a="">Hopefully for us a helper function in libbpf does it all for us: <code>xsk_socket__create_shared()</code></p>
+<p data-astro-cid-t7az6eu7="">Hopefully for us a helper function in libbpf does it all for us: <code>xsk_socket__create_shared()</code></p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="108" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C7F6JEWBYY3V16F0VFJV.png&amp;w=715&amp;h=108&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C7F6JEWBYY3V16F0VFJV.png&amp;w=640&amp;h=97&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C7F6JEWBYY3V16F0VFJV.png&amp;w=715&amp;h=108&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C7F6JEWBYY3V16F0VFJV.png&amp;w=750&amp;h=113&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C7F6JEWBYY3V16F0VFJV.png&amp;w=828&amp;h=125&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C7F6JEWBYY3V16F0VFJV.png&amp;w=1080&amp;h=163&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C7F6JEWBYY3V16F0VFJV.png&amp;w=1280&amp;h=193&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C7F6JEWBYY3V16F0VFJV.png&amp;w=1430&amp;h=216&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="xsk_socket__create_shared() function documentation" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C7F6JEWBYY3V16F0VFJV.png&amp;w=1230&amp;h=186&amp;f=webp" data-lightbox-width="1230" data-lightbox-height="186" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="108" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-nalcf22a="">The final setup is the following: Xsks are created for each queue of the devices in their respective network namespaces. flowtrackd then handles the descriptors like a puppeteer while applying our DoS mitigation logic on the packets that they reference with one exception… (notice the red crosses on the diagram):</p>
+<p data-astro-cid-t7az6eu7="">The final setup is the following: Xsks are created for each queue of the devices in their respective network namespaces. flowtrackd then handles the descriptors like a puppeteer while applying our DoS mitigation logic on the packets that they reference with one exception… (notice the red crosses on the diagram):</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="289" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47DX8EKBN559FXVTQMYCJ5.png&amp;w=715&amp;h=289&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47DX8EKBN559FXVTQMYCJ5.png&amp;w=640&amp;h=259&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47DX8EKBN559FXVTQMYCJ5.png&amp;w=715&amp;h=289&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47DX8EKBN559FXVTQMYCJ5.png&amp;w=750&amp;h=303&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47DX8EKBN559FXVTQMYCJ5.png&amp;w=828&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47DX8EKBN559FXVTQMYCJ5.png&amp;w=1080&amp;h=437&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47DX8EKBN559FXVTQMYCJ5.png&amp;w=1280&amp;h=517&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47DX8EKBN559FXVTQMYCJ5.png&amp;w=1430&amp;h=578&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="overview of flowtrackd interactions with Xsks in namespaces" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47DX8EKBN559FXVTQMYCJ5.png&amp;w=1600&amp;h=646&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="646" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="289" class="pt-portable-image-media"></div>
 </figure>
-<h2 data-astro-cid-nalcf22a="">What "Invalid argument" ??!</h2>
-<p data-astro-cid-nalcf22a="">We were happily near the end of the rewrite when, suddenly, after porting our integration tests in the CI, flowtrackd crashed!</p>
-<p data-astro-cid-nalcf22a="">The following errors was displayed:</p>
+<h2 data-astro-cid-t7az6eu7="">What "Invalid argument" ??!</h2>
+<p data-astro-cid-t7az6eu7="">We were happily near the end of the rewrite when, suddenly, after porting our integration tests in the CI, flowtrackd crashed!</p>
+<p data-astro-cid-t7az6eu7="">The following errors was displayed:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[...]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Thread</span><span class="sk-032f62-99ffe4"> 'main'</span><span class="sk-032f62-99ffe4"> panicked</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> 'failed to create Xsk: Libbpf("Invalid argument")',</span><span class="sk-032f62-99ffe4"> flowtrack-io/src/packet_driver.rs:144:22</span></span>
@@ -162,19 +162,19 @@
 		})
 	});
 </script>
-<p data-astro-cid-nalcf22a="">According to the line number, the first socket was created with success and flowtrackd crashed when the second Xsk was created:</p>
+<p data-astro-cid-t7az6eu7="">According to the line number, the first socket was created with success and flowtrackd crashed when the second Xsk was created:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="379" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SX3S9D9VJD4CC2TCCEM8.png&amp;w=715&amp;h=379&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SX3S9D9VJD4CC2TCCEM8.png&amp;w=640&amp;h=339&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SX3S9D9VJD4CC2TCCEM8.png&amp;w=715&amp;h=379&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SX3S9D9VJD4CC2TCCEM8.png&amp;w=750&amp;h=398&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SX3S9D9VJD4CC2TCCEM8.png&amp;w=828&amp;h=439&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SX3S9D9VJD4CC2TCCEM8.png&amp;w=1080&amp;h=572&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SX3S9D9VJD4CC2TCCEM8.png&amp;w=1280&amp;h=678&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SX3S9D9VJD4CC2TCCEM8.png&amp;w=1430&amp;h=758&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Rust Xsk instantiation code snippet" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SX3S9D9VJD4CC2TCCEM8.png&amp;w=1673&amp;h=887&amp;f=webp" data-lightbox-width="1673" data-lightbox-height="887" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="379" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-nalcf22a="">Here is what we do: we enter the network namespace where the interface sits, load and attach the BPF program and for each queue of the interface, we create a socket. The UMEM and the config parameters are the same with the ingress Xsk creation. Only the ingress_veth and egress_veth are different.</p>
-<p data-astro-cid-nalcf22a="">This is what the code to create a Xsk looks like:</p>
+<p data-astro-cid-t7az6eu7="">Here is what we do: we enter the network namespace where the interface sits, load and attach the BPF program and for each queue of the interface, we create a socket. The UMEM and the config parameters are the same with the ingress Xsk creation. Only the ingress_veth and egress_veth are different.</p>
+<p data-astro-cid-t7az6eu7="">This is what the code to create a Xsk looks like:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="617" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P0PG4PA4M6N42XZFHMEF.png&amp;w=715&amp;h=617&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P0PG4PA4M6N42XZFHMEF.png&amp;w=640&amp;h=552&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P0PG4PA4M6N42XZFHMEF.png&amp;w=715&amp;h=617&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P0PG4PA4M6N42XZFHMEF.png&amp;w=750&amp;h=647&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P0PG4PA4M6N42XZFHMEF.png&amp;w=828&amp;h=715&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P0PG4PA4M6N42XZFHMEF.png&amp;w=1080&amp;h=932&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P0PG4PA4M6N42XZFHMEF.png&amp;w=1280&amp;h=1105&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P0PG4PA4M6N42XZFHMEF.png&amp;w=1430&amp;h=1234&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Rust Xsk creation code snippet" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P0PG4PA4M6N42XZFHMEF.png&amp;w=1354&amp;h=1168&amp;f=webp" data-lightbox-width="1354" data-lightbox-height="1168" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="617" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-nalcf22a="">The call to the libbpf function <a href="https://github.com/libbpf/libbpf/blob/v0.8.0/src/xsk.c#L994" target="_blank" rel="noopener noreferrer"><code>xsk_socket__create_shared()</code></a> didn't return 0.</p>
-<p data-astro-cid-nalcf22a="">The <a href="https://www.mankier.com/3/libxdp" target="_blank" rel="noopener noreferrer">libxdp manual page</a> doesn't help us here…</p>
-<p data-astro-cid-nalcf22a="">Which argument is "invalid"? And why is this error not showing up when we run flowtrackd locally but only in the CI?</p>
-<p data-astro-cid-nalcf22a="">We can try to reproduce locally with a similar network setup script used in the CI:</p>
+<p data-astro-cid-t7az6eu7="">The call to the libbpf function <a href="https://github.com/libbpf/libbpf/blob/v0.8.0/src/xsk.c#L994" target="_blank" rel="noopener noreferrer"><code>xsk_socket__create_shared()</code></a> didn't return 0.</p>
+<p data-astro-cid-t7az6eu7="">The <a href="https://www.mankier.com/3/libxdp" target="_blank" rel="noopener noreferrer">libxdp manual page</a> doesn't help us here…</p>
+<p data-astro-cid-t7az6eu7="">Which argument is "invalid"? And why is this error not showing up when we run flowtrackd locally but only in the CI?</p>
+<p data-astro-cid-t7az6eu7="">We can try to reproduce locally with a similar network setup script used in the CI:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">#!/bin/bash</span></span>
 <span class="line"><span class="sk-24292e-fff"> </span></span>
@@ -203,10 +203,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">For the rest of the blogpost, we set the number of queues per interface to 1. If you have questions about the set command in the script, <a href="https://blog.cloudflare.com/pipefail-how-a-missing-shell-option-slowed-cloudflare-down">check this out</a>.</p>
-<p data-astro-cid-nalcf22a="">Not much success triggering the error.</p>
-<p data-astro-cid-nalcf22a="">What differs between my laptop setup and the CI setup?</p>
-<p data-astro-cid-nalcf22a="">I managed to find out that when the outer and inner interface <strong>index numbers</strong> are the same then it crashes. Even though the interfaces don't have the same name, and they are not in the same network namespace. When the tests are run by the CI, both interfaces got index number 5 which was not the case on my laptop since I have more interfaces:</p>
+<p data-astro-cid-t7az6eu7="">For the rest of the blogpost, we set the number of queues per interface to 1. If you have questions about the set command in the script, <a href="https://blog.cloudflare.com/pipefail-how-a-missing-shell-option-slowed-cloudflare-down">check this out</a>.</p>
+<p data-astro-cid-t7az6eu7="">Not much success triggering the error.</p>
+<p data-astro-cid-t7az6eu7="">What differs between my laptop setup and the CI setup?</p>
+<p data-astro-cid-t7az6eu7="">I managed to find out that when the outer and inner interface <strong>index numbers</strong> are the same then it crashes. Even though the interfaces don't have the same name, and they are not in the same network namespace. When the tests are run by the CI, both interfaces got index number 5 which was not the case on my laptop since I have more interfaces:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> link</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> cut</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-032f62-99ffe4">' '</span><span class="sk-005cc5-99ffe4"> -f1,2</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">1:</span><span class="sk-032f62-99ffe4"> lo:</span></span>
@@ -222,7 +222,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">We can edit the script to set a fixed interface index number:</p>
+<p data-astro-cid-t7az6eu7="">We can edit the script to set a fixed interface index number:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ip</span><span class="sk-032f62-99ffe4"> link</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  add</span><span class="sk-032f62-99ffe4"> name</span><span class="sk-24292e-fff"> $OUTER_VETH </span><span class="sk-032f62-99ffe4">numrxqueues</span><span class="sk-24292e-fff"> $QUEUES </span><span class="sk-032f62-99ffe4">numtxqueues</span><span class="sk-24292e-fff"> $QUEUES </span><span class="sk-032f62-99ffe4">index</span><span class="sk-005cc5-ffc799"> 4242</span><span class="sk-032f62-99ffe4"> type</span><span class="sk-032f62-99ffe4"> veth</span><span class="sk-005cc5-a0a0a0"> \</span></span>
@@ -232,9 +232,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">And we can now reproduce the issue locally!</p>
-<p data-astro-cid-nalcf22a="">Interesting observation: I was not able to reproduce this issue with the previous flowtrackd version. Is this somehow related to the shared UMEM feature that we are now using?</p>
-<p data-astro-cid-nalcf22a="">Back to the "invalid" argument. strace to the rescue:</p>
+<p data-astro-cid-t7az6eu7="">And we can now reproduce the issue locally!</p>
+<p data-astro-cid-t7az6eu7="">Interesting observation: I was not able to reproduce this issue with the previous flowtrackd version. Is this somehow related to the shared UMEM feature that we are now using?</p>
+<p data-astro-cid-t7az6eu7="">Back to the "invalid" argument. strace to the rescue:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> strace</span><span class="sk-005cc5-99ffe4"> -f</span><span class="sk-005cc5-99ffe4"> -x</span><span class="sk-032f62-99ffe4"> ./flowtrackd</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> flowtrackd.toml</span><span class="sk-005cc5-99ffe4"> --ingress</span><span class="sk-032f62-99ffe4"> outer</span><span class="sk-005cc5-99ffe4"> --egress</span><span class="sk-032f62-99ffe4"> inner</span><span class="sk-005cc5-99ffe4"> --egress-netns</span><span class="sk-032f62-99ffe4"> inner-ns</span></span>
 <span class="line"><span class="sk-24292e-fff"> </span></span>
@@ -286,9 +286,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">Ok, the second <code>bind() syscall</code> returns the EINVAL value.</p>
-<p data-astro-cid-nalcf22a="">The <code>sa_family</code> is the right one. Is something wrong with <code>sa_data="\x01\x00\x92\x10\x00\x00\x00\x00\x00\x00\x09\x00\x00\x00"</code> ?</p>
-<p data-astro-cid-nalcf22a="">Let's look at the <a href="https://elixir.bootlin.com/linux/v5.15/source/net/socket.c#L1702" target="_blank" rel="noopener noreferrer">bind syscall kernel code</a>:</p>
+<p data-astro-cid-t7az6eu7="">Ok, the second <code>bind() syscall</code> returns the EINVAL value.</p>
+<p data-astro-cid-t7az6eu7="">The <code>sa_family</code> is the right one. Is something wrong with <code>sa_data="\x01\x00\x92\x10\x00\x00\x00\x00\x00\x00\x09\x00\x00\x00"</code> ?</p>
+<p data-astro-cid-t7az6eu7="">Let's look at the <a href="https://elixir.bootlin.com/linux/v5.15/source/net/socket.c#L1702" target="_blank" rel="noopener noreferrer">bind syscall kernel code</a>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">err</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> sock</span><span class="sk-24292e-fff">-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">ops</span><span class="sk-24292e-fff">-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">bind</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">sock,</span><span class="sk-24292e-fff"> (struct </span><span class="sk-032f62-99ffe4">sockaddr</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-24292e-fff">) &amp;</span><span class="sk-6f42c1-ffc799">address,</span><span class="sk-032f62-99ffe4"> addrlen</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -296,10 +296,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">The bind function of the protocol specific socket operations gets called. Searching for "AF_XDP" in the code, we quickly found the bind function call related to the <a href="https://elixir.bootlin.com/linux/v5.15/source/net/xdp/xsk.c#L857" target="_blank" rel="noopener noreferrer">AF_XDP socket address family</a>.</p>
-<p data-astro-cid-nalcf22a="">So, where in the syscall could this value be returned?</p>
-<p data-astro-cid-nalcf22a="">First, let's examine the syscall parameters to see if the libbpf <code>xsk_socket__create_shared()</code> function sets weird values for us.</p>
-<p data-astro-cid-nalcf22a="">We use the <a href="https://linux.die.net/man/1/pahole" target="_blank" rel="noopener noreferrer">pahole</a> tool to print the structure definitions:</p>
+<p data-astro-cid-t7az6eu7="">The bind function of the protocol specific socket operations gets called. Searching for "AF_XDP" in the code, we quickly found the bind function call related to the <a href="https://elixir.bootlin.com/linux/v5.15/source/net/xdp/xsk.c#L857" target="_blank" rel="noopener noreferrer">AF_XDP socket address family</a>.</p>
+<p data-astro-cid-t7az6eu7="">So, where in the syscall could this value be returned?</p>
+<p data-astro-cid-t7az6eu7="">First, let's examine the syscall parameters to see if the libbpf <code>xsk_socket__create_shared()</code> function sets weird values for us.</p>
+<p data-astro-cid-t7az6eu7="">We use the <a href="https://linux.die.net/man/1/pahole" target="_blank" rel="noopener noreferrer">pahole</a> tool to print the structure definitions:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> pahole</span><span class="sk-032f62-99ffe4"> sockaddr</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">struct</span><span class="sk-032f62-99ffe4"> sockaddr</span><span class="sk-032f62-99ffe4"> {</span></span>
@@ -326,201 +326,201 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">Translation of the arguments of the bind syscall (the 14 bytes of <code>sa_data</code>) for the first <code>bind()</code> call:</p>
-<div class="emdash-table-wrapper" data-astro-cid-pe7l3wzl="">
-	<table class="emdash-table" style="min-width: 480px;" data-astro-cid-pe7l3wzl="">
-		<thead data-astro-cid-pe7l3wzl="">
-			<tr data-astro-cid-pe7l3wzl="">
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+<p data-astro-cid-t7az6eu7="">Translation of the arguments of the bind syscall (the 14 bytes of <code>sa_data</code>) for the first <code>bind()</code> call:</p>
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 480px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Struct member</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Big Endian value</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Decimal</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Meaning</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Observation</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-pe7l3wzl="">
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>sxdp_flags</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>\x08\x00</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>8</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>XDP_USE_NEED_WAKEUP</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>expected</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>sxdp_ifindex</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>\x92\x10\x00\x00</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>4242</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>The network interface index</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>expected</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>sxdp_queue_id</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>\x00\x00\x00\x00</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>The network interface queue </p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>expected</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>sxdp_shared_umem_fd</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>\x00\x00\x00\x00</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>The umem is not shared yet</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>expected</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-nalcf22a="">Second <code>bind()</code>call:</p>
-<div class="emdash-table-wrapper" data-astro-cid-pe7l3wzl="">
-	<table class="emdash-table" style="min-width: 480px;" data-astro-cid-pe7l3wzl="">
-		<thead data-astro-cid-pe7l3wzl="">
-			<tr data-astro-cid-pe7l3wzl="">
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+<p data-astro-cid-t7az6eu7="">Second <code>bind()</code>call:</p>
+<div class="emdash-table-wrapper" data-astro-cid-pm32nto4="">
+	<table class="emdash-table" style="min-width: 480px;" data-astro-cid-pm32nto4="">
+		<thead data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Struct member</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Big Endian value</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Decimal</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Meaning</p>
 				</th>
-				<th scope="col" class="astro-pe7l3wzl" data-astro-cid-pe7l3wzl="">
+				<th scope="col" class="astro-pm32nto4" data-astro-cid-pm32nto4="">
 					<p>Observation</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-pe7l3wzl="">
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+		<tbody data-astro-cid-pm32nto4="">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>sxdp_flags</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>\x01\x00</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>1</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>XDP_SHARED_UMEM</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>expected</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>sxdp_ifindex</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>\x92\x10\x00\x00</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>4242</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>The network interface index</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>expected</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>sxdp_queue_id</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>\x00\x00\x00\x00</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>0</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>The network interface queue id</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>expected</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-pe7l3wzl="">
-				<td data-astro-cid-pe7l3wzl="true">
+			<tr data-astro-cid-pm32nto4="">
+				<td data-astro-cid-pm32nto4="true">
 					<p>sxdp_shared_umem_fd</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>\x09\x00\x00\x00</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>9</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>File descriptor of the first AF_XDP socket associated to the UMEM</p>
 				</td>
-				<td data-astro-cid-pe7l3wzl="true">
+				<td data-astro-cid-pm32nto4="true">
 					<p>expected</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-nalcf22a="">The arguments look good...</p>
-<p data-astro-cid-nalcf22a="">We could statically try to infer where the EINVAL was returned looking at the source code. But this analysis has its limits and can be error-prone.</p>
-<p data-astro-cid-nalcf22a="">Overall, it seems that the network namespaces are not taken into account somewhere because it seems that there is some confusion with the interface indexes.</p>
-<p data-astro-cid-nalcf22a="">Is the issue on the kernel-side?</p>
-<h2 data-astro-cid-nalcf22a="">Digging deeper</h2>
-<p data-astro-cid-nalcf22a="">It would be nice if we had step-by-step runtime inspection of code paths and variables.</p>
-<p data-astro-cid-nalcf22a="">Let's:</p>
+<p data-astro-cid-t7az6eu7="">The arguments look good...</p>
+<p data-astro-cid-t7az6eu7="">We could statically try to infer where the EINVAL was returned looking at the source code. But this analysis has its limits and can be error-prone.</p>
+<p data-astro-cid-t7az6eu7="">Overall, it seems that the network namespaces are not taken into account somewhere because it seems that there is some confusion with the interface indexes.</p>
+<p data-astro-cid-t7az6eu7="">Is the issue on the kernel-side?</p>
+<h2 data-astro-cid-t7az6eu7="">Digging deeper</h2>
+<p data-astro-cid-t7az6eu7="">It would be nice if we had step-by-step runtime inspection of code paths and variables.</p>
+<p data-astro-cid-t7az6eu7="">Let's:</p>
 <ul>
 	<li>Compile a Linux kernel version closer to the one used on our servers (5.15) with debug symbols.</li>
 	<li>Generate a root filesystem for the kernel to boot.</li>
@@ -528,8 +528,8 @@
 	<li>Attach gdb to it and set a breakpoint on the syscall.</li>
 	<li>Check where the EINVAL value is returned.</li>
 </ul>
-<p data-astro-cid-nalcf22a="">We could have used <a href="https://buildroot.org" target="_blank" rel="noopener noreferrer">buildroot</a> with a minimal reproduction code, but it wasn't funny enough. Instead, we install a minimal Ubuntu and load our custom kernel. This has the benefit of having a package manager if we need to install other debugging tools.</p>
-<p data-astro-cid-nalcf22a="">Let's install a minimal Ubuntu server 21.10 (with ext4, no LVM and an ssh server selected in the installation wizard):</p>
+<p data-astro-cid-t7az6eu7="">We could have used <a href="https://buildroot.org" target="_blank" rel="noopener noreferrer">buildroot</a> with a minimal reproduction code, but it wasn't funny enough. Instead, we install a minimal Ubuntu and load our custom kernel. This has the benefit of having a package manager if we need to install other debugging tools.</p>
+<p data-astro-cid-t7az6eu7="">Let's install a minimal Ubuntu server 21.10 (with ext4, no LVM and an ssh server selected in the installation wizard):</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">qemu-img</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-005cc5-99ffe4"> -f</span><span class="sk-032f62-99ffe4"> qcow2</span><span class="sk-032f62-99ffe4"> ubuntu-21.10-live-server-amd64.qcow2</span><span class="sk-032f62-99ffe4"> 20G</span></span>
 <span class="line"><span class="sk-24292e-fff"> </span></span>
@@ -547,7 +547,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">And then build a kernel (<a href="https://www.josehu.com/memo/2021/01/02/linux-kernel-build-debug.html" target="_blank" rel="noopener noreferrer">link</a> and <a href="https://www.starlab.io/blog/using-gdb-to-debug-the-linux-kernel" target="_blank" rel="noopener noreferrer">link</a>) with the following changes in the menuconfig:</p>
+<p data-astro-cid-t7az6eu7="">And then build a kernel (<a href="https://www.josehu.com/memo/2021/01/02/linux-kernel-build-debug.html" target="_blank" rel="noopener noreferrer">link</a> and <a href="https://www.starlab.io/blog/using-gdb-to-debug-the-linux-kernel" target="_blank" rel="noopener noreferrer">link</a>) with the following changes in the menuconfig:</p>
 <ul>
 	<li>Cryptographic API → Certificates for signature checking → Provide system-wide ring of trusted keys<ul>
 			<li>change the additional string to be EMPTY ("")</li>
@@ -576,7 +576,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">We can now run Ubuntu with our custom kernel waiting for gdb to be connected:</p>
+<p data-astro-cid-t7az6eu7="">We can now run Ubuntu with our custom kernel waiting for gdb to be connected:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">qemu-system-x86_64</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  -kernel</span><span class="sk-032f62-99ffe4"> /home/bastien/work/linux/arch/x86_64/boot/bzImage</span><span class="sk-005cc5-a0a0a0"> \</span></span>
@@ -596,7 +596,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">And we can fire up gdb and set a breakpoint on the xsk_bind function:</p>
+<p data-astro-cid-t7az6eu7="">And we can fire up gdb and set a breakpoint on the xsk_bind function:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gdb</span><span class="sk-005cc5-99ffe4">  -ex</span><span class="sk-032f62-99ffe4"> "add-auto-load-safe-path $(</span><span class="sk-005cc5-ffc799">pwd</span><span class="sk-032f62-99ffe4">)"</span><span class="sk-005cc5-99ffe4"> -ex</span><span class="sk-032f62-99ffe4"> "file vmlinux"</span><span class="sk-005cc5-99ffe4"> -ex</span><span class="sk-032f62-99ffe4"> "target remote :1234"</span><span class="sk-005cc5-99ffe4"> -ex</span><span class="sk-032f62-99ffe4"> "hbreak start_kernel"</span><span class="sk-005cc5-99ffe4"> -ex</span><span class="sk-032f62-99ffe4"> "continue"</span></span>
 <span class="line"><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">gdb</span><span class="sk-24292e-fff">) </span><span class="sk-6f42c1-ffc799">b</span><span class="sk-032f62-99ffe4"> xsk_bind</span></span>
@@ -606,31 +606,31 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">After executing the network setup script and running flowtrackd, we hit the <code>xsk_bind</code> breakpoint:</p>
+<p data-astro-cid-t7az6eu7="">After executing the network setup script and running flowtrackd, we hit the <code>xsk_bind</code> breakpoint:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="545" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MKZ7X2F9GKZ1R7QY3S5F.png&amp;w=715&amp;h=545&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MKZ7X2F9GKZ1R7QY3S5F.png&amp;w=640&amp;h=488&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MKZ7X2F9GKZ1R7QY3S5F.png&amp;w=715&amp;h=545&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MKZ7X2F9GKZ1R7QY3S5F.png&amp;w=750&amp;h=572&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MKZ7X2F9GKZ1R7QY3S5F.png&amp;w=828&amp;h=631&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MKZ7X2F9GKZ1R7QY3S5F.png&amp;w=1080&amp;h=823&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MKZ7X2F9GKZ1R7QY3S5F.png&amp;w=1280&amp;h=976&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MKZ7X2F9GKZ1R7QY3S5F.png&amp;w=1430&amp;h=1090&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="gdb with breakpoint hit at xsk_bind" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MKZ7X2F9GKZ1R7QY3S5F.png&amp;w=1076&amp;h=820&amp;f=webp" data-lightbox-width="1076" data-lightbox-height="820" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="545" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-nalcf22a="">We continue to hit the second <code>xsk_bind</code> breakpoint (the one that returns EINVAL) and after a few <code>next</code> and <code>step</code> commands, we find <a href="https://elixir.bootlin.com/linux/v5.15/source/net/xdp/xsk.c#L938" target="_blank" rel="noopener noreferrer">which function</a> returned the <a href="https://elixir.bootlin.com/linux/v5.15/source/net/xdp/xsk_buff_pool.c#L201" target="_blank" rel="noopener noreferrer">EINVAL value</a>:</p>
+<p data-astro-cid-t7az6eu7="">We continue to hit the second <code>xsk_bind</code> breakpoint (the one that returns EINVAL) and after a few <code>next</code> and <code>step</code> commands, we find <a href="https://elixir.bootlin.com/linux/v5.15/source/net/xdp/xsk.c#L938" target="_blank" rel="noopener noreferrer">which function</a> returned the <a href="https://elixir.bootlin.com/linux/v5.15/source/net/xdp/xsk_buff_pool.c#L201" target="_blank" rel="noopener noreferrer">EINVAL value</a>:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="508" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DVD1MFPDX8YXN0PN1S5B.png&amp;w=715&amp;h=508&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DVD1MFPDX8YXN0PN1S5B.png&amp;w=640&amp;h=455&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DVD1MFPDX8YXN0PN1S5B.png&amp;w=715&amp;h=508&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DVD1MFPDX8YXN0PN1S5B.png&amp;w=750&amp;h=533&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DVD1MFPDX8YXN0PN1S5B.png&amp;w=828&amp;h=588&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DVD1MFPDX8YXN0PN1S5B.png&amp;w=1080&amp;h=767&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DVD1MFPDX8YXN0PN1S5B.png&amp;w=1280&amp;h=909&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DVD1MFPDX8YXN0PN1S5B.png&amp;w=1430&amp;h=1016&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="gdb stepping next to the EINVAL value" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DVD1MFPDX8YXN0PN1S5B.png&amp;w=1276&amp;h=906&amp;f=webp" data-lightbox-width="1276" data-lightbox-height="906" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="508" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-nalcf22a="">In our Rust code, we allocate a new FILL and a COMPLETION queue for each queue id of the device prior to calling <code>xsk_socket__create_shared()</code>. Why are those set to NULL? Looking at the code, <code>pool-&gt;fq</code> comes from a struct field named <code>fq_tmp</code> that is accessed from the sock pointer <code>(print ((struct xdp_sock *)sock-&gt;sk)-&gt;fq_tmp)</code>. The field is set in the first call to xsk_bind() but isn't in the second call. We note that at the end of the xsk_bind() function, <a href="https://elixir.bootlin.com/linux/v5.15/source/net/xdp/xsk.c#L981" target="_blank" rel="noopener noreferrer">fq_tmp and cq_tmp are set to NULL</a> as per this comment: "FQ and CQ are now owned by the buffer pool and cleaned up with it.".</p>
-<p data-astro-cid-nalcf22a="">Something is definitely going wrong in libbpf because the FILL queue and COMPLETION queue pointers are missing.</p>
-<p data-astro-cid-nalcf22a="">Back to the libbpf <code>xsk_socket__create_shared()</code> function to check where the queues are set for the socket, and we quickly notice two functions that interact with the FILL and COMPLETION queues:</p>
-<p data-astro-cid-nalcf22a="">The first function called is <a href="https://github.com/libbpf/libbpf/blob/v0.8.0/src/xsk.c#L879" target="_blank" rel="noopener noreferrer"><code>xsk_get_ctx()</code></a>:</p>
+<p data-astro-cid-t7az6eu7="">In our Rust code, we allocate a new FILL and a COMPLETION queue for each queue id of the device prior to calling <code>xsk_socket__create_shared()</code>. Why are those set to NULL? Looking at the code, <code>pool-&gt;fq</code> comes from a struct field named <code>fq_tmp</code> that is accessed from the sock pointer <code>(print ((struct xdp_sock *)sock-&gt;sk)-&gt;fq_tmp)</code>. The field is set in the first call to xsk_bind() but isn't in the second call. We note that at the end of the xsk_bind() function, <a href="https://elixir.bootlin.com/linux/v5.15/source/net/xdp/xsk.c#L981" target="_blank" rel="noopener noreferrer">fq_tmp and cq_tmp are set to NULL</a> as per this comment: "FQ and CQ are now owned by the buffer pool and cleaned up with it.".</p>
+<p data-astro-cid-t7az6eu7="">Something is definitely going wrong in libbpf because the FILL queue and COMPLETION queue pointers are missing.</p>
+<p data-astro-cid-t7az6eu7="">Back to the libbpf <code>xsk_socket__create_shared()</code> function to check where the queues are set for the socket, and we quickly notice two functions that interact with the FILL and COMPLETION queues:</p>
+<p data-astro-cid-t7az6eu7="">The first function called is <a href="https://github.com/libbpf/libbpf/blob/v0.8.0/src/xsk.c#L879" target="_blank" rel="noopener noreferrer"><code>xsk_get_ctx()</code></a>:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="366" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463Z6JMSC86FYY1DH0TVJJ.png&amp;w=715&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463Z6JMSC86FYY1DH0TVJJ.png&amp;w=640&amp;h=328&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463Z6JMSC86FYY1DH0TVJJ.png&amp;w=715&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463Z6JMSC86FYY1DH0TVJJ.png&amp;w=750&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463Z6JMSC86FYY1DH0TVJJ.png&amp;w=828&amp;h=424&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463Z6JMSC86FYY1DH0TVJJ.png&amp;w=1080&amp;h=553&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463Z6JMSC86FYY1DH0TVJJ.png&amp;w=1280&amp;h=655&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463Z6JMSC86FYY1DH0TVJJ.png&amp;w=1430&amp;h=732&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="xsk_get_ctx() function code" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463Z6JMSC86FYY1DH0TVJJ.png&amp;w=993&amp;h=508&amp;f=webp" data-lightbox-width="993" data-lightbox-height="508" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="366" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-nalcf22a="">The second is <a href="https://github.com/libbpf/libbpf/blob/v0.8.0/src/xsk.c#L923" target="_blank" rel="noopener noreferrer"><code>xsk_create_ctx()</code></a>:</p>
+<p data-astro-cid-t7az6eu7="">The second is <a href="https://github.com/libbpf/libbpf/blob/v0.8.0/src/xsk.c#L923" target="_blank" rel="noopener noreferrer"><code>xsk_create_ctx()</code></a>:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="1047" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SQA5GB6VP5K9E1PKBQWA.png&amp;w=715&amp;h=1047&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SQA5GB6VP5K9E1PKBQWA.png&amp;w=640&amp;h=937&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SQA5GB6VP5K9E1PKBQWA.png&amp;w=715&amp;h=1047&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SQA5GB6VP5K9E1PKBQWA.png&amp;w=750&amp;h=1098&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SQA5GB6VP5K9E1PKBQWA.png&amp;w=828&amp;h=1212&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SQA5GB6VP5K9E1PKBQWA.png&amp;w=1080&amp;h=1581&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SQA5GB6VP5K9E1PKBQWA.png&amp;w=1280&amp;h=1874&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SQA5GB6VP5K9E1PKBQWA.png&amp;w=1430&amp;h=2094&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="xsk_create_ctx() function code" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SQA5GB6VP5K9E1PKBQWA.png&amp;w=795&amp;h=1164&amp;f=webp" data-lightbox-width="795" data-lightbox-height="1164" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="1047" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-nalcf22a="">Remembering our setup, can you spot what the issue is?</p>
-<h2 data-astro-cid-nalcf22a="">The bug / missing feature</h2>
-<p data-astro-cid-nalcf22a="">The issue is in the comparison performed in the <a href="https://github.com/libbpf/libbpf/blob/v0.8.0/src/xsk.c#L888" target="_blank" rel="noopener noreferrer"><code>xsk_get_ctx()</code></a> to find the right socket context structure associated with the (ifindex, queue_id) pair in the linked-list. The UMEM being shared across Xsks, the same <code>umem-&gt;ctx_list</code> linked list head is used to find the sockets that use this UMEM. Remember that in our setup, flowtrackd attaches itself to two network devices that live in different network namespaces. Using the interface index and the queue_id to find the right context (FILL and COMPLETION queues) associated to a socket is not sufficient because another network interface with the same interface index can exist at the same time in another network namespace.</p>
-<h2 data-astro-cid-nalcf22a="">What can we do about it?</h2>
-<p data-astro-cid-nalcf22a="">We need to tell apart two network devices "system-wide". That means across the network namespace boundaries.</p>
-<p data-astro-cid-nalcf22a="">Could we fetch and store the network namespace inode number of the current process (<code>stat -c%i -L /proc/self/ns/net</code>) at the context creation and then use it in the comparison? According to <a href="https://man7.org/linux/man-pages/man7/inode.7.html" target="_blank" rel="noopener noreferrer">man 7 inode</a>: "Each file in a filesystem has a unique inode number. Inode numbers are guaranteed to be unique only within a filesystem". However, inode numbers can be reused:</p>
+<p data-astro-cid-t7az6eu7="">Remembering our setup, can you spot what the issue is?</p>
+<h2 data-astro-cid-t7az6eu7="">The bug / missing feature</h2>
+<p data-astro-cid-t7az6eu7="">The issue is in the comparison performed in the <a href="https://github.com/libbpf/libbpf/blob/v0.8.0/src/xsk.c#L888" target="_blank" rel="noopener noreferrer"><code>xsk_get_ctx()</code></a> to find the right socket context structure associated with the (ifindex, queue_id) pair in the linked-list. The UMEM being shared across Xsks, the same <code>umem-&gt;ctx_list</code> linked list head is used to find the sockets that use this UMEM. Remember that in our setup, flowtrackd attaches itself to two network devices that live in different network namespaces. Using the interface index and the queue_id to find the right context (FILL and COMPLETION queues) associated to a socket is not sufficient because another network interface with the same interface index can exist at the same time in another network namespace.</p>
+<h2 data-astro-cid-t7az6eu7="">What can we do about it?</h2>
+<p data-astro-cid-t7az6eu7="">We need to tell apart two network devices "system-wide". That means across the network namespace boundaries.</p>
+<p data-astro-cid-t7az6eu7="">Could we fetch and store the network namespace inode number of the current process (<code>stat -c%i -L /proc/self/ns/net</code>) at the context creation and then use it in the comparison? According to <a href="https://man7.org/linux/man-pages/man7/inode.7.html" target="_blank" rel="noopener noreferrer">man 7 inode</a>: "Each file in a filesystem has a unique inode number. Inode numbers are guaranteed to be unique only within a filesystem". However, inode numbers can be reused:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># ip netns add a</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># stat -c%i /run/netns/a</span></span>
@@ -644,50 +644,50 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-nalcf22a="">Here are our options:</p>
+<p data-astro-cid-t7az6eu7="">Here are our options:</p>
 <ul>
 	<li>Do a quick hack to ensure that the interface indexes are not the same (as done in the integration tests).</li>
 	<li>Explain our use case to the libbpf maintainers and see how the API for the <code>xsk_socket__create_shared()</code> function should change. It could be possible to pass an opaque "cookie" as a parameter at the socket creation and pass it to the functions that access the socket contexts.</li>
 	<li>Take our chances and look for Linux patches that contain the words “netns” and “cookie”</li>
 </ul>
-<p data-astro-cid-nalcf22a="">Well, well, well: <a href="https://lore.kernel.org/bpf/c47d2346982693a9cf9da0e12690453aded4c788.1585323121.git.daniel@iogearbox.net" target="_blank" rel="noopener noreferrer">[PATCH bpf-next 3/7] bpf: add netns cookie and enable it for bpf cgroup hooks</a></p>
-<p data-astro-cid-nalcf22a="">This is almost what we need! This patch adds a kernel function named <code>bpf_get_netns_cookie()</code> that would get us the network namespace cookie linked to a socket:</p>
+<p data-astro-cid-t7az6eu7="">Well, well, well: <a href="https://lore.kernel.org/bpf/c47d2346982693a9cf9da0e12690453aded4c788.1585323121.git.daniel@iogearbox.net" target="_blank" rel="noopener noreferrer">[PATCH bpf-next 3/7] bpf: add netns cookie and enable it for bpf cgroup hooks</a></p>
+<p data-astro-cid-t7az6eu7="">This is almost what we need! This patch adds a kernel function named <code>bpf_get_netns_cookie()</code> that would get us the network namespace cookie linked to a socket:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="299" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47488H3S12GYP3X42S2REW.png&amp;w=715&amp;h=299&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47488H3S12GYP3X42S2REW.png&amp;w=640&amp;h=268&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47488H3S12GYP3X42S2REW.png&amp;w=715&amp;h=299&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47488H3S12GYP3X42S2REW.png&amp;w=750&amp;h=314&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47488H3S12GYP3X42S2REW.png&amp;w=828&amp;h=346&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47488H3S12GYP3X42S2REW.png&amp;w=1080&amp;h=452&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47488H3S12GYP3X42S2REW.png&amp;w=1280&amp;h=535&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47488H3S12GYP3X42S2REW.png&amp;w=1430&amp;h=598&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="bpf_get_netns_cookie manual page" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47488H3S12GYP3X42S2REW.png&amp;w=987&amp;h=413&amp;f=webp" data-lightbox-width="987" data-lightbox-height="413" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="299" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-nalcf22a="">A <a href="https://patchwork.kernel.org/project/linux-parisc/patch/20210210120425.53438-2-lmb@cloudflare.com" target="_blank" rel="noopener noreferrer">second patch</a> enables us to get this cookie from userspace:</p>
+<p data-astro-cid-t7az6eu7="">A <a href="https://patchwork.kernel.org/project/linux-parisc/patch/20210210120425.53438-2-lmb@cloudflare.com" target="_blank" rel="noopener noreferrer">second patch</a> enables us to get this cookie from userspace:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="340" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FAJ04SRSJ7922V473NWC.png&amp;w=715&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FAJ04SRSJ7922V473NWC.png&amp;w=640&amp;h=304&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FAJ04SRSJ7922V473NWC.png&amp;w=715&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FAJ04SRSJ7922V473NWC.png&amp;w=750&amp;h=357&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FAJ04SRSJ7922V473NWC.png&amp;w=828&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FAJ04SRSJ7922V473NWC.png&amp;w=1080&amp;h=514&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FAJ04SRSJ7922V473NWC.png&amp;w=1280&amp;h=609&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FAJ04SRSJ7922V473NWC.png&amp;w=1430&amp;h=680&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="add SO_NETNS_COOKIE socket option patch" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FAJ04SRSJ7922V473NWC.png&amp;w=1108&amp;h=527&amp;f=webp" data-lightbox-width="1108" data-lightbox-height="527" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="340" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-nalcf22a="">I know this Lorenz from somewhere :D</p>
-<p data-astro-cid-nalcf22a="">Note that this patch was shipped with the Linux <strong>v5.14</strong> release.</p>
-<p data-astro-cid-nalcf22a="">We have more guaranties now:</p>
+<p data-astro-cid-t7az6eu7="">I know this Lorenz from somewhere :D</p>
+<p data-astro-cid-t7az6eu7="">Note that this patch was shipped with the Linux <strong>v5.14</strong> release.</p>
+<p data-astro-cid-t7az6eu7="">We have more guaranties now:</p>
 <ul>
 	<li>The cookie is generated for us by the kernel.</li>
 	<li>There is a strong bound to the socket from its creation (the netns cookie value is present in the socket structure).</li>
 	<li>The network namespace cookie remains stable for its lifetime.</li>
 	<li>It provides a global identifier that can be assumed unique and not reused.</li>
 </ul>
-<h2 data-astro-cid-nalcf22a="">A patch</h2>
-<p data-astro-cid-nalcf22a="">At the socket creation, we retrieve the netns_cookie from the Xsk file descriptor with <code>getsockopt()</code>, insert it in the xsk_ctx struct and add it in the comparison performed in <code>xsk_get_ctx()</code>.</p>
-<p data-astro-cid-nalcf22a="">Our initial patch was tested on Linux v5.15 with libbpf v0.8.0.</p>
-<h3 data-astro-cid-nalcf22a="">Testing the patch</h3>
-<p data-astro-cid-nalcf22a="">We keep the same network setup script, but we set the number of queues per interface to two (QUEUES=2). This will help us check that two sockets created in the same network namespace have the same netns_cookie.</p>
-<p data-astro-cid-nalcf22a="">After recompiling flowtrackd to use our patched libbpf, we can run it inside <strong>our guest</strong> with gdb and set breakpoints on <code>xsk_get_ctx</code> as well as <code>xsk_create_ctx</code>. We now have two instances of gdb running at the same time, one debugging the system and the other debugging the application running in that system. Here is the gdb guest view:</p>
+<h2 data-astro-cid-t7az6eu7="">A patch</h2>
+<p data-astro-cid-t7az6eu7="">At the socket creation, we retrieve the netns_cookie from the Xsk file descriptor with <code>getsockopt()</code>, insert it in the xsk_ctx struct and add it in the comparison performed in <code>xsk_get_ctx()</code>.</p>
+<p data-astro-cid-t7az6eu7="">Our initial patch was tested on Linux v5.15 with libbpf v0.8.0.</p>
+<h3 data-astro-cid-t7az6eu7="">Testing the patch</h3>
+<p data-astro-cid-t7az6eu7="">We keep the same network setup script, but we set the number of queues per interface to two (QUEUES=2). This will help us check that two sockets created in the same network namespace have the same netns_cookie.</p>
+<p data-astro-cid-t7az6eu7="">After recompiling flowtrackd to use our patched libbpf, we can run it inside <strong>our guest</strong> with gdb and set breakpoints on <code>xsk_get_ctx</code> as well as <code>xsk_create_ctx</code>. We now have two instances of gdb running at the same time, one debugging the system and the other debugging the application running in that system. Here is the gdb guest view:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="427" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W3PKVFCADTMFS5NE992D.png&amp;w=715&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W3PKVFCADTMFS5NE992D.png&amp;w=640&amp;h=382&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W3PKVFCADTMFS5NE992D.png&amp;w=715&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W3PKVFCADTMFS5NE992D.png&amp;w=750&amp;h=448&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W3PKVFCADTMFS5NE992D.png&amp;w=828&amp;h=494&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W3PKVFCADTMFS5NE992D.png&amp;w=1080&amp;h=645&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W3PKVFCADTMFS5NE992D.png&amp;w=1280&amp;h=764&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W3PKVFCADTMFS5NE992D.png&amp;w=1430&amp;h=854&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="gdb guest view of the xsk context breakpoint hits" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W3PKVFCADTMFS5NE992D.png&amp;w=1415&amp;h=845&amp;f=webp" data-lightbox-width="1415" data-lightbox-height="845" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="427" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-nalcf22a="">Here is the gdb system view:</p>
+<p data-astro-cid-t7az6eu7="">Here is the gdb system view:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="433" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M0J91JCQCC0KM6QMY8FS.png&amp;w=715&amp;h=433&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M0J91JCQCC0KM6QMY8FS.png&amp;w=640&amp;h=388&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M0J91JCQCC0KM6QMY8FS.png&amp;w=715&amp;h=433&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M0J91JCQCC0KM6QMY8FS.png&amp;w=750&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M0J91JCQCC0KM6QMY8FS.png&amp;w=828&amp;h=501&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M0J91JCQCC0KM6QMY8FS.png&amp;w=1080&amp;h=654&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M0J91JCQCC0KM6QMY8FS.png&amp;w=1280&amp;h=775&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M0J91JCQCC0KM6QMY8FS.png&amp;w=1430&amp;h=866&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="gdb system view of the xsk_bind breakpoint hits" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M0J91JCQCC0KM6QMY8FS.png&amp;w=1241&amp;h=751&amp;f=webp" data-lightbox-width="1241" data-lightbox-height="751" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="433" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-nalcf22a="">We can see that the netns_cookie value for the first two Xsks is 1 (root namespace) and the <code>net_cookie</code> value for the two other Xsks is 8193 (inner-ns namespace).</p>
-<p data-astro-cid-nalcf22a="">flowtrackd didn't crash and is behaving as expected. It works!</p>
-<h2 data-astro-cid-nalcf22a="">Conclusion</h2>
-<h3 data-astro-cid-nalcf22a="">Situation</h3>
-<p data-astro-cid-nalcf22a="">Creating AF_XDP sockets with the XDP_SHARED_UMEM flag set fails when the two devices’ ifindex (and the queue_id) are the same. This can happen with devices in different network namespaces.</p>
-<p data-astro-cid-nalcf22a="">In the shared UMEM mode, each Xsk is expected to have a dedicated fill and completion queue. Context data about those queues are set by libbpf in a linked-list stored by the UMEM object. The comparison performed to pick the right context in the linked-list only takes into account the device ifindex and the queue_id which can be the same when devices are in different network namespaces.</p>
-<h3 data-astro-cid-nalcf22a="">Resolution</h3>
-<p data-astro-cid-nalcf22a="">We retrieve the <code>netns_cookie</code> associated with the socket at its creation and add it in the comparison operation.</p>
-<p data-astro-cid-nalcf22a="">The <a href="https://github.com/xdp-project/xdp-tools/pull/205" target="_blank" rel="noopener noreferrer">fix</a> has been submitted and merged in libxdp which is where the AF_XDP parts of libbpf now <a href="https://github.com/libbpf/libbpf/wiki/Libbpf:-the-road-to-v1.0#xskch-is-moving-into-libxdp" target="_blank" rel="noopener noreferrer">live</a>.</p>
-<p data-astro-cid-nalcf22a="">We’ve also <a href="https://github.com/libbpf/libbpf/releases/tag/v0.8.1" target="_blank" rel="noopener noreferrer">backported the fix</a> in libbpf and updated the <a href="https://github.com/libbpf/libbpf-sys/releases/tag/0.8.2%2Bv0.8.1" target="_blank" rel="noopener noreferrer">libbpf-sys Rust crate</a> accordingly.</p>
+<p data-astro-cid-t7az6eu7="">We can see that the netns_cookie value for the first two Xsks is 1 (root namespace) and the <code>net_cookie</code> value for the two other Xsks is 8193 (inner-ns namespace).</p>
+<p data-astro-cid-t7az6eu7="">flowtrackd didn't crash and is behaving as expected. It works!</p>
+<h2 data-astro-cid-t7az6eu7="">Conclusion</h2>
+<h3 data-astro-cid-t7az6eu7="">Situation</h3>
+<p data-astro-cid-t7az6eu7="">Creating AF_XDP sockets with the XDP_SHARED_UMEM flag set fails when the two devices’ ifindex (and the queue_id) are the same. This can happen with devices in different network namespaces.</p>
+<p data-astro-cid-t7az6eu7="">In the shared UMEM mode, each Xsk is expected to have a dedicated fill and completion queue. Context data about those queues are set by libbpf in a linked-list stored by the UMEM object. The comparison performed to pick the right context in the linked-list only takes into account the device ifindex and the queue_id which can be the same when devices are in different network namespaces.</p>
+<h3 data-astro-cid-t7az6eu7="">Resolution</h3>
+<p data-astro-cid-t7az6eu7="">We retrieve the <code>netns_cookie</code> associated with the socket at its creation and add it in the comparison operation.</p>
+<p data-astro-cid-t7az6eu7="">The <a href="https://github.com/xdp-project/xdp-tools/pull/205" target="_blank" rel="noopener noreferrer">fix</a> has been submitted and merged in libxdp which is where the AF_XDP parts of libbpf now <a href="https://github.com/libbpf/libbpf/wiki/Libbpf:-the-road-to-v1.0#xskch-is-moving-into-libxdp" target="_blank" rel="noopener noreferrer">live</a>.</p>
+<p data-astro-cid-t7az6eu7="">We’ve also <a href="https://github.com/libbpf/libbpf/releases/tag/v0.8.1" target="_blank" rel="noopener noreferrer">backported the fix</a> in libbpf and updated the <a href="https://github.com/libbpf/libbpf-sys/releases/tag/0.8.2%2Bv0.8.1" target="_blank" rel="noopener noreferrer">libbpf-sys Rust crate</a> accordingly.</p>
