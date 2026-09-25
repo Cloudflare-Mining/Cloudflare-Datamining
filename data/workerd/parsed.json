@@ -7262,6 +7262,11 @@
 					"name": "accessBindingService",
 					"annotations": {},
 					"type": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator"
+				},
+				{
+					"name": "workflowsEngine",
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:WorkflowsEngine"
 				}
 			]
 		},
@@ -7581,6 +7586,21 @@
 			]
 		},
 		{
+			"name": "workerd/src/workerd/server/workerd.capnp:WorkflowsEngine",
+			"fields": [
+				{
+					"name": "actorClass",
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator"
+				},
+				{
+					"name": "workflows",
+					"annotations": {},
+					"type": "List(workerd/src/workerd/server/workerd.capnp:WorkflowsEngine.Workflow)"
+				}
+			]
+		},
+		{
 			"name": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.Type",
 			"fields": [
 				{
@@ -7862,6 +7882,26 @@
 					"name": "cgroupPermissions",
 					"annotations": {},
 					"type": "Text"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/workerd.capnp:WorkflowsEngine.Workflow",
+			"fields": [
+				{
+					"name": "className",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "name",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "bindingService",
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator"
 				}
 			]
 		},
