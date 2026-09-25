@@ -1,11 +1,11 @@
-<p data-astro-cid-byeekcgh=""><a href="https://www.kernel.org/doc/html/latest/admin-guide/LSM/index.html" target="_blank" rel="noopener noreferrer">Linux Security Module</a> (LSM) 是一個基於勾點的架構，用於在 Linux 核心中實作安全性原則及強制存取控制。直到前不久，期望實作安全性原則的使用者還只有兩個選項：即設定 AppArmor 或 SELinux 等現有 LSM 模組，或編寫自訂核心模組。</p>
-<p data-astro-cid-byeekcgh=""><a href="https://cdn.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.7" target="_blank" rel="noopener noreferrer">Linux 5.7</a> 推出了第三種方法︰<a href="https://docs.kernel.org/bpf/prog_lsm.html" target="_blank" rel="noopener noreferrer">LSM 延伸柏克萊封包篩選 (eBPF)</a>（簡稱為 LSM BPF）。使用 LSM BPF，開發人員無需設定或載入核心模組即可編寫精細原則。LSM BPF 程式在載入時進行驗證，然後在呼叫路徑中連線 LSM 勾點時執行。</p>
-<h2 data-astro-cid-byeekcgh="">我們來解決一個實際問題</h2>
-<p data-astro-cid-byeekcgh="">現代作業系統提供的設施允許對核心資源進行「分割」。例如，FreeBSD 有「jail」，Solaris 有「zone」。Linux 則有所不同，它提供一組看似獨立的設施，每個設施都允許隔離特定的資源。這些設施被稱為「命名空間」，並且已經在核心中不斷發展了很多年。它們是 Docker、lxc 或 firejail 等熱門工具的基礎。許多命名空間毫無爭議，比如 UTS 命名空間，它允許主機系統隱藏其主機名稱和時間。另一些則既複雜又直白——眾所週知，NET 和 NS (mount) 命名空間令人很難理解。最後，還有這個非常特殊、非常奇怪的 USER 命名空間。</p>
-<p data-astro-cid-byeekcgh="">USER 命名空間非常特殊，因為它允許擁有者在其內部以「root」身分進行操作。雖然其工作原理不在本部落格貼文所討論的範圍之內，但可以說，正是因為有它作為基礎，才會有 Docker 這樣不以真正的 root 身分操作的工具，以及無根容器這樣的物件。</p>
-<p data-astro-cid-byeekcgh="">由於其性質，允許無權限使用者存取 USER 命名空間總是會帶來很大的安全風險。權限提升就是這樣一種風險。</p>
-<p data-astro-cid-byeekcgh="">權限提升是常見的作業系統攻擊面。使用者獲得權限的一種方法就是透過 unshare <a href="https://en.wikipedia.org/wiki/System_call" target="_blank" rel="noopener noreferrer">syscall</a> 將其命名空間對應至根命名空間，並指定 <em>CLONE_NEWUSER</em> 旗標。這告訴 unshare 建立一個具有完整權限的新使用者命名空間，並將新使用者及群組 ID 對應至之前的命名空間。您可以使用 <a href="https://man7.org/linux/man-pages/man1/unshare.1.html" target="_blank" rel="noopener noreferrer">unshare(1)</a> 程式將 root 對應至原始命名空間：</p>
-<p data-astro-cid-byeekcgh="">在大多數情况下，使用 unshare 並無危害，並且預定以較低的權限執行。但是，此 syscall 已被發現用於<a href="https://nvd.nist.gov/vuln/detail/CVE-2022-0492" target="_blank" rel="noopener noreferrer">提升權限</a>。</p>
+<p data-astro-cid-c6i3vrlz=""><a href="https://www.kernel.org/doc/html/latest/admin-guide/LSM/index.html" target="_blank" rel="noopener noreferrer">Linux Security Module</a> (LSM) 是一個基於勾點的架構，用於在 Linux 核心中實作安全性原則及強制存取控制。直到前不久，期望實作安全性原則的使用者還只有兩個選項：即設定 AppArmor 或 SELinux 等現有 LSM 模組，或編寫自訂核心模組。</p>
+<p data-astro-cid-c6i3vrlz=""><a href="https://cdn.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.7" target="_blank" rel="noopener noreferrer">Linux 5.7</a> 推出了第三種方法︰<a href="https://docs.kernel.org/bpf/prog_lsm.html" target="_blank" rel="noopener noreferrer">LSM 延伸柏克萊封包篩選 (eBPF)</a>（簡稱為 LSM BPF）。使用 LSM BPF，開發人員無需設定或載入核心模組即可編寫精細原則。LSM BPF 程式在載入時進行驗證，然後在呼叫路徑中連線 LSM 勾點時執行。</p>
+<h2 data-astro-cid-c6i3vrlz="">我們來解決一個實際問題</h2>
+<p data-astro-cid-c6i3vrlz="">現代作業系統提供的設施允許對核心資源進行「分割」。例如，FreeBSD 有「jail」，Solaris 有「zone」。Linux 則有所不同，它提供一組看似獨立的設施，每個設施都允許隔離特定的資源。這些設施被稱為「命名空間」，並且已經在核心中不斷發展了很多年。它們是 Docker、lxc 或 firejail 等熱門工具的基礎。許多命名空間毫無爭議，比如 UTS 命名空間，它允許主機系統隱藏其主機名稱和時間。另一些則既複雜又直白——眾所週知，NET 和 NS (mount) 命名空間令人很難理解。最後，還有這個非常特殊、非常奇怪的 USER 命名空間。</p>
+<p data-astro-cid-c6i3vrlz="">USER 命名空間非常特殊，因為它允許擁有者在其內部以「root」身分進行操作。雖然其工作原理不在本部落格貼文所討論的範圍之內，但可以說，正是因為有它作為基礎，才會有 Docker 這樣不以真正的 root 身分操作的工具，以及無根容器這樣的物件。</p>
+<p data-astro-cid-c6i3vrlz="">由於其性質，允許無權限使用者存取 USER 命名空間總是會帶來很大的安全風險。權限提升就是這樣一種風險。</p>
+<p data-astro-cid-c6i3vrlz="">權限提升是常見的作業系統攻擊面。使用者獲得權限的一種方法就是透過 unshare <a href="https://en.wikipedia.org/wiki/System_call" target="_blank" rel="noopener noreferrer">syscall</a> 將其命名空間對應至根命名空間，並指定 <em>CLONE_NEWUSER</em> 旗標。這告訴 unshare 建立一個具有完整權限的新使用者命名空間，並將新使用者及群組 ID 對應至之前的命名空間。您可以使用 <a href="https://man7.org/linux/man-pages/man1/unshare.1.html" target="_blank" rel="noopener noreferrer">unshare(1)</a> 程式將 root 對應至原始命名空間：</p>
+<p data-astro-cid-c6i3vrlz="">在大多數情况下，使用 unshare 並無危害，並且預定以較低的權限執行。但是，此 syscall 已被發現用於<a href="https://nvd.nist.gov/vuln/detail/CVE-2022-0492" target="_blank" rel="noopener noreferrer">提升權限</a>。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> id</span></span>
 <span class="line"><span class="sk-24292e-fff">uid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1000</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">fred</span><span class="sk-24292e-fff">) gid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1000</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">fred</span><span class="sk-24292e-fff">) groups</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1000</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">fred</span><span class="sk-24292e-fff">) </span><span class="sk-6f42c1-ffc799">…</span></span>
@@ -37,13 +37,13 @@
 		})
 	});
 </script>
-<p data-astro-cid-byeekcgh="">Syscalls <em>clone</em> 和 <em>clone3</em> 很是值得研究，因為它們還具有 <em>CLONE_NEWUSER</em> 的能力。然而，在這篇貼文中，我們將重點討論 unshare。</p>
-<p data-astro-cid-byeekcgh="">Debian 透過這個<a href="https://sources.debian.org/patches/linux/3.16.56-1+deb8u1/debian/add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by-default.patch" target="_blank" rel="noopener noreferrer">「add sysctl to disallow unprivileged CLONE_NEWUSER by default」</a>修補程式解決了這個問題，但它不是主流。另一個類似的修補程式<a href="https://lore.kernel.org/all/1453502345-30416-3-git-send-email-keescook@chromium.org" target="_blank" rel="noopener noreferrer">「sysctl: allow CLONE_NEWUSER to be disabled」</a>試圖成為主流，但遭到了排擠。一種批評意見是針對特定的應用程式<a href="https://lore.kernel.org/all/87poq5y0jw.fsf@x220.int.ebiederm.org" target="_blank" rel="noopener noreferrer">無法切換此功能</a>。在《<a href="https://lwn.net/Articles/673597" target="_blank" rel="noopener noreferrer">Controlling access to user namespaces</a>》（控制對使用者命名空間的存取權）這篇文章中，作者寫道「...the current patches do not appear to have an easy path into the mainline（現有修補程式似乎很難成為主流）。」我們可以看到，這些修補程式最終並沒有包含在 vanilla 核心中。</p>
-<h2 data-astro-cid-byeekcgh="">我們的解決方案 — LSM BPF</h2>
-<p data-astro-cid-byeekcgh="">由於似乎無法選擇使用上游程式碼來限制 USER 命名空間，我們决定使用 LSM BPF 來規避這些問題。使用這種方法，不僅無需修改核心，還可以體現複雜的規則來保護存取。</p>
-<h3 data-astro-cid-byeekcgh="">追蹤適當的候選勾點</h3>
-<p data-astro-cid-byeekcgh="">首先，我們來追蹤目標 syscall。我們可以在 <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/syscalls.h#L608" target="_blank" rel="noopener noreferrer"><em>include/linux/syscalls.h</em></a> 檔案中找到原型。這在其中並不太容易進行追蹤，但這一行：</p>
-<p data-astro-cid-byeekcgh="">為我們提供了接下來在 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3201" target="_blank" rel="noopener noreferrer"><em>kernel/fork.c</em></a> 中的何處進行尋找的線索。在那裡對 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3082" target="_blank" rel="noopener noreferrer"><em>ksys_unshare()</em></a> 進行了呼叫。透過該函式進行挖掘，我們找到了對 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3129" target="_blank" rel="noopener noreferrer"><em>unshare_userns()</em></a> 的呼叫。這看起來很有希望成功。</p>
+<p data-astro-cid-c6i3vrlz="">Syscalls <em>clone</em> 和 <em>clone3</em> 很是值得研究，因為它們還具有 <em>CLONE_NEWUSER</em> 的能力。然而，在這篇貼文中，我們將重點討論 unshare。</p>
+<p data-astro-cid-c6i3vrlz="">Debian 透過這個<a href="https://sources.debian.org/patches/linux/3.16.56-1+deb8u1/debian/add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by-default.patch" target="_blank" rel="noopener noreferrer">「add sysctl to disallow unprivileged CLONE_NEWUSER by default」</a>修補程式解決了這個問題，但它不是主流。另一個類似的修補程式<a href="https://lore.kernel.org/all/1453502345-30416-3-git-send-email-keescook@chromium.org" target="_blank" rel="noopener noreferrer">「sysctl: allow CLONE_NEWUSER to be disabled」</a>試圖成為主流，但遭到了排擠。一種批評意見是針對特定的應用程式<a href="https://lore.kernel.org/all/87poq5y0jw.fsf@x220.int.ebiederm.org" target="_blank" rel="noopener noreferrer">無法切換此功能</a>。在《<a href="https://lwn.net/Articles/673597" target="_blank" rel="noopener noreferrer">Controlling access to user namespaces</a>》（控制對使用者命名空間的存取權）這篇文章中，作者寫道「...the current patches do not appear to have an easy path into the mainline（現有修補程式似乎很難成為主流）。」我們可以看到，這些修補程式最終並沒有包含在 vanilla 核心中。</p>
+<h2 data-astro-cid-c6i3vrlz="">我們的解決方案 — LSM BPF</h2>
+<p data-astro-cid-c6i3vrlz="">由於似乎無法選擇使用上游程式碼來限制 USER 命名空間，我們决定使用 LSM BPF 來規避這些問題。使用這種方法，不僅無需修改核心，還可以體現複雜的規則來保護存取。</p>
+<h3 data-astro-cid-c6i3vrlz="">追蹤適當的候選勾點</h3>
+<p data-astro-cid-c6i3vrlz="">首先，我們來追蹤目標 syscall。我們可以在 <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/syscalls.h#L608" target="_blank" rel="noopener noreferrer"><em>include/linux/syscalls.h</em></a> 檔案中找到原型。這在其中並不太容易進行追蹤，但這一行：</p>
+<p data-astro-cid-c6i3vrlz="">為我們提供了接下來在 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3201" target="_blank" rel="noopener noreferrer"><em>kernel/fork.c</em></a> 中的何處進行尋找的線索。在那裡對 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3082" target="_blank" rel="noopener noreferrer"><em>ksys_unshare()</em></a> 進行了呼叫。透過該函式進行挖掘，我們找到了對 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3129" target="_blank" rel="noopener noreferrer"><em>unshare_userns()</em></a> 的呼叫。這看起來很有希望成功。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">/* kernel/fork.c */</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -51,8 +51,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">到目前為止，我們已經確定了 syscall 實作，但下一個問題是我們可以使用哪些勾點？因為我們透過<a href="https://man7.org/linux/man-pages/man2/unshare.2.html" target="_blank" rel="noopener noreferrer">手冊頁</a>知道 unshare 用於變動工作，所以我們在 <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/lsm_hooks.h#L605" target="_blank" rel="noopener noreferrer"><em>include/linux/lsm_hooks.h</em></a> 中查看基於工作的勾點。回到函式 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/user_namespace.c#L171" target="_blank" rel="noopener noreferrer"><em>unshare_userns()</em></a>，我們看到對 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/cred.c#L252" target="_blank" rel="noopener noreferrer"><em>prepare_creds()</em></a> 進行了呼叫。這對 <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/lsm_hooks.h#L624" target="_blank" rel="noopener noreferrer"><em>cred_prepare</em></a> 勾點來說非常熟悉。為了透過 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/cred.c#L291" target="_blank" rel="noopener noreferrer"><em>prepare_creds()</em></a> 驗證我們有自己的配對，我們看到對安全性勾點 <a href="https://elixir.bootlin.com/linux/v5.18/source/security/security.c#L1706" target="_blank" rel="noopener noreferrer"><em>security_prepare_creds()</em></a> 的呼叫，其最終呼叫了勾點：</p>
-<p data-astro-cid-byeekcgh="">無需詳細探究細節，我們也知道這是一個很好用的勾點，因為 <em>prepare_creds()</em> 剛好在 <em>create_user_ns()</em> （位於 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/user_namespace.c#L181" target="_blank" rel="noopener noreferrer"><em>unshare_userns()</em></a> 中）前進行了呼叫，後者是我們嘗試封鎖的操作。</p>
+<p data-astro-cid-c6i3vrlz="">到目前為止，我們已經確定了 syscall 實作，但下一個問題是我們可以使用哪些勾點？因為我們透過<a href="https://man7.org/linux/man-pages/man2/unshare.2.html" target="_blank" rel="noopener noreferrer">手冊頁</a>知道 unshare 用於變動工作，所以我們在 <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/lsm_hooks.h#L605" target="_blank" rel="noopener noreferrer"><em>include/linux/lsm_hooks.h</em></a> 中查看基於工作的勾點。回到函式 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/user_namespace.c#L171" target="_blank" rel="noopener noreferrer"><em>unshare_userns()</em></a>，我們看到對 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/cred.c#L252" target="_blank" rel="noopener noreferrer"><em>prepare_creds()</em></a> 進行了呼叫。這對 <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/lsm_hooks.h#L624" target="_blank" rel="noopener noreferrer"><em>cred_prepare</em></a> 勾點來說非常熟悉。為了透過 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/cred.c#L291" target="_blank" rel="noopener noreferrer"><em>prepare_creds()</em></a> 驗證我們有自己的配對，我們看到對安全性勾點 <a href="https://elixir.bootlin.com/linux/v5.18/source/security/security.c#L1706" target="_blank" rel="noopener noreferrer"><em>security_prepare_creds()</em></a> 的呼叫，其最終呼叫了勾點：</p>
+<p data-astro-cid-c6i3vrlz="">無需詳細探究細節，我們也知道這是一個很好用的勾點，因為 <em>prepare_creds()</em> 剛好在 <em>create_user_ns()</em> （位於 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/user_namespace.c#L181" target="_blank" rel="noopener noreferrer"><em>unshare_userns()</em></a> 中）前進行了呼叫，後者是我們嘗試封鎖的操作。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">…</span></span>
 <span class="line"><span class="sk-24292e-fff">rc </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> call_int_hook</span><span class="sk-24292e-fff">(cred_prepare, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, new, old, gfp);</span></span>
@@ -62,10 +62,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-byeekcgh="">LSM BPF 解決方案</h3>
-<p data-astro-cid-byeekcgh="">我們將使用 <a href="https://nakryiko.com/posts/bpf-core-reference-guide/#defining-own-co-re-relocatable-type-definitions" target="_blank" rel="noopener noreferrer">eBPF compile once-run everywhere (CO-RE)</a> 方法進行編譯。透過這種方法，我們可以在一個架構上進行編譯，在另一個架構中進行載入。但我們將專門以 x86_64 為目標。適用於 ARM64 的 LSM BPF 仍在開發中，以下程式碼將無法在該架構上執行。關注 <a href="https://lore.kernel.org/bpf" target="_blank" rel="noopener noreferrer">BPF 郵寄名單</a>以追蹤進度。</p>
-<p data-astro-cid-byeekcgh="">此解決方案在具有以下設定且版本 &gt;= 5.15 的核心上進行了測試：</p>
-<p data-astro-cid-byeekcgh="">可能需要開機選項 <code>lsm=bpf</code>（若是 <code>CONFIG_LSM</code> 在名單中不包含「bpf」的話）。</p>
+<h3 data-astro-cid-c6i3vrlz="">LSM BPF 解決方案</h3>
+<p data-astro-cid-c6i3vrlz="">我們將使用 <a href="https://nakryiko.com/posts/bpf-core-reference-guide/#defining-own-co-re-relocatable-type-definitions" target="_blank" rel="noopener noreferrer">eBPF compile once-run everywhere (CO-RE)</a> 方法進行編譯。透過這種方法，我們可以在一個架構上進行編譯，在另一個架構中進行載入。但我們將專門以 x86_64 為目標。適用於 ARM64 的 LSM BPF 仍在開發中，以下程式碼將無法在該架構上執行。關注 <a href="https://lore.kernel.org/bpf" target="_blank" rel="noopener noreferrer">BPF 郵寄名單</a>以追蹤進度。</p>
+<p data-astro-cid-c6i3vrlz="">此解決方案在具有以下設定且版本 &gt;= 5.15 的核心上進行了測試：</p>
+<p data-astro-cid-c6i3vrlz="">可能需要開機選項 <code>lsm=bpf</code>（若是 <code>CONFIG_LSM</code> 在名單中不包含「bpf」的話）。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">BPF_EVENTS</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">BPF_JIT</span></span>
@@ -83,9 +83,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">我們從前序編碼開始：</p>
-<p data-astro-cid-byeekcgh=""><em>deny_unshare.bpf.c</em>：</p>
-<p data-astro-cid-byeekcgh="">接下來，我們透過以下方式為 CO-RE 重新配置建立必要的結構：</p>
+<p data-astro-cid-c6i3vrlz="">我們從前序編碼開始：</p>
+<p data-astro-cid-c6i3vrlz=""><em>deny_unshare.bpf.c</em>：</p>
+<p data-astro-cid-c6i3vrlz="">接下來，我們透過以下方式為 CO-RE 重新配置建立必要的結構：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;linux/bpf.h&gt;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;linux/capability.h&gt;</span></span>
@@ -104,8 +104,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh=""><em>deny_unshare.bpf.c</em>：</p>
-<p data-astro-cid-byeekcgh="">我們不需要完全充實結構；我們只需要提供程式運作所需的絕對最少資訊即可。CO-RE 將採取任何必要的動作來為您的核心執行重新配置。因此，編寫 LSM BPF 程式就變得特別簡單！</p>
+<p data-astro-cid-c6i3vrlz=""><em>deny_unshare.bpf.c</em>：</p>
+<p data-astro-cid-c6i3vrlz="">我們不需要完全充實結構；我們只需要提供程式運作所需的絕對最少資訊即可。CO-RE 將採取任何必要的動作來為您的核心執行重新配置。因此，編寫 LSM BPF 程式就變得特別簡單！</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">…</span></span>
 <span class="line"></span>
@@ -137,8 +137,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh=""><em>deny_unshare.bpf.c</em>：</p>
-<p data-astro-cid-byeekcgh="">建立程式是第一步，第二步是載入程式並將其連接到所需的勾點。可以採取幾種方法來完成這一步：<a href="https://github.com/cilium/ebpf" target="_blank" rel="noopener noreferrer">Cilium ebpf</a> 專案、<a href="https://github.com/libbpf/libbpf-rs" target="_blank" rel="noopener noreferrer">Rust 繫結</a>以及 <a href="https://ebpf.io/projects" target="_blank" rel="noopener noreferrer">ebpf.io</a> 專案橫向頁面上的其他幾個專案。我們將使用原生 libbpf。</p>
+<p data-astro-cid-c6i3vrlz=""><em>deny_unshare.bpf.c</em>：</p>
+<p data-astro-cid-c6i3vrlz="">建立程式是第一步，第二步是載入程式並將其連接到所需的勾點。可以採取幾種方法來完成這一步：<a href="https://github.com/cilium/ebpf" target="_blank" rel="noopener noreferrer">Cilium ebpf</a> 專案、<a href="https://github.com/libbpf/libbpf-rs" target="_blank" rel="noopener noreferrer">Rust 繫結</a>以及 <a href="https://ebpf.io/projects" target="_blank" rel="noopener noreferrer">ebpf.io</a> 專案橫向頁面上的其他幾個專案。我們將使用原生 libbpf。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">SEC</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"lsm/cred_prepare"</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">int</span><span class="sk-6f42c1-ffc799"> BPF_PROG</span><span class="sk-24292e-fff">(handle_cred_prepare, </span><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-24292e-fff"> cred </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-e36209-fff">new</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-d73a49-a0a0a0"> struct</span><span class="sk-24292e-fff"> cred </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-e36209-fff">old</span><span class="sk-24292e-fff">,</span></span>
@@ -186,8 +186,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh=""><em>deny_unshare.c</em>：</p>
-<p data-astro-cid-byeekcgh="">最後，我們使用下列 Makefile 進行編譯：</p>
+<p data-astro-cid-c6i3vrlz=""><em>deny_unshare.c</em>：</p>
+<p data-astro-cid-c6i3vrlz="">最後，我們使用下列 Makefile 進行編譯：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;bpf/libbpf.h&gt;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;unistd.h&gt;</span></span>
@@ -237,8 +237,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh=""><em>Makefile</em>：</p>
-<h3 data-astro-cid-byeekcgh="">結果</h3>
+<p data-astro-cid-c6i3vrlz=""><em>Makefile</em>：</p>
+<h3 data-astro-cid-c6i3vrlz="">結果</h3>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>CLANG ?= clang-13</span></span>
 <span class="line"><span>LLVM_STRIP ?= llvm-strip-13</span></span>
@@ -281,8 +281,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">在新的終端機視窗中執行：</p>
-<p data-astro-cid-byeekcgh="">在另一個終端機視窗中，我們被成功封锁！</p>
+<p data-astro-cid-c6i3vrlz="">在新的終端機視窗中執行：</p>
+<p data-astro-cid-c6i3vrlz="">在另一個終端機視窗中，我們被成功封锁！</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> make</span><span class="sk-032f62-99ffe4"> run</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">…</span></span>
@@ -292,7 +292,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">該原則還有一個額外功能，可以永遠允許權限通過：</p>
+<p data-astro-cid-c6i3vrlz="">該原則還有一個額外功能，可以永遠允許權限通過：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> unshare</span><span class="sk-005cc5-99ffe4"> -rU</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">unshare:</span><span class="sk-032f62-99ffe4"> unshare</span><span class="sk-032f62-99ffe4"> failed:</span><span class="sk-032f62-99ffe4"> Cannot</span><span class="sk-032f62-99ffe4"> allocate</span><span class="sk-032f62-99ffe4"> memory</span></span>
@@ -303,7 +303,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">在無權限情况下，syscall 會提前中止。在有權限情况下，會對效能產生什麼影響呢？</p>
+<p data-astro-cid-c6i3vrlz="">在無權限情况下，syscall 會提前中止。在有權限情况下，會對效能產生什麼影響呢？</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> unshare</span><span class="sk-005cc5-99ffe4"> -rU</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># id</span></span>
@@ -313,9 +313,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-byeekcgh="">測量效能</h3>
-<p data-astro-cid-byeekcgh="">我們將使用一行 unshare 來對應使用者命名空間，並在其中執行一個命令進行測量：</p>
-<p data-astro-cid-byeekcgh="">透過解析 syscall unshare 進入/結束的 CPU 週期數，我們將以 root 使用者身分進行下列測量：</p>
+<h3 data-astro-cid-c6i3vrlz="">測量效能</h3>
+<p data-astro-cid-c6i3vrlz="">我們將使用一行 unshare 來對應使用者命名空間，並在其中執行一個命令進行測量：</p>
+<p data-astro-cid-c6i3vrlz="">透過解析 syscall unshare 進入/結束的 CPU 週期數，我們將以 root 使用者身分進行下列測量：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> unshare</span><span class="sk-005cc5-99ffe4"> -frU</span><span class="sk-005cc5-99ffe4"> --kill-child</span><span class="sk-005cc5-99ffe4"> --</span><span class="sk-032f62-99ffe4"> bash</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> "exit 0"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -327,8 +327,8 @@
 	<li>在無原則情况下執行命令</li>
 	<li>在有原則情况下執行命令</li>
 </ol>
-<p data-astro-cid-byeekcgh="">我們將使用 <a href="https://docs.kernel.org/trace/ftrace.html" target="_blank" rel="noopener noreferrer">ftrace</a> 來記錄測量值：</p>
-<p data-astro-cid-byeekcgh="">此時，我們專門為 unshare 啟用了 syscall 進入和結束追蹤。現在我們設定進入/結束呼叫的時間解析來計算 CPU 週期數：</p>
+<p data-astro-cid-c6i3vrlz="">我們將使用 <a href="https://docs.kernel.org/trace/ftrace.html" target="_blank" rel="noopener noreferrer">ftrace</a> 來記錄測量值：</p>
+<p data-astro-cid-c6i3vrlz="">此時，我們專門為 unshare 啟用了 syscall 進入和結束追蹤。現在我們設定進入/結束呼叫的時間解析來計算 CPU 週期數：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> su</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># cd /sys/kernel/debug/tracing</span></span>
@@ -338,7 +338,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">接下來，我們開始進行測量：</p>
+<p data-astro-cid-c6i3vrlz="">接下來，我們開始進行測量：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># echo 'x86-tsc' &gt; trace_clock </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -346,7 +346,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">在新的終端機視窗中執行原則，然後執行下一個 syscall：</p>
+<p data-astro-cid-c6i3vrlz="">在新的終端機視窗中執行原則，然後執行下一個 syscall：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># unshare -frU --kill-child -- bash -c "exit 0" &amp;</span></span>
 <span class="line"><span class="sk-24292e-fff">[1] </span><span class="sk-6f42c1-ffc799">92014</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -355,7 +355,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">現在我們對兩個呼叫進行比較：</p>
+<p data-astro-cid-c6i3vrlz="">現在我們對兩個呼叫進行比較：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># unshare -frU --kill-child -- bash -c "exit 0" &amp;</span></span>
 <span class="line"><span class="sk-24292e-fff">[2] </span><span class="sk-6f42c1-ffc799">92019</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -364,7 +364,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">unshare-92014 使用了 63294 個週期。</p>
+<p data-astro-cid-c6i3vrlz="">unshare-92014 使用了 63294 個週期。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># cat trace</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># tracer: nop</span></span>
@@ -389,9 +389,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">unshare-92019 使用了 70138 個週期。</p>
-<p data-astro-cid-byeekcgh="">在兩次測量之間有 6844 (~10%) 個週期的差值。結果還不錯！</p>
-<p data-astro-cid-byeekcgh="">這些數字是針對單個 syscall 的，並且程式碼呼叫頻率越高，這些數字加起來的總和就會越大。unshare 通常在建立工作時進行呼叫，而不是在程式正常執行期間反覆呼叫。您的使用案例需要仔細考量和測量。</p>
-<h2 data-astro-cid-byeekcgh="">結尾</h2>
-<p data-astro-cid-byeekcgh="">我們瞭解了 LSM BPF 是什麼，如何使用 unshare 將使用者對應至 root，以及如何透過在 eBPF 中實作解決方案來解决實際問題。追蹤適當的勾點並不容易，不僅需要有相關經驗，還需要大量的核心程式碼。所幸，這是最難的部分。因為原則是用 C 語言編寫的，所以我們可以根據我們的問題對原則進行細微地調整。這意味著可以使用允許清單來延伸此原則，以允許某些程式或使用者繼續使用無權限的 unshare。最後，我們瞭解了此程式對效能的影響，發現用於封锁攻擊手段的開支是非常值得的。</p>
-<p data-astro-cid-byeekcgh="">「Cannot allocate memory」（無法配置記憶體）不是拒絕權限的明確錯誤訊息。我們提出了一個<a href="https://lore.kernel.org/all/20220608150942.776446-1-fred@cloudflare.com" target="_blank" rel="noopener noreferrer">修補程式</a>，來傳播 <em>cred_prepare</em> 中的錯誤碼以連結呼叫堆疊。最終我們得出結論：新勾點更適合解決此問題。敬請期待！</p>
+<p data-astro-cid-c6i3vrlz="">unshare-92019 使用了 70138 個週期。</p>
+<p data-astro-cid-c6i3vrlz="">在兩次測量之間有 6844 (~10%) 個週期的差值。結果還不錯！</p>
+<p data-astro-cid-c6i3vrlz="">這些數字是針對單個 syscall 的，並且程式碼呼叫頻率越高，這些數字加起來的總和就會越大。unshare 通常在建立工作時進行呼叫，而不是在程式正常執行期間反覆呼叫。您的使用案例需要仔細考量和測量。</p>
+<h2 data-astro-cid-c6i3vrlz="">結尾</h2>
+<p data-astro-cid-c6i3vrlz="">我們瞭解了 LSM BPF 是什麼，如何使用 unshare 將使用者對應至 root，以及如何透過在 eBPF 中實作解決方案來解决實際問題。追蹤適當的勾點並不容易，不僅需要有相關經驗，還需要大量的核心程式碼。所幸，這是最難的部分。因為原則是用 C 語言編寫的，所以我們可以根據我們的問題對原則進行細微地調整。這意味著可以使用允許清單來延伸此原則，以允許某些程式或使用者繼續使用無權限的 unshare。最後，我們瞭解了此程式對效能的影響，發現用於封锁攻擊手段的開支是非常值得的。</p>
+<p data-astro-cid-c6i3vrlz="">「Cannot allocate memory」（無法配置記憶體）不是拒絕權限的明確錯誤訊息。我們提出了一個<a href="https://lore.kernel.org/all/20220608150942.776446-1-fred@cloudflare.com" target="_blank" rel="noopener noreferrer">修補程式</a>，來傳播 <em>cred_prepare</em> 中的錯誤碼以連結呼叫堆疊。最終我們得出結論：新勾點更適合解決此問題。敬請期待！</p>

@@ -1,8 +1,8 @@
-<p data-astro-cid-byeekcgh="">After the recent announcement regarding <a href="https://blog.cloudflare.com/announcing-wasi-on-workers">WASI support in Workers</a>, I decided to see what it would take to get code written in <a href="https://ziglang.org" target="_blank" rel="noopener noreferrer">Zig</a> to run as a Worker, and it turned out to be trivial. This post documents the process I followed as a new user of Zig. It’s so exciting to see how Cloudflare Workers is a polyglot platform allowing you to write programs in the language you love, or the language you’re learning!</p>
-<h3 data-astro-cid-byeekcgh="">Hello, World!</h3>
-<p data-astro-cid-byeekcgh="">I’m not a Zig expert by any means, and to keep things entirely honest I’ve only just started looking into the language, but we all have to start somewhere. So, if my Zig code isn’t perfect please bear with me. My goal was to build a real, small program using Zig and deploy it on Cloudflare Workers. And to see how fast I can go from a blank screen to production code.</p>
-<p data-astro-cid-byeekcgh="">My goal for this wasn’t ambitious, just read some text from stdin and print it to stdout with line numbers, like running <code>cat -n</code>. But it does show just how easy the Workers paradigm is. This Zig program works identically on the command-line on my laptop and as an HTTP API deployed on Cloudflare Workers.</p>
-<p data-astro-cid-byeekcgh="">Here’s my code. It reads a line from stdin and outputs the same line prefixed with a line number. It terminates when there’s no more input.</p>
+<p data-astro-cid-c6i3vrlz="">After the recent announcement regarding <a href="https://blog.cloudflare.com/announcing-wasi-on-workers">WASI support in Workers</a>, I decided to see what it would take to get code written in <a href="https://ziglang.org" target="_blank" rel="noopener noreferrer">Zig</a> to run as a Worker, and it turned out to be trivial. This post documents the process I followed as a new user of Zig. It’s so exciting to see how Cloudflare Workers is a polyglot platform allowing you to write programs in the language you love, or the language you’re learning!</p>
+<h3 data-astro-cid-c6i3vrlz="">Hello, World!</h3>
+<p data-astro-cid-c6i3vrlz="">I’m not a Zig expert by any means, and to keep things entirely honest I’ve only just started looking into the language, but we all have to start somewhere. So, if my Zig code isn’t perfect please bear with me. My goal was to build a real, small program using Zig and deploy it on Cloudflare Workers. And to see how fast I can go from a blank screen to production code.</p>
+<p data-astro-cid-c6i3vrlz="">My goal for this wasn’t ambitious, just read some text from stdin and print it to stdout with line numbers, like running <code>cat -n</code>. But it does show just how easy the Workers paradigm is. This Zig program works identically on the command-line on my laptop and as an HTTP API deployed on Cloudflare Workers.</p>
+<p data-astro-cid-c6i3vrlz="">Here’s my code. It reads a line from stdin and outputs the same line prefixed with a line number. It terminates when there’s no more input.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> std</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> @import</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"std"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"></span>
@@ -49,7 +49,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-byeekcgh="">To build Zig code, you create a <code>build.zig</code> file that defines how to build your project. For this trivial case I just opted to build an executable from the sources</p>
+<p data-astro-cid-c6i3vrlz="">To build Zig code, you create a <code>build.zig</code> file that defines how to build your project. For this trivial case I just opted to build an executable from the sources</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> std</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> @import</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"std"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"></span>
@@ -67,7 +67,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">By running <code>zig build</code> the compiler will run and output a binary under <code>zig-out/bin</code></p>
+<p data-astro-cid-c6i3vrlz="">By running <code>zig build</code> the compiler will run and output a binary under <code>zig-out/bin</code></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> zig</span><span class="sk-032f62-99ffe4"> build</span></span>
 <span class="line"></span>
@@ -82,10 +82,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-byeekcgh="">WASI</h3>
-<p data-astro-cid-byeekcgh="">The next step is to get this running on Workers, but first I need to compile it into WASM with WASI support.</p>
-<p data-astro-cid-byeekcgh="">Thankfully, this comes out of the box with recent versions of Zig, so you can just tell the compiler to build your executable using the <code>wasm32-wasi</code> target, which will produce a file that can be run on any WASI-compatible WebAssembly runtime, such as <a href="https://wasmtime.dev" target="_blank" rel="noopener noreferrer">wasmtime</a>.</p>
-<p data-astro-cid-byeekcgh="">This same .wasm file can be run in wasmtime and deployed directly to Cloudflare Workers. This makes building, testing and deploying seamless.</p>
+<h3 data-astro-cid-c6i3vrlz="">WASI</h3>
+<p data-astro-cid-c6i3vrlz="">The next step is to get this running on Workers, but first I need to compile it into WASM with WASI support.</p>
+<p data-astro-cid-c6i3vrlz="">Thankfully, this comes out of the box with recent versions of Zig, so you can just tell the compiler to build your executable using the <code>wasm32-wasi</code> target, which will produce a file that can be run on any WASI-compatible WebAssembly runtime, such as <a href="https://wasmtime.dev" target="_blank" rel="noopener noreferrer">wasmtime</a>.</p>
+<p data-astro-cid-c6i3vrlz="">This same .wasm file can be run in wasmtime and deployed directly to Cloudflare Workers. This makes building, testing and deploying seamless.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> zig</span><span class="sk-032f62-99ffe4"> build</span><span class="sk-005cc5-99ffe4"> -Dtarget=wasm32-wasi</span></span>
 <span class="line"></span>
@@ -100,9 +100,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-byeekcgh="">Zig on Workers</h3>
-<p data-astro-cid-byeekcgh="">With our binary ready to go, the last piece is to get it running on Cloudflare Workers using <a href="https://blog.cloudflare.com/wrangler-v2-beta">wrangler2</a>. That is as simple as publishing the .wasm file on workers.dev. If you don’t have a <a href="https://workers.dev" target="_blank" rel="noopener noreferrer">workers.dev</a> account, you can follow the tutorial on our <a href="https://developers.cloudflare.com/workers/get-started/guide" target="_blank" rel="noopener noreferrer">getting started guide</a> that will get you from code to deployment within minutes!</p>
-<p data-astro-cid-byeekcgh="">In fact, once I signed up for my account, all I needed to do was complete the first two steps, install wrangler and login.</p>
+<h3 data-astro-cid-c6i3vrlz="">Zig on Workers</h3>
+<p data-astro-cid-c6i3vrlz="">With our binary ready to go, the last piece is to get it running on Cloudflare Workers using <a href="https://blog.cloudflare.com/wrangler-v2-beta">wrangler2</a>. That is as simple as publishing the .wasm file on workers.dev. If you don’t have a <a href="https://workers.dev" target="_blank" rel="noopener noreferrer">workers.dev</a> account, you can follow the tutorial on our <a href="https://developers.cloudflare.com/workers/get-started/guide" target="_blank" rel="noopener noreferrer">getting started guide</a> that will get you from code to deployment within minutes!</p>
+<p data-astro-cid-c6i3vrlz="">In fact, once I signed up for my account, all I needed to do was complete the first two steps, install wrangler and login.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> npx</span><span class="sk-032f62-99ffe4"> wrangler@wasm</span><span class="sk-032f62-99ffe4"> login</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Attempting</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> login</span><span class="sk-032f62-99ffe4"> via</span><span class="sk-032f62-99ffe4"> OAuth...</span></span>
@@ -113,7 +113,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Then, I ran the following command to publish my worker:</p>
+<p data-astro-cid-c6i3vrlz="">Then, I ran the following command to publish my worker:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> npx</span><span class="sk-032f62-99ffe4"> wrangler@wasm</span><span class="sk-032f62-99ffe4"> publish</span><span class="sk-005cc5-99ffe4"> --name</span><span class="sk-032f62-99ffe4"> print-with-line-numbers</span><span class="sk-005cc5-99ffe4"> --compatibility-date=2022-07-07</span><span class="sk-032f62-99ffe4"> zig-out/bin/print-with-line-numbers.wasm</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Uploaded</span><span class="sk-032f62-99ffe4"> print-with-line-numbers</span><span class="sk-24292e-fff"> (3.04 </span><span class="sk-032f62-99ffe4">sec</span><span class="sk-24292e-fff">)</span></span>
@@ -124,7 +124,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">With that step completed, the worker is ready to run and can be invoked by calling the URL printed from the output above.</p>
+<p data-astro-cid-c6i3vrlz="">With that step completed, the worker is ready to run and can be invoked by calling the URL printed from the output above.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">echo</span><span class="sk-032f62-99ffe4"> "Hello\nWorld"</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> curl</span><span class="sk-032f62-99ffe4"> https://print-with-line-numbers.workers.dev</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-005cc5-99ffe4"> --data-binary</span><span class="sk-032f62-99ffe4"> @-</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">1</span><span class="sk-032f62-99ffe4">    Hello</span></span>
@@ -134,8 +134,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Success!</p>
-<h3 data-astro-cid-byeekcgh="">Conclusion</h3>
-<p data-astro-cid-byeekcgh="">What impressed me the most here was just how easy this process was.</p>
-<p data-astro-cid-byeekcgh="">First, I had a binary compiled for the architecture of my laptop, then I compiled the code into WebAssembly by just passing a flag to the compiler, and finally I had this running on workers <strong>without having to change any code.</strong></p>
-<p data-astro-cid-byeekcgh="">Granted, this program was not very complicated and does not do anything other than read from STDIN and write to STDOUT, but it gives me confidence of what is possible, especially as technology like WASI matures.</p>
+<p data-astro-cid-c6i3vrlz="">Success!</p>
+<h3 data-astro-cid-c6i3vrlz="">Conclusion</h3>
+<p data-astro-cid-c6i3vrlz="">What impressed me the most here was just how easy this process was.</p>
+<p data-astro-cid-c6i3vrlz="">First, I had a binary compiled for the architecture of my laptop, then I compiled the code into WebAssembly by just passing a flag to the compiler, and finally I had this running on workers <strong>without having to change any code.</strong></p>
+<p data-astro-cid-c6i3vrlz="">Granted, this program was not very complicated and does not do anything other than read from STDIN and write to STDOUT, but it gives me confidence of what is possible, especially as technology like WASI matures.</p>

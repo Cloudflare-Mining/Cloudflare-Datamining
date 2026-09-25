@@ -1,6 +1,6 @@
-<p data-astro-cid-byeekcgh="">Cuando anunciamos <a href="https://github.com/cloudflare/sandbox-sdk" target="_blank" rel="noopener noreferrer"><u>Cloudflare Sandboxes</u></a> el pasado mes de junio, la idea era sencilla: los <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>agentes de IA</u></a> necesitan desarrollar y ejecutar código, y deben hacerlo en un entorno seguro.</p>
-<p data-astro-cid-byeekcgh="">Si un agente desempeña funciones propias de un desarrollador, esto implica clonar repositorios, compilar código en diversos lenguajes, gestionar servidores de desarrollo, etc. Para hacer todo esto de forma eficaz, a menudo necesitarán un ordenador de verdad (¡y si no, siempre <a href="https://blog.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>pueden recurrir a algo más ligero</u></a>!).</p>
-<p data-astro-cid-byeekcgh="">Muchos desarrolladores están combinando soluciones utilizando máquinas virtuales o soluciones de contenedores existentes, pero hay muchos problemas difíciles de resolver:</p>
+<p data-astro-cid-nalcf22a="">Cuando anunciamos <a href="https://github.com/cloudflare/sandbox-sdk" target="_blank" rel="noopener noreferrer"><u>Cloudflare Sandboxes</u></a> el pasado mes de junio, la idea era sencilla: los <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>agentes de IA</u></a> necesitan desarrollar y ejecutar código, y deben hacerlo en un entorno seguro.</p>
+<p data-astro-cid-nalcf22a="">Si un agente desempeña funciones propias de un desarrollador, esto implica clonar repositorios, compilar código en diversos lenguajes, gestionar servidores de desarrollo, etc. Para hacer todo esto de forma eficaz, a menudo necesitarán un ordenador de verdad (¡y si no, siempre <a href="https://blog.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>pueden recurrir a algo más ligero</u></a>!).</p>
+<p data-astro-cid-nalcf22a="">Muchos desarrolladores están combinando soluciones utilizando máquinas virtuales o soluciones de contenedores existentes, pero hay muchos problemas difíciles de resolver:</p>
 <ul>
 	<li><strong>Picos de actividad</strong>: como cada sesión necesita su propio entorno aislado, a menudo tienes que poner en marcha muchos entornos rápidamente, pero no quieres pagar por recursos informáticos inactivos en espera.</li>
 	<li><strong>Rápida restauración del estado</strong>: cada sesión debería iniciarse y reiniciarse rápidamente, retomando el estado anterior.</li>
@@ -8,13 +8,13 @@
 	<li><strong>Control</strong>: debe ser sencillo controlar mediante programación el ciclo de vida del entorno aislado, ejecutar comandos, gestionar archivos y mucho más.</li>
 	<li><strong>Ergonomía</strong>: debes proporcionar una interfaz sencilla para que tanto los usuarios como los agentes realicen operaciones comunes.</li>
 </ul>
-<p data-astro-cid-byeekcgh="">Hemos dedicado tiempo a resolver estos problemas para que tú no tengas que hacerlo. Desde nuestro lanzamiento inicial, hemos mejorado Sandboxes para ejecutar agentes a escala. Hemos colaborado con nuestros socios iniciales, como Figma, que ejecutan agentes en contenedores con <a href="https://www.figma.com/make" target="_blank" rel="noopener noreferrer"><u>Figma Make</u></a>:</p>
+<p data-astro-cid-nalcf22a="">Hemos dedicado tiempo a resolver estos problemas para que tú no tengas que hacerlo. Desde nuestro lanzamiento inicial, hemos mejorado Sandboxes para ejecutar agentes a escala. Hemos colaborado con nuestros socios iniciales, como Figma, que ejecutan agentes en contenedores con <a href="https://www.figma.com/make" target="_blank" rel="noopener noreferrer"><u>Figma Make</u></a>:</p>
 <blockquote>
-	<p data-astro-cid-byeekcgh=""><em>“Figma Make está diseñado para ayudar a creadores y desarrolladores de todo tipo a pasar de la idea a la producción más rápido. Para alcanzar ese objetivo, necesitábamos una solución de infraestructura que nos ofreciera entornos aislados fiables y altamente escalables en los que pudiéramos ejecutar código no verificado creado por agentes y usuarios. Cloudflare Containers es esa solución".</em></p>
-	<p data-astro-cid-byeekcgh=""><em>- <strong>Alex Mullans</strong>, responsable de IA y plataformas para desarrolladores en Figma</em></p>
+	<p data-astro-cid-nalcf22a=""><em>“Figma Make está diseñado para ayudar a creadores y desarrolladores de todo tipo a pasar de la idea a la producción más rápido. Para alcanzar ese objetivo, necesitábamos una solución de infraestructura que nos ofreciera entornos aislados fiables y altamente escalables en los que pudiéramos ejecutar código no verificado creado por agentes y usuarios. Cloudflare Containers es esa solución".</em></p>
+	<p data-astro-cid-nalcf22a=""><em>- <strong>Alex Mullans</strong>, responsable de IA y plataformas para desarrolladores en Figma</em></p>
 </blockquote>
-<p data-astro-cid-byeekcgh="">Queremos ofrecer Sandboxes a aún más organizaciones importantes, así que hoy estamos encantados de anunciar que tanto <strong>Sandboxes como Cloudflare Containers ya están disponibles para todos.</strong></p>
-<p data-astro-cid-byeekcgh="">Echemos un vistazo a algunos de los cambios recientes en Sandboxes:</p>
+<p data-astro-cid-nalcf22a="">Queremos ofrecer Sandboxes a aún más organizaciones importantes, así que hoy estamos encantados de anunciar que tanto <strong>Sandboxes como Cloudflare Containers ya están disponibles para todos.</strong></p>
+<p data-astro-cid-nalcf22a="">Echemos un vistazo a algunos de los cambios recientes en Sandboxes:</p>
 <ul>
 	<li>La <strong>inyección segura de credenciales </strong>te permite realizar llamadas autenticadas sin que el agente tenga acceso a credenciales&nbsp;&nbsp;</li>
 	<li>La <strong>compatibilidad con PTY</strong> te ofrece a ti y a tu agente un terminal real</li>
@@ -24,9 +24,9 @@
 	<li><strong>Instantáneas</strong> te permiten recuperar rápidamente la sesión de codificación de un agente</li>
 	<li>Los <strong>límites más altos y el precio de la CPU activa</strong> te permiten implementar una flota de agentes a escala sin pagar por los ciclos de CPU no utilizados</li>
 </ul>
-<h2 data-astro-cid-byeekcgh="">Conceptos básicos de Sandboxes</h2>
-<p data-astro-cid-byeekcgh="">Antes de entrar en algunos de los cambios recientes, repasemos rápidamente los conceptos básicos.</p>
-<p data-astro-cid-byeekcgh="">Un Cloudflare Sandbox es un entorno persistente y aislado que funciona con <a href="https://blog.cloudflare.com/containers-are-available-in-public-beta-for-simple-global-and-programmable" target="_blank" rel="noopener noreferrer"><u>Cloudflare Containers</u></a>. Pides un entorno aislado por su nombre. Si se está ejecutando, lo obtienes. Si no es así, se inicia. Cuando está inactivo, entra en suspensión automáticamente y se activa cuando recibe una solicitud. Es fácil interactuar mediante programación con el entorno aislado utilizando métodos como <code>exec</code>, <code>gitClone</code>, <code>writeFile</code> y <a href="https://developers.cloudflare.com/sandbox/api" target="_blank" rel="noopener noreferrer"><u>más</u></a>.</p>
+<h2 data-astro-cid-nalcf22a="">Conceptos básicos de Sandboxes</h2>
+<p data-astro-cid-nalcf22a="">Antes de entrar en algunos de los cambios recientes, repasemos rápidamente los conceptos básicos.</p>
+<p data-astro-cid-nalcf22a="">Un Cloudflare Sandbox es un entorno persistente y aislado que funciona con <a href="https://blog.cloudflare.com/containers-are-available-in-public-beta-for-simple-global-and-programmable" target="_blank" rel="noopener noreferrer"><u>Cloudflare Containers</u></a>. Pides un entorno aislado por su nombre. Si se está ejecutando, lo obtienes. Si no es así, se inicia. Cuando está inactivo, entra en suspensión automáticamente y se activa cuando recibe una solicitud. Es fácil interactuar mediante programación con el entorno aislado utilizando métodos como <code>exec</code>, <code>gitClone</code>, <code>writeFile</code> y <a href="https://developers.cloudflare.com/sandbox/api" target="_blank" rel="noopener noreferrer"><u>más</u></a>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { getSandbox } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/sandbox"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-24292e-fff"> { Sandbox } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/sandbox"</span><span class="sk-24292e-fff">;</span></span>
@@ -70,10 +70,10 @@
 		})
 	});
 </script>
-<p data-astro-cid-byeekcgh="">Siempre que proporciones el mismo identificador, las solicitudes posteriores pueden llegar a este mismo entorno aislado desde cualquier parte del mundo.</p>
-<h2 data-astro-cid-byeekcgh="">Inyección segura de credenciales</h2>
-<p data-astro-cid-byeekcgh="">Uno de los problemas más difíciles en las cargas de trabajo de los agentes es la autenticación. A menudo se necesitan agentes para acceder a servicios privados, pero no se puede confiar plenamente en ellos con credenciales sin cifrar.&nbsp;</p>
-<p data-astro-cid-byeekcgh="">Los entornos aislados resuelven este problema inyectando credenciales en la capa de red mediante un proxy de salida programable. Esto significa que los agentes de entorno aislado nunca tienen acceso a las credenciales y puedes personalizar completamente la lógica de autenticación como mejor te parezca:</p>
+<p data-astro-cid-nalcf22a="">Siempre que proporciones el mismo identificador, las solicitudes posteriores pueden llegar a este mismo entorno aislado desde cualquier parte del mundo.</p>
+<h2 data-astro-cid-nalcf22a="">Inyección segura de credenciales</h2>
+<p data-astro-cid-nalcf22a="">Uno de los problemas más difíciles en las cargas de trabajo de los agentes es la autenticación. A menudo se necesitan agentes para acceder a servicios privados, pero no se puede confiar plenamente en ellos con credenciales sin cifrar.&nbsp;</p>
+<p data-astro-cid-nalcf22a="">Los entornos aislados resuelven este problema inyectando credenciales en la capa de red mediante un proxy de salida programable. Esto significa que los agentes de entorno aislado nunca tienen acceso a las credenciales y puedes personalizar completamente la lógica de autenticación como mejor te parezca:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> OpenCodeInABox</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Sandbox</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  static</span><span class="sk-e36209-fff"> outboundByHost</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
@@ -90,12 +90,12 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Para más información sobre cómo funciona, incluida la inyección de credenciales con reconocimiento de identidad, la modificación dinámica de las reglas y la integración con los <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>enlaces de Workers</u></a>, lee nuestra reciente publicación del blog sobre la <a href="https://blog.cloudflare.com/sandbox-auth" target="_blank" rel="noopener noreferrer"><u>autenticación de Sandbox</u></a>.</p>
-<h2 data-astro-cid-byeekcgh="">Un terminal real, no una simulación</h2>
-<p data-astro-cid-byeekcgh="">Los primeros sistemas de agentes solían representar el acceso al shell como un bucle de solicitud-respuesta: ejecutar un comando, esperar a que apareciera el resultado, volver a mostrar el historial en la línea de comandos y repetir. Funciona, pero no es así como los desarrolladores utilizan realmente un terminal.&nbsp;</p>
-<p data-astro-cid-byeekcgh="">Los humanos ejecutan algo, observan la transmisión de salida, lo interrumpen, se vuelven a conectar más tarde y continúan. Los agentes se benefician de ese mismo bucle de retroalimentación.</p>
-<p data-astro-cid-byeekcgh="">En febrero, anunciamos la compatibilidad con PTY. Una sesión de pseudoterminal en un entorno aislado, redireccionada mediante proxy a través de WebSocket, compatible con <a href="https://xtermjs.org" target="_blank" rel="noopener noreferrer"><u>xterm.js</u></a>.</p>
-<p data-astro-cid-byeekcgh="">Simplemente llama a <code>sandbox.terminal</code> para servir el backend:</p>
+<p data-astro-cid-nalcf22a="">Para más información sobre cómo funciona, incluida la inyección de credenciales con reconocimiento de identidad, la modificación dinámica de las reglas y la integración con los <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>enlaces de Workers</u></a>, lee nuestra reciente publicación del blog sobre la <a href="https://blog.cloudflare.com/sandbox-auth" target="_blank" rel="noopener noreferrer"><u>autenticación de Sandbox</u></a>.</p>
+<h2 data-astro-cid-nalcf22a="">Un terminal real, no una simulación</h2>
+<p data-astro-cid-nalcf22a="">Los primeros sistemas de agentes solían representar el acceso al shell como un bucle de solicitud-respuesta: ejecutar un comando, esperar a que apareciera el resultado, volver a mostrar el historial en la línea de comandos y repetir. Funciona, pero no es así como los desarrolladores utilizan realmente un terminal.&nbsp;</p>
+<p data-astro-cid-nalcf22a="">Los humanos ejecutan algo, observan la transmisión de salida, lo interrumpen, se vuelven a conectar más tarde y continúan. Los agentes se benefician de ese mismo bucle de retroalimentación.</p>
+<p data-astro-cid-nalcf22a="">En febrero, anunciamos la compatibilidad con PTY. Una sesión de pseudoterminal en un entorno aislado, redireccionada mediante proxy a través de WebSocket, compatible con <a href="https://xtermjs.org" target="_blank" rel="noopener noreferrer"><u>xterm.js</u></a>.</p>
+<p data-astro-cid-nalcf22a="">Simplemente llama a <code>sandbox.terminal</code> para servir el backend:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Worker: upgrade a WebSocket connection into a live terminal session</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
@@ -115,7 +115,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Y usa el <code>complemento xterm</code> para llamarlo desde el cliente:</p>
+<p data-astro-cid-nalcf22a="">Y usa el <code>complemento xterm</code> para llamarlo desde el cliente:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Browser: connect xterm.js to the sandbox shell</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Terminal } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "xterm"</span><span class="sk-24292e-fff">;</span></span>
@@ -135,16 +135,16 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Esto permite a los agentes y desarrolladores utilizar un PTY completo para depurar esas sesiones en directo.</p>
+<p data-astro-cid-nalcf22a="">Esto permite a los agentes y desarrolladores utilizar un PTY completo para depurar esas sesiones en directo.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="244" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW46523K9AXQMVFN36FY21VP.gif" alt="BLOG-3264 2" width="715" height="244" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-byeekcgh="">Cada sesión de terminal tiene su propio shell aislado, su propio directorio de trabajo, su propio entorno. Abre tantos como necesites, como lo harías en tu propio equipo. La salida se almacena en el búfer del servidor, así que al volver a conectarte se reproduce lo que te perdiste.</p>
-<h2 data-astro-cid-byeekcgh="">Un intérprete de código que recuerda</h2>
-<p data-astro-cid-byeekcgh="">Para los flujos de trabajo de análisis de datos, scripting y exploración, también ofrecemos una abstracción de mayor nivel: que es un contexto de ejecución de código persistente.</p>
-<p data-astro-cid-byeekcgh="">La palabra clave es "persistente". Muchas implementaciones de intérpretes de código ejecutan cada fragmento de código de forma aislada, por lo que el estado se pierde entre llamadas. No puedes establecer una variable en un paso y leerla en el siguiente.</p>
-<p data-astro-cid-byeekcgh="">Los espacios seguros te permiten crear "contextos" que persisten. Las variables y las importaciones persisten en las llamadas de la misma manera que lo harían en un cuaderno Jupyter Notebook:</p>
+<p data-astro-cid-nalcf22a="">Cada sesión de terminal tiene su propio shell aislado, su propio directorio de trabajo, su propio entorno. Abre tantos como necesites, como lo harías en tu propio equipo. La salida se almacena en el búfer del servidor, así que al volver a conectarte se reproduce lo que te perdiste.</p>
+<h2 data-astro-cid-nalcf22a="">Un intérprete de código que recuerda</h2>
+<p data-astro-cid-nalcf22a="">Para los flujos de trabajo de análisis de datos, scripting y exploración, también ofrecemos una abstracción de mayor nivel: que es un contexto de ejecución de código persistente.</p>
+<p data-astro-cid-nalcf22a="">La palabra clave es "persistente". Muchas implementaciones de intérpretes de código ejecutan cada fragmento de código de forma aislada, por lo que el estado se pierde entre llamadas. No puedes establecer una variable en un paso y leerla en el siguiente.</p>
+<p data-astro-cid-nalcf22a="">Los espacios seguros te permiten crear "contextos" que persisten. Las variables y las importaciones persisten en las llamadas de la misma manera que lo harían en un cuaderno Jupyter Notebook:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Create a Python context. State persists for its lifetime.</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> ctx</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> sandbox.</span><span class="sk-6f42c1-ffc799">createCodeContext</span><span class="sk-24292e-fff">({ language: </span><span class="sk-032f62-99ffe4">"python"</span><span class="sk-24292e-fff"> });</span></span>
@@ -168,8 +168,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h2 data-astro-cid-byeekcgh="">Pon en marcha un servidor. Consigue una URL. Lánzalo.</h2>
-<p data-astro-cid-byeekcgh="">Los agentes son más útiles cuando pueden crear algo y mostrárselo al usuario de inmediato. Los entornos aislados admiten procesos en segundo plano, comprobaciones de disponibilidad y <a href="https://developers.cloudflare.com/sandbox/concepts/preview-urls" target="_blank" rel="noopener noreferrer"><u>URL de vista previa</u></a>. Esto permite a un agente iniciar un servidor de desarrollo y compartir un enlace en directo sin abandonar la conversación.</p>
+<h2 data-astro-cid-nalcf22a="">Pon en marcha un servidor. Consigue una URL. Lánzalo.</h2>
+<p data-astro-cid-nalcf22a="">Los agentes son más útiles cuando pueden crear algo y mostrárselo al usuario de inmediato. Los entornos aislados admiten procesos en segundo plano, comprobaciones de disponibilidad y <a href="https://developers.cloudflare.com/sandbox/concepts/preview-urls" target="_blank" rel="noopener noreferrer"><u>URL de vista previa</u></a>. Esto permite a un agente iniciar un servidor de desarrollo y compartir un enlace en directo sin abandonar la conversación.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Start a dev server as a background process</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> server</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> sandbox.</span><span class="sk-6f42c1-ffc799">startProcess</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"npm run dev"</span><span class="sk-24292e-fff">, {</span></span>
@@ -190,10 +190,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Con <em><code>waitForPort()</code></em> y <em><code>waitForLog()</code></em>, los agentes pueden secuenciar el trabajo basándose en señales reales del programa en ejecución en lugar de conjeturas. Esto es mucho mejor que la alternativa habitual, que suele ser algo así como <code>dormir (2000)</code> seguido de "esperanza".</p>
-<h2 data-astro-cid-byeekcgh="">Vigila el sistema de archivos y reacciona de inmediato</h2>
-<p data-astro-cid-byeekcgh="">Los bucles de desarrollo modernos se basan en eventos. Guarda un archivo, vuelve a ejecutar la compilación. Edita una configuración, reinicia el servidor. Cambia una prueba, vuelve a ejecutar la suite.</p>
-<p data-astro-cid-byeekcgh="">Lanzamos <em>sandbox.watch()</em> en marzo. Devuelve un flujo SSE basado en <a href="https://man7.org/linux/man-pages/man7/inotify.7.html" target="_blank" rel="noopener noreferrer"><u>inotify</u></a> nativo, el mecanismo del núcleo que utiliza Linux para los eventos del sistema de archivos.</p>
+<p data-astro-cid-nalcf22a="">Con <em><code>waitForPort()</code></em> y <em><code>waitForLog()</code></em>, los agentes pueden secuenciar el trabajo basándose en señales reales del programa en ejecución en lugar de conjeturas. Esto es mucho mejor que la alternativa habitual, que suele ser algo así como <code>dormir (2000)</code> seguido de "esperanza".</p>
+<h2 data-astro-cid-nalcf22a="">Vigila el sistema de archivos y reacciona de inmediato</h2>
+<p data-astro-cid-nalcf22a="">Los bucles de desarrollo modernos se basan en eventos. Guarda un archivo, vuelve a ejecutar la compilación. Edita una configuración, reinicia el servidor. Cambia una prueba, vuelve a ejecutar la suite.</p>
+<p data-astro-cid-nalcf22a="">Lanzamos <em>sandbox.watch()</em> en marzo. Devuelve un flujo SSE basado en <a href="https://man7.org/linux/man-pages/man7/inotify.7.html" target="_blank" rel="noopener noreferrer"><u>inotify</u></a> nativo, el mecanismo del núcleo que utiliza Linux para los eventos del sistema de archivos.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { parseSSEStream, </span><span class="sk-d73a49-a0a0a0">type</span><span class="sk-24292e-fff"> FileWatchSSEEvent } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> '@cloudflare/sandbox'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -213,13 +213,13 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Esta es una de esas primitivas que cambia silenciosamente lo que los agentes pueden hacer. Un agente que puede observar el sistema de archivos en tiempo real puede participar en los mismos bucles de retroalimentación que un desarrollador humano.</p>
-<h2 data-astro-cid-byeekcgh="">Activación rápida con instantáneas</h2>
-<p data-astro-cid-byeekcgh="">Imagina a un desarrollador (humano) trabajando en su portátil. Hace un <code>git clone</code> de un repositorio, ejecuta <code>npm install</code>, escribe código, envía un PR, luego cierra su portátil mientras espera la revisión del código. Cuando llega el momento de reanudar el trabajo, simplemente vuelve a abrir el portátil y continúa donde lo dejó.</p>
-<p data-astro-cid-byeekcgh="">Si un agente quiere replicar este flujo de trabajo en una plataforma de contenedores básica, se encuentra con un inconveniente. ¿Cómo retomas rápidamente lo que habías dejado? Se podría mantener un entorno aislado en funcionamiento, pero luego se pagaría por los procesos inactivos. Podrías empezar desde cero con la imagen del contenedor, pero entonces tendrías que esperar a que se completaran el <code>git clone</code> y el <code>npm install</code>, lo cual lleva bastante tiempo.</p>
-<p data-astro-cid-byeekcgh="">Nuestra respuesta son las instantáneas, que se implementarán en las próximas semanas.</p>
-<p data-astro-cid-byeekcgh="">Una instantánea conserva el estado completo del disco de un contenedor, la configuración del sistema operativo, las dependencias instaladas, los archivos modificados, los archivos de datos y mucho más. Luego, te permite restaurarlo rápidamente más tarde.</p>
-<p data-astro-cid-byeekcgh="">Puedes configurar un Sandbox para que tome instantáneas automáticamente cuando entre en modo de suspensión.</p>
+<p data-astro-cid-nalcf22a="">Esta es una de esas primitivas que cambia silenciosamente lo que los agentes pueden hacer. Un agente que puede observar el sistema de archivos en tiempo real puede participar en los mismos bucles de retroalimentación que un desarrollador humano.</p>
+<h2 data-astro-cid-nalcf22a="">Activación rápida con instantáneas</h2>
+<p data-astro-cid-nalcf22a="">Imagina a un desarrollador (humano) trabajando en su portátil. Hace un <code>git clone</code> de un repositorio, ejecuta <code>npm install</code>, escribe código, envía un PR, luego cierra su portátil mientras espera la revisión del código. Cuando llega el momento de reanudar el trabajo, simplemente vuelve a abrir el portátil y continúa donde lo dejó.</p>
+<p data-astro-cid-nalcf22a="">Si un agente quiere replicar este flujo de trabajo en una plataforma de contenedores básica, se encuentra con un inconveniente. ¿Cómo retomas rápidamente lo que habías dejado? Se podría mantener un entorno aislado en funcionamiento, pero luego se pagaría por los procesos inactivos. Podrías empezar desde cero con la imagen del contenedor, pero entonces tendrías que esperar a que se completaran el <code>git clone</code> y el <code>npm install</code>, lo cual lleva bastante tiempo.</p>
+<p data-astro-cid-nalcf22a="">Nuestra respuesta son las instantáneas, que se implementarán en las próximas semanas.</p>
+<p data-astro-cid-nalcf22a="">Una instantánea conserva el estado completo del disco de un contenedor, la configuración del sistema operativo, las dependencias instaladas, los archivos modificados, los archivos de datos y mucho más. Luego, te permite restaurarlo rápidamente más tarde.</p>
+<p data-astro-cid-nalcf22a="">Puedes configurar un Sandbox para que tome instantáneas automáticamente cuando entre en modo de suspensión.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> AgentDevEnvironment</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Sandbox</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-e36209-fff">  sleepAfter</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> "5m"</span><span class="sk-24292e-fff">;</span></span>
@@ -231,7 +231,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">También puedes crear una instantánea mediante programación y restaurarla manualmente. Esto es útil para el trabajo de puntos de control o para bifurcar sesiones. Por ejemplo, si quisieras ejecutar cuatro instancias de un agente en paralelo, podrías arrancar fácilmente cuatro espacios seguros desde el mismo estado.</p>
+<p data-astro-cid-nalcf22a="">También puedes crear una instantánea mediante programación y restaurarla manualmente. Esto es útil para el trabajo de puntos de control o para bifurcar sesiones. Por ejemplo, si quisieras ejecutar cuatro instancias de un agente en paralelo, podrías arrancar fácilmente cuatro espacios seguros desde el mismo estado.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> AgentDevEnvironment</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Sandbox</span><span class="sk-24292e-fff"> {}</span></span>
 <span class="line"></span>
@@ -252,20 +252,20 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Las instantáneas se almacenan en <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a> dentro de tu cuenta, lo que te proporciona durabilidad e independencia de la ubicación. El sistema de <a href="https://developers.cloudflare.com/cache/how-to/tiered-cache" target="_blank" rel="noopener noreferrer"><u>alojamiento en caché por niveles</u></a> de R2 permite restauraciones rápidas en toda la region: planeta Tierra.</p>
-<p data-astro-cid-byeekcgh="">En futuras versiones, también se capturará el estado de la memoria en vivo, lo que permitirá que los procesos en ejecución se reanuden exactamente donde se dejaron. Un terminal y un editor se volverán a abrir en el estado exacto en el que se encontraban cuando se cerraron por última vez.</p>
-<p data-astro-cid-byeekcgh="">Si te interesa restaurar el estado de la sesión antes de que se activen las instantáneas, puedes utilizar los métodos de <a href="https://developers.cloudflare.com/sandbox/guides/backup-restore" target="_blank" rel="noopener noreferrer"><code><u>copia de seguridad y restauración</u></code></a> hoy mismo. Estos también persisten y restauran directorios utilizando R2, pero no son tan eficaces como las verdaderas instantáneas a nivel de máquina virtual. Aunque aún pueden mejorar considerablemente la velocidad con respecto a la recreación ingenua del estado de la sesión.</p>
+<p data-astro-cid-nalcf22a="">Las instantáneas se almacenan en <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a> dentro de tu cuenta, lo que te proporciona durabilidad e independencia de la ubicación. El sistema de <a href="https://developers.cloudflare.com/cache/how-to/tiered-cache" target="_blank" rel="noopener noreferrer"><u>alojamiento en caché por niveles</u></a> de R2 permite restauraciones rápidas en toda la region: planeta Tierra.</p>
+<p data-astro-cid-nalcf22a="">En futuras versiones, también se capturará el estado de la memoria en vivo, lo que permitirá que los procesos en ejecución se reanuden exactamente donde se dejaron. Un terminal y un editor se volverán a abrir en el estado exacto en el que se encontraban cuando se cerraron por última vez.</p>
+<p data-astro-cid-nalcf22a="">Si te interesa restaurar el estado de la sesión antes de que se activen las instantáneas, puedes utilizar los métodos de <a href="https://developers.cloudflare.com/sandbox/guides/backup-restore" target="_blank" rel="noopener noreferrer"><code><u>copia de seguridad y restauración</u></code></a> hoy mismo. Estos también persisten y restauran directorios utilizando R2, pero no son tan eficaces como las verdaderas instantáneas a nivel de máquina virtual. Aunque aún pueden mejorar considerablemente la velocidad con respecto a la recreación ingenua del estado de la sesión.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="188" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW498BPY5VC065XFA2GZ34P5.gif" alt="BLOG-3264 3" width="715" height="188" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
 </figure>
-<p data-astro-cid-byeekcgh=""><sup><em>Iniciar un entorno aislado, clonar "axios" e instalarlo con npm lleva 30 segundos. La restauración desde una copia de seguridad tarda dos segundos.</em></sup></p>
-<p data-astro-cid-byeekcgh="">No te pierdas la publicación de la instantánea oficial.</p>
-<h2 data-astro-cid-byeekcgh="">Límites más altos y precios de CPU activa</h2>
-<p data-astro-cid-byeekcgh="">Desde nuestro lanzamiento inicial, hemos ido aumentando constantemente la capacidad. Los usuarios de nuestro plan de precios estándar ahora pueden ejecutar 15&nbsp;000 instancias simultáneas del tipo de instancia ligera, 6&nbsp;000 instancias del tipo básico y más de 1&nbsp;000 instancias simultáneas más grandes. <a href="https://forms.gle/3vvDvXPECjy6F8v56" target="_blank" rel="noopener noreferrer"><u>Ponte en contacto</u></a> si deseas ejecutar más instancias.</p>
-<p data-astro-cid-byeekcgh="">También hemos cambiado nuestro modelo de precios para que el funcionamiento a escala sea más rentable. Los entornos aislados ahora <a href="https://developers.cloudflare.com/changelog/post/2025-11-21-new-cpu-pricing" target="_blank" rel="noopener noreferrer"><u>solo cobran por los ciclos de CPU utilizados activamente</u></a>. Esto significa que no estás pagando por la CPU inactiva mientras tu agente espera que un LLM responda.</p>
-<h2 data-astro-cid-byeekcgh="">Así es un ordenador&nbsp;</h2>
-<p data-astro-cid-byeekcgh="">Hace nueve meses, lanzamos un entorno aislado que podía ejecutar comandos y acceder a un sistema de archivos. Eso fue suficiente para probar el concepto.</p>
-<p data-astro-cid-byeekcgh="">Lo que tenemos ahora es algo totalmente distinto. Hoy en día, un entorno aislado es un entorno de desarrollo completo: un terminal al que se puede conectar un navegador, un intérprete de código con estado persistente, procesos en segundo plano con URL de vista previa en directo, un sistema de archivos que emite eventos de cambio en tiempo real, proxies de salida para la inyección segura de credenciales, y un mecanismo de instantáneas que hace que los arranques en caliente sean casi instantáneos.&nbsp;</p>
-<p data-astro-cid-byeekcgh="">Si sigues por este camino, surge un patrón muy satisfactorio: agentes que realizan un verdadero trabajo de ingeniería. Clona un repositorio, instálalo, ejecuta las pruebas, lee los fallos, edita el código, vuelve a ejecutar las pruebas. Ese tipo de retroalimentación constante que hace que un ingeniero humano sea eficaz — ahora el agente también lo tiene.</p>
-<p data-astro-cid-byeekcgh="">Estamos en la versión 0.8.9 del SDK. ¡Empieza hoy mismo!</p>
-<p data-astro-cid-byeekcgh=""><code>npm i @cloudflare/sandbox@latest</code></p>
+<p data-astro-cid-nalcf22a=""><sup><em>Iniciar un entorno aislado, clonar "axios" e instalarlo con npm lleva 30 segundos. La restauración desde una copia de seguridad tarda dos segundos.</em></sup></p>
+<p data-astro-cid-nalcf22a="">No te pierdas la publicación de la instantánea oficial.</p>
+<h2 data-astro-cid-nalcf22a="">Límites más altos y precios de CPU activa</h2>
+<p data-astro-cid-nalcf22a="">Desde nuestro lanzamiento inicial, hemos ido aumentando constantemente la capacidad. Los usuarios de nuestro plan de precios estándar ahora pueden ejecutar 15&nbsp;000 instancias simultáneas del tipo de instancia ligera, 6&nbsp;000 instancias del tipo básico y más de 1&nbsp;000 instancias simultáneas más grandes. <a href="https://forms.gle/3vvDvXPECjy6F8v56" target="_blank" rel="noopener noreferrer"><u>Ponte en contacto</u></a> si deseas ejecutar más instancias.</p>
+<p data-astro-cid-nalcf22a="">También hemos cambiado nuestro modelo de precios para que el funcionamiento a escala sea más rentable. Los entornos aislados ahora <a href="https://developers.cloudflare.com/changelog/post/2025-11-21-new-cpu-pricing" target="_blank" rel="noopener noreferrer"><u>solo cobran por los ciclos de CPU utilizados activamente</u></a>. Esto significa que no estás pagando por la CPU inactiva mientras tu agente espera que un LLM responda.</p>
+<h2 data-astro-cid-nalcf22a="">Así es un ordenador&nbsp;</h2>
+<p data-astro-cid-nalcf22a="">Hace nueve meses, lanzamos un entorno aislado que podía ejecutar comandos y acceder a un sistema de archivos. Eso fue suficiente para probar el concepto.</p>
+<p data-astro-cid-nalcf22a="">Lo que tenemos ahora es algo totalmente distinto. Hoy en día, un entorno aislado es un entorno de desarrollo completo: un terminal al que se puede conectar un navegador, un intérprete de código con estado persistente, procesos en segundo plano con URL de vista previa en directo, un sistema de archivos que emite eventos de cambio en tiempo real, proxies de salida para la inyección segura de credenciales, y un mecanismo de instantáneas que hace que los arranques en caliente sean casi instantáneos.&nbsp;</p>
+<p data-astro-cid-nalcf22a="">Si sigues por este camino, surge un patrón muy satisfactorio: agentes que realizan un verdadero trabajo de ingeniería. Clona un repositorio, instálalo, ejecuta las pruebas, lee los fallos, edita el código, vuelve a ejecutar las pruebas. Ese tipo de retroalimentación constante que hace que un ingeniero humano sea eficaz — ahora el agente también lo tiene.</p>
+<p data-astro-cid-nalcf22a="">Estamos en la versión 0.8.9 del SDK. ¡Empieza hoy mismo!</p>
+<p data-astro-cid-nalcf22a=""><code>npm i @cloudflare/sandbox@latest</code></p>

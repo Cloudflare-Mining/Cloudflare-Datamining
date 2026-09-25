@@ -1,15 +1,15 @@
-<p data-astro-cid-byeekcgh="">During Speed Week 2021 we announced a new offering for Enterprise customers, <a href="https://blog.cloudflare.com/how-we-built-instant-logs">Instant Logs</a>. Since then, the team has not slowed down and has been working on new ways to enable our customers to consume their logs and gain powerful insights into their HTTP traffic in real time.</p>
+<p data-astro-cid-nalcf22a="">During Speed Week 2021 we announced a new offering for Enterprise customers, <a href="https://blog.cloudflare.com/how-we-built-instant-logs">Instant Logs</a>. Since then, the team has not slowed down and has been working on new ways to enable our customers to consume their logs and gain powerful insights into their HTTP traffic in real time.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="522" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4738DJMPWQBTH6TF42SF7M.png&amp;w=715&amp;h=522&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4738DJMPWQBTH6TF42SF7M.png&amp;w=640&amp;h=467&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4738DJMPWQBTH6TF42SF7M.png&amp;w=715&amp;h=522&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4738DJMPWQBTH6TF42SF7M.png&amp;w=750&amp;h=548&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4738DJMPWQBTH6TF42SF7M.png&amp;w=828&amp;h=604&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4738DJMPWQBTH6TF42SF7M.png&amp;w=1080&amp;h=788&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4738DJMPWQBTH6TF42SF7M.png&amp;w=1280&amp;h=934&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4738DJMPWQBTH6TF42SF7M.png&amp;w=1430&amp;h=1044&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Screenshot showing the Instant Logs dashboard with an expanded row showing details about a request" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4738DJMPWQBTH6TF42SF7M.png&amp;w=1920&amp;h=1401&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1401" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="522" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-byeekcgh="">We recognize that as developers, UIs are useful but sometimes there is the need for a more powerful alternative. Today, I am going to introduce you to Instant Logs in your terminal! In order to get started we need to install a few open-source tools to help us:</p>
+<p data-astro-cid-nalcf22a="">We recognize that as developers, UIs are useful but sometimes there is the need for a more powerful alternative. Today, I am going to introduce you to Instant Logs in your terminal! In order to get started we need to install a few open-source tools to help us:</p>
 <ul>
 	<li><a href="https://github.com/vi/websocat" target="_blank" rel="noopener noreferrer">Websocat</a> - to connect to WebSockets.</li>
 	<li><a href="https://github.com/rcoh/angle-grinder" target="_blank" rel="noopener noreferrer">Angle Grinder</a> - a utility to slice-and-dice a stream of logs on the command line.</li>
 </ul>
-<h2 data-astro-cid-byeekcgh="">Creating an Instant Log’s Session</h2>
-<p data-astro-cid-byeekcgh="">For enterprise zones with access to Instant Logs, you can create a new session by sending a POST request to our jobs' endpoint. You will need:</p>
+<h2 data-astro-cid-nalcf22a="">Creating an Instant Log’s Session</h2>
+<p data-astro-cid-nalcf22a="">For enterprise zones with access to Instant Logs, you can create a new session by sending a POST request to our jobs' endpoint. You will need:</p>
 <ul>
 	<li>Your Zone Tag / ID</li>
 	<li>An Authentication Key or an API Token with at least the Zone Logs Read permission</li>
@@ -48,8 +48,8 @@
 		})
 	});
 </script>
-<h3 data-astro-cid-byeekcgh="">Response</h3>
-<p data-astro-cid-byeekcgh="">The response will include a new field called <code>destination_conf</code>. The value of this field is your unique WebSocket address that will receive messages directly from our network!</p>
+<h3 data-astro-cid-nalcf22a="">Response</h3>
+<p data-astro-cid-nalcf22a="">The response will include a new field called <code>destination_conf</code>. The value of this field is your unique WebSocket address that will receive messages directly from our network!</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">    "errors"</span><span class="sk-24292e-fff">: [],</span></span>
@@ -69,8 +69,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h2 data-astro-cid-byeekcgh="">Connect to WebSocket</h2>
-<p data-astro-cid-byeekcgh="">Using a CLI utility like <a href="https://github.com/vi/websocat" target="_blank" rel="noopener noreferrer">Websocat</a>, you can connect to the WebSocket and start immediately receiving logs of line-delimited JSON.</p>
+<h2 data-astro-cid-nalcf22a="">Connect to WebSocket</h2>
+<p data-astro-cid-nalcf22a="">Using a CLI utility like <a href="https://github.com/vi/websocat" target="_blank" rel="noopener noreferrer">Websocat</a>, you can connect to the WebSocket and start immediately receiving logs of line-delimited JSON.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">websocat</span><span class="sk-032f62-99ffe4"> wss://logs.cloudflare.com/instant-logs/ws/sessions/949f9eb846f06d8f8b7c91b186a349d2</span></span>
 <span class="line"><span class="sk-24292e-fff">{</span><span class="sk-6f42c1-ffc799">"ClientRequestHost"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"example.com"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"ClientRequestMethod"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"GET"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"ClientRequestPath"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"/"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"EdgeEndTimestamp"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"2022-01-25T17:23:05Z"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"EdgeResponseBytes"</span><span class="sk-6f42c1-ffc799">:363,</span><span class="sk-6f42c1-ffc799">"EdgeResponseStatus"</span><span class="sk-6f42c1-ffc799">:200,</span><span class="sk-6f42c1-ffc799">"EdgeStartTimestamp"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"2022-01-25T17:23:05Z"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"RayID"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"6d332ff74fa45fbe"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"sampleInterval"</span><span class="sk-6f42c1-ffc799">:1}</span></span>
@@ -80,18 +80,18 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h2 data-astro-cid-byeekcgh="">The Scenario</h2>
-<p data-astro-cid-byeekcgh="">Now that you are able to create a new Instant Logs session let’s give it a purpose! Say you just recently deployed a new firewall rule blocking users from downloading a specific asset that is only available to users in Canada. For the purpose of this example, the asset is available at the path <code>/canadians-only</code>.</p>
-<h3 data-astro-cid-byeekcgh="">Specifying Fields</h3>
-<p data-astro-cid-byeekcgh="">In order to see what firewall actions (if any) were taken, we need to make sure that we include <code>ClientRequestCountry</code>, <code>​​FirewallMatchesActions</code> and <code>FirewallMatchesRuleIDs</code> fields when creating our session.</p>
-<p data-astro-cid-byeekcgh="">Additionally, any field available in our HTTP request dataset is usable by Instant Logs. You can view the entire list of HTTP Request fields <a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/http_requests" target="_blank" rel="noopener noreferrer">on our developer docs</a>.</p>
-<h3 data-astro-cid-byeekcgh="">Choosing a Sample Rate</h3>
-<p data-astro-cid-byeekcgh="">Instant Logs users also have the ability to choose a sample rate. The <code>sample</code> parameter is the inverse probability of selecting a log. This means that <code>"sample": 1</code> is 100% of records, <code>"sample": 10</code> is 10% and so on.</p>
-<p data-astro-cid-byeekcgh="">Going back to our example of validating that our newly deployed firewall rule is working as expected, in this case, we are choosing not to sample the data by setting <code>"sample": 1</code>.</p>
-<p data-astro-cid-byeekcgh="">Please note that Instant Logs has a maximum data rate supported. For high volume domains, we sample server side as indicated in the "sampleInterval" parameter returned in the logs. For example, "sampleInterval": 10 indicates this log message is just one out of 10 logs received.</p>
-<h3 data-astro-cid-byeekcgh="">Defining the Filters</h3>
-<p data-astro-cid-byeekcgh="">Since we are only interested in requests with the path of <code>/canadians-only</code>, we can use filters to remove any logs that do not match that specific path. The filters consist of three parts: <code>key</code>, <code>operator</code> and <code>value</code>. The <code>key</code> can be any field specified in the <code>"fields": ""</code> list when creating the session. The complete list of supported operators can be found on our <a href="https://developers.cloudflare.com/logs/instant-logs" target="_blank" rel="noopener noreferrer">Instant Logs documentation</a>.</p>
-<p data-astro-cid-byeekcgh="">To only get the logs of requests destined to <code>/canadians-only</code>, we can specify the following filter:</p>
+<h2 data-astro-cid-nalcf22a="">The Scenario</h2>
+<p data-astro-cid-nalcf22a="">Now that you are able to create a new Instant Logs session let’s give it a purpose! Say you just recently deployed a new firewall rule blocking users from downloading a specific asset that is only available to users in Canada. For the purpose of this example, the asset is available at the path <code>/canadians-only</code>.</p>
+<h3 data-astro-cid-nalcf22a="">Specifying Fields</h3>
+<p data-astro-cid-nalcf22a="">In order to see what firewall actions (if any) were taken, we need to make sure that we include <code>ClientRequestCountry</code>, <code>​​FirewallMatchesActions</code> and <code>FirewallMatchesRuleIDs</code> fields when creating our session.</p>
+<p data-astro-cid-nalcf22a="">Additionally, any field available in our HTTP request dataset is usable by Instant Logs. You can view the entire list of HTTP Request fields <a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/http_requests" target="_blank" rel="noopener noreferrer">on our developer docs</a>.</p>
+<h3 data-astro-cid-nalcf22a="">Choosing a Sample Rate</h3>
+<p data-astro-cid-nalcf22a="">Instant Logs users also have the ability to choose a sample rate. The <code>sample</code> parameter is the inverse probability of selecting a log. This means that <code>"sample": 1</code> is 100% of records, <code>"sample": 10</code> is 10% and so on.</p>
+<p data-astro-cid-nalcf22a="">Going back to our example of validating that our newly deployed firewall rule is working as expected, in this case, we are choosing not to sample the data by setting <code>"sample": 1</code>.</p>
+<p data-astro-cid-nalcf22a="">Please note that Instant Logs has a maximum data rate supported. For high volume domains, we sample server side as indicated in the "sampleInterval" parameter returned in the logs. For example, "sampleInterval": 10 indicates this log message is just one out of 10 logs received.</p>
+<h3 data-astro-cid-nalcf22a="">Defining the Filters</h3>
+<p data-astro-cid-nalcf22a="">Since we are only interested in requests with the path of <code>/canadians-only</code>, we can use filters to remove any logs that do not match that specific path. The filters consist of three parts: <code>key</code>, <code>operator</code> and <code>value</code>. The <code>key</code> can be any field specified in the <code>"fields": ""</code> list when creating the session. The complete list of supported operators can be found on our <a href="https://developers.cloudflare.com/logs/instant-logs" target="_blank" rel="noopener noreferrer">Instant Logs documentation</a>.</p>
+<p data-astro-cid-nalcf22a="">To only get the logs of requests destined to <code>/canadians-only</code>, we can specify the following filter:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  "filter"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"{</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">where</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">:{</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">and</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">:[{</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">key</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">:</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">ClientRequestPath</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">,</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">operator</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">:</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">eq</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">,</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">value</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">:</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">/canadians-only</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">}]}}"</span></span>
@@ -101,8 +101,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h2 data-astro-cid-byeekcgh="">Creating an Instant Logs Session: Canadians Only</h2>
-<p data-astro-cid-byeekcgh="">Using the information above, we can now craft the request for our custom Instant Logs session.</p>
+<h2 data-astro-cid-nalcf22a="">Creating an Instant Logs Session: Canadians Only</h2>
+<p data-astro-cid-nalcf22a="">Using the information above, we can now craft the request for our custom Instant Logs session.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-032f62-99ffe4"> 'https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/logpush/edge/jobs'</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-24292e-fff">-H </span><span class="sk-032f62-99ffe4">'X-Auth-Key: &lt;KEY&gt;'</span><span class="sk-005cc5-a0a0a0"> \</span></span>
@@ -119,8 +119,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-byeekcgh="">Angle Grinder</h3>
-<p data-astro-cid-byeekcgh="">Now that we have a connection to our WebSocket and are receiving logs that match the request path <code>/canadians-only</code>, we can start slicing and dicing the logs to see that the rule is working as expected. A handy tool to use for this is <a href="https://github.com/rcoh/angle-grinder" target="_blank" rel="noopener noreferrer">Angle Grinder</a>. Angle Grinder lets you apply filtering, transformations and aggregations on stdin with first class JSON support. For example, to get the number of visitors from each country we can sum the number of events by the <code>ClientCountry</code> field.</p>
+<h3 data-astro-cid-nalcf22a="">Angle Grinder</h3>
+<p data-astro-cid-nalcf22a="">Now that we have a connection to our WebSocket and are receiving logs that match the request path <code>/canadians-only</code>, we can start slicing and dicing the logs to see that the rule is working as expected. A handy tool to use for this is <a href="https://github.com/rcoh/angle-grinder" target="_blank" rel="noopener noreferrer">Angle Grinder</a>. Angle Grinder lets you apply filtering, transformations and aggregations on stdin with first class JSON support. For example, to get the number of visitors from each country we can sum the number of events by the <code>ClientCountry</code> field.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">websocat</span><span class="sk-032f62-99ffe4"> wss://logs.cloudflare.com/instant-logs/ws/sessions/949f9eb846f06d8f8b7c91b186a349d2</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> agrind</span><span class="sk-032f62-99ffe4"> '* | json | sum(sampleInterval) by ClientCountry'</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">ClientCountry</span><span class="sk-032f62-99ffe4">    	_sum</span></span>
@@ -133,7 +133,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Using Angle Grinder, we can create a query to count the firewall actions by each country.</p>
+<p data-astro-cid-nalcf22a="">Using Angle Grinder, we can create a query to count the firewall actions by each country.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">websocat</span><span class="sk-032f62-99ffe4"> wss://logs.cloudflare.com/instant-logs/ws/sessions/949f9eb846f06d8f8b7c91b186a349d2</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">  agrind</span><span class="sk-032f62-99ffe4"> '* | json | sum(sampleInterval) by ClientCountry,FirewallMatchesActions'</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">ClientCountry</span><span class="sk-032f62-99ffe4">        FirewallMatchesActions</span><span class="sk-032f62-99ffe4">        _sum</span></span>
@@ -145,5 +145,5 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Looks like our newly deployed firewall rule is working :)</p>
-<p data-astro-cid-byeekcgh="">Happy Logging!</p>
+<p data-astro-cid-nalcf22a="">Looks like our newly deployed firewall rule is working :)</p>
+<p data-astro-cid-nalcf22a="">Happy Logging!</p>

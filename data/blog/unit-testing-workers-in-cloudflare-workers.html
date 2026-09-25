@@ -1,9 +1,9 @@
-<p data-astro-cid-byeekcgh="">We recently wrote about unit testing Cloudflare Workers within a mock environment using CloudWorker (a Node.js based mock Cloudflare Worker environment created by Dollar Shave Club's engineering team). <a href="https://blog.cloudflare.com/unit-testing-worker-functions">See Unit Testing Worker Functions.</a></p>
-<p data-astro-cid-byeekcgh="">Even though Cloudflare Workers deploy globally within seconds, software developers often choose to use local mock environments to have the fastest possible feedback loop while developing on their local machines. CloudWorker is perfect for this use case but as it is still a mock environment it does not guarantee an identical runtime or environment with all Cloudflare Worker APIs and features. This gap can make developers uneasy as they do not have 100% certainty that their tests will succeed in the production environment.</p>
-<p data-astro-cid-byeekcgh="">In this post, we're going to demonstrate how to generate a Cloudflare Worker compatible test harness which can execute mocha unit tests directly in the production Cloudflare environment.</p>
-<h2 data-astro-cid-byeekcgh="">Directory Setup</h2>
-<p data-astro-cid-byeekcgh="">Create a new folder for your project, change it to your working directory and run <code>npm init</code> to initialise the <code>package.json</code> file.</p>
-<p data-astro-cid-byeekcgh="">Run <code>mkdir -p src &amp;&amp; mkdir -p test/lib &amp;&amp; mkdir dist</code> to create folders used by the next steps. Your folder should look like this:</p>
+<p data-astro-cid-c6i3vrlz="">We recently wrote about unit testing Cloudflare Workers within a mock environment using CloudWorker (a Node.js based mock Cloudflare Worker environment created by Dollar Shave Club's engineering team). <a href="https://blog.cloudflare.com/unit-testing-worker-functions">See Unit Testing Worker Functions.</a></p>
+<p data-astro-cid-c6i3vrlz="">Even though Cloudflare Workers deploy globally within seconds, software developers often choose to use local mock environments to have the fastest possible feedback loop while developing on their local machines. CloudWorker is perfect for this use case but as it is still a mock environment it does not guarantee an identical runtime or environment with all Cloudflare Worker APIs and features. This gap can make developers uneasy as they do not have 100% certainty that their tests will succeed in the production environment.</p>
+<p data-astro-cid-c6i3vrlz="">In this post, we're going to demonstrate how to generate a Cloudflare Worker compatible test harness which can execute mocha unit tests directly in the production Cloudflare environment.</p>
+<h2 data-astro-cid-c6i3vrlz="">Directory Setup</h2>
+<p data-astro-cid-c6i3vrlz="">Create a new folder for your project, change it to your working directory and run <code>npm init</code> to initialise the <code>package.json</code> file.</p>
+<p data-astro-cid-c6i3vrlz="">Run <code>mkdir -p src &amp;&amp; mkdir -p test/lib &amp;&amp; mkdir dist</code> to create folders used by the next steps. Your folder should look like this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">./dist</span></span>
@@ -34,12 +34,12 @@
 		})
 	});
 </script>
-<p data-astro-cid-byeekcgh=""><code>npm install --save-dev mocha exports-loader webpack webpack-cli</code></p>
-<p data-astro-cid-byeekcgh="">This will install Mocha (the unit testing framework), Webpack (a tool used to package the code into a single Worker script) and Exports Loader (a tool used by Webpack to import the Worker script into the Worker based Mocha environment.</p>
-<p data-astro-cid-byeekcgh=""><code>npm install --save-dev git+https://github.com/obezuk/mocha-loader.git</code></p>
-<p data-astro-cid-byeekcgh="">This will install a modified version of Webpack's mocha loader. It has been modified to support the Web Worker environment type. We are excited to see Web Worker support merged into Mocha Loader so please vote for our pull request here: <a href="https://github.com/webpack-contrib/mocha-loader/pull/77" target="_blank" rel="noopener noreferrer">https://github.com/webpack-contrib/mocha-loader/pull/77</a></p>
-<h3 data-astro-cid-byeekcgh=""><strong>Example Script</strong></h3>
-<p data-astro-cid-byeekcgh="">Create your Worker script in <code>./src/worker.js</code>:</p>
+<p data-astro-cid-c6i3vrlz=""><code>npm install --save-dev mocha exports-loader webpack webpack-cli</code></p>
+<p data-astro-cid-c6i3vrlz="">This will install Mocha (the unit testing framework), Webpack (a tool used to package the code into a single Worker script) and Exports Loader (a tool used by Webpack to import the Worker script into the Worker based Mocha environment.</p>
+<p data-astro-cid-c6i3vrlz=""><code>npm install --save-dev git+https://github.com/obezuk/mocha-loader.git</code></p>
+<p data-astro-cid-c6i3vrlz="">This will install a modified version of Webpack's mocha loader. It has been modified to support the Web Worker environment type. We are excited to see Web Worker support merged into Mocha Loader so please vote for our pull request here: <a href="https://github.com/webpack-contrib/mocha-loader/pull/77" target="_blank" rel="noopener noreferrer">https://github.com/webpack-contrib/mocha-loader/pull/77</a></p>
+<h3 data-astro-cid-c6i3vrlz=""><strong>Example Script</strong></h3>
+<p data-astro-cid-c6i3vrlz="">Create your Worker script in <code>./src/worker.js</code>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff"> event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">handleRequest</span><span class="sk-24292e-fff">(event.request))</span></span>
@@ -58,8 +58,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-byeekcgh="">Add Tests</h3>
-<p data-astro-cid-byeekcgh="">Create your unit tests in <code>./test/test.test.js</code>:</p>
+<h3 data-astro-cid-c6i3vrlz="">Add Tests</h3>
+<p data-astro-cid-c6i3vrlz="">Create your unit tests in <code>./test/test.test.js</code>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> assert</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> require</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'assert'</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"></span>
@@ -84,9 +84,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h2 data-astro-cid-byeekcgh="">Mocha in Worker Test Harness</h2>
-<p data-astro-cid-byeekcgh="">In order to execute mocha and unit tests within Cloudflare Workers we are going to build a Test Harness. The Test Harness script looks a lot like a normal Worker script but integrates your <code>./src/worker.js</code> and <code>./test/test.test.js</code> into a script which is capable of executing the Mocha unit tests within the Cloudflare Worker runtime.</p>
-<p data-astro-cid-byeekcgh="">Create the below script in <code>./test/lib/serviceworker-mocha-harness.js</code>.</p>
+<h2 data-astro-cid-c6i3vrlz="">Mocha in Worker Test Harness</h2>
+<p data-astro-cid-c6i3vrlz="">In order to execute mocha and unit tests within Cloudflare Workers we are going to build a Test Harness. The Test Harness script looks a lot like a normal Worker script but integrates your <code>./src/worker.js</code> and <code>./test/test.test.js</code> into a script which is capable of executing the Mocha unit tests within the Cloudflare Worker runtime.</p>
+<p data-astro-cid-c6i3vrlz="">Create the below script in <code>./test/lib/serviceworker-mocha-harness.js</code>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-032f62-99ffe4"> 'mocha'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -137,8 +137,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-byeekcgh="">Mocha Webpack Configuration</h3>
-<p data-astro-cid-byeekcgh="">Create a new file in the project root directory called: <code>./webpack.mocha.config.js</code>. This file is used by Webpack to bundle the test harness, worker script and unit tests into a single script that can be deployed to Cloudflare.</p>
+<h3 data-astro-cid-c6i3vrlz="">Mocha Webpack Configuration</h3>
+<p data-astro-cid-c6i3vrlz="">Create a new file in the project root directory called: <code>./webpack.mocha.config.js</code>. This file is used by Webpack to bundle the test harness, worker script and unit tests into a single script that can be deployed to Cloudflare.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">module</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-ffc799">exports</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">  target: </span><span class="sk-032f62-99ffe4">'webworker'</span><span class="sk-24292e-fff">,</span></span>
@@ -168,7 +168,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Your file structure should look like (excluding node_modules):</p>
+<p data-astro-cid-c6i3vrlz="">Your file structure should look like (excluding node_modules):</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">./dist</span></span>
@@ -183,8 +183,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-byeekcgh=""><strong>Customising the test harness.</strong></h3>
-<p data-astro-cid-byeekcgh="">If you wish to extend the test harness to support your own test files you will need to add additional test imports to the top of the script:</p>
+<h3 data-astro-cid-c6i3vrlz=""><strong>Customising the test harness.</strong></h3>
+<p data-astro-cid-c6i3vrlz="">If you wish to extend the test harness to support your own test files you will need to add additional test imports to the top of the script:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-032f62-99ffe4"> 'mocha-loader!/* TEST FILE NAME HERE */'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -192,7 +192,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">If you wish to import additional functions from your Worker script into the test harness environment you will need to add them comma separated into the last line:</p>
+<p data-astro-cid-c6i3vrlz="">If you wish to import additional functions from your Worker script into the test harness environment you will need to add them comma separated into the last line:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">Object.</span><span class="sk-6f42c1-ffc799">assign</span><span class="sk-24292e-fff">(global, </span><span class="sk-6f42c1-ffc799">require</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'exports-loader?/* COMMA SEPARATED FUNCTION NAMES HERE */!../../src/worker.js'</span><span class="sk-24292e-fff">));</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -200,9 +200,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h2 data-astro-cid-byeekcgh="">Running the test harness</h2>
-<p data-astro-cid-byeekcgh="">Deploying and running the test harness is identical to deploying any other Worker script with Webpack.</p>
-<p data-astro-cid-byeekcgh="">Modify the scripts section of package.json to include the build-harness command.</p>
+<h2 data-astro-cid-c6i3vrlz="">Running the test harness</h2>
+<p data-astro-cid-c6i3vrlz="">Deploying and running the test harness is identical to deploying any other Worker script with Webpack.</p>
+<p data-astro-cid-c6i3vrlz="">Modify the scripts section of package.json to include the build-harness command.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-032f62-99ffe4">"scripts"</span><span class="sk-24292e-fff">: {</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "build-harness"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"webpack --config webpack.mocha.config.js -p --progress --colors"</span></span>
@@ -212,12 +212,12 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">In the project root directory run the command <code>npm run build-harness</code> to generate and bundle your Worker script, Mocha and your unit tests into <code>./dist/worker-mocha-harness.js</code>.</p>
-<p data-astro-cid-byeekcgh="">Upload this script to a test Cloudflare workers route and run <code>curl --fail https://test.example.org</code>. If the unit tests are successful it will return a <code>200</code> response, and if the unit tests fail a <code>500</code> response.</p>
-<h2 data-astro-cid-byeekcgh="">Integrating into an existing CI/CD pipeline</h2>
-<p data-astro-cid-byeekcgh="">You can integrate Cloudflare Workers and the test harness into your existing <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-ci-cd" target="_blank" rel="noopener noreferrer">CI/CD pipeline</a> by using our API: <a href="https://developers.cloudflare.com/workers/api" target="_blank" rel="noopener noreferrer">https://developers.cloudflare.com/workers/api/</a>.</p>
-<p data-astro-cid-byeekcgh="">The test harness returns detailed test reports in JSON format:</p>
-<p data-astro-cid-byeekcgh=""><strong>Example Success Response</strong></p>
+<p data-astro-cid-c6i3vrlz="">In the project root directory run the command <code>npm run build-harness</code> to generate and bundle your Worker script, Mocha and your unit tests into <code>./dist/worker-mocha-harness.js</code>.</p>
+<p data-astro-cid-c6i3vrlz="">Upload this script to a test Cloudflare workers route and run <code>curl --fail https://test.example.org</code>. If the unit tests are successful it will return a <code>200</code> response, and if the unit tests fail a <code>500</code> response.</p>
+<h2 data-astro-cid-c6i3vrlz="">Integrating into an existing CI/CD pipeline</h2>
+<p data-astro-cid-c6i3vrlz="">You can integrate Cloudflare Workers and the test harness into your existing <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-ci-cd" target="_blank" rel="noopener noreferrer">CI/CD pipeline</a> by using our API: <a href="https://developers.cloudflare.com/workers/api" target="_blank" rel="noopener noreferrer">https://developers.cloudflare.com/workers/api/</a>.</p>
+<p data-astro-cid-c6i3vrlz="">The test harness returns detailed test reports in JSON format:</p>
+<p data-astro-cid-c6i3vrlz=""><strong>Example Success Response</strong></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  "stats"</span><span class="sk-24292e-fff">: {</span></span>
@@ -271,7 +271,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh=""><strong>Example Failure Response</strong></p>
+<p data-astro-cid-c6i3vrlz=""><strong>Example Failure Response</strong></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  "stats"</span><span class="sk-24292e-fff">: {</span></span>
@@ -357,4 +357,4 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">This is really powerful and can allow you to execute your unit tests directly in the Cloudflare runtime, giving you more confidence before releasing your code into production. We hope this was useful and welcome any feedback.</p>
+<p data-astro-cid-c6i3vrlz="">This is really powerful and can allow you to execute your unit tests directly in the Cloudflare runtime, giving you more confidence before releasing your code into production. We hope this was useful and welcome any feedback.</p>

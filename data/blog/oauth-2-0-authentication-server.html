@@ -1,7 +1,7 @@
-<p data-astro-cid-byeekcgh="">Let’s pretend I own a service and I want to grant other services access to my service on behalf of my users. The familiar OAuth 2.0 is the industry standard used by the likes of <a href="https://developers.google.com/identity/protocols/OAuth2" target="_blank" rel="noopener noreferrer">Google sign in</a>, Facebook, etc. to communicate safely without inconveniencing users.</p>
-<p data-astro-cid-byeekcgh="">Implementing an OAuth Authentication server is conceptually simple but a pain in practice. We can leverage the power of <a href="https://cloudflareworkers.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> to simplify the implementation, reduce latency, and segregate our service logic from the authentication layer.</p>
-<p data-astro-cid-byeekcgh="">For those unfamiliar with OAuth, I highly recommend reading a more in depth <a href="https://aaronparecki.com/oauth-2-simplified" target="_blank" rel="noopener noreferrer">article</a>.</p>
-<p data-astro-cid-byeekcgh="">The steps of the OAuth 2.0 workflow are as follows:</p>
+<p data-astro-cid-nalcf22a="">Let’s pretend I own a service and I want to grant other services access to my service on behalf of my users. The familiar OAuth 2.0 is the industry standard used by the likes of <a href="https://developers.google.com/identity/protocols/OAuth2" target="_blank" rel="noopener noreferrer">Google sign in</a>, Facebook, etc. to communicate safely without inconveniencing users.</p>
+<p data-astro-cid-nalcf22a="">Implementing an OAuth Authentication server is conceptually simple but a pain in practice. We can leverage the power of <a href="https://cloudflareworkers.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> to simplify the implementation, reduce latency, and segregate our service logic from the authentication layer.</p>
+<p data-astro-cid-nalcf22a="">For those unfamiliar with OAuth, I highly recommend reading a more in depth <a href="https://aaronparecki.com/oauth-2-simplified" target="_blank" rel="noopener noreferrer">article</a>.</p>
+<p data-astro-cid-nalcf22a="">The steps of the OAuth 2.0 workflow are as follows:</p>
 <ol>
 	<li>The consumer service redirects the user to a callback URL that was setup by the auth server. At this callback URL, the auth server asks the user to sign in and accept the consumer permissions requests.</li>
 	<li>The auth server redirects the user to the consumer service with a code.</li>
@@ -9,15 +9,15 @@
 	<li>The auth server gives the consumer the access token.</li>
 	<li>The consumer service can now use the access token to get resources on behalf of the user.</li>
 </ol>
-<p data-astro-cid-byeekcgh="">In the rest of this post, I will be walking through my implementation of an OAuth Authentication server using a Worker. For simplicity, I will make the assumption the user has already logged in and obtained a session token in the form of a JWT that I will refer to as “token” herein. My <a href="https://github.com/victoriabernard92/OAuth-Server" target="_blank" rel="noopener noreferrer">full implementation</a> has a more thorough flow that includes initial user login and registration.</p>
-<h3 data-astro-cid-byeekcgh="">Setup</h3>
-<p data-astro-cid-byeekcgh="">We must be able to reference valid user sessions, codes and login information. Because Workers do not maintain state between executions, we will store this information using <a href="https://developers.cloudflare.com/workers/writing-workers/storing-data" target="_blank" rel="noopener noreferrer">Cloudflare Storage</a>. We setup up three namespaces called: USERS, CODES, and TOKENS .</p>
-<p data-astro-cid-byeekcgh="">On your OAuth server domain, create two empty worker scripts called auth and token. Bind the three namespaces to the two workers scripts. Then configure the namespaces to the scripts so that your resources end up looking like:</p>
+<p data-astro-cid-nalcf22a="">In the rest of this post, I will be walking through my implementation of an OAuth Authentication server using a Worker. For simplicity, I will make the assumption the user has already logged in and obtained a session token in the form of a JWT that I will refer to as “token” herein. My <a href="https://github.com/victoriabernard92/OAuth-Server" target="_blank" rel="noopener noreferrer">full implementation</a> has a more thorough flow that includes initial user login and registration.</p>
+<h3 data-astro-cid-nalcf22a="">Setup</h3>
+<p data-astro-cid-nalcf22a="">We must be able to reference valid user sessions, codes and login information. Because Workers do not maintain state between executions, we will store this information using <a href="https://developers.cloudflare.com/workers/writing-workers/storing-data" target="_blank" rel="noopener noreferrer">Cloudflare Storage</a>. We setup up three namespaces called: USERS, CODES, and TOKENS .</p>
+<p data-astro-cid-nalcf22a="">On your OAuth server domain, create two empty worker scripts called auth and token. Bind the three namespaces to the two workers scripts. Then configure the namespaces to the scripts so that your resources end up looking like:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="510" height="518" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KQJAJGKZPHEEYCFS1YTJ.png&amp;w=510&amp;h=518&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KQJAJGKZPHEEYCFS1YTJ.png&amp;w=510&amp;h=518&amp;f=webp&amp;fit=cover&amp;position=center 510w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KQJAJGKZPHEEYCFS1YTJ.png&amp;w=640&amp;h=650&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KQJAJGKZPHEEYCFS1YTJ.png&amp;w=750&amp;h=762&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KQJAJGKZPHEEYCFS1YTJ.png&amp;w=828&amp;h=841&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KQJAJGKZPHEEYCFS1YTJ.png&amp;w=1020&amp;h=1036&amp;f=webp&amp;fit=cover&amp;position=center 1020w" alt="Screen-Shot-2018-12-11-at-3.46.15-PM" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KQJAJGKZPHEEYCFS1YTJ.png&amp;w=510&amp;h=518&amp;f=webp" data-lightbox-width="510" data-lightbox-height="518" data-astro-cid-7nvefuv6="true" sizes="(min-width: 510px) 510px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="510" height="518" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-byeekcgh="">To put and get items from storage using KV Storage syntax:</p>
+<p data-astro-cid-nalcf22a="">To put and get items from storage using KV Storage syntax:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// @ts-ignore </span></span>
 <span class="line"><span class="sk-005cc5-fff">CODES</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(“user@ex.com”) </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -44,8 +44,8 @@
 		})
 	});
 </script>
-<p data-astro-cid-byeekcgh="">We include <code>// @ts-ignore</code> preceding all KV storage commands. We do not have type definitions for these variables locally, so Typescript would throw an error at compile time otherwise.</p>
-<p data-astro-cid-byeekcgh="">To set up a project using Typescript and the Cloudflare Previewer, follow this <a href="https://blog.cloudflare.com/using-webpack-to-bundle-workers">blog post</a>. Webpack will allow us to <code>import</code> which we will need to use the JWT library <code>jsonwebtoken</code>.</p>
+<p data-astro-cid-nalcf22a="">We include <code>// @ts-ignore</code> preceding all KV storage commands. We do not have type definitions for these variables locally, so Typescript would throw an error at compile time otherwise.</p>
+<p data-astro-cid-nalcf22a="">To set up a project using Typescript and the Cloudflare Previewer, follow this <a href="https://blog.cloudflare.com/using-webpack-to-bundle-workers">blog post</a>. Webpack will allow us to <code>import</code> which we will need to use the JWT library <code>jsonwebtoken</code>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-005cc5-fff"> *</span><span class="sk-d73a49-a0a0a0"> as</span><span class="sk-24292e-fff"> jwt </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "jsonwebtoken"</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -53,7 +53,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Remember to run:</p>
+<p data-astro-cid-nalcf22a="">Remember to run:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">npm install jsonwebtoken </span><span class="sk-d73a49-a0a0a0">&amp;&amp;</span><span class="sk-24292e-fff"> npm install @types</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">jsonwebtoken</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -61,7 +61,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Optionally, we can set up a file to specify endpoints and credentials.</p>
+<p data-astro-cid-nalcf22a="">Optionally, we can set up a file to specify endpoints and credentials.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { hosts } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./private"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -92,8 +92,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4 data-astro-cid-byeekcgh="">1. Accept page after callback</h4>
-<p data-astro-cid-byeekcgh="">The consumer service generates some callback URL that redirects the user to our authentication server. The authentication server then presents the user with a login or accept page to generate a code. The authentication server thus must listen on the <code>authorize</code> url endpoint and return <code>giveLoginPageResponse</code>.</p>
+<h4 data-astro-cid-nalcf22a="">1. Accept page after callback</h4>
+<p data-astro-cid-nalcf22a="">The consumer service generates some callback URL that redirects the user to our authentication server. The authentication server then presents the user with a login or accept page to generate a code. The authentication server thus must listen on the <code>authorize</code> url endpoint and return <code>giveLoginPageResponse</code>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch"</span><span class="sk-24292e-fff">, (</span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> FetchEvent</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-005cc5-fff"> url</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(event.request.url);</span></span>
@@ -112,7 +112,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Since the user already has a stored session, we can use a method <code>giveAcceptPage</code>. To display the accept page and return a redirect to generate the code.</p>
+<p data-astro-cid-nalcf22a="">Since the user already has a stored session, we can use a method <code>giveAcceptPage</code>. To display the accept page and return a redirect to generate the code.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> giveAcceptPage</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> req_url </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url);</span></span>
@@ -131,8 +131,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4 data-astro-cid-byeekcgh="">2. Redirect back to consumer</h4>
-<p data-astro-cid-byeekcgh="">At the endpoint for <code>fetchCodeURL</code>, the authentication server will redirect the user’s browser to the consumer’s page as specified by <code>redirect_uri</code> in the original URL params of the callback with the code.</p>
+<h4 data-astro-cid-nalcf22a="">2. Redirect back to consumer</h4>
+<p data-astro-cid-nalcf22a="">At the endpoint for <code>fetchCodeURL</code>, the authentication server will redirect the user’s browser to the consumer’s page as specified by <code>redirect_uri</code> in the original URL params of the callback with the code.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch"</span><span class="sk-24292e-fff">, (</span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> FetchEvent</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0"> ...</span></span>
@@ -167,8 +167,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4 data-astro-cid-byeekcgh="">3. Code to Token Exchange</h4>
-<p data-astro-cid-byeekcgh="">Now the consumer has the code. They can use this code to request a token. On our token worker, configure the endpoint to exchange the code for the consumer service to grant a token.</p>
+<h4 data-astro-cid-nalcf22a="">3. Code to Token Exchange</h4>
+<p data-astro-cid-nalcf22a="">Now the consumer has the code. They can use this code to request a token. On our token worker, configure the endpoint to exchange the code for the consumer service to grant a token.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch"</span><span class="sk-24292e-fff">, (</span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> FetchEvent</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">...</span></span>
@@ -179,7 +179,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Grab the code from the request and validate this code matches the code that is stored for this client. Once the code is verified, deliver the token by grabbing the existing token from the KV storage or by signing the user information to generate a new token.</p>
+<p data-astro-cid-nalcf22a="">Grab the code from the request and validate this code matches the code that is stored for this client. Once the code is verified, deliver the token by grabbing the existing token from the KV storage or by signing the user information to generate a new token.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> giveToken</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0"> let</span><span class="sk-24292e-fff"> req_url </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url);</span></span>
@@ -198,8 +198,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4 data-astro-cid-byeekcgh="">4. Give the token to the consumer</h4>
-<p data-astro-cid-byeekcgh="">Continuing where step 3 left off from the <code>giveToken</code> method, respond to the consumer with this valid token.</p>
+<h4 data-astro-cid-nalcf22a="">4. Give the token to the consumer</h4>
+<p data-astro-cid-nalcf22a="">Continuing where step 3 left off from the <code>giveToken</code> method, respond to the consumer with this valid token.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">  ...</span></span>
 <span class="line"><span class="sk-24292e-fff">  headers.</span><span class="sk-6f42c1-ffc799">append</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"set-cookie"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"token=Bearer "</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> tokenJWT);</span></span>
@@ -222,9 +222,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4 data-astro-cid-byeekcgh="">5. Accepting the token</h4>
-<p data-astro-cid-byeekcgh="">At this point voila, your duty as an OAuth 2.0 Authentication server is complete! The consumer service that wishes to use your service has the token that you have not so magically generated.</p>
-<p data-astro-cid-byeekcgh="">The consumer server would send a request including the token:</p>
+<h4 data-astro-cid-nalcf22a="">5. Accepting the token</h4>
+<p data-astro-cid-nalcf22a="">At this point voila, your duty as an OAuth 2.0 Authentication server is complete! The consumer service that wishes to use your service has the token that you have not so magically generated.</p>
+<p data-astro-cid-nalcf22a="">The consumer server would send a request including the token:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">GET</span><span class="sk-d73a49-a0a0a0"> /</span><span class="sk-24292e-fff">resource</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">some</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">goods</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Authorization</span><span class="sk-24292e-fff">: Bearer eyJhbGci..bGAqA</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -233,7 +233,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Authentication server would validate the token and give the goods:</p>
+<p data-astro-cid-nalcf22a="">Authentication server would validate the token and give the goods:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> giveResource</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0"> var</span><span class="sk-24292e-fff"> respBody</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> HookResponse</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> factoryHookResponse</span><span class="sk-24292e-fff">({})</span></span>
@@ -260,5 +260,5 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">The boundaries of serverless are pushed everyday, though if your app just needs to authorize users, you may be better off using <a href="https://www.cloudflare.com/products/cloudflare-access" target="_blank" rel="noopener noreferrer">Cloudflare Access</a>. We've demonstrated that a full blown OAuth 2.0 authentication server implementation can be achieved with Cloudflare Workers and Storage.</p>
-<p data-astro-cid-byeekcgh="">Stay tuned for a follow-up blog post on an OAuth consumer implementation.</p>
+<p data-astro-cid-nalcf22a="">The boundaries of serverless are pushed everyday, though if your app just needs to authorize users, you may be better off using <a href="https://www.cloudflare.com/products/cloudflare-access" target="_blank" rel="noopener noreferrer">Cloudflare Access</a>. We've demonstrated that a full blown OAuth 2.0 authentication server implementation can be achieved with Cloudflare Workers and Storage.</p>
+<p data-astro-cid-nalcf22a="">Stay tuned for a follow-up blog post on an OAuth consumer implementation.</p>

@@ -1,6 +1,6 @@
-<p data-astro-cid-byeekcgh="">我们去年 6 月推出 <a href="https://github.com/cloudflare/sandbox-sdk" target="_blank" rel="noopener noreferrer"><u>Cloudflare Sandboxes</u></a>时，初衷很简单：<a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>AI 智能体</u></a>需要开发并运行代码，且必须在安全的环境中进行。</p>
-<p data-astro-cid-byeekcgh="">当 AI 智能体承担开发人员角色时，需完成代码仓库克隆、多语言代码构建、开发服务器运行等一系列操作。要高效完成这些操作，AI 智能体通常需要一套完整的计算环境（否则，<a href="https://blog.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>可选用轻量化方案</u></a>）。</p>
-<p data-astro-cid-byeekcgh="">许多开发人员通过虚拟机（VM）或现有容器方案自行组合解决方案，但仍有诸多技术难题亟待解决。</p>
+<p data-astro-cid-c6i3vrlz="">我们去年 6 月推出 <a href="https://github.com/cloudflare/sandbox-sdk" target="_blank" rel="noopener noreferrer"><u>Cloudflare Sandboxes</u></a>时，初衷很简单：<a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>AI 智能体</u></a>需要开发并运行代码，且必须在安全的环境中进行。</p>
+<p data-astro-cid-c6i3vrlz="">当 AI 智能体承担开发人员角色时，需完成代码仓库克隆、多语言代码构建、开发服务器运行等一系列操作。要高效完成这些操作，AI 智能体通常需要一套完整的计算环境（否则，<a href="https://blog.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>可选用轻量化方案</u></a>）。</p>
+<p data-astro-cid-c6i3vrlz="">许多开发人员通过虚拟机（VM）或现有容器方案自行组合解决方案，但仍有诸多技术难题亟待解决。</p>
 <ul>
 	<li><strong>突发性 </strong>—— 由于每个会话都需要自己的沙盒，您通常需要快速启动许多沙盒，但又不想为随时待命的空闲计算成本付费。</li>
 	<li><strong>快速状态恢复</strong>——每个会话都应快速启动并快速重新启动，恢复到过去的状态。</li>
@@ -8,13 +8,13 @@
 	<li><strong>管控</strong> —— 可通过编程方式便捷地管控沙盒的全生命周期、执行命令、处理文件及其他操作。</li>
 	<li><strong>人机工程学</strong>—— 需为人类与智能体提供一个简洁界面，以执行各类常规操作。</li>
 </ul>
-<p data-astro-cid-byeekcgh="">我们已经花时间解决了这些问题，让您无需为此费心。自初次推出以来，我们持续优化 Sandboxes，使其更适合规模化运行智能体。我们已与初期合作伙伴展开合作，例如 Figma，其通过 <a href="https://www.figma.com/make" target="_blank" rel="noopener noreferrer"><u>Figma Make</u></a> 在容器中运行智能体。</p>
+<p data-astro-cid-c6i3vrlz="">我们已经花时间解决了这些问题，让您无需为此费心。自初次推出以来，我们持续优化 Sandboxes，使其更适合规模化运行智能体。我们已与初期合作伙伴展开合作，例如 Figma，其通过 <a href="https://www.figma.com/make" target="_blank" rel="noopener noreferrer"><u>Figma Make</u></a> 在容器中运行智能体。</p>
 <blockquote>
-	<p data-astro-cid-byeekcgh=""><em>“Figma Make 旨在帮助各类背景的开发者与创作者，更快速地将创意落地并投入生产。为实现这一目标，我们需要一套基础设施解决方案，以提供可靠、高度可扩展的沙盒环境，用于运行由智能体与用户编写的不可信代码。Cloudflare Containers 就是这样一个解决方案。”</em></p>
-	<p data-astro-cid-byeekcgh=""><em>- <strong>Alex Mullans</strong>，AI 与开发人员平台，Figma</em></p>
+	<p data-astro-cid-c6i3vrlz=""><em>“Figma Make 旨在帮助各类背景的开发者与创作者，更快速地将创意落地并投入生产。为实现这一目标，我们需要一套基础设施解决方案，以提供可靠、高度可扩展的沙盒环境，用于运行由智能体与用户编写的不可信代码。Cloudflare Containers 就是这样一个解决方案。”</em></p>
+	<p data-astro-cid-c6i3vrlz=""><em>- <strong>Alex Mullans</strong>，AI 与开发人员平台，Figma</em></p>
 </blockquote>
-<p data-astro-cid-byeekcgh="">我们希望将 Sandboxes 推广至更多优秀企业，因此今天我们很高兴地宣布，<strong>Sandboxes 与 Cloudflare Containers 均正式发布</strong>。</p>
-<p data-astro-cid-byeekcgh="">让我们来看看 Sandboxes 最近的一些变化：</p>
+<p data-astro-cid-c6i3vrlz="">我们希望将 Sandboxes 推广至更多优秀企业，因此今天我们很高兴地宣布，<strong>Sandboxes 与 Cloudflare Containers 均正式发布</strong>。</p>
+<p data-astro-cid-c6i3vrlz="">让我们来看看 Sandboxes 最近的一些变化：</p>
 <ul>
 	<li><strong>安全凭据注入</strong>支持您发起鉴权调用，且智能体全程无需接触凭据信息。&nbsp;&nbsp;</li>
 	<li><strong>PTY 支持</strong>为您和智能体提供真实终端环境</li>
@@ -24,9 +24,9 @@
 	<li><strong>快照</strong>让您快速恢复智能体的编码会话</li>
 	<li><strong>更高资源配额与活动 CPU 计费模式</strong>，让您可规模化部署智能体集群，而无需为闲置 CPU 周期付费。</li>
 </ul>
-<h2 data-astro-cid-byeekcgh="">Sandboxes 基本知识</h2>
-<p data-astro-cid-byeekcgh="">在讨论最近的一些变化之前，让我们快速看一下基本知识。</p>
-<p data-astro-cid-byeekcgh="">Cloudflare 沙盒是一个由 <a href="https://blog.cloudflare.com/containers-are-available-in-public-beta-for-simple-global-and-programmable" target="_blank" rel="noopener noreferrer"><u>Cloudflare Containers</u></a> 驱动的持久化、隔离的环境。您按名称请求沙盒。若沙盒处于运行状态，您可直接使用。否则，它会立即启动。空闲时，它会自动休眠，并在收到请求时唤醒。使用 <code>exec</code>、<code>gitClone</code>、<code>writeFile</code> 等方法，可以轻松地以编程方式与沙盒进行交互（<a href="https://developers.cloudflare.com/sandbox/api" target="_blank" rel="noopener noreferrer"><u>了解更多</u></a>）。</p>
+<h2 data-astro-cid-c6i3vrlz="">Sandboxes 基本知识</h2>
+<p data-astro-cid-c6i3vrlz="">在讨论最近的一些变化之前，让我们快速看一下基本知识。</p>
+<p data-astro-cid-c6i3vrlz="">Cloudflare 沙盒是一个由 <a href="https://blog.cloudflare.com/containers-are-available-in-public-beta-for-simple-global-and-programmable" target="_blank" rel="noopener noreferrer"><u>Cloudflare Containers</u></a> 驱动的持久化、隔离的环境。您按名称请求沙盒。若沙盒处于运行状态，您可直接使用。否则，它会立即启动。空闲时，它会自动休眠，并在收到请求时唤醒。使用 <code>exec</code>、<code>gitClone</code>、<code>writeFile</code> 等方法，可以轻松地以编程方式与沙盒进行交互（<a href="https://developers.cloudflare.com/sandbox/api" target="_blank" rel="noopener noreferrer"><u>了解更多</u></a>）。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { getSandbox } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/sandbox"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-24292e-fff"> { Sandbox } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/sandbox"</span><span class="sk-24292e-fff">;</span></span>
@@ -70,10 +70,10 @@
 		})
 	});
 </script>
-<p data-astro-cid-byeekcgh="">只要您提供相同的 ID，后续请求就可以从世界任何地方访问这个沙盒。</p>
-<h2 data-astro-cid-byeekcgh="">安全凭据注入</h2>
-<p data-astro-cid-byeekcgh="">在智能体工作负载中，最难解决的问题之一便是身份认证。您通常需要让智能体访问私有服务，却无法完全放心地将原始凭据交由其处理。&nbsp;</p>
-<p data-astro-cid-byeekcgh="">Sandboxes 通过可编程出口代理在网络层注入凭据，从而解决这一问题。这意味着沙盒智能体永远无法访问凭据，您可以根据需要完全自定义身份验证逻辑：</p>
+<p data-astro-cid-c6i3vrlz="">只要您提供相同的 ID，后续请求就可以从世界任何地方访问这个沙盒。</p>
+<h2 data-astro-cid-c6i3vrlz="">安全凭据注入</h2>
+<p data-astro-cid-c6i3vrlz="">在智能体工作负载中，最难解决的问题之一便是身份认证。您通常需要让智能体访问私有服务，却无法完全放心地将原始凭据交由其处理。&nbsp;</p>
+<p data-astro-cid-c6i3vrlz="">Sandboxes 通过可编程出口代理在网络层注入凭据，从而解决这一问题。这意味着沙盒智能体永远无法访问凭据，您可以根据需要完全自定义身份验证逻辑：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> OpenCodeInABox</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Sandbox</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  static</span><span class="sk-e36209-fff"> outboundByHost</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
@@ -90,12 +90,12 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">要深入了解其工作原理——包括身份感知凭据注入、动态修改规则以及与 <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>Workers 绑定</u></a>集成——请阅读我们近期关于<a href="https://blog.cloudflare.com/sandbox-auth" target="_blank" rel="noopener noreferrer"><u>Sandbox 认证</u></a>的博客文章。</p>
-<h2 data-astro-cid-byeekcgh="">真正的终端，而非模拟</h2>
-<p data-astro-cid-byeekcgh="">早期的智能体系统通常将 Shell 访问建模为请求-响应循环：执行命令、等待输出、将执行记录回填至提示信息中，循环往复。该方案虽可运行，却并非开发人员实际使用终端的方式。</p>
-<p data-astro-cid-byeekcgh="">人类用户执行操作、实时查看输出流、中断进程，后续重新连接并继续运行。智能体同样受益于这种反馈循环。</p>
-<p data-astro-cid-byeekcgh="">今年 2 月，我们推出了 PTY 支持。沙盒中的伪终端会话，通过 WebSocket 代理，与 <a href="https://xtermjs.org" target="_blank" rel="noopener noreferrer"><u>xterm.js</u></a> 兼容。</p>
-<p data-astro-cid-byeekcgh="">只需调用 <code>sandbox.terminal</code> 为后端提供服务：</p>
+<p data-astro-cid-c6i3vrlz="">要深入了解其工作原理——包括身份感知凭据注入、动态修改规则以及与 <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>Workers 绑定</u></a>集成——请阅读我们近期关于<a href="https://blog.cloudflare.com/sandbox-auth" target="_blank" rel="noopener noreferrer"><u>Sandbox 认证</u></a>的博客文章。</p>
+<h2 data-astro-cid-c6i3vrlz="">真正的终端，而非模拟</h2>
+<p data-astro-cid-c6i3vrlz="">早期的智能体系统通常将 Shell 访问建模为请求-响应循环：执行命令、等待输出、将执行记录回填至提示信息中，循环往复。该方案虽可运行，却并非开发人员实际使用终端的方式。</p>
+<p data-astro-cid-c6i3vrlz="">人类用户执行操作、实时查看输出流、中断进程，后续重新连接并继续运行。智能体同样受益于这种反馈循环。</p>
+<p data-astro-cid-c6i3vrlz="">今年 2 月，我们推出了 PTY 支持。沙盒中的伪终端会话，通过 WebSocket 代理，与 <a href="https://xtermjs.org" target="_blank" rel="noopener noreferrer"><u>xterm.js</u></a> 兼容。</p>
+<p data-astro-cid-c6i3vrlz="">只需调用 <code>sandbox.terminal</code> 为后端提供服务：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Worker: upgrade a WebSocket connection into a live terminal session</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
@@ -115,7 +115,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">并使用 <code>xterm addon</code> 从客户端调用：</p>
+<p data-astro-cid-c6i3vrlz="">并使用 <code>xterm addon</code> 从客户端调用：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Browser: connect xterm.js to the sandbox shell</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Terminal } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "xterm"</span><span class="sk-24292e-fff">;</span></span>
@@ -135,16 +135,16 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">这允许智能体和开发人员使用完整的 PTY 来实时调试这些会话。</p>
+<p data-astro-cid-c6i3vrlz="">这允许智能体和开发人员使用完整的 PTY 来实时调试这些会话。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="244" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW46523K9AXQMVFN36FY21VP.gif" alt="BLOG-3264 2" width="715" height="244" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-byeekcgh="">每个终端会话都有自己独立的 Shell、自己的工作目录和自己的环境。可以根据需要打开任意数量的会话，就像在自己的机器上操作一样。输出在服务端进行缓冲，因此重新连接时可回放您遗漏的内容。</p>
-<h2 data-astro-cid-byeekcgh="">具备记忆能力的代码解释器</h2>
-<p data-astro-cid-byeekcgh="">针对数据分析、脚本编写及探索式工作流，我们还提供了一种更高级的抽象：持久化代码执行环境。</p>
-<p data-astro-cid-byeekcgh="">关键词是“持久”。许多代码解释器的实现会独立运行每一段代码片段，导致多次调用之间的执行状态会丢失。您无法在某一步骤中设置变量，并在下一步骤中读取该变量。</p>
-<p data-astro-cid-byeekcgh="">Sandboxes 让您能够创建持久保存状态的“上下文”。变量和导入可以在调用之间持久保存，就像在 Jupyter 笔记本中一样：</p>
+<p data-astro-cid-c6i3vrlz="">每个终端会话都有自己独立的 Shell、自己的工作目录和自己的环境。可以根据需要打开任意数量的会话，就像在自己的机器上操作一样。输出在服务端进行缓冲，因此重新连接时可回放您遗漏的内容。</p>
+<h2 data-astro-cid-c6i3vrlz="">具备记忆能力的代码解释器</h2>
+<p data-astro-cid-c6i3vrlz="">针对数据分析、脚本编写及探索式工作流，我们还提供了一种更高级的抽象：持久化代码执行环境。</p>
+<p data-astro-cid-c6i3vrlz="">关键词是“持久”。许多代码解释器的实现会独立运行每一段代码片段，导致多次调用之间的执行状态会丢失。您无法在某一步骤中设置变量，并在下一步骤中读取该变量。</p>
+<p data-astro-cid-c6i3vrlz="">Sandboxes 让您能够创建持久保存状态的“上下文”。变量和导入可以在调用之间持久保存，就像在 Jupyter 笔记本中一样：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Create a Python context. State persists for its lifetime.</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> ctx</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> sandbox.</span><span class="sk-6f42c1-ffc799">createCodeContext</span><span class="sk-24292e-fff">({ language: </span><span class="sk-032f62-99ffe4">"python"</span><span class="sk-24292e-fff"> });</span></span>
@@ -168,8 +168,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h2 data-astro-cid-byeekcgh="">启动服务器。获取 URL。上线发布。</h2>
-<p data-astro-cid-byeekcgh="">当智能体能够即时构建内容并向您展示成果时，其实用价值会更高。Sandboxes 支持后台进程、就绪性检查和<a href="https://developers.cloudflare.com/sandbox/concepts/preview-urls" target="_blank" rel="noopener noreferrer"><u>预览 URL</u></a>。借助该能力，智能体可启动开发服务器并分享实时预览链接，全程无需离开对话界面。</p>
+<h2 data-astro-cid-c6i3vrlz="">启动服务器。获取 URL。上线发布。</h2>
+<p data-astro-cid-c6i3vrlz="">当智能体能够即时构建内容并向您展示成果时，其实用价值会更高。Sandboxes 支持后台进程、就绪性检查和<a href="https://developers.cloudflare.com/sandbox/concepts/preview-urls" target="_blank" rel="noopener noreferrer"><u>预览 URL</u></a>。借助该能力，智能体可启动开发服务器并分享实时预览链接，全程无需离开对话界面。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Start a dev server as a background process</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> server</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> sandbox.</span><span class="sk-6f42c1-ffc799">startProcess</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"npm run dev"</span><span class="sk-24292e-fff">, {</span></span>
@@ -190,10 +190,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">使用 <em><code>waitForPort()</code></em> 和 <em><code>waitForLog()</code></em>，智能体可依据运行中程序发出的真实信号编排任务，而非依赖猜测。这比一种常见的替代方法要好得多，后者通常是执行 <code>sleep(2000)</code> 并期待有效。</p>
-<h2 data-astro-cid-byeekcgh="">观察文件系统并即时响应</h2>
-<p data-astro-cid-byeekcgh="">现代开发流程采用事件驱动模式。保存文件，重新执行构建。编辑配置，然后重启服务器。更改测试，重新运行套件。</p>
-<p data-astro-cid-byeekcgh="">我们在 3 月份发布了 <em>sandbox.watch()</em>。它返回一个由原生 <a href="https://man7.org/linux/man-pages/man7/inotify.7.html" target="_blank" rel="noopener noreferrer"><u>inotify</u></a> 支持的 SSE 流，这是 Linux 用于文件系统事件的内核机制。</p>
+<p data-astro-cid-c6i3vrlz="">使用 <em><code>waitForPort()</code></em> 和 <em><code>waitForLog()</code></em>，智能体可依据运行中程序发出的真实信号编排任务，而非依赖猜测。这比一种常见的替代方法要好得多，后者通常是执行 <code>sleep(2000)</code> 并期待有效。</p>
+<h2 data-astro-cid-c6i3vrlz="">观察文件系统并即时响应</h2>
+<p data-astro-cid-c6i3vrlz="">现代开发流程采用事件驱动模式。保存文件，重新执行构建。编辑配置，然后重启服务器。更改测试，重新运行套件。</p>
+<p data-astro-cid-c6i3vrlz="">我们在 3 月份发布了 <em>sandbox.watch()</em>。它返回一个由原生 <a href="https://man7.org/linux/man-pages/man7/inotify.7.html" target="_blank" rel="noopener noreferrer"><u>inotify</u></a> 支持的 SSE 流，这是 Linux 用于文件系统事件的内核机制。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { parseSSEStream, </span><span class="sk-d73a49-a0a0a0">type</span><span class="sk-24292e-fff"> FileWatchSSEEvent } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> '@cloudflare/sandbox'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -213,13 +213,13 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">这是悄然改变智能体能力的基础组件之一。能够实时监控文件系统的智能体，可与人类开发人员参与相同的反馈循环流程。</p>
-<h2 data-astro-cid-byeekcgh="">通过快照快速唤醒</h2>
-<p data-astro-cid-byeekcgh="">想象一下，一名（人类） 开发人员在笔记本电脑上工作。他 <code>git clone</code> 一个代码仓库，运行 <code>npm install</code>，编写代码，推送 PR，然后合上笔记本电脑，等待代码审查。需要恢复工作时，他只需重新打开笔记本电脑，然后从中断的地方继续工作。</p>
-<p data-astro-cid-byeekcgh="">若智能体希望在简陋的容器平台上复现这一工作流程，将会遇到阻碍。如何从中断的地方快速恢复？您可以保持沙盒运行，但这需要为空闲算力付费。您可以从容器映像重新开始，但必须等待漫长的 <code>git clone</code> 和 <code>npm install</code> 过程。</p>
-<p data-astro-cid-byeekcgh="">我们的解决方案是快照，该功能将在未来几周内推出。</p>
-<p data-astro-cid-byeekcgh="">快照保留了容器的完整磁盘状态、操作系统配置、安装的依赖项、修改的文件、数据文件等。然后您能够快速恢复环境。</p>
-<p data-astro-cid-byeekcgh="">您可以一个沙盒配置为在进入休眠状态时自动创建快照。</p>
+<p data-astro-cid-c6i3vrlz="">这是悄然改变智能体能力的基础组件之一。能够实时监控文件系统的智能体，可与人类开发人员参与相同的反馈循环流程。</p>
+<h2 data-astro-cid-c6i3vrlz="">通过快照快速唤醒</h2>
+<p data-astro-cid-c6i3vrlz="">想象一下，一名（人类） 开发人员在笔记本电脑上工作。他 <code>git clone</code> 一个代码仓库，运行 <code>npm install</code>，编写代码，推送 PR，然后合上笔记本电脑，等待代码审查。需要恢复工作时，他只需重新打开笔记本电脑，然后从中断的地方继续工作。</p>
+<p data-astro-cid-c6i3vrlz="">若智能体希望在简陋的容器平台上复现这一工作流程，将会遇到阻碍。如何从中断的地方快速恢复？您可以保持沙盒运行，但这需要为空闲算力付费。您可以从容器映像重新开始，但必须等待漫长的 <code>git clone</code> 和 <code>npm install</code> 过程。</p>
+<p data-astro-cid-c6i3vrlz="">我们的解决方案是快照，该功能将在未来几周内推出。</p>
+<p data-astro-cid-c6i3vrlz="">快照保留了容器的完整磁盘状态、操作系统配置、安装的依赖项、修改的文件、数据文件等。然后您能够快速恢复环境。</p>
+<p data-astro-cid-c6i3vrlz="">您可以一个沙盒配置为在进入休眠状态时自动创建快照。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> AgentDevEnvironment</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Sandbox</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-e36209-fff">  sleepAfter</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> "5m"</span><span class="sk-24292e-fff">;</span></span>
@@ -231,7 +231,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">您还可以通过编程方式创建快照，并手动恢复。该功能适用于为工作创建检查点或分叉会话。例如，如果您想并行运行智能体的四个实例，则可基于同一状态快速启动四个沙箱环境。</p>
+<p data-astro-cid-c6i3vrlz="">您还可以通过编程方式创建快照，并手动恢复。该功能适用于为工作创建检查点或分叉会话。例如，如果您想并行运行智能体的四个实例，则可基于同一状态快速启动四个沙箱环境。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> AgentDevEnvironment</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Sandbox</span><span class="sk-24292e-fff"> {}</span></span>
 <span class="line"></span>
@@ -252,20 +252,20 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">快照存储在您帐户内的 <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a> 中，为您提供持久性和位置无关性。R2 的<a href="https://developers.cloudflare.com/cache/how-to/tiered-cache" target="_blank" rel="noopener noreferrer"><u>分层缓存</u></a>系统可在全球任何地区实现快速恢复。</p>
-<p data-astro-cid-byeekcgh="">在未来版本中，实时内存状态也将被捕获，从而允许正在运行的进程从其中断的地方准确恢复。终端和编辑器将重新打开，并恢复到上次关闭时的状态。</p>
-<p data-astro-cid-byeekcgh="">若您希望在快照功能正式上线前恢复会话状态，现在可使用<a href="https://developers.cloudflare.com/sandbox/guides/backup-restore" target="_blank" rel="noopener noreferrer"><code><u>备份与恢复</u></code></a>方法。该方法同样借助 R2 对目录进行持久化存储与恢复，但性能不及真正的虚拟机级快照。不过相较于简单重新创建会话状态，这些方法仍可带来相当可观的性能提升。</p>
+<p data-astro-cid-c6i3vrlz="">快照存储在您帐户内的 <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a> 中，为您提供持久性和位置无关性。R2 的<a href="https://developers.cloudflare.com/cache/how-to/tiered-cache" target="_blank" rel="noopener noreferrer"><u>分层缓存</u></a>系统可在全球任何地区实现快速恢复。</p>
+<p data-astro-cid-c6i3vrlz="">在未来版本中，实时内存状态也将被捕获，从而允许正在运行的进程从其中断的地方准确恢复。终端和编辑器将重新打开，并恢复到上次关闭时的状态。</p>
+<p data-astro-cid-c6i3vrlz="">若您希望在快照功能正式上线前恢复会话状态，现在可使用<a href="https://developers.cloudflare.com/sandbox/guides/backup-restore" target="_blank" rel="noopener noreferrer"><code><u>备份与恢复</u></code></a>方法。该方法同样借助 R2 对目录进行持久化存储与恢复，但性能不及真正的虚拟机级快照。不过相较于简单重新创建会话状态，这些方法仍可带来相当可观的性能提升。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="188" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW498BPY5VC065XFA2GZ34P5.gif" alt="BLOG-3264 3" width="715" height="188" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
 </figure>
-<p data-astro-cid-byeekcgh=""><sup><em>启动沙盒，克隆“axios”并安装 npm 需要 30 秒。从备份恢复只需两秒钟。</em></sup></p>
-<p data-astro-cid-byeekcgh="">敬请关注快照功能的正式发布。</p>
-<h2 data-astro-cid-byeekcgh="">更高资源配额与活动 CPU 计费模式</h2>
-<p data-astro-cid-byeekcgh="">自最初推出以来，我们一直在稳步增加容量。使用标准价格计划的用户现在可运行 15000 个并发的轻量实例类型实例，6000 个基本实例类型实例，以及 1000 多个并发的大型实例。如需运行更多实例，<a href="https://forms.gle/3vvDvXPECjy6F8v56" target="_blank" rel="noopener noreferrer"><u>请联系我们</u></a>。</p>
-<p data-astro-cid-byeekcgh="">我们还更改了定价模型，使其在大规模部署时更具成本效益。Sandboxes 现在<a href="https://developers.cloudflare.com/changelog/post/2025-11-21-new-cpu-pricing" target="_blank" rel="noopener noreferrer"><u>仅对实际使用的 CPU 周期收费</u></a>。这意味着，在智能体等待 LLM 响应时，您无需为空闲 CPU 付费。</p>
-<h2 data-astro-cid-byeekcgh="">这就是一台电脑的样子。</h2>
-<p data-astro-cid-byeekcgh="">九个月前，我们推出了可运行命令并访问文件系统的沙盒功能。那已足以验证该技术方案的可行性。</p>
-<p data-astro-cid-byeekcgh="">如今我们所拥有的一切本质上已经不同。今天的沙盒是一个完整的开发环境：一个可以连接浏览器的终端，一个具有持久状态的代码解释器，一个具有实时预览 URL 的后台进程，一个实时发出更改事件的文件系统，用于安全凭据注入的出口代理，以及可实现近乎瞬时热启动的快照机制。</p>
-<p data-astro-cid-byeekcgh="">基于此进行开发时，您会体验到一种理想的开发模式：能够执行实际工程任务的智能体。克隆一个存储库，安装、运行测试，读取故障，编辑代码，再次运行测试。这种紧密的反馈回路，提升了人类工程师的效率，现在智能体也能获得。</p>
-<p data-astro-cid-byeekcgh="">当前 SDK 版本为 0.8.9。您今天即可开始使用。</p>
-<p data-astro-cid-byeekcgh=""><code>npm i @cloudflare/sandbox@latest</code></p>
+<p data-astro-cid-c6i3vrlz=""><sup><em>启动沙盒，克隆“axios”并安装 npm 需要 30 秒。从备份恢复只需两秒钟。</em></sup></p>
+<p data-astro-cid-c6i3vrlz="">敬请关注快照功能的正式发布。</p>
+<h2 data-astro-cid-c6i3vrlz="">更高资源配额与活动 CPU 计费模式</h2>
+<p data-astro-cid-c6i3vrlz="">自最初推出以来，我们一直在稳步增加容量。使用标准价格计划的用户现在可运行 15000 个并发的轻量实例类型实例，6000 个基本实例类型实例，以及 1000 多个并发的大型实例。如需运行更多实例，<a href="https://forms.gle/3vvDvXPECjy6F8v56" target="_blank" rel="noopener noreferrer"><u>请联系我们</u></a>。</p>
+<p data-astro-cid-c6i3vrlz="">我们还更改了定价模型，使其在大规模部署时更具成本效益。Sandboxes 现在<a href="https://developers.cloudflare.com/changelog/post/2025-11-21-new-cpu-pricing" target="_blank" rel="noopener noreferrer"><u>仅对实际使用的 CPU 周期收费</u></a>。这意味着，在智能体等待 LLM 响应时，您无需为空闲 CPU 付费。</p>
+<h2 data-astro-cid-c6i3vrlz="">这就是一台电脑的样子。</h2>
+<p data-astro-cid-c6i3vrlz="">九个月前，我们推出了可运行命令并访问文件系统的沙盒功能。那已足以验证该技术方案的可行性。</p>
+<p data-astro-cid-c6i3vrlz="">如今我们所拥有的一切本质上已经不同。今天的沙盒是一个完整的开发环境：一个可以连接浏览器的终端，一个具有持久状态的代码解释器，一个具有实时预览 URL 的后台进程，一个实时发出更改事件的文件系统，用于安全凭据注入的出口代理，以及可实现近乎瞬时热启动的快照机制。</p>
+<p data-astro-cid-c6i3vrlz="">基于此进行开发时，您会体验到一种理想的开发模式：能够执行实际工程任务的智能体。克隆一个存储库，安装、运行测试，读取故障，编辑代码，再次运行测试。这种紧密的反馈回路，提升了人类工程师的效率，现在智能体也能获得。</p>
+<p data-astro-cid-c6i3vrlz="">当前 SDK 版本为 0.8.9。您今天即可开始使用。</p>
+<p data-astro-cid-c6i3vrlz=""><code>npm i @cloudflare/sandbox@latest</code></p>

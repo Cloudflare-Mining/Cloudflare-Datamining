@@ -1,42 +1,42 @@
-<p data-astro-cid-byeekcgh="">如果沒有適當的控制機制，網站擁有者長期以來一直面臨一個艱難的權衡：是允許將自己的內容用於 AI 訓練，還是冒著在搜尋結果中失去曝光度的風險。這種權衡之所以存在，是因為網際網路上的一些大型機構使用混合用途爬蟲：單一爬蟲同時服務搜尋與 AI 訓練兩種用途。拒絕其中一個，就等於拒絕另一個。</p>
-<p data-astro-cid-byeekcgh="">今天，Cloudflare 宣布推出全新的「<a href="https://blog.cloudflare.com/bot-preference-sync" target="_blank" rel="noopener noreferrer"><u>Disallow AI Training</u></a>」（禁止 AI 訓練）設定，讓您可以輕鬆地保持搜尋索引，同時拒絕讓同一個爬蟲利用您的內容進行訓練。Apple、Google 和 Microsoft 已經尊重或承諾（在指定期限內）尊重這項設定。</p>
-<p data-astro-cid-byeekcgh="">混合用途爬蟲一直是訓練問題中最棘手的部分。接下來的挑戰在於 AI 摘要功能。簡單的全站「允許」或「禁止」過於粗糙：您的內容在摘要中呈現的比例，與內容是否呈現同樣重要。針對 AI 摘要的退出機制，已經是我們對混合用途爬蟲營運商提出的要求之一。我們的目標是在明年初之前，讓您能夠控制有多少內容被納入摘要——只要在 Cloudflare 上設定一次即可，無需分別向各個營運商設定。</p>
-<h2 data-astro-cid-byeekcgh="">為什麼光是「詢問」還不夠</h2>
-<p data-astro-cid-byeekcgh="">大多數網站擁有者都希望被人類、智慧體和（善意）機器人找到。但開放網際網路中有很大一部分是靠廣告、訂閱或與訪客的直接關係來維持營運的，而這些商業模式只有在有人實際造訪時才會產生收益。</p>
-<p data-astro-cid-byeekcgh="">幾乎所有網站擁有者都認為「搜尋」是有益的：選擇封鎖搜尋機器人的 Cloudflare 網站不到 1%。然而，訓練則是另一回事：有 17% 的網站選擇啟用某種機制來封鎖訓練。這正是我們決定網站擁有者需要更細緻的控制機制，而不是一刀切的「封鎖 AI」的原因。</p>
-<p data-astro-cid-byeekcgh="">單靠 robots.txt 指令無法解決這個問題。任何人都可以發布 robots.txt，但它無法識別是誰在爬取、無法判斷它們爬取的原因，也無法阻止無視該指令的爬蟲。</p>
-<p data-astro-cid-byeekcgh="">然而，網路層面的解決方案可以應對這一問題：我們可以發布偏好設定，識別爬蟲身分，對其爬取目的進行分類，並封鎖那些無視指令的爬蟲——隨後在 <a href="https://radar.cloudflare.com/ai-insights#ai-bot-transparency" target="_blank" rel="noopener noreferrer"><u>Radar</u></a> 上報告各營運商的實際行為。</p>
-<p data-astro-cid-byeekcgh="">但封鎖只是移除一個爬蟲，並不能改變爬蟲的行為。理想的情況是，營運商無需讓網站擁有者在兩者間做出非此即彼的選擇。因此，自七月以來，我們一直在與他們直接溝通。得到的回應令人鼓舞：幾乎所有人都同意，網站擁有者應該能控制和瞭解其內容的使用方式，並確信他們的選擇會受到尊重。為了幫助網站擁有者理解這一點，我們建立了一個稱號：「可問責」(Accountable)。</p>
-<p data-astro-cid-byeekcgh="">「可問責」認定同時認可現今可用的能力，以及交付這些能力的具體承諾。要符合資格，機器人營運商必須滿足或承諾滿足以下要求：</p>
+<p data-astro-cid-c6i3vrlz="">如果沒有適當的控制機制，網站擁有者長期以來一直面臨一個艱難的權衡：是允許將自己的內容用於 AI 訓練，還是冒著在搜尋結果中失去曝光度的風險。這種權衡之所以存在，是因為網際網路上的一些大型機構使用混合用途爬蟲：單一爬蟲同時服務搜尋與 AI 訓練兩種用途。拒絕其中一個，就等於拒絕另一個。</p>
+<p data-astro-cid-c6i3vrlz="">今天，Cloudflare 宣布推出全新的「<a href="https://blog.cloudflare.com/bot-preference-sync" target="_blank" rel="noopener noreferrer"><u>Disallow AI Training</u></a>」（禁止 AI 訓練）設定，讓您可以輕鬆地保持搜尋索引，同時拒絕讓同一個爬蟲利用您的內容進行訓練。Apple、Google 和 Microsoft 已經尊重或承諾（在指定期限內）尊重這項設定。</p>
+<p data-astro-cid-c6i3vrlz="">混合用途爬蟲一直是訓練問題中最棘手的部分。接下來的挑戰在於 AI 摘要功能。簡單的全站「允許」或「禁止」過於粗糙：您的內容在摘要中呈現的比例，與內容是否呈現同樣重要。針對 AI 摘要的退出機制，已經是我們對混合用途爬蟲營運商提出的要求之一。我們的目標是在明年初之前，讓您能夠控制有多少內容被納入摘要——只要在 Cloudflare 上設定一次即可，無需分別向各個營運商設定。</p>
+<h2 data-astro-cid-c6i3vrlz="">為什麼光是「詢問」還不夠</h2>
+<p data-astro-cid-c6i3vrlz="">大多數網站擁有者都希望被人類、智慧體和（善意）機器人找到。但開放網際網路中有很大一部分是靠廣告、訂閱或與訪客的直接關係來維持營運的，而這些商業模式只有在有人實際造訪時才會產生收益。</p>
+<p data-astro-cid-c6i3vrlz="">幾乎所有網站擁有者都認為「搜尋」是有益的：選擇封鎖搜尋機器人的 Cloudflare 網站不到 1%。然而，訓練則是另一回事：有 17% 的網站選擇啟用某種機制來封鎖訓練。這正是我們決定網站擁有者需要更細緻的控制機制，而不是一刀切的「封鎖 AI」的原因。</p>
+<p data-astro-cid-c6i3vrlz="">單靠 robots.txt 指令無法解決這個問題。任何人都可以發布 robots.txt，但它無法識別是誰在爬取、無法判斷它們爬取的原因，也無法阻止無視該指令的爬蟲。</p>
+<p data-astro-cid-c6i3vrlz="">然而，網路層面的解決方案可以應對這一問題：我們可以發布偏好設定，識別爬蟲身分，對其爬取目的進行分類，並封鎖那些無視指令的爬蟲——隨後在 <a href="https://radar.cloudflare.com/ai-insights#ai-bot-transparency" target="_blank" rel="noopener noreferrer"><u>Radar</u></a> 上報告各營運商的實際行為。</p>
+<p data-astro-cid-c6i3vrlz="">但封鎖只是移除一個爬蟲，並不能改變爬蟲的行為。理想的情況是，營運商無需讓網站擁有者在兩者間做出非此即彼的選擇。因此，自七月以來，我們一直在與他們直接溝通。得到的回應令人鼓舞：幾乎所有人都同意，網站擁有者應該能控制和瞭解其內容的使用方式，並確信他們的選擇會受到尊重。為了幫助網站擁有者理解這一點，我們建立了一個稱號：「可問責」(Accountable)。</p>
+<p data-astro-cid-c6i3vrlz="">「可問責」認定同時認可現今可用的能力，以及交付這些能力的具體承諾。要符合資格，機器人營運商必須滿足或承諾滿足以下要求：</p>
 <ol>
 	<li>提供一種機制，讓網站擁有者可以透過 robots.txt 或類似標準選擇退出 AI 訓練。</li>
 	<li>提供一種機制，讓網站擁有者可以直接向營運商設定選擇退出 AI 摘要，明年起可透過 Cloudflare 進行設定（詳情請見下方章節）。</li>
 	<li>提供 URL 層級的可視性，顯示哪些頁面被提供用於訓練，並提供顯示內容在搜尋結果中呈現情況的相關指標。</li>
 	<li>保證選擇退出 AI 訓練不會影響傳統的搜尋結果。</li>
 </ol>
-<p data-astro-cid-byeekcgh="">Apple、Google 和 Microsoft 都展現出他們符合「可問責」的資格。每一家都結合了現今可用的能力，以及對仍在開發中的能力所做出的有期限承諾。下文詳細介紹了這些公司的網路爬蟲相關資訊。</p>
-<h2 data-astro-cid-byeekcgh="">新的安全設定選項</h2>
-<p data-astro-cid-byeekcgh="">Cloudflare 依行為對機器人進行分類，而單一機器人可能會展現出多種行為。目前提供控制選項的三種行為如下：</p>
+<p data-astro-cid-c6i3vrlz="">Apple、Google 和 Microsoft 都展現出他們符合「可問責」的資格。每一家都結合了現今可用的能力，以及對仍在開發中的能力所做出的有期限承諾。下文詳細介紹了這些公司的網路爬蟲相關資訊。</p>
+<h2 data-astro-cid-c6i3vrlz="">新的安全設定選項</h2>
+<p data-astro-cid-c6i3vrlz="">Cloudflare 依行為對機器人進行分類，而單一機器人可能會展現出多種行為。目前提供控制選項的三種行為如下：</p>
 <ul>
 	<li><strong>搜尋 (Search)</strong> - 爬取以建立搜尋索引。</li>
 	<li><strong>訓練 (Training) </strong>- 爬取以訓練或微調模型。</li>
 	<li><strong>智慧體 (Agent)</strong> - 由使用者指示、代表真人造訪頁面的智慧體，例如聊天內容擷取機器人和瀏覽器操作智慧體。</li>
 </ul>
-<p data-astro-cid-byeekcgh="">所謂的「混合用途爬蟲」是指單一爬蟲同時執行「搜尋」和「訓練」兩種行為。在沒有控制機制的情況下，這種組合會造成上述的取捨困境：網站擁有者無法在允許一種用途的同時拒絕另一種用途。</p>
-<p data-astro-cid-byeekcgh="">為了避免封鎖「可問責」的混合用途爬蟲（也就是那些不會強迫網站擁有者做取捨的爬蟲），我們引入了一項新設定：「禁止 AI 訓練」(Disallow AI Training)。該設定的命名源自於它在您的 robots.txt 檔案中發布的 <code>Disallow:</code> 指令。</p>
-<h3 data-astro-cid-byeekcgh="">「封鎖」設定的含義現已發生變化</h3>
-<p data-astro-cid-byeekcgh="">過去，「封鎖 (Block)」和「在含有廣告的頁面上封鎖 (Block on pages with ads)」不適用於混合用途爬蟲，因為封鎖它們也可能影響搜尋曝光度。現在我們有了全新的「禁止 AI 訓練」設定，「封鎖」和「在含有廣告的頁面上封鎖」將適用於<em>所有</em>訓練用爬蟲，包括混合用途爬蟲。</p>
-<p data-astro-cid-byeekcgh="">「訓練」、「搜尋」和「智慧體」的控制選項是在網域層級套用。新增「禁止 AI 訓練」後，目前可用的設定如下：</p>
+<p data-astro-cid-c6i3vrlz="">所謂的「混合用途爬蟲」是指單一爬蟲同時執行「搜尋」和「訓練」兩種行為。在沒有控制機制的情況下，這種組合會造成上述的取捨困境：網站擁有者無法在允許一種用途的同時拒絕另一種用途。</p>
+<p data-astro-cid-c6i3vrlz="">為了避免封鎖「可問責」的混合用途爬蟲（也就是那些不會強迫網站擁有者做取捨的爬蟲），我們引入了一項新設定：「禁止 AI 訓練」(Disallow AI Training)。該設定的命名源自於它在您的 robots.txt 檔案中發布的 <code>Disallow:</code> 指令。</p>
+<h3 data-astro-cid-c6i3vrlz="">「封鎖」設定的含義現已發生變化</h3>
+<p data-astro-cid-c6i3vrlz="">過去，「封鎖 (Block)」和「在含有廣告的頁面上封鎖 (Block on pages with ads)」不適用於混合用途爬蟲，因為封鎖它們也可能影響搜尋曝光度。現在我們有了全新的「禁止 AI 訓練」設定，「封鎖」和「在含有廣告的頁面上封鎖」將適用於<em>所有</em>訓練用爬蟲，包括混合用途爬蟲。</p>
+<p data-astro-cid-c6i3vrlz="">「訓練」、「搜尋」和「智慧體」的控制選項是在網域層級套用。新增「禁止 AI 訓練」後，目前可用的設定如下：</p>
 <ol>
 	<li><strong>允許 (Allow)</strong>：允許所有爬蟲，除非被其他設定或 WAF 規則封鎖。</li>
 	<li><strong>禁止 AI 訓練 (Disallow AI Training)</strong>：Bot Preference Sync（機器人偏好同步）會在 robots.txt 中發布適用的「禁止訓練」偏好設定。可問責的混合用途爬蟲仍可被允許進行搜尋。其他所有訓練用爬蟲都會被封鎖，包括 Amazon、Anthropic、Meta 和 OpenAI 營運的「僅訓練」爬蟲——封鎖這些爬蟲不會影響搜尋。「禁止 AI 訓練」僅適用於「訓練」控制項，不適用於「搜尋」或「智慧體」。</li>
 	<li><strong>在含有廣告的頁面上封鎖 (Block on pages with ads)</strong>：僅在偵測到正在投放廣告的頁面上封鎖爬蟲（包括混合用途爬蟲）。</li>
 	<li><strong>封鎖 (Block)</strong>：封鎖所有爬蟲，包括混合用途爬蟲。</li>
 </ol>
-<p data-astro-cid-byeekcgh="">「禁止 AI 訓練」的運作方式是在 robots.txt 中發布偏好設定。但「僅限廣告頁面」的偏好無法用這種方式表達：Cloudflare 可以偵測哪些頁面有投放廣告，但這份清單過於龐大且變動太頻繁，無法在 robots.txt 中逐一列舉。這就是為什麼沒有「在含廣告的頁面上禁止 AI 訓練」這個選項。</p>
-<p data-astro-cid-byeekcgh="">智慧體不會像混合用途爬蟲那樣造成搜尋曝光度的取捨問題，而且網際網路目前還沒有一個完善確立的指令，可以用來向智慧體表達「禁止」偏好。目前我們不會為智慧體加入「禁止」(Disallow) 設定。隨著諸如 <a href="https://datatracker.ietf.org/wg/aipref/documents" target="_blank" rel="noopener noreferrer"><u>ai-prefs</u></a> 等標準逐漸成熟，我們會重新評估這種做法。</p>
-<h2 data-astro-cid-byeekcgh="">9 月 15 日有哪些改變？</h2>
-<p data-astro-cid-byeekcgh="">我們將對 Bot Management 和 AI Crawl Control 進行以下變更：</p>
+<p data-astro-cid-c6i3vrlz="">「禁止 AI 訓練」的運作方式是在 robots.txt 中發布偏好設定。但「僅限廣告頁面」的偏好無法用這種方式表達：Cloudflare 可以偵測哪些頁面有投放廣告，但這份清單過於龐大且變動太頻繁，無法在 robots.txt 中逐一列舉。這就是為什麼沒有「在含廣告的頁面上禁止 AI 訓練」這個選項。</p>
+<p data-astro-cid-c6i3vrlz="">智慧體不會像混合用途爬蟲那樣造成搜尋曝光度的取捨問題，而且網際網路目前還沒有一個完善確立的指令，可以用來向智慧體表達「禁止」偏好。目前我們不會為智慧體加入「禁止」(Disallow) 設定。隨著諸如 <a href="https://datatracker.ietf.org/wg/aipref/documents" target="_blank" rel="noopener noreferrer"><u>ai-prefs</u></a> 等標準逐漸成熟，我們會重新評估這種做法。</p>
+<h2 data-astro-cid-c6i3vrlz="">9 月 15 日有哪些改變？</h2>
+<p data-astro-cid-c6i3vrlz="">我們將對 Bot Management 和 AI Crawl Control 進行以下變更：</p>
 <ol>
 	<li>「封鎖」與「在含廣告的頁面上封鎖」現在會適用於混合用途爬蟲，包括 Applebot、Bingbot 和 Googlebot，因此這兩種設定都會同時影響搜尋與訓練。若要停止訓練並<em>保留</em>搜尋，請使用「禁止 AI 訓練」。</li>
 	<li>「封鎖 AI 機器人」將被淘汰，改用更精細的搜尋、訓練與智慧體控制項。</li>
@@ -44,11 +44,11 @@
 	<li>「禁止 AI 訓練」將成為某些新網域的建議設定的一部分。</li>
 	<li>現有客戶的偏好設定將依下述方式遷移至新的控制選項。</li>
 </ol>
-<h3 data-astro-cid-byeekcgh="">您需要做什麼</h3>
-<p data-astro-cid-byeekcgh="">幾乎在所有情況下，都不需要做任何事。您目前的設定會自行沿用。</p>
-<p data-astro-cid-byeekcgh="">如果您希望徹底封鎖混合用途爬蟲，則需要明確進行設定：選擇「封鎖」。這將阻止 Applebot、Bingbot 和 Googlebot 存取您的網站——包括搜尋功能。</p>
-<h4 data-astro-cid-byeekcgh="">從未使用過搜尋／訓練／智慧體控制項的現有網域</h4>
-<p data-astro-cid-byeekcgh="">從未設定過更精細控制項的網站擁有者，將根據其舊版「封鎖 AI 機器人」設定遷移到新設定：</p>
+<h3 data-astro-cid-c6i3vrlz="">您需要做什麼</h3>
+<p data-astro-cid-c6i3vrlz="">幾乎在所有情況下，都不需要做任何事。您目前的設定會自行沿用。</p>
+<p data-astro-cid-c6i3vrlz="">如果您希望徹底封鎖混合用途爬蟲，則需要明確進行設定：選擇「封鎖」。這將阻止 Applebot、Bingbot 和 Googlebot 存取您的網站——包括搜尋功能。</p>
+<h4 data-astro-cid-c6i3vrlz="">從未使用過搜尋／訓練／智慧體控制項的現有網域</h4>
+<p data-astro-cid-c6i3vrlz="">從未設定過更精細控制項的網站擁有者，將根據其舊版「封鎖 AI 機器人」設定遷移到新設定：</p>
 <div id="html-block-j4r7kdhox" class="html-block">
 	<figure class="table table-style-align-center">
 		<table>
@@ -83,8 +83,8 @@
 		</table>
 	</figure>
 </div>
-<h4 data-astro-cid-byeekcgh="">先前已設定搜尋／訓練／智慧體控制項的現有網域</h4>
-<p data-astro-cid-byeekcgh="">對於先前已設定精細控制項的網域，我們會在新的定義下保留其選擇的實際效果。先前訓練選擇「封鎖」或「在含廣告的頁面上封鎖」者，將遷移到「禁止 AI 訓練」。</p>
+<h4 data-astro-cid-c6i3vrlz="">先前已設定搜尋／訓練／智慧體控制項的現有網域</h4>
+<p data-astro-cid-c6i3vrlz="">對於先前已設定精細控制項的網域，我們會在新的定義下保留其選擇的實際效果。先前訓練選擇「封鎖」或「在含廣告的頁面上封鎖」者，將遷移到「禁止 AI 訓練」。</p>
 <div id="html-block-ny9qjp2ub" class="html-block">
 	<figure class="table table-style-align-center">
 		<table>
@@ -139,8 +139,8 @@
 		</table>
 	</figure>
 </div>
-<h3 data-astro-cid-byeekcgh="">新網域的建議設定</h3>
-<p data-astro-cid-byeekcgh="">自 9 月 15 日起，新網域的客戶在註冊時將看到兩種預設設定之一，取決於該網站是否透過廣告獲利。廣告收益取決於是否真的有真人瀏覽頁面。而「訓練」過程會以直接提供答案的方式取代這種瀏覽行為；智慧體擷取頁面時也沒有人會看到廣告。因此，針對有廣告支援的網站，預設設定會更嚴格。您可以在註冊過程中或之後的任何時間變更這些設定。</p>
+<h3 data-astro-cid-c6i3vrlz="">新網域的建議設定</h3>
+<p data-astro-cid-c6i3vrlz="">自 9 月 15 日起，新網域的客戶在註冊時將看到兩種預設設定之一，取決於該網站是否透過廣告獲利。廣告收益取決於是否真的有真人瀏覽頁面。而「訓練」過程會以直接提供答案的方式取代這種瀏覽行為；智慧體擷取頁面時也沒有人會看到廣告。因此，針對有廣告支援的網站，預設設定會更嚴格。您可以在註冊過程中或之後的任何時間變更這些設定。</p>
 <div id="html-block-yt7uq7yv4" class="html-block">
 	<figure class="table table-style-align-center">
 		<table>
@@ -176,32 +176,32 @@
 		</table>
 	</figure>
 </div>
-<p class="has-text-align-center" data-astro-cid-byeekcgh=""><em>新網域的建議設定。</em></p>
+<p class="has-text-align-center" data-astro-cid-c6i3vrlz=""><em>新網域的建議設定。</em></p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA//7+/Pr69fPz8fDw9PT09/b28/Ly6ujo////////+Pf39fT0+Pj4+vr69/b27u3t/////////fz8+fn5/Pz8////+/r68/Ly/////////////P39/////////v7+9vX1/////////////f7+////////////9/f3/////////f//+/39////////////9vf3////////+/39+fv7/v///////v//9fb2////////+vz8+fr6/v///////v//9PX1" alt="" width="715" height="797" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=715&amp;h=797&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=640&amp;h=713&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=715&amp;h=797&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=750&amp;h=836&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=828&amp;h=923&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=1080&amp;h=1204&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=1280&amp;h=1427&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=1430&amp;h=1594&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3499 2.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2H2Z9GFEJSK02H5JECVX0S8.01M2H2ZBGYSMBXA4N72BE9J750.png&amp;w=772&amp;h=861&amp;f=webp" data-lightbox-width="772" data-lightbox-height="861" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="797" class="pt-portable-image-media"></div>
 	<figcaption data-astro-cid-7nvefuv6="">新網域初始設定流程截圖，展示了選擇「我透過展示廣告的頁面獲利」時的建議設定。</figcaption>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<h2 data-astro-cid-byeekcgh="">這對特定的混合用途爬蟲意味著什麼？</h2>
-<p data-astro-cid-byeekcgh="">Applebot、Bingbot 和 Googlebot 都是「可問責」的。Apple、Google 和 Microsoft 都致力於相同的原則：讓發布者擁有選擇權和透明度。在「禁止 AI 訓練」之下，它們可以繼續為搜尋目的爬取您的網站。選擇「封鎖」則會完全阻止它們。</p>
-<p data-astro-cid-byeekcgh="">我們也將 Amazon、Anthropic、Meta 和 OpenAI 的相關爬蟲歸類為「可問責」。這些組織將它們的「搜尋」和「訓練」爬蟲分開，因此 Cloudflare 可以封鎖「訓練」爬蟲而不影響搜尋。</p>
-<h3 data-astro-cid-byeekcgh="">Applebot</h3>
-<p data-astro-cid-byeekcgh="">Applebot 允許網站擁有者透過在 robots.txt 中為「Applebot-Extended」新增 Disallow 規則，來選擇退出訓練。網站擁有者目前也可以透過頁面 HTML 中的 nosnippet <a href="https://support.apple.com/en-us/119829#:~:text=nosnippet%3A%20Applebot,products%20and%20services." target="_blank" rel="noopener noreferrer"><u>指令</u></a>來表達對「AI 摘要」的偏好。內容也可以被標記為<a href="https://support.apple.com/en-us/119829#:~:text=Marking%20paywalled%20content,the%20next%20section." target="_blank" rel="noopener noreferrer"><u>「付費圍欄內容」(paywalled content)</u></a>，以將其排除在生成式輸出之外。Applebot 目前尚未提供 URL 層級的檢查工具。然而，我們已與他們的團隊會面，他們分享了預計於明年推出的解決方案細節。Apple 也聲明，禁止訓練<a href="https://support.apple.com/en-us/119829#:~:text=Applebot%2DExtended%20and%20controlling%20data%20usage" target="_blank" rel="noopener noreferrer"><u>不會影響搜尋排名</u></a>。</p>
-<h3 data-astro-cid-byeekcgh="">Googlebot</h3>
-<p data-astro-cid-byeekcgh="">Googlebot 允許網站擁有者透過在 robots.txt 中為「Google-Extended」新增 Disallow 規則來選擇退出訓練，而且他們在網站管理員入口網站內提供切換選項，可將網站內容排除在生成式搜尋結果之外。Googlebot 也為網站擁有者提供有關搜尋結果和 AI 摘要結果的指標與報告。Google 分享了關於他們現有及最近推出的控制機制，以及他們正在開發的項目資訊，包括預計在未來幾週內推出的、與 Google-Extended 相關的額外 URL 層級透明度工具。Google 也聲明，禁止 Google-Extended <a href="https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers#google-extended:~:text=Google%2DExtended%20does%20not%20impact%20a%20site%27s%20inclusion%20in%20Google%20Search%20nor%20is%20it%20used%20as%20a%20ranking%20signal%20in%20Google%20Search." target="_blank" rel="noopener noreferrer"><u>不會影響搜尋排名</u></a>。</p>
-<h3 data-astro-cid-byeekcgh="">Bingbot</h3>
-<p data-astro-cid-byeekcgh="">Bingbot 在其 <a href="https://www.bing.com/webmasters/help/ai-performance-9f8e7d6c" target="_blank" rel="noopener noreferrer"><u>Webmaster Tools（網站管理員工具）</u></a>中提供細緻的控制和透明度。網站擁有者目前可以透過 Bing 的 <code>NOARCHIVE</code> <a href="https://blogs.bing.com/webmaster/september-2023/Announcing-new-options-for-webmasters-to-control-usage-of-their-content-in-Bing-Chat#:~:text=Content%20tagged%20NOARCHIVE%20will%20not%20be%20included%20in%20Bing%20Chat%20answers%2C%20not%20be%20linked%20to%20in%20the%20answers.%20Going%20forward%2C%20for%20content%20in%20our%20Bing%20Index%20that%20is%20labeled%20NOARCHIVE%2C%20we%20will%20not%20use%20the%20content%20for%20training%20Microsoft%E2%80%99s%20generative%20AI%20foundation%20models." target="_blank" rel="noopener noreferrer"><u>中繼標籤</u></a>來表達 AI 訓練偏好。Microsoft 正在擴充這些功能，目前正建構一種機制，以同時尊重 robots.txt 中網域/網站層級的「禁止訓練」偏好，目標是在 2027 年初推出。對於希望今天就在 Bing 中選擇退出訓練的 Cloudflare 客戶，除了使用 <code>NOARCHIVE</code> 標籤外，網站擁有者還可以使用<a href="https://www.bing.com/webmasters/help/block-urls-from-bing-264e560a" target="_blank" rel="noopener noreferrer"><u>「封鎖 URL」或「內容移除」工具</u></a>。Microsoft 也聲明，使用 <code>NOARCHIVE</code> <a href="https://blogs.bing.com/webmaster/september-2023/Announcing-new-options-for-webmasters-to-control-usage-of-their-content-in-Bing-Chat#:~:text=We%20also%20heard%20from%20publishers%20that%20they%20want%20to%20exercise%20these%20choices%20without%20impacting%20how%20Bing%20users%20can%20discover%20web%20content%20on%20Bing%E2%80%99s%20search%20results%20page.%20We%20can%20assure%20publishers%20that%20content%20with%20the%20NOCACHE%20tag%20or%20NOARCHIVE%20tag%20will%20still%20appear%20in%20our%20search%20results." target="_blank" rel="noopener noreferrer"><u>不會影響搜尋排名</u></a>。</p>
-<p data-astro-cid-byeekcgh="">在該支援功能推出之前，選擇「禁止 AI 訓練」並不會自動透過 robots.txt 向 Bing 傳達「禁止訓練」的偏好。這與先前的「訓練封鎖」設定在實際行為上相同，當時該設定不適用於 Bingbot 等混合用途爬蟲。</p>
-<h3 data-astro-cid-byeekcgh="">持續進展</h3>
-<p data-astro-cid-byeekcgh="">隨著這些功能的演進，我們將持續聯繫並與所有 AI 爬蟲營運商接洽。Cloudflare <a href="https://radar.cloudflare.com/ai-insights#ai-bot-transparency" target="_blank" rel="noopener noreferrer"><u>Radar</u></a> 公開追蹤「可問責」爬蟲營運商所提供的控制機制、透明度和報告。&nbsp;</p>
-<p data-astro-cid-byeekcgh="">要讓網際網路變得更好，需要雙方都擁有自主權：爬蟲需要存取開放網路，而創造該網路的人則需要對其作品的使用方式擁有實質控制權。今天的公告代表了朝著這種平衡邁出的具體進展。</p>
-<p data-astro-cid-byeekcgh="">這種進展需要基礎架構供應者、內容創作者、科技公司和標準制定機構（如網際網路工程任務推動小組 (IETF)）共同努力，將這些原則轉化為開放、可互通的標準。</p>
-<h2 data-astro-cid-byeekcgh="">下一步：AI 摘要</h2>
-<p data-astro-cid-byeekcgh="">訓練和 AI 摘要對網站擁有者帶來了不同的問題。訓練關乎內容是否可以被用來建構 AI 模型。摘要則影響人們如何發現、評估，並最終造訪一家企業。兩者都很重要，但它們以不同的方式影響企業。</p>
-<p data-astro-cid-byeekcgh="">選擇退出 AI 摘要的控制機制只是第一步。被認定為「可問責」的營運商，要么已經提供該能力，要么正在完成相關工作以提供這種能力，從而建立了一個重要的基準線：網站擁有者可以說「不」。</p>
-<p data-astro-cid-byeekcgh="">但是，在全站範圍內選擇「允許」或「禁止」摘要，仍然是一種粗糙的手段。正確的決定取決於網站、內容和商業成果。對於發布者而言，訓練引發了關於控制權、補償和原創內容可持續性的根本問題。摘要則創造了一個獨立且通常更直接的分發問題：使用者是會造訪發布者的網站，還是在搜尋或 AI 體驗中直接使用了答案？對於許多其他企業來說，AI 摘要越來越頻繁地出現在潛在客戶和網站之間。它們可能會回答問題、比較替代品、推薦產品，或幫助人們決定是否要造訪。</p>
-<p data-astro-cid-byeekcgh="">數據顯示了好壞參半的影響。<a href="https://www.pewresearch.org/chart/a-majority-of-americans-say-they-read-ai-summaries-at-the-top-of-search-results" target="_blank" rel="noopener noreferrer"><u>超過一半</u></a>的消費者會閱讀搜尋中的摘要，而這些消費者在閱讀後<a href="https://www.bain.com/insights/goodbye-clicks-hello-ai-zero-click-search-redefines-marketing" target="_blank" rel="noopener noreferrer"><u>結束搜尋</u></a>的機率<a href="https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results" target="_blank" rel="noopener noreferrer"><u>超過 40%</u></a>。這可能會減少網站收到的造訪次數。但是，透過 AI Search 轉介的消費者，其轉換率是傳統搜尋轉介的 <a href="https://aisearch.similarweb.com/blog/ai-visibility-roi" target="_blank" rel="noopener noreferrer"><u>3 倍</u></a>到 <a href="https://quickseo.ai/blog/ai-search-vs-google-search-in-2026-40-stats-that-show-why-your-brand-needs-to-track-both#:~:text=AI%20search%20traffic%20converts%20at%2014.2%25%2C%20compared%20to%20Google%E2%80%99s%202.8%25" target="_blank" rel="noopener noreferrer"><u>5 倍以上</u></a>。AI 可能會帶來較少的造訪次數，但同時帶來意圖更強烈的客戶。</p>
-<p data-astro-cid-byeekcgh="">這本身並非絕對的好或壞。依賴廣告收入的發布者可能會針對「受眾規模」進行最佳化。零售商可能更偏好「較少但更有可能購買的訪客」。Cloudflare 的角色不是為他們做選擇，而是提供做出明智決策所需的可見度和控制權。</p>
-<p data-astro-cid-byeekcgh="">摘要退出選項是一個強而有力的開始，但並非最終狀態。我們的下一步重點是幫助網站擁有者瞭解摘要如何影響他們的業務，並讓他們能更精細地控制有多少內容可以被使用。像 <a href="https://datatracker.ietf.org/wg/aipref/documents" target="_blank" rel="noopener noreferrer"><u>ai-prefs</u></a> 這樣的開放標準將是實現這一目標的重要一環。</p>
-<p data-astro-cid-byeekcgh="">如果您希望參與相關討論或提供回饋，請聯繫 <a href="mailto:crawlercontrols@cloudflare.com" target="_blank" rel="noopener noreferrer"><u>crawlercontrols@cloudflare.com</u></a>。</p>
-<p data-astro-cid-byeekcgh="">這些新的控制機制適用於所有方案的所有客戶，並可在網域 (zone) 的<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fsettings" target="_blank" rel="noopener noreferrer"><u>「安全性設定」</u></a>中進行配置。還沒有使用 Cloudflare？<a href="https://www.cloudflare.com/lp/pg-one-platform" target="_blank" rel="noopener noreferrer"><u>立即免費註冊</u></a>，即可著手設定符合您需求的流量控制策略。</p>
+<h2 data-astro-cid-c6i3vrlz="">這對特定的混合用途爬蟲意味著什麼？</h2>
+<p data-astro-cid-c6i3vrlz="">Applebot、Bingbot 和 Googlebot 都是「可問責」的。Apple、Google 和 Microsoft 都致力於相同的原則：讓發布者擁有選擇權和透明度。在「禁止 AI 訓練」之下，它們可以繼續為搜尋目的爬取您的網站。選擇「封鎖」則會完全阻止它們。</p>
+<p data-astro-cid-c6i3vrlz="">我們也將 Amazon、Anthropic、Meta 和 OpenAI 的相關爬蟲歸類為「可問責」。這些組織將它們的「搜尋」和「訓練」爬蟲分開，因此 Cloudflare 可以封鎖「訓練」爬蟲而不影響搜尋。</p>
+<h3 data-astro-cid-c6i3vrlz="">Applebot</h3>
+<p data-astro-cid-c6i3vrlz="">Applebot 允許網站擁有者透過在 robots.txt 中為「Applebot-Extended」新增 Disallow 規則，來選擇退出訓練。網站擁有者目前也可以透過頁面 HTML 中的 nosnippet <a href="https://support.apple.com/en-us/119829#:~:text=nosnippet%3A%20Applebot,products%20and%20services." target="_blank" rel="noopener noreferrer"><u>指令</u></a>來表達對「AI 摘要」的偏好。內容也可以被標記為<a href="https://support.apple.com/en-us/119829#:~:text=Marking%20paywalled%20content,the%20next%20section." target="_blank" rel="noopener noreferrer"><u>「付費圍欄內容」(paywalled content)</u></a>，以將其排除在生成式輸出之外。Applebot 目前尚未提供 URL 層級的檢查工具。然而，我們已與他們的團隊會面，他們分享了預計於明年推出的解決方案細節。Apple 也聲明，禁止訓練<a href="https://support.apple.com/en-us/119829#:~:text=Applebot%2DExtended%20and%20controlling%20data%20usage" target="_blank" rel="noopener noreferrer"><u>不會影響搜尋排名</u></a>。</p>
+<h3 data-astro-cid-c6i3vrlz="">Googlebot</h3>
+<p data-astro-cid-c6i3vrlz="">Googlebot 允許網站擁有者透過在 robots.txt 中為「Google-Extended」新增 Disallow 規則來選擇退出訓練，而且他們在網站管理員入口網站內提供切換選項，可將網站內容排除在生成式搜尋結果之外。Googlebot 也為網站擁有者提供有關搜尋結果和 AI 摘要結果的指標與報告。Google 分享了關於他們現有及最近推出的控制機制，以及他們正在開發的項目資訊，包括預計在未來幾週內推出的、與 Google-Extended 相關的額外 URL 層級透明度工具。Google 也聲明，禁止 Google-Extended <a href="https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers#google-extended:~:text=Google%2DExtended%20does%20not%20impact%20a%20site%27s%20inclusion%20in%20Google%20Search%20nor%20is%20it%20used%20as%20a%20ranking%20signal%20in%20Google%20Search." target="_blank" rel="noopener noreferrer"><u>不會影響搜尋排名</u></a>。</p>
+<h3 data-astro-cid-c6i3vrlz="">Bingbot</h3>
+<p data-astro-cid-c6i3vrlz="">Bingbot 在其 <a href="https://www.bing.com/webmasters/help/ai-performance-9f8e7d6c" target="_blank" rel="noopener noreferrer"><u>Webmaster Tools（網站管理員工具）</u></a>中提供細緻的控制和透明度。網站擁有者目前可以透過 Bing 的 <code>NOARCHIVE</code> <a href="https://blogs.bing.com/webmaster/september-2023/Announcing-new-options-for-webmasters-to-control-usage-of-their-content-in-Bing-Chat#:~:text=Content%20tagged%20NOARCHIVE%20will%20not%20be%20included%20in%20Bing%20Chat%20answers%2C%20not%20be%20linked%20to%20in%20the%20answers.%20Going%20forward%2C%20for%20content%20in%20our%20Bing%20Index%20that%20is%20labeled%20NOARCHIVE%2C%20we%20will%20not%20use%20the%20content%20for%20training%20Microsoft%E2%80%99s%20generative%20AI%20foundation%20models." target="_blank" rel="noopener noreferrer"><u>中繼標籤</u></a>來表達 AI 訓練偏好。Microsoft 正在擴充這些功能，目前正建構一種機制，以同時尊重 robots.txt 中網域/網站層級的「禁止訓練」偏好，目標是在 2027 年初推出。對於希望今天就在 Bing 中選擇退出訓練的 Cloudflare 客戶，除了使用 <code>NOARCHIVE</code> 標籤外，網站擁有者還可以使用<a href="https://www.bing.com/webmasters/help/block-urls-from-bing-264e560a" target="_blank" rel="noopener noreferrer"><u>「封鎖 URL」或「內容移除」工具</u></a>。Microsoft 也聲明，使用 <code>NOARCHIVE</code> <a href="https://blogs.bing.com/webmaster/september-2023/Announcing-new-options-for-webmasters-to-control-usage-of-their-content-in-Bing-Chat#:~:text=We%20also%20heard%20from%20publishers%20that%20they%20want%20to%20exercise%20these%20choices%20without%20impacting%20how%20Bing%20users%20can%20discover%20web%20content%20on%20Bing%E2%80%99s%20search%20results%20page.%20We%20can%20assure%20publishers%20that%20content%20with%20the%20NOCACHE%20tag%20or%20NOARCHIVE%20tag%20will%20still%20appear%20in%20our%20search%20results." target="_blank" rel="noopener noreferrer"><u>不會影響搜尋排名</u></a>。</p>
+<p data-astro-cid-c6i3vrlz="">在該支援功能推出之前，選擇「禁止 AI 訓練」並不會自動透過 robots.txt 向 Bing 傳達「禁止訓練」的偏好。這與先前的「訓練封鎖」設定在實際行為上相同，當時該設定不適用於 Bingbot 等混合用途爬蟲。</p>
+<h3 data-astro-cid-c6i3vrlz="">持續進展</h3>
+<p data-astro-cid-c6i3vrlz="">隨著這些功能的演進，我們將持續聯繫並與所有 AI 爬蟲營運商接洽。Cloudflare <a href="https://radar.cloudflare.com/ai-insights#ai-bot-transparency" target="_blank" rel="noopener noreferrer"><u>Radar</u></a> 公開追蹤「可問責」爬蟲營運商所提供的控制機制、透明度和報告。&nbsp;</p>
+<p data-astro-cid-c6i3vrlz="">要讓網際網路變得更好，需要雙方都擁有自主權：爬蟲需要存取開放網路，而創造該網路的人則需要對其作品的使用方式擁有實質控制權。今天的公告代表了朝著這種平衡邁出的具體進展。</p>
+<p data-astro-cid-c6i3vrlz="">這種進展需要基礎架構供應者、內容創作者、科技公司和標準制定機構（如網際網路工程任務推動小組 (IETF)）共同努力，將這些原則轉化為開放、可互通的標準。</p>
+<h2 data-astro-cid-c6i3vrlz="">下一步：AI 摘要</h2>
+<p data-astro-cid-c6i3vrlz="">訓練和 AI 摘要對網站擁有者帶來了不同的問題。訓練關乎內容是否可以被用來建構 AI 模型。摘要則影響人們如何發現、評估，並最終造訪一家企業。兩者都很重要，但它們以不同的方式影響企業。</p>
+<p data-astro-cid-c6i3vrlz="">選擇退出 AI 摘要的控制機制只是第一步。被認定為「可問責」的營運商，要么已經提供該能力，要么正在完成相關工作以提供這種能力，從而建立了一個重要的基準線：網站擁有者可以說「不」。</p>
+<p data-astro-cid-c6i3vrlz="">但是，在全站範圍內選擇「允許」或「禁止」摘要，仍然是一種粗糙的手段。正確的決定取決於網站、內容和商業成果。對於發布者而言，訓練引發了關於控制權、補償和原創內容可持續性的根本問題。摘要則創造了一個獨立且通常更直接的分發問題：使用者是會造訪發布者的網站，還是在搜尋或 AI 體驗中直接使用了答案？對於許多其他企業來說，AI 摘要越來越頻繁地出現在潛在客戶和網站之間。它們可能會回答問題、比較替代品、推薦產品，或幫助人們決定是否要造訪。</p>
+<p data-astro-cid-c6i3vrlz="">數據顯示了好壞參半的影響。<a href="https://www.pewresearch.org/chart/a-majority-of-americans-say-they-read-ai-summaries-at-the-top-of-search-results" target="_blank" rel="noopener noreferrer"><u>超過一半</u></a>的消費者會閱讀搜尋中的摘要，而這些消費者在閱讀後<a href="https://www.bain.com/insights/goodbye-clicks-hello-ai-zero-click-search-redefines-marketing" target="_blank" rel="noopener noreferrer"><u>結束搜尋</u></a>的機率<a href="https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results" target="_blank" rel="noopener noreferrer"><u>超過 40%</u></a>。這可能會減少網站收到的造訪次數。但是，透過 AI Search 轉介的消費者，其轉換率是傳統搜尋轉介的 <a href="https://aisearch.similarweb.com/blog/ai-visibility-roi" target="_blank" rel="noopener noreferrer"><u>3 倍</u></a>到 <a href="https://quickseo.ai/blog/ai-search-vs-google-search-in-2026-40-stats-that-show-why-your-brand-needs-to-track-both#:~:text=AI%20search%20traffic%20converts%20at%2014.2%25%2C%20compared%20to%20Google%E2%80%99s%202.8%25" target="_blank" rel="noopener noreferrer"><u>5 倍以上</u></a>。AI 可能會帶來較少的造訪次數，但同時帶來意圖更強烈的客戶。</p>
+<p data-astro-cid-c6i3vrlz="">這本身並非絕對的好或壞。依賴廣告收入的發布者可能會針對「受眾規模」進行最佳化。零售商可能更偏好「較少但更有可能購買的訪客」。Cloudflare 的角色不是為他們做選擇，而是提供做出明智決策所需的可見度和控制權。</p>
+<p data-astro-cid-c6i3vrlz="">摘要退出選項是一個強而有力的開始，但並非最終狀態。我們的下一步重點是幫助網站擁有者瞭解摘要如何影響他們的業務，並讓他們能更精細地控制有多少內容可以被使用。像 <a href="https://datatracker.ietf.org/wg/aipref/documents" target="_blank" rel="noopener noreferrer"><u>ai-prefs</u></a> 這樣的開放標準將是實現這一目標的重要一環。</p>
+<p data-astro-cid-c6i3vrlz="">如果您希望參與相關討論或提供回饋，請聯繫 <a href="mailto:crawlercontrols@cloudflare.com" target="_blank" rel="noopener noreferrer"><u>crawlercontrols@cloudflare.com</u></a>。</p>
+<p data-astro-cid-c6i3vrlz="">這些新的控制機制適用於所有方案的所有客戶，並可在網域 (zone) 的<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fsettings" target="_blank" rel="noopener noreferrer"><u>「安全性設定」</u></a>中進行配置。還沒有使用 Cloudflare？<a href="https://www.cloudflare.com/lp/pg-one-platform" target="_blank" rel="noopener noreferrer"><u>立即免費註冊</u></a>，即可著手設定符合您需求的流量控制策略。</p>

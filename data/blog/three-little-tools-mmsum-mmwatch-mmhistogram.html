@@ -1,7 +1,7 @@
-<p data-astro-cid-byeekcgh="">In a recent blog post, my colleague <a href="https://blog.cloudflare.com/author/marek-majkowski">Marek</a> talked about some <a href="https://blog.cloudflare.com/ssdp-100gbps">SSDP-based DDoS</a> activity we'd been seeing recently. In that blog post he used a tool called <code>mmhistogram</code> to output an ASCII histogram.</p>
-<p data-astro-cid-byeekcgh="">That tool is part of a small suite of command-line tools that can be handy when messing with data. Since a reader asked for them to be open sourced... here they are.</p>
-<h3 data-astro-cid-byeekcgh="">mmhistogram</h3>
-<p data-astro-cid-byeekcgh="">Suppose you have the following CSV of the ages of major Star Wars characters at the time of Episode IV:</p>
+<p data-astro-cid-c6i3vrlz="">In a recent blog post, my colleague <a href="https://blog.cloudflare.com/author/marek-majkowski">Marek</a> talked about some <a href="https://blog.cloudflare.com/ssdp-100gbps">SSDP-based DDoS</a> activity we'd been seeing recently. In that blog post he used a tool called <code>mmhistogram</code> to output an ASCII histogram.</p>
+<p data-astro-cid-c6i3vrlz="">That tool is part of a small suite of command-line tools that can be handy when messing with data. Since a reader asked for them to be open sourced... here they are.</p>
+<h3 data-astro-cid-c6i3vrlz="">mmhistogram</h3>
+<p data-astro-cid-c6i3vrlz="">Suppose you have the following CSV of the ages of major Star Wars characters at the time of Episode IV:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Anakin</span><span class="sk-032f62-99ffe4"> Skywalker</span><span class="sk-24292e-fff"> (Darth </span><span class="sk-032f62-99ffe4">Vader</span><span class="sk-24292e-fff">),42</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Boba</span><span class="sk-032f62-99ffe4"> Fett,32</span></span>
@@ -47,7 +47,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-byeekcgh="">You can get an ASCII histogram of the ages as follows using the <code>mmhistogram</code> tool.</p>
+<p data-astro-cid-c6i3vrlz="">You can get an ASCII histogram of the ages as follows using the <code>mmhistogram</code> tool.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cut</span><span class="sk-005cc5-99ffe4"> -d,</span><span class="sk-005cc5-99ffe4"> -f2</span><span class="sk-032f62-99ffe4"> epiv</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> mmhistogram</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> "Age"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Age</span><span class="sk-032f62-99ffe4"> min:19.00</span><span class="sk-032f62-99ffe4"> avg:123.90</span><span class="sk-032f62-99ffe4"> med=</span><span class="sk-005cc5-ffc799">54.00</span><span class="sk-032f62-99ffe4"> max:896.00</span><span class="sk-032f62-99ffe4"> dev:211.28</span><span class="sk-032f62-99ffe4"> count:21</span></span>
@@ -69,10 +69,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Handy for getting a quick sense of the data. (These charts are inspired by the <a href="https://blog.cloudflare.com/revenge-listening-sockets">ASCII output from systemtap</a>).</p>
-<h3 data-astro-cid-byeekcgh="">mmwatch</h3>
-<p data-astro-cid-byeekcgh="">The <code>mmwatch</code> tool is handy if you want to look at output from a command-line tool that provides some snapshot of values, but need to have a rate.</p>
-<p data-astro-cid-byeekcgh="">For example, here's <code>df -H</code> on my machine:</p>
+<p data-astro-cid-c6i3vrlz="">Handy for getting a quick sense of the data. (These charts are inspired by the <a href="https://blog.cloudflare.com/revenge-listening-sockets">ASCII output from systemtap</a>).</p>
+<h3 data-astro-cid-c6i3vrlz="">mmwatch</h3>
+<p data-astro-cid-c6i3vrlz="">The <code>mmwatch</code> tool is handy if you want to look at output from a command-line tool that provides some snapshot of values, but need to have a rate.</p>
+<p data-astro-cid-c6i3vrlz="">For example, here's <code>df -H</code> on my machine:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> df</span><span class="sk-005cc5-99ffe4"> -H</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Filesystem</span><span class="sk-032f62-99ffe4">             Size</span><span class="sk-032f62-99ffe4">   Used</span><span class="sk-032f62-99ffe4">  Avail</span><span class="sk-032f62-99ffe4"> Capacity</span><span class="sk-032f62-99ffe4">  iused</span><span class="sk-032f62-99ffe4">   ifree</span><span class="sk-032f62-99ffe4"> %iused</span><span class="sk-032f62-99ffe4">  Mounted</span><span class="sk-032f62-99ffe4"> on</span></span>
@@ -87,7 +87,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Now imagine you were interested in understanding the rate of change in iused and ifree. You can with <code>mmwatch</code>. It's just like <code>watch</code> but looks for changing numbers and interprets them as rates:</p>
+<p data-astro-cid-c6i3vrlz="">Now imagine you were interested in understanding the rate of change in iused and ifree. You can with <code>mmwatch</code>. It's just like <code>watch</code> but looks for changing numbers and interprets them as rates:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mmwatch</span><span class="sk-032f62-99ffe4"> 'df -H'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -95,14 +95,14 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Here's a short GIF showing it working:</p>
+<p data-astro-cid-c6i3vrlz="">Here's a short GIF showing it working:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="687" height="84" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW48YXS1BC9EZ7RXJR267N17.gif" alt="Three little tools: mmsum, mmwatch, mmhistogram Embedded Image - gwc43h" width="687" height="84" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<h3 data-astro-cid-byeekcgh="">mmsum</h3>
-<p data-astro-cid-byeekcgh="">And the final tool is <code>mmsum</code> that simply sums a list of floating point numbers (one per line).</p>
-<p data-astro-cid-byeekcgh="">Suppose you are downloading real-time rainfall data from the UK's Environment Agency and would like to know the total current rainfall. <code>mmsum</code> can help:</p>
+<h3 data-astro-cid-c6i3vrlz="">mmsum</h3>
+<p data-astro-cid-c6i3vrlz="">And the final tool is <code>mmsum</code> that simply sums a list of floating point numbers (one per line).</p>
+<p data-astro-cid-c6i3vrlz="">Suppose you are downloading real-time rainfall data from the UK's Environment Agency and would like to know the total current rainfall. <code>mmsum</code> can help:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -s</span><span class="sk-032f62-99ffe4"> 'https://environment.data.gov.uk/flood-monitoring/id/measures?parameter=rainfall'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> jq</span><span class="sk-005cc5-99ffe4"> -e</span><span class="sk-032f62-99ffe4"> '.items[].latestReading.value+0'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> ./mmsum</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">40.2</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -111,4 +111,4 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">All these tools can be found on the Cloudflare <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2017-06-29-ssdp" target="_blank" rel="noopener noreferrer">Github</a>.</p>
+<p data-astro-cid-c6i3vrlz="">All these tools can be found on the Cloudflare <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2017-06-29-ssdp" target="_blank" rel="noopener noreferrer">Github</a>.</p>

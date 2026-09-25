@@ -1,14 +1,14 @@
-<p data-astro-cid-byeekcgh=""><em>This is a guest post by Cristhian Motoche of <a href="https://www.stackbuilders.com" target="_blank" rel="noopener noreferrer">Stack Builders</a>.</em></p>
-<p data-astro-cid-byeekcgh="">At <a href="https://www.stackbuilders.com" target="_blank" rel="noopener noreferrer">Stack Builders</a>, we believe that Haskell’s system of expressive static types offers many benefits to the software industry and the world-wide community that depends on our services. In order to fully realize these benefits, it is necessary to have proper training and access to an ecosystem that allows for reliable deployment of services. In exploring the tools that help us run our systems based on Haskell, our developer Cristhian Motoche has created a tutorial that shows how to compile Haskell to WebAssembly using Asterius for deployment on Cloudflare.</p>
-<h3 data-astro-cid-byeekcgh=""></h3>
-<p data-astro-cid-byeekcgh="">What is a Cloudflare Worker?</p>
-<p data-astro-cid-byeekcgh=""><a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> is a serverless platform that allows us to run our code on the edge of the Cloudflare infrastructure. It's built on Google V8, so it’s possible to write functionalities in JavaScript or any other language that targets WebAssembly.</p>
-<p data-astro-cid-byeekcgh=""><a href="https://webassembly.org" target="_blank" rel="noopener noreferrer">WebAssembly</a> is a portable binary instruction format that can be executed fast in a memory-safe sandboxed environment. For this reason, it’s especially useful for tasks that need to perform resource-demanding and self-contained operations.</p>
-<h3 data-astro-cid-byeekcgh="">Why use Haskell to target WebAssembly?</h3>
-<p data-astro-cid-byeekcgh="">Haskell is a pure functional <a href="https://github.com/appcypher/awesome-wasm-langs" target="_blank" rel="noopener noreferrer">language</a> that can target WebAssembly. As such, It helps developers break down complex tasks into small functions that can later be composed to do complex tasks. Additionally, it’s statically typed and has type inference, so it will complain if there are type errors at compile time. Because of that and <a href="https://wiki.haskell.org/Why_Haskell_matters" target="_blank" rel="noopener noreferrer">much more</a>, Haskell is a good source language for targeting WebAssembly.</p>
-<h3 data-astro-cid-byeekcgh="">From Haskell to WebAssembly</h3>
-<p data-astro-cid-byeekcgh="">We’ll use <a href="https://asterius.netlify.app" target="_blank" rel="noopener noreferrer">Asterius</a> to target WebAssembly from Haskell. It’s a well documented tool that is updated often and supports a lot of Haskell features.</p>
-<p data-astro-cid-byeekcgh="">First, as suggested in the <a href="https://asterius.netlify.app/images.html#using-prebuilt-container-images" target="_blank" rel="noopener noreferrer">documentation</a>, we’ll use podman to pull the Asterius prebuilt container from Docker hub. In this tutorial, we will use Asterius version <a href="https://hub.docker.com/layers/terrorjack/asterius/200617/images/sha256-8e6009198c3940d1b4938b0ab6c0b119d4fce3d7ac0f6336214e758f66887b80?context=explore" target="_blank" rel="noopener noreferrer">200617</a>, which works with GHC 8.8.</p>
+<p data-astro-cid-nalcf22a=""><em>This is a guest post by Cristhian Motoche of <a href="https://www.stackbuilders.com" target="_blank" rel="noopener noreferrer">Stack Builders</a>.</em></p>
+<p data-astro-cid-nalcf22a="">At <a href="https://www.stackbuilders.com" target="_blank" rel="noopener noreferrer">Stack Builders</a>, we believe that Haskell’s system of expressive static types offers many benefits to the software industry and the world-wide community that depends on our services. In order to fully realize these benefits, it is necessary to have proper training and access to an ecosystem that allows for reliable deployment of services. In exploring the tools that help us run our systems based on Haskell, our developer Cristhian Motoche has created a tutorial that shows how to compile Haskell to WebAssembly using Asterius for deployment on Cloudflare.</p>
+<h3 data-astro-cid-nalcf22a=""></h3>
+<p data-astro-cid-nalcf22a="">What is a Cloudflare Worker?</p>
+<p data-astro-cid-nalcf22a=""><a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> is a serverless platform that allows us to run our code on the edge of the Cloudflare infrastructure. It's built on Google V8, so it’s possible to write functionalities in JavaScript or any other language that targets WebAssembly.</p>
+<p data-astro-cid-nalcf22a=""><a href="https://webassembly.org" target="_blank" rel="noopener noreferrer">WebAssembly</a> is a portable binary instruction format that can be executed fast in a memory-safe sandboxed environment. For this reason, it’s especially useful for tasks that need to perform resource-demanding and self-contained operations.</p>
+<h3 data-astro-cid-nalcf22a="">Why use Haskell to target WebAssembly?</h3>
+<p data-astro-cid-nalcf22a="">Haskell is a pure functional <a href="https://github.com/appcypher/awesome-wasm-langs" target="_blank" rel="noopener noreferrer">language</a> that can target WebAssembly. As such, It helps developers break down complex tasks into small functions that can later be composed to do complex tasks. Additionally, it’s statically typed and has type inference, so it will complain if there are type errors at compile time. Because of that and <a href="https://wiki.haskell.org/Why_Haskell_matters" target="_blank" rel="noopener noreferrer">much more</a>, Haskell is a good source language for targeting WebAssembly.</p>
+<h3 data-astro-cid-nalcf22a="">From Haskell to WebAssembly</h3>
+<p data-astro-cid-nalcf22a="">We’ll use <a href="https://asterius.netlify.app" target="_blank" rel="noopener noreferrer">Asterius</a> to target WebAssembly from Haskell. It’s a well documented tool that is updated often and supports a lot of Haskell features.</p>
+<p data-astro-cid-nalcf22a="">First, as suggested in the <a href="https://asterius.netlify.app/images.html#using-prebuilt-container-images" target="_blank" rel="noopener noreferrer">documentation</a>, we’ll use podman to pull the Asterius prebuilt container from Docker hub. In this tutorial, we will use Asterius version <a href="https://hub.docker.com/layers/terrorjack/asterius/200617/images/sha256-8e6009198c3940d1b4938b0ab6c0b119d4fce3d7ac0f6336214e758f66887b80?context=explore" target="_blank" rel="noopener noreferrer">200617</a>, which works with GHC 8.8.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">podman</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-005cc5-99ffe4"> -it</span><span class="sk-005cc5-99ffe4"> --rm</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-24292e-fff"> $(</span><span class="sk-005cc5-ffc799">pwd</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">:/workspace</span><span class="sk-005cc5-99ffe4"> -w</span><span class="sk-032f62-99ffe4"> /workspace</span><span class="sk-032f62-99ffe4"> terrorjack/asterius:200617</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -34,7 +34,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-byeekcgh="">Now we’ll create a Haskell module called <code>fact.hs</code> file that will export a pure function:</p>
+<p data-astro-cid-nalcf22a="">Now we’ll create a Haskell module called <code>fact.hs</code> file that will export a pure function:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>module Factorial (fact) where</span></span>
 <span class="line"><span></span></span>
@@ -50,8 +50,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">In this module, we define a pure function called <code>fact</code>, optimized with tail recursion and exported using the <a href="https://asterius.netlify.app/jsffi.html" target="_blank" rel="noopener noreferrer">Asterius JavaScript FFI</a>, so that it can be called when a WebAssembly module is instantiated in JavaScript.</p>
-<p data-astro-cid-byeekcgh="">Next, we’ll create a JavaScript file called <code>fact_node.mjs</code> that contains the following code:</p>
+<p data-astro-cid-nalcf22a="">In this module, we define a pure function called <code>fact</code>, optimized with tail recursion and exported using the <a href="https://asterius.netlify.app/jsffi.html" target="_blank" rel="noopener noreferrer">Asterius JavaScript FFI</a>, so that it can be called when a WebAssembly module is instantiated in JavaScript.</p>
+<p data-astro-cid-nalcf22a="">Next, we’ll create a JavaScript file called <code>fact_node.mjs</code> that contains the following code:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-005cc5-fff"> *</span><span class="sk-d73a49-a0a0a0"> as</span><span class="sk-24292e-fff"> rts </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./rts.mjs"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> module </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./fact.wasm.mjs"</span><span class="sk-24292e-fff">;</span></span>
@@ -69,9 +69,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">This code imports <code>rts.mjs</code> (common runtime), WebAssembly loaders, and the required parameters for the Asterius instance. It creates a new Asterius instance, it calls the exported function <code>fact</code> with the input <code>5</code>, and prints out the result.</p>
-<p data-astro-cid-byeekcgh="">You probably have noted that <code>fact</code> is done <strong>asynchronously</strong>. This happens with any exported function by Asterius, even if it’s a pure function.</p>
-<p data-astro-cid-byeekcgh="">Next, we’ll compile this code using the Asterius command line interface (CLI) <code>ahc-link</code>, and we’ll run the JavaScript code in Node:</p>
+<p data-astro-cid-nalcf22a="">This code imports <code>rts.mjs</code> (common runtime), WebAssembly loaders, and the required parameters for the Asterius instance. It creates a new Asterius instance, it calls the exported function <code>fact</code> with the input <code>5</code>, and prints out the result.</p>
+<p data-astro-cid-nalcf22a="">You probably have noted that <code>fact</code> is done <strong>asynchronously</strong>. This happens with any exported function by Asterius, even if it’s a pure function.</p>
+<p data-astro-cid-nalcf22a="">Next, we’ll compile this code using the Asterius command line interface (CLI) <code>ahc-link</code>, and we’ll run the JavaScript code in Node:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ahc-link</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  --input-hs</span><span class="sk-032f62-99ffe4"> fact.hs</span><span class="sk-005cc5-a0a0a0"> \</span></span>
@@ -85,8 +85,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">This command takes <code>fact.hs</code> as a Haskell input file, specifies that no <code>main</code> function is exported, and exports the <code>fact</code> function. Additionally, it takes <code>fact_node.mjs</code> as the entry JavaScript file that replaces the generated file by default, and it places the generated code in a directory called <code>node</code>.</p>
-<p data-astro-cid-byeekcgh="">Running the <code>ahc-link</code> command from above will print the following output in the console:</p>
+<p data-astro-cid-nalcf22a="">This command takes <code>fact.hs</code> as a Haskell input file, specifies that no <code>main</code> function is exported, and exports the <code>fact</code> function. Additionally, it takes <code>fact_node.mjs</code> as the entry JavaScript file that replaces the generated file by default, and it places the generated code in a directory called <code>node</code>.</p>
+<p data-astro-cid-nalcf22a="">Running the <code>ahc-link</code> command from above will print the following output in the console:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[INFO] Compiling fact.hs to WebAssembly</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">...</span></span>
@@ -97,10 +97,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">As you can see, the result is executed in <code>node</code> and it prints out the result of <code>fact</code> in the console.</p>
-<h3 data-astro-cid-byeekcgh="">Push your code to Cloudflare Workers</h3>
-<p data-astro-cid-byeekcgh="">Now we’ll set everything up for deploying our code to Cloudflare Workers.</p>
-<p data-astro-cid-byeekcgh="">First, let’s add a <code>metadata.json</code> file with the following content:</p>
+<p data-astro-cid-nalcf22a="">As you can see, the result is executed in <code>node</code> and it prints out the result of <code>fact</code> in the console.</p>
+<h3 data-astro-cid-nalcf22a="">Push your code to Cloudflare Workers</h3>
+<p data-astro-cid-nalcf22a="">Now we’ll set everything up for deploying our code to Cloudflare Workers.</p>
+<p data-astro-cid-nalcf22a="">First, let’s add a <code>metadata.json</code> file with the following content:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  "body_part"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"script"</span><span class="sk-24292e-fff">,</span></span>
@@ -117,8 +117,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">This file is needed to specify the <code>wasm_module</code> binding. The <code>name</code> value corresponds to the global variable to access the WebAssembly module from your Worker code. In our example, it’s going to have the name <code>WASM</code>.</p>
-<p data-astro-cid-byeekcgh="">Our next step is to define the main point of the Workers script.</p>
+<p data-astro-cid-nalcf22a="">This file is needed to specify the <code>wasm_module</code> binding. The <code>name</code> value corresponds to the global variable to access the WebAssembly module from your Worker code. In our example, it’s going to have the name <code>WASM</code>.</p>
+<p data-astro-cid-nalcf22a="">Our next step is to define the main point of the Workers script.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-005cc5-fff"> *</span><span class="sk-d73a49-a0a0a0"> as</span><span class="sk-24292e-fff"> rts </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./rts.mjs"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> fact </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./fact.req.mjs"</span><span class="sk-24292e-fff">;</span></span>
@@ -153,14 +153,14 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">There are a few interesting things to point out in this code:</p>
+<p data-astro-cid-nalcf22a="">There are a few interesting things to point out in this code:</p>
 <ol>
 	<li>We import <code>rts.mjs</code> and <code>fact.req.mjs</code> to load the exported functions from our WebAssembly module.</li>
 	<li><code>handleFact</code> is an asynchronous function that creates an instance of Asterius with the global <code>WASM</code> module, as a Workers global variable, and calls the exported function <code>fact</code> with some input.</li>
 	<li><code>handleRequest</code> handles the request of the Worker. It expects a <code>POST</code> request, with a parameter called <code>param</code> in the request body. If <code>param</code> is a number, it calls <code>handleFact</code> to respond with the result of <code>fact</code>.</li>
 	<li>Using the Service Workers API, we listen to the <code>fetch</code> event that will respond with the result of <code>handleRequest</code>.</li>
 </ol>
-<p data-astro-cid-byeekcgh="">We need to build and bundle our code in a single JavaScript file, because Workers only accepts one script per worker. Fortunately, Asterius comes with Parcel.js, which will bundle all the necessary code in a single JavaScript file.</p>
+<p data-astro-cid-nalcf22a="">We need to build and bundle our code in a single JavaScript file, because Workers only accepts one script per worker. Fortunately, Asterius comes with Parcel.js, which will bundle all the necessary code in a single JavaScript file.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ahc-link</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  --input-hs</span><span class="sk-032f62-99ffe4"> fact.hs</span><span class="sk-005cc5-a0a0a0"> \</span></span>
@@ -175,8 +175,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh=""><code>ahc-link</code> will generate some files inside a directory called <code>worker</code>. For our Workers, we’re only interested in the JavaScript file (<code>fact.js</code>) and the WebAssembly module (<code>fact.wasm</code>). Now, it’s time to submit both of them to Workers. We can do this with the provided REST API.</p>
-<p data-astro-cid-byeekcgh="">Make sure you have an account id (<code>$CF_ACCOUNT_ID</code>), a name for your script (<code>$SCRIPT_NAME</code>), and an API Token (<code>$CF_API_TOKEN</code>):</p>
+<p data-astro-cid-nalcf22a=""><code>ahc-link</code> will generate some files inside a directory called <code>worker</code>. For our Workers, we’re only interested in the JavaScript file (<code>fact.js</code>) and the WebAssembly module (<code>fact.wasm</code>). Now, it’s time to submit both of them to Workers. We can do this with the provided REST API.</p>
+<p data-astro-cid-nalcf22a="">Make sure you have an account id (<code>$CF_ACCOUNT_ID</code>), a name for your script (<code>$SCRIPT_NAME</code>), and an API Token (<code>$CF_API_TOKEN</code>):</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">cd</span><span class="sk-032f62-99ffe4"> worker</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> PUT</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/accounts/</span><span class="sk-24292e-fff">$CF_ACCOUNT_ID</span><span class="sk-032f62-99ffe4">/workers/scripts/</span><span class="sk-24292e-fff">$SCRIPT_NAME</span><span class="sk-032f62-99ffe4">"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
@@ -189,7 +189,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Now, visit the Workers UI, where you can use the editor to view, edit, and test the script. Also, you can enable it to on a <code>workers.dev</code> subdomain (<code>$CFW_SUBDOMAIN</code>); in that case, you could then simply:</p>
+<p data-astro-cid-nalcf22a="">Now, visit the Workers UI, where you can use the editor to view, edit, and test the script. Also, you can enable it to on a <code>workers.dev</code> subdomain (<code>$CFW_SUBDOMAIN</code>); in that case, you could then simply:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-24292e-fff"> $CFW_SUBDOMAIN </span><span class="sk-005cc5-a0a0a0">\</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">       -H</span><span class="sk-032f62-99ffe4"> 'Content-Type: application/x-www-form-urlencoded'</span><span class="sk-005cc5-a0a0a0"> \</span></span>
@@ -199,9 +199,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-byeekcgh="">Beyond a simple Haskell file</h3>
-<p data-astro-cid-byeekcgh="">So far, we’ve created a WebAssembly module that exports a pure Haskell function we ran in Workers. However, we can also create and build a Cabal project using Asterius <code>ahc-cabal</code> CLI, and then use <code>ahc-dist</code> to compile it to WebAssembly.</p>
-<p data-astro-cid-byeekcgh="">First, let’s create the project:</p>
+<h3 data-astro-cid-nalcf22a="">Beyond a simple Haskell file</h3>
+<p data-astro-cid-nalcf22a="">So far, we’ve created a WebAssembly module that exports a pure Haskell function we ran in Workers. However, we can also create and build a Cabal project using Asterius <code>ahc-cabal</code> CLI, and then use <code>ahc-dist</code> to compile it to WebAssembly.</p>
+<p data-astro-cid-nalcf22a="">First, let’s create the project:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ahc-cabal</span><span class="sk-032f62-99ffe4"> init</span><span class="sk-005cc5-99ffe4"> -m</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-032f62-99ffe4"> cabal-cfw-example</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -209,7 +209,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Then, let’s add some dependencies to our cabal project. The cabal file will look like this:</p>
+<p data-astro-cid-nalcf22a="">Then, let’s add some dependencies to our cabal project. The cabal file will look like this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cabal-version:</span><span class="sk-005cc5-ffc799">       2.4</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">name:</span><span class="sk-032f62-99ffe4">                cabal-cfw-example</span></span>
@@ -230,8 +230,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">It’s a simple cabal file, except for the <code>-optl--export-function=handleReq</code> ghc flag. This is <a href="https://github.com/tweag/asterius/issues/362#issuecomment-561576162" target="_blank" rel="noopener noreferrer">necessary</a> when exporting a function from a cabal project.</p>
-<p data-astro-cid-byeekcgh="">In this example, we’ll define a simple <code>User</code> record, and we’ll define its instance automatically using Template Haskell!</p>
+<p data-astro-cid-nalcf22a="">It’s a simple cabal file, except for the <code>-optl--export-function=handleReq</code> ghc flag. This is <a href="https://github.com/tweag/asterius/issues/362#issuecomment-561576162" target="_blank" rel="noopener noreferrer">necessary</a> when exporting a function from a cabal project.</p>
+<p data-astro-cid-nalcf22a="">In this example, we’ll define a simple <code>User</code> record, and we’ll define its instance automatically using Template Haskell!</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>{-# LANGUAGE OverloadedStrings #-}</span></span>
 <span class="line"><span>{-# LANGUAGE TemplateHaskell   #-}</span></span>
@@ -262,8 +262,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh=""><strong>NOTE:</strong> It’s not necessary to create a Cabal project for this example, because the prebuilt container comes with a lot of <a href="https://github.com/tweag/asterius/issues/354" target="_blank" rel="noopener noreferrer">prebuilt packages</a> (aesona included). Nevertheless, it will help us show the potential of <code>ahc-cabal</code> and <code>ahc-dist</code>.</p>
-<p data-astro-cid-byeekcgh="">Next, we’ll define <code>handleReq</code>, which we’ll export using JavaScript FFI just like we did before.</p>
+<p data-astro-cid-nalcf22a=""><strong>NOTE:</strong> It’s not necessary to create a Cabal project for this example, because the prebuilt container comes with a lot of <a href="https://github.com/tweag/asterius/issues/354" target="_blank" rel="noopener noreferrer">prebuilt packages</a> (aesona included). Nevertheless, it will help us show the potential of <code>ahc-cabal</code> and <code>ahc-dist</code>.</p>
+<p data-astro-cid-nalcf22a="">Next, we’ll define <code>handleReq</code>, which we’ll export using JavaScript FFI just like we did before.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>handleReq :: JSString -&gt; JSString -&gt; IO JSObject</span></span>
 <span class="line"><span>handleReq method rawBody =</span></span>
@@ -285,8 +285,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">This time, we define <code>js_new_response</code>, a Haskell function that creates a JavaScript object, to create a <code>Response</code>. <code>handleReq</code> takes two string parameters from JavaScript and it uses them to prepare a response.</p>
-<p data-astro-cid-byeekcgh="">Now let’s build and install the binary in the current directory:</p>
+<p data-astro-cid-nalcf22a="">This time, we define <code>js_new_response</code>, a Haskell function that creates a JavaScript object, to create a <code>Response</code>. <code>handleReq</code> takes two string parameters from JavaScript and it uses them to prepare a response.</p>
+<p data-astro-cid-nalcf22a="">Now let’s build and install the binary in the current directory:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ahc-cabal</span><span class="sk-032f62-99ffe4"> new-install</span><span class="sk-005cc5-99ffe4"> --installdir</span><span class="sk-032f62-99ffe4"> .</span><span class="sk-005cc5-99ffe4"> --overwrite-policy=always</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -294,7 +294,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">This will generate a binary for our executable, called <code>cabal-cfw-example</code>. We’re going to use <code>ahc-dist</code> to take that binary and target WebAssembly:</p>
+<p data-astro-cid-nalcf22a="">This will generate a binary for our executable, called <code>cabal-cfw-example</code>. We’re going to use <code>ahc-dist</code> to take that binary and target WebAssembly:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ahc-dist</span><span class="sk-005cc5-99ffe4"> --input-exe</span><span class="sk-032f62-99ffe4"> cabal-cfw-example</span><span class="sk-005cc5-99ffe4"> --export-function=handleReq</span><span class="sk-005cc5-99ffe4"> --no-main</span><span class="sk-005cc5-99ffe4"> --input-mjs</span><span class="sk-032f62-99ffe4"> cabal_cfw_example.mjs</span><span class="sk-005cc5-99ffe4"> --bundle</span><span class="sk-005cc5-99ffe4"> --browser</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -302,7 +302,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh=""><code>cabal_cfw_example.mjs</code> contains the following code:</p>
+<p data-astro-cid-nalcf22a=""><code>cabal_cfw_example.mjs</code> contains the following code:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-005cc5-fff"> *</span><span class="sk-d73a49-a0a0a0"> as</span><span class="sk-24292e-fff"> rts </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./rts.mjs"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> cabal_cfw_example </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./cabal_cfw_example.req.mjs"</span><span class="sk-24292e-fff">;</span></span>
@@ -321,10 +321,10 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Finally, we can deploy our code to Workers by defining a <code>metadata.json</code> file and uploading the script and the WebAssembly module using Workers API as we did before.</p>
-<h3 data-astro-cid-byeekcgh="">Caveats</h3>
-<p data-astro-cid-byeekcgh="">Workers <a href="https://developers.cloudflare.com/workers/about/limits/#script-size" target="_blank" rel="noopener noreferrer">limits</a> your JavaScript and WebAssembly in file size. Therefore, you need to be careful with any dependencies you add.</p>
-<h3 data-astro-cid-byeekcgh="">Conclusion</h3>
-<p data-astro-cid-byeekcgh="">Stack Builders builds better software for better living through technologies like expressive static types. We used Asterius to compile Haskell to WebAssembly and deployed it to Cloudflare Workers using the Workers API. Asterius supports a lot of Haskell features (e.g. Template Haskell) and it provides an easy-to-use JavaScript FFI to interact with JavaScript. Additionally, it provides prebuilt containers that contain a lot of Haskell packages, so you can start writing a script right away.</p>
-<p data-astro-cid-byeekcgh="">Following this approach, we can write functional type-safe code in Haskell, target it to WebAssembly, and publish it to Workers, which runs on the edge of the Cloudflare infrastructure.</p>
-<p data-astro-cid-byeekcgh="">For more content check our <a href="https://www.stackbuilders.com/news/page/1" target="_blank" rel="noopener noreferrer">blogs</a> and <a href="https://www.stackbuilders.com/tutorials" target="_blank" rel="noopener noreferrer">tutorials</a>!</p>
+<p data-astro-cid-nalcf22a="">Finally, we can deploy our code to Workers by defining a <code>metadata.json</code> file and uploading the script and the WebAssembly module using Workers API as we did before.</p>
+<h3 data-astro-cid-nalcf22a="">Caveats</h3>
+<p data-astro-cid-nalcf22a="">Workers <a href="https://developers.cloudflare.com/workers/about/limits/#script-size" target="_blank" rel="noopener noreferrer">limits</a> your JavaScript and WebAssembly in file size. Therefore, you need to be careful with any dependencies you add.</p>
+<h3 data-astro-cid-nalcf22a="">Conclusion</h3>
+<p data-astro-cid-nalcf22a="">Stack Builders builds better software for better living through technologies like expressive static types. We used Asterius to compile Haskell to WebAssembly and deployed it to Cloudflare Workers using the Workers API. Asterius supports a lot of Haskell features (e.g. Template Haskell) and it provides an easy-to-use JavaScript FFI to interact with JavaScript. Additionally, it provides prebuilt containers that contain a lot of Haskell packages, so you can start writing a script right away.</p>
+<p data-astro-cid-nalcf22a="">Following this approach, we can write functional type-safe code in Haskell, target it to WebAssembly, and publish it to Workers, which runs on the edge of the Cloudflare infrastructure.</p>
+<p data-astro-cid-nalcf22a="">For more content check our <a href="https://www.stackbuilders.com/news/page/1" target="_blank" rel="noopener noreferrer">blogs</a> and <a href="https://www.stackbuilders.com/tutorials" target="_blank" rel="noopener noreferrer">tutorials</a>!</p>

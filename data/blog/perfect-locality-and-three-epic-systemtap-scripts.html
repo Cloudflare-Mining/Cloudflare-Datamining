@@ -1,34 +1,34 @@
-<p data-astro-cid-byeekcgh="">In a recent blog post we discussed <a href="https://blog.cloudflare.com/the-sad-state-of-linux-socket-balancing">epoll behavior causing uneven load</a> among NGINX worker processes. We suggested a work around - the REUSEPORT socket option. It changes the queuing from "combined queue model" aka Waitrose (formally: <a href="http://people.revoledu.com/kardi/tutorial/Queuing/MMs-Queuing-System.html" target="_blank" rel="noopener noreferrer">M/M/s</a>), to a dedicated accept queue per worker aka "the Tesco superstore model" (formally: <a href="http://people.revoledu.com/kardi/tutorial/Queuing/MMs-Queuing-System.html" target="_blank" rel="noopener noreferrer">M/M/1</a>). With this setup the load is spread more evenly, but in certain conditions the latency distribution might suffer.</p>
-<p data-astro-cid-byeekcgh="">After reading that piece, a colleague of mine, John, said: <em>"Hey Marek, don't forget that REUSEPORT has an additional advantage: it can improve packet locality! Packets can avoid being passed around CPUs!"</em></p>
-<p data-astro-cid-byeekcgh="">John had a point. Let's dig into this step by step.</p>
-<p data-astro-cid-byeekcgh="">In this blog post we'll explain the REUSEPORT socket option, how it can help with packet locality and its performance implications. We'll show three advanced SystemTap scripts which we used to help us understand and measure the packet locality.</p>
-<h3 data-astro-cid-byeekcgh="">A shared queue</h3>
-<p data-astro-cid-byeekcgh="">The standard BSD socket API model is rather simple. In order to receive new TCP connections a program calls bind() and then listen() on a fresh socket. This will create a single accept queue. Programs can share the file descriptor - pointing to one kernel data structure - among multiple processes to spread the load. As we've <a href="https://blog.cloudflare.com/the-sad-state-of-linux-socket-balancing">seen in a previous blog post</a> connections might not be distributed perfectly. Still, this allows programs to scale up processing power from a limited single-process, single-CPU design.</p>
-<p data-astro-cid-byeekcgh="">Modern network cards split the inbound packets across multiple RX queues, allowing multiple CPUs to share interrupt and packet processing load. Unfortunately in the standard BSD API the new connections will all be funneled back to single accept queue, causing a potential bottleneck.</p>
-<h3 data-astro-cid-byeekcgh="">Introducing REUSEPORT</h3>
-<p data-astro-cid-byeekcgh="">This bottleneck was identified at Google, where a reported application was dealing with 40,000 connections per second. Google kernel hackers fixed it by <a href="https://lwn.net/Articles/542629" target="_blank" rel="noopener noreferrer">adding a TCP support for SO_REUSEPORT socket option</a> in Linux kernel 3.9.</p>
+<p data-astro-cid-nalcf22a="">In a recent blog post we discussed <a href="https://blog.cloudflare.com/the-sad-state-of-linux-socket-balancing">epoll behavior causing uneven load</a> among NGINX worker processes. We suggested a work around - the REUSEPORT socket option. It changes the queuing from "combined queue model" aka Waitrose (formally: <a href="http://people.revoledu.com/kardi/tutorial/Queuing/MMs-Queuing-System.html" target="_blank" rel="noopener noreferrer">M/M/s</a>), to a dedicated accept queue per worker aka "the Tesco superstore model" (formally: <a href="http://people.revoledu.com/kardi/tutorial/Queuing/MMs-Queuing-System.html" target="_blank" rel="noopener noreferrer">M/M/1</a>). With this setup the load is spread more evenly, but in certain conditions the latency distribution might suffer.</p>
+<p data-astro-cid-nalcf22a="">After reading that piece, a colleague of mine, John, said: <em>"Hey Marek, don't forget that REUSEPORT has an additional advantage: it can improve packet locality! Packets can avoid being passed around CPUs!"</em></p>
+<p data-astro-cid-nalcf22a="">John had a point. Let's dig into this step by step.</p>
+<p data-astro-cid-nalcf22a="">In this blog post we'll explain the REUSEPORT socket option, how it can help with packet locality and its performance implications. We'll show three advanced SystemTap scripts which we used to help us understand and measure the packet locality.</p>
+<h3 data-astro-cid-nalcf22a="">A shared queue</h3>
+<p data-astro-cid-nalcf22a="">The standard BSD socket API model is rather simple. In order to receive new TCP connections a program calls bind() and then listen() on a fresh socket. This will create a single accept queue. Programs can share the file descriptor - pointing to one kernel data structure - among multiple processes to spread the load. As we've <a href="https://blog.cloudflare.com/the-sad-state-of-linux-socket-balancing">seen in a previous blog post</a> connections might not be distributed perfectly. Still, this allows programs to scale up processing power from a limited single-process, single-CPU design.</p>
+<p data-astro-cid-nalcf22a="">Modern network cards split the inbound packets across multiple RX queues, allowing multiple CPUs to share interrupt and packet processing load. Unfortunately in the standard BSD API the new connections will all be funneled back to single accept queue, causing a potential bottleneck.</p>
+<h3 data-astro-cid-nalcf22a="">Introducing REUSEPORT</h3>
+<p data-astro-cid-nalcf22a="">This bottleneck was identified at Google, where a reported application was dealing with 40,000 connections per second. Google kernel hackers fixed it by <a href="https://lwn.net/Articles/542629" target="_blank" rel="noopener noreferrer">adding a TCP support for SO_REUSEPORT socket option</a> in Linux kernel 3.9.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="640" height="243" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478Q7H3RH8TMNS47D6WSDM.jpeg&amp;w=640&amp;h=243&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478Q7H3RH8TMNS47D6WSDM.jpeg&amp;w=640&amp;h=243&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478Q7H3RH8TMNS47D6WSDM.jpeg&amp;w=750&amp;h=285&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478Q7H3RH8TMNS47D6WSDM.jpeg&amp;w=828&amp;h=314&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478Q7H3RH8TMNS47D6WSDM.jpeg&amp;w=1080&amp;h=410&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478Q7H3RH8TMNS47D6WSDM.jpeg&amp;w=1280&amp;h=486&amp;f=webp&amp;fit=cover&amp;position=center 1280w" alt="Perfect locality and three epic SystemTap scripts Embedded Image - oxwrIn" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478Q7H3RH8TMNS47D6WSDM.jpeg&amp;w=640&amp;h=243&amp;f=webp" data-lightbox-width="640" data-lightbox-height="243" data-astro-cid-7nvefuv6="true" sizes="(min-width: 640px) 640px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="640" height="243" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-byeekcgh="">REUSEPORT allows the application to set multiple accept queues on a single TCP listen port. This removes the central bottleneck and enables the CPUs to do more work in parallel.</p>
-<h3 data-astro-cid-byeekcgh="">REUSEPORT locality</h3>
-<p data-astro-cid-byeekcgh="">Initially there was no way to influence the load balancing algorithm. While REUSEPORT allowed setting up a dedicated accept queue per each worker process, it wasn't possible to influence what packets would go into them. New connections flowing into the network stack would be distributed using only the usual 5-tuple hash. Packets from any of the RX queues, hitting any CPU, might flow into any of the accept queues.</p>
-<p data-astro-cid-byeekcgh="">This changed in Linux kernel 4.4 with the introduction of the <a href="https://patchwork.ozlabs.org/patch/528071" target="_blank" rel="noopener noreferrer">SO_INCOMING_CPU settable socket option</a>. Now a userspace program could add a hint to make the packets received on a specific CPU go to a specific accept queue. With this improvement the accept queue won't need to be shared across multiple cores, improving CPU cache locality and fixing lock contention issues.</p>
+<p data-astro-cid-nalcf22a="">REUSEPORT allows the application to set multiple accept queues on a single TCP listen port. This removes the central bottleneck and enables the CPUs to do more work in parallel.</p>
+<h3 data-astro-cid-nalcf22a="">REUSEPORT locality</h3>
+<p data-astro-cid-nalcf22a="">Initially there was no way to influence the load balancing algorithm. While REUSEPORT allowed setting up a dedicated accept queue per each worker process, it wasn't possible to influence what packets would go into them. New connections flowing into the network stack would be distributed using only the usual 5-tuple hash. Packets from any of the RX queues, hitting any CPU, might flow into any of the accept queues.</p>
+<p data-astro-cid-nalcf22a="">This changed in Linux kernel 4.4 with the introduction of the <a href="https://patchwork.ozlabs.org/patch/528071" target="_blank" rel="noopener noreferrer">SO_INCOMING_CPU settable socket option</a>. Now a userspace program could add a hint to make the packets received on a specific CPU go to a specific accept queue. With this improvement the accept queue won't need to be shared across multiple cores, improving CPU cache locality and fixing lock contention issues.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="640" height="238" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AKE80SK2H0X3PVZCVGB3.jpeg&amp;w=640&amp;h=238&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AKE80SK2H0X3PVZCVGB3.jpeg&amp;w=640&amp;h=238&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AKE80SK2H0X3PVZCVGB3.jpeg&amp;w=750&amp;h=279&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AKE80SK2H0X3PVZCVGB3.jpeg&amp;w=828&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AKE80SK2H0X3PVZCVGB3.jpeg&amp;w=1080&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AKE80SK2H0X3PVZCVGB3.jpeg&amp;w=1280&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 1280w" alt="Perfect locality and three epic SystemTap scripts Embedded Image - ADAQsT" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AKE80SK2H0X3PVZCVGB3.jpeg&amp;w=640&amp;h=238&amp;f=webp" data-lightbox-width="640" data-lightbox-height="238" data-astro-cid-7nvefuv6="true" sizes="(min-width: 640px) 640px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="640" height="238" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-byeekcgh="">There are other benefits - with proper tuning it is possible to keep the processing of packets belonging to entire connections local. Think about it like that: if a SYN packet was received on some CPU it is likely that further packets for this connection will also be delivered to the same CPU<a href="https://blog.cloudflare.com/#fn1">[1]</a>. Therefore, making sure the worker on the same CPU called the accept() has strong advantages. With the right tuning all processing of the connection might be performed on a single CPU. This can help keep the CPU cache warm, reduce cross-CPU interrupts and boost the performance of memory allocation algorithms.</p>
-<p data-astro-cid-byeekcgh="">SO_INCOMING_CPU interface is pretty rudimentary and was deemed unsuitable for more complex usage. It was superseded by the more powerful <a href="https://lwn.net/Articles/675043" target="_blank" rel="noopener noreferrer">SO_ATTACH_REUSEPORT_CBPF option</a> (and it's extended variant: SO_ATTACH_REUSEPORT_EBPF) in kernel 4.6. These flags allow a program to specify a fully functional BPF program as a load balancing algorithm.</p>
-<p data-astro-cid-byeekcgh="">Beware that the introduction of SO_ATTACH_REUSEPORT_[CE]BPF broke SO_INCOMING_CPU. Nowadays there isn't a choice - you have to use the BPF variants to get the intended behavior.</p>
-<h3 data-astro-cid-byeekcgh="">Setting CBPF on NGINX</h3>
-<p data-astro-cid-byeekcgh="">NGINX in "reuseport" mode doesn't set the advanced socket options increasing packet locality. John suggested that improving packet locality is beneficial for performance. We must verify such a bold claim!</p>
-<p data-astro-cid-byeekcgh="">We wanted to play with setting couple of SO_ATTACH_REUSEPORT_CBPF BPF scripts. We didn't want to hack the NGINX sources though. After some tinkering we decided it would be easier to write a SystemTap script to set the option from <em>outside</em> the server process. This turned out to be a big mistake!</p>
-<p data-astro-cid-byeekcgh="">After plenty of work, numerous kernel panics caused by our buggy scripts (running in "guru" mode), we finally managed to get it into working order. The SystemTap script that calls "setsockopt" with right parameters. It's one of the most complex scripts we've written so far. Here it is:</p>
+<p data-astro-cid-nalcf22a="">There are other benefits - with proper tuning it is possible to keep the processing of packets belonging to entire connections local. Think about it like that: if a SYN packet was received on some CPU it is likely that further packets for this connection will also be delivered to the same CPU<a href="https://blog.cloudflare.com/#fn1">[1]</a>. Therefore, making sure the worker on the same CPU called the accept() has strong advantages. With the right tuning all processing of the connection might be performed on a single CPU. This can help keep the CPU cache warm, reduce cross-CPU interrupts and boost the performance of memory allocation algorithms.</p>
+<p data-astro-cid-nalcf22a="">SO_INCOMING_CPU interface is pretty rudimentary and was deemed unsuitable for more complex usage. It was superseded by the more powerful <a href="https://lwn.net/Articles/675043" target="_blank" rel="noopener noreferrer">SO_ATTACH_REUSEPORT_CBPF option</a> (and it's extended variant: SO_ATTACH_REUSEPORT_EBPF) in kernel 4.6. These flags allow a program to specify a fully functional BPF program as a load balancing algorithm.</p>
+<p data-astro-cid-nalcf22a="">Beware that the introduction of SO_ATTACH_REUSEPORT_[CE]BPF broke SO_INCOMING_CPU. Nowadays there isn't a choice - you have to use the BPF variants to get the intended behavior.</p>
+<h3 data-astro-cid-nalcf22a="">Setting CBPF on NGINX</h3>
+<p data-astro-cid-nalcf22a="">NGINX in "reuseport" mode doesn't set the advanced socket options increasing packet locality. John suggested that improving packet locality is beneficial for performance. We must verify such a bold claim!</p>
+<p data-astro-cid-nalcf22a="">We wanted to play with setting couple of SO_ATTACH_REUSEPORT_CBPF BPF scripts. We didn't want to hack the NGINX sources though. After some tinkering we decided it would be easier to write a SystemTap script to set the option from <em>outside</em> the server process. This turned out to be a big mistake!</p>
+<p data-astro-cid-nalcf22a="">After plenty of work, numerous kernel panics caused by our buggy scripts (running in "guru" mode), we finally managed to get it into working order. The SystemTap script that calls "setsockopt" with right parameters. It's one of the most complex scripts we've written so far. Here it is:</p>
 <ul>
 	<li><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2017-11-perfect-locality/setcbpf.stp" target="_blank" rel="noopener noreferrer">setcbpf.stp</a></li>
 </ul>
-<p data-astro-cid-byeekcgh="">We tested it on kernel 4.9. It sets the following CBPF (classical BPF) load balancing program on the REUSEPORT socket group. Sockets received on Nth CPU will be passed to Nth member of the REUSEPORT group:</p>
+<p data-astro-cid-nalcf22a="">We tested it on kernel 4.9. It sets the following CBPF (classical BPF) load balancing program on the REUSEPORT socket group. Sockets received on Nth CPU will be passed to Nth member of the REUSEPORT group:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>A = #cpu</span></span>
 <span class="line"><span>A = A % &lt;reuseport group size&gt;</span></span>
@@ -56,7 +56,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-byeekcgh="">The SystemTap script takes three parameters: pid, file descriptor and REUSEPORT group size. To figure out the pid of a process and a file descriptor number use the "ss" tool:</p>
+<p data-astro-cid-nalcf22a="">The SystemTap script takes three parameters: pid, file descriptor and REUSEPORT group size. To figure out the pid of a process and a file descriptor number use the "ss" tool:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ ss -4nlp -t 'sport = :8181' | sort</span></span>
 <span class="line"><span>LISTEN  0   511    *:8181  *:*   users:(("nginx",pid=29333,fd=3),...</span></span>
@@ -67,7 +67,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">In this listing we see that pid=29333 fd=3 points to REUSEPORT descriptor bound to port tcp/8181. On our test machine we have 24 logical CPUs (including HT) and we run 12 NGINX workers - the group size is 12. Example invocation of the script:</p>
+<p data-astro-cid-nalcf22a="">In this listing we see that pid=29333 fd=3 points to REUSEPORT descriptor bound to port tcp/8181. On our test machine we have 24 logical CPUs (including HT) and we run 12 NGINX workers - the group size is 12. Example invocation of the script:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ sudo stap -g setcbpf.stp 29333 3 12</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -75,13 +75,13 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-byeekcgh="">Measuring performance</h3>
-<p data-astro-cid-byeekcgh="">Unfortunately on Linux it's pretty hard to verify if setting CBPF actually does anything. To understand what's going on we wrote another SystemTap script. It hooks into a process and prints all successful invocations of the accept() function, including the CPU on which the connection was delivered to kernel, and current CPU - on which the application is running. The idea is simple - if they match, we'll have good locality!</p>
-<p data-astro-cid-byeekcgh="">The script:</p>
+<h3 data-astro-cid-nalcf22a="">Measuring performance</h3>
+<p data-astro-cid-nalcf22a="">Unfortunately on Linux it's pretty hard to verify if setting CBPF actually does anything. To understand what's going on we wrote another SystemTap script. It hooks into a process and prints all successful invocations of the accept() function, including the CPU on which the connection was delivered to kernel, and current CPU - on which the application is running. The idea is simple - if they match, we'll have good locality!</p>
+<p data-astro-cid-nalcf22a="">The script:</p>
 <ul>
 	<li><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2017-11-perfect-locality/accept.stp" target="_blank" rel="noopener noreferrer">accept.stp</a></li>
 </ul>
-<p data-astro-cid-byeekcgh="">Before setting the CBPF socket option on the server, we saw this output:</p>
+<p data-astro-cid-nalcf22a="">Before setting the CBPF socket option on the server, we saw this output:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ sudo stap -g accept.stp nginx|grep "cpu=#12"</span></span>
 <span class="line"><span>cpu=#12 pid=29333 accept(3) -&gt; fd=30 rxcpu=#19</span></span>
@@ -96,8 +96,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">We can see accept()s done from a worker on CPU #12 returning client sockets received on some other CPUs like: #19, #21, #16 and so on.</p>
-<p data-astro-cid-byeekcgh="">Now, let's run CBPF and see the results:</p>
+<p data-astro-cid-nalcf22a="">We can see accept()s done from a worker on CPU #12 returning client sockets received on some other CPUs like: #19, #21, #16 and so on.</p>
+<p data-astro-cid-nalcf22a="">Now, let's run CBPF and see the results:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ sudo stap -g setcbpf.stp `pidof nginx -s` 3 12</span></span>
 <span class="line"><span>[+] Pid=29333 fd=3 group_size=12 setsockopt(SO_ATTACH_REUSEPORT_CBPF)=0</span></span>
@@ -115,18 +115,18 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Now the situation is perfect. All accept()s called from the NGINX worker pinned to CPU #12 got client sockets received on the same CPU.</p>
-<p data-astro-cid-byeekcgh="">But does it actually help with the performance?</p>
-<p data-astro-cid-byeekcgh="">Sadly: no. We've run a number of tests (using the setup introduced in previous blog post) but we weren't able to record any significant performance difference. Compared to other costs incurred by running a high level HTTP server, a couple of microseconds shaved by keeping connections local to a CPU doesn't seem to make a measurable difference.</p>
-<h3 data-astro-cid-byeekcgh="">Measuring packet locality</h3>
-<p data-astro-cid-byeekcgh="">But no, we didn't give up!</p>
-<p data-astro-cid-byeekcgh="">Not being able to measure an end to end performance gain, we decided to try another approach. Why not try to measure packet locality itself!</p>
-<p data-astro-cid-byeekcgh="">Measuring locality is tricky. In certain circumstances a packet can cross multiple CPUs on its way down the networking stack. Fortunately we can simplify the problem. Let's define "packet locality" as the probability of a packet (to be specific: the Linux sock_buff data structure, skb) being allocated and freed on the same CPU.</p>
-<p data-astro-cid-byeekcgh="">For this, we wrote yet another SystemTap script:</p>
+<p data-astro-cid-nalcf22a="">Now the situation is perfect. All accept()s called from the NGINX worker pinned to CPU #12 got client sockets received on the same CPU.</p>
+<p data-astro-cid-nalcf22a="">But does it actually help with the performance?</p>
+<p data-astro-cid-nalcf22a="">Sadly: no. We've run a number of tests (using the setup introduced in previous blog post) but we weren't able to record any significant performance difference. Compared to other costs incurred by running a high level HTTP server, a couple of microseconds shaved by keeping connections local to a CPU doesn't seem to make a measurable difference.</p>
+<h3 data-astro-cid-nalcf22a="">Measuring packet locality</h3>
+<p data-astro-cid-nalcf22a="">But no, we didn't give up!</p>
+<p data-astro-cid-nalcf22a="">Not being able to measure an end to end performance gain, we decided to try another approach. Why not try to measure packet locality itself!</p>
+<p data-astro-cid-nalcf22a="">Measuring locality is tricky. In certain circumstances a packet can cross multiple CPUs on its way down the networking stack. Fortunately we can simplify the problem. Let's define "packet locality" as the probability of a packet (to be specific: the Linux sock_buff data structure, skb) being allocated and freed on the same CPU.</p>
+<p data-astro-cid-nalcf22a="">For this, we wrote yet another SystemTap script:</p>
 <ul>
 	<li><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2017-11-perfect-locality/locality.stp" target="_blank" rel="noopener noreferrer">locality.stp</a></li>
 </ul>
-<p data-astro-cid-byeekcgh="">When run without the CBPF option the script gave us this results:</p>
+<p data-astro-cid-nalcf22a="">When run without the CBPF option the script gave us this results:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ sudo stap -g locality.stp 12</span></span>
 <span class="line"><span>rx= 21%   29kpps tx=  9%  24kpps</span></span>
@@ -143,9 +143,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">During our test the HTTP server received about 130,000 packets per second and transmitted about as much. 10-11% of the received and 8-10% of the transmitted packets had good locality - were allocated and freed on the same CPU.</p>
-<p data-astro-cid-byeekcgh="">Achieving good locality is not that easy. On the RX side, this means the packet must be received on the same CPU as the application that will read() it. On the transmission side it's even trickier. In case of TCP, a piece of data must all: be sent() by application, get transmitted, and receive back an ACK from the other party, all on the same CPU.</p>
-<p data-astro-cid-byeekcgh="">We performed a bit of tuning, which included inspecting:</p>
+<p data-astro-cid-nalcf22a="">During our test the HTTP server received about 130,000 packets per second and transmitted about as much. 10-11% of the received and 8-10% of the transmitted packets had good locality - were allocated and freed on the same CPU.</p>
+<p data-astro-cid-nalcf22a="">Achieving good locality is not that easy. On the RX side, this means the packet must be received on the same CPU as the application that will read() it. On the transmission side it's even trickier. In case of TCP, a piece of data must all: be sent() by application, get transmitted, and receive back an ACK from the other party, all on the same CPU.</p>
+<p data-astro-cid-nalcf22a="">We performed a bit of tuning, which included inspecting:</p>
 <ul>
 	<li>number of RSS queues and their interrupts being pinned to right CPUs</li>
 	<li>the indirection table</li>
@@ -154,7 +154,7 @@
 	<li>NGINX using the REUSEPORT bind option</li>
 	<li>and finally setting CBPF on the REUSEPORT sockets</li>
 </ul>
-<p data-astro-cid-byeekcgh="">We were able to achieve almost perfect locality! With all tweaks done the script output looked better:</p>
+<p data-astro-cid-nalcf22a="">We were able to achieve almost perfect locality! With all tweaks done the script output looked better:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ sudo stap -g locality.stp 12</span></span>
 <span class="line"><span>rx= 99%   18kpps tx=100%  12kpps</span></span>
@@ -171,16 +171,16 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Now the test runs at 138,000 packets per second received and transmitted. The packets have a whopping 99% packet locality.</p>
-<p data-astro-cid-byeekcgh="">As for performance difference in practice - it's too small to measure. Even though we received about 7% more packets, the end-to-end tests didn't show a meaningful speed boost.</p>
-<h3 data-astro-cid-byeekcgh="">Conclusion</h3>
-<p data-astro-cid-byeekcgh="">We weren't able to prove definitely if improving packet locality actually improves performance for a high-level TCP application like an HTTP server. In hindsight it makes sense - the added benefit is minuscule compared to the overhead of running an HTTP server, especially with logic in a high level language like Lua.</p>
-<p data-astro-cid-byeekcgh="">This hasn't stopped us from having fun! We (myself, Gilberto Bertin and David Wragg) wrote three pretty cool SystemTap scripts, which are super useful when debugging Linux packet locality. They may come handy for demanding users, for example running high performance UDP servers or doing high frequency trading.</p>
-<p data-astro-cid-byeekcgh="">Most importantly - in the process we learned a lot about the Linux networking stack. We got to practice writing CBPF scripts, and learned how to measure locality with hackish SystemTap scripts. We got reminded of the obvious - out of the box Linux is remarkably well tuned.</p>
-<hr class="emdash-break emdash-break-line" data-astro-cid-yq53pyv4="">
-<p data-astro-cid-byeekcgh=""><em>Dealing with the internals of Linux and NGINX sound interesting? Join our <a href="https://boards.greenhouse.io/cloudflare/jobs/589572" target="_blank" rel="noopener noreferrer">world famous team</a> in London, Austin, San Francisco and our elite office in Warsaw, Poland</em>.</p>
-<hr class="emdash-break emdash-break-line" data-astro-cid-yq53pyv4="">
-<hr class="emdash-break emdash-break-line" data-astro-cid-yq53pyv4="">
+<p data-astro-cid-nalcf22a="">Now the test runs at 138,000 packets per second received and transmitted. The packets have a whopping 99% packet locality.</p>
+<p data-astro-cid-nalcf22a="">As for performance difference in practice - it's too small to measure. Even though we received about 7% more packets, the end-to-end tests didn't show a meaningful speed boost.</p>
+<h3 data-astro-cid-nalcf22a="">Conclusion</h3>
+<p data-astro-cid-nalcf22a="">We weren't able to prove definitely if improving packet locality actually improves performance for a high-level TCP application like an HTTP server. In hindsight it makes sense - the added benefit is minuscule compared to the overhead of running an HTTP server, especially with logic in a high level language like Lua.</p>
+<p data-astro-cid-nalcf22a="">This hasn't stopped us from having fun! We (myself, Gilberto Bertin and David Wragg) wrote three pretty cool SystemTap scripts, which are super useful when debugging Linux packet locality. They may come handy for demanding users, for example running high performance UDP servers or doing high frequency trading.</p>
+<p data-astro-cid-nalcf22a="">Most importantly - in the process we learned a lot about the Linux networking stack. We got to practice writing CBPF scripts, and learned how to measure locality with hackish SystemTap scripts. We got reminded of the obvious - out of the box Linux is remarkably well tuned.</p>
+<hr class="emdash-break emdash-break-line" data-astro-cid-6zxmxrrb="">
+<p data-astro-cid-nalcf22a=""><em>Dealing with the internals of Linux and NGINX sound interesting? Join our <a href="https://boards.greenhouse.io/cloudflare/jobs/589572" target="_blank" rel="noopener noreferrer">world famous team</a> in London, Austin, San Francisco and our elite office in Warsaw, Poland</em>.</p>
+<hr class="emdash-break emdash-break-line" data-astro-cid-6zxmxrrb="">
+<hr class="emdash-break emdash-break-line" data-astro-cid-6zxmxrrb="">
 <ol>
 	<li>We are not taking into account aRFS - accelerated RFS. <a href="https://blog.cloudflare.com/#fnref1">↩︎</a></li>
 </ol>

@@ -1,13 +1,13 @@
-<p data-astro-cid-byeekcgh="">RSA 和 ECC 是人们几十年来一直依赖的加密算法，但它们<a href="https://blog.cloudflare.com/the-quantum-menace" target="_blank" rel="noopener noreferrer"><u>容易受到</u></a>足够先进的量子计算机攻击。这种量子计算机目前尚不存在，但它们似乎会比预期出现得<a href="https://scottaaronson.blog/?p=9718" target="_blank" rel="noopener noreferrer"><u>更早</u></a>。幸运的是，已有可用解决方案：迁移到 ML-KEM 加密并使用 ML-DSA 签名，二者的设计用途是抵御量子攻击。经过八年的公开国际竞争，美国国家标准与技术研究院 (NIST) <a href="https://blog.cloudflare.com/nists-first-post-quantum-standards" target="_blank" rel="noopener noreferrer"><u>在 2024 年</u></a>已将它们标准化。</p>
-<p data-astro-cid-byeekcgh="">向后量子加密技术的迁移正全面展开。在撰写本文时，Cloudflare 处理的大部分流量已采用 ML-KEM 加密，因此，能够防范对数据构成威胁的<a href="https://en.wikipedia.org/wiki/Harvest_now,_decrypt_later" target="_blank" rel="noopener noreferrer"><u>先收集后解密</u></a>攻击。但加密只是问题的一部分：为了完全防范能够破解经典密码技术的量子计算机，我们的目标是部署后量子签名，保护身份验证系统免遭未经授权的访问。我们<a href="https://blog.cloudflare.com/post-quantum-roadmap" target="_blank" rel="noopener noreferrer"><u>的目标是 2029 年</u></a>实现 Cloudflare 全面后量子安全。</p>
-<p data-astro-cid-byeekcgh="">ML-DSA 是目前最全面的标准化后量子签名技术方案，但也存在一些缺点：传输中的数据量大得多，而且我们过去在 RSA 和 ECC 中使用的许多<a href="https://github.com/fancy-cryptography/fancy-cryptography" target="_blank" rel="noopener noreferrer"><u>技巧</u></a>在 ML-DSA 中无法实现。更优秀的后量子签名方案仍在不断出现：上个月，NIST <a href="https://groups.google.com/a/list.nist.gov/g/pqc-forum/c/LXoTAe5AN78/m/ZXgBCNlgDAAJ" target="_blank" rel="noopener noreferrer"><u>宣布</u></a>将推动九个后量子签名方案进入“<a href="https://csrc.nist.gov/projects/pqc-dig-sig" target="_blank" rel="noopener noreferrer"><u>签名准入计划</u></a>”第三轮。此外，从上一轮竞争中脱颖而出的 <a href="https://falcon-sign.info" target="_blank" rel="noopener noreferrer"><u>FN-DSA</u></a>（原名 Falcon）标准草案预计很快就会发布。</p>
-<p data-astro-cid-byeekcgh="">Cloudflare 一直以来非常关注后量子签名算法取得的进步，并在 <a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures" target="_blank" rel="noopener noreferrer"><u>2021</u></a>、<a href="https://blog.cloudflare.com/nist-post-quantum-surprise" target="_blank" rel="noopener noreferrer"><u>2022</u></a>、<a href="https://blog.cloudflare.com/another-look-at-pq-signatures" target="_blank" rel="noopener noreferrer"><u>2024</u></a> 和 <a href="https://blog.cloudflare.com/pq-2025/#signatures-on-the-horizon" target="_blank" rel="noopener noreferrer"><u>2025</u></a> 年撰写了相关文章。在这篇博客文章中，我们将详细介绍最新进展。</p>
-<p data-astro-cid-byeekcgh="">但是，我们首先必须正视一个显而易见问题：这些新的签名算法无法及时完成后量子过渡，甚至差得很远，<a href="https://blog.cloudflare.com/#%E6%97%B6%E9%97%B4%E8%A1%A8"><u>下文将会详述</u></a>。问题来得太快，我们无法坐等。ML-DSA 目前已可用，将用于首次迁移。正如 Eric Rescorla 在 2024 年<a href="https://educatedguesswork.org/posts/pq-emergency" target="_blank" rel="noopener noreferrer"><u>所写</u></a>：</p>
-<blockquote data-astro-cid-byeekcgh="">你只能用现有的算法去打仗，而不是你原本期望拥有的算法。</blockquote>
-<p data-astro-cid-byeekcgh="">尽管如此，出于多种原因，寻找更优秀的后量子签名算法至关重要，我们坚信这仍然是充分利用 NIST 有限资源的做法。</p>
-<p data-astro-cid-byeekcgh="">让我们一起详细了解一下这些签名算法。然后，我们将探讨它们的可用时间表，以及我们仍然需要它们的原因。</p>
-<h1 data-astro-cid-byeekcgh="">签名算法</h1>
-<p data-astro-cid-byeekcgh="">在下表中，我们对进入第三轮的候选签名算法（标记为 🤔）、易受量子攻击的经典算法（标记为 ❌），以及已经标准化 (✅) 或即将标准化的后量子算法 (📝) 进行了比较。每种候选签名算法提出了多个变体。我们列出了与 TLS 最相关的变体，TLS 是用于保护互联网连接的协议。若要查看所有变体，请访问 <a href="https://thomwiggers.nl" target="_blank" rel="noopener noreferrer"><u>Thom Wiggers</u></a> 的<a href="https://pqshield.github.io/nist-sigs-zoo" target="_blank" rel="noopener noreferrer"><u>签名库</u></a>。</p>
+<p data-astro-cid-c6i3vrlz="">RSA 和 ECC 是人们几十年来一直依赖的加密算法，但它们<a href="https://blog.cloudflare.com/the-quantum-menace" target="_blank" rel="noopener noreferrer"><u>容易受到</u></a>足够先进的量子计算机攻击。这种量子计算机目前尚不存在，但它们似乎会比预期出现得<a href="https://scottaaronson.blog/?p=9718" target="_blank" rel="noopener noreferrer"><u>更早</u></a>。幸运的是，已有可用解决方案：迁移到 ML-KEM 加密并使用 ML-DSA 签名，二者的设计用途是抵御量子攻击。经过八年的公开国际竞争，美国国家标准与技术研究院 (NIST) <a href="https://blog.cloudflare.com/nists-first-post-quantum-standards" target="_blank" rel="noopener noreferrer"><u>在 2024 年</u></a>已将它们标准化。</p>
+<p data-astro-cid-c6i3vrlz="">向后量子加密技术的迁移正全面展开。在撰写本文时，Cloudflare 处理的大部分流量已采用 ML-KEM 加密，因此，能够防范对数据构成威胁的<a href="https://en.wikipedia.org/wiki/Harvest_now,_decrypt_later" target="_blank" rel="noopener noreferrer"><u>先收集后解密</u></a>攻击。但加密只是问题的一部分：为了完全防范能够破解经典密码技术的量子计算机，我们的目标是部署后量子签名，保护身份验证系统免遭未经授权的访问。我们<a href="https://blog.cloudflare.com/post-quantum-roadmap" target="_blank" rel="noopener noreferrer"><u>的目标是 2029 年</u></a>实现 Cloudflare 全面后量子安全。</p>
+<p data-astro-cid-c6i3vrlz="">ML-DSA 是目前最全面的标准化后量子签名技术方案，但也存在一些缺点：传输中的数据量大得多，而且我们过去在 RSA 和 ECC 中使用的许多<a href="https://github.com/fancy-cryptography/fancy-cryptography" target="_blank" rel="noopener noreferrer"><u>技巧</u></a>在 ML-DSA 中无法实现。更优秀的后量子签名方案仍在不断出现：上个月，NIST <a href="https://groups.google.com/a/list.nist.gov/g/pqc-forum/c/LXoTAe5AN78/m/ZXgBCNlgDAAJ" target="_blank" rel="noopener noreferrer"><u>宣布</u></a>将推动九个后量子签名方案进入“<a href="https://csrc.nist.gov/projects/pqc-dig-sig" target="_blank" rel="noopener noreferrer"><u>签名准入计划</u></a>”第三轮。此外，从上一轮竞争中脱颖而出的 <a href="https://falcon-sign.info" target="_blank" rel="noopener noreferrer"><u>FN-DSA</u></a>（原名 Falcon）标准草案预计很快就会发布。</p>
+<p data-astro-cid-c6i3vrlz="">Cloudflare 一直以来非常关注后量子签名算法取得的进步，并在 <a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures" target="_blank" rel="noopener noreferrer"><u>2021</u></a>、<a href="https://blog.cloudflare.com/nist-post-quantum-surprise" target="_blank" rel="noopener noreferrer"><u>2022</u></a>、<a href="https://blog.cloudflare.com/another-look-at-pq-signatures" target="_blank" rel="noopener noreferrer"><u>2024</u></a> 和 <a href="https://blog.cloudflare.com/pq-2025/#signatures-on-the-horizon" target="_blank" rel="noopener noreferrer"><u>2025</u></a> 年撰写了相关文章。在这篇博客文章中，我们将详细介绍最新进展。</p>
+<p data-astro-cid-c6i3vrlz="">但是，我们首先必须正视一个显而易见问题：这些新的签名算法无法及时完成后量子过渡，甚至差得很远，<a href="https://blog.cloudflare.com/#%E6%97%B6%E9%97%B4%E8%A1%A8"><u>下文将会详述</u></a>。问题来得太快，我们无法坐等。ML-DSA 目前已可用，将用于首次迁移。正如 Eric Rescorla 在 2024 年<a href="https://educatedguesswork.org/posts/pq-emergency" target="_blank" rel="noopener noreferrer"><u>所写</u></a>：</p>
+<blockquote data-astro-cid-c6i3vrlz="">你只能用现有的算法去打仗，而不是你原本期望拥有的算法。</blockquote>
+<p data-astro-cid-c6i3vrlz="">尽管如此，出于多种原因，寻找更优秀的后量子签名算法至关重要，我们坚信这仍然是充分利用 NIST 有限资源的做法。</p>
+<p data-astro-cid-c6i3vrlz="">让我们一起详细了解一下这些签名算法。然后，我们将探讨它们的可用时间表，以及我们仍然需要它们的原因。</p>
+<h1 data-astro-cid-c6i3vrlz="">签名算法</h1>
+<p data-astro-cid-c6i3vrlz="">在下表中，我们对进入第三轮的候选签名算法（标记为 🤔）、易受量子攻击的经典算法（标记为 ❌），以及已经标准化 (✅) 或即将标准化的后量子算法 (📝) 进行了比较。每种候选签名算法提出了多个变体。我们列出了与 TLS 最相关的变体，TLS 是用于保护互联网连接的协议。若要查看所有变体，请访问 <a href="https://thomwiggers.nl" target="_blank" rel="noopener noreferrer"><u>Thom Wiggers</u></a> 的<a href="https://pqshield.github.io/nist-sigs-zoo" target="_blank" rel="noopener noreferrer"><u>签名库</u></a>。</p>
 <div id="html-block-xf9bq992c" class="html-block">
 	<table class="heatmap">
 		<thead>
@@ -209,320 +209,320 @@
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-byeekcgh="">关于此表的补充说明：大多数候选签名算法在每个安全级别都有多个变体。我们展示了 128 位安全级别（安全黄金标准）上与 TLS 最相关的变体。CPU 时间取自 2026 年 6 月的<a href="https://pqshield.github.io/nist-sigs-zoo" target="_blank" rel="noopener noreferrer"><u>签名库</u></a>，该库收集了第二轮提交文档及后续进展的数据。允许更改第三轮的候选签名算法，这将会影响上表涉及的数字。有些算法会改进（计算能力和规模），另一些算法则会退步，以应对新的攻击。请查看签名库，获取最新数据。我们用 ⚠️ 标记了 FN-DSA 和 SQIsign 签名算法，因为两者都很难以快速且<a href="https://blog.cloudflare.com/kyber-isnt-broken/#side-channel-attacks" target="_blank" rel="noopener noreferrer"><u>时序侧信道安全</u></a>的方式实现。LMS 签名算法也标记了 ⚠️，因为安全的 LMS 签名需要在签名过程中保持状态，而且列出的签名时间假设使用 32MB 缓存。SLH-DSA 签名算法的 128-24 变体标记了 ⚠️️，因为其设计旨在生成少于 &nbsp;2<sup>24</sup> 个签名。</p>
-<h2 data-astro-cid-byeekcgh="">没有“全明星”算法</h2>
-<p data-astro-cid-byeekcgh="">显而易见的一点是，虽然 Ed25519 椭圆曲线签名算法容易受到量子计算机攻击，但它无疑是最全面的方案（暂且忽略其易受量子攻击）：它在几乎所有指标方面的表现最佳，包括公钥大小、签名大小和签名时间。仅在验证时间上略逊一筹，但对于绝大多数应用来说，其速度已绰绰有余。</p>
-<p data-astro-cid-byeekcgh="">这与后量子签名算法列表截然不同。后量子签名算法列表不使用单一的“全能型”算法，而是将签名方案大致分为两类：一类是专业算法，它们在某些指标方面的表现接近可靠的椭圆曲线特征，但在其他指标方面存在问题，这使得它们在合适的部署场景下表现出色。其次是通用算法，例如 ML-DSA，虽然其所有指标方面的表现都不如椭圆曲线，但就缺点而言，它们的整体表现相当均衡。</p>
-<h2 data-astro-cid-byeekcgh="">专业算法</h2>
-<p data-astro-cid-byeekcgh="">我们先来了解一下专业算法。</p>
-<h3 data-astro-cid-byeekcgh="">SQIsign：签名小/签名速度慢</h3>
-<p data-astro-cid-byeekcgh="">如果只看传输的字节数，<strong>SQIsign</strong> 看起来几乎可以完美取代椭圆曲线加密技术。它的签名大小为 148 字节，公钥大小为 65 字节，优于 RSA-2048。遗憾的是，天下没有免费的午餐：SQIsign 有三个弱点。首先，它是所有算法中最复杂的算法。其次，它的签名生成和验证速度相当慢。最后，它很难以时序侧信道安全的方式生成签名，而且这样做会产生一些性能损失。</p>
-<p data-astro-cid-byeekcgh="">目前看来情况不太乐观，但更糟糕的是：当我们<a href="https://blog.cloudflare.com/another-look-at-pq-signatures/#sqisign" target="_blank" rel="noopener noreferrer"><u>回顾 2024 年</u></a>，当时还没有任何时序侧信道安全的实现，签名验证速度也慢了 20 倍。此外，方案简化方面也取得了可喜的进展。</p>
-<p data-astro-cid-byeekcgh="">虽然取得了这些显著的改进，但在可预见的未来，（侧信道安全）签名的速度可能仍不足以用于典型的<em>在线</em>场景，例如 TLS 握手。然而，对于 CA 签名或 DNSSEC 等<em>离线</em>场景，验证时间比签名时间更重要，在这种情况下，SQIsign 或许可以派上用场。</p>
-<p data-astro-cid-byeekcgh="">但我们真正应该讨论的主题是安全性。SQIsign 基于<a href="https://blog.cloudflare.com/sidh-go" target="_blank" rel="noopener noreferrer"><u>同源</u></a>。众所周知，基于同源的另一种算法 SIKE 在 NIST 首届后量子加密技术竞赛（该竞赛实现了 ML-DSA 标准化）的后期阶段遭到<a href="https://eprint.iacr.org/2022/975.pdf" target="_blank" rel="noopener noreferrer"><u>严重</u></a>破解。SIKE 经常被提及，作为后量子加密技术可能突然失效的警示案例。这需要一些细致入微的分析。首先，人们当时就已经对 SIKE 的安全性表示担忧，尤其是导致其被破解的<em>挠点</em>。由于这些担忧，SIKE 没有入选标准化项目，而是被推迟到额外的<a href="https://nvlpubs.nist.gov/nistpubs/ir/2022/NIST.IR.8413-upd1.pdf" target="_blank" rel="noopener noreferrer"><u>评估轮次</u></a>，之后才被破解。（事实上，这正是 NIST 流程有效运作的一个实例。）SQIsign 不使用挠点，因此，没有像 SIKE 那样的类似担忧。</p>
-<p data-astro-cid-byeekcgh="">另一个值得注意的安全特性是，针对 SQIsign 最著名的攻击是通用暴力破解，就像针对精心选择的椭圆曲线的经典攻击一样。这与 RSA、格加密和多元加密大不相同，其攻击算法一直在缓慢改进，进而导致密码学家不断增加参数来构建更大的签名。尽管如此，同源算法背后的数学原理非常复杂，与其他算法相比，它存在很多<em>数学攻击面</em>。不过，它的安全性似乎仍然比我们稍后将讨论的结构化多元算法更可靠。</p>
-<p data-astro-cid-byeekcgh="">SQIsign 是一种极具潜力的算法。过早地将其标准化实属可惜。我们想与各位作者分享以下几点：</p>
+<p data-astro-cid-c6i3vrlz="">关于此表的补充说明：大多数候选签名算法在每个安全级别都有多个变体。我们展示了 128 位安全级别（安全黄金标准）上与 TLS 最相关的变体。CPU 时间取自 2026 年 6 月的<a href="https://pqshield.github.io/nist-sigs-zoo" target="_blank" rel="noopener noreferrer"><u>签名库</u></a>，该库收集了第二轮提交文档及后续进展的数据。允许更改第三轮的候选签名算法，这将会影响上表涉及的数字。有些算法会改进（计算能力和规模），另一些算法则会退步，以应对新的攻击。请查看签名库，获取最新数据。我们用 ⚠️ 标记了 FN-DSA 和 SQIsign 签名算法，因为两者都很难以快速且<a href="https://blog.cloudflare.com/kyber-isnt-broken/#side-channel-attacks" target="_blank" rel="noopener noreferrer"><u>时序侧信道安全</u></a>的方式实现。LMS 签名算法也标记了 ⚠️，因为安全的 LMS 签名需要在签名过程中保持状态，而且列出的签名时间假设使用 32MB 缓存。SLH-DSA 签名算法的 128-24 变体标记了 ⚠️️，因为其设计旨在生成少于 &nbsp;2<sup>24</sup> 个签名。</p>
+<h2 data-astro-cid-c6i3vrlz="">没有“全明星”算法</h2>
+<p data-astro-cid-c6i3vrlz="">显而易见的一点是，虽然 Ed25519 椭圆曲线签名算法容易受到量子计算机攻击，但它无疑是最全面的方案（暂且忽略其易受量子攻击）：它在几乎所有指标方面的表现最佳，包括公钥大小、签名大小和签名时间。仅在验证时间上略逊一筹，但对于绝大多数应用来说，其速度已绰绰有余。</p>
+<p data-astro-cid-c6i3vrlz="">这与后量子签名算法列表截然不同。后量子签名算法列表不使用单一的“全能型”算法，而是将签名方案大致分为两类：一类是专业算法，它们在某些指标方面的表现接近可靠的椭圆曲线特征，但在其他指标方面存在问题，这使得它们在合适的部署场景下表现出色。其次是通用算法，例如 ML-DSA，虽然其所有指标方面的表现都不如椭圆曲线，但就缺点而言，它们的整体表现相当均衡。</p>
+<h2 data-astro-cid-c6i3vrlz="">专业算法</h2>
+<p data-astro-cid-c6i3vrlz="">我们先来了解一下专业算法。</p>
+<h3 data-astro-cid-c6i3vrlz="">SQIsign：签名小/签名速度慢</h3>
+<p data-astro-cid-c6i3vrlz="">如果只看传输的字节数，<strong>SQIsign</strong> 看起来几乎可以完美取代椭圆曲线加密技术。它的签名大小为 148 字节，公钥大小为 65 字节，优于 RSA-2048。遗憾的是，天下没有免费的午餐：SQIsign 有三个弱点。首先，它是所有算法中最复杂的算法。其次，它的签名生成和验证速度相当慢。最后，它很难以时序侧信道安全的方式生成签名，而且这样做会产生一些性能损失。</p>
+<p data-astro-cid-c6i3vrlz="">目前看来情况不太乐观，但更糟糕的是：当我们<a href="https://blog.cloudflare.com/another-look-at-pq-signatures/#sqisign" target="_blank" rel="noopener noreferrer"><u>回顾 2024 年</u></a>，当时还没有任何时序侧信道安全的实现，签名验证速度也慢了 20 倍。此外，方案简化方面也取得了可喜的进展。</p>
+<p data-astro-cid-c6i3vrlz="">虽然取得了这些显著的改进，但在可预见的未来，（侧信道安全）签名的速度可能仍不足以用于典型的<em>在线</em>场景，例如 TLS 握手。然而，对于 CA 签名或 DNSSEC 等<em>离线</em>场景，验证时间比签名时间更重要，在这种情况下，SQIsign 或许可以派上用场。</p>
+<p data-astro-cid-c6i3vrlz="">但我们真正应该讨论的主题是安全性。SQIsign 基于<a href="https://blog.cloudflare.com/sidh-go" target="_blank" rel="noopener noreferrer"><u>同源</u></a>。众所周知，基于同源的另一种算法 SIKE 在 NIST 首届后量子加密技术竞赛（该竞赛实现了 ML-DSA 标准化）的后期阶段遭到<a href="https://eprint.iacr.org/2022/975.pdf" target="_blank" rel="noopener noreferrer"><u>严重</u></a>破解。SIKE 经常被提及，作为后量子加密技术可能突然失效的警示案例。这需要一些细致入微的分析。首先，人们当时就已经对 SIKE 的安全性表示担忧，尤其是导致其被破解的<em>挠点</em>。由于这些担忧，SIKE 没有入选标准化项目，而是被推迟到额外的<a href="https://nvlpubs.nist.gov/nistpubs/ir/2022/NIST.IR.8413-upd1.pdf" target="_blank" rel="noopener noreferrer"><u>评估轮次</u></a>，之后才被破解。（事实上，这正是 NIST 流程有效运作的一个实例。）SQIsign 不使用挠点，因此，没有像 SIKE 那样的类似担忧。</p>
+<p data-astro-cid-c6i3vrlz="">另一个值得注意的安全特性是，针对 SQIsign 最著名的攻击是通用暴力破解，就像针对精心选择的椭圆曲线的经典攻击一样。这与 RSA、格加密和多元加密大不相同，其攻击算法一直在缓慢改进，进而导致密码学家不断增加参数来构建更大的签名。尽管如此，同源算法背后的数学原理非常复杂，与其他算法相比，它存在很多<em>数学攻击面</em>。不过，它的安全性似乎仍然比我们稍后将讨论的结构化多元算法更可靠。</p>
+<p data-astro-cid-c6i3vrlz="">SQIsign 是一种极具潜力的算法。过早地将其标准化实属可惜。我们想与各位作者分享以下几点：</p>
 <ul>
 	<li>理想情况下，验证时间应该进一步缩短，即使这会影响签名时间和签名大小：SQIsign 签名已经足够小，而且离线签名时间也有一定的余量。</li>
 	<li>如果能够进一步缩短签名时间，则时序侧信道安全实现应成为默认选项，因为这可能会吸引一些在线签名应用。</li>
 	<li>但最重要的是，我们希望 SQIsign 能够得到简化。</li>
 </ul>
-<h3 data-astro-cid-byeekcgh="">UOV：签名小/公钥大</h3>
-<p data-astro-cid-byeekcgh=""><strong>UOV</strong>（非平衡油醋）是一种经典的多元签名算法，最初于 1999 年提出。它的签名很小：只有 96 字节。但代价是什么？巨大的公钥：66kB。这对 TLS 服务器证书来说没什么用，因为其公钥在建立连接时通过网络传输；但对于公钥预先分发的情况会有所帮助。</p>
-<p data-astro-cid-byeekcgh="">以 WebPKI 为例。一个典型的浏览器信任大约一百个根证书和 30 个证书透明度日志，如果使用 UOV，其公钥大小总计约为 8MB。</p>
+<h3 data-astro-cid-c6i3vrlz="">UOV：签名小/公钥大</h3>
+<p data-astro-cid-c6i3vrlz=""><strong>UOV</strong>（非平衡油醋）是一种经典的多元签名算法，最初于 1999 年提出。它的签名很小：只有 96 字节。但代价是什么？巨大的公钥：66kB。这对 TLS 服务器证书来说没什么用，因为其公钥在建立连接时通过网络传输；但对于公钥预先分发的情况会有所帮助。</p>
+<p data-astro-cid-c6i3vrlz="">以 WebPKI 为例。一个典型的浏览器信任大约一百个根证书和 30 个证书透明度日志，如果使用 UOV，其公钥大小总计约为 8MB。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA////////+vr48vPy7vHx7fP07PLz6+7v////////+fj48fDw7vDw7/T08PT07vDw////////+vf48O7v7/Dw8/b19Pf28fLy////////+/j58u/w8/Ly+Pn4+fv59fb1/////////vr79fHy9/b2/f79/f/++Pn4//////////7++vb2/fv7////////+/v6/////////////vr5//7//////////P38//////////////v7/////////////f39" alt="" width="715" height="779" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E2RMBD4SKQV2T6BTFFAV.png&amp;w=715&amp;h=779&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E2RMBD4SKQV2T6BTFFAV.png&amp;w=640&amp;h=697&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E2RMBD4SKQV2T6BTFFAV.png&amp;w=715&amp;h=779&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E2RMBD4SKQV2T6BTFFAV.png&amp;w=750&amp;h=817&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E2RMBD4SKQV2T6BTFFAV.png&amp;w=828&amp;h=902&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E2RMBD4SKQV2T6BTFFAV.png&amp;w=1080&amp;h=1177&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E2RMBD4SKQV2T6BTFFAV.png&amp;w=1280&amp;h=1395&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E2RMBD4SKQV2T6BTFFAV.png&amp;w=1430&amp;h=1558&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="典型 TLS 连接中的公钥和签名。" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E2RMBD4SKQV2T6BTFFAV.png&amp;w=1164&amp;h=1268&amp;f=webp" data-lightbox-width="1164" data-lightbox-height="1268" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="779" class="pt-portable-image-media"></div>
 	<figcaption data-astro-cid-7nvefuv6="">典型 TLS 连接中的公钥和签名。</figcaption>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-byeekcgh="">由于根证书通过带外方式传输给客户端，因此，一种想法是在那里使用 UOV 签名。但这并不是轻而易举的事情；由于 UOV 根证书体积较大，如果将其用作中间证书，则进行交叉签名是不切实际的。同时，对于任何更大的后量子签名，交叉签名和中间证书的吸引力都会降低。这促使更多根证书包含在客户端中。这再次有利于 UOV，但仅限于一定程度：如果根证书数量增长到超过一千个，我们将处理超过 66MB 的密钥材料，这会占据浏览器下载大小的很大一部分（例如，Firefox 151 的下载大小为 90MB）。</p>
-<p data-astro-cid-byeekcgh=""><strong>多元算法安全性</strong></p>
-<p data-astro-cid-byeekcgh="">那么，安全性如何？多年来，人们提出了许多 UOV 变体，这些变体利用一些额外的数学结构来减小公钥的大小。这些<em>结构化多元</em>方案的安全性记录并不稳定，例如 <a href="https://eprint.iacr.org/2022/214" target="_blank" rel="noopener noreferrer"><u>Rainbow</u></a> 和 <a href="https://eprint.iacr.org/2021/1677" target="_blank" rel="noopener noreferrer"><u>GeMMS</u></a> 等方案都曾被严重破解。区分这些与 UOV 本身至关重要，UOV 的安全性记录好得多，但并非完美无缺。</p>
-<p data-astro-cid-byeekcgh="">与许多加密方案一样，UOV 在早期也经历了成长的阵痛，因为人们发现了各种基本攻击和参数化陷阱。事实上，UOV 中的“U”正是这种阵痛的残余，它代表<em>不平衡</em>，这反映了对 1997 年油醋方案（UOV 的基础）中一个参数设置错误的修正：原始方案在用作公钥的二次方程组中，<em>油</em>和<em>醋</em>的变量数量相等，这最终导致了<a href="https://weizmann.elsevierpure.com/en/publications/cryptanalysis-of-the-oil-and-vinegar-signature-scheme-2" target="_blank" rel="noopener noreferrer"><u>攻击</u></a>的发生。如果您对这个有趣的名称感到好奇，不妨这样想：方程组包含醋 × 醋项以及油 × 醋项，但不包含油 × 油项。它就像是就像油醋汁里分散的小油滴。回顾其历史沿革：从 2005 年到 2020 年，多元签名技术处于相对平静期：人们对 UOV 的理解不断加深，但针对典型参数的攻击却鲜有出现。</p>
-<p data-astro-cid-byeekcgh="">随着<em>交集攻击</em>的<a href="https://eprint.iacr.org/2020/1343.pdf" target="_blank" rel="noopener noreferrer"><u>发现</u></a>，这种情况在 2020 年发生了改变。交集攻击基于最初针对平衡油醋攻击的思路。它移除了当时提议的 128 位参数集中大约 30 位安全性。这是一个相当大的打击，但不致命：稍微调整参数即可彻底缓解攻击，只需略微增加密钥和签名大小。</p>
-<p data-astro-cid-byeekcgh="">更大的冲击是 2025 年<a href="https://eprint.iacr.org/2025/1143.pdf" target="_blank" rel="noopener noreferrer"><u>发表</u></a>了利用<a href="https://en.wikipedia.org/wiki/Exterior_algebra" target="_blank" rel="noopener noreferrer"><em><u>楔形</u></em></a>攻击多元签名方案的概念。对 UOV 的初步影响很小：只有几比特（也是在 128 位安全级别）。人们担心的是，这个概念突然出现，而且不清楚这种方法可能会应用到什么程度。这种担忧在一定程度上是合理的：楔形攻击的构想很有成效，之后出现了几次基于此的攻击，导致安全性降低了约 15 位。然而，我们逐渐<a href="https://eprint.iacr.org/2026/298" target="_blank" rel="noopener noreferrer"><u>意识</u></a>到，楔形攻击及其推广可被视为现有攻击的特例，例如截断环上的<em>交集攻击</em>，因此，它比想象的要常见得多。同样，只需略微增加密钥和签名大小即可缓解这些攻击。</p>
-<p data-astro-cid-byeekcgh="">如何理解这一切呢？这类攻击历史并不罕见：在过去 25 年里，虽然近年来有所缓和，但格加密的安全性已显著降低。尽管如此，目前生产环境中部署的格加密仍然使用远高于 128 位的保守参数集，以防范未来的密码分析。我们也希望对 UOV 采取同样的做法。签名大小仅随安全级别线性增长，即使在 256 位安全级别也只有 260 字节。遗憾的是，公钥大小与安全级别呈立方关系：256 位的公钥大小为 446kB。UOV（如同大多数多元加密方案一样）可以灵活地选择不同中间安全级别的参数集，非常方便。</p>
-<p data-astro-cid-byeekcgh="">UOV 是一种基础加密方案，虽然应用场景不多，但却实用可行。展望未来，我们希望看到一个参数集，其长度略超过 128 位，例如 160 位，以应对未来可能的密码分析技术改进。</p>
-<h3 data-astro-cid-byeekcgh="">QR-UOV：签名小/公钥大</h3>
-<p data-astro-cid-byeekcgh="">与下文将讨论的 SNOVA 和 MAYO 类似，<strong>QR-UOV</strong> 是一种结构化多元签名方案：它是一种 UOV 变体，通过为公钥添加更多结构来减小其大小。但改进效果有限：最理想的情况下，公钥大小为 12kB，但对于该参数集，签名验证速度非常慢，更实际的参数集从 24kB 公钥开始。</p>
-<p data-astro-cid-byeekcgh="">就安全性而言，QR-UOV 是唯一无需调整其原始（第一轮）参数，即可应对新攻击的多元签名方案。这有点出乎意料，因为任何针对 UOV 的攻击也同样适用于 QR-UOV。原因在于这些攻击确实存在，但 QR-UOV 的自然参数恰好使其失效。另一方面，已知有几种攻击利用了 QR-UOV 添加的特定额外结构：事实上，对于某些参数集，针对特定结构的攻击是最优攻击。这与 MAYO 形成鲜明对比，目前尚无针对 MAYO 添加的额外结构的已知攻击。（本文后续部分会论述 MAYO 和 SNOVA。）</p>
-<p data-astro-cid-byeekcgh="">与上一轮相比，QR-UOV 的签名和验证时间显著缩短，但仍然相对较慢。总而言之，QR-UOV 难以推广：它为 UOV 增加了可被漏洞利用的结构，但并没有将密钥长度降低到通用长度。</p>
-<h3 data-astro-cid-byeekcgh="">基于哈希函数的签名</h3>
-<p data-astro-cid-byeekcgh=""><strong>基于哈希函数的有状态签名</strong></p>
-<p data-astro-cid-byeekcgh="">最早标准化的后量子签名算法是基于哈希函数的有状态 <a href="https://www.rfc-editor.org/rfc/rfc8554.html" target="_blank" rel="noopener noreferrer"><u>LMS、HSS</u></a> 和 <a href="https://datatracker.ietf.org/doc/html/rfc8391" target="_blank" rel="noopener noreferrer"><u>XMSS(MT)</u></a>。它们的公钥非常小，而且对于许多参数集，其签名比 ML-DSA-44 的签名小得多。此外，它们的安全性基于哈希函数，这已为人熟知且是加密技术的基础。这使得基于哈希函数的签名算法成为一种非常保守的选择，无需通过提高安全级别来规避风险。</p>
-<p data-astro-cid-byeekcgh="">那么，有什么陷阱呢？</p>
-<p data-astro-cid-byeekcgh="">有两个问题。一个重要问题是保持同名状态。这些基于哈希函数的有状态签名方案由一次性签名密钥构成，密钥被收集到默克尔 (Merkle) 树中。签名者必须跟踪哪些一次性签名密钥已被使用，这很简单，通过计数器就能完成。但是，如果签名者出了错，不小心在不同消息中两次使用了同一个一次性签名密钥，则任何人都<a href="https://eprint.iacr.org/2016/1042" target="_blank" rel="noopener noreferrer"><u>可能</u></a>利用这两个签名在任何消息中创建自己的签名。要保持正确的状态，需要考虑很多因素。一些注意事项：确保在分发签名之前将更新写入存储；不希望从备份中恢复旧状态；如果没有就如何拆分或保持状态达成一致，则无法将私钥从一个地方导出/导入到另一个地方。正如几年前 Adam Langley <a href="https://www.imperialviolet.org/2013/07/18/hashsig.html" target="_blank" rel="noopener noreferrer"><u>指出</u></a>的那样，状态隐藏着巨大的陷阱。</p>
-<p data-astro-cid-byeekcgh="">另一个缺点是，即便是最具有竞争力的参数集，也只能生成数量有限的签名。如前文表中所示，1112 字节的签名只能生成大约一百万个签名。您可以使用<a href="https://westerbaan.name/~bas/hashcalc" target="_blank" rel="noopener noreferrer"><u>计算器</u></a>来权衡各种因素。</p>
-<p data-astro-cid-byeekcgh="">综上所述，基于哈希函数的有状态签名应用范围非常有限：签名者必须能够保持状态；签名大小必须是一个实际真正考虑的问题；以及签名者必须接受签名数量的硬性限制。</p>
-<p data-astro-cid-byeekcgh=""><strong>SLH-DSA：保守的安全性/大型且缓慢</strong></p>
-<p data-astro-cid-byeekcgh=""><strong>SLH-DSA</strong> 是一种基于哈希函数的签名技术，它没有签名数量限制，并且避免了保持状态的问题。基本理念是生成足够多的一次性签名密钥，以便可以随机选择一个密钥，而不用担心重复使用，因为两次选到相同密钥的概率会递减。SLH-DSA 的效率略微更高，因为它用多次签名密钥替换了一次性签名密钥作为构建模块，即使因密钥偶尔被重复使用导致安全性温和地降低。它仍然需要付出一定的代价。SLH-DSA 有两个变体，一个优化签名大小，另一个优化签名速度。优化后的签名大小达到 8kB，并不小；而优化后的签名速度甚至比 SQIsign 更慢。</p>
-<p data-astro-cid-byeekcgh="">SLH-DSA 的签名变体更少</p>
-<p data-astro-cid-byeekcgh="">NIST 已<a href="https://csrc.nist.gov/pubs/sp/800/230/ipd" target="_blank" rel="noopener noreferrer"><u>提议</u></a>为 SLH-DSA 标准化一个额外的参数集，它可以生成更小的签名，但只能生成大约 1600 万个签名，超过这个数量后安全性会降低。但这个签名的大小为 3.8kB，仍然比 ML-DSA-44 的签名大，不过公钥和签名的组合大小非常接近。选择该参数集是为了提高签名验证速度，但以牺牲签名时间为代价。签名时间确实非常慢。</p>
-<p data-astro-cid-byeekcgh=""><strong>应用场景</strong></p>
-<p data-astro-cid-byeekcgh="">那为什么还要使用 SLH-DSA 呢？它的优势在于其保守的安全性。对于难以替代的长期可信密钥，如果应用能够接受标准化变体较大的签名大小和较慢的验证速度，或者接受新提议变体较慢的签名速度，则使用 SLH-DSA 是合理的。还有两点需要注意。首先，最好将密钥算法设计成不会“烧录”在系统中，而是可以事后替换。其次，在大多数情况下，系统（例如使用 TLS 的安全连接）不仅依赖于签名，还依赖于密钥协商。目前没有基于哈希函数的密钥协商机制，因此，我们最终还是需要信任一些不那么保守的机制，例如格。</p>
-<h3 data-astro-cid-byeekcgh="">FN-DSA：小密钥和签名/精妙的签名</h3>
-<p data-astro-cid-byeekcgh="">从数据上看，FN-DSA-512（原名 Falcon）几乎在所有指标方面的表现都远胜于 ML-DSA-44：验证速度更快、公钥更小、签名也小得多，仅为 666 字节。签名速度虽然慢了三倍，但仍然比 RSA-2048 快 25 倍。更重要的是，它已被选为 FIPS 206 标准。那么，为什么我们不把 FN-DSA 视为通用算法呢？</p>
-<p data-astro-cid-byeekcgh="">这是因为安全地实现 FN-DSA 签名非常困难。FN-DSA 最显著的优势是，使用硬件加速的<a href="https://en.wikipedia.org/wiki/Floating-point_arithmetic" target="_blank" rel="noopener noreferrer"><u>浮点运算</u></a>完成最自然、高效的实现。这在加密标准中尚属首次。一个重大挑战是，我们缺乏在不泄露侧信道的情况下，安全实现快速浮点运算的经验。据我们目前所知，这种方法比较精妙且不太稳健：在一个处理器上使用浮点单元 (FPU) 实现的 FN-DSA 签名方案，在其他处理器上可能并不安全。与其依赖 FPU，不如模拟浮点运算。虽然这种方法更容易实现，但速度慢大约 20 倍，与 RSA-2048 的速度差不多。最近在使用定点运算安全地实现 FN-DSA 签名方面取得了一些令人欣喜的<a href="https://github.com/fixed-point-fndsa/fxp-falcon-py" target="_blank" rel="noopener noreferrer"><u>进展</u></a>，这比浮点模拟快得多。那么只需使用定点运算，就可以放心使用 FN-DSA 了吗？这种假定预设了用户对相关问题的认知水平，而这种认知水平可能并不合理。在会议上，我们经常看到演讲者在基准测试中比较后量子签名算法（包括 FN-DSA）时，他们无法回答是否使用了浮点模拟。</p>
-<p data-astro-cid-byeekcgh="">使用浮点运算的另一个后果是，难以生成用于签名的测试向量。一个例子是，只能保证 <em>a+(b+c)</em> 和 <em>(a+b)+c</em> 的结果接近，但并不完全相同。这意味着，为了获得有效的测试向量，FN-DSA 规范需要非常精确地定义浮点运算的顺序。另一个例子是 <em>a*b+c</em>，可以通过两个步骤计算（先乘后加），或者使用<a href="https://en.wikipedia.org/wiki/Multiply%E2%80%93accumulate_operation" target="_blank" rel="noopener noreferrer"><u>融合乘加</u></a> (FMA) 一步完成。后者速度更快，但由于只进行一次舍入，因此，给出的答案略有不同。并非所有处理器都支持 FMA，但对于那些支持 FMA 的处理器，编译器通常会自动使用 FMA 来提升性能。同时，一些数学优化也会带来问题。例如，参考实现使用<a href="https://en.wikipedia.org/wiki/Parseval%27s_theorem" target="_blank" rel="noopener noreferrer"><u>帕塞瓦尔定理</u></a>，以更快速的迂回方式计算一个值（范数）。从数学上讲，答案是完全相同的，但由于浮点数只是近似值，结果会略有不同。同样，安全的定点运算实现也会产生略微不同的结果。</p>
-<p data-astro-cid-byeekcgh="">为什么这是个问题？因为在实践中，仍然只有简单的测试向量才能捕获大多数实现错误。其他更精细的方法，例如形式化验证，当然可以捕获更多错误，但测试向量的简洁性难以匹敌。</p>
-<p data-astro-cid-byeekcgh="">没有固定实现方式的另一个令人惊讶的优势如下。通过两个由略有不同的实现方式使用同一私钥生成的确定性签名，可以<a href="https://eprint.iacr.org/2024/1709" target="_blank" rel="noopener noreferrer"><u>推导出部分私钥</u></a>。FN-DSA 不使用确定性签名，而是添加了一个随机函数生成器来避免这种情况。测试中存在一个矛盾：需要一个确定性的接口来测试签名，但又不希望它被用于生成实际的签名。</p>
-<p data-astro-cid-byeekcgh="">如何处理 FN-DSA 规范中的回旋余地无疑将成为讨论的重点。不同实现之间的差异或许也有其积极的一面：NIST 可以决定使用定点算法实现来生成测试向量 (<a href="https://csrc.nist.gov/projects/cryptographic-algorithm-validation-program" target="_blank" rel="noopener noreferrer"><u>CAVP</u></a>)。风险更高的浮点实现无法通过测试向量，这反而是一种优势而非缺陷，因为它会引导实现转向更安全的定点版本！</p>
-<p data-astro-cid-byeekcgh="">您可以阅读<a href="https://keymaterial.net/2026/05/13/so-you-want-to-deploy-fn-dsa" target="_blank" rel="noopener noreferrer"><u>这篇博客文章</u>，</a>了解一些其他有趣的细节。抛开具体细节不谈，关键在于 FN-DSA 本身就是一个复杂的方案。不难想象，NIST 花了<a href="https://csrc.nist.gov/csrc/media/presentations/2025/fips-206-fn-dsa-(falcon)/images-media/fips_206-perlner_2.1.pdf" target="_blank" rel="noopener noreferrer"><u>几年时间</u></a>（还不包括目前的停滞期）撰写草案标准，这并不令人意外。最终标准的发布以及添加支持的密码库所需的时间将比平常更长。FN-DSA 的发布比看起来晚得多。我们将在本文稍后部分比较时间表。</p>
-<p data-astro-cid-byeekcgh="">如果这些数字仍然非常诱人，那么还有最后一点需要注意：FN-DSA-512 的参数化安全级别为 128 位，而 ML-DSA-44 的安全级别为 160 位。如果格加密技术有所改进，则没有中间安全级别：下一个级别将直接达到 256 位的 FN-DSA-1024。FN-DSA-1024 的密钥和签名大小、签名时间和验证时间均为 FN-DSA-512 的两倍。FN-DSA-1024 签名大小仍然是 ML-DSA-44 签名大小的一半，但<em>公钥+签名</em>的大小仅相差约 20%。</p>
-<p data-astro-cid-byeekcgh="">在结束对 FN-DSA 的讨论之前，需要强调的是，FN-DSA 的所有难点都在于签名方面：FN-DSA 签名的验证非常简单。&nbsp;</p>
-<h2 data-astro-cid-byeekcgh="">通用算法</h2>
-<p data-astro-cid-byeekcgh="">现在我们来看一看那些旨在作为 ML-DSA 替代方案的通用算法。</p>
-<h3 data-astro-cid-byeekcgh="">HAWK</h3>
-<p data-astro-cid-byeekcgh=""><strong>HAWK</strong> 是个有趣的示例。它在许多方面与 FN-DSA 类似：是一种结构化格哈希然后签名方案，签名和公钥的大小相近，但缺少中间层安全级别。与 FN-DSA 相比，HAWK 的主要优势在于签名速度极快，且不使用浮点运算，虽然它本身也不是一个简单的算法。这带来了一个需要权衡的问题：HAWK 基于并引入了一个新的安全假设，即<em>格同构问题</em> (LIP)。2024 年，也就是 HAWK 推出两年后，人们发现，在全实数域的特殊情况下，<a href="https://eprint.iacr.org/2024/441" target="_blank" rel="noopener noreferrer"><u>容易解决</u></a>该问题，但 HAWK 或任何其他加密算法均未使用全实数域。2025 年，这种攻击已<a href="https://eprint.iacr.org/2025/280.pdf" target="_blank" rel="noopener noreferrer"><u>扩展</u></a>到更广泛的数域类别。虽然目前尚未针对 HAWK 发起攻击，但这种情况正在逐渐逼近。2026 年 6 月<a href="https://eprint.iacr.org/2026/1318.pdf" target="_blank" rel="noopener noreferrer"><u>发表</u></a>的一篇新论文指出，存在一种将这种攻击扩展到 HAWK 的方法。该论文中发现了一个错误，但目前尚不清楚错误对该方法的影响程度。无论如何，这种发展趋势令人担忧。</p>
-<p data-astro-cid-byeekcgh="">即使不考虑潜在攻击，HAWK 也面临一些阻力：其额外的安全假设使其无法取代 FN-DSA，但其实际优势（尤其考虑到缺乏中间安全级别）不及结构化多元方案。它也没有增加安全假设的多样性，而这正是 NIST 所期望的结果。</p>
-<h3 data-astro-cid-byeekcgh="">知识证明方案</h3>
-<p data-astro-cid-byeekcgh="">FAEST、MQOM 和 SDitH 的整体结构相似。它们的公钥是某个难题的实例，而私钥是该难题的解。</p>
+<p data-astro-cid-c6i3vrlz="">由于根证书通过带外方式传输给客户端，因此，一种想法是在那里使用 UOV 签名。但这并不是轻而易举的事情；由于 UOV 根证书体积较大，如果将其用作中间证书，则进行交叉签名是不切实际的。同时，对于任何更大的后量子签名，交叉签名和中间证书的吸引力都会降低。这促使更多根证书包含在客户端中。这再次有利于 UOV，但仅限于一定程度：如果根证书数量增长到超过一千个，我们将处理超过 66MB 的密钥材料，这会占据浏览器下载大小的很大一部分（例如，Firefox 151 的下载大小为 90MB）。</p>
+<p data-astro-cid-c6i3vrlz=""><strong>多元算法安全性</strong></p>
+<p data-astro-cid-c6i3vrlz="">那么，安全性如何？多年来，人们提出了许多 UOV 变体，这些变体利用一些额外的数学结构来减小公钥的大小。这些<em>结构化多元</em>方案的安全性记录并不稳定，例如 <a href="https://eprint.iacr.org/2022/214" target="_blank" rel="noopener noreferrer"><u>Rainbow</u></a> 和 <a href="https://eprint.iacr.org/2021/1677" target="_blank" rel="noopener noreferrer"><u>GeMMS</u></a> 等方案都曾被严重破解。区分这些与 UOV 本身至关重要，UOV 的安全性记录好得多，但并非完美无缺。</p>
+<p data-astro-cid-c6i3vrlz="">与许多加密方案一样，UOV 在早期也经历了成长的阵痛，因为人们发现了各种基本攻击和参数化陷阱。事实上，UOV 中的“U”正是这种阵痛的残余，它代表<em>不平衡</em>，这反映了对 1997 年油醋方案（UOV 的基础）中一个参数设置错误的修正：原始方案在用作公钥的二次方程组中，<em>油</em>和<em>醋</em>的变量数量相等，这最终导致了<a href="https://weizmann.elsevierpure.com/en/publications/cryptanalysis-of-the-oil-and-vinegar-signature-scheme-2" target="_blank" rel="noopener noreferrer"><u>攻击</u></a>的发生。如果您对这个有趣的名称感到好奇，不妨这样想：方程组包含醋 × 醋项以及油 × 醋项，但不包含油 × 油项。它就像是就像油醋汁里分散的小油滴。回顾其历史沿革：从 2005 年到 2020 年，多元签名技术处于相对平静期：人们对 UOV 的理解不断加深，但针对典型参数的攻击却鲜有出现。</p>
+<p data-astro-cid-c6i3vrlz="">随着<em>交集攻击</em>的<a href="https://eprint.iacr.org/2020/1343.pdf" target="_blank" rel="noopener noreferrer"><u>发现</u></a>，这种情况在 2020 年发生了改变。交集攻击基于最初针对平衡油醋攻击的思路。它移除了当时提议的 128 位参数集中大约 30 位安全性。这是一个相当大的打击，但不致命：稍微调整参数即可彻底缓解攻击，只需略微增加密钥和签名大小。</p>
+<p data-astro-cid-c6i3vrlz="">更大的冲击是 2025 年<a href="https://eprint.iacr.org/2025/1143.pdf" target="_blank" rel="noopener noreferrer"><u>发表</u></a>了利用<a href="https://en.wikipedia.org/wiki/Exterior_algebra" target="_blank" rel="noopener noreferrer"><em><u>楔形</u></em></a>攻击多元签名方案的概念。对 UOV 的初步影响很小：只有几比特（也是在 128 位安全级别）。人们担心的是，这个概念突然出现，而且不清楚这种方法可能会应用到什么程度。这种担忧在一定程度上是合理的：楔形攻击的构想很有成效，之后出现了几次基于此的攻击，导致安全性降低了约 15 位。然而，我们逐渐<a href="https://eprint.iacr.org/2026/298" target="_blank" rel="noopener noreferrer"><u>意识</u></a>到，楔形攻击及其推广可被视为现有攻击的特例，例如截断环上的<em>交集攻击</em>，因此，它比想象的要常见得多。同样，只需略微增加密钥和签名大小即可缓解这些攻击。</p>
+<p data-astro-cid-c6i3vrlz="">如何理解这一切呢？这类攻击历史并不罕见：在过去 25 年里，虽然近年来有所缓和，但格加密的安全性已显著降低。尽管如此，目前生产环境中部署的格加密仍然使用远高于 128 位的保守参数集，以防范未来的密码分析。我们也希望对 UOV 采取同样的做法。签名大小仅随安全级别线性增长，即使在 256 位安全级别也只有 260 字节。遗憾的是，公钥大小与安全级别呈立方关系：256 位的公钥大小为 446kB。UOV（如同大多数多元加密方案一样）可以灵活地选择不同中间安全级别的参数集，非常方便。</p>
+<p data-astro-cid-c6i3vrlz="">UOV 是一种基础加密方案，虽然应用场景不多，但却实用可行。展望未来，我们希望看到一个参数集，其长度略超过 128 位，例如 160 位，以应对未来可能的密码分析技术改进。</p>
+<h3 data-astro-cid-c6i3vrlz="">QR-UOV：签名小/公钥大</h3>
+<p data-astro-cid-c6i3vrlz="">与下文将讨论的 SNOVA 和 MAYO 类似，<strong>QR-UOV</strong> 是一种结构化多元签名方案：它是一种 UOV 变体，通过为公钥添加更多结构来减小其大小。但改进效果有限：最理想的情况下，公钥大小为 12kB，但对于该参数集，签名验证速度非常慢，更实际的参数集从 24kB 公钥开始。</p>
+<p data-astro-cid-c6i3vrlz="">就安全性而言，QR-UOV 是唯一无需调整其原始（第一轮）参数，即可应对新攻击的多元签名方案。这有点出乎意料，因为任何针对 UOV 的攻击也同样适用于 QR-UOV。原因在于这些攻击确实存在，但 QR-UOV 的自然参数恰好使其失效。另一方面，已知有几种攻击利用了 QR-UOV 添加的特定额外结构：事实上，对于某些参数集，针对特定结构的攻击是最优攻击。这与 MAYO 形成鲜明对比，目前尚无针对 MAYO 添加的额外结构的已知攻击。（本文后续部分会论述 MAYO 和 SNOVA。）</p>
+<p data-astro-cid-c6i3vrlz="">与上一轮相比，QR-UOV 的签名和验证时间显著缩短，但仍然相对较慢。总而言之，QR-UOV 难以推广：它为 UOV 增加了可被漏洞利用的结构，但并没有将密钥长度降低到通用长度。</p>
+<h3 data-astro-cid-c6i3vrlz="">基于哈希函数的签名</h3>
+<p data-astro-cid-c6i3vrlz=""><strong>基于哈希函数的有状态签名</strong></p>
+<p data-astro-cid-c6i3vrlz="">最早标准化的后量子签名算法是基于哈希函数的有状态 <a href="https://www.rfc-editor.org/rfc/rfc8554.html" target="_blank" rel="noopener noreferrer"><u>LMS、HSS</u></a> 和 <a href="https://datatracker.ietf.org/doc/html/rfc8391" target="_blank" rel="noopener noreferrer"><u>XMSS(MT)</u></a>。它们的公钥非常小，而且对于许多参数集，其签名比 ML-DSA-44 的签名小得多。此外，它们的安全性基于哈希函数，这已为人熟知且是加密技术的基础。这使得基于哈希函数的签名算法成为一种非常保守的选择，无需通过提高安全级别来规避风险。</p>
+<p data-astro-cid-c6i3vrlz="">那么，有什么陷阱呢？</p>
+<p data-astro-cid-c6i3vrlz="">有两个问题。一个重要问题是保持同名状态。这些基于哈希函数的有状态签名方案由一次性签名密钥构成，密钥被收集到默克尔 (Merkle) 树中。签名者必须跟踪哪些一次性签名密钥已被使用，这很简单，通过计数器就能完成。但是，如果签名者出了错，不小心在不同消息中两次使用了同一个一次性签名密钥，则任何人都<a href="https://eprint.iacr.org/2016/1042" target="_blank" rel="noopener noreferrer"><u>可能</u></a>利用这两个签名在任何消息中创建自己的签名。要保持正确的状态，需要考虑很多因素。一些注意事项：确保在分发签名之前将更新写入存储；不希望从备份中恢复旧状态；如果没有就如何拆分或保持状态达成一致，则无法将私钥从一个地方导出/导入到另一个地方。正如几年前 Adam Langley <a href="https://www.imperialviolet.org/2013/07/18/hashsig.html" target="_blank" rel="noopener noreferrer"><u>指出</u></a>的那样，状态隐藏着巨大的陷阱。</p>
+<p data-astro-cid-c6i3vrlz="">另一个缺点是，即便是最具有竞争力的参数集，也只能生成数量有限的签名。如前文表中所示，1112 字节的签名只能生成大约一百万个签名。您可以使用<a href="https://westerbaan.name/~bas/hashcalc" target="_blank" rel="noopener noreferrer"><u>计算器</u></a>来权衡各种因素。</p>
+<p data-astro-cid-c6i3vrlz="">综上所述，基于哈希函数的有状态签名应用范围非常有限：签名者必须能够保持状态；签名大小必须是一个实际真正考虑的问题；以及签名者必须接受签名数量的硬性限制。</p>
+<p data-astro-cid-c6i3vrlz=""><strong>SLH-DSA：保守的安全性/大型且缓慢</strong></p>
+<p data-astro-cid-c6i3vrlz=""><strong>SLH-DSA</strong> 是一种基于哈希函数的签名技术，它没有签名数量限制，并且避免了保持状态的问题。基本理念是生成足够多的一次性签名密钥，以便可以随机选择一个密钥，而不用担心重复使用，因为两次选到相同密钥的概率会递减。SLH-DSA 的效率略微更高，因为它用多次签名密钥替换了一次性签名密钥作为构建模块，即使因密钥偶尔被重复使用导致安全性温和地降低。它仍然需要付出一定的代价。SLH-DSA 有两个变体，一个优化签名大小，另一个优化签名速度。优化后的签名大小达到 8kB，并不小；而优化后的签名速度甚至比 SQIsign 更慢。</p>
+<p data-astro-cid-c6i3vrlz="">SLH-DSA 的签名变体更少</p>
+<p data-astro-cid-c6i3vrlz="">NIST 已<a href="https://csrc.nist.gov/pubs/sp/800/230/ipd" target="_blank" rel="noopener noreferrer"><u>提议</u></a>为 SLH-DSA 标准化一个额外的参数集，它可以生成更小的签名，但只能生成大约 1600 万个签名，超过这个数量后安全性会降低。但这个签名的大小为 3.8kB，仍然比 ML-DSA-44 的签名大，不过公钥和签名的组合大小非常接近。选择该参数集是为了提高签名验证速度，但以牺牲签名时间为代价。签名时间确实非常慢。</p>
+<p data-astro-cid-c6i3vrlz=""><strong>应用场景</strong></p>
+<p data-astro-cid-c6i3vrlz="">那为什么还要使用 SLH-DSA 呢？它的优势在于其保守的安全性。对于难以替代的长期可信密钥，如果应用能够接受标准化变体较大的签名大小和较慢的验证速度，或者接受新提议变体较慢的签名速度，则使用 SLH-DSA 是合理的。还有两点需要注意。首先，最好将密钥算法设计成不会“烧录”在系统中，而是可以事后替换。其次，在大多数情况下，系统（例如使用 TLS 的安全连接）不仅依赖于签名，还依赖于密钥协商。目前没有基于哈希函数的密钥协商机制，因此，我们最终还是需要信任一些不那么保守的机制，例如格。</p>
+<h3 data-astro-cid-c6i3vrlz="">FN-DSA：小密钥和签名/精妙的签名</h3>
+<p data-astro-cid-c6i3vrlz="">从数据上看，FN-DSA-512（原名 Falcon）几乎在所有指标方面的表现都远胜于 ML-DSA-44：验证速度更快、公钥更小、签名也小得多，仅为 666 字节。签名速度虽然慢了三倍，但仍然比 RSA-2048 快 25 倍。更重要的是，它已被选为 FIPS 206 标准。那么，为什么我们不把 FN-DSA 视为通用算法呢？</p>
+<p data-astro-cid-c6i3vrlz="">这是因为安全地实现 FN-DSA 签名非常困难。FN-DSA 最显著的优势是，使用硬件加速的<a href="https://en.wikipedia.org/wiki/Floating-point_arithmetic" target="_blank" rel="noopener noreferrer"><u>浮点运算</u></a>完成最自然、高效的实现。这在加密标准中尚属首次。一个重大挑战是，我们缺乏在不泄露侧信道的情况下，安全实现快速浮点运算的经验。据我们目前所知，这种方法比较精妙且不太稳健：在一个处理器上使用浮点单元 (FPU) 实现的 FN-DSA 签名方案，在其他处理器上可能并不安全。与其依赖 FPU，不如模拟浮点运算。虽然这种方法更容易实现，但速度慢大约 20 倍，与 RSA-2048 的速度差不多。最近在使用定点运算安全地实现 FN-DSA 签名方面取得了一些令人欣喜的<a href="https://github.com/fixed-point-fndsa/fxp-falcon-py" target="_blank" rel="noopener noreferrer"><u>进展</u></a>，这比浮点模拟快得多。那么只需使用定点运算，就可以放心使用 FN-DSA 了吗？这种假定预设了用户对相关问题的认知水平，而这种认知水平可能并不合理。在会议上，我们经常看到演讲者在基准测试中比较后量子签名算法（包括 FN-DSA）时，他们无法回答是否使用了浮点模拟。</p>
+<p data-astro-cid-c6i3vrlz="">使用浮点运算的另一个后果是，难以生成用于签名的测试向量。一个例子是，只能保证 <em>a+(b+c)</em> 和 <em>(a+b)+c</em> 的结果接近，但并不完全相同。这意味着，为了获得有效的测试向量，FN-DSA 规范需要非常精确地定义浮点运算的顺序。另一个例子是 <em>a*b+c</em>，可以通过两个步骤计算（先乘后加），或者使用<a href="https://en.wikipedia.org/wiki/Multiply%E2%80%93accumulate_operation" target="_blank" rel="noopener noreferrer"><u>融合乘加</u></a> (FMA) 一步完成。后者速度更快，但由于只进行一次舍入，因此，给出的答案略有不同。并非所有处理器都支持 FMA，但对于那些支持 FMA 的处理器，编译器通常会自动使用 FMA 来提升性能。同时，一些数学优化也会带来问题。例如，参考实现使用<a href="https://en.wikipedia.org/wiki/Parseval%27s_theorem" target="_blank" rel="noopener noreferrer"><u>帕塞瓦尔定理</u></a>，以更快速的迂回方式计算一个值（范数）。从数学上讲，答案是完全相同的，但由于浮点数只是近似值，结果会略有不同。同样，安全的定点运算实现也会产生略微不同的结果。</p>
+<p data-astro-cid-c6i3vrlz="">为什么这是个问题？因为在实践中，仍然只有简单的测试向量才能捕获大多数实现错误。其他更精细的方法，例如形式化验证，当然可以捕获更多错误，但测试向量的简洁性难以匹敌。</p>
+<p data-astro-cid-c6i3vrlz="">没有固定实现方式的另一个令人惊讶的优势如下。通过两个由略有不同的实现方式使用同一私钥生成的确定性签名，可以<a href="https://eprint.iacr.org/2024/1709" target="_blank" rel="noopener noreferrer"><u>推导出部分私钥</u></a>。FN-DSA 不使用确定性签名，而是添加了一个随机函数生成器来避免这种情况。测试中存在一个矛盾：需要一个确定性的接口来测试签名，但又不希望它被用于生成实际的签名。</p>
+<p data-astro-cid-c6i3vrlz="">如何处理 FN-DSA 规范中的回旋余地无疑将成为讨论的重点。不同实现之间的差异或许也有其积极的一面：NIST 可以决定使用定点算法实现来生成测试向量 (<a href="https://csrc.nist.gov/projects/cryptographic-algorithm-validation-program" target="_blank" rel="noopener noreferrer"><u>CAVP</u></a>)。风险更高的浮点实现无法通过测试向量，这反而是一种优势而非缺陷，因为它会引导实现转向更安全的定点版本！</p>
+<p data-astro-cid-c6i3vrlz="">您可以阅读<a href="https://keymaterial.net/2026/05/13/so-you-want-to-deploy-fn-dsa" target="_blank" rel="noopener noreferrer"><u>这篇博客文章</u>，</a>了解一些其他有趣的细节。抛开具体细节不谈，关键在于 FN-DSA 本身就是一个复杂的方案。不难想象，NIST 花了<a href="https://csrc.nist.gov/csrc/media/presentations/2025/fips-206-fn-dsa-(falcon)/images-media/fips_206-perlner_2.1.pdf" target="_blank" rel="noopener noreferrer"><u>几年时间</u></a>（还不包括目前的停滞期）撰写草案标准，这并不令人意外。最终标准的发布以及添加支持的密码库所需的时间将比平常更长。FN-DSA 的发布比看起来晚得多。我们将在本文稍后部分比较时间表。</p>
+<p data-astro-cid-c6i3vrlz="">如果这些数字仍然非常诱人，那么还有最后一点需要注意：FN-DSA-512 的参数化安全级别为 128 位，而 ML-DSA-44 的安全级别为 160 位。如果格加密技术有所改进，则没有中间安全级别：下一个级别将直接达到 256 位的 FN-DSA-1024。FN-DSA-1024 的密钥和签名大小、签名时间和验证时间均为 FN-DSA-512 的两倍。FN-DSA-1024 签名大小仍然是 ML-DSA-44 签名大小的一半，但<em>公钥+签名</em>的大小仅相差约 20%。</p>
+<p data-astro-cid-c6i3vrlz="">在结束对 FN-DSA 的讨论之前，需要强调的是，FN-DSA 的所有难点都在于签名方面：FN-DSA 签名的验证非常简单。&nbsp;</p>
+<h2 data-astro-cid-c6i3vrlz="">通用算法</h2>
+<p data-astro-cid-c6i3vrlz="">现在我们来看一看那些旨在作为 ML-DSA 替代方案的通用算法。</p>
+<h3 data-astro-cid-c6i3vrlz="">HAWK</h3>
+<p data-astro-cid-c6i3vrlz=""><strong>HAWK</strong> 是个有趣的示例。它在许多方面与 FN-DSA 类似：是一种结构化格哈希然后签名方案，签名和公钥的大小相近，但缺少中间层安全级别。与 FN-DSA 相比，HAWK 的主要优势在于签名速度极快，且不使用浮点运算，虽然它本身也不是一个简单的算法。这带来了一个需要权衡的问题：HAWK 基于并引入了一个新的安全假设，即<em>格同构问题</em> (LIP)。2024 年，也就是 HAWK 推出两年后，人们发现，在全实数域的特殊情况下，<a href="https://eprint.iacr.org/2024/441" target="_blank" rel="noopener noreferrer"><u>容易解决</u></a>该问题，但 HAWK 或任何其他加密算法均未使用全实数域。2025 年，这种攻击已<a href="https://eprint.iacr.org/2025/280.pdf" target="_blank" rel="noopener noreferrer"><u>扩展</u></a>到更广泛的数域类别。虽然目前尚未针对 HAWK 发起攻击，但这种情况正在逐渐逼近。2026 年 6 月<a href="https://eprint.iacr.org/2026/1318.pdf" target="_blank" rel="noopener noreferrer"><u>发表</u></a>的一篇新论文指出，存在一种将这种攻击扩展到 HAWK 的方法。该论文中发现了一个错误，但目前尚不清楚错误对该方法的影响程度。无论如何，这种发展趋势令人担忧。</p>
+<p data-astro-cid-c6i3vrlz="">即使不考虑潜在攻击，HAWK 也面临一些阻力：其额外的安全假设使其无法取代 FN-DSA，但其实际优势（尤其考虑到缺乏中间安全级别）不及结构化多元方案。它也没有增加安全假设的多样性，而这正是 NIST 所期望的结果。</p>
+<h3 data-astro-cid-c6i3vrlz="">知识证明方案</h3>
+<p data-astro-cid-c6i3vrlz="">FAEST、MQOM 和 SDitH 的整体结构相似。它们的公钥是某个难题的实例，而私钥是该难题的解。</p>
 <ul>
 	<li><strong>FAEST</strong> 公钥是使用私钥对已知明文进行 AES 加密的结果。</li>
 	<li><strong>MQOM</strong> 的名称来源于多元二次问题，该问题与多元方案的加密假设密切相关（但更加保守）。公钥是一个二次方程组，私钥是该方程组的解。</li>
 	<li><strong>SDitH</strong> 基于随机线性码的故障译码的特定数学难题。这个问题与最初提交给 NIST 竞赛的基于码的方案相关，但这些方案在第三轮均被淘汰。</li>
 </ul>
-<p data-astro-cid-byeekcgh="">在所有情况下，签名都是一个<a href="https://en.wikipedia.org/wiki/Zero-knowledge_proof" target="_blank" rel="noopener noreferrer"><u>零知识证明</u></a>，表明签名者知道该难题的解，同时（几乎是顺带地）承认待签名消息也是证明的一部分。</p>
-<p data-astro-cid-byeekcgh="">许多签名方案在底层都采用了这种零知识证明，尤其是 ML-DSA、SQIsign 和 Ed25519。我们为什么不把它们也归入<em>知识证明</em>方案呢？</p>
-<p data-astro-cid-byeekcgh="">区别在于普适性：用于 ML-DSA 的<a href="https://blog.cloudflare.com/lattice-crypto-primer/#warm-up" target="_blank" rel="noopener noreferrer"><u>零知识证明</u></a>只能证明 ML-DSA 中使用的特定 LWE 问题：证明利用了密钥中的数学结构。虽然有<a href="https://eprint.iacr.org/2022/1341.pdf" target="_blank" rel="noopener noreferrer"><u>方法</u></a>可以使用格创建零知识证明来验证任何常规陈述，但这些证明体系与 ML-DSA 截然不同，并且会生成大约 50kB 的较大签名。</p>
-<p data-astro-cid-byeekcgh="">相比之下，FAEST、MQOM 和 SDitH 使用的证明体系可用于证明任意陈述。例如，可以修改 FAEST，使其使用 MQOM 难题。这便产生了一种更高效的方案，称为 <a href="https://eprint.iacr.org/2024/490.pdf" target="_blank" rel="noopener noreferrer"><u>KuMQuat</u></a>。（稍后我们将讨论一些性能数据。）反之，MQOM 也可以进行调整，使用 AES 作为难题。</p>
-<p data-astro-cid-byeekcgh="">这种灵活性有两个好处。首先，它不需要难题具有任何特定数学结构，因此，我们可以选择一个非常保守的难题，例如破解 AES。有些难题比其他难题更容易产生高效的签名，就像我们在 MQOM 中使用的 MQ 一样。MQ 仍然是一个相当保守的假设：它不包含 UOV 中使用的隐藏子空间，因此，也不包含其他多元签名。交集攻击或楔形攻击都不适用。事实上，二次方程组属于 NP 难计算问题。为了确保安全，仍然需要选择合适的问题规模，尽管已研究 MQ 问题相当长一段时间，但它显然没有像 AES 等已部署的算法那样受到严格的审查。</p>
-<p data-astro-cid-byeekcgh="">第二个更重要的优点是，我们能够根据通用的零知识证明体系创建远不止简单的签名方案：我们可以创建<a href="https://eprint.iacr.org/2026/109.pdf" target="_blank" rel="noopener noreferrer"><u>盲签名</u></a>，甚至是功能齐全的匿名凭证。</p>
-<p data-astro-cid-byeekcgh="">这里需要注意一个限制：这三种方案的证明规模都会随着被证明的陈述线性增长。从技术角度上讲：它们不像 <a href="https://aszepieniec.github.io/stark-anatomy" target="_blank" rel="noopener noreferrer"><u>STARK</u></a> 和 <a href="https://eprint.iacr.org/2022/1341.pdf" target="_blank" rel="noopener noreferrer"><u>LaBRADOR</u></a> 那样<em>简洁</em>，后者在处理大规模陈述时远远胜于它们。这再次说明，有时选择渐近意义上并非最优的方法反而更好。</p>
-<p data-astro-cid-byeekcgh="">回到优势：除了所选的难题和哈希函数的安全性之外，这三种方案不需要任何其他安全假设。这使得 FAEST 与 SLH-DSA 一样保守。</p>
-<p data-astro-cid-byeekcgh="">那么除了选择的难题之外，它们之间还有什么区别？这些方案的初始设计截然不同，但自第一轮以来一直在改进和趋同。MQOM 中的证明体系比 FAEST 略微简单一些，但其性能也逊色一些：<a href="https://eprint.iacr.org/2024/490.pdf" target="_blank" rel="noopener noreferrer"><u>KuMQuat</u></a> (FAEST+MQ) 的性能优于 MQOM。</p>
-<p data-astro-cid-byeekcgh="">谈到性能，我们先与 SLH-DSA 进行比较。这三种方案都有一些变体，其性能优于任何标准化 SLH-DSA 参数集，而且通常优势显著。SLH-DSA 的确有一个明显的优势：验证例程更容易实现。</p>
-<p data-astro-cid-byeekcgh="">与 ML-DSA-44 相比，则更有意思。所有方案在运行时间和签名大小之间实现了丝滑的权衡。例如，以下是 KuMQuatt (FAEST+MQ) <a href="https://eprint.iacr.org/2024/490.pdf" target="_blank" rel="noopener noreferrer"><u>报告</u></a>的权衡，验证时间与签名时间接近。</p>
+<p data-astro-cid-c6i3vrlz="">在所有情况下，签名都是一个<a href="https://en.wikipedia.org/wiki/Zero-knowledge_proof" target="_blank" rel="noopener noreferrer"><u>零知识证明</u></a>，表明签名者知道该难题的解，同时（几乎是顺带地）承认待签名消息也是证明的一部分。</p>
+<p data-astro-cid-c6i3vrlz="">许多签名方案在底层都采用了这种零知识证明，尤其是 ML-DSA、SQIsign 和 Ed25519。我们为什么不把它们也归入<em>知识证明</em>方案呢？</p>
+<p data-astro-cid-c6i3vrlz="">区别在于普适性：用于 ML-DSA 的<a href="https://blog.cloudflare.com/lattice-crypto-primer/#warm-up" target="_blank" rel="noopener noreferrer"><u>零知识证明</u></a>只能证明 ML-DSA 中使用的特定 LWE 问题：证明利用了密钥中的数学结构。虽然有<a href="https://eprint.iacr.org/2022/1341.pdf" target="_blank" rel="noopener noreferrer"><u>方法</u></a>可以使用格创建零知识证明来验证任何常规陈述，但这些证明体系与 ML-DSA 截然不同，并且会生成大约 50kB 的较大签名。</p>
+<p data-astro-cid-c6i3vrlz="">相比之下，FAEST、MQOM 和 SDitH 使用的证明体系可用于证明任意陈述。例如，可以修改 FAEST，使其使用 MQOM 难题。这便产生了一种更高效的方案，称为 <a href="https://eprint.iacr.org/2024/490.pdf" target="_blank" rel="noopener noreferrer"><u>KuMQuat</u></a>。（稍后我们将讨论一些性能数据。）反之，MQOM 也可以进行调整，使用 AES 作为难题。</p>
+<p data-astro-cid-c6i3vrlz="">这种灵活性有两个好处。首先，它不需要难题具有任何特定数学结构，因此，我们可以选择一个非常保守的难题，例如破解 AES。有些难题比其他难题更容易产生高效的签名，就像我们在 MQOM 中使用的 MQ 一样。MQ 仍然是一个相当保守的假设：它不包含 UOV 中使用的隐藏子空间，因此，也不包含其他多元签名。交集攻击或楔形攻击都不适用。事实上，二次方程组属于 NP 难计算问题。为了确保安全，仍然需要选择合适的问题规模，尽管已研究 MQ 问题相当长一段时间，但它显然没有像 AES 等已部署的算法那样受到严格的审查。</p>
+<p data-astro-cid-c6i3vrlz="">第二个更重要的优点是，我们能够根据通用的零知识证明体系创建远不止简单的签名方案：我们可以创建<a href="https://eprint.iacr.org/2026/109.pdf" target="_blank" rel="noopener noreferrer"><u>盲签名</u></a>，甚至是功能齐全的匿名凭证。</p>
+<p data-astro-cid-c6i3vrlz="">这里需要注意一个限制：这三种方案的证明规模都会随着被证明的陈述线性增长。从技术角度上讲：它们不像 <a href="https://aszepieniec.github.io/stark-anatomy" target="_blank" rel="noopener noreferrer"><u>STARK</u></a> 和 <a href="https://eprint.iacr.org/2022/1341.pdf" target="_blank" rel="noopener noreferrer"><u>LaBRADOR</u></a> 那样<em>简洁</em>，后者在处理大规模陈述时远远胜于它们。这再次说明，有时选择渐近意义上并非最优的方法反而更好。</p>
+<p data-astro-cid-c6i3vrlz="">回到优势：除了所选的难题和哈希函数的安全性之外，这三种方案不需要任何其他安全假设。这使得 FAEST 与 SLH-DSA 一样保守。</p>
+<p data-astro-cid-c6i3vrlz="">那么除了选择的难题之外，它们之间还有什么区别？这些方案的初始设计截然不同，但自第一轮以来一直在改进和趋同。MQOM 中的证明体系比 FAEST 略微简单一些，但其性能也逊色一些：<a href="https://eprint.iacr.org/2024/490.pdf" target="_blank" rel="noopener noreferrer"><u>KuMQuat</u></a> (FAEST+MQ) 的性能优于 MQOM。</p>
+<p data-astro-cid-c6i3vrlz="">谈到性能，我们先与 SLH-DSA 进行比较。这三种方案都有一些变体，其性能优于任何标准化 SLH-DSA 参数集，而且通常优势显著。SLH-DSA 的确有一个明显的优势：验证例程更容易实现。</p>
+<p data-astro-cid-c6i3vrlz="">与 ML-DSA-44 相比，则更有意思。所有方案在运行时间和签名大小之间实现了丝滑的权衡。例如，以下是 KuMQuatt (FAEST+MQ) <a href="https://eprint.iacr.org/2024/490.pdf" target="_blank" rel="noopener noreferrer"><u>报告</u></a>的权衡，验证时间与签名时间接近。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA////////9/j38/Px9PTy9vXz8fDv6Ojn////////+Pj38/Py9fXz+Pf29PTy6uvq////////+vn49fTz9/b1+vr59vf27u/u/////////Pv69/X1+fj3/Pz7+fr58fLx//////////79+fj3+/r5/f39+vv68/Tz/////////////Pv6/Pv7/v39+/v69PXz/////////////f38/fz8/v39+/r69PTz/////////////v79/v38/v39+/r59PTz" alt="" width="715" height="683" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXDA9RWV414GRFVJ1Y3TBY1Q.png&amp;w=715&amp;h=683&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXDA9RWV414GRFVJ1Y3TBY1Q.png&amp;w=640&amp;h=611&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXDA9RWV414GRFVJ1Y3TBY1Q.png&amp;w=715&amp;h=683&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXDA9RWV414GRFVJ1Y3TBY1Q.png&amp;w=750&amp;h=716&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXDA9RWV414GRFVJ1Y3TBY1Q.png&amp;w=828&amp;h=791&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXDA9RWV414GRFVJ1Y3TBY1Q.png&amp;w=1080&amp;h=1032&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXDA9RWV414GRFVJ1Y3TBY1Q.png&amp;w=1280&amp;h=1223&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXDA9RWV414GRFVJ1Y3TBY1Q.png&amp;w=1430&amp;h=1366&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image2.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXDA9RWV414GRFVJ1Y3TBY1Q.png&amp;w=764&amp;h=730&amp;f=webp" data-lightbox-width="764" data-lightbox-height="730" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="683" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-byeekcgh="">KuMQuat 可以通过参数化实现比 ML-DSA-44 更小的签名，代价是签名（和验证）运行时间较长。另一方面，它可以实现与 ML-DSA-44 类似的签名时间，代价是签名更大，不过公钥和签名的总大小仍然相似。</p>
-<p data-astro-cid-byeekcgh="">这些方案多年来已显著改进，我们预计未来还会进一步改进。虽然它们对 ML-DSA 的改进不如其他一些方案那么显著，但它们保守的安全性，尤其是在匿名凭证等更广泛应用方面的潜力，使它们极具吸引力。为了展示底层零知识证明系统的灵活性，我们希望此类别中的每个方案都展示它们在应对不同底层难题时的性能表现。</p>
-<h3 data-astro-cid-byeekcgh="">结构化多元签名：MAYO 与 SNOVA 的对比</h3>
-<p data-astro-cid-byeekcgh="">如前文所述的类似 QR-UOV，MAYO 和 SNOVA 都是 UOV 变体，通过为公钥添加额外的结构来减小其大小。但 MAYO 和 SNOVA 采取两种不同的方法：SNOVA 采取激进的策略以获得最佳性能，而 MAYO 则采用保守的设计，谨慎行事。</p>
-<p data-astro-cid-byeekcgh="">SNOVA 的性能确实令人印象深刻。它的主要参数集使用 248 字节签名（比 RSA-2048 还小！），而公钥只有 1kB。在公钥+签名大小方面，它胜过所有其他后量子方案（除了 SQIsign 之外），并且运行时间也很短。</p>
-<p data-astro-cid-byeekcgh="">MAYO 的性能同样不容小觑。MAYOone 的验证时间最短，其 454 字节的签名仍然比 FN-DSA-512、HAWK-512 和 RSA-4096 的签名更小。如果加上其 1420 字节的公钥，MAYOone 确实略逊于 FN-DSA-512 和 HAWK-512。然而，如果考虑到更高的安全性，MAYO 再次脱颖而出。FN-DSA 和 HAWK 缺少中间安全级别，因此，需要提升到 256 位安全级别，而 MAYO 的精细化设计可以在略微增加公钥和签名大小的情况下，增加额外的安全性。</p>
-<div class="emdash-table-wrapper" data-astro-cid-paimycxl="">
-	<table class="emdash-table" data-astro-cid-paimycxl="">
-		<thead data-astro-cid-paimycxl="">
-			<tr data-astro-cid-paimycxl="">
-				<th data-astro-cid-paimycxl="">
+<p data-astro-cid-c6i3vrlz="">KuMQuat 可以通过参数化实现比 ML-DSA-44 更小的签名，代价是签名（和验证）运行时间较长。另一方面，它可以实现与 ML-DSA-44 类似的签名时间，代价是签名更大，不过公钥和签名的总大小仍然相似。</p>
+<p data-astro-cid-c6i3vrlz="">这些方案多年来已显著改进，我们预计未来还会进一步改进。虽然它们对 ML-DSA 的改进不如其他一些方案那么显著，但它们保守的安全性，尤其是在匿名凭证等更广泛应用方面的潜力，使它们极具吸引力。为了展示底层零知识证明系统的灵活性，我们希望此类别中的每个方案都展示它们在应对不同底层难题时的性能表现。</p>
+<h3 data-astro-cid-c6i3vrlz="">结构化多元签名：MAYO 与 SNOVA 的对比</h3>
+<p data-astro-cid-c6i3vrlz="">如前文所述的类似 QR-UOV，MAYO 和 SNOVA 都是 UOV 变体，通过为公钥添加额外的结构来减小其大小。但 MAYO 和 SNOVA 采取两种不同的方法：SNOVA 采取激进的策略以获得最佳性能，而 MAYO 则采用保守的设计，谨慎行事。</p>
+<p data-astro-cid-c6i3vrlz="">SNOVA 的性能确实令人印象深刻。它的主要参数集使用 248 字节签名（比 RSA-2048 还小！），而公钥只有 1kB。在公钥+签名大小方面，它胜过所有其他后量子方案（除了 SQIsign 之外），并且运行时间也很短。</p>
+<p data-astro-cid-c6i3vrlz="">MAYO 的性能同样不容小觑。MAYOone 的验证时间最短，其 454 字节的签名仍然比 FN-DSA-512、HAWK-512 和 RSA-4096 的签名更小。如果加上其 1420 字节的公钥，MAYOone 确实略逊于 FN-DSA-512 和 HAWK-512。然而，如果考虑到更高的安全性，MAYO 再次脱颖而出。FN-DSA 和 HAWK 缺少中间安全级别，因此，需要提升到 256 位安全级别，而 MAYO 的精细化设计可以在略微增加公钥和签名大小的情况下，增加额外的安全性。</p>
+<div class="emdash-table-wrapper" data-astro-cid-d7axpwdr="">
+	<table class="emdash-table" style="min-width: 480px;" data-astro-cid-d7axpwdr="">
+		<thead data-astro-cid-d7axpwdr="">
+			<tr data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
 					<p><br></p>
 				</th>
-				<th data-astro-cid-paimycxl="">
+				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
 					<p><strong>安全</strong></p>
 				</th>
-				<th data-astro-cid-paimycxl="">
+				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
 					<p><strong>公钥</strong>&nbsp;</p>
 				</th>
-				<th data-astro-cid-paimycxl="">
+				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
 					<p><strong>签名</strong></p>
 				</th>
-				<th data-astro-cid-paimycxl="">
+				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
 					<p><strong>公钥 + 签名</strong></p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-paimycxl="">
-			<tr data-astro-cid-paimycxl="">
-				<td data-astro-cid-paimycxl="true">
+		<tbody data-astro-cid-d7axpwdr="">
+			<tr data-astro-cid-d7axpwdr="">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>HAWK-1024</p>
 				</td>
-				<td data-astro-cid-paimycxl="true">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>256</p>
 				</td>
-				<td data-astro-cid-paimycxl="true">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>2,440</p>
 				</td>
-				<td data-astro-cid-paimycxl="true">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>1,221</p>
 				</td>
-				<td data-astro-cid-paimycxl="true">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>3,661</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-paimycxl="">
-				<td data-astro-cid-paimycxl="true">
+			<tr data-astro-cid-d7axpwdr="">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>FN-DSA-1024</p>
 				</td>
-				<td data-astro-cid-paimycxl="true">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>256</p>
 				</td>
-				<td data-astro-cid-paimycxl="true">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>1,793</p>
 				</td>
-				<td data-astro-cid-paimycxl="true">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>1,280</p>
 				</td>
-				<td data-astro-cid-paimycxl="true">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>3,073</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-paimycxl="">
-				<td data-astro-cid-paimycxl="true">
+			<tr data-astro-cid-d7axpwdr="">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>MAYO 在 174 位安全性</p>
 				</td>
-				<td data-astro-cid-paimycxl="true">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>174</p>
 				</td>
-				<td data-astro-cid-paimycxl="true">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>1,600</p>
 				</td>
-				<td data-astro-cid-paimycxl="true">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>550</p>
 				</td>
-				<td data-astro-cid-paimycxl="true">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>2,150</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-byeekcgh="">如果这还不够好，MAYO 和 SNOVA 都允许在签名大小与公钥大小之间进行权衡。因此，对于预先传输的公钥，我们甚至可以获得更小的签名。如果将 MAYO 推向极致，它就变成了 UOV。</p>
-<p data-astro-cid-byeekcgh="">到目前为止，我们讨论的是性能。那么，安全性呢？MAYO 在 UOV 的基础上增加了一个“whipping”结构：任何针对 UOV 的攻击也适用于 MAYO，但可能存在针对 MAYO whipping 结构的特定攻击。到目前为止，尚未发现针对 whipping 结构（因此也包括针对 MAYO 本身）的攻击。最糟糕的情况是，由于 MAYO 的 UOV 参数选择是其固有特性，某些 UOV 攻击对某些 MAYO 变体的影响比典型的 UOV 参数集的影响更大。</p>
-<p data-astro-cid-byeekcgh="">这与 SNOVA 形成了鲜明对比。SNOVA 的特定结构曾多次遭受重创。为了应对这种情况，SNOVA 团队不仅调整了参数，而且还不断改变其实际结构。他们每次都会取得突破，提出性能更优的新版 SNOVA。我们<a href="https://blog.cloudflare.com/pq-2025/#the-fight-between-mayo-versus-snova" target="_blank" rel="noopener noreferrer"><u>去年</u></a>指出了这一点，而且这种模式仍在继续，而 MAYO 的基本设计保持稳定。</p>
-<p data-astro-cid-byeekcgh="">此外，SNOVA 使用的结构<u><a href="https://eprint.iacr.org/2024/1297.pdf" target="_blank" rel="noopener noreferrer">可以</a><a href="https://eprint.iacr.org/2026/659" target="_blank" rel="noopener noreferrer">被视为</a></u> MAYO 使用的 whipping 映射的一种特殊形式。这意味着任何针对 MAYO 的攻击都适用于 SNOVA，但反之则不然。</p>
-<p data-astro-cid-byeekcgh="">总的来说，我们在理解多元安全性方面取得了长足的进步。NIST <a href="https://csrc.nist.gov/pubs/ir/8610/final" target="_blank" rel="noopener noreferrer"><u>指出</u></a>，他们预计在标准化多元方案之前还需要进行一轮额外的讨论。这似乎是谨慎的做法。目前，我们还不清楚 SNOVA 届时是否准备就绪，但 MAYO 目前看来已经相当成熟。</p>
-<h2 data-astro-cid-byeekcgh="">时间表</h2>
-<p data-astro-cid-byeekcgh="">现在，让我们展望并设想一下这些新的签名算法何时能够投入使用。</p>
-<h3 data-astro-cid-byeekcgh="">目前 ML-DSA 的进展</h3>
-<p data-astro-cid-byeekcgh="">ML-DSA 的进展情况值得我们关注。</p>
-<div class="emdash-table-wrapper" data-astro-cid-paimycxl="">
-	<table class="emdash-table" data-astro-cid-paimycxl="">
-		<thead data-astro-cid-paimycxl="">
-			<tr data-astro-cid-paimycxl="">
-				<th data-astro-cid-paimycxl="">
+<p data-astro-cid-c6i3vrlz="">如果这还不够好，MAYO 和 SNOVA 都允许在签名大小与公钥大小之间进行权衡。因此，对于预先传输的公钥，我们甚至可以获得更小的签名。如果将 MAYO 推向极致，它就变成了 UOV。</p>
+<p data-astro-cid-c6i3vrlz="">到目前为止，我们讨论的是性能。那么，安全性呢？MAYO 在 UOV 的基础上增加了一个“whipping”结构：任何针对 UOV 的攻击也适用于 MAYO，但可能存在针对 MAYO whipping 结构的特定攻击。到目前为止，尚未发现针对 whipping 结构（因此也包括针对 MAYO 本身）的攻击。最糟糕的情况是，由于 MAYO 的 UOV 参数选择是其固有特性，某些 UOV 攻击对某些 MAYO 变体的影响比典型的 UOV 参数集的影响更大。</p>
+<p data-astro-cid-c6i3vrlz="">这与 SNOVA 形成了鲜明对比。SNOVA 的特定结构曾多次遭受重创。为了应对这种情况，SNOVA 团队不仅调整了参数，而且还不断改变其实际结构。他们每次都会取得突破，提出性能更优的新版 SNOVA。我们<a href="https://blog.cloudflare.com/pq-2025/#the-fight-between-mayo-versus-snova" target="_blank" rel="noopener noreferrer"><u>去年</u></a>指出了这一点，而且这种模式仍在继续，而 MAYO 的基本设计保持稳定。</p>
+<p data-astro-cid-c6i3vrlz="">此外，SNOVA 使用的结构<u><a href="https://eprint.iacr.org/2024/1297.pdf" target="_blank" rel="noopener noreferrer">可以</a><a href="https://eprint.iacr.org/2026/659" target="_blank" rel="noopener noreferrer">被视为</a></u> MAYO 使用的 whipping 映射的一种特殊形式。这意味着任何针对 MAYO 的攻击都适用于 SNOVA，但反之则不然。</p>
+<p data-astro-cid-c6i3vrlz="">总的来说，我们在理解多元安全性方面取得了长足的进步。NIST <a href="https://csrc.nist.gov/pubs/ir/8610/final" target="_blank" rel="noopener noreferrer"><u>指出</u></a>，他们预计在标准化多元方案之前还需要进行一轮额外的讨论。这似乎是谨慎的做法。目前，我们还不清楚 SNOVA 届时是否准备就绪，但 MAYO 目前看来已经相当成熟。</p>
+<h2 data-astro-cid-c6i3vrlz="">时间表</h2>
+<p data-astro-cid-c6i3vrlz="">现在，让我们展望并设想一下这些新的签名算法何时能够投入使用。</p>
+<h3 data-astro-cid-c6i3vrlz="">目前 ML-DSA 的进展</h3>
+<p data-astro-cid-c6i3vrlz="">ML-DSA 的进展情况值得我们关注。</p>
+<div class="emdash-table-wrapper" data-astro-cid-d7axpwdr="">
+	<table class="emdash-table" style="min-width: 192px;" data-astro-cid-d7axpwdr="">
+		<thead data-astro-cid-d7axpwdr="">
+			<tr data-astro-cid-d7axpwdr="">
+				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
 					<p>2017 年 11 月</p>
 				</th>
-				<th data-astro-cid-paimycxl="">
+				<th scope="col" class="astro-d7axpwdr" data-astro-cid-d7axpwdr="">
 					<p>提交至竞赛</p>
 				</th>
 			</tr>
 		</thead>
-		<tbody data-astro-cid-paimycxl="">
-			<tr data-astro-cid-paimycxl="">
-				<td data-astro-cid-paimycxl="true">
+		<tbody data-astro-cid-d7axpwdr="">
+			<tr data-astro-cid-d7axpwdr="">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>2019 年 1 月</p>
 				</td>
-				<td data-astro-cid-paimycxl="true">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>进入第二轮</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-paimycxl="">
-				<td data-astro-cid-paimycxl="true">
+			<tr data-astro-cid-d7axpwdr="">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>2020 年 7 月</p>
 				</td>
-				<td data-astro-cid-paimycxl="true">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>进入第三轮</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-paimycxl="">
-				<td data-astro-cid-paimycxl="true">
+			<tr data-astro-cid-d7axpwdr="">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>2022 年 7 月</p>
 				</td>
-				<td data-astro-cid-paimycxl="true">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>入选标准化</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-paimycxl="">
-				<td data-astro-cid-paimycxl="true">
+			<tr data-astro-cid-d7axpwdr="">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>2023 年 8 月</p>
 				</td>
-				<td data-astro-cid-paimycxl="true">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>初步公开草案</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-paimycxl="">
-				<td data-astro-cid-paimycxl="true">
+			<tr data-astro-cid-d7axpwdr="">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>2024 年 8 月</p>
 				</td>
-				<td data-astro-cid-paimycxl="true">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>NIST 最终标准</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-paimycxl="">
-				<td data-astro-cid-paimycxl="true">
+			<tr data-astro-cid-d7axpwdr="">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>2025 年 10 月</p>
 				</td>
-				<td data-astro-cid-paimycxl="true">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>ML-DSA 证书标准 (RFC 9881)</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-paimycxl="">
-				<td data-astro-cid-paimycxl="true">
+			<tr data-astro-cid-d7axpwdr="">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>2025 年 4 月</p>
 				</td>
-				<td data-astro-cid-paimycxl="true">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>OpenSSL 3.5.0 新增对 ML-DSA 的支持</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-paimycxl="">
-				<td data-astro-cid-paimycxl="true">
+			<tr data-astro-cid-d7axpwdr="">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>2025 年 8 月</p>
 				</td>
-				<td data-astro-cid-paimycxl="true">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>Debian Trixie 发布，并支持 OpenSSL 3.5.0</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-paimycxl="">
-				<td data-astro-cid-paimycxl="true">
+			<tr data-astro-cid-d7axpwdr="">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>2025 年 12 月</p>
 				</td>
-				<td data-astro-cid-paimycxl="true">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>ML-DSA 的 TLS IANA 代码点注册</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-paimycxl="">
-				<td data-astro-cid-paimycxl="true">
+			<tr data-astro-cid-d7axpwdr="">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>2026 年 3 月</p>
 				</td>
-				<td data-astro-cid-paimycxl="true">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>首个 ML-DSA 模块的 CMVP 认证</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-paimycxl="">
-				<td data-astro-cid-paimycxl="true">
+			<tr data-astro-cid-d7axpwdr="">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>2026 年 7 月（预计）</p>
 				</td>
-				<td data-astro-cid-paimycxl="true">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>混合 ML-DSA 证书标准</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-paimycxl="">
-				<td data-astro-cid-paimycxl="true">
+			<tr data-astro-cid-d7axpwdr="">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>2026 年 8 月（预计）</p>
 				</td>
-				<td data-astro-cid-paimycxl="true">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>供在 TLS 中使用 ML-DSA 的 RFC</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-paimycxl="">
-				<td data-astro-cid-paimycxl="true">
+			<tr data-astro-cid-d7axpwdr="">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>2027 年初（预计）</p>
 				</td>
-				<td data-astro-cid-paimycxl="true">
+				<td data-astro-cid-d7axpwdr="true">
 					<p>WebPKI 中首批 ML-DSA 证书可用</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<p data-astro-cid-byeekcgh="">NIST 选择了 Dilithium 作为 ML-DSA 后，用了一年时间起草标准提案，然后再花了一年时间才发布算法标准。算法标准还不够：协议需要就如何集成 ML-DSA 达成一致。证书的集成又花了一年时间。但这还没完：软件还需要添加对 ML-DSA 的支持，并将其集成到协议中。</p>
-<p data-astro-cid-byeekcgh="">这些步骤并非完全按顺序进行：ML-DSA 的软件实现工作在最终标准发布之前就已启动。此外，协议集成标准通常在最终标准发布之前就已经“完成”。例如，TLS 中的 ML-DSA 使用已经完成，但截至撰写本文时，相关的 RFC 规范还需要几个月才能发布。值得注意的是，OpenSSL 抢先一步，在 IANA 代码点分配之前添加了对 ML-DSA 的支持。目前仍未就 TLS 中应使用哪些混合签名（<a href="https://keymaterial.net/2026/06/18/on-hybrid-signatures" target="_blank" rel="noopener noreferrer"><u>或是否应该使用</u></a>）达成一致意见，截至撰写本文时，IANA 尚未为这些混合签名分配代码点。</p>
-<h3 data-astro-cid-byeekcgh="">这些新的签名算法何时可以投入使用？</h3>
-<p data-astro-cid-byeekcgh="">那么，新签名算法的未来发展方向是什么？如果 <strong>FN-DSA</strong> 草案今天发布，并且进展与 ML-DSA 相同，我们或许能在 2029 年初获得一些早期的软件支持，但不会有大量的部署。考虑到 FN-DSA 草案标准的编写耗时，最终标准、协议集成和软件支持的进展也可能较为缓慢。我们预计，FN-DSA 在 2033 年之前不会广泛应用。</p>
-<p data-astro-cid-byeekcgh="">关于<strong>多元</strong>方案的密码分析进展令 NIST 感到担忧：他们表示，预计多元加密方案至少还需要再进行大约两年的相关研究。另一方面，多元方案相对容易实现。这意味着我们可能会在 2031 年看到 NIST 出台多元加密标准，而更广泛的产品应用最早也要到 2034 年。</p>
-<p data-astro-cid-byeekcgh="">与多元加密相比，NIST 对 <strong>SQIsign</strong> 的安全性更有信心。与 FN-DSA 类似，SQIsign 是一个难以标准化和实施的方案。同时，SQIsign 在简化方面取得了长足的进步。SQIsign 可能会在第三轮评估中做出重大改动，因此，需要进行第四轮评估。无论如何，在 2035 年之前广泛应用的可能性似乎不大。</p>
-<p data-astro-cid-byeekcgh="">如<a href="https://docs.google.com/document/d/1cpaUq1BcT1jRNE-V6oEV5szHC2HDDRfE3upTw6-zFgI/edit#bookmark=id.740pyrlsw8nt" target="_blank" rel="noopener noreferrer"><u>上文</u></a>所述，<strong>HAWK</strong> 处于 FN-DSA 与结构化多元签名方案之间的一个尴尬中间地带。即使在最近的密码分析取得进展之前，它的标准化似乎也不大可能实现，我们预计最早也要到 2034 年才会发布。</p>
-<p data-astro-cid-byeekcgh="">这样一来，<em>知识证明</em>算法就只剩下 <strong>MQOM</strong>、<strong>SDitH</strong> 和 <strong>FAEST</strong>。我们已经看到，这些方案在几轮迭代中取得了显著改进。如果保持这种改进速度，将需要进行新一轮迭代调整；但如果现在已经稳定，知识证明算法将成为 2030 年首个发布的 NIST 新标准。如果这么早发布，其性能可能不会显著超越 ML-DSA。尽管如此，它仍然非常适用于构建匿名凭证以及签名之外的其他基本功能。</p>
-<p data-astro-cid-byeekcgh="">那么，您是否应该等待这些签名签名算法发布之后，再推动后量子迁移？鉴于量子硬件和软件的最新进展，我们认为我们无法再等待。Cloudflare 的目标是<a href="https://blog.cloudflare.com/post-quantum-roadmap" target="_blank" rel="noopener noreferrer"><u>在 2029 年完成全面迁移</u></a>。但这些签名算法都无法及时发布。大多数监管机构设定的最后期限在 2030 年至 2035 年之间。这些期限并未考虑近期的进展，我们预计它们将会进行调整。我们看到 <a href="https://blog.cloudflare.com/post-quantum-eo-2026" target="_blank" rel="noopener noreferrer"><u>2026 年 6 月美国行政令</u></a>将最后期限设定为 2031 年。即使最后期限没有改变，我们也不建议等待。</p>
-<p data-astro-cid-byeekcgh="">为什么？仅仅在 2035 年截止日期前的 2034 年部署后量子签名是不够的。任何合理规模的系统都无法一次性升级所有功能。您需要一个过渡期，在此期间同时支持后量子签名和传统签名。同时支持两者会导致降级攻击。防范此类降级攻击最直接的方法是禁用经典加密算法。这需要时间，而且坦白说，对于像 WebPKI 这样分布足够广泛的系统来说，这甚至不是一个可行的选择。我们将在未来的博客文章中介绍如何处理降级问题。如果您感兴趣，请阅读<a href="https://www.chromium.org/Home/chromium-security/post-quantum-auth-roadmap" target="_blank" rel="noopener noreferrer"><u>此处</u></a>的一些资料。不管怎样，处理降级都需要时间。</p>
-<p data-astro-cid-byeekcgh="">显然，这些新的后量子签名算法无法在首次迁移之前准备就绪。为什么还要这样费心？</p>
-<h3 data-astro-cid-byeekcgh="">为什么我们仍然需要它们</h3>
-<p data-astro-cid-byeekcgh="">人们已经用了 <a href="https://ee.stanford.edu/~hellman/publications/24.pdf" target="_blank" rel="noopener noreferrer"><u>50 年</u></a>时间将公钥加密技术融入整个数字社会。我们只剩下短短几年时间来使其实现量子安全。对于大多数此类升级，流程很明确：直接采用后量子密码技术。说起来容易做起来难：这是一个艰巨的任务。但有些情况从根本上来说更加困难。在后量子时代，不存在万能的签名，而且在某些情况下，ML-DSA 的规模大小是个问题。只要拥有足够的资源并获得利益相关者的同意，才可以重新设计系统，使其能够很好地处理这些更大的签名。事实上，得益于持续的重构，后量子时代的 WebPKI 正朝着<a href="https://blog.cloudflare.com/bootstrap-mtc" target="_blank" rel="noopener noreferrer"><u>优于</u></a>当前易受量子攻击的 WebPKI 的方向发展。期望所有系统在为时已晚之前都实现这一点是不现实的。一些系统将不得不接受性能上的损失。另一些系统则需要通过其他方式来应对安全漏洞，例如限制访问、隧道技术、加强监控，或者采取其他各种成本高昂的措施。一旦更小的后量子签名出现，就可以移除这些补偿性控制措施，从而恢复系统的效率和安全性。</p>
-<p data-astro-cid-byeekcgh=""><br></p>
-<p data-astro-cid-byeekcgh="">NIST 竞赛的一个间接但同样重要的益处是，它有助于推动后量子加密技术超越其基本原语：并非只有密钥协商和签名易受量子攻击。还有许多在生产环境中使用的<a href="https://github.com/fancy-cryptography/fancy-cryptography" target="_blank" rel="noopener noreferrer"><u><em>高级</em>加密原语</u></a>，例如匿名凭证、PAKE 和阈值签名等。对于大多数人来说，后量子变体并不容易获得，或者认识不足。对于某些人来说，无需复杂的加密也能实现相同的目标，但代价是遗憾地在微妙的隐私目标上出现倒退。NIST 无法针对每一种特定的原语举办后量子标准定义竞赛，但幸运的是，签名竞赛在这方面提供了极大的帮助。</p>
-<p data-astro-cid-byeekcgh=""><br></p>
-<p data-astro-cid-byeekcgh="">最明显的示例是 FAEST。虽然 FAEST 的设计初衷是作为签名方案，但其底层机制 (VOLEitH) 可与 MAYO 等多元方案搭配使用，从而创建高效的<a href="https://www.usenix.org/system/files/conference/usenixsecurity26/sec26_prepub_baum.pdf" target="_blank" rel="noopener noreferrer"><u>后量子匿名凭证</u></a>。如果没有签名竞赛，VOLEitH 不会像今天这样发展完善且经过充分验证。</p>
-<p data-astro-cid-byeekcgh="">许多候选加密签名方案简要介绍了其各自在签名之外的其他用途。我们希望看到更多此类方案的间接应用取得突出进展。</p>
-<p data-astro-cid-byeekcgh="">尽管未来将会出现更强大的签名和更先进的加密技术，但我们不应忘记眼前的任务：确保在不久的未来保持安全。</p>
+<p data-astro-cid-c6i3vrlz="">NIST 选择了 Dilithium 作为 ML-DSA 后，用了一年时间起草标准提案，然后再花了一年时间才发布算法标准。算法标准还不够：协议需要就如何集成 ML-DSA 达成一致。证书的集成又花了一年时间。但这还没完：软件还需要添加对 ML-DSA 的支持，并将其集成到协议中。</p>
+<p data-astro-cid-c6i3vrlz="">这些步骤并非完全按顺序进行：ML-DSA 的软件实现工作在最终标准发布之前就已启动。此外，协议集成标准通常在最终标准发布之前就已经“完成”。例如，TLS 中的 ML-DSA 使用已经完成，但截至撰写本文时，相关的 RFC 规范还需要几个月才能发布。值得注意的是，OpenSSL 抢先一步，在 IANA 代码点分配之前添加了对 ML-DSA 的支持。目前仍未就 TLS 中应使用哪些混合签名（<a href="https://keymaterial.net/2026/06/18/on-hybrid-signatures" target="_blank" rel="noopener noreferrer"><u>或是否应该使用</u></a>）达成一致意见，截至撰写本文时，IANA 尚未为这些混合签名分配代码点。</p>
+<h3 data-astro-cid-c6i3vrlz="">这些新的签名算法何时可以投入使用？</h3>
+<p data-astro-cid-c6i3vrlz="">那么，新签名算法的未来发展方向是什么？如果 <strong>FN-DSA</strong> 草案今天发布，并且进展与 ML-DSA 相同，我们或许能在 2029 年初获得一些早期的软件支持，但不会有大量的部署。考虑到 FN-DSA 草案标准的编写耗时，最终标准、协议集成和软件支持的进展也可能较为缓慢。我们预计，FN-DSA 在 2033 年之前不会广泛应用。</p>
+<p data-astro-cid-c6i3vrlz="">关于<strong>多元</strong>方案的密码分析进展令 NIST 感到担忧：他们表示，预计多元加密方案至少还需要再进行大约两年的相关研究。另一方面，多元方案相对容易实现。这意味着我们可能会在 2031 年看到 NIST 出台多元加密标准，而更广泛的产品应用最早也要到 2034 年。</p>
+<p data-astro-cid-c6i3vrlz="">与多元加密相比，NIST 对 <strong>SQIsign</strong> 的安全性更有信心。与 FN-DSA 类似，SQIsign 是一个难以标准化和实施的方案。同时，SQIsign 在简化方面取得了长足的进步。SQIsign 可能会在第三轮评估中做出重大改动，因此，需要进行第四轮评估。无论如何，在 2035 年之前广泛应用的可能性似乎不大。</p>
+<p data-astro-cid-c6i3vrlz="">如<a href="https://docs.google.com/document/d/1cpaUq1BcT1jRNE-V6oEV5szHC2HDDRfE3upTw6-zFgI/edit#bookmark=id.740pyrlsw8nt" target="_blank" rel="noopener noreferrer"><u>上文</u></a>所述，<strong>HAWK</strong> 处于 FN-DSA 与结构化多元签名方案之间的一个尴尬中间地带。即使在最近的密码分析取得进展之前，它的标准化似乎也不大可能实现，我们预计最早也要到 2034 年才会发布。</p>
+<p data-astro-cid-c6i3vrlz="">这样一来，<em>知识证明</em>算法就只剩下 <strong>MQOM</strong>、<strong>SDitH</strong> 和 <strong>FAEST</strong>。我们已经看到，这些方案在几轮迭代中取得了显著改进。如果保持这种改进速度，将需要进行新一轮迭代调整；但如果现在已经稳定，知识证明算法将成为 2030 年首个发布的 NIST 新标准。如果这么早发布，其性能可能不会显著超越 ML-DSA。尽管如此，它仍然非常适用于构建匿名凭证以及签名之外的其他基本功能。</p>
+<p data-astro-cid-c6i3vrlz="">那么，您是否应该等待这些签名签名算法发布之后，再推动后量子迁移？鉴于量子硬件和软件的最新进展，我们认为我们无法再等待。Cloudflare 的目标是<a href="https://blog.cloudflare.com/post-quantum-roadmap" target="_blank" rel="noopener noreferrer"><u>在 2029 年完成全面迁移</u></a>。但这些签名算法都无法及时发布。大多数监管机构设定的最后期限在 2030 年至 2035 年之间。这些期限并未考虑近期的进展，我们预计它们将会进行调整。我们看到 <a href="https://blog.cloudflare.com/post-quantum-eo-2026" target="_blank" rel="noopener noreferrer"><u>2026 年 6 月美国行政令</u></a>将最后期限设定为 2031 年。即使最后期限没有改变，我们也不建议等待。</p>
+<p data-astro-cid-c6i3vrlz="">为什么？仅仅在 2035 年截止日期前的 2034 年部署后量子签名是不够的。任何合理规模的系统都无法一次性升级所有功能。您需要一个过渡期，在此期间同时支持后量子签名和传统签名。同时支持两者会导致降级攻击。防范此类降级攻击最直接的方法是禁用经典加密算法。这需要时间，而且坦白说，对于像 WebPKI 这样分布足够广泛的系统来说，这甚至不是一个可行的选择。我们将在未来的博客文章中介绍如何处理降级问题。如果您感兴趣，请阅读<a href="https://www.chromium.org/Home/chromium-security/post-quantum-auth-roadmap" target="_blank" rel="noopener noreferrer"><u>此处</u></a>的一些资料。不管怎样，处理降级都需要时间。</p>
+<p data-astro-cid-c6i3vrlz="">显然，这些新的后量子签名算法无法在首次迁移之前准备就绪。为什么还要这样费心？</p>
+<h3 data-astro-cid-c6i3vrlz="">为什么我们仍然需要它们</h3>
+<p data-astro-cid-c6i3vrlz="">人们已经用了 <a href="https://ee.stanford.edu/~hellman/publications/24.pdf" target="_blank" rel="noopener noreferrer"><u>50 年</u></a>时间将公钥加密技术融入整个数字社会。我们只剩下短短几年时间来使其实现量子安全。对于大多数此类升级，流程很明确：直接采用后量子密码技术。说起来容易做起来难：这是一个艰巨的任务。但有些情况从根本上来说更加困难。在后量子时代，不存在万能的签名，而且在某些情况下，ML-DSA 的规模大小是个问题。只要拥有足够的资源并获得利益相关者的同意，才可以重新设计系统，使其能够很好地处理这些更大的签名。事实上，得益于持续的重构，后量子时代的 WebPKI 正朝着<a href="https://blog.cloudflare.com/bootstrap-mtc" target="_blank" rel="noopener noreferrer"><u>优于</u></a>当前易受量子攻击的 WebPKI 的方向发展。期望所有系统在为时已晚之前都实现这一点是不现实的。一些系统将不得不接受性能上的损失。另一些系统则需要通过其他方式来应对安全漏洞，例如限制访问、隧道技术、加强监控，或者采取其他各种成本高昂的措施。一旦更小的后量子签名出现，就可以移除这些补偿性控制措施，从而恢复系统的效率和安全性。</p>
+<p data-astro-cid-c6i3vrlz=""><br></p>
+<p data-astro-cid-c6i3vrlz="">NIST 竞赛的一个间接但同样重要的益处是，它有助于推动后量子加密技术超越其基本原语：并非只有密钥协商和签名易受量子攻击。还有许多在生产环境中使用的<a href="https://github.com/fancy-cryptography/fancy-cryptography" target="_blank" rel="noopener noreferrer"><u><em>高级</em>加密原语</u></a>，例如匿名凭证、PAKE 和阈值签名等。对于大多数人来说，后量子变体并不容易获得，或者认识不足。对于某些人来说，无需复杂的加密也能实现相同的目标，但代价是遗憾地在微妙的隐私目标上出现倒退。NIST 无法针对每一种特定的原语举办后量子标准定义竞赛，但幸运的是，签名竞赛在这方面提供了极大的帮助。</p>
+<p data-astro-cid-c6i3vrlz=""><br></p>
+<p data-astro-cid-c6i3vrlz="">最明显的示例是 FAEST。虽然 FAEST 的设计初衷是作为签名方案，但其底层机制 (VOLEitH) 可与 MAYO 等多元方案搭配使用，从而创建高效的<a href="https://www.usenix.org/system/files/conference/usenixsecurity26/sec26_prepub_baum.pdf" target="_blank" rel="noopener noreferrer"><u>后量子匿名凭证</u></a>。如果没有签名竞赛，VOLEitH 不会像今天这样发展完善且经过充分验证。</p>
+<p data-astro-cid-c6i3vrlz="">许多候选加密签名方案简要介绍了其各自在签名之外的其他用途。我们希望看到更多此类方案的间接应用取得突出进展。</p>
+<p data-astro-cid-c6i3vrlz="">尽管未来将会出现更强大的签名和更先进的加密技术，但我们不应忘记眼前的任务：确保在不久的未来保持安全。</p>

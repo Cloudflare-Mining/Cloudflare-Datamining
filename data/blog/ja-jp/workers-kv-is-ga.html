@@ -1,8 +1,8 @@
-<p data-astro-cid-byeekcgh="">本日、Workers KVの一般利用が開始し、業務目的の利用準備が完了したことをお知らせします！</p>
-<h3 data-astro-cid-byeekcgh=""><strong>Workers KVとは？</strong></h3>
-<p data-astro-cid-byeekcgh=""><a href="https://www.cloudflare.com/products/workers-kv" target="_blank" rel="noopener noreferrer">Workers KV</a>は、Cloudflareのグローバルエッジに拡がる、分散性が高く、結果整合性のあるKey-Valueストアです。これにより、数十億のキーと値のペアを保存し、世界中のどこでも超低レイテンシーでそれらを読み取ることができます。これで、CDN 静的キャッシュのパフォーマンスでアプリケーション全体を構築できるようになりました。</p>
-<h3 data-astro-cid-byeekcgh=""><strong>Workers KVを構築した理由は？</strong></h3>
-<p data-astro-cid-byeekcgh=""><a href="https://www.cloudflare.com/products/cloudflare-workers" target="_blank" rel="noopener noreferrer">Workers</a>は、Cloudflareの175以上のデータセンターのグローバルエッジでJavaScriptが実行できるプラットフォームです。ほんの数行のコードで、HTTP要求のルーティング、応答の修正、配信元サーバーなしでも新しい応答を作成することができます。</p>
+<p data-astro-cid-nalcf22a="">本日、Workers KVの一般利用が開始し、業務目的の利用準備が完了したことをお知らせします！</p>
+<h3 data-astro-cid-nalcf22a=""><strong>Workers KVとは？</strong></h3>
+<p data-astro-cid-nalcf22a=""><a href="https://www.cloudflare.com/products/workers-kv" target="_blank" rel="noopener noreferrer">Workers KV</a>は、Cloudflareのグローバルエッジに拡がる、分散性が高く、結果整合性のあるKey-Valueストアです。これにより、数十億のキーと値のペアを保存し、世界中のどこでも超低レイテンシーでそれらを読み取ることができます。これで、CDN 静的キャッシュのパフォーマンスでアプリケーション全体を構築できるようになりました。</p>
+<h3 data-astro-cid-nalcf22a=""><strong>Workers KVを構築した理由は？</strong></h3>
+<p data-astro-cid-nalcf22a=""><a href="https://www.cloudflare.com/products/cloudflare-workers" target="_blank" rel="noopener noreferrer">Workers</a>は、Cloudflareの175以上のデータセンターのグローバルエッジでJavaScriptが実行できるプラットフォームです。ほんの数行のコードで、HTTP要求のルーティング、応答の修正、配信元サーバーなしでも新しい応答を作成することができます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// A Worker that handles a single redirect,</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// such a humble beginning...</span></span>
@@ -45,7 +45,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-byeekcgh="">すぐに、お客様から、永続的なデータを格納する方法を必要とする利用例が提示されました。上記の例に倣い、リダイレクトが一つなら簡単に処理できますが、数十億のリダイレクトを処理する場合はどうでしょうか？Workersスクリプトにハードコード化して、すべて1MB以下に収まるようにし、変更を加えるたびに再展開する必要があります。面倒くさい！これが、WorkersKVを構築した理由です。</p>
+<p data-astro-cid-nalcf22a="">すぐに、お客様から、永続的なデータを格納する方法を必要とする利用例が提示されました。上記の例に倣い、リダイレクトが一つなら簡単に処理できますが、数十億のリダイレクトを処理する場合はどうでしょうか？Workersスクリプトにハードコード化して、すべて1MB以下に収まるようにし、変更を加えるたびに再展開する必要があります。面倒くさい！これが、WorkersKVを構築した理由です。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// A Worker that can handle billions of redirects,</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// now that's more like it!</span></span>
@@ -75,9 +75,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">前述の例からほんの少し変更しただけで、リダイレクトが一つから数十億に拡大しました。Workers KVでできることのほんの一部に過ぎません。</p>
-<h3 data-astro-cid-byeekcgh=""><strong>動作機序</strong></h3>
-<p data-astro-cid-byeekcgh="">分散型データストアはよく、<a href="https://en.wikipedia.org/wiki/CAP_theorem" target="_blank" rel="noopener noreferrer">CAP Theorem</a>を使用して、形作られます。ここでは、分散型システムは次の3つのうちの2つしか選択することができないと述べられています。</p>
+<p data-astro-cid-nalcf22a="">前述の例からほんの少し変更しただけで、リダイレクトが一つから数十億に拡大しました。Workers KVでできることのほんの一部に過ぎません。</p>
+<h3 data-astro-cid-nalcf22a=""><strong>動作機序</strong></h3>
+<p data-astro-cid-nalcf22a="">分散型データストアはよく、<a href="https://en.wikipedia.org/wiki/CAP_theorem" target="_blank" rel="noopener noreferrer">CAP Theorem</a>を使用して、形作られます。ここでは、分散型システムは次の3つのうちの2つしか選択することができないと述べられています。</p>
 <ul>
 	<li>一貫性 - データはどこでも同じですか？</li>
 	<li>可用性 - 常にデータにアクセスできますか？</li>
@@ -87,27 +87,27 @@
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="549" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=715&amp;h=549&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=640&amp;h=491&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=715&amp;h=549&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=750&amp;h=576&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=828&amp;h=636&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=1080&amp;h=829&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=1280&amp;h=983&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=1430&amp;h=1098&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Workers KV — Cloudflare's distributed database Embedded Image - pjWvzj" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=1204&amp;h=924&amp;f=webp" data-lightbox-width="1204" data-lightbox-height="924" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="549" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-byeekcgh="">Workers KV は、可用性と分断耐性を保証することを選択します。この組み合わせは<a href="https://en.wikipedia.org/wiki/Eventual_consistency" target="_blank" rel="noopener noreferrer">結果整合性</a>と呼ばれ、Workers KVは類似製品に比べて 2 つの点で有利です。</p>
+<p data-astro-cid-nalcf22a="">Workers KV は、可用性と分断耐性を保証することを選択します。この組み合わせは<a href="https://en.wikipedia.org/wiki/Eventual_consistency" target="_blank" rel="noopener noreferrer">結果整合性</a>と呼ばれ、Workers KVは類似製品に比べて 2 つの点で有利です。</p>
 <ul>
 	<li>読み取りは、当社のキャッシュ技術が装備されているため、超高速(中央値 12m秒)です。</li>
 	<li>データは175以上のエッジデータセンターで利用でき、地域的な停電時の復元力を備えています。</li>
 </ul>
-<p data-astro-cid-byeekcgh="">ただし、結果整合性には代償があります。2 者のクライアントが同じキーに異なる値を同時に書き込む場合、最後に書き込んだクライアントが_最終的に_ 「勝ち」、その値はグローバルに一貫性を持ちます。これは、クライアントがキーに書き込み、その同じクライアントが同じキーを読み取った場合でも、値が短時間一致しない可能性があるということです。</p>
-<p data-astro-cid-byeekcgh="">このシナリオをわかりやすくするために、3 人の友人の間で実際に起きたことを例にします。</p>
+<p data-astro-cid-nalcf22a="">ただし、結果整合性には代償があります。2 者のクライアントが同じキーに異なる値を同時に書き込む場合、最後に書き込んだクライアントが_最終的に_ 「勝ち」、その値はグローバルに一貫性を持ちます。これは、クライアントがキーに書き込み、その同じクライアントが同じキーを読み取った場合でも、値が短時間一致しない可能性があるということです。</p>
+<p data-astro-cid-nalcf22a="">このシナリオをわかりやすくするために、3 人の友人の間で実際に起きたことを例にします。</p>
 <ul>
 	<li>マシュー、ミシェル、リーが週一回のランチを計画しているとします。</li>
 	<li>マシューが、お寿司を食べに行くと決めました。</li>
 	<li>ミシェルにお寿司の計画を伝え、ミシェルは同意します。</li>
 	<li>リーは計画を知らないので、ミシェルに実はピザを食べる予定だと話します。</li>
 </ul>
-<p data-astro-cid-byeekcgh="">1 時間後、ミシェルとリーはピザ屋で待っていて、マシューは寿司屋で 1 人で座っています。どこで間違ったのでしょうか？私たちは、これを結果整合性であると結論づけることができます。なぜなら、マシューは数分間待った後、更新されたカレンダーを見て、_結果的に_寿司の代わりに_ピザを食べるという_新しい真実を見つけるのです。</p>
-<p data-astro-cid-byeekcgh="">現実世界では数分かかるかもしれませんが、WorkersKVは遥かに高速です。60秒未満でグローバルな一貫性が実現できます。さらに、Worker がキーに書き込み、_即座に_同じキーを読み取るときに、両方の操作が同じ場所から来た場合は、値の一貫性が期待できます。</p>
-<h3 data-astro-cid-byeekcgh=""><strong>どんな時に利用できるか？</strong></h3>
-<p data-astro-cid-byeekcgh="">結果整合性を使用する利点と代償が理解できました。では、アプリケーションに適したストレージソリューションかどうかを判断するにはどうすればよいでしょうか？簡単に言えば、超高速読み取りでグローバルな可用性をお求めなら、Workers KVが最適です。</p>
-<p data-astro-cid-byeekcgh="">ただし、アプリケーションが頻繁に同じキーに書き込む場合は、さらに考慮すべきことがあります。私たちはそれを「マシューの疑問」と呼んでいます。世界のマシューたちが_たまに_間違ったレストランに行っても許容できますか？</p>
-<p data-astro-cid-byeekcgh="">これにより実質的な違いが生じない利用例 (当社のリダイレクトWorkerの例など) は、想像できます。しかし、ユーザーの銀行口座残高を追跡すると決めた場合、同時に2つの残高が存在する可能性は望まないでしょう。既に使ってしまったお金で何かを購入してしまうかもしれないからです。</p>
-<h3 data-astro-cid-byeekcgh=""><strong>Workers KVで何を構築することができますか？</strong></h3>
-<p data-astro-cid-byeekcgh="">KVで構築されたアプリケーションの例を次に示しましょう。</p>
+<p data-astro-cid-nalcf22a="">1 時間後、ミシェルとリーはピザ屋で待っていて、マシューは寿司屋で 1 人で座っています。どこで間違ったのでしょうか？私たちは、これを結果整合性であると結論づけることができます。なぜなら、マシューは数分間待った後、更新されたカレンダーを見て、_結果的に_寿司の代わりに_ピザを食べるという_新しい真実を見つけるのです。</p>
+<p data-astro-cid-nalcf22a="">現実世界では数分かかるかもしれませんが、WorkersKVは遥かに高速です。60秒未満でグローバルな一貫性が実現できます。さらに、Worker がキーに書き込み、_即座に_同じキーを読み取るときに、両方の操作が同じ場所から来た場合は、値の一貫性が期待できます。</p>
+<h3 data-astro-cid-nalcf22a=""><strong>どんな時に利用できるか？</strong></h3>
+<p data-astro-cid-nalcf22a="">結果整合性を使用する利点と代償が理解できました。では、アプリケーションに適したストレージソリューションかどうかを判断するにはどうすればよいでしょうか？簡単に言えば、超高速読み取りでグローバルな可用性をお求めなら、Workers KVが最適です。</p>
+<p data-astro-cid-nalcf22a="">ただし、アプリケーションが頻繁に同じキーに書き込む場合は、さらに考慮すべきことがあります。私たちはそれを「マシューの疑問」と呼んでいます。世界のマシューたちが_たまに_間違ったレストランに行っても許容できますか？</p>
+<p data-astro-cid-nalcf22a="">これにより実質的な違いが生じない利用例 (当社のリダイレクトWorkerの例など) は、想像できます。しかし、ユーザーの銀行口座残高を追跡すると決めた場合、同時に2つの残高が存在する可能性は望まないでしょう。既に使ってしまったお金で何かを購入してしまうかもしれないからです。</p>
+<h3 data-astro-cid-nalcf22a=""><strong>Workers KVで何を構築することができますか？</strong></h3>
+<p data-astro-cid-nalcf22a="">KVで構築されたアプリケーションの例を次に示しましょう。</p>
 <ul>
 	<li>一括リダイレクト - 数十億ものHTTPリダイレクトを処理します。</li>
 	<li>ユーザー認証 - API へのユーザー要求を検証します。</li>
@@ -116,14 +116,14 @@
 	<li>ステップ関数 - 複数の API 関数間で状態データを同期します。</li>
 	<li>エッジファイル格納 - 大量にある小さなファイルをホストします。</li>
 </ul>
-<p data-astro-cid-byeekcgh="">当社の以前の<a href="https://blog.cloudflare.com/building-with-workers-kv">ブログ記事</a>で、これらの利用例のいくつかを取り上げました。また、<a href="https://blog.cloudflare.com/building-a-to-do-list-with-workers-and-kv">Workers KVを利用したオンラインTo-Doリスト</a>を作成する方法に関する、最近公開されたブログ記事など、より詳細なコードチュートリアルもあります。</p>
+<p data-astro-cid-nalcf22a="">当社の以前の<a href="https://blog.cloudflare.com/building-with-workers-kv">ブログ記事</a>で、これらの利用例のいくつかを取り上げました。また、<a href="https://blog.cloudflare.com/building-a-to-do-list-with-workers-and-kv">Workers KVを利用したオンラインTo-Doリスト</a>を作成する方法に関する、最近公開されたブログ記事など、より詳細なコードチュートリアルもあります。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="618" height="487" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=618&amp;h=487&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=618&amp;h=487&amp;f=webp&amp;fit=cover&amp;position=center 618w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=640&amp;h=504&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=750&amp;h=591&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=828&amp;h=652&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=1080&amp;h=851&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=1236&amp;h=974&amp;f=webp&amp;fit=cover&amp;position=center 1236w" alt="Workers KV — Cloudflare's distributed database Embedded Image - LkgCY5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=618&amp;h=487&amp;f=webp" data-lightbox-width="618" data-lightbox-height="487" data-astro-cid-7nvefuv6="true" sizes="(min-width: 618px) 618px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="618" height="487" class="pt-portable-image-media"></div>
 </figure>
-<h3 data-astro-cid-byeekcgh=""><strong>ベータ版以降の新機能は何ですか？</strong></h3>
-<p data-astro-cid-byeekcgh="">これまでのところ、最も一般的なリクエストは、Workers KVへのデータの書き込みを容易にすることです。そのため、その体験をさらに向上させる 3 つの新しい方法をリリースします。</p>
-<h4 data-astro-cid-byeekcgh=""><strong>1.一括書き込み</strong></h4>
-<p data-astro-cid-byeekcgh="">既存のデータを Workers KV にインポートする場合は、キーと値のペアすべ_て_に対してHTTP要求を送信する手間はかけたくありません。だからこそ、Cloudflare API に<a href="https://api.cloudflare.com/#workers-kv-namespace-write-multiple-key-value-pairs" target="_blank" rel="noopener noreferrer">一括エンドポイント</a>を追加したのです。1 回の PUT要求で最大 10,000 組 (最大 100 MB のデータ) がアップロードできるようになりました。</p>
+<h3 data-astro-cid-nalcf22a=""><strong>ベータ版以降の新機能は何ですか？</strong></h3>
+<p data-astro-cid-nalcf22a="">これまでのところ、最も一般的なリクエストは、Workers KVへのデータの書き込みを容易にすることです。そのため、その体験をさらに向上させる 3 つの新しい方法をリリースします。</p>
+<h4 data-astro-cid-nalcf22a=""><strong>1.一括書き込み</strong></h4>
+<p data-astro-cid-nalcf22a="">既存のデータを Workers KV にインポートする場合は、キーと値のペアすべ_て_に対してHTTP要求を送信する手間はかけたくありません。だからこそ、Cloudflare API に<a href="https://api.cloudflare.com/#workers-kv-namespace-write-multiple-key-value-pairs" target="_blank" rel="noopener noreferrer">一括エンドポイント</a>を追加したのです。1 回の PUT要求で最大 10,000 組 (最大 100 MB のデータ) がアップロードできるようになりました。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/accounts/ </span><span class="sk-005cc5-a0a0a0">\</span></span>
 <span class="line"><span class="sk-24292e-fff">     $ACCOUNT_ID</span><span class="sk-032f62-99ffe4">/storage/kv/namespaces/</span><span class="sk-24292e-fff">$NAMESPACE_ID</span><span class="sk-032f62-99ffe4">/bulk"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
@@ -140,8 +140,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">利用例を 1 件ずつ見ていきましょう。Workersへのウェブサイト翻訳負荷軽減をしたいと思っています。翻訳キーを頻繁に読み込んでいるのですが、たまにしかアップデートしないため、このアプリケーションにはWorkers KVの結果整合性モデルが適しています。</p>
-<p data-astro-cid-byeekcgh="">この例では、翻訳データ管理に人気のプラットフォームである<a href="https://crowdin.com" target="_blank" rel="noopener noreferrer">Crowdin</a>を結び付けます。このWorkersは/translateエンドポイントに応答し、すべての翻訳キーをダウンロードした後で、当社のエッジで後で読むことができるようにWorkers KVに一括書き込みします。</p>
+<p data-astro-cid-nalcf22a="">利用例を 1 件ずつ見ていきましょう。Workersへのウェブサイト翻訳負荷軽減をしたいと思っています。翻訳キーを頻繁に読み込んでいるのですが、たまにしかアップデートしないため、このアプリケーションにはWorkers KVの結果整合性モデルが適しています。</p>
+<p data-astro-cid-nalcf22a="">この例では、翻訳データ管理に人気のプラットフォームである<a href="https://crowdin.com" target="_blank" rel="noopener noreferrer">Crowdin</a>を結び付けます。このWorkersは/translateエンドポイントに応答し、すべての翻訳キーをダウンロードした後で、当社のエッジで後で読むことができるようにWorkers KVに一括書き込みします。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch"</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (event.request.url.pathname </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "/translate"</span><span class="sk-24292e-fff">) {</span></span>
@@ -193,7 +193,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">これで、ページを翻訳したい場合は、Workers KV から読み取るだけです。</p>
+<p data-astro-cid-nalcf22a="">これで、ページを翻訳したい場合は、Workers KV から読み取るだけです。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> translate</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">keys</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">lang</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // You bind your translations namespace to the TRANSLATIONS variable.</span></span>
@@ -204,8 +204,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4 data-astro-cid-byeekcgh=""><strong>2.期限付きのキー</strong></h4>
-<p data-astro-cid-byeekcgh="">デフォルトでは、Workers KV に格納されているキーと値のペアは永久に存続します。しかし、一定時間の経過後にデータを自動削除したい場合があります。そのため、書き込み操作の有効期限と有効期限の Ttlオプションを導入しています。</p>
+<h4 data-astro-cid-nalcf22a=""><strong>2.期限付きのキー</strong></h4>
+<p data-astro-cid-nalcf22a="">デフォルトでは、Workers KV に格納されているキーと値のペアは永久に存続します。しかし、一定時間の経過後にデータを自動削除したい場合があります。そのため、書き込み操作の有効期限と有効期限の Ttlオプションを導入しています。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Key expires 60 seconds from now.</span></span>
 <span class="line"><span class="sk-005cc5-fff">NAMESPACE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"myKey"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"myValue"</span><span class="sk-24292e-fff">, {expirationTtl: </span><span class="sk-005cc5-ffc799">60</span><span class="sk-24292e-fff">})</span></span>
@@ -231,8 +231,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">たとえば、不適切だとフラグがついているユーザーをサイトからブロックしたいとします。ただし 1 週間の期限付きです。期限付きのキーを使用すれば、有効期限を設定でき、後で削除する必要もありません。</p>
-<p data-astro-cid-byeekcgh="">この例では、ユーザーと IP アドレスが同じものであると仮定します。アプリケーションにデータ確認がある場合は、アクセス・トークンをキー識別子として使用できます。</p>
+<p data-astro-cid-nalcf22a="">たとえば、不適切だとフラグがついているユーザーをサイトからブロックしたいとします。ただし 1 週間の期限付きです。期限付きのキーを使用すれば、有効期限を設定でき、後で削除する必要もありません。</p>
+<p data-astro-cid-nalcf22a="">この例では、ユーザーと IP アドレスが同じものであると仮定します。アプリケーションにデータ確認がある場合は、アクセス・トークンをキー識別子として使用できます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch"</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> url </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(event.request.url)</span></span>
@@ -271,14 +271,14 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh=""><strong>3.大きい値</strong></p>
-<p data-astro-cid-byeekcgh="">値のサイズ制限を64 kB から2 MBに増やしました。これは、Workers KV にバッファベースまたはファイルデータを格納する必要がある場合に、非常に便利です。</p>
+<p data-astro-cid-nalcf22a=""><strong>3.大きい値</strong></p>
+<p data-astro-cid-nalcf22a="">値のサイズ制限を64 kB から2 MBに増やしました。これは、Workers KV にバッファベースまたはファイルデータを格納する必要がある場合に、非常に便利です。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="356" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=715&amp;h=356&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=640&amp;h=319&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=715&amp;h=356&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=750&amp;h=373&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=828&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=1080&amp;h=538&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=1280&amp;h=637&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=1430&amp;h=712&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Workers KV — Cloudflare's distributed database Embedded Image - cOsdZR" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=1212&amp;h=604&amp;f=webp" data-lightbox-width="1212" data-lightbox-height="604" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="356" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-byeekcgh="">こんな場合が考えられます。ユーザーが、プロフィールにお好みのGIFをアップロードできるようにしたい、でも自分のデータベースにバイナリとして格納したり、別_の_ストレージバケットを管理することは避けたい。</p>
-<p data-astro-cid-byeekcgh="">Workers KVは、この利用例に最適です！ユーザーのGIF用に Workers KV の名前空間を作成することができ、ユーザーの所在地に関わらず高速で高い信頼性を実現します。</p>
-<p data-astro-cid-byeekcgh="">この例では、ユーザーがお気に入りの GIFへのリンクをアップロードし、Workersがダウンロードして、Workers KV に格納します。</p>
+<p data-astro-cid-nalcf22a="">こんな場合が考えられます。ユーザーが、プロフィールにお好みのGIFをアップロードできるようにしたい、でも自分のデータベースにバイナリとして格納したり、別_の_ストレージバケットを管理することは避けたい。</p>
+<p data-astro-cid-nalcf22a="">Workers KVは、この利用例に最適です！ユーザーのGIF用に Workers KV の名前空間を作成することができ、ユーザーの所在地に関わらず高速で高い信頼性を実現します。</p>
+<p data-astro-cid-nalcf22a="">この例では、ユーザーがお気に入りの GIFへのリンクをアップロードし、Workersがダウンロードして、Workers KV に格納します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch"</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> url </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> event.request.url</span></span>
@@ -317,17 +317,17 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">最後に、ベータ版をご利用いただいたすべてのお客様に感謝申し上げます。みなさまの貴重なフィードバックがあってこそ、Workers KVの変更を開発することが可能になりました。どうぞこれからもお願いいたします。当社は常にさらに先を見据えており、お客様からのご意見を楽しみにしております！</p>
-<h3 data-astro-cid-byeekcgh=""><strong>価格設定</strong></h3>
-<p data-astro-cid-byeekcgh="">正式版も、価格を発表する準備が整いました。エンタープライズプランのお客様の場合、価格の変更はありません。</p>
+<p data-astro-cid-nalcf22a="">最後に、ベータ版をご利用いただいたすべてのお客様に感謝申し上げます。みなさまの貴重なフィードバックがあってこそ、Workers KVの変更を開発することが可能になりました。どうぞこれからもお願いいたします。当社は常にさらに先を見据えており、お客様からのご意見を楽しみにしております！</p>
+<h3 data-astro-cid-nalcf22a=""><strong>価格設定</strong></h3>
+<p data-astro-cid-nalcf22a="">正式版も、価格を発表する準備が整いました。エンタープライズプランのお客様の場合、価格の変更はありません。</p>
 <ul>
 	<li>最初の1 GBは無料。以後は1 GBごとに$0.50</li>
 	<li>最初の1千万回分の読み取りは無料。以後は百万回ごとに$0.50</li>
 	<li>最初の百万回分の書き込み、リスト、削除操作は無料。以降は百万回ごとに$5</li>
 </ul>
-<p data-astro-cid-byeekcgh="">ベータ期間中に判明したことは、当社のエッジで値を読み取るだけではなく、エッジから値の書き込みも必要とされている、ということでした。需要の高いエッジ操作はよりコストがかかるため、読み取り操作以外にも月額の課金を開始しました。</p>
-<h3 data-astro-cid-byeekcgh=""><strong>制限</strong></h3>
-<p data-astro-cid-byeekcgh="">前述のように、値のサイズ制限を 64 kB から 2 MB に拡張しました。また、名前空間ごとのキー数の上限もなくし、無制限としました。正式版の制限は次のとおりです。</p>
+<p data-astro-cid-nalcf22a="">ベータ期間中に判明したことは、当社のエッジで値を読み取るだけではなく、エッジから値の書き込みも必要とされている、ということでした。需要の高いエッジ操作はよりコストがかかるため、読み取り操作以外にも月額の課金を開始しました。</p>
+<h3 data-astro-cid-nalcf22a=""><strong>制限</strong></h3>
+<p data-astro-cid-nalcf22a="">前述のように、値のサイズ制限を 64 kB から 2 MB に拡張しました。また、名前空間ごとのキー数の上限もなくし、無制限としました。正式版の制限は次のとおりです。</p>
 <ul>
 	<li>アカウントあたり最大 20 個の名前空間(それぞれ無制限のキー付き)</li>
 	<li>最大512バイトのキーと最大2MB の値</li>
@@ -335,6 +335,6 @@
 	<li>同じキーに対して1秒あたり 1 回の書き込み</li>
 	<li>キーごとの1秒あたりの読み取り数は無制限</li>
 </ul>
-<h3 data-astro-cid-byeekcgh=""><strong>今すぐお試しください！</strong></h3>
-<p data-astro-cid-byeekcgh="">すべてのお客様に公開しましたので、<a href="https://www.cloudflare.com/products/workers-kv" target="_blank" rel="noopener noreferrer">Workers KV</a>は Cloudflare ダッシュボード上で、[Workers] タブから使用開始できます。当社の更新版<a href="https://developers.cloudflare.com/workers/kv" target="_blank" rel="noopener noreferrer">ドキュメントもご覧ください。</a></p>
-<p data-astro-cid-byeekcgh="">Workers KVで何が構築できるのか、拝見するのが楽しみです！</p>
+<h3 data-astro-cid-nalcf22a=""><strong>今すぐお試しください！</strong></h3>
+<p data-astro-cid-nalcf22a="">すべてのお客様に公開しましたので、<a href="https://www.cloudflare.com/products/workers-kv" target="_blank" rel="noopener noreferrer">Workers KV</a>は Cloudflare ダッシュボード上で、[Workers] タブから使用開始できます。当社の更新版<a href="https://developers.cloudflare.com/workers/kv" target="_blank" rel="noopener noreferrer">ドキュメントもご覧ください。</a></p>
+<p data-astro-cid-nalcf22a="">Workers KVで何が構築できるのか、拝見するのが楽しみです！</p>

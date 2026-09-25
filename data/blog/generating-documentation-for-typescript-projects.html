@@ -1,6 +1,6 @@
-<p data-astro-cid-byeekcgh="">Documentation for JavaScript projects has traditionally been generated via annotations inserted as code comments. While this gets the job done, it seems far from ideal. In this post, I’ll explore how to use TypeScript to generate documentation from source code alone.</p>
-<p data-astro-cid-byeekcgh=""><sub><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/davidjoyner/511102367/in/photolist-MawVM-7zyucG-7aZ4QT-6GBfU4-aFrGn6-unAh43-axBGXx-ciiroq-92cKAD-iER1r2-5bRGPh-92fVBf-92fQBm-iER1Gc-2JMg5k-8rfzDR-iERFKo-jL2WXi-iEU2RU-jL4n6N-nqbf3-iER2q6-6H9k7G-dgnntH-eMMtEx-hHiLuM-9Sx4wb-9pCef2-9RLkVe-iEU1Nb-jL27Jr-ai89xS-dWQYFd-dyZqij-7cnSxN-8dyQSg-6yATnF-3om4q-nMWdCg-2KEjsj-eoQ3Lw-eoQfdN-9snnkJ-abB6Hb-2KEvib-eoQcXG-iEU2xh-9Hz7sB-5VhaNf-2KzRJp" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/davidjoyner" target="_blank" rel="noopener noreferrer">David Joyner</a></sub></p>
-<p data-astro-cid-byeekcgh=""><a href="https://www.typescriptlang.org" target="_blank" rel="noopener noreferrer">TypeScript</a> is JavaScript with optional types. Here’s a simple example:</p>
+<p data-astro-cid-nalcf22a="">Documentation for JavaScript projects has traditionally been generated via annotations inserted as code comments. While this gets the job done, it seems far from ideal. In this post, I’ll explore how to use TypeScript to generate documentation from source code alone.</p>
+<p data-astro-cid-nalcf22a=""><sub><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/davidjoyner/511102367/in/photolist-MawVM-7zyucG-7aZ4QT-6GBfU4-aFrGn6-unAh43-axBGXx-ciiroq-92cKAD-iER1r2-5bRGPh-92fVBf-92fQBm-iER1Gc-2JMg5k-8rfzDR-iERFKo-jL2WXi-iEU2RU-jL4n6N-nqbf3-iER2q6-6H9k7G-dgnntH-eMMtEx-hHiLuM-9Sx4wb-9pCef2-9RLkVe-iEU1Nb-jL27Jr-ai89xS-dWQYFd-dyZqij-7cnSxN-8dyQSg-6yATnF-3om4q-nMWdCg-2KEjsj-eoQ3Lw-eoQfdN-9snnkJ-abB6Hb-2KEvib-eoQcXG-iEU2xh-9Hz7sB-5VhaNf-2KzRJp" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/davidjoyner" target="_blank" rel="noopener noreferrer">David Joyner</a></sub></p>
+<p data-astro-cid-nalcf22a=""><a href="https://www.typescriptlang.org" target="_blank" rel="noopener noreferrer">TypeScript</a> is JavaScript with optional types. Here’s a simple example:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>// Sends some data to some analytics endpoint</span></span>
 <span class="line"><span>function sendAnalyticsJS(data) {</span></span>
@@ -38,7 +38,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-byeekcgh="">The JavaScript code will result in a run-time error. This is fine if the developer catches it early, but it would be better if the developer were warned as the bug was introduced. Here’s the same code written using TypeScript:</p>
+<p data-astro-cid-nalcf22a="">The JavaScript code will result in a run-time error. This is fine if the developer catches it early, but it would be better if the developer were warned as the bug was introduced. Here’s the same code written using TypeScript:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>// Describe the shape of the data parameter</span></span>
 <span class="line"><span>interface IAnalyticsData {</span></span>
@@ -70,13 +70,13 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">These annotations are all optional and the more you add, the more the compiler can help you. Compiling the TypeScript version results in code equivalent to the first example. The only difference is that the developer is warned about an error while writing the code.</p>
-<p data-astro-cid-byeekcgh="">With TypeScript, JavaScript developers are given powerful tools that aid the development of applications, large and small. Anders Hejlsberg, lead architect of C# and core dev for TypeScript, describes the language as, “JavaScript that scales.”</p>
+<p data-astro-cid-nalcf22a="">These annotations are all optional and the more you add, the more the compiler can help you. Compiling the TypeScript version results in code equivalent to the first example. The only difference is that the developer is warned about an error while writing the code.</p>
+<p data-astro-cid-nalcf22a="">With TypeScript, JavaScript developers are given powerful tools that aid the development of applications, large and small. Anders Hejlsberg, lead architect of C# and core dev for TypeScript, describes the language as, “JavaScript that scales.”</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="712" height="395" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW467V5T25KWTMB5VPDDDG2A.gif" alt="Typescript Gif" width="712" height="395" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-byeekcgh="">Using TypeScript means you can:</p>
+<p data-astro-cid-nalcf22a="">Using TypeScript means you can:</p>
 <ul>
 	<li>Interactively explore library interfaces from your text editor</li>
 	<li>Enjoy useful auto-completion</li>
@@ -87,12 +87,12 @@
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="384" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47038SME7KKVF1YG1TKN6Q.png&amp;w=715&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47038SME7KKVF1YG1TKN6Q.png&amp;w=640&amp;h=344&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47038SME7KKVF1YG1TKN6Q.png&amp;w=715&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47038SME7KKVF1YG1TKN6Q.png&amp;w=750&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47038SME7KKVF1YG1TKN6Q.png&amp;w=828&amp;h=445&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47038SME7KKVF1YG1TKN6Q.png&amp;w=1080&amp;h=580&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47038SME7KKVF1YG1TKN6Q.png&amp;w=1280&amp;h=687&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47038SME7KKVF1YG1TKN6Q.png&amp;w=1430&amp;h=768&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="amp-viewer-docs-2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47038SME7KKVF1YG1TKN6Q.png&amp;w=1312&amp;h=704&amp;f=webp" data-lightbox-width="1312" data-lightbox-height="704" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="384" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-byeekcgh=""><sub><em>The screenshot above is of the generated documentation from a TypeScript project at Cloudflare.</em></sub></p>
-<h3 data-astro-cid-byeekcgh="">Why not JSDoc?</h3>
+<p data-astro-cid-nalcf22a=""><sub><em>The screenshot above is of the generated documentation from a TypeScript project at Cloudflare.</em></sub></p>
+<h3 data-astro-cid-nalcf22a="">Why not JSDoc?</h3>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="449" height="164" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A7B1SY49K4ZA6THQGCCR.png&amp;w=449&amp;h=164&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A7B1SY49K4ZA6THQGCCR.png&amp;w=449&amp;h=164&amp;f=webp&amp;fit=cover&amp;position=center 449w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A7B1SY49K4ZA6THQGCCR.png&amp;w=640&amp;h=234&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A7B1SY49K4ZA6THQGCCR.png&amp;w=750&amp;h=274&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A7B1SY49K4ZA6THQGCCR.png&amp;w=828&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A7B1SY49K4ZA6THQGCCR.png&amp;w=898&amp;h=328&amp;f=webp&amp;fit=cover&amp;position=center 898w" alt="jsdoc-example-1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A7B1SY49K4ZA6THQGCCR.png&amp;w=449&amp;h=164&amp;f=webp" data-lightbox-width="449" data-lightbox-height="164" data-astro-cid-7nvefuv6="true" sizes="(min-width: 449px) 449px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="449" height="164" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-byeekcgh="">The amount of work required to annotate source code with JSDoc comments is comparable to adopting TypeScript annotations. However, JSDoc comments are not tightly coupled to the codebase, so when the code changes, an independent change of the JSDoc comment is also required. Contrast to TypeScript where the structure is gleaned directly from the source. Here’s a side-by-side comparison between JSDoc and TypeScript:</p>
+<p data-astro-cid-nalcf22a="">The amount of work required to annotate source code with JSDoc comments is comparable to adopting TypeScript annotations. However, JSDoc comments are not tightly coupled to the codebase, so when the code changes, an independent change of the JSDoc comment is also required. Contrast to TypeScript where the structure is gleaned directly from the source. Here’s a side-by-side comparison between JSDoc and TypeScript:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>/**</span></span>
 <span class="line"><span> * A class representing a point</span></span>
@@ -153,7 +153,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh=""><strong>TypeScript</strong></p>
+<p data-astro-cid-nalcf22a=""><strong>TypeScript</strong></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>/** Class representing a point. */</span></span>
 <span class="line"><span>class Point {</span></span>
@@ -203,12 +203,12 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">The above code sample was taken from the <a href="http://usejsdoc.org/howto-es2015-classes.html#documenting-a-simple-class" target="_blank" rel="noopener noreferrer">JSDoc documentation</a> and adapted for use with TypeScript.</p>
-<p data-astro-cid-byeekcgh="">The annotations for TypeScript are much more compact, they’re syntax-highlighted, and most importantly, if something is wrong, the compiler lets us know. Long-form descriptions of things are still made in comments, but the type information has been moved into language semantics.</p>
-<p data-astro-cid-byeekcgh="">The downside to adopting TypeScript is the large amount of work required to fit the build tools into your current processes. However, we won’t focus on the nitty-gritty details of build tools since the ecosystem is rapidly changing.</p>
-<h3 data-astro-cid-byeekcgh="">Using TypeDoc</h3>
-<p data-astro-cid-byeekcgh="">At Cloudflare, we use a tool called <a href="http://typedoc.org" target="_blank" rel="noopener noreferrer">TypeDoc</a> to help build documentation. It’s set up such that documentation-generation is on watch and will re-build on codebase changes. Anybody hacking on the project will always have up-to-date docs at localhost:3000/docs.</p>
-<p data-astro-cid-byeekcgh="">If you’re using TypeScript 2.x, use the following command to install TypeDoc for your project:</p>
+<p data-astro-cid-nalcf22a="">The above code sample was taken from the <a href="http://usejsdoc.org/howto-es2015-classes.html#documenting-a-simple-class" target="_blank" rel="noopener noreferrer">JSDoc documentation</a> and adapted for use with TypeScript.</p>
+<p data-astro-cid-nalcf22a="">The annotations for TypeScript are much more compact, they’re syntax-highlighted, and most importantly, if something is wrong, the compiler lets us know. Long-form descriptions of things are still made in comments, but the type information has been moved into language semantics.</p>
+<p data-astro-cid-nalcf22a="">The downside to adopting TypeScript is the large amount of work required to fit the build tools into your current processes. However, we won’t focus on the nitty-gritty details of build tools since the ecosystem is rapidly changing.</p>
+<h3 data-astro-cid-nalcf22a="">Using TypeDoc</h3>
+<p data-astro-cid-nalcf22a="">At Cloudflare, we use a tool called <a href="http://typedoc.org" target="_blank" rel="noopener noreferrer">TypeDoc</a> to help build documentation. It’s set up such that documentation-generation is on watch and will re-build on codebase changes. Anybody hacking on the project will always have up-to-date docs at localhost:3000/docs.</p>
+<p data-astro-cid-nalcf22a="">If you’re using TypeScript 2.x, use the following command to install TypeDoc for your project:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>npm install --save-dev https://github.com/DatenMetzgerX/typedoc/tarball/typescript-2-build</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -216,7 +216,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Otherwise, for prior versions of TypeScript, you can install straight from </p>
+<p data-astro-cid-nalcf22a="">Otherwise, for prior versions of TypeScript, you can install straight from </p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>npm install --save-dev typedoc</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -224,7 +224,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">From within your project directory, run the following command:</p>
+<p data-astro-cid-nalcf22a="">From within your project directory, run the following command:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span># Change the --out flag to wherever you’d like the output to be stored</span></span>
 <span class="line"><span>./node_modules/.bin/typedoc --out dist/docs --mode modules .</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -233,7 +233,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">You should see a bunch of HTML documents generated. One for each class and module.</p>
+<p data-astro-cid-nalcf22a="">You should see a bunch of HTML documents generated. One for each class and module.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>dist/docs</span></span>
 <span class="line"><span>├── assets</span></span>
@@ -263,7 +263,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">I wanted to build something akin to <a href="https://lodash.com/docs" target="_blank" rel="noopener noreferrer">Lodash’s documentation</a> (a beautiful single page API reference with examples and links to source code). Luckily, you can use TypeDoc’s --json flag to produce a set of useful descriptions of your codebase in JSON format.</p>
+<p data-astro-cid-nalcf22a="">I wanted to build something akin to <a href="https://lodash.com/docs" target="_blank" rel="noopener noreferrer">Lodash’s documentation</a> (a beautiful single page API reference with examples and links to source code). Luckily, you can use TypeDoc’s --json flag to produce a set of useful descriptions of your codebase in JSON format.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>./node_modules/.bin/typedoc --json dist/docs.json --mode modules</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -271,11 +271,11 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh=""><em>Note: In order to use the --json flag, you’ll need to setup a proper <a href="https://www.typescriptlang.org/docs/handbook/tsconfig-json.html" target="_blank" rel="noopener noreferrer">tsconfig.json</a> for your TypeScript project.</em></p>
+<p data-astro-cid-nalcf22a=""><em>Note: In order to use the --json flag, you’ll need to setup a proper <a href="https://www.typescriptlang.org/docs/handbook/tsconfig-json.html" target="_blank" rel="noopener noreferrer">tsconfig.json</a> for your TypeScript project.</em></p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="393" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CXT9D75H0ARF8PYA4YHB.png&amp;w=715&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CXT9D75H0ARF8PYA4YHB.png&amp;w=640&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CXT9D75H0ARF8PYA4YHB.png&amp;w=715&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CXT9D75H0ARF8PYA4YHB.png&amp;w=750&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CXT9D75H0ARF8PYA4YHB.png&amp;w=828&amp;h=455&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CXT9D75H0ARF8PYA4YHB.png&amp;w=1080&amp;h=594&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CXT9D75H0ARF8PYA4YHB.png&amp;w=1280&amp;h=704&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CXT9D75H0ARF8PYA4YHB.png&amp;w=1430&amp;h=786&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="ts-docs-post-screen-1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CXT9D75H0ARF8PYA4YHB.png&amp;w=806&amp;h=443&amp;f=webp" data-lightbox-width="806" data-lightbox-height="443" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="393" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-byeekcgh="">With this high-level, structured description of our code base, we can render any HTML we’d like with a few scripts and a templating language like <a href="http://handlebarsjs.com" target="_blank" rel="noopener noreferrer">Handlebars</a>. Here’s a simple script to render a list of code base modules:</p>
+<p data-astro-cid-nalcf22a="">With this high-level, structured description of our code base, we can render any HTML we’d like with a few scripts and a templating language like <a href="http://handlebarsjs.com" target="_blank" rel="noopener noreferrer">Handlebars</a>. Here’s a simple script to render a list of code base modules:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>const fs = require('fs')</span></span>
 <span class="line"><span>const hbs = require('handlebars')</span></span>
@@ -312,9 +312,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">While this means that there is a lot of work up front to create a template that suits the needs of this particular code base, I hope to use the same infrastructure for TypeScript projects at Cloudflare moving forward.</p>
-<h3 data-astro-cid-byeekcgh="">More Than API Reference</h3>
-<p data-astro-cid-byeekcgh="">TypeDoc gets us halfway there. It provides a structured and automated way to create reference material that is always in sync with our codebase; but we can do more than reference material. Suppose you’re writing a getting-started.md file. You might say something like this:</p>
+<p data-astro-cid-nalcf22a="">While this means that there is a lot of work up front to create a template that suits the needs of this particular code base, I hope to use the same infrastructure for TypeScript projects at Cloudflare moving forward.</p>
+<h3 data-astro-cid-nalcf22a="">More Than API Reference</h3>
+<p data-astro-cid-nalcf22a="">TypeDoc gets us halfway there. It provides a structured and automated way to create reference material that is always in sync with our codebase; but we can do more than reference material. Suppose you’re writing a getting-started.md file. You might say something like this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>To get started, call the `viewer.init()` method.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -322,7 +322,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Since we’re using TypeDoc and Handlebars, we can assume we have all the information necessary to actually link to the source code. That might look something like this:</p>
+<p data-astro-cid-nalcf22a="">Since we’re using TypeDoc and Handlebars, we can assume we have all the information necessary to actually link to the source code. That might look something like this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>{{!-- Pull the AMPViewer class into scope --}}</span></span>
 <span class="line"><span>{{#Class "AMPViewer"}}</span></span>
@@ -340,8 +340,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">While the above looks arcane, it’s just Markdown and Handlebars. The template contains a block helper called Class that will pull the AMPViewer class object into the current scope. Then using the AMPViewer class, we pull the init member into the current scope. We use the {{&gt; signature}} partial to pretty-print the function’s signature and the getSourceUrl helper to link to this method in the source code.</p>
-<p data-astro-cid-byeekcgh="">If the source code changes, our docs update too.</p>
-<h3 data-astro-cid-byeekcgh="">Open Source and Beyond</h3>
-<p data-astro-cid-byeekcgh="">Over next couple of months, we’ll be open sourcing the tools we’ve created to generate our documentation. We’ll also open source the theme shown in this post so you can generate docs without worrying about the styling. We hope to create a rich TypeScript ecosystem and to have fantastic documentation for all of our projects.</p>
-<p data-astro-cid-byeekcgh="">If you’re thinking of generating documentation by annotating your source, use TypeScript instead and enjoy the benefits.</p>
+<p data-astro-cid-nalcf22a="">While the above looks arcane, it’s just Markdown and Handlebars. The template contains a block helper called Class that will pull the AMPViewer class object into the current scope. Then using the AMPViewer class, we pull the init member into the current scope. We use the {{&gt; signature}} partial to pretty-print the function’s signature and the getSourceUrl helper to link to this method in the source code.</p>
+<p data-astro-cid-nalcf22a="">If the source code changes, our docs update too.</p>
+<h3 data-astro-cid-nalcf22a="">Open Source and Beyond</h3>
+<p data-astro-cid-nalcf22a="">Over next couple of months, we’ll be open sourcing the tools we’ve created to generate our documentation. We’ll also open source the theme shown in this post so you can generate docs without worrying about the styling. We hope to create a rich TypeScript ecosystem and to have fantastic documentation for all of our projects.</p>
+<p data-astro-cid-nalcf22a="">If you’re thinking of generating documentation by annotating your source, use TypeScript instead and enjoy the benefits.</p>

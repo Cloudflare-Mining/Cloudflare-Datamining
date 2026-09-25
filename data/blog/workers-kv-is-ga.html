@@ -1,8 +1,8 @@
-<p data-astro-cid-byeekcgh="">Today, we’re excited to announce Workers KV is entering general availability and is ready for production use!</p>
-<h3 data-astro-cid-byeekcgh="">What is Workers KV?</h3>
-<p data-astro-cid-byeekcgh=""><a href="https://www.cloudflare.com/products/workers-kv" target="_blank" rel="noopener noreferrer">Workers KV</a> is a highly distributed, eventually consistent, key-value store that spans Cloudflare's global edge. It allows you to store billions of key-value pairs and read them with ultra-low latency anywhere in the world. Now you can build entire applications with the performance of a CDN static cache.</p>
-<h3 data-astro-cid-byeekcgh="">Why did we build it?</h3>
-<p data-astro-cid-byeekcgh=""><a href="https://www.cloudflare.com/products/cloudflare-workers" target="_blank" rel="noopener noreferrer">Workers</a> is a platform that lets you run JavaScript on Cloudflare's global edge of 175+ data centers. With only a few lines of code, you can route HTTP requests, modify responses, or even create new responses without an origin server.</p>
+<p data-astro-cid-c6i3vrlz="">Today, we’re excited to announce Workers KV is entering general availability and is ready for production use!</p>
+<h3 data-astro-cid-c6i3vrlz="">What is Workers KV?</h3>
+<p data-astro-cid-c6i3vrlz=""><a href="https://www.cloudflare.com/products/workers-kv" target="_blank" rel="noopener noreferrer">Workers KV</a> is a highly distributed, eventually consistent, key-value store that spans Cloudflare's global edge. It allows you to store billions of key-value pairs and read them with ultra-low latency anywhere in the world. Now you can build entire applications with the performance of a CDN static cache.</p>
+<h3 data-astro-cid-c6i3vrlz="">Why did we build it?</h3>
+<p data-astro-cid-c6i3vrlz=""><a href="https://www.cloudflare.com/products/cloudflare-workers" target="_blank" rel="noopener noreferrer">Workers</a> is a platform that lets you run JavaScript on Cloudflare's global edge of 175+ data centers. With only a few lines of code, you can route HTTP requests, modify responses, or even create new responses without an origin server.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// A Worker that handles a single redirect,</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// such a humble beginning...</span></span>
@@ -45,7 +45,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-byeekcgh="">Customers quickly came to us with use cases that required a way to store persistent data. Following our example above, it's easy to handle a single redirect, but what if you want to handle <strong>billions</strong> of them? You would have to hard-code them into your Workers script, fit it all in under 1 MB, and re-deploy it every time you wanted to make a change — yikes! That’s why we built Workers KV.</p>
+<p data-astro-cid-c6i3vrlz="">Customers quickly came to us with use cases that required a way to store persistent data. Following our example above, it's easy to handle a single redirect, but what if you want to handle <strong>billions</strong> of them? You would have to hard-code them into your Workers script, fit it all in under 1 MB, and re-deploy it every time you wanted to make a change — yikes! That’s why we built Workers KV.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// A Worker that can handle billions of redirects,</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// now that's more like it!</span></span>
@@ -75,9 +75,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">With only a few changes from our previous example, we scaled from one redirect to billions − that's just a taste of what you can build with Workers KV.</p>
-<h3 data-astro-cid-byeekcgh="">How does it work?</h3>
-<p data-astro-cid-byeekcgh="">Distributed data stores are often modeled using the <a href="https://en.wikipedia.org/wiki/CAP_theorem" target="_blank" rel="noopener noreferrer">CAP Theorem</a>, which states that distributed systems can only pick between <strong>2 out of the 3</strong> following guarantees:</p>
+<p data-astro-cid-c6i3vrlz="">With only a few changes from our previous example, we scaled from one redirect to billions − that's just a taste of what you can build with Workers KV.</p>
+<h3 data-astro-cid-c6i3vrlz="">How does it work?</h3>
+<p data-astro-cid-c6i3vrlz="">Distributed data stores are often modeled using the <a href="https://en.wikipedia.org/wiki/CAP_theorem" target="_blank" rel="noopener noreferrer">CAP Theorem</a>, which states that distributed systems can only pick between <strong>2 out of the 3</strong> following guarantees:</p>
 <ul>
 	<li><strong>C</strong>onsistency - is my data the same everywhere?</li>
 	<li><strong>A</strong>vailability - is my data accessible all the time?</li>
@@ -87,27 +87,27 @@
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="549" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=715&amp;h=549&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=640&amp;h=491&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=715&amp;h=549&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=750&amp;h=576&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=828&amp;h=636&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=1080&amp;h=829&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=1280&amp;h=983&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=1430&amp;h=1098&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Workers KV — Cloudflare's distributed database Embedded Image - pjWvzj" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=1204&amp;h=924&amp;f=webp" data-lightbox-width="1204" data-lightbox-height="924" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="549" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-byeekcgh="">Workers KV chooses to guarantee <strong>A</strong>vailability and <strong>P</strong>artition tolerance. This combination is known as <a href="https://en.wikipedia.org/wiki/Eventual_consistency" target="_blank" rel="noopener noreferrer">eventual consistency</a>, which presents Workers KV with two unique competitive advantages:</p>
+<p data-astro-cid-c6i3vrlz="">Workers KV chooses to guarantee <strong>A</strong>vailability and <strong>P</strong>artition tolerance. This combination is known as <a href="https://en.wikipedia.org/wiki/Eventual_consistency" target="_blank" rel="noopener noreferrer">eventual consistency</a>, which presents Workers KV with two unique competitive advantages:</p>
 <ul>
 	<li>Reads are ultra fast (median of 12 ms) since its powered by our caching technology.</li>
 	<li>Data is available across 175+ edge data centers and resilient to regional outages.</li>
 </ul>
-<p data-astro-cid-byeekcgh="">Although, there are tradeoffs to eventual consistency. If two clients write different values to the same key at the same time, the last client to write <strong>eventually</strong> "wins" and its value becomes globally consistent. This also means that if a client writes to a key and that same client reads that same key, the values may be inconsistent for a short amount of time.</p>
-<p data-astro-cid-byeekcgh="">To help visualize this scenario, here's a real-life example amongst three friends:</p>
+<p data-astro-cid-c6i3vrlz="">Although, there are tradeoffs to eventual consistency. If two clients write different values to the same key at the same time, the last client to write <strong>eventually</strong> "wins" and its value becomes globally consistent. This also means that if a client writes to a key and that same client reads that same key, the values may be inconsistent for a short amount of time.</p>
+<p data-astro-cid-c6i3vrlz="">To help visualize this scenario, here's a real-life example amongst three friends:</p>
 <ul>
 	<li>Suppose Matthew, Michelle, and Lee are planning their weekly lunch.</li>
 	<li>Matthew decides they're going out for sushi.</li>
 	<li>Matthew tells Michelle their sushi plans, Michelle agrees.</li>
 	<li>Lee, not knowing the plans, tells Michelle they're actually having pizza.</li>
 </ul>
-<p data-astro-cid-byeekcgh="">An hour later, Michelle and Lee are waiting at the pizza parlor while Matthew is sitting alone at the sushi restaurant — what went wrong? We can chalk this up to eventual consistency, because after waiting for a few minutes, Matthew looks at his updated calendar and <strong>eventually</strong> finds the new truth, they're going out for pizza instead.</p>
-<p data-astro-cid-byeekcgh="">While it may take minutes in real-life, Workers KV is much faster. It can achieve global consistency in less than 60 seconds. Additionally, when a Worker writes to a key, then <strong>immediately</strong> reads that same key, it can expect the values to be consistent if both operations came from the same location.</p>
-<h3 data-astro-cid-byeekcgh="">When should I use it?</h3>
-<p data-astro-cid-byeekcgh="">Now that you understand the benefits and tradeoffs of using eventual consistency, how do you determine if it's the right storage solution for your application? Simply put, if you want global availability with ultra-fast reads, Workers KV is right for you.</p>
-<p data-astro-cid-byeekcgh="">However, if your application is <strong>frequently</strong> writing to the <strong>same</strong> key, there is an additional consideration. We call it "the Matthew question": Are you okay with the Matthews of the world <strong>occasionally</strong> going to the wrong restaurant?</p>
-<p data-astro-cid-byeekcgh="">You can imagine use cases (like our redirect Worker example) where this doesn't make any material difference. But if you decide to keep track of a user’s bank account balance, you would not want the possibility of two balances existing at once, since they could purchase something with money they’ve already spent.</p>
-<h3 data-astro-cid-byeekcgh="">What can I build with it?</h3>
-<p data-astro-cid-byeekcgh="">Here are a few examples of applications that have been built with KV:</p>
+<p data-astro-cid-c6i3vrlz="">An hour later, Michelle and Lee are waiting at the pizza parlor while Matthew is sitting alone at the sushi restaurant — what went wrong? We can chalk this up to eventual consistency, because after waiting for a few minutes, Matthew looks at his updated calendar and <strong>eventually</strong> finds the new truth, they're going out for pizza instead.</p>
+<p data-astro-cid-c6i3vrlz="">While it may take minutes in real-life, Workers KV is much faster. It can achieve global consistency in less than 60 seconds. Additionally, when a Worker writes to a key, then <strong>immediately</strong> reads that same key, it can expect the values to be consistent if both operations came from the same location.</p>
+<h3 data-astro-cid-c6i3vrlz="">When should I use it?</h3>
+<p data-astro-cid-c6i3vrlz="">Now that you understand the benefits and tradeoffs of using eventual consistency, how do you determine if it's the right storage solution for your application? Simply put, if you want global availability with ultra-fast reads, Workers KV is right for you.</p>
+<p data-astro-cid-c6i3vrlz="">However, if your application is <strong>frequently</strong> writing to the <strong>same</strong> key, there is an additional consideration. We call it "the Matthew question": Are you okay with the Matthews of the world <strong>occasionally</strong> going to the wrong restaurant?</p>
+<p data-astro-cid-c6i3vrlz="">You can imagine use cases (like our redirect Worker example) where this doesn't make any material difference. But if you decide to keep track of a user’s bank account balance, you would not want the possibility of two balances existing at once, since they could purchase something with money they’ve already spent.</p>
+<h3 data-astro-cid-c6i3vrlz="">What can I build with it?</h3>
+<p data-astro-cid-c6i3vrlz="">Here are a few examples of applications that have been built with KV:</p>
 <ul>
 	<li>Mass redirects - handle billions of HTTP redirects.</li>
 	<li>User authentication - validate user requests to your API.</li>
@@ -116,14 +116,14 @@
 	<li>Step functions - sync state data between multiple APIs functions.</li>
 	<li>Edge file store - <a href="https://www.cloudflare.com/developer-platform/solutions/hosting" target="_blank" rel="noopener noreferrer">host</a> large amounts of small files.</li>
 </ul>
-<p data-astro-cid-byeekcgh="">We’ve highlighted several of those <a href="https://blog.cloudflare.com/building-with-workers-kv">use cases</a> in our previous blog post. We also have some more in-depth code walkthroughs, including a recently published blog post on how to build an online <a href="https://blog.cloudflare.com/building-a-to-do-list-with-workers-and-kv">To-do list with Workers KV</a>.</p>
+<p data-astro-cid-c6i3vrlz="">We’ve highlighted several of those <a href="https://blog.cloudflare.com/building-with-workers-kv">use cases</a> in our previous blog post. We also have some more in-depth code walkthroughs, including a recently published blog post on how to build an online <a href="https://blog.cloudflare.com/building-a-to-do-list-with-workers-and-kv">To-do list with Workers KV</a>.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="618" height="487" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=618&amp;h=487&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=618&amp;h=487&amp;f=webp&amp;fit=cover&amp;position=center 618w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=640&amp;h=504&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=750&amp;h=591&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=828&amp;h=652&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=1080&amp;h=851&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=1236&amp;h=974&amp;f=webp&amp;fit=cover&amp;position=center 1236w" alt="Workers KV — Cloudflare's distributed database Embedded Image - LkgCY5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=618&amp;h=487&amp;f=webp" data-lightbox-width="618" data-lightbox-height="487" data-astro-cid-7nvefuv6="true" sizes="(min-width: 618px) 618px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="618" height="487" class="pt-portable-image-media"></div>
 </figure>
-<h3 data-astro-cid-byeekcgh="">What's new since beta?</h3>
-<p data-astro-cid-byeekcgh="">By far, our most common request was to make it easier to write data to Workers KV. That's why we're releasing three new ways to make that experience even better:</p>
-<h4 data-astro-cid-byeekcgh="">1. Bulk Writes</h4>
-<p data-astro-cid-byeekcgh="">If you want to import your existing data into Workers KV, you don't want to go through the hassle of sending an HTTP request for <strong>every</strong> key-value pair. That's why we added a <a href="https://api.cloudflare.com/#workers-kv-namespace-write-multiple-key-value-pairs" target="_blank" rel="noopener noreferrer">bulk endpoint</a> to the Cloudflare API. Now you can upload up to 10,000 pairs (up to 100 MB of data) in a single PUT request.</p>
+<h3 data-astro-cid-c6i3vrlz="">What's new since beta?</h3>
+<p data-astro-cid-c6i3vrlz="">By far, our most common request was to make it easier to write data to Workers KV. That's why we're releasing three new ways to make that experience even better:</p>
+<h4 data-astro-cid-c6i3vrlz="">1. Bulk Writes</h4>
+<p data-astro-cid-c6i3vrlz="">If you want to import your existing data into Workers KV, you don't want to go through the hassle of sending an HTTP request for <strong>every</strong> key-value pair. That's why we added a <a href="https://api.cloudflare.com/#workers-kv-namespace-write-multiple-key-value-pairs" target="_blank" rel="noopener noreferrer">bulk endpoint</a> to the Cloudflare API. Now you can upload up to 10,000 pairs (up to 100 MB of data) in a single PUT request.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/accounts/ </span><span class="sk-005cc5-a0a0a0">\</span></span>
 <span class="line"><span class="sk-24292e-fff">     $ACCOUNT_ID</span><span class="sk-032f62-99ffe4">/storage/kv/namespaces/</span><span class="sk-24292e-fff">$NAMESPACE_ID</span><span class="sk-032f62-99ffe4">/bulk"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
@@ -140,8 +140,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Let's walk through an example use case: you want to off-load your website translation to Workers. Since you're reading translation keys frequently and only occasionally updating them, this application works well with the eventual consistency model of Workers KV.</p>
-<p data-astro-cid-byeekcgh="">In this example, we hook into <a href="https://crowdin.com" target="_blank" rel="noopener noreferrer">Crowdin</a>, a popular platform to manage translation data. This Worker responds to a <code>/translate</code> endpoint, downloads all your translation keys, and bulk writes them to Workers KV so you can read it later on our edge:</p>
+<p data-astro-cid-c6i3vrlz="">Let's walk through an example use case: you want to off-load your website translation to Workers. Since you're reading translation keys frequently and only occasionally updating them, this application works well with the eventual consistency model of Workers KV.</p>
+<p data-astro-cid-c6i3vrlz="">In this example, we hook into <a href="https://crowdin.com" target="_blank" rel="noopener noreferrer">Crowdin</a>, a popular platform to manage translation data. This Worker responds to a <code>/translate</code> endpoint, downloads all your translation keys, and bulk writes them to Workers KV so you can read it later on our edge:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch"</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (event.request.url.pathname </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "/translate"</span><span class="sk-24292e-fff">) {</span></span>
@@ -193,7 +193,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Now, when you want to translate a page, all you have to do is read from Workers KV:</p>
+<p data-astro-cid-c6i3vrlz="">Now, when you want to translate a page, all you have to do is read from Workers KV:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> translate</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">keys</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">lang</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // You bind your translations namespace to the TRANSLATIONS variable.</span></span>
@@ -204,8 +204,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4 data-astro-cid-byeekcgh="">2. Expiring Keys</h4>
-<p data-astro-cid-byeekcgh="">By default, key-value pairs stored in Workers KV last forever. However, sometimes you want your data to auto-delete after a certain amount of time. That's why we're introducing the <code>expiration</code> and <code>expirationTtl</code>options for write operations.</p>
+<h4 data-astro-cid-c6i3vrlz="">2. Expiring Keys</h4>
+<p data-astro-cid-c6i3vrlz="">By default, key-value pairs stored in Workers KV last forever. However, sometimes you want your data to auto-delete after a certain amount of time. That's why we're introducing the <code>expiration</code> and <code>expirationTtl</code>options for write operations.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Key expires 60 seconds from now.</span></span>
 <span class="line"><span class="sk-005cc5-fff">NAMESPACE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"myKey"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"myValue"</span><span class="sk-24292e-fff">, {expirationTtl: </span><span class="sk-005cc5-ffc799">60</span><span class="sk-24292e-fff">})</span></span>
@@ -231,8 +231,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Let's say you want to block users that have been flagged as inappropriate from your website, but only for a week. With an expiring key, you can set the expire time and not have to worry about deleting it later.</p>
-<p data-astro-cid-byeekcgh="">In this example, we assume users and IP addresses are one of the same. If your application has authentication, you could use access tokens as the key identifier.</p>
+<p data-astro-cid-c6i3vrlz="">Let's say you want to block users that have been flagged as inappropriate from your website, but only for a week. With an expiring key, you can set the expire time and not have to worry about deleting it later.</p>
+<p data-astro-cid-c6i3vrlz="">In this example, we assume users and IP addresses are one of the same. If your application has authentication, you could use access tokens as the key identifier.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch"</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> url </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(event.request.url)</span></span>
@@ -271,14 +271,14 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4 data-astro-cid-byeekcgh="">3. Larger Values</h4>
-<p data-astro-cid-byeekcgh="">We've increased our size limit on values from <code>64 kB</code> to <code>2 MB</code>. This is quite useful if you need to store buffer-based or file data in Workers KV.</p>
+<h4 data-astro-cid-c6i3vrlz="">3. Larger Values</h4>
+<p data-astro-cid-c6i3vrlz="">We've increased our size limit on values from <code>64 kB</code> to <code>2 MB</code>. This is quite useful if you need to store buffer-based or file data in Workers KV.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="356" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=715&amp;h=356&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=640&amp;h=319&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=715&amp;h=356&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=750&amp;h=373&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=828&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=1080&amp;h=538&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=1280&amp;h=637&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=1430&amp;h=712&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Workers KV — Cloudflare's distributed database Embedded Image - cOsdZR" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=1212&amp;h=604&amp;f=webp" data-lightbox-width="1212" data-lightbox-height="604" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="356" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-byeekcgh="">Consider this scenario: you want to let your users upload their favorite GIF to their profile without having to store these GIFs as binaries in your database or managing <strong>another</strong> cloud storage bucket.</p>
-<p data-astro-cid-byeekcgh="">Workers KV is a great fit for this use case! You can create a Workers KV namespace for your users’ GIFs that is fast and reliable wherever your customers are located.</p>
-<p data-astro-cid-byeekcgh="">In this example, users upload a link to their favorite GIF, then a Worker downloads it and stores it to Workers KV.</p>
+<p data-astro-cid-c6i3vrlz="">Consider this scenario: you want to let your users upload their favorite GIF to their profile without having to store these GIFs as binaries in your database or managing <strong>another</strong> cloud storage bucket.</p>
+<p data-astro-cid-c6i3vrlz="">Workers KV is a great fit for this use case! You can create a Workers KV namespace for your users’ GIFs that is fast and reliable wherever your customers are located.</p>
+<p data-astro-cid-c6i3vrlz="">In this example, users upload a link to their favorite GIF, then a Worker downloads it and stores it to Workers KV.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch"</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> url </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> event.request.url</span></span>
@@ -317,17 +317,17 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Lastly, we want to thank all of our beta customers. It was your valuable feedback that led us to develop these changes to Workers KV. Make sure to stay in touch with us, we're always looking ahead for what's next and we love hearing from you!</p>
-<h3 data-astro-cid-byeekcgh="">Pricing</h3>
-<p data-astro-cid-byeekcgh="">We’re also ready to announce our GA pricing. If you're one of our Enterprise customers, your pricing obviously remains unchanged.</p>
+<p data-astro-cid-c6i3vrlz="">Lastly, we want to thank all of our beta customers. It was your valuable feedback that led us to develop these changes to Workers KV. Make sure to stay in touch with us, we're always looking ahead for what's next and we love hearing from you!</p>
+<h3 data-astro-cid-c6i3vrlz="">Pricing</h3>
+<p data-astro-cid-c6i3vrlz="">We’re also ready to announce our GA pricing. If you're one of our Enterprise customers, your pricing obviously remains unchanged.</p>
 <ul>
 	<li>$0.50 / GB of data stored, 1 GB included</li>
 	<li>$0.50 / million reads, 10 million included</li>
 	<li>$5 / million write, list, and delete operations, 1 million included</li>
 </ul>
-<p data-astro-cid-byeekcgh="">During the beta period, we learned customers don't want to just read values at our edge, they want to write values from our edge too. Since there is high demand for these edge operations, which are more costly, we have started charging non-read operations per month.</p>
-<h3 data-astro-cid-byeekcgh="">Limits</h3>
-<p data-astro-cid-byeekcgh="">As mentioned earlier, we increased our value size limit from <code>64 kB</code> to <code>2 MB</code>. We've also removed our cap on the number of keys per namespace — it's now unlimited. Here are our GA limits:</p>
+<p data-astro-cid-c6i3vrlz="">During the beta period, we learned customers don't want to just read values at our edge, they want to write values from our edge too. Since there is high demand for these edge operations, which are more costly, we have started charging non-read operations per month.</p>
+<h3 data-astro-cid-c6i3vrlz="">Limits</h3>
+<p data-astro-cid-c6i3vrlz="">As mentioned earlier, we increased our value size limit from <code>64 kB</code> to <code>2 MB</code>. We've also removed our cap on the number of keys per namespace — it's now unlimited. Here are our GA limits:</p>
 <ul>
 	<li>Up to 20 namespaces per account, each with unlimited keys</li>
 	<li>Keys of up to 512 bytes and values of up to 2 MB</li>
@@ -335,6 +335,6 @@
 	<li>One write per second for the same key</li>
 	<li>Unlimited reads per second per key</li>
 </ul>
-<h3 data-astro-cid-byeekcgh="">Try it out now!</h3>
-<p data-astro-cid-byeekcgh="">Now open to all customers, you can start using <a href="https://www.cloudflare.com/products/workers-kv" target="_blank" rel="noopener noreferrer">Workers KV</a> today from your Cloudflare dashboard under the Workers tab. You can also look at our updated <a href="https://developers.cloudflare.com/workers/kv" target="_blank" rel="noopener noreferrer">documentation.</a></p>
-<p data-astro-cid-byeekcgh="">We're really excited to see what you all can build with Workers KV!</p>
+<h3 data-astro-cid-c6i3vrlz="">Try it out now!</h3>
+<p data-astro-cid-c6i3vrlz="">Now open to all customers, you can start using <a href="https://www.cloudflare.com/products/workers-kv" target="_blank" rel="noopener noreferrer">Workers KV</a> today from your Cloudflare dashboard under the Workers tab. You can also look at our updated <a href="https://developers.cloudflare.com/workers/kv" target="_blank" rel="noopener noreferrer">documentation.</a></p>
+<p data-astro-cid-c6i3vrlz="">We're really excited to see what you all can build with Workers KV!</p>

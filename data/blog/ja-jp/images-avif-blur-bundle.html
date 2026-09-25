@@ -1,20 +1,20 @@
-<p data-astro-cid-byeekcgh="">Cloudflare Imagesの一般公開を<a href="https://blog.cloudflare.com/announcing-cloudflare-images">開始して</a>から2か月が経過し、これまでのご利用状況、皆さまから寄せられたフィードバックを大変喜ばしく思っています。</p>
-<p data-astro-cid-byeekcgh="">いくつかの数字から見ていきましょう：</p>
-<p data-astro-cid-byeekcgh="">11月5日から12日の週に、1日あたり平均7,000万枚以上の画像が配信されました。</p>
-<p data-astro-cid-byeekcgh="">これまでに150万枚以上の画像がアップロードされており、日々急速に増えています。</p>
-<p data-astro-cid-byeekcgh="">しかし、我々はまだ始まったばかりです。そして最も要望の多かった機能のリリースを発表できることをうれしく思います。まず、ImagesのAVIFサポートについて説明します。可能な限り多くの画像をAVIFを使用して変換すると、品質を損なうことなく、画像が高圧縮され高速配信されます。</p>
-<p data-astro-cid-byeekcgh="">次に、ぼかし機能を紹介します。<a href="https://developers.cloudflare.com/images/cloudflare-images/serve-images/serve-private-images-using-signed-url-tokens" target="_blank" rel="noopener noreferrer">署名されたURL</a>を介してすでにサポートされているプライベート画像の保護と組み合わせて画像にぼかしを入れることにより、Cloudflare Imagesを有料コンテンツのプレビューに最適なソリューションにします。</p>
-<p data-astro-cid-byeekcgh="">多くのお客様にとって、imagedelivery.netだけでなく、独自のドメインから画像を提供できることが重要です。ここでは、カスタムWorkersまたは特別なURLを使用した画像提供の簡単なソリューションを示します。</p>
-<p data-astro-cid-byeekcgh="">最後に大事なこととして、Cloudflare ImagesとStreamの両方で魅力的な価格の新しいバンドルの発売についてお知らせします。</p>
-<h3 data-astro-cid-byeekcgh=""><strong>AVIFに対応した画像</strong></h3>
-<p data-astro-cid-byeekcgh="">昨年、Image Resizing製品での新しいAVIF画像形式の<a href="https://blog.cloudflare.com/generate-avif-images-with-image-resizing">サポートを発表</a>しました。</p>
-<p data-astro-cid-byeekcgh="">先月、私たちはCloudflare ImagesにAVIFのサポートを追加しました。WebPやJPEGなどの旧世代の形式よりもはるかによりよく画像を圧縮します。現在、AVIF画像形式はChromeとFirefoxの両方でサポートされています。<a href="https://caniuse.com/avif" target="_blank" rel="noopener noreferrer">世界中で、ユーザーのほぼ70％</a>がAVIFをサポートするWebブラウザを使用しています。</p>
-<h3 data-astro-cid-byeekcgh=""><strong>AVIFとは</strong></h3>
-<p data-astro-cid-byeekcgh=""><a href="https://blog.cloudflare.com/generate-avif-images-with-image-resizing/#what-is-avif">以前ご説明したように</a>、AVIFは、HEIF ISO規格と、<a href="https://aomedia.org" target="_blank" rel="noopener noreferrer">Mozilla、Xiph、Google、Cisco、およびその他多くの</a>ロイヤリティフリーのAV1コーデックを組み合わせたものです。</p>
-<p data-astro-cid-byeekcgh="">「現在、JPEGはウェブ上で最も人気のある画像形式です。古くから非常に好調で、互換性に優れているため、今後も人気が続くと思われます。JPEG 2000、JPEG XR、WebPなど、JPEGに置き換わる試みはこれまで多くありました。しかし、これらの形式による圧縮の改善はささやかなもので、画質で必ずしもJPEGに勝るとは限りませんでした。 <a href="https://netflixtechblog.com/avif-for-next-generation-image-coding-b1d75675fe4" target="_blank" rel="noopener noreferrer">AVIFの圧縮と画質は、それらすべてよりも大幅に優れています</a>。」1</p>
-<h3 data-astro-cid-byeekcgh=""><strong>Cloudflare ImagesでAVIFをサポートする方法</strong></h3>
-<p data-astro-cid-byeekcgh="">注意事項として、<a href="https://blog.cloudflare.com/building-cloudflare-images-in-rust-and-cloudflare-workers/#image-delivery">画像配信</a>はCloudflareが管理するimagedelivery.netドメインを介して行われます。それはCloudflare Workersを活用します。AcceptHTTPリクエストヘッダーに基づいてAVIFフォーマットをリクエストするロジックは次のとおりです。</p>
-<p data-astro-cid-byeekcgh="">Acceptヘッダーに基づいて、Workerのロジックは、WebPまたはAVIF形式を提供できるかどうかを検出します。リクエストはImage Resizingに渡されます。画像がCloudflareキャッシュで利用可能な場合はすぐに提供され、そうでない場合は画像のサイズが変更、変換、キャッシュされます。このアプローチにより、AVIF形式をサポートしていないクライアントに対して、WebPまたはJPEG形式で画像を配信します。</p>
+<p data-astro-cid-nalcf22a="">Cloudflare Imagesの一般公開を<a href="https://blog.cloudflare.com/announcing-cloudflare-images">開始して</a>から2か月が経過し、これまでのご利用状況、皆さまから寄せられたフィードバックを大変喜ばしく思っています。</p>
+<p data-astro-cid-nalcf22a="">いくつかの数字から見ていきましょう：</p>
+<p data-astro-cid-nalcf22a="">11月5日から12日の週に、1日あたり平均7,000万枚以上の画像が配信されました。</p>
+<p data-astro-cid-nalcf22a="">これまでに150万枚以上の画像がアップロードされており、日々急速に増えています。</p>
+<p data-astro-cid-nalcf22a="">しかし、我々はまだ始まったばかりです。そして最も要望の多かった機能のリリースを発表できることをうれしく思います。まず、ImagesのAVIFサポートについて説明します。可能な限り多くの画像をAVIFを使用して変換すると、品質を損なうことなく、画像が高圧縮され高速配信されます。</p>
+<p data-astro-cid-nalcf22a="">次に、ぼかし機能を紹介します。<a href="https://developers.cloudflare.com/images/cloudflare-images/serve-images/serve-private-images-using-signed-url-tokens" target="_blank" rel="noopener noreferrer">署名されたURL</a>を介してすでにサポートされているプライベート画像の保護と組み合わせて画像にぼかしを入れることにより、Cloudflare Imagesを有料コンテンツのプレビューに最適なソリューションにします。</p>
+<p data-astro-cid-nalcf22a="">多くのお客様にとって、imagedelivery.netだけでなく、独自のドメインから画像を提供できることが重要です。ここでは、カスタムWorkersまたは特別なURLを使用した画像提供の簡単なソリューションを示します。</p>
+<p data-astro-cid-nalcf22a="">最後に大事なこととして、Cloudflare ImagesとStreamの両方で魅力的な価格の新しいバンドルの発売についてお知らせします。</p>
+<h3 data-astro-cid-nalcf22a=""><strong>AVIFに対応した画像</strong></h3>
+<p data-astro-cid-nalcf22a="">昨年、Image Resizing製品での新しいAVIF画像形式の<a href="https://blog.cloudflare.com/generate-avif-images-with-image-resizing">サポートを発表</a>しました。</p>
+<p data-astro-cid-nalcf22a="">先月、私たちはCloudflare ImagesにAVIFのサポートを追加しました。WebPやJPEGなどの旧世代の形式よりもはるかによりよく画像を圧縮します。現在、AVIF画像形式はChromeとFirefoxの両方でサポートされています。<a href="https://caniuse.com/avif" target="_blank" rel="noopener noreferrer">世界中で、ユーザーのほぼ70％</a>がAVIFをサポートするWebブラウザを使用しています。</p>
+<h3 data-astro-cid-nalcf22a=""><strong>AVIFとは</strong></h3>
+<p data-astro-cid-nalcf22a=""><a href="https://blog.cloudflare.com/generate-avif-images-with-image-resizing/#what-is-avif">以前ご説明したように</a>、AVIFは、HEIF ISO規格と、<a href="https://aomedia.org" target="_blank" rel="noopener noreferrer">Mozilla、Xiph、Google、Cisco、およびその他多くの</a>ロイヤリティフリーのAV1コーデックを組み合わせたものです。</p>
+<p data-astro-cid-nalcf22a="">「現在、JPEGはウェブ上で最も人気のある画像形式です。古くから非常に好調で、互換性に優れているため、今後も人気が続くと思われます。JPEG 2000、JPEG XR、WebPなど、JPEGに置き換わる試みはこれまで多くありました。しかし、これらの形式による圧縮の改善はささやかなもので、画質で必ずしもJPEGに勝るとは限りませんでした。 <a href="https://netflixtechblog.com/avif-for-next-generation-image-coding-b1d75675fe4" target="_blank" rel="noopener noreferrer">AVIFの圧縮と画質は、それらすべてよりも大幅に優れています</a>。」1</p>
+<h3 data-astro-cid-nalcf22a=""><strong>Cloudflare ImagesでAVIFをサポートする方法</strong></h3>
+<p data-astro-cid-nalcf22a="">注意事項として、<a href="https://blog.cloudflare.com/building-cloudflare-images-in-rust-and-cloudflare-workers/#image-delivery">画像配信</a>はCloudflareが管理するimagedelivery.netドメインを介して行われます。それはCloudflare Workersを活用します。AcceptHTTPリクエストヘッダーに基づいてAVIFフォーマットをリクエストするロジックは次のとおりです。</p>
+<p data-astro-cid-nalcf22a="">Acceptヘッダーに基づいて、Workerのロジックは、WebPまたはAVIF形式を提供できるかどうかを検出します。リクエストはImage Resizingに渡されます。画像がCloudflareキャッシュで利用可能な場合はすぐに提供され、そうでない場合は画像のサイズが変更、変換、キャッシュされます。このアプローチにより、AVIF形式をサポートしていないクライアントに対して、WebPまたはJPEG形式で画像を配信します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> WEBP_ACCEPT_HEADER</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-a0a0a0"> /image</span><span class="sk-22863a-a0a0a0 sk-fw-bold-inherit">\/</span><span class="sk-032f62-a0a0a0">webp/</span><span class="sk-d73a49-ffc799">i</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> AVIF_ACCEPT_HEADER</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-a0a0a0"> /image</span><span class="sk-22863a-a0a0a0 sk-fw-bold-inherit">\/</span><span class="sk-032f62-a0a0a0">avif/</span><span class="sk-d73a49-ffc799">i</span><span class="sk-24292e-fff">;</span></span>
@@ -73,13 +73,13 @@
 		})
 	});
 </script>
-<p data-astro-cid-byeekcgh="">Cloudflare Images製品のメリットは、お客様側で1行のコードも変更する必要のないAVIFサポートを追加したことです。</p>
-<p data-astro-cid-byeekcgh="">画像をAVIFに変換すると計算量が多くなりますが、ファイルサイズに大きなメリットがあります。どの形式を提供するかを決定する際には、常にコストとメリットを比較検討しています。</p>
-<p data-astro-cid-byeekcgh="">WebPおよびAVIF形式へのすべての変換は、現時点では画像配信のリクエストフェーズで行われることに注意してください。将来的には、アップロードフェーズで画像を変換する機能を追加する予定です。</p>
-<h3 data-astro-cid-byeekcgh=""><strong>ぼかし機能の導入</strong></h3>
-<p data-astro-cid-byeekcgh="">ImagesとImage Resizingで最も要望の多かった機能の1つは、ぼかし機能のサポートを追加することでした。最近、<a href="https://developers.cloudflare.com/images/image-resizing/url-format" target="_blank" rel="noopener noreferrer">URL形式</a>と<a href="https://developers.cloudflare.com/images/image-resizing/resize-with-workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a>の両方でぼかし機能のサポートを追加しました。</p>
-<p data-astro-cid-byeekcgh="">Cloudflare Imagesはバリアントを使用しています。バリアントを作成するときに、バリアント名、幅、高さ、およびバリアントをパブリックにアクセス可能にするかどうかなどのプロパティを定義できます。ぼかし機能は、<a href="https://api.cloudflare.com/#cloudflare-images-variants-create-a-variant" target="_blank" rel="noopener noreferrer">バリアントAPI</a>を介したバリアントの新しいオプションとして利用できるようになります。</p>
-<p data-astro-cid-byeekcgh="">Cloudflare Imagesでぼかし機能を使用する事例の1つに、プレミアムコンテンツへのアクセス制御があります。</p>
+<p data-astro-cid-nalcf22a="">Cloudflare Images製品のメリットは、お客様側で1行のコードも変更する必要のないAVIFサポートを追加したことです。</p>
+<p data-astro-cid-nalcf22a="">画像をAVIFに変換すると計算量が多くなりますが、ファイルサイズに大きなメリットがあります。どの形式を提供するかを決定する際には、常にコストとメリットを比較検討しています。</p>
+<p data-astro-cid-nalcf22a="">WebPおよびAVIF形式へのすべての変換は、現時点では画像配信のリクエストフェーズで行われることに注意してください。将来的には、アップロードフェーズで画像を変換する機能を追加する予定です。</p>
+<h3 data-astro-cid-nalcf22a=""><strong>ぼかし機能の導入</strong></h3>
+<p data-astro-cid-nalcf22a="">ImagesとImage Resizingで最も要望の多かった機能の1つは、ぼかし機能のサポートを追加することでした。最近、<a href="https://developers.cloudflare.com/images/image-resizing/url-format" target="_blank" rel="noopener noreferrer">URL形式</a>と<a href="https://developers.cloudflare.com/images/image-resizing/resize-with-workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a>の両方でぼかし機能のサポートを追加しました。</p>
+<p data-astro-cid-nalcf22a="">Cloudflare Imagesはバリアントを使用しています。バリアントを作成するときに、バリアント名、幅、高さ、およびバリアントをパブリックにアクセス可能にするかどうかなどのプロパティを定義できます。ぼかし機能は、<a href="https://api.cloudflare.com/#cloudflare-images-variants-create-a-variant" target="_blank" rel="noopener noreferrer">バリアントAPI</a>を介したバリアントの新しいオプションとして利用できるようになります。</p>
+<p data-astro-cid-nalcf22a="">Cloudflare Imagesでぼかし機能を使用する事例の1つに、プレミアムコンテンツへのアクセス制御があります。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1/variants"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer &lt;api_token&gt;"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
@@ -90,8 +90,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">お客様は、アクセストークンが必要な画像をアップロードします。</p>
-<p data-astro-cid-byeekcgh="">APIを介して定義したバリアントを使用して、署名を提供せずに画像を取得できます。</p>
+<p data-astro-cid-nalcf22a="">お客様は、アクセストークンが必要な画像をアップロードします。</p>
+<p data-astro-cid-nalcf22a="">APIを介して定義したバリアントを使用して、署名を提供せずに画像を取得できます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer &lt;api_token&gt;"</span></span>
@@ -102,17 +102,17 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">保護された画像にアクセスするには、<a href="https://developers.cloudflare.com/images/cloudflare-images/serve-images/serve-private-images-using-signed-url-tokens" target="_blank" rel="noopener noreferrer">有効な署名付きURL</a>が必要です。</p>
+<p data-astro-cid-nalcf22a="">保護された画像にアクセスするには、<a href="https://developers.cloudflare.com/images/cloudflare-images/serve-images/serve-private-images-using-signed-url-tokens" target="_blank" rel="noopener noreferrer">有効な署名付きURL</a>が必要です。</p>
 <div id="html-block-k2m" class="html-block"><img src="https://imagedelivery.net/r1xBEzoDl4p34DP7QLrECw/dfc72df8-863f-46e3-7bba-a21f9795e401/blur20" alt="Blurred example picture of lava lamps"></div>
-<p data-astro-cid-byeekcgh=""> Cloudflare 社のロビーにあるラバランプ <a href="https://twitter.com/mahtin/status/888251632550424577" target="_blank" rel="noopener noreferrer">@mahtin</a></p>
+<p data-astro-cid-nalcf22a=""> Cloudflare 社のロビーにあるラバランプ <a href="https://twitter.com/mahtin/status/888251632550424577" target="_blank" rel="noopener noreferrer">@mahtin</a></p>
 <div id="html-block-k2s" class="html-block"><img src="https://imagedelivery.net/r1xBEzoDl4p34DP7QLrECw/dfc72df8-863f-46e3-7bba-a21f9795e401/public?sig=d67d49055d652b8fb2575b3ec11f0e1a8fae3932d3e516d381e49e498dd4a96e" alt="Unblurred example picture of lava lamps">
 	Lava lamps in the Cloudflare lobby. Courtesy of <a href="https://twitter.com/mahtin/status/888251632550424577">@mahtin</a>
 	<br>
 </div>
-<p data-astro-cid-byeekcgh="">画像のぼかし機能と画像へのアクセス制限の組み合わせは、多くのシナリオに統合でき、コンテンツ発行者に強力なツールセットを提供します。</p>
-<p data-astro-cid-byeekcgh="">ぼかしオプションを使用してバリアントを定義する機能は、Cloudflareダッシュボードで間もなく使用できるようになります。</p>
-<h3 data-astro-cid-byeekcgh=""><strong>カスタムドメインからの画像の提供</strong></h3>
-<p data-astro-cid-byeekcgh="">Cloudflare Imagesのお客様にとって重要なユースケースの1つは、カスタムドメインからの画像を提供することです。クライアントで追加のTLSネゴシエーションを必要としないことで、遅延の短縮と読み込みパフォーマンスの改善ができます。Cloudflare Workersを使用しているお客様は、次の例を使用して、この機能を今すぐ追加できます。</p>
+<p data-astro-cid-nalcf22a="">画像のぼかし機能と画像へのアクセス制限の組み合わせは、多くのシナリオに統合でき、コンテンツ発行者に強力なツールセットを提供します。</p>
+<p data-astro-cid-nalcf22a="">ぼかしオプションを使用してバリアントを定義する機能は、Cloudflareダッシュボードで間もなく使用できるようになります。</p>
+<h3 data-astro-cid-nalcf22a=""><strong>カスタムドメインからの画像の提供</strong></h3>
+<p data-astro-cid-nalcf22a="">Cloudflare Imagesのお客様にとって重要なユースケースの1つは、カスタムドメインからの画像を提供することです。クライアントで追加のTLSネゴシエーションを必要としないことで、遅延の短縮と読み込みパフォーマンスの改善ができます。Cloudflare Workersを使用しているお客様は、次の例を使用して、この機能を今すぐ追加できます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> IMAGE_DELIVERY_HOST</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "https://imagedelivery.net"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -132,7 +132,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">簡素化するために、Workersスクリプトは、デプロイされているドメインからimagedelivery.netにリダイレクトします。Cloudflare ImagesのURLと同じ形式を想定しています。</p>
+<p data-astro-cid-nalcf22a="">簡素化するために、Workersスクリプトは、デプロイされているドメインからimagedelivery.netにリダイレクトします。Cloudflare ImagesのURLと同じ形式を想定しています。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">https://</span><span class="sk-24292e-fff">&lt;customdomain.net&gt;/&lt;encoded </span><span class="sk-032f62-99ffe4">account</span><span class="sk-032f62-99ffe4"> i</span><span class="sk-24292e-fff">d</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">/</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">image</span><span class="sk-032f62-99ffe4"> i</span><span class="sk-24292e-fff">d</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">/</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">variant</span><span class="sk-032f62-99ffe4"> nam</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -140,13 +140,13 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Workerは、次のようなお客様のニーズに合わせて調整できます。</p>
+<p data-astro-cid-nalcf22a="">Workerは、次のようなお客様のニーズに合わせて調整できます。</p>
 <ul>
 	<li>カスタムドメインのパスからの画像の提供（例：/images/）</li>
 	<li>アカウントIDまたはバリアント名を自動的に入力</li>
 	<li>Cloudflare ImagesをカスタムURLに完全にマッピング</li>
 </ul>
-<p data-astro-cid-byeekcgh="">CloudflareのドメインからCloudflare Imagesを簡単に提供したいお客様のために、次の形式を使用してCloudflare Imagesを提供する機能を追加します。</p>
+<p data-astro-cid-nalcf22a="">CloudflareのドメインからCloudflare Imagesを簡単に提供したいお客様のために、次の形式を使用してCloudflare Imagesを提供する機能を追加します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">https://</span><span class="sk-24292e-fff">&lt;customdomain.net&gt;/cdn-cgi/imagedelivery/&lt;encrypted_account_id&gt;/&lt;_image_id&gt;/&lt;variant_name&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -154,28 +154,28 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">画像配信は、Cloudflare Imagesサブスクリプションが有効化されている同じCloudflareアカウントのすべてのカスタマードメインからサポートされます。これは、連休前にすべてのCloudflare Imagesのお客様が利用できるようになります。</p>
-<h3 data-astro-cid-byeekcgh=""><strong>ImagesとStreaｍのバンドル</strong></h3>
-<p data-astro-cid-byeekcgh="">クリエイタープラットフォーム、eコマース、その他の多くの製品には、共通点が1つあります。それは、画像や動画を最も手頃な方法でアップロード、保存、配信するための簡単で利用しやすい方法が不可欠であるということです。</p>
-<p data-astro-cid-byeekcgh="">当社はStreamチームと協力して、製品の使用を非常に簡単に開始できる一連のバンドルを作成しました。</p>
-<p data-astro-cid-byeekcgh="">スターターバンドルは、検証と最初のMVPに最適です。月額わずか10ドルで、バンドルされていないオプションよりも50％安く、開始に十分な以下の内容が同梱されています。</p>
+<p data-astro-cid-nalcf22a="">画像配信は、Cloudflare Imagesサブスクリプションが有効化されている同じCloudflareアカウントのすべてのカスタマードメインからサポートされます。これは、連休前にすべてのCloudflare Imagesのお客様が利用できるようになります。</p>
+<h3 data-astro-cid-nalcf22a=""><strong>ImagesとStreaｍのバンドル</strong></h3>
+<p data-astro-cid-nalcf22a="">クリエイタープラットフォーム、eコマース、その他の多くの製品には、共通点が1つあります。それは、画像や動画を最も手頃な方法でアップロード、保存、配信するための簡単で利用しやすい方法が不可欠であるということです。</p>
+<p data-astro-cid-nalcf22a="">当社はStreamチームと協力して、製品の使用を非常に簡単に開始できる一連のバンドルを作成しました。</p>
+<p data-astro-cid-nalcf22a="">スターターバンドルは、検証と最初のMVPに最適です。月額わずか10ドルで、バンドルされていないオプションよりも50％安く、開始に十分な以下の内容が同梱されています。</p>
 <ul>
 	<li>Stream: 1,000分間の動画の保存と、5,000分間の動画の提供</li>
 	<li>Images: 100,000枚の画像の保存と、500,000枚の画像の提供</li>
 </ul>
-<p data-astro-cid-byeekcgh="">大規模で高速なスケーリングアプリケーション向けに月額50ドルのクリエイターバンドルも用意しており、バンドルされていない製品と比べて60％以上節約できます。これにはスケーリングを開始するためのすべての機能が含まれています。</p>
+<p data-astro-cid-nalcf22a="">大規模で高速なスケーリングアプリケーション向けに月額50ドルのクリエイターバンドルも用意しており、バンドルされていない製品と比べて60％以上節約できます。これにはスケーリングを開始するためのすべての機能が含まれています。</p>
 <ul>
 	<li>Stream: 10,000分間の動画の保存と、50,000分の提供</li>
 	<li>Images: 500,000枚の画像の保存と、1000,000枚の画像の提供</li>
 </ul>
 <div id="html-block-k40" class="html-block"><img src="https://imagedelivery.net/r1xBEzoDl4p34DP7QLrECw/fb149b8a-8d93-494d-74da-0a88b8ffd600/public" alt="Screenshot of the bundle selection UI, mentioning the price and what's included"></div>
-<p data-astro-cid-byeekcgh="">これらの新しいバンドルは、11月末からすべてのお客様にご利用いただけます。</p>
-<h3 data-astro-cid-byeekcgh=""><strong>次は何を？</strong></h3>
-<p data-astro-cid-byeekcgh="">ここで止まることはなく、すでにImagesの次の機能に狙いを定めています。その1つがImages Analyticsです。製品の優れた分析を行うことは非常に重要であるため、すべてのお客様がすべての画像とその使用状況を追跡できるように、Cloudflare Imagesに分析機能を導入します。</p>
-<hr class="emdash-break emdash-break-line" data-astro-cid-yq53pyv4="">
+<p data-astro-cid-nalcf22a="">これらの新しいバンドルは、11月末からすべてのお客様にご利用いただけます。</p>
+<h3 data-astro-cid-nalcf22a=""><strong>次は何を？</strong></h3>
+<p data-astro-cid-nalcf22a="">ここで止まることはなく、すでにImagesの次の機能に狙いを定めています。その1つがImages Analyticsです。製品の優れた分析を行うことは非常に重要であるため、すべてのお客様がすべての画像とその使用状況を追跡できるように、Cloudflare Imagesに分析機能を導入します。</p>
+<hr class="emdash-break emdash-break-line" data-astro-cid-6zxmxrrb="">
 <div id="html-block-k48" class="html-block">
 	<div style="padding-top:56.25%"><iframe src="https://iframe.videodelivery.net/e5726d54ab932f49c1431963272e3222?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2Fe5726d54ab932f49c1431963272e3222%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
 	<p></p>
 	<div style="padding-top:56.25%"><iframe src="https://iframe.videodelivery.net/e7e82657a9463b085dcb6f2ee2142c94?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2Fe7e82657a9463b085dcb6f2ee2142c94%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
 </div>
-<p data-astro-cid-byeekcgh=""><sup>1</sup><a href="https://blog.cloudflare.com/generate-avif-images-with-image-resizing/#what-is-avif">/generate-avif-images-with-image-resizing/#what-is-avif</a></p>
+<p data-astro-cid-nalcf22a=""><sup>1</sup><a href="https://blog.cloudflare.com/generate-avif-images-with-image-resizing/#what-is-avif">/generate-avif-images-with-image-resizing/#what-is-avif</a></p>

@@ -1,21 +1,21 @@
-<h2 data-astro-cid-byeekcgh="">Calling a simple function without linking</h2>
-<p data-astro-cid-byeekcgh="">When we write software using a high-level compiled programming language, there are usually a number of steps involved in transforming our source code into the final executable binary:</p>
+<h2 data-astro-cid-nalcf22a="">Calling a simple function without linking</h2>
+<p data-astro-cid-nalcf22a="">When we write software using a high-level compiled programming language, there are usually a number of steps involved in transforming our source code into the final executable binary:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="565" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4610NG9W92G0EVNP9C851J.png&amp;w=715&amp;h=565&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4610NG9W92G0EVNP9C851J.png&amp;w=640&amp;h=506&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4610NG9W92G0EVNP9C851J.png&amp;w=715&amp;h=565&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4610NG9W92G0EVNP9C851J.png&amp;w=750&amp;h=593&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4610NG9W92G0EVNP9C851J.png&amp;w=828&amp;h=654&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4610NG9W92G0EVNP9C851J.png&amp;w=1080&amp;h=853&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4610NG9W92G0EVNP9C851J.png&amp;w=1280&amp;h=1011&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4610NG9W92G0EVNP9C851J.png&amp;w=1430&amp;h=1130&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="compile and link" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4610NG9W92G0EVNP9C851J.png&amp;w=880&amp;h=695&amp;f=webp" data-lightbox-width="880" data-lightbox-height="695" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="565" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-byeekcgh="">First, our source files are compiled by a <em>compiler</em> translating the high-level programming language into machine code. The output of the compiler is a number of <em>object</em> files. If the project contains multiple source files, we usually get as many object files. The next step is the <em>linker</em>: since the code in different object files may reference each other, the linker is responsible for assembling all these object files into one big program and binding these references together. The output of the linker is usually our target executable, so only one file.</p>
-<p data-astro-cid-byeekcgh="">However, at this point, our executable might still be incomplete. These days, most executables on Linux are dynamically linked: the executable itself does not have all the code it needs to run a program. Instead it expects to "borrow" part of the code at runtime from <a href="https://en.wikipedia.org/wiki/Library_(computing)#Shared_libraries" target="_blank" rel="noopener noreferrer">shared libraries</a> for some of its functionality:</p>
+<p data-astro-cid-nalcf22a="">First, our source files are compiled by a <em>compiler</em> translating the high-level programming language into machine code. The output of the compiler is a number of <em>object</em> files. If the project contains multiple source files, we usually get as many object files. The next step is the <em>linker</em>: since the code in different object files may reference each other, the linker is responsible for assembling all these object files into one big program and binding these references together. The output of the linker is usually our target executable, so only one file.</p>
+<p data-astro-cid-nalcf22a="">However, at this point, our executable might still be incomplete. These days, most executables on Linux are dynamically linked: the executable itself does not have all the code it needs to run a program. Instead it expects to "borrow" part of the code at runtime from <a href="https://en.wikipedia.org/wiki/Library_(computing)#Shared_libraries" target="_blank" rel="noopener noreferrer">shared libraries</a> for some of its functionality:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="537" height="657" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47133HERFW2W9MP9DH5ANH.png&amp;w=537&amp;h=657&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47133HERFW2W9MP9DH5ANH.png&amp;w=537&amp;h=657&amp;f=webp&amp;fit=cover&amp;position=center 537w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47133HERFW2W9MP9DH5ANH.png&amp;w=640&amp;h=783&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47133HERFW2W9MP9DH5ANH.png&amp;w=750&amp;h=918&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47133HERFW2W9MP9DH5ANH.png&amp;w=828&amp;h=1013&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47133HERFW2W9MP9DH5ANH.png&amp;w=1074&amp;h=1314&amp;f=webp&amp;fit=cover&amp;position=center 1074w" alt="dynamic loader" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47133HERFW2W9MP9DH5ANH.png&amp;w=537&amp;h=657&amp;f=webp" data-lightbox-width="537" data-lightbox-height="657" data-astro-cid-7nvefuv6="true" sizes="(min-width: 537px) 537px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="537" height="657" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-byeekcgh="">This process is called <em>runtime linking</em>: when our executable is being started, the operating system will invoke the <em>dynamic loader</em>, which should find all the needed libraries, copy/map their code into our target process address space, and resolve all the dependencies our code has on them.</p>
-<p data-astro-cid-byeekcgh="">One interesting thing to note about this overall process is that we get the executable machine code directly from step 1 (compiling the source code), but if any of the later steps fail, we still can't execute our program. So, in this series of blog posts we will investigate if it is possible to execute machine code directly from object files skipping all the later steps.</p>
-<h4 data-astro-cid-byeekcgh="">Why would we want to execute an object file?</h4>
-<p data-astro-cid-byeekcgh="">There may be many reasons. Perhaps we're writing an open-source replacement for a proprietary Linux driver or an application, and want to compare if the behaviour of some code is the same. Or we have a piece of a rare, obscure program and we can't link to it, because it was compiled with a rare, obscure compiler. Maybe we have a source file, but cannot create a full featured executable, because of the missing build time or runtime dependencies. Malware analysis, code from a different operating system etc - all these scenarios may put us in a position, where either linking is not possible or the runtime environment is not suitable.</p>
-<h3 data-astro-cid-byeekcgh="">A simple toy object file</h3>
-<p data-astro-cid-byeekcgh="">For the purposes of this article, let's create a simple toy object file, so we can use it in our experiments:</p>
-<p data-astro-cid-byeekcgh=""><em>obj.c</em>:</p>
+<p data-astro-cid-nalcf22a="">This process is called <em>runtime linking</em>: when our executable is being started, the operating system will invoke the <em>dynamic loader</em>, which should find all the needed libraries, copy/map their code into our target process address space, and resolve all the dependencies our code has on them.</p>
+<p data-astro-cid-nalcf22a="">One interesting thing to note about this overall process is that we get the executable machine code directly from step 1 (compiling the source code), but if any of the later steps fail, we still can't execute our program. So, in this series of blog posts we will investigate if it is possible to execute machine code directly from object files skipping all the later steps.</p>
+<h4 data-astro-cid-nalcf22a="">Why would we want to execute an object file?</h4>
+<p data-astro-cid-nalcf22a="">There may be many reasons. Perhaps we're writing an open-source replacement for a proprietary Linux driver or an application, and want to compare if the behaviour of some code is the same. Or we have a piece of a rare, obscure program and we can't link to it, because it was compiled with a rare, obscure compiler. Maybe we have a source file, but cannot create a full featured executable, because of the missing build time or runtime dependencies. Malware analysis, code from a different operating system etc - all these scenarios may put us in a position, where either linking is not possible or the runtime environment is not suitable.</p>
+<h3 data-astro-cid-nalcf22a="">A simple toy object file</h3>
+<p data-astro-cid-nalcf22a="">For the purposes of this article, let's create a simple toy object file, so we can use it in our experiments:</p>
+<p data-astro-cid-nalcf22a=""><em>obj.c</em>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">int</span><span class="sk-6f42c1-ffc799"> add5</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">int</span><span class="sk-e36209-fff"> num</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">{</span></span>
@@ -49,7 +49,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-byeekcgh="">Our source file contains only 2 functions, <code>add5</code> and <code>add10</code>, which adds 5 or 10 respectively to the only input parameter. It's a small but fully functional piece of code, and we can easily compile it into an object file:</p>
+<p data-astro-cid-nalcf22a="">Our source file contains only 2 functions, <code>add5</code> and <code>add10</code>, which adds 5 or 10 respectively to the only input parameter. It's a small but fully functional piece of code, and we can easily compile it into an object file:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> obj.c</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ls</span></span>
@@ -59,9 +59,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-byeekcgh="">Loading an object file into the process memory</h3>
-<p data-astro-cid-byeekcgh="">Now we will try to import the <code>add5</code> and <code>add10</code> functions from the object file and execute them. When we talk about executing an object file, we mean using an object file as some sort of a library. As we learned above, when we have an executable that utilises external shared libraries, the <em>dynamic loader</em> loads these libraries into the process address space for us. With object files, however, we have to do this manually, because ultimately we can't execute machine code that doesn't reside in the operating system's RAM. So, to execute object files we still need some kind of a wrapper program:</p>
-<p data-astro-cid-byeekcgh=""><em>loader.c</em>:</p>
+<h3 data-astro-cid-nalcf22a="">Loading an object file into the process memory</h3>
+<p data-astro-cid-nalcf22a="">Now we will try to import the <code>add5</code> and <code>add10</code> functions from the object file and execute them. When we talk about executing an object file, we mean using an object file as some sort of a library. As we learned above, when we have an executable that utilises external shared libraries, the <em>dynamic loader</em> loads these libraries into the process address space for us. With object files, however, we have to do this manually, because ultimately we can't execute machine code that doesn't reside in the operating system's RAM. So, to execute object files we still need some kind of a wrapper program:</p>
+<p data-astro-cid-nalcf22a=""><em>loader.c</em>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;stdio.h&gt;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;stdint.h&gt;</span></span>
@@ -96,9 +96,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Above is a self-contained object loader program with some functions as placeholders. We will be implementing these functions (and adding more) in the course of this post.</p>
-<p data-astro-cid-byeekcgh="">First, as we established already, we need to load our object file into the process address space. We could just read the whole file into a buffer, but that would not be very efficient. Real-world object files might be big, but as we will see later, we don't need all of the object's file contents. So it is better to <a href="https://man7.org/linux/man-pages/man2/mmap.2.html" target="_blank" rel="noopener noreferrer"><code>mmap</code></a> the file instead: this way the operating system will lazily read the parts from the file we need at the time we need them. Let's implement the <code>load_obj</code> function:</p>
-<p data-astro-cid-byeekcgh=""><em>loader.c</em>:</p>
+<p data-astro-cid-nalcf22a="">Above is a self-contained object loader program with some functions as placeholders. We will be implementing these functions (and adding more) in the course of this post.</p>
+<p data-astro-cid-nalcf22a="">First, as we established already, we need to load our object file into the process address space. We could just read the whole file into a buffer, but that would not be very efficient. Real-world object files might be big, but as we will see later, we don't need all of the object's file contents. So it is better to <a href="https://man7.org/linux/man-pages/man2/mmap.2.html" target="_blank" rel="noopener noreferrer"><code>mmap</code></a> the file instead: this way the operating system will lazily read the parts from the file we need at the time we need them. Let's implement the <code>load_obj</code> function:</p>
+<p data-astro-cid-nalcf22a=""><em>loader.c</em>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">...</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">/* for open(2), fstat(2) */</span></span>
@@ -156,15 +156,15 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">If we don't encounter any errors, after <code>load_obj</code> executes we should get the memory address, which points to the beginning of our <code>obj.o</code> in the <code>obj</code> global variable. It is worth noting we have created a special union type for the <code>obj</code> variable: we will be parsing <code>obj.o</code> later (and peeking ahead - object files are actually <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format" target="_blank" rel="noopener noreferrer">ELF files</a>), so will be referring to the address both as <code>Elf64_Ehdr</code> (ELF header structure in C) and a byte pointer (parsing ELF files involves calculations of byte offsets from the beginning of the file).</p>
-<h3 data-astro-cid-byeekcgh="">A peek inside an object file</h3>
-<p data-astro-cid-byeekcgh="">To use some code from an object file, we need to find it first. As I've leaked above, object files are actually <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format" target="_blank" rel="noopener noreferrer">ELF files</a> (the same format as Linux executables and shared libraries) and luckily they’re easy to parse on Linux with the help of the standard <code>elf.h</code> header, which includes many useful definitions related to the ELF file structure. But we actually need to know what we’re looking for, so a high-level understanding of an ELF file is needed.</p>
-<h4 data-astro-cid-byeekcgh="">ELF segments and sections</h4>
-<p data-astro-cid-byeekcgh="">Segments (also known as program headers) and sections are probably the main parts of an ELF file and usually a starting point of any ELF tutorial. However, there is often some confusion between the two. Different sections contain different types of ELF data: executable code (which we are most interested in in this post), constant data, global variables etc. Segments, on the other hand, do not contain any data themselves - they just describe to the operating system how to properly load sections into RAM for the executable to work correctly. Some tutorials say "a segment may include 0 or more sections", which is not entirely accurate: segments do not contain sections, rather they just indicate to the OS where in memory a particular section should be loaded and what is the access pattern for this memory (read, write or execute):</p>
+<p data-astro-cid-nalcf22a="">If we don't encounter any errors, after <code>load_obj</code> executes we should get the memory address, which points to the beginning of our <code>obj.o</code> in the <code>obj</code> global variable. It is worth noting we have created a special union type for the <code>obj</code> variable: we will be parsing <code>obj.o</code> later (and peeking ahead - object files are actually <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format" target="_blank" rel="noopener noreferrer">ELF files</a>), so will be referring to the address both as <code>Elf64_Ehdr</code> (ELF header structure in C) and a byte pointer (parsing ELF files involves calculations of byte offsets from the beginning of the file).</p>
+<h3 data-astro-cid-nalcf22a="">A peek inside an object file</h3>
+<p data-astro-cid-nalcf22a="">To use some code from an object file, we need to find it first. As I've leaked above, object files are actually <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format" target="_blank" rel="noopener noreferrer">ELF files</a> (the same format as Linux executables and shared libraries) and luckily they’re easy to parse on Linux with the help of the standard <code>elf.h</code> header, which includes many useful definitions related to the ELF file structure. But we actually need to know what we’re looking for, so a high-level understanding of an ELF file is needed.</p>
+<h4 data-astro-cid-nalcf22a="">ELF segments and sections</h4>
+<p data-astro-cid-nalcf22a="">Segments (also known as program headers) and sections are probably the main parts of an ELF file and usually a starting point of any ELF tutorial. However, there is often some confusion between the two. Different sections contain different types of ELF data: executable code (which we are most interested in in this post), constant data, global variables etc. Segments, on the other hand, do not contain any data themselves - they just describe to the operating system how to properly load sections into RAM for the executable to work correctly. Some tutorials say "a segment may include 0 or more sections", which is not entirely accurate: segments do not contain sections, rather they just indicate to the OS where in memory a particular section should be loaded and what is the access pattern for this memory (read, write or execute):</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="590" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PP17AV7CP0HME9VKK6VJ.png&amp;w=715&amp;h=590&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PP17AV7CP0HME9VKK6VJ.png&amp;w=640&amp;h=528&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PP17AV7CP0HME9VKK6VJ.png&amp;w=715&amp;h=590&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PP17AV7CP0HME9VKK6VJ.png&amp;w=750&amp;h=619&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PP17AV7CP0HME9VKK6VJ.png&amp;w=828&amp;h=683&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PP17AV7CP0HME9VKK6VJ.png&amp;w=1080&amp;h=891&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PP17AV7CP0HME9VKK6VJ.png&amp;w=1280&amp;h=1056&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PP17AV7CP0HME9VKK6VJ.png&amp;w=1430&amp;h=1180&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="segments and sections" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PP17AV7CP0HME9VKK6VJ.png&amp;w=751&amp;h=620&amp;f=webp" data-lightbox-width="751" data-lightbox-height="620" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="590" class="pt-portable-image-media"></div>
 </figure>
-<p data-astro-cid-byeekcgh="">Furthermore, object files do not contain any segments at all: an object file is not meant to be directly loaded by the OS. Instead, it is assumed it will be linked with some other code, so ELF segments are usually generated by the linker, not the compiler. We can check this by using the <a href="https://man7.org/linux/man-pages/man1/readelf.1.html" target="_blank" rel="noopener noreferrer">readelf command</a>:</p>
+<p data-astro-cid-nalcf22a="">Furthermore, object files do not contain any segments at all: an object file is not meant to be directly loaded by the OS. Instead, it is assumed it will be linked with some other code, so ELF segments are usually generated by the linker, not the compiler. We can check this by using the <a href="https://man7.org/linux/man-pages/man1/readelf.1.html" target="_blank" rel="noopener noreferrer">readelf command</a>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> readelf</span><span class="sk-005cc5-99ffe4"> --segments</span><span class="sk-032f62-99ffe4"> obj.o</span></span>
 <span class="line"></span>
@@ -174,8 +174,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h4 data-astro-cid-byeekcgh="">Object file sections</h4>
-<p data-astro-cid-byeekcgh="">The same <a href="https://man7.org/linux/man-pages/man1/readelf.1.html" target="_blank" rel="noopener noreferrer">readelf command</a> can be used to get all the sections from our object file:</p>
+<h4 data-astro-cid-nalcf22a="">Object file sections</h4>
+<p data-astro-cid-nalcf22a="">The same <a href="https://man7.org/linux/man-pages/man1/readelf.1.html" target="_blank" rel="noopener noreferrer">readelf command</a> can be used to get all the sections from our object file:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> readelf</span><span class="sk-005cc5-99ffe4"> --sections</span><span class="sk-032f62-99ffe4"> obj.o</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">There</span><span class="sk-032f62-99ffe4"> are</span><span class="sk-005cc5-ffc799"> 11</span><span class="sk-032f62-99ffe4"> section</span><span class="sk-032f62-99ffe4"> headers,</span><span class="sk-032f62-99ffe4"> starting</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> offset</span><span class="sk-032f62-99ffe4"> 0x268:</span></span>
@@ -215,7 +215,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">There are different tutorials online describing the most popular ELF sections in detail. Another great reference is the <a href="https://man7.org/linux/man-pages/man5/elf.5.html" target="_blank" rel="noopener noreferrer">Linux manpages project</a>. It is handy because it describes both sections’ purpose as well as C structure definitions from <code>elf.h</code>, which makes it a one-stop shop for parsing ELF files. However, for completeness, below is a short description of the most popular sections one may encounter in an ELF file:</p>
+<p data-astro-cid-nalcf22a="">There are different tutorials online describing the most popular ELF sections in detail. Another great reference is the <a href="https://man7.org/linux/man-pages/man5/elf.5.html" target="_blank" rel="noopener noreferrer">Linux manpages project</a>. It is handy because it describes both sections’ purpose as well as C structure definitions from <code>elf.h</code>, which makes it a one-stop shop for parsing ELF files. However, for completeness, below is a short description of the most popular sections one may encounter in an ELF file:</p>
 <ul>
 	<li><code>.text</code>: this section contains the executable code (the actual machine code, which was created by the compiler from our source code). This section is the primary area of interest for this post as it should contain the <code>add5</code> and <code>add10</code> functions we want to use.</li>
 	<li><code>.data</code> and <code>.bss</code>: these sections contain global and static local variables. The difference is: <code>.data</code> has variables with an initial value (defined like <code>int foo = 5;</code>) and <code>.bss</code> just reserves space for variables with no initial value (defined like <code>int bar;</code>).</li>
@@ -223,8 +223,8 @@
 	<li><code>.symtab</code>: this section contains information about the symbols in the object file: functions, global variables, constants etc. It may also contain information about external symbols the object file needs, like needed functions from the external libraries.</li>
 	<li><code>.strtab</code> and <code>.shstrtab</code>: contain packed strings for the ELF file. Note, that these are not the strings we may define in our source code (those go to the <code>.rodata</code> section). These are the strings describing the names of other ELF structures, like symbols from <code>.symtab</code> or even section names from the table above. ELF binary format aims to make its structures compact and of a fixed size, so all strings are stored in one place and the respective data structures just reference them as an offset in either <code>.shstrtab</code> or <code>.strtab</code> sections instead of storing the full string locally.</li>
 </ul>
-<h4 data-astro-cid-byeekcgh="">The <code>.symtab</code> section</h4>
-<p data-astro-cid-byeekcgh="">At this point, we know that the code we want to import and execute is located in the <code>obj.o</code>'s <code>.text</code> section. But we have two functions, <code>add5</code> and <code>add10</code>, remember? At this level the <code>.text</code> section is just a byte blob - how do we know where each of these functions is located? This is where the <code>.symtab</code> (the "symbol table") comes in handy. It is so important that it has its own dedicated parameter in <a href="https://man7.org/linux/man-pages/man1/readelf.1.html" target="_blank" rel="noopener noreferrer">readelf</a>:</p>
+<h4 data-astro-cid-nalcf22a="">The <code>.symtab</code> section</h4>
+<p data-astro-cid-nalcf22a="">At this point, we know that the code we want to import and execute is located in the <code>obj.o</code>'s <code>.text</code> section. But we have two functions, <code>add5</code> and <code>add10</code>, remember? At this level the <code>.text</code> section is just a byte blob - how do we know where each of these functions is located? This is where the <code>.symtab</code> (the "symbol table") comes in handy. It is so important that it has its own dedicated parameter in <a href="https://man7.org/linux/man-pages/man1/readelf.1.html" target="_blank" rel="noopener noreferrer">readelf</a>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> readelf</span><span class="sk-005cc5-99ffe4"> --symbols</span><span class="sk-032f62-99ffe4"> obj.o</span></span>
 <span class="line"></span>
@@ -245,16 +245,16 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Let's ignore the other entries for now and just focus on the last two lines, because they conveniently have <code>add5</code> and <code>add10</code> as their symbol names. And indeed, this is the info about our functions. Apart from the names, the symbol table provides us with some additional metadata:</p>
+<p data-astro-cid-nalcf22a="">Let's ignore the other entries for now and just focus on the last two lines, because they conveniently have <code>add5</code> and <code>add10</code> as their symbol names. And indeed, this is the info about our functions. Apart from the names, the symbol table provides us with some additional metadata:</p>
 <ul>
 	<li>The <code>Ndx</code> column tells us the index of the section, where the symbol is located. We can cross-check it with the section table above and confirm that indeed these functions are located in <code>.text</code> (section with the index <code>1</code>).</li>
 	<li><code>Type</code> being set to <code>FUNC</code> confirms that these are indeed functions.</li>
 	<li><code>Size</code> tells us the size of each function, but this information is not very useful in our context. The same goes for <code>Bind</code> and <code>Vis</code>.</li>
 	<li>Probably the most useful piece of information is <code>Value</code>. The name is misleading, because it is actually an offset from the start of the containing section in this context. That is, the <code>add5</code> function starts just from the beginning of <code>.text</code> and <code>add10</code> is located from 15th byte and onwards.</li>
 </ul>
-<p data-astro-cid-byeekcgh="">So now we have all the pieces on how to parse an ELF file and find the functions we need.</p>
-<h3 data-astro-cid-byeekcgh="">Finding and executing a function from an object file</h3>
-<p data-astro-cid-byeekcgh="">Given what we have learned so far, let's define a plan on how to proceed to import and execute a function from an object file:</p>
+<p data-astro-cid-nalcf22a="">So now we have all the pieces on how to parse an ELF file and find the functions we need.</p>
+<h3 data-astro-cid-nalcf22a="">Finding and executing a function from an object file</h3>
+<p data-astro-cid-nalcf22a="">Given what we have learned so far, let's define a plan on how to proceed to import and execute a function from an object file:</p>
 <ol>
 	<li>Find the ELF sections table and <code>.shstrtab</code> section (we need <code>.shstrtab</code> later to lookup sections in the section table by name).</li>
 	<li>Find the <code>.symtab</code> and <code>.strtab</code> sections (we need <code>.strtab</code> to lookup symbols by name in <code>.symtab</code>).</li>
@@ -262,8 +262,8 @@
 	<li>Find <code>add5</code> and <code>add10</code> function offsets from the <code>.symtab</code>.</li>
 	<li>Execute <code>add5</code> and <code>add10</code> functions.</li>
 </ol>
-<p data-astro-cid-byeekcgh="">Let's start by adding some more global variables and implementing the <code>parse_obj</code> function:</p>
-<p data-astro-cid-byeekcgh=""><em>loader.c</em>:</p>
+<p data-astro-cid-nalcf22a="">Let's start by adding some more global variables and implementing the <code>parse_obj</code> function:</p>
+<p data-astro-cid-nalcf22a=""><em>loader.c</em>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">...</span></span>
 <span class="line"></span>
@@ -297,8 +297,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Now that we have references to both the sections table and the <code>.shstrtab</code> section, we can lookup other sections by their name. Let's create a helper function for that:</p>
-<p data-astro-cid-byeekcgh=""><em>loader.c</em>:</p>
+<p data-astro-cid-nalcf22a="">Now that we have references to both the sections table and the <code>.shstrtab</code> section, we can lookup other sections by their name. Let's create a helper function for that:</p>
+<p data-astro-cid-nalcf22a=""><em>loader.c</em>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">...</span></span>
 <span class="line"></span>
@@ -331,8 +331,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Using our new helper function, we can now find the <code>.symtab</code> and <code>.strtab</code> sections:</p>
-<p data-astro-cid-byeekcgh=""><em>loader.c</em>:</p>
+<p data-astro-cid-nalcf22a="">Using our new helper function, we can now find the <code>.symtab</code> and <code>.strtab</code> sections:</p>
+<p data-astro-cid-nalcf22a=""><em>loader.c</em>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">...</span></span>
 <span class="line"></span>
@@ -369,14 +369,14 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Next, let's focus on the <code>.text</code> section. We noted earlier in our plan that it is not enough to just locate the <code>.text</code> section in the object file, like we did with other sections. We would need to copy it over to a different location in RAM with executable permissions. There are several reasons for that, but these are the main ones:</p>
+<p data-astro-cid-nalcf22a="">Next, let's focus on the <code>.text</code> section. We noted earlier in our plan that it is not enough to just locate the <code>.text</code> section in the object file, like we did with other sections. We would need to copy it over to a different location in RAM with executable permissions. There are several reasons for that, but these are the main ones:</p>
 <ul>
 	<li>Many CPU architectures either don't allow execution of the machine code, which is <a href="https://en.wikipedia.org/wiki/Page_(computer_memory)" target="_blank" rel="noopener noreferrer">unaligned in memory</a> (4 kilobytes for x86 systems), or they execute it with a performance penalty. However, the <code>.text</code> section in an ELF file is not guaranteed to be positioned at a page aligned offset, because the on-disk version of the ELF file aims to be compact rather than convenient.</li>
 	<li>We may need to modify some bytes in the <code>.text</code> section to perform relocations (we don't need to do it in this case, but will be dealing with relocations in future posts). If, for example, we forget to use the <code>MAP_PRIVATE</code> flag, when mapping the ELF file, our modifications may propagate to the underlying file and corrupt it.</li>
 	<li>Finally, different sections, which are needed at runtime, like <code>.text</code>, <code>.data</code>, <code>.bss</code> and <code>.rodata</code>, require different memory permission bits: the <code>.text</code> section memory needs to be both readable and executable, but not writable (it is considered a bad security practice to have memory both writable and executable). The <code>.data</code> and <code>.bss</code> sections need to be readable and writable to support global variables, but not executable. The <code>.rodata</code> section should be readonly, because its purpose is to hold constant data. To support this, each section must be allocated on a page boundary as we can only set memory permission bits on whole pages and not custom ranges. Therefore, we need to create new, page aligned memory ranges for these sections and copy the data there.</li>
 </ul>
-<p data-astro-cid-byeekcgh="">To create a page aligned copy of the <code>.text</code> section, first we actually need to know the page size. Many programs usually just hardcode the page size to 4096 (4 kilobytes), but we shouldn't rely on that. While it's accurate for most x86 systems, other CPU architectures, like arm64, might have a different page size. So hard coding a page size may make our program non-portable. Let's find the page size and store it in another global variable:</p>
-<p data-astro-cid-byeekcgh=""><em>loader.c</em>:</p>
+<p data-astro-cid-nalcf22a="">To create a page aligned copy of the <code>.text</code> section, first we actually need to know the page size. Many programs usually just hardcode the page size to 4096 (4 kilobytes), but we shouldn't rely on that. While it's accurate for most x86 systems, other CPU architectures, like arm64, might have a different page size. So hard coding a page size may make our program non-portable. Let's find the page size and store it in another global variable:</p>
+<p data-astro-cid-nalcf22a=""><em>loader.c</em>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">...</span></span>
 <span class="line"></span>
@@ -405,15 +405,15 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Notice, we have also added a convenience function <code>page_align</code>, which will round up the passed in number to the next page aligned boundary. Next, back to the <code>.text</code> section. As a reminder, we need to:</p>
+<p data-astro-cid-nalcf22a="">Notice, we have also added a convenience function <code>page_align</code>, which will round up the passed in number to the next page aligned boundary. Next, back to the <code>.text</code> section. As a reminder, we need to:</p>
 <ol>
 	<li>Find the <code>.text</code> section metadata in the sections table.</li>
 	<li>Allocate a chunk of memory to hold the <code>.text</code> section copy.</li>
 	<li>Actually copy the <code>.text</code> section to the newly allocated memory.</li>
 	<li>Make the <code>.text</code> section executable, so we can later call functions from it.</li>
 </ol>
-<p data-astro-cid-byeekcgh="">Here is the implementation of the above steps:</p>
-<p data-astro-cid-byeekcgh=""><em>loader.c</em>:</p>
+<p data-astro-cid-nalcf22a="">Here is the implementation of the above steps:</p>
+<p data-astro-cid-nalcf22a=""><em>loader.c</em>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">...</span></span>
 <span class="line"></span>
@@ -456,8 +456,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Now we have all the pieces we need to locate the address of a function. Let's write a helper for it:</p>
-<p data-astro-cid-byeekcgh=""><em>loader.c</em>:</p>
+<p data-astro-cid-nalcf22a="">Now we have all the pieces we need to locate the address of a function. Let's write a helper for it:</p>
+<p data-astro-cid-nalcf22a=""><em>loader.c</em>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">...</span></span>
 <span class="line"></span>
@@ -494,8 +494,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">And finally we can implement the <code>execute_funcs</code> function to import and execute code from an object file:</p>
-<p data-astro-cid-byeekcgh=""><em>loader.c</em>:</p>
+<p data-astro-cid-nalcf22a="">And finally we can implement the <code>execute_funcs</code> function to import and execute code from an object file:</p>
+<p data-astro-cid-nalcf22a=""><em>loader.c</em>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">...</span></span>
 <span class="line"></span>
@@ -530,7 +530,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Let's compile our loader and make sure it works as expected:</p>
+<p data-astro-cid-nalcf22a="">Let's compile our loader and make sure it works as expected:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> loader</span><span class="sk-032f62-99ffe4"> loader.c</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./loader</span><span class="sk-24292e-fff"> </span></span>
@@ -543,7 +543,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Voila! We have successfully imported code from <code>obj.o</code> and executed it. Of course, the example above is simplified: the code in the object file is self-contained, does not reference any global variables or constants, and does not have any external dependencies. In future posts we will look into more complex code and how to handle such cases.</p>
-<h4 data-astro-cid-byeekcgh="">Security considerations</h4>
-<p data-astro-cid-byeekcgh="">Processing external inputs, like parsing an ELF file from the disk above, should be handled with care. The code from <em>loader.c</em> omits a lot of bounds checking and additional ELF integrity checks, when parsing the object file. The code is simplified for the purposes of this post, but most likely not production ready, as it can probably be exploited by specifically crafted malicious inputs. Use it only for educational purposes!</p>
-<p data-astro-cid-byeekcgh="">The complete source code from this post can be found <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/1" target="_blank" rel="noopener noreferrer">here</a>.</p>
+<p data-astro-cid-nalcf22a="">Voila! We have successfully imported code from <code>obj.o</code> and executed it. Of course, the example above is simplified: the code in the object file is self-contained, does not reference any global variables or constants, and does not have any external dependencies. In future posts we will look into more complex code and how to handle such cases.</p>
+<h4 data-astro-cid-nalcf22a="">Security considerations</h4>
+<p data-astro-cid-nalcf22a="">Processing external inputs, like parsing an ELF file from the disk above, should be handled with care. The code from <em>loader.c</em> omits a lot of bounds checking and additional ELF integrity checks, when parsing the object file. The code is simplified for the purposes of this post, but most likely not production ready, as it can probably be exploited by specifically crafted malicious inputs. Use it only for educational purposes!</p>
+<p data-astro-cid-nalcf22a="">The complete source code from this post can be found <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/1" target="_blank" rel="noopener noreferrer">here</a>.</p>

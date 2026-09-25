@@ -1,28 +1,28 @@
-<p data-astro-cid-byeekcgh="">몇 주 전에 저희는 Worker 코드를 보안 샌드박스에 즉시 로드할 수 있게 해주는 Workers 플랫폼의 새로운 기능인 <a href="https://blog.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Dynamic Workers</u></a>를 발표했습니다. Dynamic Worker Loader API는 기본적으로 Workers가 오랫동안 기반으로 해온 기본 컴퓨팅 격리 기본 요소, 즉 컨테이너가 아닌 격리에 대한 직접 액세스를 제공합니다. 격리는 컨테이너보다 훨씬 가볍기 때문에 1/10의 메모리만 사용해 100배 빠르게 로드할 수 있습니다. 격리는 매우 효율적이어서 “일회용”처럼 취급할 수 있습니다. 몇 줄의 코드를 실행하기 위해 하나를 실행한 뒤, 바로 폐기하면 됩니다. eval()의 안전한 버전과도 같습니다. </p>
-<p data-astro-cid-byeekcgh="">Dynamic Workers는 다양한 활용 사례를 가지고 있습니다. 최초 발표에서는 툴 호출의 대안으로 AI 에이전트가 생성한 코드를 실행하는 방법에 초점을 맞췄습니다. 이 사용 사례에서는 AI 에이전트가 몇 줄의 코드를 작성하고 이를 실행함으로써 사용자 요청에 따라 작업을 수행합니다. 해당 코드는 단일 사용을 전제로 하며, 한 번의 작업을 수행하기 위한 용도로만 사용되고 실행 직후 즉시 폐기됩니다.</p>
-<p data-astro-cid-byeekcgh="">그렇다면 AI가 더 지속적으로 유지되는 코드를 생성하게 하려면 어떻게 해야 할까요? 사용자가 상호작용할 수 있는 맞춤형 UI를 갖춘 작은 애플리케이션을 AI가 만들게 하려면 어떻게 해야 할까요? 그 애플리케이션이 장기적으로 유지되는 상태를 가지게 하려면 어떻게 해야 할까요? 물론, 여러분은 이것이 여전히 안전한 샌드박스에서 실행되기를 원할 것입니다.</p>
-<p data-astro-cid-byeekcgh="">이를 구현하는 한 가지 방법은 Dynamic Workers를 사용하고, 스토리지에 액세스할 수 있는 <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc" target="_blank" rel="noopener noreferrer"><u>RPC</u></a> API를 Worker에 제공하는 것입니다. <a href="https://developers.cloudflare.com/dynamic-workers/usage/bindings" target="_blank" rel="noopener noreferrer"><u>바인딩</u></a>을 사용하면 Dynamic Worker에 원격 SQL 데이터베이스를 가리키는 API를 제공할 수 있습니다(<a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>Cloudflare D1</u></a>을 기반으로 할 수도 있고, <a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer"><u>Hyperdrive</u></a>를 통해 액세스하는 Postgres 데이터베이스일 수도 있습니다. 이는 사용자가 선택할 수 있습니다).</p>
-<p data-astro-cid-byeekcgh="">하지만 Workers는 매우 빠른 고유의 스토리지 유형인 <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>를 갖추고 있어 이러한 사용 사례에 완벽하게 들어맞습니다. Durable Object는 고유한 이름을 가지며, 해당 이름마다 전 세계적으로 단 하나의 인스턴스만 존재하는 특수한 유형의 Worker입니다. 해당 인스턴스에는 SQLite 데이터베이스가 연결되어 있으며, 이는 Durable Object가 실행되는 머신의 <em>로컬 디스크</em>에 저장됩니다. 이로 인해 스토리지 액세스 속도가 압도적으로 빨라져, 사실상 <a href="https://blog.cloudflare.com/sqlite-in-durable-objects" target="_blank" rel="noopener noreferrer"><u>대기 시간이 0</u></a>에 가깝습니다.</p>
-<p data-astro-cid-byeekcgh="">아마 여러분은 AI가 Durable Object용 코드를 작성하고, 그 코드를 Dynamic Worker에서 실행하는 것을 실제로 원할 것입니다.</p>
-<h2 data-astro-cid-byeekcgh=""><strong>그러나 어떻게 하면 그렇게 할 수 있을까요?</strong></h2>
-<p data-astro-cid-byeekcgh="">여기서 다소 묘한 문제가 생깁니다. 일반적으로 Durable Objects를 사용하려면 다음과 같이 해야 합니다.</p>
+<p data-astro-cid-nalcf22a="">몇 주 전에 저희는 Worker 코드를 보안 샌드박스에 즉시 로드할 수 있게 해주는 Workers 플랫폼의 새로운 기능인 <a href="https://blog.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Dynamic Workers</u></a>를 발표했습니다. Dynamic Worker Loader API는 기본적으로 Workers가 오랫동안 기반으로 해온 기본 컴퓨팅 격리 기본 요소, 즉 컨테이너가 아닌 격리에 대한 직접 액세스를 제공합니다. 격리는 컨테이너보다 훨씬 가볍기 때문에 1/10의 메모리만 사용해 100배 빠르게 로드할 수 있습니다. 격리는 매우 효율적이어서 “일회용”처럼 취급할 수 있습니다. 몇 줄의 코드를 실행하기 위해 하나를 실행한 뒤, 바로 폐기하면 됩니다. eval()의 안전한 버전과도 같습니다. </p>
+<p data-astro-cid-nalcf22a="">Dynamic Workers는 다양한 활용 사례를 가지고 있습니다. 최초 발표에서는 툴 호출의 대안으로 AI 에이전트가 생성한 코드를 실행하는 방법에 초점을 맞췄습니다. 이 사용 사례에서는 AI 에이전트가 몇 줄의 코드를 작성하고 이를 실행함으로써 사용자 요청에 따라 작업을 수행합니다. 해당 코드는 단일 사용을 전제로 하며, 한 번의 작업을 수행하기 위한 용도로만 사용되고 실행 직후 즉시 폐기됩니다.</p>
+<p data-astro-cid-nalcf22a="">그렇다면 AI가 더 지속적으로 유지되는 코드를 생성하게 하려면 어떻게 해야 할까요? 사용자가 상호작용할 수 있는 맞춤형 UI를 갖춘 작은 애플리케이션을 AI가 만들게 하려면 어떻게 해야 할까요? 그 애플리케이션이 장기적으로 유지되는 상태를 가지게 하려면 어떻게 해야 할까요? 물론, 여러분은 이것이 여전히 안전한 샌드박스에서 실행되기를 원할 것입니다.</p>
+<p data-astro-cid-nalcf22a="">이를 구현하는 한 가지 방법은 Dynamic Workers를 사용하고, 스토리지에 액세스할 수 있는 <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc" target="_blank" rel="noopener noreferrer"><u>RPC</u></a> API를 Worker에 제공하는 것입니다. <a href="https://developers.cloudflare.com/dynamic-workers/usage/bindings" target="_blank" rel="noopener noreferrer"><u>바인딩</u></a>을 사용하면 Dynamic Worker에 원격 SQL 데이터베이스를 가리키는 API를 제공할 수 있습니다(<a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>Cloudflare D1</u></a>을 기반으로 할 수도 있고, <a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer"><u>Hyperdrive</u></a>를 통해 액세스하는 Postgres 데이터베이스일 수도 있습니다. 이는 사용자가 선택할 수 있습니다).</p>
+<p data-astro-cid-nalcf22a="">하지만 Workers는 매우 빠른 고유의 스토리지 유형인 <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>를 갖추고 있어 이러한 사용 사례에 완벽하게 들어맞습니다. Durable Object는 고유한 이름을 가지며, 해당 이름마다 전 세계적으로 단 하나의 인스턴스만 존재하는 특수한 유형의 Worker입니다. 해당 인스턴스에는 SQLite 데이터베이스가 연결되어 있으며, 이는 Durable Object가 실행되는 머신의 <em>로컬 디스크</em>에 저장됩니다. 이로 인해 스토리지 액세스 속도가 압도적으로 빨라져, 사실상 <a href="https://blog.cloudflare.com/sqlite-in-durable-objects" target="_blank" rel="noopener noreferrer"><u>대기 시간이 0</u></a>에 가깝습니다.</p>
+<p data-astro-cid-nalcf22a="">아마 여러분은 AI가 Durable Object용 코드를 작성하고, 그 코드를 Dynamic Worker에서 실행하는 것을 실제로 원할 것입니다.</p>
+<h2 data-astro-cid-nalcf22a=""><strong>그러나 어떻게 하면 그렇게 할 수 있을까요?</strong></h2>
+<p data-astro-cid-nalcf22a="">여기서 다소 묘한 문제가 생깁니다. 일반적으로 Durable Objects를 사용하려면 다음과 같이 해야 합니다.</p>
 <ol>
 	<li><code>DurableObject</code>를 확장하는 클래스를 작성합니다.</li>
 	<li>Worker의 기본 모듈에서 이를 내보냅니다.</li>
 	<li>이 클래스에 대해 스토리지가 프로비저닝되도록 <a href="https://developers.cloudflare.com/durable-objects/get-started/#5-configure-durable-object-class-with-sqlite-storage-backend" target="_blank" rel="noopener noreferrer"><u>Wrangler 구성에서 지정</u></a>합니다. 이렇게 하면 들어오는 요청을 처리하기 위해 해당 클래스를 가리키는 Durable Object 네임스페이스가 생성됩니다.</li>
 	<li>네임스페이스를 가리키는 <a href="https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings" target="_blank" rel="noopener noreferrer"><u>Durable Object 네임스페이스 바인딩을 선언</u></a>하고(또는 <a href="https://developers.cloudflare.com/workers/runtime-apis/context/#exports" target="_blank" rel="noopener noreferrer"><u>ctx.exports</u></a>를 사용), 이를 통해 Durable Object로 요청을 보냅니다.</li>
 </ol>
-<p data-astro-cid-byeekcgh="">이 방식은 Dynamic Workers에는 자연스럽게 확장되지 않습니다. 우선 명확한 문제가 있습니다. 코드는 동적으로 생성되며, Cloudflare API를 전혀 호출하지 않고 실행됩니다. 하지만 Durable Object 스토리지는 API를 통해 프로비저닝되어야 하고, 네임스페이스는 반드시 이를 구현하는 클래스를 가리켜야 합니다. Dynamic Worker를 가리키도록 설정할 수는 없습니다.</p>
-<p data-astro-cid-byeekcgh="">하지만 더 근본적인 문제가 있습니다. 설령 Durable Object 네임스페이스가 Dynamic Worker를 직접 가리키도록 설정할 수 있다고 해도, 과연 그렇게 하는 것이 바람직할까요? 에이전트(또는 사용자)가 수많은 Durable Object로 구성된 전체 네임스페이스를 생성하도록 허용하고 싶으신가요? 전 세계에 분산된 무제한 스토리지를 사용할 수 있도록 두는 것이 과연 적절할까요?</p>
-<p data-astro-cid-byeekcgh="">아마 그렇지 않을 겁니다. 아마 제어하고 싶을 것입니다. 생성할 수 있는 객체 수를 제한하거나, 적어도 얼마나 많이 생성하는지는 추적하고 싶을 것입니다. 어쩌면 객체를 하나로만 제한하고 싶을 수도 있습니다(아마 바이브 코딩 기반 개인용 애플리케이션에는 그것만으로도 충분할 것입니다). 로깅 및 기타 관찰 가능성을 추가하고 싶을 수도 있습니다. 메트릭. 청구 기능. 그 밖에도 다양한 기능도 마찬가지입니다.</p>
-<p data-astro-cid-byeekcgh="">이 모든 것을 구현하려면, 실제로는 이러한 Durable Object에 대한 요청이 <em>먼저</em> <em>사용자의</em> 코드로 들어가서, 그곳에서 각종 “로지스틱스”를 처리한 다음, <em>그 후에</em> 에이전트의 코드로 요청을 전달하는 방식이 필요합니다. 모든 Durable Object의 일부로 실행되는 <em>supervisor</em>를 작성하고자 하는 것입니다.</p>
-<h2 data-astro-cid-byeekcgh=""><strong>솔루션: Durable Object Facets</strong></h2>
-<p data-astro-cid-byeekcgh="">오늘 저희는 이 문제를 해결하는 기능을 오픈 베타로 출시합니다.</p>
+<p data-astro-cid-nalcf22a="">이 방식은 Dynamic Workers에는 자연스럽게 확장되지 않습니다. 우선 명확한 문제가 있습니다. 코드는 동적으로 생성되며, Cloudflare API를 전혀 호출하지 않고 실행됩니다. 하지만 Durable Object 스토리지는 API를 통해 프로비저닝되어야 하고, 네임스페이스는 반드시 이를 구현하는 클래스를 가리켜야 합니다. Dynamic Worker를 가리키도록 설정할 수는 없습니다.</p>
+<p data-astro-cid-nalcf22a="">하지만 더 근본적인 문제가 있습니다. 설령 Durable Object 네임스페이스가 Dynamic Worker를 직접 가리키도록 설정할 수 있다고 해도, 과연 그렇게 하는 것이 바람직할까요? 에이전트(또는 사용자)가 수많은 Durable Object로 구성된 전체 네임스페이스를 생성하도록 허용하고 싶으신가요? 전 세계에 분산된 무제한 스토리지를 사용할 수 있도록 두는 것이 과연 적절할까요?</p>
+<p data-astro-cid-nalcf22a="">아마 그렇지 않을 겁니다. 아마 제어하고 싶을 것입니다. 생성할 수 있는 객체 수를 제한하거나, 적어도 얼마나 많이 생성하는지는 추적하고 싶을 것입니다. 어쩌면 객체를 하나로만 제한하고 싶을 수도 있습니다(아마 바이브 코딩 기반 개인용 애플리케이션에는 그것만으로도 충분할 것입니다). 로깅 및 기타 관찰 가능성을 추가하고 싶을 수도 있습니다. 메트릭. 청구 기능. 그 밖에도 다양한 기능도 마찬가지입니다.</p>
+<p data-astro-cid-nalcf22a="">이 모든 것을 구현하려면, 실제로는 이러한 Durable Object에 대한 요청이 <em>먼저</em> <em>사용자의</em> 코드로 들어가서, 그곳에서 각종 “로지스틱스”를 처리한 다음, <em>그 후에</em> 에이전트의 코드로 요청을 전달하는 방식이 필요합니다. 모든 Durable Object의 일부로 실행되는 <em>supervisor</em>를 작성하고자 하는 것입니다.</p>
+<h2 data-astro-cid-nalcf22a=""><strong>솔루션: Durable Object Facets</strong></h2>
+<p data-astro-cid-nalcf22a="">오늘 저희는 이 문제를 해결하는 기능을 오픈 베타로 출시합니다.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="396" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKZJANBGF7YV1BB7BZMD.png&amp;w=715&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKZJANBGF7YV1BB7BZMD.png&amp;w=640&amp;h=354&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKZJANBGF7YV1BB7BZMD.png&amp;w=715&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKZJANBGF7YV1BB7BZMD.png&amp;w=750&amp;h=415&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKZJANBGF7YV1BB7BZMD.png&amp;w=828&amp;h=459&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKZJANBGF7YV1BB7BZMD.png&amp;w=1080&amp;h=598&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKZJANBGF7YV1BB7BZMD.png&amp;w=1280&amp;h=709&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKZJANBGF7YV1BB7BZMD.png&amp;w=1430&amp;h=792&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3211 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKZJANBGF7YV1BB7BZMD.png&amp;w=1920&amp;h=1064&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1064" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="396" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-byeekcgh=""><a href="https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets" target="_blank" rel="noopener noreferrer"><u>Durable Object Facets</u></a>를 사용하면 Durable Object 클래스를 동적으로 로드하고 인스턴스화할 수 있으며, 스토리지로 사용할 SQLite 데이터베이스를 제공할 수 있습니다. Facets을 사용하는 방법은 다음과 같습니다.</p>
+<p data-astro-cid-nalcf22a=""><a href="https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets" target="_blank" rel="noopener noreferrer"><u>Durable Object Facets</u></a>를 사용하면 Durable Object 클래스를 동적으로 로드하고 인스턴스화할 수 있으며, 스토리지로 사용할 SQLite 데이터베이스를 제공할 수 있습니다. Facets을 사용하는 방법은 다음과 같습니다.</p>
 <ul>
 	<li>먼저 <em>여러분</em>이 작성하는 클래스를 가리키는 일반 Durable Object 네임스페이스를 생성합니다.</li>
 	<li>그 클래스에서 동적 Worker로 에이전트의 코드를 로드하고 해당 코드를 호출합니다.</li>
@@ -30,8 +30,8 @@
 	<li>즉, 해당 클래스를 여러분의 Durable Object의 “facet”으로 인스턴스화하는 것입니다.</li>
 	<li>해당 facet은 자체 SQLite 데이터베이스를 가지며, 일반적인 Durable Object 스토리지 API를 통해 이를 사용할 수 있습니다. 이 데이터베이스는 supervisor의 데이터베이스와는 분리되어 있지만, 전체적으로는 동일한 Durable Object의 일부로 함께 저장됩니다.</li>
 </ul>
-<h2 data-astro-cid-byeekcgh=""><strong>작동 방식</strong></h2>
-<p data-astro-cid-byeekcgh="">다음은 Durable Object 클래스를 동적으로 로드하고 실행하는 애플리케이션 플랫폼의 간단하고 완전한 구현입니다.</p>
+<h2 data-astro-cid-nalcf22a=""><strong>작동 방식</strong></h2>
+<p data-astro-cid-nalcf22a="">다음은 Durable Object 클래스를 동적으로 로드하고 실행하는 애플리케이션 플랫폼의 간단하고 완전한 구현입니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { DurableObject } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "cloudflare:workers"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -157,7 +157,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-byeekcgh="">이 예에서는,</p>
+<p data-astro-cid-nalcf22a="">이 예에서는,</p>
 <ul>
 	<li><code>AppRunner</code>는 플랫폼 개발자(여러분)가 작성한 “일반적인” Durable Object입니다.</li>
 	<li>각 <code>AppRunner</code> 인스턴스는 하나의 애플리케이션을 관리합니다. 애플리케이션 코드를 저장하고 필요 시 로드합니다.</li>
@@ -165,7 +165,7 @@
 	<li><code>AppRunner</code>는 Dynamic Workers를 사용하여 애플리케이션 코드를 로드한 다음 해당 코드를 Durable Object Facet으로 실행합니다.</li>
 	<li>각 <code>AppRunner</code> 인스턴스는 <em>두 개의</em> SQLite 데이터베이스로 구성된 하나의 Durable Object입니다. 하나는 부모(<code>AppRunner</code> 자체)에 속하고, 다른 하나는 facet(<code>App</code>)에 속합니다. 이 데이터베이스들은 서로 격리되어 있습니다. 애플리케이션은 <code>AppRunner</code>의 데이터베이스를 읽을 수 없으며, 오직 자신의 데이터베이스만 접근할 수 있습니다.</li>
 </ul>
-<p data-astro-cid-byeekcgh="">예제를 실행하려면 위 코드를 <code>worker.js</code> 파일에 복사하고, 아래의 <code>wrangler.jsonc</code>와 함께 구성한 뒤 <code>npx wrangler dev</code>로 로컬에서 실행하세요.</p>
+<p data-astro-cid-nalcf22a="">예제를 실행하려면 위 코드를 <code>worker.js</code> 파일에 복사하고, 아래의 <code>wrangler.jsonc</code>와 함께 구성한 뒤 <code>npx wrangler dev</code>로 로컬에서 실행하세요.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// wrangler.jsonc for the above sample worker.</span></span>
 <span class="line"><span class="sk-24292e-fff">{</span></span>
@@ -191,6 +191,6 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h2 data-astro-cid-byeekcgh=""><strong>구축 시작</strong></h2>
-<p data-astro-cid-byeekcgh="">Facets는 Dynamic Workers의 기능으로, Workers 유료 플랜 사용자에게 베타로 즉시 제공됩니다.</p>
-<p data-astro-cid-byeekcgh=""><a href="https://developers.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Dynamic Workers</u></a>와 <a href="https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets" target="_blank" rel="noopener noreferrer"><u>Facets</u></a>에 대해 더 알아보려면 문서를 확인하세요.</p>
+<h2 data-astro-cid-nalcf22a=""><strong>구축 시작</strong></h2>
+<p data-astro-cid-nalcf22a="">Facets는 Dynamic Workers의 기능으로, Workers 유료 플랜 사용자에게 베타로 즉시 제공됩니다.</p>
+<p data-astro-cid-nalcf22a=""><a href="https://developers.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Dynamic Workers</u></a>와 <a href="https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets" target="_blank" rel="noopener noreferrer"><u>Facets</u></a>에 대해 더 알아보려면 문서를 확인하세요.</p>

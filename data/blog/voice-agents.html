@@ -1,8 +1,8 @@
-<p data-astro-cid-byeekcgh="">For many of us, our first experiences with AI agents have been through typing into a chat box. And for those of us using agents day to day, we have likely gotten very good at writing detailed prompts or markdown files to guide them.</p>
-<p data-astro-cid-byeekcgh="">But some of the moments where agents would be most useful are not always text-first. You might be on a long commute, juggling a few open sessions, or just wanting to speak naturally to an agent, have it speak back, and continue the interaction.</p>
-<p data-astro-cid-byeekcgh="">Adding voice to an agent should not require moving that agent into a separate voice framework. Today, we are releasing an experimental voice pipeline for the <a href="https://developers.cloudflare.com/agents/api-reference/voice" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>.</p>
-<p data-astro-cid-byeekcgh="">With <code>@cloudflare/voice</code>, you can add real-time voice to the same Agent architecture you already use. Voice just becomes another way you can talk to the same Durable Object, with the same tools, persistence, and WebSocket connection model that the Agents SDK already provides.&nbsp;</p>
-<p data-astro-cid-byeekcgh=""><code>@cloudflare/voice</code> is an experimental package for the Agents SDK that provides:&nbsp;</p>
+<p data-astro-cid-c6i3vrlz="">For many of us, our first experiences with AI agents have been through typing into a chat box. And for those of us using agents day to day, we have likely gotten very good at writing detailed prompts or markdown files to guide them.</p>
+<p data-astro-cid-c6i3vrlz="">But some of the moments where agents would be most useful are not always text-first. You might be on a long commute, juggling a few open sessions, or just wanting to speak naturally to an agent, have it speak back, and continue the interaction.</p>
+<p data-astro-cid-c6i3vrlz="">Adding voice to an agent should not require moving that agent into a separate voice framework. Today, we are releasing an experimental voice pipeline for the <a href="https://developers.cloudflare.com/agents/api-reference/voice" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>.</p>
+<p data-astro-cid-c6i3vrlz="">With <code>@cloudflare/voice</code>, you can add real-time voice to the same Agent architecture you already use. Voice just becomes another way you can talk to the same Durable Object, with the same tools, persistence, and WebSocket connection model that the Agents SDK already provides.&nbsp;</p>
+<p data-astro-cid-c6i3vrlz=""><code>@cloudflare/voice</code> is an experimental package for the Agents SDK that provides:&nbsp;</p>
 <ul>
 	<li><code>withVoice(Agent)</code> for full conversation voice agents</li>
 	<li><code>withVoiceInput(Agent)</code> for speech-to-text-only use cases, like dictation or voice search&nbsp;</li>
@@ -15,10 +15,10 @@
 		</ul>
 	</li>
 </ul>
-<p data-astro-cid-byeekcgh="">This means you can now build an agent that users can talk to in real time over a single WebSocket connection, while keeping the same Agent class, Durable Object instance, and the same SQLite-backed conversation history.&nbsp;</p>
-<p data-astro-cid-byeekcgh="">Just as importantly, we want this to be bigger than one fixed default stack. The provider interfaces in <code>@cloudflare/voice</code> are intentionally small, and we want speech, telephony, and transport providers to build with us, so developers can mix and match the right components for their use case, instead of being locked into a single voice architecture.</p>
-<h2 data-astro-cid-byeekcgh="">Get started with voice</h2>
-<p data-astro-cid-byeekcgh="">Here’s the minimal server-side pattern for a voice agent in the Agents SDK:&nbsp;</p>
+<p data-astro-cid-c6i3vrlz="">This means you can now build an agent that users can talk to in real time over a single WebSocket connection, while keeping the same Agent class, Durable Object instance, and the same SQLite-backed conversation history.&nbsp;</p>
+<p data-astro-cid-c6i3vrlz="">Just as importantly, we want this to be bigger than one fixed default stack. The provider interfaces in <code>@cloudflare/voice</code> are intentionally small, and we want speech, telephony, and transport providers to build with us, so developers can mix and match the right components for their use case, instead of being locked into a single voice architecture.</p>
+<h2 data-astro-cid-c6i3vrlz="">Get started with voice</h2>
+<p data-astro-cid-c6i3vrlz="">Here’s the minimal server-side pattern for a voice agent in the Agents SDK:&nbsp;</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Agent, routeAgentRequest } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> {</span></span>
@@ -72,7 +72,7 @@
 		})
 	});
 </script>
-<p data-astro-cid-byeekcgh="">That’s the whole server. You add a continuous transcriber, a text-to-speech provider, and implement <code>onTurn()</code>. <br><br>On the client side, you can connect to it with a React hook:&nbsp;</p>
+<p data-astro-cid-c6i3vrlz="">That’s the whole server. You add a continuous transcriber, a text-to-speech provider, and implement <code>onTurn()</code>. <br><br>On the client side, you can connect to it with a React hook:&nbsp;</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { useVoiceAgent } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/voice/react"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -109,15 +109,15 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">If you are not using React, you can use <code>VoiceClient</code> directly from <code>@cloudflare/voice/client</code>.&nbsp;</p>
-<h2 data-astro-cid-byeekcgh="">How the voice pipeline works</h2>
-<p data-astro-cid-byeekcgh="">With the <a href="https://github.com/cloudflare/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>, every agent is a <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Object</u></a> — a stateful, addressable server instance with its own <a href="https://developers.cloudflare.com/agents/api-reference/store-and-sync-state" target="_blank" rel="noopener noreferrer"><u>SQLite database</u></a>, <a href="https://developers.cloudflare.com/agents/api-reference/websockets" target="_blank" rel="noopener noreferrer"><u>WebSocket connections</u></a>, and application logic. The voice pipeline extends this model instead of replacing it.&nbsp;</p>
-<p data-astro-cid-byeekcgh="">At a high level, the flow looks like this:</p>
+<p data-astro-cid-c6i3vrlz="">If you are not using React, you can use <code>VoiceClient</code> directly from <code>@cloudflare/voice/client</code>.&nbsp;</p>
+<h2 data-astro-cid-c6i3vrlz="">How the voice pipeline works</h2>
+<p data-astro-cid-c6i3vrlz="">With the <a href="https://github.com/cloudflare/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>, every agent is a <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Object</u></a> — a stateful, addressable server instance with its own <a href="https://developers.cloudflare.com/agents/api-reference/store-and-sync-state" target="_blank" rel="noopener noreferrer"><u>SQLite database</u></a>, <a href="https://developers.cloudflare.com/agents/api-reference/websockets" target="_blank" rel="noopener noreferrer"><u>WebSocket connections</u></a>, and application logic. The voice pipeline extends this model instead of replacing it.&nbsp;</p>
+<p data-astro-cid-c6i3vrlz="">At a high level, the flow looks like this:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="327" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BE6YV9DWY940P4A9F6B2.png&amp;w=715&amp;h=327&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BE6YV9DWY940P4A9F6B2.png&amp;w=640&amp;h=293&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BE6YV9DWY940P4A9F6B2.png&amp;w=715&amp;h=327&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BE6YV9DWY940P4A9F6B2.png&amp;w=750&amp;h=343&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BE6YV9DWY940P4A9F6B2.png&amp;w=828&amp;h=379&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BE6YV9DWY940P4A9F6B2.png&amp;w=1080&amp;h=494&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BE6YV9DWY940P4A9F6B2.png&amp;w=1280&amp;h=585&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BE6YV9DWY940P4A9F6B2.png&amp;w=1430&amp;h=654&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3198 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BE6YV9DWY940P4A9F6B2.png&amp;w=1920&amp;h=879&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="879" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="327" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-byeekcgh="">Here’s how the pipeline breaks down, step by step: </p>
+<p data-astro-cid-c6i3vrlz="">Here’s how the pipeline breaks down, step by step: </p>
 <ol>
 	<li><strong>Audio transport: </strong>The browser captures microphone audio and streams 16 kHz mono PCM over the same WebSocket connection the agent already uses. </li>
 	<li><strong>STT session setup:&nbsp; </strong>When the call starts, the agent creates a continuous transcriber session that lives for the duration of the call.&nbsp;</li>
@@ -127,21 +127,21 @@
 	<li><strong>TTS output: </strong>Your response is synthesized to audio and sent back to the client. If <code>onTurn()</code> returns a stream, the pipeline sentence-chunks it and starts sending audio as sentences are ready.&nbsp;</li>
 	<li><strong>Persistence: </strong>The user and agent messages are persisted in SQLite, so conversation history survives reconnections and deployments.&nbsp;&nbsp;</li>
 </ol>
-<h2 data-astro-cid-byeekcgh="">Why voice should grow with the rest of your agent</h2>
-<p data-astro-cid-byeekcgh="">Many voice frameworks focus on the voice loop itself: audio in, transcription, model response, audio out. Those are important primitives, but there’s a lot more to an agent than just voice.&nbsp;</p>
-<p data-astro-cid-byeekcgh="">Real agents running in production will grow. They need state, scheduling, persistence, tools, workflows, telephony, and ways to keep all of that consistent across channels. As your agent grows in complexity, voice stops being a standalone feature and becomes part of a larger system.&nbsp;</p>
-<p data-astro-cid-byeekcgh="">We wanted voice in the Agents SDK to start from that assumption. Instead of building voice as a separate stack, we built it on top of the same Durable Object-based agent platform, so you can pull in the rest of the primitives you need without re-architecting the application later.</p>
-<h3 data-astro-cid-byeekcgh="">Voice and text share the same state</h3>
-<p data-astro-cid-byeekcgh="">A user might start by typing, switch to voice, and go back to text. With Agents SDK, these are all just different inputs to the same agent. The same conversation history lives in SQLite, and the same tools are available. This gives you both a cleaner mental model and a much simpler application architecture to reason about.&nbsp;</p>
-<h2 data-astro-cid-byeekcgh="">Lower latency comes from...</h2>
-<h3 data-astro-cid-byeekcgh="">a shorter network path&nbsp;</h3>
-<p data-astro-cid-byeekcgh="">Voice experiences feel good or bad very quickly. Once a user stops speaking, the system needs to transcribe, think, and start speaking back fast enough to feel conversational.&nbsp;</p>
-<p data-astro-cid-byeekcgh="">A lot of voice latency is not pure model time. It’s the cost of bouncing audio and text between different services in different places. Audio needs to go to STT, transcripts go to an LLM, and responses go to a TTS model – and each handoff adds network overhead.&nbsp;</p>
-<p data-astro-cid-byeekcgh="">With the Agents SDK voice pipeline, the agent runs on Cloudflare’s network, and the built-in providers use Workers AI bindings. That keeps the pipeline tighter and reduces the amount of infrastructure you have to stitch together yourself.&nbsp;</p>
-<h3 data-astro-cid-byeekcgh="">built-in streaming</h3>
-<p data-astro-cid-byeekcgh="">A voice agent interaction feels much more natural if it speaks the first sentence quickly (also called Time-to-First Audio). When <code>onTurn()</code> returns a stream, the pipeline chunks it into sentences and starts synthesis as sentences complete. That means the user can hear the beginning of the answer while the rest is still being generated.&nbsp;</p>
-<h2 data-astro-cid-byeekcgh="">A more realistic backend&nbsp;</h2>
-<p data-astro-cid-byeekcgh="">Here is a fuller example that streams an LLM response and starts speaking it back, sentence by sentence:</p>
+<h2 data-astro-cid-c6i3vrlz="">Why voice should grow with the rest of your agent</h2>
+<p data-astro-cid-c6i3vrlz="">Many voice frameworks focus on the voice loop itself: audio in, transcription, model response, audio out. Those are important primitives, but there’s a lot more to an agent than just voice.&nbsp;</p>
+<p data-astro-cid-c6i3vrlz="">Real agents running in production will grow. They need state, scheduling, persistence, tools, workflows, telephony, and ways to keep all of that consistent across channels. As your agent grows in complexity, voice stops being a standalone feature and becomes part of a larger system.&nbsp;</p>
+<p data-astro-cid-c6i3vrlz="">We wanted voice in the Agents SDK to start from that assumption. Instead of building voice as a separate stack, we built it on top of the same Durable Object-based agent platform, so you can pull in the rest of the primitives you need without re-architecting the application later.</p>
+<h3 data-astro-cid-c6i3vrlz="">Voice and text share the same state</h3>
+<p data-astro-cid-c6i3vrlz="">A user might start by typing, switch to voice, and go back to text. With Agents SDK, these are all just different inputs to the same agent. The same conversation history lives in SQLite, and the same tools are available. This gives you both a cleaner mental model and a much simpler application architecture to reason about.&nbsp;</p>
+<h2 data-astro-cid-c6i3vrlz="">Lower latency comes from...</h2>
+<h3 data-astro-cid-c6i3vrlz="">a shorter network path&nbsp;</h3>
+<p data-astro-cid-c6i3vrlz="">Voice experiences feel good or bad very quickly. Once a user stops speaking, the system needs to transcribe, think, and start speaking back fast enough to feel conversational.&nbsp;</p>
+<p data-astro-cid-c6i3vrlz="">A lot of voice latency is not pure model time. It’s the cost of bouncing audio and text between different services in different places. Audio needs to go to STT, transcripts go to an LLM, and responses go to a TTS model – and each handoff adds network overhead.&nbsp;</p>
+<p data-astro-cid-c6i3vrlz="">With the Agents SDK voice pipeline, the agent runs on Cloudflare’s network, and the built-in providers use Workers AI bindings. That keeps the pipeline tighter and reduces the amount of infrastructure you have to stitch together yourself.&nbsp;</p>
+<h3 data-astro-cid-c6i3vrlz="">built-in streaming</h3>
+<p data-astro-cid-c6i3vrlz="">A voice agent interaction feels much more natural if it speaks the first sentence quickly (also called Time-to-First Audio). When <code>onTurn()</code> returns a stream, the pipeline chunks it into sentences and starts synthesis as sentences complete. That means the user can hear the beginning of the answer while the rest is still being generated.&nbsp;</p>
+<h2 data-astro-cid-c6i3vrlz="">A more realistic backend&nbsp;</h2>
+<p data-astro-cid-c6i3vrlz="">Here is a fuller example that streams an LLM response and starts speaking it back, sentence by sentence:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Agent, routeAgentRequest } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> {</span></span>
@@ -193,9 +193,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh=""><code>Context.messages</code> gives you recent SQLite-backed conversation history, and <code>context.signal</code> lets the pipeline abort the LLM call if the user interrupts.&nbsp;</p>
-<h2 data-astro-cid-byeekcgh="">Voice as an input: <code>withVoiceInput</code></h2>
-<p data-astro-cid-byeekcgh="">Not every speech interface needs to speak back. Sometimes you might want dictation, transcription, or voice search. For these use cases, you can use <code>withVoiceInput</code></p>
+<p data-astro-cid-c6i3vrlz=""><code>Context.messages</code> gives you recent SQLite-backed conversation history, and <code>context.signal</code> lets the pipeline abort the LLM call if the user interrupts.&nbsp;</p>
+<h2 data-astro-cid-c6i3vrlz="">Voice as an input: <code>withVoiceInput</code></h2>
+<p data-astro-cid-c6i3vrlz="">Not every speech interface needs to speak back. Sometimes you might want dictation, transcription, or voice search. For these use cases, you can use <code>withVoiceInput</code></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Agent, </span><span class="sk-d73a49-a0a0a0">type</span><span class="sk-24292e-fff"> Connection } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { withVoiceInput, WorkersAINova3STT } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/voice"</span><span class="sk-24292e-fff">;</span></span>
@@ -215,7 +215,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">On the client, <code>useVoiceInput</code> gives you a lightweight interface centered on transcriptions:&nbsp;</p>
+<p data-astro-cid-c6i3vrlz="">On the client, <code>useVoiceInput</code> gives you a lightweight interface centered on transcriptions:&nbsp;</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { useVoiceInput } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/voice/react"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -227,14 +227,14 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">This is useful when speech is an input method, and you don’t need a full conversational loop.&nbsp;</p>
-<h2 data-astro-cid-byeekcgh="">Voice and text on the same connection</h2>
-<p data-astro-cid-byeekcgh="">The same client can call <code>sendText(“What’s the weather?”)</code>, which bypasses STT and sends the text directly to <code>onTurn()</code>. During an active call, the response can be spoken and shown as text. Outside a call, it can remain text-only.&nbsp;</p>
-<p data-astro-cid-byeekcgh="">This gives you a genuinely multimodal agent, without splitting the implementation into different code paths.&nbsp;</p>
-<h2 data-astro-cid-byeekcgh="">What else can you build?&nbsp;</h2>
-<p data-astro-cid-byeekcgh="">Because a voice agent is still an agent, all the normal Agents SDK capabilities still apply.&nbsp;</p>
-<h3 data-astro-cid-byeekcgh="">Tools and scheduling</h3>
-<p data-astro-cid-byeekcgh="">You can greet a caller when a session starts:&nbsp;</p>
+<p data-astro-cid-c6i3vrlz="">This is useful when speech is an input method, and you don’t need a full conversational loop.&nbsp;</p>
+<h2 data-astro-cid-c6i3vrlz="">Voice and text on the same connection</h2>
+<p data-astro-cid-c6i3vrlz="">The same client can call <code>sendText(“What’s the weather?”)</code>, which bypasses STT and sends the text directly to <code>onTurn()</code>. During an active call, the response can be spoken and shown as text. Outside a call, it can remain text-only.&nbsp;</p>
+<p data-astro-cid-c6i3vrlz="">This gives you a genuinely multimodal agent, without splitting the implementation into different code paths.&nbsp;</p>
+<h2 data-astro-cid-c6i3vrlz="">What else can you build?&nbsp;</h2>
+<p data-astro-cid-c6i3vrlz="">Because a voice agent is still an agent, all the normal Agents SDK capabilities still apply.&nbsp;</p>
+<h3 data-astro-cid-c6i3vrlz="">Tools and scheduling</h3>
+<p data-astro-cid-c6i3vrlz="">You can greet a caller when a session starts:&nbsp;</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Agent, </span><span class="sk-d73a49-a0a0a0">type</span><span class="sk-24292e-fff"> Connection } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { withVoice, WorkersAIFluxSTT, WorkersAITTS } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/voice"</span><span class="sk-24292e-fff">;</span></span>
@@ -259,7 +259,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">You can schedule spoken reminders and expose tools to your LLM just like any other agent:&nbsp;</p>
+<p data-astro-cid-c6i3vrlz="">You can schedule spoken reminders and expose tools to your LLM just like any other agent:&nbsp;</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Agent } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> {</span></span>
@@ -319,9 +319,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-byeekcgh="">Runtime model switching</h3>
-<p data-astro-cid-byeekcgh="">The voice pipeline also lets you choose a transcription model dynamically per connection.&nbsp;</p>
-<p data-astro-cid-byeekcgh="">For example, you might prefer Flux for conversational turn-taking and Nova 3 for higher-accuracy dictation. You can switch at runtime by overriding <code>createTranscriber()</code>:&nbsp;</p>
+<h3 data-astro-cid-c6i3vrlz="">Runtime model switching</h3>
+<p data-astro-cid-c6i3vrlz="">The voice pipeline also lets you choose a transcription model dynamically per connection.&nbsp;</p>
+<p data-astro-cid-c6i3vrlz="">For example, you might prefer Flux for conversational turn-taking and Nova 3 for higher-accuracy dictation. You can switch at runtime by overriding <code>createTranscriber()</code>:&nbsp;</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Agent, </span><span class="sk-d73a49-a0a0a0">type</span><span class="sk-24292e-fff"> Connection } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> {</span></span>
@@ -350,7 +350,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">On the client, you can pass query parameters through the hook:&nbsp;</p>
+<p data-astro-cid-c6i3vrlz="">On the client, you can pass query parameters through the hook:&nbsp;</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> voiceAgent</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> useVoiceAgent</span><span class="sk-24292e-fff">({</span></span>
 <span class="line"><span class="sk-24292e-fff">  agent: </span><span class="sk-032f62-99ffe4">"my-voice-agent"</span><span class="sk-24292e-fff">,</span></span>
@@ -362,18 +362,18 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h2 data-astro-cid-byeekcgh="">Pipeline hooks</h2>
-<p data-astro-cid-byeekcgh="">You can also intercept data between stages:&nbsp;</p>
+<h2 data-astro-cid-c6i3vrlz="">Pipeline hooks</h2>
+<p data-astro-cid-c6i3vrlz="">You can also intercept data between stages:&nbsp;</p>
 <ul>
 	<li><code>afterTranscribe(transcript, connection)</code></li>
 	<li><code>beforeSynthesize(text, connection)</code></li>
 	<li><code>afterSynthesize(audio, text, connection)</code></li>
 </ul>
-<p data-astro-cid-byeekcgh="">These hooks are useful for content filtering, text normalization, language-specific transformations, or custom logging.&nbsp;</p>
-<h2 data-astro-cid-byeekcgh="">Telephone and transport options</h2>
-<p data-astro-cid-byeekcgh="">By default, the voice pipeline uses a single WebSocket connection as the simplest path for 1:1 voice agents. But that’s not the only option.&nbsp;</p>
-<h3 data-astro-cid-byeekcgh="">Phone calls via Twilio</h3>
-<p data-astro-cid-byeekcgh="">You can connect phone calls to the same agent using the Twilio adapter:</p>
+<p data-astro-cid-c6i3vrlz="">These hooks are useful for content filtering, text normalization, language-specific transformations, or custom logging.&nbsp;</p>
+<h2 data-astro-cid-c6i3vrlz="">Telephone and transport options</h2>
+<p data-astro-cid-c6i3vrlz="">By default, the voice pipeline uses a single WebSocket connection as the simplest path for 1:1 voice agents. But that’s not the only option.&nbsp;</p>
+<h3 data-astro-cid-c6i3vrlz="">Phone calls via Twilio</h3>
+<p data-astro-cid-c6i3vrlz="">You can connect phone calls to the same agent using the Twilio adapter:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { TwilioAdapter } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/voice-twilio"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
@@ -395,13 +395,13 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">This lets the same agent handle web voice, text input, and phone calls.&nbsp;</p>
-<p data-astro-cid-byeekcgh="">One caveat: the default Workers AI TTS provider returns MP3, while Twilio expects mulaw 8kHz audio. For production telephony, you may want to use a TTS provider that outputs PCM or mulaw directly.&nbsp;</p>
-<h3 data-astro-cid-byeekcgh="">WebRTC</h3>
-<p data-astro-cid-byeekcgh="">If you need a transport that is better suited to difficult network conditions or will include multiple participants, the voice package also includes SFU utilities and supports custom transports. The default model is WebSocket-native today, but we plan to develop more adapters to connect to our <a href="https://developers.cloudflare.com/realtime/sfu" target="_blank" rel="noopener noreferrer"><u>global SFU infrastructure</u></a>.&nbsp;</p>
-<h2 data-astro-cid-byeekcgh="">Build with us&nbsp;</h2>
-<p data-astro-cid-byeekcgh="">The voice pipeline is provider-agnostic by design.&nbsp;</p>
-<p data-astro-cid-byeekcgh="">Under the hood, each stage is defined by a small interface: a transcriber opens a continuous session and accepts audio frames as they arrive, while a TTS provider takes text and returns audio. If a provider can stream audio output, the pipeline can use that too.</p>
+<p data-astro-cid-c6i3vrlz="">This lets the same agent handle web voice, text input, and phone calls.&nbsp;</p>
+<p data-astro-cid-c6i3vrlz="">One caveat: the default Workers AI TTS provider returns MP3, while Twilio expects mulaw 8kHz audio. For production telephony, you may want to use a TTS provider that outputs PCM or mulaw directly.&nbsp;</p>
+<h3 data-astro-cid-c6i3vrlz="">WebRTC</h3>
+<p data-astro-cid-c6i3vrlz="">If you need a transport that is better suited to difficult network conditions or will include multiple participants, the voice package also includes SFU utilities and supports custom transports. The default model is WebSocket-native today, but we plan to develop more adapters to connect to our <a href="https://developers.cloudflare.com/realtime/sfu" target="_blank" rel="noopener noreferrer"><u>global SFU infrastructure</u></a>.&nbsp;</p>
+<h2 data-astro-cid-c6i3vrlz="">Build with us&nbsp;</h2>
+<p data-astro-cid-c6i3vrlz="">The voice pipeline is provider-agnostic by design.&nbsp;</p>
+<p data-astro-cid-c6i3vrlz="">Under the hood, each stage is defined by a small interface: a transcriber opens a continuous session and accepts audio frames as they arrive, while a TTS provider takes text and returns audio. If a provider can stream audio output, the pipeline can use that too.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">interface</span><span class="sk-6f42c1-ffc799"> Transcriber</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  createSession</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">options</span><span class="sk-d73a49-a0a0a0">?:</span><span class="sk-6f42c1-ffc799"> TranscriberSessionOptions</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> TranscriberSession</span><span class="sk-24292e-fff">;</span></span>
@@ -421,30 +421,30 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">We didn’t want voice support in Agents SDK to only work with one fixed combination of models and transports. We wanted the default path to be simple, while still making it easy to plug in other providers as the ecosystem grows.&nbsp;</p>
-<p data-astro-cid-byeekcgh="">The built-in providers use Workers AI, so you can get started without external API keys:</p>
+<p data-astro-cid-c6i3vrlz="">We didn’t want voice support in Agents SDK to only work with one fixed combination of models and transports. We wanted the default path to be simple, while still making it easy to plug in other providers as the ecosystem grows.&nbsp;</p>
+<p data-astro-cid-c6i3vrlz="">The built-in providers use Workers AI, so you can get started without external API keys:</p>
 <ul>
 	<li><code>WorkersAIFluxSTT</code> for conversational streaming STT</li>
 	<li><code>WorkersAINova3STT</code> for dictation-style streaming STT</li>
 	<li><code>WorkersAITTS</code> for text-to-speech</li>
 </ul>
-<p data-astro-cid-byeekcgh="">But the bigger goal is interoperability. If you maintain a speech or voice service, these interfaces are small enough to implement without needing to understand the rest of the SDK internals. If your STT provider accepts streaming audio and can detect utterance boundaries, it can satisfy the transcriber interface. If your TTS provider can stream audio output, even better.&nbsp;</p>
-<p data-astro-cid-byeekcgh="">We would love to work on interoperability with:</p>
+<p data-astro-cid-c6i3vrlz="">But the bigger goal is interoperability. If you maintain a speech or voice service, these interfaces are small enough to implement without needing to understand the rest of the SDK internals. If your STT provider accepts streaming audio and can detect utterance boundaries, it can satisfy the transcriber interface. If your TTS provider can stream audio output, even better.&nbsp;</p>
+<p data-astro-cid-c6i3vrlz="">We would love to work on interoperability with:</p>
 <ul>
 	<li>STT providers like AssemblyAI, Rev.ai, Speechmatics, or any service with a real-time transcription API</li>
 	<li>TTS providers like PlayHT, LMNT, Cartesia, Coqui, Amazon Polly, or Google Cloud TTS</li>
 	<li>telephony adapters for platforms like Vonage, Telnyx, or Bandwidth</li>
 	<li>transport implementations for WebRTC data channels, SFU bridges, and other audio transport layers</li>
 </ul>
-<p data-astro-cid-byeekcgh="">We are also interested in collaborations that go beyond individual providers:</p>
+<p data-astro-cid-c6i3vrlz="">We are also interested in collaborations that go beyond individual providers:</p>
 <ul>
 	<li>latency benchmarking across STT + LLM + TTS combinations</li>
 	<li>multilingual support and better documentation for non-English voice agents</li>
 	<li>accessibility work, especially around multimodal interfaces and speech impairments</li>
 </ul>
-<p data-astro-cid-byeekcgh="">If you are building voice infrastructure and want to see a first-class integration, <a href="https://github.com/cloudflare/agents/pulls" target="_blank" rel="noopener noreferrer"><u>open a PR</u></a> or reach out.</p>
-<h2 data-astro-cid-byeekcgh="">Try it now</h2>
-<p data-astro-cid-byeekcgh="">The voice pipeline is available today as an experimental package:</p>
+<p data-astro-cid-c6i3vrlz="">If you are building voice infrastructure and want to see a first-class integration, <a href="https://github.com/cloudflare/agents/pulls" target="_blank" rel="noopener noreferrer"><u>open a PR</u></a> or reach out.</p>
+<h2 data-astro-cid-c6i3vrlz="">Try it now</h2>
+<p data-astro-cid-c6i3vrlz="">The voice pipeline is available today as an experimental package:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> cloudflare@latest</span><span class="sk-005cc5-99ffe4"> --</span><span class="sk-005cc5-99ffe4"> --template</span><span class="sk-032f62-99ffe4"> cloudflare/agents-starter</span></span>
 <span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -453,8 +453,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">Add <code>@cloudflare/voice</code>, give your agent a transcriber and a TTS provider, deploy it, and start talking to it. You can also read the <a href="https://developers.cloudflare.com/agents/api-reference/voice" target="_blank" rel="noopener noreferrer"><u>API reference</u></a>. </p>
-<p data-astro-cid-byeekcgh="">If you build something interesting, open an issue or PR on <a href="https://github.com/cloudflare/agents" target="_blank" rel="noopener noreferrer"><u>github.com/cloudflare/agents</u></a>. Voice should not require a separate stack, and we think the best voice agents will be the ones built on the same durable application model as everything else.</p>
+<p data-astro-cid-c6i3vrlz="">Add <code>@cloudflare/voice</code>, give your agent a transcriber and a TTS provider, deploy it, and start talking to it. You can also read the <a href="https://developers.cloudflare.com/agents/api-reference/voice" target="_blank" rel="noopener noreferrer"><u>API reference</u></a>. </p>
+<p data-astro-cid-c6i3vrlz="">If you build something interesting, open an issue or PR on <a href="https://github.com/cloudflare/agents" target="_blank" rel="noopener noreferrer"><u>github.com/cloudflare/agents</u></a>. Voice should not require a separate stack, and we think the best voice agents will be the ones built on the same durable application model as everything else.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="137" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JB7KBDP7Y804X949JDZS.png&amp;w=715&amp;h=137&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JB7KBDP7Y804X949JDZS.png&amp;w=640&amp;h=123&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JB7KBDP7Y804X949JDZS.png&amp;w=715&amp;h=137&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JB7KBDP7Y804X949JDZS.png&amp;w=750&amp;h=144&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JB7KBDP7Y804X949JDZS.png&amp;w=828&amp;h=159&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JB7KBDP7Y804X949JDZS.png&amp;w=1080&amp;h=207&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JB7KBDP7Y804X949JDZS.png&amp;w=1280&amp;h=245&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JB7KBDP7Y804X949JDZS.png&amp;w=1430&amp;h=274&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3198 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JB7KBDP7Y804X949JDZS.png&amp;w=1920&amp;h=369&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="369" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="137" class="pt-portable-image-media"></div>
 </figure>

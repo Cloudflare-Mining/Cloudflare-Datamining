@@ -1,19 +1,19 @@
-<p data-astro-cid-byeekcgh="">2022年5月、当社はデータベースの簡素化（データベースの構築、保守、統合）を追求することを<a href="https://blog.cloudflare.com/ja-jp/introducing-d1-ja-jp">発表しました</a>。当社の目標は、最先端のパフォーマンスを備えた強力でスケーラブルなデータベースを、いかなる煩わしさもなく、実行できるようにするツールをお客様に提供することです。そして、当社は最初に、データベースの専門家だけでなく、あらゆるタイプのユーザーのデータベース開発経験を再考することを目指しました。</p>
-<p data-astro-cid-byeekcgh="">この数カ月間、それだけを作成するために<a href="https://blog.cloudflare.com/whats-new-with-d1">取り組み</a>、一方その過程でいくつかの非常に重要な教訓を学びました。Workers上でグローバルなリレーショナルデータベース製品を構築することは、開発者プラットフォームの境界を絶対的な限界まで押し上げ、しばしばそれを超えますが、Cloudflare の私たちにとっては非常にスリリングな方法であるということが分かりました。当社の進歩は、外部からは遅いように見えるかもしれません。しかし、すべての改善、バグ修正またはストレステストは、_すべての_お客様が、世界で最も<a href="https://blog.cloudflare.com/ja-jp/welcome-to-the-supercloud-and-developer-week-2022-ja-jp">意欲的なサーバーレスアプリケーション</a>を構築するための道筋を築くのに役立つということです。</p>
-<p data-astro-cid-byeekcgh="">しかし、D1の生産準備をするまでの道のりは続き、まだ_完全には_完成していませんが、まずフィードバックを求めて立ち止まらなければ、それは「Cloudflare流」とは言えません。Developer Weekの精神において、<strong>D1 Open Alphaを導入するのにこれ以上の好機はありません</strong>！</p>
-<p data-astro-cid-byeekcgh="">「Open Alpha」は、私たちにとって新しい概念です。Cloudflareの様々な発表で「オープンベータ」という言葉を耳にすると思いますが、ここの多くの製品にも言えることですが、D1には全く適していませんでした。まだアクティブな開発とテストの段階にある極めて重要な部分がまだいくつかあるため、実際のアプリの構築を開始できるように、完全に形成されたD1をパブリックベータ版としてリリースする前に、趣味のアプリやサイドプロジェクトで製品の感触をつかむことができるようにしたいと考えています。</p>
-<h2 data-astro-cid-byeekcgh="">Alphaには何が含まれているのですか？</h2>
-<p data-astro-cid-byeekcgh="">D1の舞台裏ではまだ多くのことが変化していますが、開発者としてのあなたがデータベースを初めて使う場合であっても、D1とのかかわり方について多くのことを考慮してきました。</p>
-<h3 data-astro-cid-byeekcgh="">D1ダッシュボードの使用</h3>
-<p data-astro-cid-byeekcgh="">数回クリックするだけで簡単に、ダッシュボード内からD1データベースを立ち上げ、実行することができます。D1インターフェースでは、自由にデータを作成、維持、表示できます。UIで行われた変更は、すぐにWorkerで利用できますー再デプロイは必要ありません！</p>
-<h3 data-astro-cid-byeekcgh="">Wranglerを使う</h3>
+<p data-astro-cid-nalcf22a="">2022年5月、当社はデータベースの簡素化（データベースの構築、保守、統合）を追求することを<a href="https://blog.cloudflare.com/ja-jp/introducing-d1-ja-jp">発表しました</a>。当社の目標は、最先端のパフォーマンスを備えた強力でスケーラブルなデータベースを、いかなる煩わしさもなく、実行できるようにするツールをお客様に提供することです。そして、当社は最初に、データベースの専門家だけでなく、あらゆるタイプのユーザーのデータベース開発経験を再考することを目指しました。</p>
+<p data-astro-cid-nalcf22a="">この数カ月間、それだけを作成するために<a href="https://blog.cloudflare.com/whats-new-with-d1">取り組み</a>、一方その過程でいくつかの非常に重要な教訓を学びました。Workers上でグローバルなリレーショナルデータベース製品を構築することは、開発者プラットフォームの境界を絶対的な限界まで押し上げ、しばしばそれを超えますが、Cloudflare の私たちにとっては非常にスリリングな方法であるということが分かりました。当社の進歩は、外部からは遅いように見えるかもしれません。しかし、すべての改善、バグ修正またはストレステストは、_すべての_お客様が、世界で最も<a href="https://blog.cloudflare.com/ja-jp/welcome-to-the-supercloud-and-developer-week-2022-ja-jp">意欲的なサーバーレスアプリケーション</a>を構築するための道筋を築くのに役立つということです。</p>
+<p data-astro-cid-nalcf22a="">しかし、D1の生産準備をするまでの道のりは続き、まだ_完全には_完成していませんが、まずフィードバックを求めて立ち止まらなければ、それは「Cloudflare流」とは言えません。Developer Weekの精神において、<strong>D1 Open Alphaを導入するのにこれ以上の好機はありません</strong>！</p>
+<p data-astro-cid-nalcf22a="">「Open Alpha」は、私たちにとって新しい概念です。Cloudflareの様々な発表で「オープンベータ」という言葉を耳にすると思いますが、ここの多くの製品にも言えることですが、D1には全く適していませんでした。まだアクティブな開発とテストの段階にある極めて重要な部分がまだいくつかあるため、実際のアプリの構築を開始できるように、完全に形成されたD1をパブリックベータ版としてリリースする前に、趣味のアプリやサイドプロジェクトで製品の感触をつかむことができるようにしたいと考えています。</p>
+<h2 data-astro-cid-nalcf22a="">Alphaには何が含まれているのですか？</h2>
+<p data-astro-cid-nalcf22a="">D1の舞台裏ではまだ多くのことが変化していますが、開発者としてのあなたがデータベースを初めて使う場合であっても、D1とのかかわり方について多くのことを考慮してきました。</p>
+<h3 data-astro-cid-nalcf22a="">D1ダッシュボードの使用</h3>
+<p data-astro-cid-nalcf22a="">数回クリックするだけで簡単に、ダッシュボード内からD1データベースを立ち上げ、実行することができます。D1インターフェースでは、自由にデータを作成、維持、表示できます。UIで行われた変更は、すぐにWorkerで利用できますー再デプロイは必要ありません！</p>
+<h3 data-astro-cid-nalcf22a="">Wranglerを使う</h3>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="263" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FPYRYDJYPFBXHJ4JC9Y1.png&amp;w=715&amp;h=263&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FPYRYDJYPFBXHJ4JC9Y1.png&amp;w=640&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FPYRYDJYPFBXHJ4JC9Y1.png&amp;w=715&amp;h=263&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FPYRYDJYPFBXHJ4JC9Y1.png&amp;w=750&amp;h=276&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FPYRYDJYPFBXHJ4JC9Y1.png&amp;w=828&amp;h=305&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FPYRYDJYPFBXHJ4JC9Y1.png&amp;w=1080&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FPYRYDJYPFBXHJ4JC9Y1.png&amp;w=1280&amp;h=471&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FPYRYDJYPFBXHJ4JC9Y1.png&amp;w=1430&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1458 Embedded Image - agHVpu" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FPYRYDJYPFBXHJ4JC9Y1.png&amp;w=1920&amp;h=707&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="707" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="263" class="pt-portable-image-media"></div>
 </figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p data-astro-cid-byeekcgh="">もし少しやってみたいという関心があるのでしたら、Wrangler CLIを使用してデータベースを操作することもできます。データベースを作成し、手動でデータの追加を開始するか、次の2つの方法のいずれかでデータベースをブートストラップします。</p>
-<p data-astro-cid-byeekcgh=""><strong>1. SQLファイルを実行する</strong></p>
-<p data-astro-cid-byeekcgh="">あなたの <code>.sql</code> ファイルは次のようになります。</p>
+<p data-astro-cid-nalcf22a="">もし少しやってみたいという関心があるのでしたら、Wrangler CLIを使用してデータベースを操作することもできます。データベースを作成し、手動でデータの追加を開始するか、次の2つの方法のいずれかでデータベースをブートストラップします。</p>
+<p data-astro-cid-nalcf22a=""><strong>1. SQLファイルを実行する</strong></p>
+<p data-astro-cid-nalcf22a="">あなたの <code>.sql</code> ファイルは次のようになります。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> execute</span><span class="sk-032f62-99ffe4"> my-database-name</span><span class="sk-005cc5-99ffe4"> --file</span><span class="sk-032f62-99ffe4"> ./customers.sql</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -39,8 +39,8 @@
 		})
 	});
 </script>
-<p data-astro-cid-byeekcgh="">customers.sql</p>
-<p data-astro-cid-byeekcgh=""><strong>2. マイグレーションの作成と実行</strong></p>
+<p data-astro-cid-nalcf22a="">customers.sql</p>
+<p data-astro-cid-nalcf22a=""><strong>2. マイグレーションの作成と実行</strong></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">DROP</span><span class="sk-d73a49-ffc799"> TABLE</span><span class="sk-d73a49-ffc799"> IF</span><span class="sk-d73a49-ffc799"> EXISTS</span><span class="sk-24292e-fff"> Customers;</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">CREATE</span><span class="sk-d73a49-ffc799"> TABLE</span><span class="sk-6f42c1-ffc799"> Customers</span><span class="sk-24292e-fff"> (CustomerID </span><span class="sk-d73a49-a0a0a0">INT</span><span class="sk-24292e-fff">, CompanyName </span><span class="sk-d73a49-a0a0a0">TEXT</span><span class="sk-24292e-fff">, ContactName </span><span class="sk-d73a49-a0a0a0">TEXT</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">PRIMARY KEY</span><span class="sk-24292e-fff"> (</span><span class="sk-032f62-99ffe4">`CustomerID`</span><span class="sk-24292e-fff">));</span></span>
@@ -51,9 +51,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">マイグレーションは、データベースの変更をバージョン管理するための方法です。D1 では、<a href="https://developers.cloudflare.com/d1/migrations" target="_blank" rel="noopener noreferrer">マイグレーションを作成</a>し、それをデータベースに適用することができます。</p>
-<p data-astro-cid-byeekcgh="">マイグレーションを作成するために、以下を実行します。</p>
-<p data-astro-cid-byeekcgh="">これで、 <code>migrations</code> フォルダにSQLファイルが作成され、そこにクエリを追加できるようになります。その後、以下を実行することでデータベースにマイグレーションを適用します。</p>
+<p data-astro-cid-nalcf22a="">マイグレーションは、データベースの変更をバージョン管理するための方法です。D1 では、<a href="https://developers.cloudflare.com/d1/migrations" target="_blank" rel="noopener noreferrer">マイグレーションを作成</a>し、それをデータベースに適用することができます。</p>
+<p data-astro-cid-nalcf22a="">マイグレーションを作成するために、以下を実行します。</p>
+<p data-astro-cid-nalcf22a="">これで、 <code>migrations</code> フォルダにSQLファイルが作成され、そこにクエリを追加できるようになります。その後、以下を実行することでデータベースにマイグレーションを適用します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> migrations</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">my-database-nam</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">short</span><span class="sk-032f62-99ffe4"> description</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> migratio</span><span class="sk-24292e-fff">n</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -61,7 +61,7 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-byeekcgh="">Worker内からD1へアクセスする</h3>
+<h3 data-astro-cid-nalcf22a="">Worker内からD1へアクセスする</h3>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> migrations</span><span class="sk-032f62-99ffe4"> apply</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">my-database-nam</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
 				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
@@ -69,8 +69,8 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh=""><code>wrangler.toml</code> 設定ファイルにD1バインディングを追加することで、WorkerにD1をアタッチできます。次に、Worker内で以下のようにクエリを実行することで、D1とやりとりできます。</p>
-<h3 data-astro-cid-byeekcgh="">または、Pages FunctionからD1へアクセスする</h3>
+<p data-astro-cid-nalcf22a=""><code>wrangler.toml</code> 設定ファイルにD1バインディングを追加することで、WorkerにD1をアタッチできます。次に、Worker内で以下のようにクエリを実行することで、D1とやりとりできます。</p>
+<h3 data-astro-cid-nalcf22a="">または、Pages FunctionからD1へアクセスする</h3>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">) {</span></span>
@@ -93,12 +93,12 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<p data-astro-cid-byeekcgh="">今回のアルファ版では、D1は<a href="https://pages.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Pages</a>との統合もサポートしています。Pagesダッシュボード内にD1バインディングを追加し、Pages Function内にクエリを記述して、フルスタックアプリケーションを構築することができます。PagesとD1を始めるには、<a href="https://developers.cloudflare.com/pages/platform/functions/bindings/#d1-database" target="_blank" rel="noopener noreferrer">完全なドキュメント</a>をチェックしてみてください。</p>
-<h2 data-astro-cid-byeekcgh="">コミュニティが構築したツール</h2>
-<p data-astro-cid-byeekcgh="">プライベートアルファ版の期間中、D1にある熱狂は、コミュニティのメンバーによるD1エコシステムと開発者エクスペリエンスへの貴重な貢献へとつながりました。これまでのプロジェクトの中から、特にお気に入りのものを以下にご紹介します。</p>
-<h3 data-astro-cid-byeekcgh="">d1-orm</h3>
-<p data-astro-cid-byeekcgh="">ORM（オブジェクトリレーショナルマッピング）とは、JavaScriptを使ってデータを問い合わせ・処理する方法です。Cloudflare Discord Community Championによって作成された<code>d1-orm</code> は、D1使用時に厳密な型付け体験を提供することを目的としています。</p>
-<p data-astro-cid-byeekcgh=""><a href="https://docs.interactions.rest/d1-orm" target="_blank" rel="noopener noreferrer">完全なドキュメント</a>をご覧いただき、 <a href="https://github.com/Interactions-as-a-Service/d1-orm/issues" target="_blank" rel="noopener noreferrer">GitHubリポジトリ</a>で問題を作成してフィードバックを提供することができます。</p>
+<p data-astro-cid-nalcf22a="">今回のアルファ版では、D1は<a href="https://pages.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Pages</a>との統合もサポートしています。Pagesダッシュボード内にD1バインディングを追加し、Pages Function内にクエリを記述して、フルスタックアプリケーションを構築することができます。PagesとD1を始めるには、<a href="https://developers.cloudflare.com/pages/platform/functions/bindings/#d1-database" target="_blank" rel="noopener noreferrer">完全なドキュメント</a>をチェックしてみてください。</p>
+<h2 data-astro-cid-nalcf22a="">コミュニティが構築したツール</h2>
+<p data-astro-cid-nalcf22a="">プライベートアルファ版の期間中、D1にある熱狂は、コミュニティのメンバーによるD1エコシステムと開発者エクスペリエンスへの貴重な貢献へとつながりました。これまでのプロジェクトの中から、特にお気に入りのものを以下にご紹介します。</p>
+<h3 data-astro-cid-nalcf22a="">d1-orm</h3>
+<p data-astro-cid-nalcf22a="">ORM（オブジェクトリレーショナルマッピング）とは、JavaScriptを使ってデータを問い合わせ・処理する方法です。Cloudflare Discord Community Championによって作成された<code>d1-orm</code> は、D1使用時に厳密な型付け体験を提供することを目的としています。</p>
+<p data-astro-cid-nalcf22a=""><a href="https://docs.interactions.rest/d1-orm" target="_blank" rel="noopener noreferrer">完全なドキュメント</a>をご覧いただき、 <a href="https://github.com/Interactions-as-a-Service/d1-orm/issues" target="_blank" rel="noopener noreferrer">GitHubリポジトリ</a>で問題を作成してフィードバックを提供することができます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> users</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Model</span><span class="sk-24292e-fff">(</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // table name, primary keys, indexes etc</span></span>
@@ -121,9 +121,9 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-byeekcgh="">workers-qb</h3>
-<p data-astro-cid-byeekcgh="">これはゼロ依存性のクエリビルダで、従来のORMよりも生のクエリを使用する利点と速度を維持しながら、シンプルな標準化されたインタフェースを提供します。ORMのような機能を提供することは意図していませんが、<code>workers-qb</code> により、コードからSQLに直接アクセスすることでデータベースとのやりとりを容易にします。</p>
-<p data-astro-cid-byeekcgh="">クエリビルダの詳細については、<a href="https://workers-qb.massadas.com" target="_blank" rel="noopener noreferrer">こちら</a>をご覧ください。</p>
+<h3 data-astro-cid-nalcf22a="">workers-qb</h3>
+<p data-astro-cid-nalcf22a="">これはゼロ依存性のクエリビルダで、従来のORMよりも生のクエリを使用する利点と速度を維持しながら、シンプルな標準化されたインタフェースを提供します。ORMのような機能を提供することは意図していませんが、<code>workers-qb</code> により、コードからSQLに直接アクセスすることでデータベースとのやりとりを容易にします。</p>
+<p data-astro-cid-nalcf22a="">クエリビルダの詳細については、<a href="https://workers-qb.massadas.com" target="_blank" rel="noopener noreferrer">こちら</a>をご覧ください。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> qb</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> D1QB</span><span class="sk-24292e-fff">(env.</span><span class="sk-005cc5-fff">DB</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"></span>
@@ -140,15 +140,15 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h3 data-astro-cid-byeekcgh="">d1-console</h3>
-<p data-astro-cid-byeekcgh="">データベースを操作するたび、ターミナルで <code>wrangler d1 execute</code> コマンドを実行する代わりに、<code>d1-console</code> 内で D1を操作することができます。Discord Community Championによって作成されたもので、複数行のクエリの実行、コマンド履歴の取得、きれいにフォーマットされたテーブル出力の表示などの利点があります。</p>
-<p data-astro-cid-byeekcgh="">これは現在コミュニティプロジェクトですが、将来的には「D1 Console」をネイティブにサポートする予定です。今現在は、<a href="https://github.com/isaac-mcfadyen/d1-console" target="_blank" rel="noopener noreferrer">こちらから</a> <code>d1-console</code> パッケージをチェックして始めてみてください。</p>
+<h3 data-astro-cid-nalcf22a="">d1-console</h3>
+<p data-astro-cid-nalcf22a="">データベースを操作するたび、ターミナルで <code>wrangler d1 execute</code> コマンドを実行する代わりに、<code>d1-console</code> 内で D1を操作することができます。Discord Community Championによって作成されたもので、複数行のクエリの実行、コマンド履歴の取得、きれいにフォーマットされたテーブル出力の表示などの利点があります。</p>
+<p data-astro-cid-nalcf22a="">これは現在コミュニティプロジェクトですが、将来的には「D1 Console」をネイティブにサポートする予定です。今現在は、<a href="https://github.com/isaac-mcfadyen/d1-console" target="_blank" rel="noopener noreferrer">こちらから</a> <code>d1-console</code> パッケージをチェックして始めてみてください。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="409" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QDYTNV18MQV7XZXTF82A.png&amp;w=715&amp;h=409&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QDYTNV18MQV7XZXTF82A.png&amp;w=640&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QDYTNV18MQV7XZXTF82A.png&amp;w=715&amp;h=409&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QDYTNV18MQV7XZXTF82A.png&amp;w=750&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QDYTNV18MQV7XZXTF82A.png&amp;w=828&amp;h=474&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QDYTNV18MQV7XZXTF82A.png&amp;w=1080&amp;h=618&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QDYTNV18MQV7XZXTF82A.png&amp;w=1280&amp;h=732&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QDYTNV18MQV7XZXTF82A.png&amp;w=1430&amp;h=818&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1458 Embedded Image - wLLdA5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QDYTNV18MQV7XZXTF82A.png&amp;w=1476&amp;h=844&amp;f=webp" data-lightbox-width="1476" data-lightbox-height="844" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="409" class="pt-portable-image-media"></div>
 </figure>
-<h3 data-astro-cid-byeekcgh=""><a href="https://github.com/koskimas/kysely" target="_blank" rel="noopener noreferrer">Kysely</a>用D1アダプター</h3>
-<p data-astro-cid-byeekcgh="">Kyselyは、型安全性があり、自動補完に適したTypeScriptのSQLクエリビルダです。このアダプターを使うと、使い慣れたKyselyのインターフェースでD1とやりとりできます。</p>
-<p data-astro-cid-byeekcgh=""><a href="https://github.com/aidenwallis/kysely-d1" target="_blank" rel="noopener noreferrer">こちら</a>からプロジェクトをチェックしてください。</p>
+<h3 data-astro-cid-nalcf22a=""><a href="https://github.com/koskimas/kysely" target="_blank" rel="noopener noreferrer">Kysely</a>用D1アダプター</h3>
+<p data-astro-cid-nalcf22a="">Kyselyは、型安全性があり、自動補完に適したTypeScriptのSQLクエリビルダです。このアダプターを使うと、使い慣れたKyselyのインターフェースでD1とやりとりできます。</p>
+<p data-astro-cid-nalcf22a=""><a href="https://github.com/aidenwallis/kysely-d1" target="_blank" rel="noopener noreferrer">こちら</a>からプロジェクトをチェックしてください。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Create Kysely instance with kysely-d1</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> db</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Kysely</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Database</span><span class="sk-24292e-fff">&gt;({ </span></span>
@@ -166,15 +166,15 @@
 				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
 			</svg></span></button>
 </div>
-<h2 data-astro-cid-byeekcgh="">まだテスト段階のものは？</h2>
-<p data-astro-cid-byeekcgh="">このAlphaリリースで無効にされた最大のものは、レプリケーションとJavaScriptトランザクションのサポートです。これらの変更は徐々に展開していきますが、現在、存在するいくつかの制限（積極的にテストに取り組んでいる）について呼びかけたいと思います：</p>
-<p data-astro-cid-byeekcgh="">● &nbsp; &nbsp; **データベースの場所：**各D1データベースは、単一のインスタンスのみ実行します。これは、開発者であるあなたがデータベースを作成する場所の近くで作成され、現在アクセスパターンに基づいて地域を移動することはありません。世界各地で実行しているWorkersは、結果として遅延がより高くなります。</p>
-<p data-astro-cid-byeekcgh="">● &nbsp; &nbsp; **並行処理制限:**高負荷時には、読み取りや書き込みクエリは、新しいレプリカの作成をトリガーするのではなく、キューに入れられることがあります。その結果、Open Alpha のパフォーマンスとスループットの特性は、最終製品を代表するものではなくなります。</p>
-<p data-astro-cid-byeekcgh="">● &nbsp; &nbsp; **可用性の制限:**バックアップの実行中は、DBへのアクセスをブロックします。ほとんどの場合、これは1〜2秒程度であり、バックアップ中に到着したリクエストはキューに入れられます。</p>
-<p data-astro-cid-byeekcgh="">また、<a href="https://developers.cloudflare.com/d1/limits-and-pricing" target="_blank" rel="noopener noreferrer">D1 Alpha Limitations</a>で、より詳細な最新リストを確認することができます。</p>
-<h2 data-astro-cid-byeekcgh=""><strong>フィードバックのリクエスト</strong></h2>
-<p data-astro-cid-byeekcgh="">D1をご利用になりたいデータベースの種類で、当社はあらゆる種類の推測や手だてを行うことができますが、当社はユーザーではないのです–ユーザーはお客様です私たちは、あらゆる立場の開発者に、初期段階のD1技術を試してもらい、あなたの製品アプリに適したものにするために、改善点を教えてもらいたいと考えています。</p>
-<p data-astro-cid-byeekcgh="">体験に関する一般的なフィードバックや、Alphaの他の人々と交流するには、<a href="https://discord.gg/cloudflaredev" target="_blank" rel="noopener noreferrer">Cloudflare Developers Discord</a>の<a href="https://discord.com/channels/595317990191398933/992060581832032316" target="_blank" rel="noopener noreferrer">#d1-open-alpha</a>チャンネルに参加してください。重要なお知らせや変更は、このチャンネルや<a href="https://discord.com/channels/595317990191398933/832698219824807956" target="_blank" rel="noopener noreferrer">毎月のコミュニティコール</a>で行う予定です。</p>
-<p data-astro-cid-byeekcgh="">より具体的な機能要望（どんなに奇抜なものでも）やバグの報告は、<a href="https://community.cloudflare.com/c/developers/d1" target="_blank" rel="noopener noreferrer">Cloudflareコミュニティフォーラム</a>のD1カテゴリーにスレッドを作成してください。このフォーラムは、数ヶ月先のプランを立てるための手段として維持していく予定です。</p>
-<h2 data-astro-cid-byeekcgh="">追伸：募集中です。</h2>
-<p data-astro-cid-byeekcgh="">ご興味を持たれましたか？もしあなたが、未知の問題を解決し、スケールの大きなパワフルな製品を作るのがお好きでしたら、D1チームは採用中です。<a href="https://www.cloudflare.com/careers/jobs" target="_blank" rel="noopener noreferrer">募集中の職種</a>をぜひご覧ください。</p>
+<h2 data-astro-cid-nalcf22a="">まだテスト段階のものは？</h2>
+<p data-astro-cid-nalcf22a="">このAlphaリリースで無効にされた最大のものは、レプリケーションとJavaScriptトランザクションのサポートです。これらの変更は徐々に展開していきますが、現在、存在するいくつかの制限（積極的にテストに取り組んでいる）について呼びかけたいと思います：</p>
+<p data-astro-cid-nalcf22a="">● &nbsp; &nbsp; **データベースの場所：**各D1データベースは、単一のインスタンスのみ実行します。これは、開発者であるあなたがデータベースを作成する場所の近くで作成され、現在アクセスパターンに基づいて地域を移動することはありません。世界各地で実行しているWorkersは、結果として遅延がより高くなります。</p>
+<p data-astro-cid-nalcf22a="">● &nbsp; &nbsp; **並行処理制限:**高負荷時には、読み取りや書き込みクエリは、新しいレプリカの作成をトリガーするのではなく、キューに入れられることがあります。その結果、Open Alpha のパフォーマンスとスループットの特性は、最終製品を代表するものではなくなります。</p>
+<p data-astro-cid-nalcf22a="">● &nbsp; &nbsp; **可用性の制限:**バックアップの実行中は、DBへのアクセスをブロックします。ほとんどの場合、これは1〜2秒程度であり、バックアップ中に到着したリクエストはキューに入れられます。</p>
+<p data-astro-cid-nalcf22a="">また、<a href="https://developers.cloudflare.com/d1/limits-and-pricing" target="_blank" rel="noopener noreferrer">D1 Alpha Limitations</a>で、より詳細な最新リストを確認することができます。</p>
+<h2 data-astro-cid-nalcf22a=""><strong>フィードバックのリクエスト</strong></h2>
+<p data-astro-cid-nalcf22a="">D1をご利用になりたいデータベースの種類で、当社はあらゆる種類の推測や手だてを行うことができますが、当社はユーザーではないのです–ユーザーはお客様です私たちは、あらゆる立場の開発者に、初期段階のD1技術を試してもらい、あなたの製品アプリに適したものにするために、改善点を教えてもらいたいと考えています。</p>
+<p data-astro-cid-nalcf22a="">体験に関する一般的なフィードバックや、Alphaの他の人々と交流するには、<a href="https://discord.gg/cloudflaredev" target="_blank" rel="noopener noreferrer">Cloudflare Developers Discord</a>の<a href="https://discord.com/channels/595317990191398933/992060581832032316" target="_blank" rel="noopener noreferrer">#d1-open-alpha</a>チャンネルに参加してください。重要なお知らせや変更は、このチャンネルや<a href="https://discord.com/channels/595317990191398933/832698219824807956" target="_blank" rel="noopener noreferrer">毎月のコミュニティコール</a>で行う予定です。</p>
+<p data-astro-cid-nalcf22a="">より具体的な機能要望（どんなに奇抜なものでも）やバグの報告は、<a href="https://community.cloudflare.com/c/developers/d1" target="_blank" rel="noopener noreferrer">Cloudflareコミュニティフォーラム</a>のD1カテゴリーにスレッドを作成してください。このフォーラムは、数ヶ月先のプランを立てるための手段として維持していく予定です。</p>
+<h2 data-astro-cid-nalcf22a="">追伸：募集中です。</h2>
+<p data-astro-cid-nalcf22a="">ご興味を持たれましたか？もしあなたが、未知の問題を解決し、スケールの大きなパワフルな製品を作るのがお好きでしたら、D1チームは採用中です。<a href="https://www.cloudflare.com/careers/jobs" target="_blank" rel="noopener noreferrer">募集中の職種</a>をぜひご覧ください。</p>
