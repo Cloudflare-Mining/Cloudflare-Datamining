@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/nimbus-docs",
 	"dist-tags": {
-		"latest": "0.14.1"
+		"latest": "0.14.2"
 	},
 	"versions": {
 		"0.0.0": {
@@ -1211,8 +1211,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQD6dIogW1MFe7H0Z0Dl19HVHN0BY5u7pMLFxFTHV2Y+GAIhAIGytcpggOgY8DkuLkUu4b1V/X4nf0G6BHJlF/Fgp1S2"
+						"sig": "MEYCIQD6dIogW1MFe7H0Z0Dl19HVHN0BY5u7pMLFxFTHV2Y+GAIhAIGytcpggOgY8DkuLkUu4b1V/X4nf0G6BHJlF/Fgp1S2",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -1222,6 +1222,102 @@
 					}
 				},
 				"unpackedSize": 3610179
+			},
+			"engines": {
+				"node": ">=22.12.0"
+			}
+		},
+		"0.14.2": {
+			"name": "@cloudflare/nimbus-docs",
+			"version": "0.14.2",
+			"dependencies": {
+				"mri": "^1.2.0",
+				"clsx": "^2.1.1",
+				"vite": "^8.0.0",
+				"yaml": "^2.7.1",
+				"giget": "^3.3.0",
+				"shiki": "^4.4.1",
+				"vfile": "^6.0.3",
+				"semver": "^7.8.5",
+				"satteri": "^0.10.5",
+				"unified": "^11.0.5",
+				"picomatch": "^4.0.5",
+				"typescript": "^5.8.3",
+				"cross-spawn": "7.0.6",
+				"@astrojs/mdx": "~8.0.0",
+				"jsonc-parser": "^3.3.1",
+				"@clack/prompts": "^0.9.1",
+				"@iconify/tools": "^5.0.12",
+				"@iconify/types": "^2.0.0",
+				"@iconify/utils": "^3.1.4",
+				"@shikijs/types": "^4.4.1",
+				"github-slugger": "^2.0.0",
+				"tailwind-merge": "^3.5.0",
+				"@astrojs/sitemap": "3.7.2",
+				"hast-util-to-html": "^9.0.5",
+				"hast-util-sanitize": "^5.0.2",
+				"hast-util-from-html": "^2.0.3",
+				"@vercel/detect-agent": "1.2.3",
+				"@shikijs/transformers": "^4.4.1",
+				"satteri-source-parser": "npm:satteri@^0.9.1",
+				"@astrojs/markdown-satteri": "^0.4.0",
+				"remark-lint-emphasis-marker": "^4.0.1",
+				"remark-lint-no-literal-urls": "^4.0.1",
+				"remark-lint-fenced-code-flag": "^4.2.0",
+				"remark-lint-heading-increment": "^4.0.1",
+				"remark-lint-no-duplicate-headings": "^4.0.1",
+				"remark-lint-no-heading-punctuation": "^4.0.1",
+				"remark-lint-unordered-list-marker-style": "^4.0.1",
+				"remark-lint-no-multiple-toplevel-headings": "^4.0.1"
+			},
+			"devDependencies": {
+				"tsx": "^4.22.3",
+				"astro": "7.3.1",
+				"jsdom": "^29.1.1",
+				"tsdown": "^0.20.3",
+				"@mdx-js/mdx": "^3.1.1",
+				"@types/react": "^19.2.6",
+				"@types/semver": "^7.7.1",
+				"openapi-sampler": "^1.7.4",
+				"@types/picomatch": "^4.0.3",
+				"@types/react-dom": "^19.2.3",
+				"@readme/httpsnippet": "^11.4.0",
+				"@scalar/openapi-parser": "^0.28.12",
+				"@astrojs/markdown-remark": "7.3.0"
+			},
+			"peerDependencies": {
+				"astro": ">=7.2.6 <8.0.0",
+				"react": ">=19.0.0",
+				"react-dom": ">=19.0.0",
+				"openapi-sampler": ">=1.5.0",
+				"@readme/httpsnippet": ">=10.0.0",
+				"@scalar/openapi-parser": ">=0.10.0 <1.0.0"
+			},
+			"bin": {
+				"nimbus-docs": "dist/cli/index.js"
+			},
+			"dist": {
+				"shasum": "445e18594db3b5748608a3217feeafeafe400ac7",
+				"tarball": "https://registry.npmjs.org/@cloudflare/nimbus-docs/-/nimbus-docs-0.14.2.tgz",
+				"fileCount": 157,
+				"integrity": "sha512-sj54zv8RR+vRPoF1VaSPof7nIOAyBiT9zaOpCHSEjwRQtyThnpH7LNkB5UdZXZq69kQN5tHjRFfVMS+MsTOiRw==",
+				"signatures": [
+					{
+						"sig": "MEUCIAsPjxbyf2bor+j6EBvb3iMu4PmfrfZV6B5aSRKRp85uAiEAnCT4qI+fm7BUr+LH7876jPkfAln3y872XfSSY3SV8Xs=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIQCHSlGHE4T87sWcd6taS9kH27JGQoldu3Q8bRgkUUdy1QIgFO4qTMEFQcCho+s9/Zic3HPgkBZlrRcBqHKi6SxWSRQ="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fnimbus-docs@0.14.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 3644049
 			},
 			"engines": {
 				"node": ">=22.12.0"
