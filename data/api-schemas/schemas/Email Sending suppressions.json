@@ -139,6 +139,54 @@
 											"type": "string",
 											"format": "uuid",
 											"example": "396a5436-d4b0-42a6-b3fc-48e8fa522321"
+										},
+										"scope": {
+											"description": "Where the suppression applies: `account` for every sending domain of the account, or `sending_domain` for one envelope MAIL FROM domain.",
+											"example": {
+												"type": "sending_domain",
+												"value": "mail.example.com"
+											},
+											"oneOf": [
+												{
+													"properties": {
+														"type": {
+															"description": "Blocks the recipient for every sending domain of the account.",
+															"type": "string",
+															"example": "account",
+															"enum": [
+																"account"
+															]
+														}
+													},
+													"required": [
+														"type"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"type": {
+															"description": "Blocks the recipient only for mail whose envelope MAIL FROM uses `value`.",
+															"type": "string",
+															"example": "sending_domain",
+															"enum": [
+																"sending_domain"
+															]
+														},
+														"value": {
+															"description": "The sending domain: the domain part of the envelope MAIL FROM, lowercase, without a trailing dot.",
+															"type": "string",
+															"example": "mail.example.com",
+															"maxLength": 1024
+														}
+													},
+													"required": [
+														"type",
+														"value"
+													],
+													"type": "object"
+												}
+											]
 										}
 									},
 									"required": [
@@ -171,6 +219,16 @@
 									"type": "array",
 									"items": {
 										"properties": {
+											"code": {
+												"description": "Machine-readable error code, when one applies: `invalid_scope_value` (the sending domain is not valid), `scope_immutable` (scope cannot change after creation), or `scope_value_requires_type` (`scope_value` needs `scope_type=sending_domain`).",
+												"type": "string",
+												"example": "invalid_scope_value",
+												"enum": [
+													"invalid_scope_value",
+													"scope_immutable",
+													"scope_value_requires_type"
+												]
+											},
 											"message": {
 												"type": "string",
 												"example": "Suppression not found"
@@ -217,6 +275,16 @@
 									"type": "array",
 									"items": {
 										"properties": {
+											"code": {
+												"description": "Machine-readable error code, when one applies: `invalid_scope_value` (the sending domain is not valid), `scope_immutable` (scope cannot change after creation), or `scope_value_requires_type` (`scope_value` needs `scope_type=sending_domain`).",
+												"type": "string",
+												"example": "invalid_scope_value",
+												"enum": [
+													"invalid_scope_value",
+													"scope_immutable",
+													"scope_value_requires_type"
+												]
+											},
 											"message": {
 												"type": "string",
 												"example": "Suppression not found"
@@ -263,6 +331,16 @@
 									"type": "array",
 									"items": {
 										"properties": {
+											"code": {
+												"description": "Machine-readable error code, when one applies: `invalid_scope_value` (the sending domain is not valid), `scope_immutable` (scope cannot change after creation), or `scope_value_requires_type` (`scope_value` needs `scope_type=sending_domain`).",
+												"type": "string",
+												"example": "invalid_scope_value",
+												"enum": [
+													"invalid_scope_value",
+													"scope_immutable",
+													"scope_value_requires_type"
+												]
+											},
 											"message": {
 												"type": "string",
 												"example": "Suppression not found"
@@ -309,6 +387,16 @@
 									"type": "array",
 									"items": {
 										"properties": {
+											"code": {
+												"description": "Machine-readable error code, when one applies: `invalid_scope_value` (the sending domain is not valid), `scope_immutable` (scope cannot change after creation), or `scope_value_requires_type` (`scope_value` needs `scope_type=sending_domain`).",
+												"type": "string",
+												"example": "invalid_scope_value",
+												"enum": [
+													"invalid_scope_value",
+													"scope_immutable",
+													"scope_value_requires_type"
+												]
+											},
 											"message": {
 												"type": "string",
 												"example": "Suppression not found"
@@ -752,7 +840,7 @@
 	"GET /accounts/{account_id}/email/sending/suppressions": {
 		"operationId": "get_publicListSendingSuppressions",
 		"summary": "List account Email Sending suppressions",
-		"description": "Lists every active Email Sending suppression owned by the account, including legacy rows with internal zone memberships.",
+		"description": "Lists every active Email Sending suppression owned by the account: sending-domain suppressions first, then account-wide suppressions (including legacy rows with internal zone memberships). Each group is newest first.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -782,7 +870,7 @@
 				"schema": {
 					"description": "Opaque pagination cursor returned as `result_info.next_cursor`. It carries the filters that produced it.",
 					"type": "string",
-					"example": "eyJ0IjozLCJwIjoxMjMsImMiOiJjM2RjNWYwYjM0YTE0ZmY4ZTFiM2VjMDQ4OTVlMWIyMiJ9",
+					"example": "eyJ0Ijo0LCJwaCI6ImRvbWFpbiIsInAiOjEyMywiYyI6ImMzZGM1ZjBiMzRhMTRmZjhlMWIzZWMwNDg5NWUxYjIyIn0",
 					"maxLength": 2048
 				}
 			},
@@ -821,6 +909,29 @@
 						"soft_bounce",
 						"policy"
 					]
+				}
+			},
+			{
+				"name": "scope_type",
+				"in": "query",
+				"schema": {
+					"description": "Filter by scope: `account` returns only account-wide suppressions, `sending_domain` only sending-domain suppressions. Omit to list both, sending-domain suppressions first.",
+					"type": "string",
+					"example": "sending_domain",
+					"enum": [
+						"account",
+						"sending_domain"
+					]
+				}
+			},
+			{
+				"name": "scope_value",
+				"in": "query",
+				"schema": {
+					"description": "Exact sending-domain filter. Requires `scope_type=sending_domain`.",
+					"type": "string",
+					"example": "mail.example.com",
+					"maxLength": 1024
 				}
 			}
 		],
@@ -888,6 +999,54 @@
 												"description": "Why the address is suppressed: `manual`, `complaint`, `hard_bounce`, `soft_bounce`, or `policy`.",
 												"type": "string",
 												"example": "hard_bounce"
+											},
+											"scope": {
+												"description": "Where the suppression applies: `account` for every sending domain of the account, or `sending_domain` for one envelope MAIL FROM domain.",
+												"example": {
+													"type": "sending_domain",
+													"value": "mail.example.com"
+												},
+												"oneOf": [
+													{
+														"properties": {
+															"type": {
+																"description": "Blocks the recipient for every sending domain of the account.",
+																"type": "string",
+																"example": "account",
+																"enum": [
+																	"account"
+																]
+															}
+														},
+														"required": [
+															"type"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"type": {
+																"description": "Blocks the recipient only for mail whose envelope MAIL FROM uses `value`.",
+																"type": "string",
+																"example": "sending_domain",
+																"enum": [
+																	"sending_domain"
+																]
+															},
+															"value": {
+																"description": "The sending domain: the domain part of the envelope MAIL FROM, lowercase, without a trailing dot.",
+																"type": "string",
+																"example": "mail.example.com",
+																"maxLength": 1024
+															}
+														},
+														"required": [
+															"type",
+															"value"
+														],
+														"type": "object"
+													}
+												]
 											}
 										},
 										"required": [
@@ -916,9 +1075,9 @@
 											"example": 1
 										},
 										"next_cursor": {
-											"description": "Opaque cursor for the next page. Pass it back as the `cursor` query parameter and continue until it is `null`. A bounded large-account scan may return a short intermediate page.",
+											"description": "Opaque cursor for the next page. Pass it back as the `cursor` query parameter and continue until it is `null`. A bounded large-account scan may return a short intermediate page. Sending-domain suppressions are listed before account suppressions; each group is newest first.",
 											"type": "string",
-											"example": "eyJ0IjozLCJwIjoxMjMsImMiOiJjM2RjNWYwYjM0YTE0ZmY4ZTFiM2VjMDQ4OTVlMWIyMiJ9",
+											"example": "eyJ0Ijo0LCJwaCI6ImRvbWFpbiIsInAiOjEyMywiYyI6ImMzZGM1ZjBiMzRhMTRmZjhlMWIzZWMwNDg5NWUxYjIyIn0",
 											"nullable": true
 										},
 										"per_page": {
@@ -960,6 +1119,16 @@
 									"type": "array",
 									"items": {
 										"properties": {
+											"code": {
+												"description": "Machine-readable error code, when one applies: `invalid_scope_value` (the sending domain is not valid), `scope_immutable` (scope cannot change after creation), or `scope_value_requires_type` (`scope_value` needs `scope_type=sending_domain`).",
+												"type": "string",
+												"example": "invalid_scope_value",
+												"enum": [
+													"invalid_scope_value",
+													"scope_immutable",
+													"scope_value_requires_type"
+												]
+											},
 											"message": {
 												"type": "string",
 												"example": "Suppression not found"
@@ -1041,7 +1210,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Returns account-level Email Sending suppression.",
+				"description": "Returns an Email Sending suppression owned by the account.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1102,6 +1271,54 @@
 											"description": "Why the address is suppressed: `manual`, `complaint`, `hard_bounce`, `soft_bounce`, or `policy`.",
 											"type": "string",
 											"example": "hard_bounce"
+										},
+										"scope": {
+											"description": "Where the suppression applies: `account` for every sending domain of the account, or `sending_domain` for one envelope MAIL FROM domain.",
+											"example": {
+												"type": "sending_domain",
+												"value": "mail.example.com"
+											},
+											"oneOf": [
+												{
+													"properties": {
+														"type": {
+															"description": "Blocks the recipient for every sending domain of the account.",
+															"type": "string",
+															"example": "account",
+															"enum": [
+																"account"
+															]
+														}
+													},
+													"required": [
+														"type"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"type": {
+															"description": "Blocks the recipient only for mail whose envelope MAIL FROM uses `value`.",
+															"type": "string",
+															"example": "sending_domain",
+															"enum": [
+																"sending_domain"
+															]
+														},
+														"value": {
+															"description": "The sending domain: the domain part of the envelope MAIL FROM, lowercase, without a trailing dot.",
+															"type": "string",
+															"example": "mail.example.com",
+															"maxLength": 1024
+														}
+													},
+													"required": [
+														"type",
+														"value"
+													],
+													"type": "object"
+												}
+											]
 										}
 									},
 									"required": [
@@ -1139,6 +1356,16 @@
 									"type": "array",
 									"items": {
 										"properties": {
+											"code": {
+												"description": "Machine-readable error code, when one applies: `invalid_scope_value` (the sending domain is not valid), `scope_immutable` (scope cannot change after creation), or `scope_value_requires_type` (`scope_value` needs `scope_type=sending_domain`).",
+												"type": "string",
+												"example": "invalid_scope_value",
+												"enum": [
+													"invalid_scope_value",
+													"scope_immutable",
+													"scope_value_requires_type"
+												]
+											},
 											"message": {
 												"type": "string",
 												"example": "Suppression not found"
@@ -1496,7 +1723,7 @@
 	"PATCH /accounts/{account_id}/email/sending/suppressions/{suppression_id}": {
 		"operationId": "patch_publicUpdateSendingSuppression",
 		"summary": "Update account Email Sending suppression",
-		"description": "Updates expiry or advisory note fields without changing legacy internal zone memberships.",
+		"description": "Updates expiry or advisory note fields without changing legacy internal zone memberships. Scope cannot be changed.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1538,6 +1765,13 @@
 								"type": "string",
 								"example": "Customer re-confirmed opt-in",
 								"maxLength": 1000
+							},
+							"scope": {
+								"description": "Not editable. Scope is fixed when the suppression is created; any value returns 400 with code `scope_immutable`. Delete and recreate the suppression to change it.",
+								"example": {
+									"type": "account"
+								},
+								"nullable": true
 							}
 						}
 					}
@@ -1607,6 +1841,54 @@
 											"description": "Why the address is suppressed: `manual`, `complaint`, `hard_bounce`, `soft_bounce`, or `policy`.",
 											"type": "string",
 											"example": "hard_bounce"
+										},
+										"scope": {
+											"description": "Where the suppression applies: `account` for every sending domain of the account, or `sending_domain` for one envelope MAIL FROM domain.",
+											"example": {
+												"type": "sending_domain",
+												"value": "mail.example.com"
+											},
+											"oneOf": [
+												{
+													"properties": {
+														"type": {
+															"description": "Blocks the recipient for every sending domain of the account.",
+															"type": "string",
+															"example": "account",
+															"enum": [
+																"account"
+															]
+														}
+													},
+													"required": [
+														"type"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"type": {
+															"description": "Blocks the recipient only for mail whose envelope MAIL FROM uses `value`.",
+															"type": "string",
+															"example": "sending_domain",
+															"enum": [
+																"sending_domain"
+															]
+														},
+														"value": {
+															"description": "The sending domain: the domain part of the envelope MAIL FROM, lowercase, without a trailing dot.",
+															"type": "string",
+															"example": "mail.example.com",
+															"maxLength": 1024
+														}
+													},
+													"required": [
+														"type",
+														"value"
+													],
+													"type": "object"
+												}
+											]
 										}
 									},
 									"required": [
@@ -1634,7 +1916,7 @@
 				}
 			},
 			"400": {
-				"description": "No updatable fields supplied.",
+				"description": "No updatable fields supplied, or scope supplied.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1644,6 +1926,16 @@
 									"type": "array",
 									"items": {
 										"properties": {
+											"code": {
+												"description": "Machine-readable error code, when one applies: `invalid_scope_value` (the sending domain is not valid), `scope_immutable` (scope cannot change after creation), or `scope_value_requires_type` (`scope_value` needs `scope_type=sending_domain`).",
+												"type": "string",
+												"example": "invalid_scope_value",
+												"enum": [
+													"invalid_scope_value",
+													"scope_immutable",
+													"scope_value_requires_type"
+												]
+											},
 											"message": {
 												"type": "string",
 												"example": "Suppression not found"
@@ -1690,6 +1982,16 @@
 									"type": "array",
 									"items": {
 										"properties": {
+											"code": {
+												"description": "Machine-readable error code, when one applies: `invalid_scope_value` (the sending domain is not valid), `scope_immutable` (scope cannot change after creation), or `scope_value_requires_type` (`scope_value` needs `scope_type=sending_domain`).",
+												"type": "string",
+												"example": "invalid_scope_value",
+												"enum": [
+													"invalid_scope_value",
+													"scope_immutable",
+													"scope_value_requires_type"
+												]
+											},
 											"message": {
 												"type": "string",
 												"example": "Suppression not found"
@@ -1736,6 +2038,16 @@
 									"type": "array",
 									"items": {
 										"properties": {
+											"code": {
+												"description": "Machine-readable error code, when one applies: `invalid_scope_value` (the sending domain is not valid), `scope_immutable` (scope cannot change after creation), or `scope_value_requires_type` (`scope_value` needs `scope_type=sending_domain`).",
+												"type": "string",
+												"example": "invalid_scope_value",
+												"enum": [
+													"invalid_scope_value",
+													"scope_immutable",
+													"scope_value_requires_type"
+												]
+											},
 											"message": {
 												"type": "string",
 												"example": "Suppression not found"
@@ -1903,7 +2215,7 @@
 	"POST /accounts/{account_id}/email/sending/suppressions": {
 		"operationId": "post_publicCreateSendingSuppression",
 		"summary": "Create account Email Sending suppression",
-		"description": "Creates an account-wide suppression. If a mutable legacy zone-linked row already exists, it is promoted without changing its identifier.",
+		"description": "Creates a suppression for every sending domain of the account (default) or for one sending domain (`scope.type = sending_domain`). Creating an existing active suppression returns its identifier. If a mutable legacy zone-linked account row already exists, it is promoted without changing its identifier.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1940,6 +2252,54 @@
 								"type": "string",
 								"example": "Imported from CRM",
 								"maxLength": 1000
+							},
+							"scope": {
+								"description": "Where the suppression applies. Omit for `{ \"type\": \"account\" }`, which blocks the recipient for every sending domain of the account.",
+								"example": {
+									"type": "sending_domain",
+									"value": "mail.example.com"
+								},
+								"oneOf": [
+									{
+										"properties": {
+											"type": {
+												"description": "Blocks the recipient for every sending domain of the account.",
+												"type": "string",
+												"example": "account",
+												"enum": [
+													"account"
+												]
+											}
+										},
+										"required": [
+											"type"
+										],
+										"type": "object"
+									},
+									{
+										"properties": {
+											"type": {
+												"description": "Blocks the recipient only for mail whose envelope MAIL FROM uses `value`.",
+												"type": "string",
+												"example": "sending_domain",
+												"enum": [
+													"sending_domain"
+												]
+											},
+											"value": {
+												"description": "The sending domain to suppress for: the domain part of the envelope MAIL FROM. It is lowercased and trailing dots are removed. Internationalized domains must use the ASCII (punycode) form. Ownership is not checked; a domain the account does not send from never matches.",
+												"type": "string",
+												"example": "mail.example.com",
+												"maxLength": 1024
+											}
+										},
+										"required": [
+											"type",
+											"value"
+										],
+										"type": "object"
+									}
+								]
 							}
 						},
 						"required": [
@@ -1977,6 +2337,54 @@
 											"type": "string",
 											"format": "uuid",
 											"example": "396a5436-d4b0-42a6-b3fc-48e8fa522321"
+										},
+										"scope": {
+											"description": "Where the suppression applies: `account` for every sending domain of the account, or `sending_domain` for one envelope MAIL FROM domain.",
+											"example": {
+												"type": "sending_domain",
+												"value": "mail.example.com"
+											},
+											"oneOf": [
+												{
+													"properties": {
+														"type": {
+															"description": "Blocks the recipient for every sending domain of the account.",
+															"type": "string",
+															"example": "account",
+															"enum": [
+																"account"
+															]
+														}
+													},
+													"required": [
+														"type"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"type": {
+															"description": "Blocks the recipient only for mail whose envelope MAIL FROM uses `value`.",
+															"type": "string",
+															"example": "sending_domain",
+															"enum": [
+																"sending_domain"
+															]
+														},
+														"value": {
+															"description": "The sending domain: the domain part of the envelope MAIL FROM, lowercase, without a trailing dot.",
+															"type": "string",
+															"example": "mail.example.com",
+															"maxLength": 1024
+														}
+													},
+													"required": [
+														"type",
+														"value"
+													],
+													"type": "object"
+												}
+											]
 										}
 									},
 									"required": [
@@ -2009,6 +2417,16 @@
 									"type": "array",
 									"items": {
 										"properties": {
+											"code": {
+												"description": "Machine-readable error code, when one applies: `invalid_scope_value` (the sending domain is not valid), `scope_immutable` (scope cannot change after creation), or `scope_value_requires_type` (`scope_value` needs `scope_type=sending_domain`).",
+												"type": "string",
+												"example": "invalid_scope_value",
+												"enum": [
+													"invalid_scope_value",
+													"scope_immutable",
+													"scope_value_requires_type"
+												]
+											},
 											"message": {
 												"type": "string",
 												"example": "Suppression not found"
@@ -2055,6 +2473,16 @@
 									"type": "array",
 									"items": {
 										"properties": {
+											"code": {
+												"description": "Machine-readable error code, when one applies: `invalid_scope_value` (the sending domain is not valid), `scope_immutable` (scope cannot change after creation), or `scope_value_requires_type` (`scope_value` needs `scope_type=sending_domain`).",
+												"type": "string",
+												"example": "invalid_scope_value",
+												"enum": [
+													"invalid_scope_value",
+													"scope_immutable",
+													"scope_value_requires_type"
+												]
+											},
 											"message": {
 												"type": "string",
 												"example": "Suppression not found"
@@ -2101,6 +2529,16 @@
 									"type": "array",
 									"items": {
 										"properties": {
+											"code": {
+												"description": "Machine-readable error code, when one applies: `invalid_scope_value` (the sending domain is not valid), `scope_immutable` (scope cannot change after creation), or `scope_value_requires_type` (`scope_value` needs `scope_type=sending_domain`).",
+												"type": "string",
+												"example": "invalid_scope_value",
+												"enum": [
+													"invalid_scope_value",
+													"scope_immutable",
+													"scope_value_requires_type"
+												]
+											},
 											"message": {
 												"type": "string",
 												"example": "Suppression not found"
@@ -2147,6 +2585,16 @@
 									"type": "array",
 									"items": {
 										"properties": {
+											"code": {
+												"description": "Machine-readable error code, when one applies: `invalid_scope_value` (the sending domain is not valid), `scope_immutable` (scope cannot change after creation), or `scope_value_requires_type` (`scope_value` needs `scope_type=sending_domain`).",
+												"type": "string",
+												"example": "invalid_scope_value",
+												"enum": [
+													"invalid_scope_value",
+													"scope_immutable",
+													"scope_value_requires_type"
+												]
+											},
 											"message": {
 												"type": "string",
 												"example": "Suppression not found"
@@ -2202,7 +2650,7 @@
 	"POST /accounts/{account_id}/email/sending/suppressions/bulk": {
 		"operationId": "post_publicBulkCreateSendingSuppressions",
 		"summary": "Bulk import account Email Sending suppressions",
-		"description": "Imports up to 1,000 account-level Email Sending suppressions in one request.",
+		"description": "Imports up to 1,000 Email Sending suppressions in one request. Each item applies to every sending domain of the account (default) or to one sending domain.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2222,7 +2670,7 @@
 						"type": "object",
 						"properties": {
 							"items": {
-								"description": "Suppressions to import. Items with a duplicate email address are deduplicated before processing.",
+								"description": "Suppressions to import. Items with the same email address and scope are deduplicated before processing.",
 								"type": "array",
 								"items": {
 									"properties": {
@@ -2243,6 +2691,54 @@
 											"type": "string",
 											"example": "Imported from CRM",
 											"maxLength": 1000
+										},
+										"scope": {
+											"description": "Where the suppression applies. Omit for `{ \"type\": \"account\" }`, which blocks the recipient for every sending domain of the account.",
+											"example": {
+												"type": "sending_domain",
+												"value": "mail.example.com"
+											},
+											"oneOf": [
+												{
+													"properties": {
+														"type": {
+															"description": "Blocks the recipient for every sending domain of the account.",
+															"type": "string",
+															"example": "account",
+															"enum": [
+																"account"
+															]
+														}
+													},
+													"required": [
+														"type"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"type": {
+															"description": "Blocks the recipient only for mail whose envelope MAIL FROM uses `value`.",
+															"type": "string",
+															"example": "sending_domain",
+															"enum": [
+																"sending_domain"
+															]
+														},
+														"value": {
+															"description": "The sending domain to suppress for: the domain part of the envelope MAIL FROM. It is lowercased and trailing dots are removed. Internationalized domains must use the ASCII (punycode) form. Ownership is not checked; a domain the account does not send from never matches.",
+															"type": "string",
+															"example": "mail.example.com",
+															"maxLength": 1024
+														}
+													},
+													"required": [
+														"type",
+														"value"
+													],
+													"type": "object"
+												}
+											]
 										}
 									},
 									"required": [
@@ -2257,7 +2753,11 @@
 									{
 										"email": "other@example.com",
 										"expires_at": "2027-01-01T00:00:00Z",
-										"note": "Imported from CRM"
+										"note": "Imported from CRM",
+										"scope": {
+											"type": "sending_domain",
+											"value": "mail.example.com"
+										}
 									}
 								],
 								"maxItems": 1000
@@ -2294,7 +2794,7 @@
 									"type": "object",
 									"properties": {
 										"deduplicated": {
-											"description": "Number of items dropped because their email address repeated an earlier item in this request. Counted once and excluded from `items`.",
+											"description": "Number of items dropped because their email address and scope repeated an earlier item in this request. Counted once and excluded from `items`.",
 											"type": "integer",
 											"example": 1
 										},
@@ -2304,7 +2804,7 @@
 											"example": 0
 										},
 										"invalid": {
-											"description": "Number of items with an invalid email address.",
+											"description": "Number of items with an invalid email address or sending domain.",
 											"type": "integer",
 											"example": 1
 										},
@@ -2334,6 +2834,54 @@
 														"description": "Zero-based index of this item in the request body.",
 														"type": "integer",
 														"example": 0
+													},
+													"scope": {
+														"description": "Where the suppression applies: `account` for every sending domain of the account, or `sending_domain` for one envelope MAIL FROM domain.",
+														"example": {
+															"type": "sending_domain",
+															"value": "mail.example.com"
+														},
+														"oneOf": [
+															{
+																"properties": {
+																	"type": {
+																		"description": "Blocks the recipient for every sending domain of the account.",
+																		"type": "string",
+																		"example": "account",
+																		"enum": [
+																			"account"
+																		]
+																	}
+																},
+																"required": [
+																	"type"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"type": {
+																		"description": "Blocks the recipient only for mail whose envelope MAIL FROM uses `value`.",
+																		"type": "string",
+																		"example": "sending_domain",
+																		"enum": [
+																			"sending_domain"
+																		]
+																	},
+																	"value": {
+																		"description": "The sending domain: the domain part of the envelope MAIL FROM, lowercase, without a trailing dot.",
+																		"type": "string",
+																		"example": "mail.example.com",
+																		"maxLength": 1024
+																	}
+																},
+																"required": [
+																	"type",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
 													},
 													"status": {
 														"description": "Outcome for this item.",
@@ -2406,6 +2954,16 @@
 									"type": "array",
 									"items": {
 										"properties": {
+											"code": {
+												"description": "Machine-readable error code, when one applies: `invalid_scope_value` (the sending domain is not valid), `scope_immutable` (scope cannot change after creation), or `scope_value_requires_type` (`scope_value` needs `scope_type=sending_domain`).",
+												"type": "string",
+												"example": "invalid_scope_value",
+												"enum": [
+													"invalid_scope_value",
+													"scope_immutable",
+													"scope_value_requires_type"
+												]
+											},
 											"message": {
 												"type": "string",
 												"example": "Suppression not found"
