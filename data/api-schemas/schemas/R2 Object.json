@@ -9,7 +9,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -489,7 +489,8 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.objects",
 		"x-fern-sdk-method-name": "bulk-delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This permanently deletes the selected R2 objects. An explicitly empty prefix deletes every object in the bucket while retaining the bucket itself."
 	},
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/objects/{object_key}": {
 		"operationId": "r2-delete-object",
@@ -501,7 +502,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -698,7 +699,8 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.objects",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This permanently deletes the specified object from the R2 bucket."
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/objects": {
 		"operationId": "r2-list-objects",
@@ -710,7 +712,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -1052,7 +1054,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -1259,7 +1261,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32

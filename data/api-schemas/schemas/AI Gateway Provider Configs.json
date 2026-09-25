@@ -1,8 +1,8 @@
 {
 	"DELETE /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/provider_configs/{id}": {
 		"operationId": "aig-config-delete-providers",
-		"summary": "Delete a Provider Configs",
-		"description": "Deletes an AI Gateway dataset.",
+		"summary": "Delete a provider key",
+		"description": "Deletes a provider key configuration from an AI Gateway and deletes its secret from the Secrets Store.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -18,7 +18,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "gateway id",
+					"description": "Unique identifier of the AI Gateway within the account.",
 					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
@@ -54,7 +54,7 @@
 											"type": "boolean"
 										},
 										"gateway_id": {
-											"description": "gateway id",
+											"description": "Unique identifier of the AI Gateway within the account.",
 											"type": "string",
 											"example": "my-gateway",
 											"maxLength": 64,
@@ -178,12 +178,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-gateway.gateways.providers",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This deletes the stored provider key and its Secrets Store secret. Requests that rely on this key will stop authenticating with it."
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/provider_configs": {
 		"operationId": "aig-config-list-providers",
-		"summary": "List Provider Configs",
-		"description": "Lists all AI Gateway evaluator types configured for the account.",
+		"summary": "List provider keys",
+		"description": "Lists the provider keys stored for an AI Gateway. Responses show a masked preview of each key, never the key itself.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -199,7 +199,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "gateway id",
+					"description": "Unique identifier of the AI Gateway within the account.",
 					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
@@ -247,7 +247,7 @@
 												"type": "boolean"
 											},
 											"gateway_id": {
-												"description": "gateway id",
+												"description": "Unique identifier of the AI Gateway within the account.",
 												"type": "string",
 												"example": "my-gateway",
 												"maxLength": 64,
@@ -368,13 +368,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-gateway.gateways.providers",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"POST /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/provider_configs": {
 		"operationId": "aig-config-create-providers",
-		"summary": "Create a new Provider Configs",
-		"description": "Creates a new AI Gateway.",
+		"summary": "Store a provider key",
+		"description": "Stores an upstream AI provider API key for an AI Gateway in the Secrets Store configured on the gateway, with an optional rate limit. Pass `secret` to store a new key, or omit it to use an existing Secrets Store secret.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -390,7 +389,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "gateway id",
+					"description": "Unique identifier of the AI Gateway within the account.",
 					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
@@ -423,7 +422,9 @@
 								"default": 60
 							},
 							"secret": {
-								"type": "string"
+								"description": "Provider API key to store in the Secrets Store configured on the gateway.",
+								"type": "string",
+								"x-sensitive": true
 							},
 							"secret_id": {
 								"type": "string"
@@ -456,7 +457,7 @@
 											"type": "boolean"
 										},
 										"gateway_id": {
-											"description": "gateway id",
+											"description": "Unique identifier of the AI Gateway within the account.",
 											"type": "string",
 											"example": "my-gateway",
 											"maxLength": 64,
@@ -587,13 +588,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-gateway.gateways.providers",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/provider_configs/{id}": {
 		"operationId": "aig-config-update-providers",
-		"summary": "Update a Provider Configs",
-		"description": "Updates an existing AI Gateway dataset.",
+		"summary": "Rotate a provider key",
+		"description": "Replaces the stored API key of a provider key configuration. Only the key can change.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -609,7 +609,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "gateway id",
+					"description": "Unique identifier of the AI Gateway within the account.",
 					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
@@ -634,7 +634,9 @@
 						"type": "object",
 						"properties": {
 							"secret": {
-								"type": "string"
+								"description": "Provider API key to store in the Secrets Store configured on the gateway.",
+								"type": "string",
+								"x-sensitive": true
 							}
 						},
 						"required": [
@@ -662,7 +664,7 @@
 											"type": "boolean"
 										},
 										"gateway_id": {
-											"description": "gateway id",
+											"description": "Unique identifier of the AI Gateway within the account.",
 											"type": "string",
 											"example": "my-gateway",
 											"maxLength": 64,
@@ -832,7 +834,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-gateway.gateways.providers",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

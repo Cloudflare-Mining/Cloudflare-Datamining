@@ -9,7 +9,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32

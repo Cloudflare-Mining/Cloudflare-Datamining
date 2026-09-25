@@ -1,8 +1,8 @@
 {
 	"DELETE /accounts/{account_id}/ai-gateway/gateways/{id}": {
 		"operationId": "aig-config-delete-gateway",
-		"summary": "Delete a Gateway",
-		"description": "Deletes an AI Gateway dataset.",
+		"summary": "Delete a gateway",
+		"description": "Permanently deletes an AI Gateway, its configuration, and its stored logs.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -18,14 +18,15 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "gateway id",
+					"description": "Unique identifier of the AI Gateway within the account.",
 					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
-				}
+				},
+				"x-fern-parameter-name": "gateway-id"
 			}
 		],
 		"responses": {
@@ -372,7 +373,7 @@
 											"x-auditable": true
 										},
 										"id": {
-											"description": "gateway id",
+											"description": "Unique identifier of the AI Gateway within the account.",
 											"type": "string",
 											"example": "my-gateway",
 											"maxLength": 64,
@@ -795,12 +796,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-gateway.gateways",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This permanently deletes the gateway, its configuration, and its stored logs. Requests sent to this gateway will fail. This action cannot be undone."
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways": {
 		"operationId": "aig-config-list-gateway",
-		"summary": "List Gateways",
-		"description": "Lists all AI Gateway evaluator types configured for the account.",
+		"summary": "List gateways",
+		"description": "Lists the AI Gateways in the account. Use `search` to filter by gateway ID.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1184,7 +1185,7 @@
 												"x-auditable": true
 											},
 											"id": {
-												"description": "gateway id",
+												"description": "Unique identifier of the AI Gateway within the account.",
 												"type": "string",
 												"example": "my-gateway",
 												"maxLength": 64,
@@ -1608,8 +1609,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-gateway.gateways",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/url/{provider}": {
 		"operationId": "aig-config-get-gateway-url",
@@ -1621,7 +1621,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "gateway id",
+					"description": "Unique identifier of the AI Gateway within the account.",
 					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
@@ -1738,15 +1738,14 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "ai-gateway.urls",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-gateway.gateways",
+		"x-fern-sdk-method-name": "get-url"
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{id}": {
 		"operationId": "aig-config-fetch-gateway",
-		"summary": "Fetch a Gateway",
-		"description": "Retrieves details for a specific AI Gateway dataset.",
+		"summary": "Get a gateway",
+		"description": "Retrieves the configuration of an AI Gateway.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1762,14 +1761,15 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "gateway id",
+					"description": "Unique identifier of the AI Gateway within the account.",
 					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
-				}
+				},
+				"x-fern-parameter-name": "gateway-id"
 			}
 		],
 		"responses": {
@@ -2116,7 +2116,7 @@
 											"x-auditable": true
 										},
 										"id": {
-											"description": "gateway id",
+											"description": "Unique identifier of the AI Gateway within the account.",
 											"type": "string",
 											"example": "my-gateway",
 											"maxLength": 64,
@@ -2539,13 +2539,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-gateway.gateways",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/ai-gateway/gateways": {
 		"operationId": "aig-config-create-gateway",
-		"summary": "Create a new Gateway",
-		"description": "Creates a new AI Gateway.",
+		"summary": "Create a gateway",
+		"description": "Creates an AI Gateway in the account with the specified caching, rate limiting, logging, and authentication settings. The gateway ID appears in request URLs and must be unique within the account.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2589,7 +2588,7 @@
 								"x-auditable": true
 							},
 							"id": {
-								"description": "gateway id",
+								"description": "Unique identifier of the AI Gateway within the account.",
 								"type": "string",
 								"example": "my-gateway",
 								"maxLength": 64,
@@ -3052,7 +3051,7 @@
 											"x-auditable": true
 										},
 										"id": {
-											"description": "gateway id",
+											"description": "Unique identifier of the AI Gateway within the account.",
 											"type": "string",
 											"example": "my-gateway",
 											"maxLength": 64,
@@ -3482,13 +3481,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-gateway.gateways",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/ai-gateway/gateways/{id}": {
 		"operationId": "aig-config-update-gateway",
-		"summary": "Update a Gateway",
-		"description": "Updates an existing AI Gateway dataset.",
+		"summary": "Update a gateway",
+		"description": "Updates the configuration of an AI Gateway, such as its caching, rate limiting, logging, and authentication settings.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3504,14 +3502,15 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "gateway id",
+					"description": "Unique identifier of the AI Gateway within the account.",
 					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
-				}
+				},
+				"x-fern-parameter-name": "gateway-id"
 			}
 		],
 		"requestBody": {
@@ -4518,7 +4517,7 @@
 											"x-auditable": true
 										},
 										"id": {
-											"description": "gateway id",
+											"description": "Unique identifier of the AI Gateway within the account.",
 											"type": "string",
 											"example": "my-gateway",
 											"maxLength": 64,
@@ -4987,7 +4986,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-gateway.gateways",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

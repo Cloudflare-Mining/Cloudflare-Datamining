@@ -2,14 +2,14 @@
 	"DELETE /accounts/{account_id}/event_notifications/r2/{bucket_name}/configuration/queues/{queue_id}": {
 		"operationId": "r2-event-notification-delete-config",
 		"summary": "Delete Event Notification Rules",
-		"description": "Delete an event notification rule. **If no body is provided, all rules for specified queue will be deleted**.",
+		"description": "Deletes the specified event notification rules for an R2 bucket and Cloudflare Queue. Provide ruleIds in the request body to select rules. If no body is provided, all rules for that bucket and queue are deleted.",
 		"parameters": [
 			{
 				"name": "queue_id",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Queue ID.",
+					"description": "ID of the Cloudflare Queue that receives notifications for matching R2 object events.",
 					"type": "string",
 					"example": "11111aa1-11aa-111a-a1a1-a1a111a11a11",
 					"maxLength": 32,
@@ -35,7 +35,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -213,12 +213,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.event-notifications",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This deletes event notification rules for the selected R2 bucket and queue. Without a request body, all rules for that bucket and queue are deleted."
 	},
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}": {
 		"operationId": "r2-delete-bucket",
 		"summary": "Delete Bucket",
-		"description": "Deletes an existing R2 bucket.",
+		"description": "Deletes an empty R2 bucket and its configuration. The bucket must have no objects, no in-progress multipart uploads, and no event notification rules; otherwise the request fails.",
 		"parameters": [
 			{
 				"name": "bucket_name",
@@ -239,7 +239,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -391,7 +391,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This permanently deletes the empty R2 bucket and its configuration."
 	},
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/cors": {
 		"operationId": "r2-delete-bucket-cors-policy",
@@ -417,7 +417,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -573,12 +573,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.cors",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This removes the R2 bucket's CORS policy. Browser requests that depend on these cross-origin permissions may fail."
 	},
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom/{domain}": {
 		"operationId": "r2-delete-custom-domain",
 		"summary": "Remove Custom Domain From Bucket",
-		"description": "Remove custom domain registration from an existing R2 bucket.",
+		"description": "Disconnects a custom domain from an R2 bucket and removes its configuration. Access through other enabled custom domains or the bucket's r2.dev domain is unaffected.",
 		"parameters": [
 			{
 				"name": "bucket_name",
@@ -599,7 +599,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -787,7 +787,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.domains.custom",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This disconnects the custom domain from the R2 bucket. Access through other enabled domains remains available."
 	},
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/lock": {
 		"operationId": "r2-delete-bucket-lock-configuration",
@@ -813,7 +813,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -969,12 +969,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.locks",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This removes all lock rules from the R2 bucket, removing their protection against object deletion and overwriting."
 	},
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/sippy": {
 		"operationId": "r2-delete-bucket-sippy-config",
 		"summary": "Disable Sippy",
-		"description": "Disables Sippy on this bucket.",
+		"description": "Disables Sippy on-demand migration for an R2 bucket. Requests no longer fetch missing objects from the source storage provider. Objects already copied to R2 remain in the bucket.",
 		"parameters": [
 			{
 				"name": "bucket_name",
@@ -995,7 +995,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -1167,12 +1167,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.sippy",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This disables Sippy on-demand migration for the R2 bucket. Objects already copied to R2 remain in the bucket."
 	},
 	"GET /accounts/{account_id}/event_notifications/r2/{bucket_name}/configuration": {
 		"operationId": "r2-get-event-notification-configs",
 		"summary": "List Event Notification Rules",
-		"description": "List all event notification rules for a bucket.",
+		"description": "Lists event notification rules for an R2 bucket, grouped by the Cloudflare Queue that receives matching object events.",
 		"parameters": [
 			{
 				"name": "bucket_name",
@@ -1193,7 +1193,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -1533,20 +1533,19 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.event-notifications",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/event_notifications/r2/{bucket_name}/configuration/queues/{queue_id}": {
 		"operationId": "r2-get-event-notification-config",
-		"summary": "Get Event Notification Rule",
-		"description": "Get a single event notification rule.",
+		"summary": "Get Event Notification Rules for a Queue",
+		"description": "Gets the event notification rules for the specified R2 bucket and Cloudflare Queue. The response includes the queue's configuration and its array of rules.",
 		"parameters": [
 			{
 				"name": "queue_id",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Queue ID.",
+					"description": "ID of the Cloudflare Queue that receives notifications for matching R2 object events.",
 					"type": "string",
 					"example": "11111aa1-11aa-111a-a1a1-a1a111a11a11",
 					"maxLength": 32,
@@ -1572,7 +1571,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -1898,20 +1897,19 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.event-notifications",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/r2/buckets": {
 		"operationId": "r2-list-buckets",
 		"summary": "List Buckets",
-		"description": "Lists all R2 buckets on your account.",
+		"description": "Lists a page of R2 buckets in the account and selected jurisdiction. Use the returned cursor to retrieve the next page.",
 		"parameters": [
 			{
 				"name": "account_id",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -2222,8 +2220,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}": {
 		"operationId": "r2-get-bucket",
@@ -2235,7 +2232,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -2468,8 +2465,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/cors": {
 		"operationId": "r2-get-bucket-cors-policy",
@@ -2495,7 +2491,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -2732,8 +2728,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.cors",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom": {
 		"operationId": "r2-list-custom-domains",
@@ -2745,7 +2740,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -3039,8 +3034,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.domains.custom",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom/{domain}": {
 		"operationId": "r2-get-custom-domain-settings",
@@ -3052,7 +3046,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -3336,20 +3330,19 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.domains.custom",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/domains/managed": {
 		"operationId": "r2-get-bucket-public-policy",
 		"summary": "Get r2.dev Domain of Bucket",
-		"description": "Gets state of public access over the bucket's R2-managed (r2.dev) domain.",
+		"description": "Gets the R2 bucket's managed r2.dev domain and whether public access is enabled. The r2.dev domain is rate-limited and intended for development use.",
 		"parameters": [
 			{
 				"name": "account_id",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -3556,20 +3549,19 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.domains.managed",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/jobs": {
 		"operationId": "r2-list-bucket-jobs",
 		"summary": "List Bucket Jobs",
-		"description": "Lists background jobs for an R2 bucket. Use this endpoint to poll jobs returned by\nasynchronous operations such as deleting objects by prefix or emptying a bucket.\n",
+		"description": "Lists a page of prefix-deletion and bucket-emptying jobs for an R2 bucket.\nUse the returned job identifiers to inspect progress with Get Bucket Job.\nStorage-class migration jobs are listed by the separate List Storage Class Migration Jobs endpoint.\n",
 		"parameters": [
 			{
 				"name": "account_id",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -3906,14 +3898,14 @@
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/jobs/{job_id}": {
 		"operationId": "r2-get-bucket-job",
 		"summary": "Get Bucket Job",
-		"description": "Gets the current status of a background job for an R2 bucket. Poll this endpoint with\nthe job identifier returned when the operation was submitted until the status is\n`COMPLETED`, `FAILED`, or `CANCELLED`.\n",
+		"description": "Gets the current status of a prefix-deletion or bucket-emptying job for an R2 bucket. Poll this endpoint with\nthe job identifier returned when the operation was submitted until the status is\n`COMPLETED`, `FAILED`, or `CANCELLED`.\n",
 		"parameters": [
 			{
 				"name": "account_id",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -4215,7 +4207,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -4574,13 +4566,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.lifecycle",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/local-uploads": {
 		"operationId": "r2-get-bucket-local-uploads-configuration",
 		"summary": "Get Local Uploads Configuration",
-		"description": "Get the local uploads configuration for a bucket. When enabled, object's data is written to the nearest region first, then asynchronously replicated to the bucket's primary region.",
+		"description": "Gets the Local Uploads configuration for an R2 bucket. When enabled, object data is written near the client before being asynchronously copied to the bucket's primary region. Local Uploads is only supported in the default jurisdiction.",
 		"parameters": [
 			{
 				"name": "bucket_name",
@@ -4601,7 +4592,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -4756,10 +4747,9 @@
 				"com.cloudflare.edge.r2.bucket.read"
 			]
 		},
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "r2.buckets.local-uploads",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/lock": {
 		"operationId": "r2-get-bucket-lock-configuration",
@@ -4785,7 +4775,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -5044,8 +5034,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.locks",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/sippy": {
 		"operationId": "r2-get-bucket-sippy-config",
@@ -5057,7 +5046,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -5309,8 +5298,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.sippy",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/storage-class-migration-jobs": {
 		"operationId": "r2-list-storage-class-migration-jobs",
@@ -5322,7 +5310,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -5693,7 +5681,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -6012,14 +6000,14 @@
 	"PATCH /accounts/{account_id}/r2/buckets/{bucket_name}": {
 		"operationId": "r2-patch-bucket",
 		"summary": "Patch Bucket",
-		"description": "Updates properties of an existing R2 bucket.",
+		"description": "Changes the default storage class for newly uploaded objects in an existing R2 bucket. Existing objects retain their storage class, and individual uploads can override the bucket default.",
 		"parameters": [
 			{
 				"name": "account_id",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -6272,20 +6260,19 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/r2/buckets": {
 		"operationId": "r2-create-bucket",
 		"summary": "Create Bucket",
-		"description": "Creates a new R2 bucket.",
+		"description": "Creates an R2 bucket in the account and selected jurisdiction, with an optional location hint and default storage class.",
 		"parameters": [
 			{
 				"name": "account_id",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -6551,8 +6538,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom": {
 		"operationId": "r2-add-custom-domain",
@@ -6564,7 +6550,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -6844,20 +6830,19 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.domains.custom",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/r2/buckets/{bucket_name}/storage-class-migration-jobs": {
 		"operationId": "r2-create-storage-class-migration-job",
 		"summary": "Create a Storage Class Migration Job",
-		"description": "Creates a storage-class migration background job for an R2 bucket.",
+		"description": "Creates a background job to migrate existing objects in an R2 bucket between storage classes. Provide both source and destination classes, or omit both to migrate from InfrequentAccess to Standard. Use the returned job ID with Get Storage Class Migration Job to inspect progress.",
 		"parameters": [
 			{
 				"name": "account_id",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -6903,6 +6888,7 @@
 						"type": "object",
 						"properties": {
 							"destinationStorageClass": {
+								"description": "Storage class to migrate objects to. Provide together with sourceStorageClass; the two classes must differ.",
 								"type": "string",
 								"enum": [
 									"Standard",
@@ -6916,6 +6902,7 @@
 								]
 							},
 							"sourceStorageClass": {
+								"description": "Storage class to migrate objects from. Provide together with destinationStorageClass; the two classes must differ.",
 								"type": "string",
 								"enum": [
 									"Standard",
@@ -7177,6 +7164,7 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "r2.buckets.storage-class-migration-jobs",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-require-confirmation": "This starts a bucket-wide storage-class migration of existing R2 objects in the selected source storage class.",
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/r2/temp-access-credentials": {
@@ -7189,7 +7177,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -7217,7 +7205,7 @@
 								}
 							},
 							"parentAccessKeyId": {
-								"description": "The parent access key id to use for signing.",
+								"description": "Access key ID of the parent R2 API token. The temporary credentials cannot exceed this token's permissions.",
 								"type": "string"
 							},
 							"permission": {
@@ -7240,7 +7228,7 @@
 								}
 							},
 							"ttlSeconds": {
-								"description": "How long the credentials will live for in seconds.",
+								"description": "Lifetime of the temporary credentials in seconds, up to 604800 seconds (7 days).",
 								"type": "number",
 								"default": 900,
 								"maximum": 604800,
@@ -7427,20 +7415,19 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.temporary-credentials",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/event_notifications/r2/{bucket_name}/configuration/queues/{queue_id}": {
 		"operationId": "r2-put-event-notification-config",
-		"summary": "Create Event Notification Rule",
-		"description": "Create event notification rule.",
+		"summary": "Create Event Notification Rules",
+		"description": "Creates rules that send notifications for matching R2 object events to the specified Cloudflare Queue. Rules can filter objects by key prefix and suffix. New rules are added to any existing rules for the queue; a rule that overlaps an existing rule is rejected.",
 		"parameters": [
 			{
 				"name": "queue_id",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Queue ID.",
+					"description": "ID of the Cloudflare Queue that receives notifications for matching R2 object events.",
 					"type": "string",
 					"example": "11111aa1-11aa-111a-a1a1-a1a111a11a11",
 					"maxLength": 32,
@@ -7466,7 +7453,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -7690,8 +7677,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.event-notifications",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}": {
 		"operationId": "r2-create-bucket-by-name",
@@ -7703,7 +7689,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -7958,8 +7944,8 @@
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/cors": {
 		"operationId": "r2-put-bucket-cors-policy",
-		"summary": "Put Bucket CORS Policy",
-		"description": "Set the CORS policy for a bucket.",
+		"summary": "Set Bucket CORS Policy",
+		"description": "Replaces the Cross-Origin Resource Sharing (CORS) rules for an R2 bucket. Rules specify which origins, methods, and headers are allowed for browser requests to objects in the bucket.",
 		"parameters": [
 			{
 				"name": "bucket_name",
@@ -7980,7 +7966,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -8223,7 +8209,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.cors",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This replaces the R2 bucket's CORS policy. Browser requests that relied on the previous rules may fail."
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom/{domain}": {
 		"operationId": "r2-edit-custom-domain-settings",
@@ -8235,7 +8221,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -8507,20 +8493,19 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.domains.custom",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/domains/managed": {
 		"operationId": "r2-put-bucket-public-policy",
 		"summary": "Update r2.dev Domain of Bucket",
-		"description": "Updates state of public access over the bucket's R2-managed (r2.dev) domain.",
+		"description": "Enables or disables public access to the R2 bucket through its managed r2.dev domain. Custom domain access is unaffected. The r2.dev domain is rate-limited and intended for development use.",
 		"parameters": [
 			{
 				"name": "account_id",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -8751,12 +8736,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.domains.managed",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This changes public access to the R2 bucket through its r2.dev domain."
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/lifecycle": {
 		"operationId": "r2-put-bucket-lifecycle-configuration",
-		"summary": "Put Object Lifecycle Rules",
-		"description": "Set the object lifecycle rules for a bucket.",
+		"summary": "Set Object Lifecycle Rules",
+		"description": "Replaces the object lifecycle rules for an R2 bucket. Rules match object-key prefixes and can expire objects, abort incomplete multipart uploads, or transition objects to Infrequent Access storage.",
 		"parameters": [
 			{
 				"name": "bucket_name",
@@ -8777,7 +8762,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -9138,12 +9123,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.lifecycle",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This replaces the R2 bucket's object lifecycle rules and can schedule object deletion or abort multipart uploads."
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/local-uploads": {
 		"operationId": "r2-put-bucket-local-uploads-configuration",
-		"summary": "Put Local Uploads Configuration",
-		"description": "Set the local uploads configuration for a bucket. When enabled, object's data is written to the nearest region first, then asynchronously replicated to the bucket's primary region.",
+		"summary": "Set Local Uploads Configuration",
+		"description": "Enables or disables Local Uploads for an R2 bucket in the default jurisdiction. When enabled, object data is written near the client before being asynchronously copied to the bucket's primary region. Disabling Local Uploads allows existing replication to finish.",
 		"parameters": [
 			{
 				"name": "bucket_name",
@@ -9164,7 +9149,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -9326,15 +9311,14 @@
 				"com.cloudflare.edge.r2.bucket.write"
 			]
 		},
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "r2.buckets.local-uploads",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/lock": {
 		"operationId": "r2-put-bucket-lock-configuration",
-		"summary": "Put Bucket Lock Rules",
-		"description": "Set lock rules for a bucket.",
+		"summary": "Set Bucket Lock Rules",
+		"description": "Replaces the lock rules for an R2 bucket. Enabled rules prevent matching objects from being overwritten or deleted for a duration, until a date, or indefinitely. Rules apply to existing and newly uploaded objects.",
 		"parameters": [
 			{
 				"name": "bucket_name",
@@ -9355,7 +9339,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -9616,19 +9600,19 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.locks",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This replaces the R2 bucket's lock rules. Removing or shortening retention can allow objects to be overwritten or deleted."
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/sippy": {
 		"operationId": "r2-put-bucket-sippy-config",
 		"summary": "Enable Sippy",
-		"description": "Sets configuration for Sippy for an existing R2 bucket.",
+		"description": "Configures and enables Sippy on-demand migration for an R2 bucket. When a requested object is missing from R2, Sippy serves it from the configured source storage provider and copies it to R2.",
 		"parameters": [
 			{
 				"name": "account_id",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Account ID.",
+					"description": "Cloudflare account ID that owns the R2 resource.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32
@@ -9716,7 +9700,7 @@
 												"x-auditable": true
 											},
 											"region": {
-												"description": "Name of the AWS availability zone.",
+												"description": "AWS region containing the source S3 bucket.",
 												"type": "string",
 												"x-auditable": true
 											},
@@ -10112,7 +10096,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.sippy",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

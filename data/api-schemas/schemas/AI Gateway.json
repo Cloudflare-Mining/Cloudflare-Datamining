@@ -1,7 +1,7 @@
 {
 	"DELETE /accounts/{account_id}/ai-gateway/billing/spending-limit": {
 		"operationId": "aig-billing-delete-spending-limit",
-		"summary": "Delete spending limit",
+		"summary": "Delete spending limit (deprecated)",
 		"description": "Remove the spending limit for the account.",
 		"parameters": [
 			{
@@ -263,10 +263,10 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.billing.spending-limit",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/ai-gateway/billing/topup/config": {
 		"operationId": "aig-billing-delete-topup-config",
@@ -533,9 +533,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.billing.topup.config",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/credit-balance": {
 		"operationId": "aig-billing-get-credit-balance",
@@ -861,9 +861,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.billing",
-		"x-fern-sdk-method-name": "credit-balance",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "credit-balance"
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/invoice-history": {
 		"operationId": "aig-billing-get-invoice-history",
@@ -1237,9 +1237,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.billing",
-		"x-fern-sdk-method-name": "invoice-history",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "invoice-history"
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/invoice-preview": {
 		"operationId": "aig-billing-get-invoice-preview",
@@ -1633,13 +1633,13 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.billing",
-		"x-fern-sdk-method-name": "invoice-preview",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "invoice-preview"
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/spending-limit": {
 		"operationId": "aig-billing-get-spending-limit",
-		"summary": "Get spending limit",
+		"summary": "Get spending limit (deprecated)",
 		"description": "Retrieve the current spending limit configuration for the account.",
 		"parameters": [
 			{
@@ -1933,10 +1933,10 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.billing.spending-limit",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/topup/config": {
 		"operationId": "aig-billing-get-topup-config",
@@ -2230,9 +2230,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.billing.topup.config",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/topup/limits": {
 		"operationId": "aig-billing-get-topup-limits",
@@ -2520,9 +2520,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "ai-gateway.billing",
-		"x-fern-sdk-method-name": "get-topup-limits",
-		"x-forge-hidden": true
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "ai-gateway.billing.topup",
+		"x-fern-sdk-method-name": "limits"
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/usage-history": {
 		"operationId": "aig-billing-get-usage-history",
@@ -2858,9 +2858,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.billing",
-		"x-fern-sdk-method-name": "usage-history",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "usage-history"
 	},
 	"POST /accounts/{account_id}/ai-gateway/billing/spending-limit": {
 		"operationId": "aig-billing-set-spending-limit",
@@ -3170,10 +3170,10 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.billing.spending-limit",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/ai-gateway/billing/topup": {
 		"operationId": "aig-billing-create-topup",
@@ -3540,9 +3540,10 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.billing.topup",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This purchases AI Gateway credits and charges the amount to the account's default payment method."
 	},
 	"POST /accounts/{account_id}/ai-gateway/billing/topup/config": {
 		"operationId": "aig-billing-set-topup-config",
@@ -3850,9 +3851,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.billing.topup.config",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/ai-gateway/billing/topup/eligibility": {
 		"operationId": "aig-billing-topup-eligibility",
@@ -4253,9 +4254,10 @@
 			"free": true,
 			"pro": true
 		},
+		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.billing.topup",
-		"x-fern-sdk-method-name": "eligibility",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "eligibility"
 	},
 	"POST /accounts/{account_id}/ai-gateway/billing/topup/status": {
 		"operationId": "aig-billing-check-topup-status",
@@ -4559,9 +4561,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.billing.topup",
-		"x-fern-sdk-method-name": "status",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "status"
 	},
 	"POST /accounts/{account_id}/ai/websearch": {
 		"operationId": "workers-ai-ai-gateway-web-search",

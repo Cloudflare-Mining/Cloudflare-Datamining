@@ -1,8 +1,8 @@
 {
-	"DELETE /accounts/{account_id}/ai-gateway/custom-providers/{id}": {
-		"operationId": "aig-config-delete-account-provider",
-		"summary": "Delete a Account Provider",
-		"description": "Deletes an AI Gateway dataset.",
+	"DELETE /accounts/{account_id}/ai-gateway/custom-providers/costs/{id}": {
+		"operationId": "aig-config-delete-account-provider-cost",
+		"summary": "Delete a custom provider pricing rule",
+		"description": "Deletes a custom provider pricing rule. Requests to the matched model stop using its prices.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -34,65 +34,64 @@
 								"result": {
 									"type": "object",
 									"properties": {
-										"base_url": {
+										"account_provider_id": {
 											"type": "string",
-											"format": "uri"
+											"format": "uuid"
 										},
-										"beta": {
-											"type": "boolean"
+										"changed_by": {
+											"type": "string",
+											"default": "manual"
+										},
+										"cost_in": {
+											"type": "number"
+										},
+										"cost_out": {
+											"type": "number"
+										},
+										"cost_type": {
+											"type": "string",
+											"default": "tokens"
 										},
 										"created_at": {
 											"type": "string",
 											"format": "date-time"
 										},
-										"curl_example": {
-											"type": "string"
-										},
-										"description": {
-											"type": "string"
-										},
 										"enable": {
 											"type": "boolean"
-										},
-										"headers": {
-											"type": "string",
-											"maxLength": 8192
 										},
 										"id": {
 											"type": "string",
 											"format": "uuid"
 										},
-										"js_example": {
+										"model": {
 											"type": "string"
 										},
-										"link": {
-											"type": "string"
-										},
-										"logo": {
-											"type": "string"
+										"model_rule": {
+											"type": "string",
+											"default": "equals",
+											"enum": [
+												"equals",
+												"starts-with",
+												"contains"
+											]
 										},
 										"modified_at": {
 											"type": "string",
 											"format": "date-time"
 										},
-										"name": {
+										"token_pricing": {
 											"type": "string"
 										},
-										"position": {
+										"weight": {
 											"type": "integer"
-										},
-										"slug": {
-											"type": "string",
-											"pattern": "^[a-zA-Z0-9_-]+$"
 										}
 									},
 									"required": [
+										"account_provider_id",
+										"model",
 										"id",
 										"created_at",
-										"modified_at",
-										"name",
-										"slug",
-										"base_url"
+										"modified_at"
 									]
 								},
 								"success": {
@@ -157,7 +156,7 @@
 			}
 		],
 		"tags": [
-			"AI Gateway Account Providers"
+			"AI Gateway Custom Provider Costs"
 		],
 		"x-api-token-group": [
 			"AI Gateway Write"
@@ -174,14 +173,15 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "ai-gateway.account-providers",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "ai-gateway.custom-providers.costs",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This permanently deletes the pricing rule. Cost calculations for the matched model will no longer use its prices."
 	},
-	"GET /accounts/{account_id}/ai-gateway/custom-providers": {
-		"operationId": "aig-config-list-account-provider",
-		"summary": "List Account Providers",
-		"description": "Lists all AI Gateway evaluator types configured for the account.",
+	"GET /accounts/{account_id}/ai-gateway/custom-providers/costs": {
+		"operationId": "aig-config-list-account-provider-cost",
+		"summary": "List custom provider pricing rules",
+		"description": "Lists the pricing rules for custom providers in the account, most recently modified first.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -212,13 +212,6 @@
 				}
 			},
 			{
-				"name": "beta",
-				"in": "query",
-				"schema": {
-					"type": "boolean"
-				}
-			},
-			{
 				"name": "enable",
 				"in": "query",
 				"schema": {
@@ -226,10 +219,41 @@
 				}
 			},
 			{
+				"name": "account_provider_id",
+				"in": "query",
+				"schema": {
+					"description": "Only return pricing rules for this custom provider ID.",
+					"type": "string",
+					"format": "uuid"
+				},
+				"x-fern-parameter-name": "custom-provider-id"
+			},
+			{
+				"name": "model_rule",
+				"in": "query",
+				"schema": {
+					"type": "string",
+					"default": "equals",
+					"enum": [
+						"equals",
+						"starts-with",
+						"contains"
+					]
+				}
+			},
+			{
+				"name": "cost_type",
+				"in": "query",
+				"schema": {
+					"type": "string",
+					"default": "tokens"
+				}
+			},
+			{
 				"name": "search",
 				"in": "query",
 				"schema": {
-					"description": "Search by id, name, slug",
+					"description": "Search by model, changed_by",
 					"type": "string"
 				}
 			}
@@ -246,65 +270,64 @@
 									"type": "array",
 									"items": {
 										"properties": {
-											"base_url": {
+											"account_provider_id": {
 												"type": "string",
-												"format": "uri"
+												"format": "uuid"
 											},
-											"beta": {
-												"type": "boolean"
+											"changed_by": {
+												"type": "string",
+												"default": "manual"
+											},
+											"cost_in": {
+												"type": "number"
+											},
+											"cost_out": {
+												"type": "number"
+											},
+											"cost_type": {
+												"type": "string",
+												"default": "tokens"
 											},
 											"created_at": {
 												"type": "string",
 												"format": "date-time"
 											},
-											"curl_example": {
-												"type": "string"
-											},
-											"description": {
-												"type": "string"
-											},
 											"enable": {
 												"type": "boolean"
-											},
-											"headers": {
-												"type": "string",
-												"maxLength": 8192
 											},
 											"id": {
 												"type": "string",
 												"format": "uuid"
 											},
-											"js_example": {
+											"model": {
 												"type": "string"
 											},
-											"link": {
-												"type": "string"
-											},
-											"logo": {
-												"type": "string"
+											"model_rule": {
+												"type": "string",
+												"default": "equals",
+												"enum": [
+													"equals",
+													"starts-with",
+													"contains"
+												]
 											},
 											"modified_at": {
 												"type": "string",
 												"format": "date-time"
 											},
-											"name": {
+											"token_pricing": {
 												"type": "string"
 											},
-											"position": {
+											"weight": {
 												"type": "integer"
-											},
-											"slug": {
-												"type": "string",
-												"pattern": "^[a-zA-Z0-9_-]+$"
 											}
 										},
 										"required": [
+											"account_provider_id",
+											"model",
 											"id",
 											"created_at",
-											"modified_at",
-											"name",
-											"slug",
-											"base_url"
+											"modified_at"
 										],
 										"type": "object"
 									}
@@ -370,7 +393,7 @@
 			}
 		],
 		"tags": [
-			"AI Gateway Account Providers"
+			"AI Gateway Custom Provider Costs"
 		],
 		"x-api-token-group": [
 			"AI Gateway Write",
@@ -388,14 +411,14 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "ai-gateway.account-providers",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "ai-gateway.custom-providers.costs",
+		"x-fern-sdk-method-name": "list"
 	},
-	"GET /accounts/{account_id}/ai-gateway/custom-providers/{id}": {
-		"operationId": "aig-config-fetch-account-provider",
-		"summary": "Fetch a Account Provider",
-		"description": "Retrieves details for a specific AI Gateway dataset.",
+	"GET /accounts/{account_id}/ai-gateway/custom-providers/costs/{id}": {
+		"operationId": "aig-config-fetch-account-provider-cost",
+		"summary": "Get a custom provider pricing rule",
+		"description": "Retrieves a custom provider pricing rule, including its model match rule and token prices.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -427,65 +450,64 @@
 								"result": {
 									"type": "object",
 									"properties": {
-										"base_url": {
+										"account_provider_id": {
 											"type": "string",
-											"format": "uri"
+											"format": "uuid"
 										},
-										"beta": {
-											"type": "boolean"
+										"changed_by": {
+											"type": "string",
+											"default": "manual"
+										},
+										"cost_in": {
+											"type": "number"
+										},
+										"cost_out": {
+											"type": "number"
+										},
+										"cost_type": {
+											"type": "string",
+											"default": "tokens"
 										},
 										"created_at": {
 											"type": "string",
 											"format": "date-time"
 										},
-										"curl_example": {
-											"type": "string"
-										},
-										"description": {
-											"type": "string"
-										},
 										"enable": {
 											"type": "boolean"
-										},
-										"headers": {
-											"type": "string",
-											"maxLength": 8192
 										},
 										"id": {
 											"type": "string",
 											"format": "uuid"
 										},
-										"js_example": {
+										"model": {
 											"type": "string"
 										},
-										"link": {
-											"type": "string"
-										},
-										"logo": {
-											"type": "string"
+										"model_rule": {
+											"type": "string",
+											"default": "equals",
+											"enum": [
+												"equals",
+												"starts-with",
+												"contains"
+											]
 										},
 										"modified_at": {
 											"type": "string",
 											"format": "date-time"
 										},
-										"name": {
+										"token_pricing": {
 											"type": "string"
 										},
-										"position": {
+										"weight": {
 											"type": "integer"
-										},
-										"slug": {
-											"type": "string",
-											"pattern": "^[a-zA-Z0-9_-]+$"
 										}
 									},
 									"required": [
+										"account_provider_id",
+										"model",
 										"id",
 										"created_at",
-										"modified_at",
-										"name",
-										"slug",
-										"base_url"
+										"modified_at"
 									]
 								},
 								"success": {
@@ -550,7 +572,7 @@
 			}
 		],
 		"tags": [
-			"AI Gateway Account Providers"
+			"AI Gateway Custom Provider Costs"
 		],
 		"x-api-token-group": [
 			"AI Gateway Write",
@@ -568,14 +590,14 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "ai-gateway.account-providers",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "ai-gateway.custom-providers.costs",
+		"x-fern-sdk-method-name": "get"
 	},
-	"PATCH /accounts/{account_id}/ai-gateway/custom-providers/{id}": {
-		"operationId": "aig-config-update-account-provider",
-		"summary": "Update a Account Provider",
-		"description": "Updates an existing AI Gateway dataset.",
+	"PATCH /accounts/{account_id}/ai-gateway/custom-providers/costs/{id}": {
+		"operationId": "aig-config-update-account-provider-cost",
+		"summary": "Update a custom provider pricing rule",
+		"description": "Updates the specified fields of a custom provider pricing rule. Changes clear cached costs for the matched model.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -602,44 +624,71 @@
 					"schema": {
 						"type": "object",
 						"properties": {
-							"base_url": {
+							"cost_in": {
+								"type": "number"
+							},
+							"cost_out": {
+								"type": "number"
+							},
+							"cost_type": {
 								"type": "string",
-								"format": "uri"
-							},
-							"beta": {
-								"type": "boolean"
-							},
-							"curl_example": {
-								"type": "string"
-							},
-							"description": {
-								"type": "string"
+								"default": "tokens"
 							},
 							"enable": {
 								"type": "boolean"
 							},
-							"headers": {
+							"model": {
+								"type": "string"
+							},
+							"model_rule": {
 								"type": "string",
-								"maxLength": 8192
+								"default": "equals",
+								"enum": [
+									"equals",
+									"starts-with",
+									"contains"
+								]
 							},
-							"js_example": {
-								"type": "string"
-							},
-							"link": {
-								"type": "string"
-							},
-							"logo": {
-								"type": "string"
-							},
-							"name": {
-								"type": "string"
-							},
-							"position": {
-								"type": "integer"
-							},
-							"slug": {
-								"type": "string",
-								"pattern": "^[a-zA-Z0-9_-]+$"
+							"token_pricing": {
+								"type": "object",
+								"properties": {
+									"input_audio_tokens": {
+										"type": "number"
+									},
+									"input_cache_creation_tokens": {
+										"type": "number"
+									},
+									"input_cached_tokens": {
+										"type": "number"
+									},
+									"input_image_count": {
+										"type": "number"
+									},
+									"input_image_tokens": {
+										"type": "number"
+									},
+									"input_text_tokens": {
+										"type": "number"
+									},
+									"input_tokens": {
+										"type": "number"
+									},
+									"input_video_tokens": {
+										"type": "number"
+									},
+									"output_image_count": {
+										"type": "number"
+									},
+									"output_reasoning_tokens": {
+										"type": "number"
+									},
+									"output_tokens": {
+										"type": "number"
+									},
+									"total_tokens": {
+										"type": "number"
+									}
+								}
 							}
 						}
 					}
@@ -657,65 +706,64 @@
 								"result": {
 									"type": "object",
 									"properties": {
-										"base_url": {
+										"account_provider_id": {
 											"type": "string",
-											"format": "uri"
+											"format": "uuid"
 										},
-										"beta": {
-											"type": "boolean"
+										"changed_by": {
+											"type": "string",
+											"default": "manual"
+										},
+										"cost_in": {
+											"type": "number"
+										},
+										"cost_out": {
+											"type": "number"
+										},
+										"cost_type": {
+											"type": "string",
+											"default": "tokens"
 										},
 										"created_at": {
 											"type": "string",
 											"format": "date-time"
 										},
-										"curl_example": {
-											"type": "string"
-										},
-										"description": {
-											"type": "string"
-										},
 										"enable": {
 											"type": "boolean"
-										},
-										"headers": {
-											"type": "string",
-											"maxLength": 8192
 										},
 										"id": {
 											"type": "string",
 											"format": "uuid"
 										},
-										"js_example": {
+										"model": {
 											"type": "string"
 										},
-										"link": {
-											"type": "string"
-										},
-										"logo": {
-											"type": "string"
+										"model_rule": {
+											"type": "string",
+											"default": "equals",
+											"enum": [
+												"equals",
+												"starts-with",
+												"contains"
+											]
 										},
 										"modified_at": {
 											"type": "string",
 											"format": "date-time"
 										},
-										"name": {
+										"token_pricing": {
 											"type": "string"
 										},
-										"position": {
+										"weight": {
 											"type": "integer"
-										},
-										"slug": {
-											"type": "string",
-											"pattern": "^[a-zA-Z0-9_-]+$"
 										}
 									},
 									"required": [
+										"account_provider_id",
+										"model",
 										"id",
 										"created_at",
-										"modified_at",
-										"name",
-										"slug",
-										"base_url"
+										"modified_at"
 									]
 								},
 								"success": {
@@ -827,7 +875,7 @@
 			}
 		],
 		"tags": [
-			"AI Gateway Account Providers"
+			"AI Gateway Custom Provider Costs"
 		],
 		"x-api-token-group": [
 			"AI Gateway Write"
@@ -844,14 +892,14 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "ai-gateway.account-providers",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "ai-gateway.custom-providers.costs",
+		"x-fern-sdk-method-name": "update"
 	},
-	"POST /accounts/{account_id}/ai-gateway/custom-providers": {
-		"operationId": "aig-config-create-account-provider",
-		"summary": "Create a new Account Provider",
-		"description": "Creates a new AI Gateway.",
+	"POST /accounts/{account_id}/ai-gateway/custom-providers/costs": {
+		"operationId": "aig-config-create-account-provider-cost",
+		"summary": "Create a custom provider pricing rule",
+		"description": "Creates a pricing rule that sets per-token costs for models matched on a custom provider. AI Gateway uses these rules to calculate request costs.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -869,47 +917,82 @@
 					"schema": {
 						"type": "object",
 						"properties": {
-							"base_url": {
+							"account_provider_id": {
+								"description": "ID of the custom provider that the pricing rule applies to.",
 								"type": "string",
-								"format": "uri"
+								"format": "uuid",
+								"x-fern-property-name": "custom-provider-id"
 							},
-							"beta": {
-								"type": "boolean"
+							"cost_in": {
+								"type": "number"
 							},
-							"curl_example": {
-								"type": "string"
+							"cost_out": {
+								"type": "number"
 							},
-							"description": {
-								"type": "string"
+							"cost_type": {
+								"type": "string",
+								"default": "tokens"
 							},
 							"enable": {
 								"type": "boolean"
 							},
-							"headers": {
+							"model": {
+								"type": "string"
+							},
+							"model_rule": {
 								"type": "string",
-								"maxLength": 8192
+								"default": "equals",
+								"enum": [
+									"equals",
+									"starts-with",
+									"contains"
+								]
 							},
-							"js_example": {
-								"type": "string"
-							},
-							"link": {
-								"type": "string"
-							},
-							"name": {
-								"type": "string"
-							},
-							"position": {
-								"type": "integer"
-							},
-							"slug": {
-								"type": "string",
-								"pattern": "^[a-zA-Z0-9_-]+$"
+							"token_pricing": {
+								"type": "object",
+								"properties": {
+									"input_audio_tokens": {
+										"type": "number"
+									},
+									"input_cache_creation_tokens": {
+										"type": "number"
+									},
+									"input_cached_tokens": {
+										"type": "number"
+									},
+									"input_image_count": {
+										"type": "number"
+									},
+									"input_image_tokens": {
+										"type": "number"
+									},
+									"input_text_tokens": {
+										"type": "number"
+									},
+									"input_tokens": {
+										"type": "number"
+									},
+									"input_video_tokens": {
+										"type": "number"
+									},
+									"output_image_count": {
+										"type": "number"
+									},
+									"output_reasoning_tokens": {
+										"type": "number"
+									},
+									"output_tokens": {
+										"type": "number"
+									},
+									"total_tokens": {
+										"type": "number"
+									}
+								}
 							}
 						},
 						"required": [
-							"name",
-							"slug",
-							"base_url"
+							"account_provider_id",
+							"model"
 						]
 					}
 				}
@@ -926,65 +1009,64 @@
 								"result": {
 									"type": "object",
 									"properties": {
-										"base_url": {
+										"account_provider_id": {
 											"type": "string",
-											"format": "uri"
+											"format": "uuid"
 										},
-										"beta": {
-											"type": "boolean"
+										"changed_by": {
+											"type": "string",
+											"default": "manual"
+										},
+										"cost_in": {
+											"type": "number"
+										},
+										"cost_out": {
+											"type": "number"
+										},
+										"cost_type": {
+											"type": "string",
+											"default": "tokens"
 										},
 										"created_at": {
 											"type": "string",
 											"format": "date-time"
 										},
-										"curl_example": {
-											"type": "string"
-										},
-										"description": {
-											"type": "string"
-										},
 										"enable": {
 											"type": "boolean"
-										},
-										"headers": {
-											"type": "string",
-											"maxLength": 8192
 										},
 										"id": {
 											"type": "string",
 											"format": "uuid"
 										},
-										"js_example": {
+										"model": {
 											"type": "string"
 										},
-										"link": {
-											"type": "string"
-										},
-										"logo": {
-											"type": "string"
+										"model_rule": {
+											"type": "string",
+											"default": "equals",
+											"enum": [
+												"equals",
+												"starts-with",
+												"contains"
+											]
 										},
 										"modified_at": {
 											"type": "string",
 											"format": "date-time"
 										},
-										"name": {
+										"token_pricing": {
 											"type": "string"
 										},
-										"position": {
+										"weight": {
 											"type": "integer"
-										},
-										"slug": {
-											"type": "string",
-											"pattern": "^[a-zA-Z0-9_-]+$"
 										}
 									},
 									"required": [
+										"account_provider_id",
+										"model",
 										"id",
 										"created_at",
-										"modified_at",
-										"name",
-										"slug",
-										"base_url"
+										"modified_at"
 									]
 								},
 								"success": {
@@ -1057,7 +1139,7 @@
 			}
 		],
 		"tags": [
-			"AI Gateway Account Providers"
+			"AI Gateway Custom Provider Costs"
 		],
 		"x-api-token-group": [
 			"AI Gateway Write"
@@ -1074,8 +1156,8 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "ai-gateway.account-providers",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "ai-gateway.custom-providers.costs",
+		"x-fern-sdk-method-name": "create"
 	}
 }

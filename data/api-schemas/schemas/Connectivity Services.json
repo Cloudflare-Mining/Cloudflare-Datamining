@@ -153,7 +153,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "workers-vpc.services",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation permanently deletes a Workers VPC connectivity service."
 	},
 	"GET /accounts/{account_id}/connectivity/directory/services": {
@@ -978,8 +977,7 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "workers-vpc.services",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/connectivity/directory/services/{service_id}": {
 		"operationId": "connectivity-services-get",
@@ -1730,8 +1728,7 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "workers-vpc.services",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/connectivity/directory/services": {
 		"operationId": "connectivity-services-post",
@@ -3102,8 +3099,7 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "workers-vpc.services",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/connectivity/directory/services/{service_id}": {
 		"operationId": "connectivity-services-put",
@@ -4388,7 +4384,6 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "workers-vpc.services",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

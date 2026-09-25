@@ -1,8 +1,8 @@
 {
-	"DELETE /accounts/{account_id}/ai-gateway/custom-providers/costs/{id}": {
-		"operationId": "aig-config-delete-account-provider-cost",
-		"summary": "Delete a Account Provider Cost",
-		"description": "Deletes an AI Gateway dataset.",
+	"DELETE /accounts/{account_id}/ai-gateway/custom-providers/{id}": {
+		"operationId": "aig-config-delete-account-provider",
+		"summary": "Delete a custom provider",
+		"description": "Deletes a custom provider and every pricing rule that belongs to it.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -34,64 +34,67 @@
 								"result": {
 									"type": "object",
 									"properties": {
-										"account_provider_id": {
+										"base_url": {
 											"type": "string",
-											"format": "uuid"
+											"format": "uri"
 										},
-										"changed_by": {
-											"type": "string",
-											"default": "manual"
-										},
-										"cost_in": {
-											"type": "number"
-										},
-										"cost_out": {
-											"type": "number"
-										},
-										"cost_type": {
-											"type": "string",
-											"default": "tokens"
+										"beta": {
+											"type": "boolean"
 										},
 										"created_at": {
 											"type": "string",
 											"format": "date-time"
 										},
+										"curl_example": {
+											"type": "string"
+										},
+										"description": {
+											"type": "string"
+										},
 										"enable": {
 											"type": "boolean"
+										},
+										"headers": {
+											"description": "JSON object of extra HTTP headers that AI Gateway sends to the provider. Values can contain credentials.",
+											"type": "string",
+											"maxLength": 8192,
+											"x-sensitive": true
 										},
 										"id": {
 											"type": "string",
 											"format": "uuid"
 										},
-										"model": {
+										"js_example": {
 											"type": "string"
 										},
-										"model_rule": {
-											"type": "string",
-											"default": "equals",
-											"enum": [
-												"equals",
-												"starts-with",
-												"contains"
-											]
+										"link": {
+											"type": "string"
+										},
+										"logo": {
+											"type": "string"
 										},
 										"modified_at": {
 											"type": "string",
 											"format": "date-time"
 										},
-										"token_pricing": {
+										"name": {
 											"type": "string"
 										},
-										"weight": {
+										"position": {
 											"type": "integer"
+										},
+										"slug": {
+											"type": "string",
+											"pattern": "^[a-zA-Z0-9_-]+$"
 										}
 									},
 									"required": [
-										"account_provider_id",
-										"model",
 										"id",
 										"created_at",
-										"modified_at"
+										"modified_at",
+										"name",
+										"slug",
+										"base_url"
 									]
 								},
 								"success": {
@@ -156,7 +159,7 @@
 			}
 		],
 		"tags": [
-			"AI Gateway Account Provider Costs"
+			"AI Gateway Custom Providers"
 		],
 		"x-api-token-group": [
 			"AI Gateway Write"
@@ -173,14 +176,14 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "ai-gateway.account-providers.costs",
+		"x-fern-sdk-group-name": "ai-gateway.custom-providers",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This permanently deletes the custom provider and all of its pricing rules. Gateway requests that use `custom-{slug}` for this provider will stop routing."
 	},
-	"GET /accounts/{account_id}/ai-gateway/custom-providers/costs": {
-		"operationId": "aig-config-list-account-provider-cost",
-		"summary": "List Account Provider Costs",
-		"description": "Lists all AI Gateway evaluator types configured for the account.",
+	"GET /accounts/{account_id}/ai-gateway/custom-providers": {
+		"operationId": "aig-config-list-account-provider",
+		"summary": "List custom providers",
+		"description": "Lists the custom providers configured for the account, ordered by position and then name.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -211,6 +214,13 @@
 				}
 			},
 			{
+				"name": "beta",
+				"in": "query",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			{
 				"name": "enable",
 				"in": "query",
 				"schema": {
@@ -218,39 +228,10 @@
 				}
 			},
 			{
-				"name": "account_provider_id",
-				"in": "query",
-				"schema": {
-					"type": "string",
-					"format": "uuid"
-				}
-			},
-			{
-				"name": "model_rule",
-				"in": "query",
-				"schema": {
-					"type": "string",
-					"default": "equals",
-					"enum": [
-						"equals",
-						"starts-with",
-						"contains"
-					]
-				}
-			},
-			{
-				"name": "cost_type",
-				"in": "query",
-				"schema": {
-					"type": "string",
-					"default": "tokens"
-				}
-			},
-			{
 				"name": "search",
 				"in": "query",
 				"schema": {
-					"description": "Search by model, changed_by",
+					"description": "Search by id, name, slug",
 					"type": "string"
 				}
 			}
@@ -267,64 +248,67 @@
 									"type": "array",
 									"items": {
 										"properties": {
-											"account_provider_id": {
+											"base_url": {
 												"type": "string",
-												"format": "uuid"
+												"format": "uri"
 											},
-											"changed_by": {
-												"type": "string",
-												"default": "manual"
-											},
-											"cost_in": {
-												"type": "number"
-											},
-											"cost_out": {
-												"type": "number"
-											},
-											"cost_type": {
-												"type": "string",
-												"default": "tokens"
+											"beta": {
+												"type": "boolean"
 											},
 											"created_at": {
 												"type": "string",
 												"format": "date-time"
 											},
+											"curl_example": {
+												"type": "string"
+											},
+											"description": {
+												"type": "string"
+											},
 											"enable": {
 												"type": "boolean"
+											},
+											"headers": {
+												"description": "JSON object of extra HTTP headers that AI Gateway sends to the provider. Values can contain credentials.",
+												"type": "string",
+												"maxLength": 8192,
+												"x-sensitive": true
 											},
 											"id": {
 												"type": "string",
 												"format": "uuid"
 											},
-											"model": {
+											"js_example": {
 												"type": "string"
 											},
-											"model_rule": {
-												"type": "string",
-												"default": "equals",
-												"enum": [
-													"equals",
-													"starts-with",
-													"contains"
-												]
+											"link": {
+												"type": "string"
+											},
+											"logo": {
+												"type": "string"
 											},
 											"modified_at": {
 												"type": "string",
 												"format": "date-time"
 											},
-											"token_pricing": {
+											"name": {
 												"type": "string"
 											},
-											"weight": {
+											"position": {
 												"type": "integer"
+											},
+											"slug": {
+												"type": "string",
+												"pattern": "^[a-zA-Z0-9_-]+$"
 											}
 										},
 										"required": [
-											"account_provider_id",
-											"model",
 											"id",
 											"created_at",
-											"modified_at"
+											"modified_at",
+											"name",
+											"slug",
+											"base_url"
 										],
 										"type": "object"
 									}
@@ -390,7 +374,7 @@
 			}
 		],
 		"tags": [
-			"AI Gateway Account Provider Costs"
+			"AI Gateway Custom Providers"
 		],
 		"x-api-token-group": [
 			"AI Gateway Write",
@@ -408,14 +392,13 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "ai-gateway.account-providers.costs",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "ai-gateway.custom-providers",
+		"x-fern-sdk-method-name": "list"
 	},
-	"GET /accounts/{account_id}/ai-gateway/custom-providers/costs/{id}": {
-		"operationId": "aig-config-fetch-account-provider-cost",
-		"summary": "Fetch a Account Provider Cost",
-		"description": "Retrieves details for a specific AI Gateway dataset.",
+	"GET /accounts/{account_id}/ai-gateway/custom-providers/{id}": {
+		"operationId": "aig-config-fetch-account-provider",
+		"summary": "Get a custom provider",
+		"description": "Retrieves a custom provider, including its slug, base URL, and custom headers.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -447,64 +430,67 @@
 								"result": {
 									"type": "object",
 									"properties": {
-										"account_provider_id": {
+										"base_url": {
 											"type": "string",
-											"format": "uuid"
+											"format": "uri"
 										},
-										"changed_by": {
-											"type": "string",
-											"default": "manual"
-										},
-										"cost_in": {
-											"type": "number"
-										},
-										"cost_out": {
-											"type": "number"
-										},
-										"cost_type": {
-											"type": "string",
-											"default": "tokens"
+										"beta": {
+											"type": "boolean"
 										},
 										"created_at": {
 											"type": "string",
 											"format": "date-time"
 										},
+										"curl_example": {
+											"type": "string"
+										},
+										"description": {
+											"type": "string"
+										},
 										"enable": {
 											"type": "boolean"
+										},
+										"headers": {
+											"description": "JSON object of extra HTTP headers that AI Gateway sends to the provider. Values can contain credentials.",
+											"type": "string",
+											"maxLength": 8192,
+											"x-sensitive": true
 										},
 										"id": {
 											"type": "string",
 											"format": "uuid"
 										},
-										"model": {
+										"js_example": {
 											"type": "string"
 										},
-										"model_rule": {
-											"type": "string",
-											"default": "equals",
-											"enum": [
-												"equals",
-												"starts-with",
-												"contains"
-											]
+										"link": {
+											"type": "string"
+										},
+										"logo": {
+											"type": "string"
 										},
 										"modified_at": {
 											"type": "string",
 											"format": "date-time"
 										},
-										"token_pricing": {
+										"name": {
 											"type": "string"
 										},
-										"weight": {
+										"position": {
 											"type": "integer"
+										},
+										"slug": {
+											"type": "string",
+											"pattern": "^[a-zA-Z0-9_-]+$"
 										}
 									},
 									"required": [
-										"account_provider_id",
-										"model",
 										"id",
 										"created_at",
-										"modified_at"
+										"modified_at",
+										"name",
+										"slug",
+										"base_url"
 									]
 								},
 								"success": {
@@ -569,7 +555,7 @@
 			}
 		],
 		"tags": [
-			"AI Gateway Account Provider Costs"
+			"AI Gateway Custom Providers"
 		],
 		"x-api-token-group": [
 			"AI Gateway Write",
@@ -587,14 +573,13 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "ai-gateway.account-providers.costs",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "ai-gateway.custom-providers",
+		"x-fern-sdk-method-name": "get"
 	},
-	"PATCH /accounts/{account_id}/ai-gateway/custom-providers/costs/{id}": {
-		"operationId": "aig-config-update-account-provider-cost",
-		"summary": "Update a Account Provider Cost",
-		"description": "Updates an existing AI Gateway dataset.",
+	"PATCH /accounts/{account_id}/ai-gateway/custom-providers/{id}": {
+		"operationId": "aig-config-update-account-provider",
+		"summary": "Update a custom provider",
+		"description": "Updates the specified fields of a custom provider. Changes clear cached entries for the provider.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -621,71 +606,46 @@
 					"schema": {
 						"type": "object",
 						"properties": {
-							"cost_in": {
-								"type": "number"
-							},
-							"cost_out": {
-								"type": "number"
-							},
-							"cost_type": {
+							"base_url": {
 								"type": "string",
-								"default": "tokens"
+								"format": "uri"
+							},
+							"beta": {
+								"type": "boolean"
+							},
+							"curl_example": {
+								"type": "string"
+							},
+							"description": {
+								"type": "string"
 							},
 							"enable": {
 								"type": "boolean"
 							},
-							"model": {
+							"headers": {
+								"description": "JSON object of extra HTTP headers that AI Gateway sends to the provider. Values can contain credentials.",
+								"type": "string",
+								"maxLength": 8192,
+								"x-sensitive": true
+							},
+							"js_example": {
 								"type": "string"
 							},
-							"model_rule": {
-								"type": "string",
-								"default": "equals",
-								"enum": [
-									"equals",
-									"starts-with",
-									"contains"
-								]
+							"link": {
+								"type": "string"
 							},
-							"token_pricing": {
-								"type": "object",
-								"properties": {
-									"input_audio_tokens": {
-										"type": "number"
-									},
-									"input_cache_creation_tokens": {
-										"type": "number"
-									},
-									"input_cached_tokens": {
-										"type": "number"
-									},
-									"input_image_count": {
-										"type": "number"
-									},
-									"input_image_tokens": {
-										"type": "number"
-									},
-									"input_text_tokens": {
-										"type": "number"
-									},
-									"input_tokens": {
-										"type": "number"
-									},
-									"input_video_tokens": {
-										"type": "number"
-									},
-									"output_image_count": {
-										"type": "number"
-									},
-									"output_reasoning_tokens": {
-										"type": "number"
-									},
-									"output_tokens": {
-										"type": "number"
-									},
-									"total_tokens": {
-										"type": "number"
-									}
-								}
+							"logo": {
+								"type": "string"
+							},
+							"name": {
+								"type": "string"
+							},
+							"position": {
+								"type": "integer"
+							},
+							"slug": {
+								"type": "string",
+								"pattern": "^[a-zA-Z0-9_-]+$"
 							}
 						}
 					}
@@ -703,64 +663,67 @@
 								"result": {
 									"type": "object",
 									"properties": {
-										"account_provider_id": {
+										"base_url": {
 											"type": "string",
-											"format": "uuid"
+											"format": "uri"
 										},
-										"changed_by": {
-											"type": "string",
-											"default": "manual"
-										},
-										"cost_in": {
-											"type": "number"
-										},
-										"cost_out": {
-											"type": "number"
-										},
-										"cost_type": {
-											"type": "string",
-											"default": "tokens"
+										"beta": {
+											"type": "boolean"
 										},
 										"created_at": {
 											"type": "string",
 											"format": "date-time"
 										},
+										"curl_example": {
+											"type": "string"
+										},
+										"description": {
+											"type": "string"
+										},
 										"enable": {
 											"type": "boolean"
+										},
+										"headers": {
+											"description": "JSON object of extra HTTP headers that AI Gateway sends to the provider. Values can contain credentials.",
+											"type": "string",
+											"maxLength": 8192,
+											"x-sensitive": true
 										},
 										"id": {
 											"type": "string",
 											"format": "uuid"
 										},
-										"model": {
+										"js_example": {
 											"type": "string"
 										},
-										"model_rule": {
-											"type": "string",
-											"default": "equals",
-											"enum": [
-												"equals",
-												"starts-with",
-												"contains"
-											]
+										"link": {
+											"type": "string"
+										},
+										"logo": {
+											"type": "string"
 										},
 										"modified_at": {
 											"type": "string",
 											"format": "date-time"
 										},
-										"token_pricing": {
+										"name": {
 											"type": "string"
 										},
-										"weight": {
+										"position": {
 											"type": "integer"
+										},
+										"slug": {
+											"type": "string",
+											"pattern": "^[a-zA-Z0-9_-]+$"
 										}
 									},
 									"required": [
-										"account_provider_id",
-										"model",
 										"id",
 										"created_at",
-										"modified_at"
+										"modified_at",
+										"name",
+										"slug",
+										"base_url"
 									]
 								},
 								"success": {
@@ -872,7 +835,7 @@
 			}
 		],
 		"tags": [
-			"AI Gateway Account Provider Costs"
+			"AI Gateway Custom Providers"
 		],
 		"x-api-token-group": [
 			"AI Gateway Write"
@@ -889,14 +852,33 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "ai-gateway.account-providers.costs",
+		"x-fern-sdk-group-name": "ai-gateway.custom-providers",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-forge-params": {
+			"beta": {
+				"hidden": true
+			},
+			"curl_example": {
+				"hidden": true
+			},
+			"js_example": {
+				"hidden": true
+			},
+			"link": {
+				"hidden": true
+			},
+			"logo": {
+				"hidden": true
+			},
+			"position": {
+				"hidden": true
+			}
+		}
 	},
-	"POST /accounts/{account_id}/ai-gateway/custom-providers/costs": {
-		"operationId": "aig-config-create-account-provider-cost",
-		"summary": "Create a new Account Provider Cost",
-		"description": "Creates a new AI Gateway.",
+	"POST /accounts/{account_id}/ai-gateway/custom-providers": {
+		"operationId": "aig-config-create-account-provider",
+		"summary": "Create a custom provider",
+		"description": "Creates an account-level custom provider that forwards AI Gateway requests to the HTTPS base URL you supply. Requests reference the provider as `custom-{slug}`, so the slug must be unique within the account.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -914,80 +896,49 @@
 					"schema": {
 						"type": "object",
 						"properties": {
-							"account_provider_id": {
+							"base_url": {
 								"type": "string",
-								"format": "uuid"
+								"format": "uri"
 							},
-							"cost_in": {
-								"type": "number"
+							"beta": {
+								"type": "boolean"
 							},
-							"cost_out": {
-								"type": "number"
+							"curl_example": {
+								"type": "string"
 							},
-							"cost_type": {
-								"type": "string",
-								"default": "tokens"
+							"description": {
+								"type": "string"
 							},
 							"enable": {
 								"type": "boolean"
 							},
-							"model": {
+							"headers": {
+								"description": "JSON object of extra HTTP headers that AI Gateway sends to the provider. Values can contain credentials.",
+								"type": "string",
+								"maxLength": 8192,
+								"x-sensitive": true
+							},
+							"js_example": {
 								"type": "string"
 							},
-							"model_rule": {
-								"type": "string",
-								"default": "equals",
-								"enum": [
-									"equals",
-									"starts-with",
-									"contains"
-								]
+							"link": {
+								"type": "string"
 							},
-							"token_pricing": {
-								"type": "object",
-								"properties": {
-									"input_audio_tokens": {
-										"type": "number"
-									},
-									"input_cache_creation_tokens": {
-										"type": "number"
-									},
-									"input_cached_tokens": {
-										"type": "number"
-									},
-									"input_image_count": {
-										"type": "number"
-									},
-									"input_image_tokens": {
-										"type": "number"
-									},
-									"input_text_tokens": {
-										"type": "number"
-									},
-									"input_tokens": {
-										"type": "number"
-									},
-									"input_video_tokens": {
-										"type": "number"
-									},
-									"output_image_count": {
-										"type": "number"
-									},
-									"output_reasoning_tokens": {
-										"type": "number"
-									},
-									"output_tokens": {
-										"type": "number"
-									},
-									"total_tokens": {
-										"type": "number"
-									}
-								}
+							"name": {
+								"type": "string"
+							},
+							"position": {
+								"type": "integer"
+							},
+							"slug": {
+								"type": "string",
+								"pattern": "^[a-zA-Z0-9_-]+$"
 							}
 						},
 						"required": [
-							"account_provider_id",
-							"model"
+							"name",
+							"slug",
+							"base_url"
 						]
 					}
 				}
@@ -1004,64 +955,67 @@
 								"result": {
 									"type": "object",
 									"properties": {
-										"account_provider_id": {
+										"base_url": {
 											"type": "string",
-											"format": "uuid"
+											"format": "uri"
 										},
-										"changed_by": {
-											"type": "string",
-											"default": "manual"
-										},
-										"cost_in": {
-											"type": "number"
-										},
-										"cost_out": {
-											"type": "number"
-										},
-										"cost_type": {
-											"type": "string",
-											"default": "tokens"
+										"beta": {
+											"type": "boolean"
 										},
 										"created_at": {
 											"type": "string",
 											"format": "date-time"
 										},
+										"curl_example": {
+											"type": "string"
+										},
+										"description": {
+											"type": "string"
+										},
 										"enable": {
 											"type": "boolean"
+										},
+										"headers": {
+											"description": "JSON object of extra HTTP headers that AI Gateway sends to the provider. Values can contain credentials.",
+											"type": "string",
+											"maxLength": 8192,
+											"x-sensitive": true
 										},
 										"id": {
 											"type": "string",
 											"format": "uuid"
 										},
-										"model": {
+										"js_example": {
 											"type": "string"
 										},
-										"model_rule": {
-											"type": "string",
-											"default": "equals",
-											"enum": [
-												"equals",
-												"starts-with",
-												"contains"
-											]
+										"link": {
+											"type": "string"
+										},
+										"logo": {
+											"type": "string"
 										},
 										"modified_at": {
 											"type": "string",
 											"format": "date-time"
 										},
-										"token_pricing": {
+										"name": {
 											"type": "string"
 										},
-										"weight": {
+										"position": {
 											"type": "integer"
+										},
+										"slug": {
+											"type": "string",
+											"pattern": "^[a-zA-Z0-9_-]+$"
 										}
 									},
 									"required": [
-										"account_provider_id",
-										"model",
 										"id",
 										"created_at",
-										"modified_at"
+										"modified_at",
+										"name",
+										"slug",
+										"base_url"
 									]
 								},
 								"success": {
@@ -1134,7 +1088,7 @@
 			}
 		],
 		"tags": [
-			"AI Gateway Account Provider Costs"
+			"AI Gateway Custom Providers"
 		],
 		"x-api-token-group": [
 			"AI Gateway Write"
@@ -1151,8 +1105,24 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "ai-gateway.account-providers.costs",
+		"x-fern-sdk-group-name": "ai-gateway.custom-providers",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-params": {
+			"beta": {
+				"hidden": true
+			},
+			"curl_example": {
+				"hidden": true
+			},
+			"js_example": {
+				"hidden": true
+			},
+			"link": {
+				"hidden": true
+			},
+			"position": {
+				"hidden": true
+			}
+		}
 	}
 }

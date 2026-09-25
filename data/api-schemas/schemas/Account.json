@@ -165,6 +165,7 @@
 			"free": true,
 			"pro": true
 		},
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.logging-state",
 		"x-fern-sdk-method-name": "get"
 	},
@@ -538,7 +539,9 @@
 			"free": true,
 			"pro": true
 		},
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.logging-state",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-require-confirmation": "This irreversibly migrates AI Gateway logging for the entire account from Legacy Logs to Workers Observability. You cannot switch the account back to Legacy Logs."
 	}
 }

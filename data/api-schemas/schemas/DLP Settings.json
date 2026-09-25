@@ -295,9 +295,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.settings",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.dlp.settings",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/dlp/limits": {
 		"operationId": "dlp-limits-get",
@@ -596,8 +595,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.limits",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/dlp/payload_log": {
 		"operationId": "dlp-payload-log-get",
@@ -862,6 +860,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_email": [],
@@ -876,10 +875,10 @@
 			"Zero Trust Read",
 			"Zero Trust Write"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.dlp.payload-logs",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/dlp/settings": {
 		"operationId": "dlp-settings-get",
@@ -1178,9 +1177,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.settings",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.dlp.settings",
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/dlp/settings": {
 		"operationId": "dlp-settings-edit",
@@ -1537,9 +1535,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.settings",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.dlp.settings",
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/dlp/patterns/validate": {
 		"operationId": "dlp-pattern-validate",
@@ -1826,8 +1823,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.patterns",
-		"x-fern-sdk-method-name": "validate",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "validate"
 	},
 	"PUT /accounts/{account_id}/dlp/payload_log": {
 		"operationId": "dlp-payload-log-put",
@@ -2125,6 +2121,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_email": [],
@@ -2138,10 +2135,10 @@
 		"x-api-token-group": [
 			"Zero Trust Write"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.dlp.payload-logs",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/dlp/settings": {
 		"operationId": "dlp-settings-update",
@@ -2498,8 +2495,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.settings",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.dlp.settings",
+		"x-fern-sdk-method-name": "update"
 	}
 }

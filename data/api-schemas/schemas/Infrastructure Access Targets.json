@@ -160,9 +160,8 @@
 			"Infrastructure Access Targets"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "access.targets",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.access.targets",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/infrastructure/targets/batch": {
 		"operationId": "infra-targets-delete-batch",
@@ -341,7 +340,7 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "access.targets",
+		"x-fern-sdk-group-name": "zero-trust.access.targets",
 		"x-fern-sdk-method-name": "bulk-delete"
 	},
 	"GET /accounts/{account_id}/infrastructure/targets": {
@@ -938,9 +937,8 @@
 			"Infrastructure Access Targets"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "access.targets",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.access.targets",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/infrastructure/targets/{target_id}": {
 		"operationId": "infra-targets-get",
@@ -1296,9 +1294,8 @@
 			"Infrastructure Access Targets"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "access.targets",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.access.targets",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/infrastructure/targets": {
 		"operationId": "infra-targets-post",
@@ -1717,9 +1714,8 @@
 			"Infrastructure Access Targets"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "access.targets",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.access.targets",
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/infrastructure/targets/batch_delete": {
 		"operationId": "infra-targets-delete-batch-post",
@@ -1896,9 +1892,8 @@
 			"Infrastructure Access Targets"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "access.targets.bulk",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.access.targets.bulk",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"POST /accounts/{account_id}/infrastructure/targets/batch_tags": {
 		"operationId": "infra-targets-post-batch-tags",
@@ -2285,9 +2280,8 @@
 			"Infrastructure Access Targets"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "access.targets.bulk",
+		"x-fern-sdk-group-name": "zero-trust.access.targets.bulk",
 		"x-fern-sdk-method-name": "replace-tags",
-		"x-forge-hidden": true,
 		"x-stainless-skip": [
 			"terraform"
 		]
@@ -2723,9 +2717,8 @@
 			"Infrastructure Access Targets"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "access.targets",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.access.targets",
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/infrastructure/targets/batch": {
 		"operationId": "infra-targets-put-batch",
@@ -3150,9 +3143,8 @@
 			"Infrastructure Access Targets"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "access.targets.bulk",
+		"x-fern-sdk-group-name": "zero-trust.access.targets.bulk",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true,
 		"x-stainless-skip": [
 			"terraform"
 		]

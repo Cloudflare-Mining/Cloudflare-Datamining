@@ -1,8 +1,8 @@
 {
 	"DELETE /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}": {
 		"operationId": "aig-config-delete-gateway-dynamic-route",
-		"summary": "Delete an AI Gateway Dynamic Route.",
-		"description": "Delete an AI Gateway Dynamic Route.",
+		"summary": "Delete a dynamic route",
+		"description": "Deletes a dynamic route from an AI Gateway.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -470,15 +470,14 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes": {
 		"operationId": "aig-config-list-gateway-dynamic-routes",
-		"summary": "List all AI Gateway Dynamic Routes.",
-		"description": "List all AI Gateway Dynamic Routes.",
+		"summary": "List dynamic routes",
+		"description": "Lists the dynamic routes configured on an AI Gateway.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1040,15 +1039,14 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}": {
 		"operationId": "aig-config-get-gateway-dynamic-route",
-		"summary": "Get an AI Gateway Dynamic Route.",
-		"description": "Get an AI Gateway Dynamic Route.",
+		"summary": "Get a dynamic route",
+		"description": "Retrieves a dynamic route with its routing elements, active version, and current deployment.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1568,15 +1566,14 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/deployments": {
 		"operationId": "aig-config-list-gateway-dynamic-route-deployments",
-		"summary": "List all AI Gateway Dynamic Route Deployments.",
-		"description": "List all AI Gateway Dynamic Route Deployments.",
+		"summary": "List dynamic route deployments",
+		"description": "Lists the deployment history of a dynamic route.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1738,15 +1735,14 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing",
-		"x-fern-sdk-method-name": "list-deployments",
-		"x-forge-hidden": true
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing.deployments",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/versions": {
 		"operationId": "aig-config-list-gateway-dynamic-route-versions",
-		"summary": "List all AI Gateway Dynamic Route Versions.",
-		"description": "List all AI Gateway Dynamic Route Versions.",
+		"summary": "List dynamic route versions",
+		"description": "Lists the saved versions of a dynamic route.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1919,15 +1915,14 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing",
-		"x-fern-sdk-method-name": "list-versions",
-		"x-forge-hidden": true
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing.versions",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/versions/{version_id}": {
 		"operationId": "aig-config-get-gateway-dynamic-route-version",
-		"summary": "Get an AI Gateway Dynamic Route Version.",
-		"description": "Get an AI Gateway Dynamic Route Version.",
+		"summary": "Get a dynamic route version",
+		"description": "Retrieves a saved version of a dynamic route, including its routing elements.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2423,15 +2418,14 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing",
-		"x-fern-sdk-method-name": "get-version",
-		"x-forge-hidden": true
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing.versions",
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}": {
 		"operationId": "aig-config-update-gateway-dynamic-route",
-		"summary": "Update an AI Gateway Dynamic Route.",
-		"description": "Update an AI Gateway Dynamic Route.",
+		"summary": "Rename a dynamic route",
+		"description": "Updates the name of a dynamic route. To change routing behaviour, create and deploy a new version.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3311,15 +3305,14 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"POST /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes": {
 		"operationId": "aig-config-post-gateway-dynamic-route",
-		"summary": "Create a new AI Gateway Dynamic Route.",
-		"description": "Create a new AI Gateway Dynamic Route.",
+		"summary": "Create a dynamic route",
+		"description": "Creates a dynamic route on an AI Gateway from the specified routing elements. Clients call the route by using `dynamic/{name}` as the model name.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -4170,15 +4163,14 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/deployments": {
 		"operationId": "aig-config-post-gateway-dynamic-route-deployment",
-		"summary": "Create a new AI Gateway Dynamic Route Deployment.",
-		"description": "Create a new AI Gateway Dynamic Route Deployment.",
+		"summary": "Deploy a dynamic route version",
+		"description": "Deploys the specified version of a dynamic route so that it serves traffic. Deploy an earlier version to roll back.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -4664,15 +4656,14 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing",
-		"x-fern-sdk-method-name": "create-deployment",
-		"x-forge-hidden": true
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing.deployments",
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/versions": {
 		"operationId": "aig-config-post-gateway-dynamic-route-version",
-		"summary": "Create a new AI Gateway Dynamic Route Version.",
-		"description": "Create a new AI Gateway Dynamic Route Version.",
+		"summary": "Create a dynamic route version",
+		"description": "Creates a new version of a dynamic route from the specified routing elements. The version does not serve traffic until you deploy it.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -5476,9 +5467,8 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing",
-		"x-fern-sdk-method-name": "create-version",
-		"x-forge-hidden": true
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing.versions",
+		"x-fern-sdk-method-name": "create"
 	}
 }

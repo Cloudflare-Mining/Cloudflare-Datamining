@@ -1,8 +1,8 @@
 {
 	"DELETE /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations/{id}": {
 		"operationId": "aig-config-delete-evaluations",
-		"summary": "Delete a Evaluation",
-		"description": "Deletes an AI Gateway dataset.",
+		"summary": "Delete an evaluation (deprecated)",
+		"description": "Deletes an evaluation and its results. Evaluations and datasets are deprecated and unavailable to new accounts.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -18,7 +18,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "gateway id",
+					"description": "Unique identifier of the AI Gateway within the account.",
 					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
@@ -131,7 +131,7 @@
 														"x-auditable": true
 													},
 													"gateway_id": {
-														"description": "gateway id",
+														"description": "Unique identifier of the AI Gateway within the account.",
 														"type": "string",
 														"example": "my-gateway",
 														"maxLength": 64,
@@ -167,7 +167,7 @@
 											}
 										},
 										"gateway_id": {
-											"description": "gateway id",
+											"description": "Unique identifier of the AI Gateway within the account.",
 											"type": "string",
 											"example": "my-gateway",
 											"maxLength": 64,
@@ -334,15 +334,14 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "ai-gateway.evaluations",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/ai-gateway/evaluation-types": {
 		"operationId": "aig-config-list-evaluators",
-		"summary": "List Evaluators",
-		"description": "Lists all available evaluator types for scoring AI gateway responses.",
+		"summary": "List evaluator types (deprecated)",
+		"description": "Lists the evaluator types that evaluations can use to score AI Gateway responses. Evaluations are deprecated and unavailable to new accounts.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -547,15 +546,14 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "ai-gateway.evaluation-types",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations": {
 		"operationId": "aig-config-list-evaluations",
-		"summary": "List Evaluations",
-		"description": "Lists all AI Gateway evaluator types configured for the account.",
+		"summary": "List evaluations (deprecated)",
+		"description": "Lists the evaluations run on an AI Gateway. Evaluations and datasets are deprecated and unavailable to new accounts.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -571,7 +569,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "gateway id",
+					"description": "Unique identifier of the AI Gateway within the account.",
 					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
@@ -719,7 +717,7 @@
 															"x-auditable": true
 														},
 														"gateway_id": {
-															"description": "gateway id",
+															"description": "Unique identifier of the AI Gateway within the account.",
 															"type": "string",
 															"example": "my-gateway",
 															"maxLength": 64,
@@ -755,7 +753,7 @@
 												}
 											},
 											"gateway_id": {
-												"description": "gateway id",
+												"description": "Unique identifier of the AI Gateway within the account.",
 												"type": "string",
 												"example": "my-gateway",
 												"maxLength": 64,
@@ -924,15 +922,14 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "ai-gateway.evaluations",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations/{id}": {
 		"operationId": "aig-config-fetch-evaluations",
-		"summary": "Fetch a Evaluation",
-		"description": "Retrieves details for a specific AI Gateway dataset.",
+		"summary": "Get an evaluation (deprecated)",
+		"description": "Retrieves an evaluation and its results. Evaluations and datasets are deprecated and unavailable to new accounts.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -948,7 +945,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "gateway id",
+					"description": "Unique identifier of the AI Gateway within the account.",
 					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
@@ -1061,7 +1058,7 @@
 														"x-auditable": true
 													},
 													"gateway_id": {
-														"description": "gateway id",
+														"description": "Unique identifier of the AI Gateway within the account.",
 														"type": "string",
 														"example": "my-gateway",
 														"maxLength": 64,
@@ -1097,7 +1094,7 @@
 											}
 										},
 										"gateway_id": {
-											"description": "gateway id",
+											"description": "Unique identifier of the AI Gateway within the account.",
 											"type": "string",
 											"example": "my-gateway",
 											"maxLength": 64,
@@ -1265,22 +1262,21 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "ai-gateway.evaluations",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations": {
 		"operationId": "aig-config-create-evaluations",
-		"summary": "Create a new Evaluation",
-		"description": "Creates a new AI Gateway.",
+		"summary": "Create an evaluation (deprecated)",
+		"description": "Creates an evaluation that scores the logs in a dataset with the specified evaluator types. Evaluations and datasets are deprecated and unavailable to new accounts.",
 		"parameters": [
 			{
 				"name": "gateway_id",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "gateway id",
+					"description": "Unique identifier of the AI Gateway within the account.",
 					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
@@ -1427,7 +1423,7 @@
 														"x-auditable": true
 													},
 													"gateway_id": {
-														"description": "gateway id",
+														"description": "Unique identifier of the AI Gateway within the account.",
 														"type": "string",
 														"example": "my-gateway",
 														"maxLength": 64,
@@ -1463,7 +1459,7 @@
 											}
 										},
 										"gateway_id": {
-											"description": "gateway id",
+											"description": "Unique identifier of the AI Gateway within the account.",
 											"type": "string",
 											"example": "my-gateway",
 											"maxLength": 64,
@@ -1638,9 +1634,8 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "ai-gateway.evaluations",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }
