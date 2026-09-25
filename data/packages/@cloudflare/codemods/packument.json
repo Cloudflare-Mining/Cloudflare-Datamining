@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/codemods",
 	"dist-tags": {
-		"latest": "0.1.0"
+		"latest": "0.2.0"
 	},
 	"versions": {
 		"0.0.0": {
@@ -54,6 +54,47 @@
 					}
 				},
 				"unpackedSize": 1469994
+			}
+		},
+		"0.2.0": {
+			"name": "@cloudflare/codemods",
+			"version": "0.2.0",
+			"devDependencies": {
+				"tsup": "8.3.0",
+				"vitest": "4.1.0",
+				"tinyglobby": "0.2.16",
+				"typescript": "5.8.3",
+				"@types/node": "22.15.17",
+				"@cloudflare/workers-utils": "0.44.0",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/cli-shared-helpers": "0.2.0",
+				"@cloudflare/shared-ast-primitives": "1.1.0"
+			},
+			"bin": {
+				"cloudflare-codemods": "dist/bin.mjs"
+			},
+			"dist": {
+				"shasum": "1c1c3e2790f7abbfd0b76377a07226af943a8306",
+				"tarball": "https://registry.npmjs.org/@cloudflare/codemods/-/codemods-0.2.0.tgz",
+				"fileCount": 10,
+				"integrity": "sha512-UonIk10PqFQgH8DfP8cTqixR4I6KKwFeSpy7CVXl5rpcckqfHSUhiNYe+K+xL6d1x7H4N/wjCpGsFnOxORsmkg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQChufNPJfBQv5gHBEOnOwSBRGf/xyjaSodk6g2Df0cf6AIgJaPmOthAaJOOhPdc8T8vFZOgkH5eZN+J2TJnSr8MUJU=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCICEFTzneDrkNiEhkPvoTpZsdZIjBE4CP50owORPW5pkKAiBs6sDg6aDZKTZ+OqX83jV6cD67s6eU4WfU6fRG1SPYwA=="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fcodemods@0.2.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 8034206
 			}
 		}
 	}
