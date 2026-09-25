@@ -18,7 +18,7 @@ Misconfiguring Turnstile by skipping backend validation leaves sites exposed to 
 
 [Jules Lemee](https://blog.cloudflare.com/author/jules-lemee/)
 
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M39NWTASMSZ5QNR34B69DE9W.01M39NWV0E5V2VQFG38NH7SPK8.png&w=1365&h=768&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/turnstile-spin/)
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CQMQWGC7WBK8ZR7DG13PFE.01M3CQMRMEBSVS7GAD6GNHZ9JD.png&w=1200&h=675&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/turnstile-spin/)
 
 September 24, 2026 [<h2>How Cloudflare addressed a cross-tenant data exposure vulnerability in Containers</h2>](https://blog.cloudflare.com/containers-cross-tenant-vulnerability/)
 
