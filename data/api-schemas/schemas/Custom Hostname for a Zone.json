@@ -9,10 +9,12 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "Custom hostname identifier tag.",
 					"type": "string",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
+					"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+					"maxLength": 36,
+					"minLength": 36,
+					"readOnly": true,
 					"x-auditable": true
 				}
 			},
@@ -38,10 +40,12 @@
 							"type": "object",
 							"properties": {
 								"id": {
-									"description": "Identifier.",
+									"description": "Custom hostname identifier tag.",
 									"type": "string",
-									"example": "023e105f4ecef8ad9ca31a8372d0c353",
-									"maxLength": 32,
+									"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+									"maxLength": 36,
+									"minLength": 36,
+									"readOnly": true,
 									"x-auditable": true
 								}
 							}
@@ -58,10 +62,12 @@
 								{
 									"properties": {
 										"id": {
-											"description": "Identifier.",
+											"description": "Custom hostname identifier tag.",
 											"type": "string",
-											"example": "023e105f4ecef8ad9ca31a8372d0c353",
-											"maxLength": 32,
+											"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+											"maxLength": 36,
+											"minLength": 36,
+											"readOnly": true,
 											"x-auditable": true
 										}
 									},
@@ -220,10 +226,12 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "Custom hostname identifier tag.",
 					"type": "string",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
+					"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+					"maxLength": 36,
+					"minLength": 36,
+					"readOnly": true,
 					"x-auditable": true
 				}
 			},
@@ -232,10 +240,12 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "Custom hostname identifier tag.",
 					"type": "string",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
+					"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+					"maxLength": 36,
+					"minLength": 36,
+					"readOnly": true,
 					"x-auditable": true
 				}
 			},
@@ -244,10 +254,12 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "Custom hostname identifier tag.",
 					"type": "string",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
+					"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+					"maxLength": 36,
+					"minLength": 36,
+					"readOnly": true,
 					"x-auditable": true
 				}
 			},
@@ -273,10 +285,12 @@
 							"type": "object",
 							"properties": {
 								"id": {
-									"description": "Identifier.",
+									"description": "Custom hostname identifier tag.",
 									"type": "string",
-									"example": "023e105f4ecef8ad9ca31a8372d0c353",
-									"maxLength": 32,
+									"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+									"maxLength": 36,
+									"minLength": 36,
+									"readOnly": true,
 									"x-auditable": true
 								}
 							}
@@ -293,10 +307,12 @@
 								{
 									"properties": {
 										"id": {
-											"description": "Identifier.",
+											"description": "Custom hostname identifier tag.",
 											"type": "string",
-											"example": "023e105f4ecef8ad9ca31a8372d0c353",
-											"maxLength": 32,
+											"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+											"maxLength": 36,
+											"minLength": 36,
+											"readOnly": true,
 											"x-auditable": true
 										}
 									},
@@ -743,10 +759,12 @@
 														"x-auditable": true
 													},
 													"id": {
-														"description": "Identifier.",
+														"description": "Custom hostname identifier tag.",
 														"type": "string",
-														"example": "023e105f4ecef8ad9ca31a8372d0c353",
-														"maxLength": 32,
+														"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+														"maxLength": 36,
+														"minLength": 36,
+														"readOnly": true,
 														"x-auditable": true
 													},
 													"ssl": {
@@ -1153,10 +1171,12 @@
 																"x-auditable": true
 															},
 															"id": {
-																"description": "Identifier.",
+																"description": "Custom hostname identifier tag.",
 																"type": "string",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
+																"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+																"maxLength": 36,
+																"minLength": 36,
+																"readOnly": true,
 																"x-auditable": true
 															},
 															"ownership_verification": {
@@ -1739,10 +1759,12 @@
 																"x-auditable": true
 															},
 															"id": {
-																"description": "Identifier.",
+																"description": "Custom hostname identifier tag.",
 																"type": "string",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
+																"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+																"maxLength": 36,
+																"minLength": 36,
+																"readOnly": true,
 																"x-auditable": true
 															},
 															"ssl": {
@@ -2149,10 +2171,12 @@
 																		"x-auditable": true
 																	},
 																	"id": {
-																		"description": "Identifier.",
+																		"description": "Custom hostname identifier tag.",
 																		"type": "string",
-																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																		"maxLength": 32,
+																		"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+																		"maxLength": 36,
+																		"minLength": 36,
+																		"readOnly": true,
 																		"x-auditable": true
 																	},
 																	"ownership_verification": {
@@ -2803,10 +2827,12 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "Custom hostname identifier tag.",
 					"type": "string",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
+					"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+					"maxLength": 36,
+					"minLength": 36,
+					"readOnly": true,
 					"x-auditable": true
 				}
 			},
@@ -2906,10 +2932,12 @@
 															"x-auditable": true
 														},
 														"id": {
-															"description": "Identifier.",
+															"description": "Custom hostname identifier tag.",
 															"type": "string",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
+															"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+															"maxLength": 36,
+															"minLength": 36,
+															"readOnly": true,
 															"x-auditable": true
 														},
 														"ssl": {
@@ -3316,10 +3344,12 @@
 																	"x-auditable": true
 																},
 																"id": {
-																	"description": "Identifier.",
+																	"description": "Custom hostname identifier tag.",
 																	"type": "string",
-																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																	"maxLength": 32,
+																	"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+																	"maxLength": 36,
+																	"minLength": 36,
+																	"readOnly": true,
 																	"x-auditable": true
 																},
 																"ownership_verification": {
@@ -3874,10 +3904,12 @@
 																	"x-auditable": true
 																},
 																"id": {
-																	"description": "Identifier.",
+																	"description": "Custom hostname identifier tag.",
 																	"type": "string",
-																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																	"maxLength": 32,
+																	"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+																	"maxLength": 36,
+																	"minLength": 36,
+																	"readOnly": true,
 																	"x-auditable": true
 																},
 																"ssl": {
@@ -4284,10 +4316,12 @@
 																			"x-auditable": true
 																		},
 																		"id": {
-																			"description": "Identifier.",
+																			"description": "Custom hostname identifier tag.",
 																			"type": "string",
-																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																			"maxLength": 32,
+																			"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+																			"maxLength": 36,
+																			"minLength": 36,
+																			"readOnly": true,
 																			"x-auditable": true
 																		},
 																		"ownership_verification": {
@@ -5160,10 +5194,12 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "Custom hostname identifier tag.",
 					"type": "string",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
+					"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+					"maxLength": 36,
+					"minLength": 36,
+					"readOnly": true,
 					"x-auditable": true
 				}
 			},
@@ -5467,10 +5503,12 @@
 															"x-auditable": true
 														},
 														"id": {
-															"description": "Identifier.",
+															"description": "Custom hostname identifier tag.",
 															"type": "string",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
+															"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+															"maxLength": 36,
+															"minLength": 36,
+															"readOnly": true,
 															"x-auditable": true
 														},
 														"ssl": {
@@ -5877,10 +5915,12 @@
 																	"x-auditable": true
 																},
 																"id": {
-																	"description": "Identifier.",
+																	"description": "Custom hostname identifier tag.",
 																	"type": "string",
-																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																	"maxLength": 32,
+																	"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+																	"maxLength": 36,
+																	"minLength": 36,
+																	"readOnly": true,
 																	"x-auditable": true
 																},
 																"ownership_verification": {
@@ -6435,10 +6475,12 @@
 																	"x-auditable": true
 																},
 																"id": {
-																	"description": "Identifier.",
+																	"description": "Custom hostname identifier tag.",
 																	"type": "string",
-																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																	"maxLength": 32,
+																	"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+																	"maxLength": 36,
+																	"minLength": 36,
+																	"readOnly": true,
 																	"x-auditable": true
 																},
 																"ssl": {
@@ -6845,10 +6887,12 @@
 																			"x-auditable": true
 																		},
 																		"id": {
-																			"description": "Identifier.",
+																			"description": "Custom hostname identifier tag.",
 																			"type": "string",
-																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																			"maxLength": 32,
+																			"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+																			"maxLength": 36,
+																			"minLength": 36,
+																			"readOnly": true,
 																			"x-auditable": true
 																		},
 																		"ownership_verification": {
@@ -7774,10 +7818,12 @@
 															"x-auditable": true
 														},
 														"id": {
-															"description": "Identifier.",
+															"description": "Custom hostname identifier tag.",
 															"type": "string",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
+															"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+															"maxLength": 36,
+															"minLength": 36,
+															"readOnly": true,
 															"x-auditable": true
 														},
 														"ssl": {
@@ -8184,10 +8230,12 @@
 																	"x-auditable": true
 																},
 																"id": {
-																	"description": "Identifier.",
+																	"description": "Custom hostname identifier tag.",
 																	"type": "string",
-																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																	"maxLength": 32,
+																	"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+																	"maxLength": 36,
+																	"minLength": 36,
+																	"readOnly": true,
 																	"x-auditable": true
 																},
 																"ownership_verification": {
@@ -8742,10 +8790,12 @@
 																	"x-auditable": true
 																},
 																"id": {
-																	"description": "Identifier.",
+																	"description": "Custom hostname identifier tag.",
 																	"type": "string",
-																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																	"maxLength": 32,
+																	"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+																	"maxLength": 36,
+																	"minLength": 36,
+																	"readOnly": true,
 																	"x-auditable": true
 																},
 																"ssl": {
@@ -9152,10 +9202,12 @@
 																			"x-auditable": true
 																		},
 																		"id": {
-																			"description": "Identifier.",
+																			"description": "Custom hostname identifier tag.",
 																			"type": "string",
-																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																			"maxLength": 32,
+																			"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+																			"maxLength": 36,
+																			"minLength": 36,
+																			"readOnly": true,
 																			"x-auditable": true
 																		},
 																		"ownership_verification": {
@@ -9776,10 +9828,12 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "Custom hostname identifier tag.",
 					"type": "string",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
+					"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+					"maxLength": 36,
+					"minLength": 36,
+					"readOnly": true,
 					"x-auditable": true
 				}
 			},
@@ -9788,10 +9842,12 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "Custom hostname identifier tag.",
 					"type": "string",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
+					"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+					"maxLength": 36,
+					"minLength": 36,
+					"readOnly": true,
 					"x-auditable": true
 				}
 			},
@@ -9800,10 +9856,12 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "Custom hostname identifier tag.",
 					"type": "string",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
+					"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+					"maxLength": 36,
+					"minLength": 36,
+					"readOnly": true,
 					"x-auditable": true
 				}
 			},
@@ -9930,10 +9988,12 @@
 															"x-auditable": true
 														},
 														"id": {
-															"description": "Identifier.",
+															"description": "Custom hostname identifier tag.",
 															"type": "string",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
+															"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+															"maxLength": 36,
+															"minLength": 36,
+															"readOnly": true,
 															"x-auditable": true
 														},
 														"ssl": {
@@ -10340,10 +10400,12 @@
 																	"x-auditable": true
 																},
 																"id": {
-																	"description": "Identifier.",
+																	"description": "Custom hostname identifier tag.",
 																	"type": "string",
-																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																	"maxLength": 32,
+																	"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+																	"maxLength": 36,
+																	"minLength": 36,
+																	"readOnly": true,
 																	"x-auditable": true
 																},
 																"ownership_verification": {
@@ -10898,10 +10960,12 @@
 																	"x-auditable": true
 																},
 																"id": {
-																	"description": "Identifier.",
+																	"description": "Custom hostname identifier tag.",
 																	"type": "string",
-																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																	"maxLength": 32,
+																	"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+																	"maxLength": 36,
+																	"minLength": 36,
+																	"readOnly": true,
 																	"x-auditable": true
 																},
 																"ssl": {
@@ -11308,10 +11372,12 @@
 																			"x-auditable": true
 																		},
 																		"id": {
-																			"description": "Identifier.",
+																			"description": "Custom hostname identifier tag.",
 																			"type": "string",
-																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																			"maxLength": 32,
+																			"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+																			"maxLength": 36,
+																			"minLength": 36,
+																			"readOnly": true,
 																			"x-auditable": true
 																		},
 																		"ownership_verification": {

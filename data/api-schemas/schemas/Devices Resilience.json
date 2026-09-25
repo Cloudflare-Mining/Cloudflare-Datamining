@@ -258,7 +258,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.emergency-disconnect",
+		"x-fern-sdk-group-name": "zt.devices.emergency-disconnect",
 		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/devices/resilience/disconnect": {
@@ -545,7 +545,7 @@
 			"Zero Trust Resilience Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.emergency-disconnect",
+		"x-fern-sdk-group-name": "zt.devices.emergency-disconnect",
 		"x-fern-sdk-method-name": "set"
 	}
 }

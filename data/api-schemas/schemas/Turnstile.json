@@ -2,7 +2,7 @@
 	"DELETE /accounts/{account_id}/challenges/widgets/{sitekey}": {
 		"operationId": "accounts-turnstile-widget-delete",
 		"summary": "Delete a Turnstile Widget",
-		"description": "Destroy a Turnstile Widget.",
+		"description": "Deletes a Turnstile widget from an account.",
 		"responses": {
 			"200": {
 				"description": "Delete Turnstile Widget Response",
@@ -197,7 +197,7 @@
 													"x-sensitive": true
 												},
 												"sitekey": {
-													"description": "Widget item identifier tag.",
+													"description": "Unique identifier for a Turnstile widget.",
 													"type": "string",
 													"example": "0x4AAF00AAAABn0R22HWm-YUc",
 													"maxLength": 32,
@@ -337,7 +337,7 @@
 	"GET /accounts/{account_id}/challenges/widgets": {
 		"operationId": "accounts-turnstile-widgets-list",
 		"summary": "List Turnstile Widgets",
-		"description": "Lists all turnstile widgets of an account.",
+		"description": "Lists Turnstile widgets for an account.",
 		"responses": {
 			"200": {
 				"description": "List Turnstile Widgets",
@@ -564,7 +564,7 @@
 														"x-auditable": true
 													},
 													"sitekey": {
-														"description": "Widget item identifier tag.",
+														"description": "Unique identifier for a Turnstile widget.",
 														"type": "string",
 														"example": "0x4AAF00AAAABn0R22HWm-YUc",
 														"maxLength": 32,
@@ -706,7 +706,7 @@
 	"GET /accounts/{account_id}/challenges/widgets/{sitekey}": {
 		"operationId": "accounts-turnstile-widget-get",
 		"summary": "Turnstile Widget Details",
-		"description": "Show a single challenge widget configuration.",
+		"description": "Returns the configuration of a Turnstile widget.",
 		"responses": {
 			"200": {
 				"description": "Turnstile Widget Details Response",
@@ -901,7 +901,7 @@
 													"x-sensitive": true
 												},
 												"sitekey": {
-													"description": "Widget item identifier tag.",
+													"description": "Unique identifier for a Turnstile widget.",
 													"type": "string",
 													"example": "0x4AAF00AAAABn0R22HWm-YUc",
 													"maxLength": 32,
@@ -1043,7 +1043,7 @@
 	"POST /accounts/{account_id}/challenges/widgets": {
 		"operationId": "accounts-turnstile-widget-create",
 		"summary": "Create a Turnstile Widget",
-		"description": "Lists challenge widgets.",
+		"description": "Creates a Turnstile widget for an account.",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -1365,7 +1365,7 @@
 													"x-sensitive": true
 												},
 												"sitekey": {
-													"description": "Widget item identifier tag.",
+													"description": "Unique identifier for a Turnstile widget.",
 													"type": "string",
 													"example": "0x4AAF00AAAABn0R22HWm-YUc",
 													"maxLength": 32,
@@ -1500,12 +1500,17 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "turnstile.widgets",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"mode": {
+				"flagName": "widget-mode"
+			}
+		}
 	},
 	"POST /accounts/{account_id}/challenges/widgets/{sitekey}/rotate_secret": {
 		"operationId": "accounts-turnstile-widget-rotate-secret",
 		"summary": "Rotate Secret for a Turnstile Widget",
-		"description": "Generate a new secret key for this widget. If `invalidate_immediately`\nis set to `false`, the previous secret remains valid for 2 hours.\n\nNote that secrets cannot be rotated again during the grace period.\n",
+		"description": "Generates a new secret key for this widget. If `invalidate_immediately`\nis set to `false`, the previous secret remains valid for 2 hours.\n\nNote that secrets cannot be rotated again during the grace period.\n",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -1718,7 +1723,7 @@
 													"x-sensitive": true
 												},
 												"sitekey": {
-													"description": "Widget item identifier tag.",
+													"description": "Unique identifier for a Turnstile widget.",
 													"type": "string",
 													"example": "0x4AAF00AAAABn0R22HWm-YUc",
 													"maxLength": 32,
@@ -1858,7 +1863,7 @@
 	"PUT /accounts/{account_id}/challenges/widgets/{sitekey}": {
 		"operationId": "accounts-turnstile-widget-update",
 		"summary": "Update a Turnstile Widget",
-		"description": "Update the configuration of a widget.",
+		"description": "Updates the configuration of a Turnstile widget.",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -2144,7 +2149,7 @@
 													"x-sensitive": true
 												},
 												"sitekey": {
-													"description": "Widget item identifier tag.",
+													"description": "Unique identifier for a Turnstile widget.",
 													"type": "string",
 													"example": "0x4AAF00AAAABn0R22HWm-YUc",
 													"maxLength": 32,
@@ -2279,6 +2284,11 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "turnstile.widgets",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"mode": {
+				"flagName": "widget-mode"
+			}
+		}
 	}
 }

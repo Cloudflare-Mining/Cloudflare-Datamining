@@ -271,7 +271,7 @@
 			"Client Versions"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "zero-trust.devices.client-versions",
+		"x-fern-sdk-group-name": "zt.devices.client-versions",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/devices/client-versions/target-environments": {
@@ -448,7 +448,7 @@
 			"Client Versions"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "zero-trust.devices.client-versions.target-environments",
+		"x-fern-sdk-group-name": "zt.devices.client-versions.target-environments",
 		"x-fern-sdk-method-name": "list"
 	}
 }

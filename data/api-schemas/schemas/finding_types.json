@@ -365,9 +365,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "list-finding-types",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.casb.finding-types",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/data-security/posture/finding_types/{finding_type_id}": {
 		"operationId": "GetFindingType",
@@ -641,9 +640,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "get-finding-type",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.casb.finding-types",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/data-security/posture/finding_types/{finding_type_id}/remediation_types": {
 		"operationId": "GetRemediationTypesForFindingType",
@@ -929,8 +927,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "get-remediation-types-for-finding-type",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.casb.finding-types.remediation-types",
+		"x-fern-sdk-method-name": "list"
 	}
 }

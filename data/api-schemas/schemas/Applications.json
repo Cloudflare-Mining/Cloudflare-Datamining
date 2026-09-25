@@ -3964,7 +3964,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.applications",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/one/applications/{application_id}": {
@@ -4356,7 +4355,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.applications",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/one/applications/{application_id}/auth-methods": {
@@ -4620,7 +4618,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.applications.auth-methods",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/one/applications/{application_id}/setup-flows": {
@@ -5070,9 +5067,9 @@
 			"Applications"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.casb.applications.setup-flows",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/resource-library/applications": {

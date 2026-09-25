@@ -252,7 +252,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.posture.integrations",
+		"x-fern-sdk-group-name": "zt.devices.posture.integrations",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/devices/posture/integration": {
@@ -589,7 +589,7 @@
 			"Device Posture Integrations"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.posture.integrations",
+		"x-fern-sdk-group-name": "zt.devices.posture.integrations",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/devices/posture/integration/{integration_id}": {
@@ -915,7 +915,7 @@
 			"Device Posture Integrations"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.posture.integrations",
+		"x-fern-sdk-group-name": "zt.devices.posture.integrations",
 		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/devices/posture/integration/{integration_id}": {
@@ -1529,7 +1529,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.posture.integrations",
+		"x-fern-sdk-group-name": "zt.devices.posture.integrations",
 		"x-fern-sdk-method-name": "update"
 	},
 	"POST /accounts/{account_id}/devices/posture/integration": {
@@ -2137,7 +2137,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.posture.integrations",
+		"x-fern-sdk-group-name": "zt.devices.posture.integrations",
 		"x-fern-sdk-method-name": "create"
 	}
 }

@@ -313,9 +313,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "data-security.posture.exports",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.casb.exports",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/data-security/posture/exports/{id}": {
 		"operationId": "GetExportJob",
@@ -562,9 +561,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "get-export-job",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.casb.exports",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/data-security/posture/content/export": {
 		"operationId": "CreateContentExport",
@@ -993,14 +991,13 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "data-security.posture.content.export",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.casb.content",
+		"x-fern-sdk-method-name": "export"
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/{storage_namespace_id}/instances/export": {
 		"operationId": "CreateFindingInstancesExportCSV",
 		"summary": "Create a finding instances export",
-		"description": "Creates a CSV export for Finding instances and accepts optional filters in the payload.\n\nThe `storage_namespace_id` path parameter is derived from the finding ID by base64-decoding it\n(which yields `integration_id:finding_type_id`) and replacing the colon with a hyphen.\n",
+		"description": "Creates a CSV export for Finding instances and accepts optional filters in the payload.\n\nIdentify the finding as `<integration_id>-<finding_type_id>`: join the `integration.id` and\n`finding.id` of the finding (from the List posture findings response) with a hyphen.\n",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID for the user making the request.",
@@ -1013,7 +1010,7 @@
 				}
 			},
 			{
-				"description": "A storage namespace identifier for the finding, used to scope finding instance exports.\nConstructed by base64-decoding the finding ID (which encodes `integration_id:finding_type_id`)\nand replacing the colon separator with a hyphen.\nFor example, a finding ID that decodes to `00000000-0000-0000-0000-000000000001:00000000-0000-0000-0000-000000000002`\nbecomes `00000000-0000-0000-0000-000000000001-00000000-0000-0000-0000-000000000002`.",
+				"description": "Identifies the finding whose instances to export, in the form `<integration_id>-<finding_type_id>`.\nTake `integration.id` and `finding.id` from the finding in the List posture findings response\nand join them with a hyphen.",
 				"example": "00000000-0000-0000-0000-000000000001-00000000-0000-0000-0000-000000000002",
 				"in": "path",
 				"name": "storage_namespace_id",
@@ -1021,7 +1018,8 @@
 				"schema": {
 					"type": "string",
 					"pattern": "^[\\da-f]{8}-([\\da-f]{4}-){3}[\\da-f]{12}-[\\da-f]{8}-([\\da-f]{4}-){3}[\\da-f]{12}$"
-				}
+				},
+				"x-fern-parameter-name": "finding-namespace-id"
 			}
 		],
 		"requestBody": {
@@ -1310,9 +1308,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "create-finding-instances-export-csv",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.casb.findings.instances",
+		"x-fern-sdk-method-name": "export"
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/export": {
 		"operationId": "CreateFindingExportCSV",
@@ -1699,9 +1696,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "create-finding-export-csv",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.casb.findings",
+		"x-fern-sdk-method-name": "export"
 	},
 	"POST /accounts/{account_id}/data-security/posture/remediations/jobs/export": {
 		"operationId": "CreateRemediationJobsExportCSV",
@@ -2032,8 +2028,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "create-remediation-jobs-export-csv",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.casb.remediations.jobs",
+		"x-fern-sdk-method-name": "export"
 	}
 }

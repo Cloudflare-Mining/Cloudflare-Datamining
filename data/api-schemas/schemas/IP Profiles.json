@@ -173,7 +173,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.ip-profiles",
+		"x-fern-sdk-group-name": "zt.devices.ip-profiles",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/devices/ip-profiles": {
@@ -464,7 +464,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.ip-profiles",
+		"x-fern-sdk-group-name": "zt.devices.ip-profiles",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/devices/ip-profiles/{profile_id}": {
@@ -701,7 +701,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.ip-profiles",
+		"x-fern-sdk-group-name": "zt.devices.ip-profiles",
 		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/devices/ip-profiles/{profile_id}": {
@@ -986,7 +986,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.ip-profiles",
+		"x-fern-sdk-group-name": "zt.devices.ip-profiles",
 		"x-fern-sdk-method-name": "update"
 	},
 	"POST /accounts/{account_id}/devices/ip-profiles": {
@@ -1271,7 +1271,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.ip-profiles",
+		"x-fern-sdk-group-name": "zt.devices.ip-profiles",
 		"x-fern-sdk-method-name": "create"
 	}
 }

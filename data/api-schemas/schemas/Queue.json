@@ -4916,8 +4916,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "queues",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/event_subscriptions/subscriptions": {
 		"operationId": "subscriptions-create",
@@ -8100,9 +8099,9 @@
 			]
 		},
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "queues.messages",
-		"x-fern-sdk-method-name": "preview",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "preview"
 	},
 	"POST /accounts/{account_id}/queues/{queue_id}/messages/preview/ack": {
 		"operationId": "queues-ack-preview-messages",
@@ -8343,9 +8342,9 @@
 			]
 		},
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "queues.messages",
-		"x-fern-sdk-method-name": "ack-preview",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "ack-preview"
 	},
 	"POST /accounts/{account_id}/queues/{queue_id}/messages/pull": {
 		"operationId": "queues-pull-messages",
@@ -10072,9 +10071,9 @@
 			]
 		},
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "queues",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/queues/{queue_id}/consumers/{consumer_id}": {
 		"operationId": "queues-update-consumer",

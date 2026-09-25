@@ -381,8 +381,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.prefixes",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/addressing/loa_documents/{loa_document_id}/download": {
 		"operationId": "ip-address-management-prefixes-download-loa-document",
@@ -559,8 +558,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.loa-documents",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/addressing/prefixes": {
 		"operationId": "ip-address-management-prefixes-list-prefixes",
@@ -1186,8 +1184,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.prefixes",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/addressing/prefixes/{prefix_id}": {
 		"operationId": "ip-address-management-prefixes-prefix-details",
@@ -1819,8 +1816,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.prefixes",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/addressing/prefixes/{prefix_id}": {
 		"operationId": "ip-address-management-prefixes-update-prefix-description",
@@ -2470,8 +2466,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.prefixes",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/addressing/loa_documents": {
 		"operationId": "ip-address-management-prefixes-upload-loa-document",
@@ -2960,8 +2955,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.loa-documents",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/addressing/prefixes": {
 		"operationId": "ip-address-management-prefixes-add-prefix",
@@ -3624,8 +3618,7 @@
 		"x-api-token-group": null,
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.prefixes",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/addressing/prefixes/{prefix_id}/validate": {
 		"operationId": "ip-address-management-prefixes-validate-prefix",
@@ -4253,7 +4246,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.prefixes.validate",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

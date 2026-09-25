@@ -165,7 +165,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.registrations",
+		"x-fern-sdk-group-name": "zt.devices.registrations",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/devices/registrations": {
@@ -757,7 +757,7 @@
 			"Registrations"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.registrations",
+		"x-fern-sdk-group-name": "zt.devices.registrations",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/devices/registrations/{registration_id}": {
@@ -1113,7 +1113,7 @@
 			"Registrations"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.registrations",
+		"x-fern-sdk-group-name": "zt.devices.registrations",
 		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/devices/registrations/revoke": {
@@ -1323,7 +1323,7 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.devices.registrations",
+		"x-fern-sdk-group-name": "zt.devices.registrations",
 		"x-fern-sdk-method-name": "revoke"
 	},
 	"POST /accounts/{account_id}/devices/registrations/unrevoke": {
@@ -1533,7 +1533,7 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.devices.registrations",
+		"x-fern-sdk-group-name": "zt.devices.registrations",
 		"x-fern-sdk-method-name": "unrevoke"
 	}
 }

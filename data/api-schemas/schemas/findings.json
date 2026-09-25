@@ -1233,13 +1233,12 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "list-findings",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.casb.findings",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/data-security/posture/findings/{finding_id}": {
 		"operationId": "GetFinding",
-		"summary": "Get a finding type",
+		"summary": "Get a posture finding",
 		"description": "Gets a security Finding that has been identified as being problematic.",
 		"parameters": [
 			{
@@ -1253,7 +1252,7 @@
 				}
 			},
 			{
-				"description": "A base64-encoded ID identifying this Finding.",
+				"description": "The `id` of a finding, as returned in each item of the List posture findings response.\nIt is a base64-encoded identifier.",
 				"in": "path",
 				"name": "finding_id",
 				"required": true,
@@ -2356,9 +2355,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "get-finding",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.casb.findings",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/data-security/posture/findings/{finding_id}/instances": {
 		"operationId": "ListFindingInstances",
@@ -2384,7 +2382,7 @@
 				}
 			},
 			{
-				"description": "A base64-encoded ID identifying this Finding.",
+				"description": "The `id` of a finding, as returned in each item of the List posture findings response.\nIt is a base64-encoded identifier.",
 				"in": "path",
 				"name": "finding_id",
 				"required": true,
@@ -3070,9 +3068,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "list-finding-instances",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.casb.findings.instances",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/data-security/posture/findings/{finding_id}/instances/{instance_id}": {
 		"operationId": "GetFindingInstance",
@@ -3090,7 +3087,7 @@
 				}
 			},
 			{
-				"description": "A base64-encoded ID identifying this Finding.",
+				"description": "The `id` of a finding, as returned in each item of the List posture findings response.\nIt is a base64-encoded identifier.",
 				"in": "path",
 				"name": "finding_id",
 				"required": true,
@@ -3604,9 +3601,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "get-finding-instance",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.casb.findings.instances",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/{finding_id}/instances/archive": {
 		"operationId": "ArchiveFindingInstance",
@@ -3624,7 +3620,7 @@
 				}
 			},
 			{
-				"description": "A base64-encoded ID identifying this Finding.",
+				"description": "The `id` of a finding, as returned in each item of the List posture findings response.\nIt is a base64-encoded identifier.",
 				"in": "path",
 				"name": "finding_id",
 				"required": true,
@@ -4153,9 +4149,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "archive-finding-instance",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.casb.findings.instances",
+		"x-fern-sdk-method-name": "archive"
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/{finding_id}/instances/unarchive": {
 		"operationId": "UnarchiveFindingInstance",
@@ -4173,7 +4168,7 @@
 				}
 			},
 			{
-				"description": "A base64-encoded ID identifying this Finding.",
+				"description": "The `id` of a finding, as returned in each item of the List posture findings response.\nIt is a base64-encoded identifier.",
 				"in": "path",
 				"name": "finding_id",
 				"required": true,
@@ -4702,9 +4697,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "unarchive-finding-instance",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.casb.findings.instances",
+		"x-fern-sdk-method-name": "unarchive"
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/{finding_id}/reset_finding_severity": {
 		"operationId": "ResetFindingSeverity",
@@ -4722,7 +4716,7 @@
 				}
 			},
 			{
-				"description": "A base64-encoded ID identifying this Finding.",
+				"description": "The `id` of a finding, as returned in each item of the List posture findings response.\nIt is a base64-encoded identifier.",
 				"in": "path",
 				"name": "finding_id",
 				"required": true,
@@ -5506,9 +5500,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "reset-finding-severity",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.casb.findings",
+		"x-fern-sdk-method-name": "reset-severity"
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/{finding_id}/tune_finding_severity": {
 		"operationId": "ChangeFindingSeverity",
@@ -5526,7 +5519,7 @@
 				}
 			},
 			{
-				"description": "A base64-encoded ID identifying this Finding.",
+				"description": "The `id` of a finding, as returned in each item of the List posture findings response.\nIt is a base64-encoded identifier.",
 				"in": "path",
 				"name": "finding_id",
 				"required": true,
@@ -6336,9 +6329,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "change-finding-severity",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.casb.findings",
+		"x-fern-sdk-method-name": "tune-severity"
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/ignore": {
 		"operationId": "IgnoreFinding",
@@ -7049,9 +7041,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "ignore-finding",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.casb.findings",
+		"x-fern-sdk-method-name": "ignore"
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/unignore": {
 		"operationId": "UnIgnoreFinding",
@@ -7762,8 +7753,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "unignore-finding",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.casb.findings",
+		"x-fern-sdk-method-name": "unignore"
 	}
 }

@@ -165,7 +165,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices",
+		"x-fern-sdk-group-name": "zt.devices",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/devices/registrations": {
@@ -373,7 +373,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.registrations",
+		"x-fern-sdk-group-name": "zt.devices.registrations",
 		"x-fern-sdk-method-name": "bulk-delete"
 	},
 	"GET /accounts/{account_id}/devices/physical-devices": {
@@ -958,7 +958,7 @@
 			"Physical Devices"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices",
+		"x-fern-sdk-group-name": "zt.devices",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/devices/physical-devices/{device_id}": {
@@ -1355,7 +1355,7 @@
 			"Physical Devices"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices",
+		"x-fern-sdk-group-name": "zt.devices",
 		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/devices/physical-devices/{device_id}": {
@@ -1772,7 +1772,7 @@
 		],
 		"x-auditable": true,
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "zero-trust.devices",
+		"x-fern-sdk-group-name": "zt.devices",
 		"x-fern-sdk-method-name": "update"
 	},
 	"POST /accounts/{account_id}/devices/physical-devices/{device_id}/revoke": {
@@ -1943,7 +1943,7 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.devices",
+		"x-fern-sdk-group-name": "zt.devices",
 		"x-fern-sdk-method-name": "revoke"
 	}
 }

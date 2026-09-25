@@ -808,7 +808,7 @@
 		{
 			"name": "filter",
 			"in": "query",
-			"description": "Filter widgets by field using case-insensitive substring matching.\nFormat: `field:value`\n\nSupported fields:\n- `name` - Filter by widget name (e.g., `filter=name:login-form`)\n- `sitekey` - Filter by sitekey (e.g., `filter=sitekey:0x4AAA`)\n\nReturns 400 Bad Request if the field is unsupported or format is invalid.\nAn empty filter value returns all results.\n",
+			"description": "Filter widgets by field. The `name` field uses case-insensitive\nsubstring matching; `sitekey` uses exact matching.\nFormat: `field:value`\n\nSupported fields:\n- `name` - Filter by widget name (e.g., `filter=name:login-form`)\n- `sitekey` - Filter by sitekey (e.g., `filter=sitekey:0x4AAA`)\n\nReturns 400 Bad Request if the field is unsupported or format is invalid.\nAn empty filter value returns all results.\n",
 			"schema": {
 				"type": "string",
 				"example": "name:my-widget"
@@ -834,7 +834,7 @@
 			"in": "path",
 			"required": true,
 			"schema": {
-				"description": "Widget item identifier tag.",
+				"description": "Unique identifier for a Turnstile widget.",
 				"type": "string",
 				"example": "0x4AAF00AAAABn0R22HWm-YUc",
 				"maxLength": 32,
@@ -861,7 +861,7 @@
 			"in": "path",
 			"required": true,
 			"schema": {
-				"description": "Widget item identifier tag.",
+				"description": "Unique identifier for a Turnstile widget.",
 				"type": "string",
 				"example": "0x4AAF00AAAABn0R22HWm-YUc",
 				"maxLength": 32,

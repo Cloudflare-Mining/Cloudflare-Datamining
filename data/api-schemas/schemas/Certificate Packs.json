@@ -9,10 +9,10 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "The unique identifier for a certificate_pack.",
 					"type": "string",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
+					"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+					"readOnly": true,
 					"x-auditable": true
 				}
 			},
@@ -129,10 +129,10 @@
 											"type": "object",
 											"properties": {
 												"id": {
-													"description": "Identifier.",
+													"description": "The unique identifier for a certificate_pack.",
 													"type": "string",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
+													"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+													"readOnly": true,
 													"x-auditable": true
 												}
 											}
@@ -246,10 +246,10 @@
 													"type": "object",
 													"properties": {
 														"id": {
-															"description": "Identifier.",
+															"description": "The unique identifier for a certificate_pack.",
 															"type": "string",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
+															"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+															"readOnly": true,
 															"x-auditable": true
 														}
 													}
@@ -806,10 +806,10 @@
 														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"id": {
-														"description": "Identifier.",
+														"description": "The unique identifier for a certificate_pack.",
 														"type": "string",
-														"example": "023e105f4ecef8ad9ca31a8372d0c353",
-														"maxLength": 32,
+														"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+														"readOnly": true,
 														"x-auditable": true
 													},
 													"primary_certificate": {
@@ -1322,10 +1322,10 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"id": {
-																"description": "Identifier.",
+																"description": "The unique identifier for a certificate_pack.",
 																"type": "string",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
+																"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+																"readOnly": true,
 																"x-auditable": true
 															},
 															"primary_certificate": {
@@ -1648,10 +1648,10 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "The unique identifier for a certificate_pack.",
 					"type": "string",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
+					"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+					"readOnly": true,
 					"x-auditable": true
 				}
 			},
@@ -1971,10 +1971,10 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"id": {
-													"description": "Identifier.",
+													"description": "The unique identifier for a certificate_pack.",
 													"type": "string",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
+													"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"primary_certificate": {
@@ -2449,10 +2449,10 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"id": {
-															"description": "Identifier.",
+															"description": "The unique identifier for a certificate_pack.",
 															"type": "string",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
+															"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+															"readOnly": true,
 															"x-auditable": true
 														},
 														"primary_certificate": {
@@ -3182,10 +3182,10 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "The unique identifier for a certificate_pack.",
 					"type": "string",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
+					"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+					"readOnly": true,
 					"x-auditable": true
 				}
 			},
@@ -3523,10 +3523,10 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"id": {
-													"description": "Identifier.",
+													"description": "The unique identifier for a certificate_pack.",
 													"type": "string",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
+													"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"primary_certificate": {
@@ -4001,10 +4001,10 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"id": {
-															"description": "Identifier.",
+															"description": "The unique identifier for a certificate_pack.",
 															"type": "string",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
+															"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+															"readOnly": true,
 															"x-auditable": true
 														},
 														"primary_certificate": {
@@ -4719,10 +4719,10 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"id": {
-													"description": "Identifier.",
+													"description": "The unique identifier for a certificate_pack.",
 													"type": "string",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
+													"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"primary_certificate": {
@@ -5197,10 +5197,10 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"id": {
-															"description": "Identifier.",
+															"description": "The unique identifier for a certificate_pack.",
 															"type": "string",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
+															"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+															"readOnly": true,
 															"x-auditable": true
 														},
 														"primary_certificate": {

@@ -9,10 +9,11 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "Keyless certificate identifier tag.",
 					"type": "string",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"example": "4d2844d2ce78891c34d0b6c0535a291e",
 					"maxLength": 32,
+					"readOnly": true,
 					"x-auditable": true
 				}
 			},
@@ -129,10 +130,11 @@
 											"type": "object",
 											"properties": {
 												"id": {
-													"description": "Identifier.",
+													"description": "Keyless certificate identifier tag.",
 													"type": "string",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"example": "4d2844d2ce78891c34d0b6c0535a291e",
 													"maxLength": 32,
+													"readOnly": true,
 													"x-auditable": true
 												}
 											}
@@ -246,10 +248,11 @@
 													"type": "object",
 													"properties": {
 														"id": {
-															"description": "Identifier.",
+															"description": "Keyless certificate identifier tag.",
 															"type": "string",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"example": "4d2844d2ce78891c34d0b6c0535a291e",
 															"maxLength": 32,
+															"readOnly": true,
 															"x-auditable": true
 														}
 													}
@@ -1100,10 +1103,11 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "Keyless certificate identifier tag.",
 					"type": "string",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"example": "4d2844d2ce78891c34d0b6c0535a291e",
 					"maxLength": 32,
+					"readOnly": true,
 					"x-auditable": true
 				}
 			},
@@ -1761,10 +1765,11 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "Keyless certificate identifier tag.",
 					"type": "string",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"example": "4d2844d2ce78891c34d0b6c0535a291e",
 					"maxLength": 32,
+					"readOnly": true,
 					"x-auditable": true
 				}
 			},

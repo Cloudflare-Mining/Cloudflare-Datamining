@@ -255,9 +255,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "data-security.posture.webhooks",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.casb.webhooks",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/data-security/posture/webhooks": {
 		"operationId": "ListWebhooks",
@@ -722,9 +721,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "list-webhooks",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.casb.webhooks",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/data-security/posture/webhooks/{webhook_id}": {
 		"operationId": "GetWebhookConfigByID",
@@ -1411,9 +1409,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "get-webhook-config-by-id",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.casb.webhooks",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/data-security/posture/webhooks": {
 		"operationId": "CreateWebhook",
@@ -2185,9 +2182,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "create-webhook",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.casb.webhooks",
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/data-security/posture/webhooks/{webhook_id}/evaluate": {
 		"operationId": "EvaluateExistingWebhook",
@@ -2801,9 +2797,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "evaluate-existing-webhook",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.casb.webhooks",
+		"x-fern-sdk-method-name": "evaluate-existing"
 	},
 	"POST /accounts/{account_id}/data-security/posture/webhooks/evaluate": {
 		"operationId": "EvaluateNewWebhook",
@@ -3379,9 +3374,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "evaluate-new-webhook",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.casb.webhooks",
+		"x-fern-sdk-method-name": "evaluate"
 	},
 	"POST /accounts/{account_id}/data-security/posture/webhooks/jobs": {
 		"operationId": "CreateWebhookJobs",
@@ -4157,9 +4151,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "data-security.posture",
-		"x-fern-sdk-method-name": "create-webhook-jobs",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.casb.webhooks.jobs",
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/data-security/posture/webhooks/{webhook_id}": {
 		"operationId": "UpdateWebhook",
@@ -4941,8 +4934,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "data-security.posture.webhooks",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.casb.webhooks",
+		"x-fern-sdk-method-name": "update"
 	}
 }

@@ -259,8 +259,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.prefixes.bgp-prefixes",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/prefixes": {
 		"operationId": "ip-address-management-prefixes-list-bgp-prefixes",
@@ -846,8 +845,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.prefixes.bgp-prefixes",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/prefixes/{bgp_prefix_id}": {
 		"operationId": "ip-address-management-prefixes-fetch-bgp-prefix",
@@ -1439,8 +1437,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.prefixes.bgp-prefixes",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/prefixes/{bgp_prefix_id}": {
 		"operationId": "ip-address-management-prefixes-update-bgp-prefix",
@@ -2065,8 +2062,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.prefixes.bgp-prefixes",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/prefixes": {
 		"operationId": "ip-address-management-prefixes-create-bgp-prefix",
@@ -2659,7 +2655,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.prefixes.bgp-prefixes",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

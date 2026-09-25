@@ -162,25 +162,29 @@
 														"description": "Whether to allow the user to switch WARP between modes.",
 														"type": "boolean",
 														"example": true,
-														"default": false
+														"default": false,
+														"x-auditable": true
 													},
 													"allow_updates": {
 														"description": "Whether to receive update notifications when a new version of the client is available.",
 														"type": "boolean",
 														"example": true,
-														"default": false
+														"default": false,
+														"x-auditable": true
 													},
 													"allowed_to_leave": {
 														"description": "Whether to allow devices to leave the organization.",
 														"type": "boolean",
 														"example": true,
-														"default": true
+														"default": true,
+														"x-auditable": true
 													},
 													"auto_connect": {
 														"description": "The amount of time in seconds to reconnect after having been disabled.",
 														"type": "number",
 														"example": 0,
-														"default": 0
+														"default": 0,
+														"x-auditable": true
 													},
 													"browser_extension_config": {
 														"description": "Browser extension proxy settings. Required when profile_type is browser_extension and invalid for WARP profiles.",
@@ -192,11 +196,13 @@
 																"enum": [
 																	"unlocked",
 																	"locked"
-																]
+																],
+																"x-auditable": true
 															},
 															"proxy_enabled": {
 																"description": "Whether the browser extension proxy is active.",
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															}
 														},
 														"additionalProperties": false,
@@ -210,19 +216,22 @@
 														"description": "Turn on the captive portal after the specified amount of time.",
 														"type": "number",
 														"example": 180,
-														"default": 180
+														"default": 180,
+														"x-auditable": true
 													},
 													"default": {
 														"description": "Whether the policy is the account default. WARP group profiles cannot set this field.",
 														"type": "boolean",
 														"example": false,
-														"default": false
+														"default": false,
+														"x-auditable": true
 													},
 													"description": {
 														"description": "A description of the policy.",
 														"type": "string",
 														"example": "Policy for test teams.",
-														"maxLength": 500
+														"maxLength": 500,
+														"x-auditable": true
 													},
 													"disable_auto_fallback": {
 														"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
@@ -262,7 +271,8 @@
 														"description": "Whether the policy will be applied to matching devices.",
 														"type": "boolean",
 														"example": true,
-														"default": true
+														"default": true,
+														"x-auditable": true
 													},
 													"exclude": {
 														"description": "List of routes excluded in the WARP client's tunnel.",
@@ -277,6 +287,7 @@
 																			"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																			"type": "string",
 																			"example": "192.0.2.0/24",
+																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"description": {
@@ -284,6 +295,7 @@
 																			"type": "string",
 																			"example": "Exclude testing domains from the tunnel",
 																			"maxLength": 100,
+																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
@@ -299,12 +311,14 @@
 																			"type": "string",
 																			"example": "Exclude testing domains from the tunnel",
 																			"maxLength": 100,
+																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"host": {
 																			"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																			"type": "string",
 																			"example": "*.example.com",
+																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
@@ -372,7 +386,8 @@
 														"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 														"type": "boolean",
 														"example": true,
-														"default": false
+														"default": false,
+														"x-auditable": true
 													},
 													"fallback_domains": {
 														"type": "array",
@@ -464,13 +479,13 @@
 																"description": "IP:port entries for the API endpoints.",
 																"type": "array",
 																"items": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"example": [
 																	"198.51.100.1:443"
 																],
-																"maxItems": 5,
-																"x-auditable": true
+																"maxItems": 5
 															},
 															"autoswitch": {
 																"description": "Automatically switch Global Acceleration regions based on device location. Defaults to false when not provided.",
@@ -489,25 +504,25 @@
 																"description": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
 																"type": "array",
 																"items": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"example": [
 																	"198.51.100.1:443"
 																],
-																"maxItems": 5,
-																"x-auditable": true
+																"maxItems": 5
 															},
 															"wireguard_endpoints": {
 																"description": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
 																"type": "array",
 																"items": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"example": [
 																	"198.51.100.1:2408"
 																],
-																"maxItems": 5,
-																"x-auditable": true
+																"maxItems": 5
 															}
 														},
 														"nullable": true,
@@ -516,8 +531,7 @@
 															"wireguard_endpoints",
 															"masque_endpoints",
 															"api_endpoints"
-														],
-														"x-auditable": true
+														]
 													},
 													"include": {
 														"description": "List of routes included in the WARP client's tunnel.",
@@ -532,6 +546,7 @@
 																			"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																			"type": "string",
 																			"example": "192.0.2.0/24",
+																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"description": {
@@ -539,6 +554,7 @@
 																			"type": "string",
 																			"example": "Include testing domains in the tunnel",
 																			"maxLength": 100,
+																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
@@ -554,12 +570,14 @@
 																			"type": "string",
 																			"example": "Include testing domains in the tunnel",
 																			"maxLength": 100,
+																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"host": {
 																			"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																			"type": "string",
 																			"example": "*.example.com",
+																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
@@ -573,24 +591,28 @@
 													"lan_allow_minutes": {
 														"description": "The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.",
 														"type": "number",
-														"example": 30
+														"example": 30,
+														"x-auditable": true
 													},
 													"lan_allow_subnet_size": {
 														"description": "The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.",
 														"type": "number",
-														"example": 24
+														"example": 24,
+														"x-auditable": true
 													},
 													"match": {
 														"description": "The wirefilter expression to match devices. Available values: \"identity.email\", \"identity.groups.id\", \"identity.groups.name\", \"identity.groups.email\", \"identity.service_token_uuid\", \"identity.saml_attributes\", \"network\", \"os.name\", \"os.version\".",
 														"type": "string",
 														"example": "identity.email == \"test@cloudflare.com\"",
-														"maxLength": 500
+														"maxLength": 500,
+														"x-auditable": true
 													},
 													"name": {
 														"description": "The name of the device settings profile.",
 														"type": "string",
 														"example": "Allow Developers",
-														"maxLength": 100
+														"maxLength": 100,
+														"x-auditable": true
 													},
 													"policy_id": {
 														"type": "string",
@@ -601,7 +623,8 @@
 													"precedence": {
 														"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
 														"type": "number",
-														"example": 100
+														"example": 100,
+														"x-auditable": true
 													},
 													"profile_type": {
 														"description": "The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.",
@@ -611,19 +634,22 @@
 														"enum": [
 															"warp",
 															"browser_extension"
-														]
+														],
+														"x-auditable": true
 													},
 													"register_interface_ip_with_dns": {
 														"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 														"type": "boolean",
 														"example": true,
-														"default": true
+														"default": true,
+														"x-auditable": true
 													},
 													"sccm_vpn_boundary_support": {
 														"description": "Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).",
 														"type": "boolean",
 														"example": false,
-														"default": false
+														"default": false,
+														"x-auditable": true
 													},
 													"service_mode_v2": {
 														"type": "object",
@@ -655,7 +681,8 @@
 														"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 														"type": "boolean",
 														"example": true,
-														"default": false
+														"default": false,
+														"x-auditable": true
 													},
 													"target_tests": {
 														"type": "array",
@@ -664,11 +691,13 @@
 															"properties": {
 																"id": {
 																	"description": "The id of the DEX test targeting this policy.",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"name": {
 																	"description": "The name of the DEX test targeting this policy.",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															}
 														}
@@ -677,13 +706,15 @@
 														"description": "Determines which tunnel protocol to use.",
 														"type": "string",
 														"example": "wireguard",
-														"default": ""
+														"default": "",
+														"x-auditable": true
 													},
 													"uninstall_protection": {
 														"description": "Determines whether uninstalling the WARP client requires an override code. (Windows only).",
 														"type": "boolean",
 														"example": false,
-														"default": false
+														"default": false,
+														"x-auditable": true
 													},
 													"virtual_networks": {
 														"description": "Virtual network access settings for the device.",
@@ -694,7 +725,8 @@
 																"type": "array",
 																"items": {
 																	"format": "uuid",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"example": [
 																	"f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
@@ -706,7 +738,8 @@
 																"description": "The default virtual network ID. Must be included in the `allowed` list.",
 																"type": "string",
 																"format": "uuid",
-																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"x-auditable": true
 															}
 														},
 														"nullable": true,
@@ -832,7 +865,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom",
+		"x-fern-sdk-group-name": "zt.devices.profiles.custom",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/devices/policy/{policy_id}/exclude": {
@@ -1011,6 +1044,7 @@
 																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																"type": "string",
 																"example": "192.0.2.0/24",
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"description": {
@@ -1018,6 +1052,7 @@
 																"type": "string",
 																"example": "Exclude testing domains from the tunnel",
 																"maxLength": 100,
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
@@ -1033,12 +1068,14 @@
 																"type": "string",
 																"example": "Exclude testing domains from the tunnel",
 																"maxLength": 100,
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"host": {
 																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																"type": "string",
 																"example": "*.example.com",
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
@@ -1165,7 +1202,7 @@
 		"x-auditable": true,
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.excludes",
+		"x-fern-sdk-group-name": "zt.devices.profiles.custom.excludes",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/devices/policy/{policy_id}/fallback_domains": {
@@ -1482,7 +1519,7 @@
 		"x-auditable": true,
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.fallback-domains",
+		"x-fern-sdk-group-name": "zt.devices.profiles.custom.fallback-domains",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/devices/policy/exclude": {
@@ -1650,6 +1687,7 @@
 																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																"type": "string",
 																"example": "192.0.2.0/24",
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"description": {
@@ -1657,6 +1695,7 @@
 																"type": "string",
 																"example": "Exclude testing domains from the tunnel",
 																"maxLength": 100,
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
@@ -1672,12 +1711,14 @@
 																"type": "string",
 																"example": "Exclude testing domains from the tunnel",
 																"maxLength": 100,
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"host": {
 																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																"type": "string",
 																"example": "*.example.com",
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
@@ -1804,7 +1845,7 @@
 		"x-auditable": true,
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.excludes",
+		"x-fern-sdk-group-name": "zt.devices.profiles.default.excludes",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/devices/policy/fallback_domains": {
@@ -2110,7 +2151,7 @@
 		"x-auditable": true,
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.fallback-domains",
+		"x-fern-sdk-group-name": "zt.devices.profiles.default.fallback-domains",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/devices": {
@@ -2519,7 +2560,7 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.devices.v1",
+		"x-fern-sdk-group-name": "zt.devices.v1",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/devices/{device_id}": {
@@ -2916,7 +2957,7 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.devices.v1",
+		"x-fern-sdk-group-name": "zt.devices.v1",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/devices/{device_id}/override_codes": {
@@ -3205,7 +3246,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "deprecated",
-		"x-fern-sdk-group-name": "zero-trust.devices.override-codes",
+		"x-fern-sdk-group-name": "zt.devices.override-codes",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/devices/policies": {
@@ -3234,7 +3275,8 @@
 					"enum": [
 						"warp",
 						"browser_extension"
-					]
+					],
+					"x-auditable": true
 				}
 			}
 		],
@@ -3375,25 +3417,29 @@
 														"description": "Whether to allow the user to switch WARP between modes.",
 														"type": "boolean",
 														"example": true,
-														"default": false
+														"default": false,
+														"x-auditable": true
 													},
 													"allow_updates": {
 														"description": "Whether to receive update notifications when a new version of the client is available.",
 														"type": "boolean",
 														"example": true,
-														"default": false
+														"default": false,
+														"x-auditable": true
 													},
 													"allowed_to_leave": {
 														"description": "Whether to allow devices to leave the organization.",
 														"type": "boolean",
 														"example": true,
-														"default": true
+														"default": true,
+														"x-auditable": true
 													},
 													"auto_connect": {
 														"description": "The amount of time in seconds to reconnect after having been disabled.",
 														"type": "number",
 														"example": 0,
-														"default": 0
+														"default": 0,
+														"x-auditable": true
 													},
 													"browser_extension_config": {
 														"description": "Browser extension proxy settings. Required when profile_type is browser_extension and invalid for WARP profiles.",
@@ -3405,11 +3451,13 @@
 																"enum": [
 																	"unlocked",
 																	"locked"
-																]
+																],
+																"x-auditable": true
 															},
 															"proxy_enabled": {
 																"description": "Whether the browser extension proxy is active.",
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															}
 														},
 														"additionalProperties": false,
@@ -3423,19 +3471,22 @@
 														"description": "Turn on the captive portal after the specified amount of time.",
 														"type": "number",
 														"example": 180,
-														"default": 180
+														"default": 180,
+														"x-auditable": true
 													},
 													"default": {
 														"description": "Whether the policy is the account default. WARP group profiles cannot set this field.",
 														"type": "boolean",
 														"example": false,
-														"default": false
+														"default": false,
+														"x-auditable": true
 													},
 													"description": {
 														"description": "A description of the policy.",
 														"type": "string",
 														"example": "Policy for test teams.",
-														"maxLength": 500
+														"maxLength": 500,
+														"x-auditable": true
 													},
 													"disable_auto_fallback": {
 														"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
@@ -3475,7 +3526,8 @@
 														"description": "Whether the policy will be applied to matching devices.",
 														"type": "boolean",
 														"example": true,
-														"default": true
+														"default": true,
+														"x-auditable": true
 													},
 													"exclude": {
 														"description": "List of routes excluded in the WARP client's tunnel.",
@@ -3490,6 +3542,7 @@
 																			"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																			"type": "string",
 																			"example": "192.0.2.0/24",
+																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"description": {
@@ -3497,6 +3550,7 @@
 																			"type": "string",
 																			"example": "Exclude testing domains from the tunnel",
 																			"maxLength": 100,
+																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
@@ -3512,12 +3566,14 @@
 																			"type": "string",
 																			"example": "Exclude testing domains from the tunnel",
 																			"maxLength": 100,
+																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"host": {
 																			"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																			"type": "string",
 																			"example": "*.example.com",
+																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
@@ -3585,7 +3641,8 @@
 														"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 														"type": "boolean",
 														"example": true,
-														"default": false
+														"default": false,
+														"x-auditable": true
 													},
 													"fallback_domains": {
 														"type": "array",
@@ -3677,13 +3734,13 @@
 																"description": "IP:port entries for the API endpoints.",
 																"type": "array",
 																"items": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"example": [
 																	"198.51.100.1:443"
 																],
-																"maxItems": 5,
-																"x-auditable": true
+																"maxItems": 5
 															},
 															"autoswitch": {
 																"description": "Automatically switch Global Acceleration regions based on device location. Defaults to false when not provided.",
@@ -3702,25 +3759,25 @@
 																"description": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
 																"type": "array",
 																"items": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"example": [
 																	"198.51.100.1:443"
 																],
-																"maxItems": 5,
-																"x-auditable": true
+																"maxItems": 5
 															},
 															"wireguard_endpoints": {
 																"description": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
 																"type": "array",
 																"items": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"example": [
 																	"198.51.100.1:2408"
 																],
-																"maxItems": 5,
-																"x-auditable": true
+																"maxItems": 5
 															}
 														},
 														"nullable": true,
@@ -3729,8 +3786,7 @@
 															"wireguard_endpoints",
 															"masque_endpoints",
 															"api_endpoints"
-														],
-														"x-auditable": true
+														]
 													},
 													"include": {
 														"description": "List of routes included in the WARP client's tunnel.",
@@ -3745,6 +3801,7 @@
 																			"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																			"type": "string",
 																			"example": "192.0.2.0/24",
+																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"description": {
@@ -3752,6 +3809,7 @@
 																			"type": "string",
 																			"example": "Include testing domains in the tunnel",
 																			"maxLength": 100,
+																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
@@ -3767,12 +3825,14 @@
 																			"type": "string",
 																			"example": "Include testing domains in the tunnel",
 																			"maxLength": 100,
+																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"host": {
 																			"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																			"type": "string",
 																			"example": "*.example.com",
+																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
@@ -3786,24 +3846,28 @@
 													"lan_allow_minutes": {
 														"description": "The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.",
 														"type": "number",
-														"example": 30
+														"example": 30,
+														"x-auditable": true
 													},
 													"lan_allow_subnet_size": {
 														"description": "The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.",
 														"type": "number",
-														"example": 24
+														"example": 24,
+														"x-auditable": true
 													},
 													"match": {
 														"description": "The wirefilter expression to match devices. Available values: \"identity.email\", \"identity.groups.id\", \"identity.groups.name\", \"identity.groups.email\", \"identity.service_token_uuid\", \"identity.saml_attributes\", \"network\", \"os.name\", \"os.version\".",
 														"type": "string",
 														"example": "identity.email == \"test@cloudflare.com\"",
-														"maxLength": 500
+														"maxLength": 500,
+														"x-auditable": true
 													},
 													"name": {
 														"description": "The name of the device settings profile.",
 														"type": "string",
 														"example": "Allow Developers",
-														"maxLength": 100
+														"maxLength": 100,
+														"x-auditable": true
 													},
 													"policy_id": {
 														"type": "string",
@@ -3814,7 +3878,8 @@
 													"precedence": {
 														"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
 														"type": "number",
-														"example": 100
+														"example": 100,
+														"x-auditable": true
 													},
 													"profile_type": {
 														"description": "The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.",
@@ -3824,19 +3889,22 @@
 														"enum": [
 															"warp",
 															"browser_extension"
-														]
+														],
+														"x-auditable": true
 													},
 													"register_interface_ip_with_dns": {
 														"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 														"type": "boolean",
 														"example": true,
-														"default": true
+														"default": true,
+														"x-auditable": true
 													},
 													"sccm_vpn_boundary_support": {
 														"description": "Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).",
 														"type": "boolean",
 														"example": false,
-														"default": false
+														"default": false,
+														"x-auditable": true
 													},
 													"service_mode_v2": {
 														"type": "object",
@@ -3868,7 +3936,8 @@
 														"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 														"type": "boolean",
 														"example": true,
-														"default": false
+														"default": false,
+														"x-auditable": true
 													},
 													"target_tests": {
 														"type": "array",
@@ -3877,11 +3946,13 @@
 															"properties": {
 																"id": {
 																	"description": "The id of the DEX test targeting this policy.",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"name": {
 																	"description": "The name of the DEX test targeting this policy.",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															}
 														}
@@ -3890,13 +3961,15 @@
 														"description": "Determines which tunnel protocol to use.",
 														"type": "string",
 														"example": "wireguard",
-														"default": ""
+														"default": "",
+														"x-auditable": true
 													},
 													"uninstall_protection": {
 														"description": "Determines whether uninstalling the WARP client requires an override code. (Windows only).",
 														"type": "boolean",
 														"example": false,
-														"default": false
+														"default": false,
+														"x-auditable": true
 													},
 													"virtual_networks": {
 														"description": "Virtual network access settings for the device.",
@@ -3907,7 +3980,8 @@
 																"type": "array",
 																"items": {
 																	"format": "uuid",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"example": [
 																	"f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
@@ -3919,7 +3993,8 @@
 																"description": "The default virtual network ID. Must be included in the `allowed` list.",
 																"type": "string",
 																"format": "uuid",
-																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"x-auditable": true
 															}
 														},
 														"nullable": true,
@@ -4042,7 +4117,7 @@
 			"Devices"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom",
+		"x-fern-sdk-group-name": "zt.devices.profiles.custom",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/devices/policy": {
@@ -4175,36 +4250,42 @@
 													"description": "Whether to allow the user to switch WARP between modes.",
 													"type": "boolean",
 													"example": true,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"allow_updates": {
 													"description": "Whether to receive update notifications when a new version of the client is available.",
 													"type": "boolean",
 													"example": true,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"allowed_to_leave": {
 													"description": "Whether to allow devices to leave the organization.",
 													"type": "boolean",
 													"example": true,
-													"default": true
+													"default": true,
+													"x-auditable": true
 												},
 												"auto_connect": {
 													"description": "The amount of time in seconds to reconnect after having been disabled.",
 													"type": "number",
 													"example": 0,
-													"default": 0
+													"default": 0,
+													"x-auditable": true
 												},
 												"captive_portal": {
 													"description": "Turn on the captive portal after the specified amount of time.",
 													"type": "number",
 													"example": 180,
-													"default": 180
+													"default": 180,
+													"x-auditable": true
 												},
 												"default": {
 													"description": "Whether the policy will be applied to matching devices.",
 													"type": "boolean",
-													"example": true
+													"example": true,
+													"x-auditable": true
 												},
 												"disable_auto_fallback": {
 													"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
@@ -4244,7 +4325,8 @@
 													"description": "Whether the policy will be applied to matching devices.",
 													"type": "boolean",
 													"example": true,
-													"default": true
+													"default": true,
+													"x-auditable": true
 												},
 												"exclude": {
 													"description": "List of routes excluded in the WARP client's tunnel.",
@@ -4259,6 +4341,7 @@
 																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																		"type": "string",
 																		"example": "192.0.2.0/24",
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"description": {
@@ -4266,6 +4349,7 @@
 																		"type": "string",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
@@ -4281,12 +4365,14 @@
 																		"type": "string",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"host": {
 																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																		"type": "string",
 																		"example": "*.example.com",
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
@@ -4354,7 +4440,8 @@
 													"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 													"type": "boolean",
 													"example": true,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"fallback_domains": {
 													"type": "array",
@@ -4446,13 +4533,13 @@
 															"description": "IP:port entries for the API endpoints.",
 															"type": "array",
 															"items": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"example": [
 																"198.51.100.1:443"
 															],
-															"maxItems": 5,
-															"x-auditable": true
+															"maxItems": 5
 														},
 														"autoswitch": {
 															"description": "Automatically switch Global Acceleration regions based on device location. Defaults to false when not provided.",
@@ -4471,25 +4558,25 @@
 															"description": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
 															"type": "array",
 															"items": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"example": [
 																"198.51.100.1:443"
 															],
-															"maxItems": 5,
-															"x-auditable": true
+															"maxItems": 5
 														},
 														"wireguard_endpoints": {
 															"description": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
 															"type": "array",
 															"items": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"example": [
 																"198.51.100.1:2408"
 															],
-															"maxItems": 5,
-															"x-auditable": true
+															"maxItems": 5
 														}
 													},
 													"nullable": true,
@@ -4498,8 +4585,7 @@
 														"wireguard_endpoints",
 														"masque_endpoints",
 														"api_endpoints"
-													],
-													"x-auditable": true
+													]
 												},
 												"include": {
 													"description": "List of routes included in the WARP client's tunnel.",
@@ -4514,6 +4600,7 @@
 																		"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																		"type": "string",
 																		"example": "192.0.2.0/24",
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"description": {
@@ -4521,6 +4608,7 @@
 																		"type": "string",
 																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
@@ -4536,12 +4624,14 @@
 																		"type": "string",
 																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"host": {
 																		"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																		"type": "string",
 																		"example": "*.example.com",
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
@@ -4566,19 +4656,22 @@
 													"enum": [
 														"warp",
 														"browser_extension"
-													]
+													],
+													"x-auditable": true
 												},
 												"register_interface_ip_with_dns": {
 													"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 													"type": "boolean",
 													"example": true,
-													"default": true
+													"default": true,
+													"x-auditable": true
 												},
 												"sccm_vpn_boundary_support": {
 													"description": "Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).",
 													"type": "boolean",
 													"example": false,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"service_mode_v2": {
 													"type": "object",
@@ -4610,19 +4703,22 @@
 													"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 													"type": "boolean",
 													"example": true,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"tunnel_protocol": {
 													"description": "Determines which tunnel protocol to use.",
 													"type": "string",
 													"example": "wireguard",
-													"default": ""
+													"default": "",
+													"x-auditable": true
 												},
 												"uninstall_protection": {
 													"description": "Determines whether uninstalling the WARP client requires an override code. (Windows only).",
 													"type": "boolean",
 													"example": false,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"virtual_networks": {
 													"description": "Virtual network access settings for the device.",
@@ -4633,7 +4729,8 @@
 															"type": "array",
 															"items": {
 																"format": "uuid",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"example": [
 																"f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
@@ -4645,7 +4742,8 @@
 															"description": "The default virtual network ID. Must be included in the `allowed` list.",
 															"type": "string",
 															"format": "uuid",
-															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"x-auditable": true
 														}
 													},
 													"nullable": true,
@@ -4767,7 +4865,7 @@
 			"Devices"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default",
+		"x-fern-sdk-group-name": "zt.devices.profiles.default",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/devices/policy/{policy_id}": {
@@ -4911,25 +5009,29 @@
 													"description": "Whether to allow the user to switch WARP between modes.",
 													"type": "boolean",
 													"example": true,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"allow_updates": {
 													"description": "Whether to receive update notifications when a new version of the client is available.",
 													"type": "boolean",
 													"example": true,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"allowed_to_leave": {
 													"description": "Whether to allow devices to leave the organization.",
 													"type": "boolean",
 													"example": true,
-													"default": true
+													"default": true,
+													"x-auditable": true
 												},
 												"auto_connect": {
 													"description": "The amount of time in seconds to reconnect after having been disabled.",
 													"type": "number",
 													"example": 0,
-													"default": 0
+													"default": 0,
+													"x-auditable": true
 												},
 												"browser_extension_config": {
 													"description": "Browser extension proxy settings. Required when profile_type is browser_extension and invalid for WARP profiles.",
@@ -4941,11 +5043,13 @@
 															"enum": [
 																"unlocked",
 																"locked"
-															]
+															],
+															"x-auditable": true
 														},
 														"proxy_enabled": {
 															"description": "Whether the browser extension proxy is active.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														}
 													},
 													"additionalProperties": false,
@@ -4959,19 +5063,22 @@
 													"description": "Turn on the captive portal after the specified amount of time.",
 													"type": "number",
 													"example": 180,
-													"default": 180
+													"default": 180,
+													"x-auditable": true
 												},
 												"default": {
 													"description": "Whether the policy is the account default. WARP group profiles cannot set this field.",
 													"type": "boolean",
 													"example": false,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"description": {
 													"description": "A description of the policy.",
 													"type": "string",
 													"example": "Policy for test teams.",
-													"maxLength": 500
+													"maxLength": 500,
+													"x-auditable": true
 												},
 												"disable_auto_fallback": {
 													"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
@@ -5011,7 +5118,8 @@
 													"description": "Whether the policy will be applied to matching devices.",
 													"type": "boolean",
 													"example": true,
-													"default": true
+													"default": true,
+													"x-auditable": true
 												},
 												"exclude": {
 													"description": "List of routes excluded in the WARP client's tunnel.",
@@ -5026,6 +5134,7 @@
 																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																		"type": "string",
 																		"example": "192.0.2.0/24",
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"description": {
@@ -5033,6 +5142,7 @@
 																		"type": "string",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
@@ -5048,12 +5158,14 @@
 																		"type": "string",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"host": {
 																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																		"type": "string",
 																		"example": "*.example.com",
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
@@ -5121,7 +5233,8 @@
 													"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 													"type": "boolean",
 													"example": true,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"fallback_domains": {
 													"type": "array",
@@ -5213,13 +5326,13 @@
 															"description": "IP:port entries for the API endpoints.",
 															"type": "array",
 															"items": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"example": [
 																"198.51.100.1:443"
 															],
-															"maxItems": 5,
-															"x-auditable": true
+															"maxItems": 5
 														},
 														"autoswitch": {
 															"description": "Automatically switch Global Acceleration regions based on device location. Defaults to false when not provided.",
@@ -5238,25 +5351,25 @@
 															"description": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
 															"type": "array",
 															"items": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"example": [
 																"198.51.100.1:443"
 															],
-															"maxItems": 5,
-															"x-auditable": true
+															"maxItems": 5
 														},
 														"wireguard_endpoints": {
 															"description": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
 															"type": "array",
 															"items": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"example": [
 																"198.51.100.1:2408"
 															],
-															"maxItems": 5,
-															"x-auditable": true
+															"maxItems": 5
 														}
 													},
 													"nullable": true,
@@ -5265,8 +5378,7 @@
 														"wireguard_endpoints",
 														"masque_endpoints",
 														"api_endpoints"
-													],
-													"x-auditable": true
+													]
 												},
 												"include": {
 													"description": "List of routes included in the WARP client's tunnel.",
@@ -5281,6 +5393,7 @@
 																		"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																		"type": "string",
 																		"example": "192.0.2.0/24",
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"description": {
@@ -5288,6 +5401,7 @@
 																		"type": "string",
 																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
@@ -5303,12 +5417,14 @@
 																		"type": "string",
 																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"host": {
 																		"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																		"type": "string",
 																		"example": "*.example.com",
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
@@ -5322,24 +5438,28 @@
 												"lan_allow_minutes": {
 													"description": "The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.",
 													"type": "number",
-													"example": 30
+													"example": 30,
+													"x-auditable": true
 												},
 												"lan_allow_subnet_size": {
 													"description": "The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.",
 													"type": "number",
-													"example": 24
+													"example": 24,
+													"x-auditable": true
 												},
 												"match": {
 													"description": "The wirefilter expression to match devices. Available values: \"identity.email\", \"identity.groups.id\", \"identity.groups.name\", \"identity.groups.email\", \"identity.service_token_uuid\", \"identity.saml_attributes\", \"network\", \"os.name\", \"os.version\".",
 													"type": "string",
 													"example": "identity.email == \"test@cloudflare.com\"",
-													"maxLength": 500
+													"maxLength": 500,
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The name of the device settings profile.",
 													"type": "string",
 													"example": "Allow Developers",
-													"maxLength": 100
+													"maxLength": 100,
+													"x-auditable": true
 												},
 												"policy_id": {
 													"type": "string",
@@ -5350,7 +5470,8 @@
 												"precedence": {
 													"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
 													"type": "number",
-													"example": 100
+													"example": 100,
+													"x-auditable": true
 												},
 												"profile_type": {
 													"description": "The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.",
@@ -5360,19 +5481,22 @@
 													"enum": [
 														"warp",
 														"browser_extension"
-													]
+													],
+													"x-auditable": true
 												},
 												"register_interface_ip_with_dns": {
 													"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 													"type": "boolean",
 													"example": true,
-													"default": true
+													"default": true,
+													"x-auditable": true
 												},
 												"sccm_vpn_boundary_support": {
 													"description": "Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).",
 													"type": "boolean",
 													"example": false,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"service_mode_v2": {
 													"type": "object",
@@ -5404,7 +5528,8 @@
 													"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 													"type": "boolean",
 													"example": true,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"target_tests": {
 													"type": "array",
@@ -5413,11 +5538,13 @@
 														"properties": {
 															"id": {
 																"description": "The id of the DEX test targeting this policy.",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "The name of the DEX test targeting this policy.",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														}
 													}
@@ -5426,13 +5553,15 @@
 													"description": "Determines which tunnel protocol to use.",
 													"type": "string",
 													"example": "wireguard",
-													"default": ""
+													"default": "",
+													"x-auditable": true
 												},
 												"uninstall_protection": {
 													"description": "Determines whether uninstalling the WARP client requires an override code. (Windows only).",
 													"type": "boolean",
 													"example": false,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"virtual_networks": {
 													"description": "Virtual network access settings for the device.",
@@ -5443,7 +5572,8 @@
 															"type": "array",
 															"items": {
 																"format": "uuid",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"example": [
 																"f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
@@ -5455,7 +5585,8 @@
 															"description": "The default virtual network ID. Must be included in the `allowed` list.",
 															"type": "string",
 															"format": "uuid",
-															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"x-auditable": true
 														}
 													},
 													"nullable": true,
@@ -5577,7 +5708,7 @@
 			"Devices"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom",
+		"x-fern-sdk-group-name": "zt.devices.profiles.custom",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/devices/policy/{policy_id}/exclude": {
@@ -5746,6 +5877,7 @@
 																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																"type": "string",
 																"example": "192.0.2.0/24",
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"description": {
@@ -5753,6 +5885,7 @@
 																"type": "string",
 																"example": "Exclude testing domains from the tunnel",
 																"maxLength": 100,
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
@@ -5768,12 +5901,14 @@
 																"type": "string",
 																"example": "Exclude testing domains from the tunnel",
 																"maxLength": 100,
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"host": {
 																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																"type": "string",
 																"example": "*.example.com",
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
@@ -5896,7 +6031,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.excludes",
+		"x-fern-sdk-group-name": "zt.devices.profiles.custom.excludes",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/devices/policy/{policy_id}/fallback_domains": {
@@ -6199,7 +6334,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.fallback-domains",
+		"x-fern-sdk-group-name": "zt.devices.profiles.custom.fallback-domains",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/devices/policy/{policy_id}/include": {
@@ -6368,6 +6503,7 @@
 																"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																"type": "string",
 																"example": "192.0.2.0/24",
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"description": {
@@ -6375,6 +6511,7 @@
 																"type": "string",
 																"example": "Include testing domains in the tunnel",
 																"maxLength": 100,
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
@@ -6390,12 +6527,14 @@
 																"type": "string",
 																"example": "Include testing domains in the tunnel",
 																"maxLength": 100,
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"host": {
 																"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																"type": "string",
 																"example": "*.example.com",
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
@@ -6518,7 +6657,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.includes",
+		"x-fern-sdk-group-name": "zt.devices.profiles.custom.includes",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/devices/policy/exclude": {
@@ -6676,6 +6815,7 @@
 																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																"type": "string",
 																"example": "192.0.2.0/24",
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"description": {
@@ -6683,6 +6823,7 @@
 																"type": "string",
 																"example": "Exclude testing domains from the tunnel",
 																"maxLength": 100,
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
@@ -6698,12 +6839,14 @@
 																"type": "string",
 																"example": "Exclude testing domains from the tunnel",
 																"maxLength": 100,
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"host": {
 																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																"type": "string",
 																"example": "*.example.com",
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
@@ -6826,7 +6969,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.excludes",
+		"x-fern-sdk-group-name": "zt.devices.profiles.default.excludes",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/devices/policy/fallback_domains": {
@@ -7118,7 +7261,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.fallback-domains",
+		"x-fern-sdk-group-name": "zt.devices.profiles.default.fallback-domains",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/devices/policy/include": {
@@ -7276,6 +7419,7 @@
 																"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																"type": "string",
 																"example": "192.0.2.0/24",
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"description": {
@@ -7283,6 +7427,7 @@
 																"type": "string",
 																"example": "Include testing domains in the tunnel",
 																"maxLength": 100,
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
@@ -7298,12 +7443,14 @@
 																"type": "string",
 																"example": "Include testing domains in the tunnel",
 																"maxLength": 100,
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"host": {
 																"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																"type": "string",
 																"example": "*.example.com",
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
@@ -7426,7 +7573,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.includes",
+		"x-fern-sdk-group-name": "zt.devices.profiles.default.includes",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/devices/policy/certificates": {
@@ -7681,7 +7828,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.certificates",
+		"x-fern-sdk-group-name": "zt.devices.profiles.default.certificates",
 		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/devices/policy": {
@@ -7710,31 +7857,36 @@
 								"description": "Whether to allow the user to switch WARP between modes.",
 								"type": "boolean",
 								"example": true,
-								"default": false
+								"default": false,
+								"x-auditable": true
 							},
 							"allow_updates": {
 								"description": "Whether to receive update notifications when a new version of the client is available.",
 								"type": "boolean",
 								"example": true,
-								"default": false
+								"default": false,
+								"x-auditable": true
 							},
 							"allowed_to_leave": {
 								"description": "Whether to allow devices to leave the organization.",
 								"type": "boolean",
 								"example": true,
-								"default": true
+								"default": true,
+								"x-auditable": true
 							},
 							"auto_connect": {
 								"description": "The amount of time in seconds to reconnect after having been disabled.",
 								"type": "number",
 								"example": 0,
-								"default": 0
+								"default": 0,
+								"x-auditable": true
 							},
 							"captive_portal": {
 								"description": "Turn on the captive portal after the specified amount of time.",
 								"type": "number",
 								"example": 180,
-								"default": 180
+								"default": 180,
+								"x-auditable": true
 							},
 							"disable_auto_fallback": {
 								"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
@@ -7783,6 +7935,7 @@
 													"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 													"type": "string",
 													"example": "192.0.2.0/24",
+													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"description": {
@@ -7790,6 +7943,7 @@
 													"type": "string",
 													"example": "Exclude testing domains from the tunnel",
 													"maxLength": 100,
+													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
@@ -7805,12 +7959,14 @@
 													"type": "string",
 													"example": "Exclude testing domains from the tunnel",
 													"maxLength": 100,
+													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"host": {
 													"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 													"type": "string",
 													"example": "*.example.com",
+													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
@@ -7826,7 +7982,8 @@
 								"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 								"type": "boolean",
 								"example": true,
-								"default": false
+								"default": false,
+								"x-auditable": true
 							},
 							"global_acceleration": {
 								"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
@@ -7836,13 +7993,13 @@
 										"description": "IP:port entries for the API endpoints.",
 										"type": "array",
 										"items": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"example": [
 											"198.51.100.1:443"
 										],
-										"maxItems": 5,
-										"x-auditable": true
+										"maxItems": 5
 									},
 									"autoswitch": {
 										"description": "Automatically switch Global Acceleration regions based on device location. Defaults to false when not provided.",
@@ -7861,25 +8018,25 @@
 										"description": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
 										"type": "array",
 										"items": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"example": [
 											"198.51.100.1:443"
 										],
-										"maxItems": 5,
-										"x-auditable": true
+										"maxItems": 5
 									},
 									"wireguard_endpoints": {
 										"description": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
 										"type": "array",
 										"items": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"example": [
 											"198.51.100.1:2408"
 										],
-										"maxItems": 5,
-										"x-auditable": true
+										"maxItems": 5
 									}
 								},
 								"nullable": true,
@@ -7888,8 +8045,7 @@
 									"wireguard_endpoints",
 									"masque_endpoints",
 									"api_endpoints"
-								],
-								"x-auditable": true
+								]
 							},
 							"include": {
 								"description": "List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.",
@@ -7904,6 +8060,7 @@
 													"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 													"type": "string",
 													"example": "192.0.2.0/24",
+													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"description": {
@@ -7911,6 +8068,7 @@
 													"type": "string",
 													"example": "Include testing domains in the tunnel",
 													"maxLength": 100,
+													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
@@ -7926,12 +8084,14 @@
 													"type": "string",
 													"example": "Include testing domains in the tunnel",
 													"maxLength": 100,
+													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"host": {
 													"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 													"type": "string",
 													"example": "*.example.com",
+													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
@@ -7946,24 +8106,28 @@
 							"lan_allow_minutes": {
 								"description": "The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.",
 								"type": "number",
-								"example": 30
+								"example": 30,
+								"x-auditable": true
 							},
 							"lan_allow_subnet_size": {
 								"description": "The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.",
 								"type": "number",
-								"example": 24
+								"example": 24,
+								"x-auditable": true
 							},
 							"register_interface_ip_with_dns": {
 								"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 								"type": "boolean",
 								"example": true,
-								"default": true
+								"default": true,
+								"x-auditable": true
 							},
 							"sccm_vpn_boundary_support": {
 								"description": "Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).",
 								"type": "boolean",
 								"example": false,
-								"default": false
+								"default": false,
+								"x-auditable": true
 							},
 							"service_mode_v2": {
 								"type": "object",
@@ -7995,19 +8159,22 @@
 								"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 								"type": "boolean",
 								"example": true,
-								"default": false
+								"default": false,
+								"x-auditable": true
 							},
 							"tunnel_protocol": {
 								"description": "Determines which tunnel protocol to use.",
 								"type": "string",
 								"example": "wireguard",
-								"default": ""
+								"default": "",
+								"x-auditable": true
 							},
 							"uninstall_protection": {
 								"description": "Determines whether uninstalling the WARP client requires an override code. (Windows only).",
 								"type": "boolean",
 								"example": false,
-								"default": false
+								"default": false,
+								"x-auditable": true
 							},
 							"virtual_networks": {
 								"description": "Virtual network access settings for the device.",
@@ -8018,7 +8185,8 @@
 										"type": "array",
 										"items": {
 											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"example": [
 											"f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
@@ -8030,7 +8198,8 @@
 										"description": "The default virtual network ID. Must be included in the `allowed` list.",
 										"type": "string",
 										"format": "uuid",
-										"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+										"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+										"x-auditable": true
 									}
 								},
 								"nullable": true,
@@ -8159,36 +8328,42 @@
 													"description": "Whether to allow the user to switch WARP between modes.",
 													"type": "boolean",
 													"example": true,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"allow_updates": {
 													"description": "Whether to receive update notifications when a new version of the client is available.",
 													"type": "boolean",
 													"example": true,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"allowed_to_leave": {
 													"description": "Whether to allow devices to leave the organization.",
 													"type": "boolean",
 													"example": true,
-													"default": true
+													"default": true,
+													"x-auditable": true
 												},
 												"auto_connect": {
 													"description": "The amount of time in seconds to reconnect after having been disabled.",
 													"type": "number",
 													"example": 0,
-													"default": 0
+													"default": 0,
+													"x-auditable": true
 												},
 												"captive_portal": {
 													"description": "Turn on the captive portal after the specified amount of time.",
 													"type": "number",
 													"example": 180,
-													"default": 180
+													"default": 180,
+													"x-auditable": true
 												},
 												"default": {
 													"description": "Whether the policy will be applied to matching devices.",
 													"type": "boolean",
-													"example": true
+													"example": true,
+													"x-auditable": true
 												},
 												"disable_auto_fallback": {
 													"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
@@ -8228,7 +8403,8 @@
 													"description": "Whether the policy will be applied to matching devices.",
 													"type": "boolean",
 													"example": true,
-													"default": true
+													"default": true,
+													"x-auditable": true
 												},
 												"exclude": {
 													"description": "List of routes excluded in the WARP client's tunnel.",
@@ -8243,6 +8419,7 @@
 																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																		"type": "string",
 																		"example": "192.0.2.0/24",
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"description": {
@@ -8250,6 +8427,7 @@
 																		"type": "string",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
@@ -8265,12 +8443,14 @@
 																		"type": "string",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"host": {
 																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																		"type": "string",
 																		"example": "*.example.com",
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
@@ -8338,7 +8518,8 @@
 													"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 													"type": "boolean",
 													"example": true,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"fallback_domains": {
 													"type": "array",
@@ -8430,13 +8611,13 @@
 															"description": "IP:port entries for the API endpoints.",
 															"type": "array",
 															"items": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"example": [
 																"198.51.100.1:443"
 															],
-															"maxItems": 5,
-															"x-auditable": true
+															"maxItems": 5
 														},
 														"autoswitch": {
 															"description": "Automatically switch Global Acceleration regions based on device location. Defaults to false when not provided.",
@@ -8455,25 +8636,25 @@
 															"description": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
 															"type": "array",
 															"items": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"example": [
 																"198.51.100.1:443"
 															],
-															"maxItems": 5,
-															"x-auditable": true
+															"maxItems": 5
 														},
 														"wireguard_endpoints": {
 															"description": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
 															"type": "array",
 															"items": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"example": [
 																"198.51.100.1:2408"
 															],
-															"maxItems": 5,
-															"x-auditable": true
+															"maxItems": 5
 														}
 													},
 													"nullable": true,
@@ -8482,8 +8663,7 @@
 														"wireguard_endpoints",
 														"masque_endpoints",
 														"api_endpoints"
-													],
-													"x-auditable": true
+													]
 												},
 												"include": {
 													"description": "List of routes included in the WARP client's tunnel.",
@@ -8498,6 +8678,7 @@
 																		"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																		"type": "string",
 																		"example": "192.0.2.0/24",
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"description": {
@@ -8505,6 +8686,7 @@
 																		"type": "string",
 																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
@@ -8520,12 +8702,14 @@
 																		"type": "string",
 																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"host": {
 																		"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																		"type": "string",
 																		"example": "*.example.com",
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
@@ -8550,19 +8734,22 @@
 													"enum": [
 														"warp",
 														"browser_extension"
-													]
+													],
+													"x-auditable": true
 												},
 												"register_interface_ip_with_dns": {
 													"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 													"type": "boolean",
 													"example": true,
-													"default": true
+													"default": true,
+													"x-auditable": true
 												},
 												"sccm_vpn_boundary_support": {
 													"description": "Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).",
 													"type": "boolean",
 													"example": false,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"service_mode_v2": {
 													"type": "object",
@@ -8594,19 +8781,22 @@
 													"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 													"type": "boolean",
 													"example": true,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"tunnel_protocol": {
 													"description": "Determines which tunnel protocol to use.",
 													"type": "string",
 													"example": "wireguard",
-													"default": ""
+													"default": "",
+													"x-auditable": true
 												},
 												"uninstall_protection": {
 													"description": "Determines whether uninstalling the WARP client requires an override code. (Windows only).",
 													"type": "boolean",
 													"example": false,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"virtual_networks": {
 													"description": "Virtual network access settings for the device.",
@@ -8617,7 +8807,8 @@
 															"type": "array",
 															"items": {
 																"format": "uuid",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"example": [
 																"f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
@@ -8629,7 +8820,8 @@
 															"description": "The default virtual network ID. Must be included in the `allowed` list.",
 															"type": "string",
 															"format": "uuid",
-															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"x-auditable": true
 														}
 													},
 													"nullable": true,
@@ -8754,7 +8946,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default",
+		"x-fern-sdk-group-name": "zt.devices.profiles.default",
 		"x-fern-sdk-method-name": "update"
 	},
 	"PATCH /accounts/{account_id}/devices/policy/{policy_id}": {
@@ -8794,25 +8986,29 @@
 								"description": "Whether to allow the user to switch WARP between modes.",
 								"type": "boolean",
 								"example": true,
-								"default": false
+								"default": false,
+								"x-auditable": true
 							},
 							"allow_updates": {
 								"description": "Whether to receive update notifications when a new version of the client is available.",
 								"type": "boolean",
 								"example": true,
-								"default": false
+								"default": false,
+								"x-auditable": true
 							},
 							"allowed_to_leave": {
 								"description": "Whether to allow devices to leave the organization.",
 								"type": "boolean",
 								"example": true,
-								"default": true
+								"default": true,
+								"x-auditable": true
 							},
 							"auto_connect": {
 								"description": "The amount of time in seconds to reconnect after having been disabled.",
 								"type": "number",
 								"example": 0,
-								"default": 0
+								"default": 0,
+								"x-auditable": true
 							},
 							"browser_extension_config": {
 								"description": "Browser extension proxy settings. Required when profile_type is browser_extension and invalid for WARP profiles.",
@@ -8824,11 +9020,13 @@
 										"enum": [
 											"unlocked",
 											"locked"
-										]
+										],
+										"x-auditable": true
 									},
 									"proxy_enabled": {
 										"description": "Whether the browser extension proxy is active.",
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									}
 								},
 								"additionalProperties": false,
@@ -8842,19 +9040,22 @@
 								"description": "Turn on the captive portal after the specified amount of time.",
 								"type": "number",
 								"example": 180,
-								"default": 180
+								"default": 180,
+								"x-auditable": true
 							},
 							"default": {
 								"description": "Whether the policy is the account default. WARP group profiles cannot set this field.",
 								"type": "boolean",
 								"example": false,
-								"default": false
+								"default": false,
+								"x-auditable": true
 							},
 							"description": {
 								"description": "A description of the policy.",
 								"type": "string",
 								"example": "Policy for test teams.",
-								"maxLength": 500
+								"maxLength": 500,
+								"x-auditable": true
 							},
 							"disable_auto_fallback": {
 								"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
@@ -8893,7 +9094,8 @@
 							"enabled": {
 								"description": "Whether the policy will be applied to matching devices.",
 								"type": "boolean",
-								"example": true
+								"example": true,
+								"x-auditable": true
 							},
 							"exclude": {
 								"description": "List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.",
@@ -8908,6 +9110,7 @@
 													"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 													"type": "string",
 													"example": "192.0.2.0/24",
+													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"description": {
@@ -8915,6 +9118,7 @@
 													"type": "string",
 													"example": "Exclude testing domains from the tunnel",
 													"maxLength": 100,
+													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
@@ -8930,12 +9134,14 @@
 													"type": "string",
 													"example": "Exclude testing domains from the tunnel",
 													"maxLength": 100,
+													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"host": {
 													"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 													"type": "string",
 													"example": "*.example.com",
+													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
@@ -8951,7 +9157,8 @@
 								"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 								"type": "boolean",
 								"example": true,
-								"default": false
+								"default": false,
+								"x-auditable": true
 							},
 							"global_acceleration": {
 								"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
@@ -8961,13 +9168,13 @@
 										"description": "IP:port entries for the API endpoints.",
 										"type": "array",
 										"items": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"example": [
 											"198.51.100.1:443"
 										],
-										"maxItems": 5,
-										"x-auditable": true
+										"maxItems": 5
 									},
 									"autoswitch": {
 										"description": "Automatically switch Global Acceleration regions based on device location. Defaults to false when not provided.",
@@ -8986,25 +9193,25 @@
 										"description": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
 										"type": "array",
 										"items": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"example": [
 											"198.51.100.1:443"
 										],
-										"maxItems": 5,
-										"x-auditable": true
+										"maxItems": 5
 									},
 									"wireguard_endpoints": {
 										"description": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
 										"type": "array",
 										"items": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"example": [
 											"198.51.100.1:2408"
 										],
-										"maxItems": 5,
-										"x-auditable": true
+										"maxItems": 5
 									}
 								},
 								"nullable": true,
@@ -9013,8 +9220,7 @@
 									"wireguard_endpoints",
 									"masque_endpoints",
 									"api_endpoints"
-								],
-								"x-auditable": true
+								]
 							},
 							"include": {
 								"description": "List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.",
@@ -9029,6 +9235,7 @@
 													"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 													"type": "string",
 													"example": "192.0.2.0/24",
+													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"description": {
@@ -9036,6 +9243,7 @@
 													"type": "string",
 													"example": "Include testing domains in the tunnel",
 													"maxLength": 100,
+													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
@@ -9051,12 +9259,14 @@
 													"type": "string",
 													"example": "Include testing domains in the tunnel",
 													"maxLength": 100,
+													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"host": {
 													"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 													"type": "string",
 													"example": "*.example.com",
+													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
@@ -9071,41 +9281,48 @@
 							"lan_allow_minutes": {
 								"description": "The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.",
 								"type": "number",
-								"example": 30
+								"example": 30,
+								"x-auditable": true
 							},
 							"lan_allow_subnet_size": {
 								"description": "The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.",
 								"type": "number",
-								"example": 24
+								"example": 24,
+								"x-auditable": true
 							},
 							"match": {
 								"description": "The wirefilter expression to match devices. Available values: \"identity.email\", \"identity.groups.id\", \"identity.groups.name\", \"identity.groups.email\", \"identity.service_token_uuid\", \"identity.saml_attributes\", \"network\", \"os.name\", \"os.version\".",
 								"type": "string",
 								"example": "identity.email == \"test@cloudflare.com\"",
-								"maxLength": 500
+								"maxLength": 500,
+								"x-auditable": true
 							},
 							"name": {
 								"description": "The name of the device settings profile.",
 								"type": "string",
 								"example": "Allow Developers",
-								"maxLength": 100
+								"maxLength": 100,
+								"x-auditable": true
 							},
 							"precedence": {
 								"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
 								"type": "number",
-								"example": 100
+								"example": 100,
+								"x-auditable": true
 							},
 							"register_interface_ip_with_dns": {
 								"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 								"type": "boolean",
 								"example": true,
-								"default": true
+								"default": true,
+								"x-auditable": true
 							},
 							"sccm_vpn_boundary_support": {
 								"description": "Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).",
 								"type": "boolean",
 								"example": false,
-								"default": false
+								"default": false,
+								"x-auditable": true
 							},
 							"service_mode_v2": {
 								"type": "object",
@@ -9137,19 +9354,22 @@
 								"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 								"type": "boolean",
 								"example": true,
-								"default": false
+								"default": false,
+								"x-auditable": true
 							},
 							"tunnel_protocol": {
 								"description": "Determines which tunnel protocol to use.",
 								"type": "string",
 								"example": "wireguard",
-								"default": ""
+								"default": "",
+								"x-auditable": true
 							},
 							"uninstall_protection": {
 								"description": "Determines whether uninstalling the WARP client requires an override code. (Windows only).",
 								"type": "boolean",
 								"example": false,
-								"default": false
+								"default": false,
+								"x-auditable": true
 							},
 							"virtual_networks": {
 								"description": "Virtual network access settings for the device.",
@@ -9160,7 +9380,8 @@
 										"type": "array",
 										"items": {
 											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"example": [
 											"f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
@@ -9172,7 +9393,8 @@
 										"description": "The default virtual network ID. Must be included in the `allowed` list.",
 										"type": "string",
 										"format": "uuid",
-										"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+										"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+										"x-auditable": true
 									}
 								},
 								"nullable": true,
@@ -9301,25 +9523,29 @@
 													"description": "Whether to allow the user to switch WARP between modes.",
 													"type": "boolean",
 													"example": true,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"allow_updates": {
 													"description": "Whether to receive update notifications when a new version of the client is available.",
 													"type": "boolean",
 													"example": true,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"allowed_to_leave": {
 													"description": "Whether to allow devices to leave the organization.",
 													"type": "boolean",
 													"example": true,
-													"default": true
+													"default": true,
+													"x-auditable": true
 												},
 												"auto_connect": {
 													"description": "The amount of time in seconds to reconnect after having been disabled.",
 													"type": "number",
 													"example": 0,
-													"default": 0
+													"default": 0,
+													"x-auditable": true
 												},
 												"browser_extension_config": {
 													"description": "Browser extension proxy settings. Required when profile_type is browser_extension and invalid for WARP profiles.",
@@ -9331,11 +9557,13 @@
 															"enum": [
 																"unlocked",
 																"locked"
-															]
+															],
+															"x-auditable": true
 														},
 														"proxy_enabled": {
 															"description": "Whether the browser extension proxy is active.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														}
 													},
 													"additionalProperties": false,
@@ -9349,19 +9577,22 @@
 													"description": "Turn on the captive portal after the specified amount of time.",
 													"type": "number",
 													"example": 180,
-													"default": 180
+													"default": 180,
+													"x-auditable": true
 												},
 												"default": {
 													"description": "Whether the policy is the account default. WARP group profiles cannot set this field.",
 													"type": "boolean",
 													"example": false,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"description": {
 													"description": "A description of the policy.",
 													"type": "string",
 													"example": "Policy for test teams.",
-													"maxLength": 500
+													"maxLength": 500,
+													"x-auditable": true
 												},
 												"disable_auto_fallback": {
 													"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
@@ -9401,7 +9632,8 @@
 													"description": "Whether the policy will be applied to matching devices.",
 													"type": "boolean",
 													"example": true,
-													"default": true
+													"default": true,
+													"x-auditable": true
 												},
 												"exclude": {
 													"description": "List of routes excluded in the WARP client's tunnel.",
@@ -9416,6 +9648,7 @@
 																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																		"type": "string",
 																		"example": "192.0.2.0/24",
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"description": {
@@ -9423,6 +9656,7 @@
 																		"type": "string",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
@@ -9438,12 +9672,14 @@
 																		"type": "string",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"host": {
 																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																		"type": "string",
 																		"example": "*.example.com",
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
@@ -9511,7 +9747,8 @@
 													"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 													"type": "boolean",
 													"example": true,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"fallback_domains": {
 													"type": "array",
@@ -9603,13 +9840,13 @@
 															"description": "IP:port entries for the API endpoints.",
 															"type": "array",
 															"items": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"example": [
 																"198.51.100.1:443"
 															],
-															"maxItems": 5,
-															"x-auditable": true
+															"maxItems": 5
 														},
 														"autoswitch": {
 															"description": "Automatically switch Global Acceleration regions based on device location. Defaults to false when not provided.",
@@ -9628,25 +9865,25 @@
 															"description": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
 															"type": "array",
 															"items": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"example": [
 																"198.51.100.1:443"
 															],
-															"maxItems": 5,
-															"x-auditable": true
+															"maxItems": 5
 														},
 														"wireguard_endpoints": {
 															"description": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
 															"type": "array",
 															"items": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"example": [
 																"198.51.100.1:2408"
 															],
-															"maxItems": 5,
-															"x-auditable": true
+															"maxItems": 5
 														}
 													},
 													"nullable": true,
@@ -9655,8 +9892,7 @@
 														"wireguard_endpoints",
 														"masque_endpoints",
 														"api_endpoints"
-													],
-													"x-auditable": true
+													]
 												},
 												"include": {
 													"description": "List of routes included in the WARP client's tunnel.",
@@ -9671,6 +9907,7 @@
 																		"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																		"type": "string",
 																		"example": "192.0.2.0/24",
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"description": {
@@ -9678,6 +9915,7 @@
 																		"type": "string",
 																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
@@ -9693,12 +9931,14 @@
 																		"type": "string",
 																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"host": {
 																		"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																		"type": "string",
 																		"example": "*.example.com",
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
@@ -9712,24 +9952,28 @@
 												"lan_allow_minutes": {
 													"description": "The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.",
 													"type": "number",
-													"example": 30
+													"example": 30,
+													"x-auditable": true
 												},
 												"lan_allow_subnet_size": {
 													"description": "The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.",
 													"type": "number",
-													"example": 24
+													"example": 24,
+													"x-auditable": true
 												},
 												"match": {
 													"description": "The wirefilter expression to match devices. Available values: \"identity.email\", \"identity.groups.id\", \"identity.groups.name\", \"identity.groups.email\", \"identity.service_token_uuid\", \"identity.saml_attributes\", \"network\", \"os.name\", \"os.version\".",
 													"type": "string",
 													"example": "identity.email == \"test@cloudflare.com\"",
-													"maxLength": 500
+													"maxLength": 500,
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The name of the device settings profile.",
 													"type": "string",
 													"example": "Allow Developers",
-													"maxLength": 100
+													"maxLength": 100,
+													"x-auditable": true
 												},
 												"policy_id": {
 													"type": "string",
@@ -9740,7 +9984,8 @@
 												"precedence": {
 													"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
 													"type": "number",
-													"example": 100
+													"example": 100,
+													"x-auditable": true
 												},
 												"profile_type": {
 													"description": "The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.",
@@ -9750,19 +9995,22 @@
 													"enum": [
 														"warp",
 														"browser_extension"
-													]
+													],
+													"x-auditable": true
 												},
 												"register_interface_ip_with_dns": {
 													"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 													"type": "boolean",
 													"example": true,
-													"default": true
+													"default": true,
+													"x-auditable": true
 												},
 												"sccm_vpn_boundary_support": {
 													"description": "Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).",
 													"type": "boolean",
 													"example": false,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"service_mode_v2": {
 													"type": "object",
@@ -9794,7 +10042,8 @@
 													"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 													"type": "boolean",
 													"example": true,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"target_tests": {
 													"type": "array",
@@ -9803,11 +10052,13 @@
 														"properties": {
 															"id": {
 																"description": "The id of the DEX test targeting this policy.",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "The name of the DEX test targeting this policy.",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														}
 													}
@@ -9816,13 +10067,15 @@
 													"description": "Determines which tunnel protocol to use.",
 													"type": "string",
 													"example": "wireguard",
-													"default": ""
+													"default": "",
+													"x-auditable": true
 												},
 												"uninstall_protection": {
 													"description": "Determines whether uninstalling the WARP client requires an override code. (Windows only).",
 													"type": "boolean",
 													"example": false,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"virtual_networks": {
 													"description": "Virtual network access settings for the device.",
@@ -9833,7 +10086,8 @@
 															"type": "array",
 															"items": {
 																"format": "uuid",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"example": [
 																"f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
@@ -9845,7 +10099,8 @@
 															"description": "The default virtual network ID. Must be included in the `allowed` list.",
 															"type": "string",
 															"format": "uuid",
-															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"x-auditable": true
 														}
 													},
 													"nullable": true,
@@ -9970,7 +10225,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom",
+		"x-fern-sdk-group-name": "zt.devices.profiles.custom",
 		"x-fern-sdk-method-name": "update"
 	},
 	"PATCH /zones/{zone_id}/devices/policy/certificates": {
@@ -10244,7 +10499,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.certificates",
+		"x-fern-sdk-group-name": "zt.devices.profiles.default.certificates",
 		"x-fern-sdk-method-name": "update"
 	},
 	"POST /accounts/{account_id}/devices/policy": {
@@ -10273,25 +10528,29 @@
 								"description": "Whether to allow the user to switch WARP between modes.",
 								"type": "boolean",
 								"example": true,
-								"default": false
+								"default": false,
+								"x-auditable": true
 							},
 							"allow_updates": {
 								"description": "Whether to receive update notifications when a new version of the client is available.",
 								"type": "boolean",
 								"example": true,
-								"default": false
+								"default": false,
+								"x-auditable": true
 							},
 							"allowed_to_leave": {
 								"description": "Whether to allow devices to leave the organization.",
 								"type": "boolean",
 								"example": true,
-								"default": true
+								"default": true,
+								"x-auditable": true
 							},
 							"auto_connect": {
 								"description": "The amount of time in seconds to reconnect after having been disabled.",
 								"type": "number",
 								"example": 0,
-								"default": 0
+								"default": 0,
+								"x-auditable": true
 							},
 							"browser_extension_config": {
 								"description": "Browser extension proxy settings. Required when profile_type is browser_extension and invalid for WARP profiles.",
@@ -10303,11 +10562,13 @@
 										"enum": [
 											"unlocked",
 											"locked"
-										]
+										],
+										"x-auditable": true
 									},
 									"proxy_enabled": {
 										"description": "Whether the browser extension proxy is active.",
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									}
 								},
 								"additionalProperties": false,
@@ -10321,13 +10582,15 @@
 								"description": "Turn on the captive portal after the specified amount of time.",
 								"type": "number",
 								"example": 180,
-								"default": 180
+								"default": 180,
+								"x-auditable": true
 							},
 							"default": {
 								"description": "Whether the policy is the account default. WARP group profiles cannot set this field.",
 								"type": "boolean",
 								"example": false,
-								"default": false
+								"default": false,
+								"x-auditable": true
 							},
 							"description": {
 								"allOf": [
@@ -10335,11 +10598,13 @@
 										"description": "A description of the policy.",
 										"type": "string",
 										"example": "Policy for test teams.",
-										"maxLength": 500
+										"maxLength": 500,
+										"x-auditable": true
 									},
 									{
 										"default": "",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								]
 							},
@@ -10381,7 +10646,8 @@
 								"description": "Whether the policy will be applied to matching devices.",
 								"type": "boolean",
 								"example": true,
-								"default": true
+								"default": true,
+								"x-auditable": true
 							},
 							"exclude": {
 								"description": "List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.",
@@ -10396,6 +10662,7 @@
 													"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 													"type": "string",
 													"example": "192.0.2.0/24",
+													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"description": {
@@ -10403,6 +10670,7 @@
 													"type": "string",
 													"example": "Exclude testing domains from the tunnel",
 													"maxLength": 100,
+													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
@@ -10418,12 +10686,14 @@
 													"type": "string",
 													"example": "Exclude testing domains from the tunnel",
 													"maxLength": 100,
+													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"host": {
 													"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 													"type": "string",
 													"example": "*.example.com",
+													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
@@ -10439,7 +10709,8 @@
 								"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 								"type": "boolean",
 								"example": true,
-								"default": false
+								"default": false,
+								"x-auditable": true
 							},
 							"global_acceleration": {
 								"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
@@ -10449,13 +10720,13 @@
 										"description": "IP:port entries for the API endpoints.",
 										"type": "array",
 										"items": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"example": [
 											"198.51.100.1:443"
 										],
-										"maxItems": 5,
-										"x-auditable": true
+										"maxItems": 5
 									},
 									"autoswitch": {
 										"description": "Automatically switch Global Acceleration regions based on device location. Defaults to false when not provided.",
@@ -10474,25 +10745,25 @@
 										"description": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
 										"type": "array",
 										"items": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"example": [
 											"198.51.100.1:443"
 										],
-										"maxItems": 5,
-										"x-auditable": true
+										"maxItems": 5
 									},
 									"wireguard_endpoints": {
 										"description": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
 										"type": "array",
 										"items": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"example": [
 											"198.51.100.1:2408"
 										],
-										"maxItems": 5,
-										"x-auditable": true
+										"maxItems": 5
 									}
 								},
 								"nullable": true,
@@ -10501,8 +10772,7 @@
 									"wireguard_endpoints",
 									"masque_endpoints",
 									"api_endpoints"
-								],
-								"x-auditable": true
+								]
 							},
 							"include": {
 								"description": "List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.",
@@ -10517,6 +10787,7 @@
 													"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 													"type": "string",
 													"example": "192.0.2.0/24",
+													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"description": {
@@ -10524,6 +10795,7 @@
 													"type": "string",
 													"example": "Include testing domains in the tunnel",
 													"maxLength": 100,
+													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
@@ -10539,12 +10811,14 @@
 													"type": "string",
 													"example": "Include testing domains in the tunnel",
 													"maxLength": 100,
+													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"host": {
 													"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 													"type": "string",
 													"example": "*.example.com",
+													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
@@ -10559,29 +10833,34 @@
 							"lan_allow_minutes": {
 								"description": "The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.",
 								"type": "number",
-								"example": 30
+								"example": 30,
+								"x-auditable": true
 							},
 							"lan_allow_subnet_size": {
 								"description": "The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.",
 								"type": "number",
-								"example": 24
+								"example": 24,
+								"x-auditable": true
 							},
 							"match": {
 								"description": "The wirefilter expression to match devices. Available values: \"identity.email\", \"identity.groups.id\", \"identity.groups.name\", \"identity.groups.email\", \"identity.service_token_uuid\", \"identity.saml_attributes\", \"network\", \"os.name\", \"os.version\".",
 								"type": "string",
 								"example": "identity.email == \"test@cloudflare.com\"",
-								"maxLength": 500
+								"maxLength": 500,
+								"x-auditable": true
 							},
 							"name": {
 								"description": "The name of the device settings profile.",
 								"type": "string",
 								"example": "Allow Developers",
-								"maxLength": 100
+								"maxLength": 100,
+								"x-auditable": true
 							},
 							"precedence": {
 								"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
 								"type": "number",
-								"example": 100
+								"example": 100,
+								"x-auditable": true
 							},
 							"profile_type": {
 								"description": "The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.",
@@ -10591,19 +10870,22 @@
 								"enum": [
 									"warp",
 									"browser_extension"
-								]
+								],
+								"x-auditable": true
 							},
 							"register_interface_ip_with_dns": {
 								"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 								"type": "boolean",
 								"example": true,
-								"default": true
+								"default": true,
+								"x-auditable": true
 							},
 							"sccm_vpn_boundary_support": {
 								"description": "Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).",
 								"type": "boolean",
 								"example": false,
-								"default": false
+								"default": false,
+								"x-auditable": true
 							},
 							"service_mode_v2": {
 								"type": "object",
@@ -10635,19 +10917,22 @@
 								"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 								"type": "boolean",
 								"example": true,
-								"default": false
+								"default": false,
+								"x-auditable": true
 							},
 							"tunnel_protocol": {
 								"description": "Determines which tunnel protocol to use.",
 								"type": "string",
 								"example": "wireguard",
-								"default": ""
+								"default": "",
+								"x-auditable": true
 							},
 							"uninstall_protection": {
 								"description": "Determines whether uninstalling the WARP client requires an override code. (Windows only).",
 								"type": "boolean",
 								"example": false,
-								"default": false
+								"default": false,
+								"x-auditable": true
 							},
 							"virtual_networks": {
 								"description": "Virtual network access settings for the device.",
@@ -10658,7 +10943,8 @@
 										"type": "array",
 										"items": {
 											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"example": [
 											"f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
@@ -10670,7 +10956,8 @@
 										"description": "The default virtual network ID. Must be included in the `allowed` list.",
 										"type": "string",
 										"format": "uuid",
-										"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+										"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+										"x-auditable": true
 									}
 								},
 								"nullable": true,
@@ -10802,25 +11089,29 @@
 													"description": "Whether to allow the user to switch WARP between modes.",
 													"type": "boolean",
 													"example": true,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"allow_updates": {
 													"description": "Whether to receive update notifications when a new version of the client is available.",
 													"type": "boolean",
 													"example": true,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"allowed_to_leave": {
 													"description": "Whether to allow devices to leave the organization.",
 													"type": "boolean",
 													"example": true,
-													"default": true
+													"default": true,
+													"x-auditable": true
 												},
 												"auto_connect": {
 													"description": "The amount of time in seconds to reconnect after having been disabled.",
 													"type": "number",
 													"example": 0,
-													"default": 0
+													"default": 0,
+													"x-auditable": true
 												},
 												"browser_extension_config": {
 													"description": "Browser extension proxy settings. Required when profile_type is browser_extension and invalid for WARP profiles.",
@@ -10832,11 +11123,13 @@
 															"enum": [
 																"unlocked",
 																"locked"
-															]
+															],
+															"x-auditable": true
 														},
 														"proxy_enabled": {
 															"description": "Whether the browser extension proxy is active.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														}
 													},
 													"additionalProperties": false,
@@ -10850,19 +11143,22 @@
 													"description": "Turn on the captive portal after the specified amount of time.",
 													"type": "number",
 													"example": 180,
-													"default": 180
+													"default": 180,
+													"x-auditable": true
 												},
 												"default": {
 													"description": "Whether the policy is the account default. WARP group profiles cannot set this field.",
 													"type": "boolean",
 													"example": false,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"description": {
 													"description": "A description of the policy.",
 													"type": "string",
 													"example": "Policy for test teams.",
-													"maxLength": 500
+													"maxLength": 500,
+													"x-auditable": true
 												},
 												"disable_auto_fallback": {
 													"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
@@ -10902,7 +11198,8 @@
 													"description": "Whether the policy will be applied to matching devices.",
 													"type": "boolean",
 													"example": true,
-													"default": true
+													"default": true,
+													"x-auditable": true
 												},
 												"exclude": {
 													"description": "List of routes excluded in the WARP client's tunnel.",
@@ -10917,6 +11214,7 @@
 																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																		"type": "string",
 																		"example": "192.0.2.0/24",
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"description": {
@@ -10924,6 +11222,7 @@
 																		"type": "string",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
@@ -10939,12 +11238,14 @@
 																		"type": "string",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"host": {
 																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																		"type": "string",
 																		"example": "*.example.com",
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
@@ -11012,7 +11313,8 @@
 													"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 													"type": "boolean",
 													"example": true,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"fallback_domains": {
 													"type": "array",
@@ -11104,13 +11406,13 @@
 															"description": "IP:port entries for the API endpoints.",
 															"type": "array",
 															"items": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"example": [
 																"198.51.100.1:443"
 															],
-															"maxItems": 5,
-															"x-auditable": true
+															"maxItems": 5
 														},
 														"autoswitch": {
 															"description": "Automatically switch Global Acceleration regions based on device location. Defaults to false when not provided.",
@@ -11129,25 +11431,25 @@
 															"description": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
 															"type": "array",
 															"items": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"example": [
 																"198.51.100.1:443"
 															],
-															"maxItems": 5,
-															"x-auditable": true
+															"maxItems": 5
 														},
 														"wireguard_endpoints": {
 															"description": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
 															"type": "array",
 															"items": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"example": [
 																"198.51.100.1:2408"
 															],
-															"maxItems": 5,
-															"x-auditable": true
+															"maxItems": 5
 														}
 													},
 													"nullable": true,
@@ -11156,8 +11458,7 @@
 														"wireguard_endpoints",
 														"masque_endpoints",
 														"api_endpoints"
-													],
-													"x-auditable": true
+													]
 												},
 												"include": {
 													"description": "List of routes included in the WARP client's tunnel.",
@@ -11172,6 +11473,7 @@
 																		"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																		"type": "string",
 																		"example": "192.0.2.0/24",
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"description": {
@@ -11179,6 +11481,7 @@
 																		"type": "string",
 																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
@@ -11194,12 +11497,14 @@
 																		"type": "string",
 																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"host": {
 																		"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																		"type": "string",
 																		"example": "*.example.com",
+																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
@@ -11213,24 +11518,28 @@
 												"lan_allow_minutes": {
 													"description": "The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.",
 													"type": "number",
-													"example": 30
+													"example": 30,
+													"x-auditable": true
 												},
 												"lan_allow_subnet_size": {
 													"description": "The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.",
 													"type": "number",
-													"example": 24
+													"example": 24,
+													"x-auditable": true
 												},
 												"match": {
 													"description": "The wirefilter expression to match devices. Available values: \"identity.email\", \"identity.groups.id\", \"identity.groups.name\", \"identity.groups.email\", \"identity.service_token_uuid\", \"identity.saml_attributes\", \"network\", \"os.name\", \"os.version\".",
 													"type": "string",
 													"example": "identity.email == \"test@cloudflare.com\"",
-													"maxLength": 500
+													"maxLength": 500,
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The name of the device settings profile.",
 													"type": "string",
 													"example": "Allow Developers",
-													"maxLength": 100
+													"maxLength": 100,
+													"x-auditable": true
 												},
 												"policy_id": {
 													"type": "string",
@@ -11241,7 +11550,8 @@
 												"precedence": {
 													"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
 													"type": "number",
-													"example": 100
+													"example": 100,
+													"x-auditable": true
 												},
 												"profile_type": {
 													"description": "The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.",
@@ -11251,19 +11561,22 @@
 													"enum": [
 														"warp",
 														"browser_extension"
-													]
+													],
+													"x-auditable": true
 												},
 												"register_interface_ip_with_dns": {
 													"description": "Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.",
 													"type": "boolean",
 													"example": true,
-													"default": true
+													"default": true,
+													"x-auditable": true
 												},
 												"sccm_vpn_boundary_support": {
 													"description": "Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).",
 													"type": "boolean",
 													"example": false,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"service_mode_v2": {
 													"type": "object",
@@ -11295,7 +11608,8 @@
 													"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 													"type": "boolean",
 													"example": true,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"target_tests": {
 													"type": "array",
@@ -11304,11 +11618,13 @@
 														"properties": {
 															"id": {
 																"description": "The id of the DEX test targeting this policy.",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "The name of the DEX test targeting this policy.",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														}
 													}
@@ -11317,13 +11633,15 @@
 													"description": "Determines which tunnel protocol to use.",
 													"type": "string",
 													"example": "wireguard",
-													"default": ""
+													"default": "",
+													"x-auditable": true
 												},
 												"uninstall_protection": {
 													"description": "Determines whether uninstalling the WARP client requires an override code. (Windows only).",
 													"type": "boolean",
 													"example": false,
-													"default": false
+													"default": false,
+													"x-auditable": true
 												},
 												"virtual_networks": {
 													"description": "Virtual network access settings for the device.",
@@ -11334,7 +11652,8 @@
 															"type": "array",
 															"items": {
 																"format": "uuid",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"example": [
 																"f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
@@ -11346,7 +11665,8 @@
 															"description": "The default virtual network ID. Must be included in the `allowed` list.",
 															"type": "string",
 															"format": "uuid",
-															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"x-auditable": true
 														}
 													},
 													"nullable": true,
@@ -11471,7 +11791,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom",
+		"x-fern-sdk-group-name": "zt.devices.profiles.custom",
 		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/devices/revoke": {
@@ -11723,7 +12043,7 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.devices.v1",
+		"x-fern-sdk-group-name": "zt.devices.v1",
 		"x-fern-sdk-method-name": "revoke"
 	},
 	"POST /accounts/{account_id}/devices/unrevoke": {
@@ -11975,7 +12295,7 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.devices.v1",
+		"x-fern-sdk-group-name": "zt.devices.v1",
 		"x-fern-sdk-method-name": "unrevoke"
 	},
 	"PUT /accounts/{account_id}/devices/policy/{policy_id}/exclude": {
@@ -12020,6 +12340,7 @@
 											"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 											"type": "string",
 											"example": "192.0.2.0/24",
+											"x-auditable": true,
 											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"description": {
@@ -12027,6 +12348,7 @@
 											"type": "string",
 											"example": "Exclude testing domains from the tunnel",
 											"maxLength": 100,
+											"x-auditable": true,
 											"x-stainless-terraform-configurability": "computed_optional"
 										}
 									},
@@ -12042,12 +12364,14 @@
 											"type": "string",
 											"example": "Exclude testing domains from the tunnel",
 											"maxLength": 100,
+											"x-auditable": true,
 											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"host": {
 											"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 											"type": "string",
 											"example": "*.example.com",
+											"x-auditable": true,
 											"x-stainless-terraform-configurability": "computed_optional"
 										}
 									},
@@ -12201,6 +12525,7 @@
 																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																"type": "string",
 																"example": "192.0.2.0/24",
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"description": {
@@ -12208,6 +12533,7 @@
 																"type": "string",
 																"example": "Exclude testing domains from the tunnel",
 																"maxLength": 100,
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
@@ -12223,12 +12549,14 @@
 																"type": "string",
 																"example": "Exclude testing domains from the tunnel",
 																"maxLength": 100,
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"host": {
 																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																"type": "string",
 																"example": "*.example.com",
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
@@ -12354,7 +12682,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.excludes",
+		"x-fern-sdk-group-name": "zt.devices.profiles.custom.excludes",
 		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/devices/policy/{policy_id}/fallback_domains": {
@@ -12701,7 +13029,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.fallback-domains",
+		"x-fern-sdk-group-name": "zt.devices.profiles.custom.fallback-domains",
 		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/devices/policy/{policy_id}/include": {
@@ -12746,6 +13074,7 @@
 											"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 											"type": "string",
 											"example": "192.0.2.0/24",
+											"x-auditable": true,
 											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"description": {
@@ -12753,6 +13082,7 @@
 											"type": "string",
 											"example": "Include testing domains in the tunnel",
 											"maxLength": 100,
+											"x-auditable": true,
 											"x-stainless-terraform-configurability": "computed_optional"
 										}
 									},
@@ -12768,12 +13098,14 @@
 											"type": "string",
 											"example": "Include testing domains in the tunnel",
 											"maxLength": 100,
+											"x-auditable": true,
 											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"host": {
 											"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 											"type": "string",
 											"example": "*.example.com",
+											"x-auditable": true,
 											"x-stainless-terraform-configurability": "computed_optional"
 										}
 									},
@@ -12927,6 +13259,7 @@
 																"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																"type": "string",
 																"example": "192.0.2.0/24",
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"description": {
@@ -12934,6 +13267,7 @@
 																"type": "string",
 																"example": "Include testing domains in the tunnel",
 																"maxLength": 100,
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
@@ -12949,12 +13283,14 @@
 																"type": "string",
 																"example": "Include testing domains in the tunnel",
 																"maxLength": 100,
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"host": {
 																"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																"type": "string",
 																"example": "*.example.com",
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
@@ -13080,7 +13416,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.includes",
+		"x-fern-sdk-group-name": "zt.devices.profiles.custom.includes",
 		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/devices/policy/exclude": {
@@ -13114,6 +13450,7 @@
 											"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 											"type": "string",
 											"example": "192.0.2.0/24",
+											"x-auditable": true,
 											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"description": {
@@ -13121,6 +13458,7 @@
 											"type": "string",
 											"example": "Exclude testing domains from the tunnel",
 											"maxLength": 100,
+											"x-auditable": true,
 											"x-stainless-terraform-configurability": "computed_optional"
 										}
 									},
@@ -13136,12 +13474,14 @@
 											"type": "string",
 											"example": "Exclude testing domains from the tunnel",
 											"maxLength": 100,
+											"x-auditable": true,
 											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"host": {
 											"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 											"type": "string",
 											"example": "*.example.com",
+											"x-auditable": true,
 											"x-stainless-terraform-configurability": "computed_optional"
 										}
 									},
@@ -13295,6 +13635,7 @@
 																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																"type": "string",
 																"example": "192.0.2.0/24",
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"description": {
@@ -13302,6 +13643,7 @@
 																"type": "string",
 																"example": "Exclude testing domains from the tunnel",
 																"maxLength": 100,
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
@@ -13317,12 +13659,14 @@
 																"type": "string",
 																"example": "Exclude testing domains from the tunnel",
 																"maxLength": 100,
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"host": {
 																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																"type": "string",
 																"example": "*.example.com",
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
@@ -13448,7 +13792,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.excludes",
+		"x-fern-sdk-group-name": "zt.devices.profiles.default.excludes",
 		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/devices/policy/fallback_domains": {
@@ -13784,7 +14128,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.fallback-domains",
+		"x-fern-sdk-group-name": "zt.devices.profiles.default.fallback-domains",
 		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/devices/policy/include": {
@@ -13818,6 +14162,7 @@
 											"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 											"type": "string",
 											"example": "192.0.2.0/24",
+											"x-auditable": true,
 											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"description": {
@@ -13825,6 +14170,7 @@
 											"type": "string",
 											"example": "Include testing domains in the tunnel",
 											"maxLength": 100,
+											"x-auditable": true,
 											"x-stainless-terraform-configurability": "computed_optional"
 										}
 									},
@@ -13840,12 +14186,14 @@
 											"type": "string",
 											"example": "Include testing domains in the tunnel",
 											"maxLength": 100,
+											"x-auditable": true,
 											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"host": {
 											"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 											"type": "string",
 											"example": "*.example.com",
+											"x-auditable": true,
 											"x-stainless-terraform-configurability": "computed_optional"
 										}
 									},
@@ -13999,6 +14347,7 @@
 																"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																"type": "string",
 																"example": "192.0.2.0/24",
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"description": {
@@ -14006,6 +14355,7 @@
 																"type": "string",
 																"example": "Include testing domains in the tunnel",
 																"maxLength": 100,
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
@@ -14021,12 +14371,14 @@
 																"type": "string",
 																"example": "Include testing domains in the tunnel",
 																"maxLength": 100,
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"host": {
 																"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																"type": "string",
 																"example": "*.example.com",
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
@@ -14152,7 +14504,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.includes",
+		"x-fern-sdk-group-name": "zt.devices.profiles.default.includes",
 		"x-fern-sdk-method-name": "update"
 	}
 }

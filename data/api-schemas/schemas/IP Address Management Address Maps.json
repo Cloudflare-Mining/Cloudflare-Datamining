@@ -416,8 +416,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.address-maps",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/addressing/address_maps/{address_map_id}/accounts/{member_account_id}": {
 		"operationId": "ip-address-management-address-maps-remove-an-account-membership-from-an-address-map",
@@ -848,8 +847,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.address-maps.accounts",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/addressing/address_maps/{address_map_id}/ips/{ip_address}": {
 		"operationId": "ip-address-management-address-maps-remove-an-ip-from-an-address-map",
@@ -1279,16 +1277,15 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.address-maps.ips",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
-	"DELETE /accounts/{account_id}/addressing/address_maps/{address_map_id}/zones/{zone_id}": {
+	"DELETE /accounts/{account_id}/addressing/address_maps/{address_map_id}/zones/{member_zone_id}": {
 		"operationId": "ip-address-management-address-maps-remove-a-zone-membership-from-an-address-map",
 		"summary": "Remove a zone membership from an Address Map",
 		"description": "Remove a zone as a member of a particular address map.",
 		"parameters": [
 			{
-				"name": "zone_id",
+				"name": "member_zone_id",
 				"in": "path",
 				"required": true,
 				"schema": {
@@ -1711,8 +1708,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.address-maps.zones",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/addressing/address_maps": {
 		"operationId": "ip-address-management-address-maps-list-address-maps",
@@ -2264,8 +2260,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.address-maps",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/addressing/address_maps/{address_map_id}": {
 		"operationId": "ip-address-management-address-maps-address-map-details",
@@ -2891,8 +2886,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.address-maps",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/addressing/address_maps/{address_map_id}": {
 		"operationId": "ip-address-management-address-maps-update-address-map",
@@ -3413,8 +3407,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.address-maps",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/addressing/address_maps": {
 		"operationId": "ip-address-management-address-maps-create-address-map",
@@ -4098,8 +4091,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.address-maps",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/addressing/address_maps/{address_map_id}/accounts/{member_account_id}": {
 		"operationId": "ip-address-management-address-maps-add-an-account-membership-to-an-address-map",
@@ -4527,8 +4519,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.address-maps.accounts",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/addressing/address_maps/{address_map_id}/ips/{ip_address}": {
 		"operationId": "ip-address-management-address-maps-add-an-ip-to-an-address-map",
@@ -4958,16 +4949,15 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.address-maps.ips",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
-	"PUT /accounts/{account_id}/addressing/address_maps/{address_map_id}/zones/{zone_id}": {
+	"PUT /accounts/{account_id}/addressing/address_maps/{address_map_id}/zones/{member_zone_id}": {
 		"operationId": "ip-address-management-address-maps-add-a-zone-membership-to-an-address-map",
 		"summary": "Add a zone membership to an Address Map",
 		"description": "Add a zone as a member of a particular address map.",
 		"parameters": [
 			{
-				"name": "zone_id",
+				"name": "member_zone_id",
 				"in": "path",
 				"required": true,
 				"schema": {
@@ -5387,7 +5377,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.address-maps.zones",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

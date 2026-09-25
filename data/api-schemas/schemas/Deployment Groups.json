@@ -171,7 +171,7 @@
 		],
 		"x-auditable": true,
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "zero-trust.devices.deployment-groups",
+		"x-fern-sdk-group-name": "zt.devices.deployment-groups",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/devices/deployment-groups": {
@@ -283,14 +283,14 @@
 												"description": "Contains a list of policy IDs assigned to this deployment group.",
 												"type": "array",
 												"items": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"example": [
 													"policy-uuid-1",
 													"policy-uuid-2"
 												],
-												"nullable": true,
-												"x-auditable": true
+												"nullable": true
 											},
 											"updated_at": {
 												"description": "The RFC3339Nano timestamp when the deployment group was last updated.",
@@ -464,7 +464,7 @@
 			"Deployment Groups"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "zero-trust.devices.deployment-groups",
+		"x-fern-sdk-group-name": "zt.devices.deployment-groups",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/devices/deployment-groups/{group_id}": {
@@ -561,14 +561,14 @@
 											"description": "Contains a list of policy IDs assigned to this deployment group.",
 											"type": "array",
 											"items": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"example": [
 												"policy-uuid-1",
 												"policy-uuid-2"
 											],
-											"nullable": true,
-											"x-auditable": true
+											"nullable": true
 										},
 										"updated_at": {
 											"description": "The RFC3339Nano timestamp when the deployment group was last updated.",
@@ -702,7 +702,7 @@
 			"Deployment Groups"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "zero-trust.devices.deployment-groups",
+		"x-fern-sdk-group-name": "zt.devices.deployment-groups",
 		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/devices/deployment-groups/{group_id}": {
@@ -852,14 +852,14 @@
 											"description": "Contains a list of policy IDs assigned to this deployment group.",
 											"type": "array",
 											"items": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"example": [
 												"policy-uuid-1",
 												"policy-uuid-2"
 											],
-											"nullable": true,
-											"x-auditable": true
+											"nullable": true
 										},
 										"updated_at": {
 											"description": "The RFC3339Nano timestamp when the deployment group was last updated.",
@@ -994,7 +994,7 @@
 		],
 		"x-auditable": true,
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "zero-trust.devices.deployment-groups",
+		"x-fern-sdk-group-name": "zt.devices.deployment-groups",
 		"x-fern-sdk-method-name": "update"
 	},
 	"POST /accounts/{account_id}/devices/deployment-groups": {
@@ -1141,14 +1141,14 @@
 											"description": "Contains a list of policy IDs assigned to this deployment group.",
 											"type": "array",
 											"items": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"example": [
 												"policy-uuid-1",
 												"policy-uuid-2"
 											],
-											"nullable": true,
-											"x-auditable": true
+											"nullable": true
 										},
 										"updated_at": {
 											"description": "The RFC3339Nano timestamp when the deployment group was last updated.",
@@ -1283,7 +1283,7 @@
 		],
 		"x-auditable": true,
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "zero-trust.devices.deployment-groups",
+		"x-fern-sdk-group-name": "zt.devices.deployment-groups",
 		"x-fern-sdk-method-name": "create"
 	}
 }

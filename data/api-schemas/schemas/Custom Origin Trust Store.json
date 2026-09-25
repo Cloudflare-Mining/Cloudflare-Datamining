@@ -9,10 +9,11 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "Certificate identifier tag.",
 					"type": "string",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
+					"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+					"maxLength": 36,
+					"readOnly": true,
 					"x-auditable": true
 				}
 			},
@@ -129,10 +130,11 @@
 											"type": "object",
 											"properties": {
 												"id": {
-													"description": "Identifier.",
+													"description": "Certificate identifier tag.",
 													"type": "string",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
+													"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+													"maxLength": 36,
+													"readOnly": true,
 													"x-auditable": true
 												}
 											}
@@ -152,10 +154,11 @@
 						"schema": {
 							"allOf": [
 								{
-									"description": "Identifier.",
+									"description": "Certificate identifier tag.",
 									"type": "string",
-									"example": "023e105f4ecef8ad9ca31a8372d0c353",
-									"maxLength": 32,
+									"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+									"maxLength": 36,
+									"readOnly": true,
 									"x-auditable": true
 								},
 								{
@@ -509,10 +512,11 @@
 														"x-auditable": true
 													},
 													"id": {
-														"description": "Identifier.",
+														"description": "Certificate identifier tag.",
 														"type": "string",
-														"example": "023e105f4ecef8ad9ca31a8372d0c353",
-														"maxLength": 32,
+														"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+														"maxLength": 36,
+														"readOnly": true,
 														"x-auditable": true
 													},
 													"issuer": {
@@ -732,10 +736,11 @@
 																"x-auditable": true
 															},
 															"id": {
-																"description": "Identifier.",
+																"description": "Certificate identifier tag.",
 																"type": "string",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
+																"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+																"maxLength": 36,
+																"readOnly": true,
 																"x-auditable": true
 															},
 															"issuer": {
@@ -955,10 +960,11 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "Certificate identifier tag.",
 					"type": "string",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
+					"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+					"maxLength": 36,
+					"readOnly": true,
 					"x-auditable": true
 				}
 			},
@@ -1088,10 +1094,11 @@
 													"x-auditable": true
 												},
 												"id": {
-													"description": "Identifier.",
+													"description": "Certificate identifier tag.",
 													"type": "string",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
+													"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+													"maxLength": 36,
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"issuer": {
@@ -1273,10 +1280,11 @@
 															"x-auditable": true
 														},
 														"id": {
-															"description": "Identifier.",
+															"description": "Certificate identifier tag.",
 															"type": "string",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
+															"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+															"maxLength": 36,
+															"readOnly": true,
 															"x-auditable": true
 														},
 														"issuer": {
@@ -1636,10 +1644,11 @@
 													"x-auditable": true
 												},
 												"id": {
-													"description": "Identifier.",
+													"description": "Certificate identifier tag.",
 													"type": "string",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
+													"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+													"maxLength": 36,
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"issuer": {
@@ -1821,10 +1830,11 @@
 															"x-auditable": true
 														},
 														"id": {
-															"description": "Identifier.",
+															"description": "Certificate identifier tag.",
 															"type": "string",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
+															"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+															"maxLength": 36,
+															"readOnly": true,
 															"x-auditable": true
 														},
 														"issuer": {

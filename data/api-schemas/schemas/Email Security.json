@@ -251,14 +251,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate.bulk",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation permanently deletes the completed, cancelled, or failed bulk action job from all list and detail endpoints.",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate": {
 		"operationId": "email_security_investigate",
 		"summary": "Search email messages",
-		"description": "Returns information for each email that matches the search parameter(s).",
+		"description": "Returns information for each email that matches the provided search parameters.",
 		"parameters": [
 			{
 				"name": "start",
@@ -283,7 +282,7 @@
 			{
 				"name": "query",
 				"in": "query",
-				"description": "Space-delimited search term. Case-insensitive.",
+				"description": "Space-delimited term matched case-insensitively against message metadata — sender, recipient, subject, attachment names and hashes, and message ID.",
 				"schema": {
 					"type": "string"
 				},
@@ -317,6 +316,7 @@
 			{
 				"name": "metric",
 				"in": "query",
+				"description": "Metric to aggregate the results by, as used by the Email Security dashboard.",
 				"schema": {
 					"type": "string"
 				}
@@ -337,6 +337,7 @@
 			{
 				"name": "recipient",
 				"in": "query",
+				"description": "Filter by recipient. Matches an email address or a domain.",
 				"schema": {
 					"type": "string"
 				},
@@ -345,6 +346,7 @@
 			{
 				"name": "sender",
 				"in": "query",
+				"description": "Filter by sender. Matches an email address or a domain.",
 				"schema": {
 					"type": "string"
 				},
@@ -362,6 +364,7 @@
 			{
 				"name": "alert_id",
 				"in": "query",
+				"description": "Filter by alert ID.",
 				"schema": {
 					"type": "string"
 				}
@@ -369,7 +372,7 @@
 			{
 				"name": "domain",
 				"in": "query",
-				"description": "Sender domains to filter by.",
+				"description": "Filter by a domain found in the email — sender domain, recipient domain, or a domain in a link.",
 				"schema": {
 					"type": "string"
 				},
@@ -378,6 +381,7 @@
 			{
 				"name": "message_id",
 				"in": "query",
+				"description": "Filter by the RFC 5322 Message-ID header.",
 				"schema": {
 					"type": "string"
 				}
@@ -385,6 +389,7 @@
 			{
 				"name": "subject",
 				"in": "query",
+				"description": "Search for messages containing individual keywords in any order within the subject.",
 				"schema": {
 					"type": "string"
 				}
@@ -411,6 +416,7 @@
 			{
 				"name": "cursor",
 				"in": "query",
+				"description": "Opaque cursor from a previous response's `result_info.next` or `result_info.previous` for cursor-based pagination. When omitted, the first page is returned.",
 				"schema": {
 					"type": "string"
 				}
@@ -1357,7 +1363,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{investigate_id}": {
@@ -2069,12 +2074,11 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{investigate_id}/action_log": {
 		"operationId": "email_security_get_message_action_log",
-		"summary": "Get action log for a message",
+		"summary": "List post-delivery actions for a message",
 		"description": "Returns the list of post-delivery actions (moves, quarantine releases, previews, etc.) that have been applied to a specific email message.",
 		"responses": {
 			"200": {
@@ -2385,14 +2389,13 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate.action-log",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true,
+		"x-fern-sdk-method-name": "list",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{investigate_id}/detections": {
 		"operationId": "email_security_get_message_detections",
 		"summary": "Get message detection details",
-		"description": "Returns detection details such as threat categories and sender information for non-benign messages.",
+		"description": "Returns detection details such as threat categories and sender information for messages with a detection.",
 		"responses": {
 			"200": {
 				"description": "Email message detection details.",
@@ -2947,13 +2950,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate.detections",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{investigate_id}/preview": {
 		"operationId": "email_security_get_message_preview",
-		"summary": "Get email preview",
-		"description": "Returns a preview of the message body as a base64 encoded PNG image for non-benign messages.",
+		"summary": "Get preview for a detection",
+		"description": "Returns a preview of the message body as a base64-encoded PNG image for any message with a detection. For messages without a detection, use the non-detection preview endpoint instead.",
 		"responses": {
 			"200": {
 				"description": "Email preview.",
@@ -3201,13 +3203,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate.preview",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{investigate_id}/raw": {
 		"operationId": "email_security_get_message_raw",
 		"summary": "Get raw email content",
-		"description": "Returns the raw eml of any non-benign message.",
+		"description": "Returns the raw EML content of any message with a detection.",
 		"responses": {
 			"200": {
 				"description": "Raw email content.",
@@ -3455,7 +3456,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate.raw",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{investigate_id}/trace": {
@@ -3782,7 +3782,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate.trace",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/bulk": {
@@ -3816,6 +3815,7 @@
 			{
 				"name": "action_type",
 				"in": "query",
+				"description": "Filter jobs by the action they perform.",
 				"schema": {
 					"type": "string",
 					"enum": [
@@ -3827,7 +3827,7 @@
 			{
 				"name": "status",
 				"in": "query",
-				"description": "Filter by job status.",
+				"description": "Filter jobs by their processing status.",
 				"schema": {
 					"description": "Status of a bulk action job.",
 					"type": "string",
@@ -4403,7 +4403,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate.bulk",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/bulk/{job_id}": {
@@ -4928,7 +4927,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate.bulk",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/bulk/{job_id}/messages": {
@@ -4962,7 +4960,7 @@
 			{
 				"name": "status",
 				"in": "query",
-				"description": "Filter by message status.",
+				"description": "Filter the job's messages by their processing status.",
 				"schema": {
 					"description": "Status of a message within a bulk action job.",
 					"type": "string",
@@ -5879,12 +5877,11 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate.bulk.messages",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/phishguard/reports": {
 		"operationId": "email_security_get_phishguard_reports",
-		"summary": "Get PhishGuard reports",
+		"summary": "List PhishGuard reports",
 		"description": "Retrieves PhishGuard security alert reports for a specified date range. Reports include detected threats, dispositions, and contextual information. Use for security monitoring and threat analysis.",
 		"parameters": [
 			{
@@ -6286,12 +6283,11 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.phishguard.reports",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/submissions": {
 		"operationId": "email_security_submissions",
-		"summary": "Get reclassify submissions",
+		"summary": "List reclassify submissions",
 		"description": "Returns information for submissions made to reclassify emails. Shows the status, outcome, and disposition changes for reclassification requests made by users or the security team. Useful for tracking false positive/negative reports.",
 		"parameters": [
 			{
@@ -6317,6 +6313,7 @@
 			{
 				"name": "type",
 				"in": "query",
+				"description": "Filter by who created the submission — `TEAM` for security team members or `USER` for end users.",
 				"schema": {
 					"type": "string",
 					"enum": [
@@ -6328,6 +6325,7 @@
 			{
 				"name": "submission_id",
 				"in": "query",
+				"description": "Filter by a specific submission ID.",
 				"schema": {
 					"type": "string"
 				}
@@ -6380,6 +6378,7 @@
 			{
 				"name": "status",
 				"in": "query",
+				"description": "Filter by review status — `escalated`, `reviewed`, or `unreviewed`.",
 				"schema": {
 					"type": "string"
 				}
@@ -6387,6 +6386,7 @@
 			{
 				"name": "query",
 				"in": "query",
+				"description": "Search term for filtering submissions.",
 				"schema": {
 					"type": "string",
 					"nullable": true
@@ -6869,7 +6869,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.submissions",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/investigate/{investigate_id}/move": {
@@ -7216,15 +7215,15 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email-security.investigate.move",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/investigate/{investigate_id}/reclassify": {
 		"operationId": "email_security_post_reclassify",
 		"summary": "Change email classification",
-		"description": "Submits a request to reclassify an email's disposition. Use for reporting false positives or false negatives. Optionally provide the raw EML content for reanalysis. The reclassification is processed asynchronously.",
+		"description": "Submits a request to reclassify an email's disposition. Use for reporting false positives or false negatives. Optionally provide the raw EML content for reanalysis. The reclassification is processed asynchronously. Deprecated; use the create submissions endpoint instead.",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -7478,6 +7477,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -7493,16 +7493,16 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
-		"x-fern-availability": "beta",
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email-security.investigate.reclassify",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/investigate/bulk": {
 		"operationId": "email_security_create_bulk_job",
 		"summary": "Create a bulk action job",
-		"description": "Creates a new bulk action job to move or release messages that match the provided search parameters.",
+		"description": "Creates a new bulk action job to move or release messages that match the provided search parameters. To move or release an explicit list of known messages instead of a search, use the move or release endpoints.",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -8209,7 +8209,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate.bulk",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/investigate/bulk/{job_id}/cancel": {
@@ -8731,15 +8730,14 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.investigate.bulk.cancel",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true,
+		"x-fern-sdk-group-name": "email-security.investigate.bulk",
+		"x-fern-sdk-method-name": "cancel",
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/investigate/move": {
 		"operationId": "email_security_post_bulk_move",
-		"summary": "Move multiple messages",
-		"description": "Moves multiple messages to a specified mailbox folder (Inbox, JunkEmail, DeletedItems, RecoverableItemsDeletions, or RecoverableItemsPurges). Requires active integration.",
+		"summary": "Move messages",
+		"description": "Moves one or more messages to a specified mailbox folder (Inbox, JunkEmail, DeletedItems, RecoverableItemsDeletions, or RecoverableItemsPurges). Requires active integration. Operates on an explicit list of messages; to move all messages matching a search, create a bulk action job instead.",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -8789,6 +8787,8 @@
 									"type": "string",
 									"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678"
 								},
+								"maxItems": 1000,
+								"minItems": 1,
 								"x-auditable": true
 							},
 							"postfix_ids": {
@@ -8805,7 +8805,8 @@
 							}
 						},
 						"required": [
-							"destination"
+							"destination",
+							"ids"
 						]
 					}
 				}
@@ -9102,15 +9103,14 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.investigate.move",
-		"x-fern-sdk-method-name": "bulk",
-		"x-forge-hidden": true,
+		"x-fern-sdk-group-name": "email-security.investigate",
+		"x-fern-sdk-method-name": "move",
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/investigate/preview": {
 		"operationId": "email_security_post_preview",
-		"summary": "Preview for non-detection messages",
-		"description": "Generates a preview image for a message that was not flagged as a detection. Useful for investigating benign messages. Returns a base64-encoded PNG screenshot of the email body.",
+		"summary": "Generate preview for a non-detection message",
+		"description": "Generates a preview image for a message that was not flagged as a detection. The message is rendered from the copy in the recipient's mailbox, so this requires an active integration and only works while the message is still in the recipient's inbox. Returns a base64-encoded PNG screenshot of the email body. For messages with a detection, use the detection preview endpoint instead.",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -9118,14 +9118,14 @@
 					"schema": {
 						"type": "object",
 						"properties": {
-							"postfix_id": {
-								"description": "The identifier of the message.",
+							"id": {
+								"description": "Unique identifier for a message retrieved from investigation.",
 								"type": "string",
-								"example": "4Njp3P0STMz2c02Q"
+								"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678"
 							}
 						},
 						"required": [
-							"postfix_id"
+							"id"
 						]
 					}
 				}
@@ -9376,14 +9376,13 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate.preview",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true,
+		"x-fern-sdk-method-name": "generate",
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/investigate/release": {
 		"operationId": "email_security_post_release",
 		"summary": "Release messages from quarantine",
-		"description": "Delivers one or more quarantined messages to their intended recipients, for cases where a message was incorrectly quarantined. The response includes delivery status for each recipient.",
+		"description": "Delivers one or more quarantined messages to their intended recipients, for cases where a message was incorrectly quarantined. Operates on an explicit list of messages; to release all messages matching a search, create a bulk action job instead. The response includes delivery status for each recipient.",
 		"requestBody": {
 			"description": "A list of investigate IDs identifying the messages to release.",
 			"required": true,
@@ -9395,7 +9394,8 @@
 							"description": "Unique identifier for a message retrieved from investigation.",
 							"type": "string",
 							"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678"
-						}
+						},
+						"minItems": 1
 					}
 				}
 			}
@@ -9686,9 +9686,399 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.investigate.release",
-		"x-fern-sdk-method-name": "bulk",
-		"x-forge-hidden": true,
+		"x-fern-sdk-group-name": "email-security.investigate",
+		"x-fern-sdk-method-name": "release",
+		"x-stability": "beta"
+	},
+	"POST /accounts/{account_id}/email-security/submissions": {
+		"operationId": "email_security_create_submissions",
+		"summary": "Create new submissions",
+		"description": "Submits messages for reclassification or to report missed detections.",
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"discriminator": {
+							"propertyName": "type"
+						},
+						"oneOf": [
+							{
+								"properties": {
+									"messages": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"alert_id": {
+													"type": "string",
+													"x-auditable": true
+												},
+												"escalated_submission_id": {
+													"type": "string",
+													"x-auditable": true
+												},
+												"expected_disposition": {
+													"type": "string",
+													"enum": [
+														"MALICIOUS",
+														"SUSPICIOUS",
+														"SPOOF",
+														"SPAM",
+														"BULK",
+														"NONE"
+													]
+												}
+											},
+											"required": [
+												"alert_id",
+												"expected_disposition"
+											]
+										}
+									},
+									"type": {
+										"type": "string",
+										"enum": [
+											"reclassification"
+										]
+									}
+								},
+								"required": [
+									"type",
+									"messages"
+								],
+								"type": "object"
+							},
+							{
+								"properties": {
+									"messages": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"eml_content": {
+													"type": "string"
+												},
+												"escalated_submission_id": {
+													"type": "string",
+													"x-auditable": true
+												},
+												"expected_disposition": {
+													"type": "string",
+													"enum": [
+														"MALICIOUS",
+														"SUSPICIOUS",
+														"SPOOF",
+														"SPAM",
+														"BULK",
+														"NONE"
+													]
+												},
+												"message_id": {
+													"type": "string",
+													"x-auditable": true
+												},
+												"postfix_id": {
+													"description": "The identifier of the message.",
+													"type": "string",
+													"example": "4Njp3P0STMz2c02Q"
+												},
+												"recipient_emails": {
+													"type": "array",
+													"items": {
+														"type": "string",
+														"x-auditable": true
+													},
+													"minItems": 1
+												}
+											},
+											"required": [
+												"postfix_id",
+												"expected_disposition",
+												"message_id",
+												"recipient_emails"
+											]
+										}
+									},
+									"type": {
+										"type": "string",
+										"enum": [
+											"missed_detection"
+										]
+									}
+								},
+								"required": [
+									"type",
+									"messages"
+								],
+								"type": "object"
+							}
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"202": {
+				"description": "Submission accepted.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"results": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"accepted": {
+																"type": "boolean"
+															},
+															"error": {
+																"type": "string",
+																"nullable": true
+															},
+															"id": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"id",
+															"accepted"
+														]
+													}
+												}
+											},
+											"required": [
+												"results"
+											]
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Client error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Email Security"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.submissions",
+		"x-fern-sdk-method-name": "create",
 		"x-stability": "beta"
 	}
 }

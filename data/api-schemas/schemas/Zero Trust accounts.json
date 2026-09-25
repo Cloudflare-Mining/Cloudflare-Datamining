@@ -295,7 +295,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.settings",
+		"x-fern-sdk-group-name": "zt.devices.settings",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/devices/settings": {
@@ -591,7 +591,7 @@
 			"Zero Trust accounts"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.settings",
+		"x-fern-sdk-group-name": "zt.devices.settings",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/gateway": {
@@ -3546,7 +3546,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.devices.settings",
+		"x-fern-sdk-group-name": "zt.devices.settings",
 		"x-fern-sdk-method-name": "update"
 	},
 	"PATCH /accounts/{account_id}/gateway/configuration": {
@@ -5896,7 +5896,7 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.devices.v1.settings",
+		"x-fern-sdk-group-name": "zt.devices.v1.settings",
 		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/gateway/configuration": {

@@ -600,7 +600,7 @@
 		"x-api-token-group": [
 			"Zero Trust Write"
 		],
-		"x-fern-sdk-group-name": "data-security.posture.policies",
+		"x-fern-sdk-group-name": "zero-trust.casb.policies",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/data-security/posture/policies": {
@@ -1287,7 +1287,7 @@
 			"Zero Trust Read",
 			"Zero Trust Write"
 		],
-		"x-fern-sdk-group-name": "data-security.posture.policies",
+		"x-fern-sdk-group-name": "zero-trust.casb.policies",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/data-security/posture/policies/{policy_id}": {
@@ -2037,7 +2037,7 @@
 			"Zero Trust Read",
 			"Zero Trust Write"
 		],
-		"x-fern-sdk-group-name": "data-security.posture.policies",
+		"x-fern-sdk-group-name": "zero-trust.casb.policies",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/data-security/posture/policies/logs": {
@@ -2977,7 +2977,8 @@
 			"Zero Trust Read",
 			"Zero Trust Write"
 		],
-		"x-fern-sdk-group-name": "data-security.posture.policies.logs",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.casb.policies.logs",
 		"x-fern-sdk-method-name": "list"
 	},
 	"POST /accounts/{account_id}/data-security/posture/policies": {
@@ -3822,7 +3823,7 @@
 		"x-api-token-group": [
 			"Zero Trust Write"
 		],
-		"x-fern-sdk-group-name": "data-security.posture.policies",
+		"x-fern-sdk-group-name": "zero-trust.casb.policies",
 		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/data-security/posture/policies/{policy_id}": {
@@ -4670,7 +4671,7 @@
 		"x-api-token-group": [
 			"Zero Trust Write"
 		],
-		"x-fern-sdk-group-name": "data-security.posture.policies",
+		"x-fern-sdk-group-name": "zero-trust.casb.policies",
 		"x-fern-sdk-method-name": "update"
 	}
 }

@@ -254,7 +254,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.allow-policies",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation deletes the allow policy and restores normal security scanning and disposition actions for matching emails.",
 		"x-stability": "beta"
 	},
@@ -513,7 +512,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.block-senders",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation deletes the blocked sender pattern and stops automatically blocking matching emails based on this rule.",
 		"x-stability": "beta"
 	},
@@ -772,7 +770,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.content-policies",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation deletes the content policy and stops evaluating emails against its pattern.",
 		"x-stability": "beta"
 	},
@@ -1062,7 +1059,6 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email-security.domains",
 		"x-fern-sdk-method-name": "bulk-delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation permanently deletes protection for the selected email domains. Emails for these domains will no longer be processed by Email Security.",
 		"x-stability": "beta"
 	},
@@ -1321,7 +1317,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.domains",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation permanently deletes protection for the email domain. Emails for this domain will no longer be processed by Email Security.",
 		"x-stability": "beta"
 	},
@@ -1581,7 +1576,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.impersonation-registry",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation deletes the impersonation registry entry and stops protecting the identity from impersonation.",
 		"x-stability": "beta"
 	},
@@ -1841,7 +1835,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.sending-domain-restrictions",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation deletes the sending domain restriction and removes TLS enforcement for emails from this domain.",
 		"x-stability": "beta"
 	},
@@ -2100,7 +2093,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.trusted-domains",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation deletes the trusted domain pattern and restores normal recent domain and similarity checks for matching emails.",
 		"x-stability": "beta"
 	},
@@ -2360,7 +2352,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.url-ignore-patterns",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation deletes the URL rewrite ignore pattern and causes matching URLs to be rewritten again.",
 		"x-stability": "beta"
 	},
@@ -2459,6 +2450,7 @@
 			{
 				"name": "pattern_type",
 				"in": "query",
+				"description": "Filter by pattern type.",
 				"schema": {
 					"allOf": [
 						{
@@ -2479,6 +2471,7 @@
 			{
 				"name": "pattern",
 				"in": "query",
+				"description": "Filter by exact pattern value.",
 				"schema": {
 					"type": "string"
 				}
@@ -2892,7 +2885,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.allow-policies",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/allow_policies/{policy_id}": {
@@ -3274,7 +3266,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.allow-policies",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/block_senders": {
@@ -3722,7 +3713,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.block-senders",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/block_senders/{pattern_id}": {
@@ -4051,7 +4041,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.block-senders",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/content_policies": {
@@ -4483,7 +4472,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.content-policies",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/content_policies/{policy_id}": {
@@ -4809,7 +4797,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.content-policies",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/domains": {
@@ -5462,7 +5449,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.domains",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/domains/{domain_id}": {
@@ -5959,7 +5945,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.domains",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/domains/{domain_id}/verification": {
@@ -6236,12 +6221,11 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.domains.verification",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/impersonation_registry": {
 		"operationId": "email_security_list_impersonation_registry",
-		"summary": "List entries in impersonation registry",
+		"summary": "List impersonation registry entries",
 		"description": "Returns a paginated list of protected identities in the impersonation registry. These entries define identities and email addresses to protect from impersonation attacks. Can be manually added or automatically synced from directory integrations.",
 		"parameters": [
 			{
@@ -6688,7 +6672,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.impersonation-registry",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/impersonation_registry/{impersonation_registry_id}": {
@@ -7036,7 +7019,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.impersonation-registry",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/sending_domain_restrictions": {
@@ -7448,7 +7430,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.sending-domain-restrictions",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/sending_domain_restrictions/{sending_domain_restriction_id}": {
@@ -7770,7 +7751,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.sending-domain-restrictions",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/trusted_domains": {
@@ -8211,7 +8191,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.trusted-domains",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}": {
@@ -8539,7 +8518,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.trusted-domains",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/url_ignore_patterns": {
@@ -8902,7 +8880,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.url-ignore-patterns",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/url_ignore_patterns/{pattern_id}": {
@@ -9207,7 +9184,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.url-ignore-patterns",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/allow_policies/{policy_id}": {
@@ -9739,7 +9715,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.allow-policies",
 		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/block_senders/{pattern_id}": {
@@ -10165,7 +10140,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.block-senders",
 		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/content_policies/{policy_id}": {
@@ -10585,7 +10559,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.content-policies",
 		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/domains/{domain_id}": {
@@ -11193,7 +11166,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.domains",
 		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/impersonation_registry/{impersonation_registry_id}": {
@@ -11657,7 +11629,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.impersonation-registry",
 		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/sending_domain_restrictions/{sending_domain_restriction_id}": {
@@ -12069,7 +12040,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.sending-domain-restrictions",
 		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}": {
@@ -12493,7 +12463,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.trusted-domains",
 		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/url_ignore_patterns/{pattern_id}": {
@@ -12828,7 +12797,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.url-ignore-patterns",
 		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/allow_policies": {
@@ -13368,12 +13336,11 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.allow-policies",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/allow_policies/batch": {
 		"operationId": "email_security_batch_allow_policies",
-		"summary": "Batch allow policies operations",
+		"summary": "Batch allow policy operations",
 		"description": "Executes multiple operations atomically. All four operation arrays\n(deletes, patches, puts, posts) are required and executed in order.\nSend empty arrays for unused operations.\n",
 		"requestBody": {
 			"required": true,
@@ -14600,7 +14567,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.allow-policies",
 		"x-fern-sdk-method-name": "batch",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation may delete the selected allow policies and restore normal security scanning and disposition actions for matching emails.",
 		"x-stability": "beta"
 	},
@@ -15031,12 +14997,11 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.block-senders",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/block_senders/batch": {
 		"operationId": "email_security_batch_blocked_senders",
-		"summary": "Batch blocked senders operations",
+		"summary": "Batch blocked sender operations",
 		"description": "Executes multiple operations atomically. All four operation arrays\n(deletes, patches, puts, posts) are required and executed in order.\nSend empty arrays for unused operations.\n",
 		"requestBody": {
 			"required": true,
@@ -15937,7 +15902,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.block-senders",
 		"x-fern-sdk-method-name": "batch",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation may delete the selected blocked sender patterns and stop automatically blocking matching emails based on those rules.",
 		"x-stability": "beta"
 	},
@@ -16363,7 +16327,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.content-policies",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/content_policies/batch": {
@@ -17253,7 +17216,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.content-policies",
 		"x-fern-sdk-method-name": "batch",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation may delete the selected content policies and stop evaluating emails against their patterns.",
 		"x-stability": "beta"
 	},
@@ -17884,7 +17846,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.domains",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/domains/batch": {
@@ -19365,7 +19326,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.domains",
 		"x-fern-sdk-method-name": "batch",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation may permanently delete protection for the selected email domains. Emails for those domains will no longer be processed by Email Security.",
 		"x-stability": "beta"
 	},
@@ -19834,7 +19794,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.impersonation-registry",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/sending_domain_restrictions": {
@@ -20249,12 +20208,11 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.sending-domain-restrictions",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/sending_domain_restrictions/batch": {
 		"operationId": "email_security_batch_sending_domain_restrictions",
-		"summary": "Batch sending domain restrictions operations",
+		"summary": "Batch sending domain restriction operations",
 		"description": "Executes multiple delete operations on sending domain restrictions atomically. All operations succeed or fail together as a transaction. Currently only supports batch deletion. Removes TLS enforcement requirements for the specified domains.",
 		"requestBody": {
 			"required": true,
@@ -20555,7 +20513,6 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email-security.sending-domain-restrictions",
 		"x-fern-sdk-method-name": "batch",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation deletes the selected sending domain restrictions and removes TLS enforcement for the specified domains.",
 		"x-stability": "beta"
 	},
@@ -20985,12 +20942,11 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.trusted-domains",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/trusted_domains/batch": {
 		"operationId": "email_security_batch_trusted_domains",
-		"summary": "Batch trusted domains operations",
+		"summary": "Batch trusted domain operations",
 		"description": "Executes multiple operations atomically. All four operation arrays\n(deletes, patches, puts, posts) are required and executed in order.\nSend empty arrays for unused operations.\n",
 		"requestBody": {
 			"required": true,
@@ -21887,7 +21843,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.trusted-domains",
 		"x-fern-sdk-method-name": "batch",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation may delete the selected trusted domain patterns and restore normal recent domain and similarity checks for matching emails.",
 		"x-stability": "beta"
 	},
@@ -22225,13 +22180,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.url-ignore-patterns",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/url_ignore_patterns/batch": {
 		"operationId": "email_security_batch_url_ignore_patterns",
-		"summary": "Batch URL ignore patterns",
-		"description": "Sends a batch of URL ignore patterns API calls to execute together.",
+		"summary": "Batch URL ignore pattern operations",
+		"description": "Executes multiple operations atomically. All four operation arrays\n(deletes, patches, puts, posts) are required and executed in order.\nSend empty arrays for unused operations.\n",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -22862,7 +22816,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.url-ignore-patterns",
 		"x-fern-sdk-method-name": "batch",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation may delete the selected URL rewrite ignore patterns and cause matching URLs to be rewritten again.",
 		"x-stability": "beta"
 	},
@@ -23400,7 +23353,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.allow-policies",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"PUT /accounts/{account_id}/email-security/settings/block_senders/{pattern_id}": {
@@ -23827,7 +23779,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.block-senders",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"PUT /accounts/{account_id}/email-security/settings/domains/{domain_id}": {
@@ -24449,7 +24400,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.domains",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"PUT /accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}": {
@@ -24875,7 +24825,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.trusted-domains",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	}
 }

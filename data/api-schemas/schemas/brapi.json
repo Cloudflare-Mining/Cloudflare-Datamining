@@ -5733,6 +5733,13 @@
 										"description": "Attempt to proceed when 'awaited' events fail or timeout.",
 										"type": "boolean"
 									},
+									"browser": {
+										"description": "Rendering backend for this crawl. Set to `kitesurf` to render pages with Kitesurf (beta). Only valid when `render` is `true`.",
+										"type": "string",
+										"enum": [
+											"kitesurf"
+										]
+									},
 									"contentUse": {
 										"description": "Intended content use level to respect the `use` Content-Signal directive in robots.txt. Levels (least to most permissive): 'reference', 'full'. A URL is disallowed when the publisher's declared `use` level is lower than this intent. Learn more: https://contentsignals.org/. Default: 'full'.",
 										"default": "full",

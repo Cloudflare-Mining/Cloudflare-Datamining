@@ -21,10 +21,12 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "Client Certificate Tag",
 					"type": "string",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
+					"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+					"maxLength": 36,
+					"minLength": 36,
+					"readOnly": true,
 					"x-auditable": true
 				}
 			}
@@ -185,10 +187,12 @@
 													"x-auditable": true
 												},
 												"id": {
-													"description": "Identifier.",
+													"description": "Client Certificate Tag",
 													"type": "string",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
+													"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+													"maxLength": 36,
+													"minLength": 36,
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"issued_on": {
@@ -977,10 +981,12 @@
 														"x-auditable": true
 													},
 													"id": {
-														"description": "Identifier.",
+														"description": "Client Certificate Tag",
 														"type": "string",
-														"example": "023e105f4ecef8ad9ca31a8372d0c353",
-														"maxLength": 32,
+														"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+														"maxLength": 36,
+														"minLength": 36,
+														"readOnly": true,
 														"x-auditable": true
 													},
 													"issued_on": {
@@ -1240,10 +1246,12 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "Client Certificate Tag",
 					"type": "string",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
+					"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+					"maxLength": 36,
+					"minLength": 36,
+					"readOnly": true,
 					"x-auditable": true
 				}
 			}
@@ -1404,10 +1412,12 @@
 													"x-auditable": true
 												},
 												"id": {
-													"description": "Identifier.",
+													"description": "Client Certificate Tag",
 													"type": "string",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
+													"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+													"maxLength": 36,
+													"minLength": 36,
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"issued_on": {
@@ -1662,10 +1672,12 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "Client Certificate Tag",
 					"type": "string",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
+					"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+					"maxLength": 36,
+					"minLength": 36,
+					"readOnly": true,
 					"x-auditable": true
 				}
 			}
@@ -1842,10 +1854,12 @@
 													"x-auditable": true
 												},
 												"id": {
-													"description": "Identifier.",
+													"description": "Client Certificate Tag",
 													"type": "string",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
+													"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+													"maxLength": 36,
+													"minLength": 36,
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"issued_on": {
@@ -2279,10 +2293,12 @@
 													"x-auditable": true
 												},
 												"id": {
-													"description": "Identifier.",
+													"description": "Client Certificate Tag",
 													"type": "string",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
+													"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+													"maxLength": 36,
+													"minLength": 36,
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"issued_on": {
@@ -2526,10 +2542,12 @@
 															"x-auditable": true
 														},
 														"id": {
-															"description": "Identifier.",
+															"description": "Client Certificate Tag",
 															"type": "string",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
+															"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+															"maxLength": 36,
+															"minLength": 36,
+															"readOnly": true,
 															"x-auditable": true
 														},
 														"issued_on": {

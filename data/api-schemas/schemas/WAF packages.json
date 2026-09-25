@@ -517,7 +517,8 @@
 			"free": false,
 			"pro": true
 		},
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.waf.packages",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
@@ -784,7 +785,8 @@
 			"free": false,
 			"pro": true
 		},
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.waf.packages",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
@@ -1197,6 +1199,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.waf.packages",
 		"x-fern-sdk-method-name": "edit",
 		"x-forge-hidden": true
