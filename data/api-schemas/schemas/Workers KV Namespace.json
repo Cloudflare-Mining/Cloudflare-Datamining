@@ -1,15 +1,15 @@
 {
 	"DELETE /accounts/{account_id}/storage/kv/namespaces/{namespace_id}": {
 		"operationId": "workers-kv-namespace-remove-a-namespace",
-		"summary": "Remove a Namespace",
-		"description": "Deletes the namespace corresponding to the given ID.",
+		"summary": "Delete a namespace",
+		"description": "Deletes the specified Workers KV namespace and its stored key-value pairs from the account.",
 		"parameters": [
 			{
 				"name": "namespace_id",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Namespace identifier tag.",
+					"description": "ID of the Workers KV namespace.",
 					"type": "string",
 					"example": "0f2ac74b498b48028cb68387c421e279",
 					"maxLength": 32,
@@ -22,7 +22,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "ID of the Cloudflare account that owns the Workers KV namespaces.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -227,7 +227,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "kv.namespaces",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This operation deletes the selected Workers KV namespace and all of its key-value pairs."
 	},
 	"DELETE /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk": {
 		"operationId": "workers-kv-namespace-delete-multiple-key-value-pairs-deprecated",
@@ -239,7 +239,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Namespace identifier tag.",
+					"description": "ID of the Workers KV namespace.",
 					"type": "string",
 					"example": "0f2ac74b498b48028cb68387c421e279",
 					"maxLength": 32,
@@ -252,7 +252,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "ID of the Cloudflare account that owns the Workers KV namespaces.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -365,12 +365,12 @@
 											"type": "object",
 											"properties": {
 												"successful_key_count": {
-													"description": "Number of keys successfully updated.",
+													"description": "Number of keys successfully written or deleted by the bulk operation.",
 													"type": "number",
 													"example": 100
 												},
 												"unsuccessful_keys": {
-													"description": "Name of the keys that failed to be fully updated. They should be retried.",
+													"description": "Names of keys that failed to be written or deleted. Retry the operation for these keys.",
 													"type": "array",
 													"items": {
 														"type": "string"
@@ -472,12 +472,12 @@
 											"type": "object",
 											"properties": {
 												"successful_key_count": {
-													"description": "Number of keys successfully updated.",
+													"description": "Number of keys successfully written or deleted by the bulk operation.",
 													"type": "number",
 													"example": 100
 												},
 												"unsuccessful_keys": {
-													"description": "Name of the keys that failed to be fully updated. They should be retried.",
+													"description": "Names of keys that failed to be written or deleted. Retry the operation for these keys.",
 													"type": "array",
 													"items": {
 														"type": "string"
@@ -513,15 +513,12 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "kv.bulk-deprecated",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
-		"x-forge-sunset": {
-			"date": "2030-01-01T00:00:00Z"
-		}
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/values/{key_name}": {
 		"operationId": "workers-kv-namespace-delete-key-value-pair",
-		"summary": "Delete key-value pair",
-		"description": "Remove a KV pair from the namespace. Use URL-encoding to use special characters (for example, `:`, `!`, `%`) in the key name.",
+		"summary": "Delete a key-value pair",
+		"description": "Deletes the specified key and its value from the Workers KV namespace. Use URL-encoding for special characters (for example, `:`, `!`, `%`) in the key name when constructing the request URL.",
 		"parameters": [
 			{
 				"name": "key_name",
@@ -539,7 +536,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Namespace identifier tag.",
+					"description": "ID of the Workers KV namespace.",
 					"type": "string",
 					"example": "0f2ac74b498b48028cb68387c421e279",
 					"maxLength": 32,
@@ -552,7 +549,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "ID of the Cloudflare account that owns the Workers KV namespaces.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -757,19 +754,19 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "kv.keys",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "This operation deletes the selected key-value pair from the Workers KV namespace."
 	},
 	"GET /accounts/{account_id}/storage/kv/namespaces": {
 		"operationId": "workers-kv-namespace-list-namespaces",
-		"summary": "List Namespaces",
-		"description": "Returns the namespaces owned by an account.",
+		"summary": "List namespaces",
+		"description": "Lists Workers KV namespaces owned by the specified account. Use `page` and `per_page` to select a page of results, and `order` and `direction` to control sorting.",
 		"parameters": [
 			{
 				"name": "account_id",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "ID of the Cloudflare account that owns the Workers KV namespaces.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -802,7 +799,7 @@
 				"name": "order",
 				"in": "query",
 				"schema": {
-					"description": "Field to order results by.",
+					"description": "Namespace field to sort by (`id` or `title`).",
 					"type": "string",
 					"example": "id",
 					"enum": [
@@ -815,7 +812,7 @@
 				"name": "direction",
 				"in": "query",
 				"schema": {
-					"description": "Direction to order namespaces.",
+					"description": "Sort namespaces in ascending (`asc`) or descending (`desc`) order.",
 					"type": "string",
 					"example": "asc",
 					"enum": [
@@ -935,7 +932,7 @@
 												"type": "object",
 												"properties": {
 													"id": {
-														"description": "Namespace identifier tag.",
+														"description": "ID of the Workers KV namespace.",
 														"type": "string",
 														"example": "0f2ac74b498b48028cb68387c421e279",
 														"maxLength": 32,
@@ -961,7 +958,7 @@
 														"x-auditable": true
 													},
 													"title": {
-														"description": "A human-readable string name for a Namespace.",
+														"description": "Human-readable string name for a Workers KV namespace.",
 														"type": "string",
 														"example": "My Own Namespace",
 														"maxLength": 512,
@@ -1090,20 +1087,19 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "kv.namespaces",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/storage/kv/namespaces/{namespace_id}": {
 		"operationId": "workers-kv-namespace-get-a-namespace",
-		"summary": "Get a Namespace",
-		"description": "Get the namespace corresponding to the given ID.",
+		"summary": "Get a namespace",
+		"description": "Returns the Workers KV namespace for the specified account and namespace ID.",
 		"parameters": [
 			{
 				"name": "namespace_id",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Namespace identifier tag.",
+					"description": "ID of the Workers KV namespace.",
 					"type": "string",
 					"example": "0f2ac74b498b48028cb68387c421e279",
 					"maxLength": 32,
@@ -1116,7 +1112,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "ID of the Cloudflare account that owns the Workers KV namespaces.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -1198,7 +1194,7 @@
 											"type": "object",
 											"properties": {
 												"id": {
-													"description": "Namespace identifier tag.",
+													"description": "ID of the Workers KV namespace.",
 													"type": "string",
 													"example": "0f2ac74b498b48028cb68387c421e279",
 													"maxLength": 32,
@@ -1224,7 +1220,7 @@
 													"x-auditable": true
 												},
 												"title": {
-													"description": "A human-readable string name for a Namespace.",
+													"description": "Human-readable string name for a Workers KV namespace.",
 													"type": "string",
 													"example": "My Own Namespace",
 													"maxLength": 512,
@@ -1352,20 +1348,19 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "kv.namespaces",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/keys": {
 		"operationId": "workers-kv-namespace-list-a-namespace'-s-keys",
-		"summary": "List a Namespace's Keys",
-		"description": "Lists a namespace's keys.",
+		"summary": "List keys in a namespace",
+		"description": "Lists key names in the specified Workers KV namespace, with expiration times and metadata when present. Use `prefix` to filter names and `cursor` to request the next page. Values are not included.",
 		"parameters": [
 			{
 				"name": "namespace_id",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Namespace identifier tag.",
+					"description": "ID of the Workers KV namespace.",
 					"type": "string",
 					"example": "0f2ac74b498b48028cb68387c421e279",
 					"maxLength": 32,
@@ -1378,7 +1373,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "ID of the Cloudflare account that owns the Workers KV namespaces.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -1390,7 +1385,7 @@
 				"name": "limit",
 				"in": "query",
 				"schema": {
-					"description": "Limits the number of keys returned in the response. The cursor attribute may be used to iterate over the next batch of keys if there are more than the limit.",
+					"description": "Maximum number of keys to return in one response. Pass `result_info.cursor` from the response as `cursor` to request the next page.",
 					"type": "number",
 					"default": 1000,
 					"maximum": 1000,
@@ -1410,7 +1405,7 @@
 				"name": "cursor",
 				"in": "query",
 				"schema": {
-					"description": "Opaque token indicating the position from which to continue when requesting the next set of records if the amount of list results was limited by the limit parameter. A valid value for the cursor can be obtained from the `cursors` object in the `result_info` structure.",
+					"description": "Opaque pagination token from `result_info.cursor` in the previous response. Pass it unchanged to request the next page of keys.",
 					"type": "string",
 					"example": "6Ck1la0VxJ0djhidm1MdX2FyDGxLKVeeHZZmORS_8XeSuhz9SjIJRaSa2lnsF01tQOHrfTGAP3R5X1Kv5iVUuMbNKhWNAXHOl6ePB0TUL8nw",
 					"x-stainless-pagination-property": {
@@ -1561,7 +1556,7 @@
 													"example": 1
 												},
 												"cursor": {
-													"description": "Opaque token indicating the position from which to continue when requesting the next set of records if the amount of list results was limited by the limit parameter. A valid value for the cursor can be obtained from the cursors object in the result_info structure.",
+													"description": "Opaque pagination token returned in `result_info.cursor`. Pass it unchanged as the `cursor` query parameter to request the next page of keys.",
 													"type": "string",
 													"example": "6Ck1la0VxJ0djhidm1MdX2FyDGxLKVeeHZZmORS_8XeSuhz9SjIJRaSa2lnsF01tQOHrfTGAP3R5X1Kv5iVUuMbNKhWNAXHOl6ePB0TUL8nw",
 													"x-stainless-pagination-property": {
@@ -1686,13 +1681,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "kv.keys",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/metadata/{key_name}": {
 		"operationId": "workers-kv-namespace-read-the-metadata-for-a-key",
-		"summary": "Read the metadata for a key",
-		"description": "Returns the metadata associated with the given key in the given namespace. Use URL-encoding to use special characters (for example, `:`, `!`, `%`) in the key name.",
+		"summary": "Get a key's metadata",
+		"description": "Returns the JSON metadata associated with the specified key in the Workers KV namespace, without retrieving its value. Use URL-encoding for special characters (for example, `:`, `!`, `%`) in the key name when constructing the request URL.",
 		"parameters": [
 			{
 				"name": "key_name",
@@ -1710,7 +1704,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Namespace identifier tag.",
+					"description": "ID of the Workers KV namespace.",
 					"type": "string",
 					"example": "0f2ac74b498b48028cb68387c421e279",
 					"maxLength": 32,
@@ -1723,7 +1717,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "ID of the Cloudflare account that owns the Workers KV namespaces.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -1955,13 +1949,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "kv.metadata",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/values/{key_name}": {
 		"operationId": "workers-kv-namespace-read-key-value-pair",
-		"summary": "Read key-value pair",
-		"description": "Returns the value associated with the given key in the given namespace. Use URL-encoding to use special characters (for example, `:`, `!`, `%`) in the key name. If the KV-pair is set to expire at some point, the expiration time as measured in seconds since the UNIX epoch will be returned in the `expiration` response header.",
+		"summary": "Get a key's value",
+		"description": "Returns the value stored under the specified key in the Workers KV namespace as raw bytes. Use URL-encoding for special characters (for example, `:`, `!`, `%`) in the key name when constructing the request URL. If the key-value pair expires, the `expiration` response header contains its expiration time in seconds since the UNIX epoch.",
 		"parameters": [
 			{
 				"name": "key_name",
@@ -1979,7 +1972,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Namespace identifier tag.",
+					"description": "ID of the Workers KV namespace.",
 					"type": "string",
 					"example": "0f2ac74b498b48028cb68387c421e279",
 					"maxLength": 32,
@@ -1992,7 +1985,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "ID of the Cloudflare account that owns the Workers KV namespaces.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -2130,20 +2123,19 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "kv.keys",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/storage/kv/namespaces": {
 		"operationId": "workers-kv-namespace-create-a-namespace",
-		"summary": "Create a Namespace",
-		"description": "Creates a namespace under the given title. A `400` is returned if the account already owns a namespace with this title. A namespace must be explicitly deleted to be replaced.",
+		"summary": "Create a namespace",
+		"description": "Creates a Workers KV namespace in the specified account with the given title. Returns `400` if the account already owns a namespace with that title; an existing namespace must be explicitly deleted before it can be replaced. An optional jurisdiction restricts where data is durably stored and can only be set at creation time.",
 		"parameters": [
 			{
 				"name": "account_id",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "ID of the Cloudflare account that owns the Workers KV namespaces.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -2171,7 +2163,7 @@
 								"x-auditable": true
 							},
 							"title": {
-								"description": "A human-readable string name for a Namespace.",
+								"description": "Human-readable string name for a Workers KV namespace.",
 								"type": "string",
 								"example": "My Own Namespace",
 								"maxLength": 512,
@@ -2258,7 +2250,7 @@
 											"type": "object",
 											"properties": {
 												"id": {
-													"description": "Namespace identifier tag.",
+													"description": "ID of the Workers KV namespace.",
 													"type": "string",
 													"example": "0f2ac74b498b48028cb68387c421e279",
 													"maxLength": 32,
@@ -2284,7 +2276,7 @@
 													"x-auditable": true
 												},
 												"title": {
-													"description": "A human-readable string name for a Namespace.",
+													"description": "Human-readable string name for a Workers KV namespace.",
 													"type": "string",
 													"example": "My Own Namespace",
 													"maxLength": 512,
@@ -2411,20 +2403,19 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "kv.namespaces",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk/delete": {
 		"operationId": "workers-kv-namespace-delete-multiple-key-value-pairs",
 		"summary": "Delete multiple key-value pairs",
-		"description": "Remove multiple KV pairs from the namespace. Body should be an array of up to 10,000 keys to be removed.",
+		"description": "Deletes up to 10,000 key-value pairs from the specified Workers KV namespace. Send a JSON array of the key names to delete. The result reports the number of successful deletions and any keys that failed and should be retried.",
 		"parameters": [
 			{
 				"name": "namespace_id",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Namespace identifier tag.",
+					"description": "ID of the Workers KV namespace.",
 					"type": "string",
 					"example": "0f2ac74b498b48028cb68387c421e279",
 					"maxLength": 32,
@@ -2437,7 +2428,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "ID of the Cloudflare account that owns the Workers KV namespaces.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -2550,12 +2541,12 @@
 											"type": "object",
 											"properties": {
 												"successful_key_count": {
-													"description": "Number of keys successfully updated.",
+													"description": "Number of keys successfully written or deleted by the bulk operation.",
 													"type": "number",
 													"example": 100
 												},
 												"unsuccessful_keys": {
-													"description": "Name of the keys that failed to be fully updated. They should be retried.",
+													"description": "Names of keys that failed to be written or deleted. Retry the operation for these keys.",
 													"type": "array",
 													"items": {
 														"type": "string"
@@ -2657,12 +2648,12 @@
 											"type": "object",
 											"properties": {
 												"successful_key_count": {
-													"description": "Number of keys successfully updated.",
+													"description": "Number of keys successfully written or deleted by the bulk operation.",
 													"type": "number",
 													"example": 100
 												},
 												"unsuccessful_keys": {
-													"description": "Name of the keys that failed to be fully updated. They should be retried.",
+													"description": "Names of keys that failed to be written or deleted. Retry the operation for these keys.",
 													"type": "array",
 													"items": {
 														"type": "string"
@@ -2697,20 +2688,19 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "kv.bulk",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
-		"x-forge-require-confirmation": "This operation deletes the specified keys from the namespace."
+		"x-forge-require-confirmation": "This operation deletes the specified keys and their values from the Workers KV namespace."
 	},
 	"POST /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk/get": {
 		"operationId": "workers-kv-namespace-get-multiple-key-value-pairs",
 		"summary": "Get multiple key-value pairs",
-		"description": "Retrieve up to 100 KV pairs from the namespace. Keys must contain text-based values. JSON values can optionally be parsed instead of being returned as a string value. Metadata can be included if `withMetadata` is true.",
+		"description": "Retrieves the text-based values of up to 100 keys from the specified Workers KV namespace. The result maps each requested key to its value. Set `type` to `json` to parse JSON values instead of returning strings, and set `withMetadata` to `true` to include metadata with each value. Binary values are not supported by this operation.",
 		"parameters": [
 			{
 				"name": "namespace_id",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Namespace identifier tag.",
+					"description": "ID of the Workers KV namespace.",
 					"type": "string",
 					"example": "0f2ac74b498b48028cb68387c421e279",
 					"maxLength": 32,
@@ -2723,7 +2713,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "ID of the Cloudflare account that owns the Workers KV namespaces.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -2751,7 +2741,7 @@
 								"maxItems": 100
 							},
 							"type": {
-								"description": "Whether to parse JSON values in the response.",
+								"description": "Return values as strings with `text`, or parse stored JSON values with `json`.",
 								"type": "string",
 								"default": "text",
 								"enum": [
@@ -3115,20 +3105,19 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "kv.bulk",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PUT /accounts/{account_id}/storage/kv/namespaces/{namespace_id}": {
 		"operationId": "workers-kv-namespace-rename-a-namespace",
-		"summary": "Rename a Namespace",
-		"description": "Modifies a namespace's title.",
+		"summary": "Rename a namespace",
+		"description": "Changes the title of the specified Workers KV namespace and returns the updated namespace. The namespace ID and stored key-value pairs are unchanged.",
 		"parameters": [
 			{
 				"name": "namespace_id",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Namespace identifier tag.",
+					"description": "ID of the Workers KV namespace.",
 					"type": "string",
 					"example": "0f2ac74b498b48028cb68387c421e279",
 					"maxLength": 32,
@@ -3141,7 +3130,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "ID of the Cloudflare account that owns the Workers KV namespaces.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -3158,7 +3147,7 @@
 						"type": "object",
 						"properties": {
 							"title": {
-								"description": "A human-readable string name for a Namespace.",
+								"description": "Human-readable string name for a Workers KV namespace.",
 								"type": "string",
 								"example": "My Own Namespace",
 								"maxLength": 512,
@@ -3245,7 +3234,7 @@
 											"type": "object",
 											"properties": {
 												"id": {
-													"description": "Namespace identifier tag.",
+													"description": "ID of the Workers KV namespace.",
 													"type": "string",
 													"example": "0f2ac74b498b48028cb68387c421e279",
 													"maxLength": 32,
@@ -3271,7 +3260,7 @@
 													"x-auditable": true
 												},
 												"title": {
-													"description": "A human-readable string name for a Namespace.",
+													"description": "Human-readable string name for a Workers KV namespace.",
 													"type": "string",
 													"example": "My Own Namespace",
 													"maxLength": 512,
@@ -3401,20 +3390,19 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "kv.namespaces",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk": {
 		"operationId": "workers-kv-namespace-write-multiple-key-value-pairs",
 		"summary": "Write multiple key-value pairs",
-		"description": "Write multiple keys and values at once. Body should be an array of up to 10,000 key-value pairs to be stored, along with optional expiration information. Existing values and expirations will be overwritten. If neither `expiration` nor `expiration_ttl` is specified, the key-value pair will never expire. If both are set, `expiration_ttl` is used and `expiration` is ignored. The entire request size must be 100 megabytes or less.",
+		"description": "Writes up to 10,000 key-value pairs to the specified Workers KV namespace from a JSON array, with optional metadata and expiration settings for each pair. Existing values and expirations are overwritten. If neither `expiration` nor `expiration_ttl` is specified, the key-value pair will not expire. If both are set, `expiration_ttl` takes precedence. The entire request must be 100 megabytes or less. The result reports the number of successful writes and any keys that failed and should be retried.",
 		"parameters": [
 			{
 				"name": "namespace_id",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Namespace identifier tag.",
+					"description": "ID of the Workers KV namespace.",
 					"type": "string",
 					"example": "0f2ac74b498b48028cb68387c421e279",
 					"maxLength": 32,
@@ -3427,7 +3415,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "ID of the Cloudflare account that owns the Workers KV namespaces.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -3455,7 +3443,7 @@
 									"example": 1578435000
 								},
 								"expiration_ttl": {
-									"description": "Expires the key after a number of seconds. Must be at least 60.",
+									"description": "Number of seconds until the key expires. Must be at least 60. Takes precedence over `expiration` when both are specified.",
 									"type": "number",
 									"example": 300,
 									"minimum": 60
@@ -3609,12 +3597,12 @@
 											"type": "object",
 											"properties": {
 												"successful_key_count": {
-													"description": "Number of keys successfully updated.",
+													"description": "Number of keys successfully written or deleted by the bulk operation.",
 													"type": "number",
 													"example": 100
 												},
 												"unsuccessful_keys": {
-													"description": "Name of the keys that failed to be fully updated. They should be retried.",
+													"description": "Names of keys that failed to be written or deleted. Retry the operation for these keys.",
 													"type": "array",
 													"items": {
 														"type": "string"
@@ -3716,12 +3704,12 @@
 											"type": "object",
 											"properties": {
 												"successful_key_count": {
-													"description": "Number of keys successfully updated.",
+													"description": "Number of keys successfully written or deleted by the bulk operation.",
 													"type": "number",
 													"example": 100
 												},
 												"unsuccessful_keys": {
-													"description": "Name of the keys that failed to be fully updated. They should be retried.",
+													"description": "Names of keys that failed to be written or deleted. Retry the operation for these keys.",
 													"type": "array",
 													"items": {
 														"type": "string"
@@ -3755,13 +3743,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "kv.bulk",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "put"
 	},
 	"PUT /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/values/{key_name}": {
 		"operationId": "workers-kv-namespace-write-key-value-pair-with-metadata",
-		"summary": "Write key-value pair with optional metadata",
-		"description": "Write a value identified by a key. Use URL-encoding to use special characters (for example, `:`, `!`, `%`) in the key name. Body should be the value to be stored. If JSON metadata to be associated with the key/value pair is needed, use `multipart/form-data` content type for your PUT request (see dropdown below in `REQUEST BODY SCHEMA`). Existing values, expirations, and metadata will be overwritten. If neither `expiration` nor `expiration_ttl` is specified, the key-value pair will never expire. If both are set, `expiration_ttl` is used and `expiration` is ignored.",
+		"summary": "Write a key-value pair with optional metadata",
+		"description": "Writes a value under the specified key in the Workers KV namespace, creating the key-value pair or replacing its existing value, expiration, and metadata. Send the value as an `application/octet-stream` request body, or use `multipart/form-data` with a `value` part and an optional JSON `metadata` part. Use URL-encoding for special characters (for example, `:`, `!`, `%`) in the key name when constructing the request URL. If neither `expiration` nor `expiration_ttl` is specified, the key-value pair will not expire. If both are set, `expiration_ttl` takes precedence.",
 		"parameters": [
 			{
 				"name": "key_name",
@@ -3779,7 +3766,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Namespace identifier tag.",
+					"description": "ID of the Workers KV namespace.",
 					"type": "string",
 					"example": "0f2ac74b498b48028cb68387c421e279",
 					"maxLength": 32,
@@ -3792,7 +3779,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifier.",
+					"description": "ID of the Cloudflare account that owns the Workers KV namespaces.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -3813,7 +3800,7 @@
 				"name": "expiration_ttl",
 				"in": "query",
 				"schema": {
-					"description": "Expires the key after a number of seconds. Must be at least 60.",
+					"description": "Number of seconds until the key expires. Must be at least 60. Takes precedence over `expiration` when both are specified.",
 					"type": "number",
 					"example": 300,
 					"minimum": 60
@@ -4098,7 +4085,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "kv.keys",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "put"
 	}
 }
