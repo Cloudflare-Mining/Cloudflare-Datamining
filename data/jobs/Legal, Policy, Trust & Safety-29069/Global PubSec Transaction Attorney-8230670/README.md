@@ -3,39 +3,60 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: </strong>San Francisco, CA | Austin, TX | New York City, NY</p>
-<h4><strong>About the role</strong></h4>
-<p>We are looking for a Director of Digital Communications to redefine how Cloudflare shows up online. In this role, you will think like a storyteller—transforming our deep data pools, research, and corporate milestones into a sophisticated, multi-platform strategy. You will oversee global social media, executive digital positioning, web-based storytelling, and community-driven engagement to build a cohesive, influential, and authentic digital brand.</p>
-<p>You are a visionary storyteller, a sharp strategist, and an Internet-native thinker. You understand that how we communicate on GitHub, Reddit, Hacker News, and YouTube matters just as much as a headline in The Wall Street Journal. This role isn't just about managing a content calendar; it’s about strategically deploying Cloudflare's voice on LinkedIn, X, and via digital assets to influence enterprise buyers, developers, tech policy leaders, and the global business community.</p>
-<p>If you understand Internet subcultures, appreciate a great tech meme, and know how to foster genuine developer loyalty at scale, this is your sandbox.</p>
-<h4><strong>Responsibilities</strong></h4>
+<p><strong>Available Locations:&nbsp;</strong></p>
+<p style="padding-left: 40px;">Austin, TX</p>
+<p style="padding-left: 40px;">Washington D.C.</p>
+<h1><span style="font-size: 12pt;"><strong>Role summary</strong></span></h1>
+<p>Cloudflare is hiring a Global PubSec Transaction Attorney to support our public sector commercial transactions across the U.S. federal market, U.S. state and local government, and select APAC and EMEA opportunities. This attorney will partner closely with Sales, Public Sector, Finance, Deal Desk, Security, Privacy, Product, and other legal and operational stakeholders to structure, negotiate, and close complex transactions with government customers and public sector partners.</p>
+<p>This is a hands-on role for a lawyer who can move quickly, think commercially, and bring judgment to high-volume, high-stakes deals. The right candidate combines deep public sector contracting experience with practical familiarity with cloud, software, or technology transactions; disciplined management of deadlines, dependencies, and decisions; and the ability to operate across time zones and legal regimes.&nbsp;</p>
+<h1><span style="font-size: 12pt;"><strong>What you will do</strong></span></h1>
 <ul>
-	<li><strong>Architect the Digital Strategy:</strong> Define the overarching vision for Cloudflare’s corporate digital channels, ensuring our voice is distinct, authoritative, and deeply understood by tech-savvy audiences and enterprise buyers alike.</li>
-	<li><strong>Elevate Executive Positioning:</strong> Partner directly with our executive leadership team to shape and scale their personal digital brands, turning complex industry trends into compelling online narratives.</li>
-	<li><strong>Drive Multi-Channel Storytelling: </strong>Manage our corporate social media channels (X/Twitter, LinkedIn, YouTube, etc.) while expanding our strategic footprint into emerging platforms and technical communities.</li>
-	<li><strong>Bridge Tech and Culture:</strong> Translate highly complex technical milestones—from network infrastructure to post-quantum cryptography—into creative, engaging, and accessible digital content.</li>
-	<li><strong>Crisis &amp; Rapid Response: </strong>Act as a critical node in our crisis management engine. When internet-scale events happen, you will ensure our digital response is swift, transparent, accurate, and aligned with our core values.</li>
-	<li><strong>Data-Driven Optimization</strong>: Establish robust measurement frameworks to track brand sentiment, share of voice, and engagement, continuously iterating our strategy based on hard data.</li>
+	<li>Advise on and negotiate public sector commercial agreements, including federal, state, local, and quasi-government contracts.</li>
+	<li>Support transaction strategy for public sector deals in the U.S., APAC, and EMEA, coordinating with regional legal and sales teams as needed.</li>
+	<li>Draft, review, and negotiate MSAs, order forms, amendments, DPAs, security exhibits, procurement terms, and related transactional documents.</li>
+	<li>Identify and resolve commercial, legal, privacy, data protection, security, and compliance issues in a practical, business-oriented way.</li>
+	<li>Partner with internal teams to create and improve scalable contracting processes, playbooks, templates, and approvals.</li>
+	<li>Help evaluate RFPs, RFIs, security questionnaires, and other procurement materials.</li>
+	<li>Escalate issues appropriately and provide crisp risk-based recommendations to business partners.</li>
+	<li>Build strong working relationships with cross-functional stakeholders in a fast-paced, high-growth environment.</li>
+	<li>Help translate negotiated terms and procurement requirements into a complete post-award handoff: obligation, accountable owner, due date or cadence, required evidence, and escalation path for compliance management.</li>
 </ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience</strong></h4>
+<h1><span style="font-size: 12pt;"><strong>What you need to succeed</strong></span></h1>
 <ul>
-	<li><strong>Experience: </strong>10+ years of experience in corporate communications, digital strategy, or brand journalism, with at least 4+ years leading high-performing digital or social teams in the B2B tech or SaaS space.</li>
-	<li><strong>Deep Tech Literacy: </strong>You don't need to write code, but you must be able to hold your own with engineers and product managers. You understand how the Internet works and can explain the "why" behind cloud infrastructure and cybersecurity.</li>
-	<li><strong>Platform Fluent: </strong>You know the algorithms, subcultures, and unwritten rules of LinkedIn, X, Reddit, YouTube, and Threads. You know what builds authentic engagement and what feels like cringe corporate noise.</li>
-	<li><strong>Exceptional Judgment: </strong>You possess a flawless editorial compass. You know exactly when to jump on a viral trend, when to remain serious, and how to handle sensitive geopolitical or cybersecurity issues online.</li>
-	<li><strong>Collaborative Leadership:</strong> Proven ability to influence cross-functional teams, from Legal and Product to Policy and Investor Relations.</li>
+	<li>JD from an accredited law school and active bar membership in at least one jurisdiction.</li>
+	<li>5+ years of legal experience, with substantial time spent on public sector transactions.</li>
+	<li>Strong experience negotiating U.S. federal and/or state and local government contracts.</li>
+	<li>Working knowledge of APAC and/or EMEA public sector or regulated commercial contracting preferred.</li>
+	<li>Experience with SaaS, cloud services, cybersecurity, software, or technology procurement strongly preferred.</li>
+	<li>Familiarity with government procurement concepts, public sector compliance constraints, and common deal structures.</li>
+	<li>Excellent drafting, negotiation, and issue-spotting skills.</li>
+	<li>Sound judgment, responsiveness, and the ability to operate independently in a highly collaborative environment.</li>
+	<li>Eagerness to use AI in a manner that makes work more efficient but always accountable for outputs.</li>
+	<li>Comfort balancing legal rigor with business pragmatism.</li>
 </ul>
-<h4>Bonus Points</h4>
+<h1><span style="font-size: 12pt;"><strong>Nice to have</strong></span></h1>
 <ul>
-	<li>You have a background in tech journalism or have managed communications for an open-source project.</li>
-	<li>You are an active participant in the tech ecosystem yourself (we'd love to see your portfolio, blog, or digital projects).</li>
-	<li>You have a genuine obsession with making the internet a faster, safer, and more reliable place.</li>
+	<li>Experience working at a technology company, cloud provider, or similarly fast-moving environment.</li>
+	<li>Familiarity with global data protection frameworks and cross-border contracting issues.</li>
+	<li>Exposure to export controls, sanctions, or public sector compliance frameworks.</li>
+	<li>Experience creating legal enablement materials or scaling contract operations.</li>
 </ul>
+<h1><span style="font-size: 12pt;"><strong>What success looks like</strong></span></h1>
+<ul>
+	<li>Deals move efficiently without unnecessary friction.</li>
+	<li>Business partners trust Legal as a practical and responsive advisor.</li>
+	<li>Public sector contracting risks are identified early and managed consistently.</li>
+	<li>Templates, guidance, and approvals become more scalable over time.
+		<ul>
+			<li>The role contributes to a smoother global public sector sales motion.</li>
+		</ul>
+	</li>
+</ul>
+<p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $170,000 - $234,000</span></li>
-	<li><span data-sheets-root="1">For New York based hires: Estimated annual salary o $163,000 - $224,000&nbsp;</span></li>
+	<li>For Washington D.C. based hires: Estimated annual salary of $150,000 - $207,000.</li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
