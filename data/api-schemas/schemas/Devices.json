@@ -865,7 +865,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zt.devices.profiles.custom",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/devices/policy/{policy_id}/exclude": {
@@ -1202,7 +1202,7 @@
 		"x-auditable": true,
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zt.devices.profiles.custom.excludes",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.excludes",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/devices/policy/{policy_id}/fallback_domains": {
@@ -1519,7 +1519,7 @@
 		"x-auditable": true,
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zt.devices.profiles.custom.fallback-domains",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.fallback-domains",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/devices/policy/exclude": {
@@ -1845,7 +1845,7 @@
 		"x-auditable": true,
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zt.devices.profiles.default.excludes",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.excludes",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/devices/policy/fallback_domains": {
@@ -2151,7 +2151,7 @@
 		"x-auditable": true,
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zt.devices.profiles.default.fallback-domains",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.fallback-domains",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/devices": {
@@ -2560,7 +2560,7 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zt.devices.v1",
+		"x-fern-sdk-group-name": "zero-trust.devices.v1",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/devices/{device_id}": {
@@ -2957,7 +2957,7 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zt.devices.v1",
+		"x-fern-sdk-group-name": "zero-trust.devices.v1",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/devices/{device_id}/override_codes": {
@@ -3246,7 +3246,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "deprecated",
-		"x-fern-sdk-group-name": "zt.devices.override-codes",
+		"x-fern-sdk-group-name": "zero-trust.devices.override-codes",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/devices/policies": {
@@ -4117,7 +4117,7 @@
 			"Devices"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zt.devices.profiles.custom",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/devices/policy": {
@@ -4865,7 +4865,7 @@
 			"Devices"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zt.devices.profiles.default",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/devices/policy/{policy_id}": {
@@ -5708,7 +5708,7 @@
 			"Devices"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zt.devices.profiles.custom",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/devices/policy/{policy_id}/exclude": {
@@ -6031,7 +6031,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zt.devices.profiles.custom.excludes",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.excludes",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/devices/policy/{policy_id}/fallback_domains": {
@@ -6334,7 +6334,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zt.devices.profiles.custom.fallback-domains",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.fallback-domains",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/devices/policy/{policy_id}/include": {
@@ -6657,7 +6657,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zt.devices.profiles.custom.includes",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.includes",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/devices/policy/exclude": {
@@ -6969,7 +6969,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zt.devices.profiles.default.excludes",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.excludes",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/devices/policy/fallback_domains": {
@@ -7261,7 +7261,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zt.devices.profiles.default.fallback-domains",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.fallback-domains",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/devices/policy/include": {
@@ -7573,7 +7573,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zt.devices.profiles.default.includes",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.includes",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/devices/policy/certificates": {
@@ -7828,7 +7828,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zt.devices.profiles.default.certificates",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.certificates",
 		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/devices/policy": {
@@ -8946,7 +8946,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zt.devices.profiles.default",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default",
 		"x-fern-sdk-method-name": "update"
 	},
 	"PATCH /accounts/{account_id}/devices/policy/{policy_id}": {
@@ -10225,7 +10225,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zt.devices.profiles.custom",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom",
 		"x-fern-sdk-method-name": "update"
 	},
 	"PATCH /zones/{zone_id}/devices/policy/certificates": {
@@ -10499,7 +10499,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zt.devices.profiles.default.certificates",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.certificates",
 		"x-fern-sdk-method-name": "update"
 	},
 	"POST /accounts/{account_id}/devices/policy": {
@@ -11791,7 +11791,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zt.devices.profiles.custom",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom",
 		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/devices/revoke": {
@@ -12043,7 +12043,7 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zt.devices.v1",
+		"x-fern-sdk-group-name": "zero-trust.devices.v1",
 		"x-fern-sdk-method-name": "revoke"
 	},
 	"POST /accounts/{account_id}/devices/unrevoke": {
@@ -12295,7 +12295,7 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zt.devices.v1",
+		"x-fern-sdk-group-name": "zero-trust.devices.v1",
 		"x-fern-sdk-method-name": "unrevoke"
 	},
 	"PUT /accounts/{account_id}/devices/policy/{policy_id}/exclude": {
@@ -12682,7 +12682,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zt.devices.profiles.custom.excludes",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.excludes",
 		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/devices/policy/{policy_id}/fallback_domains": {
@@ -13029,7 +13029,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zt.devices.profiles.custom.fallback-domains",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.fallback-domains",
 		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/devices/policy/{policy_id}/include": {
@@ -13416,7 +13416,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zt.devices.profiles.custom.includes",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom.includes",
 		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/devices/policy/exclude": {
@@ -13792,7 +13792,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zt.devices.profiles.default.excludes",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.excludes",
 		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/devices/policy/fallback_domains": {
@@ -14128,7 +14128,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zt.devices.profiles.default.fallback-domains",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.fallback-domains",
 		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/devices/policy/include": {
@@ -14504,7 +14504,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zt.devices.profiles.default.includes",
+		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default.includes",
 		"x-fern-sdk-method-name": "update"
 	}
 }
