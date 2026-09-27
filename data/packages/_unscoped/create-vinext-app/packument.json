@@ -2,7 +2,7 @@
 	"name": "create-vinext-app",
 	"dist-tags": {
 		"beta": "1.0.0-beta.0",
-		"latest": "1.0.0-beta.3"
+		"latest": "1.0.0-beta.4"
 	},
 	"versions": {
 		"0.0.1": {
@@ -153,8 +153,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIAUKp1kc8m0C6jk2prhwzMjMXNP1WSKFicMC7g2/8ecaAiEA+mCSuls/N0uBTkWXIb+Rj3grz0vRyJqw+yNHubZzX74="
+						"sig": "MEUCIAUKp1kc8m0C6jk2prhwzMjMXNP1WSKFicMC7g2/8ecaAiEA+mCSuls/N0uBTkWXIb+Rj3grz0vRyJqw+yNHubZzX74=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -164,6 +164,46 @@
 					}
 				},
 				"unpackedSize": 218253
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"1.0.0-beta.4": {
+			"name": "create-vinext-app",
+			"version": "1.0.0-beta.4",
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.3.2",
+				"vite-plus": "0.3.2",
+				"@types/node": "^25.9.2",
+				"am-i-vibing": "^0.5.0",
+				"magic-string": "^0.30.21"
+			},
+			"bin": {
+				"create-vinext-app": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "4aa1b3d54224fb83deb711e742b4705788a384c9",
+				"tarball": "https://registry.npmjs.org/create-vinext-app/-/create-vinext-app-1.0.0-beta.4.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-1B9VJtBimIRtmvap9j52GyF5M8ik74ycXivZ1qViFg552oGjCiQpr2bZJ5in3XjVag2vjipedSIujSz17oYZ1g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCMw3IP9Z9tzCAfrdWk5c9qasNqzIbxZ19FBn9MnrI1LQIhAMpXP1IIvjHNIbqG1KzQK9P4u51BS69Y0Jb/M8uwqd7A",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIQChS3z20miPL25RqXTXuAfppqtTJRYuH8ZiAPfiTFAhAgIgasE1reUsLFuW45qWB0SSq1qvDlpCvrCgGCqVLsclrmk="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/create-vinext-app@1.0.0-beta.4",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 231354
 			},
 			"engines": {
 				"node": ">=22"
