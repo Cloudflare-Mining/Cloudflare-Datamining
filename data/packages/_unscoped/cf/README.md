@@ -41,6 +41,14 @@ named profiles. `cf auth login` and `cf auth logout` manage the default profile.
 
 ## Projects
 
+`cf init [directory]` starts a project. If you leave out the directory, cf asks for one (use `cf init .` for the current directory in scripts). In a new or empty directory (only `.git` is allowed), it creates a hello-world Worker with `cloudflare.config.ts`, `vite.config.ts`, `src/index.ts`, `tsconfig.json`, `package.json`, and `.gitignore`, then installs dependencies with the package manager you choose (`--package-manager`, or `--no-install` to skip) and, once they are installed, generates Worker types in `.cloudflare/types/index.d.ts`. With `--no-install`, the types are generated later by `cf dev` or the project's `typecheck` script, which runs `cf workers types` and then `tsc`. In a directory that already contains files, it configures the existing project with autoconfig instead. Either way, it finishes with the next steps to run. `cf init workers [directory]` is the default initializer and currently does the same thing.
+
+```sh
+cf init my-worker
+cd my-worker
+cf dev
+```
+
 `cf dev` and `cf build` detect supported projects, run autoconfiguration when needed, and invoke the canonical framework command or an installed Cloudflare implementation. Successful builds produce standardized Build Output.
 
 `cf deploy` builds by default and then uploads that output. `cf workers versions create` uploads a version without deploying it, and `cf workers triggers deploy` applies the configured routes and cron schedules. Pass `--prebuilt` to any of these commands to reuse existing Build Output.
@@ -52,6 +60,9 @@ Add `--local` to a supported command to run it against a short-lived Miniflare i
 ## Output
 
 Structured API results are pretty-printed JSON on stdout. Generated `binary` and `text` response kinds instead write their payload directly to stdout, preserving binary output for redirection; some binary commands provide `--text` for UTF-8 decoding. Null-result success markers go to stderr. On an interactive, color-capable TTY, clack progress animation uses stdout before the final payload; it is disabled for pipes, color-disabled terminals, or `CF_QUIET=1`. Pipe JSON results through `jq` for newline-delimited or filtered output.
+
+cf uses a semantic colour palette designed to remain legible on both light and
+dark terminal backgrounds. Set `NO_COLOR=1` to disable styling entirely.
 
 Supported terminals also show progress outside the terminal buffer, such as in
 the tab title or OS taskbar. Set `CF_NO_OSC_PROGRESS=1` to disable this globally.
