@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/containers-shared",
 	"dist-tags": {
-		"latest": "0.20.2"
+		"latest": "0.20.3"
 	},
 	"versions": {
 		"0.16.0": {
@@ -580,12 +580,57 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIEMcQshKDGG8js8SctGF5RKZmDqbl2aS2AnDwJMWCEYbAiAxL2c068o42kT/W8SbFHZJoad3evTT6oQq/eDp+CKz4g=="
+						"sig": "MEQCIEMcQshKDGG8js8SctGF5RKZmDqbl2aS2AnDwJMWCEYbAiAxL2c068o42kT/W8SbFHZJoad3evTT6oQq/eDp+CKz4g==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fcontainers-shared@0.20.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 517473
+			},
+			"engines": {
+				"node": ">=22.0.0"
+			}
+		},
+		"0.20.3": {
+			"name": "@cloudflare/containers-shared",
+			"version": "0.20.3",
+			"dependencies": {
+				"@cloudflare/config": "0.20.0",
+				"@cloudflare/workers-utils": "0.44.0",
+				"@cloudflare/build-output-utils": "0.8.2",
+				"@cloudflare/cli-shared-helpers": "0.2.0"
+			},
+			"devDependencies": {
+				"ws": "8.21.0",
+				"tsup": "8.3.0",
+				"vitest": "4.1.0",
+				"@types/ws": "^8.5.7",
+				"typescript": "5.8.3",
+				"@types/node": "22.15.17",
+				"@cloudflare/workers-tsconfig": "0.0.0"
+			},
+			"dist": {
+				"shasum": "8f284d1917a6e8be4e5c9949dcd7c924d560205e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/containers-shared/-/containers-shared-0.20.3.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-2WTXNV5LH7k7pG8C1JIiFC3QWQo+bfqLsd+Q7y88touThVCf3R24Fu4+4xQaDLuPUNh6nyOjn8LSfTbTPf6t/A==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCQtmi1NZDNfLdXJYiTN0uLp9qI1O/RaNl5N1tXLNpwgAIhAMgjuzljceaWTpnyHG1ZGM7gshWQtqLytMSMK93zx/cu",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIQCrak1OLgcDx5cdWcmqz7CyP5M+xNVo6vbnf6S8DNM+1gIgTqQ/73TLe9ObtWVF1OOmTIqp6jOa39/FgUe9ObcSNOc="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fcontainers-shared@0.20.3",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}

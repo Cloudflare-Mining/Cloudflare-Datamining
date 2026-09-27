@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/config",
 	"dist-tags": {
-		"latest": "0.19.0"
+		"latest": "0.20.0"
 	},
 	"versions": {
 		"0.0.0": {
@@ -713,8 +713,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQC+Tu7GIobXU7wsyY2oHbZNikYCzD/OdW0QP/ZHFzDvngIgK5PKT15D5Xl42+OJjBFvmBbVI/GXtzFh9lCrps61lsU="
+						"sig": "MEUCIQC+Tu7GIobXU7wsyY2oHbZNikYCzD/OdW0QP/ZHFzDvngIgK5PKT15D5Xl42+OJjBFvmBbVI/GXtzFh9lCrps61lsU=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -724,6 +724,45 @@
 					}
 				},
 				"unpackedSize": 202149
+			}
+		},
+		"0.20.0": {
+			"name": "@cloudflare/config",
+			"version": "0.20.0",
+			"dependencies": {
+				"zod": "4.4.3"
+			},
+			"devDependencies": {
+				"tsdown": "0.16.3",
+				"vitest": "4.1.0",
+				"ts-dedent": "^2.2.0",
+				"typescript": "5.8.3",
+				"@cloudflare/workers-types": "^5.20260926.1",
+				"@cloudflare/workers-utils": "0.44.0",
+				"@cloudflare/workers-tsconfig": "0.0.0"
+			},
+			"dist": {
+				"shasum": "4e80dad3237231c7c9b868112c4f73057ab9d82c",
+				"tarball": "https://registry.npmjs.org/@cloudflare/config/-/config-0.20.0.tgz",
+				"fileCount": 8,
+				"integrity": "sha512-Dv/UDLkqsmvW95+CmM2nE55pdkLPWnJ63KDMjAFe/5KW1hc2SzJW4f8CUagqarivQugf5+oJMWYlHSmtA4KVlA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDdJeyE0l5U+7Cc9O+qgVZXl+MEYHoU5g0TkZC97ZuZagIhAKANl847znO0Wqn9KnijF+2eAXAYpVx8UxgRIUBCudmm",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIAeVV6Y9mizghQ0gzeKQXi52I428gZO5iq75xeLENZDpAiB3d2vQ7c6zBm86WZLarZ9pvkDalyqFFJBBpvuys8xAlA=="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fconfig@0.20.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 204470
 			}
 		}
 	}
