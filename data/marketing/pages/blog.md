@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+September 27, 2026 [<h2>Cloudflare's 2026 Annual Founders' Letter</h2>](https://blog.cloudflare.com/cloudflares-2026-annual-founders-letter/)
+
+The Internet is changing more today than at any point since Cloudflare launched back on September 27, 2010. As automated traffic surpasses human activity, we reflect on the rise of AI agents, new creators, and how we can help build a fair, sustainable future for the web.
+
+![Matthew Prince](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KQ4Z9PY1TR0ERGW96HZR.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Michelle Zatlyn](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48BFVBX36HA6NMPMG9SE5F.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Matthew Prince](https://blog.cloudflare.com/author/matthew-prince/) and  [Michelle Zatlyn](https://blog.cloudflare.com/author/michelle-zatlyn/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3G3F5ZSHVH0CSDBN2M4A43T.01M3G3F6KFD00H82BMWC8VN4TP.png&w=1200&h=675&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/cloudflares-2026-annual-founders-letter/)
+
 September 25, 2026 [<h2>Agents can now set up your website's security with Turnstile Spin</h2>](https://blog.cloudflare.com/turnstile-spin/)
 
 Misconfiguring Turnstile by skipping backend validation leaves sites exposed to bots. Turnstile Spin fixes incomplete setups by using your preferred AI coding agent to wire up server-side verification.
@@ -17,8 +27,6 @@ Misconfiguring Turnstile by skipping backend validation leaves sites exposed to 
 ![Jules Lemee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M39NSXNPCF10P4Z6JA0RQA40.01M39NSYFNRMXAWS5CQP67TDNS.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Jules Lemee](https://blog.cloudflare.com/author/jules-lemee/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CQMQWGC7WBK8ZR7DG13PFE.01M3CQMRMEBSVS7GAD6GNHZ9JD.png&w=1200&h=675&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/turnstile-spin/)
 
 September 24, 2026 [<h2>How Cloudflare addressed a cross-tenant data exposure vulnerability in Containers</h2>](https://blog.cloudflare.com/containers-cross-tenant-vulnerability/)
 
@@ -155,14 +163,6 @@ Five Rust-level memory optimizations to the DNS cache layout of Big Pineapple cu
 ![Sebastiaan Neuteboom](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GH720TA5A2634QYMAXZR.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Sebastiaan Neuteboom](https://blog.cloudflare.com/author/sebastiaan-neuteboom/)
-
-August 24, 2026 [<h2>The Cloudflare Blog — brought to you by EmDash</h2>](https://blog.cloudflare.com/cloudflare-blog-uses-emdash/)
-
-We migrated the Cloudflare Blog to EmDash to prove our stack at massive scale. Here is how we stress-tested performance, safely routed production traffic, and redesigned the frontend experience.
-
-![Kody Jackson](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WYRNEDQXNFYKHFAH3WFJ.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Diogo Carneiro](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0TETGHBYR0R4NPWVRQS2TQK.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Amy Dutton](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0TE76JV4WWSR820WP54D0RW.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Kody Jackson](https://blog.cloudflare.com/author/kody/),  [Diogo Carneiro](https://blog.cloudflare.com/author/diogo-carneiro/), and  [Amy Dutton](https://blog.cloudflare.com/author/amy-dutton/)
 
 Load more
 
