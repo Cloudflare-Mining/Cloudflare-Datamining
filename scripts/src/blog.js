@@ -394,6 +394,26 @@ for (const url of [...blogURLs].sort()) {
 			});
 		}
 
+		// astro scoped-style and bundle hashes change on every blog rebuild without any content change
+		dom('script[src^="/_astro/"]').remove();
+		dom('*').each((i, node) => {
+			const el = dom(node);
+			for (const attr of Object.keys(node.attribs)) {
+				if (attr.startsWith('data-astro-cid-')) {
+					el.removeAttr(attr);
+				}
+			}
+			const classes = el.attr('class');
+			if (classes && /\bastro-[\da-z]{8}\b/.test(classes)) {
+				const kept = classes.split(/\s+/).filter(name => !/^astro-[\da-z]{8}$/.test(name));
+				if (kept.length > 0) {
+					el.attr('class', kept.join(' '));
+				} else {
+					el.removeAttr('class');
+				}
+			}
+		});
+
 		// get application/ld+json
 		const ldJson = rawDom('script[type="application/ld+json"]');
 		let ldJsonData;

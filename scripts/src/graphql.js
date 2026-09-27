@@ -8,6 +8,13 @@ import fetch from 'node-fetch';
 
 import { tryAndPush } from './utils.js';
 
+function normaliseDescription(description) {
+	if (typeof description !== 'string') {
+		return description;
+	}
+	return description.replace(/^Scalar type types\.(\w+)$/, (match, name) => `Scalar type ${name.toLowerCase()}`);
+}
+
 async function run() {
 	const result = {};
 
@@ -55,7 +62,7 @@ async function run() {
 				}
 			}\n`;
 			result[type.name] ??= {
-				__description: type.description,
+				__description: normaliseDescription(type.description),
 			};
 		}
 		query += '}';
@@ -210,6 +217,9 @@ async function run() {
 	});
 	if (rawGraphQLRes.ok) {
 		const rawGraphQL = await rawGraphQLRes.json();
+		for (const type of rawGraphQL?.data?.__schema?.types ?? []) {
+			type.description = normaliseDescription(type.description);
+		}
 		await fs.writeFile(path.resolve('../data/other/graphql-raw.json'), JSON.stringify(rawGraphQL, null, '\t'));
 	}
 
