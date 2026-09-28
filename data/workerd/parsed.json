@@ -4251,6 +4251,13 @@
 						"compatEnableFlag": "durable_object_io_tasks_prevent_eviction"
 					},
 					"type": "Bool"
+				},
+				{
+					"name": "webCryptoModernAlgorithms",
+					"annotations": {
+						"compatEnableFlag": "webcrypto_modern_algorithms"
+					},
+					"type": "Bool"
 				}
 			]
 		},
