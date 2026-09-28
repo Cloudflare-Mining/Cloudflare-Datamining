@@ -29,7 +29,7 @@
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For Portugal based hires: Estimated annual salary of €54,000 - €68,000</span></li>
+	<li><span data-sheets-root="1">For Portugal based hires: Estimated annual salary of €54,000 - €75,000</span></li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
