@@ -2,7 +2,7 @@
 	"name": "create-vinext-app",
 	"dist-tags": {
 		"beta": "1.0.0-beta.0",
-		"latest": "1.0.0-beta.4"
+		"latest": "1.0.0"
 	},
 	"versions": {
 		"0.0.1": {
@@ -193,8 +193,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQChS3z20miPL25RqXTXuAfppqtTJRYuH8ZiAPfiTFAhAgIgasE1reUsLFuW45qWB0SSq1qvDlpCvrCgGCqVLsclrmk="
+						"sig": "MEUCIQChS3z20miPL25RqXTXuAfppqtTJRYuH8ZiAPfiTFAhAgIgasE1reUsLFuW45qWB0SSq1qvDlpCvrCgGCqVLsclrmk=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -204,6 +204,46 @@
 					}
 				},
 				"unpackedSize": 231354
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"1.0.0": {
+			"name": "create-vinext-app",
+			"version": "1.0.0",
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.3.2",
+				"vite-plus": "0.3.2",
+				"@types/node": "^25.9.2",
+				"am-i-vibing": "^0.5.0",
+				"magic-string": "^0.30.21"
+			},
+			"bin": {
+				"create-vinext-app": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "20a99fa397a4be2d5e6f1b159e1c86d210bcc28d",
+				"tarball": "https://registry.npmjs.org/create-vinext-app/-/create-vinext-app-1.0.0.tgz",
+				"fileCount": 21,
+				"integrity": "sha512-1594A3zymCTXoXQ0epcTsZ5w8IgBwCYWuMvr3mzlejliTr8faT/KH/HgzVJqNE4qjUIsF6DbcqRkWAtR8Y+qsw==",
+				"signatures": [
+					{
+						"sig": "MEUCIBPkblt45pT6xBOq5ISlJyzqGpk7pDIdHOx+wOnHPyCEAiEAs/o9BLfTtt19Brshx19qvgIgzas2Qyi2MU+Qro89BZY=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIQDr7Hj6pzEtB6MiH7eczuv3MVsjA3JxFhc21njhaqk3OgIgKlzLSmxlu1NWHbJ+D7zMdi4hape874mzoiYwsDw+hHU="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/create-vinext-app@1.0.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 268008
 			},
 			"engines": {
 				"node": ">=22"

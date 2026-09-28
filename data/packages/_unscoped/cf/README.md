@@ -72,3 +72,4 @@ terminal.
 ## Documentation
 
 - [Cloudflare developer docs](https://developers.cloudflare.com/)
+- [cf CLI telemetry](https://github.com/cloudflare/cf/blob/main/packages/cli/telemetry.md)

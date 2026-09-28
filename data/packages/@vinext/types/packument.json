@@ -1,7 +1,7 @@
 {
 	"name": "@vinext/types",
 	"dist-tags": {
-		"latest": "1.0.0-beta.2"
+		"latest": "1.0.0"
 	},
 	"versions": {
 		"1.0.0-beta.1": {
@@ -28,23 +28,53 @@
 			"name": "@vinext/types",
 			"version": "1.0.0-beta.2",
 			"dist": {
-				"integrity": "sha512-kbKY/H1RWlf7yox4G6Vwk1JeM6x0Tv1EAv28f3tDYkK3brq+89vp5eZHbdw3L/pZMbAhG4oFyhT9C976y+jkhQ==",
 				"shasum": "449bb662ba341128d8da50f362c32243bbfe6193",
 				"tarball": "https://registry.npmjs.org/@vinext/types/-/types-1.0.0-beta.2.tgz",
 				"fileCount": 359,
-				"unpackedSize": 1645476,
+				"integrity": "sha512-kbKY/H1RWlf7yox4G6Vwk1JeM6x0Tv1EAv28f3tDYkK3brq+89vp5eZHbdw3L/pZMbAhG4oFyhT9C976y+jkhQ==",
+				"signatures": [
+					{
+						"sig": "MEUCICS1N5axbFew+8SbdInVRK0QlQ9pIPGkrVhIoMkKl/nhAiEAiId4uaYe4LqE979nan5imLWtTePmkvQmIifYWecEZMo=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@vinext%2ftypes@1.0.0-beta.2",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
 				},
+				"unpackedSize": 1645476
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"1.0.0": {
+			"name": "@vinext/types",
+			"version": "1.0.0",
+			"dist": {
+				"shasum": "1ab8e144efac948249708addcc33348cbd24bf80",
+				"tarball": "https://registry.npmjs.org/@vinext/types/-/types-1.0.0.tgz",
+				"fileCount": 359,
+				"integrity": "sha512-pcrHH3Lhw+vmzexwQJ2aMbDzi0mZ7veYrEHXbzDp38GsGO0NWpxYbA6EXnKw9dGEVSeM+1eq0h1BZ7zt2OIhGg==",
 				"signatures": [
 					{
+						"sig": "MEQCIFoh3LI3rsePrwfdrAQjKb0VuUoLvtkA7Ly4e0zGcvw0AiA9wKFsGNsRQ1YPI7D13pFaIKWy7qdSdAijVQuBuhVU6Q==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCICS1N5axbFew+8SbdInVRK0QlQ9pIPGkrVhIoMkKl/nhAiEAiId4uaYe4LqE979nan5imLWtTePmkvQmIifYWecEZMo="
+						"sig": "MEYCIQDyjwcQtTEVfx0K+WXuGoQhs97ShLTN2gc8h/fIlv+NbAIhAMS37epKtDEwpvKMMGdOONRZkWzX9EH8mRCelzNW04Su"
 					}
-				]
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@vinext%2ftypes@1.0.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 1645506
 			},
 			"engines": {
 				"node": ">=22"
