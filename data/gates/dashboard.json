@@ -931,6 +931,9 @@
 	"deseng-api-token": {
 		"enabled": true
 	},
+	"deseng-autofix-workers-obs": {
+		"enabled": true
+	},
 	"deseng-better-worker-404": {
 		"enabled": true
 	},
@@ -2916,7 +2919,7 @@
 		"enabled": true
 	},
 	"threat-signals-custom-ai-skills": {
-		"enabled": false
+		"enabled": true
 	},
 	"threat-signals-enabled": {
 		"enabled": false
@@ -3240,6 +3243,9 @@
 		"enabled": true
 	},
 	"workers-vpc-service-dash": {
+		"enabled": true
+	},
+	"workflows-ci": {
 		"enabled": true
 	},
 	"workflows-fed-dashboard": {
