@@ -21,8 +21,6 @@
 	"is_template": false,
 	"default_branch": "main",
 	"branches": [
-		"changeset-release/main",
-		"docs/migration-guide-1.2",
 		"feat/ema-restructure",
 		"feat/hyperdrive-storage",
 		"feat/iss-parameter-compat",
@@ -31,6 +29,7 @@
 		"feat/pluggable-oauth-storage",
 		"feat/self-contained-access-tokens",
 		"feat/storage-providers-v2",
+		"fix/kv-key-length",
 		"fix/mcp-redirect-uri-security",
 		"fix-types-2",
 		"main",
