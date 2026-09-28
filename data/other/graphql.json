@@ -6542,6 +6542,24 @@
 		"billableEventCount": "Confidence interval for the corresponding point estimate",
 		"requests": "Confidence interval for the corresponding point estimate"
 	},
+	"AccountImagesUniqueGroups": {
+		"__description": "Number of unique origin images over the requested period",
+		"dimensions": "List of dimensions to group by",
+		"uniq": "Calculates the number of unique values over the queried period"
+	},
+	"AccountImagesUniqueGroupsDimensions": {
+		"__description": ""
+	},
+	"AccountImagesUniqueGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountImagesUniqueGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountImagesUniqueGroupsUniq": {
+		"__description": "",
+		"images": "Number of unique origin images over the queried period"
+	},
 	"AccountImagesUniqueTransformations": {
 		"__description": "Image unique transfromations per day",
 		"date": "The date uniques are calculated for",
@@ -11320,6 +11338,7 @@
 		"hyperdriveQueriesAdaptiveGroups": "",
 		"imagesRequestsAdaptiveGroups": "",
 		"imagesTransformationsAdaptiveGroups": "",
+		"imagesUniqueGroups": "",
 		"imagesUniqueTransformations": "",
 		"imagesUniqueTransformationsAccumulatedSinceStartOfMonth": "",
 		"kvOperationsAdaptiveGroups": "",
@@ -16387,6 +16406,7 @@
 		"topASNs": "Array of top 5 ASNs for a user id.",
 		"topCities": "Array of top 5 city names for a user id.",
 		"topCountries": "Array of top 5 country codes (alpha2) for a user id.",
+		"topDevices": "Array of up to 5 approximately most frequent non-empty Turnstile ephemeral IDs for a user id.",
 		"topIPs": "Array of top 5 IP addresses for a user id.",
 		"topUserAgents": "Array of top 5 user agents for a user id."
 	},
@@ -17246,6 +17266,7 @@
 		"hyperdriveQueriesAdaptiveGroups": "Hyperdrive query events with adaptive sampling.",
 		"imagesRequestsAdaptiveGroups": "A high-level summary of Cloudflare Images served to end users.",
 		"imagesTransformationsAdaptiveGroups": "Image transformations performed for an account, grouped by zone, Worker script, transformation and origin host. Counts only transformations the resizer actually performed, so this is estimated processing volume rather than end-user request count or invoice total",
+		"imagesUniqueGroups": "Number of unique origin images over the requested period",
 		"imagesUniqueTransformations": "Image unique transfromations per day",
 		"imagesUniqueTransformationsAccumulatedSinceStartOfMonth": "Image unique transformations accumulated since start of month",
 		"kvOperationsAdaptiveGroups": "KV operations data with adaptive sampling",
