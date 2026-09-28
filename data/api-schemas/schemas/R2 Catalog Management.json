@@ -439,6 +439,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -455,10 +456,10 @@
 			"Workers R2 Data Catalog Write",
 			"Workers R2 Data Catalog Read"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "r2-data-catalog",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-stainless-deprecation-message": "Use `GET /accounts/{account_id}/basin-catalog` instead."
 	},
 	"GET /accounts/{account_id}/r2-catalog/{bucket_name}": {
 		"operationId": "get-catalog-details",
@@ -920,6 +921,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -936,10 +938,10 @@
 			"Workers R2 Data Catalog Write",
 			"Workers R2 Data Catalog Read"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "r2-data-catalog",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-stainless-deprecation-message": "Use `GET /accounts/{account_id}/basin-catalog/{bucket_name}` instead."
 	},
 	"POST /accounts/{account_id}/r2-catalog/{bucket_name}/delete": {
 		"operationId": "delete-catalog",
@@ -1073,6 +1075,7 @@
 				"description": "Internal server error."
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -1088,11 +1091,11 @@
 		"x-api-token-group": [
 			"Workers R2 Data Catalog Write"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "r2-data-catalog",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
-		"x-forge-require-confirmation": "This removes catalog metadata. R2 bucket objects are retained."
+		"x-forge-require-confirmation": "This removes catalog metadata. R2 bucket objects are retained.",
+		"x-stainless-deprecation-message": "Use `POST /accounts/{account_id}/basin-catalog/{bucket_name}/delete` instead."
 	},
 	"POST /accounts/{account_id}/r2-catalog/{bucket_name}/disable": {
 		"operationId": "disable-catalog",
@@ -1326,6 +1329,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -1341,11 +1345,11 @@
 		"x-api-token-group": [
 			"Workers R2 Data Catalog Write"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "r2-data-catalog",
 		"x-fern-sdk-method-name": "disable",
-		"x-forge-hidden": true,
-		"x-forge-require-confirmation": "This operation turns off the data catalog for the bucket. Existing namespace or table state remains, but writes stop."
+		"x-forge-require-confirmation": "This operation turns off the data catalog for the bucket. Existing namespace or table state remains, but writes stop.",
+		"x-stainless-deprecation-message": "Use `POST /accounts/{account_id}/basin-catalog/{bucket_name}/disable` instead."
 	},
 	"POST /accounts/{account_id}/r2-catalog/{bucket_name}/enable": {
 		"operationId": "enable-catalog",
@@ -1718,6 +1722,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -1733,9 +1738,9 @@
 		"x-api-token-group": [
 			"Workers R2 Data Catalog Write"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "r2-data-catalog",
 		"x-fern-sdk-method-name": "enable",
-		"x-forge-hidden": true
+		"x-stainless-deprecation-message": "Use `POST /accounts/{account_id}/basin-catalog/{bucket_name}/enable` instead."
 	}
 }

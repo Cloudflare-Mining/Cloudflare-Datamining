@@ -1,6 +1,6 @@
 {
-	"GET /accounts/{account_id}/r2-catalog/{bucket_name}/maintenance-configs": {
-		"operationId": "get-maintenance-config",
+	"GET /accounts/{account_id}/basin-catalog/{bucket_name}/maintenance-configs": {
+		"operationId": "basin-get-maintenance-config",
 		"summary": "Get catalog maintenance configuration",
 		"description": "Retrieve the maintenance configuration for a specific catalog,\nincluding compaction settings and credential status.\n",
 		"parameters": [
@@ -431,12 +431,448 @@
 			"Workers R2 Data Catalog Read"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "basin-catalog.maintenance-configs",
+		"x-fern-sdk-method-name": "get"
+	},
+	"GET /accounts/{account_id}/r2-catalog/{bucket_name}/maintenance-configs": {
+		"operationId": "get-maintenance-config",
+		"summary": "Get catalog maintenance configuration",
+		"description": "Retrieve the maintenance configuration for a specific catalog,\nincluding compaction settings and credential status.\n",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Identifies the account.",
+				"required": true,
+				"schema": {
+					"description": "Use this to identify the account.",
+					"type": "string",
+					"example": "0123456789abcdef0123456789abcdef",
+					"pattern": "^[a-fA-F0-9]{32}$"
+				}
+			},
+			{
+				"name": "bucket_name",
+				"in": "path",
+				"description": "Specifies the R2 bucket name.",
+				"required": true,
+				"schema": {
+					"description": "Specifies the R2 bucket name.",
+					"type": "string",
+					"example": "my-data-bucket",
+					"maxLength": 63,
+					"minLength": 3,
+					"pattern": "^[a-z0-9]([a-z0-9\\-]*[a-z0-9])?$"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Maintenance configuration retrieved successfully.",
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [],
+							"messages": [],
+							"result": {
+								"credential_status": "present",
+								"maintenance_config": {
+									"compaction": {
+										"state": "enabled",
+										"target_size_mb": "128"
+									},
+									"snapshot_expiration": {
+										"max_snapshot_age": "7d",
+										"min_snapshots_to_keep": 100,
+										"state": "enabled"
+									}
+								}
+							},
+							"success": true
+						},
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"description": "Contains errors if the API call was unsuccessful.",
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Specifies the error code.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Describes the error.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										},
+										"messages": {
+											"description": "Contains informational messages.",
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Specifies the message code.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Contains the message text.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"description": "Indicates whether the API call was successful.",
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Contains maintenance configuration and credential status.",
+											"type": "object",
+											"properties": {
+												"credential_status": {
+													"description": "Shows the credential configuration status.",
+													"type": "string",
+													"example": "present",
+													"enum": [
+														"present",
+														"absent"
+													]
+												},
+												"maintenance_config": {
+													"description": "Configures maintenance for the catalog.",
+													"type": "object",
+													"properties": {
+														"compaction": {
+															"description": "Configures compaction for catalog maintenance.",
+															"type": "object",
+															"properties": {
+																"state": {
+																	"description": "Specifies the state of maintenance operations.",
+																	"type": "string",
+																	"example": "enabled",
+																	"enum": [
+																		"enabled",
+																		"disabled"
+																	]
+																},
+																"target_size_mb": {
+																	"description": "Sets the target file size for compaction in megabytes. Defaults to \"128\".",
+																	"type": "string",
+																	"example": "128",
+																	"enum": [
+																		"64",
+																		"128",
+																		"256",
+																		"512"
+																	]
+																}
+															},
+															"required": [
+																"state",
+																"target_size_mb"
+															]
+														},
+														"interval": {
+															"description": "Scheduling interval between normal table maintenance runs.",
+															"type": "string",
+															"example": "1h",
+															"pattern": "^\\d+(d|h|m|s)$"
+														},
+														"snapshot_expiration": {
+															"description": "Configures snapshot expiration settings.",
+															"type": "object",
+															"properties": {
+																"max_snapshot_age": {
+																	"description": "Specifies the maximum age for snapshots. The system deletes snapshots older than this age.\nFormat: <number><unit> where unit is d (days), h (hours), m (minutes), or s (seconds).\nExamples: \"7d\" (7 days), \"48h\" (48 hours), \"2880m\" (2,880 minutes).\nDefaults to \"7d\".\n",
+																	"type": "string",
+																	"example": "7d",
+																	"pattern": "^\\d+(d|h|m|s)$"
+																},
+																"min_snapshots_to_keep": {
+																	"description": "Specifies the minimum number of snapshots to retain. Defaults to 100.",
+																	"type": "integer",
+																	"format": "int64",
+																	"example": 100,
+																	"minimum": 1
+																},
+																"state": {
+																	"description": "Specifies the state of maintenance operations.",
+																	"type": "string",
+																	"example": "enabled",
+																	"enum": [
+																		"enabled",
+																		"disabled"
+																	]
+																}
+															},
+															"required": [
+																"state",
+																"min_snapshots_to_keep",
+																"max_snapshot_age"
+															]
+														}
+													}
+												}
+											},
+											"required": [
+												"maintenance_config",
+												"credential_status"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							}
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Authentication failed.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							}
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							}
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Catalog not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							}
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal server error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"deprecated": true,
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Maintenance Configuration"
+		],
+		"x-api-token-group": [
+			"Workers R2 Data Catalog Write",
+			"Workers R2 Data Catalog Read"
+		],
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "r2-data-catalog.maintenance-configs",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-stainless-deprecation-message": "Use `GET /accounts/{account_id}/basin-catalog/{bucket_name}/maintenance-configs` instead."
 	},
-	"POST /accounts/{account_id}/r2-catalog/{bucket_name}/maintenance-configs": {
-		"operationId": "update-maintenance-config",
+	"POST /accounts/{account_id}/basin-catalog/{bucket_name}/maintenance-configs": {
+		"operationId": "basin-update-maintenance-config",
 		"summary": "Update catalog maintenance configuration",
 		"description": "Update the maintenance configuration for a catalog. This allows you to\nenable or disable compaction and adjust target file sizes for optimization.\n",
 		"parameters": [
@@ -940,8 +1376,517 @@
 			"Workers R2 Data Catalog Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "basin-catalog.maintenance-configs",
+		"x-fern-sdk-method-name": "update"
+	},
+	"POST /accounts/{account_id}/r2-catalog/{bucket_name}/maintenance-configs": {
+		"operationId": "update-maintenance-config",
+		"summary": "Update catalog maintenance configuration",
+		"description": "Update the maintenance configuration for a catalog. This allows you to\nenable or disable compaction and adjust target file sizes for optimization.\n",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Identifies the account.",
+				"required": true,
+				"schema": {
+					"description": "Use this to identify the account.",
+					"type": "string",
+					"example": "0123456789abcdef0123456789abcdef",
+					"pattern": "^[a-fA-F0-9]{32}$"
+				}
+			},
+			{
+				"name": "bucket_name",
+				"in": "path",
+				"description": "Specifies the R2 bucket name.",
+				"required": true,
+				"schema": {
+					"description": "Specifies the R2 bucket name.",
+					"type": "string",
+					"example": "my-data-bucket",
+					"maxLength": 63,
+					"minLength": 3,
+					"pattern": "^[a-z0-9]([a-z0-9\\-]*[a-z0-9])?$"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"example": {
+						"compaction": {
+							"state": "enabled",
+							"target_size_mb": "256"
+						},
+						"snapshot_expiration": {
+							"max_snapshot_age": "14d",
+							"min_snapshots_to_keep": 5,
+							"state": "enabled"
+						}
+					},
+					"schema": {
+						"description": "Contains request to update catalog maintenance configuration.",
+						"allOf": [
+							{
+								"description": "Contains maintenance update parameters.",
+								"type": "object",
+								"properties": {
+									"compaction": {
+										"description": "Updates compaction configuration (all fields optional).",
+										"type": "object",
+										"properties": {
+											"state": {
+												"description": "Updates the state optionally.",
+												"allOf": [
+													{
+														"description": "Specifies the state of maintenance operations.",
+														"type": "string",
+														"example": "enabled",
+														"enum": [
+															"enabled",
+															"disabled"
+														]
+													}
+												]
+											},
+											"target_size_mb": {
+												"description": "Updates the target file size optionally.",
+												"allOf": [
+													{
+														"description": "Sets the target file size for compaction in megabytes. Defaults to \"128\".",
+														"type": "string",
+														"example": "128",
+														"enum": [
+															"64",
+															"128",
+															"256",
+															"512"
+														]
+													}
+												]
+											}
+										}
+									},
+									"snapshot_expiration": {
+										"description": "Updates snapshot expiration configuration (all fields optional).",
+										"type": "object",
+										"properties": {
+											"max_snapshot_age": {
+												"description": "Updates the maximum age for snapshots optionally.",
+												"type": "string",
+												"pattern": "^\\d+(d|h|m|s)$"
+											},
+											"min_snapshots_to_keep": {
+												"description": "Updates the minimum number of snapshots to retain optionally.",
+												"type": "integer",
+												"format": "int64",
+												"minimum": 1
+											},
+											"state": {
+												"description": "Updates the state optionally.",
+												"allOf": [
+													{
+														"description": "Specifies the state of maintenance operations.",
+														"type": "string",
+														"example": "enabled",
+														"enum": [
+															"enabled",
+															"disabled"
+														]
+													}
+												]
+											}
+										}
+									}
+								}
+							}
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Maintenance configuration updated successfully.",
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [],
+							"messages": [],
+							"result": {
+								"compaction": {
+									"state": "enabled",
+									"target_size_mb": "256"
+								},
+								"snapshot_expiration": {
+									"max_snapshot_age": "14d",
+									"min_snapshots_to_keep": 5,
+									"state": "enabled"
+								}
+							},
+							"success": true
+						},
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"description": "Contains errors if the API call was unsuccessful.",
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Specifies the error code.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Describes the error.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										},
+										"messages": {
+											"description": "Contains informational messages.",
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Specifies the message code.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Contains the message text.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"description": "Indicates whether the API call was successful.",
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Configures maintenance for the catalog.",
+											"type": "object",
+											"properties": {
+												"compaction": {
+													"description": "Configures compaction for catalog maintenance.",
+													"type": "object",
+													"properties": {
+														"state": {
+															"description": "Specifies the state of maintenance operations.",
+															"type": "string",
+															"example": "enabled",
+															"enum": [
+																"enabled",
+																"disabled"
+															]
+														},
+														"target_size_mb": {
+															"description": "Sets the target file size for compaction in megabytes. Defaults to \"128\".",
+															"type": "string",
+															"example": "128",
+															"enum": [
+																"64",
+																"128",
+																"256",
+																"512"
+															]
+														}
+													},
+													"required": [
+														"state",
+														"target_size_mb"
+													]
+												},
+												"interval": {
+													"description": "Scheduling interval between normal table maintenance runs.",
+													"type": "string",
+													"example": "1h",
+													"pattern": "^\\d+(d|h|m|s)$"
+												},
+												"snapshot_expiration": {
+													"description": "Configures snapshot expiration settings.",
+													"type": "object",
+													"properties": {
+														"max_snapshot_age": {
+															"description": "Specifies the maximum age for snapshots. The system deletes snapshots older than this age.\nFormat: <number><unit> where unit is d (days), h (hours), m (minutes), or s (seconds).\nExamples: \"7d\" (7 days), \"48h\" (48 hours), \"2880m\" (2,880 minutes).\nDefaults to \"7d\".\n",
+															"type": "string",
+															"example": "7d",
+															"pattern": "^\\d+(d|h|m|s)$"
+														},
+														"min_snapshots_to_keep": {
+															"description": "Specifies the minimum number of snapshots to retain. Defaults to 100.",
+															"type": "integer",
+															"format": "int64",
+															"example": 100,
+															"minimum": 1
+														},
+														"state": {
+															"description": "Specifies the state of maintenance operations.",
+															"type": "string",
+															"example": "enabled",
+															"enum": [
+																"enabled",
+																"disabled"
+															]
+														}
+													},
+													"required": [
+														"state",
+														"min_snapshots_to_keep",
+														"max_snapshot_age"
+													]
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							}
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Authentication failed.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							}
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							}
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Catalog not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							}
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal server error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"deprecated": true,
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Maintenance Configuration"
+		],
+		"x-api-token-group": [
+			"Workers R2 Data Catalog Write"
+		],
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "r2-data-catalog.maintenance-configs",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-stainless-deprecation-message": "Use `POST /accounts/{account_id}/basin-catalog/{bucket_name}/maintenance-configs` instead."
 	}
 }
