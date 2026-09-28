@@ -249,7 +249,7 @@
 			"Email Security"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.investigate.bulk",
+		"x-fern-sdk-group-name": "email-security.bulk-actions",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-require-confirmation": "This operation permanently deletes the completed, cancelled, or failed bulk action job from all list and detail endpoints.",
 		"x-stability": "beta"
@@ -316,7 +316,7 @@
 			{
 				"name": "metric",
 				"in": "query",
-				"description": "Metric to aggregate the results by, as used by the Email Security dashboard.",
+				"description": "Metric to aggregate the results by.",
 				"schema": {
 					"type": "string"
 				}
@@ -416,10 +416,11 @@
 			{
 				"name": "cursor",
 				"in": "query",
-				"description": "Opaque cursor from a previous response's `result_info.next` or `result_info.previous` for cursor-based pagination. When omitted, the first page is returned.",
+				"description": "Pagination cursor from the previous response's `result_info`.",
 				"schema": {
 					"type": "string"
-				}
+				},
+				"x-auditable": true
 			},
 			{
 				"description": "The number of results per page. Maximum value is 1000.",
@@ -679,6 +680,7 @@
 														"type": "string",
 														"allOf": [
 															{
+																"description": "The verdict Email Security assigns to a message.",
 																"type": "string",
 																"enum": [
 																	"MALICIOUS",
@@ -713,6 +715,7 @@
 																	"type": "string",
 																	"allOf": [
 																		{
+																			"description": "The verdict Email Security assigns to a message.",
 																			"type": "string",
 																			"enum": [
 																				"MALICIOUS",
@@ -1598,6 +1601,7 @@
 													"type": "string",
 													"allOf": [
 														{
+															"description": "The verdict Email Security assigns to a message.",
 															"type": "string",
 															"enum": [
 																"MALICIOUS",
@@ -1632,6 +1636,7 @@
 																"type": "string",
 																"allOf": [
 																	{
+																		"description": "The verdict Email Security assigns to a message.",
 																		"type": "string",
 																		"enum": [
 																			"MALICIOUS",
@@ -2080,6 +2085,31 @@
 		"operationId": "email_security_get_message_action_log",
 		"summary": "List post-delivery actions for a message",
 		"description": "Returns the list of post-delivery actions (moves, quarantine releases, previews, etc.) that have been applied to a specific email message.",
+		"parameters": [
+			{
+				"description": "Current page within paginated list of results.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"type": "integer",
+					"example": 1,
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"description": "The number of results per page. Maximum value is 1000.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"type": "integer",
+					"example": 20,
+					"default": 20,
+					"maximum": 1000,
+					"minimum": 1
+				}
+			}
+		],
 		"responses": {
 			"200": {
 				"description": "Action log for the email.",
@@ -2089,84 +2119,119 @@
 							"allOf": [
 								{
 									"type": "object",
-									"properties": {
-										"errors": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
 														"properties": {
-															"pointer": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
 																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
 															}
-														}
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"messages": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
+														},
+														"required": [
+															"code",
+															"message"
+														],
 														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
-													}
+														"uniqueItems": true
+													},
+													"example": []
 												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
 											},
-											"example": []
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": true,
-											"enum": [
-												true
+											"required": [
+												"success",
+												"errors",
+												"messages"
 											]
+										},
+										{
+											"properties": {
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"type": "number",
+															"example": 1
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"type": "number",
+															"example": 1
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"type": "number",
+															"example": 20
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"type": "number",
+															"example": 2000
+														}
+													}
+												}
+											},
+											"type": "object"
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
 									]
 								},
 								{
@@ -2508,6 +2573,7 @@
 																"type": "string",
 																"allOf": [
 																	{
+																		"description": "The verdict Email Security assigns to a message.",
 																		"type": "string",
 																		"enum": [
 																			"MALICIOUS",
@@ -2570,6 +2636,7 @@
 													"type": "string",
 													"allOf": [
 														{
+															"description": "The verdict Email Security assigns to a message.",
 															"type": "string",
 															"enum": [
 																"MALICIOUS",
@@ -2606,6 +2673,7 @@
 																"type": "string",
 																"allOf": [
 																	{
+																		"description": "The verdict Email Security assigns to a message.",
 																		"type": "string",
 																		"enum": [
 																			"MALICIOUS",
@@ -3946,6 +4014,7 @@
 															{
 																"properties": {
 																	"destination": {
+																		"description": "The mailbox folder to move messages to.",
 																		"type": "string",
 																		"enum": [
 																			"Inbox",
@@ -3960,6 +4029,7 @@
 																		"type": "string",
 																		"allOf": [
 																			{
+																				"description": "The verdict Email Security assigns to a message.",
 																				"type": "string",
 																				"enum": [
 																					"MALICIOUS",
@@ -4061,10 +4131,12 @@
 																"x-stainless-deprecation-message": "Use GET /investigate/{investigate_id}/action_log instead."
 															},
 															"alert_id": {
+																"description": "Alert ID of the detection to filter by.",
 																"type": "string",
 																"nullable": true
 															},
 															"delivery_status": {
+																"description": "Delivery status to filter by.",
 																"type": "string",
 																"allOf": [
 																	{
@@ -4085,10 +4157,12 @@
 																"nullable": true
 															},
 															"detections_only": {
+																"description": "Whether to include only detections in search results.",
 																"type": "boolean",
 																"default": true
 															},
 															"domain": {
+																"description": "Match messages that mention this domain — sender domain, recipient domain, or a domain in a link.",
 																"type": "string",
 																"nullable": true
 															},
@@ -4099,13 +4173,16 @@
 																"example": "2022-07-25T14:30:00Z"
 															},
 															"exact_subject": {
+																"description": "Match messages whose subject line equals this value exactly.",
 																"type": "string",
 																"nullable": true
 															},
 															"final_disposition": {
+																"description": "Dispositions to filter by.",
 																"type": "string",
 																"allOf": [
 																	{
+																		"description": "The verdict Email Security assigns to a message.",
 																		"type": "string",
 																		"enum": [
 																			"MALICIOUS",
@@ -4124,6 +4201,7 @@
 																"nullable": true
 															},
 															"message_action": {
+																"description": "Message actions to filter by.",
 																"type": "string",
 																"enum": [
 																	"PREVIEW",
@@ -4133,22 +4211,27 @@
 																"nullable": true
 															},
 															"message_id": {
+																"description": "Message-ID header value to filter by.",
 																"type": "string",
 																"nullable": true
 															},
 															"metric": {
+																"description": "Metric name to filter the search by.",
 																"type": "string",
 																"nullable": true
 															},
 															"query": {
+																"description": "Space-delimited search term. Case-insensitive.",
 																"nullable": true,
 																"type": "string"
 															},
 															"recipient": {
+																"description": "Match messages whose recipient is this email address or domain.",
 																"type": "string",
 																"nullable": true
 															},
 															"sender": {
+																"description": "Match messages whose sender is this email address or domain.",
 																"type": "string",
 																"nullable": true
 															},
@@ -4164,10 +4247,12 @@
 																"example": "2022-06-25T14:30:00Z"
 															},
 															"subject": {
+																"description": "Match messages whose subject contains these keywords, in any order.",
 																"type": "string",
 																"nullable": true
 															},
 															"submissions": {
+																"description": "Whether to search reclassification submissions instead of original messages.",
 																"type": "boolean",
 																"default": false
 															}
@@ -4401,7 +4486,7 @@
 			"Cloud Email Security: Read"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.investigate.bulk",
+		"x-fern-sdk-group-name": "email-security.bulk-actions",
 		"x-fern-sdk-method-name": "list",
 		"x-stability": "beta"
 	},
@@ -4516,6 +4601,7 @@
 														{
 															"properties": {
 																"destination": {
+																	"description": "The mailbox folder to move messages to.",
 																	"type": "string",
 																	"enum": [
 																		"Inbox",
@@ -4530,6 +4616,7 @@
 																	"type": "string",
 																	"allOf": [
 																		{
+																			"description": "The verdict Email Security assigns to a message.",
 																			"type": "string",
 																			"enum": [
 																				"MALICIOUS",
@@ -4631,10 +4718,12 @@
 															"x-stainless-deprecation-message": "Use GET /investigate/{investigate_id}/action_log instead."
 														},
 														"alert_id": {
+															"description": "Alert ID of the detection to filter by.",
 															"type": "string",
 															"nullable": true
 														},
 														"delivery_status": {
+															"description": "Delivery status to filter by.",
 															"type": "string",
 															"allOf": [
 																{
@@ -4655,10 +4744,12 @@
 															"nullable": true
 														},
 														"detections_only": {
+															"description": "Whether to include only detections in search results.",
 															"type": "boolean",
 															"default": true
 														},
 														"domain": {
+															"description": "Match messages that mention this domain — sender domain, recipient domain, or a domain in a link.",
 															"type": "string",
 															"nullable": true
 														},
@@ -4669,13 +4760,16 @@
 															"example": "2022-07-25T14:30:00Z"
 														},
 														"exact_subject": {
+															"description": "Match messages whose subject line equals this value exactly.",
 															"type": "string",
 															"nullable": true
 														},
 														"final_disposition": {
+															"description": "Dispositions to filter by.",
 															"type": "string",
 															"allOf": [
 																{
+																	"description": "The verdict Email Security assigns to a message.",
 																	"type": "string",
 																	"enum": [
 																		"MALICIOUS",
@@ -4694,6 +4788,7 @@
 															"nullable": true
 														},
 														"message_action": {
+															"description": "Message actions to filter by.",
 															"type": "string",
 															"enum": [
 																"PREVIEW",
@@ -4703,22 +4798,27 @@
 															"nullable": true
 														},
 														"message_id": {
+															"description": "Message-ID header value to filter by.",
 															"type": "string",
 															"nullable": true
 														},
 														"metric": {
+															"description": "Metric name to filter the search by.",
 															"type": "string",
 															"nullable": true
 														},
 														"query": {
+															"description": "Space-delimited search term. Case-insensitive.",
 															"nullable": true,
 															"type": "string"
 														},
 														"recipient": {
+															"description": "Match messages whose recipient is this email address or domain.",
 															"type": "string",
 															"nullable": true
 														},
 														"sender": {
+															"description": "Match messages whose sender is this email address or domain.",
 															"type": "string",
 															"nullable": true
 														},
@@ -4734,10 +4834,12 @@
 															"example": "2022-06-25T14:30:00Z"
 														},
 														"subject": {
+															"description": "Match messages whose subject contains these keywords, in any order.",
 															"type": "string",
 															"nullable": true
 														},
 														"submissions": {
+															"description": "Whether to search reclassification submissions instead of original messages.",
 															"type": "boolean",
 															"default": false
 														}
@@ -4925,7 +5027,7 @@
 			"Cloud Email Security: Read"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.investigate.bulk",
+		"x-fern-sdk-group-name": "email-security.bulk-actions",
 		"x-fern-sdk-method-name": "get",
 		"x-stability": "beta"
 	},
@@ -5082,6 +5184,7 @@
 																		"type": "string"
 																	},
 																	"destination": {
+																		"description": "The mailbox folder to move messages to.",
 																		"type": "string",
 																		"enum": [
 																			"Inbox",
@@ -5096,6 +5199,7 @@
 																		"type": "string",
 																		"allOf": [
 																			{
+																				"description": "The verdict Email Security assigns to a message.",
 																				"type": "string",
 																				"enum": [
 																					"MALICIOUS",
@@ -5307,6 +5411,7 @@
 																"type": "string",
 																"allOf": [
 																	{
+																		"description": "The verdict Email Security assigns to a message.",
 																		"type": "string",
 																		"enum": [
 																			"MALICIOUS",
@@ -5341,6 +5446,7 @@
 																			"type": "string",
 																			"allOf": [
 																				{
+																					"description": "The verdict Email Security assigns to a message.",
 																					"type": "string",
 																					"enum": [
 																						"MALICIOUS",
@@ -5875,7 +5981,7 @@
 			"Cloud Email Security: Read"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.investigate.bulk.messages",
+		"x-fern-sdk-group-name": "email-security.bulk-actions.messages",
 		"x-fern-sdk-method-name": "list",
 		"x-stability": "beta"
 	},
@@ -5929,6 +6035,29 @@
 				"example": "2020-09-01T00:00:00Z",
 				"x-stainless-deprecation-message": "Use `end` instead.",
 				"x-sunset": "2026-11-01T00:00:00Z"
+			},
+			{
+				"description": "Current page within paginated list of results.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"type": "integer",
+					"example": 1,
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"description": "The number of results per page. Maximum value is 1000.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"type": "integer",
+					"example": 20,
+					"default": 20,
+					"maximum": 1000,
+					"minimum": 1
+				}
 			}
 		],
 		"responses": {
@@ -5940,84 +6069,119 @@
 							"allOf": [
 								{
 									"type": "object",
-									"properties": {
-										"errors": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
 														"properties": {
-															"pointer": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
 																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
 															}
-														}
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"messages": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
+														},
+														"required": [
+															"code",
+															"message"
+														],
 														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
-													}
+														"uniqueItems": true
+													},
+													"example": []
 												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
 											},
-											"example": []
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": true,
-											"enum": [
-												true
+											"required": [
+												"success",
+												"errors",
+												"messages"
 											]
+										},
+										{
+											"properties": {
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"type": "number",
+															"example": 1
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"type": "number",
+															"example": 1
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"type": "number",
+															"example": 20
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"type": "number",
+															"example": 2000
+														}
+													}
+												}
+											},
+											"type": "object"
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
 									]
 								},
 								{
@@ -6037,6 +6201,7 @@
 														"readOnly": true
 													},
 													"disposition": {
+														"description": "The verdict Email Security assigns to a message.",
 														"type": "string",
 														"enum": [
 															"MALICIOUS",
@@ -6334,6 +6499,7 @@
 				"name": "original_disposition",
 				"in": "query",
 				"schema": {
+					"description": "The disposition a message is submitted to have.",
 					"type": "string",
 					"enum": [
 						"MALICIOUS",
@@ -6349,6 +6515,7 @@
 				"name": "requested_disposition",
 				"in": "query",
 				"schema": {
+					"description": "The disposition a message is submitted to have.",
 					"type": "string",
 					"enum": [
 						"MALICIOUS",
@@ -6364,6 +6531,7 @@
 				"name": "outcome_disposition",
 				"in": "query",
 				"schema": {
+					"description": "The disposition a message is submitted to have.",
 					"type": "string",
 					"enum": [
 						"MALICIOUS",
@@ -6597,6 +6765,7 @@
 														"type": "string",
 														"allOf": [
 															{
+																"description": "The disposition a message is submitted to have.",
 																"type": "string",
 																"enum": [
 																	"MALICIOUS",
@@ -6611,15 +6780,18 @@
 														"nullable": true
 													},
 													"escalated_at": {
+														"description": "When the submission was escalated to the security team.",
 														"type": "string",
 														"format": "date-time",
 														"nullable": true
 													},
 													"escalated_by": {
+														"description": "Email address of the user who escalated the submission.",
 														"type": "string",
 														"nullable": true
 													},
 													"escalated_submission_id": {
+														"description": "Submission ID of the escalated team submission, when this user submission was escalated.",
 														"type": "string",
 														"nullable": true
 													},
@@ -6627,6 +6799,7 @@
 														"type": "string",
 														"allOf": [
 															{
+																"description": "The disposition a message is submitted to have.",
 																"type": "string",
 																"enum": [
 																	"MALICIOUS",
@@ -6641,6 +6814,7 @@
 														"nullable": true
 													},
 													"original_edf_hash": {
+														"description": "EDF hash of the original message.",
 														"type": "string",
 														"nullable": true
 													},
@@ -6650,6 +6824,7 @@
 														"nullable": true
 													},
 													"outcome": {
+														"description": "Processing outcome of the submission.",
 														"type": "string",
 														"nullable": true
 													},
@@ -6657,6 +6832,7 @@
 														"type": "string",
 														"allOf": [
 															{
+																"description": "The disposition a message is submitted to have.",
 																"type": "string",
 																"enum": [
 																	"MALICIOUS",
@@ -6676,6 +6852,7 @@
 														"format": "date-time"
 													},
 													"requested_by": {
+														"description": "Email address of the user who requested the submission.",
 														"type": "string",
 														"nullable": true
 													},
@@ -6683,6 +6860,7 @@
 														"type": "string",
 														"allOf": [
 															{
+																"description": "The disposition a message is submitted to have.",
 																"type": "string",
 																"enum": [
 																	"MALICIOUS",
@@ -6704,10 +6882,12 @@
 														"x-stainless-deprecation-message": "Use `requested_at` instead."
 													},
 													"status": {
+														"description": "Processing status of the submission.",
 														"type": "string",
 														"nullable": true
 													},
 													"subject": {
+														"description": "Subject line of the submitted message.",
 														"type": "string",
 														"nullable": true
 													},
@@ -6883,6 +7063,7 @@
 						"type": "object",
 						"properties": {
 							"destination": {
+								"description": "The mailbox folder to move messages to.",
 								"type": "string",
 								"enum": [
 									"Inbox",
@@ -6897,6 +7078,7 @@
 								"type": "string",
 								"allOf": [
 									{
+										"description": "The verdict Email Security assigns to a message.",
 										"type": "string",
 										"enum": [
 											"MALICIOUS",
@@ -7236,10 +7418,12 @@
 								"type": "string"
 							},
 							"escalated_submission_id": {
+								"description": "Submission ID of the original user submission, when reclassifying an escalated user report.",
 								"type": "string",
 								"x-auditable": true
 							},
 							"expected_disposition": {
+								"description": "The disposition the message should have.",
 								"type": "string",
 								"enum": [
 									"NONE",
@@ -7511,6 +7695,7 @@
 						"type": "object",
 						"properties": {
 							"action": {
+								"description": "The action the job performs on every message matching the search parameters.",
 								"type": "string",
 								"enum": [
 									"MOVE",
@@ -7518,6 +7703,7 @@
 								]
 							},
 							"comment": {
+								"description": "Optional note describing the job.",
 								"type": "string",
 								"nullable": true
 							},
@@ -7525,6 +7711,7 @@
 								"description": "Required when action is 'MOVE'.",
 								"allOf": [
 									{
+										"description": "The mailbox folder to move messages to.",
 										"type": "string",
 										"enum": [
 											"Inbox",
@@ -7541,6 +7728,7 @@
 								"type": "string",
 								"allOf": [
 									{
+										"description": "The verdict Email Security assigns to a message.",
 										"type": "string",
 										"enum": [
 											"MALICIOUS",
@@ -7571,10 +7759,12 @@
 										"x-stainless-deprecation-message": "Use GET /investigate/{investigate_id}/action_log instead."
 									},
 									"alert_id": {
+										"description": "Alert ID of the detection to filter by.",
 										"type": "string",
 										"nullable": true
 									},
 									"delivery_status": {
+										"description": "Delivery status to filter by.",
 										"type": "string",
 										"allOf": [
 											{
@@ -7595,10 +7785,12 @@
 										"nullable": true
 									},
 									"detections_only": {
+										"description": "Whether to include only detections in search results.",
 										"type": "boolean",
 										"default": true
 									},
 									"domain": {
+										"description": "Match messages that mention this domain — sender domain, recipient domain, or a domain in a link.",
 										"type": "string",
 										"nullable": true
 									},
@@ -7609,13 +7801,16 @@
 										"example": "2022-07-25T14:30:00Z"
 									},
 									"exact_subject": {
+										"description": "Match messages whose subject line equals this value exactly.",
 										"type": "string",
 										"nullable": true
 									},
 									"final_disposition": {
+										"description": "Dispositions to filter by.",
 										"type": "string",
 										"allOf": [
 											{
+												"description": "The verdict Email Security assigns to a message.",
 												"type": "string",
 												"enum": [
 													"MALICIOUS",
@@ -7634,6 +7829,7 @@
 										"nullable": true
 									},
 									"message_action": {
+										"description": "Message actions to filter by.",
 										"type": "string",
 										"enum": [
 											"PREVIEW",
@@ -7643,22 +7839,27 @@
 										"nullable": true
 									},
 									"message_id": {
+										"description": "Message-ID header value to filter by.",
 										"type": "string",
 										"nullable": true
 									},
 									"metric": {
+										"description": "Metric name to filter the search by.",
 										"type": "string",
 										"nullable": true
 									},
 									"query": {
+										"description": "Space-delimited search term. Case-insensitive.",
 										"nullable": true,
 										"type": "string"
 									},
 									"recipient": {
+										"description": "Match messages whose recipient is this email address or domain.",
 										"type": "string",
 										"nullable": true
 									},
 									"sender": {
+										"description": "Match messages whose sender is this email address or domain.",
 										"type": "string",
 										"nullable": true
 									},
@@ -7674,10 +7875,12 @@
 										"example": "2022-06-25T14:30:00Z"
 									},
 									"subject": {
+										"description": "Match messages whose subject contains these keywords, in any order.",
 										"type": "string",
 										"nullable": true
 									},
 									"submissions": {
+										"description": "Whether to search reclassification submissions instead of original messages.",
 										"type": "boolean",
 										"default": false
 									}
@@ -7799,6 +8002,7 @@
 														{
 															"properties": {
 																"destination": {
+																	"description": "The mailbox folder to move messages to.",
 																	"type": "string",
 																	"enum": [
 																		"Inbox",
@@ -7813,6 +8017,7 @@
 																	"type": "string",
 																	"allOf": [
 																		{
+																			"description": "The verdict Email Security assigns to a message.",
 																			"type": "string",
 																			"enum": [
 																				"MALICIOUS",
@@ -7914,10 +8119,12 @@
 															"x-stainless-deprecation-message": "Use GET /investigate/{investigate_id}/action_log instead."
 														},
 														"alert_id": {
+															"description": "Alert ID of the detection to filter by.",
 															"type": "string",
 															"nullable": true
 														},
 														"delivery_status": {
+															"description": "Delivery status to filter by.",
 															"type": "string",
 															"allOf": [
 																{
@@ -7938,10 +8145,12 @@
 															"nullable": true
 														},
 														"detections_only": {
+															"description": "Whether to include only detections in search results.",
 															"type": "boolean",
 															"default": true
 														},
 														"domain": {
+															"description": "Match messages that mention this domain — sender domain, recipient domain, or a domain in a link.",
 															"type": "string",
 															"nullable": true
 														},
@@ -7952,13 +8161,16 @@
 															"example": "2022-07-25T14:30:00Z"
 														},
 														"exact_subject": {
+															"description": "Match messages whose subject line equals this value exactly.",
 															"type": "string",
 															"nullable": true
 														},
 														"final_disposition": {
+															"description": "Dispositions to filter by.",
 															"type": "string",
 															"allOf": [
 																{
+																	"description": "The verdict Email Security assigns to a message.",
 																	"type": "string",
 																	"enum": [
 																		"MALICIOUS",
@@ -7977,6 +8189,7 @@
 															"nullable": true
 														},
 														"message_action": {
+															"description": "Message actions to filter by.",
 															"type": "string",
 															"enum": [
 																"PREVIEW",
@@ -7986,22 +8199,27 @@
 															"nullable": true
 														},
 														"message_id": {
+															"description": "Message-ID header value to filter by.",
 															"type": "string",
 															"nullable": true
 														},
 														"metric": {
+															"description": "Metric name to filter the search by.",
 															"type": "string",
 															"nullable": true
 														},
 														"query": {
+															"description": "Space-delimited search term. Case-insensitive.",
 															"nullable": true,
 															"type": "string"
 														},
 														"recipient": {
+															"description": "Match messages whose recipient is this email address or domain.",
 															"type": "string",
 															"nullable": true
 														},
 														"sender": {
+															"description": "Match messages whose sender is this email address or domain.",
 															"type": "string",
 															"nullable": true
 														},
@@ -8017,10 +8235,12 @@
 															"example": "2022-06-25T14:30:00Z"
 														},
 														"subject": {
+															"description": "Match messages whose subject contains these keywords, in any order.",
 															"type": "string",
 															"nullable": true
 														},
 														"submissions": {
+															"description": "Whether to search reclassification submissions instead of original messages.",
 															"type": "boolean",
 															"default": false
 														}
@@ -8207,7 +8427,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.investigate.bulk",
+		"x-fern-sdk-group-name": "email-security.bulk-actions",
 		"x-fern-sdk-method-name": "create",
 		"x-stability": "beta"
 	},
@@ -8322,6 +8542,7 @@
 														{
 															"properties": {
 																"destination": {
+																	"description": "The mailbox folder to move messages to.",
 																	"type": "string",
 																	"enum": [
 																		"Inbox",
@@ -8336,6 +8557,7 @@
 																	"type": "string",
 																	"allOf": [
 																		{
+																			"description": "The verdict Email Security assigns to a message.",
 																			"type": "string",
 																			"enum": [
 																				"MALICIOUS",
@@ -8437,10 +8659,12 @@
 															"x-stainless-deprecation-message": "Use GET /investigate/{investigate_id}/action_log instead."
 														},
 														"alert_id": {
+															"description": "Alert ID of the detection to filter by.",
 															"type": "string",
 															"nullable": true
 														},
 														"delivery_status": {
+															"description": "Delivery status to filter by.",
 															"type": "string",
 															"allOf": [
 																{
@@ -8461,10 +8685,12 @@
 															"nullable": true
 														},
 														"detections_only": {
+															"description": "Whether to include only detections in search results.",
 															"type": "boolean",
 															"default": true
 														},
 														"domain": {
+															"description": "Match messages that mention this domain — sender domain, recipient domain, or a domain in a link.",
 															"type": "string",
 															"nullable": true
 														},
@@ -8475,13 +8701,16 @@
 															"example": "2022-07-25T14:30:00Z"
 														},
 														"exact_subject": {
+															"description": "Match messages whose subject line equals this value exactly.",
 															"type": "string",
 															"nullable": true
 														},
 														"final_disposition": {
+															"description": "Dispositions to filter by.",
 															"type": "string",
 															"allOf": [
 																{
+																	"description": "The verdict Email Security assigns to a message.",
 																	"type": "string",
 																	"enum": [
 																		"MALICIOUS",
@@ -8500,6 +8729,7 @@
 															"nullable": true
 														},
 														"message_action": {
+															"description": "Message actions to filter by.",
 															"type": "string",
 															"enum": [
 																"PREVIEW",
@@ -8509,22 +8739,27 @@
 															"nullable": true
 														},
 														"message_id": {
+															"description": "Message-ID header value to filter by.",
 															"type": "string",
 															"nullable": true
 														},
 														"metric": {
+															"description": "Metric name to filter the search by.",
 															"type": "string",
 															"nullable": true
 														},
 														"query": {
+															"description": "Space-delimited search term. Case-insensitive.",
 															"nullable": true,
 															"type": "string"
 														},
 														"recipient": {
+															"description": "Match messages whose recipient is this email address or domain.",
 															"type": "string",
 															"nullable": true
 														},
 														"sender": {
+															"description": "Match messages whose sender is this email address or domain.",
 															"type": "string",
 															"nullable": true
 														},
@@ -8540,10 +8775,12 @@
 															"example": "2022-06-25T14:30:00Z"
 														},
 														"subject": {
+															"description": "Match messages whose subject contains these keywords, in any order.",
 															"type": "string",
 															"nullable": true
 														},
 														"submissions": {
+															"description": "Whether to search reclassification submissions instead of original messages.",
 															"type": "boolean",
 															"default": false
 														}
@@ -8730,7 +8967,7 @@
 			"Cloud Email Security: Write"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "email-security.investigate.bulk",
+		"x-fern-sdk-group-name": "email-security.bulk-actions",
 		"x-fern-sdk-method-name": "cancel",
 		"x-stability": "beta"
 	},
@@ -8746,6 +8983,7 @@
 						"type": "object",
 						"properties": {
 							"destination": {
+								"description": "The mailbox folder to move messages to.",
 								"type": "string",
 								"enum": [
 									"Inbox",
@@ -8760,6 +8998,7 @@
 								"type": "string",
 								"allOf": [
 									{
+										"description": "The verdict Email Security assigns to a message.",
 										"type": "string",
 										"enum": [
 											"MALICIOUS",
@@ -9384,18 +9623,28 @@
 		"summary": "Release messages from quarantine",
 		"description": "Delivers one or more quarantined messages to their intended recipients, for cases where a message was incorrectly quarantined. Operates on an explicit list of messages; to release all messages matching a search, create a bulk action job instead. The response includes delivery status for each recipient.",
 		"requestBody": {
-			"description": "A list of investigate IDs identifying the messages to release.",
+			"description": "The messages to release, identified by their investigate IDs.",
 			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
-						"type": "array",
-						"items": {
-							"description": "Unique identifier for a message retrieved from investigation.",
-							"type": "string",
-							"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678"
+						"type": "object",
+						"properties": {
+							"ids": {
+								"description": "Investigate IDs of the messages to release.",
+								"type": "array",
+								"items": {
+									"description": "Unique identifier for a message retrieved from investigation.",
+									"type": "string",
+									"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678"
+								},
+								"minItems": 1,
+								"x-auditable": true
+							}
 						},
-						"minItems": 1
+						"required": [
+							"ids"
+						]
 					}
 				}
 			}
@@ -9711,14 +9960,17 @@
 											"type": "object",
 											"properties": {
 												"alert_id": {
+													"description": "Alert ID of the detection to reclassify.",
 													"type": "string",
 													"x-auditable": true
 												},
 												"escalated_submission_id": {
+													"description": "Submission ID of the original user submission, when reclassifying an escalated user report.",
 													"type": "string",
 													"x-auditable": true
 												},
 												"expected_disposition": {
+													"description": "The disposition a message is submitted to have.",
 													"type": "string",
 													"enum": [
 														"MALICIOUS",
@@ -9757,13 +10009,16 @@
 											"type": "object",
 											"properties": {
 												"eml_content": {
+													"description": "Base64 encoded content of the EML file.",
 													"type": "string"
 												},
 												"escalated_submission_id": {
+													"description": "Submission ID of the original user submission, when escalating an escalated user report.",
 													"type": "string",
 													"x-auditable": true
 												},
 												"expected_disposition": {
+													"description": "The disposition a message is submitted to have.",
 													"type": "string",
 													"enum": [
 														"MALICIOUS",
@@ -9775,6 +10030,7 @@
 													]
 												},
 												"message_id": {
+													"description": "Message-ID header value of the reported message.",
 													"type": "string",
 													"x-auditable": true
 												},
@@ -9784,6 +10040,7 @@
 													"example": "4Njp3P0STMz2c02Q"
 												},
 												"recipient_emails": {
+													"description": "Recipient email addresses of the reported message.",
 													"type": "array",
 													"items": {
 														"type": "string",

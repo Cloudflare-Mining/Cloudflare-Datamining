@@ -267,8 +267,7 @@
 		"x-api-token-group": null,
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.users",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/access/users/{user_id}/mfa_authenticators/{authenticator_id}": {
 		"operationId": "zero-trust-users-delete-mfa-authenticator",
@@ -548,8 +547,7 @@
 		"x-api-token-group": null,
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.users.mfa.authenticators",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/access/users": {
 		"operationId": "zero-trust-users-get-users",
@@ -976,8 +974,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.users",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/access/users/{user_id}": {
 		"operationId": "zero-trust-users-get-user",
@@ -1309,8 +1306,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.users",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/access/users/{user_id}/active_sessions": {
 		"operationId": "zero-trust-users-get-active-sessions",
@@ -1673,8 +1669,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.users.active-sessions",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/access/users/{user_id}/active_sessions/{nonce}": {
 		"operationId": "zero-trust-users-get-active-session",
@@ -2133,8 +2128,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.users.active-sessions",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/access/users/{user_id}/failed_logins": {
 		"operationId": "zero-trust-users-get-failed-logins",
@@ -2459,8 +2453,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.users.failed-logins",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/access/users/{user_id}/last_seen_identity": {
 		"operationId": "zero-trust-users-get-last-seen-identity",
@@ -2901,8 +2894,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.users.last-seen-identity",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/access/users": {
 		"operationId": "zero-trust-users-create-user",
@@ -3246,8 +3238,7 @@
 		"x-api-token-group": null,
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.users",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/access/users/{user_id}": {
 		"operationId": "zero-trust-users-update-user",
@@ -3606,7 +3597,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.users",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

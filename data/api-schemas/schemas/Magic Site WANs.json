@@ -170,6 +170,9 @@
 													"maxLength": 32,
 													"readOnly": true
 												},
+												"load_balance_inner_flows": {
+													"type": "boolean"
+												},
 												"name": {
 													"type": "string"
 												},
@@ -511,6 +514,9 @@
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
 														"readOnly": true
+													},
+													"load_balance_inner_flows": {
+														"type": "boolean"
 													},
 													"name": {
 														"type": "string"
@@ -862,6 +868,9 @@
 													"maxLength": 32,
 													"readOnly": true
 												},
+												"load_balance_inner_flows": {
+													"type": "boolean"
+												},
 												"name": {
 													"type": "string"
 												},
@@ -1094,6 +1103,20 @@
 					"schema": {
 						"type": "object",
 						"properties": {
+							"health_check_rate": {
+								"description": "Magic WAN health check rate for tunnels created on this link.",
+								"type": "string",
+								"example": "low",
+								"enum": [
+									"low",
+									"mid",
+									"high"
+								]
+							},
+							"load_balance_inner_flows": {
+								"type": "boolean",
+								"nullable": true
+							},
 							"name": {
 								"type": "string"
 							},
@@ -1268,6 +1291,9 @@
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"readOnly": true
+												},
+												"load_balance_inner_flows": {
+													"type": "boolean"
 												},
 												"name": {
 													"type": "string"
@@ -1487,6 +1513,21 @@
 					"schema": {
 						"type": "object",
 						"properties": {
+							"health_check_rate": {
+								"description": "Magic WAN health check rate for tunnels created on this link. The default value is `mid`.",
+								"type": "string",
+								"example": "low",
+								"default": "mid",
+								"enum": [
+									"low",
+									"mid",
+									"high"
+								]
+							},
+							"load_balance_inner_flows": {
+								"type": "boolean",
+								"default": true
+							},
 							"name": {
 								"type": "string"
 							},
@@ -1666,6 +1707,9 @@
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
 														"readOnly": true
+													},
+													"load_balance_inner_flows": {
+														"type": "boolean"
 													},
 													"name": {
 														"type": "string"
@@ -1893,6 +1937,20 @@
 					"schema": {
 						"type": "object",
 						"properties": {
+							"health_check_rate": {
+								"description": "Magic WAN health check rate for tunnels created on this link.",
+								"type": "string",
+								"example": "low",
+								"enum": [
+									"low",
+									"mid",
+									"high"
+								]
+							},
+							"load_balance_inner_flows": {
+								"type": "boolean",
+								"nullable": true
+							},
 							"name": {
 								"type": "string"
 							},
@@ -2067,6 +2125,9 @@
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"readOnly": true
+												},
+												"load_balance_inner_flows": {
+													"type": "boolean"
 												},
 												"name": {
 													"type": "string"

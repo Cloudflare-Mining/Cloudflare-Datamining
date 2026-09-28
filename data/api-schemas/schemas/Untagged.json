@@ -1271,10 +1271,14 @@
 		{
 			"name": "job_id",
 			"in": "path",
+			"description": "Identifier of the bulk action job.",
 			"required": true,
 			"schema": {
+				"description": "Bulk action job identifier.",
 				"type": "string",
-				"format": "uuid"
+				"format": "uuid",
+				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+				"x-auditable": true
 			}
 		}
 	],
@@ -1295,10 +1299,14 @@
 		{
 			"name": "job_id",
 			"in": "path",
+			"description": "Identifier of the bulk action job to cancel.",
 			"required": true,
 			"schema": {
+				"description": "Bulk action job identifier.",
 				"type": "string",
-				"format": "uuid"
+				"format": "uuid",
+				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+				"x-auditable": true
 			}
 		}
 	],
@@ -1319,10 +1327,14 @@
 		{
 			"name": "job_id",
 			"in": "path",
+			"description": "Identifier of the bulk action job whose messages to list.",
 			"required": true,
 			"schema": {
+				"description": "Bulk action job identifier.",
 				"type": "string",
-				"format": "uuid"
+				"format": "uuid",
+				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+				"x-auditable": true
 			}
 		}
 	],

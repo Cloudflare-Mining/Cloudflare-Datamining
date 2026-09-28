@@ -271,9 +271,8 @@
 			"Access: Mutual TLS Certificates Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.access.certificates",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.access.mtls-certificates",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/access/certificates": {
 		"operationId": "access-mtls-authentication-list-mtls-certificates",
@@ -651,9 +650,8 @@
 			"Access: Mutual TLS Certificates Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.access.certificates",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.access.mtls-certificates",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/access/certificates/{certificate_id}": {
 		"operationId": "access-mtls-authentication-get-an-mtls-certificate",
@@ -986,9 +984,8 @@
 			"Access: Mutual TLS Certificates Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.access.certificates",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.access.mtls-certificates",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/access/certificates/settings": {
 		"operationId": "access-mtls-authentication-list-mtls-certificates-hostname-settings",
@@ -1312,9 +1309,8 @@
 			"Access: Mutual TLS Certificates Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.access.certificates.settings",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.access.mtls-certificates.settings",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/access/certificates": {
 		"operationId": "access-mtls-authentication-add-an-mtls-certificate",
@@ -1671,9 +1667,8 @@
 			"Access: Mutual TLS Certificates Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.access.certificates",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.access.mtls-certificates",
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/access/certificates/{certificate_id}": {
 		"operationId": "access-mtls-authentication-update-an-mtls-certificate",
@@ -2036,9 +2031,8 @@
 			"Access: Mutual TLS Certificates Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.access.certificates",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.access.mtls-certificates",
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/access/certificates/settings": {
 		"operationId": "access-mtls-authentication-update-an-mtls-certificate-settings",
@@ -2409,8 +2403,7 @@
 			"Access: Mutual TLS Certificates Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.access.certificates.settings",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.access.mtls-certificates.settings",
+		"x-fern-sdk-method-name": "update"
 	}
 }

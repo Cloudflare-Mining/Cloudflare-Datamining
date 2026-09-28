@@ -280,9 +280,8 @@
 			"Access: Organizations, Identity Providers, and Groups Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.access.keys",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.access.signing-keys",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/access/keys/rotate": {
 		"operationId": "access-key-configuration-rotate-access-keys",
@@ -564,9 +563,8 @@
 			"Access: Organizations, Identity Providers, and Groups Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.access.keys",
-		"x-fern-sdk-method-name": "rotate",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.access.signing-keys",
+		"x-fern-sdk-method-name": "rotate"
 	},
 	"PUT /accounts/{account_id}/access/keys": {
 		"operationId": "access-key-configuration-update-the-access-key-configuration",
@@ -871,8 +869,7 @@
 			"Access: Organizations, Identity Providers, and Groups Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.access.keys",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.access.signing-keys",
+		"x-fern-sdk-method-name": "update"
 	}
 }

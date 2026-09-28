@@ -442,7 +442,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logs.datasets",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation deletes a Log Explorer dataset for the account."
 	},
 	"DELETE /zones/{zone_id}/logs/explorer/datasets/{dataset_id}": {
@@ -888,7 +887,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logs.zone.datasets",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation deletes a Log Explorer dataset for the zone."
 	},
 	"GET /accounts/{account_id}/logs/explorer/datasets": {
@@ -1236,8 +1234,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logs.datasets",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/logs/explorer/datasets/{dataset_id}": {
 		"operationId": "accounts-logs-explorer-datasets-get",
@@ -1625,8 +1622,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logs.datasets",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/logs/explorer/datasets/available": {
 		"operationId": "accounts-logs-explorer-datasets-available-list",
@@ -1938,8 +1934,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logs.datasets",
-		"x-fern-sdk-method-name": "available",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "available"
 	},
 	"GET /zones/{zone_id}/logs/explorer/datasets": {
 		"operationId": "zones-logs-explorer-datasets-list",
@@ -2278,8 +2273,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logs.zone.datasets",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/logs/explorer/datasets/{dataset_id}": {
 		"operationId": "zones-logs-explorer-datasets-get",
@@ -2667,8 +2661,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logs.zone.datasets",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/logs/explorer/datasets/available": {
 		"operationId": "zones-logs-explorer-datasets-available-list",
@@ -2980,8 +2973,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logs.zone.datasets",
-		"x-fern-sdk-method-name": "available",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "available"
 	},
 	"POST /accounts/{account_id}/logs/explorer/datasets": {
 		"operationId": "accounts-logs-explorer-datasets-create",
@@ -3468,8 +3460,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logs.datasets",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /zones/{zone_id}/logs/explorer/datasets": {
 		"operationId": "zones-logs-explorer-datasets-create",
@@ -3956,8 +3947,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logs.zone.datasets",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/logs/explorer/datasets/{dataset_id}": {
 		"operationId": "accounts-logs-explorer-datasets-update",
@@ -4403,8 +4393,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logs.datasets",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /zones/{zone_id}/logs/explorer/datasets/{dataset_id}": {
 		"operationId": "zones-logs-explorer-datasets-update",
@@ -4850,7 +4839,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logs.zone.datasets",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

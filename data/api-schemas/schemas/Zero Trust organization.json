@@ -580,9 +580,8 @@
 			"Access: Organizations, Identity Providers, and Groups Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.organizations",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.organization",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/access/organizations/doh": {
 		"operationId": "zero-trust-organization-get-your-zero-trust-organization-doh-settings",
@@ -949,9 +948,8 @@
 			"Access: Organizations, Identity Providers, and Groups Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.organizations.doh",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.organization.doh",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/access/organizations": {
 		"operationId": "zero-trust-organization-create-your-zero-trust-organization",
@@ -1789,9 +1787,8 @@
 			"Access: Organizations, Identity Providers, and Groups Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.organizations",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.organization",
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/access/organizations/revoke_user": {
 		"operationId": "zero-trust-organization-revoke-all-access-tokens-for-a-user",
@@ -2019,9 +2016,8 @@
 			"Access: Organizations, Identity Providers, and Groups Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.organizations",
-		"x-fern-sdk-method-name": "revoke-users",
-		"x-forge-hidden": true,
+		"x-fern-sdk-group-name": "zero-trust.access.users",
+		"x-fern-sdk-method-name": "revoke",
 		"x-forge-require-confirmation": "This operation revokes all access tokens for a user destructively."
 	},
 	"PUT /accounts/{account_id}/access/organizations": {
@@ -2871,9 +2867,8 @@
 			"Access: Organizations, Identity Providers, and Groups Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.organizations",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.organization",
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/access/organizations/doh": {
 		"operationId": "zero-trust-organization-update-your-zero-trust-organization-doh-settings",
@@ -3261,8 +3256,7 @@
 			"Access: Organizations, Identity Providers, and Groups Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.organizations.doh",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.organization.doh",
+		"x-fern-sdk-method-name": "update"
 	}
 }

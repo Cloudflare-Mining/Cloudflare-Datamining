@@ -109,7 +109,7 @@
 		"x-fern-sdk-group-name": "organization.member",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true,
-		"x-forge-require-confirmation": "Are you sure? This action cannot be undone."
+		"x-forge-require-confirmation": "Delete this organization membership? The member will lose access to this organization and its sub-organizations."
 	},
 	"GET /organizations/{organization_id}/members": {
 		"operationId": "Members_list",

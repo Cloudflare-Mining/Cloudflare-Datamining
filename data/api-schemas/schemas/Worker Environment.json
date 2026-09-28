@@ -182,13 +182,10 @@
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
-		"x-fern-audiences": [
-			"sdk"
-		],
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "workers.services.environments.content",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/workers/services/{service_name}/environments/{environment_name}/settings": {
 		"operationId": "worker-script-environment-get-settings",
@@ -689,13 +686,10 @@
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
-		"x-fern-audiences": [
-			"sdk"
-		],
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "workers.services.environments.settings",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/workers/services/{service_name}/environments/{environment_name}/settings": {
 		"operationId": "worker-script-environment-patch-settings",
@@ -1690,13 +1684,10 @@
 		"tags": [
 			"Worker Environment"
 		],
-		"x-fern-audiences": [
-			"sdk"
-		],
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "workers.services.environments.settings",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"PUT /accounts/{account_id}/workers/services/{service_name}/environments/{environment_name}/content": {
 		"operationId": "worker-environment-put-script-content",
@@ -2946,12 +2937,9 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
-		"x-fern-audiences": [
-			"sdk"
-		],
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "workers.services.environments.content",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

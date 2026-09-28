@@ -3520,6 +3520,7 @@
 														"readOnly": true
 													},
 													"is_regex": {
+														"description": "Whether `pattern` is a regular expression instead of a literal value.",
 														"type": "boolean",
 														"example": false,
 														"x-auditable": true
@@ -3849,6 +3850,7 @@
 													"readOnly": true
 												},
 												"is_regex": {
+													"description": "Whether `pattern` is a regular expression instead of a literal value.",
 													"type": "boolean",
 													"example": false,
 													"x-auditable": true
@@ -4264,6 +4266,7 @@
 														"readOnly": true
 													},
 													"enabled": {
+														"description": "Whether the policy is active.",
 														"type": "boolean",
 														"example": true,
 														"x-auditable": true
@@ -4292,6 +4295,7 @@
 														"readOnly": true
 													},
 													"name": {
+														"description": "Human-readable name of the policy.",
 														"type": "string",
 														"example": "Block phishing keywords",
 														"maxLength": 256,
@@ -4299,12 +4303,14 @@
 														"x-auditable": true
 													},
 													"notes": {
+														"description": "Optional note describing the purpose of the policy.",
 														"type": "string",
 														"example": "Blocks common phishing subject lines",
 														"maxLength": 4096,
 														"nullable": true
 													},
 													"pattern": {
+														"description": "Regular expression the policy matches against.",
 														"type": "string",
 														"example": "urgent.*verify.*account",
 														"maxLength": 2048,
@@ -4312,6 +4318,7 @@
 														"x-auditable": true
 													},
 													"targets": {
+														"description": "Parts of the email the pattern is matched against.",
 														"type": "array",
 														"items": {
 															"description": "The part of the email to match the pattern against.",
@@ -4590,6 +4597,7 @@
 													"readOnly": true
 												},
 												"enabled": {
+													"description": "Whether the policy is active.",
 													"type": "boolean",
 													"example": true,
 													"x-auditable": true
@@ -4618,6 +4626,7 @@
 													"readOnly": true
 												},
 												"name": {
+													"description": "Human-readable name of the policy.",
 													"type": "string",
 													"example": "Block phishing keywords",
 													"maxLength": 256,
@@ -4625,12 +4634,14 @@
 													"x-auditable": true
 												},
 												"notes": {
+													"description": "Optional note describing the purpose of the policy.",
 													"type": "string",
 													"example": "Blocks common phishing subject lines",
 													"maxLength": 4096,
 													"nullable": true
 												},
 												"pattern": {
+													"description": "Regular expression the policy matches against.",
 													"type": "string",
 													"example": "urgent.*verify.*account",
 													"maxLength": 2048,
@@ -4638,6 +4649,7 @@
 													"x-auditable": true
 												},
 												"targets": {
+													"description": "Parts of the email the pattern is matched against.",
 													"type": "array",
 													"items": {
 														"description": "The part of the email to match the pattern against.",
@@ -5128,6 +5140,7 @@
 													"drop_dispositions": {
 														"type": "array",
 														"items": {
+															"description": "The verdict Email Security assigns to a message.",
 															"type": "string",
 															"enum": [
 																"MALICIOUS",
@@ -5177,6 +5190,7 @@
 													"folder": {
 														"allOf": [
 															{
+																"description": "The mailbox folder to scan, for API-scanning domains.",
 																"type": "string",
 																"enum": [
 																	"AllItems",
@@ -5257,6 +5271,7 @@
 													"regions": {
 														"type": "array",
 														"items": {
+															"description": "The region that processes messages for this domain.",
 															"type": "string",
 															"enum": [
 																"GLOBAL",
@@ -5625,6 +5640,7 @@
 												"drop_dispositions": {
 													"type": "array",
 													"items": {
+														"description": "The verdict Email Security assigns to a message.",
 														"type": "string",
 														"enum": [
 															"MALICIOUS",
@@ -5674,6 +5690,7 @@
 												"folder": {
 													"allOf": [
 														{
+															"description": "The mailbox folder to scan, for API-scanning domains.",
 															"type": "string",
 															"enum": [
 																"AllItems",
@@ -5754,6 +5771,7 @@
 												"regions": {
 													"type": "array",
 													"items": {
+														"description": "The region that processes messages for this domain.",
 														"type": "string",
 														"enum": [
 															"GLOBAL",
@@ -6431,6 +6449,7 @@
 												"type": "object",
 												"properties": {
 													"comments": {
+														"description": "Optional note describing the entry.",
 														"type": "string",
 														"nullable": true
 													},
@@ -6446,19 +6465,23 @@
 														"readOnly": true
 													},
 													"directory_id": {
+														"description": "Identifier of the directory the entry was synced from, when directory-synced.",
 														"type": "integer",
 														"nullable": true
 													},
 													"directory_node_id": {
+														"description": "Identifier of the directory node the entry was synced from, when directory-synced.",
 														"type": "integer",
 														"nullable": true
 													},
 													"email": {
+														"description": "Email address (or pattern) of the protected identity.",
 														"type": "string",
 														"example": "john.doe@example.com",
 														"x-auditable": true
 													},
 													"external_directory_node_id": {
+														"description": "Deprecated. External identifier of the directory node.",
 														"type": "string",
 														"deprecated": true,
 														"nullable": true,
@@ -6478,6 +6501,7 @@
 														"readOnly": true
 													},
 													"is_email_regex": {
+														"description": "Whether `email` is a regular expression instead of a literal address.",
 														"type": "boolean",
 														"example": false,
 														"x-auditable": true
@@ -6508,12 +6532,14 @@
 														"readOnly": true
 													},
 													"name": {
+														"description": "Display name of the protected identity.",
 														"type": "string",
 														"example": "John Doe",
 														"maxLength": 1024,
 														"x-auditable": true
 													},
 													"provenance": {
+														"description": "Source the entry was created from.",
 														"type": "string",
 														"allOf": [
 															{
@@ -6779,6 +6805,7 @@
 											"type": "object",
 											"properties": {
 												"comments": {
+													"description": "Optional note describing the entry.",
 													"type": "string",
 													"nullable": true
 												},
@@ -6794,19 +6821,23 @@
 													"readOnly": true
 												},
 												"directory_id": {
+													"description": "Identifier of the directory the entry was synced from, when directory-synced.",
 													"type": "integer",
 													"nullable": true
 												},
 												"directory_node_id": {
+													"description": "Identifier of the directory node the entry was synced from, when directory-synced.",
 													"type": "integer",
 													"nullable": true
 												},
 												"email": {
+													"description": "Email address (or pattern) of the protected identity.",
 													"type": "string",
 													"example": "john.doe@example.com",
 													"x-auditable": true
 												},
 												"external_directory_node_id": {
+													"description": "Deprecated. External identifier of the directory node.",
 													"type": "string",
 													"deprecated": true,
 													"nullable": true,
@@ -6826,6 +6857,7 @@
 													"readOnly": true
 												},
 												"is_email_regex": {
+													"description": "Whether `email` is a regular expression instead of a literal address.",
 													"type": "boolean",
 													"example": false,
 													"x-auditable": true
@@ -6856,12 +6888,14 @@
 													"readOnly": true
 												},
 												"name": {
+													"description": "Display name of the protected identity.",
 													"type": "string",
 													"example": "John Doe",
 													"maxLength": 1024,
 													"x-auditable": true
 												},
 												"provenance": {
+													"description": "Source the entry was created from.",
 													"type": "string",
 													"allOf": [
 														{
@@ -8005,6 +8039,7 @@
 														"x-auditable": true
 													},
 													"is_regex": {
+														"description": "Whether `pattern` is a regular expression instead of a literal domain.",
 														"type": "boolean",
 														"example": false,
 														"x-auditable": true
@@ -8041,6 +8076,7 @@
 														"readOnly": true
 													},
 													"pattern": {
+														"description": "The domain pattern to trust, e.g. `example.com`.",
 														"type": "string",
 														"example": "example.com",
 														"maxLength": 1024,
@@ -8333,6 +8369,7 @@
 													"x-auditable": true
 												},
 												"is_regex": {
+													"description": "Whether `pattern` is a regular expression instead of a literal domain.",
 													"type": "boolean",
 													"example": false,
 													"x-auditable": true
@@ -8369,6 +8406,7 @@
 													"readOnly": true
 												},
 												"pattern": {
+													"description": "The domain pattern to trust, e.g. `example.com`.",
 													"type": "string",
 													"example": "example.com",
 													"maxLength": 1024,
@@ -9762,6 +9800,7 @@
 										"readOnly": true
 									},
 									"is_regex": {
+										"description": "Whether `pattern` is a regular expression instead of a literal value.",
 										"type": "boolean",
 										"example": false,
 										"x-auditable": true
@@ -9949,6 +9988,7 @@
 													"readOnly": true
 												},
 												"is_regex": {
+													"description": "Whether `pattern` is a regular expression instead of a literal value.",
 													"type": "boolean",
 													"example": false,
 													"x-auditable": true
@@ -10169,6 +10209,7 @@
 										"readOnly": true
 									},
 									"enabled": {
+										"description": "Whether the policy is active.",
 										"type": "boolean",
 										"example": true,
 										"x-auditable": true
@@ -10197,6 +10238,7 @@
 										"readOnly": true
 									},
 									"name": {
+										"description": "Human-readable name of the policy.",
 										"type": "string",
 										"example": "Block phishing keywords",
 										"maxLength": 256,
@@ -10204,12 +10246,14 @@
 										"x-auditable": true
 									},
 									"notes": {
+										"description": "Optional note describing the purpose of the policy.",
 										"type": "string",
 										"example": "Blocks common phishing subject lines",
 										"maxLength": 4096,
 										"nullable": true
 									},
 									"pattern": {
+										"description": "Regular expression the policy matches against.",
 										"type": "string",
 										"example": "urgent.*verify.*account",
 										"maxLength": 2048,
@@ -10217,6 +10261,7 @@
 										"x-auditable": true
 									},
 									"targets": {
+										"description": "Parts of the email the pattern is matched against.",
 										"type": "array",
 										"items": {
 											"description": "The part of the email to match the pattern against.",
@@ -10353,6 +10398,7 @@
 													"readOnly": true
 												},
 												"enabled": {
+													"description": "Whether the policy is active.",
 													"type": "boolean",
 													"example": true,
 													"x-auditable": true
@@ -10381,6 +10427,7 @@
 													"readOnly": true
 												},
 												"name": {
+													"description": "Human-readable name of the policy.",
 													"type": "string",
 													"example": "Block phishing keywords",
 													"maxLength": 256,
@@ -10388,12 +10435,14 @@
 													"x-auditable": true
 												},
 												"notes": {
+													"description": "Optional note describing the purpose of the policy.",
 													"type": "string",
 													"example": "Blocks common phishing subject lines",
 													"maxLength": 4096,
 													"nullable": true
 												},
 												"pattern": {
+													"description": "Regular expression the policy matches against.",
 													"type": "string",
 													"example": "urgent.*verify.*account",
 													"maxLength": 2048,
@@ -10401,6 +10450,7 @@
 													"x-auditable": true
 												},
 												"targets": {
+													"description": "Parts of the email the pattern is matched against.",
 													"type": "array",
 													"items": {
 														"description": "The part of the email to match the pattern against.",
@@ -10573,6 +10623,7 @@
 						"type": "object",
 						"properties": {
 							"allowed_delivery_modes": {
+								"description": "Delivery modes to onboard the domain through.",
 								"type": "array",
 								"items": {
 									"type": "string",
@@ -10587,8 +10638,10 @@
 								"x-stainless-collection-type": "set"
 							},
 							"drop_dispositions": {
+								"description": "Dispositions to drop instead of delivering, e.g. `[\"MALICIOUS\", \"SPAM\"]`.",
 								"type": "array",
 								"items": {
+									"description": "The verdict Email Security assigns to a message.",
 									"type": "string",
 									"enum": [
 										"MALICIOUS",
@@ -10606,8 +10659,10 @@
 								"x-stainless-collection-type": "set"
 							},
 							"folder": {
+								"description": "The mailbox folder to scan, for API-scanning domains.",
 								"allOf": [
 									{
+										"description": "The mailbox folder to scan, for API-scanning domains.",
 										"type": "string",
 										"enum": [
 											"AllItems",
@@ -10620,12 +10675,14 @@
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"integration_id": {
+								"description": "Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.",
 								"type": "string",
 								"format": "uuid",
 								"nullable": true,
 								"x-auditable": true
 							},
 							"ip_restrictions": {
+								"description": "Source IP ranges mail is accepted from. Any other source is rejected.",
 								"type": "array",
 								"items": {
 									"type": "string",
@@ -10638,6 +10695,7 @@
 								"x-stainless-collection-type": "set"
 							},
 							"lookback_hops": {
+								"description": "Number of hops to trace back through received headers when reconstructing the original message (1-20).",
 								"type": "integer",
 								"maximum": 20,
 								"minimum": 1,
@@ -10645,8 +10703,10 @@
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"regions": {
+								"description": "Regions that process messages for this domain, e.g. `[\"GLOBAL\"]` or `[\"US\"]`.",
 								"type": "array",
 								"items": {
+									"description": "The region that processes messages for this domain.",
 									"type": "string",
 									"enum": [
 										"GLOBAL",
@@ -10659,16 +10719,19 @@
 								"x-stainless-collection-type": "set"
 							},
 							"require_tls_inbound": {
+								"description": "Require TLS on inbound connections.",
 								"type": "boolean",
 								"x-auditable": true,
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"require_tls_outbound": {
+								"description": "Require TLS on outbound connections.",
 								"type": "boolean",
 								"x-auditable": true,
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"transport": {
+								"description": "The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).",
 								"type": "string",
 								"x-auditable": true
 							}
@@ -10847,6 +10910,7 @@
 												"drop_dispositions": {
 													"type": "array",
 													"items": {
+														"description": "The verdict Email Security assigns to a message.",
 														"type": "string",
 														"enum": [
 															"MALICIOUS",
@@ -10896,6 +10960,7 @@
 												"folder": {
 													"allOf": [
 														{
+															"description": "The mailbox folder to scan, for API-scanning domains.",
 															"type": "string",
 															"enum": [
 																"AllItems",
@@ -10976,6 +11041,7 @@
 												"regions": {
 													"type": "array",
 													"items": {
+														"description": "The region that processes messages for this domain.",
 														"type": "string",
 														"enum": [
 															"GLOBAL",
@@ -11184,6 +11250,7 @@
 								"type": "object",
 								"properties": {
 									"comments": {
+										"description": "Optional note describing the entry.",
 										"type": "string",
 										"nullable": true
 									},
@@ -11199,19 +11266,23 @@
 										"readOnly": true
 									},
 									"directory_id": {
+										"description": "Identifier of the directory the entry was synced from, when directory-synced.",
 										"type": "integer",
 										"nullable": true
 									},
 									"directory_node_id": {
+										"description": "Identifier of the directory node the entry was synced from, when directory-synced.",
 										"type": "integer",
 										"nullable": true
 									},
 									"email": {
+										"description": "Email address (or pattern) of the protected identity.",
 										"type": "string",
 										"example": "john.doe@example.com",
 										"x-auditable": true
 									},
 									"external_directory_node_id": {
+										"description": "Deprecated. External identifier of the directory node.",
 										"type": "string",
 										"deprecated": true,
 										"nullable": true,
@@ -11231,6 +11302,7 @@
 										"readOnly": true
 									},
 									"is_email_regex": {
+										"description": "Whether `email` is a regular expression instead of a literal address.",
 										"type": "boolean",
 										"example": false,
 										"x-auditable": true
@@ -11261,12 +11333,14 @@
 										"readOnly": true
 									},
 									"name": {
+										"description": "Display name of the protected identity.",
 										"type": "string",
 										"example": "John Doe",
 										"maxLength": 1024,
 										"x-auditable": true
 									},
 									"provenance": {
+										"description": "Source the entry was created from.",
 										"type": "string",
 										"allOf": [
 											{
@@ -11390,6 +11464,7 @@
 											"type": "object",
 											"properties": {
 												"comments": {
+													"description": "Optional note describing the entry.",
 													"type": "string",
 													"nullable": true
 												},
@@ -11405,19 +11480,23 @@
 													"readOnly": true
 												},
 												"directory_id": {
+													"description": "Identifier of the directory the entry was synced from, when directory-synced.",
 													"type": "integer",
 													"nullable": true
 												},
 												"directory_node_id": {
+													"description": "Identifier of the directory node the entry was synced from, when directory-synced.",
 													"type": "integer",
 													"nullable": true
 												},
 												"email": {
+													"description": "Email address (or pattern) of the protected identity.",
 													"type": "string",
 													"example": "john.doe@example.com",
 													"x-auditable": true
 												},
 												"external_directory_node_id": {
+													"description": "Deprecated. External identifier of the directory node.",
 													"type": "string",
 													"deprecated": true,
 													"nullable": true,
@@ -11437,6 +11516,7 @@
 													"readOnly": true
 												},
 												"is_email_regex": {
+													"description": "Whether `email` is a regular expression instead of a literal address.",
 													"type": "boolean",
 													"example": false,
 													"x-auditable": true
@@ -11467,12 +11547,14 @@
 													"readOnly": true
 												},
 												"name": {
+													"description": "Display name of the protected identity.",
 													"type": "string",
 													"example": "John Doe",
 													"maxLength": 1024,
 													"x-auditable": true
 												},
 												"provenance": {
+													"description": "Source the entry was created from.",
 													"type": "string",
 													"allOf": [
 														{
@@ -12093,6 +12175,7 @@
 										"x-auditable": true
 									},
 									"is_regex": {
+										"description": "Whether `pattern` is a regular expression instead of a literal domain.",
 										"type": "boolean",
 										"example": false,
 										"x-auditable": true
@@ -12129,6 +12212,7 @@
 										"readOnly": true
 									},
 									"pattern": {
+										"description": "The domain pattern to trust, e.g. `example.com`.",
 										"type": "string",
 										"example": "example.com",
 										"maxLength": 1024,
@@ -12279,6 +12363,7 @@
 													"x-auditable": true
 												},
 												"is_regex": {
+													"description": "Whether `pattern` is a regular expression instead of a literal domain.",
 													"type": "boolean",
 													"example": false,
 													"x-auditable": true
@@ -12315,6 +12400,7 @@
 													"readOnly": true
 												},
 												"pattern": {
+													"description": "The domain pattern to trust, e.g. `example.com`.",
 													"type": "string",
 													"example": "example.com",
 													"maxLength": 1024,
@@ -13341,7 +13427,7 @@
 	"POST /accounts/{account_id}/email-security/settings/allow_policies/batch": {
 		"operationId": "email_security_batch_allow_policies",
 		"summary": "Batch allow policy operations",
-		"description": "Executes multiple operations atomically. All four operation arrays\n(deletes, patches, puts, posts) are required and executed in order.\nSend empty arrays for unused operations.\n",
+		"description": "Executes multiple allow policy operations atomically: delete, partially update,\nreplace, and create allow policies in a single request. All four operation arrays\n(deletes, patches, puts, posts) are required and executed in order.\nSend empty arrays for unused operations.\n",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -13350,6 +13436,7 @@
 						"type": "object",
 						"properties": {
 							"deletes": {
+								"description": "IDs of the allow policies to delete.",
 								"type": "array",
 								"items": {
 									"properties": {
@@ -13369,6 +13456,7 @@
 								"maxItems": 1000
 							},
 							"patches": {
+								"description": "Partial updates to apply — each entry carries the policy's ID and only the fields to change.",
 								"type": "array",
 								"items": {
 									"allOf": [
@@ -13540,6 +13628,7 @@
 								"maxItems": 1000
 							},
 							"posts": {
+								"description": "Allow policies to create.",
 								"type": "array",
 								"items": {
 									"description": "Create an allow policy.",
@@ -13696,6 +13785,7 @@
 								"maxItems": 1000
 							},
 							"puts": {
+								"description": "Full replacements to apply — each entry carries the policy's ID and every field of its new value.",
 								"type": "array",
 								"items": {
 									"allOf": [
@@ -14615,6 +14705,7 @@
 										"readOnly": true
 									},
 									"is_regex": {
+										"description": "Whether `pattern` is a regular expression instead of a literal value.",
 										"type": "boolean",
 										"example": false,
 										"x-auditable": true
@@ -14806,6 +14897,7 @@
 													"readOnly": true
 												},
 												"is_regex": {
+													"description": "Whether `pattern` is a regular expression instead of a literal value.",
 													"type": "boolean",
 													"example": false,
 													"x-auditable": true
@@ -15002,7 +15094,7 @@
 	"POST /accounts/{account_id}/email-security/settings/block_senders/batch": {
 		"operationId": "email_security_batch_blocked_senders",
 		"summary": "Batch blocked sender operations",
-		"description": "Executes multiple operations atomically. All four operation arrays\n(deletes, patches, puts, posts) are required and executed in order.\nSend empty arrays for unused operations.\n",
+		"description": "Executes multiple blocked sender operations atomically: delete, partially update,\nreplace, and create blocked sender patterns in a single request. All four operation\narrays (deletes, patches, puts, posts) are required and executed in order.\nSend empty arrays for unused operations.\n",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -15011,6 +15103,7 @@
 						"type": "object",
 						"properties": {
 							"deletes": {
+								"description": "IDs of the blocked sender patterns to delete.",
 								"type": "array",
 								"items": {
 									"properties": {
@@ -15030,6 +15123,7 @@
 								"maxItems": 1000
 							},
 							"patches": {
+								"description": "Partial updates to apply — each entry carries the pattern's ID and only the fields to change.",
 								"type": "array",
 								"items": {
 									"allOf": [
@@ -15070,6 +15164,7 @@
 															"readOnly": true
 														},
 														"is_regex": {
+															"description": "Whether `pattern` is a regular expression instead of a literal value.",
 															"type": "boolean",
 															"example": false,
 															"x-auditable": true
@@ -15148,6 +15243,7 @@
 								"maxItems": 1000
 							},
 							"posts": {
+								"description": "Blocked sender patterns to create.",
 								"type": "array",
 								"items": {
 									"description": "Create a blocked sender pattern.",
@@ -15186,6 +15282,7 @@
 													"readOnly": true
 												},
 												"is_regex": {
+													"description": "Whether `pattern` is a regular expression instead of a literal value.",
 													"type": "boolean",
 													"example": false,
 													"x-auditable": true
@@ -15247,6 +15344,7 @@
 								"maxItems": 1000
 							},
 							"puts": {
+								"description": "Full replacements to apply — each entry carries the pattern's ID and every field of its new value.",
 								"type": "array",
 								"items": {
 									"allOf": [
@@ -15287,6 +15385,7 @@
 															"readOnly": true
 														},
 														"is_regex": {
+															"description": "Whether `pattern` is a regular expression instead of a literal value.",
 															"type": "boolean",
 															"example": false,
 															"x-auditable": true
@@ -15532,6 +15631,7 @@
 																"readOnly": true
 															},
 															"is_regex": {
+																"description": "Whether `pattern` is a regular expression instead of a literal value.",
 																"type": "boolean",
 																"example": false,
 																"x-auditable": true
@@ -15620,6 +15720,7 @@
 																"readOnly": true
 															},
 															"is_regex": {
+																"description": "Whether `pattern` is a regular expression instead of a literal value.",
 																"type": "boolean",
 																"example": false,
 																"x-auditable": true
@@ -15708,6 +15809,7 @@
 																"readOnly": true
 															},
 															"is_regex": {
+																"description": "Whether `pattern` is a regular expression instead of a literal value.",
 																"type": "boolean",
 																"example": false,
 																"x-auditable": true
@@ -15932,6 +16034,7 @@
 										"readOnly": true
 									},
 									"enabled": {
+										"description": "Whether the policy is active.",
 										"type": "boolean",
 										"example": true,
 										"x-auditable": true
@@ -15960,6 +16063,7 @@
 										"readOnly": true
 									},
 									"name": {
+										"description": "Human-readable name of the policy.",
 										"type": "string",
 										"example": "Block phishing keywords",
 										"maxLength": 256,
@@ -15967,12 +16071,14 @@
 										"x-auditable": true
 									},
 									"notes": {
+										"description": "Optional note describing the purpose of the policy.",
 										"type": "string",
 										"example": "Blocks common phishing subject lines",
 										"maxLength": 4096,
 										"nullable": true
 									},
 									"pattern": {
+										"description": "Regular expression the policy matches against.",
 										"type": "string",
 										"example": "urgent.*verify.*account",
 										"maxLength": 2048,
@@ -15980,6 +16086,7 @@
 										"x-auditable": true
 									},
 									"targets": {
+										"description": "Parts of the email the pattern is matched against.",
 										"type": "array",
 										"items": {
 											"description": "The part of the email to match the pattern against.",
@@ -16121,6 +16228,7 @@
 													"readOnly": true
 												},
 												"enabled": {
+													"description": "Whether the policy is active.",
 													"type": "boolean",
 													"example": true,
 													"x-auditable": true
@@ -16149,6 +16257,7 @@
 													"readOnly": true
 												},
 												"name": {
+													"description": "Human-readable name of the policy.",
 													"type": "string",
 													"example": "Block phishing keywords",
 													"maxLength": 256,
@@ -16156,12 +16265,14 @@
 													"x-auditable": true
 												},
 												"notes": {
+													"description": "Optional note describing the purpose of the policy.",
 													"type": "string",
 													"example": "Blocks common phishing subject lines",
 													"maxLength": 4096,
 													"nullable": true
 												},
 												"pattern": {
+													"description": "Regular expression the policy matches against.",
 													"type": "string",
 													"example": "urgent.*verify.*account",
 													"maxLength": 2048,
@@ -16169,6 +16280,7 @@
 													"x-auditable": true
 												},
 												"targets": {
+													"description": "Parts of the email the pattern is matched against.",
 													"type": "array",
 													"items": {
 														"description": "The part of the email to match the pattern against.",
@@ -16332,7 +16444,7 @@
 	"POST /accounts/{account_id}/email-security/settings/content_policies/batch": {
 		"operationId": "email_security_batch_content_policies",
 		"summary": "Batch content policy operations",
-		"description": "Executes multiple operations atomically. All four operation arrays\n(deletes, patches, puts, posts) are required and executed in order.\nSend empty arrays for unused operations.\n",
+		"description": "Executes multiple content policy operations atomically: delete, partially update,\nreplace, and create content policies in a single request. All four operation arrays\n(deletes, patches, puts, posts) are required and executed in order.\nSend empty arrays for unused operations.\n",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -16341,6 +16453,7 @@
 						"type": "object",
 						"properties": {
 							"deletes": {
+								"description": "IDs of the content policies to delete.",
 								"type": "array",
 								"items": {
 									"properties": {
@@ -16360,6 +16473,7 @@
 								"maxItems": 1000
 							},
 							"patches": {
+								"description": "Partial updates to apply — each entry carries the policy's ID and only the fields to change.",
 								"type": "array",
 								"items": {
 									"allOf": [
@@ -16382,6 +16496,7 @@
 															"readOnly": true
 														},
 														"enabled": {
+															"description": "Whether the policy is active.",
 															"type": "boolean",
 															"example": true,
 															"x-auditable": true
@@ -16410,6 +16525,7 @@
 															"readOnly": true
 														},
 														"name": {
+															"description": "Human-readable name of the policy.",
 															"type": "string",
 															"example": "Block phishing keywords",
 															"maxLength": 256,
@@ -16417,12 +16533,14 @@
 															"x-auditable": true
 														},
 														"notes": {
+															"description": "Optional note describing the purpose of the policy.",
 															"type": "string",
 															"example": "Blocks common phishing subject lines",
 															"maxLength": 4096,
 															"nullable": true
 														},
 														"pattern": {
+															"description": "Regular expression the policy matches against.",
 															"type": "string",
 															"example": "urgent.*verify.*account",
 															"maxLength": 2048,
@@ -16430,6 +16548,7 @@
 															"x-auditable": true
 														},
 														"targets": {
+															"description": "Parts of the email the pattern is matched against.",
 															"type": "array",
 															"items": {
 																"description": "The part of the email to match the pattern against.",
@@ -16475,6 +16594,7 @@
 								"maxItems": 1000
 							},
 							"posts": {
+								"description": "Content policies to create.",
 								"type": "array",
 								"items": {
 									"description": "Create a content policy.",
@@ -16495,6 +16615,7 @@
 													"readOnly": true
 												},
 												"enabled": {
+													"description": "Whether the policy is active.",
 													"type": "boolean",
 													"example": true,
 													"x-auditable": true
@@ -16523,6 +16644,7 @@
 													"readOnly": true
 												},
 												"name": {
+													"description": "Human-readable name of the policy.",
 													"type": "string",
 													"example": "Block phishing keywords",
 													"maxLength": 256,
@@ -16530,12 +16652,14 @@
 													"x-auditable": true
 												},
 												"notes": {
+													"description": "Optional note describing the purpose of the policy.",
 													"type": "string",
 													"example": "Blocks common phishing subject lines",
 													"maxLength": 4096,
 													"nullable": true
 												},
 												"pattern": {
+													"description": "Regular expression the policy matches against.",
 													"type": "string",
 													"example": "urgent.*verify.*account",
 													"maxLength": 2048,
@@ -16543,6 +16667,7 @@
 													"x-auditable": true
 												},
 												"targets": {
+													"description": "Parts of the email the pattern is matched against.",
 													"type": "array",
 													"items": {
 														"description": "The part of the email to match the pattern against.",
@@ -16572,6 +16697,7 @@
 								"maxItems": 1000
 							},
 							"puts": {
+								"description": "Full replacements to apply — each entry carries the policy's ID and every field of its new value.",
 								"type": "array",
 								"items": {
 									"allOf": [
@@ -16594,6 +16720,7 @@
 															"readOnly": true
 														},
 														"enabled": {
+															"description": "Whether the policy is active.",
 															"type": "boolean",
 															"example": true,
 															"x-auditable": true
@@ -16622,6 +16749,7 @@
 															"readOnly": true
 														},
 														"name": {
+															"description": "Human-readable name of the policy.",
 															"type": "string",
 															"example": "Block phishing keywords",
 															"maxLength": 256,
@@ -16629,12 +16757,14 @@
 															"x-auditable": true
 														},
 														"notes": {
+															"description": "Optional note describing the purpose of the policy.",
 															"type": "string",
 															"example": "Blocks common phishing subject lines",
 															"maxLength": 4096,
 															"nullable": true
 														},
 														"pattern": {
+															"description": "Regular expression the policy matches against.",
 															"type": "string",
 															"example": "urgent.*verify.*account",
 															"maxLength": 2048,
@@ -16642,6 +16772,7 @@
 															"x-auditable": true
 														},
 														"targets": {
+															"description": "Parts of the email the pattern is matched against.",
 															"type": "array",
 															"items": {
 																"description": "The part of the email to match the pattern against.",
@@ -16837,6 +16968,7 @@
 																"readOnly": true
 															},
 															"enabled": {
+																"description": "Whether the policy is active.",
 																"type": "boolean",
 																"example": true,
 																"x-auditable": true
@@ -16865,6 +16997,7 @@
 																"readOnly": true
 															},
 															"name": {
+																"description": "Human-readable name of the policy.",
 																"type": "string",
 																"example": "Block phishing keywords",
 																"maxLength": 256,
@@ -16872,12 +17005,14 @@
 																"x-auditable": true
 															},
 															"notes": {
+																"description": "Optional note describing the purpose of the policy.",
 																"type": "string",
 																"example": "Blocks common phishing subject lines",
 																"maxLength": 4096,
 																"nullable": true
 															},
 															"pattern": {
+																"description": "Regular expression the policy matches against.",
 																"type": "string",
 																"example": "urgent.*verify.*account",
 																"maxLength": 2048,
@@ -16885,6 +17020,7 @@
 																"x-auditable": true
 															},
 															"targets": {
+																"description": "Parts of the email the pattern is matched against.",
 																"type": "array",
 																"items": {
 																	"description": "The part of the email to match the pattern against.",
@@ -16922,6 +17058,7 @@
 																"readOnly": true
 															},
 															"enabled": {
+																"description": "Whether the policy is active.",
 																"type": "boolean",
 																"example": true,
 																"x-auditable": true
@@ -16950,6 +17087,7 @@
 																"readOnly": true
 															},
 															"name": {
+																"description": "Human-readable name of the policy.",
 																"type": "string",
 																"example": "Block phishing keywords",
 																"maxLength": 256,
@@ -16957,12 +17095,14 @@
 																"x-auditable": true
 															},
 															"notes": {
+																"description": "Optional note describing the purpose of the policy.",
 																"type": "string",
 																"example": "Blocks common phishing subject lines",
 																"maxLength": 4096,
 																"nullable": true
 															},
 															"pattern": {
+																"description": "Regular expression the policy matches against.",
 																"type": "string",
 																"example": "urgent.*verify.*account",
 																"maxLength": 2048,
@@ -16970,6 +17110,7 @@
 																"x-auditable": true
 															},
 															"targets": {
+																"description": "Parts of the email the pattern is matched against.",
 																"type": "array",
 																"items": {
 																	"description": "The part of the email to match the pattern against.",
@@ -17007,6 +17148,7 @@
 																"readOnly": true
 															},
 															"enabled": {
+																"description": "Whether the policy is active.",
 																"type": "boolean",
 																"example": true,
 																"x-auditable": true
@@ -17035,6 +17177,7 @@
 																"readOnly": true
 															},
 															"name": {
+																"description": "Human-readable name of the policy.",
 																"type": "string",
 																"example": "Block phishing keywords",
 																"maxLength": 256,
@@ -17042,12 +17185,14 @@
 																"x-auditable": true
 															},
 															"notes": {
+																"description": "Optional note describing the purpose of the policy.",
 																"type": "string",
 																"example": "Blocks common phishing subject lines",
 																"maxLength": 4096,
 																"nullable": true
 															},
 															"pattern": {
+																"description": "Regular expression the policy matches against.",
 																"type": "string",
 																"example": "urgent.*verify.*account",
 																"maxLength": 2048,
@@ -17055,6 +17200,7 @@
 																"x-auditable": true
 															},
 															"targets": {
+																"description": "Parts of the email the pattern is matched against.",
 																"type": "array",
 																"items": {
 																	"description": "The part of the email to match the pattern against.",
@@ -17231,6 +17377,7 @@
 						"type": "object",
 						"properties": {
 							"allowed_delivery_modes": {
+								"description": "Delivery modes to onboard the domain through.",
 								"type": "array",
 								"items": {
 									"type": "string",
@@ -17247,12 +17394,15 @@
 								"x-stainless-collection-type": "set"
 							},
 							"domain": {
+								"description": "The email domain to protect.",
 								"type": "string",
 								"x-auditable": true
 							},
 							"drop_dispositions": {
+								"description": "Dispositions to drop instead of delivering, e.g. `[\"MALICIOUS\", \"SPAM\"]`.",
 								"type": "array",
 								"items": {
+									"description": "The verdict Email Security assigns to a message.",
 									"type": "string",
 									"enum": [
 										"MALICIOUS",
@@ -17271,8 +17421,10 @@
 								"x-stainless-collection-type": "set"
 							},
 							"folder": {
+								"description": "The mailbox folder to scan, for API-scanning domains.",
 								"allOf": [
 									{
+										"description": "The mailbox folder to scan, for API-scanning domains.",
 										"type": "string",
 										"enum": [
 											"AllItems",
@@ -17285,12 +17437,14 @@
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"integration_id": {
+								"description": "Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.",
 								"type": "string",
 								"format": "uuid",
 								"nullable": true,
 								"x-auditable": true
 							},
 							"ip_restrictions": {
+								"description": "Source IP ranges mail is accepted from. Any other source is rejected.",
 								"type": "array",
 								"items": {
 									"type": "string",
@@ -17304,6 +17458,7 @@
 								"x-stainless-collection-type": "set"
 							},
 							"lookback_hops": {
+								"description": "Number of hops to trace back through received headers when reconstructing the original message (1-20).",
 								"type": "integer",
 								"maximum": 20,
 								"minimum": 1,
@@ -17312,8 +17467,10 @@
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"regions": {
+								"description": "Regions that process messages for this domain, e.g. `[\"GLOBAL\"]` or `[\"US\"]`.",
 								"type": "array",
 								"items": {
+									"description": "The region that processes messages for this domain.",
 									"type": "string",
 									"enum": [
 										"GLOBAL",
@@ -17328,18 +17485,21 @@
 								"x-stainless-collection-type": "set"
 							},
 							"require_tls_inbound": {
+								"description": "Require TLS on inbound connections.",
 								"type": "boolean",
 								"nullable": true,
 								"x-auditable": true,
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"require_tls_outbound": {
+								"description": "Require TLS on outbound connections.",
 								"type": "boolean",
 								"nullable": true,
 								"x-auditable": true,
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"transport": {
+								"description": "The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).",
 								"type": "string",
 								"nullable": true,
 								"x-auditable": true
@@ -17527,6 +17687,7 @@
 												"drop_dispositions": {
 													"type": "array",
 													"items": {
+														"description": "The verdict Email Security assigns to a message.",
 														"type": "string",
 														"enum": [
 															"MALICIOUS",
@@ -17576,6 +17737,7 @@
 												"folder": {
 													"allOf": [
 														{
+															"description": "The mailbox folder to scan, for API-scanning domains.",
 															"type": "string",
 															"enum": [
 																"AllItems",
@@ -17656,6 +17818,7 @@
 												"regions": {
 													"type": "array",
 													"items": {
+														"description": "The region that processes messages for this domain.",
 														"type": "string",
 														"enum": [
 															"GLOBAL",
@@ -17860,6 +18023,7 @@
 						"type": "object",
 						"properties": {
 							"deletes": {
+								"description": "IDs of the domains to remove protection from.",
 								"type": "array",
 								"items": {
 									"properties": {
@@ -17879,6 +18043,7 @@
 								"maxItems": 1000
 							},
 							"patches": {
+								"description": "Partial updates to apply — each entry carries the domain's ID and only the fields to change.",
 								"type": "array",
 								"items": {
 									"allOf": [
@@ -17886,6 +18051,7 @@
 											"type": "object",
 											"properties": {
 												"allowed_delivery_modes": {
+													"description": "Delivery modes to onboard the domain through.",
 													"type": "array",
 													"items": {
 														"type": "string",
@@ -17900,8 +18066,10 @@
 													"x-stainless-collection-type": "set"
 												},
 												"drop_dispositions": {
+													"description": "Dispositions to drop instead of delivering, e.g. `[\"MALICIOUS\", \"SPAM\"]`.",
 													"type": "array",
 													"items": {
+														"description": "The verdict Email Security assigns to a message.",
 														"type": "string",
 														"enum": [
 															"MALICIOUS",
@@ -17919,8 +18087,10 @@
 													"x-stainless-collection-type": "set"
 												},
 												"folder": {
+													"description": "The mailbox folder to scan, for API-scanning domains.",
 													"allOf": [
 														{
+															"description": "The mailbox folder to scan, for API-scanning domains.",
 															"type": "string",
 															"enum": [
 																"AllItems",
@@ -17933,12 +18103,14 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"integration_id": {
+													"description": "Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.",
 													"type": "string",
 													"format": "uuid",
 													"nullable": true,
 													"x-auditable": true
 												},
 												"ip_restrictions": {
+													"description": "Source IP ranges mail is accepted from. Any other source is rejected.",
 													"type": "array",
 													"items": {
 														"type": "string",
@@ -17951,6 +18123,7 @@
 													"x-stainless-collection-type": "set"
 												},
 												"lookback_hops": {
+													"description": "Number of hops to trace back through received headers when reconstructing the original message (1-20).",
 													"type": "integer",
 													"maximum": 20,
 													"minimum": 1,
@@ -17958,8 +18131,10 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"regions": {
+													"description": "Regions that process messages for this domain, e.g. `[\"GLOBAL\"]` or `[\"US\"]`.",
 													"type": "array",
 													"items": {
+														"description": "The region that processes messages for this domain.",
 														"type": "string",
 														"enum": [
 															"GLOBAL",
@@ -17972,16 +18147,19 @@
 													"x-stainless-collection-type": "set"
 												},
 												"require_tls_inbound": {
+													"description": "Require TLS on inbound connections.",
 													"type": "boolean",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"require_tls_outbound": {
+													"description": "Require TLS on outbound connections.",
 													"type": "boolean",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"transport": {
+													"description": "The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).",
 													"type": "string",
 													"x-auditable": true
 												}
@@ -18007,11 +18185,13 @@
 								"maxItems": 1000
 							},
 							"posts": {
+								"description": "Domains to add protection for.",
 								"type": "array",
 								"items": {
 									"type": "object",
 									"properties": {
 										"allowed_delivery_modes": {
+											"description": "Delivery modes to onboard the domain through.",
 											"type": "array",
 											"items": {
 												"type": "string",
@@ -18028,12 +18208,15 @@
 											"x-stainless-collection-type": "set"
 										},
 										"domain": {
+											"description": "The email domain to protect.",
 											"type": "string",
 											"x-auditable": true
 										},
 										"drop_dispositions": {
+											"description": "Dispositions to drop instead of delivering, e.g. `[\"MALICIOUS\", \"SPAM\"]`.",
 											"type": "array",
 											"items": {
+												"description": "The verdict Email Security assigns to a message.",
 												"type": "string",
 												"enum": [
 													"MALICIOUS",
@@ -18052,8 +18235,10 @@
 											"x-stainless-collection-type": "set"
 										},
 										"folder": {
+											"description": "The mailbox folder to scan, for API-scanning domains.",
 											"allOf": [
 												{
+													"description": "The mailbox folder to scan, for API-scanning domains.",
 													"type": "string",
 													"enum": [
 														"AllItems",
@@ -18066,12 +18251,14 @@
 											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"integration_id": {
+											"description": "Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.",
 											"type": "string",
 											"format": "uuid",
 											"nullable": true,
 											"x-auditable": true
 										},
 										"ip_restrictions": {
+											"description": "Source IP ranges mail is accepted from. Any other source is rejected.",
 											"type": "array",
 											"items": {
 												"type": "string",
@@ -18085,6 +18272,7 @@
 											"x-stainless-collection-type": "set"
 										},
 										"lookback_hops": {
+											"description": "Number of hops to trace back through received headers when reconstructing the original message (1-20).",
 											"type": "integer",
 											"maximum": 20,
 											"minimum": 1,
@@ -18093,8 +18281,10 @@
 											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"regions": {
+											"description": "Regions that process messages for this domain, e.g. `[\"GLOBAL\"]` or `[\"US\"]`.",
 											"type": "array",
 											"items": {
+												"description": "The region that processes messages for this domain.",
 												"type": "string",
 												"enum": [
 													"GLOBAL",
@@ -18109,18 +18299,21 @@
 											"x-stainless-collection-type": "set"
 										},
 										"require_tls_inbound": {
+											"description": "Require TLS on inbound connections.",
 											"type": "boolean",
 											"nullable": true,
 											"x-auditable": true,
 											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"require_tls_outbound": {
+											"description": "Require TLS on outbound connections.",
 											"type": "boolean",
 											"nullable": true,
 											"x-auditable": true,
 											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"transport": {
+											"description": "The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).",
 											"type": "string",
 											"nullable": true,
 											"x-auditable": true
@@ -18138,6 +18331,7 @@
 								"maxItems": 1000
 							},
 							"puts": {
+								"description": "Full replacements to apply — each entry carries the domain's ID and every field of its new value.",
 								"type": "array",
 								"items": {
 									"allOf": [
@@ -18146,6 +18340,7 @@
 											"type": "object",
 											"properties": {
 												"allowed_delivery_modes": {
+													"description": "Delivery modes to onboard the domain through.",
 													"type": "array",
 													"items": {
 														"type": "string",
@@ -18162,8 +18357,10 @@
 													"x-stainless-collection-type": "set"
 												},
 												"drop_dispositions": {
+													"description": "Dispositions to drop instead of delivering, e.g. `[\"MALICIOUS\", \"SPAM\"]`.",
 													"type": "array",
 													"items": {
+														"description": "The verdict Email Security assigns to a message.",
 														"type": "string",
 														"enum": [
 															"MALICIOUS",
@@ -18182,8 +18379,10 @@
 													"x-stainless-collection-type": "set"
 												},
 												"folder": {
+													"description": "The mailbox folder to scan, for API-scanning domains.",
 													"allOf": [
 														{
+															"description": "The mailbox folder to scan, for API-scanning domains.",
 															"type": "string",
 															"enum": [
 																"AllItems",
@@ -18196,12 +18395,14 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"integration_id": {
+													"description": "Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.",
 													"type": "string",
 													"format": "uuid",
 													"nullable": true,
 													"x-auditable": true
 												},
 												"ip_restrictions": {
+													"description": "Source IP ranges mail is accepted from. Any other source is rejected.",
 													"type": "array",
 													"items": {
 														"type": "string",
@@ -18215,6 +18416,7 @@
 													"x-stainless-collection-type": "set"
 												},
 												"lookback_hops": {
+													"description": "Number of hops to trace back through received headers when reconstructing the original message (1-20).",
 													"type": "integer",
 													"maximum": 20,
 													"minimum": 1,
@@ -18223,8 +18425,10 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"regions": {
+													"description": "Regions that process messages for this domain, e.g. `[\"GLOBAL\"]` or `[\"US\"]`.",
 													"type": "array",
 													"items": {
+														"description": "The region that processes messages for this domain.",
 														"type": "string",
 														"enum": [
 															"GLOBAL",
@@ -18239,18 +18443,21 @@
 													"x-stainless-collection-type": "set"
 												},
 												"require_tls_inbound": {
+													"description": "Require TLS on inbound connections.",
 													"type": "boolean",
 													"nullable": true,
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"require_tls_outbound": {
+													"description": "Require TLS on outbound connections.",
 													"type": "boolean",
 													"nullable": true,
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"transport": {
+													"description": "The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).",
 													"type": "string",
 													"nullable": true,
 													"x-auditable": true
@@ -18486,6 +18693,7 @@
 															"drop_dispositions": {
 																"type": "array",
 																"items": {
+																	"description": "The verdict Email Security assigns to a message.",
 																	"type": "string",
 																	"enum": [
 																		"MALICIOUS",
@@ -18535,6 +18743,7 @@
 															"folder": {
 																"allOf": [
 																	{
+																		"description": "The mailbox folder to scan, for API-scanning domains.",
 																		"type": "string",
 																		"enum": [
 																			"AllItems",
@@ -18615,6 +18824,7 @@
 															"regions": {
 																"type": "array",
 																"items": {
+																	"description": "The region that processes messages for this domain.",
 																	"type": "string",
 																	"enum": [
 																		"GLOBAL",
@@ -18742,6 +18952,7 @@
 															"drop_dispositions": {
 																"type": "array",
 																"items": {
+																	"description": "The verdict Email Security assigns to a message.",
 																	"type": "string",
 																	"enum": [
 																		"MALICIOUS",
@@ -18791,6 +19002,7 @@
 															"folder": {
 																"allOf": [
 																	{
+																		"description": "The mailbox folder to scan, for API-scanning domains.",
 																		"type": "string",
 																		"enum": [
 																			"AllItems",
@@ -18871,6 +19083,7 @@
 															"regions": {
 																"type": "array",
 																"items": {
+																	"description": "The region that processes messages for this domain.",
 																	"type": "string",
 																	"enum": [
 																		"GLOBAL",
@@ -18998,6 +19211,7 @@
 															"drop_dispositions": {
 																"type": "array",
 																"items": {
+																	"description": "The verdict Email Security assigns to a message.",
 																	"type": "string",
 																	"enum": [
 																		"MALICIOUS",
@@ -19047,6 +19261,7 @@
 															"folder": {
 																"allOf": [
 																	{
+																		"description": "The mailbox folder to scan, for API-scanning domains.",
 																		"type": "string",
 																		"enum": [
 																			"AllItems",
@@ -19127,6 +19342,7 @@
 															"regions": {
 																"type": "array",
 																"items": {
+																	"description": "The region that processes messages for this domain.",
 																	"type": "string",
 																	"enum": [
 																		"GLOBAL",
@@ -19345,6 +19561,7 @@
 								"type": "object",
 								"properties": {
 									"comments": {
+										"description": "Optional note describing the entry.",
 										"type": "string",
 										"nullable": true
 									},
@@ -19360,19 +19577,23 @@
 										"readOnly": true
 									},
 									"directory_id": {
+										"description": "Identifier of the directory the entry was synced from, when directory-synced.",
 										"type": "integer",
 										"nullable": true
 									},
 									"directory_node_id": {
+										"description": "Identifier of the directory node the entry was synced from, when directory-synced.",
 										"type": "integer",
 										"nullable": true
 									},
 									"email": {
+										"description": "Email address (or pattern) of the protected identity.",
 										"type": "string",
 										"example": "john.doe@example.com",
 										"x-auditable": true
 									},
 									"external_directory_node_id": {
+										"description": "Deprecated. External identifier of the directory node.",
 										"type": "string",
 										"deprecated": true,
 										"nullable": true,
@@ -19392,6 +19613,7 @@
 										"readOnly": true
 									},
 									"is_email_regex": {
+										"description": "Whether `email` is a regular expression instead of a literal address.",
 										"type": "boolean",
 										"example": false,
 										"x-auditable": true
@@ -19422,12 +19644,14 @@
 										"readOnly": true
 									},
 									"name": {
+										"description": "Display name of the protected identity.",
 										"type": "string",
 										"example": "John Doe",
 										"maxLength": 1024,
 										"x-auditable": true
 									},
 									"provenance": {
+										"description": "Source the entry was created from.",
 										"type": "string",
 										"allOf": [
 											{
@@ -19555,6 +19779,7 @@
 											"type": "object",
 											"properties": {
 												"comments": {
+													"description": "Optional note describing the entry.",
 													"type": "string",
 													"nullable": true
 												},
@@ -19570,19 +19795,23 @@
 													"readOnly": true
 												},
 												"directory_id": {
+													"description": "Identifier of the directory the entry was synced from, when directory-synced.",
 													"type": "integer",
 													"nullable": true
 												},
 												"directory_node_id": {
+													"description": "Identifier of the directory node the entry was synced from, when directory-synced.",
 													"type": "integer",
 													"nullable": true
 												},
 												"email": {
+													"description": "Email address (or pattern) of the protected identity.",
 													"type": "string",
 													"example": "john.doe@example.com",
 													"x-auditable": true
 												},
 												"external_directory_node_id": {
+													"description": "Deprecated. External identifier of the directory node.",
 													"type": "string",
 													"deprecated": true,
 													"nullable": true,
@@ -19602,6 +19831,7 @@
 													"readOnly": true
 												},
 												"is_email_regex": {
+													"description": "Whether `email` is a regular expression instead of a literal address.",
 													"type": "boolean",
 													"example": false,
 													"x-auditable": true
@@ -19632,12 +19862,14 @@
 													"readOnly": true
 												},
 												"name": {
+													"description": "Display name of the protected identity.",
 													"type": "string",
 													"example": "John Doe",
 													"maxLength": 1024,
 													"x-auditable": true
 												},
 												"provenance": {
+													"description": "Source the entry was created from.",
 													"type": "string",
 													"allOf": [
 														{
@@ -20222,6 +20454,7 @@
 						"type": "object",
 						"properties": {
 							"deletes": {
+								"description": "IDs of the sending domain restrictions to delete.",
 								"type": "array",
 								"items": {
 									"properties": {
@@ -20567,6 +20800,7 @@
 										"x-auditable": true
 									},
 									"is_regex": {
+										"description": "Whether `pattern` is a regular expression instead of a literal domain.",
 										"type": "boolean",
 										"example": false,
 										"x-auditable": true
@@ -20603,6 +20837,7 @@
 										"readOnly": true
 									},
 									"pattern": {
+										"description": "The domain pattern to trust, e.g. `example.com`.",
 										"type": "string",
 										"example": "example.com",
 										"maxLength": 1024,
@@ -20758,6 +20993,7 @@
 													"x-auditable": true
 												},
 												"is_regex": {
+													"description": "Whether `pattern` is a regular expression instead of a literal domain.",
 													"type": "boolean",
 													"example": false,
 													"x-auditable": true
@@ -20794,6 +21030,7 @@
 													"readOnly": true
 												},
 												"pattern": {
+													"description": "The domain pattern to trust, e.g. `example.com`.",
 													"type": "string",
 													"example": "example.com",
 													"maxLength": 1024,
@@ -20947,7 +21184,7 @@
 	"POST /accounts/{account_id}/email-security/settings/trusted_domains/batch": {
 		"operationId": "email_security_batch_trusted_domains",
 		"summary": "Batch trusted domain operations",
-		"description": "Executes multiple operations atomically. All four operation arrays\n(deletes, patches, puts, posts) are required and executed in order.\nSend empty arrays for unused operations.\n",
+		"description": "Executes multiple trusted domain operations atomically: delete, partially update,\nreplace, and create trusted domain patterns in a single request. All four operation\narrays (deletes, patches, puts, posts) are required and executed in order.\nSend empty arrays for unused operations.\n",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -20956,6 +21193,7 @@
 						"type": "object",
 						"properties": {
 							"deletes": {
+								"description": "IDs of the trusted domain patterns to delete.",
 								"type": "array",
 								"items": {
 									"properties": {
@@ -20975,6 +21213,7 @@
 								"maxItems": 1000
 							},
 							"patches": {
+								"description": "Partial updates to apply — each entry carries the pattern's ID and only the fields to change.",
 								"type": "array",
 								"items": {
 									"allOf": [
@@ -21021,6 +21260,7 @@
 															"x-auditable": true
 														},
 														"is_regex": {
+															"description": "Whether `pattern` is a regular expression instead of a literal domain.",
 															"type": "boolean",
 															"example": false,
 															"x-auditable": true
@@ -21057,6 +21297,7 @@
 															"readOnly": true
 														},
 														"pattern": {
+															"description": "The domain pattern to trust, e.g. `example.com`.",
 															"type": "string",
 															"example": "example.com",
 															"maxLength": 1024,
@@ -21092,6 +21333,7 @@
 								"maxItems": 1000
 							},
 							"posts": {
+								"description": "Trusted domain patterns to create.",
 								"type": "array",
 								"items": {
 									"description": "Create a trusted domain.",
@@ -21136,6 +21378,7 @@
 													"x-auditable": true
 												},
 												"is_regex": {
+													"description": "Whether `pattern` is a regular expression instead of a literal domain.",
 													"type": "boolean",
 													"example": false,
 													"x-auditable": true
@@ -21172,6 +21415,7 @@
 													"readOnly": true
 												},
 												"pattern": {
+													"description": "The domain pattern to trust, e.g. `example.com`.",
 													"type": "string",
 													"example": "example.com",
 													"maxLength": 1024,
@@ -21191,6 +21435,7 @@
 								"maxItems": 1000
 							},
 							"puts": {
+								"description": "Full replacements to apply — each entry carries the pattern's ID and every field of its new value.",
 								"type": "array",
 								"items": {
 									"allOf": [
@@ -21237,6 +21482,7 @@
 															"x-auditable": true
 														},
 														"is_regex": {
+															"description": "Whether `pattern` is a regular expression instead of a literal domain.",
 															"type": "boolean",
 															"example": false,
 															"x-auditable": true
@@ -21273,6 +21519,7 @@
 															"readOnly": true
 														},
 														"pattern": {
+															"description": "The domain pattern to trust, e.g. `example.com`.",
 															"type": "string",
 															"example": "example.com",
 															"maxLength": 1024,
@@ -21482,6 +21729,7 @@
 																"x-auditable": true
 															},
 															"is_regex": {
+																"description": "Whether `pattern` is a regular expression instead of a literal domain.",
 																"type": "boolean",
 																"example": false,
 																"x-auditable": true
@@ -21518,6 +21766,7 @@
 																"readOnly": true
 															},
 															"pattern": {
+																"description": "The domain pattern to trust, e.g. `example.com`.",
 																"type": "string",
 																"example": "example.com",
 																"maxLength": 1024,
@@ -21569,6 +21818,7 @@
 																"x-auditable": true
 															},
 															"is_regex": {
+																"description": "Whether `pattern` is a regular expression instead of a literal domain.",
 																"type": "boolean",
 																"example": false,
 																"x-auditable": true
@@ -21605,6 +21855,7 @@
 																"readOnly": true
 															},
 															"pattern": {
+																"description": "The domain pattern to trust, e.g. `example.com`.",
 																"type": "string",
 																"example": "example.com",
 																"maxLength": 1024,
@@ -21656,6 +21907,7 @@
 																"x-auditable": true
 															},
 															"is_regex": {
+																"description": "Whether `pattern` is a regular expression instead of a literal domain.",
 																"type": "boolean",
 																"example": false,
 																"x-auditable": true
@@ -21692,6 +21944,7 @@
 																"readOnly": true
 															},
 															"pattern": {
+																"description": "The domain pattern to trust, e.g. `example.com`.",
 																"type": "string",
 																"example": "example.com",
 																"maxLength": 1024,
@@ -22194,6 +22447,7 @@
 						"type": "object",
 						"properties": {
 							"deletes": {
+								"description": "IDs of the URL ignore patterns to delete.",
 								"type": "array",
 								"items": {
 									"properties": {
@@ -22214,6 +22468,7 @@
 								"maxItems": 1000
 							},
 							"patches": {
+								"description": "Partial updates to apply — each entry carries the pattern's ID and only the fields to change.",
 								"type": "array",
 								"items": {
 									"allOf": [
@@ -22266,6 +22521,7 @@
 								"maxItems": 1000
 							},
 							"posts": {
+								"description": "URL ignore patterns to create.",
 								"type": "array",
 								"items": {
 									"description": "Creates a URL ignore pattern that exempts matching URLs from rewriting.",
@@ -22296,6 +22552,7 @@
 								"maxItems": 1000
 							},
 							"puts": {
+								"description": "Full replacements to apply — each entry carries the pattern's ID and every field of its new value.",
 								"type": "array",
 								"items": {
 									"allOf": [
@@ -23400,6 +23657,7 @@
 										"readOnly": true
 									},
 									"is_regex": {
+										"description": "Whether `pattern` is a regular expression instead of a literal value.",
 										"type": "boolean",
 										"example": false,
 										"x-auditable": true
@@ -23591,6 +23849,7 @@
 													"readOnly": true
 												},
 												"is_regex": {
+													"description": "Whether `pattern` is a regular expression instead of a literal value.",
 													"type": "boolean",
 													"example": false,
 													"x-auditable": true
@@ -23794,6 +24053,7 @@
 						"type": "object",
 						"properties": {
 							"allowed_delivery_modes": {
+								"description": "Delivery modes to onboard the domain through.",
 								"type": "array",
 								"items": {
 									"type": "string",
@@ -23810,8 +24070,10 @@
 								"x-stainless-collection-type": "set"
 							},
 							"drop_dispositions": {
+								"description": "Dispositions to drop instead of delivering, e.g. `[\"MALICIOUS\", \"SPAM\"]`.",
 								"type": "array",
 								"items": {
+									"description": "The verdict Email Security assigns to a message.",
 									"type": "string",
 									"enum": [
 										"MALICIOUS",
@@ -23830,8 +24092,10 @@
 								"x-stainless-collection-type": "set"
 							},
 							"folder": {
+								"description": "The mailbox folder to scan, for API-scanning domains.",
 								"allOf": [
 									{
+										"description": "The mailbox folder to scan, for API-scanning domains.",
 										"type": "string",
 										"enum": [
 											"AllItems",
@@ -23844,12 +24108,14 @@
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"integration_id": {
+								"description": "Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.",
 								"type": "string",
 								"format": "uuid",
 								"nullable": true,
 								"x-auditable": true
 							},
 							"ip_restrictions": {
+								"description": "Source IP ranges mail is accepted from. Any other source is rejected.",
 								"type": "array",
 								"items": {
 									"type": "string",
@@ -23863,6 +24129,7 @@
 								"x-stainless-collection-type": "set"
 							},
 							"lookback_hops": {
+								"description": "Number of hops to trace back through received headers when reconstructing the original message (1-20).",
 								"type": "integer",
 								"maximum": 20,
 								"minimum": 1,
@@ -23871,8 +24138,10 @@
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"regions": {
+								"description": "Regions that process messages for this domain, e.g. `[\"GLOBAL\"]` or `[\"US\"]`.",
 								"type": "array",
 								"items": {
+									"description": "The region that processes messages for this domain.",
 									"type": "string",
 									"enum": [
 										"GLOBAL",
@@ -23887,18 +24156,21 @@
 								"x-stainless-collection-type": "set"
 							},
 							"require_tls_inbound": {
+								"description": "Require TLS on inbound connections.",
 								"type": "boolean",
 								"nullable": true,
 								"x-auditable": true,
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"require_tls_outbound": {
+								"description": "Require TLS on outbound connections.",
 								"type": "boolean",
 								"nullable": true,
 								"x-auditable": true,
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"transport": {
+								"description": "The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).",
 								"type": "string",
 								"nullable": true,
 								"x-auditable": true
@@ -24084,6 +24356,7 @@
 												"drop_dispositions": {
 													"type": "array",
 													"items": {
+														"description": "The verdict Email Security assigns to a message.",
 														"type": "string",
 														"enum": [
 															"MALICIOUS",
@@ -24133,6 +24406,7 @@
 												"folder": {
 													"allOf": [
 														{
+															"description": "The mailbox folder to scan, for API-scanning domains.",
 															"type": "string",
 															"enum": [
 																"AllItems",
@@ -24213,6 +24487,7 @@
 												"regions": {
 													"type": "array",
 													"items": {
+														"description": "The region that processes messages for this domain.",
 														"type": "string",
 														"enum": [
 															"GLOBAL",
@@ -24453,6 +24728,7 @@
 										"x-auditable": true
 									},
 									"is_regex": {
+										"description": "Whether `pattern` is a regular expression instead of a literal domain.",
 										"type": "boolean",
 										"example": false,
 										"x-auditable": true
@@ -24489,6 +24765,7 @@
 										"readOnly": true
 									},
 									"pattern": {
+										"description": "The domain pattern to trust, e.g. `example.com`.",
 										"type": "string",
 										"example": "example.com",
 										"maxLength": 1024,
@@ -24644,6 +24921,7 @@
 													"x-auditable": true
 												},
 												"is_regex": {
+													"description": "Whether `pattern` is a regular expression instead of a literal domain.",
 													"type": "boolean",
 													"example": false,
 													"x-auditable": true
@@ -24680,6 +24958,7 @@
 													"readOnly": true
 												},
 												"pattern": {
+													"description": "The domain pattern to trust, e.g. `example.com`.",
 													"type": "string",
 													"example": "example.com",
 													"maxLength": 1024,

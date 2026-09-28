@@ -109,14 +109,10 @@
 								{
 									"properties": {
 										"result": {
-											"anyOf": [
-												{
-													"items": {
-														"type": "string"
-													},
-													"type": "array"
-												}
-											]
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
 										}
 									},
 									"type": "object"
@@ -600,141 +596,137 @@
 								{
 									"properties": {
 										"result": {
-											"anyOf": [
-												{
-													"properties": {
-														"count": {
-															"description": "Indicates the total number of results.",
-															"type": "integer",
-															"example": 1,
-															"x-auditable": true
-														},
-														"issues": {
-															"type": "array",
-															"items": {
+											"type": "object",
+											"properties": {
+												"count": {
+													"description": "Indicates the total number of results.",
+													"type": "integer",
+													"example": 1,
+													"x-auditable": true
+												},
+												"issues": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"dismissed": {
+																"type": "boolean",
+																"example": false,
+																"x-auditable": true
+															},
+															"has_extended_context": {
+																"description": "Indicates whether the insight has a large payload that requires fetching via the context endpoint.",
+																"type": "boolean",
+																"example": false,
+																"x-auditable": true
+															},
+															"id": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"issue_class": {
+																"type": "string",
+																"example": "always_use_https_not_enabled",
+																"x-auditable": true
+															},
+															"issue_type": {
+																"type": "string",
+																"enum": [
+																	"compliance_violation",
+																	"email_security",
+																	"exposed_infrastructure",
+																	"insecure_configuration",
+																	"weak_authentication",
+																	"configuration_suggestion"
+																],
+																"x-auditable": true
+															},
+															"payload": {
 																"type": "object",
 																"properties": {
-																	"dismissed": {
-																		"type": "boolean",
-																		"example": false,
-																		"x-auditable": true
-																	},
-																	"has_extended_context": {
-																		"description": "Indicates whether the insight has a large payload that requires fetching via the context endpoint.",
-																		"type": "boolean",
-																		"example": false,
-																		"x-auditable": true
-																	},
-																	"id": {
+																	"detection_method": {
+																		"description": "Describes the method used to detect insight.",
 																		"type": "string",
+																		"example": "We detected security rules referencing multiple IP addresses directly in the rules.",
 																		"x-auditable": true
 																	},
-																	"issue_class": {
+																	"zone_tag": {
 																		"type": "string",
-																		"example": "always_use_https_not_enabled",
-																		"x-auditable": true
-																	},
-																	"issue_type": {
-																		"type": "string",
-																		"enum": [
-																			"compliance_violation",
-																			"email_security",
-																			"exposed_infrastructure",
-																			"insecure_configuration",
-																			"weak_authentication",
-																			"configuration_suggestion"
-																		],
-																		"x-auditable": true
-																	},
-																	"payload": {
-																		"type": "object",
-																		"properties": {
-																			"detection_method": {
-																				"description": "Describes the method used to detect insight.",
-																				"type": "string",
-																				"example": "We detected security rules referencing multiple IP addresses directly in the rules.",
-																				"x-auditable": true
-																			},
-																			"zone_tag": {
-																				"type": "string",
-																				"x-auditable": true
-																			}
-																		}
-																	},
-																	"resolve_link": {
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"resolve_text": {
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"severity": {
-																		"type": "string",
-																		"enum": [
-																			"Low",
-																			"Moderate",
-																			"Critical"
-																		],
-																		"x-auditable": true
-																	},
-																	"since": {
-																		"type": "string",
-																		"format": "date-time",
-																		"x-auditable": true
-																	},
-																	"status": {
-																		"description": "The current status of the insight.",
-																		"type": "string",
-																		"example": "active",
-																		"enum": [
-																			"active",
-																			"resolved"
-																		],
-																		"x-auditable": true
-																	},
-																	"subject": {
-																		"type": "string",
-																		"example": "example.com",
-																		"x-auditable": true
-																	},
-																	"timestamp": {
-																		"type": "string",
-																		"format": "date-time",
-																		"x-auditable": true
-																	},
-																	"user_classification": {
-																		"description": "User-defined classification for the insight. Can be 'false_positive', 'accept_risk', 'other', or null.",
-																		"type": "string",
-																		"example": "false_positive",
-																		"enum": [
-																			"false_positive",
-																			"accept_risk",
-																			"other",
-																			null
-																		],
-																		"nullable": true,
 																		"x-auditable": true
 																	}
 																}
+															},
+															"resolve_link": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"resolve_text": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"severity": {
+																"type": "string",
+																"enum": [
+																	"Low",
+																	"Moderate",
+																	"Critical"
+																],
+																"x-auditable": true
+															},
+															"since": {
+																"type": "string",
+																"format": "date-time",
+																"x-auditable": true
+															},
+															"status": {
+																"description": "The current status of the insight.",
+																"type": "string",
+																"example": "active",
+																"enum": [
+																	"active",
+																	"resolved"
+																],
+																"x-auditable": true
+															},
+															"subject": {
+																"type": "string",
+																"example": "example.com",
+																"x-auditable": true
+															},
+															"timestamp": {
+																"type": "string",
+																"format": "date-time",
+																"x-auditable": true
+															},
+															"user_classification": {
+																"description": "User-defined classification for the insight. Can be 'false_positive', 'accept_risk', 'other', or null.",
+																"type": "string",
+																"example": "false_positive",
+																"enum": [
+																	"false_positive",
+																	"accept_risk",
+																	"other",
+																	null
+																],
+																"nullable": true,
+																"x-auditable": true
 															}
-														},
-														"page": {
-															"description": "Specifies the current page within paginated list of results.",
-															"type": "integer",
-															"example": 1
-														},
-														"per_page": {
-															"description": "Sets the number of results per page of results.",
-															"type": "integer",
-															"example": 25,
-															"maximum": 1000,
-															"minimum": 1
 														}
-													},
-													"type": "object"
+													}
+												},
+												"page": {
+													"description": "Specifies the current page within paginated list of results.",
+													"type": "integer",
+													"example": 1
+												},
+												"per_page": {
+													"description": "Sets the number of results per page of results.",
+													"type": "integer",
+													"example": 25,
+													"maximum": 1000,
+													"minimum": 1
 												}
-											]
+											}
 										}
 									},
 									"type": "object"
@@ -1189,25 +1181,21 @@
 								{
 									"properties": {
 										"result": {
-											"anyOf": [
-												{
-													"items": {
-														"properties": {
-															"count": {
-																"type": "integer",
-																"example": 1,
-																"x-auditable": true
-															},
-															"value": {
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"type": "object"
+											"type": "array",
+											"items": {
+												"properties": {
+													"count": {
+														"type": "integer",
+														"example": 1,
+														"x-auditable": true
 													},
-													"type": "array"
-												}
-											]
+													"value": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -1662,25 +1650,21 @@
 								{
 									"properties": {
 										"result": {
-											"anyOf": [
-												{
-													"items": {
-														"properties": {
-															"count": {
-																"type": "integer",
-																"example": 1,
-																"x-auditable": true
-															},
-															"value": {
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"type": "object"
+											"type": "array",
+											"items": {
+												"properties": {
+													"count": {
+														"type": "integer",
+														"example": 1,
+														"x-auditable": true
 													},
-													"type": "array"
-												}
-											]
+													"value": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -2135,25 +2119,21 @@
 								{
 									"properties": {
 										"result": {
-											"anyOf": [
-												{
-													"items": {
-														"properties": {
-															"count": {
-																"type": "integer",
-																"example": 1,
-																"x-auditable": true
-															},
-															"value": {
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"type": "object"
+											"type": "array",
+											"items": {
+												"properties": {
+													"count": {
+														"type": "integer",
+														"example": 1,
+														"x-auditable": true
 													},
-													"type": "array"
-												}
-											]
+													"value": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -2638,141 +2618,137 @@
 								{
 									"properties": {
 										"result": {
-											"anyOf": [
-												{
-													"properties": {
-														"count": {
-															"description": "Indicates the total number of results.",
-															"type": "integer",
-															"example": 1,
-															"x-auditable": true
-														},
-														"issues": {
-															"type": "array",
-															"items": {
+											"type": "object",
+											"properties": {
+												"count": {
+													"description": "Indicates the total number of results.",
+													"type": "integer",
+													"example": 1,
+													"x-auditable": true
+												},
+												"issues": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"dismissed": {
+																"type": "boolean",
+																"example": false,
+																"x-auditable": true
+															},
+															"has_extended_context": {
+																"description": "Indicates whether the insight has a large payload that requires fetching via the context endpoint.",
+																"type": "boolean",
+																"example": false,
+																"x-auditable": true
+															},
+															"id": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"issue_class": {
+																"type": "string",
+																"example": "always_use_https_not_enabled",
+																"x-auditable": true
+															},
+															"issue_type": {
+																"type": "string",
+																"enum": [
+																	"compliance_violation",
+																	"email_security",
+																	"exposed_infrastructure",
+																	"insecure_configuration",
+																	"weak_authentication",
+																	"configuration_suggestion"
+																],
+																"x-auditable": true
+															},
+															"payload": {
 																"type": "object",
 																"properties": {
-																	"dismissed": {
-																		"type": "boolean",
-																		"example": false,
-																		"x-auditable": true
-																	},
-																	"has_extended_context": {
-																		"description": "Indicates whether the insight has a large payload that requires fetching via the context endpoint.",
-																		"type": "boolean",
-																		"example": false,
-																		"x-auditable": true
-																	},
-																	"id": {
+																	"detection_method": {
+																		"description": "Describes the method used to detect insight.",
 																		"type": "string",
+																		"example": "We detected security rules referencing multiple IP addresses directly in the rules.",
 																		"x-auditable": true
 																	},
-																	"issue_class": {
+																	"zone_tag": {
 																		"type": "string",
-																		"example": "always_use_https_not_enabled",
-																		"x-auditable": true
-																	},
-																	"issue_type": {
-																		"type": "string",
-																		"enum": [
-																			"compliance_violation",
-																			"email_security",
-																			"exposed_infrastructure",
-																			"insecure_configuration",
-																			"weak_authentication",
-																			"configuration_suggestion"
-																		],
-																		"x-auditable": true
-																	},
-																	"payload": {
-																		"type": "object",
-																		"properties": {
-																			"detection_method": {
-																				"description": "Describes the method used to detect insight.",
-																				"type": "string",
-																				"example": "We detected security rules referencing multiple IP addresses directly in the rules.",
-																				"x-auditable": true
-																			},
-																			"zone_tag": {
-																				"type": "string",
-																				"x-auditable": true
-																			}
-																		}
-																	},
-																	"resolve_link": {
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"resolve_text": {
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"severity": {
-																		"type": "string",
-																		"enum": [
-																			"Low",
-																			"Moderate",
-																			"Critical"
-																		],
-																		"x-auditable": true
-																	},
-																	"since": {
-																		"type": "string",
-																		"format": "date-time",
-																		"x-auditable": true
-																	},
-																	"status": {
-																		"description": "The current status of the insight.",
-																		"type": "string",
-																		"example": "active",
-																		"enum": [
-																			"active",
-																			"resolved"
-																		],
-																		"x-auditable": true
-																	},
-																	"subject": {
-																		"type": "string",
-																		"example": "example.com",
-																		"x-auditable": true
-																	},
-																	"timestamp": {
-																		"type": "string",
-																		"format": "date-time",
-																		"x-auditable": true
-																	},
-																	"user_classification": {
-																		"description": "User-defined classification for the insight. Can be 'false_positive', 'accept_risk', 'other', or null.",
-																		"type": "string",
-																		"example": "false_positive",
-																		"enum": [
-																			"false_positive",
-																			"accept_risk",
-																			"other",
-																			null
-																		],
-																		"nullable": true,
 																		"x-auditable": true
 																	}
 																}
+															},
+															"resolve_link": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"resolve_text": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"severity": {
+																"type": "string",
+																"enum": [
+																	"Low",
+																	"Moderate",
+																	"Critical"
+																],
+																"x-auditable": true
+															},
+															"since": {
+																"type": "string",
+																"format": "date-time",
+																"x-auditable": true
+															},
+															"status": {
+																"description": "The current status of the insight.",
+																"type": "string",
+																"example": "active",
+																"enum": [
+																	"active",
+																	"resolved"
+																],
+																"x-auditable": true
+															},
+															"subject": {
+																"type": "string",
+																"example": "example.com",
+																"x-auditable": true
+															},
+															"timestamp": {
+																"type": "string",
+																"format": "date-time",
+																"x-auditable": true
+															},
+															"user_classification": {
+																"description": "User-defined classification for the insight. Can be 'false_positive', 'accept_risk', 'other', or null.",
+																"type": "string",
+																"example": "false_positive",
+																"enum": [
+																	"false_positive",
+																	"accept_risk",
+																	"other",
+																	null
+																],
+																"nullable": true,
+																"x-auditable": true
 															}
-														},
-														"page": {
-															"description": "Specifies the current page within paginated list of results.",
-															"type": "integer",
-															"example": 1
-														},
-														"per_page": {
-															"description": "Sets the number of results per page of results.",
-															"type": "integer",
-															"example": 25,
-															"maximum": 1000,
-															"minimum": 1
 														}
-													},
-													"type": "object"
+													}
+												},
+												"page": {
+													"description": "Specifies the current page within paginated list of results.",
+													"type": "integer",
+													"example": 1
+												},
+												"per_page": {
+													"description": "Sets the number of results per page of results.",
+													"type": "integer",
+													"example": 25,
+													"maximum": 1000,
+													"minimum": 1
 												}
-											]
+											}
 										}
 									},
 									"type": "object"
@@ -2909,9 +2885,8 @@
 			"Security Center Insights"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "security-center.insights",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "security-insights",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/security-center/insights/{issue_id}/context": {
 		"operationId": "get-security-center-insight-context",
@@ -3169,9 +3144,8 @@
 			"Security Center Insights"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "security-center.zone-insights.context",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "security-insights.context",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/security-center/insights/class": {
 		"operationId": "get-security-center-insight-counts-by-class",
@@ -3482,25 +3456,21 @@
 								{
 									"properties": {
 										"result": {
-											"anyOf": [
-												{
-													"items": {
-														"properties": {
-															"count": {
-																"type": "integer",
-																"example": 1,
-																"x-auditable": true
-															},
-															"value": {
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"type": "object"
+											"type": "array",
+											"items": {
+												"properties": {
+													"count": {
+														"type": "integer",
+														"example": 1,
+														"x-auditable": true
 													},
-													"type": "array"
-												}
-											]
+													"value": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -3637,9 +3607,8 @@
 			"Security Center Insights"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "security-center.insights.class",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "security-insights.count",
+		"x-fern-sdk-method-name": "by-class"
 	},
 	"GET /accounts/{account_id}/security-center/insights/partner-count": {
 		"operationId": "get-security-center-partner-insight-count",
@@ -3762,21 +3731,17 @@
 								{
 									"properties": {
 										"result": {
-											"anyOf": [
-												{
-													"additionalProperties": false,
-													"properties": {
-														"count": {
-															"type": "integer",
-															"example": 1,
-															"x-auditable": true
-														}
-													},
-													"required": [
-														"count"
-													],
-													"type": "object"
+											"type": "object",
+											"additionalProperties": false,
+											"properties": {
+												"count": {
+													"type": "integer",
+													"example": 1,
+													"x-auditable": true
 												}
+											},
+											"required": [
+												"count"
 											]
 										}
 									},
@@ -3914,8 +3879,8 @@
 			"Security Center Insights"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "security-center.insights",
-		"x-fern-sdk-method-name": "get-partner-count",
+		"x-fern-sdk-group-name": "security-insights.count",
+		"x-fern-sdk-method-name": "by-partner",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/security-center/insights/severity": {
@@ -4227,25 +4192,21 @@
 								{
 									"properties": {
 										"result": {
-											"anyOf": [
-												{
-													"items": {
-														"properties": {
-															"count": {
-																"type": "integer",
-																"example": 1,
-																"x-auditable": true
-															},
-															"value": {
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"type": "object"
+											"type": "array",
+											"items": {
+												"properties": {
+													"count": {
+														"type": "integer",
+														"example": 1,
+														"x-auditable": true
 													},
-													"type": "array"
-												}
-											]
+													"value": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -4382,9 +4343,8 @@
 			"Security Center Insights"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "security-center.insights.severity",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "security-insights.count",
+		"x-fern-sdk-method-name": "by-severity"
 	},
 	"GET /accounts/{account_id}/security-center/insights/type": {
 		"operationId": "get-security-center-insight-counts-by-type",
@@ -4695,25 +4655,21 @@
 								{
 									"properties": {
 										"result": {
-											"anyOf": [
-												{
-													"items": {
-														"properties": {
-															"count": {
-																"type": "integer",
-																"example": 1,
-																"x-auditable": true
-															},
-															"value": {
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"type": "object"
+											"type": "array",
+											"items": {
+												"properties": {
+													"count": {
+														"type": "integer",
+														"example": 1,
+														"x-auditable": true
 													},
-													"type": "array"
-												}
-											]
+													"value": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -4850,9 +4806,8 @@
 			"Security Center Insights"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "security-center.insights.type",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "security-insights.count",
+		"x-fern-sdk-method-name": "by-type"
 	},
 	"GET /accounts/{account_id}/security-center/state": {
 		"operationId": "get-security-center-account-state",
@@ -5117,7 +5072,7 @@
 			"Security Center Insights"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "security-center.state",
+		"x-fern-sdk-group-name": "security-insights.state",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/security-center/insights": {
@@ -5459,141 +5414,137 @@
 								{
 									"properties": {
 										"result": {
-											"anyOf": [
-												{
-													"properties": {
-														"count": {
-															"description": "Indicates the total number of results.",
-															"type": "integer",
-															"example": 1,
-															"x-auditable": true
-														},
-														"issues": {
-															"type": "array",
-															"items": {
+											"type": "object",
+											"properties": {
+												"count": {
+													"description": "Indicates the total number of results.",
+													"type": "integer",
+													"example": 1,
+													"x-auditable": true
+												},
+												"issues": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"dismissed": {
+																"type": "boolean",
+																"example": false,
+																"x-auditable": true
+															},
+															"has_extended_context": {
+																"description": "Indicates whether the insight has a large payload that requires fetching via the context endpoint.",
+																"type": "boolean",
+																"example": false,
+																"x-auditable": true
+															},
+															"id": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"issue_class": {
+																"type": "string",
+																"example": "always_use_https_not_enabled",
+																"x-auditable": true
+															},
+															"issue_type": {
+																"type": "string",
+																"enum": [
+																	"compliance_violation",
+																	"email_security",
+																	"exposed_infrastructure",
+																	"insecure_configuration",
+																	"weak_authentication",
+																	"configuration_suggestion"
+																],
+																"x-auditable": true
+															},
+															"payload": {
 																"type": "object",
 																"properties": {
-																	"dismissed": {
-																		"type": "boolean",
-																		"example": false,
-																		"x-auditable": true
-																	},
-																	"has_extended_context": {
-																		"description": "Indicates whether the insight has a large payload that requires fetching via the context endpoint.",
-																		"type": "boolean",
-																		"example": false,
-																		"x-auditable": true
-																	},
-																	"id": {
+																	"detection_method": {
+																		"description": "Describes the method used to detect insight.",
 																		"type": "string",
+																		"example": "We detected security rules referencing multiple IP addresses directly in the rules.",
 																		"x-auditable": true
 																	},
-																	"issue_class": {
+																	"zone_tag": {
 																		"type": "string",
-																		"example": "always_use_https_not_enabled",
-																		"x-auditable": true
-																	},
-																	"issue_type": {
-																		"type": "string",
-																		"enum": [
-																			"compliance_violation",
-																			"email_security",
-																			"exposed_infrastructure",
-																			"insecure_configuration",
-																			"weak_authentication",
-																			"configuration_suggestion"
-																		],
-																		"x-auditable": true
-																	},
-																	"payload": {
-																		"type": "object",
-																		"properties": {
-																			"detection_method": {
-																				"description": "Describes the method used to detect insight.",
-																				"type": "string",
-																				"example": "We detected security rules referencing multiple IP addresses directly in the rules.",
-																				"x-auditable": true
-																			},
-																			"zone_tag": {
-																				"type": "string",
-																				"x-auditable": true
-																			}
-																		}
-																	},
-																	"resolve_link": {
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"resolve_text": {
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"severity": {
-																		"type": "string",
-																		"enum": [
-																			"Low",
-																			"Moderate",
-																			"Critical"
-																		],
-																		"x-auditable": true
-																	},
-																	"since": {
-																		"type": "string",
-																		"format": "date-time",
-																		"x-auditable": true
-																	},
-																	"status": {
-																		"description": "The current status of the insight.",
-																		"type": "string",
-																		"example": "active",
-																		"enum": [
-																			"active",
-																			"resolved"
-																		],
-																		"x-auditable": true
-																	},
-																	"subject": {
-																		"type": "string",
-																		"example": "example.com",
-																		"x-auditable": true
-																	},
-																	"timestamp": {
-																		"type": "string",
-																		"format": "date-time",
-																		"x-auditable": true
-																	},
-																	"user_classification": {
-																		"description": "User-defined classification for the insight. Can be 'false_positive', 'accept_risk', 'other', or null.",
-																		"type": "string",
-																		"example": "false_positive",
-																		"enum": [
-																			"false_positive",
-																			"accept_risk",
-																			"other",
-																			null
-																		],
-																		"nullable": true,
 																		"x-auditable": true
 																	}
 																}
+															},
+															"resolve_link": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"resolve_text": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"severity": {
+																"type": "string",
+																"enum": [
+																	"Low",
+																	"Moderate",
+																	"Critical"
+																],
+																"x-auditable": true
+															},
+															"since": {
+																"type": "string",
+																"format": "date-time",
+																"x-auditable": true
+															},
+															"status": {
+																"description": "The current status of the insight.",
+																"type": "string",
+																"example": "active",
+																"enum": [
+																	"active",
+																	"resolved"
+																],
+																"x-auditable": true
+															},
+															"subject": {
+																"type": "string",
+																"example": "example.com",
+																"x-auditable": true
+															},
+															"timestamp": {
+																"type": "string",
+																"format": "date-time",
+																"x-auditable": true
+															},
+															"user_classification": {
+																"description": "User-defined classification for the insight. Can be 'false_positive', 'accept_risk', 'other', or null.",
+																"type": "string",
+																"example": "false_positive",
+																"enum": [
+																	"false_positive",
+																	"accept_risk",
+																	"other",
+																	null
+																],
+																"nullable": true,
+																"x-auditable": true
 															}
-														},
-														"page": {
-															"description": "Specifies the current page within paginated list of results.",
-															"type": "integer",
-															"example": 1
-														},
-														"per_page": {
-															"description": "Sets the number of results per page of results.",
-															"type": "integer",
-															"example": 25,
-															"maximum": 1000,
-															"minimum": 1
 														}
-													},
-													"type": "object"
+													}
+												},
+												"page": {
+													"description": "Specifies the current page within paginated list of results.",
+													"type": "integer",
+													"example": 1
+												},
+												"per_page": {
+													"description": "Sets the number of results per page of results.",
+													"type": "integer",
+													"example": 25,
+													"maximum": 1000,
+													"minimum": 1
 												}
-											]
+											}
 										}
 									},
 									"type": "object"
@@ -5734,9 +5685,8 @@
 			"Zone Settings Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "security-center.zone-insights",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "security-insights.zone",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/security-center/insights/class": {
 		"operationId": "get-zone-security-center-insight-counts-by-class",
@@ -6047,25 +5997,21 @@
 								{
 									"properties": {
 										"result": {
-											"anyOf": [
-												{
-													"items": {
-														"properties": {
-															"count": {
-																"type": "integer",
-																"example": 1,
-																"x-auditable": true
-															},
-															"value": {
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"type": "object"
+											"type": "array",
+											"items": {
+												"properties": {
+													"count": {
+														"type": "integer",
+														"example": 1,
+														"x-auditable": true
 													},
-													"type": "array"
-												}
-											]
+													"value": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -6206,9 +6152,8 @@
 			"Zone Settings Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "security-center.zone-insights.class",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "security-insights.zone.count",
+		"x-fern-sdk-method-name": "by-class"
 	},
 	"GET /zones/{zone_id}/security-center/insights/partner-count": {
 		"operationId": "get-zone-security-center-partner-insight-count",
@@ -6331,21 +6276,17 @@
 								{
 									"properties": {
 										"result": {
-											"anyOf": [
-												{
-													"additionalProperties": false,
-													"properties": {
-														"count": {
-															"type": "integer",
-															"example": 1,
-															"x-auditable": true
-														}
-													},
-													"required": [
-														"count"
-													],
-													"type": "object"
+											"type": "object",
+											"additionalProperties": false,
+											"properties": {
+												"count": {
+													"type": "integer",
+													"example": 1,
+													"x-auditable": true
 												}
+											},
+											"required": [
+												"count"
 											]
 										}
 									},
@@ -6487,8 +6428,8 @@
 			"Zone Settings Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "security-center.zone-insights",
-		"x-fern-sdk-method-name": "get-partner-count",
+		"x-fern-sdk-group-name": "security-insights.zone.count",
+		"x-fern-sdk-method-name": "by-partner",
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/security-center/insights/severity": {
@@ -6800,25 +6741,21 @@
 								{
 									"properties": {
 										"result": {
-											"anyOf": [
-												{
-													"items": {
-														"properties": {
-															"count": {
-																"type": "integer",
-																"example": 1,
-																"x-auditable": true
-															},
-															"value": {
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"type": "object"
+											"type": "array",
+											"items": {
+												"properties": {
+													"count": {
+														"type": "integer",
+														"example": 1,
+														"x-auditable": true
 													},
-													"type": "array"
-												}
-											]
+													"value": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -6959,9 +6896,8 @@
 			"Zone Settings Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "security-center.zone-insights.severity",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "security-insights.zone.count",
+		"x-fern-sdk-method-name": "by-severity"
 	},
 	"GET /zones/{zone_id}/security-center/insights/type": {
 		"operationId": "get-zone-security-center-insight-counts-by-type",
@@ -7272,25 +7208,21 @@
 								{
 									"properties": {
 										"result": {
-											"anyOf": [
-												{
-													"items": {
-														"properties": {
-															"count": {
-																"type": "integer",
-																"example": 1,
-																"x-auditable": true
-															},
-															"value": {
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"type": "object"
+											"type": "array",
+											"items": {
+												"properties": {
+													"count": {
+														"type": "integer",
+														"example": 1,
+														"x-auditable": true
 													},
-													"type": "array"
-												}
-											]
+													"value": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -7431,9 +7363,8 @@
 			"Zone Settings Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "security-center.zone-insights.type",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "security-insights.zone.count",
+		"x-fern-sdk-method-name": "by-type"
 	},
 	"PATCH /accounts/{account_id}/security-center/insights/{issue_id}/classification": {
 		"operationId": "update-security-center-insight-classification",
@@ -7717,9 +7648,8 @@
 			"Security Center Insights"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "security-center.insights",
-		"x-fern-sdk-method-name": "update-classification",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "security-insights",
+		"x-fern-sdk-method-name": "classify"
 	},
 	"PATCH /zones/{zone_id}/security-center/insights/{issue_id}/classification": {
 		"operationId": "update-zone-security-center-insight-classification",
@@ -8003,9 +7933,8 @@
 			"Security Center Insights"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "security-center.zone-insights",
-		"x-fern-sdk-method-name": "update-classification",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "security-insights.zone",
+		"x-fern-sdk-method-name": "classify"
 	},
 	"PUT /accounts/{account_id}/intel/attack-surface-report/issues/{issue_id}/dismiss": {
 		"operationId": "archive-security-center-insight-deprecated",
@@ -8555,9 +8484,8 @@
 			"Security Center Insights"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "security-center.insights",
+		"x-fern-sdk-group-name": "security-insights",
 		"x-fern-sdk-method-name": "dismiss",
-		"x-forge-hidden": true,
 		"x-forge-params": {
 			"dismiss": {
 				"default": null
@@ -8847,7 +8775,7 @@
 			"Security Center Insights"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "security-center.state",
+		"x-fern-sdk-group-name": "security-insights.state",
 		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /zones/{zone_id}/security-center/insights/{issue_id}/dismiss": {
@@ -9122,9 +9050,8 @@
 			"Zone Settings Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "security-center.zone-insights.dismiss",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true,
+		"x-fern-sdk-group-name": "security-insights.zone",
+		"x-fern-sdk-method-name": "dismiss",
 		"x-forge-params": {
 			"dismiss": {
 				"default": null

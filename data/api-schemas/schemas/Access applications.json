@@ -288,8 +288,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.applications",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/access/apps": {
 		"operationId": "access-applications-list-access-applications",
@@ -39148,7 +39147,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.applications",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/access/apps/{app_id}": {
@@ -77925,7 +77923,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.applications",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/access/apps/{app_id}/user_policy_checks": {
@@ -78315,8 +78312,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.applications.user-policy-checks",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"PATCH /accounts/{account_id}/access/apps/{app_id}/settings": {
 		"operationId": "access-applications-patch-update-access-application-settings",
@@ -78632,9 +78628,9 @@
 			"Access applications"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.access.applications.settings",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/access/apps": {
 		"operationId": "access-applications-add-an-application",
@@ -195660,7 +195656,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.applications",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/access/apps/{app_id}/revoke_tokens": {
@@ -195867,7 +195862,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.applications",
 		"x-fern-sdk-method-name": "revoke-tokens",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation invalidates every service token for the app."
 	},
 	"PUT /accounts/{account_id}/access/apps/{app_id}": {
@@ -312917,7 +312911,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.applications",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"PUT /accounts/{account_id}/access/apps/{app_id}/settings": {
@@ -313238,7 +313231,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.applications.settings",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

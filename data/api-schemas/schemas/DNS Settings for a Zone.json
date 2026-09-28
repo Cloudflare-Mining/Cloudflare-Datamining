@@ -374,33 +374,90 @@
 												{
 													"properties": {
 														"nameservers": {
-															"description": "Settings determining the nameservers through which the zone should be available.",
+															"description": "Controls the nameservers through which the zone is available.",
 															"type": "object",
-															"properties": {
-																"ns_set": {
-																	"description": "Configured nameserver set to be used for this zone",
-																	"type": "integer",
-																	"example": 1,
-																	"maximum": 5,
-																	"minimum": 1,
-																	"x-auditable": true
+															"oneOf": [
+																{
+																	"type": "object",
+																	"properties": {
+																		"type": {
+																			"description": "Nameserver type.",
+																			"type": "string",
+																			"example": "cloudflare.standard",
+																			"enum": [
+																				"cloudflare.standard",
+																				"cloudflare.advanced"
+																			],
+																			"x-auditable": true
+																		}
+																	},
+																	"additionalProperties": false,
+																	"required": [
+																		"type"
+																	]
 																},
-																"type": {
-																	"description": "Nameserver type",
-																	"type": "string",
-																	"example": "cloudflare.standard",
-																	"enum": [
-																		"cloudflare.standard",
-																		"cloudflare.advanced",
-																		"custom.account",
-																		"custom.tenant",
-																		"custom.zone"
-																	],
-																	"x-auditable": true
+																{
+																	"type": "object",
+																	"properties": {
+																		"ns_set": {
+																			"description": "Configured nameserver set number to use for this zone.",
+																			"type": "integer",
+																			"example": 1,
+																			"default": 1,
+																			"maximum": 5,
+																			"minimum": 1,
+																			"x-auditable": true
+																		},
+																		"type": {
+																			"description": "Nameserver type.",
+																			"type": "string",
+																			"example": "custom.account",
+																			"enum": [
+																				"custom.account",
+																				"custom.tenant",
+																				"custom.zone"
+																			],
+																			"x-auditable": true
+																		}
+																	},
+																	"additionalProperties": false,
+																	"required": [
+																		"type"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"nameserver_set_id": {
+																			"description": "Identifier of the account-owned Custom Nameserver Set to use for this zone.",
+																			"allOf": [
+																				{
+																					"description": "Identifier for a nameserver set.",
+																					"type": "string",
+																					"example": "0123456789abcdef0123456789abcdef",
+																					"maxLength": 32,
+																					"minLength": 32,
+																					"pattern": "^[0-9a-f]{32}$",
+																					"x-auditable": true
+																				}
+																			]
+																		},
+																		"type": {
+																			"description": "Nameserver type.",
+																			"type": "string",
+																			"example": "custom",
+																			"enum": [
+																				"custom"
+																			],
+																			"x-auditable": true
+																		}
+																	},
+																	"additionalProperties": false,
+																	"required": [
+																		"type",
+																		"nameserver_set_id"
+																	]
 																}
-															},
-															"required": [
-																"type"
 															]
 														}
 													},
@@ -781,33 +838,90 @@
 														{
 															"properties": {
 																"nameservers": {
-																	"description": "Settings determining the nameservers through which the zone should be available.",
+																	"description": "Controls the nameservers through which the zone is available.",
 																	"type": "object",
-																	"properties": {
-																		"ns_set": {
-																			"description": "Configured nameserver set to be used for this zone",
-																			"type": "integer",
-																			"example": 1,
-																			"maximum": 5,
-																			"minimum": 1,
-																			"x-auditable": true
+																	"oneOf": [
+																		{
+																			"type": "object",
+																			"properties": {
+																				"type": {
+																					"description": "Nameserver type.",
+																					"type": "string",
+																					"example": "cloudflare.standard",
+																					"enum": [
+																						"cloudflare.standard",
+																						"cloudflare.advanced"
+																					],
+																					"x-auditable": true
+																				}
+																			},
+																			"additionalProperties": false,
+																			"required": [
+																				"type"
+																			]
 																		},
-																		"type": {
-																			"description": "Nameserver type",
-																			"type": "string",
-																			"example": "cloudflare.standard",
-																			"enum": [
-																				"cloudflare.standard",
-																				"cloudflare.advanced",
-																				"custom.account",
-																				"custom.tenant",
-																				"custom.zone"
-																			],
-																			"x-auditable": true
+																		{
+																			"type": "object",
+																			"properties": {
+																				"ns_set": {
+																					"description": "Configured nameserver set number to use for this zone.",
+																					"type": "integer",
+																					"example": 1,
+																					"default": 1,
+																					"maximum": 5,
+																					"minimum": 1,
+																					"x-auditable": true
+																				},
+																				"type": {
+																					"description": "Nameserver type.",
+																					"type": "string",
+																					"example": "custom.account",
+																					"enum": [
+																						"custom.account",
+																						"custom.tenant",
+																						"custom.zone"
+																					],
+																					"x-auditable": true
+																				}
+																			},
+																			"additionalProperties": false,
+																			"required": [
+																				"type"
+																			]
+																		},
+																		{
+																			"type": "object",
+																			"properties": {
+																				"nameserver_set_id": {
+																					"description": "Identifier of the account-owned Custom Nameserver Set to use for this zone.",
+																					"allOf": [
+																						{
+																							"description": "Identifier for a nameserver set.",
+																							"type": "string",
+																							"example": "0123456789abcdef0123456789abcdef",
+																							"maxLength": 32,
+																							"minLength": 32,
+																							"pattern": "^[0-9a-f]{32}$",
+																							"x-auditable": true
+																						}
+																					]
+																				},
+																				"type": {
+																					"description": "Nameserver type.",
+																					"type": "string",
+																					"example": "custom",
+																					"enum": [
+																						"custom"
+																					],
+																					"x-auditable": true
+																				}
+																			},
+																			"additionalProperties": false,
+																			"required": [
+																				"type",
+																				"nameserver_set_id"
+																			]
 																		}
-																	},
-																	"required": [
-																		"type"
 																	]
 																}
 															},
@@ -1132,31 +1246,95 @@
 							{
 								"properties": {
 									"nameservers": {
-										"description": "Settings determining the nameservers through which the zone should be available.",
-										"type": "object",
-										"properties": {
-											"ns_set": {
-												"description": "Configured nameserver set to be used for this zone",
-												"type": "integer",
-												"example": 1,
-												"maximum": 5,
-												"minimum": 1,
-												"x-auditable": true
-											},
-											"type": {
-												"description": "Nameserver type",
-												"type": "string",
-												"example": "cloudflare.standard",
-												"enum": [
-													"cloudflare.standard",
-													"cloudflare.advanced",
-													"custom.account",
-													"custom.tenant",
-													"custom.zone"
-												],
-												"x-auditable": true
+										"allOf": [
+											{
+												"description": "Controls the nameservers through which the zone is available.",
+												"type": "object",
+												"oneOf": [
+													{
+														"type": "object",
+														"properties": {
+															"type": {
+																"description": "Nameserver type.",
+																"type": "string",
+																"example": "cloudflare.standard",
+																"enum": [
+																	"cloudflare.standard",
+																	"cloudflare.advanced"
+																],
+																"x-auditable": true
+															}
+														},
+														"additionalProperties": false,
+														"required": [
+															"type"
+														]
+													},
+													{
+														"type": "object",
+														"properties": {
+															"ns_set": {
+																"description": "Configured nameserver set number to use for this zone.",
+																"type": "integer",
+																"example": 1,
+																"default": 1,
+																"maximum": 5,
+																"minimum": 1,
+																"x-auditable": true
+															},
+															"type": {
+																"description": "Nameserver type.",
+																"type": "string",
+																"example": "custom.account",
+																"enum": [
+																	"custom.account",
+																	"custom.tenant",
+																	"custom.zone"
+																],
+																"x-auditable": true
+															}
+														},
+														"additionalProperties": false,
+														"required": [
+															"type"
+														]
+													},
+													{
+														"type": "object",
+														"properties": {
+															"nameserver_set_id": {
+																"description": "Identifier of the account-owned Custom Nameserver Set to use for this zone.",
+																"allOf": [
+																	{
+																		"description": "Identifier for a nameserver set.",
+																		"type": "string",
+																		"example": "0123456789abcdef0123456789abcdef",
+																		"maxLength": 32,
+																		"minLength": 32,
+																		"pattern": "^[0-9a-f]{32}$",
+																		"x-auditable": true
+																	}
+																]
+															},
+															"type": {
+																"description": "Nameserver type.",
+																"type": "string",
+																"example": "custom",
+																"enum": [
+																	"custom"
+																],
+																"x-auditable": true
+															}
+														},
+														"additionalProperties": false,
+														"required": [
+															"type",
+															"nameserver_set_id"
+														]
+													}
+												]
 											}
-										},
+										],
 										"x-stainless-terraform-configurability": "computed_optional"
 									}
 								},
@@ -1524,33 +1702,90 @@
 												{
 													"properties": {
 														"nameservers": {
-															"description": "Settings determining the nameservers through which the zone should be available.",
+															"description": "Controls the nameservers through which the zone is available.",
 															"type": "object",
-															"properties": {
-																"ns_set": {
-																	"description": "Configured nameserver set to be used for this zone",
-																	"type": "integer",
-																	"example": 1,
-																	"maximum": 5,
-																	"minimum": 1,
-																	"x-auditable": true
+															"oneOf": [
+																{
+																	"type": "object",
+																	"properties": {
+																		"type": {
+																			"description": "Nameserver type.",
+																			"type": "string",
+																			"example": "cloudflare.standard",
+																			"enum": [
+																				"cloudflare.standard",
+																				"cloudflare.advanced"
+																			],
+																			"x-auditable": true
+																		}
+																	},
+																	"additionalProperties": false,
+																	"required": [
+																		"type"
+																	]
 																},
-																"type": {
-																	"description": "Nameserver type",
-																	"type": "string",
-																	"example": "cloudflare.standard",
-																	"enum": [
-																		"cloudflare.standard",
-																		"cloudflare.advanced",
-																		"custom.account",
-																		"custom.tenant",
-																		"custom.zone"
-																	],
-																	"x-auditable": true
+																{
+																	"type": "object",
+																	"properties": {
+																		"ns_set": {
+																			"description": "Configured nameserver set number to use for this zone.",
+																			"type": "integer",
+																			"example": 1,
+																			"default": 1,
+																			"maximum": 5,
+																			"minimum": 1,
+																			"x-auditable": true
+																		},
+																		"type": {
+																			"description": "Nameserver type.",
+																			"type": "string",
+																			"example": "custom.account",
+																			"enum": [
+																				"custom.account",
+																				"custom.tenant",
+																				"custom.zone"
+																			],
+																			"x-auditable": true
+																		}
+																	},
+																	"additionalProperties": false,
+																	"required": [
+																		"type"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"nameserver_set_id": {
+																			"description": "Identifier of the account-owned Custom Nameserver Set to use for this zone.",
+																			"allOf": [
+																				{
+																					"description": "Identifier for a nameserver set.",
+																					"type": "string",
+																					"example": "0123456789abcdef0123456789abcdef",
+																					"maxLength": 32,
+																					"minLength": 32,
+																					"pattern": "^[0-9a-f]{32}$",
+																					"x-auditable": true
+																				}
+																			]
+																		},
+																		"type": {
+																			"description": "Nameserver type.",
+																			"type": "string",
+																			"example": "custom",
+																			"enum": [
+																				"custom"
+																			],
+																			"x-auditable": true
+																		}
+																	},
+																	"additionalProperties": false,
+																	"required": [
+																		"type",
+																		"nameserver_set_id"
+																	]
 																}
-															},
-															"required": [
-																"type"
 															]
 														}
 													},
@@ -1931,33 +2166,90 @@
 														{
 															"properties": {
 																"nameservers": {
-																	"description": "Settings determining the nameservers through which the zone should be available.",
+																	"description": "Controls the nameservers through which the zone is available.",
 																	"type": "object",
-																	"properties": {
-																		"ns_set": {
-																			"description": "Configured nameserver set to be used for this zone",
-																			"type": "integer",
-																			"example": 1,
-																			"maximum": 5,
-																			"minimum": 1,
-																			"x-auditable": true
+																	"oneOf": [
+																		{
+																			"type": "object",
+																			"properties": {
+																				"type": {
+																					"description": "Nameserver type.",
+																					"type": "string",
+																					"example": "cloudflare.standard",
+																					"enum": [
+																						"cloudflare.standard",
+																						"cloudflare.advanced"
+																					],
+																					"x-auditable": true
+																				}
+																			},
+																			"additionalProperties": false,
+																			"required": [
+																				"type"
+																			]
 																		},
-																		"type": {
-																			"description": "Nameserver type",
-																			"type": "string",
-																			"example": "cloudflare.standard",
-																			"enum": [
-																				"cloudflare.standard",
-																				"cloudflare.advanced",
-																				"custom.account",
-																				"custom.tenant",
-																				"custom.zone"
-																			],
-																			"x-auditable": true
+																		{
+																			"type": "object",
+																			"properties": {
+																				"ns_set": {
+																					"description": "Configured nameserver set number to use for this zone.",
+																					"type": "integer",
+																					"example": 1,
+																					"default": 1,
+																					"maximum": 5,
+																					"minimum": 1,
+																					"x-auditable": true
+																				},
+																				"type": {
+																					"description": "Nameserver type.",
+																					"type": "string",
+																					"example": "custom.account",
+																					"enum": [
+																						"custom.account",
+																						"custom.tenant",
+																						"custom.zone"
+																					],
+																					"x-auditable": true
+																				}
+																			},
+																			"additionalProperties": false,
+																			"required": [
+																				"type"
+																			]
+																		},
+																		{
+																			"type": "object",
+																			"properties": {
+																				"nameserver_set_id": {
+																					"description": "Identifier of the account-owned Custom Nameserver Set to use for this zone.",
+																					"allOf": [
+																						{
+																							"description": "Identifier for a nameserver set.",
+																							"type": "string",
+																							"example": "0123456789abcdef0123456789abcdef",
+																							"maxLength": 32,
+																							"minLength": 32,
+																							"pattern": "^[0-9a-f]{32}$",
+																							"x-auditable": true
+																						}
+																					]
+																				},
+																				"type": {
+																					"description": "Nameserver type.",
+																					"type": "string",
+																					"example": "custom",
+																					"enum": [
+																						"custom"
+																					],
+																					"x-auditable": true
+																				}
+																			},
+																			"additionalProperties": false,
+																			"required": [
+																				"type",
+																				"nameserver_set_id"
+																			]
 																		}
-																	},
-																	"required": [
-																		"type"
 																	]
 																}
 															},

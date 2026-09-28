@@ -1,12 +1,13 @@
 {
 	"GET /tenants/{tenant_id}": {
 		"operationId": "Tenants_retrieveTenant",
-		"summary": "Get tenant",
-		"description": "Retrieves a Tenant by Tenant ID.",
+		"summary": "Get tenant details",
+		"description": "Retrieves a tenant's identity, status, metadata, contacts, and organizational units.",
 		"parameters": [
 			{
 				"name": "tenant_id",
 				"in": "path",
+				"description": "The ID of the tenant to retrieve.",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -259,12 +260,13 @@
 	},
 	"GET /tenants/{tenant_id}/account_types": {
 		"operationId": "Tenants_validAccountTypes",
-		"summary": "Get tenant account types",
-		"description": "List of account types available for the Tenant to provision accounts.",
+		"summary": "List tenant account types",
+		"description": "Lists the account types this tenant is allowed to provision.",
 		"parameters": [
 			{
 				"name": "tenant_id",
 				"in": "path",
+				"description": "The ID of the tenant whose available account types to list.",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -406,11 +408,12 @@
 	"GET /tenants/{tenant_id}/accounts": {
 		"operationId": "Tenants_listAccounts",
 		"summary": "List tenant accounts",
-		"description": "List of accounts for the Tenant.",
+		"description": "Lists the Cloudflare accounts associated with this tenant.",
 		"parameters": [
 			{
 				"name": "tenant_id",
 				"in": "path",
+				"description": "The ID of the tenant whose accounts to list.",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -628,11 +631,12 @@
 	"GET /tenants/{tenant_id}/entitlements": {
 		"operationId": "Tenants_listEntitlements",
 		"summary": "List tenant entitlements",
-		"description": "List of innate entitlements available for the Tenant.",
+		"description": "Retrieves the innate and custom entitlement allocations available to this tenant.",
 		"parameters": [
 			{
 				"name": "tenant_id",
 				"in": "path",
+				"description": "The ID of the tenant whose entitlement allocations to retrieve.",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -952,11 +956,12 @@
 	"GET /tenants/{tenant_id}/memberships": {
 		"operationId": "Tenants_listMemberships",
 		"summary": "List tenant memberships",
-		"description": "List of active members (Cloudflare users) for the Tenant.",
+		"description": "Lists active Cloudflare users with memberships in this tenant.",
 		"parameters": [
 			{
 				"name": "tenant_id",
 				"in": "path",
+				"description": "The ID of the tenant whose active memberships to list.",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1108,6 +1113,7 @@
 			"Tenants"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "tenant.membership",
 		"x-fern-sdk-method-name": "list"
 	}

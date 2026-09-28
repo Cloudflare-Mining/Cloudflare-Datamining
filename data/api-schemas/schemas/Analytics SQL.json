@@ -17,7 +17,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Query executed successfully.",
+				"description": "Query executed successfully. Columns that the query reaches only through `*` exclude any that the caller is not permitted to read.\n",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -193,7 +193,7 @@
 				}
 			},
 			"403": {
-				"description": "Authentication failed or the caller is not authorized.",
+				"description": "Authentication failed, the caller is not authorized, or the query references a column the caller is not permitted to read.\n",
 				"content": {
 					"text/plain": {
 						"example": "Authorization error",
@@ -837,7 +837,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Query executed successfully.",
+				"description": "Query executed successfully. Columns that the query reaches only through `*` exclude any that the caller is not permitted to read.\n",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1013,7 +1013,7 @@
 				}
 			},
 			"403": {
-				"description": "Authentication failed or the caller is not authorized.",
+				"description": "Authentication failed, the caller is not authorized, or the query references a column the caller is not permitted to read.\n",
 				"content": {
 					"text/plain": {
 						"example": "Authorization error",

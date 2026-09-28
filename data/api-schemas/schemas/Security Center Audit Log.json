@@ -405,9 +405,8 @@
 			"Security Center Audit Log"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "security-center.audit-logs",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "security-insights.audit-logs",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/security-center/insights/audit-log": {
 		"operationId": "get-security-center-account-audit-log",
@@ -807,9 +806,8 @@
 			"Security Center Audit Log"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "security-center.audit-logs",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "security-insights.audit-logs",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/security-center/insights/{issue_id}/audit-log": {
 		"operationId": "get-zone-security-center-issue-audit-log",
@@ -1221,9 +1219,8 @@
 			"Zone Settings Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "security-center.zone-audit-logs",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "security-insights.zone.audit-logs",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/security-center/insights/audit-log": {
 		"operationId": "get-zone-security-center-audit-log",
@@ -1627,8 +1624,7 @@
 			"Zone Settings Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "security-center.zone-audit-logs",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "security-insights.zone.audit-logs",
+		"x-fern-sdk-method-name": "list"
 	}
 }

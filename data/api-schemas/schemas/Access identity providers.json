@@ -277,8 +277,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.identity-providers",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/access/identity_providers": {
 		"operationId": "access-identity-providers-list-access-identity-providers",
@@ -4305,8 +4304,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.identity-providers",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/access/identity_providers/{identity_provider_id}": {
 		"operationId": "access-identity-providers-get-an-access-identity-provider",
@@ -8280,8 +8278,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.identity-providers",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/access/identity_providers/{identity_provider_id}/scim/groups": {
 		"operationId": "access-identity-providers-list-scim-group-resources",
@@ -8697,8 +8694,372 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.identity-providers.scim.groups",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
+	},
+	"GET /accounts/{account_id}/access/identity_providers/{identity_provider_id}/scim/groups/{group_id}": {
+		"operationId": "access-identity-providers-get-scim-group-resource",
+		"summary": "Get a SCIM Group resource",
+		"description": "Returns a SCIM Group resource, including its direct members, synced to Cloudflare via the System for Cross-domain Identity Management (SCIM).",
+		"parameters": [
+			{
+				"name": "identity_provider_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "UUID.",
+					"type": "string",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "group_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns a SCIM Group resource.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"displayName": {
+													"description": "The display name of the SCIM Group resource.",
+													"type": "string",
+													"example": "ALL EMPLOYEES"
+												},
+												"externalId": {
+													"description": "The IdP-generated Id of the SCIM resource.",
+													"type": "string",
+													"example": "all_employees"
+												},
+												"id": {
+													"description": "The unique Cloudflare-generated Id of the SCIM resource.",
+													"type": "string",
+													"example": "bd97ef8d-7986-43e3-9ee0-c25dda33e4b0"
+												},
+												"members": {
+													"description": "The direct members of the SCIM Group resource.",
+													"type": "array",
+													"items": {
+														"properties": {
+															"$ref": {
+																"description": "The URI of the member resource.",
+																"type": "string",
+																"format": "uri",
+																"example": "https://example.com/scim/v2/Users/bd97ef8d-7986-43e3-9ee0-c25dda33e4b0"
+															},
+															"display": {
+																"description": "The display name of the member resource.",
+																"type": "string",
+																"example": "john.smith@example.com"
+															},
+															"type": {
+																"description": "The SCIM resource type of the member.",
+																"type": "string",
+																"example": "User",
+																"enum": [
+																	"User",
+																	"Group"
+																]
+															},
+															"value": {
+																"description": "The unique Cloudflare-generated Id of the member resource.",
+																"type": "string",
+																"example": "bd97ef8d-7986-43e3-9ee0-c25dda33e4b0"
+															}
+														},
+														"required": [
+															"value"
+														],
+														"type": "object"
+													}
+												},
+												"meta": {
+													"description": "The metadata of the SCIM resource.",
+													"type": "object",
+													"properties": {
+														"created": {
+															"description": "The timestamp of when the SCIM resource was created.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2025-01-01T00:00:00Z"
+														},
+														"lastModified": {
+															"description": "The timestamp of when the SCIM resource was last modified.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2025-01-02T00:00:00Z"
+														}
+													}
+												},
+												"schemas": {
+													"description": "The list of URIs which indicate the attributes contained within a SCIM resource.",
+													"type": "array",
+													"items": {
+														"type": "string"
+													},
+													"example": [
+														"urn:ietf:params:scim:schemas:core:2.0:Group"
+													]
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Indicates a failure to get a SCIM Group resource.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Access identity providers"
+		],
+		"x-api-token-group": [
+			"Access: Organizations, Identity Providers, and Groups Write",
+			"Access: Organizations, Identity Providers, and Groups Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.identity-providers.scim.groups",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/access/identity_providers/{identity_provider_id}/scim/users": {
 		"operationId": "access-identity-providers-list-scim-user-resources",
@@ -9161,8 +9522,364 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.identity-providers.scim.users",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
+	},
+	"GET /accounts/{account_id}/access/identity_providers/{identity_provider_id}/scim/users/{user_id}": {
+		"operationId": "access-identity-providers-get-scim-user-resource",
+		"summary": "Get a SCIM User resource",
+		"description": "Returns a SCIM User resource synced to Cloudflare via the System for Cross-domain Identity Management (SCIM).",
+		"parameters": [
+			{
+				"name": "identity_provider_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "UUID.",
+					"type": "string",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "user_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns a SCIM User resource.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"active": {
+													"description": "Determines the status of the SCIM User resource.",
+													"type": "boolean",
+													"example": true
+												},
+												"displayName": {
+													"description": "The name of the SCIM User resource.",
+													"type": "string",
+													"example": "John Smith"
+												},
+												"emails": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"primary": {
+																"description": "Indicates if the email address is the primary email belonging to the SCIM User resource.",
+																"type": "boolean",
+																"example": true
+															},
+															"type": {
+																"description": "Indicates the type of the email address.",
+																"type": "string",
+																"example": "work"
+															},
+															"value": {
+																"description": "The email address of the SCIM User resource.",
+																"type": "string",
+																"format": "email",
+																"example": "john.smith@example.com"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"externalId": {
+													"description": "The IdP-generated Id of the SCIM resource.",
+													"type": "string",
+													"example": "john_smith"
+												},
+												"id": {
+													"description": "The unique Cloudflare-generated Id of the SCIM resource.",
+													"type": "string",
+													"example": "bd97ef8d-7986-43e3-9ee0-c25dda33e4b0"
+												},
+												"meta": {
+													"description": "The metadata of the SCIM resource.",
+													"type": "object",
+													"properties": {
+														"created": {
+															"description": "The timestamp of when the SCIM resource was created.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2025-01-01T00:00:00Z"
+														},
+														"lastModified": {
+															"description": "The timestamp of when the SCIM resource was last modified.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2025-01-02T00:00:00Z"
+														}
+													}
+												},
+												"schemas": {
+													"description": "The list of URIs which indicate the attributes contained within a SCIM resource.",
+													"type": "array",
+													"items": {
+														"type": "string"
+													},
+													"example": [
+														"urn:ietf:params:scim:schemas:core:2.0:User"
+													]
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Indicates a failure to get a SCIM User resource.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Access identity providers"
+		],
+		"x-api-token-group": [
+			"Access: Organizations, Identity Providers, and Groups Write",
+			"Access: Organizations, Identity Providers, and Groups Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.identity-providers.scim.users",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/access/identity_providers": {
 		"operationId": "access-identity-providers-add-an-access-identity-provider",
@@ -16835,8 +17552,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.identity-providers",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/access/identity_providers/{identity_provider_id}/saml_certificate": {
 		"operationId": "access-identity-providers-create-saml-certificate-for-identity-provider",
@@ -17575,8 +18291,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.identity-providers.saml-certificate",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/access/identity_providers/{identity_provider_id}": {
 		"operationId": "access-identity-providers-update-an-access-identity-provider",
@@ -25261,7 +25976,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.identity-providers",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

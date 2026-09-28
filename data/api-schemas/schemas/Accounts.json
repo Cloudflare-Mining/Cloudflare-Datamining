@@ -1365,18 +1365,18 @@
 			"Account Settings Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "account.organization",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "accounts.organization",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/profile": {
 		"operationId": "Accounts_getAccountProfile",
 		"summary": "Get account profile",
-		"description": "Retrieves the profile information for a specific Cloudflare account, including organization details, settings, and metadata. This endpoint is commonly used to verify account access and retrieve account-level configuration.",
+		"description": "Retrieves the business profile (name, email, phone, address, and external metadata) associated with this account's parent organization customer record. Profiles can be shared across accounts and organizations. Only available to members of an organization that contains the account.",
 		"parameters": [
 			{
 				"name": "account_id",
 				"in": "path",
+				"description": "The ID of the account whose business profile to retrieve.",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1564,7 +1564,7 @@
 			"Account Settings Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "account.profile",
+		"x-fern-sdk-group-name": "accounts.profile",
 		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts": {
@@ -1957,12 +1957,13 @@
 	},
 	"POST /accounts/{account_id}/move": {
 		"operationId": "Accounts_moveAccounts",
-		"summary": "Move account",
-		"description": "Move an account within an organization hierarchy or an account outside an organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
+		"summary": "Move account to organization",
+		"description": "Move an account into a destination organization, either assigning a standalone account\nto an organization or moving it between organizations in the same hierarchy. Availability\ndepends on the organization's capabilities. (Currently in Public Beta - see\nhttps://developers.cloudflare.com/fundamentals/organizations/)",
 		"parameters": [
 			{
 				"name": "account_id",
 				"in": "path",
+				"description": "The ID of the account to move.",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1978,6 +1979,7 @@
 						"type": "object",
 						"properties": {
 							"destination_organization_id": {
+								"description": "The ID of the organization to move the account into.",
 								"type": "string"
 							}
 						},
@@ -2131,7 +2133,7 @@
 		],
 		"x-api-token-group": null,
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "account",
+		"x-fern-sdk-group-name": "accounts",
 		"x-fern-sdk-method-name": "move"
 	},
 	"POST /accounts/move": {
@@ -2314,7 +2316,8 @@
 			"Accounts"
 		],
 		"x-fern-availability": "alpha",
-		"x-fern-sdk-group-name": "account.batch",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "accounts.batch",
 		"x-fern-sdk-method-name": "move"
 	},
 	"PUT /accounts/{account_id}": {
@@ -2758,12 +2761,13 @@
 	},
 	"PUT /accounts/{account_id}/profile": {
 		"operationId": "Accounts_modifyAccountProfile",
-		"summary": "Modify account profile",
-		"description": "Updates the profile information for a Cloudflare account. Allows modification of account-level settings and organizational details. Requires Account Settings Write permission.",
+		"summary": "Update account profile",
+		"description": "Updates the business profile (name, email, phone, address, and external metadata) associated with this account's parent organization customer record. Changes apply to every account and organization sharing that profile. Omitted or empty fields are left unchanged. Only available to members of an organization that contains the account. Requires Account Settings Write permission.",
 		"parameters": [
 			{
 				"name": "account_id",
 				"in": "path",
+				"description": "The ID of the account whose business profile to update.",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -2884,7 +2888,7 @@
 			"Account Settings Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "account.profile",
+		"x-fern-sdk-group-name": "accounts.profile",
 		"x-fern-sdk-method-name": "update"
 	}
 }

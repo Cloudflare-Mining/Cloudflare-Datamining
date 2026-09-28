@@ -1,15 +1,15 @@
 {
 	"DELETE /accounts/{account_id}/pages/projects/{project_name}": {
 		"operationId": "pages-project-delete-project",
-		"summary": "Delete project",
-		"description": "Delete a project by name.",
+		"summary": "Delete a Cloudflare Pages project",
+		"description": "Permanently delete a Cloudflare Pages project and its deployments.",
 		"parameters": [
 			{
 				"name": "project_name",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the project.",
+					"description": "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.",
 					"type": "string",
 					"example": "this-is-my-project-01",
 					"pattern": "^[a-z0-9][a-z0-9-]*$",
@@ -265,21 +265,20 @@
 			"Pages Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "pages.projects",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "pages",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/pages/projects/{project_name}/source": {
 		"operationId": "pages-project-disconnect-project-source",
-		"summary": "Disconnect project source",
-		"description": "Disconnect the Git repository source from an existing Pages project.",
+		"summary": "Disconnect a Git repository",
+		"description": "Disconnect the Git repository from a Cloudflare Pages project to stop Git-based deployments.",
 		"parameters": [
 			{
 				"name": "project_name",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the project.",
+					"description": "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.",
 					"type": "string",
 					"example": "this-is-my-project-01",
 					"pattern": "^[a-z0-9][a-z0-9-]*$",
@@ -671,7 +670,7 @@
 																	"x-auditable": true
 																},
 																"is_skipped": {
-																	"description": "If the deployment has been skipped.",
+																	"description": "Whether the deployment was skipped.",
 																	"type": "boolean",
 																	"example": true,
 																	"readOnly": true,
@@ -721,7 +720,8 @@
 																				"idle",
 																				"active",
 																				"failure",
-																				"canceled"
+																				"canceled",
+																				"skipped"
 																			],
 																			"readOnly": true,
 																			"x-auditable": true
@@ -751,7 +751,7 @@
 																	"x-auditable": true
 																},
 																"project_name": {
-																	"description": "Name of the project.",
+																	"description": "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.",
 																	"type": "string",
 																	"example": "this-is-my-project-01",
 																	"pattern": "^[a-z0-9][a-z0-9-]*$",
@@ -774,7 +774,8 @@
 																		"production_deployments_disabled",
 																		"path_config",
 																		"branch_config",
-																		"pages_to_workers_conversion"
+																		"pages_to_workers_conversion",
+																		"superseded_queued_build"
 																	],
 																	"nullable": true,
 																	"readOnly": true,
@@ -956,7 +957,8 @@
 																					"idle",
 																					"active",
 																					"failure",
-																					"canceled"
+																					"canceled",
+																					"skipped"
 																				],
 																				"readOnly": true,
 																				"x-auditable": true
@@ -2268,7 +2270,7 @@
 																	"x-auditable": true
 																},
 																"is_skipped": {
-																	"description": "If the deployment has been skipped.",
+																	"description": "Whether the deployment was skipped.",
 																	"type": "boolean",
 																	"example": true,
 																	"readOnly": true,
@@ -2318,7 +2320,8 @@
 																				"idle",
 																				"active",
 																				"failure",
-																				"canceled"
+																				"canceled",
+																				"skipped"
 																			],
 																			"readOnly": true,
 																			"x-auditable": true
@@ -2348,7 +2351,7 @@
 																	"x-auditable": true
 																},
 																"project_name": {
-																	"description": "Name of the project.",
+																	"description": "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.",
 																	"type": "string",
 																	"example": "this-is-my-project-01",
 																	"pattern": "^[a-z0-9][a-z0-9-]*$",
@@ -2371,7 +2374,8 @@
 																		"production_deployments_disabled",
 																		"path_config",
 																		"branch_config",
-																		"pages_to_workers_conversion"
+																		"pages_to_workers_conversion",
+																		"superseded_queued_build"
 																	],
 																	"nullable": true,
 																	"readOnly": true,
@@ -2553,7 +2557,8 @@
 																					"idle",
 																					"active",
 																					"failure",
-																					"canceled"
+																					"canceled",
+																					"skipped"
 																				],
 																				"readOnly": true,
 																				"x-auditable": true
@@ -2644,7 +2649,7 @@
 													]
 												},
 												"name": {
-													"description": "Name of the project.",
+													"description": "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.",
 													"type": "string",
 													"example": "this-is-my-project-01",
 													"pattern": "^[a-z0-9][a-z0-9-]*$",
@@ -2970,14 +2975,13 @@
 			"Pages Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "pages.projects",
-		"x-fern-sdk-method-name": "disconnect-source",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "pages.source",
+		"x-fern-sdk-method-name": "disconnect"
 	},
 	"GET /accounts/{account_id}/pages/projects": {
 		"operationId": "pages-project-get-projects",
-		"summary": "Get projects",
-		"description": "Fetch a list of all user projects.",
+		"summary": "List Cloudflare Pages projects",
+		"description": "List the Cloudflare Pages projects in an account.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2995,7 +2999,7 @@
 				"name": "page",
 				"in": "query",
 				"schema": {
-					"description": "Which page of projects to fetch.",
+					"description": "Page number of results to return.",
 					"type": "integer",
 					"example": 1
 				}
@@ -3004,7 +3008,7 @@
 				"name": "per_page",
 				"in": "query",
 				"schema": {
-					"description": "How many projects to return per page.",
+					"description": "Number of results to return per page.",
 					"type": "integer",
 					"example": 10
 				}
@@ -3424,7 +3428,7 @@
 																		"x-auditable": true
 																	},
 																	"is_skipped": {
-																		"description": "If the deployment has been skipped.",
+																		"description": "Whether the deployment was skipped.",
 																		"type": "boolean",
 																		"example": true,
 																		"readOnly": true,
@@ -3474,7 +3478,8 @@
 																					"idle",
 																					"active",
 																					"failure",
-																					"canceled"
+																					"canceled",
+																					"skipped"
 																				],
 																				"readOnly": true,
 																				"x-auditable": true
@@ -3504,7 +3509,7 @@
 																		"x-auditable": true
 																	},
 																	"project_name": {
-																		"description": "Name of the project.",
+																		"description": "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.",
 																		"type": "string",
 																		"example": "this-is-my-project-01",
 																		"pattern": "^[a-z0-9][a-z0-9-]*$",
@@ -3527,7 +3532,8 @@
 																			"production_deployments_disabled",
 																			"path_config",
 																			"branch_config",
-																			"pages_to_workers_conversion"
+																			"pages_to_workers_conversion",
+																			"superseded_queued_build"
 																		],
 																		"nullable": true,
 																		"readOnly": true,
@@ -3709,7 +3715,8 @@
 																						"idle",
 																						"active",
 																						"failure",
-																						"canceled"
+																						"canceled",
+																						"skipped"
 																					],
 																					"readOnly": true,
 																					"x-auditable": true
@@ -5021,7 +5028,7 @@
 																		"x-auditable": true
 																	},
 																	"is_skipped": {
-																		"description": "If the deployment has been skipped.",
+																		"description": "Whether the deployment was skipped.",
 																		"type": "boolean",
 																		"example": true,
 																		"readOnly": true,
@@ -5071,7 +5078,8 @@
 																					"idle",
 																					"active",
 																					"failure",
-																					"canceled"
+																					"canceled",
+																					"skipped"
 																				],
 																				"readOnly": true,
 																				"x-auditable": true
@@ -5101,7 +5109,7 @@
 																		"x-auditable": true
 																	},
 																	"project_name": {
-																		"description": "Name of the project.",
+																		"description": "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.",
 																		"type": "string",
 																		"example": "this-is-my-project-01",
 																		"pattern": "^[a-z0-9][a-z0-9-]*$",
@@ -5124,7 +5132,8 @@
 																			"production_deployments_disabled",
 																			"path_config",
 																			"branch_config",
-																			"pages_to_workers_conversion"
+																			"pages_to_workers_conversion",
+																			"superseded_queued_build"
 																		],
 																		"nullable": true,
 																		"readOnly": true,
@@ -5306,7 +5315,8 @@
 																						"idle",
 																						"active",
 																						"failure",
-																						"canceled"
+																						"canceled",
+																						"skipped"
 																					],
 																					"readOnly": true,
 																					"x-auditable": true
@@ -5397,7 +5407,7 @@
 														]
 													},
 													"name": {
-														"description": "Name of the project.",
+														"description": "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.",
 														"type": "string",
 														"example": "this-is-my-project-01",
 														"pattern": "^[a-z0-9][a-z0-9-]*$",
@@ -5725,21 +5735,20 @@
 			"Pages Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "pages.projects",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "pages",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/pages/projects/{project_name}": {
 		"operationId": "pages-project-get-project",
-		"summary": "Get project",
-		"description": "Fetch a project by name.",
+		"summary": "Get a Cloudflare Pages project",
+		"description": "Retrieve the configuration and deployment settings for a Cloudflare Pages project.",
 		"parameters": [
 			{
 				"name": "project_name",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the project.",
+					"description": "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.",
 					"type": "string",
 					"example": "this-is-my-project-01",
 					"pattern": "^[a-z0-9][a-z0-9-]*$",
@@ -6131,7 +6140,7 @@
 																	"x-auditable": true
 																},
 																"is_skipped": {
-																	"description": "If the deployment has been skipped.",
+																	"description": "Whether the deployment was skipped.",
 																	"type": "boolean",
 																	"example": true,
 																	"readOnly": true,
@@ -6181,7 +6190,8 @@
 																				"idle",
 																				"active",
 																				"failure",
-																				"canceled"
+																				"canceled",
+																				"skipped"
 																			],
 																			"readOnly": true,
 																			"x-auditable": true
@@ -6211,7 +6221,7 @@
 																	"x-auditable": true
 																},
 																"project_name": {
-																	"description": "Name of the project.",
+																	"description": "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.",
 																	"type": "string",
 																	"example": "this-is-my-project-01",
 																	"pattern": "^[a-z0-9][a-z0-9-]*$",
@@ -6234,7 +6244,8 @@
 																		"production_deployments_disabled",
 																		"path_config",
 																		"branch_config",
-																		"pages_to_workers_conversion"
+																		"pages_to_workers_conversion",
+																		"superseded_queued_build"
 																	],
 																	"nullable": true,
 																	"readOnly": true,
@@ -6416,7 +6427,8 @@
 																					"idle",
 																					"active",
 																					"failure",
-																					"canceled"
+																					"canceled",
+																					"skipped"
 																				],
 																				"readOnly": true,
 																				"x-auditable": true
@@ -7728,7 +7740,7 @@
 																	"x-auditable": true
 																},
 																"is_skipped": {
-																	"description": "If the deployment has been skipped.",
+																	"description": "Whether the deployment was skipped.",
 																	"type": "boolean",
 																	"example": true,
 																	"readOnly": true,
@@ -7778,7 +7790,8 @@
 																				"idle",
 																				"active",
 																				"failure",
-																				"canceled"
+																				"canceled",
+																				"skipped"
 																			],
 																			"readOnly": true,
 																			"x-auditable": true
@@ -7808,7 +7821,7 @@
 																	"x-auditable": true
 																},
 																"project_name": {
-																	"description": "Name of the project.",
+																	"description": "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.",
 																	"type": "string",
 																	"example": "this-is-my-project-01",
 																	"pattern": "^[a-z0-9][a-z0-9-]*$",
@@ -7831,7 +7844,8 @@
 																		"production_deployments_disabled",
 																		"path_config",
 																		"branch_config",
-																		"pages_to_workers_conversion"
+																		"pages_to_workers_conversion",
+																		"superseded_queued_build"
 																	],
 																	"nullable": true,
 																	"readOnly": true,
@@ -8013,7 +8027,8 @@
 																					"idle",
 																					"active",
 																					"failure",
-																					"canceled"
+																					"canceled",
+																					"skipped"
 																				],
 																				"readOnly": true,
 																				"x-auditable": true
@@ -8104,7 +8119,7 @@
 													]
 												},
 												"name": {
-													"description": "Name of the project.",
+													"description": "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.",
 													"type": "string",
 													"example": "this-is-my-project-01",
 													"pattern": "^[a-z0-9][a-z0-9-]*$",
@@ -8431,9 +8446,8 @@
 			"Pages Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "pages.projects",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "pages",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/pages/projects/{project_name}/upload-token": {
 		"operationId": "pages-project-get-upload-token",
@@ -8445,7 +8459,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the project.",
+					"description": "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.",
 					"type": "string",
 					"example": "this-is-my-project-01",
 					"pattern": "^[a-z0-9][a-z0-9-]*$",
@@ -8710,21 +8724,21 @@
 			"Pages Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "pages.projects",
-		"x-fern-sdk-method-name": "get-upload-token",
-		"x-forge-hidden": true
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "pages.upload-token",
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/pages/projects/{project_name}": {
 		"operationId": "pages-project-update-project",
-		"summary": "Update project",
-		"description": "Set new attributes for an existing project. Modify environment variables. To delete an environment variable, set the key to null.",
+		"summary": "Update a Cloudflare Pages project",
+		"description": "Update the build, deployment, source, or environment settings for a Cloudflare Pages project. To delete an environment variable, set its key to `null`.",
 		"parameters": [
 			{
 				"name": "project_name",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the project.",
+					"description": "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.",
 					"type": "string",
 					"example": "this-is-my-project-01",
 					"pattern": "^[a-z0-9][a-z0-9-]*$",
@@ -9756,7 +9770,7 @@
 								}
 							},
 							"name": {
-								"description": "Name of the project.",
+								"description": "Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.",
 								"type": "string",
 								"example": "my-pages-app",
 								"x-auditable": true
@@ -10278,7 +10292,7 @@
 																	"x-auditable": true
 																},
 																"is_skipped": {
-																	"description": "If the deployment has been skipped.",
+																	"description": "Whether the deployment was skipped.",
 																	"type": "boolean",
 																	"example": true,
 																	"readOnly": true,
@@ -10328,7 +10342,8 @@
 																				"idle",
 																				"active",
 																				"failure",
-																				"canceled"
+																				"canceled",
+																				"skipped"
 																			],
 																			"readOnly": true,
 																			"x-auditable": true
@@ -10358,7 +10373,7 @@
 																	"x-auditable": true
 																},
 																"project_name": {
-																	"description": "Name of the project.",
+																	"description": "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.",
 																	"type": "string",
 																	"example": "this-is-my-project-01",
 																	"pattern": "^[a-z0-9][a-z0-9-]*$",
@@ -10381,7 +10396,8 @@
 																		"production_deployments_disabled",
 																		"path_config",
 																		"branch_config",
-																		"pages_to_workers_conversion"
+																		"pages_to_workers_conversion",
+																		"superseded_queued_build"
 																	],
 																	"nullable": true,
 																	"readOnly": true,
@@ -10563,7 +10579,8 @@
 																					"idle",
 																					"active",
 																					"failure",
-																					"canceled"
+																					"canceled",
+																					"skipped"
 																				],
 																				"readOnly": true,
 																				"x-auditable": true
@@ -11875,7 +11892,7 @@
 																	"x-auditable": true
 																},
 																"is_skipped": {
-																	"description": "If the deployment has been skipped.",
+																	"description": "Whether the deployment was skipped.",
 																	"type": "boolean",
 																	"example": true,
 																	"readOnly": true,
@@ -11925,7 +11942,8 @@
 																				"idle",
 																				"active",
 																				"failure",
-																				"canceled"
+																				"canceled",
+																				"skipped"
 																			],
 																			"readOnly": true,
 																			"x-auditable": true
@@ -11955,7 +11973,7 @@
 																	"x-auditable": true
 																},
 																"project_name": {
-																	"description": "Name of the project.",
+																	"description": "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.",
 																	"type": "string",
 																	"example": "this-is-my-project-01",
 																	"pattern": "^[a-z0-9][a-z0-9-]*$",
@@ -11978,7 +11996,8 @@
 																		"production_deployments_disabled",
 																		"path_config",
 																		"branch_config",
-																		"pages_to_workers_conversion"
+																		"pages_to_workers_conversion",
+																		"superseded_queued_build"
 																	],
 																	"nullable": true,
 																	"readOnly": true,
@@ -12160,7 +12179,8 @@
 																					"idle",
 																					"active",
 																					"failure",
-																					"canceled"
+																					"canceled",
+																					"skipped"
 																				],
 																				"readOnly": true,
 																				"x-auditable": true
@@ -12251,7 +12271,7 @@
 													]
 												},
 												"name": {
-													"description": "Name of the project.",
+													"description": "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.",
 													"type": "string",
 													"example": "this-is-my-project-01",
 													"pattern": "^[a-z0-9][a-z0-9-]*$",
@@ -12577,14 +12597,13 @@
 			"Pages Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "pages.projects",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "pages",
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/pages/projects": {
 		"operationId": "pages-project-create-project",
-		"summary": "Create project",
-		"description": "Create a new project.",
+		"summary": "Create a Cloudflare Pages project",
+		"description": "Create a Cloudflare Pages project for configuring and deploying a site or application.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -13611,7 +13630,7 @@
 								}
 							},
 							"name": {
-								"description": "Name of the project.",
+								"description": "Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.",
 								"type": "string",
 								"example": "my-pages-app",
 								"x-auditable": true
@@ -14117,7 +14136,7 @@
 																	"x-auditable": true
 																},
 																"is_skipped": {
-																	"description": "If the deployment has been skipped.",
+																	"description": "Whether the deployment was skipped.",
 																	"type": "boolean",
 																	"example": true,
 																	"readOnly": true,
@@ -14167,7 +14186,8 @@
 																				"idle",
 																				"active",
 																				"failure",
-																				"canceled"
+																				"canceled",
+																				"skipped"
 																			],
 																			"readOnly": true,
 																			"x-auditable": true
@@ -14197,7 +14217,7 @@
 																	"x-auditable": true
 																},
 																"project_name": {
-																	"description": "Name of the project.",
+																	"description": "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.",
 																	"type": "string",
 																	"example": "this-is-my-project-01",
 																	"pattern": "^[a-z0-9][a-z0-9-]*$",
@@ -14220,7 +14240,8 @@
 																		"production_deployments_disabled",
 																		"path_config",
 																		"branch_config",
-																		"pages_to_workers_conversion"
+																		"pages_to_workers_conversion",
+																		"superseded_queued_build"
 																	],
 																	"nullable": true,
 																	"readOnly": true,
@@ -14402,7 +14423,8 @@
 																					"idle",
 																					"active",
 																					"failure",
-																					"canceled"
+																					"canceled",
+																					"skipped"
 																				],
 																				"readOnly": true,
 																				"x-auditable": true
@@ -15714,7 +15736,7 @@
 																	"x-auditable": true
 																},
 																"is_skipped": {
-																	"description": "If the deployment has been skipped.",
+																	"description": "Whether the deployment was skipped.",
 																	"type": "boolean",
 																	"example": true,
 																	"readOnly": true,
@@ -15764,7 +15786,8 @@
 																				"idle",
 																				"active",
 																				"failure",
-																				"canceled"
+																				"canceled",
+																				"skipped"
 																			],
 																			"readOnly": true,
 																			"x-auditable": true
@@ -15794,7 +15817,7 @@
 																	"x-auditable": true
 																},
 																"project_name": {
-																	"description": "Name of the project.",
+																	"description": "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.",
 																	"type": "string",
 																	"example": "this-is-my-project-01",
 																	"pattern": "^[a-z0-9][a-z0-9-]*$",
@@ -15817,7 +15840,8 @@
 																		"production_deployments_disabled",
 																		"path_config",
 																		"branch_config",
-																		"pages_to_workers_conversion"
+																		"pages_to_workers_conversion",
+																		"superseded_queued_build"
 																	],
 																	"nullable": true,
 																	"readOnly": true,
@@ -15999,7 +16023,8 @@
 																					"idle",
 																					"active",
 																					"failure",
-																					"canceled"
+																					"canceled",
+																					"skipped"
 																				],
 																				"readOnly": true,
 																				"x-auditable": true
@@ -16090,7 +16115,7 @@
 													]
 												},
 												"name": {
-													"description": "Name of the project.",
+													"description": "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.",
 													"type": "string",
 													"example": "this-is-my-project-01",
 													"pattern": "^[a-z0-9][a-z0-9-]*$",
@@ -16416,21 +16441,20 @@
 			"Pages Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "pages.projects",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "pages",
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/pages/projects/{project_name}/source": {
 		"operationId": "pages-project-connect-project-source",
-		"summary": "Connect project source",
-		"description": "Connect a Git repository source to an existing Pages project.",
+		"summary": "Connect a Git repository",
+		"description": "Connect a GitHub or GitLab repository to a Cloudflare Pages project to enable Git-based deployments.",
 		"parameters": [
 			{
 				"name": "project_name",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the project.",
+					"description": "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.",
 					"type": "string",
 					"example": "this-is-my-project-01",
 					"pattern": "^[a-z0-9][a-z0-9-]*$",
@@ -16455,117 +16479,122 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "Configs for the project source control.",
+						"description": "Repository and deployment settings for connecting a Git repository to a Pages project.",
 						"type": "object",
 						"properties": {
 							"config": {
-								"type": "object",
-								"properties": {
-									"deployments_enabled": {
-										"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
-										"type": "boolean",
-										"deprecated": true,
-										"x-auditable": true,
-										"x-stainless-deprecation-message": "Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control."
-									},
-									"owner": {
-										"description": "The owner of the repository.",
-										"type": "string",
-										"example": "my-org",
-										"x-auditable": true
-									},
-									"owner_id": {
-										"description": "The owner ID of the repository.",
-										"type": "string",
-										"example": "12345678",
-										"x-auditable": true
-									},
-									"path_excludes": {
-										"description": "A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.",
-										"type": "array",
-										"items": {
-											"type": "string",
-											"x-auditable": true
-										}
-									},
-									"path_includes": {
-										"description": "A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.",
-										"type": "array",
-										"items": {
-											"type": "string",
-											"x-auditable": true
-										}
-									},
-									"pr_comments_enabled": {
-										"description": "Whether to enable PR comments.",
-										"type": "boolean",
-										"x-auditable": true
-									},
-									"preview_branch_excludes": {
-										"description": "A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `preview_deployment_setting` set to `custom`.",
-										"type": "array",
-										"items": {
-											"type": "string",
-											"x-auditable": true
-										}
-									},
-									"preview_branch_includes": {
-										"description": "A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `preview_deployment_setting` set to `custom`.",
-										"type": "array",
-										"items": {
-											"type": "string",
-											"x-auditable": true
-										}
-									},
-									"preview_deployment_setting": {
-										"description": "Controls whether commits to preview branches trigger a preview deployment.",
-										"type": "string",
-										"enum": [
-											"all",
-											"none",
-											"custom"
-										],
-										"x-auditable": true
-									},
-									"production_branch": {
-										"description": "The production branch of the repository.",
-										"type": "string",
-										"example": "main",
-										"x-auditable": true
-									},
-									"production_deployments_enabled": {
-										"description": "Whether to trigger a production deployment on commits to the production branch.",
-										"type": "boolean",
-										"x-auditable": true
-									},
-									"repo_id": {
-										"description": "The ID of the repository.",
-										"type": "string",
-										"example": "12345678",
-										"x-auditable": true
-									},
-									"repo_name": {
-										"description": "The name of the repository.",
-										"type": "string",
-										"example": "my-repo",
-										"x-auditable": true
+								"allOf": [
+									{
+										"type": "object",
+										"properties": {
+											"deployments_enabled": {
+												"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
+												"type": "boolean",
+												"deprecated": true,
+												"x-auditable": true,
+												"x-stainless-deprecation-message": "Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control."
+											},
+											"owner": {
+												"description": "The owner of the repository.",
+												"type": "string",
+												"example": "my-org",
+												"x-auditable": true
+											},
+											"owner_id": {
+												"description": "The owner ID of the repository.",
+												"type": "string",
+												"example": "12345678",
+												"x-auditable": true
+											},
+											"path_excludes": {
+												"description": "A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.",
+												"type": "array",
+												"items": {
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"path_includes": {
+												"description": "A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.",
+												"type": "array",
+												"items": {
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"pr_comments_enabled": {
+												"description": "Whether to enable PR comments.",
+												"type": "boolean",
+												"x-auditable": true
+											},
+											"preview_branch_excludes": {
+												"description": "A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `preview_deployment_setting` set to `custom`.",
+												"type": "array",
+												"items": {
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"preview_branch_includes": {
+												"description": "A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `preview_deployment_setting` set to `custom`.",
+												"type": "array",
+												"items": {
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"preview_deployment_setting": {
+												"description": "Controls whether commits to preview branches trigger a preview deployment.",
+												"type": "string",
+												"enum": [
+													"all",
+													"none",
+													"custom"
+												],
+												"x-auditable": true
+											},
+											"production_branch": {
+												"description": "The production branch of the repository.",
+												"type": "string",
+												"example": "main",
+												"x-auditable": true
+											},
+											"production_deployments_enabled": {
+												"description": "Whether to trigger a production deployment on commits to the production branch.",
+												"type": "boolean",
+												"x-auditable": true
+											},
+											"repo_id": {
+												"description": "The ID of the repository.",
+												"type": "string",
+												"example": "12345678",
+												"x-auditable": true
+											},
+											"repo_name": {
+												"description": "The name of the repository.",
+												"type": "string",
+												"example": "my-repo",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"deployments_enabled",
+											"owner",
+											"owner_id",
+											"path_excludes",
+											"path_includes",
+											"pr_comments_enabled",
+											"preview_branch_excludes",
+											"preview_branch_includes",
+											"preview_deployment_setting",
+											"production_branch",
+											"production_deployments_enabled",
+											"repo_id",
+											"repo_name"
+										]
 									}
-								},
-								"required": [
-									"deployments_enabled",
-									"owner",
-									"owner_id",
-									"path_excludes",
-									"path_includes",
-									"pr_comments_enabled",
-									"preview_branch_excludes",
-									"preview_branch_includes",
-									"preview_deployment_setting",
-									"production_branch",
-									"production_deployments_enabled",
-									"repo_id",
-									"repo_name"
-								]
+								],
+								"x-fern-property-name": "source-config"
 							},
 							"type": {
 								"description": "The source control management provider.",
@@ -16958,7 +16987,7 @@
 																	"x-auditable": true
 																},
 																"is_skipped": {
-																	"description": "If the deployment has been skipped.",
+																	"description": "Whether the deployment was skipped.",
 																	"type": "boolean",
 																	"example": true,
 																	"readOnly": true,
@@ -17008,7 +17037,8 @@
 																				"idle",
 																				"active",
 																				"failure",
-																				"canceled"
+																				"canceled",
+																				"skipped"
 																			],
 																			"readOnly": true,
 																			"x-auditable": true
@@ -17038,7 +17068,7 @@
 																	"x-auditable": true
 																},
 																"project_name": {
-																	"description": "Name of the project.",
+																	"description": "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.",
 																	"type": "string",
 																	"example": "this-is-my-project-01",
 																	"pattern": "^[a-z0-9][a-z0-9-]*$",
@@ -17061,7 +17091,8 @@
 																		"production_deployments_disabled",
 																		"path_config",
 																		"branch_config",
-																		"pages_to_workers_conversion"
+																		"pages_to_workers_conversion",
+																		"superseded_queued_build"
 																	],
 																	"nullable": true,
 																	"readOnly": true,
@@ -17243,7 +17274,8 @@
 																					"idle",
 																					"active",
 																					"failure",
-																					"canceled"
+																					"canceled",
+																					"skipped"
 																				],
 																				"readOnly": true,
 																				"x-auditable": true
@@ -18555,7 +18587,7 @@
 																	"x-auditable": true
 																},
 																"is_skipped": {
-																	"description": "If the deployment has been skipped.",
+																	"description": "Whether the deployment was skipped.",
 																	"type": "boolean",
 																	"example": true,
 																	"readOnly": true,
@@ -18605,7 +18637,8 @@
 																				"idle",
 																				"active",
 																				"failure",
-																				"canceled"
+																				"canceled",
+																				"skipped"
 																			],
 																			"readOnly": true,
 																			"x-auditable": true
@@ -18635,7 +18668,7 @@
 																	"x-auditable": true
 																},
 																"project_name": {
-																	"description": "Name of the project.",
+																	"description": "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.",
 																	"type": "string",
 																	"example": "this-is-my-project-01",
 																	"pattern": "^[a-z0-9][a-z0-9-]*$",
@@ -18658,7 +18691,8 @@
 																		"production_deployments_disabled",
 																		"path_config",
 																		"branch_config",
-																		"pages_to_workers_conversion"
+																		"pages_to_workers_conversion",
+																		"superseded_queued_build"
 																	],
 																	"nullable": true,
 																	"readOnly": true,
@@ -18840,7 +18874,8 @@
 																					"idle",
 																					"active",
 																					"failure",
-																					"canceled"
+																					"canceled",
+																					"skipped"
 																				],
 																				"readOnly": true,
 																				"x-auditable": true
@@ -18931,7 +18966,7 @@
 													]
 												},
 												"name": {
-													"description": "Name of the project.",
+													"description": "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.",
 													"type": "string",
 													"example": "this-is-my-project-01",
 													"pattern": "^[a-z0-9][a-z0-9-]*$",
@@ -19257,8 +19292,7 @@
 			"Pages Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "pages.projects",
-		"x-fern-sdk-method-name": "connect-source",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "pages.source",
+		"x-fern-sdk-method-name": "connect"
 	}
 }

@@ -1,8 +1,8 @@
 {
 	"DELETE /organizations/{organization_id}": {
 		"operationId": "Organizations_delete",
-		"summary": "Delete organization.",
-		"description": "Delete an organization. The organization MUST be empty before deleting.\nIt must not contain any sub-organizations, accounts, members or users. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)\n\n**Access Control:** Restricted to enterprise organizations.",
+		"summary": "Delete organization",
+		"description": "Delete an organization. The organization MUST be empty before deleting.\nIt must not contain any sub-organizations, accounts, members or users. Sub-organization\ndeletion availability depends on the organization's capabilities. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)\n\n**Access Control:** Restricted to enterprise organizations.",
 		"parameters": [
 			{
 				"name": "organization_id",
@@ -156,7 +156,7 @@
 		"x-fern-sdk-group-name": "organization",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true,
-		"x-forge-require-confirmation": "Are you sure? This action cannot be undone."
+		"x-forge-require-confirmation": "Delete this empty organization? This action cannot be undone."
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/analytics/daywise": {
 		"operationId": "get-org-analytics",
@@ -1036,8 +1036,8 @@
 	},
 	"GET /organizations/{organization_id}/accounts": {
 		"operationId": "Organizations_getAccounts",
-		"summary": "Get organization accounts",
-		"description": "Retrieve a list of accounts that belong to a specific organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
+		"summary": "List organization accounts",
+		"description": "Retrieve the accounts immediately attached to a specific organization. Accounts\nattached to sub-organizations are not included. (Currently in Public Beta - see\nhttps://developers.cloudflare.com/fundamentals/organizations/)",
 		"parameters": [
 			{
 				"name": "organization_id",
@@ -1592,7 +1592,7 @@
 	"POST /organizations": {
 		"operationId": "Organizations_createUserOrganization",
 		"summary": "Create organization",
-		"description": "Create a new organization for a user. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
+		"description": "Create a new organization for a user. Sub-organization creation availability depends on the organization's capabilities. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -2020,8 +2020,8 @@
 	},
 	"PUT /organizations/{organization_id}": {
 		"operationId": "Organizations_modify",
-		"summary": "Modify organization.",
-		"description": "Modify organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
+		"summary": "Update organization",
+		"description": "Update an organization's name. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
 		"parameters": [
 			{
 				"name": "organization_id",

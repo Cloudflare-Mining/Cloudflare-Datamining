@@ -1067,8 +1067,19 @@
 											"type": "object",
 											"properties": {
 												"params": {
+													"description": "Values bound to the `?` placeholders in `sql`, in order.",
 													"type": "array",
-													"items": {}
+													"items": {
+														"anyOf": [
+															{
+																"nullable": true,
+																"type": "string"
+															},
+															{
+																"type": "number"
+															}
+														]
+													}
 												},
 												"sql": {
 													"type": "string",
@@ -1107,8 +1118,19 @@
 											"type": "object",
 											"properties": {
 												"params": {
+													"description": "Values bound to the `?` placeholders in `sql`, in order.",
 													"type": "array",
-													"items": {}
+													"items": {
+														"anyOf": [
+															{
+																"nullable": true,
+																"type": "string"
+															},
+															{
+																"type": "number"
+															}
+														]
+													}
 												},
 												"sql": {
 													"type": "string",
@@ -1223,7 +1245,74 @@
 								},
 								{
 									"properties": {
-										"result": {}
+										"result": {
+											"type": "object",
+											"properties": {
+												"error": {
+													"description": "The error that stopped the queries. Omitted when every query succeeds.",
+													"type": "string"
+												},
+												"results": {
+													"description": "One entry per query, in request order.",
+													"type": "array",
+													"items": {
+														"properties": {
+															"columns": {
+																"type": "array",
+																"items": {
+																	"type": "string"
+																}
+															},
+															"meta": {
+																"type": "object",
+																"properties": {
+																	"rows_read": {
+																		"type": "number"
+																	},
+																	"rows_written": {
+																		"type": "number"
+																	}
+																}
+															},
+															"rows": {
+																"description": "Each row lists its values in column order.",
+																"type": "array",
+																"items": {
+																	"items": {
+																		"description": "A SQLite value. Blobs are returned as arrays of byte values.",
+																		"anyOf": [
+																			{
+																				"nullable": true,
+																				"type": "string"
+																			},
+																			{
+																				"type": "number"
+																			},
+																			{
+																				"items": {
+																					"type": "integer"
+																				},
+																				"type": "array"
+																			}
+																		]
+																	},
+																	"type": "array"
+																}
+															}
+														},
+														"required": [
+															"columns",
+															"rows",
+															"meta"
+														],
+														"type": "object"
+													}
+												}
+											},
+											"required": [
+												"results"
+											]
+										}
 									},
 									"type": "object"
 								}
@@ -1361,9 +1450,11 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "durable-objects.namespaces",
-		"x-fern-sdk-method-name": "query",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "query"
 	}
 }

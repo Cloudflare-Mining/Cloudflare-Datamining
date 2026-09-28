@@ -276,9 +276,8 @@
 			"Access: SSH Auditing Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.access.gateway-ca",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.access.infrastructure.ssh-ca",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/access/gateway_ca": {
 		"operationId": "access-gateway-ca-list-SSH-ca",
@@ -586,9 +585,8 @@
 			"Access: SSH Auditing Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.access.gateway-ca",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.access.infrastructure.ssh-ca",
+		"x-fern-sdk-method-name": "list"
 	},
 	"POST /accounts/{account_id}/access/gateway_ca": {
 		"operationId": "access-gateway-ca-add-an-SSH-ca",
@@ -857,8 +855,7 @@
 			"Access: SSH Auditing Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.access.gateway-ca",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.access.infrastructure.ssh-ca",
+		"x-fern-sdk-method-name": "create"
 	}
 }

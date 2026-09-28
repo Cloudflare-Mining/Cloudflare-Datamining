@@ -1,0 +1,1957 @@
+{
+	"DELETE /accounts/{account_id}/dns_settings/nameserver_sets/{nameserver_set_id}": {
+		"operationId": "dns-settings-for-an-account-delete-custom-nameserver-set",
+		"summary": "Delete Custom Nameserver Set",
+		"description": "Deletes an unassigned Custom Nameserver Set.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "nameserver_set_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier for a nameserver set.",
+					"type": "string",
+					"example": "0123456789abcdef0123456789abcdef",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns the identifier of the deleted Custom Nameserver Set.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"id": {
+													"description": "Identifier for a nameserver set.",
+													"type": "string",
+													"example": "0123456789abcdef0123456789abcdef",
+													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-f]{32}$",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"id"
+											]
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Returns an error when the Custom Nameserver Set cannot be deleted.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Custom Nameserver Sets for an Account"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.custom-ns-set.delete"
+			]
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "dns.settings.account.nameserver-sets",
+		"x-fern-sdk-method-name": "delete",
+		"x-stability": "beta"
+	},
+	"GET /accounts/{account_id}/dns_settings/nameserver_sets": {
+		"operationId": "dns-settings-for-an-account-list-custom-nameserver-sets",
+		"summary": "List Custom Nameserver Sets",
+		"description": "Lists an account's Custom Nameserver Sets.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "page",
+				"in": "query",
+				"schema": {
+					"description": "Page number of paginated results.",
+					"type": "integer",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"schema": {
+					"description": "Number of results per page.",
+					"type": "integer",
+					"example": 5,
+					"default": 100,
+					"maximum": 5000000,
+					"minimum": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns a list of Custom Nameserver Sets.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										},
+										{
+											"properties": {
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"type": "number",
+															"example": 1
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"type": "number",
+															"example": 1
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"type": "number",
+															"example": 20
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"type": "number",
+															"example": 2000
+														},
+														"total_pages": {
+															"description": "The number of total pages in the entire result set.",
+															"type": "number",
+															"example": 100
+														}
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"oneOf": [
+													{
+														"allOf": [
+															{
+																"type": "object",
+																"properties": {
+																	"created_on": {
+																		"description": "When the nameserver set was created.",
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2026-09-01T12:00:00Z",
+																		"readOnly": true,
+																		"x-auditable": true
+																	},
+																	"id": {
+																		"description": "Identifier for a nameserver set.",
+																		"type": "string",
+																		"example": "0123456789abcdef0123456789abcdef",
+																		"maxLength": 32,
+																		"minLength": 32,
+																		"pattern": "^[0-9a-f]{32}$",
+																		"x-auditable": true
+																	},
+																	"ip_set": {
+																		"description": "Selects the account-specific IP set that supplies the nameserver addresses. The account's entitlement determines the maximum value. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
+																		"type": "integer",
+																		"format": "int64",
+																		"example": 1,
+																		"default": 1,
+																		"minimum": 1,
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"id",
+																	"ip_set",
+																	"created_on"
+																]
+															},
+															{
+																"properties": {
+																	"advanced": {
+																		"description": "Whether the nameserver set uses Advanced anycast groups.",
+																		"type": "boolean",
+																		"example": false,
+																		"enum": [
+																			false
+																		],
+																		"x-auditable": true
+																	},
+																	"nameservers": {
+																		"type": "array",
+																		"items": {
+																			"type": "object",
+																			"properties": {
+																				"ipv4": {
+																					"description": "IPv4 addresses assigned to the nameserver.",
+																					"type": "array",
+																					"items": {
+																						"example": "192.0.2.1",
+																						"format": "ipv4",
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"maxItems": 3,
+																					"readOnly": true
+																				},
+																				"ipv6": {
+																					"description": "IPv6 addresses assigned to the nameserver.",
+																					"type": "array",
+																					"items": {
+																						"example": "2001:db8::1",
+																						"format": "ipv6",
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"maxItems": 3,
+																					"readOnly": true
+																				},
+																				"name": {
+																					"description": "A unique lowercase Punycode nameserver name within the set.",
+																					"type": "string",
+																					"example": "ns1.example.com",
+																					"x-auditable": true
+																				}
+																			},
+																			"required": [
+																				"name",
+																				"ipv4",
+																				"ipv6"
+																			]
+																		},
+																		"maxItems": 5,
+																		"minItems": 2
+																	}
+																},
+																"required": [
+																	"advanced",
+																	"nameservers"
+																],
+																"type": "object"
+															}
+														]
+													},
+													{
+														"allOf": [
+															{
+																"type": "object",
+																"properties": {
+																	"created_on": {
+																		"description": "When the nameserver set was created.",
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2026-09-01T12:00:00Z",
+																		"readOnly": true,
+																		"x-auditable": true
+																	},
+																	"id": {
+																		"description": "Identifier for a nameserver set.",
+																		"type": "string",
+																		"example": "0123456789abcdef0123456789abcdef",
+																		"maxLength": 32,
+																		"minLength": 32,
+																		"pattern": "^[0-9a-f]{32}$",
+																		"x-auditable": true
+																	},
+																	"ip_set": {
+																		"description": "Selects the account-specific IP set that supplies the nameserver addresses. The account's entitlement determines the maximum value. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
+																		"type": "integer",
+																		"format": "int64",
+																		"example": 1,
+																		"default": 1,
+																		"minimum": 1,
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"id",
+																	"ip_set",
+																	"created_on"
+																]
+															},
+															{
+																"properties": {
+																	"advanced": {
+																		"description": "Whether the nameserver set uses Advanced anycast groups.",
+																		"type": "boolean",
+																		"example": true,
+																		"enum": [
+																			true
+																		],
+																		"x-auditable": true
+																	},
+																	"nameservers": {
+																		"type": "array",
+																		"items": {
+																			"type": "object",
+																			"properties": {
+																				"ipv4": {
+																					"description": "IPv4 addresses assigned to the nameserver.",
+																					"type": "array",
+																					"items": {
+																						"example": "192.0.2.1",
+																						"format": "ipv4",
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"maxItems": 3,
+																					"readOnly": true
+																				},
+																				"ipv4_groups": {
+																					"description": "Advanced anycast group for each address in the corresponding address array. Entries have the same order as, and correspond one-to-one with, the addresses.",
+																					"type": "array",
+																					"items": {
+																						"enum": [
+																							"a",
+																							"b",
+																							"c"
+																						],
+																						"example": "a",
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"maxItems": 3,
+																					"readOnly": true
+																				},
+																				"ipv6": {
+																					"description": "IPv6 addresses assigned to the nameserver.",
+																					"type": "array",
+																					"items": {
+																						"example": "2001:db8::1",
+																						"format": "ipv6",
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"maxItems": 3,
+																					"readOnly": true
+																				},
+																				"ipv6_groups": {
+																					"description": "Advanced anycast group for each address in the corresponding address array. Entries have the same order as, and correspond one-to-one with, the addresses.",
+																					"type": "array",
+																					"items": {
+																						"enum": [
+																							"a",
+																							"b",
+																							"c"
+																						],
+																						"example": "a",
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"maxItems": 3,
+																					"readOnly": true
+																				},
+																				"name": {
+																					"description": "A unique lowercase Punycode nameserver name within the set.",
+																					"type": "string",
+																					"example": "ns1.example.com",
+																					"x-auditable": true
+																				}
+																			},
+																			"required": [
+																				"name",
+																				"ipv4",
+																				"ipv4_groups",
+																				"ipv6",
+																				"ipv6_groups"
+																			]
+																		},
+																		"maxItems": 5,
+																		"minItems": 2
+																	}
+																},
+																"required": [
+																	"advanced",
+																	"nameservers"
+																],
+																"type": "object"
+															}
+														]
+													}
+												]
+											}
+										}
+									},
+									"required": [
+										"result",
+										"result_info"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Returns an error when Custom Nameserver Sets cannot be listed.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Custom Nameserver Sets for an Account"
+		],
+		"x-api-token-group": [
+			"Account DNS Settings Write",
+			"Account DNS Settings Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.custom-ns-set.list"
+			]
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "dns.settings.account.nameserver-sets",
+		"x-fern-sdk-method-name": "list",
+		"x-stability": "beta"
+	},
+	"GET /accounts/{account_id}/dns_settings/nameserver_sets/{nameserver_set_id}": {
+		"operationId": "dns-settings-for-an-account-get-custom-nameserver-set",
+		"summary": "Get Custom Nameserver Set",
+		"description": "Gets a Custom Nameserver Set owned by an account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "nameserver_set_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier for a nameserver set.",
+					"type": "string",
+					"example": "0123456789abcdef0123456789abcdef",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns the requested Custom Nameserver Set.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"oneOf": [
+												{
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"created_on": {
+																	"description": "When the nameserver set was created.",
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2026-09-01T12:00:00Z",
+																	"readOnly": true,
+																	"x-auditable": true
+																},
+																"id": {
+																	"description": "Identifier for a nameserver set.",
+																	"type": "string",
+																	"example": "0123456789abcdef0123456789abcdef",
+																	"maxLength": 32,
+																	"minLength": 32,
+																	"pattern": "^[0-9a-f]{32}$",
+																	"x-auditable": true
+																},
+																"ip_set": {
+																	"description": "Selects the account-specific IP set that supplies the nameserver addresses. The account's entitlement determines the maximum value. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
+																	"type": "integer",
+																	"format": "int64",
+																	"example": 1,
+																	"default": 1,
+																	"minimum": 1,
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"id",
+																"ip_set",
+																"created_on"
+															]
+														},
+														{
+															"properties": {
+																"advanced": {
+																	"description": "Whether the nameserver set uses Advanced anycast groups.",
+																	"type": "boolean",
+																	"example": false,
+																	"enum": [
+																		false
+																	],
+																	"x-auditable": true
+																},
+																"nameservers": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"ipv4": {
+																				"description": "IPv4 addresses assigned to the nameserver.",
+																				"type": "array",
+																				"items": {
+																					"example": "192.0.2.1",
+																					"format": "ipv4",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"maxItems": 3,
+																				"readOnly": true
+																			},
+																			"ipv6": {
+																				"description": "IPv6 addresses assigned to the nameserver.",
+																				"type": "array",
+																				"items": {
+																					"example": "2001:db8::1",
+																					"format": "ipv6",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"maxItems": 3,
+																				"readOnly": true
+																			},
+																			"name": {
+																				"description": "A unique lowercase Punycode nameserver name within the set.",
+																				"type": "string",
+																				"example": "ns1.example.com",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"ipv4",
+																			"ipv6"
+																		]
+																	},
+																	"maxItems": 5,
+																	"minItems": 2
+																}
+															},
+															"required": [
+																"advanced",
+																"nameservers"
+															],
+															"type": "object"
+														}
+													]
+												},
+												{
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"created_on": {
+																	"description": "When the nameserver set was created.",
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2026-09-01T12:00:00Z",
+																	"readOnly": true,
+																	"x-auditable": true
+																},
+																"id": {
+																	"description": "Identifier for a nameserver set.",
+																	"type": "string",
+																	"example": "0123456789abcdef0123456789abcdef",
+																	"maxLength": 32,
+																	"minLength": 32,
+																	"pattern": "^[0-9a-f]{32}$",
+																	"x-auditable": true
+																},
+																"ip_set": {
+																	"description": "Selects the account-specific IP set that supplies the nameserver addresses. The account's entitlement determines the maximum value. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
+																	"type": "integer",
+																	"format": "int64",
+																	"example": 1,
+																	"default": 1,
+																	"minimum": 1,
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"id",
+																"ip_set",
+																"created_on"
+															]
+														},
+														{
+															"properties": {
+																"advanced": {
+																	"description": "Whether the nameserver set uses Advanced anycast groups.",
+																	"type": "boolean",
+																	"example": true,
+																	"enum": [
+																		true
+																	],
+																	"x-auditable": true
+																},
+																"nameservers": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"ipv4": {
+																				"description": "IPv4 addresses assigned to the nameserver.",
+																				"type": "array",
+																				"items": {
+																					"example": "192.0.2.1",
+																					"format": "ipv4",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"maxItems": 3,
+																				"readOnly": true
+																			},
+																			"ipv4_groups": {
+																				"description": "Advanced anycast group for each address in the corresponding address array. Entries have the same order as, and correspond one-to-one with, the addresses.",
+																				"type": "array",
+																				"items": {
+																					"enum": [
+																						"a",
+																						"b",
+																						"c"
+																					],
+																					"example": "a",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"maxItems": 3,
+																				"readOnly": true
+																			},
+																			"ipv6": {
+																				"description": "IPv6 addresses assigned to the nameserver.",
+																				"type": "array",
+																				"items": {
+																					"example": "2001:db8::1",
+																					"format": "ipv6",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"maxItems": 3,
+																				"readOnly": true
+																			},
+																			"ipv6_groups": {
+																				"description": "Advanced anycast group for each address in the corresponding address array. Entries have the same order as, and correspond one-to-one with, the addresses.",
+																				"type": "array",
+																				"items": {
+																					"enum": [
+																						"a",
+																						"b",
+																						"c"
+																					],
+																					"example": "a",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"maxItems": 3,
+																				"readOnly": true
+																			},
+																			"name": {
+																				"description": "A unique lowercase Punycode nameserver name within the set.",
+																				"type": "string",
+																				"example": "ns1.example.com",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"ipv4",
+																			"ipv4_groups",
+																			"ipv6",
+																			"ipv6_groups"
+																		]
+																	},
+																	"maxItems": 5,
+																	"minItems": 2
+																}
+															},
+															"required": [
+																"advanced",
+																"nameservers"
+															],
+															"type": "object"
+														}
+													]
+												}
+											]
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Returns an error when the Custom Nameserver Set cannot be retrieved.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Custom Nameserver Sets for an Account"
+		],
+		"x-api-token-group": [
+			"Account DNS Settings Write",
+			"Account DNS Settings Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.custom-ns-set.read"
+			]
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "dns.settings.account.nameserver-sets",
+		"x-fern-sdk-method-name": "get",
+		"x-stability": "beta"
+	},
+	"POST /accounts/{account_id}/dns_settings/nameserver_sets": {
+		"operationId": "dns-settings-for-an-account-create-custom-nameserver-set",
+		"summary": "Create Custom Nameserver Set",
+		"description": "Creates an immutable Custom Nameserver Set. To change a set, create a new one, move any zone assignments, and delete the old set.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"advanced": {
+								"description": "Whether to allocate the nameservers from distinct Advanced anycast groups.",
+								"type": "boolean",
+								"example": false,
+								"default": false,
+								"x-auditable": true
+							},
+							"ip_set": {
+								"description": "Selects the account-specific IP set that supplies the nameserver addresses. The account's entitlement determines the maximum value. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
+								"type": "integer",
+								"format": "int64",
+								"example": 1,
+								"default": 1,
+								"minimum": 1,
+								"x-auditable": true
+							},
+							"nameservers": {
+								"description": "Lists each nameserver and the number of addresses to allocate to it. Requires a unique name for each entry in the set.",
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"ip_count": {
+											"description": "Number of IPv4 addresses and number of IPv6 addresses to allocate to this nameserver. All nameservers in an Advanced nameserver set must use the same value.",
+											"type": "integer",
+											"format": "int64",
+											"example": 1,
+											"default": 1,
+											"maximum": 3,
+											"minimum": 1,
+											"x-auditable": true
+										},
+										"name": {
+											"description": "A unique lowercase Punycode nameserver name within the set.",
+											"type": "string",
+											"example": "ns1.example.com",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"name"
+									]
+								},
+								"maxItems": 5,
+								"minItems": 2
+							}
+						},
+						"required": [
+							"nameservers"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Returns the created Custom Nameserver Set.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"oneOf": [
+												{
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"created_on": {
+																	"description": "When the nameserver set was created.",
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2026-09-01T12:00:00Z",
+																	"readOnly": true,
+																	"x-auditable": true
+																},
+																"id": {
+																	"description": "Identifier for a nameserver set.",
+																	"type": "string",
+																	"example": "0123456789abcdef0123456789abcdef",
+																	"maxLength": 32,
+																	"minLength": 32,
+																	"pattern": "^[0-9a-f]{32}$",
+																	"x-auditable": true
+																},
+																"ip_set": {
+																	"description": "Selects the account-specific IP set that supplies the nameserver addresses. The account's entitlement determines the maximum value. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
+																	"type": "integer",
+																	"format": "int64",
+																	"example": 1,
+																	"default": 1,
+																	"minimum": 1,
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"id",
+																"ip_set",
+																"created_on"
+															]
+														},
+														{
+															"properties": {
+																"advanced": {
+																	"description": "Whether the nameserver set uses Advanced anycast groups.",
+																	"type": "boolean",
+																	"example": false,
+																	"enum": [
+																		false
+																	],
+																	"x-auditable": true
+																},
+																"nameservers": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"ipv4": {
+																				"description": "IPv4 addresses assigned to the nameserver.",
+																				"type": "array",
+																				"items": {
+																					"example": "192.0.2.1",
+																					"format": "ipv4",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"maxItems": 3,
+																				"readOnly": true
+																			},
+																			"ipv6": {
+																				"description": "IPv6 addresses assigned to the nameserver.",
+																				"type": "array",
+																				"items": {
+																					"example": "2001:db8::1",
+																					"format": "ipv6",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"maxItems": 3,
+																				"readOnly": true
+																			},
+																			"name": {
+																				"description": "A unique lowercase Punycode nameserver name within the set.",
+																				"type": "string",
+																				"example": "ns1.example.com",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"ipv4",
+																			"ipv6"
+																		]
+																	},
+																	"maxItems": 5,
+																	"minItems": 2
+																}
+															},
+															"required": [
+																"advanced",
+																"nameservers"
+															],
+															"type": "object"
+														}
+													]
+												},
+												{
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"created_on": {
+																	"description": "When the nameserver set was created.",
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2026-09-01T12:00:00Z",
+																	"readOnly": true,
+																	"x-auditable": true
+																},
+																"id": {
+																	"description": "Identifier for a nameserver set.",
+																	"type": "string",
+																	"example": "0123456789abcdef0123456789abcdef",
+																	"maxLength": 32,
+																	"minLength": 32,
+																	"pattern": "^[0-9a-f]{32}$",
+																	"x-auditable": true
+																},
+																"ip_set": {
+																	"description": "Selects the account-specific IP set that supplies the nameserver addresses. The account's entitlement determines the maximum value. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
+																	"type": "integer",
+																	"format": "int64",
+																	"example": 1,
+																	"default": 1,
+																	"minimum": 1,
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"id",
+																"ip_set",
+																"created_on"
+															]
+														},
+														{
+															"properties": {
+																"advanced": {
+																	"description": "Whether the nameserver set uses Advanced anycast groups.",
+																	"type": "boolean",
+																	"example": true,
+																	"enum": [
+																		true
+																	],
+																	"x-auditable": true
+																},
+																"nameservers": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"ipv4": {
+																				"description": "IPv4 addresses assigned to the nameserver.",
+																				"type": "array",
+																				"items": {
+																					"example": "192.0.2.1",
+																					"format": "ipv4",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"maxItems": 3,
+																				"readOnly": true
+																			},
+																			"ipv4_groups": {
+																				"description": "Advanced anycast group for each address in the corresponding address array. Entries have the same order as, and correspond one-to-one with, the addresses.",
+																				"type": "array",
+																				"items": {
+																					"enum": [
+																						"a",
+																						"b",
+																						"c"
+																					],
+																					"example": "a",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"maxItems": 3,
+																				"readOnly": true
+																			},
+																			"ipv6": {
+																				"description": "IPv6 addresses assigned to the nameserver.",
+																				"type": "array",
+																				"items": {
+																					"example": "2001:db8::1",
+																					"format": "ipv6",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"maxItems": 3,
+																				"readOnly": true
+																			},
+																			"ipv6_groups": {
+																				"description": "Advanced anycast group for each address in the corresponding address array. Entries have the same order as, and correspond one-to-one with, the addresses.",
+																				"type": "array",
+																				"items": {
+																					"enum": [
+																						"a",
+																						"b",
+																						"c"
+																					],
+																					"example": "a",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"maxItems": 3,
+																				"readOnly": true
+																			},
+																			"name": {
+																				"description": "A unique lowercase Punycode nameserver name within the set.",
+																				"type": "string",
+																				"example": "ns1.example.com",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"ipv4",
+																			"ipv4_groups",
+																			"ipv6",
+																			"ipv6_groups"
+																		]
+																	},
+																	"maxItems": 5,
+																	"minItems": 2
+																}
+															},
+															"required": [
+																"advanced",
+																"nameservers"
+															],
+															"type": "object"
+														}
+													]
+												}
+											]
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Returns an error when the Custom Nameserver Set cannot be created.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Custom Nameserver Sets for an Account"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.custom-ns-set.create"
+			]
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "dns.settings.account.nameserver-sets",
+		"x-fern-sdk-method-name": "create",
+		"x-stability": "beta"
+	}
+}

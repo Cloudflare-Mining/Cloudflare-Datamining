@@ -1,8 +1,8 @@
 {
 	"GET /accounts/{account_id}/abuse-reports": {
 		"operationId": "ListAbuseReports",
-		"summary": "List abuse reports",
-		"description": "List the abuse reports for a given account",
+		"summary": "List abuse reports against the account",
+		"description": "List abuse reports made against domains or other content associated with the account. To list reports that the account submitted, use the submitted abuse reports endpoint instead.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -324,14 +324,14 @@
 				}
 			},
 			"401": {
-				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the Abuse Reports\nread permission required for this account.",
+				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the\n`Trust and Safety Read` or `Trust and Safety Write` permission for\nthis account.",
 				"content": {
 					"application/json": {
 						"schema": {
-							"description": "For HTTP 401 responses, use one of these error shapes. Cloudflare's API layer rejects requests with missing or invalid credentials before they reach the Abuse Reports API and returns the standard Cloudflare API error envelope. The Abuse Reports API returns its authorization error shape when valid credentials fail the Abuse Reports permission check or the submission entitlement check.",
+							"description": "For HTTP 401 responses, use one of these error shapes. Cloudflare's API layer rejects requests with missing or invalid credentials before they reach the Abuse Reports API and returns the standard Cloudflare API error envelope. The Abuse Reports API returns its authorization error shape when valid credentials fail the Trust and Safety permission check or the submission entitlement check.",
 							"oneOf": [
 								{
-									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication before they reach the Abuse Reports API. The example shows the authentication error for missing or invalid credentials.",
+									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication or authorization before they reach the Abuse Reports API. The example shows error code `10000`, returned for missing or invalid credentials (HTTP 401) and for a token or OAuth grant that lacks the required Trust and Safety permission (HTTP 403).",
 									"type": "object",
 									"properties": {
 										"errors": {
@@ -411,7 +411,7 @@
 									]
 								},
 								{
-									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Abuse Reports permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
+									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Trust and Safety permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
 									"type": "object",
 									"properties": {
 										"err_code": {
@@ -448,6 +448,93 @@
 										"error_code"
 									]
 								}
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Cloudflare's API layer rejected the request because the API token or\nOAuth grant does not have the required Trust and Safety permission for\nthis account. The response uses error code `10000`.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication or authorization before they reach the Abuse Reports API. The example shows error code `10000`, returned for missing or invalid credentials (HTTP 401) and for a token or OAuth grant that lacks the required Trust and Safety permission (HTTP 403).",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Cloudflare API error details.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"oneOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "number"
+													}
+												]
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": [
+										{
+											"code": 10000,
+											"message": "Authentication error"
+										}
+									]
+								},
+								"messages": {
+									"description": "Informational messages.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Always null for this error response.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the request succeeded.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"example": {
+								"errors": [
+									{
+										"code": 10000,
+										"message": "Authentication error"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -514,13 +601,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "abuse-reports",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/abuse-reports/{report_id}/appeals/eligibility": {
 		"operationId": "CheckAppealEligibility",
 		"summary": "Check whether a report can be appealed",
-		"description": "Returns whether the report is currently appealable, along with the signals behind that decision: whether it already has an open appeal, how many appeals have been submitted against it, and whether it has at least one mitigation that an appeal could reverse.",
+		"description": "Returns whether the report is currently appealable, along with the signals behind that decision: whether it already has an open appeal, how many appeals have been submitted against it, and whether it has at least one mitigation that an appeal could reverse.\nReport-level appeals are currently available only for DMCA (copyright) reports. For other report types this operation returns the same `404 Report not found` response as a report that does not exist for the account.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -623,14 +709,14 @@
 				}
 			},
 			"401": {
-				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the Abuse Reports\nread permission required for this account.",
+				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the\n`Trust and Safety Read` or `Trust and Safety Write` permission for\nthis account.",
 				"content": {
 					"application/json": {
 						"schema": {
-							"description": "For HTTP 401 responses, use one of these error shapes. Cloudflare's API layer rejects requests with missing or invalid credentials before they reach the Abuse Reports API and returns the standard Cloudflare API error envelope. The Abuse Reports API returns its authorization error shape when valid credentials fail the Abuse Reports permission check or the submission entitlement check.",
+							"description": "For HTTP 401 responses, use one of these error shapes. Cloudflare's API layer rejects requests with missing or invalid credentials before they reach the Abuse Reports API and returns the standard Cloudflare API error envelope. The Abuse Reports API returns its authorization error shape when valid credentials fail the Trust and Safety permission check or the submission entitlement check.",
 							"oneOf": [
 								{
-									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication before they reach the Abuse Reports API. The example shows the authentication error for missing or invalid credentials.",
+									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication or authorization before they reach the Abuse Reports API. The example shows error code `10000`, returned for missing or invalid credentials (HTTP 401) and for a token or OAuth grant that lacks the required Trust and Safety permission (HTTP 403).",
 									"type": "object",
 									"properties": {
 										"errors": {
@@ -710,7 +796,7 @@
 									]
 								},
 								{
-									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Abuse Reports permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
+									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Trust and Safety permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
 									"type": "object",
 									"properties": {
 										"err_code": {
@@ -752,8 +838,95 @@
 					}
 				}
 			},
+			"403": {
+				"description": "Cloudflare's API layer rejected the request because the API token or\nOAuth grant does not have the required Trust and Safety permission for\nthis account. The response uses error code `10000`.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication or authorization before they reach the Abuse Reports API. The example shows error code `10000`, returned for missing or invalid credentials (HTTP 401) and for a token or OAuth grant that lacks the required Trust and Safety permission (HTTP 403).",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Cloudflare API error details.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"oneOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "number"
+													}
+												]
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": [
+										{
+											"code": 10000,
+											"message": "Authentication error"
+										}
+									]
+								},
+								"messages": {
+									"description": "Informational messages.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Always null for this error response.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the request succeeded.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"example": {
+								"errors": [
+									{
+										"code": 10000,
+										"message": "Authentication error"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
 			"404": {
-				"description": "The report was not found, or does not support appeals.",
+				"description": "The report was not found for this account, or its type does not support report-level appeals (currently DMCA reports only).",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -831,8 +1004,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "abuse-reports.appeals",
-		"x-fern-sdk-method-name": "eligibility",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "eligibility"
 	},
 	"GET /accounts/{account_id}/abuse-reports/{report_id}/emails": {
 		"operationId": "ListEmails",
@@ -1042,14 +1214,14 @@
 				}
 			},
 			"401": {
-				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the Abuse Reports\nread permission required for this account.",
+				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the\n`Trust and Safety Read` or `Trust and Safety Write` permission for\nthis account.",
 				"content": {
 					"application/json": {
 						"schema": {
-							"description": "For HTTP 401 responses, use one of these error shapes. Cloudflare's API layer rejects requests with missing or invalid credentials before they reach the Abuse Reports API and returns the standard Cloudflare API error envelope. The Abuse Reports API returns its authorization error shape when valid credentials fail the Abuse Reports permission check or the submission entitlement check.",
+							"description": "For HTTP 401 responses, use one of these error shapes. Cloudflare's API layer rejects requests with missing or invalid credentials before they reach the Abuse Reports API and returns the standard Cloudflare API error envelope. The Abuse Reports API returns its authorization error shape when valid credentials fail the Trust and Safety permission check or the submission entitlement check.",
 							"oneOf": [
 								{
-									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication before they reach the Abuse Reports API. The example shows the authentication error for missing or invalid credentials.",
+									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication or authorization before they reach the Abuse Reports API. The example shows error code `10000`, returned for missing or invalid credentials (HTTP 401) and for a token or OAuth grant that lacks the required Trust and Safety permission (HTTP 403).",
 									"type": "object",
 									"properties": {
 										"errors": {
@@ -1129,7 +1301,7 @@
 									]
 								},
 								{
-									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Abuse Reports permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
+									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Trust and Safety permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
 									"type": "object",
 									"properties": {
 										"err_code": {
@@ -1166,6 +1338,93 @@
 										"error_code"
 									]
 								}
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Cloudflare's API layer rejected the request because the API token or\nOAuth grant does not have the required Trust and Safety permission for\nthis account. The response uses error code `10000`.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication or authorization before they reach the Abuse Reports API. The example shows error code `10000`, returned for missing or invalid credentials (HTTP 401) and for a token or OAuth grant that lacks the required Trust and Safety permission (HTTP 403).",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Cloudflare API error details.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"oneOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "number"
+													}
+												]
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": [
+										{
+											"code": 10000,
+											"message": "Authentication error"
+										}
+									]
+								},
+								"messages": {
+									"description": "Informational messages.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Always null for this error response.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the request succeeded.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"example": {
+								"errors": [
+									{
+										"code": 10000,
+										"message": "Authentication error"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1232,8 +1491,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "abuse-reports.emails",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/abuse-reports/{report_id}/mitigations": {
 		"operationId": "ListMitigations",
@@ -1494,14 +1752,14 @@
 				}
 			},
 			"401": {
-				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the Abuse Reports\nread permission required for this account.",
+				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the\n`Trust and Safety Read` or `Trust and Safety Write` permission for\nthis account.",
 				"content": {
 					"application/json": {
 						"schema": {
-							"description": "For HTTP 401 responses, use one of these error shapes. Cloudflare's API layer rejects requests with missing or invalid credentials before they reach the Abuse Reports API and returns the standard Cloudflare API error envelope. The Abuse Reports API returns its authorization error shape when valid credentials fail the Abuse Reports permission check or the submission entitlement check.",
+							"description": "For HTTP 401 responses, use one of these error shapes. Cloudflare's API layer rejects requests with missing or invalid credentials before they reach the Abuse Reports API and returns the standard Cloudflare API error envelope. The Abuse Reports API returns its authorization error shape when valid credentials fail the Trust and Safety permission check or the submission entitlement check.",
 							"oneOf": [
 								{
-									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication before they reach the Abuse Reports API. The example shows the authentication error for missing or invalid credentials.",
+									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication or authorization before they reach the Abuse Reports API. The example shows error code `10000`, returned for missing or invalid credentials (HTTP 401) and for a token or OAuth grant that lacks the required Trust and Safety permission (HTTP 403).",
 									"type": "object",
 									"properties": {
 										"errors": {
@@ -1581,7 +1839,7 @@
 									]
 								},
 								{
-									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Abuse Reports permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
+									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Trust and Safety permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
 									"type": "object",
 									"properties": {
 										"err_code": {
@@ -1618,6 +1876,93 @@
 										"error_code"
 									]
 								}
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Cloudflare's API layer rejected the request because the API token or\nOAuth grant does not have the required Trust and Safety permission for\nthis account. The response uses error code `10000`.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication or authorization before they reach the Abuse Reports API. The example shows error code `10000`, returned for missing or invalid credentials (HTTP 401) and for a token or OAuth grant that lacks the required Trust and Safety permission (HTTP 403).",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Cloudflare API error details.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"oneOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "number"
+													}
+												]
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": [
+										{
+											"code": 10000,
+											"message": "Authentication error"
+										}
+									]
+								},
+								"messages": {
+									"description": "Informational messages.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Always null for this error response.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the request succeeded.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"example": {
+								"errors": [
+									{
+										"code": 10000,
+										"message": "Authentication error"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1684,13 +2029,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "abuse-reports.mitigations",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/abuse-reports/{report_param}": {
 		"operationId": "GetAbuseReport",
-		"summary": "Abuse Report Details",
-		"description": "Retrieve the details of an abuse report.",
+		"summary": "Get an abuse report against the account",
+		"description": "Retrieve the details of an abuse report made against a domain or other content associated with the account. To retrieve a report that the account submitted, use the submitted abuse report endpoint instead.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1706,16 +2050,17 @@
 			{
 				"name": "report_param",
 				"in": "path",
-				"description": "Identifier of the abuse report",
+				"description": "Public report ID.",
 				"required": true,
 				"schema": {
 					"type": "string"
-				}
+				},
+				"x-fern-parameter-name": "report-id"
 			}
 		],
 		"responses": {
 			"200": {
-				"description": "Report submitted successfully",
+				"description": "Abuse report found.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2057,14 +2402,14 @@
 				}
 			},
 			"401": {
-				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the Abuse Reports\nread permission required for this account.",
+				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the\n`Trust and Safety Read` or `Trust and Safety Write` permission for\nthis account.",
 				"content": {
 					"application/json": {
 						"schema": {
-							"description": "For HTTP 401 responses, use one of these error shapes. Cloudflare's API layer rejects requests with missing or invalid credentials before they reach the Abuse Reports API and returns the standard Cloudflare API error envelope. The Abuse Reports API returns its authorization error shape when valid credentials fail the Abuse Reports permission check or the submission entitlement check.",
+							"description": "For HTTP 401 responses, use one of these error shapes. Cloudflare's API layer rejects requests with missing or invalid credentials before they reach the Abuse Reports API and returns the standard Cloudflare API error envelope. The Abuse Reports API returns its authorization error shape when valid credentials fail the Trust and Safety permission check or the submission entitlement check.",
 							"oneOf": [
 								{
-									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication before they reach the Abuse Reports API. The example shows the authentication error for missing or invalid credentials.",
+									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication or authorization before they reach the Abuse Reports API. The example shows error code `10000`, returned for missing or invalid credentials (HTTP 401) and for a token or OAuth grant that lacks the required Trust and Safety permission (HTTP 403).",
 									"type": "object",
 									"properties": {
 										"errors": {
@@ -2144,7 +2489,7 @@
 									]
 								},
 								{
-									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Abuse Reports permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
+									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Trust and Safety permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
 									"type": "object",
 									"properties": {
 										"err_code": {
@@ -2181,6 +2526,93 @@
 										"error_code"
 									]
 								}
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Cloudflare's API layer rejected the request because the API token or\nOAuth grant does not have the required Trust and Safety permission for\nthis account. The response uses error code `10000`.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication or authorization before they reach the Abuse Reports API. The example shows error code `10000`, returned for missing or invalid credentials (HTTP 401) and for a token or OAuth grant that lacks the required Trust and Safety permission (HTTP 403).",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Cloudflare API error details.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"oneOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "number"
+													}
+												]
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": [
+										{
+											"code": 10000,
+											"message": "Authentication error"
+										}
+									]
+								},
+								"messages": {
+									"description": "Informational messages.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Always null for this error response.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the request succeeded.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"example": {
+								"errors": [
+									{
+										"code": 10000,
+										"message": "Authentication error"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -2372,8 +2804,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "abuse-reports",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/abuse-reports/submitted": {
 		"operationId": "ListSubmittedAbuseReports",
@@ -2699,14 +3130,14 @@
 				"description": "Invalid account or query parameters."
 			},
 			"401": {
-				"description": "The request is not authorized to read abuse reports for this account.",
+				"description": "The request is not authorized to read abuse reports for this account.\nThe API token needs the `Trust and Safety Read` or\n`Trust and Safety Write` permission.",
 				"content": {
 					"application/json": {
 						"schema": {
-							"description": "For HTTP 401 responses, use one of these error shapes. Cloudflare's API layer rejects requests with missing or invalid credentials before they reach the Abuse Reports API and returns the standard Cloudflare API error envelope. The Abuse Reports API returns its authorization error shape when valid credentials fail the Abuse Reports permission check or the submission entitlement check.",
+							"description": "For HTTP 401 responses, use one of these error shapes. Cloudflare's API layer rejects requests with missing or invalid credentials before they reach the Abuse Reports API and returns the standard Cloudflare API error envelope. The Abuse Reports API returns its authorization error shape when valid credentials fail the Trust and Safety permission check or the submission entitlement check.",
 							"oneOf": [
 								{
-									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication before they reach the Abuse Reports API. The example shows the authentication error for missing or invalid credentials.",
+									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication or authorization before they reach the Abuse Reports API. The example shows error code `10000`, returned for missing or invalid credentials (HTTP 401) and for a token or OAuth grant that lacks the required Trust and Safety permission (HTTP 403).",
 									"type": "object",
 									"properties": {
 										"errors": {
@@ -2786,7 +3217,7 @@
 									]
 								},
 								{
-									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Abuse Reports permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
+									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Trust and Safety permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
 									"type": "object",
 									"properties": {
 										"err_code": {
@@ -2828,6 +3259,93 @@
 					}
 				}
 			},
+			"403": {
+				"description": "Cloudflare's API layer rejected the request because the API token or\nOAuth grant does not have the required Trust and Safety permission for\nthis account. The response uses error code `10000`.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication or authorization before they reach the Abuse Reports API. The example shows error code `10000`, returned for missing or invalid credentials (HTTP 401) and for a token or OAuth grant that lacks the required Trust and Safety permission (HTTP 403).",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Cloudflare API error details.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"oneOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "number"
+													}
+												]
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": [
+										{
+											"code": 10000,
+											"message": "Authentication error"
+										}
+									]
+								},
+								"messages": {
+									"description": "Informational messages.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Always null for this error response.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the request succeeded.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"example": {
+								"errors": [
+									{
+										"code": 10000,
+										"message": "Authentication error"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
 			"500": {
 				"description": "Failed to retrieve submitted abuse reports."
 			}
@@ -2846,8 +3364,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "abuse-reports",
-		"x-fern-sdk-method-name": "list-submitted",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list-submitted"
 	},
 	"GET /accounts/{account_id}/abuse-reports/submitted/{report_id}": {
 		"operationId": "GetSubmittedAbuseReport",
@@ -3215,14 +3732,14 @@
 				"description": "Invalid account or report code."
 			},
 			"401": {
-				"description": "The request is not authorized to read abuse reports for this account.",
+				"description": "The request is not authorized to read abuse reports for this account.\nThe API token needs the `Trust and Safety Read` or\n`Trust and Safety Write` permission.",
 				"content": {
 					"application/json": {
 						"schema": {
-							"description": "For HTTP 401 responses, use one of these error shapes. Cloudflare's API layer rejects requests with missing or invalid credentials before they reach the Abuse Reports API and returns the standard Cloudflare API error envelope. The Abuse Reports API returns its authorization error shape when valid credentials fail the Abuse Reports permission check or the submission entitlement check.",
+							"description": "For HTTP 401 responses, use one of these error shapes. Cloudflare's API layer rejects requests with missing or invalid credentials before they reach the Abuse Reports API and returns the standard Cloudflare API error envelope. The Abuse Reports API returns its authorization error shape when valid credentials fail the Trust and Safety permission check or the submission entitlement check.",
 							"oneOf": [
 								{
-									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication before they reach the Abuse Reports API. The example shows the authentication error for missing or invalid credentials.",
+									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication or authorization before they reach the Abuse Reports API. The example shows error code `10000`, returned for missing or invalid credentials (HTTP 401) and for a token or OAuth grant that lacks the required Trust and Safety permission (HTTP 403).",
 									"type": "object",
 									"properties": {
 										"errors": {
@@ -3302,7 +3819,7 @@
 									]
 								},
 								{
-									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Abuse Reports permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
+									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Trust and Safety permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
 									"type": "object",
 									"properties": {
 										"err_code": {
@@ -3344,6 +3861,93 @@
 					}
 				}
 			},
+			"403": {
+				"description": "Cloudflare's API layer rejected the request because the API token or\nOAuth grant does not have the required Trust and Safety permission for\nthis account. The response uses error code `10000`.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication or authorization before they reach the Abuse Reports API. The example shows error code `10000`, returned for missing or invalid credentials (HTTP 401) and for a token or OAuth grant that lacks the required Trust and Safety permission (HTTP 403).",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Cloudflare API error details.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"oneOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "number"
+													}
+												]
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": [
+										{
+											"code": 10000,
+											"message": "Authentication error"
+										}
+									]
+								},
+								"messages": {
+									"description": "Informational messages.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Always null for this error response.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the request succeeded.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"example": {
+								"errors": [
+									{
+										"code": 10000,
+										"message": "Authentication error"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
 			"404": {
 				"description": "No matching submitted report was found for the account."
 			},
@@ -3365,8 +3969,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "abuse-reports",
-		"x-fern-sdk-method-name": "get-submitted",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get-submitted"
 	},
 	"GET /accounts/{account_id}/abuse-reports/submitted/{report_id}/emails": {
 		"operationId": "ListSubmittedAbuseReportEmails",
@@ -3544,14 +4147,14 @@
 				"description": "Invalid account, report, or query parameters."
 			},
 			"401": {
-				"description": "The request is not authorized to read abuse reports for this account.",
+				"description": "The request is not authorized to read abuse reports for this account.\nThe API token needs the `Trust and Safety Read` or\n`Trust and Safety Write` permission.",
 				"content": {
 					"application/json": {
 						"schema": {
-							"description": "For HTTP 401 responses, use one of these error shapes. Cloudflare's API layer rejects requests with missing or invalid credentials before they reach the Abuse Reports API and returns the standard Cloudflare API error envelope. The Abuse Reports API returns its authorization error shape when valid credentials fail the Abuse Reports permission check or the submission entitlement check.",
+							"description": "For HTTP 401 responses, use one of these error shapes. Cloudflare's API layer rejects requests with missing or invalid credentials before they reach the Abuse Reports API and returns the standard Cloudflare API error envelope. The Abuse Reports API returns its authorization error shape when valid credentials fail the Trust and Safety permission check or the submission entitlement check.",
 							"oneOf": [
 								{
-									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication before they reach the Abuse Reports API. The example shows the authentication error for missing or invalid credentials.",
+									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication or authorization before they reach the Abuse Reports API. The example shows error code `10000`, returned for missing or invalid credentials (HTTP 401) and for a token or OAuth grant that lacks the required Trust and Safety permission (HTTP 403).",
 									"type": "object",
 									"properties": {
 										"errors": {
@@ -3631,7 +4234,7 @@
 									]
 								},
 								{
-									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Abuse Reports permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
+									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Trust and Safety permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
 									"type": "object",
 									"properties": {
 										"err_code": {
@@ -3673,6 +4276,93 @@
 					}
 				}
 			},
+			"403": {
+				"description": "Cloudflare's API layer rejected the request because the API token or\nOAuth grant does not have the required Trust and Safety permission for\nthis account. The response uses error code `10000`.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication or authorization before they reach the Abuse Reports API. The example shows error code `10000`, returned for missing or invalid credentials (HTTP 401) and for a token or OAuth grant that lacks the required Trust and Safety permission (HTTP 403).",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Cloudflare API error details.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"oneOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "number"
+													}
+												]
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": [
+										{
+											"code": 10000,
+											"message": "Authentication error"
+										}
+									]
+								},
+								"messages": {
+									"description": "Informational messages.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Always null for this error response.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the request succeeded.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"example": {
+								"errors": [
+									{
+										"code": 10000,
+										"message": "Authentication error"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
 			"404": {
 				"description": "Submitted abuse report not found for the selected account."
 			},
@@ -3694,13 +4384,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "abuse-reports.emails",
-		"x-fern-sdk-method-name": "list-submitted",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list-submitted"
 	},
 	"POST /accounts/{account_id}/abuse-reports/{report_id}/mitigations/appeal": {
 		"operationId": "RequestReview",
 		"summary": "Request review on mitigations",
-		"description": "Request a review for mitigations on an account. Repeating a request for a mitigation with an unresolved appeal is idempotent and returns that mitigation in the in-review state.",
+		"description": "Request a review of mitigations applied because of an abuse report, or submit a report-level appeal.\n\n- To request a review of specific mitigations, send `appeals` with the mitigation IDs and reasons. Repeating a request for a mitigation with an unresolved appeal is idempotent and returns that mitigation in the in-review state.\n- To submit a report-level appeal, send `type` and, for a `counter_notice`, the counter-notice details in `data`. Report-level appeals are currently available only for DMCA (copyright) reports.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -4108,14 +4797,14 @@
 				}
 			},
 			"401": {
-				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the Abuse Reports\nedit permission required for this account.",
+				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the\n`Trust and Safety Write` permission for this account.",
 				"content": {
 					"application/json": {
 						"schema": {
-							"description": "For HTTP 401 responses, use one of these error shapes. Cloudflare's API layer rejects requests with missing or invalid credentials before they reach the Abuse Reports API and returns the standard Cloudflare API error envelope. The Abuse Reports API returns its authorization error shape when valid credentials fail the Abuse Reports permission check or the submission entitlement check.",
+							"description": "For HTTP 401 responses, use one of these error shapes. Cloudflare's API layer rejects requests with missing or invalid credentials before they reach the Abuse Reports API and returns the standard Cloudflare API error envelope. The Abuse Reports API returns its authorization error shape when valid credentials fail the Trust and Safety permission check or the submission entitlement check.",
 							"oneOf": [
 								{
-									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication before they reach the Abuse Reports API. The example shows the authentication error for missing or invalid credentials.",
+									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication or authorization before they reach the Abuse Reports API. The example shows error code `10000`, returned for missing or invalid credentials (HTTP 401) and for a token or OAuth grant that lacks the required Trust and Safety permission (HTTP 403).",
 									"type": "object",
 									"properties": {
 										"errors": {
@@ -4195,7 +4884,7 @@
 									]
 								},
 								{
-									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Abuse Reports permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
+									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Trust and Safety permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
 									"type": "object",
 									"properties": {
 										"err_code": {
@@ -4232,6 +4921,93 @@
 										"error_code"
 									]
 								}
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Cloudflare's API layer rejected the request because the API token or\nOAuth grant does not have the required Trust and Safety permission for\nthis account. The response uses error code `10000`.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication or authorization before they reach the Abuse Reports API. The example shows error code `10000`, returned for missing or invalid credentials (HTTP 401) and for a token or OAuth grant that lacks the required Trust and Safety permission (HTTP 403).",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Cloudflare API error details.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"oneOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "number"
+													}
+												]
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": [
+										{
+											"code": 10000,
+											"message": "Authentication error"
+										}
+									]
+								},
+								"messages": {
+									"description": "Informational messages.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Always null for this error response.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the request succeeded.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"example": {
+								"errors": [
+									{
+										"code": 10000,
+										"message": "Authentication error"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -4297,13 +5073,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "abuse-reports.mitigations",
-		"x-fern-sdk-method-name": "review",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "review"
 	},
 	"POST /accounts/{account_id}/abuse-reports/{report_param}": {
 		"operationId": "SubmitAbuseReport",
 		"summary": "Submit an abuse report",
-		"description": "Submit an abuse report of a particular type.\n\nRequires the abuse-reports entitlement on the account (Enterprise\naccounts have it by default; other accounts must request access) and an\nAPI token with the `Account > Abuse Reports > Edit` permission. If the\naccount is not entitled, the request is rejected with an HTTP `401`\nresponse (see below).",
+		"description": "Submit an abuse report of a particular type.\n\nRequires the abuse-reports entitlement on the account (Enterprise\naccounts have it by default; other accounts must request access) and an\nAPI token with the `Trust and Safety Write` permission. If the account\nis not entitled, the request is rejected with an HTTP `401` response\n(see below).",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -4324,7 +5099,8 @@
 				"schema": {
 					"description": "The report type for submitted reports.",
 					"type": "string"
-				}
+				},
+				"x-fern-parameter-name": "report-type"
 			}
 		],
 		"requestBody": {
@@ -5748,14 +6524,14 @@
 				}
 			},
 			"401": {
-				"description": "The request is not authorized to submit abuse reports. Missing or\ninvalid credentials may be rejected with the standard Cloudflare API\nauthentication error. If credentials are valid, this is most commonly\nbecause the account does not have the abuse-reports entitlement\n(Enterprise accounts have it by default; other accounts must request\naccess), or because the API token is missing the\n`Account > Abuse Reports > Edit` permission. Entitlement failures\nreturn the message `Not entitled to use feature: Abuse Report API`.",
+				"description": "The request is not authorized to submit abuse reports. Missing or\ninvalid credentials may be rejected with the standard Cloudflare API\nauthentication error. If credentials are valid, this is most commonly\nbecause the account does not have the abuse-reports entitlement\n(Enterprise accounts have it by default; other accounts must request\naccess), or because the API token is missing the\n`Trust and Safety Write` permission. Entitlement failures\nreturn the message `Not entitled to use feature: Abuse Report API`.",
 				"content": {
 					"application/json": {
 						"schema": {
-							"description": "For HTTP 401 responses, use one of these error shapes. Cloudflare's API layer rejects requests with missing or invalid credentials before they reach the Abuse Reports API and returns the standard Cloudflare API error envelope. The Abuse Reports API returns its authorization error shape when valid credentials fail the Abuse Reports permission check or the submission entitlement check.",
+							"description": "For HTTP 401 responses, use one of these error shapes. Cloudflare's API layer rejects requests with missing or invalid credentials before they reach the Abuse Reports API and returns the standard Cloudflare API error envelope. The Abuse Reports API returns its authorization error shape when valid credentials fail the Trust and Safety permission check or the submission entitlement check.",
 							"oneOf": [
 								{
-									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication before they reach the Abuse Reports API. The example shows the authentication error for missing or invalid credentials.",
+									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication or authorization before they reach the Abuse Reports API. The example shows error code `10000`, returned for missing or invalid credentials (HTTP 401) and for a token or OAuth grant that lacks the required Trust and Safety permission (HTTP 403).",
 									"type": "object",
 									"properties": {
 										"errors": {
@@ -5835,7 +6611,7 @@
 									]
 								},
 								{
-									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Abuse Reports permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
+									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Trust and Safety permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
 									"type": "object",
 									"properties": {
 										"err_code": {
@@ -5872,6 +6648,93 @@
 										"error_code"
 									]
 								}
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Cloudflare's API layer rejected the request because the API token or\nOAuth grant does not have the required Trust and Safety permission for\nthis account. The response uses error code `10000`.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication or authorization before they reach the Abuse Reports API. The example shows error code `10000`, returned for missing or invalid credentials (HTTP 401) and for a token or OAuth grant that lacks the required Trust and Safety permission (HTTP 403).",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Cloudflare API error details.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"oneOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "number"
+													}
+												]
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": [
+										{
+											"code": 10000,
+											"message": "Authentication error"
+										}
+									]
+								},
+								"messages": {
+									"description": "Informational messages.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Always null for this error response.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the request succeeded.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"example": {
+								"errors": [
+									{
+										"code": 10000,
+										"message": "Authentication error"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -6167,9 +7030,11 @@
 		"tags": [
 			"tseng-abuse-complaint-processor_other"
 		],
+		"x-api-token-group": [
+			"Trust and Safety Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "abuse-reports",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

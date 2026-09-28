@@ -21,7 +21,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -34,7 +34,8 @@
 				"description": "If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.",
 				"schema": {
 					"type": "boolean"
-				}
+				},
+				"x-fern-parameter-name": "delete-with-references"
 			}
 		],
 		"responses": {
@@ -302,7 +303,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -595,7 +596,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -864,7 +865,6 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "workers.legacy.scripts.subdomain",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This will disable all workers.dev subdomains for the Worker script."
 	},
 	"GET /accounts/{account_id}/workers/scripts": {
@@ -2319,7 +2319,7 @@
 														"x-auditable": true
 													},
 													"script_name": {
-														"description": "Name of the script, used in URLs and route configuration.",
+														"description": "Name of the script.",
 														"type": "string",
 														"example": "this-is_my_script-01",
 														"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -2508,7 +2508,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -2698,7 +2698,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -2854,8 +2854,7 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "workers.legacy.scripts.content",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/script-settings": {
 		"operationId": "worker-script-settings-get-settings",
@@ -2879,7 +2878,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -3375,7 +3374,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -3764,7 +3763,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -4168,7 +4167,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -8567,7 +8566,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -8837,8 +8836,7 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "workers.legacy.scripts.subdomain",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/usage-model": {
 		"operationId": "worker-script-fetch-usage-model",
@@ -8862,7 +8860,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -9162,7 +9160,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -10061,7 +10059,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -10828,13 +10826,9 @@
 		"tags": [
 			"Worker Script"
 		],
-		"x-fern-audiences": [
-			"sdk"
-		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.secrets",
-		"x-fern-sdk-method-name": "bulk-edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "bulk"
 	},
 	"PATCH /accounts/{account_id}/workers/scripts/{script_name}/settings": {
 		"operationId": "worker-script-patch-settings",
@@ -10858,7 +10852,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -19939,8 +19933,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.assets.upload",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/workers/scripts/{script_name}/assets-upload-session": {
 		"operationId": "worker-script-update-create-assets-upload-session",
@@ -19964,7 +19957,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -20384,8 +20377,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.assets.upload",
-		"x-fern-sdk-method-name": "create-session",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create-session"
 	},
 	"POST /accounts/{account_id}/workers/scripts/{script_name}/subdomain": {
 		"operationId": "worker-script-post-subdomain",
@@ -20409,7 +20401,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -20705,8 +20697,7 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "workers.legacy.scripts.subdomain",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/workers/scripts/{script_name}": {
 		"operationId": "worker-script-upload-worker-module",
@@ -20730,7 +20721,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -25018,7 +25009,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -26239,8 +26230,7 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "workers.legacy.scripts.content",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/workers/scripts/{script_name}/secrets": {
 		"operationId": "worker-put-script-secret",
@@ -26264,7 +26254,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -26864,19 +26854,9 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
-		"x-fern-audiences": [
-			"sdk"
-		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.secrets",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true,
-		"x-forge-params": {
-			"name": {
-				"positional": true,
-				"required": true
-			}
-		}
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/workers/scripts/{script_name}/usage-model": {
 		"operationId": "worker-script-update-usage-model",
@@ -26900,7 +26880,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",

@@ -295,7 +295,8 @@
 				"description": "If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.",
 				"schema": {
 					"type": "boolean"
-				}
+				},
+				"x-fern-parameter-name": "delete-with-references"
 			}
 		],
 		"responses": {

@@ -267,7 +267,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This will permanently delete the Workers for Platforms dispatch namespace."
 	},
 	"DELETE /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts": {
@@ -303,6 +302,7 @@
 				"name": "tags",
 				"in": "query",
 				"description": "Filter scripts by tags before deletion. Format: comma-separated list of tag:allowed pairs where allowed is 'yes' or 'no'.",
+				"required": true,
 				"schema": {
 					"type": "string",
 					"example": "production:yes,staging:no"
@@ -484,10 +484,12 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts",
 		"x-fern-sdk-method-name": "bulk-delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This will permanently delete matching scripts in the Workers for Platforms dispatch namespace."
 	},
 	"DELETE /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}": {
@@ -524,7 +526,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -537,7 +539,8 @@
 				"description": "If true, delete the script even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted script are deleted even if other Workers reference them.",
 				"schema": {
 					"type": "boolean"
-				}
+				},
+				"x-fern-parameter-name": "delete-with-references"
 			}
 		],
 		"responses": {
@@ -814,7 +817,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -1080,9 +1083,6 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
-		"x-fern-audiences": [
-			"sdk"
-		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.secrets",
 		"x-fern-sdk-method-name": "delete",
@@ -1122,7 +1122,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -1375,9 +1375,6 @@
 		],
 		"x-api-token-group": [
 			"Workers Scripts Write"
-		],
-		"x-fern-audiences": [
-			"sdk"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.tags",
@@ -1698,8 +1695,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}": {
 		"operationId": "namespace-worker-get-namespace",
@@ -2024,8 +2020,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts": {
 		"operationId": "namespace-worker-list-scripts",
@@ -3227,8 +3222,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}": {
 		"operationId": "namespace-worker-script-worker-details",
@@ -3264,7 +3258,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -4466,7 +4460,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -6097,13 +6091,9 @@
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
-		"x-fern-audiences": [
-			"sdk"
-		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.bindings",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/content": {
 		"operationId": "namespace-worker-get-script-content",
@@ -6139,7 +6129,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -6295,8 +6285,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.content",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets": {
 		"operationId": "namespace-worker-list-script-secrets",
@@ -6332,7 +6321,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -6698,13 +6687,9 @@
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
-		"x-fern-audiences": [
-			"sdk"
-		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.secrets",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets/{secret_name}": {
 		"operationId": "namespace-worker-get-script-secrets",
@@ -6740,7 +6725,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -7126,13 +7111,9 @@
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
-		"x-fern-audiences": [
-			"sdk"
-		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.secrets",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/settings": {
 		"operationId": "namespace-worker-get-script-settings",
@@ -7168,7 +7149,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -11512,13 +11493,9 @@
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
-		"x-fern-audiences": [
-			"sdk"
-		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.settings",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/tags": {
 		"operationId": "namespace-worker-get-script-tags",
@@ -11554,7 +11531,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -11804,9 +11781,6 @@
 			"Workers Tail Read",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
-		],
-		"x-fern-audiences": [
-			"sdk"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.tags",
@@ -12156,10 +12130,12 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"PATCH /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets-bulk": {
 		"operationId": "namespace-worker-patch-script-secrets-bulk",
@@ -12195,7 +12171,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -12965,13 +12941,9 @@
 		"tags": [
 			"Workers for Platforms"
 		],
-		"x-fern-audiences": [
-			"sdk"
-		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.secrets",
-		"x-fern-sdk-method-name": "bulk-edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "bulk"
 	},
 	"PATCH /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/settings": {
 		"operationId": "namespace-worker-patch-script-settings",
@@ -13007,7 +12979,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -21644,13 +21616,9 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
-		"x-fern-audiences": [
-			"sdk"
-		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.settings",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/workers/dispatch/namespaces": {
 		"operationId": "namespace-worker-create",
@@ -21979,8 +21947,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/assets-upload-session": {
 		"operationId": "namespace-worker-script-update-create-assets-upload-session",
@@ -22016,7 +21983,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -22314,8 +22281,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.assets.upload",
-		"x-fern-sdk-method-name": "create-session",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create-session"
 	},
 	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}": {
 		"operationId": "namespace-worker-put-namespace",
@@ -22666,8 +22632,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}": {
 		"operationId": "namespace-worker-script-upload-worker-module",
@@ -22703,7 +22668,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -26930,6 +26895,9 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts",
 		"x-fern-sdk-method-name": "update"
@@ -26968,7 +26936,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -28189,8 +28157,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.content",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets": {
 		"operationId": "namespace-worker-put-script-secrets",
@@ -28226,7 +28193,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -28829,13 +28796,9 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
-		"x-fern-audiences": [
-			"sdk"
-		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.secrets",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/tags": {
 		"operationId": "namespace-worker-put-script-tags",
@@ -28871,7 +28834,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -29147,11 +29110,8 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
-		"x-fern-audiences": [
-			"sdk"
-		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.tags.bulk",
+		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.tags",
 		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/tags/{tag}": {
@@ -29188,7 +29148,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",

@@ -1,0 +1,1781 @@
+{
+	"GET /accounts/{account_id}/security-center/partners/{partner}/settings": {
+		"operationId": "get-security-center-partner-settings",
+		"summary": "Retrieves Partner Integration Settings",
+		"description": "Returns whether the account has enabled the selected partner integration. An integration that has never been configured is returned as disabled.",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "The partner integration identifier.",
+				"in": "path",
+				"name": "partner",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"enum": [
+						"riskrecon"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "The request was successful.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"enabled": {
+													"description": "Whether the partner integration is enabled for the account.",
+													"type": "boolean",
+													"example": true,
+													"x-auditable": true
+												}
+											},
+											"additionalProperties": false,
+											"required": [
+												"enabled"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "A client error occurred.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Security Center Partners"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "security-insights.partners.settings",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/security-center/partners/{partner}/shadow-zones": {
+		"operationId": "get-security-center-partner-shadow-zones",
+		"summary": "Lists Partner-Discovered Shadow Zones",
+		"description": "Lists domains discovered by the selected partner that are not in the account. Baseline accounts receive the total count only; premium accounts receive paginated items and may request CSV output.",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "The partner integration identifier.",
+				"in": "path",
+				"name": "partner",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"enum": [
+						"riskrecon"
+					]
+				}
+			},
+			{
+				"description": "Page number for premium partner asset results.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"type": "integer",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"description": "Number of premium partner asset results per page. Values other than 1 must be a multiple of 5.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"type": "integer",
+					"default": 25,
+					"maximum": 1000,
+					"minimum": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "The request was successful. CSV output is available to premium accounts when requested with `Accept: text/csv`.",
+				"headers": {
+					"X-Collection-Total": {
+						"description": "Total number of items in the collection. Returned with CSV responses.",
+						"schema": {
+							"type": "integer",
+							"format": "int64",
+							"minimum": 0
+						}
+					},
+					"X-Collection-Truncated": {
+						"description": "Whether partner data reached the service collection limit. Returned with CSV responses.",
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"additionalProperties": false,
+											"properties": {
+												"collection_truncated": {
+													"description": "Whether partner data reached the service collection limit.",
+													"type": "boolean",
+													"example": false,
+													"x-auditable": true
+												},
+												"entitlement": {
+													"description": "The account's feature level for the partner integration.",
+													"type": "string",
+													"example": "premium",
+													"enum": [
+														"baseline",
+														"premium"
+													],
+													"x-auditable": true
+												},
+												"has_more": {
+													"description": "Whether another page of items is available.",
+													"type": "boolean",
+													"example": true,
+													"x-auditable": true
+												},
+												"items": {
+													"description": "Paginated shadow zones. Empty for baseline accounts.",
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"discovered_at": {
+																"description": "When the partner first discovered the domain.",
+																"type": "string",
+																"format": "date-time",
+																"example": "2026-09-16T10:30:00.123Z",
+																"x-auditable": true
+															},
+															"domain": {
+																"description": "A partner-discovered domain that is not in the account.",
+																"type": "string",
+																"example": "example.com",
+																"x-auditable": true
+															},
+															"shadow_host_count": {
+																"description": "Number of partner-discovered hosts beneath the domain that are not in the account.",
+																"type": "integer",
+																"format": "int64",
+																"example": 4,
+																"minimum": 0,
+																"x-auditable": true
+															}
+														},
+														"additionalProperties": false,
+														"required": [
+															"domain",
+															"shadow_host_count",
+															"discovered_at"
+														]
+													}
+												},
+												"total_count": {
+													"description": "Total number of shadow zones discovered for the account.",
+													"type": "integer",
+													"format": "int64",
+													"example": 30,
+													"minimum": 0,
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"entitlement",
+												"total_count",
+												"items",
+												"has_more",
+												"collection_truncated"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					},
+					"text/csv": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "A client error occurred, including when the integration is disabled or CSV output is unavailable for the account entitlement.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Security Center Partners"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "security-insights.partners.shadow-zones",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/security-center/partners/{partner}/shadow-zones/{domain}/hosts": {
+		"operationId": "get-security-center-partner-shadow-zone-hosts",
+		"summary": "Lists Hosts in a Partner-Discovered Shadow Zone",
+		"description": "Lists hosts discovered beneath a shadow-zone domain. This endpoint is available only to premium accounts and supports JSON and CSV output.",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "The partner integration identifier.",
+				"in": "path",
+				"name": "partner",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"enum": [
+						"riskrecon"
+					]
+				}
+			},
+			{
+				"name": "domain",
+				"in": "path",
+				"description": "The shadow-zone domain.",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "example.com"
+				}
+			},
+			{
+				"description": "Page number for premium partner asset results.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"type": "integer",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"description": "Number of premium partner asset results per page. Values other than 1 must be a multiple of 5.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"type": "integer",
+					"default": 25,
+					"maximum": 1000,
+					"minimum": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "The request was successful. CSV output is returned when requested with `Accept: text/csv`.",
+				"headers": {
+					"X-Collection-Total": {
+						"description": "Total number of items in the collection. Returned with CSV responses.",
+						"schema": {
+							"type": "integer",
+							"format": "int64",
+							"minimum": 0
+						}
+					},
+					"X-Collection-Truncated": {
+						"description": "Whether partner data reached the service collection limit. Returned with CSV responses.",
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"additionalProperties": false,
+											"properties": {
+												"collection_truncated": {
+													"description": "Whether partner data reached the service collection limit.",
+													"type": "boolean",
+													"example": false,
+													"x-auditable": true
+												},
+												"domain": {
+													"description": "The parent domain for the returned hosts.",
+													"type": "string",
+													"example": "example.com",
+													"x-auditable": true
+												},
+												"entitlement": {
+													"description": "The account's feature level for the partner integration.",
+													"type": "string",
+													"example": "premium",
+													"enum": [
+														"baseline",
+														"premium"
+													],
+													"x-auditable": true
+												},
+												"has_more": {
+													"description": "Whether another page of items is available.",
+													"type": "boolean",
+													"example": true,
+													"x-auditable": true
+												},
+												"items": {
+													"description": "Paginated shadow hosts. Empty for baseline accounts.",
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"criticality": {
+																"description": "The partner-provided criticality, or `unknown` when unavailable or unrecognized.",
+																"type": "string",
+																"example": "high",
+																"enum": [
+																	"unknown",
+																	"idle",
+																	"low",
+																	"medium",
+																	"high"
+																],
+																"x-auditable": true
+															},
+															"discovered_at": {
+																"description": "When the partner first discovered the host.",
+																"type": "string",
+																"format": "date-time",
+																"example": "2026-09-16T10:30:00.123Z",
+																"x-auditable": true
+															},
+															"hosting_provider": {
+																"description": "The observed hosting provider, or `unknown` when unavailable.",
+																"type": "string",
+																"example": "Example Hosting",
+																"x-auditable": true
+															},
+															"hostname": {
+																"type": "string",
+																"example": "vpn.example.com",
+																"x-auditable": true
+															},
+															"ip_address": {
+																"description": "The IP address observed for the host.",
+																"type": "string",
+																"example": "203.0.113.5",
+																"x-auditable": true
+															}
+														},
+														"additionalProperties": false,
+														"required": [
+															"hostname",
+															"ip_address",
+															"hosting_provider",
+															"criticality",
+															"discovered_at"
+														]
+													}
+												},
+												"total_count": {
+													"description": "Total number of shadow hosts discovered beneath the domain.",
+													"type": "integer",
+													"format": "int64",
+													"example": 30,
+													"minimum": 0,
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"entitlement",
+												"domain",
+												"total_count",
+												"items",
+												"has_more",
+												"collection_truncated"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					},
+					"text/csv": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "A client error occurred, including when the integration is disabled, the account lacks premium entitlement, or the shadow zone does not exist.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Security Center Partners"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "security-insights.partners.shadow-zone-hosts",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
+	},
+	"GET /zones/{zone_id}/security-center/partners/{partner}/shadow-hosts": {
+		"operationId": "get-zone-security-center-partner-shadow-hosts",
+		"summary": "Lists Partner-Discovered Shadow Hosts for a Zone",
+		"description": "Lists partner-discovered hosts beneath the zone that are not in the account.",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "The partner integration identifier.",
+				"in": "path",
+				"name": "partner",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"enum": [
+						"riskrecon"
+					]
+				}
+			},
+			{
+				"description": "Page number for premium partner asset results.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"type": "integer",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"description": "Number of premium partner asset results per page. Values other than 1 must be a multiple of 5.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"type": "integer",
+					"default": 25,
+					"maximum": 1000,
+					"minimum": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "The request was successful. CSV output is available to premium accounts when requested with `Accept: text/csv`.",
+				"headers": {
+					"X-Collection-Total": {
+						"description": "Total number of items in the collection. Returned with CSV responses.",
+						"schema": {
+							"type": "integer",
+							"format": "int64",
+							"minimum": 0
+						}
+					},
+					"X-Collection-Truncated": {
+						"description": "Whether partner data reached the service collection limit. Returned with CSV responses.",
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"additionalProperties": false,
+											"properties": {
+												"collection_truncated": {
+													"description": "Whether partner data reached the service collection limit.",
+													"type": "boolean",
+													"example": false,
+													"x-auditable": true
+												},
+												"domain": {
+													"description": "The parent domain for the returned hosts.",
+													"type": "string",
+													"example": "example.com",
+													"x-auditable": true
+												},
+												"entitlement": {
+													"description": "The account's feature level for the partner integration.",
+													"type": "string",
+													"example": "premium",
+													"enum": [
+														"baseline",
+														"premium"
+													],
+													"x-auditable": true
+												},
+												"has_more": {
+													"description": "Whether another page of items is available.",
+													"type": "boolean",
+													"example": true,
+													"x-auditable": true
+												},
+												"items": {
+													"description": "Paginated shadow hosts. Empty for baseline accounts.",
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"criticality": {
+																"description": "The partner-provided criticality, or `unknown` when unavailable or unrecognized.",
+																"type": "string",
+																"example": "high",
+																"enum": [
+																	"unknown",
+																	"idle",
+																	"low",
+																	"medium",
+																	"high"
+																],
+																"x-auditable": true
+															},
+															"discovered_at": {
+																"description": "When the partner first discovered the host.",
+																"type": "string",
+																"format": "date-time",
+																"example": "2026-09-16T10:30:00.123Z",
+																"x-auditable": true
+															},
+															"hosting_provider": {
+																"description": "The observed hosting provider, or `unknown` when unavailable.",
+																"type": "string",
+																"example": "Example Hosting",
+																"x-auditable": true
+															},
+															"hostname": {
+																"type": "string",
+																"example": "vpn.example.com",
+																"x-auditable": true
+															},
+															"ip_address": {
+																"description": "The IP address observed for the host.",
+																"type": "string",
+																"example": "203.0.113.5",
+																"x-auditable": true
+															}
+														},
+														"additionalProperties": false,
+														"required": [
+															"hostname",
+															"ip_address",
+															"hosting_provider",
+															"criticality",
+															"discovered_at"
+														]
+													}
+												},
+												"total_count": {
+													"description": "Total number of shadow hosts discovered beneath the domain.",
+													"type": "integer",
+													"format": "int64",
+													"example": 30,
+													"minimum": 0,
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"entitlement",
+												"domain",
+												"total_count",
+												"items",
+												"has_more",
+												"collection_truncated"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					},
+					"text/csv": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "A client error occurred, including when the integration is disabled, CSV output is unavailable for the account entitlement, or partner data for the zone does not exist.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Security Center Partners"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "security-insights.partners.shadow-hosts",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
+	},
+	"POST /accounts/{account_id}/security-center/partners/{partner}/settings": {
+		"operationId": "update-security-center-partner-settings",
+		"summary": "Updates Partner Integration Settings",
+		"description": "Enables or disables the selected partner integration for the account. Enabling the integration for the first time also schedules an account scan for that partner.",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "The partner integration identifier.",
+				"in": "path",
+				"name": "partner",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"enum": [
+						"riskrecon"
+					]
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"enabled": {
+								"description": "Whether the partner integration is enabled for the account.",
+								"type": "boolean",
+								"example": true,
+								"x-auditable": true
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"enabled"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "The request was successful.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"enabled": {
+													"description": "Whether the partner integration is enabled for the account.",
+													"type": "boolean",
+													"example": true,
+													"x-auditable": true
+												}
+											},
+											"additionalProperties": false,
+											"required": [
+												"enabled"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "A client error occurred.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Security Center Partners"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "security-insights.partners.settings",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
+	}
+}

@@ -41,6 +41,8 @@
 				"content": {
 					"application/json": {
 						"example": {
+							"errors": [],
+							"messages": [],
 							"result": [
 								"b026324c6904b2a9cb4b88d6d61c81d1"
 							],
@@ -275,7 +277,10 @@
 		"tags": [
 			"Pages Assets"
 		],
-		"x-forge-hidden": true
+		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "pages.assets.hashes",
+		"x-fern-sdk-method-name": "check"
 	},
 	"POST /pages/assets/upload": {
 		"operationId": "pages-assets-upload",
@@ -552,7 +557,10 @@
 		"tags": [
 			"Pages Assets"
 		],
-		"x-forge-hidden": true
+		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "pages.assets",
+		"x-fern-sdk-method-name": "upload"
 	},
 	"POST /pages/assets/upsert-hashes": {
 		"operationId": "pages-assets-upsert-hashes",
@@ -596,6 +604,8 @@
 				"content": {
 					"application/json": {
 						"example": {
+							"errors": [],
+							"messages": [],
 							"success": true
 						},
 						"schema": {
@@ -805,6 +815,9 @@
 		"tags": [
 			"Pages Assets"
 		],
-		"x-forge-hidden": true
+		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "pages.assets.hashes",
+		"x-fern-sdk-method-name": "upsert"
 	}
 }

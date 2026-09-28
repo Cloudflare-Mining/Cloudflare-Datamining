@@ -356,8 +356,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.service-tokens",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/access/service_tokens": {
 		"operationId": "access-service-tokens-list-service-tokens",
@@ -778,8 +777,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.service-tokens",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/access/service_tokens/{service_token_id}": {
 		"operationId": "access-service-tokens-get-a-service-token",
@@ -1139,8 +1137,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.service-tokens",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/access/service_tokens": {
 		"operationId": "access-service-tokens-create-a-service-token",
@@ -1508,8 +1505,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.service-tokens",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/access/service_tokens/{service_token_id}/refresh": {
 		"operationId": "access-service-tokens-refresh-a-service-token",
@@ -1868,8 +1864,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.service-tokens",
-		"x-fern-sdk-method-name": "refresh",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "refresh"
 	},
 	"POST /accounts/{account_id}/access/service_tokens/{service_token_id}/rotate": {
 		"operationId": "access-service-tokens-rotate-a-service-token",
@@ -2218,8 +2213,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.service-tokens",
-		"x-fern-sdk-method-name": "rotate",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "rotate"
 	},
 	"PUT /accounts/{account_id}/access/service_tokens/{service_token_id}": {
 		"operationId": "access-service-tokens-update-a-service-token",
@@ -2621,7 +2615,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.service-tokens",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

@@ -277,9 +277,8 @@
 			"Access: Apps and Policies Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.access.applications.cas",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.access.applications.short-lived-certificates",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/access/apps/{app_id}/ca": {
 		"operationId": "access-short-lived-certificate-c-as-get-a-short-lived-certificate-ca",
@@ -574,9 +573,8 @@
 			"Access: Apps and Policies Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.access.applications.cas",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.access.applications.short-lived-certificates",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/access/apps/ca": {
 		"operationId": "access-short-lived-certificate-c-as-list-short-lived-certificate-c-as",
@@ -916,9 +914,8 @@
 			"Access: Apps and Policies Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.access.applications.cas",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.access.applications.short-lived-certificates",
+		"x-fern-sdk-method-name": "list"
 	},
 	"POST /accounts/{account_id}/access/apps/{app_id}/ca": {
 		"operationId": "access-short-lived-certificate-c-as-create-a-short-lived-certificate-ca",
@@ -1212,8 +1209,7 @@
 			"Access: Apps and Policies Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.access.applications.cas",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.access.applications.short-lived-certificates",
+		"x-fern-sdk-method-name": "create"
 	}
 }

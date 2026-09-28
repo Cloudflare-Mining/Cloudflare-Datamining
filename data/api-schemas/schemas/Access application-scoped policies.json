@@ -289,10 +289,10 @@
 		"x-api-token-group": [
 			"Access: Apps and Policies Write"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.access.applications.policies",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/access/apps/{app_id}/policies": {
 		"operationId": "access-policies-list-access-app-policies",
@@ -5072,10 +5072,9 @@
 			"Access: Apps and Policies Write",
 			"Access: Apps and Policies Read"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "zero-trust.access.applications.policies",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/access/apps/{app_id}/policies/{policy_id}": {
 		"operationId": "access-policies-get-an-access-policy",
@@ -9811,10 +9810,9 @@
 			"Access: Apps and Policies Write",
 			"Access: Apps and Policies Read"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "zero-trust.access.applications.policies",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/access/apps/{app_id}/policies": {
 		"operationId": "access-policies-create-an-access-policy",
@@ -18965,10 +18963,10 @@
 		"x-api-token-group": [
 			"Access: Apps and Policies Write"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.access.applications.policies",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/access/apps/{app_id}/policies/{policy_id}": {
 		"operationId": "access-policies-update-an-access-policy",
@@ -28186,10 +28184,10 @@
 		"x-api-token-group": [
 			"Access: Apps and Policies Write"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.access.applications.policies",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/access/apps/{app_id}/policies/{policy_id}/make_reusable": {
 		"operationId": "access-policies-convert-reusable",
@@ -32963,8 +32961,7 @@
 			"Access: Apps and Policies Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.apps.policies.make.reusable",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "zero-trust.access.applications.policies",
+		"x-fern-sdk-method-name": "make-reusable"
 	}
 }

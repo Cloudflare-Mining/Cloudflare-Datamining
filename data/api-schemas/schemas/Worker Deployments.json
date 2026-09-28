@@ -21,7 +21,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -284,7 +284,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -736,7 +736,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -1107,7 +1107,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Name of the script, used in URLs and route configuration.",
+					"description": "Name of the script.",
 					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
@@ -1120,7 +1120,8 @@
 				"description": "If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.",
 				"schema": {
 					"type": "boolean"
-				}
+				},
+				"x-fern-parameter-name": "bypass-deployment-checks"
 			}
 		],
 		"requestBody": {

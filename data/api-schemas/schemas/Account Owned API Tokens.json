@@ -298,7 +298,7 @@
 	"GET /accounts/{account_id}/tokens": {
 		"operationId": "account-api-tokens-list-tokens",
 		"summary": "List Tokens",
-		"description": "List all Account Owned API tokens created for this account. Results include active, disabled, and recently-expired tokens when include_expired is set to true.",
+		"description": "List Account Owned API tokens created for this account. Callers with\n`com.cloudflare.api.account.token.list_self` permission only receive\ntokens they created. Results include active, disabled, and\nrecently-expired tokens when `include_expired` is set to true.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -542,6 +542,14 @@
 															}
 														}
 													},
+													"creator_email_at_creation": {
+														"description": "The email address of the user who created the token at the time of\ncreation. Only present for Account Owned API Tokens when a creator email\nwas available.",
+														"type": "string",
+														"example": "user@example.com",
+														"maxLength": 90,
+														"readOnly": true,
+														"x-auditable": true
+													},
 													"expires_on": {
 														"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
 														"type": "string",
@@ -684,20 +692,7 @@
 																"resources": {
 																	"description": "A list of resource names that the policy applies to.",
 																	"example": {
-																		"object": {
-																			"summary": "Nested object value",
-																			"value": {
-																				"com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4": {
-																					"com.cloudflare.api.account.zone.*": "*"
-																				}
-																			}
-																		},
-																		"string": {
-																			"summary": "Single string value",
-																			"value": {
-																				"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
-																			}
-																		}
+																		"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
 																	},
 																	"oneOf": [
 																		{
@@ -731,6 +726,21 @@
 															],
 															"title": "Policy with Permission Groups and Resources"
 														}
+													},
+													"provisioner_id": {
+														"description": "The identifier of the service that provisioned the token. For an\nOAuth-provisioned token, this is the OAuth client identifier. Present\nwhen `provisioner_type` is present and null when the identifier is\nunavailable.",
+														"type": "string",
+														"example": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4",
+														"nullable": true,
+														"readOnly": true,
+														"x-auditable": true
+													},
+													"provisioner_type": {
+														"description": "The type of service that provisioned the token. Only present for\nprovisioned Account Owned API Tokens.",
+														"type": "string",
+														"example": "com.cloudflare.api.oauthtoken",
+														"readOnly": true,
+														"x-auditable": true
 													},
 													"status": {
 														"description": "Status of the token.",
@@ -884,7 +894,8 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.account.token.list"
+				"com.cloudflare.api.account.token.list",
+				"com.cloudflare.api.account.token.list_self"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -1084,6 +1095,14 @@
 														}
 													}
 												},
+												"creator_email_at_creation": {
+													"description": "The email address of the user who created the token at the time of\ncreation. Only present for Account Owned API Tokens when a creator email\nwas available.",
+													"type": "string",
+													"example": "user@example.com",
+													"maxLength": 90,
+													"readOnly": true,
+													"x-auditable": true
+												},
 												"expires_on": {
 													"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
 													"type": "string",
@@ -1226,20 +1245,7 @@
 															"resources": {
 																"description": "A list of resource names that the policy applies to.",
 																"example": {
-																	"object": {
-																		"summary": "Nested object value",
-																		"value": {
-																			"com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4": {
-																				"com.cloudflare.api.account.zone.*": "*"
-																			}
-																		}
-																	},
-																	"string": {
-																		"summary": "Single string value",
-																		"value": {
-																			"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
-																		}
-																	}
+																	"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
 																},
 																"oneOf": [
 																	{
@@ -1273,6 +1279,21 @@
 														],
 														"title": "Policy with Permission Groups and Resources"
 													}
+												},
+												"provisioner_id": {
+													"description": "The identifier of the service that provisioned the token. For an\nOAuth-provisioned token, this is the OAuth client identifier. Present\nwhen `provisioner_type` is present and null when the identifier is\nunavailable.",
+													"type": "string",
+													"example": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4",
+													"nullable": true,
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"provisioner_type": {
+													"description": "The type of service that provisioned the token. Only present for\nprovisioned Account Owned API Tokens.",
+													"type": "string",
+													"example": "com.cloudflare.api.oauthtoken",
+													"readOnly": true,
+													"x-auditable": true
 												},
 												"status": {
 													"description": "Status of the token.",
@@ -1442,7 +1463,7 @@
 	"GET /accounts/{account_id}/tokens/permission_groups": {
 		"operationId": "account-api-tokens-list-permission-groups",
 		"summary": "List Permission Groups",
-		"description": "Find all available permission groups for Account Owned API Tokens",
+		"description": "Find all available permission groups for Account Owned API Tokens.\nEach permission group indicates whether the caller can select it when\ncreating a token. Token creation performs the authoritative permission\ncheck.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1636,6 +1657,12 @@
 														"type": "string",
 														"x-auditable": true
 													},
+													"is_selectable": {
+														"description": "Whether the caller can select this permission group when creating a token.",
+														"type": "boolean",
+														"example": true,
+														"readOnly": true
+													},
 													"name": {
 														"description": "Permission Group Name",
 														"type": "string",
@@ -1662,6 +1689,7 @@
 												{
 													"category": "account_and_billing",
 													"id": "7cf72faf220841aabcfdfab81c43c4f6",
+													"is_selectable": true,
 													"name": "Billing Read",
 													"scopes": [
 														"com.cloudflare.api.account"
@@ -1670,6 +1698,7 @@
 												{
 													"category": "network_services",
 													"id": "9d24387c6e8544e2bc4024a03991339f",
+													"is_selectable": true,
 													"name": "Load Balancing: Monitors and Pools Read",
 													"scopes": [
 														"com.cloudflare.api.account"
@@ -1678,6 +1707,7 @@
 												{
 													"category": "network_services",
 													"id": "d2a1802cc9a34e30852f8b33869b2f3c",
+													"is_selectable": false,
 													"name": "Load Balancing: Monitors and Pools Write",
 													"scopes": [
 														"com.cloudflare.api.account"
@@ -1686,6 +1716,7 @@
 												{
 													"category": "developer_platform",
 													"id": "8b47d2786a534c08a1f94ee8f9f599ef",
+													"is_selectable": true,
 													"name": "Workers KV Storage Read",
 													"scopes": [
 														"com.cloudflare.api.account"
@@ -1694,6 +1725,7 @@
 												{
 													"category": "developer_platform",
 													"id": "f7f0eda5697f475c90846e879bab8666",
+													"is_selectable": true,
 													"name": "Workers KV Storage Write",
 													"scopes": [
 														"com.cloudflare.api.account"
@@ -1702,6 +1734,7 @@
 												{
 													"category": "developer_platform",
 													"id": "1a71c399035b4950a1bd1466bbe4f420",
+													"is_selectable": true,
 													"name": "Workers Scripts Read",
 													"scopes": [
 														"com.cloudflare.api.account"
@@ -1710,6 +1743,7 @@
 												{
 													"category": "developer_platform",
 													"id": "e086da7e2179491d91ee5f35b3ca210a",
+													"is_selectable": true,
 													"name": "Workers Scripts Write",
 													"scopes": [
 														"com.cloudflare.api.account"
@@ -2362,20 +2396,7 @@
 										"resources": {
 											"description": "A list of resource names that the policy applies to.",
 											"example": {
-												"object": {
-													"summary": "Nested object value",
-													"value": {
-														"com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4": {
-															"com.cloudflare.api.account.zone.*": "*"
-														}
-													}
-												},
-												"string": {
-													"summary": "Single string value",
-													"value": {
-														"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
-													}
-												}
+												"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
 											},
 											"oneOf": [
 												{
@@ -2569,6 +2590,14 @@
 																}
 															}
 														},
+														"creator_email_at_creation": {
+															"description": "The email address of the user who created the token at the time of\ncreation. Only present for Account Owned API Tokens when a creator email\nwas available.",
+															"type": "string",
+															"example": "user@example.com",
+															"maxLength": 90,
+															"readOnly": true,
+															"x-auditable": true
+														},
 														"expires_on": {
 															"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
 															"type": "string",
@@ -2711,20 +2740,7 @@
 																	"resources": {
 																		"description": "A list of resource names that the policy applies to.",
 																		"example": {
-																			"object": {
-																				"summary": "Nested object value",
-																				"value": {
-																					"com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4": {
-																						"com.cloudflare.api.account.zone.*": "*"
-																					}
-																				}
-																			},
-																			"string": {
-																				"summary": "Single string value",
-																				"value": {
-																					"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
-																				}
-																			}
+																			"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
 																		},
 																		"oneOf": [
 																			{
@@ -2758,6 +2774,21 @@
 																],
 																"title": "Policy with Permission Groups and Resources"
 															}
+														},
+														"provisioner_id": {
+															"description": "The identifier of the service that provisioned the token. For an\nOAuth-provisioned token, this is the OAuth client identifier. Present\nwhen `provisioner_type` is present and null when the identifier is\nunavailable.",
+															"type": "string",
+															"example": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4",
+															"nullable": true,
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"provisioner_type": {
+															"description": "The type of service that provisioned the token. Only present for\nprovisioned Account Owned API Tokens.",
+															"type": "string",
+															"example": "com.cloudflare.api.oauthtoken",
+															"readOnly": true,
+															"x-auditable": true
 														},
 														"status": {
 															"description": "Status of the token.",
@@ -3035,6 +3066,14 @@
 											}
 										}
 									},
+									"creator_email_at_creation": {
+										"description": "The email address of the user who created the token at the time of\ncreation. Only present for Account Owned API Tokens when a creator email\nwas available.",
+										"type": "string",
+										"example": "user@example.com",
+										"maxLength": 90,
+										"readOnly": true,
+										"x-auditable": true
+									},
 									"expires_on": {
 										"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
 										"type": "string",
@@ -3177,20 +3216,7 @@
 												"resources": {
 													"description": "A list of resource names that the policy applies to.",
 													"example": {
-														"object": {
-															"summary": "Nested object value",
-															"value": {
-																"com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4": {
-																	"com.cloudflare.api.account.zone.*": "*"
-																}
-															}
-														},
-														"string": {
-															"summary": "Single string value",
-															"value": {
-																"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
-															}
-														}
+														"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
 													},
 													"oneOf": [
 														{
@@ -3224,6 +3250,21 @@
 											],
 											"title": "Policy with Permission Groups and Resources"
 										}
+									},
+									"provisioner_id": {
+										"description": "The identifier of the service that provisioned the token. For an\nOAuth-provisioned token, this is the OAuth client identifier. Present\nwhen `provisioner_type` is present and null when the identifier is\nunavailable.",
+										"type": "string",
+										"example": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4",
+										"nullable": true,
+										"readOnly": true,
+										"x-auditable": true
+									},
+									"provisioner_type": {
+										"description": "The type of service that provisioned the token. Only present for\nprovisioned Account Owned API Tokens.",
+										"type": "string",
+										"example": "com.cloudflare.api.oauthtoken",
+										"readOnly": true,
+										"x-auditable": true
 									},
 									"status": {
 										"description": "Status of the token.",
@@ -3402,6 +3443,14 @@
 														}
 													}
 												},
+												"creator_email_at_creation": {
+													"description": "The email address of the user who created the token at the time of\ncreation. Only present for Account Owned API Tokens when a creator email\nwas available.",
+													"type": "string",
+													"example": "user@example.com",
+													"maxLength": 90,
+													"readOnly": true,
+													"x-auditable": true
+												},
 												"expires_on": {
 													"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
 													"type": "string",
@@ -3544,20 +3593,7 @@
 															"resources": {
 																"description": "A list of resource names that the policy applies to.",
 																"example": {
-																	"object": {
-																		"summary": "Nested object value",
-																		"value": {
-																			"com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4": {
-																				"com.cloudflare.api.account.zone.*": "*"
-																			}
-																		}
-																	},
-																	"string": {
-																		"summary": "Single string value",
-																		"value": {
-																			"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
-																		}
-																	}
+																	"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
 																},
 																"oneOf": [
 																	{
@@ -3591,6 +3627,21 @@
 														],
 														"title": "Policy with Permission Groups and Resources"
 													}
+												},
+												"provisioner_id": {
+													"description": "The identifier of the service that provisioned the token. For an\nOAuth-provisioned token, this is the OAuth client identifier. Present\nwhen `provisioner_type` is present and null when the identifier is\nunavailable.",
+													"type": "string",
+													"example": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4",
+													"nullable": true,
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"provisioner_type": {
+													"description": "The type of service that provisioned the token. Only present for\nprovisioned Account Owned API Tokens.",
+													"type": "string",
+													"example": "com.cloudflare.api.oauthtoken",
+													"readOnly": true,
+													"x-auditable": true
 												},
 												"status": {
 													"description": "Status of the token.",

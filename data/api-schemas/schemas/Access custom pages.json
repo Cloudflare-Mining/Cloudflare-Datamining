@@ -272,8 +272,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.custom-pages",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/access/custom_pages": {
 		"operationId": "access-custom-pages-list-custom-pages",
@@ -687,8 +686,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.custom-pages",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/access/custom_pages/{custom_page_id}": {
 		"operationId": "access-custom-pages-get-a-custom-page",
@@ -1035,8 +1033,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.custom-pages",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/access/custom_pages": {
 		"operationId": "access-custom-pages-create-a-custom-page",
@@ -1666,8 +1663,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.custom-pages",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/access/custom_pages/validate": {
 		"operationId": "access-custom-pages-validate-a-custom-page-template",
@@ -1713,7 +1709,8 @@
 							"version": {
 								"description": "Contract version to validate against; omit for the latest.",
 								"type": "integer",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-fern-property-name": "contract-version"
 							}
 						},
 						"required": [
@@ -2046,8 +2043,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.custom-pages",
-		"x-fern-sdk-method-name": "validate",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "validate"
 	},
 	"PUT /accounts/{account_id}/access/custom_pages/{custom_page_id}": {
 		"operationId": "access-custom-pages-update-a-custom-page",
@@ -2689,7 +2685,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.custom-pages",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

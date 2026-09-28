@@ -319,7 +319,7 @@
 				"in": "query",
 				"schema": {
 					"description": "Page number of paginated results.",
-					"type": "number",
+					"type": "integer",
 					"default": 1,
 					"minimum": 1
 				}
@@ -328,8 +328,8 @@
 				"name": "per_page",
 				"in": "query",
 				"schema": {
-					"description": "Number of DNS views per page.",
-					"type": "number",
+					"description": "Number of results per page.",
+					"type": "integer",
 					"example": 5,
 					"default": 100,
 					"maximum": 5000000,

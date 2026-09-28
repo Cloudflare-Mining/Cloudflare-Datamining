@@ -72352,9 +72352,6 @@
 										],
 										"title": "Kind"
 									},
-									"name": {
-										"type": "string"
-									},
 									"phase": {
 										"description": "The phase of the ruleset.",
 										"type": "string",
@@ -80624,13 +80621,13 @@
 										"title": "Rules"
 									}
 								},
-								"required": [
-									"name",
-									"kind",
-									"phase"
-								],
 								"type": "object"
 							}
+						],
+						"required": [
+							"name",
+							"kind",
+							"phase"
 						]
 					}
 				}

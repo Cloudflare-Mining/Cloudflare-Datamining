@@ -275,10 +275,10 @@
 		"x-api-token-group": [
 			"Access: Organizations, Identity Providers, and Groups Write"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.groups",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.access.zone-groups",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /zones/{zone_id}/access/groups": {
 		"operationId": "zone-level-access-groups-list-access-groups",
@@ -2652,10 +2652,10 @@
 			"Access: Organizations, Identity Providers, and Groups Write",
 			"Access: Organizations, Identity Providers, and Groups Read"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.groups",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.access.zone-groups",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/access/groups/{group_id}": {
 		"operationId": "zone-level-access-groups-get-an-access-group",
@@ -5003,10 +5003,10 @@
 			"Access: Organizations, Identity Providers, and Groups Write",
 			"Access: Organizations, Identity Providers, and Groups Read"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.groups",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.access.zone-groups",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /zones/{zone_id}/access/groups": {
 		"operationId": "zone-level-access-groups-create-an-access-group",
@@ -9414,10 +9414,10 @@
 		"x-api-token-group": [
 			"Access: Organizations, Identity Providers, and Groups Write"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.groups",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.access.zone-groups",
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /zones/{zone_id}/access/groups/{group_id}": {
 		"operationId": "zone-level-access-groups-update-an-access-group",
@@ -13837,9 +13837,9 @@
 		"x-api-token-group": [
 			"Access: Organizations, Identity Providers, and Groups Write"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.groups",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.access.zone-groups",
+		"x-fern-sdk-method-name": "update"
 	}
 }

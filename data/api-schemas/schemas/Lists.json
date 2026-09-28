@@ -361,13 +361,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rules.lists",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation deletes the custom list and every item it contains."
 	},
 	"DELETE /accounts/{account_id}/rules/lists/{list_id}/items": {
 		"operationId": "lists-delete-list-items",
 		"summary": "Delete list items",
-		"description": "Removes one or more items from a list.\n\nThis operation is asynchronous. To get current the operation status, invoke the `Get bulk operation status` endpoint with the returned `operation_id`.\n\nThere is a limit of 1 pending bulk operation per account. If an outstanding bulk operation is in progress, the request will be rejected.",
+		"description": "Removes one or more items from a list.\n\nThis operation is asynchronous. To get the current operation status, invoke the `Get bulk operation status` endpoint with the returned `operation_id`.\n\nThere is a limit of 1 pending bulk operation per account. If an outstanding bulk operation is in progress, the request will be rejected.",
 		"parameters": [
 			{
 				"name": "list_id",
@@ -406,6 +405,7 @@
 						"type": "object",
 						"properties": {
 							"items": {
+								"description": "The list items to delete, identified by their unique IDs.",
 								"type": "array",
 								"items": {
 									"example": {
@@ -789,7 +789,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rules.lists.items",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation deletes the selected items from the custom list."
 	},
 	"GET /accounts/{account_id}/rules/lists": {
@@ -1298,8 +1297,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rules.lists",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/rules/lists/{list_id}": {
 		"operationId": "lists-get-a-list",
@@ -1780,8 +1778,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rules.lists",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/rules/lists/{list_id}/items": {
 		"operationId": "lists-get-list-items",
@@ -2841,8 +2838,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rules.lists.items",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/rules/lists/{list_id}/items/{item_id}": {
 		"operationId": "lists-get-a-list-item",
@@ -3808,8 +3804,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rules.lists.items",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/rules/lists/bulk_operations/{operation_id}": {
 		"operationId": "lists-get-bulk-operation-status",
@@ -4349,8 +4344,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rules.lists.bulk-operations",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/rules/lists": {
 		"operationId": "lists-create-a-list",
@@ -4858,13 +4852,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rules.lists",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/rules/lists/{list_id}/items": {
 		"operationId": "lists-create-list-items",
 		"summary": "Create list items",
-		"description": "Appends new items to the list.\n\nThis operation is asynchronous. To get current the operation status, invoke the `Get bulk operation status` endpoint with the returned `operation_id`.\n\nThere is a limit of 1 pending bulk operation per account. If an outstanding bulk operation is in progress, the request will be rejected.",
+		"description": "Appends new items to the list.\n\nThis operation is asynchronous. To get the current operation status, invoke the `Get bulk operation status` endpoint with the returned `operation_id`.\n\nThere is a limit of 1 pending bulk operation per account. If an outstanding bulk operation is in progress, the request will be rejected.",
 		"parameters": [
 			{
 				"name": "list_id",
@@ -5436,8 +5429,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rules.lists.items",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/rules/lists/{list_id}": {
 		"operationId": "lists-update-a-list",
@@ -5937,13 +5929,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rules.lists",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/rules/lists/{list_id}/items": {
 		"operationId": "lists-update-all-list-items",
 		"summary": "Update all list items",
-		"description": "Removes all existing items from the list and adds the provided items to the list.\n\nThis operation is asynchronous. To get current the operation status, invoke the `Get bulk operation status` endpoint with the returned `operation_id`.\n\nThere is a limit of 1 pending bulk operation per account. If an outstanding bulk operation is in progress, the request will be rejected.",
+		"description": "Removes all existing items from the list and adds the provided items to the list.\n\nThis operation is asynchronous. To get the current operation status, invoke the `Get bulk operation status` endpoint with the returned `operation_id`.\n\nThere is a limit of 1 pending bulk operation per account. If an outstanding bulk operation is in progress, the request will be rejected.",
 		"parameters": [
 			{
 				"name": "list_id",
@@ -6515,7 +6506,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rules.lists.items",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }
