@@ -37,6 +37,19 @@
 				}
 			}
 		},
+		"/.well-known/api-catalog": {
+			"get": {
+				"summary": "Discover the public API catalog",
+				"responses": {
+					"200": {
+						"description": "RFC 9727 API catalog",
+						"content": {
+							"application/linkset+json": {}
+						}
+					}
+				}
+			}
+		},
 		"/.well-known/agents.json": {
 			"get": {
 				"summary": "Get agents catalog metadata",
