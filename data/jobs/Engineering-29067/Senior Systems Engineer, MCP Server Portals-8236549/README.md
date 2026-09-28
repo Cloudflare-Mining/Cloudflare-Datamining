@@ -4,44 +4,50 @@
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
 <p><strong>Available Locations: Lisbon, Portugal&nbsp;</strong></p>
-<p><strong>About the role</strong></p>
-<p>Do you love solving complex technical issues and interacting with people? Are you passionate about providing premium-level support to customers and are a standout colleague? Cloudflare is seeking an experienced Network Security Engineer to join our team and support our largest and most technically sophisticated customers in resolving technical problems, threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This will span the range of Cloudflare products from Magic Transit Infrastructure Protection, Argo Smart Routing, DDoS mitigation and Network Firewall, to using the Web Application firewall (WAF), Spectrum and Rate Limiting to help customers.</p>
-<h4><strong>Responsibilities</strong></h4>
+<h2>Role Summary</h2>
+<p>Cloudflare MCP Server Portals give organizations a secure, centralized way to connect AI agents to internal and third-party tools. As a Senior Systems Engineer on the MCP Portals team, you will lead the design, delivery, and operation of distributed systems that authenticate users, manage OAuth credentials and sessions, enforce Zero Trust policies, and proxy MCP traffic across Cloudflare's global network. You will own complex projects across service boundaries, make architectural tradeoffs for your area, and help other engineers deliver reliable, secure changes. You will work closely with engineers and product managers across Access, Gateway, and Developer Platform teams as the protocol and product evolve. We are looking for a hands-on engineer who can bring clarity to ambiguous systems problems and take responsibility for outcomes in production.</p>
+<h4>&nbsp;</h4>
+<h2>Role Responsibilities</h2>
 <ul>
-	<li>Communicate with customers via chat, email, and phone&nbsp;</li>
-	<li>Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</li>
-	<li>DDoS mitigation for OSI layers 3,4, &amp; 7: advise customers on how to filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blocklisting, allowlisting, and rate limiting</li>
-	<li>Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation, when applicable</li>
-	<li>Work with Engineering and Product teams to improve the products and tools</li>
+	<li>Lead the design, implementation, and operation of globally distributed services that connect MCP clients to authorized upstream MCP servers.</li>
+	<li>Own complex features and service improvements from problem definition and design through implementation, rollout, observability, and production support.</li>
+	<li>Shape technical decisions for MCP Portals, including service boundaries, security controls, compatibility, and tradeoffs among reliability, latency, and resource use.</li>
+	<li>Evolve our implementation as the MCP specification changes, planning safe migrations for existing customers and integrations.</li>
+	<li>Design and review authentication and authorization flows involving Cloudflare Access, OAuth, identity, credential handling, and delegated access to upstream services.</li>
+	<li>Improve the reliability and scalability of multi-tenant systems built on the Cloudflare Developer Platform, using production data to identify and prioritize work.</li>
+	<li>Strengthen observability through structured logs, metrics, traces, dashboards, and actionable alerts; participate in production support and incident response.</li>
+	<li>Lead investigations of complex customer issues across services and teams, identify root causes, and drive fixes that prevent recurrence.</li>
+	<li>Review designs and code, mentor engineers, and raise the quality of testing, deployment, and operational practices on the team.</li>
+	<li>Partner with product, security, and engineering teams to turn customer needs and emerging standards into maintainable product capabilities.</li>
 </ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<h4>&nbsp;</h4>
+<h2>Role Requirements</h2>
+<h3>Must Have Skills</h3>
 <ul>
-	<li>Self-driven and capable of learning new technologies / systems / features with little guidance</li>
-	<li>Fundamental understanding how the Internet works (OSI Model)</li>
-	<li>Advanced understanding of modern internet protocols like TCP and UDP</li>
-	<li>Computer Networking fundamentals, experience with iptables and looking glass</li>
-	<li>Experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels</li>
-	<li>Packet capture analysis</li>
-	<li>Experience in command line and tools, including curl, dig, traceroute, openssl, git</li>
-	<li>Experience troubleshooting DNS, SSL / TLS, HTTP</li>
-	<li>Experience in a web development and / or hosting environment such as installing and configuring web servers like Apache, Nginx, Caddy and IIS</li>
-	<li>Experience writing scripts in Bash, Python, JavaScript or other scripting language</li>
-	<li>Experience in working as part of a team in a customer-facing role</li>
+	<li>6+ years of experience building and operating distributed systems, backend services, network services, or infrastructure products in production.</li>
+	<li>Demonstrated ownership of complex production services or projects, including architecture, implementation, rollout, and operational outcomes.</li>
+	<li>Strong programming skills in TypeScript, JavaScript, Go, Rust, C++, or another language used to build production services.</li>
+	<li>Deep understanding of HTTP, APIs, proxies, streaming connections, and distributed-systems failure modes.</li>
+	<li>Experience with authentication and authorization technologies such as OAuth 2.0, OpenID Connect, JWTs, PKCE, or policy-based access control.</li>
+	<li>Experience designing or operating security-sensitive systems, with sound judgment about identity, authorization, credential handling, concurrency, and state management.</li>
+	<li>Ability to diagnose difficult production issues using logs, metrics, traces, error reporting, and customer-provided evidence, then drive durable fixes.</li>
+	<li>Experience making backward-compatible changes to live systems and managing the risks of deployment and migration.</li>
+	<li>Clear written and verbal communication skills, with the ability to explain technical tradeoffs, influence decisions across teams, and mentor other engineers.</li>
 </ul>
-<h3><strong>Bonus Points</strong></h3>
+<p>Applicants should provide a resume or CV describing relevant engineering, technical leadership, and operational experience.</p>
+<h3>Nice to Have Skills</h3>
 <ul>
-	<li>You are fluent in German, Japanese, French, Spanish, Portuguese, or Mandarin</li>
-	<li>You have worked with PostgreSQL, MySQL, MS SQL, and other database servers</li>
-	<li>You are familiar with Cloudflare and are actively using our platform</li>
+	<li>Experience with the Model Context Protocol&nbsp;</li>
+	<li>Familiarity with the Cloudflare Developer Platform or other serverless edge-computing platforms.</li>
+	<li>Experience building gateways, forward proxies, identity systems, developer platforms, or Zero Trust and data loss prevention products.</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For Lisbon based hires: Estimated annual salary of €<span class="cell-value">38,000-52,000. </span>&nbsp;</span></li>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of €66,000-91,000&nbsp;</span></li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

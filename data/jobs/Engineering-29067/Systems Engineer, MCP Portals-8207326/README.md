@@ -4,34 +4,36 @@
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
 <p><strong>Available Locations: Lisbon, Portugal&nbsp;</strong></p>
-<h4>Role Summary</h4>
-<p>Cloudflare MCP Server Portals give organizations a secure, centralized way to connect AI agents to internal and third-party tools. As a Systems Engineer on the MCP Portals team, you will build and operate the distributed systems that authenticate users, manage OAuth credentials and sessions, enforce Zero Trust policies, and proxy MCP traffic across Cloudflare's global network. You will work with engineers and product managers across Access, Gateway, and Developer Platform teams to advance a rapidly evolving protocol and product. We are looking for a thoughtful engineer who enjoys solving ambiguous systems problems and taking responsibility for services in production.</p>
-<h4><strong>Role Responsibilities</strong></h4>
+<h2>Role Summary</h2>
+<p>Cloudflare MCP Server Portals give organizations a secure, centralized way to connect AI agents to internal and third-party tools. As a Systems Engineer on the MCP Portals team, you will build and operate the distributed systems that authenticate users, manage OAuth credentials and sessions, enforce Zero Trust policies, and proxy MCP traffic across Cloudflare's global network. You will own scoped projects from design through rollout and production support, working with engineers and product managers across Access, Gateway, and Developer Platform teams. We are looking for an engineer who can make sound technical decisions, work through ambiguous systems problems, and take responsibility for the services they build.</p>
+<h2>Role Responsibilities</h2>
 <ul>
-	<li>Design, build, and operate the globally distributed services that connect MCP clients to authorized upstream MCP servers.</li>
-	<li>Evolve our implementation as the MCP specification changes.</li>
+	<li>Design, implement, and operate distributed services that connect MCP clients to authorized upstream MCP servers.</li>
+	<li>Own scoped features and service improvements through design, implementation, testing, rollout, observability, and production follow-up.</li>
+	<li>Evolve our implementation as the MCP specification changes while maintaining compatibility for existing customers and integrations.</li>
 	<li>Build secure authentication and authorization flows involving Cloudflare Access, OAuth, identity, and delegated access to upstream services.</li>
 	<li>Improve the reliability, scalability, latency, and resource efficiency of multi-tenant systems built on the Cloudflare Developer Platform.</li>
-	<li>Develop observability through structured logs, metrics, traces, dashboards, and actionable alerts, and participate in production support and incident response.</li>
-	<li>Investigate customer issues across multiple services and teams, distinguishing product defects from upstream failures, policy configuration, and infrastructure dependencies.</li>
-	<li>Collaborate with product, security, and engineering partners to turn customer needs and emerging standards into well-tested, maintainable product capabilities.</li>
+	<li>Use structured logs, metrics, traces, dashboards, and alerts to understand service behavior; participate in production support and incident response.</li>
+	<li>Investigate customer issues across multiple services, distinguishing product defects from upstream failures, policy configuration, and infrastructure dependencies.</li>
+	<li>Collaborate with product, security, and engineering partners to turn customer needs and emerging standards into maintainable product capabilities.</li>
 </ul>
-<h4><strong>Role Requirements</strong></h4>
-<h4><strong>Must Have Skills</strong></h4>
+<h2>Role Requirements</h2>
+<h3>Must Have Skills</h3>
 <ul>
-	<li>Experience building and operating reliable distributed systems, backend services, network services, or infrastructure products in production.</li>
-	<li>Strong programming skills in TypeScript, JavaScript, Go, Rust, C++, or another systems-oriented language.</li>
+	<li>4+ years of experience building and operating distributed systems, backend services, network services, or infrastructure products in production.</li>
+	<li>Strong programming skills in TypeScript, JavaScript, Go, Rust, C++, or another language used to build production services.</li>
+	<li>Experience independently delivering changes to a production service, including testing, deployment, monitoring, and follow-up.</li>
 	<li>A solid understanding of HTTP, APIs, proxies, streaming connections, and common distributed-systems failure modes.</li>
 	<li>Experience debugging production systems using logs, metrics, traces, error reporting, and customer-provided evidence.</li>
 	<li>Ability to reason carefully about security boundaries, credential handling, concurrency, state management, and backward-compatible deployments.</li>
-	<li>Clear written and verbal communication skills, with the ability to coordinate investigations and solutions across team boundaries.</li>
+	<li>Clear written and verbal communication skills, including the ability to explain technical tradeoffs and coordinate work across team boundaries.</li>
 </ul>
 <p>Applicants should provide a resume or CV describing relevant engineering and operational experience.</p>
-<h4><strong>Nice to Have Skills</strong></h4>
+<h3>Nice to Have Skills</h3>
 <ul>
 	<li>Experience with authentication and authorization technologies such as OAuth 2.0, OpenID Connect, JWTs, PKCE, or policy-based access control.</li>
-	<li>Experience with the Model Context Protocol or other rapidly evolving application protocols. Prior MCP experience is helpful but not required.</li>
-	<li>Familiarity with the Cloudflare Developer Platform, or other serverless edge-computing platforms.</li>
+	<li>Experience with the Model Context Protocol</li>
+	<li>Familiarity with the Cloudflare Developer Platform or other serverless edge-computing platforms.</li>
 	<li>Experience building gateways, forward proxies, identity systems, developer platforms, or Zero Trust and data loss prevention products.</li>
 </ul>
 <p><strong>Compensation</strong></p>
