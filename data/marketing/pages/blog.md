@@ -10,6 +10,80 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+September 29, 2026 [<h2>Building a certificate authority for the whole Internet</h2>](https://blog.cloudflare.com/cloudflare-certificate-authority/)
+
+Twelve years after launching Universal SSL, Cloudflare is applying to become a certificate authority. By combining an established root, an ACME-first approach, and Merkle Tree Certificates, we are building a post-quantum CA for the open web.
+
+![Steve Goldsmith](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497YX7768BEJGS24P0FMX8.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Steve Goldsmith](https://blog.cloudflare.com/author/steve-goldsmith/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3NDS17PAN9XKW88493GE864.01M3NDS24T3Y1A90FZDRFXYHZD.png&w=1999&h=1123&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/cloudflare-certificate-authority/)
+
+September 29, 2026 [<h2>Using AI to chart a course for our post-quantum migration</h2>](https://blog.cloudflare.com/ai-driven-cryptography-discovery/)
+
+We're building CryptoLabe, an internal AI-powered tool that discovers cryptography across our codebase, surfaces dependencies, and helps us progress toward a full post-quantum migration by 2029. Here's what we've learned so far.
+
+![Sharon Goldberg](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488S3YN4RV24QXC7PM57EC.png&w=64&h=64&f=webp&fit=cover&position=center)![Tiago Silva](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M34Y5PD1JFD5WXM3SY93FQ3Q.01M34Y5PYATEYXM7BF3DB95FPM.webp&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Sharon Goldberg](https://blog.cloudflare.com/author/goldbe/) and  [Tiago Silva](https://blog.cloudflare.com/author/tiago-silva/)
+
+September 29, 2026 [<h2>Adaptive application security for the AI era: how Cloudflare connects code, traffic, and intelligence to stop attacks</h2>](https://blog.cloudflare.com/ai-era-framework/)
+
+Cloudflare introduces an adaptive security framework connecting risk discovery, agent governance, runtime protection, and AI-powered response in a continuous learning loop.
+
+![Daniele Molteni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464793D50Z8QJQK451PK2A.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Jonathan Spies](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SF1ECCPSP7J9HQD6FKT0.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Christian Reilly](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3N50B9Z6PNXC2HR0HGCHB6P.01M3N50BQYTR03YB2J2D68J4TS.webp&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Daniele Molteni](https://blog.cloudflare.com/author/daniele/),  [Jonathan Spies](https://blog.cloudflare.com/author/jonathan-spies/), and  [Christian Reilly](https://blog.cloudflare.com/author/christian-reilly/)
+
+September 29, 2026 [<h2>Building a post-quantum certificate authority with Merkle Tree Certificates</h2>](https://blog.cloudflare.com/pq-ca-with-mtcs/)
+
+As post-quantum signatures threaten to inflate TLS handshakes and certificate transparency logs, Merkle Tree Certificates offer a path to compact, auditable authentication. Cloudflare's new certificate authority will support MTC issuance at scale.
+
+![Mari Galicer](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481GPW34N2TYBX476WQC8S.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Mari Galicer](https://blog.cloudflare.com/author/mari/)
+
+September 29, 2026 [<h2>We tested our own WAF with frontier AI models. Here's what we found</h2>](https://blog.cloudflare.com/adaptive-ai-waf-testing/)
+
+We built a WAF tester that adapted each request based on what the WAF blocked or passed. This helped us explore variations that a fixed test might miss. We ran it across six attack categories on an authorized staging environment and discovered detection gaps worth fixing. Here's how the loop worked, what got through, and what we did about it.
+
+![Vikram Grover](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXRZQ9V87C8WK94DX4J9EPSD.webp&w=64&h=64&f=webp&fit=cover&position=center)![Daniele Molteni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464793D50Z8QJQK451PK2A.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Kuber Nandwani](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXRZS93GCE4CXP81WJ1TX25Y.webp&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Vikram Grover](https://blog.cloudflare.com/author/vikram-grover/),  [Daniele Molteni](https://blog.cloudflare.com/author/daniele/), and  [Kuber Nandwani](https://blog.cloudflare.com/author/kuber-nandwani/)
+
+September 29, 2026 [<h2>Introducing Threat Signals: agentic skills for open-source threat intelligence, free for every Cloudflare account</h2>](https://blog.cloudflare.com/threat-signals/)
+
+We are expanding access to Cloudforce One's Threat Events Platform to every Cloudflare account and introducing Threat Signals. Threat Signals automatically parses open-source threat reporting, extracts structured indicators, and connects threat context directly to your WAF rules.
+
+![Emilia Yoffie](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CT8MBEKV0SGZG9P6EEAX.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Victor Niño](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M34XJSCFJDJDCJENXTJQWSM3.01M34XJSZ3Y5A9AFARPYMT9YD5.webp&w=64&h=64&f=webp&fit=cover&position=center)![Brian Seel](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46NT7H3SMGX08DS803DZP9.png&w=64&h=64&f=webp&fit=cover&position=center)![Jacob Crisp](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468SZ92CTQZG9K5AR69G1E.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Emilia Yoffie](https://blog.cloudflare.com/author/emilia-yoffie/),  [Victor Niño](https://blog.cloudflare.com/author/victor-nino/),  [Brian Seel](https://blog.cloudflare.com/author/brian-seel/), and  [Jacob Crisp](https://blog.cloudflare.com/author/jacob-crisp/)
+
+September 29, 2026 [<h2>Is your domain using post-quantum encryption? Now you can see for yourself</h2>](https://blog.cloudflare.com/post-quantum-visibility/)
+
+Cloudflare has added visibility into post-quantum (PQ) encryption in TLS 1.3 directly into HTTP Analytics, Log Explorer, and Logpush. Learn how to make sure your domain is protected with PQ encryption.
+
+![Andrew Depke](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M34Y85BNVY4E7ZMPAC5XW2RT.01M34Y85TM54R8HSGTP30NBKFP.webp&w=64&h=64&f=webp&fit=cover&position=center)![Sophie Park](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3MQZ69R27H7200RAWVEAQ4V.01M3MQZ6XP1DETQYD1V634JYB0.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Sharon Goldberg](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488S3YN4RV24QXC7PM57EC.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Andrew Depke](https://blog.cloudflare.com/author/andrew-depke/),  [Sophie Park](https://blog.cloudflare.com/author/sophie-park/), and  [Sharon Goldberg](https://blog.cloudflare.com/author/goldbe/)
+
+September 29, 2026 [<h2>Enforce positive security with Cloudflare Application Profiles</h2>](https://blog.cloudflare.com/application-profiles/)
+
+Cloudflare learns the structure of your HTTP requests and identifies deviations. You can add a positive security layer that helps reduce attack surface as AI makes it easier for attackers to generate and vary payloads.
+
+![Daniele Molteni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464793D50Z8QJQK451PK2A.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Zhiyuan Zheng](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H03CGFSDPVGKTC145T2G.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Daniele Molteni](https://blog.cloudflare.com/author/daniele/) and  [Zhiyuan Zheng](https://blog.cloudflare.com/author/xmflsct/)
+
+September 29, 2026 [<h2>Preventing quantum downgrade attacks against IPsec</h2>](https://blog.cloudflare.com/ipsec-downgrade-protection/)
+
+A sophisticated attacker with a quantum computer can exploit a protocol design flaw to downgrade post-quantum IPsec tunnels to classical crypto. We helped the IETF develop a transcript authentication extension to prevent these attacks.
+
+![Christopher Patton](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471WT491ZC11M0S5HA34X3.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Amos Paul](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FD25GV5MTTPN5NXN79ES.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Lina Baquero](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXDHSP0NJR8EJ5X72TPSFA2R.webp&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Christopher Patton](https://blog.cloudflare.com/author/christopher-patton/),  [Amos Paul](https://blog.cloudflare.com/author/amos-paul/), and  [Lina Baquero](https://blog.cloudflare.com/author/lina-baquero/)
+
 September 28, 2026 [<h2>Introducing cf: the agentic CLI for the entire Cloudflare API</h2>](https://blog.cloudflare.com/cloudflare-cf-cli-launch/)
 
 We are releasing cf, our new command-line tool that mirrors the entire Cloudflare API and supports programmatic TypeScript configuration. We are also open-sourcing Forge, our internal SDK generator.
@@ -17,8 +91,6 @@ We are releasing cf, our new command-line tool that mirrors the entire Cloudflar
 ![Matt "TK" Taylor](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46YW143XXGWD5TFT0BBYBQ.webp&w=64&h=64&f=webp&fit=cover&position=center)![Samuel Macleod](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498X1ZVM0N111DBDKB3MM1.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Matt "TK" Taylor](https://blog.cloudflare.com/author/matt-tk-taylor/) and  [Samuel Macleod](https://blog.cloudflare.com/author/samuel/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3KR63G9MAXHAG81FC5HKYRY.01M3KR64BVBYV5MM3YBHRRRWGF.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/cloudflare-cf-cli-launch/)
 
 September 28, 2026 [<h2>Next.js applications, powered by Vite: introducing Vinext 1.0</h2>](https://blog.cloudflare.com/vinext-nextjs-on-vite/)
 
@@ -91,78 +163,6 @@ The Internet is changing more today than at any point since Cloudflare launched 
 ![Matthew Prince](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KQ4Z9PY1TR0ERGW96HZR.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Michelle Zatlyn](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48BFVBX36HA6NMPMG9SE5F.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Matthew Prince](https://blog.cloudflare.com/author/matthew-prince/) and  [Michelle Zatlyn](https://blog.cloudflare.com/author/michelle-zatlyn/)
-
-September 25, 2026 [<h2>Agents can now set up your website's security with Turnstile Spin</h2>](https://blog.cloudflare.com/turnstile-spin/)
-
-Misconfiguring Turnstile by skipping backend validation leaves sites exposed to bots. Turnstile Spin fixes incomplete setups by using your preferred AI coding agent to wire up server-side verification.
-
-![Jules Lemee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M39NSXNPCF10P4Z6JA0RQA40.01M39NSYFNRMXAWS5CQP67TDNS.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Jules Lemee](https://blog.cloudflare.com/author/jules-lemee/)
-
-September 24, 2026 [<h2>How Cloudflare addressed a cross-tenant data exposure vulnerability in Containers</h2>](https://blog.cloudflare.com/containers-cross-tenant-vulnerability/)
-
-External security researchers at Accomplish identified a vulnerability in Cloudflare Containers that could expose residual disk data from previous workloads. We explain how the issue worked, how we investigated it, and the steps we took to remediate it.
-
-![Rushil Mehra](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3J65XQ6KWWMTYQHZMX9VC2Q.01M3J65YDX7BCSBDQXBR3P2B20.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Cody Roseborough](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M38E1YCKQQ7SK9HMG29XA6XQ.01M38E1ZKXSRPP7CARW0XHHGHQ.png&w=64&h=64&f=webp&fit=cover&position=center)![Avishek Sarkar](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M38E47B3HVDJXBZ730J0520B.01M38E484WQSDS96PP5Z1H7JYR.png&w=64&h=64&f=webp&fit=cover&position=center)![Hrushikesh Deshpande](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46TCFGG70368SEB6CXEHN8.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Rushil Mehra](https://blog.cloudflare.com/author/rushil-mehra/),  [Cody Roseborough](https://blog.cloudflare.com/author/cody-roseborough/),  [Avishek Sarkar](https://blog.cloudflare.com/author/avishek-sarkar/), and  [Hrushikesh Deshpande](https://blog.cloudflare.com/author/hrushikesh-deshpande/)
-
-September 22, 2026 [<h2>We just shipped support for the ugliest part of HTTP: Vary</h2>](https://blog.cloudflare.com/vary-support/)
-
-Vary support is now available in Cache Rules on every plan. You can normalize known negotiation headers, pass exact values through to the origin when those small differences matter, or bypass cache when the variation is too unpredictable.
-
-![Alex Krivit](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Q0QQ4YF44E63CZ5V25R6.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Zaidoon Abd Al Hadi](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VAC8T0NPDPFZ06GAZW3H.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Alex Krivit](https://blog.cloudflare.com/author/alex/) and  [Zaidoon Abd Al Hadi](https://blog.cloudflare.com/author/zaidoon/)
-
-September 22, 2026 [<h2>Introducing Worker Previews: Isolated preview environments for every change your agent makes</h2>](https://blog.cloudflare.com/worker-previews/)
-
-Worker Previews gives every branch its own URL, configuration, state, and observability, so you and your agents can test changes in parallel without affecting production.
-
-![Yomna Shousha](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44D53TR5Q6CJV4H84YN9FN.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![William Taylor](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M31X946ZD6G5H8162HX7A2PN.01M31X94YKHHV0A63REEGJP07Q.webp&w=64&h=64&f=webp&fit=cover&position=center)![Nanda Syahrasyad](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M31XBRAZNN5JZZN8WA0JNAW1.01M31XBS3S1JAWK32RPCT9EY1S.webp&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Yomna Shousha](https://blog.cloudflare.com/author/yomna-shousha/),  [William Taylor](https://blog.cloudflare.com/author/william-taylor/), and  [Nanda Syahrasyad](https://blog.cloudflare.com/author/nanda-syahrasyad/)
-
-September 21, 2026 [<h2>Python Workers are now generally available</h2>](https://blog.cloudflare.com/python-workers-ga/)
-
-Python Workers allow developers to run Python web frameworks and AI orchestration libraries natively in the Cloudflare Workers runtime. You can seamlessly integrate with Cloudflare's ecosystem including D1, R2, and Workers AI without writing any JavaScript glue code.
-
-![Gyeongjae Choi](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYT1GVVH6V865W8Z5B63CYZT.webp&w=64&h=64&f=webp&fit=cover&position=center)![Dominik Picheta](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P5G8RRA9GKFZA6BYERZ1.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Hood Chatham](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47DGCR56ZBCN9NTBRE18MF.webp&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Gyeongjae Choi](https://blog.cloudflare.com/author/gyeongjae-choi/),  [Dominik Picheta](https://blog.cloudflare.com/author/dominik/), and  [Hood Chatham](https://blog.cloudflare.com/author/hood/)
-
-September 18, 2026 [<h2>Saving another 100TB of RAM with math (and Rust)</h2>](https://blog.cloudflare.com/saving-100-tb-of-ram-with-math/)
-
-Cloudflare's global network is immense but not limitless. As we look for small ways to trim our resource usage, we sometimes get lucky and we can cut significantly more. Here's how we reduced one of our Pingora-based service's RAM usage with statistics.
-
-![Kevin Guthrie](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VQ8K1T55ANDEX70V1EEQ.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Mariia Iurchenko](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2PGX99HXQ1AJD4D0GYQ6PZ7.01M2PGXACVX3VE6FGB02AYFXX5.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Zaidoon Abd Al Hadi](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VAC8T0NPDPFZ06GAZW3H.png&w=64&h=64&f=webp&fit=cover&position=center)![Ivan Babrou](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459B6P3WP5JXFP7X1NGXQY.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Kevin Guthrie](https://blog.cloudflare.com/author/kevin-guthrie/),  [Mariia Iurchenko](https://blog.cloudflare.com/author/mariia-iurchenko/),  [Zaidoon Abd Al Hadi](https://blog.cloudflare.com/author/zaidoon/), and  [Ivan Babrou](https://blog.cloudflare.com/author/ivan/)
-
-September 16, 2026 [<h2>When scanners miss the attack: how Cloudflare Client-Side Security protects storefronts</h2>](https://blog.cloudflare.com/client-side-security-finds-4-malicious-campaigns/)
-
-A modern storefront can look healthy while malicious JavaScript quietly siphons revenue, hijacks clicks, or rewrites analytics. See how Cloudflare's machine learning models surface evasive client-side attacks for analyst investigation.
-
-![Juan Miguel Cejuela (Juanmi)](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2NNGNXWKEB20VGBSJG0NW3S.01M2NNGPWD0KA2CVW0JDYVNXRG.png&w=64&h=64&f=webp&fit=cover&position=center)![Zhiyuan Zheng](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H03CGFSDPVGKTC145T2G.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Denzil Correa](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48B6V73R1DF1YQBSAN5YFJ.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Juan Miguel Cejuela (Juanmi)](https://blog.cloudflare.com/author/juan-miguel-cejuela/),  [Zhiyuan Zheng](https://blog.cloudflare.com/author/xmflsct/), and  [Denzil Correa](https://blog.cloudflare.com/author/denzil-correa/)
-
-September 15, 2026 [<h2>Have it both ways: stay discoverable in search while disallowing AI training</h2>](https://blog.cloudflare.com/accountable-mixed-use-ai-crawlers/)
-
-Cloudflare is giving site owners a way to stay discoverable while disallowing AI training. New controls and an Accountable designation establish a shared model with Apple, Google, and Microsoft.
-
-![Bryan Becker](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PPX6Y9F64M9HHDMGBP2Q.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Bryan Becker](https://blog.cloudflare.com/author/bryan-becker/)
-
-September 15, 2026 [<h2>Give every teammate and agent the right level of access to your Workers</h2>](https://blog.cloudflare.com/workers-granular-authorization/)
-
-You can now scope access to individual Workers and assign narrower Developer Platform roles, so teammates, CI tokens, and agents get only the access they need to debug, deploy, or monitor safely.
-
-![Dina Kozlov](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DZ20ZY95S71GB0FPG6GC.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Anthony Oreglia](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2FPT3Z3K2863VB1YT41PSSZ.01M2FPT4MEBD6E6KSGMWZPQQA0.webp&w=64&h=64&f=webp&fit=cover&position=center)![Visal In](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2FPVS926WFD9QF74SP330QK.01M2FPVSW4YQJD57Q54T6HW9RE.webp&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Dina Kozlov](https://blog.cloudflare.com/author/dina/),  [Anthony Oreglia](https://blog.cloudflare.com/author/anthony-oreglia/), and  [Visal In](https://blog.cloudflare.com/author/visal-in/)
 
 Load more
 
