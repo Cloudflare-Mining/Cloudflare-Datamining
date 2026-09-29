@@ -454,20 +454,20 @@
 																		"minLength": 1,
 																		"x-auditable": true
 																	},
-																	"integration": {
-																		"description": "The database integration used by this operation.",
-																		"type": "string",
-																		"example": "planetscale",
-																		"enum": [
-																			"planetscale"
-																		],
-																		"x-auditable": true
-																	},
 																	"organization_name": {
 																		"description": "The name of the PlanetScale organization.",
 																		"type": "string",
 																		"maxLength": 2048,
 																		"minLength": 1,
+																		"x-auditable": true
+																	},
+																	"provider": {
+																		"description": "The database integration provider used by this operation.",
+																		"type": "string",
+																		"example": "planetscale",
+																		"enum": [
+																			"planetscale"
+																		],
 																		"x-auditable": true
 																	},
 																	"scheme": {
@@ -482,7 +482,7 @@
 																	}
 																},
 																"required": [
-																	"integration",
+																	"provider",
 																	"organization_name",
 																	"database_name",
 																	"database_branch_name",
@@ -513,7 +513,8 @@
 															"mtls_certificate_id": {
 																"description": "Define mTLS certificate ID obtained after uploading client cert.",
 																"type": "string",
-																"example": "00000000-0000-0000-0000-0000000000"
+																"example": "00000000-0000-0000-0000-0000000000",
+																"x-fern-property-name": "certificate-id"
 															},
 															"sslmode": {
 																"description": "PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.",
@@ -1093,20 +1094,20 @@
 																	"minLength": 1,
 																	"x-auditable": true
 																},
-																"integration": {
-																	"description": "The database integration used by this operation.",
-																	"type": "string",
-																	"example": "planetscale",
-																	"enum": [
-																		"planetscale"
-																	],
-																	"x-auditable": true
-																},
 																"organization_name": {
 																	"description": "The name of the PlanetScale organization.",
 																	"type": "string",
 																	"maxLength": 2048,
 																	"minLength": 1,
+																	"x-auditable": true
+																},
+																"provider": {
+																	"description": "The database integration provider used by this operation.",
+																	"type": "string",
+																	"example": "planetscale",
+																	"enum": [
+																		"planetscale"
+																	],
 																	"x-auditable": true
 																},
 																"scheme": {
@@ -1121,7 +1122,7 @@
 																}
 															},
 															"required": [
-																"integration",
+																"provider",
 																"organization_name",
 																"database_name",
 																"database_branch_name",
@@ -1152,7 +1153,8 @@
 														"mtls_certificate_id": {
 															"description": "Define mTLS certificate ID obtained after uploading client cert.",
 															"type": "string",
-															"example": "00000000-0000-0000-0000-0000000000"
+															"example": "00000000-0000-0000-0000-0000000000",
+															"x-fern-property-name": "certificate-id"
 														},
 														"sslmode": {
 															"description": "PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.",
@@ -1660,7 +1662,8 @@
 									"mtls_certificate_id": {
 										"description": "Define mTLS certificate ID obtained after uploading client cert.",
 										"type": "string",
-										"example": "00000000-0000-0000-0000-0000000000"
+										"example": "00000000-0000-0000-0000-0000000000",
+										"x-fern-property-name": "certificate-id"
 									},
 									"sslmode": {
 										"description": "PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.",
@@ -1944,20 +1947,20 @@
 																	"minLength": 1,
 																	"x-auditable": true
 																},
-																"integration": {
-																	"description": "The database integration used by this operation.",
-																	"type": "string",
-																	"example": "planetscale",
-																	"enum": [
-																		"planetscale"
-																	],
-																	"x-auditable": true
-																},
 																"organization_name": {
 																	"description": "The name of the PlanetScale organization.",
 																	"type": "string",
 																	"maxLength": 2048,
 																	"minLength": 1,
+																	"x-auditable": true
+																},
+																"provider": {
+																	"description": "The database integration provider used by this operation.",
+																	"type": "string",
+																	"example": "planetscale",
+																	"enum": [
+																		"planetscale"
+																	],
 																	"x-auditable": true
 																},
 																"scheme": {
@@ -1972,7 +1975,7 @@
 																}
 															},
 															"required": [
-																"integration",
+																"provider",
 																"organization_name",
 																"database_name",
 																"database_branch_name",
@@ -2003,7 +2006,8 @@
 														"mtls_certificate_id": {
 															"description": "Define mTLS certificate ID obtained after uploading client cert.",
 															"type": "string",
-															"example": "00000000-0000-0000-0000-0000000000"
+															"example": "00000000-0000-0000-0000-0000000000",
+															"x-fern-property-name": "certificate-id"
 														},
 														"sslmode": {
 															"description": "PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.",
@@ -2403,9 +2407,6 @@
 		"x-fern-sdk-group-name": "hyperdrive",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-params": {
-			"mtls.mtls_certificate_id": {
-				"flagName": "mtls-certificate-id"
-			},
 			"mtls.sslmode": {
 				"choices": [
 					"require",
@@ -2545,7 +2546,8 @@
 													"mtls_certificate_id": {
 														"description": "Define mTLS certificate ID obtained after uploading client cert.",
 														"type": "string",
-														"example": "00000000-0000-0000-0000-0000000000"
+														"example": "00000000-0000-0000-0000-0000000000",
+														"x-fern-property-name": "certificate-id"
 													},
 													"sslmode": {
 														"description": "PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.",
@@ -2935,7 +2937,8 @@
 													"mtls_certificate_id": {
 														"description": "Define mTLS certificate ID obtained after uploading client cert.",
 														"type": "string",
-														"example": "00000000-0000-0000-0000-0000000000"
+														"example": "00000000-0000-0000-0000-0000000000",
+														"x-fern-property-name": "certificate-id"
 													},
 													"sslmode": {
 														"description": "PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.",
@@ -3002,20 +3005,20 @@
 														"minLength": 1,
 														"x-auditable": true
 													},
-													"integration": {
-														"description": "The database integration used by this operation.",
-														"type": "string",
-														"example": "planetscale",
-														"enum": [
-															"planetscale"
-														],
-														"x-auditable": true
-													},
 													"organization_name": {
 														"description": "The name of the PlanetScale organization.",
 														"type": "string",
 														"maxLength": 2048,
 														"minLength": 1,
+														"x-auditable": true
+													},
+													"provider": {
+														"description": "The database integration provider used by this operation.",
+														"type": "string",
+														"example": "planetscale",
+														"enum": [
+															"planetscale"
+														],
 														"x-auditable": true
 													},
 													"scheme": {
@@ -3030,7 +3033,7 @@
 													}
 												},
 												"required": [
-													"integration",
+													"provider",
 													"organization_name",
 													"database_name",
 													"database_branch_name",
@@ -3200,20 +3203,20 @@
 																	"minLength": 1,
 																	"x-auditable": true
 																},
-																"integration": {
-																	"description": "The database integration used by this operation.",
-																	"type": "string",
-																	"example": "planetscale",
-																	"enum": [
-																		"planetscale"
-																	],
-																	"x-auditable": true
-																},
 																"organization_name": {
 																	"description": "The name of the PlanetScale organization.",
 																	"type": "string",
 																	"maxLength": 2048,
 																	"minLength": 1,
+																	"x-auditable": true
+																},
+																"provider": {
+																	"description": "The database integration provider used by this operation.",
+																	"type": "string",
+																	"example": "planetscale",
+																	"enum": [
+																		"planetscale"
+																	],
 																	"x-auditable": true
 																},
 																"scheme": {
@@ -3228,7 +3231,7 @@
 																}
 															},
 															"required": [
-																"integration",
+																"provider",
 																"organization_name",
 																"database_name",
 																"database_branch_name",
@@ -3259,7 +3262,8 @@
 														"mtls_certificate_id": {
 															"description": "Define mTLS certificate ID obtained after uploading client cert.",
 															"type": "string",
-															"example": "00000000-0000-0000-0000-0000000000"
+															"example": "00000000-0000-0000-0000-0000000000",
+															"x-fern-property-name": "certificate-id"
 														},
 														"sslmode": {
 															"description": "PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.",
@@ -3659,27 +3663,6 @@
 		"x-fern-sdk-group-name": "hyperdrive",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-params": {
-			"integration.custom_database_name": {
-				"flagName": "integration-custom-database-name"
-			},
-			"integration.database_branch_name": {
-				"flagName": "integration-database-branch-name"
-			},
-			"integration.database_name": {
-				"flagName": "integration-database-name"
-			},
-			"integration.integration": {
-				"flagName": "integration"
-			},
-			"integration.organization_name": {
-				"flagName": "integration-organization-name"
-			},
-			"integration.scheme": {
-				"flagName": "integration-scheme"
-			},
-			"mtls.mtls_certificate_id": {
-				"flagName": "mtls-certificate-id"
-			},
 			"mtls.sslmode": {
 				"choices": [
 					"require",
@@ -3870,20 +3853,20 @@
 																	"minLength": 1,
 																	"x-auditable": true
 																},
-																"integration": {
-																	"description": "The database integration used by this operation.",
-																	"type": "string",
-																	"example": "planetscale",
-																	"enum": [
-																		"planetscale"
-																	],
-																	"x-auditable": true
-																},
 																"organization_name": {
 																	"description": "The name of the PlanetScale organization.",
 																	"type": "string",
 																	"maxLength": 2048,
 																	"minLength": 1,
+																	"x-auditable": true
+																},
+																"provider": {
+																	"description": "The database integration provider used by this operation.",
+																	"type": "string",
+																	"example": "planetscale",
+																	"enum": [
+																		"planetscale"
+																	],
 																	"x-auditable": true
 																},
 																"scheme": {
@@ -3898,7 +3881,7 @@
 																}
 															},
 															"required": [
-																"integration",
+																"provider",
 																"organization_name",
 																"database_name",
 																"database_branch_name",
@@ -3929,7 +3912,8 @@
 														"mtls_certificate_id": {
 															"description": "Define mTLS certificate ID obtained after uploading client cert.",
 															"type": "string",
-															"example": "00000000-0000-0000-0000-0000000000"
+															"example": "00000000-0000-0000-0000-0000000000",
+															"x-fern-property-name": "certificate-id"
 														},
 														"sslmode": {
 															"description": "PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.",
@@ -4324,7 +4308,7 @@
 		"x-fern-sdk-group-name": "hyperdrive",
 		"x-fern-sdk-method-name": "restart"
 	},
-	"POST /accounts/{account_id}/hyperdrive/integrationsOperations/{integration}/createDatabaseSignature": {
+	"POST /accounts/{account_id}/hyperdrive/integrationsOperations/planetScale/createDatabaseSignature": {
 		"operationId": "create-hyperdrive-database-signature",
 		"summary": "Create Database Signature",
 		"description": "Returns a short-lived signed authorization for creating a database that is billed through Cloudflare. The caller passes these values to the integration partner's own CLI, which verifies the signature before creating the database. Requires the account to be entitled to Cloudflare-billed databases for the integration.",
@@ -4340,21 +4324,6 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"x-auditable": true
-				}
-			},
-			{
-				"name": "integration",
-				"in": "path",
-				"description": "The database integration to authorize against. This value is case-insensitive.",
-				"required": true,
-				"schema": {
-					"description": "The database integration used by this operation.",
-					"type": "string",
-					"example": "planetscale",
-					"enum": [
-						"planetscale"
-					],
 					"x-auditable": true
 				}
 			}
@@ -4579,7 +4548,14 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "hyperdrive",
-		"x-fern-sdk-method-name": "create-database-signature"
+		"x-fern-sdk-method-name": "create-database-signature",
+		"x-forge-aliases": [
+			{
+				"x-fern-availability": "beta",
+				"x-fern-sdk-group-name": "hyperdrive.integration.planetscale",
+				"x-fern-sdk-method-name": "signature"
+			}
+		]
 	},
 	"PUT /accounts/{account_id}/hyperdrive/configs/{hyperdrive_id}": {
 		"operationId": "update-hyperdrive",
@@ -4712,7 +4688,8 @@
 									"mtls_certificate_id": {
 										"description": "Define mTLS certificate ID obtained after uploading client cert.",
 										"type": "string",
-										"example": "00000000-0000-0000-0000-0000000000"
+										"example": "00000000-0000-0000-0000-0000000000",
+										"x-fern-property-name": "certificate-id"
 									},
 									"sslmode": {
 										"description": "PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.",
@@ -5134,20 +5111,20 @@
 																	"minLength": 1,
 																	"x-auditable": true
 																},
-																"integration": {
-																	"description": "The database integration used by this operation.",
-																	"type": "string",
-																	"example": "planetscale",
-																	"enum": [
-																		"planetscale"
-																	],
-																	"x-auditable": true
-																},
 																"organization_name": {
 																	"description": "The name of the PlanetScale organization.",
 																	"type": "string",
 																	"maxLength": 2048,
 																	"minLength": 1,
+																	"x-auditable": true
+																},
+																"provider": {
+																	"description": "The database integration provider used by this operation.",
+																	"type": "string",
+																	"example": "planetscale",
+																	"enum": [
+																		"planetscale"
+																	],
 																	"x-auditable": true
 																},
 																"scheme": {
@@ -5162,7 +5139,7 @@
 																}
 															},
 															"required": [
-																"integration",
+																"provider",
 																"organization_name",
 																"database_name",
 																"database_branch_name",
@@ -5193,7 +5170,8 @@
 														"mtls_certificate_id": {
 															"description": "Define mTLS certificate ID obtained after uploading client cert.",
 															"type": "string",
-															"example": "00000000-0000-0000-0000-0000000000"
+															"example": "00000000-0000-0000-0000-0000000000",
+															"x-fern-property-name": "certificate-id"
 														},
 														"sslmode": {
 															"description": "PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.",
@@ -5593,9 +5571,6 @@
 		"x-fern-sdk-group-name": "hyperdrive",
 		"x-fern-sdk-method-name": "replace",
 		"x-forge-params": {
-			"mtls.mtls_certificate_id": {
-				"flagName": "mtls-certificate-id"
-			},
 			"mtls.sslmode": {
 				"choices": [
 					"require",

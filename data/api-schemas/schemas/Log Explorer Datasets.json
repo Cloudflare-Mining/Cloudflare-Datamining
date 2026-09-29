@@ -171,6 +171,12 @@
 													"type": "string",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"filter_attack_traffic": {
+													"description": "Whether the Logpush job filters attack traffic. Omitted for\ndatasets that do not support this option.\n",
+													"type": "boolean",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
 											"required": [
@@ -614,6 +620,12 @@
 												"filter": {
 													"description": "The Logpush filter predicate applied to this dataset. Omitted\nwhen no filter is set.\n",
 													"type": "string",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"filter_attack_traffic": {
+													"description": "Whether the Logpush job filters attack traffic. Omitted for\ndatasets that do not support this option.\n",
+													"type": "boolean",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
@@ -1406,6 +1418,12 @@
 												"filter": {
 													"description": "The Logpush filter predicate applied to this dataset. Omitted\nwhen no filter is set.\n",
 													"type": "string",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"filter_attack_traffic": {
+													"description": "Whether the Logpush job filters attack traffic. Omitted for\ndatasets that do not support this option.\n",
+													"type": "boolean",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
@@ -2447,6 +2465,12 @@
 													"type": "string",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"filter_attack_traffic": {
+													"description": "Whether the Logpush job filters attack traffic. Omitted for\ndatasets that do not support this option.\n",
+													"type": "boolean",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
 											"required": [
@@ -3028,8 +3052,14 @@
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"filter": {
-								"description": "Optional Logpush filter predicate to restrict which events are ingested.\nIf provided, replaces the dataset's default filter entirely.\nSee [Logpush filters](https://developers.cloudflare.com/logs/reference/filters/)\nfor syntax and examples.\n",
+								"description": "Optional Logpush filter predicate to restrict which events are ingested.\nSee [Logpush filters](https://developers.cloudflare.com/logs/reference/filters/)\nfor syntax and examples.\n",
 								"type": "string",
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
+							},
+							"filter_attack_traffic": {
+								"description": "Whether to filter attack traffic from the Logpush job. Defaults to\n`true` for supported datasets when omitted. Supported datasets are\n`http_requests`, `firewall_events`, and `network_analytics_logs`.\n",
+								"type": "boolean",
 								"x-auditable": true,
 								"x-stainless-terraform-configurability": "computed_optional"
 							}
@@ -3185,6 +3215,12 @@
 												"filter": {
 													"description": "The Logpush filter predicate applied to this dataset. Omitted\nwhen no filter is set.\n",
 													"type": "string",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"filter_attack_traffic": {
+													"description": "Whether the Logpush job filters attack traffic. Omitted for\ndatasets that do not support this option.\n",
+													"type": "boolean",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
@@ -3515,8 +3551,14 @@
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"filter": {
-								"description": "Optional Logpush filter predicate to restrict which events are ingested.\nIf provided, replaces the dataset's default filter entirely.\nSee [Logpush filters](https://developers.cloudflare.com/logs/reference/filters/)\nfor syntax and examples.\n",
+								"description": "Optional Logpush filter predicate to restrict which events are ingested.\nSee [Logpush filters](https://developers.cloudflare.com/logs/reference/filters/)\nfor syntax and examples.\n",
 								"type": "string",
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
+							},
+							"filter_attack_traffic": {
+								"description": "Whether to filter attack traffic from the Logpush job. Defaults to\n`true` for supported datasets when omitted. Supported datasets are\n`http_requests`, `firewall_events`, and `network_analytics_logs`.\n",
+								"type": "boolean",
 								"x-auditable": true,
 								"x-stainless-terraform-configurability": "computed_optional"
 							}
@@ -3672,6 +3714,12 @@
 												"filter": {
 													"description": "The Logpush filter predicate applied to this dataset. Omitted\nwhen no filter is set.\n",
 													"type": "string",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"filter_attack_traffic": {
+													"description": "Whether the Logpush job filters attack traffic. Omitted for\ndatasets that do not support this option.\n",
+													"type": "boolean",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
@@ -4024,6 +4072,12 @@
 								"nullable": true,
 								"x-auditable": true,
 								"x-stainless-terraform-configurability": "computed_optional"
+							},
+							"filter_attack_traffic": {
+								"description": "Whether to filter attack traffic from the Logpush job. If omitted,\nthe existing setting is left unchanged. Supported datasets are\n`http_requests`, `firewall_events`, and `network_analytics_logs`.\n",
+								"type": "boolean",
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							}
 						},
 						"required": [
@@ -4177,6 +4231,12 @@
 												"filter": {
 													"description": "The Logpush filter predicate applied to this dataset. Omitted\nwhen no filter is set.\n",
 													"type": "string",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"filter_attack_traffic": {
+													"description": "Whether the Logpush job filters attack traffic. Omitted for\ndatasets that do not support this option.\n",
+													"type": "boolean",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
@@ -4470,6 +4530,12 @@
 								"nullable": true,
 								"x-auditable": true,
 								"x-stainless-terraform-configurability": "computed_optional"
+							},
+							"filter_attack_traffic": {
+								"description": "Whether to filter attack traffic from the Logpush job. If omitted,\nthe existing setting is left unchanged. Supported datasets are\n`http_requests`, `firewall_events`, and `network_analytics_logs`.\n",
+								"type": "boolean",
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							}
 						},
 						"required": [
@@ -4623,6 +4689,12 @@
 												"filter": {
 													"description": "The Logpush filter predicate applied to this dataset. Omitted\nwhen no filter is set.\n",
 													"type": "string",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"filter_attack_traffic": {
+													"description": "Whether the Logpush job filters attack traffic. Omitted for\ndatasets that do not support this option.\n",
+													"type": "boolean",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
