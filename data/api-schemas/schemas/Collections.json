@@ -693,7 +693,8 @@
 					"description": "Case-insensitive substring search across all columns. Matches any column containing the term. No relevance ranking.",
 					"type": "string",
 					"maxLength": 500,
-					"minLength": 1
+					"minLength": 1,
+					"x-fern-parameter-name": "query_search"
 				}
 			}
 		],

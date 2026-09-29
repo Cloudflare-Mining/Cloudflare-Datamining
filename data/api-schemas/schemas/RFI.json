@@ -147,7 +147,9 @@
 			{
 				"name": "orderBy",
 				"in": "query",
+				"description": "Sort field. SOC Communications support customer-safe latest_activity ordering.",
 				"schema": {
+					"description": "Sort field. SOC Communications support customer-safe latest_activity ordering.",
 					"type": "string"
 				}
 			},

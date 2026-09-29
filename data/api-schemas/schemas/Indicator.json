@@ -332,6 +332,7 @@
 												"example": "domain"
 											},
 											"relatedEvents": {
+												"description": "Related events, capped by `relatedEventsLimit` (default 2). Check `relatedEventsHasMore` to detect a capped list; pass `relatedEventsLimit=-1` to retrieve all of them.",
 												"type": "array",
 												"items": {
 													"properties": {
@@ -356,6 +357,10 @@
 													],
 													"type": "object"
 												}
+											},
+											"relatedEventsHasMore": {
+												"description": "True when this indicator appears in more events than `relatedEvents` contains because `relatedEventsLimit` capped the list. Pass `relatedEventsLimit=-1` to retrieve every related event.",
+												"type": "boolean"
 											},
 											"sources": {
 												"description": "RSS article sources from which this indicator was extracted.",
@@ -563,6 +568,7 @@
 									"example": "domain"
 								},
 								"relatedEvents": {
+									"description": "Related events, capped by `relatedEventsLimit` (default 2). Check `relatedEventsHasMore` to detect a capped list; pass `relatedEventsLimit=-1` to retrieve all of them.",
 									"type": "array",
 									"items": {
 										"properties": {
@@ -587,6 +593,10 @@
 										],
 										"type": "object"
 									}
+								},
+								"relatedEventsHasMore": {
+									"description": "True when this indicator appears in more events than `relatedEvents` contains because `relatedEventsLimit` capped the list. Pass `relatedEventsLimit=-1` to retrieve every related event.",
+									"type": "boolean"
 								},
 								"tags": {
 									"type": "array",
@@ -1417,9 +1427,9 @@
 			{
 				"name": "relatedEventsLimit",
 				"in": "query",
-				"description": "Limit the number of related events returned per indicator. Default: 2. Set to 0 for none, -1 for all events.",
+				"description": "Limit the number of related events returned per indicator. Default: 2. Set to 0 for none, -1 for all events. For JSON responses, when the limit hides events, the indicator carries `relatedEventsHasMore: true` and the response includes an advisory message — the cap is never applied silently. STIX and TAXII representations do not include related-event data.",
 				"schema": {
-					"description": "Limit the number of related events returned per indicator. Default: 2. Set to 0 for none, -1 for all events.",
+					"description": "Limit the number of related events returned per indicator. Default: 2. Set to 0 for none, -1 for all events. For JSON responses, when the limit hides events, the indicator carries `relatedEventsHasMore: true` and the response includes an advisory message — the cap is never applied silently. STIX and TAXII representations do not include related-event data.",
 					"type": "number",
 					"example": 2
 				}
@@ -1655,6 +1665,7 @@
 															"example": "domain"
 														},
 														"relatedEvents": {
+															"description": "Related events, capped by `relatedEventsLimit` (default 2). Check `relatedEventsHasMore` to detect a capped list; pass `relatedEventsLimit=-1` to retrieve all of them.",
 															"type": "array",
 															"items": {
 																"properties": {
@@ -1679,6 +1690,10 @@
 																],
 																"type": "object"
 															}
+														},
+														"relatedEventsHasMore": {
+															"description": "True when this indicator appears in more events than `relatedEvents` contains because `relatedEventsLimit` capped the list. Pass `relatedEventsLimit=-1` to retrieve every related event.",
+															"type": "boolean"
 														},
 														"sources": {
 															"description": "RSS article sources from which this indicator was extracted.",
@@ -2365,6 +2380,7 @@
 									"example": "domain"
 								},
 								"relatedEvents": {
+									"description": "Related events, capped by `relatedEventsLimit` (default 2). Check `relatedEventsHasMore` to detect a capped list; pass `relatedEventsLimit=-1` to retrieve all of them.",
 									"type": "array",
 									"items": {
 										"properties": {
@@ -2389,6 +2405,10 @@
 										],
 										"type": "object"
 									}
+								},
+								"relatedEventsHasMore": {
+									"description": "True when this indicator appears in more events than `relatedEvents` contains because `relatedEventsLimit` capped the list. Pass `relatedEventsLimit=-1` to retrieve every related event.",
+									"type": "boolean"
 								},
 								"tags": {
 									"type": "array",
@@ -3278,6 +3298,7 @@
 									"example": "domain"
 								},
 								"relatedEvents": {
+									"description": "Related events, capped by `relatedEventsLimit` (default 2). Check `relatedEventsHasMore` to detect a capped list; pass `relatedEventsLimit=-1` to retrieve all of them.",
 									"type": "array",
 									"items": {
 										"properties": {
@@ -3302,6 +3323,10 @@
 										],
 										"type": "object"
 									}
+								},
+								"relatedEventsHasMore": {
+									"description": "True when this indicator appears in more events than `relatedEvents` contains because `relatedEventsLimit` capped the list. Pass `relatedEventsLimit=-1` to retrieve every related event.",
+									"type": "boolean"
 								},
 								"tags": {
 									"type": "array",

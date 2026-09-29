@@ -2,7 +2,7 @@
 	"DELETE /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/tags/{tag_id}": {
 		"operationId": "rssArticleTagRemove",
 		"summary": "Remove tag from Threat Signals article",
-		"description": "Remove tag from Threat Signals article.",
+		"description": "Removes a tag from a Threat Signals article.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -33,7 +33,110 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Threat Signals response."
+				"description": "Threat Signals response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"free_custom_feed_limit",
+													"free_custom_skills_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"applied_by": {
+											"type": "string",
+											"enum": [
+												"ai",
+												"analyst",
+												"system"
+											]
+										},
+										"categoryId": {
+											"type": "string",
+											"format": "uuid",
+											"nullable": true
+										},
+										"uuid": {
+											"type": "string",
+											"format": "uuid"
+										},
+										"value": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"uuid",
+										"value",
+										"categoryId",
+										"applied_by"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
 			},
 			"4XX": {
 				"description": "Client error response."
@@ -55,57 +158,10 @@
 		"x-fern-sdk-method-name": "remove",
 		"x-forge-hidden": true
 	},
-	"DELETE /accounts/{account_id}/cloudforce-one/v2/threat-signals/curated-feeds/{curated_feed_id}": {
-		"operationId": "rssCuratedFeedDelete",
-		"summary": "Delete curated Threat Signals feed",
-		"description": "Delete curated Threat Signals feed.",
-		"parameters": [
-			{
-				"name": "account_id",
-				"in": "path",
-				"required": true,
-				"schema": {
-					"type": "string"
-				}
-			},
-			{
-				"name": "curated_feed_id",
-				"in": "path",
-				"required": true,
-				"schema": {
-					"type": "string",
-					"format": "uuid"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"description": "Threat Signals response."
-			},
-			"4XX": {
-				"description": "Client error response."
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			}
-		],
-		"tags": [
-			"Threat Signals"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write"
-		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.curated-feeds",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
-	},
 	"DELETE /accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds/{feed_id}": {
 		"operationId": "rssFeedDelete",
 		"summary": "Delete Threat Signals feed",
-		"description": "Delete Threat Signals feed.",
+		"description": "Unsubscribes the account from a Threat Signals feed and deletes its articles.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -127,7 +183,161 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Threat Signals response."
+				"description": "Threat Signals response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"free_custom_feed_limit",
+													"free_custom_skills_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"category_id": {
+											"description": "Feed category identifier. Null when unset.",
+											"type": "string",
+											"nullable": true
+										},
+										"category_name": {
+											"description": "Display name of the feed category. Null when unset or unresolvable.",
+											"type": "string",
+											"nullable": true
+										},
+										"created_at": {
+											"type": "string"
+										},
+										"curated_feed_id": {
+											"description": "Curated catalog feed this subscription was created from. Null for custom feeds.",
+											"type": "string",
+											"nullable": true
+										},
+										"display_name": {
+											"type": "string",
+											"nullable": true
+										},
+										"enabled": {
+											"type": "boolean"
+										},
+										"id": {
+											"type": "string",
+											"format": "uuid"
+										},
+										"last_polled_at": {
+											"type": "string",
+											"nullable": true
+										},
+										"poll_interval_s": {
+											"type": "integer"
+										},
+										"source_type": {
+											"description": "`custom` for a feed added by URL, `curated` for a curated catalog feed.",
+											"type": "string",
+											"example": "custom"
+										},
+										"status": {
+											"description": "Polling health: `active`, or `error` after a failed poll.",
+											"type": "string",
+											"example": "active"
+										},
+										"subscribed_at": {
+											"type": "string",
+											"nullable": true
+										},
+										"title": {
+											"type": "string",
+											"nullable": true
+										},
+										"updated_at": {
+											"type": "string"
+										},
+										"url": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"created_at",
+										"updated_at",
+										"url",
+										"title",
+										"display_name",
+										"category_id",
+										"category_name",
+										"source_type",
+										"curated_feed_id",
+										"enabled",
+										"last_polled_at",
+										"poll_interval_s",
+										"status",
+										"subscribed_at"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
 			},
 			"4XX": {
 				"description": "Client error response."
@@ -152,7 +362,7 @@
 	"DELETE /accounts/{account_id}/cloudforce-one/v2/threat-signals/skills/{skill_id}": {
 		"operationId": "rssSkillDelete",
 		"summary": "Delete Threat Signals skill",
-		"description": "Delete Threat Signals skill.",
+		"description": "Deletes a custom skill. Default skills cannot be deleted.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -173,7 +383,137 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Threat Signals response."
+				"description": "Threat Signals response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"free_custom_feed_limit",
+													"free_custom_skills_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"config": {
+											"description": "JSON-encoded skill configuration. Always null for default skills.",
+											"type": "string",
+											"nullable": true
+										},
+										"created_at": {
+											"type": "string"
+										},
+										"id": {
+											"type": "string"
+										},
+										"is_active": {
+											"description": "1 when active, 0 when inactive.",
+											"type": "integer"
+										},
+										"name": {
+											"type": "string"
+										},
+										"output_schema": {
+											"description": "JSON-encoded JSON Schema the skill output must satisfy.",
+											"type": "string",
+											"nullable": true
+										},
+										"prompt": {
+											"type": "string"
+										},
+										"source": {
+											"description": "`default` for Cloudforce One managed skills (read-only), `custom` for account skills.",
+											"type": "string",
+											"enum": [
+												"default",
+												"custom"
+											]
+										},
+										"type": {
+											"type": "string",
+											"example": "summary"
+										},
+										"updated_at": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"created_at",
+										"updated_at",
+										"name",
+										"type",
+										"prompt",
+										"config",
+										"output_schema",
+										"is_active",
+										"source"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
 			},
 			"4XX": {
 				"description": "Client error response."
@@ -198,7 +538,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles": {
 		"operationId": "rssArticleList",
 		"summary": "List Threat Signals articles",
-		"description": "List Threat Signals articles.",
+		"description": "Lists articles from the account's Threat Signals feeds.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -595,7 +935,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}": {
 		"operationId": "rssArticleGet",
 		"summary": "Get Threat Signals article",
-		"description": "Get Threat Signals article.",
+		"description": "Retrieves a Threat Signals article with its summary, tags and indicator status.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -617,7 +957,192 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Threat Signals response."
+				"description": "Threat Signals response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"bullet_points": {
+											"type": "object",
+											"nullable": true,
+											"properties": {
+												"impact": {
+													"type": "string"
+												},
+												"what_happened": {
+													"type": "string"
+												},
+												"who_affected": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"what_happened",
+												"who_affected",
+												"impact"
+											]
+										},
+										"content_r2_key": {
+											"type": "string",
+											"nullable": true
+										},
+										"feed_display_name": {
+											"type": "string",
+											"nullable": true
+										},
+										"feed_id": {
+											"type": "string",
+											"format": "uuid"
+										},
+										"fetched_at": {
+											"type": "string"
+										},
+										"id": {
+											"type": "string",
+											"format": "uuid"
+										},
+										"indicator_extraction_status": {
+											"description": "Progress of the article's indicator extraction and IOC contextualization run. complete and failed are terminal; unknown means no run has been recorded.",
+											"type": "string",
+											"enum": [
+												"in_progress",
+												"complete",
+												"failed",
+												"unknown"
+											]
+										},
+										"link": {
+											"type": "string",
+											"nullable": true
+										},
+										"metadata": {
+											"type": "object",
+											"additionalProperties": true,
+											"nullable": true
+										},
+										"published_at": {
+											"type": "string",
+											"nullable": true
+										},
+										"read": {
+											"type": "boolean"
+										},
+										"read_at": {
+											"type": "string",
+											"nullable": true
+										},
+										"skill_version": {
+											"type": "string",
+											"nullable": true
+										},
+										"source_count": {
+											"type": "number"
+										},
+										"summary": {
+											"description": "Persisted enrichment summary. Null until enrichment produces a summary.",
+											"type": "string",
+											"nullable": true
+										},
+										"summary_r2_key": {
+											"type": "string",
+											"nullable": true
+										},
+										"tag_skill_version": {
+											"type": "string",
+											"nullable": true
+										},
+										"tags": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"applied_by": {
+														"type": "string",
+														"enum": [
+															"ai",
+															"analyst",
+															"system"
+														]
+													},
+													"categoryId": {
+														"type": "string",
+														"format": "uuid",
+														"nullable": true
+													},
+													"uuid": {
+														"type": "string",
+														"format": "uuid"
+													},
+													"value": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"uuid",
+													"value",
+													"categoryId",
+													"applied_by"
+												],
+												"type": "object"
+											}
+										},
+										"title": {
+											"type": "string",
+											"nullable": true
+										}
+									},
+									"required": [
+										"id",
+										"feed_id",
+										"feed_display_name",
+										"title",
+										"link",
+										"published_at",
+										"read",
+										"read_at",
+										"tags",
+										"fetched_at",
+										"summary",
+										"content_r2_key",
+										"summary_r2_key",
+										"bullet_points",
+										"metadata",
+										"source_count",
+										"indicator_extraction_status"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
 			},
 			"4XX": {
 				"description": "Client error response."
@@ -643,7 +1168,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/content": {
 		"operationId": "rssArticleContentGet",
 		"summary": "Get Threat Signals article content",
-		"description": "Get Threat Signals article content.",
+		"description": "Retrieves the stored body of a Threat Signals article as plain text or HTML.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -676,7 +1201,19 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Threat Signals response."
+				"description": "Threat Signals response.",
+				"content": {
+					"text/html": {
+						"schema": {
+							"type": "string"
+						}
+					},
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
 			},
 			"4XX": {
 				"description": "Client error response."
@@ -702,7 +1239,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/skills/{skill_id}/output": {
 		"operationId": "rssArticleSkillOutputGet",
 		"summary": "Get Threat Signals article skill output",
-		"description": "Get Threat Signals article skill output.",
+		"description": "Retrieves the stored output of a skill for a Threat Signals article.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -732,7 +1269,109 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Threat Signals response."
+				"description": "Threat Signals response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"free_custom_feed_limit",
+													"free_custom_skills_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"article_id": {
+											"type": "string",
+											"format": "uuid"
+										},
+										"custom_output": {
+											"description": "Skill output. Parsed JSON when the stored output is valid JSON, otherwise the raw string."
+										},
+										"custom_skill_version": {
+											"type": "string",
+											"nullable": true
+										},
+										"output_schema": {
+											"description": "JSON-encoded output schema of the skill. Null when the skill no longer exists.",
+											"type": "string",
+											"nullable": true
+										},
+										"skill_id": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"article_id",
+										"skill_id",
+										"custom_skill_version",
+										"output_schema"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
 			},
 			"4XX": {
 				"description": "Client error response."
@@ -758,7 +1397,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/categories": {
 		"operationId": "rssFeedCategoryList",
 		"summary": "List Threat Signals feed categories",
-		"description": "List Threat Signals feed categories.",
+		"description": "Lists the predefined categories that can be assigned to feeds.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -865,7 +1504,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/curated-feeds": {
 		"operationId": "rssCuratedFeedList",
 		"summary": "List curated Threat Signals feeds",
-		"description": "List curated Threat Signals feeds.",
+		"description": "Lists the curated feeds the account can subscribe to.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -894,7 +1533,128 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Threat Signals response."
+				"description": "Threat Signals response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"free_custom_feed_limit",
+													"free_custom_skills_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"feeds": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"category_id": {
+														"type": "string"
+													},
+													"display_order": {
+														"type": "integer",
+														"nullable": true
+													},
+													"id": {
+														"type": "string",
+														"format": "uuid"
+													},
+													"is_active": {
+														"type": "boolean"
+													},
+													"name": {
+														"type": "string"
+													},
+													"url": {
+														"type": "string"
+													},
+													"why_valuable": {
+														"type": "string",
+														"nullable": true
+													}
+												},
+												"required": [
+													"id",
+													"url",
+													"name",
+													"category_id",
+													"why_valuable",
+													"display_order",
+													"is_active"
+												],
+												"type": "object"
+											}
+										}
+									},
+									"required": [
+										"feeds"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
 			},
 			"4XX": {
 				"description": "Client error response."
@@ -920,7 +1680,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds": {
 		"operationId": "rssFeedList",
 		"summary": "List Threat Signals feeds",
-		"description": "List Threat Signals feeds.",
+		"description": "Lists the account's Threat Signals feed subscriptions.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1003,7 +1763,189 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Threat Signals response."
+				"description": "Threat Signals response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"free_custom_feed_limit",
+													"free_custom_skills_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"description": "Number of feeds on this page.",
+											"type": "integer"
+										},
+										"feeds": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"category_id": {
+														"description": "Feed category identifier. Null when unset.",
+														"type": "string",
+														"nullable": true
+													},
+													"category_name": {
+														"description": "Display name of the feed category. Null when unset or unresolvable.",
+														"type": "string",
+														"nullable": true
+													},
+													"created_at": {
+														"type": "string"
+													},
+													"curated_feed_id": {
+														"description": "Curated catalog feed this subscription was created from. Null for custom feeds.",
+														"type": "string",
+														"nullable": true
+													},
+													"display_name": {
+														"type": "string",
+														"nullable": true
+													},
+													"enabled": {
+														"type": "boolean"
+													},
+													"id": {
+														"type": "string",
+														"format": "uuid"
+													},
+													"last_polled_at": {
+														"type": "string",
+														"nullable": true
+													},
+													"poll_interval_s": {
+														"type": "integer"
+													},
+													"source_type": {
+														"description": "`custom` for a feed added by URL, `curated` for a curated catalog feed.",
+														"type": "string",
+														"example": "custom"
+													},
+													"status": {
+														"description": "Polling health: `active`, or `error` after a failed poll.",
+														"type": "string",
+														"example": "active"
+													},
+													"subscribed_at": {
+														"type": "string",
+														"nullable": true
+													},
+													"title": {
+														"type": "string",
+														"nullable": true
+													},
+													"updated_at": {
+														"type": "string"
+													},
+													"url": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"created_at",
+													"updated_at",
+													"url",
+													"title",
+													"display_name",
+													"category_id",
+													"category_name",
+													"source_type",
+													"curated_feed_id",
+													"enabled",
+													"last_polled_at",
+													"poll_interval_s",
+													"status",
+													"subscribed_at"
+												],
+												"type": "object"
+											}
+										},
+										"page": {
+											"type": "integer"
+										},
+										"per_page": {
+											"type": "integer"
+										},
+										"total_count": {
+											"type": "integer"
+										}
+									},
+									"required": [
+										"feeds",
+										"count",
+										"page",
+										"per_page",
+										"total_count"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
 			},
 			"4XX": {
 				"description": "Client error response."
@@ -1029,7 +1971,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds/{feed_id}/raw": {
 		"operationId": "rssFeedRawGet",
 		"summary": "Get Threat Signals feed XML",
-		"description": "Get Threat Signals feed XML.",
+		"description": "Retrieves the feed document fetched by the most recent poll.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1061,7 +2003,19 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Threat Signals response."
+				"description": "Threat Signals response.",
+				"content": {
+					"application/xml": {
+						"schema": {
+							"type": "string"
+						}
+					},
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
 			},
 			"4XX": {
 				"description": "Client error response."
@@ -1087,7 +2041,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds/{feed_id}/skills": {
 		"operationId": "rssFeedSkillsGet",
 		"summary": "Get Threat Signals feed skills",
-		"description": "Get Threat Signals feed skills.",
+		"description": "Retrieves the effective skill pipeline for a Threat Signals feed.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1109,7 +2063,153 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Threat Signals response."
+				"description": "Threat Signals response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"free_custom_feed_limit",
+													"free_custom_skills_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"feed_id": {
+											"type": "string",
+											"format": "uuid"
+										},
+										"skills": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"config": {
+														"description": "JSON-encoded skill configuration. Always null for default skills.",
+														"type": "string",
+														"nullable": true
+													},
+													"created_at": {
+														"type": "string"
+													},
+													"id": {
+														"type": "string"
+													},
+													"is_active": {
+														"description": "1 when active, 0 when inactive.",
+														"type": "integer"
+													},
+													"name": {
+														"type": "string"
+													},
+													"output_schema": {
+														"description": "JSON-encoded JSON Schema the skill output must satisfy.",
+														"type": "string",
+														"nullable": true
+													},
+													"prompt": {
+														"type": "string"
+													},
+													"source": {
+														"description": "`default` for Cloudforce One managed skills (read-only), `custom` for account skills.",
+														"type": "string",
+														"enum": [
+															"default",
+															"custom"
+														]
+													},
+													"type": {
+														"type": "string",
+														"example": "summary"
+													},
+													"updated_at": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"created_at",
+													"updated_at",
+													"name",
+													"type",
+													"prompt",
+													"config",
+													"output_schema",
+													"is_active",
+													"source"
+												],
+												"type": "object"
+											}
+										}
+									},
+									"required": [
+										"feed_id",
+										"skills"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
 			},
 			"4XX": {
 				"description": "Client error response."
@@ -1135,7 +2235,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/health": {
 		"operationId": "rssHealth",
 		"summary": "Check Threat Signals service health",
-		"description": "Check Threat Signals service health.",
+		"description": "Checks that the Threat Signals API is reachable.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1148,7 +2248,25 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Threat Signals response."
+				"description": "Threat Signals response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"status": {
+									"type": "string",
+									"enum": [
+										"ok"
+									]
+								}
+							},
+							"required": [
+								"status"
+							]
+						}
+					}
+				}
 			},
 			"4XX": {
 				"description": "Client error response."
@@ -1174,7 +2292,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/indicators": {
 		"operationId": "rssArticleIndicatorList",
 		"summary": "List Threat Signals article indicators",
-		"description": "List Threat Signals article indicators.",
+		"description": "Lists indicators of compromise extracted from the account's Threat Signals articles.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1404,10 +2522,172 @@
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/search": {
+		"operationId": "searchThreatSignals",
+		"summary": "Search Threat Signals articles using AI Search",
+		"description": "Searches the account's Threat Signals articles using keyword and semantic retrieval.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "query",
+				"in": "query",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"maxLength": 1000,
+					"minLength": 1
+				}
+			},
+			{
+				"name": "max_results",
+				"in": "query",
+				"schema": {
+					"anyOf": [
+						{
+							"enum": [
+								""
+							],
+							"type": "string"
+						},
+						{
+							"type": "string"
+						}
+					]
+				}
+			},
+			{
+				"name": "feed_id",
+				"in": "query",
+				"schema": {
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Threat Signals response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"description": "Number of unique article candidates returned in this response. Equal to results.length.",
+											"type": "integer",
+											"minimum": 0
+										},
+										"results": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"article_id": {
+														"type": "string",
+														"format": "uuid"
+													},
+													"dataset_id": {
+														"type": "string",
+														"format": "uuid",
+														"nullable": true
+													},
+													"event_id": {
+														"type": "string",
+														"format": "uuid",
+														"nullable": true
+													},
+													"feed_id": {
+														"type": "string",
+														"format": "uuid"
+													},
+													"score": {
+														"type": "number"
+													},
+													"text": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"article_id",
+													"feed_id",
+													"event_id",
+													"dataset_id",
+													"score",
+													"text"
+												],
+												"type": "object"
+											}
+										}
+									},
+									"required": [
+										"count",
+										"results"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Client error response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Threat Signals"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-signals",
+		"x-fern-sdk-method-name": "search",
+		"x-forge-hidden": true
+	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/skills": {
 		"operationId": "rssSkillList",
 		"summary": "List Threat Signals skills",
-		"description": "List Threat Signals skills.",
+		"description": "Lists the default and custom skills available to the account.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1439,7 +2719,170 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Threat Signals response."
+				"description": "Threat Signals response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"free_custom_feed_limit",
+													"free_custom_skills_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"description": "Number of skills on this page.",
+											"type": "integer"
+										},
+										"custom_skills_available": {
+											"description": "Whether the authenticated account may access custom-skill capabilities under Stakeout's Threat Signals access-mode policy. This is a policy availability indicator, not a row-existence indicator. False for threat_signals_only mode; true for entitled, allowlisted, cfone_internal, and service modes.",
+											"type": "boolean"
+										},
+										"page": {
+											"type": "integer"
+										},
+										"per_page": {
+											"type": "integer"
+										},
+										"skills": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"config": {
+														"description": "JSON-encoded skill configuration. Always null for default skills.",
+														"type": "string",
+														"nullable": true
+													},
+													"created_at": {
+														"type": "string"
+													},
+													"id": {
+														"type": "string"
+													},
+													"is_active": {
+														"description": "1 when active, 0 when inactive.",
+														"type": "integer"
+													},
+													"name": {
+														"type": "string"
+													},
+													"output_schema": {
+														"description": "JSON-encoded JSON Schema the skill output must satisfy.",
+														"type": "string",
+														"nullable": true
+													},
+													"prompt": {
+														"type": "string"
+													},
+													"source": {
+														"description": "`default` for Cloudforce One managed skills (read-only), `custom` for account skills.",
+														"type": "string",
+														"enum": [
+															"default",
+															"custom"
+														]
+													},
+													"type": {
+														"type": "string",
+														"example": "summary"
+													},
+													"updated_at": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"created_at",
+													"updated_at",
+													"name",
+													"type",
+													"prompt",
+													"config",
+													"output_schema",
+													"is_active",
+													"source"
+												],
+												"type": "object"
+											}
+										},
+										"total_count": {
+											"type": "integer"
+										}
+									},
+									"required": [
+										"skills",
+										"count",
+										"page",
+										"per_page",
+										"total_count",
+										"custom_skills_available"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
 			},
 			"4XX": {
 				"description": "Client error response."
@@ -1465,7 +2908,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/skills/{skill_id}": {
 		"operationId": "rssSkillGet",
 		"summary": "Get Threat Signals skill",
-		"description": "Get Threat Signals skill.",
+		"description": "Retrieves a default or custom skill by ID.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1486,7 +2929,137 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Threat Signals response."
+				"description": "Threat Signals response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"free_custom_feed_limit",
+													"free_custom_skills_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"config": {
+											"description": "JSON-encoded skill configuration. Always null for default skills.",
+											"type": "string",
+											"nullable": true
+										},
+										"created_at": {
+											"type": "string"
+										},
+										"id": {
+											"type": "string"
+										},
+										"is_active": {
+											"description": "1 when active, 0 when inactive.",
+											"type": "integer"
+										},
+										"name": {
+											"type": "string"
+										},
+										"output_schema": {
+											"description": "JSON-encoded JSON Schema the skill output must satisfy.",
+											"type": "string",
+											"nullable": true
+										},
+										"prompt": {
+											"type": "string"
+										},
+										"source": {
+											"description": "`default` for Cloudforce One managed skills (read-only), `custom` for account skills.",
+											"type": "string",
+											"enum": [
+												"default",
+												"custom"
+											]
+										},
+										"type": {
+											"type": "string",
+											"example": "summary"
+										},
+										"updated_at": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"created_at",
+										"updated_at",
+										"name",
+										"type",
+										"prompt",
+										"config",
+										"output_schema",
+										"is_active",
+										"source"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
 			},
 			"4XX": {
 				"description": "Client error response."
@@ -1512,7 +3085,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/skills/{skill_id}/tag-categories": {
 		"operationId": "rssSkillTagCategoriesGet",
 		"summary": "Get Threat Signals skill tag categories",
-		"description": "Get Threat Signals skill tag categories.",
+		"description": "Retrieves the tag categories the default tagging skill may choose tags from.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1618,7 +3191,7 @@
 	"PATCH /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles": {
 		"operationId": "rssArticleBulkMarkRead",
 		"summary": "Bulk update Threat Signals article read status",
-		"description": "Bulk update Threat Signals article read status.",
+		"description": "Marks up to 50 Threat Signals articles as read or unread.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1658,7 +3231,90 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Threat Signals response."
+				"description": "Threat Signals response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"free_custom_feed_limit",
+													"free_custom_skills_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"updated_count": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"updated_count"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
 			},
 			"4XX": {
 				"description": "Client error response."
@@ -1683,7 +3339,7 @@
 	"PATCH /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}": {
 		"operationId": "rssArticleMarkRead",
 		"summary": "Update Threat Signals article read status",
-		"description": "Update Threat Signals article read status.",
+		"description": "Marks a Threat Signals article as read or unread.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1722,7 +3378,192 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Threat Signals response."
+				"description": "Threat Signals response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"bullet_points": {
+											"type": "object",
+											"nullable": true,
+											"properties": {
+												"impact": {
+													"type": "string"
+												},
+												"what_happened": {
+													"type": "string"
+												},
+												"who_affected": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"what_happened",
+												"who_affected",
+												"impact"
+											]
+										},
+										"content_r2_key": {
+											"type": "string",
+											"nullable": true
+										},
+										"feed_display_name": {
+											"type": "string",
+											"nullable": true
+										},
+										"feed_id": {
+											"type": "string",
+											"format": "uuid"
+										},
+										"fetched_at": {
+											"type": "string"
+										},
+										"id": {
+											"type": "string",
+											"format": "uuid"
+										},
+										"indicator_extraction_status": {
+											"description": "Progress of the article's indicator extraction and IOC contextualization run. complete and failed are terminal; unknown means no run has been recorded.",
+											"type": "string",
+											"enum": [
+												"in_progress",
+												"complete",
+												"failed",
+												"unknown"
+											]
+										},
+										"link": {
+											"type": "string",
+											"nullable": true
+										},
+										"metadata": {
+											"type": "object",
+											"additionalProperties": true,
+											"nullable": true
+										},
+										"published_at": {
+											"type": "string",
+											"nullable": true
+										},
+										"read": {
+											"type": "boolean"
+										},
+										"read_at": {
+											"type": "string",
+											"nullable": true
+										},
+										"skill_version": {
+											"type": "string",
+											"nullable": true
+										},
+										"source_count": {
+											"type": "number"
+										},
+										"summary": {
+											"description": "Persisted enrichment summary. Null until enrichment produces a summary.",
+											"type": "string",
+											"nullable": true
+										},
+										"summary_r2_key": {
+											"type": "string",
+											"nullable": true
+										},
+										"tag_skill_version": {
+											"type": "string",
+											"nullable": true
+										},
+										"tags": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"applied_by": {
+														"type": "string",
+														"enum": [
+															"ai",
+															"analyst",
+															"system"
+														]
+													},
+													"categoryId": {
+														"type": "string",
+														"format": "uuid",
+														"nullable": true
+													},
+													"uuid": {
+														"type": "string",
+														"format": "uuid"
+													},
+													"value": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"uuid",
+													"value",
+													"categoryId",
+													"applied_by"
+												],
+												"type": "object"
+											}
+										},
+										"title": {
+											"type": "string",
+											"nullable": true
+										}
+									},
+									"required": [
+										"id",
+										"feed_id",
+										"feed_display_name",
+										"title",
+										"link",
+										"published_at",
+										"read",
+										"read_at",
+										"tags",
+										"fetched_at",
+										"summary",
+										"content_r2_key",
+										"summary_r2_key",
+										"bullet_points",
+										"metadata",
+										"source_count",
+										"indicator_extraction_status"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
 			},
 			"4XX": {
 				"description": "Client error response."
@@ -1744,104 +3585,10 @@
 		"x-fern-sdk-method-name": "mark-read",
 		"x-forge-hidden": true
 	},
-	"PATCH /accounts/{account_id}/cloudforce-one/v2/threat-signals/curated-feeds/{curated_feed_id}": {
-		"operationId": "rssCuratedFeedUpdate",
-		"summary": "Update curated Threat Signals feed",
-		"description": "Update curated Threat Signals feed.",
-		"parameters": [
-			{
-				"name": "account_id",
-				"in": "path",
-				"required": true,
-				"schema": {
-					"type": "string"
-				}
-			},
-			{
-				"name": "curated_feed_id",
-				"in": "path",
-				"required": true,
-				"schema": {
-					"type": "string",
-					"format": "uuid"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"type": "object",
-						"properties": {
-							"category_id": {
-								"description": "One of the predefined Threat Signals feed categories; see GET /:account_id/v2/threat-signals/categories.",
-								"type": "string",
-								"enum": [
-									"b12a0fd6-f7b9-5393-9ef3-f888d506c550",
-									"d5b70eaa-626f-5761-b55b-6d9590df49fb",
-									"3b572d2b-890d-5286-9433-f18c85079030",
-									"17f90d3b-37d3-5241-8ad4-7d6abbc2006c",
-									"c68f28e9-7e8f-5d4b-853b-f3076893a9ee",
-									"bb0e4a94-38ab-5c14-80a7-28cee9f4b139",
-									"b1ef66d9-a73c-58dc-b269-22d34dfd11f4",
-									"ab02a976-0a20-5c76-a553-7f6325afacfe"
-								]
-							},
-							"display_order": {
-								"type": "integer",
-								"nullable": true
-							},
-							"is_active": {
-								"type": "boolean"
-							},
-							"name": {
-								"type": "string",
-								"maxLength": 255,
-								"minLength": 1
-							},
-							"url": {
-								"type": "string",
-								"format": "uri",
-								"maxLength": 2048
-							},
-							"why_valuable": {
-								"type": "string",
-								"maxLength": 1000,
-								"nullable": true
-							}
-						}
-					}
-				}
-			}
-		},
-		"responses": {
-			"200": {
-				"description": "Threat Signals response."
-			},
-			"4XX": {
-				"description": "Client error response."
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			}
-		],
-		"tags": [
-			"Threat Signals"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write"
-		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.curated-feeds",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
-	},
 	"PATCH /accounts/{account_id}/cloudforce-one/v2/threat-signals/curated-feeds/opt-out": {
 		"operationId": "rssCuratedFeedOptOut",
 		"summary": "Opt out of curated Threat Signals feeds",
-		"description": "Opt out of curated Threat Signals feeds.",
+		"description": "Opts the account out of, or back into, the curated feed catalog.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1871,7 +3618,90 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Threat Signals response."
+				"description": "Threat Signals response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"free_custom_feed_limit",
+													"free_custom_skills_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"opted_out": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"opted_out"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
 			},
 			"4XX": {
 				"description": "Client error response."
@@ -1896,7 +3726,7 @@
 	"PATCH /accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds/{feed_id}": {
 		"operationId": "rssFeedUpdate",
 		"summary": "Update Threat Signals feed",
-		"description": "Update Threat Signals feed.",
+		"description": "Updates a Threat Signals feed subscription.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1962,7 +3792,161 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Threat Signals response."
+				"description": "Threat Signals response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"free_custom_feed_limit",
+													"free_custom_skills_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"category_id": {
+											"description": "Feed category identifier. Null when unset.",
+											"type": "string",
+											"nullable": true
+										},
+										"category_name": {
+											"description": "Display name of the feed category. Null when unset or unresolvable.",
+											"type": "string",
+											"nullable": true
+										},
+										"created_at": {
+											"type": "string"
+										},
+										"curated_feed_id": {
+											"description": "Curated catalog feed this subscription was created from. Null for custom feeds.",
+											"type": "string",
+											"nullable": true
+										},
+										"display_name": {
+											"type": "string",
+											"nullable": true
+										},
+										"enabled": {
+											"type": "boolean"
+										},
+										"id": {
+											"type": "string",
+											"format": "uuid"
+										},
+										"last_polled_at": {
+											"type": "string",
+											"nullable": true
+										},
+										"poll_interval_s": {
+											"type": "integer"
+										},
+										"source_type": {
+											"description": "`custom` for a feed added by URL, `curated` for a curated catalog feed.",
+											"type": "string",
+											"example": "custom"
+										},
+										"status": {
+											"description": "Polling health: `active`, or `error` after a failed poll.",
+											"type": "string",
+											"example": "active"
+										},
+										"subscribed_at": {
+											"type": "string",
+											"nullable": true
+										},
+										"title": {
+											"type": "string",
+											"nullable": true
+										},
+										"updated_at": {
+											"type": "string"
+										},
+										"url": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"created_at",
+										"updated_at",
+										"url",
+										"title",
+										"display_name",
+										"category_id",
+										"category_name",
+										"source_type",
+										"curated_feed_id",
+										"enabled",
+										"last_polled_at",
+										"poll_interval_s",
+										"status",
+										"subscribed_at"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
 			},
 			"4XX": {
 				"description": "Client error response."
@@ -1987,7 +3971,7 @@
 	"PATCH /accounts/{account_id}/cloudforce-one/v2/threat-signals/skills/{skill_id}": {
 		"operationId": "rssSkillUpdate",
 		"summary": "Update Threat Signals skill",
-		"description": "Update Threat Signals skill.",
+		"description": "Updates a custom skill. Default skills are read-only.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2013,7 +3997,8 @@
 						"type": "object",
 						"properties": {
 							"config": {
-								"type": "string"
+								"type": "string",
+								"x-fern-property-name": "skill-config"
 							},
 							"is_active": {
 								"type": "boolean"
@@ -2040,69 +4025,6 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Threat Signals response."
-			},
-			"4XX": {
-				"description": "Client error response."
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			}
-		],
-		"tags": [
-			"Threat Signals"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write"
-		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.skills",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true,
-		"x-forge-params": {
-			"config": {
-				"flagName": "skill-config"
-			}
-		}
-	},
-	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/skills/{skill_id}/diagnostic": {
-		"operationId": "rssArticleTagDiagnostic",
-		"summary": "Diagnose Threat Signals default tag skill",
-		"description": "Diagnose Threat Signals default tag skill.",
-		"parameters": [
-			{
-				"name": "account_id",
-				"in": "path",
-				"required": true,
-				"schema": {
-					"type": "string"
-				}
-			},
-			{
-				"name": "article_id",
-				"in": "path",
-				"required": true,
-				"schema": {
-					"type": "string",
-					"format": "uuid"
-				}
-			},
-			{
-				"name": "skill_id",
-				"in": "path",
-				"required": true,
-				"schema": {
-					"type": "string",
-					"enum": [
-						"default-tagging-skill"
-					]
-				}
-			}
-		],
-		"responses": {
-			"200": {
 				"description": "Threat Signals response.",
 				"content": {
 					"application/json": {
@@ -2141,6 +4063,17 @@
 												"items": {
 													"type": "string"
 												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"free_custom_feed_limit",
+													"free_custom_skills_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
 											}
 										},
 										"required": [
@@ -2150,164 +4083,61 @@
 									}
 								},
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"outcome": {
-													"type": "string",
-													"enum": [
-														"success"
-													]
-												},
-												"prompt": {
-													"type": "string"
-												},
-												"rawResponse": {
-													"description": "Unparsed response returned by the AI provider.",
-													"oneOf": [
-														{
-															"additionalProperties": true,
-															"type": "object"
-														},
-														{
-															"items": {
-																"oneOf": [
-																	{
-																		"additionalProperties": "[Circular ~.POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/skills/{skill_id}/diagnostic.responses.200.content.application/json.schema.properties.result.oneOf.0.properties.rawResponse.oneOf.1.items]",
-																		"type": "object"
-																	},
-																	{
-																		"items": "[Circular ~.POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/skills/{skill_id}/diagnostic.responses.200.content.application/json.schema.properties.result.oneOf.0.properties.rawResponse.oneOf.1.items]",
-																		"type": "array"
-																	},
-																	{
-																		"nullable": true,
-																		"type": "string"
-																	},
-																	{
-																		"type": "number"
-																	},
-																	{
-																		"type": "boolean"
-																	}
-																]
-															},
-															"type": "array"
-														},
-														{
-															"nullable": true,
-															"type": "string"
-														},
-														{
-															"type": "number"
-														},
-														{
-															"type": "boolean"
-														}
-													]
-												},
-												"skillId": {
-													"type": "string",
-													"enum": [
-														"default-tagging-skill"
-													]
-												}
-											},
-											"required": [
-												"skillId",
-												"prompt",
-												"outcome",
-												"rawResponse"
-											],
-											"type": "object"
+									"type": "object",
+									"properties": {
+										"config": {
+											"description": "JSON-encoded skill configuration. Always null for default skills.",
+											"type": "string",
+											"nullable": true
 										},
-										{
-											"properties": {
-												"error": {
-													"type": "object",
-													"properties": {
-														"aiDurationMs": {
-															"type": "number",
-															"minimum": 0
-														},
-														"failureKind": {
-															"type": "string",
-															"enum": [
-																"timeout",
-																"rate_limited",
-																"invalid_request",
-																"unavailable",
-																"aborted",
-																"binding_error",
-																"unknown"
-															]
-														},
-														"failureStage": {
-															"type": "string",
-															"enum": [
-																"ai_run"
-															]
-														},
-														"providerErrorName": {
-															"type": "string",
-															"enum": [
-																"AbortError",
-																"TypeError",
-																"unknown"
-															]
-														},
-														"providerStatus": {
-															"type": "string",
-															"enum": [
-																"400",
-																"401",
-																"403",
-																"408",
-																"413",
-																"422",
-																"429",
-																"5xx",
-																"unknown"
-															]
-														},
-														"timeoutMs": {
-															"type": "number",
-															"exclusiveMinimum": true,
-															"minimum": 0
-														}
-													},
-													"required": [
-														"failureStage",
-														"failureKind",
-														"aiDurationMs",
-														"providerStatus",
-														"providerErrorName"
-													]
-												},
-												"outcome": {
-													"type": "string",
-													"enum": [
-														"failed"
-													]
-												},
-												"prompt": {
-													"type": "string"
-												},
-												"skillId": {
-													"type": "string",
-													"enum": [
-														"default-tagging-skill"
-													]
-												}
-											},
-											"required": [
-												"skillId",
-												"prompt",
-												"outcome",
-												"error"
-											],
-											"type": "object"
+										"created_at": {
+											"type": "string"
+										},
+										"id": {
+											"type": "string"
+										},
+										"is_active": {
+											"description": "1 when active, 0 when inactive.",
+											"type": "integer"
+										},
+										"name": {
+											"type": "string"
+										},
+										"output_schema": {
+											"description": "JSON-encoded JSON Schema the skill output must satisfy.",
+											"type": "string",
+											"nullable": true
+										},
+										"prompt": {
+											"type": "string"
+										},
+										"source": {
+											"description": "`default` for Cloudforce One managed skills (read-only), `custom` for account skills.",
+											"type": "string",
+											"enum": [
+												"default",
+												"custom"
+											]
+										},
+										"type": {
+											"type": "string",
+											"example": "summary"
+										},
+										"updated_at": {
+											"type": "string"
 										}
+									},
+									"required": [
+										"id",
+										"created_at",
+										"updated_at",
+										"name",
+										"type",
+										"prompt",
+										"config",
+										"output_schema",
+										"is_active",
+										"source"
 									]
 								},
 								"success": {
@@ -2319,9 +4149,9 @@
 							},
 							"required": [
 								"result",
-								"messages",
 								"success",
-								"errors"
+								"errors",
+								"messages"
 							]
 						}
 					}
@@ -2343,14 +4173,14 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles.skills",
-		"x-fern-sdk-method-name": "diagnostic",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.skills",
+		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/tag": {
 		"operationId": "rssArticleTagGenerate",
 		"summary": "Generate Threat Signals article AI tags",
-		"description": "Generate Threat Signals article AI tags.",
+		"description": "Runs the default AI tagging skill on an article and replaces its AI-applied tags.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2410,6 +4240,17 @@
 												"items": {
 													"type": "string"
 												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"free_custom_feed_limit",
+													"free_custom_skills_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
 											}
 										},
 										"required": [
@@ -2505,7 +4346,7 @@
 	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/tags": {
 		"operationId": "rssArticleTagAdd",
 		"summary": "Add tag to Threat Signals article",
-		"description": "Add tag to Threat Signals article.",
+		"description": "Applies a tag from the account's tag catalog to a Threat Signals article.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2544,8 +4385,111 @@
 			}
 		},
 		"responses": {
-			"200": {
-				"description": "Threat Signals response."
+			"201": {
+				"description": "Threat Signals response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"free_custom_feed_limit",
+													"free_custom_skills_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"applied_by": {
+											"type": "string",
+											"enum": [
+												"ai",
+												"analyst",
+												"system"
+											]
+										},
+										"categoryId": {
+											"type": "string",
+											"format": "uuid",
+											"nullable": true
+										},
+										"uuid": {
+											"type": "string",
+											"format": "uuid"
+										},
+										"value": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"uuid",
+										"value",
+										"categoryId",
+										"applied_by"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
 			},
 			"4XX": {
 				"description": "Client error response."
@@ -2567,205 +4511,10 @@
 		"x-fern-sdk-method-name": "add",
 		"x-forge-hidden": true
 	},
-	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/curated-feeds": {
-		"operationId": "rssCuratedFeedCreate",
-		"summary": "Create curated Threat Signals feed",
-		"description": "Create curated Threat Signals feed.",
-		"parameters": [
-			{
-				"name": "account_id",
-				"in": "path",
-				"required": true,
-				"schema": {
-					"type": "string"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"type": "object",
-						"properties": {
-							"category_id": {
-								"description": "One of the predefined Threat Signals feed categories; see GET /:account_id/v2/threat-signals/categories.",
-								"type": "string",
-								"enum": [
-									"b12a0fd6-f7b9-5393-9ef3-f888d506c550",
-									"d5b70eaa-626f-5761-b55b-6d9590df49fb",
-									"3b572d2b-890d-5286-9433-f18c85079030",
-									"17f90d3b-37d3-5241-8ad4-7d6abbc2006c",
-									"c68f28e9-7e8f-5d4b-853b-f3076893a9ee",
-									"bb0e4a94-38ab-5c14-80a7-28cee9f4b139",
-									"b1ef66d9-a73c-58dc-b269-22d34dfd11f4",
-									"ab02a976-0a20-5c76-a553-7f6325afacfe"
-								]
-							},
-							"display_order": {
-								"type": "integer",
-								"nullable": true
-							},
-							"is_active": {
-								"type": "boolean",
-								"default": true
-							},
-							"name": {
-								"type": "string",
-								"maxLength": 255,
-								"minLength": 1
-							},
-							"url": {
-								"type": "string",
-								"format": "uri",
-								"maxLength": 2048
-							},
-							"why_valuable": {
-								"type": "string",
-								"maxLength": 1000,
-								"nullable": true
-							}
-						},
-						"required": [
-							"url",
-							"name",
-							"category_id"
-						]
-					}
-				}
-			}
-		},
-		"responses": {
-			"200": {
-				"description": "Threat Signals response."
-			},
-			"4XX": {
-				"description": "Client error response."
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			}
-		],
-		"tags": [
-			"Threat Signals"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write"
-		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.curated-feeds",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
-	},
-	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/curated-feeds/bulk": {
-		"operationId": "rssCuratedFeedBulkCreate",
-		"summary": "Bulk create curated Threat Signals feeds",
-		"description": "Bulk create curated Threat Signals feeds.",
-		"parameters": [
-			{
-				"name": "account_id",
-				"in": "path",
-				"required": true,
-				"schema": {
-					"type": "string"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"type": "object",
-						"properties": {
-							"feeds": {
-								"type": "array",
-								"items": {
-									"properties": {
-										"category_id": {
-											"description": "One of the predefined Threat Signals feed categories; see GET /:account_id/v2/threat-signals/categories.",
-											"type": "string",
-											"enum": [
-												"b12a0fd6-f7b9-5393-9ef3-f888d506c550",
-												"d5b70eaa-626f-5761-b55b-6d9590df49fb",
-												"3b572d2b-890d-5286-9433-f18c85079030",
-												"17f90d3b-37d3-5241-8ad4-7d6abbc2006c",
-												"c68f28e9-7e8f-5d4b-853b-f3076893a9ee",
-												"bb0e4a94-38ab-5c14-80a7-28cee9f4b139",
-												"b1ef66d9-a73c-58dc-b269-22d34dfd11f4",
-												"ab02a976-0a20-5c76-a553-7f6325afacfe"
-											]
-										},
-										"display_order": {
-											"type": "integer",
-											"nullable": true
-										},
-										"is_active": {
-											"type": "boolean",
-											"default": true
-										},
-										"name": {
-											"type": "string",
-											"maxLength": 255,
-											"minLength": 1
-										},
-										"url": {
-											"type": "string",
-											"format": "uri",
-											"maxLength": 2048
-										},
-										"why_valuable": {
-											"type": "string",
-											"maxLength": 1000,
-											"nullable": true
-										}
-									},
-									"required": [
-										"url",
-										"name",
-										"category_id"
-									],
-									"type": "object"
-								},
-								"maxItems": 100,
-								"minItems": 1
-							}
-						},
-						"required": [
-							"feeds"
-						]
-					}
-				}
-			}
-		},
-		"responses": {
-			"200": {
-				"description": "Threat Signals response."
-			},
-			"4XX": {
-				"description": "Client error response."
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			}
-		],
-		"tags": [
-			"Threat Signals"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write"
-		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.curated-feeds",
-		"x-fern-sdk-method-name": "bulk-create",
-		"x-forge-hidden": true
-	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds": {
 		"operationId": "rssFeedCreate",
 		"summary": "Create Threat Signals feed",
-		"description": "Create Threat Signals feed.",
+		"description": "Subscribes the account to a custom or curated Threat Signals feed.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2832,8 +4581,162 @@
 			}
 		},
 		"responses": {
-			"200": {
-				"description": "Threat Signals response."
+			"201": {
+				"description": "Threat Signals response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"free_custom_feed_limit",
+													"free_custom_skills_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"category_id": {
+											"description": "Feed category identifier. Null when unset.",
+											"type": "string",
+											"nullable": true
+										},
+										"category_name": {
+											"description": "Display name of the feed category. Null when unset or unresolvable.",
+											"type": "string",
+											"nullable": true
+										},
+										"created_at": {
+											"type": "string"
+										},
+										"curated_feed_id": {
+											"description": "Curated catalog feed this subscription was created from. Null for custom feeds.",
+											"type": "string",
+											"nullable": true
+										},
+										"display_name": {
+											"type": "string",
+											"nullable": true
+										},
+										"enabled": {
+											"type": "boolean"
+										},
+										"id": {
+											"type": "string",
+											"format": "uuid"
+										},
+										"last_polled_at": {
+											"type": "string",
+											"nullable": true
+										},
+										"poll_interval_s": {
+											"type": "integer"
+										},
+										"source_type": {
+											"description": "`custom` for a feed added by URL, `curated` for a curated catalog feed.",
+											"type": "string",
+											"example": "custom"
+										},
+										"status": {
+											"description": "Polling health: `active`, or `error` after a failed poll.",
+											"type": "string",
+											"example": "active"
+										},
+										"subscribed_at": {
+											"type": "string",
+											"nullable": true
+										},
+										"title": {
+											"type": "string",
+											"nullable": true
+										},
+										"updated_at": {
+											"type": "string"
+										},
+										"url": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"created_at",
+										"updated_at",
+										"url",
+										"title",
+										"display_name",
+										"category_id",
+										"category_name",
+										"source_type",
+										"curated_feed_id",
+										"enabled",
+										"last_polled_at",
+										"poll_interval_s",
+										"status",
+										"subscribed_at"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
 			},
 			"4XX": {
 				"description": "Client error response."
@@ -2858,7 +4761,7 @@
 	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds/poll": {
 		"operationId": "rssFeedPoll",
 		"summary": "Trigger Threat Signals feed poll",
-		"description": "Trigger Threat Signals feed poll.",
+		"description": "Starts an immediate poll of one or all Threat Signals feeds.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2994,7 +4897,7 @@
 	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/skills": {
 		"operationId": "rssSkillCreate",
 		"summary": "Create Threat Signals skill",
-		"description": "Create Threat Signals skill.",
+		"description": "Creates a custom AI skill for the account.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3045,8 +4948,138 @@
 			}
 		},
 		"responses": {
-			"200": {
-				"description": "Threat Signals response."
+			"201": {
+				"description": "Threat Signals response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"free_custom_feed_limit",
+													"free_custom_skills_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"config": {
+											"description": "JSON-encoded skill configuration. Always null for default skills.",
+											"type": "string",
+											"nullable": true
+										},
+										"created_at": {
+											"type": "string"
+										},
+										"id": {
+											"type": "string"
+										},
+										"is_active": {
+											"description": "1 when active, 0 when inactive.",
+											"type": "integer"
+										},
+										"name": {
+											"type": "string"
+										},
+										"output_schema": {
+											"description": "JSON-encoded JSON Schema the skill output must satisfy.",
+											"type": "string",
+											"nullable": true
+										},
+										"prompt": {
+											"type": "string"
+										},
+										"source": {
+											"description": "`default` for Cloudforce One managed skills (read-only), `custom` for account skills.",
+											"type": "string",
+											"enum": [
+												"default",
+												"custom"
+											]
+										},
+										"type": {
+											"type": "string",
+											"example": "summary"
+										},
+										"updated_at": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"created_at",
+										"updated_at",
+										"name",
+										"type",
+										"prompt",
+										"config",
+										"output_schema",
+										"is_active",
+										"source"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
 			},
 			"4XX": {
 				"description": "Client error response."
@@ -3071,7 +5104,7 @@
 	"PUT /accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds/{feed_id}/skills": {
 		"operationId": "rssFeedSkillsSet",
 		"summary": "Set Threat Signals feed skills",
-		"description": "Set Threat Signals feed skills.",
+		"description": "Replaces the ordered custom skills assigned to a Threat Signals feed.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3115,7 +5148,111 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Threat Signals response."
+				"description": "Threat Signals response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"free_custom_feed_limit",
+													"free_custom_skills_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"feed_id": {
+											"type": "string",
+											"format": "uuid"
+										},
+										"skills": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"position": {
+														"description": "Zero-based pipeline position.",
+														"type": "integer"
+													},
+													"skill_id": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"skill_id",
+													"position"
+												],
+												"type": "object"
+											}
+										}
+									},
+									"required": [
+										"feed_id",
+										"skills"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
 			},
 			"4XX": {
 				"description": "Client error response."
@@ -3140,7 +5277,7 @@
 	"PUT /accounts/{account_id}/cloudforce-one/v2/threat-signals/skills/{skill_id}/tag-categories": {
 		"operationId": "rssSkillTagCategoriesReplace",
 		"summary": "Replace Threat Signals skill tag categories",
-		"description": "Replace Threat Signals skill tag categories.",
+		"description": "Replaces the tag categories the default tagging skill may choose tags from.",
 		"parameters": [
 			{
 				"name": "account_id",
