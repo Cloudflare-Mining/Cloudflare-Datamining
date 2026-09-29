@@ -7,20 +7,20 @@
 			{
 				"name": "account_id",
 				"in": "path",
-				"description": "Cloudflare account ID.",
+				"description": "Cloudflare account ID that owns the Flagship app.",
 				"required": true,
 				"schema": {
-					"description": "Cloudflare account ID.",
+					"description": "Cloudflare account ID that owns the Flagship app.",
 					"type": "string"
 				}
 			},
 			{
 				"name": "app_id",
 				"in": "path",
-				"description": "App identifier.",
+				"description": "Flagship app ID returned when the app was created.",
 				"required": true,
 				"schema": {
-					"description": "App identifier.",
+					"description": "Flagship app ID returned when the app was created.",
 					"type": "string"
 				}
 			}
@@ -508,20 +508,20 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "flagship.apps",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "Delete this Flagship app, all of its flags, and all changelog history? This action cannot be undone."
 	},
 	"GET /accounts/{account_id}/flagship/apps": {
 		"operationId": "flagship_list_apps",
 		"summary": "List apps",
-		"description": "Lists all apps in the account. Returns identity and audit fields only — flag definitions are not included.",
+		"description": "Lists all Flagship apps in the account. Returns identity and audit fields only; flag definitions are not included.",
 		"parameters": [
 			{
 				"name": "account_id",
 				"in": "path",
-				"description": "Cloudflare account ID.",
+				"description": "Cloudflare account ID that owns the Flagship app.",
 				"required": true,
 				"schema": {
-					"description": "Cloudflare account ID.",
+					"description": "Cloudflare account ID that owns the Flagship app.",
 					"type": "string"
 				}
 			}
@@ -973,8 +973,7 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "flagship.apps",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/flagship/apps/{app_id}": {
 		"operationId": "flagship_get_app",
@@ -984,20 +983,20 @@
 			{
 				"name": "account_id",
 				"in": "path",
-				"description": "Cloudflare account ID.",
+				"description": "Cloudflare account ID that owns the Flagship app.",
 				"required": true,
 				"schema": {
-					"description": "Cloudflare account ID.",
+					"description": "Cloudflare account ID that owns the Flagship app.",
 					"type": "string"
 				}
 			},
 			{
 				"name": "app_id",
 				"in": "path",
-				"description": "App identifier.",
+				"description": "Flagship app ID returned when the app was created.",
 				"required": true,
 				"schema": {
-					"description": "App identifier.",
+					"description": "Flagship app ID returned when the app was created.",
 					"type": "string"
 				}
 			}
@@ -1446,8 +1445,7 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "flagship.apps",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/realtime/kit/apps": {
 		"operationId": "get_apps",
@@ -1680,10 +1678,10 @@
 			{
 				"name": "account_id",
 				"in": "path",
-				"description": "Cloudflare account ID.",
+				"description": "Cloudflare account ID that owns the Flagship app.",
 				"required": true,
 				"schema": {
-					"description": "Cloudflare account ID.",
+					"description": "Cloudflare account ID that owns the Flagship app.",
 					"type": "string"
 				}
 			}
@@ -1696,6 +1694,7 @@
 						"type": "object",
 						"properties": {
 							"name": {
+								"description": "Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).",
 								"type": "string",
 								"maxLength": 64,
 								"minLength": 1,
@@ -2153,8 +2152,7 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "flagship.apps",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/realtime/kit/apps": {
 		"operationId": "create_app",
@@ -2255,20 +2253,20 @@
 			{
 				"name": "account_id",
 				"in": "path",
-				"description": "Cloudflare account ID.",
+				"description": "Cloudflare account ID that owns the Flagship app.",
 				"required": true,
 				"schema": {
-					"description": "Cloudflare account ID.",
+					"description": "Cloudflare account ID that owns the Flagship app.",
 					"type": "string"
 				}
 			},
 			{
 				"name": "app_id",
 				"in": "path",
-				"description": "App identifier.",
+				"description": "Flagship app ID returned when the app was created.",
 				"required": true,
 				"schema": {
-					"description": "App identifier.",
+					"description": "Flagship app ID returned when the app was created.",
 					"type": "string"
 				}
 			}
@@ -2281,6 +2279,7 @@
 						"type": "object",
 						"properties": {
 							"name": {
+								"description": "Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).",
 								"type": "string",
 								"maxLength": 64,
 								"minLength": 1,
@@ -2735,7 +2734,6 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "flagship.apps",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

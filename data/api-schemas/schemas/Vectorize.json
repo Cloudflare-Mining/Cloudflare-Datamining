@@ -372,8 +372,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "vectorize",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/vectorize/v2/indexes": {
 		"operationId": "vectorize-list-vectorize-indexes",
@@ -484,30 +483,51 @@
 												"type": "object",
 												"properties": {
 													"config": {
-														"type": "object",
-														"properties": {
-															"dimensions": {
-																"description": "Specifies the number of dimensions for the index",
-																"type": "integer",
-																"example": 768,
-																"maximum": 1536,
-																"minimum": 1,
-																"x-auditable": true
+														"allOf": [
+															{
+																"type": "object",
+																"properties": {
+																	"dimensions": {
+																		"description": "Specifies the number of dimensions for the index",
+																		"type": "integer",
+																		"example": 768,
+																		"maximum": 1536,
+																		"minimum": 1,
+																		"x-auditable": true
+																	},
+																	"metric": {
+																		"description": "Specifies the type of metric to use calculating distance.",
+																		"type": "string",
+																		"enum": [
+																			"cosine",
+																			"euclidean",
+																			"dot-product"
+																		],
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"dimensions",
+																	"metric"
+																]
 															},
-															"metric": {
-																"description": "Specifies the type of metric to use calculating distance.",
-																"type": "string",
-																"enum": [
-																	"cosine",
-																	"euclidean",
-																	"dot-product"
-																],
-																"x-auditable": true
+															{
+																"properties": {
+																	"preset": {
+																		"description": "Specifies the preset to use for the index.",
+																		"type": "string",
+																		"example": "@cf/baai/bge-small-en-v1.5",
+																		"enum": [
+																			"@cf/baai/bge-small-en-v1.5",
+																			"@cf/baai/bge-base-en-v1.5",
+																			"@cf/baai/bge-large-en-v1.5",
+																			"openai/text-embedding-ada-002",
+																			"cohere/embed-multilingual-v2.0"
+																		],
+																		"x-auditable": true
+																	}
+																}
 															}
-														},
-														"required": [
-															"dimensions",
-															"metric"
 														]
 													},
 													"created_on": {
@@ -776,8 +796,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "vectorize",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/vectorize/v2/indexes/{index_name}": {
 		"operationId": "vectorize-get-vectorize-index",
@@ -918,30 +937,51 @@
 											"type": "object",
 											"properties": {
 												"config": {
-													"type": "object",
-													"properties": {
-														"dimensions": {
-															"description": "Specifies the number of dimensions for the index",
-															"type": "integer",
-															"example": 768,
-															"maximum": 1536,
-															"minimum": 1,
-															"x-auditable": true
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"dimensions": {
+																	"description": "Specifies the number of dimensions for the index",
+																	"type": "integer",
+																	"example": 768,
+																	"maximum": 1536,
+																	"minimum": 1,
+																	"x-auditable": true
+																},
+																"metric": {
+																	"description": "Specifies the type of metric to use calculating distance.",
+																	"type": "string",
+																	"enum": [
+																		"cosine",
+																		"euclidean",
+																		"dot-product"
+																	],
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"dimensions",
+																"metric"
+															]
 														},
-														"metric": {
-															"description": "Specifies the type of metric to use calculating distance.",
-															"type": "string",
-															"enum": [
-																"cosine",
-																"euclidean",
-																"dot-product"
-															],
-															"x-auditable": true
+														{
+															"properties": {
+																"preset": {
+																	"description": "Specifies the preset to use for the index.",
+																	"type": "string",
+																	"example": "@cf/baai/bge-small-en-v1.5",
+																	"enum": [
+																		"@cf/baai/bge-small-en-v1.5",
+																		"@cf/baai/bge-base-en-v1.5",
+																		"@cf/baai/bge-large-en-v1.5",
+																		"openai/text-embedding-ada-002",
+																		"cohere/embed-multilingual-v2.0"
+																	],
+																	"x-auditable": true
+																}
+															}
 														}
-													},
-													"required": [
-														"dimensions",
-														"metric"
 													]
 												},
 												"created_on": {
@@ -1209,8 +1249,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "vectorize",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/vectorize/v2/indexes/{index_name}/info": {
 		"operationId": "vectorize-index-info",
@@ -1616,8 +1655,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "vectorize",
-		"x-fern-sdk-method-name": "info",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "info"
 	},
 	"GET /accounts/{account_id}/vectorize/v2/indexes/{index_name}/list": {
 		"operationId": "vectorize-list-vectors",
@@ -2068,8 +2106,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "vectorize",
-		"x-fern-sdk-method-name": "list-vectors",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list-vectors"
 	},
 	"GET /accounts/{account_id}/vectorize/v2/indexes/{index_name}/metadata_index/list": {
 		"operationId": "vectorize-list-metadata-indexes",
@@ -2482,8 +2519,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "vectorize.metadata-index",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"POST /accounts/{account_id}/vectorize/v2/indexes": {
 		"operationId": "vectorize-create-vectorize-index",
@@ -2698,30 +2734,51 @@
 											"type": "object",
 											"properties": {
 												"config": {
-													"type": "object",
-													"properties": {
-														"dimensions": {
-															"description": "Specifies the number of dimensions for the index",
-															"type": "integer",
-															"example": 768,
-															"maximum": 1536,
-															"minimum": 1,
-															"x-auditable": true
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"dimensions": {
+																	"description": "Specifies the number of dimensions for the index",
+																	"type": "integer",
+																	"example": 768,
+																	"maximum": 1536,
+																	"minimum": 1,
+																	"x-auditable": true
+																},
+																"metric": {
+																	"description": "Specifies the type of metric to use calculating distance.",
+																	"type": "string",
+																	"enum": [
+																		"cosine",
+																		"euclidean",
+																		"dot-product"
+																	],
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"dimensions",
+																"metric"
+															]
 														},
-														"metric": {
-															"description": "Specifies the type of metric to use calculating distance.",
-															"type": "string",
-															"enum": [
-																"cosine",
-																"euclidean",
-																"dot-product"
-															],
-															"x-auditable": true
+														{
+															"properties": {
+																"preset": {
+																	"description": "Specifies the preset to use for the index.",
+																	"type": "string",
+																	"example": "@cf/baai/bge-small-en-v1.5",
+																	"enum": [
+																		"@cf/baai/bge-small-en-v1.5",
+																		"@cf/baai/bge-base-en-v1.5",
+																		"@cf/baai/bge-large-en-v1.5",
+																		"openai/text-embedding-ada-002",
+																		"cohere/embed-multilingual-v2.0"
+																	],
+																	"x-auditable": true
+																}
+															}
 														}
-													},
-													"required": [
-														"dimensions",
-														"metric"
 													]
 												},
 												"created_on": {
@@ -2988,8 +3045,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "vectorize",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/vectorize/v2/indexes/{index_name}/delete_by_ids": {
 		"operationId": "vectorize-delete-vectors-by-id",
@@ -3398,8 +3454,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "vectorize",
-		"x-fern-sdk-method-name": "delete-by-ids",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete-by-ids"
 	},
 	"POST /accounts/{account_id}/vectorize/v2/indexes/{index_name}/get_by_ids": {
 		"operationId": "vectorize-get-vectors-by-id",
@@ -3849,8 +3904,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "vectorize",
-		"x-fern-sdk-method-name": "get-by-ids",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get-by-ids"
 	},
 	"POST /accounts/{account_id}/vectorize/v2/indexes/{index_name}/insert": {
 		"operationId": "vectorize-insert-vector",
@@ -4252,8 +4306,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "vectorize",
-		"x-fern-sdk-method-name": "insert",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "insert"
 	},
 	"POST /accounts/{account_id}/vectorize/v2/indexes/{index_name}/metadata_index/create": {
 		"operationId": "vectorize-create-metadata-index",
@@ -4667,8 +4720,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "vectorize.metadata-index",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/vectorize/v2/indexes/{index_name}/metadata_index/delete": {
 		"operationId": "vectorize-delete-metadata-index",
@@ -5072,7 +5124,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "vectorize.metadata-index",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation deletes a metadata index destructively."
 	},
 	"POST /accounts/{account_id}/vectorize/v2/indexes/{index_name}/query": {
@@ -5542,8 +5593,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "vectorize",
-		"x-fern-sdk-method-name": "query",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "query"
 	},
 	"POST /accounts/{account_id}/vectorize/v2/indexes/{index_name}/upsert": {
 		"operationId": "vectorize-upsert-vector",
@@ -5945,7 +5995,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "vectorize",
-		"x-fern-sdk-method-name": "upsert",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "upsert"
 	}
 }

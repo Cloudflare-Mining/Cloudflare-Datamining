@@ -1,26 +1,26 @@
 {
 	"GET /accounts/{account_id}/flagship/apps/{app_id}/evaluate": {
 		"operationId": "flagship_evaluate_flag",
-		"summary": "Evaluate flag",
-		"description": "Evaluates a flag against the provided context. Pass context attributes as query parameters; values are forwarded as strings. For low-latency in-Worker evaluation, prefer the Flagship binding over this endpoint.",
+		"summary": "Evaluate flag from query context",
+		"description": "Evaluates a flag against the provided context. Pass context attributes as query parameters; values are coerced to numbers or booleans where unambiguous. For low-latency in-Worker evaluation, prefer the Flagship binding over this endpoint.",
 		"parameters": [
 			{
 				"name": "account_id",
 				"in": "path",
-				"description": "Cloudflare account ID.",
+				"description": "Cloudflare account ID that owns the Flagship app.",
 				"required": true,
 				"schema": {
-					"description": "Cloudflare account ID.",
+					"description": "Cloudflare account ID that owns the Flagship app.",
 					"type": "string"
 				}
 			},
 			{
 				"name": "app_id",
 				"in": "path",
-				"description": "App identifier.",
+				"description": "Flagship app ID returned when the app was created.",
 				"required": true,
 				"schema": {
-					"description": "App identifier.",
+					"description": "Flagship app ID returned when the app was created.",
 					"type": "string"
 				}
 			},
@@ -53,11 +53,14 @@
 							"type": "object",
 							"properties": {
 								"flagKey": {
+									"description": "Key of the evaluated flag.",
 									"type": "string"
 								},
 								"reason": {
+									"description": "Reason the evaluator selected this variation.",
 									"type": "string",
 									"enum": [
+										"STATIC",
 										"TARGETING_MATCH",
 										"DEFAULT",
 										"DISABLED",
@@ -87,6 +90,7 @@
 									]
 								},
 								"variant": {
+									"description": "Name of the variation that supplied the resolved value.",
 									"type": "string"
 								}
 							},
@@ -466,31 +470,30 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "flagship.apps.evaluate",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/flagship/apps/{app_id}/evaluate": {
 		"operationId": "flagship_evaluate_flag_post",
-		"summary": "Evaluate flag (POST)",
+		"summary": "Evaluate flag with JSON context",
 		"description": "Evaluates a flag against the provided context, passed as a JSON request body (OFREP-shaped) rather than query parameters. Returns the same response shape as the GET variant.",
 		"parameters": [
 			{
 				"name": "account_id",
 				"in": "path",
-				"description": "Cloudflare account ID.",
+				"description": "Cloudflare account ID that owns the Flagship app.",
 				"required": true,
 				"schema": {
-					"description": "Cloudflare account ID.",
+					"description": "Cloudflare account ID that owns the Flagship app.",
 					"type": "string"
 				}
 			},
 			{
 				"name": "app_id",
 				"in": "path",
-				"description": "App identifier.",
+				"description": "Flagship app ID returned when the app was created.",
 				"required": true,
 				"schema": {
-					"description": "App identifier.",
+					"description": "Flagship app ID returned when the app was created.",
 					"type": "string"
 				}
 			}
@@ -503,6 +506,7 @@
 						"type": "object",
 						"properties": {
 							"context": {
+								"description": "Evaluation attributes keyed by name. Values may be any JSON value; the context supports up to 100 entries and 32 KB.",
 								"type": "object",
 								"default": {},
 								"additionalProperties": {
@@ -529,6 +533,7 @@
 								}
 							},
 							"flagKey": {
+								"description": "Key of the flag to evaluate within the app.",
 								"type": "string",
 								"maxLength": 64,
 								"minLength": 1,
@@ -552,11 +557,14 @@
 							"type": "object",
 							"properties": {
 								"flagKey": {
+									"description": "Key of the evaluated flag.",
 									"type": "string"
 								},
 								"reason": {
+									"description": "Reason the evaluator selected this variation.",
 									"type": "string",
 									"enum": [
+										"STATIC",
 										"TARGETING_MATCH",
 										"DEFAULT",
 										"DISABLED",
@@ -586,6 +594,7 @@
 									]
 								},
 								"variant": {
+									"description": "Name of the variation that supplied the resolved value.",
 									"type": "string"
 								}
 							},
@@ -964,8 +973,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "flagship.apps.evaluate",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "flagship.apps.flags",
+		"x-fern-sdk-method-name": "evaluate"
 	}
 }

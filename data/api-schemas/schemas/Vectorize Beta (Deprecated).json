@@ -493,30 +493,51 @@
 												"type": "object",
 												"properties": {
 													"config": {
-														"type": "object",
-														"properties": {
-															"dimensions": {
-																"description": "Specifies the number of dimensions for the index",
-																"type": "integer",
-																"example": 768,
-																"maximum": 1536,
-																"minimum": 1,
-																"x-auditable": true
+														"allOf": [
+															{
+																"type": "object",
+																"properties": {
+																	"dimensions": {
+																		"description": "Specifies the number of dimensions for the index",
+																		"type": "integer",
+																		"example": 768,
+																		"maximum": 1536,
+																		"minimum": 1,
+																		"x-auditable": true
+																	},
+																	"metric": {
+																		"description": "Specifies the type of metric to use calculating distance.",
+																		"type": "string",
+																		"enum": [
+																			"cosine",
+																			"euclidean",
+																			"dot-product"
+																		],
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"dimensions",
+																	"metric"
+																]
 															},
-															"metric": {
-																"description": "Specifies the type of metric to use calculating distance.",
-																"type": "string",
-																"enum": [
-																	"cosine",
-																	"euclidean",
-																	"dot-product"
-																],
-																"x-auditable": true
+															{
+																"properties": {
+																	"preset": {
+																		"description": "Specifies the preset to use for the index.",
+																		"type": "string",
+																		"example": "@cf/baai/bge-small-en-v1.5",
+																		"enum": [
+																			"@cf/baai/bge-small-en-v1.5",
+																			"@cf/baai/bge-base-en-v1.5",
+																			"@cf/baai/bge-large-en-v1.5",
+																			"openai/text-embedding-ada-002",
+																			"cohere/embed-multilingual-v2.0"
+																		],
+																		"x-auditable": true
+																	}
+																}
 															}
-														},
-														"required": [
-															"dimensions",
-															"metric"
 														]
 													},
 													"created_on": {
@@ -936,30 +957,51 @@
 											"type": "object",
 											"properties": {
 												"config": {
-													"type": "object",
-													"properties": {
-														"dimensions": {
-															"description": "Specifies the number of dimensions for the index",
-															"type": "integer",
-															"example": 768,
-															"maximum": 1536,
-															"minimum": 1,
-															"x-auditable": true
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"dimensions": {
+																	"description": "Specifies the number of dimensions for the index",
+																	"type": "integer",
+																	"example": 768,
+																	"maximum": 1536,
+																	"minimum": 1,
+																	"x-auditable": true
+																},
+																"metric": {
+																	"description": "Specifies the type of metric to use calculating distance.",
+																	"type": "string",
+																	"enum": [
+																		"cosine",
+																		"euclidean",
+																		"dot-product"
+																	],
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"dimensions",
+																"metric"
+															]
 														},
-														"metric": {
-															"description": "Specifies the type of metric to use calculating distance.",
-															"type": "string",
-															"enum": [
-																"cosine",
-																"euclidean",
-																"dot-product"
-															],
-															"x-auditable": true
+														{
+															"properties": {
+																"preset": {
+																	"description": "Specifies the preset to use for the index.",
+																	"type": "string",
+																	"example": "@cf/baai/bge-small-en-v1.5",
+																	"enum": [
+																		"@cf/baai/bge-small-en-v1.5",
+																		"@cf/baai/bge-base-en-v1.5",
+																		"@cf/baai/bge-large-en-v1.5",
+																		"openai/text-embedding-ada-002",
+																		"cohere/embed-multilingual-v2.0"
+																	],
+																	"x-auditable": true
+																}
+															}
 														}
-													},
-													"required": [
-														"dimensions",
-														"metric"
 													]
 												},
 												"created_on": {
@@ -1452,30 +1494,51 @@
 											"type": "object",
 											"properties": {
 												"config": {
-													"type": "object",
-													"properties": {
-														"dimensions": {
-															"description": "Specifies the number of dimensions for the index",
-															"type": "integer",
-															"example": 768,
-															"maximum": 1536,
-															"minimum": 1,
-															"x-auditable": true
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"dimensions": {
+																	"description": "Specifies the number of dimensions for the index",
+																	"type": "integer",
+																	"example": 768,
+																	"maximum": 1536,
+																	"minimum": 1,
+																	"x-auditable": true
+																},
+																"metric": {
+																	"description": "Specifies the type of metric to use calculating distance.",
+																	"type": "string",
+																	"enum": [
+																		"cosine",
+																		"euclidean",
+																		"dot-product"
+																	],
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"dimensions",
+																"metric"
+															]
 														},
-														"metric": {
-															"description": "Specifies the type of metric to use calculating distance.",
-															"type": "string",
-															"enum": [
-																"cosine",
-																"euclidean",
-																"dot-product"
-															],
-															"x-auditable": true
+														{
+															"properties": {
+																"preset": {
+																	"description": "Specifies the preset to use for the index.",
+																	"type": "string",
+																	"example": "@cf/baai/bge-small-en-v1.5",
+																	"enum": [
+																		"@cf/baai/bge-small-en-v1.5",
+																		"@cf/baai/bge-base-en-v1.5",
+																		"@cf/baai/bge-large-en-v1.5",
+																		"openai/text-embedding-ada-002",
+																		"cohere/embed-multilingual-v2.0"
+																	],
+																	"x-auditable": true
+																}
+															}
 														}
-													},
-													"required": [
-														"dimensions",
-														"metric"
 													]
 												},
 												"created_on": {
@@ -4100,30 +4163,51 @@
 											"type": "object",
 											"properties": {
 												"config": {
-													"type": "object",
-													"properties": {
-														"dimensions": {
-															"description": "Specifies the number of dimensions for the index",
-															"type": "integer",
-															"example": 768,
-															"maximum": 1536,
-															"minimum": 1,
-															"x-auditable": true
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"dimensions": {
+																	"description": "Specifies the number of dimensions for the index",
+																	"type": "integer",
+																	"example": 768,
+																	"maximum": 1536,
+																	"minimum": 1,
+																	"x-auditable": true
+																},
+																"metric": {
+																	"description": "Specifies the type of metric to use calculating distance.",
+																	"type": "string",
+																	"enum": [
+																		"cosine",
+																		"euclidean",
+																		"dot-product"
+																	],
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"dimensions",
+																"metric"
+															]
 														},
-														"metric": {
-															"description": "Specifies the type of metric to use calculating distance.",
-															"type": "string",
-															"enum": [
-																"cosine",
-																"euclidean",
-																"dot-product"
-															],
-															"x-auditable": true
+														{
+															"properties": {
+																"preset": {
+																	"description": "Specifies the preset to use for the index.",
+																	"type": "string",
+																	"example": "@cf/baai/bge-small-en-v1.5",
+																	"enum": [
+																		"@cf/baai/bge-small-en-v1.5",
+																		"@cf/baai/bge-base-en-v1.5",
+																		"@cf/baai/bge-large-en-v1.5",
+																		"openai/text-embedding-ada-002",
+																		"cohere/embed-multilingual-v2.0"
+																	],
+																	"x-auditable": true
+																}
+															}
 														}
-													},
-													"required": [
-														"dimensions",
-														"metric"
 													]
 												},
 												"created_on": {

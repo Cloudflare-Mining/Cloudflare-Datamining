@@ -7,20 +7,20 @@
 			{
 				"name": "account_id",
 				"in": "path",
-				"description": "Cloudflare account ID.",
+				"description": "Cloudflare account ID that owns the Flagship app.",
 				"required": true,
 				"schema": {
-					"description": "Cloudflare account ID.",
+					"description": "Cloudflare account ID that owns the Flagship app.",
 					"type": "string"
 				}
 			},
 			{
 				"name": "app_id",
 				"in": "path",
-				"description": "App identifier.",
+				"description": "Flagship app ID returned when the app was created.",
 				"required": true,
 				"schema": {
-					"description": "App identifier.",
+					"description": "Flagship app ID returned when the app was created.",
 					"type": "string"
 				}
 			},
@@ -101,7 +101,9 @@
 																					"starts_with",
 																					"ends_with",
 																					"in",
-																					"not_in"
+																					"not_in",
+																					"has",
+																					"not_has"
 																				]
 																			},
 																			"value": {
@@ -162,7 +164,9 @@
 																										"starts_with",
 																										"ends_with",
 																										"in",
-																										"not_in"
+																										"not_in",
+																										"has",
+																										"not_has"
 																									]
 																								},
 																								"value": {
@@ -223,7 +227,9 @@
 																															"starts_with",
 																															"ends_with",
 																															"in",
-																															"not_in"
+																															"not_in",
+																															"has",
+																															"not_has"
 																														]
 																													},
 																													"value": {
@@ -284,7 +290,9 @@
 																																				"starts_with",
 																																				"ends_with",
 																																				"in",
-																																				"not_in"
+																																				"not_in",
+																																				"has",
+																																				"not_has"
 																																			]
 																																		},
 																																		"value": {
@@ -345,7 +353,9 @@
 																																									"starts_with",
 																																									"ends_with",
 																																									"in",
-																																									"not_in"
+																																									"not_in",
+																																									"has",
+																																									"not_has"
 																																								]
 																																							},
 																																							"value": {
@@ -406,7 +416,9 @@
 																																														"starts_with",
 																																														"ends_with",
 																																														"in",
-																																														"not_in"
+																																														"not_in",
+																																														"has",
+																																														"not_has"
 																																													]
 																																												},
 																																												"value": {
@@ -582,13 +594,15 @@
 																"attribute": {
 																	"description": "Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.",
 																	"type": "string",
+																	"maxLength": 64,
 																	"minLength": 1
 																},
 																"percentage": {
-																	"description": "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
+																	"description": "Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
 																	"type": "number",
 																	"maximum": 100,
-																	"minimum": 0
+																	"minimum": 0,
+																	"multipleOf": 0.01
 																}
 															},
 															"required": [
@@ -819,7 +833,6 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "flagship.apps.definitions",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	}
 }

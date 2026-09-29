@@ -2,35 +2,35 @@
 	"DELETE /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}": {
 		"operationId": "flagship_delete_flag",
 		"summary": "Delete flag",
-		"description": "Deletes a flag permanently. Subsequent evaluations fall back to the caller-supplied default. Cannot be undone.",
+		"description": "Deletes a flag permanently. After deletion propagates, direct evaluations return not found; typed binding accessors may return the caller-supplied default. Cannot be undone.",
 		"parameters": [
 			{
 				"name": "account_id",
 				"in": "path",
-				"description": "Cloudflare account ID.",
+				"description": "Cloudflare account ID that owns the Flagship app.",
 				"required": true,
 				"schema": {
-					"description": "Cloudflare account ID.",
+					"description": "Cloudflare account ID that owns the Flagship app.",
 					"type": "string"
 				}
 			},
 			{
 				"name": "app_id",
 				"in": "path",
-				"description": "App identifier.",
+				"description": "Flagship app ID returned when the app was created.",
 				"required": true,
 				"schema": {
-					"description": "App identifier.",
+					"description": "Flagship app ID returned when the app was created.",
 					"type": "string"
 				}
 			},
 			{
 				"name": "flag_key",
 				"in": "path",
-				"description": "Flag key (slug).",
+				"description": "Case-sensitive key identifying the flag within the app.",
 				"required": true,
 				"schema": {
-					"description": "Flag key (slug).",
+					"description": "Case-sensitive key identifying the flag within the app.",
 					"type": "string"
 				}
 			}
@@ -462,7 +462,7 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "flagship.apps.flags",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "Delete this feature flag? After the deletion propagates, evaluation requests can no longer resolve it. This action cannot be undone."
 	},
 	"GET /accounts/{account_id}/flagship/apps/{app_id}/flags": {
 		"operationId": "flagship_list_flags",
@@ -472,20 +472,20 @@
 			{
 				"name": "account_id",
 				"in": "path",
-				"description": "Cloudflare account ID.",
+				"description": "Cloudflare account ID that owns the Flagship app.",
 				"required": true,
 				"schema": {
-					"description": "Cloudflare account ID.",
+					"description": "Cloudflare account ID that owns the Flagship app.",
 					"type": "string"
 				}
 			},
 			{
 				"name": "app_id",
 				"in": "path",
-				"description": "App identifier.",
+				"description": "Flagship app ID returned when the app was created.",
 				"required": true,
 				"schema": {
-					"description": "App identifier.",
+					"description": "Flagship app ID returned when the app was created.",
 					"type": "string"
 				}
 			},
@@ -495,7 +495,9 @@
 				"description": "Max items to return (1–200).",
 				"schema": {
 					"description": "Max items to return (1–200).",
-					"type": "string"
+					"type": "integer",
+					"maximum": 200,
+					"minimum": 1
 				}
 			},
 			{
@@ -555,6 +557,7 @@
 												"minLength": 1
 											},
 											"description": {
+												"description": "Optional operator-facing description. It does not affect flag evaluation.",
 												"type": "string",
 												"maxLength": 512,
 												"nullable": true
@@ -602,7 +605,9 @@
 																					"starts_with",
 																					"ends_with",
 																					"in",
-																					"not_in"
+																					"not_in",
+																					"has",
+																					"not_has"
 																				]
 																			},
 																			"value": {
@@ -663,7 +668,9 @@
 																										"starts_with",
 																										"ends_with",
 																										"in",
-																										"not_in"
+																										"not_in",
+																										"has",
+																										"not_has"
 																									]
 																								},
 																								"value": {
@@ -724,7 +731,9 @@
 																															"starts_with",
 																															"ends_with",
 																															"in",
-																															"not_in"
+																															"not_in",
+																															"has",
+																															"not_has"
 																														]
 																													},
 																													"value": {
@@ -785,7 +794,9 @@
 																																				"starts_with",
 																																				"ends_with",
 																																				"in",
-																																				"not_in"
+																																				"not_in",
+																																				"has",
+																																				"not_has"
 																																			]
 																																		},
 																																		"value": {
@@ -846,7 +857,9 @@
 																																									"starts_with",
 																																									"ends_with",
 																																									"in",
-																																									"not_in"
+																																									"not_in",
+																																									"has",
+																																									"not_has"
 																																								]
 																																							},
 																																							"value": {
@@ -907,7 +920,9 @@
 																																														"starts_with",
 																																														"ends_with",
 																																														"in",
-																																														"not_in"
+																																														"not_in",
+																																														"has",
+																																														"not_has"
 																																													]
 																																												},
 																																												"value": {
@@ -1088,13 +1103,15 @@
 																"attribute": {
 																	"description": "Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.",
 																	"type": "string",
+																	"maxLength": 64,
 																	"minLength": 1
 																},
 																"percentage": {
-																	"description": "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
+																	"description": "Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
 																	"type": "number",
 																	"maximum": 100,
-																	"minimum": 0
+																	"minimum": 0,
+																	"multipleOf": 0.01
 																}
 															},
 															"required": [
@@ -1570,8 +1587,7 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "flagship.apps.flags",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}": {
 		"operationId": "flagship_get_flag",
@@ -1581,30 +1597,30 @@
 			{
 				"name": "account_id",
 				"in": "path",
-				"description": "Cloudflare account ID.",
+				"description": "Cloudflare account ID that owns the Flagship app.",
 				"required": true,
 				"schema": {
-					"description": "Cloudflare account ID.",
+					"description": "Cloudflare account ID that owns the Flagship app.",
 					"type": "string"
 				}
 			},
 			{
 				"name": "app_id",
 				"in": "path",
-				"description": "App identifier.",
+				"description": "Flagship app ID returned when the app was created.",
 				"required": true,
 				"schema": {
-					"description": "App identifier.",
+					"description": "Flagship app ID returned when the app was created.",
 					"type": "string"
 				}
 			},
 			{
 				"name": "flag_key",
 				"in": "path",
-				"description": "Flag key (slug).",
+				"description": "Case-sensitive key identifying the flag within the app.",
 				"required": true,
 				"schema": {
-					"description": "Flag key (slug).",
+					"description": "Case-sensitive key identifying the flag within the app.",
 					"type": "string"
 				}
 			}
@@ -1654,6 +1670,7 @@
 											"minLength": 1
 										},
 										"description": {
+											"description": "Optional operator-facing description. It does not affect flag evaluation.",
 											"type": "string",
 											"maxLength": 512,
 											"nullable": true
@@ -1701,7 +1718,9 @@
 																				"starts_with",
 																				"ends_with",
 																				"in",
-																				"not_in"
+																				"not_in",
+																				"has",
+																				"not_has"
 																			]
 																		},
 																		"value": {
@@ -1762,7 +1781,9 @@
 																									"starts_with",
 																									"ends_with",
 																									"in",
-																									"not_in"
+																									"not_in",
+																									"has",
+																									"not_has"
 																								]
 																							},
 																							"value": {
@@ -1823,7 +1844,9 @@
 																														"starts_with",
 																														"ends_with",
 																														"in",
-																														"not_in"
+																														"not_in",
+																														"has",
+																														"not_has"
 																													]
 																												},
 																												"value": {
@@ -1884,7 +1907,9 @@
 																																			"starts_with",
 																																			"ends_with",
 																																			"in",
-																																			"not_in"
+																																			"not_in",
+																																			"has",
+																																			"not_has"
 																																		]
 																																	},
 																																	"value": {
@@ -1945,7 +1970,9 @@
 																																								"starts_with",
 																																								"ends_with",
 																																								"in",
-																																								"not_in"
+																																								"not_in",
+																																								"has",
+																																								"not_has"
 																																							]
 																																						},
 																																						"value": {
@@ -2006,7 +2033,9 @@
 																																													"starts_with",
 																																													"ends_with",
 																																													"in",
-																																													"not_in"
+																																													"not_in",
+																																													"has",
+																																													"not_has"
 																																												]
 																																											},
 																																											"value": {
@@ -2187,13 +2216,15 @@
 															"attribute": {
 																"description": "Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.",
 																"type": "string",
+																"maxLength": 64,
 																"minLength": 1
 															},
 															"percentage": {
-																"description": "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
+																"description": "Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
 																"type": "number",
 																"maximum": 100,
-																"minimum": 0
+																"minimum": 0,
+																"multipleOf": 0.01
 															}
 														},
 														"required": [
@@ -2648,8 +2679,7 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "flagship.apps.flags",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/flagship/apps/{app_id}/flags": {
 		"operationId": "flagship_create_flag",
@@ -2659,20 +2689,20 @@
 			{
 				"name": "account_id",
 				"in": "path",
-				"description": "Cloudflare account ID.",
+				"description": "Cloudflare account ID that owns the Flagship app.",
 				"required": true,
 				"schema": {
-					"description": "Cloudflare account ID.",
+					"description": "Cloudflare account ID that owns the Flagship app.",
 					"type": "string"
 				}
 			},
 			{
 				"name": "app_id",
 				"in": "path",
-				"description": "App identifier.",
+				"description": "Flagship app ID returned when the app was created.",
 				"required": true,
 				"schema": {
-					"description": "App identifier.",
+					"description": "Flagship app ID returned when the app was created.",
 					"type": "string"
 				}
 			}
@@ -2690,6 +2720,7 @@
 								"minLength": 1
 							},
 							"description": {
+								"description": "Optional operator-facing description. It does not affect flag evaluation.",
 								"type": "string",
 								"maxLength": 512,
 								"nullable": true
@@ -2737,7 +2768,9 @@
 																	"starts_with",
 																	"ends_with",
 																	"in",
-																	"not_in"
+																	"not_in",
+																	"has",
+																	"not_has"
 																]
 															},
 															"value": {
@@ -2798,7 +2831,9 @@
 																						"starts_with",
 																						"ends_with",
 																						"in",
-																						"not_in"
+																						"not_in",
+																						"has",
+																						"not_has"
 																					]
 																				},
 																				"value": {
@@ -2859,7 +2894,9 @@
 																											"starts_with",
 																											"ends_with",
 																											"in",
-																											"not_in"
+																											"not_in",
+																											"has",
+																											"not_has"
 																										]
 																									},
 																									"value": {
@@ -2920,7 +2957,9 @@
 																																"starts_with",
 																																"ends_with",
 																																"in",
-																																"not_in"
+																																"not_in",
+																																"has",
+																																"not_has"
 																															]
 																														},
 																														"value": {
@@ -2981,7 +3020,9 @@
 																																					"starts_with",
 																																					"ends_with",
 																																					"in",
-																																					"not_in"
+																																					"not_in",
+																																					"has",
+																																					"not_has"
 																																				]
 																																			},
 																																			"value": {
@@ -3042,7 +3083,9 @@
 																																										"starts_with",
 																																										"ends_with",
 																																										"in",
-																																										"not_in"
+																																										"not_in",
+																																										"has",
+																																										"not_has"
 																																									]
 																																								},
 																																								"value": {
@@ -3223,13 +3266,15 @@
 												"attribute": {
 													"description": "Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.",
 													"type": "string",
+													"maxLength": 64,
 													"minLength": 1
 												},
 												"percentage": {
-													"description": "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
+													"description": "Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
 													"type": "number",
 													"maximum": 100,
-													"minimum": 0
+													"minimum": 0,
+													"multipleOf": 0.01
 												}
 											},
 											"required": [
@@ -3346,6 +3391,7 @@
 											"minLength": 1
 										},
 										"description": {
+											"description": "Optional operator-facing description. It does not affect flag evaluation.",
 											"type": "string",
 											"maxLength": 512,
 											"nullable": true
@@ -3393,7 +3439,9 @@
 																				"starts_with",
 																				"ends_with",
 																				"in",
-																				"not_in"
+																				"not_in",
+																				"has",
+																				"not_has"
 																			]
 																		},
 																		"value": {
@@ -3454,7 +3502,9 @@
 																									"starts_with",
 																									"ends_with",
 																									"in",
-																									"not_in"
+																									"not_in",
+																									"has",
+																									"not_has"
 																								]
 																							},
 																							"value": {
@@ -3515,7 +3565,9 @@
 																														"starts_with",
 																														"ends_with",
 																														"in",
-																														"not_in"
+																														"not_in",
+																														"has",
+																														"not_has"
 																													]
 																												},
 																												"value": {
@@ -3576,7 +3628,9 @@
 																																			"starts_with",
 																																			"ends_with",
 																																			"in",
-																																			"not_in"
+																																			"not_in",
+																																			"has",
+																																			"not_has"
 																																		]
 																																	},
 																																	"value": {
@@ -3637,7 +3691,9 @@
 																																								"starts_with",
 																																								"ends_with",
 																																								"in",
-																																								"not_in"
+																																								"not_in",
+																																								"has",
+																																								"not_has"
 																																							]
 																																						},
 																																						"value": {
@@ -3698,7 +3754,9 @@
 																																													"starts_with",
 																																													"ends_with",
 																																													"in",
-																																													"not_in"
+																																													"not_in",
+																																													"has",
+																																													"not_has"
 																																												]
 																																											},
 																																											"value": {
@@ -3879,13 +3937,15 @@
 															"attribute": {
 																"description": "Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.",
 																"type": "string",
+																"maxLength": 64,
 																"minLength": 1
 															},
 															"percentage": {
-																"description": "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
+																"description": "Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
 																"type": "number",
 																"maximum": 100,
-																"minimum": 0
+																"minimum": 0,
+																"multipleOf": 0.01
 															}
 														},
 														"required": [
@@ -4339,41 +4399,40 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "flagship.apps.flags",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}": {
 		"operationId": "flagship_update_flag",
 		"summary": "Update flag",
-		"description": "Replaces the entire flag definition. Omitted fields are dropped, not preserved — read before writing. Each update appends a changelog entry.",
+		"description": "Replaces the entire flag definition. Omitted fields are dropped, not preserved — read before writing. The path key identifies the flag and cannot be renamed by changing the body `key`. Each update appends a changelog entry.",
 		"parameters": [
 			{
 				"name": "account_id",
 				"in": "path",
-				"description": "Cloudflare account ID.",
+				"description": "Cloudflare account ID that owns the Flagship app.",
 				"required": true,
 				"schema": {
-					"description": "Cloudflare account ID.",
+					"description": "Cloudflare account ID that owns the Flagship app.",
 					"type": "string"
 				}
 			},
 			{
 				"name": "app_id",
 				"in": "path",
-				"description": "App identifier.",
+				"description": "Flagship app ID returned when the app was created.",
 				"required": true,
 				"schema": {
-					"description": "App identifier.",
+					"description": "Flagship app ID returned when the app was created.",
 					"type": "string"
 				}
 			},
 			{
 				"name": "flag_key",
 				"in": "path",
-				"description": "Flag key (slug).",
+				"description": "Case-sensitive key identifying the flag within the app.",
 				"required": true,
 				"schema": {
-					"description": "Flag key (slug).",
+					"description": "Case-sensitive key identifying the flag within the app.",
 					"type": "string"
 				}
 			}
@@ -4391,6 +4450,7 @@
 								"minLength": 1
 							},
 							"description": {
+								"description": "Optional operator-facing description. It does not affect flag evaluation.",
 								"type": "string",
 								"maxLength": 512,
 								"nullable": true
@@ -4438,7 +4498,9 @@
 																	"starts_with",
 																	"ends_with",
 																	"in",
-																	"not_in"
+																	"not_in",
+																	"has",
+																	"not_has"
 																]
 															},
 															"value": {
@@ -4499,7 +4561,9 @@
 																						"starts_with",
 																						"ends_with",
 																						"in",
-																						"not_in"
+																						"not_in",
+																						"has",
+																						"not_has"
 																					]
 																				},
 																				"value": {
@@ -4560,7 +4624,9 @@
 																											"starts_with",
 																											"ends_with",
 																											"in",
-																											"not_in"
+																											"not_in",
+																											"has",
+																											"not_has"
 																										]
 																									},
 																									"value": {
@@ -4621,7 +4687,9 @@
 																																"starts_with",
 																																"ends_with",
 																																"in",
-																																"not_in"
+																																"not_in",
+																																"has",
+																																"not_has"
 																															]
 																														},
 																														"value": {
@@ -4682,7 +4750,9 @@
 																																					"starts_with",
 																																					"ends_with",
 																																					"in",
-																																					"not_in"
+																																					"not_in",
+																																					"has",
+																																					"not_has"
 																																				]
 																																			},
 																																			"value": {
@@ -4743,7 +4813,9 @@
 																																										"starts_with",
 																																										"ends_with",
 																																										"in",
-																																										"not_in"
+																																										"not_in",
+																																										"has",
+																																										"not_has"
 																																									]
 																																								},
 																																								"value": {
@@ -4924,13 +4996,15 @@
 												"attribute": {
 													"description": "Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.",
 													"type": "string",
+													"maxLength": 64,
 													"minLength": 1
 												},
 												"percentage": {
-													"description": "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
+													"description": "Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
 													"type": "number",
 													"maximum": 100,
-													"minimum": 0
+													"minimum": 0,
+													"multipleOf": 0.01
 												}
 											},
 											"required": [
@@ -5047,6 +5121,7 @@
 											"minLength": 1
 										},
 										"description": {
+											"description": "Optional operator-facing description. It does not affect flag evaluation.",
 											"type": "string",
 											"maxLength": 512,
 											"nullable": true
@@ -5094,7 +5169,9 @@
 																				"starts_with",
 																				"ends_with",
 																				"in",
-																				"not_in"
+																				"not_in",
+																				"has",
+																				"not_has"
 																			]
 																		},
 																		"value": {
@@ -5155,7 +5232,9 @@
 																									"starts_with",
 																									"ends_with",
 																									"in",
-																									"not_in"
+																									"not_in",
+																									"has",
+																									"not_has"
 																								]
 																							},
 																							"value": {
@@ -5216,7 +5295,9 @@
 																														"starts_with",
 																														"ends_with",
 																														"in",
-																														"not_in"
+																														"not_in",
+																														"has",
+																														"not_has"
 																													]
 																												},
 																												"value": {
@@ -5277,7 +5358,9 @@
 																																			"starts_with",
 																																			"ends_with",
 																																			"in",
-																																			"not_in"
+																																			"not_in",
+																																			"has",
+																																			"not_has"
 																																		]
 																																	},
 																																	"value": {
@@ -5338,7 +5421,9 @@
 																																								"starts_with",
 																																								"ends_with",
 																																								"in",
-																																								"not_in"
+																																								"not_in",
+																																								"has",
+																																								"not_has"
 																																							]
 																																						},
 																																						"value": {
@@ -5399,7 +5484,9 @@
 																																													"starts_with",
 																																													"ends_with",
 																																													"in",
-																																													"not_in"
+																																													"not_in",
+																																													"has",
+																																													"not_has"
 																																												]
 																																											},
 																																											"value": {
@@ -5580,13 +5667,15 @@
 															"attribute": {
 																"description": "Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.",
 																"type": "string",
+																"maxLength": 64,
 																"minLength": 1
 															},
 															"percentage": {
-																"description": "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
+																"description": "Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
 																"type": "number",
 																"maximum": 100,
-																"minimum": 0
+																"minimum": 0,
+																"multipleOf": 0.01
 															}
 														},
 														"required": [
@@ -6040,7 +6129,6 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "flagship.apps.flags",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

@@ -1801,7 +1801,8 @@
 				"schema": {
 					"type": "string",
 					"format": "date-time"
-				}
+				},
+				"x-fern-parameter-name": "start"
 			},
 			{
 				"name": "date_end",
@@ -1810,7 +1811,8 @@
 				"schema": {
 					"type": "string",
 					"format": "date-time"
-				}
+				},
+				"x-fern-parameter-name": "end"
 			},
 			{
 				"name": "account_id",
@@ -2129,15 +2131,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workflows.instances",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-params": {
-			"date_end": {
-				"flagName": "end"
-			},
-			"date_start": {
-				"flagName": "start"
-			}
-		}
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}": {
 		"operationId": "wor-describe-workflow-instance",
@@ -7466,7 +7460,8 @@
 												"pattern": "^(\\d+)\\s+(second|minute|hour|day|week|month|year)s?$",
 												"type": "string"
 											}
-										]
+										],
+										"x-fern-property-name": "error"
 									},
 									"success_retention": {
 										"description": "Specifies the duration in milliseconds or as a string like '5 minutes'.",
@@ -7480,7 +7475,8 @@
 												"pattern": "^(\\d+)\\s+(second|minute|hour|day|week|month|year)s?$",
 												"type": "string"
 											}
-										]
+										],
+										"x-fern-property-name": "success"
 									}
 								}
 							},
@@ -7788,12 +7784,6 @@
 		"x-fern-sdk-group-name": "workflows.instances",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-params": {
-			"instance_retention.error_retention": {
-				"flagName": "error-retention"
-			},
-			"instance_retention.success_retention": {
-				"flagName": "success-retention"
-			},
 			"params": {
 				"fromFile": {
 					"format": "json"
@@ -8160,7 +8150,8 @@
 													"pattern": "^(\\d+)\\s+(second|minute|hour|day|week|month|year)s?$",
 													"type": "string"
 												}
-											]
+											],
+											"x-fern-property-name": "error"
 										},
 										"success_retention": {
 											"description": "Specifies the duration in milliseconds or as a string like '5 minutes'.",
@@ -8174,7 +8165,8 @@
 													"pattern": "^(\\d+)\\s+(second|minute|hour|day|week|month|year)s?$",
 													"type": "string"
 												}
-											]
+											],
+											"x-fern-property-name": "success"
 										}
 									}
 								},

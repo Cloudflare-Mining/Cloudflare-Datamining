@@ -1,0 +1,4072 @@
+{
+	"DELETE /zones/{zone_id}/monetization/rules": {
+		"operationId": "monetization-delete-ruleset",
+		"summary": "Delete all payment rules",
+		"description": "Removes every Payment Required rule from the zone. Any rules the service does not own are preserved. Deleting a zone with no payment rules is a no-op. Returns the resulting (empty) rule collection.",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the zone.",
+					"type": "string",
+					"example": "9f1839b6152d298aca64c4e906b6d074",
+					"pattern": "^[0-9a-f]{32}$",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Resulting payment rule collection response after deletion.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "The zone's payment rules. Mirrors the shape of the ruleset submitted to the deploy endpoint, so the response can be read back as the desired state.",
+											"type": "object",
+											"properties": {
+												"rules": {
+													"description": "The zone's payment rules, in the order they are evaluated. Empty when the zone has no payment rules.",
+													"type": "array",
+													"items": {
+														"allOf": [
+															{
+																"discriminator": {
+																	"mapping": {
+																		"exact": "#/components/schemas/monetization_monetization-rule-input-fixed-price",
+																		"origin_controlled": "#/components/schemas/monetization_monetization-rule-input-origin-controlled",
+																		"upto": "#/components/schemas/monetization_monetization-rule-input-fixed-price"
+																	},
+																	"propertyName": "scheme"
+																},
+																"oneOf": [
+																	{
+																		"description": "Payment rule with a fixed price set at configuration time.",
+																		"type": "object",
+																		"properties": {
+																			"address": {
+																				"description": "0x-prefixed 20-byte hexadecimal Ethereum address. Mixed-case addresses must carry a valid EIP-55 checksum; all-lowercase or all-uppercase addresses are also accepted. The address must pass wallet screening whenever its rule is deployed or patched.",
+																				"type": "string",
+																				"example": "0x1234567890abcdef1234567890abcdef12345678===",
+																				"pattern": "^0x[0-9a-fA-F]{40}$",
+																				"x-auditable": true
+																			},
+																			"description": {
+																				"type": "string",
+																				"example": "Premium API endpoint",
+																				"maxLength": 512,
+																				"x-auditable": true
+																			},
+																			"enabled": {
+																				"type": "boolean",
+																				"default": true,
+																				"x-auditable": true
+																			},
+																			"expression": {
+																				"description": "Wirefilter expression identifying the requests that require payment. Forwarded verbatim to the Rulesets API, which validates its syntax.",
+																				"type": "string",
+																				"example": "(http.request.uri.path eq \"/premium\" and http.request.method in {\"GET\" \"POST\"})",
+																				"x-auditable": true
+																			},
+																			"id": {
+																				"description": "Optional on input. Include the ID of an existing payment rule to update it in place, preserving its stable identity across the full-ruleset replacement; omit it to create a new rule. An ID that does not match an existing payment rule in the zone is rejected. Rules omitted from the request are deleted.",
+																				"allOf": [
+																					{
+																						"type": "string",
+																						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																						"maxLength": 32,
+																						"x-auditable": true
+																					}
+																				]
+																			},
+																			"price": {
+																				"description": "Price in the smallest indivisible unit of the configured payment token, encoded as a decimal string. Must be a canonical decimal integer in [1000, 100000000]: no leading zeros, and a bare JSON number is rejected. The price is required for the fixed-price schemes (\"exact\" and \"upto\") and must be at least 1000, the smallest amount the payment facilitator can settle ($0.001 for a 6-decimal token such as USDC), and at most 100000000 ($100 for a 6-decimal token). When the scheme is \"origin_controlled\" the origin server sets pricing dynamically and the rule carries no price: the field must be omitted — any provided value, including \"0\", is rejected because it would not be enforced. Responses always encode this as a string and omit it for \"origin_controlled\" rules; the pattern matches exactly the set of values the server accepts.",
+																				"type": "string",
+																				"example": "250000",
+																				"pattern": "^([1-9]\\d{3,7}|10{8})$",
+																				"x-auditable": true
+																			},
+																			"scheme": {
+																				"description": "X402 payment scheme. \"exact\" requires the specified payment amount; \"upto\" permits a payment up to the specified amount. Both fixed-price schemes require the price field.",
+																				"type": "string",
+																				"example": "exact",
+																				"enum": [
+																					"exact",
+																					"upto"
+																				],
+																				"x-auditable": true
+																			}
+																		},
+																		"additionalProperties": false,
+																		"required": [
+																			"expression",
+																			"address",
+																			"scheme",
+																			"price"
+																		]
+																	},
+																	{
+																		"description": "Payment rule whose price the origin server sets dynamically. The rule carries no price and the price field must be omitted — any provided value, including \"0\", is rejected because it would not be enforced.",
+																		"type": "object",
+																		"properties": {
+																			"address": {
+																				"description": "0x-prefixed 20-byte hexadecimal Ethereum address. Mixed-case addresses must carry a valid EIP-55 checksum; all-lowercase or all-uppercase addresses are also accepted. The address must pass wallet screening whenever its rule is deployed or patched.",
+																				"type": "string",
+																				"example": "0x1234567890abcdef1234567890abcdef12345678===",
+																				"pattern": "^0x[0-9a-fA-F]{40}$",
+																				"x-auditable": true
+																			},
+																			"description": {
+																				"type": "string",
+																				"example": "Premium API endpoint",
+																				"maxLength": 512,
+																				"x-auditable": true
+																			},
+																			"enabled": {
+																				"type": "boolean",
+																				"default": true,
+																				"x-auditable": true
+																			},
+																			"expression": {
+																				"description": "Wirefilter expression identifying the requests that require payment. Forwarded verbatim to the Rulesets API, which validates its syntax.",
+																				"type": "string",
+																				"example": "(http.request.uri.path eq \"/premium\" and http.request.method in {\"GET\" \"POST\"})",
+																				"x-auditable": true
+																			},
+																			"id": {
+																				"description": "Optional on input. Include the ID of an existing payment rule to update it in place, preserving its stable identity across the full-ruleset replacement; omit it to create a new rule. An ID that does not match an existing payment rule in the zone is rejected. Rules omitted from the request are deleted.",
+																				"allOf": [
+																					{
+																						"type": "string",
+																						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																						"maxLength": 32,
+																						"x-auditable": true
+																					}
+																				]
+																			},
+																			"scheme": {
+																				"description": "X402 payment scheme. \"origin_controlled\" lets the origin server set pricing dynamically; the rule carries no price and the price field must be omitted.",
+																				"type": "string",
+																				"example": "origin_controlled",
+																				"enum": [
+																					"origin_controlled"
+																				],
+																				"x-auditable": true
+																			}
+																		},
+																		"additionalProperties": false,
+																		"required": [
+																			"expression",
+																			"address",
+																			"scheme"
+																		]
+																	}
+																]
+															},
+															{
+																"properties": {
+																	"id": {
+																		"description": "The server-assigned unique ID of the payment rule. Stable across full-ruleset replacements.",
+																		"allOf": [
+																			{
+																				"type": "string",
+																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																				"maxLength": 32,
+																				"x-auditable": true
+																			}
+																		]
+																	}
+																},
+																"required": [
+																	"id",
+																	"enabled"
+																],
+																"type": "object"
+															}
+														]
+													}
+												}
+											},
+											"required": [
+												"rules"
+											]
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Rulesets dependency failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Monetization"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "monetization.rules",
+		"x-fern-sdk-method-name": "delete-all",
+		"x-forge-require-confirmation": "This operation deletes every Monetization Gateway rule for the zone.",
+		"x-stability": "beta"
+	},
+	"DELETE /zones/{zone_id}/monetization/rules/{rule_id}": {
+		"operationId": "monetization-delete-rule",
+		"summary": "Delete a payment rule",
+		"description": "Removes a single Payment Required rule identified by its ID. Every other rule is preserved. Returns the resulting rule collection.",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the zone.",
+					"type": "string",
+					"example": "9f1839b6152d298aca64c4e906b6d074",
+					"pattern": "^[0-9a-f]{32}$",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "The unique ID of the payment rule.",
+				"in": "path",
+				"name": "rule_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Resulting payment rule collection response after deletion.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "The zone's payment rules. Mirrors the shape of the ruleset submitted to the deploy endpoint, so the response can be read back as the desired state.",
+											"type": "object",
+											"properties": {
+												"rules": {
+													"description": "The zone's payment rules, in the order they are evaluated. Empty when the zone has no payment rules.",
+													"type": "array",
+													"items": {
+														"allOf": [
+															{
+																"discriminator": {
+																	"mapping": {
+																		"exact": "#/components/schemas/monetization_monetization-rule-input-fixed-price",
+																		"origin_controlled": "#/components/schemas/monetization_monetization-rule-input-origin-controlled",
+																		"upto": "#/components/schemas/monetization_monetization-rule-input-fixed-price"
+																	},
+																	"propertyName": "scheme"
+																},
+																"oneOf": [
+																	{
+																		"description": "Payment rule with a fixed price set at configuration time.",
+																		"type": "object",
+																		"properties": {
+																			"address": {
+																				"description": "0x-prefixed 20-byte hexadecimal Ethereum address. Mixed-case addresses must carry a valid EIP-55 checksum; all-lowercase or all-uppercase addresses are also accepted. The address must pass wallet screening whenever its rule is deployed or patched.",
+																				"type": "string",
+																				"example": "0x1234567890abcdef1234567890abcdef12345678===",
+																				"pattern": "^0x[0-9a-fA-F]{40}$",
+																				"x-auditable": true
+																			},
+																			"description": {
+																				"type": "string",
+																				"example": "Premium API endpoint",
+																				"maxLength": 512,
+																				"x-auditable": true
+																			},
+																			"enabled": {
+																				"type": "boolean",
+																				"default": true,
+																				"x-auditable": true
+																			},
+																			"expression": {
+																				"description": "Wirefilter expression identifying the requests that require payment. Forwarded verbatim to the Rulesets API, which validates its syntax.",
+																				"type": "string",
+																				"example": "(http.request.uri.path eq \"/premium\" and http.request.method in {\"GET\" \"POST\"})",
+																				"x-auditable": true
+																			},
+																			"id": {
+																				"description": "Optional on input. Include the ID of an existing payment rule to update it in place, preserving its stable identity across the full-ruleset replacement; omit it to create a new rule. An ID that does not match an existing payment rule in the zone is rejected. Rules omitted from the request are deleted.",
+																				"allOf": [
+																					{
+																						"type": "string",
+																						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																						"maxLength": 32,
+																						"x-auditable": true
+																					}
+																				]
+																			},
+																			"price": {
+																				"description": "Price in the smallest indivisible unit of the configured payment token, encoded as a decimal string. Must be a canonical decimal integer in [1000, 100000000]: no leading zeros, and a bare JSON number is rejected. The price is required for the fixed-price schemes (\"exact\" and \"upto\") and must be at least 1000, the smallest amount the payment facilitator can settle ($0.001 for a 6-decimal token such as USDC), and at most 100000000 ($100 for a 6-decimal token). When the scheme is \"origin_controlled\" the origin server sets pricing dynamically and the rule carries no price: the field must be omitted — any provided value, including \"0\", is rejected because it would not be enforced. Responses always encode this as a string and omit it for \"origin_controlled\" rules; the pattern matches exactly the set of values the server accepts.",
+																				"type": "string",
+																				"example": "250000",
+																				"pattern": "^([1-9]\\d{3,7}|10{8})$",
+																				"x-auditable": true
+																			},
+																			"scheme": {
+																				"description": "X402 payment scheme. \"exact\" requires the specified payment amount; \"upto\" permits a payment up to the specified amount. Both fixed-price schemes require the price field.",
+																				"type": "string",
+																				"example": "exact",
+																				"enum": [
+																					"exact",
+																					"upto"
+																				],
+																				"x-auditable": true
+																			}
+																		},
+																		"additionalProperties": false,
+																		"required": [
+																			"expression",
+																			"address",
+																			"scheme",
+																			"price"
+																		]
+																	},
+																	{
+																		"description": "Payment rule whose price the origin server sets dynamically. The rule carries no price and the price field must be omitted — any provided value, including \"0\", is rejected because it would not be enforced.",
+																		"type": "object",
+																		"properties": {
+																			"address": {
+																				"description": "0x-prefixed 20-byte hexadecimal Ethereum address. Mixed-case addresses must carry a valid EIP-55 checksum; all-lowercase or all-uppercase addresses are also accepted. The address must pass wallet screening whenever its rule is deployed or patched.",
+																				"type": "string",
+																				"example": "0x1234567890abcdef1234567890abcdef12345678===",
+																				"pattern": "^0x[0-9a-fA-F]{40}$",
+																				"x-auditable": true
+																			},
+																			"description": {
+																				"type": "string",
+																				"example": "Premium API endpoint",
+																				"maxLength": 512,
+																				"x-auditable": true
+																			},
+																			"enabled": {
+																				"type": "boolean",
+																				"default": true,
+																				"x-auditable": true
+																			},
+																			"expression": {
+																				"description": "Wirefilter expression identifying the requests that require payment. Forwarded verbatim to the Rulesets API, which validates its syntax.",
+																				"type": "string",
+																				"example": "(http.request.uri.path eq \"/premium\" and http.request.method in {\"GET\" \"POST\"})",
+																				"x-auditable": true
+																			},
+																			"id": {
+																				"description": "Optional on input. Include the ID of an existing payment rule to update it in place, preserving its stable identity across the full-ruleset replacement; omit it to create a new rule. An ID that does not match an existing payment rule in the zone is rejected. Rules omitted from the request are deleted.",
+																				"allOf": [
+																					{
+																						"type": "string",
+																						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																						"maxLength": 32,
+																						"x-auditable": true
+																					}
+																				]
+																			},
+																			"scheme": {
+																				"description": "X402 payment scheme. \"origin_controlled\" lets the origin server set pricing dynamically; the rule carries no price and the price field must be omitted.",
+																				"type": "string",
+																				"example": "origin_controlled",
+																				"enum": [
+																					"origin_controlled"
+																				],
+																				"x-auditable": true
+																			}
+																		},
+																		"additionalProperties": false,
+																		"required": [
+																			"expression",
+																			"address",
+																			"scheme"
+																		]
+																	}
+																]
+															},
+															{
+																"properties": {
+																	"id": {
+																		"description": "The server-assigned unique ID of the payment rule. Stable across full-ruleset replacements.",
+																		"allOf": [
+																			{
+																				"type": "string",
+																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																				"maxLength": 32,
+																				"x-auditable": true
+																			}
+																		]
+																	}
+																},
+																"required": [
+																	"id",
+																	"enabled"
+																],
+																"type": "object"
+															}
+														]
+													}
+												}
+											},
+											"required": [
+												"rules"
+											]
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "No payment rule with the given ID exists in the zone.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Rulesets dependency failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Monetization"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "monetization.rules",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-require-confirmation": "This operation deletes the selected Monetization Gateway rule.",
+		"x-stability": "beta"
+	},
+	"GET /accounts/{account_id}/monetization": {
+		"operationId": "monetization-get-account-eligibility",
+		"summary": "Get account monetization eligibility",
+		"description": "Returns the account's latest stored monetization eligibility result.",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the account.",
+					"type": "string",
+					"example": "abf9b32d38c5f572afde3336ec0ce302",
+					"pattern": "^[0-9a-f]{32}$",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Stored account eligibility result.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"reasons": {
+													"description": "Public, human-readable reasons for a rejected decision, when available.",
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												},
+												"status": {
+													"description": "Current monetization eligibility decision.",
+													"type": "string",
+													"enum": [
+														"pending",
+														"approved",
+														"rejected"
+													]
+												}
+											},
+											"required": [
+												"status"
+											]
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "No account eligibility result exists.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Payments-edge dependency failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Monetization"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "monetization.account-eligibility",
+		"x-fern-sdk-method-name": "get",
+		"x-stability": "beta"
+	},
+	"GET /zones/{zone_id}/monetization": {
+		"operationId": "monetization-get-zone-eligibility",
+		"summary": "Get zone monetization eligibility",
+		"description": "Returns the zone's latest stored monetization eligibility result.",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the zone.",
+					"type": "string",
+					"example": "9f1839b6152d298aca64c4e906b6d074",
+					"pattern": "^[0-9a-f]{32}$",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Stored zone eligibility result.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"reasons": {
+													"description": "Public, human-readable reasons for a rejected decision, when available.",
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												},
+												"status": {
+													"description": "Current monetization eligibility decision.",
+													"type": "string",
+													"enum": [
+														"pending",
+														"approved",
+														"rejected"
+													]
+												}
+											},
+											"required": [
+												"status"
+											]
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "No zone eligibility result exists.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Payments-edge dependency failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Monetization"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "monetization.zone-eligibility",
+		"x-fern-sdk-method-name": "get",
+		"x-stability": "beta"
+	},
+	"GET /zones/{zone_id}/monetization/rules": {
+		"operationId": "monetization-list-rules",
+		"summary": "List payment rules",
+		"description": "Returns the currently deployed Payment Required rules for a zone. A zone with no Payment Required ruleset returns 404.",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the zone.",
+					"type": "string",
+					"example": "9f1839b6152d298aca64c4e906b6d074",
+					"pattern": "^[0-9a-f]{32}$",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Payment rule collection response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "The zone's payment rules. Mirrors the shape of the ruleset submitted to the deploy endpoint, so the response can be read back as the desired state.",
+											"type": "object",
+											"properties": {
+												"rules": {
+													"description": "The zone's payment rules, in the order they are evaluated. Empty when the zone has no payment rules.",
+													"type": "array",
+													"items": {
+														"allOf": [
+															{
+																"discriminator": {
+																	"mapping": {
+																		"exact": "#/components/schemas/monetization_monetization-rule-input-fixed-price",
+																		"origin_controlled": "#/components/schemas/monetization_monetization-rule-input-origin-controlled",
+																		"upto": "#/components/schemas/monetization_monetization-rule-input-fixed-price"
+																	},
+																	"propertyName": "scheme"
+																},
+																"oneOf": [
+																	{
+																		"description": "Payment rule with a fixed price set at configuration time.",
+																		"type": "object",
+																		"properties": {
+																			"address": {
+																				"description": "0x-prefixed 20-byte hexadecimal Ethereum address. Mixed-case addresses must carry a valid EIP-55 checksum; all-lowercase or all-uppercase addresses are also accepted. The address must pass wallet screening whenever its rule is deployed or patched.",
+																				"type": "string",
+																				"example": "0x1234567890abcdef1234567890abcdef12345678===",
+																				"pattern": "^0x[0-9a-fA-F]{40}$",
+																				"x-auditable": true
+																			},
+																			"description": {
+																				"type": "string",
+																				"example": "Premium API endpoint",
+																				"maxLength": 512,
+																				"x-auditable": true
+																			},
+																			"enabled": {
+																				"type": "boolean",
+																				"default": true,
+																				"x-auditable": true
+																			},
+																			"expression": {
+																				"description": "Wirefilter expression identifying the requests that require payment. Forwarded verbatim to the Rulesets API, which validates its syntax.",
+																				"type": "string",
+																				"example": "(http.request.uri.path eq \"/premium\" and http.request.method in {\"GET\" \"POST\"})",
+																				"x-auditable": true
+																			},
+																			"id": {
+																				"description": "Optional on input. Include the ID of an existing payment rule to update it in place, preserving its stable identity across the full-ruleset replacement; omit it to create a new rule. An ID that does not match an existing payment rule in the zone is rejected. Rules omitted from the request are deleted.",
+																				"allOf": [
+																					{
+																						"type": "string",
+																						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																						"maxLength": 32,
+																						"x-auditable": true
+																					}
+																				]
+																			},
+																			"price": {
+																				"description": "Price in the smallest indivisible unit of the configured payment token, encoded as a decimal string. Must be a canonical decimal integer in [1000, 100000000]: no leading zeros, and a bare JSON number is rejected. The price is required for the fixed-price schemes (\"exact\" and \"upto\") and must be at least 1000, the smallest amount the payment facilitator can settle ($0.001 for a 6-decimal token such as USDC), and at most 100000000 ($100 for a 6-decimal token). When the scheme is \"origin_controlled\" the origin server sets pricing dynamically and the rule carries no price: the field must be omitted — any provided value, including \"0\", is rejected because it would not be enforced. Responses always encode this as a string and omit it for \"origin_controlled\" rules; the pattern matches exactly the set of values the server accepts.",
+																				"type": "string",
+																				"example": "250000",
+																				"pattern": "^([1-9]\\d{3,7}|10{8})$",
+																				"x-auditable": true
+																			},
+																			"scheme": {
+																				"description": "X402 payment scheme. \"exact\" requires the specified payment amount; \"upto\" permits a payment up to the specified amount. Both fixed-price schemes require the price field.",
+																				"type": "string",
+																				"example": "exact",
+																				"enum": [
+																					"exact",
+																					"upto"
+																				],
+																				"x-auditable": true
+																			}
+																		},
+																		"additionalProperties": false,
+																		"required": [
+																			"expression",
+																			"address",
+																			"scheme",
+																			"price"
+																		]
+																	},
+																	{
+																		"description": "Payment rule whose price the origin server sets dynamically. The rule carries no price and the price field must be omitted — any provided value, including \"0\", is rejected because it would not be enforced.",
+																		"type": "object",
+																		"properties": {
+																			"address": {
+																				"description": "0x-prefixed 20-byte hexadecimal Ethereum address. Mixed-case addresses must carry a valid EIP-55 checksum; all-lowercase or all-uppercase addresses are also accepted. The address must pass wallet screening whenever its rule is deployed or patched.",
+																				"type": "string",
+																				"example": "0x1234567890abcdef1234567890abcdef12345678===",
+																				"pattern": "^0x[0-9a-fA-F]{40}$",
+																				"x-auditable": true
+																			},
+																			"description": {
+																				"type": "string",
+																				"example": "Premium API endpoint",
+																				"maxLength": 512,
+																				"x-auditable": true
+																			},
+																			"enabled": {
+																				"type": "boolean",
+																				"default": true,
+																				"x-auditable": true
+																			},
+																			"expression": {
+																				"description": "Wirefilter expression identifying the requests that require payment. Forwarded verbatim to the Rulesets API, which validates its syntax.",
+																				"type": "string",
+																				"example": "(http.request.uri.path eq \"/premium\" and http.request.method in {\"GET\" \"POST\"})",
+																				"x-auditable": true
+																			},
+																			"id": {
+																				"description": "Optional on input. Include the ID of an existing payment rule to update it in place, preserving its stable identity across the full-ruleset replacement; omit it to create a new rule. An ID that does not match an existing payment rule in the zone is rejected. Rules omitted from the request are deleted.",
+																				"allOf": [
+																					{
+																						"type": "string",
+																						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																						"maxLength": 32,
+																						"x-auditable": true
+																					}
+																				]
+																			},
+																			"scheme": {
+																				"description": "X402 payment scheme. \"origin_controlled\" lets the origin server set pricing dynamically; the rule carries no price and the price field must be omitted.",
+																				"type": "string",
+																				"example": "origin_controlled",
+																				"enum": [
+																					"origin_controlled"
+																				],
+																				"x-auditable": true
+																			}
+																		},
+																		"additionalProperties": false,
+																		"required": [
+																			"expression",
+																			"address",
+																			"scheme"
+																		]
+																	}
+																]
+															},
+															{
+																"properties": {
+																	"id": {
+																		"description": "The server-assigned unique ID of the payment rule. Stable across full-ruleset replacements.",
+																		"allOf": [
+																			{
+																				"type": "string",
+																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																				"maxLength": 32,
+																				"x-auditable": true
+																			}
+																		]
+																	}
+																},
+																"required": [
+																	"id",
+																	"enabled"
+																],
+																"type": "object"
+															}
+														]
+													}
+												}
+											},
+											"required": [
+												"rules"
+											]
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "The zone has no Payment Required ruleset.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Rulesets dependency failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Monetization"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "monetization.rules",
+		"x-fern-sdk-method-name": "list",
+		"x-stability": "beta"
+	},
+	"GET /zones/{zone_id}/monetization/rules/{rule_id}": {
+		"operationId": "monetization-get-rule",
+		"summary": "Get a payment rule",
+		"description": "Returns a single Payment Required rule identified by its ID.",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the zone.",
+					"type": "string",
+					"example": "9f1839b6152d298aca64c4e906b6d074",
+					"pattern": "^[0-9a-f]{32}$",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "The unique ID of the payment rule.",
+				"in": "path",
+				"name": "rule_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Payment rule response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"discriminator": {
+														"mapping": {
+															"exact": "#/components/schemas/monetization_monetization-rule-input-fixed-price",
+															"origin_controlled": "#/components/schemas/monetization_monetization-rule-input-origin-controlled",
+															"upto": "#/components/schemas/monetization_monetization-rule-input-fixed-price"
+														},
+														"propertyName": "scheme"
+													},
+													"oneOf": [
+														{
+															"description": "Payment rule with a fixed price set at configuration time.",
+															"type": "object",
+															"properties": {
+																"address": {
+																	"description": "0x-prefixed 20-byte hexadecimal Ethereum address. Mixed-case addresses must carry a valid EIP-55 checksum; all-lowercase or all-uppercase addresses are also accepted. The address must pass wallet screening whenever its rule is deployed or patched.",
+																	"type": "string",
+																	"example": "0x1234567890abcdef1234567890abcdef12345678===",
+																	"pattern": "^0x[0-9a-fA-F]{40}$",
+																	"x-auditable": true
+																},
+																"description": {
+																	"type": "string",
+																	"example": "Premium API endpoint",
+																	"maxLength": 512,
+																	"x-auditable": true
+																},
+																"enabled": {
+																	"type": "boolean",
+																	"default": true,
+																	"x-auditable": true
+																},
+																"expression": {
+																	"description": "Wirefilter expression identifying the requests that require payment. Forwarded verbatim to the Rulesets API, which validates its syntax.",
+																	"type": "string",
+																	"example": "(http.request.uri.path eq \"/premium\" and http.request.method in {\"GET\" \"POST\"})",
+																	"x-auditable": true
+																},
+																"id": {
+																	"description": "Optional on input. Include the ID of an existing payment rule to update it in place, preserving its stable identity across the full-ruleset replacement; omit it to create a new rule. An ID that does not match an existing payment rule in the zone is rejected. Rules omitted from the request are deleted.",
+																	"allOf": [
+																		{
+																			"type": "string",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"maxLength": 32,
+																			"x-auditable": true
+																		}
+																	]
+																},
+																"price": {
+																	"description": "Price in the smallest indivisible unit of the configured payment token, encoded as a decimal string. Must be a canonical decimal integer in [1000, 100000000]: no leading zeros, and a bare JSON number is rejected. The price is required for the fixed-price schemes (\"exact\" and \"upto\") and must be at least 1000, the smallest amount the payment facilitator can settle ($0.001 for a 6-decimal token such as USDC), and at most 100000000 ($100 for a 6-decimal token). When the scheme is \"origin_controlled\" the origin server sets pricing dynamically and the rule carries no price: the field must be omitted — any provided value, including \"0\", is rejected because it would not be enforced. Responses always encode this as a string and omit it for \"origin_controlled\" rules; the pattern matches exactly the set of values the server accepts.",
+																	"type": "string",
+																	"example": "250000",
+																	"pattern": "^([1-9]\\d{3,7}|10{8})$",
+																	"x-auditable": true
+																},
+																"scheme": {
+																	"description": "X402 payment scheme. \"exact\" requires the specified payment amount; \"upto\" permits a payment up to the specified amount. Both fixed-price schemes require the price field.",
+																	"type": "string",
+																	"example": "exact",
+																	"enum": [
+																		"exact",
+																		"upto"
+																	],
+																	"x-auditable": true
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"expression",
+																"address",
+																"scheme",
+																"price"
+															]
+														},
+														{
+															"description": "Payment rule whose price the origin server sets dynamically. The rule carries no price and the price field must be omitted — any provided value, including \"0\", is rejected because it would not be enforced.",
+															"type": "object",
+															"properties": {
+																"address": {
+																	"description": "0x-prefixed 20-byte hexadecimal Ethereum address. Mixed-case addresses must carry a valid EIP-55 checksum; all-lowercase or all-uppercase addresses are also accepted. The address must pass wallet screening whenever its rule is deployed or patched.",
+																	"type": "string",
+																	"example": "0x1234567890abcdef1234567890abcdef12345678===",
+																	"pattern": "^0x[0-9a-fA-F]{40}$",
+																	"x-auditable": true
+																},
+																"description": {
+																	"type": "string",
+																	"example": "Premium API endpoint",
+																	"maxLength": 512,
+																	"x-auditable": true
+																},
+																"enabled": {
+																	"type": "boolean",
+																	"default": true,
+																	"x-auditable": true
+																},
+																"expression": {
+																	"description": "Wirefilter expression identifying the requests that require payment. Forwarded verbatim to the Rulesets API, which validates its syntax.",
+																	"type": "string",
+																	"example": "(http.request.uri.path eq \"/premium\" and http.request.method in {\"GET\" \"POST\"})",
+																	"x-auditable": true
+																},
+																"id": {
+																	"description": "Optional on input. Include the ID of an existing payment rule to update it in place, preserving its stable identity across the full-ruleset replacement; omit it to create a new rule. An ID that does not match an existing payment rule in the zone is rejected. Rules omitted from the request are deleted.",
+																	"allOf": [
+																		{
+																			"type": "string",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"maxLength": 32,
+																			"x-auditable": true
+																		}
+																	]
+																},
+																"scheme": {
+																	"description": "X402 payment scheme. \"origin_controlled\" lets the origin server set pricing dynamically; the rule carries no price and the price field must be omitted.",
+																	"type": "string",
+																	"example": "origin_controlled",
+																	"enum": [
+																		"origin_controlled"
+																	],
+																	"x-auditable": true
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"expression",
+																"address",
+																"scheme"
+															]
+														}
+													]
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "The server-assigned unique ID of the payment rule. Stable across full-ruleset replacements.",
+															"allOf": [
+																{
+																	"type": "string",
+																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																	"maxLength": 32,
+																	"x-auditable": true
+																}
+															]
+														}
+													},
+													"required": [
+														"id",
+														"enabled"
+													],
+													"type": "object"
+												}
+											]
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "No payment rule with the given ID exists in the zone.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Rulesets dependency failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Monetization"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "monetization.rules",
+		"x-fern-sdk-method-name": "get",
+		"x-stability": "beta"
+	},
+	"PATCH /zones/{zone_id}/monetization/rules/{rule_id}": {
+		"operationId": "monetization-patch-rule",
+		"summary": "Update a payment rule",
+		"description": "Applies a partial update to a single Payment Required rule. Only the fields present in the request body are changed; omitted fields keep their current values. Returns the full resulting rule collection.",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the zone.",
+					"type": "string",
+					"example": "9f1839b6152d298aca64c4e906b6d074",
+					"pattern": "^[0-9a-f]{32}$",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "The unique ID of the payment rule.",
+				"in": "path",
+				"name": "rule_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "Partial update to a single payment rule. Only the fields present are modified; omitted fields keep their existing values.",
+						"type": "object",
+						"properties": {
+							"address": {
+								"description": "0x-prefixed 20-byte hexadecimal Ethereum address. Mixed-case addresses must carry a valid EIP-55 checksum; all-lowercase or all-uppercase addresses are also accepted. The effective address must pass wallet screening whenever the rule is patched.",
+								"type": "string",
+								"example": "0x1234567890abcdef1234567890abcdef12345678===",
+								"pattern": "^0x[0-9a-fA-F]{40}$",
+								"x-auditable": true
+							},
+							"description": {
+								"type": "string",
+								"example": "Premium API endpoint",
+								"maxLength": 512,
+								"x-auditable": true
+							},
+							"enabled": {
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"expression": {
+								"description": "Wirefilter expression identifying the requests that require payment. Forwarded verbatim to the Rulesets API, which validates its syntax.",
+								"type": "string",
+								"example": "(http.request.uri.path eq \"/premium\" and http.request.method in {\"GET\" \"POST\"})",
+								"x-auditable": true
+							},
+							"price": {
+								"description": "Price in the smallest indivisible unit of the configured payment token, encoded as a decimal string. Must be a canonical decimal integer in [1000, 100000000]: no leading zeros, and a bare JSON number is rejected. The price is required for the fixed-price schemes (\"exact\" and \"upto\") and must be at least 1000, the smallest amount the payment facilitator can settle ($0.001 for a 6-decimal token such as USDC), and at most 100000000 ($100 for a 6-decimal token). When the scheme is \"origin_controlled\" the origin server sets pricing dynamically and the rule carries no price: the field must be omitted — any provided value, including \"0\", is rejected because it would not be enforced. Responses always encode this as a string and omit it for \"origin_controlled\" rules; the pattern matches exactly the set of values the server accepts.",
+								"type": "string",
+								"example": "250000",
+								"pattern": "^([1-9]\\d{3,7}|10{8})$",
+								"x-auditable": true
+							},
+							"scheme": {
+								"description": "X402 payment scheme. \"exact\" requires the specified payment amount; \"upto\" permits a payment up to the specified amount; \"origin_controlled\" lets the origin server set pricing dynamically, in which case the rule carries no price and the price field must be omitted.",
+								"type": "string",
+								"example": "exact",
+								"enum": [
+									"exact",
+									"upto",
+									"origin_controlled"
+								],
+								"x-auditable": true
+							}
+						},
+						"additionalProperties": false
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Updated payment rule collection response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "The zone's payment rules. Mirrors the shape of the ruleset submitted to the deploy endpoint, so the response can be read back as the desired state.",
+											"type": "object",
+											"properties": {
+												"rules": {
+													"description": "The zone's payment rules, in the order they are evaluated. Empty when the zone has no payment rules.",
+													"type": "array",
+													"items": {
+														"allOf": [
+															{
+																"discriminator": {
+																	"mapping": {
+																		"exact": "#/components/schemas/monetization_monetization-rule-input-fixed-price",
+																		"origin_controlled": "#/components/schemas/monetization_monetization-rule-input-origin-controlled",
+																		"upto": "#/components/schemas/monetization_monetization-rule-input-fixed-price"
+																	},
+																	"propertyName": "scheme"
+																},
+																"oneOf": [
+																	{
+																		"description": "Payment rule with a fixed price set at configuration time.",
+																		"type": "object",
+																		"properties": {
+																			"address": {
+																				"description": "0x-prefixed 20-byte hexadecimal Ethereum address. Mixed-case addresses must carry a valid EIP-55 checksum; all-lowercase or all-uppercase addresses are also accepted. The address must pass wallet screening whenever its rule is deployed or patched.",
+																				"type": "string",
+																				"example": "0x1234567890abcdef1234567890abcdef12345678===",
+																				"pattern": "^0x[0-9a-fA-F]{40}$",
+																				"x-auditable": true
+																			},
+																			"description": {
+																				"type": "string",
+																				"example": "Premium API endpoint",
+																				"maxLength": 512,
+																				"x-auditable": true
+																			},
+																			"enabled": {
+																				"type": "boolean",
+																				"default": true,
+																				"x-auditable": true
+																			},
+																			"expression": {
+																				"description": "Wirefilter expression identifying the requests that require payment. Forwarded verbatim to the Rulesets API, which validates its syntax.",
+																				"type": "string",
+																				"example": "(http.request.uri.path eq \"/premium\" and http.request.method in {\"GET\" \"POST\"})",
+																				"x-auditable": true
+																			},
+																			"id": {
+																				"description": "Optional on input. Include the ID of an existing payment rule to update it in place, preserving its stable identity across the full-ruleset replacement; omit it to create a new rule. An ID that does not match an existing payment rule in the zone is rejected. Rules omitted from the request are deleted.",
+																				"allOf": [
+																					{
+																						"type": "string",
+																						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																						"maxLength": 32,
+																						"x-auditable": true
+																					}
+																				]
+																			},
+																			"price": {
+																				"description": "Price in the smallest indivisible unit of the configured payment token, encoded as a decimal string. Must be a canonical decimal integer in [1000, 100000000]: no leading zeros, and a bare JSON number is rejected. The price is required for the fixed-price schemes (\"exact\" and \"upto\") and must be at least 1000, the smallest amount the payment facilitator can settle ($0.001 for a 6-decimal token such as USDC), and at most 100000000 ($100 for a 6-decimal token). When the scheme is \"origin_controlled\" the origin server sets pricing dynamically and the rule carries no price: the field must be omitted — any provided value, including \"0\", is rejected because it would not be enforced. Responses always encode this as a string and omit it for \"origin_controlled\" rules; the pattern matches exactly the set of values the server accepts.",
+																				"type": "string",
+																				"example": "250000",
+																				"pattern": "^([1-9]\\d{3,7}|10{8})$",
+																				"x-auditable": true
+																			},
+																			"scheme": {
+																				"description": "X402 payment scheme. \"exact\" requires the specified payment amount; \"upto\" permits a payment up to the specified amount. Both fixed-price schemes require the price field.",
+																				"type": "string",
+																				"example": "exact",
+																				"enum": [
+																					"exact",
+																					"upto"
+																				],
+																				"x-auditable": true
+																			}
+																		},
+																		"additionalProperties": false,
+																		"required": [
+																			"expression",
+																			"address",
+																			"scheme",
+																			"price"
+																		]
+																	},
+																	{
+																		"description": "Payment rule whose price the origin server sets dynamically. The rule carries no price and the price field must be omitted — any provided value, including \"0\", is rejected because it would not be enforced.",
+																		"type": "object",
+																		"properties": {
+																			"address": {
+																				"description": "0x-prefixed 20-byte hexadecimal Ethereum address. Mixed-case addresses must carry a valid EIP-55 checksum; all-lowercase or all-uppercase addresses are also accepted. The address must pass wallet screening whenever its rule is deployed or patched.",
+																				"type": "string",
+																				"example": "0x1234567890abcdef1234567890abcdef12345678===",
+																				"pattern": "^0x[0-9a-fA-F]{40}$",
+																				"x-auditable": true
+																			},
+																			"description": {
+																				"type": "string",
+																				"example": "Premium API endpoint",
+																				"maxLength": 512,
+																				"x-auditable": true
+																			},
+																			"enabled": {
+																				"type": "boolean",
+																				"default": true,
+																				"x-auditable": true
+																			},
+																			"expression": {
+																				"description": "Wirefilter expression identifying the requests that require payment. Forwarded verbatim to the Rulesets API, which validates its syntax.",
+																				"type": "string",
+																				"example": "(http.request.uri.path eq \"/premium\" and http.request.method in {\"GET\" \"POST\"})",
+																				"x-auditable": true
+																			},
+																			"id": {
+																				"description": "Optional on input. Include the ID of an existing payment rule to update it in place, preserving its stable identity across the full-ruleset replacement; omit it to create a new rule. An ID that does not match an existing payment rule in the zone is rejected. Rules omitted from the request are deleted.",
+																				"allOf": [
+																					{
+																						"type": "string",
+																						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																						"maxLength": 32,
+																						"x-auditable": true
+																					}
+																				]
+																			},
+																			"scheme": {
+																				"description": "X402 payment scheme. \"origin_controlled\" lets the origin server set pricing dynamically; the rule carries no price and the price field must be omitted.",
+																				"type": "string",
+																				"example": "origin_controlled",
+																				"enum": [
+																					"origin_controlled"
+																				],
+																				"x-auditable": true
+																			}
+																		},
+																		"additionalProperties": false,
+																		"required": [
+																			"expression",
+																			"address",
+																			"scheme"
+																		]
+																	}
+																]
+															},
+															{
+																"properties": {
+																	"id": {
+																		"description": "The server-assigned unique ID of the payment rule. Stable across full-ruleset replacements.",
+																		"allOf": [
+																			{
+																				"type": "string",
+																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																				"maxLength": 32,
+																				"x-auditable": true
+																			}
+																		]
+																	}
+																},
+																"required": [
+																	"id",
+																	"enabled"
+																],
+																"type": "object"
+															}
+														]
+													}
+												}
+											},
+											"required": [
+												"rules"
+											]
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "The request cannot be fulfilled due to policy restrictions.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "No payment rule with the given ID exists in the zone.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Rulesets dependency failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Monetization"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "monetization.rules",
+		"x-fern-sdk-method-name": "edit",
+		"x-stability": "beta"
+	},
+	"POST /accounts/{account_id}/monetization": {
+		"operationId": "monetization-check-account-eligibility",
+		"summary": "Check account monetization eligibility",
+		"description": "Checks the account for Monetization Gateway eligibility and returns its pending, approved, or rejected decision.",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the account.",
+					"type": "string",
+					"example": "abf9b32d38c5f572afde3336ec0ce302",
+					"pattern": "^[0-9a-f]{32}$",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"acceptedTermsOfService": {
+								"description": "Confirms acceptance of the Monetization Gateway terms of service.",
+								"type": "boolean",
+								"enum": [
+									true
+								],
+								"x-auditable": true
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"acceptedTermsOfService"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Account eligibility decision.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"reasons": {
+													"description": "Public, human-readable reasons for a rejected decision, when available.",
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												},
+												"status": {
+													"description": "Current monetization eligibility decision.",
+													"type": "string",
+													"enum": [
+														"pending",
+														"approved",
+														"rejected"
+													]
+												}
+											},
+											"required": [
+												"status"
+											]
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Payments-edge dependency failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Monetization"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "monetization.account-eligibility",
+		"x-fern-sdk-method-name": "check",
+		"x-stability": "beta"
+	},
+	"POST /zones/{zone_id}/monetization": {
+		"operationId": "monetization-check-zone-eligibility",
+		"summary": "Check zone monetization eligibility",
+		"description": "Checks the zone for Monetization Gateway eligibility and enables its entitlement when the decision is approved.",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the zone.",
+					"type": "string",
+					"example": "9f1839b6152d298aca64c4e906b6d074",
+					"pattern": "^[0-9a-f]{32}$",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Zone eligibility decision and entitlement activation outcome.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"reasons": {
+															"description": "Public, human-readable reasons for a rejected decision, when available.",
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
+														"status": {
+															"description": "Current monetization eligibility decision.",
+															"type": "string",
+															"enum": [
+																"pending",
+																"approved",
+																"rejected"
+															]
+														}
+													},
+													"required": [
+														"status"
+													]
+												},
+												{
+													"properties": {
+														"enabled": {
+															"description": "Whether this check successfully enabled the zone entitlement. Only approved decisions can enable it.",
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"enabled"
+													],
+													"type": "object"
+												}
+											]
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Payments-edge or Entitlements API dependency failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Monetization"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "monetization.zone-eligibility",
+		"x-fern-sdk-method-name": "check",
+		"x-stability": "beta"
+	},
+	"PUT /zones/{zone_id}/monetization/rules": {
+		"operationId": "monetization-deploy-ruleset",
+		"summary": "Deploy payment ruleset",
+		"description": "Replaces the zone's Payment Required ruleset with the submitted desired state. Submit an empty rules array to clear all payment rules.",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the zone.",
+					"type": "string",
+					"example": "9f1839b6152d298aca64c4e906b6d074",
+					"pattern": "^[0-9a-f]{32}$",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"rules": {
+								"description": "Full desired Payment Required ruleset. An empty array clears all payment rules. The ruleset may contain at most 40 unique wallet addresses; address comparison is case-insensitive. Every address must pass wallet screening before deployment.",
+								"type": "array",
+								"items": {
+									"discriminator": {
+										"mapping": {
+											"exact": "#/components/schemas/monetization_monetization-rule-input-fixed-price",
+											"origin_controlled": "#/components/schemas/monetization_monetization-rule-input-origin-controlled",
+											"upto": "#/components/schemas/monetization_monetization-rule-input-fixed-price"
+										},
+										"propertyName": "scheme"
+									},
+									"oneOf": [
+										{
+											"description": "Payment rule with a fixed price set at configuration time.",
+											"type": "object",
+											"properties": {
+												"address": {
+													"description": "0x-prefixed 20-byte hexadecimal Ethereum address. Mixed-case addresses must carry a valid EIP-55 checksum; all-lowercase or all-uppercase addresses are also accepted. The address must pass wallet screening whenever its rule is deployed or patched.",
+													"type": "string",
+													"example": "0x1234567890abcdef1234567890abcdef12345678===",
+													"pattern": "^0x[0-9a-fA-F]{40}$",
+													"x-auditable": true
+												},
+												"description": {
+													"type": "string",
+													"example": "Premium API endpoint",
+													"maxLength": 512,
+													"x-auditable": true
+												},
+												"enabled": {
+													"type": "boolean",
+													"default": true,
+													"x-auditable": true
+												},
+												"expression": {
+													"description": "Wirefilter expression identifying the requests that require payment. Forwarded verbatim to the Rulesets API, which validates its syntax.",
+													"type": "string",
+													"example": "(http.request.uri.path eq \"/premium\" and http.request.method in {\"GET\" \"POST\"})",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "Optional on input. Include the ID of an existing payment rule to update it in place, preserving its stable identity across the full-ruleset replacement; omit it to create a new rule. An ID that does not match an existing payment rule in the zone is rejected. Rules omitted from the request are deleted.",
+													"allOf": [
+														{
+															"type": "string",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"x-auditable": true
+														}
+													]
+												},
+												"price": {
+													"description": "Price in the smallest indivisible unit of the configured payment token, encoded as a decimal string. Must be a canonical decimal integer in [1000, 100000000]: no leading zeros, and a bare JSON number is rejected. The price is required for the fixed-price schemes (\"exact\" and \"upto\") and must be at least 1000, the smallest amount the payment facilitator can settle ($0.001 for a 6-decimal token such as USDC), and at most 100000000 ($100 for a 6-decimal token). When the scheme is \"origin_controlled\" the origin server sets pricing dynamically and the rule carries no price: the field must be omitted — any provided value, including \"0\", is rejected because it would not be enforced. Responses always encode this as a string and omit it for \"origin_controlled\" rules; the pattern matches exactly the set of values the server accepts.",
+													"type": "string",
+													"example": "250000",
+													"pattern": "^([1-9]\\d{3,7}|10{8})$",
+													"x-auditable": true
+												},
+												"scheme": {
+													"description": "X402 payment scheme. \"exact\" requires the specified payment amount; \"upto\" permits a payment up to the specified amount. Both fixed-price schemes require the price field.",
+													"type": "string",
+													"example": "exact",
+													"enum": [
+														"exact",
+														"upto"
+													],
+													"x-auditable": true
+												}
+											},
+											"additionalProperties": false,
+											"required": [
+												"expression",
+												"address",
+												"scheme",
+												"price"
+											]
+										},
+										{
+											"description": "Payment rule whose price the origin server sets dynamically. The rule carries no price and the price field must be omitted — any provided value, including \"0\", is rejected because it would not be enforced.",
+											"type": "object",
+											"properties": {
+												"address": {
+													"description": "0x-prefixed 20-byte hexadecimal Ethereum address. Mixed-case addresses must carry a valid EIP-55 checksum; all-lowercase or all-uppercase addresses are also accepted. The address must pass wallet screening whenever its rule is deployed or patched.",
+													"type": "string",
+													"example": "0x1234567890abcdef1234567890abcdef12345678===",
+													"pattern": "^0x[0-9a-fA-F]{40}$",
+													"x-auditable": true
+												},
+												"description": {
+													"type": "string",
+													"example": "Premium API endpoint",
+													"maxLength": 512,
+													"x-auditable": true
+												},
+												"enabled": {
+													"type": "boolean",
+													"default": true,
+													"x-auditable": true
+												},
+												"expression": {
+													"description": "Wirefilter expression identifying the requests that require payment. Forwarded verbatim to the Rulesets API, which validates its syntax.",
+													"type": "string",
+													"example": "(http.request.uri.path eq \"/premium\" and http.request.method in {\"GET\" \"POST\"})",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "Optional on input. Include the ID of an existing payment rule to update it in place, preserving its stable identity across the full-ruleset replacement; omit it to create a new rule. An ID that does not match an existing payment rule in the zone is rejected. Rules omitted from the request are deleted.",
+													"allOf": [
+														{
+															"type": "string",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"x-auditable": true
+														}
+													]
+												},
+												"scheme": {
+													"description": "X402 payment scheme. \"origin_controlled\" lets the origin server set pricing dynamically; the rule carries no price and the price field must be omitted.",
+													"type": "string",
+													"example": "origin_controlled",
+													"enum": [
+														"origin_controlled"
+													],
+													"x-auditable": true
+												}
+											},
+											"additionalProperties": false,
+											"required": [
+												"expression",
+												"address",
+												"scheme"
+											]
+										}
+									]
+								},
+								"x-auditable": true
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"rules"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Deployed payment rule collection response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "The zone's payment rules. Mirrors the shape of the ruleset submitted to the deploy endpoint, so the response can be read back as the desired state.",
+											"type": "object",
+											"properties": {
+												"rules": {
+													"description": "The zone's payment rules, in the order they are evaluated. Empty when the zone has no payment rules.",
+													"type": "array",
+													"items": {
+														"allOf": [
+															{
+																"discriminator": {
+																	"mapping": {
+																		"exact": "#/components/schemas/monetization_monetization-rule-input-fixed-price",
+																		"origin_controlled": "#/components/schemas/monetization_monetization-rule-input-origin-controlled",
+																		"upto": "#/components/schemas/monetization_monetization-rule-input-fixed-price"
+																	},
+																	"propertyName": "scheme"
+																},
+																"oneOf": [
+																	{
+																		"description": "Payment rule with a fixed price set at configuration time.",
+																		"type": "object",
+																		"properties": {
+																			"address": {
+																				"description": "0x-prefixed 20-byte hexadecimal Ethereum address. Mixed-case addresses must carry a valid EIP-55 checksum; all-lowercase or all-uppercase addresses are also accepted. The address must pass wallet screening whenever its rule is deployed or patched.",
+																				"type": "string",
+																				"example": "0x1234567890abcdef1234567890abcdef12345678===",
+																				"pattern": "^0x[0-9a-fA-F]{40}$",
+																				"x-auditable": true
+																			},
+																			"description": {
+																				"type": "string",
+																				"example": "Premium API endpoint",
+																				"maxLength": 512,
+																				"x-auditable": true
+																			},
+																			"enabled": {
+																				"type": "boolean",
+																				"default": true,
+																				"x-auditable": true
+																			},
+																			"expression": {
+																				"description": "Wirefilter expression identifying the requests that require payment. Forwarded verbatim to the Rulesets API, which validates its syntax.",
+																				"type": "string",
+																				"example": "(http.request.uri.path eq \"/premium\" and http.request.method in {\"GET\" \"POST\"})",
+																				"x-auditable": true
+																			},
+																			"id": {
+																				"description": "Optional on input. Include the ID of an existing payment rule to update it in place, preserving its stable identity across the full-ruleset replacement; omit it to create a new rule. An ID that does not match an existing payment rule in the zone is rejected. Rules omitted from the request are deleted.",
+																				"allOf": [
+																					{
+																						"type": "string",
+																						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																						"maxLength": 32,
+																						"x-auditable": true
+																					}
+																				]
+																			},
+																			"price": {
+																				"description": "Price in the smallest indivisible unit of the configured payment token, encoded as a decimal string. Must be a canonical decimal integer in [1000, 100000000]: no leading zeros, and a bare JSON number is rejected. The price is required for the fixed-price schemes (\"exact\" and \"upto\") and must be at least 1000, the smallest amount the payment facilitator can settle ($0.001 for a 6-decimal token such as USDC), and at most 100000000 ($100 for a 6-decimal token). When the scheme is \"origin_controlled\" the origin server sets pricing dynamically and the rule carries no price: the field must be omitted — any provided value, including \"0\", is rejected because it would not be enforced. Responses always encode this as a string and omit it for \"origin_controlled\" rules; the pattern matches exactly the set of values the server accepts.",
+																				"type": "string",
+																				"example": "250000",
+																				"pattern": "^([1-9]\\d{3,7}|10{8})$",
+																				"x-auditable": true
+																			},
+																			"scheme": {
+																				"description": "X402 payment scheme. \"exact\" requires the specified payment amount; \"upto\" permits a payment up to the specified amount. Both fixed-price schemes require the price field.",
+																				"type": "string",
+																				"example": "exact",
+																				"enum": [
+																					"exact",
+																					"upto"
+																				],
+																				"x-auditable": true
+																			}
+																		},
+																		"additionalProperties": false,
+																		"required": [
+																			"expression",
+																			"address",
+																			"scheme",
+																			"price"
+																		]
+																	},
+																	{
+																		"description": "Payment rule whose price the origin server sets dynamically. The rule carries no price and the price field must be omitted — any provided value, including \"0\", is rejected because it would not be enforced.",
+																		"type": "object",
+																		"properties": {
+																			"address": {
+																				"description": "0x-prefixed 20-byte hexadecimal Ethereum address. Mixed-case addresses must carry a valid EIP-55 checksum; all-lowercase or all-uppercase addresses are also accepted. The address must pass wallet screening whenever its rule is deployed or patched.",
+																				"type": "string",
+																				"example": "0x1234567890abcdef1234567890abcdef12345678===",
+																				"pattern": "^0x[0-9a-fA-F]{40}$",
+																				"x-auditable": true
+																			},
+																			"description": {
+																				"type": "string",
+																				"example": "Premium API endpoint",
+																				"maxLength": 512,
+																				"x-auditable": true
+																			},
+																			"enabled": {
+																				"type": "boolean",
+																				"default": true,
+																				"x-auditable": true
+																			},
+																			"expression": {
+																				"description": "Wirefilter expression identifying the requests that require payment. Forwarded verbatim to the Rulesets API, which validates its syntax.",
+																				"type": "string",
+																				"example": "(http.request.uri.path eq \"/premium\" and http.request.method in {\"GET\" \"POST\"})",
+																				"x-auditable": true
+																			},
+																			"id": {
+																				"description": "Optional on input. Include the ID of an existing payment rule to update it in place, preserving its stable identity across the full-ruleset replacement; omit it to create a new rule. An ID that does not match an existing payment rule in the zone is rejected. Rules omitted from the request are deleted.",
+																				"allOf": [
+																					{
+																						"type": "string",
+																						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																						"maxLength": 32,
+																						"x-auditable": true
+																					}
+																				]
+																			},
+																			"scheme": {
+																				"description": "X402 payment scheme. \"origin_controlled\" lets the origin server set pricing dynamically; the rule carries no price and the price field must be omitted.",
+																				"type": "string",
+																				"example": "origin_controlled",
+																				"enum": [
+																					"origin_controlled"
+																				],
+																				"x-auditable": true
+																			}
+																		},
+																		"additionalProperties": false,
+																		"required": [
+																			"expression",
+																			"address",
+																			"scheme"
+																		]
+																	}
+																]
+															},
+															{
+																"properties": {
+																	"id": {
+																		"description": "The server-assigned unique ID of the payment rule. Stable across full-ruleset replacements.",
+																		"allOf": [
+																			{
+																				"type": "string",
+																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																				"maxLength": 32,
+																				"x-auditable": true
+																			}
+																		]
+																	}
+																},
+																"required": [
+																	"id",
+																	"enabled"
+																],
+																"type": "object"
+															}
+														]
+													}
+												}
+											},
+											"required": [
+												"rules"
+											]
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "The request cannot be fulfilled due to policy restrictions.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Rulesets dependency failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Monetization"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "monetization.rules",
+		"x-fern-sdk-method-name": "update",
+		"x-stability": "beta"
+	}
+}
