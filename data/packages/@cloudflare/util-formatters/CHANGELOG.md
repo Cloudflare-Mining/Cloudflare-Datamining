@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.7.11
+
+### Patch Changes
+
+- 44b2124d4b: Use uppercase T and Q suffixes for trillion- and quadrillion-scale analytics values.
+
 ## 2.7.10
 
 ### Patch Changes

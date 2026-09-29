@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.0.43
+
+### Patch Changes
+
+- @cloudflare/component-forms@7.0.43
+
 ## 7.0.42
 
 ### Patch Changes

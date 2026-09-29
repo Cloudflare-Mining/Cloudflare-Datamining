@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.0.43
+
+### Patch Changes
+
+- @cloudflare/component-time-period-picker@7.3.9
+
 ## 7.0.42
 
 ### Patch Changes

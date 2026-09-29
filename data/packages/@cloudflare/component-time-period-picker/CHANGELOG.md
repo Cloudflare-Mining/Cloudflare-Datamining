@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.3.9
+
+### Patch Changes
+
+- @cloudflare/component-calendar@8.0.28
+
 ## 7.3.8
 
 ### Patch Changes

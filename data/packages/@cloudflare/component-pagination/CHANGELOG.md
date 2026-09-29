@@ -1,5 +1,12 @@
 # Change Log
 
+## 11.0.30
+
+### Patch Changes
+
+- Updated dependencies [44b2124d4b]
+  - @cloudflare/util-formatters@2.7.11
+
 ## 11.0.29
 
 ### Patch Changes
