@@ -3,42 +3,73 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: </strong>Hybrid - Austin, TX</p>
-<p><strong>Schedule: </strong>This is a full-time, Tuesday-Saturday role requiring a firm start time of 11:00 AM Central Time to align with our global operations. This role requires you to be able to come into our Austin office twice a week.</p>
-<h4>About the Department</h4>
-<p>The Customer Support Team is dedicated to resolving complex issues and providing technical assistance across various channels, including phone, email, chat, and social media. Our team passionately advocates for all customers, from individual Wordpress bloggers to Fortune 500 customers handling millions of clients daily. By actively listening to real-world pain points and use cases, we serve as the vital link between our customers and the rest of Cloudflare and play a key role in building a better Internet every day!</p>
-<h4>What You’ll do</h4>
-<p>As a Technical Support Engineer at Cloudflare, you’ll work directly with customers and cross-functional teams to tackle a variety of technical challenges. You’ll gain hands-on experience with our products, learn the inner workings of Cloudflare’s offerings, and deepen your understanding of internet technologies. This role also provides opportunities to develop valuable technical and professional skills, as well as job shadowing experiences to explore different roles within the company. Join us to enhance your skill set while making a real impact!</p>
-<h4>Responsibilities&nbsp;</h4>
+<p><strong>Available Locations: </strong>Austin, TX</p>
+<h4><strong>About the Department</strong></h4>
+<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
+<h4><strong>About the Role</strong></h4>
+<p>Do you love solving complex technical problems and interacting with people? Are you passionate about helping customers and are a standout colleague? Cloudflare is seeking an experienced Network Security Engineer to join our team and support our largest and most technically sophisticated customers in resolving technical problems, threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This will span the range of Cloudflare products from Magic Transit Infrastructure Protection, Argo Smart Routing, DDoS mitigation and Network Firewall, to using the Web Application firewall (WAF), Spectrum and Rate Limiting to help customers.</p>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li>Fulfill support requests by communicating with Cloudflare customers via chat, email, and phone</li>
-	<li>Collaborate with senior engineers to analyze and troubleshoot customer issues</li>
-	<li>Track support requests using our ticketing system</li>
-	<li>Participate in team meetings to discuss and share feedback</li>
-	<li>Help define and update AI skills and conversational journeys to ensure up-to-date knowledge is available in automated workflows, as well as updating other internal- and public-facing documentation as needed.</li>
-	<li>Provide feedback on our product and potential improvements based on customer interactions</li>
-	<li>Support the team in testing new releases and reporting bugs</li>
-	<li>Perform other duties/projects as assigned&nbsp;</li>
+	<li>Communicate with customers via chat, email, and phone&nbsp;</li>
+	<li>Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</li>
+	<li>DDoS mitigation for OSI layers 3,4, &amp; 7: advise customers on how to filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blocklisting, allowlisting, and rate limiting</li>
+	<li>Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation when applicable</li>
+	<li>Work with Engineering and Product teams to improve products and tools</li>
 </ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<h4>Desirable Skills, Knowledge, and Experience</h4>
 <ul>
-	<li>3-5 years of experience working in a technical Customer Support role, preferably as part of a team working with large enterprise customers</li>
-	<li>Self-driven and comfortable learning new technologies and systems on an ongoing basis</li>
-	<li>Excellent written and verbal communication skills</li>
-	<li>Strong understanding of how the Internet works at OSI Model layers 3, 4, and 7</li>
-	<li>Strong understanding of DNS, SSL/TLS, and HTTP(S) protocols</li>
-	<li>General understanding of HTTP reverse proxying, caching, and load balancing</li>
-	<li>Experience using Linux and associated command line tools, including curl, dig, traceroute, openssl, git, etc.</li>
-	<li>Experience writing scripts in Bash, Python, JavaScript, or other scripting languages</li>
-	<li>Experience installing and configuring web servers like Apache, Nginx, and/or IIS</li>
-</ul>
-<h4>Bonus Points</h4>
-<ul>
-	<li>Prior experience with the Cloudflare platform, especially for personal projects/websites</li>
+	<li>Fluent English speaker is a requirement</li>
+	<li>Minimum 3 years working within a Technical Support team solving various technical issues&nbsp;</li>
+	<li>Self-driven and capable of learning new technologies / systems / features with little guidance</li>
+	<li>Fundamental understanding how the Internet works (OSI Model)</li>
+	<li>Advanced understanding of internet protocols like TCP and UDP</li>
+	<li>Computer Networking fundamentals, experience with iptables and looking glass</li>
 	<li>Experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels</li>
-	<li>Experience configuring network or application firewalls</li>
-	<li>Degrees or certifications in Computer Science, Information Technology, and related fields</li>
-	<li>Fluency in Mandarin, Spanish, and/or Portuguese</li>
+	<li>Packet capture analysis</li>
+	<li>Experience in command line and tools, including curl, dig, traceroute, openssl, git</li>
+	<li>Experience troubleshooting DNS, SSL / TLS, HTTP</li>
+	<li>Experience in a web development and / or hosting environment such as installing and configuring web servers like Apache, Nginx, Caddy and IIS</li>
+	<li>Experience writing scripts in Bash, Python, JavaScript or other scripting language</li>
+	<li>Experience in working as part of a team in a customer-facing role</li>
+</ul>
+<h4><strong>Bonus Points</strong></h4>
+<ul>
+	<li>You are familiar with Cloudflare and are actively using our platform</li>
+	<li>You have worked with PostgreSQL, MySQL, MS SQL, and other database servers</li>
+	<li>You are fluent and can troubleshoot in other languages beyond English and Spanish</li>
+</ul>
+<h4><strong>Availability and Schedule Requirements</strong></h4>
+<ul>
+	<li>Flexibility to work varying work schedules including: 8:30 AM - 5:30 PM Pacific Time Zone, Tuesday through Saturday, Sunday through Thursday, holidays, weekends, more than 5 days in a row, or additional hours on occasion.</li>
+</ul>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">

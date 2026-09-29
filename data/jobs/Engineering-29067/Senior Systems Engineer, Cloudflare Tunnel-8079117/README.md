@@ -37,9 +37,10 @@
 	<li>Experience with containerization and orchestration technologies, such as Docker and Kubernetes.</li>
 	<li>Strong interpersonal and communication skills, demonstrating empathy, teamwork and a sense of ownership.</li>
 </ul>
-<p></p>
+<p>&nbsp;</p>
 <p><strong>Compensation</strong><br><strong>Compensation may be adjusted depending on work location.</strong></p>
 <p><strong>For Denver based hires: Estimated annual salary of $168,000 - $231,000.</strong></p>
+<p><strong>For Washington and Washington DC based hires: Estimated annual salary of $185,000 - $254,000.</strong></p>
 <p><strong>Application Deadline: December 1, 2026</strong></p>
 <p><strong>Equity</strong><br>This role is eligible to participate in Cloudflare's equity plan.</p>
 <p><strong>Benefits</strong><br>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S. &nbsp;</p>
