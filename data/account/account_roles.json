@@ -1,5 +1,43 @@
 [
 	{
+		"id": "ea047b23601d07321ca4f0d8de902612",
+		"name": "Cloudflare Access SCIM Population Admin",
+		"description": "Can view and edit Cloudflare Access SCIM Populations.",
+		"permissions": {
+			"access": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "6311d88cb49a39bb4db3fdb9d5571f17",
+		"name": "Cloudflare Access SCIM Population Read",
+		"description": "Can read Cloudflare Access SCIM Populations.",
+		"permissions": {
+			"access": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "273cb7e69a0052cd39ebe96a052eb888",
 		"name": "Cache Admin",
 		"description": "Can manage cache configuration.",
@@ -1992,40 +2030,6 @@
 				"read": true,
 				"edit": false
 			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "fc86e6664bfb8ff279cd5a92f7424b50",
-		"name": "Hyperdrive Admin",
-		"description": "Can edit Hyperdrive database configurations.",
-		"permissions": {
-			"query_cache": {
-				"read": true,
-				"edit": true
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "2964cc9c4ebefdc6bf2bdbc4e106b906",
-		"name": "Turnstile Read",
-		"description": "Grants read access to Turnstile",
-		"permissions": {
 			"zone": {
 				"read": true,
 				"edit": false
