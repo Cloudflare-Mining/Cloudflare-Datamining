@@ -173,7 +173,7 @@
 											"type": "array"
 										},
 										{
-											"description": "Descriptor of a bucket background job. Returned when the delete-objects endpoint is\ninvoked with a `prefix` query parameter, and by the Get Bucket Job and List Bucket Jobs\nendpoints. An empty prefix indicates an Empty Bucket job. A small operation can already\nbe `COMPLETED` when it is returned.\n",
+											"description": "Descriptor of a prefix-delete job. An empty prefix indicates a job that empties the\nwhole bucket.\n",
 											"type": "object",
 											"properties": {
 												"endTime": {
@@ -186,7 +186,7 @@
 													"type": "string"
 												},
 												"jobType": {
-													"description": "The job kind. Always `prefixDelete` for this endpoint.",
+													"description": "The job kind.",
 													"type": "string",
 													"enum": [
 														"prefixDelete"

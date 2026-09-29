@@ -75,82 +75,33 @@
 						"oneOf": [
 							{
 								"description": "Request body schema for deleting tags from worker_version resources.",
-								"allOf": [
-									{
-										"description": "Request body schema for deleting tags from account-level resources.",
-										"type": "object",
-										"properties": {
-											"resource_id": {
-												"description": "Identifies the unique resource.",
-												"type": "string",
-												"example": "023e105f4ecef8ad9ca31a8372d0c353",
-												"x-auditable": true
-											},
-											"resource_type": {
-												"description": "Enum for base account-level resource types (those with no extra required fields).",
-												"type": "string",
-												"example": "worker",
-												"enum": [
-													"access_application",
-													"access_group",
-													"account",
-													"account_ruleset",
-													"ai_gateway",
-													"alerting_policy",
-													"alerting_webhook",
-													"cloudflared_tunnel",
-													"cws_deployment",
-													"cws_policy",
-													"cws_policy_set",
-													"cws_workload",
-													"d1_database",
-													"durable_object_namespace",
-													"gateway_list",
-													"gateway_rule",
-													"image",
-													"infrastructure_target",
-													"kv_namespace",
-													"load_balancer_monitor",
-													"load_balancer_pool",
-													"pages_project",
-													"queue",
-													"r2_bucket",
-													"resource_share",
-													"stream_live_input",
-													"stream_video",
-													"vectorize_index",
-													"worker"
-												],
-												"x-auditable": true
-											}
-										},
-										"required": [
-											"resource_type",
-											"resource_id"
-										]
+								"type": "object",
+								"properties": {
+									"resource_id": {
+										"description": "Identifies the unique resource.",
+										"type": "string",
+										"example": "023e105f4ecef8ad9ca31a8372d0c353",
+										"x-auditable": true
 									},
-									{
-										"properties": {
-											"resource_type": {
-												"description": "Enum for worker_version resource type.",
-												"type": "string",
-												"example": "worker_version",
-												"enum": [
-													"worker_version"
-												],
-												"x-auditable": true
-											},
-											"worker_id": {
-												"description": "Worker ID is required only for worker_version resources",
-												"type": "string",
-												"example": "3f72a691-44b3-4c11-8642-c18a88ddaa5e"
-											}
-										},
-										"required": [
-											"worker_id"
+									"resource_type": {
+										"description": "Enum for worker_version resource type.",
+										"type": "string",
+										"example": "worker_version",
+										"enum": [
+											"worker_version"
 										],
-										"type": "object"
+										"x-auditable": true
+									},
+									"worker_id": {
+										"description": "Worker ID is required only for worker_version resources",
+										"type": "string",
+										"example": "3f72a691-44b3-4c11-8642-c18a88ddaa5e"
 									}
+								},
+								"required": [
+									"resource_type",
+									"resource_id",
+									"worker_id"
 								]
 							},
 							{
@@ -573,7 +524,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "account-tags",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"DELETE /zones/{zone_id}/tags": {
@@ -669,64 +619,34 @@
 							},
 							{
 								"description": "Request body schema for deleting tags from access_application_policy resources.",
-								"allOf": [
-									{
-										"description": "Request body schema for deleting tags from zone-level resources. Zone ID comes from URL path.",
-										"type": "object",
-										"properties": {
-											"resource_id": {
-												"description": "Identifies the unique resource.",
-												"type": "string",
-												"example": "023e105f4ecef8ad9ca31a8372d0c353",
-												"x-auditable": true
-											},
-											"resource_type": {
-												"description": "Enum for base zone-level resource types (those with no extra required fields).",
-												"type": "string",
-												"example": "zone",
-												"enum": [
-													"api_gateway_operation",
-													"custom_certificate",
-													"custom_hostname",
-													"dns_record",
-													"healthcheck",
-													"load_balancer",
-													"managed_client_certificate",
-													"worker_route",
-													"zone",
-													"zone_ruleset"
-												],
-												"x-auditable": true
-											}
-										},
-										"required": [
-											"resource_type",
-											"resource_id"
-										]
+								"type": "object",
+								"properties": {
+									"access_application_id": {
+										"description": "Access application ID is required only for access_application_policy resources",
+										"type": "string",
+										"format": "uuid",
+										"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 									},
-									{
-										"properties": {
-											"access_application_id": {
-												"description": "Access application ID is required only for access_application_policy resources",
-												"type": "string",
-												"format": "uuid",
-												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
-											},
-											"resource_type": {
-												"description": "Enum for access_application_policy resource type.",
-												"type": "string",
-												"example": "access_application_policy",
-												"enum": [
-													"access_application_policy"
-												],
-												"x-auditable": true
-											}
-										},
-										"required": [
-											"access_application_id"
+									"resource_id": {
+										"description": "Identifies the unique resource.",
+										"type": "string",
+										"example": "023e105f4ecef8ad9ca31a8372d0c353",
+										"x-auditable": true
+									},
+									"resource_type": {
+										"description": "Enum for access_application_policy resource type.",
+										"type": "string",
+										"example": "access_application_policy",
+										"enum": [
+											"access_application_policy"
 										],
-										"type": "object"
+										"x-auditable": true
 									}
+								},
+								"required": [
+									"resource_type",
+									"resource_id",
+									"access_application_id"
 								]
 							}
 						]
@@ -1096,7 +1016,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "zone-tags",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/tags": {
@@ -4549,7 +4468,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "account-tags",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/tags/keys": {
@@ -4956,7 +4874,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "keys",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/tags/resources": {
@@ -8484,7 +8401,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "tags.resources",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/tags/summary": {
@@ -8924,7 +8840,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "resource-tagging.summary",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/tags/values/{tag_key}": {
@@ -9393,7 +9308,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "values",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /zones/{zone_id}/tags": {
@@ -12830,13 +12744,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "zone-tags",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"PUT /accounts/{account_id}/tags": {
 		"operationId": "tags-set",
 		"summary": "Set tags for an account-level resource",
-		"description": "Creates or updates tags for a specific account-level resource.",
+		"description": "Creates or updates tags for a specific account-level resource. Replaces all existing tags for the resource.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -12912,82 +12825,33 @@
 								"allOf": [
 									{
 										"description": "Request body schema for deleting tags from worker_version resources.",
-										"allOf": [
-											{
-												"description": "Request body schema for deleting tags from account-level resources.",
-												"type": "object",
-												"properties": {
-													"resource_id": {
-														"description": "Identifies the unique resource.",
-														"type": "string",
-														"example": "023e105f4ecef8ad9ca31a8372d0c353",
-														"x-auditable": true
-													},
-													"resource_type": {
-														"description": "Enum for base account-level resource types (those with no extra required fields).",
-														"type": "string",
-														"example": "worker",
-														"enum": [
-															"access_application",
-															"access_group",
-															"account",
-															"account_ruleset",
-															"ai_gateway",
-															"alerting_policy",
-															"alerting_webhook",
-															"cloudflared_tunnel",
-															"cws_deployment",
-															"cws_policy",
-															"cws_policy_set",
-															"cws_workload",
-															"d1_database",
-															"durable_object_namespace",
-															"gateway_list",
-															"gateway_rule",
-															"image",
-															"infrastructure_target",
-															"kv_namespace",
-															"load_balancer_monitor",
-															"load_balancer_pool",
-															"pages_project",
-															"queue",
-															"r2_bucket",
-															"resource_share",
-															"stream_live_input",
-															"stream_video",
-															"vectorize_index",
-															"worker"
-														],
-														"x-auditable": true
-													}
-												},
-												"required": [
-													"resource_type",
-													"resource_id"
-												]
+										"type": "object",
+										"properties": {
+											"resource_id": {
+												"description": "Identifies the unique resource.",
+												"type": "string",
+												"example": "023e105f4ecef8ad9ca31a8372d0c353",
+												"x-auditable": true
 											},
-											{
-												"properties": {
-													"resource_type": {
-														"description": "Enum for worker_version resource type.",
-														"type": "string",
-														"example": "worker_version",
-														"enum": [
-															"worker_version"
-														],
-														"x-auditable": true
-													},
-													"worker_id": {
-														"description": "Worker ID is required only for worker_version resources",
-														"type": "string",
-														"example": "3f72a691-44b3-4c11-8642-c18a88ddaa5e"
-													}
-												},
-												"required": [
-													"worker_id"
+											"resource_type": {
+												"description": "Enum for worker_version resource type.",
+												"type": "string",
+												"example": "worker_version",
+												"enum": [
+													"worker_version"
 												],
-												"type": "object"
+												"x-auditable": true
+											},
+											"worker_id": {
+												"description": "Worker ID is required only for worker_version resources",
+												"type": "string",
+												"example": "3f72a691-44b3-4c11-8642-c18a88ddaa5e"
 											}
+										},
+										"required": [
+											"resource_type",
+											"resource_id",
+											"worker_id"
 										]
 									},
 									{
@@ -16565,7 +16429,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "account-tags",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"PUT /zones/{zone_id}/tags": {
@@ -16687,64 +16550,34 @@
 								"allOf": [
 									{
 										"description": "Request body schema for deleting tags from access_application_policy resources.",
-										"allOf": [
-											{
-												"description": "Request body schema for deleting tags from zone-level resources. Zone ID comes from URL path.",
-												"type": "object",
-												"properties": {
-													"resource_id": {
-														"description": "Identifies the unique resource.",
-														"type": "string",
-														"example": "023e105f4ecef8ad9ca31a8372d0c353",
-														"x-auditable": true
-													},
-													"resource_type": {
-														"description": "Enum for base zone-level resource types (those with no extra required fields).",
-														"type": "string",
-														"example": "zone",
-														"enum": [
-															"api_gateway_operation",
-															"custom_certificate",
-															"custom_hostname",
-															"dns_record",
-															"healthcheck",
-															"load_balancer",
-															"managed_client_certificate",
-															"worker_route",
-															"zone",
-															"zone_ruleset"
-														],
-														"x-auditable": true
-													}
-												},
-												"required": [
-													"resource_type",
-													"resource_id"
-												]
+										"type": "object",
+										"properties": {
+											"access_application_id": {
+												"description": "Access application ID is required only for access_application_policy resources",
+												"type": "string",
+												"format": "uuid",
+												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 											},
-											{
-												"properties": {
-													"access_application_id": {
-														"description": "Access application ID is required only for access_application_policy resources",
-														"type": "string",
-														"format": "uuid",
-														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
-													},
-													"resource_type": {
-														"description": "Enum for access_application_policy resource type.",
-														"type": "string",
-														"example": "access_application_policy",
-														"enum": [
-															"access_application_policy"
-														],
-														"x-auditable": true
-													}
-												},
-												"required": [
-													"access_application_id"
+											"resource_id": {
+												"description": "Identifies the unique resource.",
+												"type": "string",
+												"example": "023e105f4ecef8ad9ca31a8372d0c353",
+												"x-auditable": true
+											},
+											"resource_type": {
+												"description": "Enum for access_application_policy resource type.",
+												"type": "string",
+												"example": "access_application_policy",
+												"enum": [
+													"access_application_policy"
 												],
-												"type": "object"
+												"x-auditable": true
 											}
+										},
+										"required": [
+											"resource_type",
+											"resource_id",
+											"access_application_id"
 										]
 									},
 									{
@@ -20246,7 +20079,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "zone-tags",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true,
 		"x-stability": "beta"
 	}
 }
