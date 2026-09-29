@@ -2860,6 +2860,26 @@
 		"is_selectable": true
 	},
 	{
+		"id": "69a7c8a8d0794770be19af6fa020d8e9",
+		"name": "Payments Gateway Read",
+		"description": "Grants read access to Payment Required rules",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		],
+		"category": "rules_and_configuration",
+		"is_selectable": true
+	},
+	{
+		"id": "5e875a9694a340c6bfba2e88a0a59a42",
+		"name": "Payments Gateway Write",
+		"description": "Grants write access to Payment Required rules",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		],
+		"category": "rules_and_configuration",
+		"is_selectable": true
+	},
+	{
 		"id": "14b9cf2f410f4c0c9a16bb10a81c0e0b",
 		"name": "Pipelines Read",
 		"description": "Grants read access to Cloudflare Pipelines",
