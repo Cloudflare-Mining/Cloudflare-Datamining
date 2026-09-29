@@ -1,8 +1,8 @@
 {
 	"name": "@cloudflare/realtimekit-react-ui",
 	"dist-tags": {
-		"staging": "2.0.3-staging.1",
-		"latest": "2.0.2"
+		"latest": "2.0.2",
+		"staging": "2.0.3-staging.2"
 	},
 	"versions": {
 		"0.0.0": {
@@ -2247,12 +2247,42 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQD6ukEWfj7jAN8ciV07KWp0jx2+cIL6cN2NFjKnHe3ivgIga+jETULYvSb4xEUipEStKDgnlibJFiNvgcDyRWOESMc="
+						"sig": "MEUCIQD6ukEWfj7jAN8ciV07KWp0jx2+cIL6cN2NFjKnHe3ivgIga+jETULYvSb4xEUipEStKDgnlibJFiNvgcDyRWOESMc=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2frealtimekit-react-ui@2.0.3-staging.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 161163
+			}
+		},
+		"2.0.3-staging.2": {
+			"name": "@cloudflare/realtimekit-react-ui",
+			"version": "2.0.3-staging.2",
+			"dependencies": {
+				"@cloudflare/realtimekit-ui": "2.0.3-staging.2"
+			},
+			"dist": {
+				"shasum": "ec574a81c73d52d8d9d98afbc95a10cef7fbd147",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-react-ui/-/realtimekit-react-ui-2.0.3-staging.2.tgz",
+				"fileCount": 46,
+				"integrity": "sha512-jiBzMvqapi69OoDV3Lnd7OYtv8ptksHTX/X5A6bun8kCwXam9h8e1GbKoathTSIloDG93nGo96zsa3mmEe16wA==",
+				"signatures": [
+					{
+						"sig": "MEQCIH7cDtwkxJ7EscKKvcnqs4v2Dm7bmjaumCoLOPPGFMgVAiACcClGl+cV1vxHO0IRAGYT7D+ARPGIysW1FBZgviU+gA==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIFd0LawSTZ1XJG8GJLq0zH/BB9QXak1o+EneleoFM5dWAiEA0Rl+Fa0w1oqp4Mej3APibdQiz2wD5K8mHrgAhsxhNW4="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2frealtimekit-react-ui@2.0.3-staging.2",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}

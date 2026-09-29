@@ -1,8 +1,8 @@
 {
 	"name": "@cloudflare/realtimekit-ui",
 	"dist-tags": {
-		"staging": "2.0.3-staging.1",
-		"latest": "2.0.2"
+		"latest": "2.0.2",
+		"staging": "2.0.3-staging.2"
 	},
 	"versions": {
 		"0.0.0": {
@@ -2671,8 +2671,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQDs3lZc8+8V5Uwl9lv3txpjl4d8jBPoi85LzGA5fuldfgIhANTrvQQFklMY+UUT5gSGZYufDpdp/O8i0W7thM10sbP5"
+						"sig": "MEYCIQDs3lZc8+8V5Uwl9lv3txpjl4d8jBPoi85LzGA5fuldfgIhANTrvQQFklMY+UUT5gSGZYufDpdp/O8i0W7thM10sbP5",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -2682,6 +2682,40 @@
 					}
 				},
 				"unpackedSize": 28719517
+			}
+		},
+		"2.0.3-staging.2": {
+			"name": "@cloudflare/realtimekit-ui",
+			"version": "2.0.3-staging.2",
+			"dependencies": {
+				"hark": "^1.2.3",
+				"hls.js": "^1.5.17",
+				"lodash-es": "^4.17.21",
+				"@floating-ui/dom": "^1.7.4",
+				"resize-observer-polyfill": "^1.5.1"
+			},
+			"dist": {
+				"shasum": "0c3a2bb8b703f52f34c1182745d02b9afac7f63a",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui/-/realtimekit-ui-2.0.3-staging.2.tgz",
+				"fileCount": 1266,
+				"integrity": "sha512-n6xYnLh7zSTcahYaHVcra0dLWbT0g1rRsICSYZsWpFYV5OP3jh9g8t6nUKRJHVwmIcSms87tlN3wcxezeAjnRQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD6Yf+QdAyybe7PBhFVZdHaSY5nnc4VTDTj5cp9MEZ7QwIhAOlz0F8d4gOLs85tUD7P8f3aN+py5f9VcDBkdH2gBaC0",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQCf9qEK3uK9cpGxmHwhJiBDckd21/yAc+vY7My2OtZUXAIhAOmvb5Byt4h0XLmn0zCEo76tS2GazJYE/mN8Dh+UxEGB"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2frealtimekit-ui@2.0.3-staging.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 28719664
 			}
 		}
 	}
