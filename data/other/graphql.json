@@ -6454,6 +6454,88 @@
 		"queryLatency": "Confidence interval for the corresponding point estimate",
 		"resultBytes": "Confidence interval for the corresponding point estimate"
 	},
+	"AccountImagesHostedRequestsAdaptiveGroups": {
+		"__description": "Hosted Images delivery requests for an account, grouped by variant, format, response, cache status and location",
+		"avg": "The average value for a metric per dimensions",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Estimated number of Hosted Images delivery requests using adaptive sampling weights",
+		"dimensions": "List of dimensions to group by"
+	},
+	"AccountImagesHostedRequestsAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": "Average adaptive sampling weight",
+		"subrequestDurationMs": "Average duration in milliseconds of the image delivery subrequest"
+	},
+	"AccountImagesHostedRequestsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Estimated number of Hosted Images delivery requests using adaptive sampling weights, with confidence intervals",
+		"level": "Confidence level that was requested"
+	},
+	"AccountImagesHostedRequestsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"cacheStatus": "Cache status returned for the image request",
+		"clientCountryName": "Country where the image request originated",
+		"coloName": "Cloudflare data centre that served the image request",
+		"contentType": "Content type returned for the image request",
+		"date": "The date the image request was served",
+		"datetime": "The date and time the image request was served",
+		"datetimeFifteenMinutes": "The date and time the image request was served, truncated to a multiple of 15 minutes",
+		"datetimeFiveMinutes": "The date and time the image request was served, truncated to a multiple of 5 minutes",
+		"datetimeHour": "The date and time the image request was served, truncated to the hour",
+		"datetimeMinute": "The date and time the image request was served, truncated to the minute",
+		"formatPreference": "Requested image format preference",
+		"httpStatus": "HTTP response status returned for the image request",
+		"isFlexibleVariant": "1 when the request used a flexible variant, otherwise 0",
+		"isSigned": "1 when the image request used a signed URL, otherwise 0",
+		"variant": "Requested image variant"
+	},
+	"AccountImagesHostedRequestsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountImagesHostedRequestsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountImagesHostedRequestsStagingAdaptiveGroups": {
+		"__description": "Hosted Images delivery requests for an account in staging, grouped by variant, format, response, cache status and location",
+		"avg": "The average value for a metric per dimensions",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Estimated number of Hosted Images delivery requests using adaptive sampling weights",
+		"dimensions": "List of dimensions to group by"
+	},
+	"AccountImagesHostedRequestsStagingAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": "Average adaptive sampling weight",
+		"subrequestDurationMs": "Average duration in milliseconds of the image delivery subrequest"
+	},
+	"AccountImagesHostedRequestsStagingAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Estimated number of Hosted Images delivery requests using adaptive sampling weights, with confidence intervals",
+		"level": "Confidence level that was requested"
+	},
+	"AccountImagesHostedRequestsStagingAdaptiveGroupsDimensions": {
+		"__description": "",
+		"cacheStatus": "Cache status returned for the image request",
+		"clientCountryName": "Country where the image request originated",
+		"coloName": "Cloudflare data centre that served the image request",
+		"contentType": "Content type returned for the image request",
+		"date": "The date the image request was served",
+		"datetime": "The date and time the image request was served",
+		"datetimeFifteenMinutes": "The date and time the image request was served, truncated to a multiple of 15 minutes",
+		"datetimeFiveMinutes": "The date and time the image request was served, truncated to a multiple of 5 minutes",
+		"datetimeHour": "The date and time the image request was served, truncated to the hour",
+		"datetimeMinute": "The date and time the image request was served, truncated to the minute",
+		"formatPreference": "Requested image format preference",
+		"httpStatus": "HTTP response status returned for the image request",
+		"isFlexibleVariant": "1 when the request used a flexible variant, otherwise 0",
+		"isSigned": "1 when the image request used a signed URL, otherwise 0",
+		"variant": "Requested image variant"
+	},
+	"AccountImagesHostedRequestsStagingAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountImagesHostedRequestsStagingAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountImagesRequestsAdaptiveGroups": {
 		"__description": "A high-level summary of Cloudflare Images served to end users.",
 		"avg": "The average value for a metric per dimension",
@@ -10381,6 +10463,10 @@
 	"AccountR2BandwidthUsageAdaptiveGroupsDimensions": {
 		"__description": "",
 		"bucketName": "The canonical R2 bucket identifier, including its jurisdiction prefix when applicable",
+		"coloCity": "City of the Cloudflare data center that served the transfer",
+		"coloCode": "IATA airport code of the Cloudflare data center that served the transfer",
+		"coloCountry": "ISO 3166-1 alpha-2 country code of the Cloudflare data center that served the transfer",
+		"coloRegion": "Region of the Cloudflare data center that served the transfer (WNAM, ENAM, WEUR, EEUR, APAC, SAM, OC, AFR, ME)",
 		"date": "Transfer timestamp, truncated to the start of a day",
 		"datetime": "Transfer timestamp",
 		"datetimeFifteenMinutes": "Transfer timestamp, truncated to the start of fifteen minutes",
@@ -17266,6 +17352,8 @@
 		"httpRequestsOverviewAdaptiveGroups": "A high-level summary of HTTP requests made by end users.",
 		"hyperdrivePoolSizesAdaptiveGroups": "Hyperdrive connection pool size snapshots with adaptive sampling.",
 		"hyperdriveQueriesAdaptiveGroups": "Hyperdrive query events with adaptive sampling.",
+		"imagesHostedRequestsAdaptiveGroups": "Hosted Images delivery requests for an account, grouped by variant, format, response, cache status and location",
+		"imagesHostedRequestsStagingAdaptiveGroups": "Hosted Images delivery requests for an account in staging, grouped by variant, format, response, cache status and location",
 		"imagesRequestsAdaptiveGroups": "A high-level summary of Cloudflare Images served to end users.",
 		"imagesTransformationsAdaptiveGroups": "Image transformations performed for an account, grouped by zone, Worker script, transformation and origin host. Counts only transformations the resizer actually performed, so this is estimated processing volume rather than end-user request count or invoice total",
 		"imagesUniqueGroups": "Number of unique origin images over the requested period",
