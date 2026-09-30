@@ -10,15 +10,79 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
-September 29, 2026 [<h2>Building a certificate authority for the whole Internet</h2>](https://blog.cloudflare.com/cloudflare-certificate-authority/)
+September 30, 2026 [<h2>The Internet has a second audience</h2>](https://blog.cloudflare.com/agentic-web/)
 
-Twelve years after launching Universal SSL, Cloudflare is applying to become a certificate authority. By combining an established root, an ACME-first approach, and Merkle Tree Certificates, we are building a post-quantum CA for the open web.
+More than half the traffic reaching sites on Cloudflare is now automated, and AI agents are the fastest-growing part of it. We're giving site owners the tools to see who's visiting, decide who gets in, and charge for access.
 
-![Steve Goldsmith](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497YX7768BEJGS24P0FMX8.png&w=64&h=64&f=webp&fit=cover&position=center)
+![Matthew Conroy](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW1QZW47KMHA09RY62FC.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
-[Steve Goldsmith](https://blog.cloudflare.com/author/steve-goldsmith/)
+[Matthew Conroy](https://blog.cloudflare.com/author/matthew-conroy/)
 
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3NDS17PAN9XKW88493GE864.01M3NDS24T3Y1A90FZDRFXYHZD.png&w=1999&h=1123&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/cloudflare-certificate-authority/)
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3Q3ZZ59Z3P49M2FX7R7F4WQ.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/agentic-web/)
+
+September 30, 2026 [<h2>Cloudflare Impact reaches $100 million in donations</h2>](https://blog.cloudflare.com/100-million-donations/)
+
+This week, Cloudflare's Impact programs will reach $100 million in donated services. This milestone means that thousands of entities including journalists, civil society, state and local governments, election management bodies, and public schools are being protected from cyberattacks.
+
+![Patrick Day](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TYR5VCZ5TE2F5PZ2Z1X5.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Patrick Day](https://blog.cloudflare.com/author/patrick-day/)
+
+September 30, 2026 [<h2>Cut your AI spend with AI Gateway's Auto Router</h2>](https://blog.cloudflare.com/auto-router/)
+
+Cloudflare AI Gateway now features a model router that evaluates request complexity using an edge-deployed classifier to select the optimal model. By balancing expected output quality against token costs, organizations can dramatically cut AI spend while maintaining performance.
+
+![Ming Lu](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449KZ4869TJZZSHHFJXPTB.png&w=64&h=64&f=webp&fit=cover&position=center)![Andreas Jansson](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44X2A1B8NAS779X4H79QDR.webp&w=64&h=64&f=webp&fit=cover&position=center)![Harrison Harnisch](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M34X25YHN8N2RCY39MP0RMTF.01M34X26HH325YM3WS5X26R8RT.webp&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Ming Lu](https://blog.cloudflare.com/author/ming-lu/),  [Andreas Jansson](https://blog.cloudflare.com/author/andreas-jansson/), and  [Harrison Harnisch](https://blog.cloudflare.com/author/harrison-harnisch/)
+
+September 30, 2026 [<h2>Detect and send production issues straight to your agent</h2>](https://blog.cloudflare.com/real-time-issue-detection/)
+
+You can now use built-in error monitoring in Cloudflare Workers to group production failures and send stack traces, logs, traces, and application context directly to a coding agent to investigate further and open a pull request.
+
+![Thomas Ankcorn](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QZ31NTXQHX39AFDRDXPNCG.01M3QZ32306STRTQ3S4KDR4PEA.webp&w=64&h=64&f=webp&fit=cover&position=center)![Maksym Makuch](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QZ355NYNSFKZTWNGNGA81C.01M3QZ35QP33RVC4R8E4SYRXSQ.webp&w=64&h=64&f=webp&fit=cover&position=center)![Nevi Shah](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BZN18F7KC4GE3NPR8Z9J.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Thomas Ankcorn](https://blog.cloudflare.com/author/thomas-ankcorn/),  [Maksym Makuch](https://blog.cloudflare.com/author/maksym-makuch/), and  [Nevi Shah](https://blog.cloudflare.com/author/nevi/)
+
+September 30, 2026 [<h2>Simplifying domains for people and agents</h2>](https://blog.cloudflare.com/simplifying-domains/)
+
+Cloudflare Registrar's new search delivers fast, transparent results across 420+ extensions using Workers, Durable Objects, and WebSockets. Its expanded API and cf CLI also let agents search, register, and transfer domains.
+
+![Ankit Shah](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P1V9QJWTCY43FWFGA7RA.png&w=64&h=64&f=webp&fit=cover&position=center)![Carlos Armada](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GNGVRDMTAZC97MJZE2EC.webp&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Ankit Shah](https://blog.cloudflare.com/author/ankit-shah/) and  [Carlos Armada](https://blog.cloudflare.com/author/carlos-armada/)
+
+September 30, 2026 [<h2>Monetization Gateway beta: charge AI agents for consumption with HTTP 402</h2>](https://blog.cloudflare.com/monetization-gateway-beta/)
+
+Cloudflare's AI Gateway, Ceramic.ai, Stocktwits, and more are using the Cloudflare Monetization Gateway today to charge agents for access to tokens, APIs, and MCP tools. U.S.-based sellers can now apply for access to the closed beta.
+
+![Rohin Lohe](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4732TDPVKGF30GJC5C5KJV.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Jorge Silva](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKPVCNR1E6D22GKX1W590P.01M3QKPW0NDNQQRBK0W1HCKT5X.webp&w=64&h=64&f=webp&fit=cover&position=center)![Caleb Carithers](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKMYN63XV7TX67MW067W44.01M3QKMZM03DDV2MYQYN6EEZAV.webp&w=64&h=64&f=webp&fit=cover&position=center)![ Isaac Bremseth](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKK0SZJZ2TY09D2HQ89KY9.01M3QKK1A5VN2S8VR65MSN5G09.webp&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Rohin Lohe](https://blog.cloudflare.com/author/rohin/),  [Jorge Silva](https://blog.cloudflare.com/author/jorge-silva/),  [Caleb Carithers](https://blog.cloudflare.com/author/caleb-carithers/), and  [ Isaac Bremseth](https://blog.cloudflare.com/author/isaac-bremseth/)
+
+September 30, 2026 [<h2>Pay Per Use: when AI uses your work, you should get paid</h2>](https://blog.cloudflare.com/pay-per-use/)
+
+Pay Per Use is now in beta. AI companies report when they use publishers' content, and Cloudflare handles billing, payouts, and reporting, so our customers are paid according to use.
+
+![Rúben Teixeira](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M34X5ARCQ54FM8J7DAEDPEYK.01M34X5BGCPR89EE0MDEM9CFWF.webp&w=64&h=64&f=webp&fit=cover&position=center)![Jack Galilee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA3MX64PMX25X6GHJWTCKYT.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Kayte Johnston](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3Q962PFWD5P98AWMSCTXHBZ.01M3Q9637EN55SVYKAPPC9PC8C.webp&w=64&h=64&f=webp&fit=cover&position=center)![Sam Else](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3Q96AH0YC46X2T69EDA94K0.01M3Q96B1VTN1AMSCYJ2FQHQS2.webp&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Rúben Teixeira](https://blog.cloudflare.com/author/ruben-teixeira/),  [Jack Galilee](https://blog.cloudflare.com/author/jack-galilee/),  [Kayte Johnston](https://blog.cloudflare.com/author/kayte-johnston/), and  [Sam Else](https://blog.cloudflare.com/author/sam-else/)
+
+September 30, 2026 [<h2>Identify AI model overuse with User Insights</h2>](https://blog.cloudflare.com/ai-model-overuse-user-insights/)
+
+AI Gateway User Insights now adds task, model, turn, and user categories to help teams understand AI adoption and make better model decisions. This is available free to AI Gateway users.
+
+![Ayush Kumar](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449VZTK4C95VB94E47SS8C.png&w=64&h=64&f=webp&fit=cover&position=center)![Frank Meszaros](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QPES9JMH4S7VRJ0JA4DP.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Ayush Kumar](https://blog.cloudflare.com/author/ayush/) and  [Frank Meszaros](https://blog.cloudflare.com/author/frank-meszaros/)
+
+September 30, 2026 [<h2>Cloudflare Containers, rebuilt to scale agent sandboxes</h2>](https://blog.cloudflare.com/faster-agent-sandboxes/)
+
+Cloudflare Containers now start 6x faster, let your agent choose each sandbox's image and instance type at runtime, and support filesystem snapshots in public beta, all controlled from a Durable Object.
+
+![Thomas Gauvin](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45J4TRGWP46SWRWBD5YV1M.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Rushil Mehra](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3J65XQ6KWWMTYQHZMX9VC2Q.01M3J65YDX7BCSBDQXBR3P2B20.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Gabi Villalonga Simón](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487ZJXVZK1XCZP956EKZ1C.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Thomas Lefebvre](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D89GA9ZG50V7GF845BBQ.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Thomas Gauvin](https://blog.cloudflare.com/author/thomas-gauvin/),  [Rushil Mehra](https://blog.cloudflare.com/author/rushil-mehra/),  [Gabi Villalonga Simón](https://blog.cloudflare.com/author/gabi-villalonga-simon/), and  [Thomas Lefebvre](https://blog.cloudflare.com/author/thomas/)
 
 September 29, 2026 [<h2>Using AI to chart a course for our post-quantum migration</h2>](https://blog.cloudflare.com/ai-driven-cryptography-discovery/)
 
@@ -27,6 +91,14 @@ We're building CryptoLabe, an internal AI-powered tool that discovers cryptograp
 ![Sharon Goldberg](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488S3YN4RV24QXC7PM57EC.png&w=64&h=64&f=webp&fit=cover&position=center)![Tiago Silva](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M34Y5PD1JFD5WXM3SY93FQ3Q.01M34Y5PYATEYXM7BF3DB95FPM.webp&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Sharon Goldberg](https://blog.cloudflare.com/author/goldbe/) and  [Tiago Silva](https://blog.cloudflare.com/author/tiago-silva/)
+
+September 29, 2026 [<h2>Building a certificate authority for the whole Internet</h2>](https://blog.cloudflare.com/cloudflare-certificate-authority/)
+
+Twelve years after launching Universal SSL, Cloudflare is applying to become a certificate authority. By combining an established root, an ACME-first approach, and Merkle Tree Certificates, we are building a post-quantum CA for the open web.
+
+![Steve Goldsmith](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497YX7768BEJGS24P0FMX8.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Steve Goldsmith](https://blog.cloudflare.com/author/steve-goldsmith/)
 
 September 29, 2026 [<h2>Adaptive application security for the AI era: how Cloudflare connects code, traffic, and intelligence to stop attacks</h2>](https://blog.cloudflare.com/ai-era-framework/)
 
@@ -91,78 +163,6 @@ We are releasing cf, our new command-line tool that mirrors the entire Cloudflar
 ![Matt "TK" Taylor](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46YW143XXGWD5TFT0BBYBQ.webp&w=64&h=64&f=webp&fit=cover&position=center)![Samuel Macleod](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498X1ZVM0N111DBDKB3MM1.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Matt "TK" Taylor](https://blog.cloudflare.com/author/matt-tk-taylor/) and  [Samuel Macleod](https://blog.cloudflare.com/author/samuel/)
-
-September 28, 2026 [<h2>Next.js applications, powered by Vite: introducing Vinext 1.0</h2>](https://blog.cloudflare.com/vinext-nextjs-on-vite/)
-
-Vinext 1.0 graduates from an AI experiment to a production-ready framework, letting developers run Next.js apps on Vite. This release brings advanced cache warming, broader compatibility, and an automated testing pipeline.
-
-![James Anderson](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486E3RRZ3SYBSNDQB0G472.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Matt "TK" Taylor](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46YW143XXGWD5TFT0BBYBQ.webp&w=64&h=64&f=webp&fit=cover&position=center)
-
-[James Anderson](https://blog.cloudflare.com/author/james-anderson/) and  [Matt "TK" Taylor](https://blog.cloudflare.com/author/matt-tk-taylor/)
-
-September 28, 2026 [<h2>How fast is the web? Explore billions of real-user measurements with BEACON</h2>](https://blog.cloudflare.com/how-fast-is-the-web/)
-
-Cloudflare is open-sourcing the BEACON dataset, making billions of anonymized Real User Monitoring (RUM) performance records publicly available on Google BigQuery. Explore real-world Core Web Vitals, soft navigation metrics, and performance breakdowns across browsers and regions.
-
-![Ryan Townsend](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M34X8F4P4T7VWQM3KCJ3125V.01M34X8FP8VRJRNGHT1GFQZXA8.webp&w=64&h=64&f=webp&fit=cover&position=center)![Nic Jansma](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M34XAT0NN3EE68M1JE1Y45J3.01M34XATM7AJT5QHSV0D8ASRKP.webp&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Ryan Townsend](https://blog.cloudflare.com/author/ryan-townsend/) and  [Nic Jansma](https://blog.cloudflare.com/author/nic-jansma/)
-
-September 28, 2026 [<h2>Four months of VoidZero at Cloudflare: making the open-source JavaScript toolchain faster for all humans and agents</h2>](https://blog.cloudflare.com/voidzero-update/)
-
-Since joining Cloudflare, VoidZero has delivered more than 80 releases that drastically speed up JavaScript compilation, linting, and testing. From a 10x faster React compiler to Vite+ 1.0, here's how we are building faster tools for developers and AI agents.
-
-![Evan You](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47QNHDACR1Y9KK1PZY7EWS.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Evan You](https://blog.cloudflare.com/author/evan-you/)
-
-September 28, 2026 [<h2>Introducing Forge: the open source pipeline for generating SDKs, CLIs, docs, and more</h2>](https://blog.cloudflare.com/forge-open-source-generation-pipeline/)
-
-Forge is a pluggable, open-source pipeline that runs in CI to generate SDKs, CLIs, and documentation directly from API definitions. By shifting generation upstream into individual team repositories, Forge keeps developer tools continuously in sync.
-
-![Dimitri Mitropoulos](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498DEF6RX03R0G7TNW7CR3.webp&w=64&h=64&f=webp&fit=cover&position=center)![Matt "TK" Taylor](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46YW143XXGWD5TFT0BBYBQ.webp&w=64&h=64&f=webp&fit=cover&position=center)![Samuel Macleod](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498X1ZVM0N111DBDKB3MM1.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Dimitri Mitropoulos](https://blog.cloudflare.com/author/dimitri-mitropoulos/),  [Matt "TK" Taylor](https://blog.cloudflare.com/author/matt-tk-taylor/), and  [Samuel Macleod](https://blog.cloudflare.com/author/samuel/)
-
-September 28, 2026 [<h2>The road to the agentic browser: A Kitesurf update</h2>](https://blog.cloudflare.com/kitesurf-update/)
-
-We've updated Kitesurf, our Workers-based browser for AI agents, with WebMCP support, improved DOM performance, and terminal-based rendering. With over 730,000 Web Platform subtests passing, agents can now navigate complex sites faster.
-
-![Celso Martinho](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K1GG0634XMEFX9CSSGM2.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Celso Martinho](https://blog.cloudflare.com/author/celso/)
-
-September 28, 2026 [<h2>Introducing The Cold Start: pitch your startup live at Cloudflare Connect</h2>](https://blog.cloudflare.com/introducing-the-cold-start/)
-
-Cloudflare is launching The Cold Start, a startup competition giving five early-stage companies five minutes on stage at Cloudflare Connect. Grand Prize winner receives $500,000 in credits, a San Francisco billboard, and an invitation to our VIP speakers dinner.
-
-![Fatima Yusuf](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3FCTBYVQWM2HYWCF8AETK94.01M3FCTCKT4XPK9XFH2EH22YVS.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Sunil Pai](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P424GFXMHVQ80AN1KS3Q.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Fatima Yusuf](https://blog.cloudflare.com/author/fatima-yusuf/) and  [Sunil Pai](https://blog.cloudflare.com/author/sunil/)
-
-September 28, 2026 [<h2>EmDash 1.0: the stable CMS with a secure plugin registry</h2>](https://blog.cloudflare.com/emdash-cms-plugin-registry/)
-
-EmDash 1.0 is a stable, open source CMS built for Astro, with agent-friendly workflows, secure sandboxed plugins, and a decentralized registry that keeps publishers in control.
-
-![Scott Buscemi](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M34Y0F0APEJCYXC3H3YPCJPZ.01M34Y0FH8QVBMSAQHS2BJF8V6.webp&w=64&h=64&f=webp&fit=cover&position=center)![Matt Kane](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475N68VWP3E9MWJKN27Q2B.webp&w=64&h=64&f=webp&fit=cover&position=center)![Noah Pham](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3D1JXK13M9EP94QXP0D1YXY.01M3D1JZCG0GRHXDJA178BGQ26.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Scott Buscemi](https://blog.cloudflare.com/author/scott-buscemi/),  [Matt Kane](https://blog.cloudflare.com/author/matt-kane/), and  [Noah Pham](https://blog.cloudflare.com/author/noah-pham/)
-
-September 28, 2026 [<h2>Supporting native Rust in Workers with the new Emscripten target for wasm-bindgen</h2>](https://blog.cloudflare.com/rust-workers-emscripten-target/)
-
-With the new experimental support for the Emscripten target in Rust Workers, many previously unsupported Rust libraries and applications can now be built and deployed directly to Cloudflare's global Workers platform, including upcoming support for Tokio async.
-
-![Guy Bedford](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EK56GG251YRHAXKS587V.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Mitch Foley](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3AKQWSJP6J7R9A91N8QTSGE.01M3AKR1JETQEG5MGZZENGC42C.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Guy Bedford](https://blog.cloudflare.com/author/guy-bedford/) and  [Mitch Foley](https://blog.cloudflare.com/author/mitch-foley/)
-
-September 27, 2026 [<h2>Cloudflare's 2026 Annual Founders' Letter</h2>](https://blog.cloudflare.com/cloudflares-2026-annual-founders-letter/)
-
-The Internet is changing more today than at any point since Cloudflare launched back on September 27, 2010. As automated traffic surpasses human activity, we reflect on the rise of AI agents, new creators, and how we can help build a fair, sustainable future for the web.
-
-![Matthew Prince](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KQ4Z9PY1TR0ERGW96HZR.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Michelle Zatlyn](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48BFVBX36HA6NMPMG9SE5F.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Matthew Prince](https://blog.cloudflare.com/author/matthew-prince/) and  [Michelle Zatlyn](https://blog.cloudflare.com/author/michelle-zatlyn/)
 
 Load more
 
