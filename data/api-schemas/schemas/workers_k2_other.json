@@ -1,0 +1,1584 @@
+{
+	"DELETE /accounts/{account_id}/k2/streams/{stream_id}": {
+		"operationId": "deleteV4AccountsByAccount_idK2StreamsByStream_id",
+		"summary": "Delete K2 stream",
+		"description": "Delete a K2 stream in an account. Deleting a stream that does not exist also succeeds.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the account.",
+					"type": "string",
+					"example": "0123105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[a-f0-9]{32}$"
+				}
+			},
+			{
+				"name": "stream_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the K2 stream.",
+					"type": "string",
+					"example": "053e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[a-f0-9]{32}$"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Indicates a successfully deleted K2 stream.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Indicates an error in deleting a K2 stream."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"workers_k2_other"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "k2.streams",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": false
+	},
+	"GET /accounts/{account_id}/k2/streams": {
+		"operationId": "getV4AccountsByAccount_idK2Streams",
+		"summary": "List K2 streams",
+		"description": "List or filter K2 streams in an account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the account.",
+					"type": "string",
+					"example": "0123105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[a-f0-9]{32}$"
+				}
+			},
+			{
+				"name": "name",
+				"in": "query",
+				"description": "Filters K2 streams by name using a case-insensitive substring.",
+				"schema": {
+					"type": "string",
+					"maxLength": 128,
+					"minLength": 1
+				}
+			},
+			{
+				"name": "page",
+				"in": "query",
+				"schema": {
+					"type": "integer",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"schema": {
+					"type": "integer",
+					"default": 25,
+					"maximum": 100,
+					"minimum": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Indicates successfully listed K2 streams.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"created_at": {
+												"type": "string",
+												"format": "date-time"
+											},
+											"endpoint": {
+												"description": "Indicates the base HTTP endpoint for producing and consuming records.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://053e105f4ecef8ad9ca31a8372d0c353.k2.cloudflarestorage.com"
+											},
+											"http": {
+												"oneOf": [
+													{
+														"additionalProperties": false,
+														"properties": {
+															"enabled": {
+																"description": "Indicates whether the HTTP endpoint accepts records.",
+																"type": "boolean",
+																"enum": [
+																	false
+																]
+															}
+														},
+														"required": [
+															"enabled"
+														],
+														"type": "object"
+													},
+													{
+														"additionalProperties": false,
+														"properties": {
+															"authentication": {
+																"description": "Indicates whether the HTTP endpoint requires an API token with K2 produce permission. When false or omitted, the endpoint accepts unauthenticated records.",
+																"type": "boolean",
+																"default": false
+															},
+															"cors": {
+																"type": "object",
+																"properties": {
+																	"origins": {
+																		"description": "Allows requests from these HTTP or HTTPS origins. Use a wildcard only as the sole origin.",
+																		"oneOf": [
+																			{
+																				"items": {
+																					"enum": [
+																						"*"
+																					],
+																					"type": "string"
+																				},
+																				"maxItems": 1,
+																				"minItems": 1,
+																				"type": "array"
+																			},
+																			{
+																				"items": {
+																					"format": "uri",
+																					"pattern": "^https?://[^/?#@]+$",
+																					"type": "string"
+																				},
+																				"maxItems": 5,
+																				"type": "array",
+																				"uniqueItems": true
+																			}
+																		]
+																	}
+																},
+																"additionalProperties": false
+															},
+															"enabled": {
+																"description": "Indicates whether the HTTP endpoint accepts records.",
+																"type": "boolean",
+																"enum": [
+																	true
+																]
+															}
+														},
+														"required": [
+															"enabled"
+														],
+														"type": "object"
+													}
+												]
+											},
+											"id": {
+												"description": "Specifies the public ID of the K2 stream.",
+												"type": "string",
+												"example": "053e105f4ecef8ad9ca31a8372d0c353",
+												"maxLength": 32,
+												"minLength": 32,
+												"pattern": "^[a-f0-9]{32}$"
+											},
+											"modified_at": {
+												"type": "string",
+												"format": "date-time"
+											},
+											"name": {
+												"description": "Indicates the name of the K2 stream.",
+												"type": "string",
+												"example": "my_k2_stream",
+												"maxLength": 128,
+												"minLength": 1,
+												"pattern": "^[a-zA-Z0-9_]+$"
+											},
+											"retention_seconds": {
+												"description": "Shows the configured record retention period from 1 hour (3600 seconds) to 30 days (2592000 seconds), inclusive.",
+												"type": "integer",
+												"example": 604800,
+												"maximum": 2592000,
+												"minimum": 3600
+											},
+											"worker_binding": {
+												"oneOf": [
+													{
+														"additionalProperties": false,
+														"properties": {
+															"enabled": {
+																"description": "Indicates whether Workers bindings can produce records to the stream.",
+																"type": "boolean",
+																"enum": [
+																	false
+																]
+															}
+														},
+														"required": [
+															"enabled"
+														],
+														"type": "object"
+													},
+													{
+														"additionalProperties": false,
+														"properties": {
+															"enabled": {
+																"description": "Indicates whether Workers bindings can produce records to the stream.",
+																"type": "boolean",
+																"enum": [
+																	true
+																]
+															}
+														},
+														"required": [
+															"enabled"
+														],
+														"type": "object"
+													}
+												]
+											}
+										},
+										"required": [
+											"id",
+											"name",
+											"retention_seconds",
+											"endpoint",
+											"http",
+											"worker_binding",
+											"created_at",
+											"modified_at"
+										]
+									}
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"count",
+										"page",
+										"per_page",
+										"total_count"
+									]
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"result_info"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Indicates an error in listing K2 streams."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"workers_k2_other"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "k2.streams",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": false
+	},
+	"GET /accounts/{account_id}/k2/streams/{stream_id}": {
+		"operationId": "getV4AccountsByAccount_idK2StreamsByStream_id",
+		"summary": "Get K2 stream",
+		"description": "Get K2 stream details.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the account.",
+					"type": "string",
+					"example": "0123105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[a-f0-9]{32}$"
+				}
+			},
+			{
+				"name": "stream_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the K2 stream.",
+					"type": "string",
+					"example": "053e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[a-f0-9]{32}$"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Indicates a successfully retrieved K2 stream.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"created_at": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"endpoint": {
+											"description": "Indicates the base HTTP endpoint for producing and consuming records.",
+											"type": "string",
+											"format": "uri",
+											"example": "https://053e105f4ecef8ad9ca31a8372d0c353.k2.cloudflarestorage.com"
+										},
+										"http": {
+											"oneOf": [
+												{
+													"additionalProperties": false,
+													"properties": {
+														"enabled": {
+															"description": "Indicates whether the HTTP endpoint accepts records.",
+															"type": "boolean",
+															"enum": [
+																false
+															]
+														}
+													},
+													"required": [
+														"enabled"
+													],
+													"type": "object"
+												},
+												{
+													"additionalProperties": false,
+													"properties": {
+														"authentication": {
+															"description": "Indicates whether the HTTP endpoint requires an API token with K2 produce permission. When false or omitted, the endpoint accepts unauthenticated records.",
+															"type": "boolean",
+															"default": false
+														},
+														"cors": {
+															"type": "object",
+															"properties": {
+																"origins": {
+																	"description": "Allows requests from these HTTP or HTTPS origins. Use a wildcard only as the sole origin.",
+																	"oneOf": [
+																		{
+																			"items": {
+																				"enum": [
+																					"*"
+																				],
+																				"type": "string"
+																			},
+																			"maxItems": 1,
+																			"minItems": 1,
+																			"type": "array"
+																		},
+																		{
+																			"items": {
+																				"format": "uri",
+																				"pattern": "^https?://[^/?#@]+$",
+																				"type": "string"
+																			},
+																			"maxItems": 5,
+																			"type": "array",
+																			"uniqueItems": true
+																		}
+																	]
+																}
+															},
+															"additionalProperties": false
+														},
+														"enabled": {
+															"description": "Indicates whether the HTTP endpoint accepts records.",
+															"type": "boolean",
+															"enum": [
+																true
+															]
+														}
+													},
+													"required": [
+														"enabled"
+													],
+													"type": "object"
+												}
+											]
+										},
+										"id": {
+											"description": "Specifies the public ID of the K2 stream.",
+											"type": "string",
+											"example": "053e105f4ecef8ad9ca31a8372d0c353",
+											"maxLength": 32,
+											"minLength": 32,
+											"pattern": "^[a-f0-9]{32}$"
+										},
+										"modified_at": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"name": {
+											"description": "Indicates the name of the K2 stream.",
+											"type": "string",
+											"example": "my_k2_stream",
+											"maxLength": 128,
+											"minLength": 1,
+											"pattern": "^[a-zA-Z0-9_]+$"
+										},
+										"retention_seconds": {
+											"description": "Shows the configured record retention period from 1 hour (3600 seconds) to 30 days (2592000 seconds), inclusive.",
+											"type": "integer",
+											"example": 604800,
+											"maximum": 2592000,
+											"minimum": 3600
+										},
+										"worker_binding": {
+											"oneOf": [
+												{
+													"additionalProperties": false,
+													"properties": {
+														"enabled": {
+															"description": "Indicates whether Workers bindings can produce records to the stream.",
+															"type": "boolean",
+															"enum": [
+																false
+															]
+														}
+													},
+													"required": [
+														"enabled"
+													],
+													"type": "object"
+												},
+												{
+													"additionalProperties": false,
+													"properties": {
+														"enabled": {
+															"description": "Indicates whether Workers bindings can produce records to the stream.",
+															"type": "boolean",
+															"enum": [
+																true
+															]
+														}
+													},
+													"required": [
+														"enabled"
+													],
+													"type": "object"
+												}
+											]
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"retention_seconds",
+										"endpoint",
+										"http",
+										"worker_binding",
+										"created_at",
+										"modified_at"
+									]
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Indicates an error in retrieving a K2 stream."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"workers_k2_other"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "k2.streams",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": false
+	},
+	"GET /accounts/{account_id}/k2/streams/{stream_id}/subscriptions": {
+		"operationId": "getV4AccountsByAccount_idK2StreamsByStream_idSubscriptions",
+		"summary": "List K2 stream subscriptions",
+		"description": "Lists every subscription on one stream, oldest first. Lag uses committed positions, not reserved read positions. A failed tail observation preserves subscription metadata and returns unavailable lag.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the account.",
+					"type": "string",
+					"example": "0123105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[a-f0-9]{32}$"
+				}
+			},
+			{
+				"name": "stream_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the K2 stream.",
+					"type": "string",
+					"example": "053e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[a-f0-9]{32}$"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Every subscription on the K2 stream, with observed committed-position lag.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"created_at": {
+												"type": "string",
+												"format": "date-time"
+											},
+											"id": {
+												"type": "string",
+												"pattern": "^[a-f0-9]{32}$"
+											},
+											"lag": {
+												"type": "object",
+												"properties": {
+													"records": {
+														"description": "Decimal-string distance from the subscription's committed position to the observed exclusive stream tail, in records. Includes in-flight records and may include expired records or records acknowledged beyond an earlier gap. Null unless status is available.",
+														"type": "string",
+														"nullable": true,
+														"pattern": "^(0|[1-9][0-9]*)$"
+													},
+													"status": {
+														"description": "Unsupported means the subscription or stream topology cannot be measured; unavailable means a required observation failed or was inconsistent.",
+														"type": "string",
+														"enum": [
+															"available",
+															"unsupported",
+															"unavailable"
+														]
+													}
+												},
+												"required": [
+													"status",
+													"records"
+												]
+											},
+											"modified_at": {
+												"type": "string",
+												"format": "date-time"
+											},
+											"name": {
+												"type": "string"
+											},
+											"start_at": {
+												"type": "object",
+												"properties": {
+													"type": {
+														"type": "string",
+														"enum": [
+															"earliest",
+															"latest"
+														]
+													}
+												},
+												"required": [
+													"type"
+												]
+											}
+										},
+										"required": [
+											"id",
+											"name",
+											"start_at",
+											"created_at",
+											"modified_at",
+											"lag"
+										]
+									}
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Missing stream or insufficient K2 read permission."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"workers_k2_other"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "k2.streams.subscriptions",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": false
+	},
+	"PATCH /accounts/{account_id}/k2/streams/{stream_id}": {
+		"operationId": "patchV4AccountsByAccount_idK2StreamsByStream_id",
+		"summary": "Update K2 stream",
+		"description": "Update a K2 stream. Each provided input replaces that input's full configuration, so include every `http` setting to keep, such as `authentication` and `cors`. At least one input must remain enabled.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the account.",
+					"type": "string",
+					"example": "0123105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[a-f0-9]{32}$"
+				}
+			},
+			{
+				"name": "stream_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the K2 stream.",
+					"type": "string",
+					"example": "053e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[a-f0-9]{32}$"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"http": {
+								"oneOf": [
+									{
+										"additionalProperties": false,
+										"properties": {
+											"enabled": {
+												"description": "Indicates whether the HTTP endpoint accepts records.",
+												"type": "boolean",
+												"enum": [
+													false
+												]
+											}
+										},
+										"required": [
+											"enabled"
+										],
+										"type": "object"
+									},
+									{
+										"additionalProperties": false,
+										"properties": {
+											"authentication": {
+												"description": "Indicates whether the HTTP endpoint requires an API token with K2 produce permission. When false or omitted, the endpoint accepts unauthenticated records.",
+												"type": "boolean",
+												"default": false
+											},
+											"cors": {
+												"type": "object",
+												"properties": {
+													"origins": {
+														"description": "Allows requests from these HTTP or HTTPS origins. Use a wildcard only as the sole origin.",
+														"oneOf": [
+															{
+																"items": {
+																	"enum": [
+																		"*"
+																	],
+																	"type": "string"
+																},
+																"maxItems": 1,
+																"minItems": 1,
+																"type": "array"
+															},
+															{
+																"items": {
+																	"format": "uri",
+																	"pattern": "^https?://[^/?#@]+$",
+																	"type": "string"
+																},
+																"maxItems": 5,
+																"type": "array",
+																"uniqueItems": true
+															}
+														]
+													}
+												},
+												"additionalProperties": false
+											},
+											"enabled": {
+												"description": "Indicates whether the HTTP endpoint accepts records.",
+												"type": "boolean",
+												"enum": [
+													true
+												]
+											}
+										},
+										"required": [
+											"enabled"
+										],
+										"type": "object"
+									}
+								]
+							},
+							"retention_seconds": {
+								"description": "Sets the record retention period from 1 hour (3600 seconds) to 30 days (2592000 seconds), inclusive.",
+								"type": "integer",
+								"maximum": 2592000,
+								"minimum": 3600
+							},
+							"worker_binding": {
+								"oneOf": [
+									{
+										"additionalProperties": false,
+										"properties": {
+											"enabled": {
+												"description": "Indicates whether Workers bindings can produce records to the stream.",
+												"type": "boolean",
+												"enum": [
+													false
+												]
+											}
+										},
+										"required": [
+											"enabled"
+										],
+										"type": "object"
+									},
+									{
+										"additionalProperties": false,
+										"properties": {
+											"enabled": {
+												"description": "Indicates whether Workers bindings can produce records to the stream.",
+												"type": "boolean",
+												"enum": [
+													true
+												]
+											}
+										},
+										"required": [
+											"enabled"
+										],
+										"type": "object"
+									}
+								]
+							}
+						},
+						"additionalProperties": false,
+						"minProperties": 1,
+						"not": {
+							"properties": {
+								"http": {
+									"type": "object",
+									"properties": {
+										"enabled": {
+											"type": "boolean",
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"enabled"
+									]
+								},
+								"worker_binding": {
+									"type": "object",
+									"properties": {
+										"enabled": {
+											"type": "boolean",
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"enabled"
+									]
+								}
+							},
+							"required": [
+								"http",
+								"worker_binding"
+							]
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Indicates a successfully updated K2 stream.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"created_at": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"endpoint": {
+											"description": "Indicates the base HTTP endpoint for producing and consuming records.",
+											"type": "string",
+											"format": "uri",
+											"example": "https://053e105f4ecef8ad9ca31a8372d0c353.k2.cloudflarestorage.com"
+										},
+										"http": {
+											"oneOf": [
+												{
+													"additionalProperties": false,
+													"properties": {
+														"enabled": {
+															"description": "Indicates whether the HTTP endpoint accepts records.",
+															"type": "boolean",
+															"enum": [
+																false
+															]
+														}
+													},
+													"required": [
+														"enabled"
+													],
+													"type": "object"
+												},
+												{
+													"additionalProperties": false,
+													"properties": {
+														"authentication": {
+															"description": "Indicates whether the HTTP endpoint requires an API token with K2 produce permission. When false or omitted, the endpoint accepts unauthenticated records.",
+															"type": "boolean",
+															"default": false
+														},
+														"cors": {
+															"type": "object",
+															"properties": {
+																"origins": {
+																	"description": "Allows requests from these HTTP or HTTPS origins. Use a wildcard only as the sole origin.",
+																	"oneOf": [
+																		{
+																			"items": {
+																				"enum": [
+																					"*"
+																				],
+																				"type": "string"
+																			},
+																			"maxItems": 1,
+																			"minItems": 1,
+																			"type": "array"
+																		},
+																		{
+																			"items": {
+																				"format": "uri",
+																				"pattern": "^https?://[^/?#@]+$",
+																				"type": "string"
+																			},
+																			"maxItems": 5,
+																			"type": "array",
+																			"uniqueItems": true
+																		}
+																	]
+																}
+															},
+															"additionalProperties": false
+														},
+														"enabled": {
+															"description": "Indicates whether the HTTP endpoint accepts records.",
+															"type": "boolean",
+															"enum": [
+																true
+															]
+														}
+													},
+													"required": [
+														"enabled"
+													],
+													"type": "object"
+												}
+											]
+										},
+										"id": {
+											"description": "Specifies the public ID of the K2 stream.",
+											"type": "string",
+											"example": "053e105f4ecef8ad9ca31a8372d0c353",
+											"maxLength": 32,
+											"minLength": 32,
+											"pattern": "^[a-f0-9]{32}$"
+										},
+										"modified_at": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"name": {
+											"description": "Indicates the name of the K2 stream.",
+											"type": "string",
+											"example": "my_k2_stream",
+											"maxLength": 128,
+											"minLength": 1,
+											"pattern": "^[a-zA-Z0-9_]+$"
+										},
+										"retention_seconds": {
+											"description": "Shows the configured record retention period from 1 hour (3600 seconds) to 30 days (2592000 seconds), inclusive.",
+											"type": "integer",
+											"example": 604800,
+											"maximum": 2592000,
+											"minimum": 3600
+										},
+										"worker_binding": {
+											"oneOf": [
+												{
+													"additionalProperties": false,
+													"properties": {
+														"enabled": {
+															"description": "Indicates whether Workers bindings can produce records to the stream.",
+															"type": "boolean",
+															"enum": [
+																false
+															]
+														}
+													},
+													"required": [
+														"enabled"
+													],
+													"type": "object"
+												},
+												{
+													"additionalProperties": false,
+													"properties": {
+														"enabled": {
+															"description": "Indicates whether Workers bindings can produce records to the stream.",
+															"type": "boolean",
+															"enum": [
+																true
+															]
+														}
+													},
+													"required": [
+														"enabled"
+													],
+													"type": "object"
+												}
+											]
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"retention_seconds",
+										"endpoint",
+										"http",
+										"worker_binding",
+										"created_at",
+										"modified_at"
+									]
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Indicates an error in updating a K2 stream."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"workers_k2_other"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "k2.streams",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": false
+	},
+	"POST /accounts/{account_id}/k2/streams": {
+		"operationId": "postV4AccountsByAccount_idK2Streams",
+		"summary": "Create K2 stream",
+		"description": "Create a new K2 stream.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the account.",
+					"type": "string",
+					"example": "0123105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[a-f0-9]{32}$"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"http": {
+								"oneOf": [
+									{
+										"additionalProperties": false,
+										"properties": {
+											"enabled": {
+												"description": "Indicates whether the HTTP endpoint accepts records.",
+												"type": "boolean",
+												"enum": [
+													false
+												]
+											}
+										},
+										"required": [
+											"enabled"
+										],
+										"type": "object"
+									},
+									{
+										"additionalProperties": false,
+										"properties": {
+											"authentication": {
+												"description": "Indicates whether the HTTP endpoint requires an API token with K2 produce permission. When false or omitted, the endpoint accepts unauthenticated records.",
+												"type": "boolean",
+												"default": false
+											},
+											"cors": {
+												"type": "object",
+												"properties": {
+													"origins": {
+														"description": "Allows requests from these HTTP or HTTPS origins. Use a wildcard only as the sole origin.",
+														"oneOf": [
+															{
+																"items": {
+																	"enum": [
+																		"*"
+																	],
+																	"type": "string"
+																},
+																"maxItems": 1,
+																"minItems": 1,
+																"type": "array"
+															},
+															{
+																"items": {
+																	"format": "uri",
+																	"pattern": "^https?://[^/?#@]+$",
+																	"type": "string"
+																},
+																"maxItems": 5,
+																"type": "array",
+																"uniqueItems": true
+															}
+														]
+													}
+												},
+												"additionalProperties": false
+											},
+											"enabled": {
+												"description": "Indicates whether the HTTP endpoint accepts records.",
+												"type": "boolean",
+												"enum": [
+													true
+												]
+											}
+										},
+										"required": [
+											"enabled"
+										],
+										"type": "object"
+									}
+								]
+							},
+							"name": {
+								"description": "Specifies the name of the K2 stream.",
+								"type": "string",
+								"example": "my_k2_stream",
+								"maxLength": 128,
+								"minLength": 1,
+								"pattern": "^[a-zA-Z0-9_]+$"
+							},
+							"retention_seconds": {
+								"description": "Sets the record retention period from 1 hour (3600 seconds) to 30 days (2592000 seconds), inclusive.",
+								"type": "integer",
+								"default": 604800,
+								"maximum": 2592000,
+								"minimum": 3600
+							},
+							"worker_binding": {
+								"default": {
+									"enabled": true
+								},
+								"allOf": [
+									{
+										"oneOf": [
+											{
+												"additionalProperties": false,
+												"properties": {
+													"enabled": {
+														"description": "Indicates whether Workers bindings can produce records to the stream.",
+														"type": "boolean",
+														"enum": [
+															false
+														]
+													}
+												},
+												"required": [
+													"enabled"
+												],
+												"type": "object"
+											},
+											{
+												"additionalProperties": false,
+												"properties": {
+													"enabled": {
+														"description": "Indicates whether Workers bindings can produce records to the stream.",
+														"type": "boolean",
+														"enum": [
+															true
+														]
+													}
+												},
+												"required": [
+													"enabled"
+												],
+												"type": "object"
+											}
+										]
+									}
+								]
+							}
+						},
+						"additionalProperties": false,
+						"not": {
+							"properties": {
+								"http": {
+									"type": "object",
+									"properties": {
+										"enabled": {
+											"type": "boolean",
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"enabled"
+									]
+								},
+								"worker_binding": {
+									"type": "object",
+									"properties": {
+										"enabled": {
+											"type": "boolean",
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"enabled"
+									]
+								}
+							},
+							"required": [
+								"http",
+								"worker_binding"
+							]
+						},
+						"required": [
+							"name",
+							"http"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Indicates a successfully created K2 stream.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"created_at": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"endpoint": {
+											"description": "Indicates the base HTTP endpoint for producing and consuming records.",
+											"type": "string",
+											"format": "uri",
+											"example": "https://053e105f4ecef8ad9ca31a8372d0c353.k2.cloudflarestorage.com"
+										},
+										"http": {
+											"oneOf": [
+												{
+													"additionalProperties": false,
+													"properties": {
+														"enabled": {
+															"description": "Indicates whether the HTTP endpoint accepts records.",
+															"type": "boolean",
+															"enum": [
+																false
+															]
+														}
+													},
+													"required": [
+														"enabled"
+													],
+													"type": "object"
+												},
+												{
+													"additionalProperties": false,
+													"properties": {
+														"authentication": {
+															"description": "Indicates whether the HTTP endpoint requires an API token with K2 produce permission. When false or omitted, the endpoint accepts unauthenticated records.",
+															"type": "boolean",
+															"default": false
+														},
+														"cors": {
+															"type": "object",
+															"properties": {
+																"origins": {
+																	"description": "Allows requests from these HTTP or HTTPS origins. Use a wildcard only as the sole origin.",
+																	"oneOf": [
+																		{
+																			"items": {
+																				"enum": [
+																					"*"
+																				],
+																				"type": "string"
+																			},
+																			"maxItems": 1,
+																			"minItems": 1,
+																			"type": "array"
+																		},
+																		{
+																			"items": {
+																				"format": "uri",
+																				"pattern": "^https?://[^/?#@]+$",
+																				"type": "string"
+																			},
+																			"maxItems": 5,
+																			"type": "array",
+																			"uniqueItems": true
+																		}
+																	]
+																}
+															},
+															"additionalProperties": false
+														},
+														"enabled": {
+															"description": "Indicates whether the HTTP endpoint accepts records.",
+															"type": "boolean",
+															"enum": [
+																true
+															]
+														}
+													},
+													"required": [
+														"enabled"
+													],
+													"type": "object"
+												}
+											]
+										},
+										"id": {
+											"description": "Specifies the public ID of the K2 stream.",
+											"type": "string",
+											"example": "053e105f4ecef8ad9ca31a8372d0c353",
+											"maxLength": 32,
+											"minLength": 32,
+											"pattern": "^[a-f0-9]{32}$"
+										},
+										"modified_at": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"name": {
+											"description": "Indicates the name of the K2 stream.",
+											"type": "string",
+											"example": "my_k2_stream",
+											"maxLength": 128,
+											"minLength": 1,
+											"pattern": "^[a-zA-Z0-9_]+$"
+										},
+										"retention_seconds": {
+											"description": "Shows the configured record retention period from 1 hour (3600 seconds) to 30 days (2592000 seconds), inclusive.",
+											"type": "integer",
+											"example": 604800,
+											"maximum": 2592000,
+											"minimum": 3600
+										},
+										"worker_binding": {
+											"oneOf": [
+												{
+													"additionalProperties": false,
+													"properties": {
+														"enabled": {
+															"description": "Indicates whether Workers bindings can produce records to the stream.",
+															"type": "boolean",
+															"enum": [
+																false
+															]
+														}
+													},
+													"required": [
+														"enabled"
+													],
+													"type": "object"
+												},
+												{
+													"additionalProperties": false,
+													"properties": {
+														"enabled": {
+															"description": "Indicates whether Workers bindings can produce records to the stream.",
+															"type": "boolean",
+															"enum": [
+																true
+															]
+														}
+													},
+													"required": [
+														"enabled"
+													],
+													"type": "object"
+												}
+											]
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"retention_seconds",
+										"endpoint",
+										"http",
+										"worker_binding",
+										"created_at",
+										"modified_at"
+									]
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Indicates an error in creating a K2 stream."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"workers_k2_other"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "k2.streams",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": false
+	}
+}

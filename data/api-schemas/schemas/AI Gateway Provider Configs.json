@@ -370,6 +370,183 @@
 		"x-fern-sdk-group-name": "ai-gateway.gateways.providers",
 		"x-fern-sdk-method-name": "list"
 	},
+	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/provider_configs/{id}": {
+		"operationId": "aig-config-fetch-providers",
+		"summary": "Get a provider key",
+		"description": "Retrieves a provider key configuration for an AI Gateway. The response shows a masked preview of the key, never the key itself.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
+				}
+			},
+			{
+				"name": "gateway_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Unique identifier of the AI Gateway within the account.",
+					"type": "string",
+					"example": "my-gateway",
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns a single object if found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"alias": {
+											"type": "string"
+										},
+										"default_config": {
+											"type": "boolean"
+										},
+										"gateway_id": {
+											"description": "Unique identifier of the AI Gateway within the account.",
+											"type": "string",
+											"example": "my-gateway",
+											"maxLength": 64,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"x-auditable": true
+										},
+										"id": {
+											"type": "string"
+										},
+										"modified_at": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"provider_slug": {
+											"type": "string"
+										},
+										"rate_limit": {
+											"type": "number"
+										},
+										"rate_limit_period": {
+											"type": "number",
+											"default": 60
+										},
+										"secret_id": {
+											"type": "string"
+										},
+										"secret_preview": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"provider_slug",
+										"secret_preview",
+										"default_config",
+										"gateway_id",
+										"modified_at",
+										"alias",
+										"secret_id"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not Found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 7002
+											},
+											"message": {
+												"type": "string",
+												"example": "Not Found"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"AI Gateway Provider Configs"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-gateway.gateways.providers",
+		"x-fern-sdk-method-name": "get"
+	},
 	"POST /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/provider_configs": {
 		"operationId": "aig-config-create-providers",
 		"summary": "Store a provider key",

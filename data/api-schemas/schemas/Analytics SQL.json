@@ -2,12 +2,12 @@
 	"GET /analytics/sql": {
 		"operationId": "sql-api-query-get",
 		"summary": "Query analytics datasets",
-		"description": "Executes a SQL query against the analytics datasets available to the caller. SQL placeholders can be bound with query parameters named `param_<name>`, such as `param_status=404` for `$status`.\n",
+		"description": "Executes a SQL query against the analytics datasets available to the caller. SQL placeholders can be bound with query parameters named `param_<name>`, such as `param_status=404` for `$status`. A trailing `FORMAT JSON`, `FORMAT JSONEachRow`, `FORMAT TabSeparated`, or `FORMAT TSV` is supported for all datasets. Without FORMAT, each backend retains its existing default JSON response.\n",
 		"parameters": [
 			{
 				"name": "query",
 				"in": "query",
-				"description": "SQL query to execute.",
+				"description": "SQL query to execute. A trailing FORMAT selects JSON, JSONEachRow, TabSeparated, or TSV output on any dataset.\n",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -17,43 +17,157 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Query executed successfully. Columns that the query reaches only through `*` exclude any that the caller is not permitted to read.\n",
+				"description": "Query executed successfully. Columns that the query reaches only through `*` exclude any that the caller is not permitted to read. ClickHouse's default JSON envelope has data, rows, and statistics; explicit FORMAT JSON additionally has typed metadata and rows_before_limit_at_least. Log Explorer's default and FORMAT JSON responses use its existing {data, rows} envelope, without unavailable metadata, pre-limit counts, or statistics. FORMAT JSONEachRow returns newline-delimited JSON objects. FORMAT TabSeparated and TSV return escaped tab-separated rows without a header; Log Explorer serializes nested JSON values as compact JSON text in one field.\n",
 				"content": {
 					"application/json": {
 						"schema": {
-							"type": "object",
-							"properties": {
-								"data": {
-									"description": "Query result rows keyed by the selected column names.",
-									"type": "array",
-									"items": {
-										"additionalProperties": true,
-										"type": "object"
-									}
-								},
-								"rows": {
-									"description": "Number of rows in `data`.",
-									"type": "integer",
-									"format": "int64",
-									"minimum": 0
-								},
-								"statistics": {
+							"oneOf": [
+								{
 									"type": "object",
 									"properties": {
-										"bytes_read": {
-											"description": "Number of source bytes read while executing the query.",
+										"data": {
+											"description": "Query result rows keyed by the selected column names.",
+											"type": "array",
+											"items": {
+												"additionalProperties": true,
+												"type": "object"
+											}
+										},
+										"rows": {
+											"description": "Number of rows in `data`.",
 											"type": "integer",
 											"format": "int64",
 											"minimum": 0
 										},
-										"elapsed_ms": {
-											"description": "Backend execution time in milliseconds.",
+										"statistics": {
+											"type": "object",
+											"properties": {
+												"bytes_read": {
+													"description": "Number of source bytes read while executing the query.",
+													"type": "integer",
+													"format": "int64",
+													"minimum": 0
+												},
+												"elapsed_ms": {
+													"description": "Backend execution time in milliseconds.",
+													"type": "integer",
+													"format": "int64",
+													"minimum": 0
+												},
+												"rows_read": {
+													"description": "Number of source rows read while executing the query.",
+													"type": "integer",
+													"format": "int64",
+													"minimum": 0
+												}
+											},
+											"additionalProperties": false,
+											"required": [
+												"elapsed_ms",
+												"rows_read",
+												"bytes_read"
+											]
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"data",
+										"rows",
+										"statistics"
+									]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"data": {
+											"type": "array",
+											"items": {
+												"additionalProperties": true,
+												"type": "object"
+											}
+										},
+										"meta": {
+											"type": "array",
+											"items": {
+												"additionalProperties": false,
+												"properties": {
+													"name": {
+														"type": "string"
+													},
+													"type": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"name",
+													"type"
+												],
+												"type": "object"
+											}
+										},
+										"rows": {
 											"type": "integer",
 											"format": "int64",
 											"minimum": 0
 										},
-										"rows_read": {
-											"description": "Number of source rows read while executing the query.",
+										"rows_before_limit_at_least": {
+											"description": "ClickHouse pre-limit count, or rows when unavailable.",
+											"type": "integer",
+											"format": "int64",
+											"minimum": 0
+										},
+										"statistics": {
+											"type": "object",
+											"properties": {
+												"bytes_read": {
+													"description": "Number of source bytes read while executing the query.",
+													"type": "integer",
+													"format": "int64",
+													"minimum": 0
+												},
+												"elapsed_ms": {
+													"description": "Backend execution time in milliseconds.",
+													"type": "integer",
+													"format": "int64",
+													"minimum": 0
+												},
+												"rows_read": {
+													"description": "Number of source rows read while executing the query.",
+													"type": "integer",
+													"format": "int64",
+													"minimum": 0
+												}
+											},
+											"additionalProperties": false,
+											"required": [
+												"elapsed_ms",
+												"rows_read",
+												"bytes_read"
+											]
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"meta",
+										"data",
+										"rows",
+										"rows_before_limit_at_least",
+										"statistics"
+									]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"data": {
+											"description": "Log Explorer query rows keyed by selected column names.",
+											"type": "array",
+											"items": {
+												"additionalProperties": true,
+												"type": "object"
+											}
+										},
+										"rows": {
+											"description": "Number of rows in data.",
 											"type": "integer",
 											"format": "int64",
 											"minimum": 0
@@ -61,18 +175,23 @@
 									},
 									"additionalProperties": false,
 									"required": [
-										"elapsed_ms",
-										"rows_read",
-										"bytes_read"
+										"data",
+										"rows"
 									]
 								}
-							},
-							"additionalProperties": false,
-							"required": [
-								"data",
-								"rows",
-								"statistics"
 							]
+						}
+					},
+					"application/x-ndjson": {
+						"schema": {
+							"description": "FORMAT JSONEachRow emits one JSON object per line, rather than a single JSON document.\n",
+							"type": "string"
+						}
+					},
+					"text/tab-separated-values": {
+						"schema": {
+							"description": "FORMAT TabSeparated (or TSV) emits escaped tab-separated rows without a header.\n",
+							"type": "string"
 						}
 					}
 				}
@@ -727,7 +846,7 @@
 	"POST /analytics/sql": {
 		"operationId": "sql-api-query-post",
 		"summary": "Query analytics datasets",
-		"description": "Executes a SQL query against the analytics datasets available to the caller. Send either raw SQL or a JSON object containing the query and optional positional or named parameters, time range, and account or zone scope. Raw SQL placeholders can also be bound with query parameters named `param_<name>`.\n",
+		"description": "Executes a SQL query against the analytics datasets available to the caller. Send either raw SQL or a JSON object containing the query and optional positional or named parameters, time range, and account or zone scope. Raw SQL placeholders can also be bound with query parameters named `param_<name>`. A trailing `FORMAT JSON`, `FORMAT JSONEachRow`, `FORMAT TabSeparated`, or `FORMAT TSV` is supported for all datasets. Without FORMAT, each backend retains its existing default JSON response.\n",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -749,7 +868,7 @@
 								]
 							},
 							"query": {
-								"description": "SQL query to execute.",
+								"description": "SQL query to execute. A trailing FORMAT selects JSON, JSONEachRow, TabSeparated, or TSV output on any dataset.\n",
 								"type": "string"
 							},
 							"scope": {
@@ -837,43 +956,157 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Query executed successfully. Columns that the query reaches only through `*` exclude any that the caller is not permitted to read.\n",
+				"description": "Query executed successfully. Columns that the query reaches only through `*` exclude any that the caller is not permitted to read. ClickHouse's default JSON envelope has data, rows, and statistics; explicit FORMAT JSON additionally has typed metadata and rows_before_limit_at_least. Log Explorer's default and FORMAT JSON responses use its existing {data, rows} envelope, without unavailable metadata, pre-limit counts, or statistics. FORMAT JSONEachRow returns newline-delimited JSON objects. FORMAT TabSeparated and TSV return escaped tab-separated rows without a header; Log Explorer serializes nested JSON values as compact JSON text in one field.\n",
 				"content": {
 					"application/json": {
 						"schema": {
-							"type": "object",
-							"properties": {
-								"data": {
-									"description": "Query result rows keyed by the selected column names.",
-									"type": "array",
-									"items": {
-										"additionalProperties": true,
-										"type": "object"
-									}
-								},
-								"rows": {
-									"description": "Number of rows in `data`.",
-									"type": "integer",
-									"format": "int64",
-									"minimum": 0
-								},
-								"statistics": {
+							"oneOf": [
+								{
 									"type": "object",
 									"properties": {
-										"bytes_read": {
-											"description": "Number of source bytes read while executing the query.",
+										"data": {
+											"description": "Query result rows keyed by the selected column names.",
+											"type": "array",
+											"items": {
+												"additionalProperties": true,
+												"type": "object"
+											}
+										},
+										"rows": {
+											"description": "Number of rows in `data`.",
 											"type": "integer",
 											"format": "int64",
 											"minimum": 0
 										},
-										"elapsed_ms": {
-											"description": "Backend execution time in milliseconds.",
+										"statistics": {
+											"type": "object",
+											"properties": {
+												"bytes_read": {
+													"description": "Number of source bytes read while executing the query.",
+													"type": "integer",
+													"format": "int64",
+													"minimum": 0
+												},
+												"elapsed_ms": {
+													"description": "Backend execution time in milliseconds.",
+													"type": "integer",
+													"format": "int64",
+													"minimum": 0
+												},
+												"rows_read": {
+													"description": "Number of source rows read while executing the query.",
+													"type": "integer",
+													"format": "int64",
+													"minimum": 0
+												}
+											},
+											"additionalProperties": false,
+											"required": [
+												"elapsed_ms",
+												"rows_read",
+												"bytes_read"
+											]
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"data",
+										"rows",
+										"statistics"
+									]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"data": {
+											"type": "array",
+											"items": {
+												"additionalProperties": true,
+												"type": "object"
+											}
+										},
+										"meta": {
+											"type": "array",
+											"items": {
+												"additionalProperties": false,
+												"properties": {
+													"name": {
+														"type": "string"
+													},
+													"type": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"name",
+													"type"
+												],
+												"type": "object"
+											}
+										},
+										"rows": {
 											"type": "integer",
 											"format": "int64",
 											"minimum": 0
 										},
-										"rows_read": {
-											"description": "Number of source rows read while executing the query.",
+										"rows_before_limit_at_least": {
+											"description": "ClickHouse pre-limit count, or rows when unavailable.",
+											"type": "integer",
+											"format": "int64",
+											"minimum": 0
+										},
+										"statistics": {
+											"type": "object",
+											"properties": {
+												"bytes_read": {
+													"description": "Number of source bytes read while executing the query.",
+													"type": "integer",
+													"format": "int64",
+													"minimum": 0
+												},
+												"elapsed_ms": {
+													"description": "Backend execution time in milliseconds.",
+													"type": "integer",
+													"format": "int64",
+													"minimum": 0
+												},
+												"rows_read": {
+													"description": "Number of source rows read while executing the query.",
+													"type": "integer",
+													"format": "int64",
+													"minimum": 0
+												}
+											},
+											"additionalProperties": false,
+											"required": [
+												"elapsed_ms",
+												"rows_read",
+												"bytes_read"
+											]
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"meta",
+										"data",
+										"rows",
+										"rows_before_limit_at_least",
+										"statistics"
+									]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"data": {
+											"description": "Log Explorer query rows keyed by selected column names.",
+											"type": "array",
+											"items": {
+												"additionalProperties": true,
+												"type": "object"
+											}
+										},
+										"rows": {
+											"description": "Number of rows in data.",
 											"type": "integer",
 											"format": "int64",
 											"minimum": 0
@@ -881,18 +1114,23 @@
 									},
 									"additionalProperties": false,
 									"required": [
-										"elapsed_ms",
-										"rows_read",
-										"bytes_read"
+										"data",
+										"rows"
 									]
 								}
-							},
-							"additionalProperties": false,
-							"required": [
-								"data",
-								"rows",
-								"statistics"
 							]
+						}
+					},
+					"application/x-ndjson": {
+						"schema": {
+							"description": "FORMAT JSONEachRow emits one JSON object per line, rather than a single JSON document.\n",
+							"type": "string"
+						}
+					},
+					"text/tab-separated-values": {
+						"schema": {
+							"description": "FORMAT TabSeparated (or TSV) emits escaped tab-separated rows without a header.\n",
+							"type": "string"
 						}
 					}
 				}

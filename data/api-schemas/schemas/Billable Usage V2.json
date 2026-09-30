@@ -105,12 +105,12 @@
 												"nullable": true
 											},
 											"BillingAccountId": {
-												"description": "Public identifier of the Cloudflare account (account tag). Omitted when account is not part of the requested grouping.",
+												"description": "Public identifier of the Cloudflare account (account tag). Omitted when account is not part of the requested grouping, and always omitted for usage measured at contract level, even when grouping by account: that usage is returned as its own record with no account.",
 												"type": "string",
 												"example": "023e105f4ecef8ad9ca31a8372d0c353"
 											},
 											"BillingAccountName": {
-												"description": "Display name of the Cloudflare account. Omitted when account is not part of the requested grouping.",
+												"description": "Display name of the Cloudflare account. Omitted when account is not part of the requested grouping, and for usage measured at contract level.",
 												"type": "string",
 												"example": "My Account"
 											},
@@ -310,13 +310,13 @@
 												"example": "Workers"
 											},
 											"x_ZoneId": {
-												"description": "The identifier for the Cloudflare zone (zone tag). Cloudflare extension.",
+												"description": "The identifier for the Cloudflare zone (zone tag). Omitted when zone is not part of the requested grouping, and always omitted for usage measured at contract level, even when grouping by zone. Cloudflare extension.",
 												"type": "string",
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"nullable": true
 											},
 											"x_ZoneName": {
-												"description": "The display name of the Cloudflare zone. Cloudflare extension.",
+												"description": "The display name of the Cloudflare zone. Omitted when zone is not part of the requested grouping, and for usage measured at contract level. Cloudflare extension.",
 												"type": "string",
 												"example": "example.com",
 												"nullable": true
@@ -845,12 +845,12 @@
 												"nullable": true
 											},
 											"BillingAccountId": {
-												"description": "Public identifier of the Cloudflare account (account tag). Omitted when account is not part of the requested grouping.",
+												"description": "Public identifier of the Cloudflare account (account tag). Omitted when account is not part of the requested grouping, and always omitted for usage measured at contract level, even when grouping by account: that usage is returned as its own record with no account.",
 												"type": "string",
 												"example": "023e105f4ecef8ad9ca31a8372d0c353"
 											},
 											"BillingAccountName": {
-												"description": "Display name of the Cloudflare account. Omitted when account is not part of the requested grouping.",
+												"description": "Display name of the Cloudflare account. Omitted when account is not part of the requested grouping, and for usage measured at contract level.",
 												"type": "string",
 												"example": "My Account"
 											},
@@ -1050,13 +1050,13 @@
 												"example": "Workers"
 											},
 											"x_ZoneId": {
-												"description": "The identifier for the Cloudflare zone (zone tag). Cloudflare extension.",
+												"description": "The identifier for the Cloudflare zone (zone tag). Omitted when zone is not part of the requested grouping, and always omitted for usage measured at contract level, even when grouping by zone. Cloudflare extension.",
 												"type": "string",
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"nullable": true
 											},
 											"x_ZoneName": {
-												"description": "The display name of the Cloudflare zone. Cloudflare extension.",
+												"description": "The display name of the Cloudflare zone. Omitted when zone is not part of the requested grouping, and for usage measured at contract level. Cloudflare extension.",
 												"type": "string",
 												"example": "example.com",
 												"nullable": true
@@ -1424,12 +1424,12 @@
 												"nullable": true
 											},
 											"BillingAccountId": {
-												"description": "Public identifier of the Cloudflare account (account tag). Omitted when account is not part of the requested grouping.",
+												"description": "Public identifier of the Cloudflare account (account tag). Omitted when account is not part of the requested grouping, and always omitted for usage measured at contract level, even when grouping by account: that usage is returned as its own record with no account.",
 												"type": "string",
 												"example": "023e105f4ecef8ad9ca31a8372d0c353"
 											},
 											"BillingAccountName": {
-												"description": "Display name of the Cloudflare account. Omitted when account is not part of the requested grouping.",
+												"description": "Display name of the Cloudflare account. Omitted when account is not part of the requested grouping, and for usage measured at contract level.",
 												"type": "string",
 												"example": "My Account"
 											},
@@ -1629,13 +1629,13 @@
 												"example": "Workers"
 											},
 											"x_ZoneId": {
-												"description": "The identifier for the Cloudflare zone (zone tag). Cloudflare extension.",
+												"description": "The identifier for the Cloudflare zone (zone tag). Omitted when zone is not part of the requested grouping, and always omitted for usage measured at contract level, even when grouping by zone. Cloudflare extension.",
 												"type": "string",
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"nullable": true
 											},
 											"x_ZoneName": {
-												"description": "The display name of the Cloudflare zone. Cloudflare extension.",
+												"description": "The display name of the Cloudflare zone. Omitted when zone is not part of the requested grouping, and for usage measured at contract level. Cloudflare extension.",
 												"type": "string",
 												"example": "example.com",
 												"nullable": true

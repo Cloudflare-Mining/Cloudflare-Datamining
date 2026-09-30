@@ -14,7 +14,8 @@
 					"example": "2f2feab2026849078ba485f918791bdc",
 					"pattern": "^[0-9a-f]{32}$",
 					"title": "Ruleset ID"
-				}
+				},
+				"x-fern-parameter-name": "id"
 			},
 			{
 				"name": "zone_id",
@@ -252,7 +253,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "rulesets",
+		"x-fern-sdk-group-name": "rulesets.zone",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true
 	},
@@ -9084,7 +9085,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "rulesets.rules",
+		"x-fern-sdk-group-name": "rulesets.zone.rules",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true
 	},
@@ -9115,7 +9116,8 @@
 					"example": "2f2feab2026849078ba485f918791bdc",
 					"pattern": "^[0-9a-f]{32}$",
 					"title": "Ruleset ID"
-				}
+				},
+				"x-fern-parameter-name": "id"
 			},
 			{
 				"name": "zone_id",
@@ -9353,7 +9355,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "rulesets.versions",
+		"x-fern-sdk-group-name": "rulesets.zone.versions",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true
 	},
@@ -9953,7 +9955,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "rulesets",
+		"x-fern-sdk-group-name": "rulesets.zone",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
@@ -9972,7 +9974,8 @@
 					"example": "2f2feab2026849078ba485f918791bdc",
 					"pattern": "^[0-9a-f]{32}$",
 					"title": "Ruleset ID"
-				}
+				},
+				"x-fern-parameter-name": "id"
 			},
 			{
 				"name": "zone_id",
@@ -18772,7 +18775,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "rulesets",
+		"x-fern-sdk-group-name": "rulesets.zone",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -18791,7 +18794,8 @@
 					"example": "2f2feab2026849078ba485f918791bdc",
 					"pattern": "^[0-9a-f]{32}$",
 					"title": "Ruleset ID"
-				}
+				},
+				"x-fern-parameter-name": "id"
 			},
 			{
 				"name": "zone_id",
@@ -19361,7 +19365,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "rulesets.versions",
+		"x-fern-sdk-group-name": "rulesets.zone.versions",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
@@ -19392,7 +19396,8 @@
 					"example": "2f2feab2026849078ba485f918791bdc",
 					"pattern": "^[0-9a-f]{32}$",
 					"title": "Ruleset ID"
-				}
+				},
+				"x-fern-parameter-name": "id"
 			},
 			{
 				"name": "zone_id",
@@ -28192,7 +28197,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "rulesets.versions",
+		"x-fern-sdk-group-name": "rulesets.zone.versions",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -28211,7 +28216,8 @@
 					"example": "directory-traversal",
 					"minLength": 1,
 					"title": "Category"
-				}
+				},
+				"x-fern-parameter-name": "tag"
 			},
 			{
 				"name": "ruleset_version",
@@ -28235,7 +28241,8 @@
 					"example": "2f2feab2026849078ba485f918791bdc",
 					"pattern": "^[0-9a-f]{32}$",
 					"title": "Ruleset ID"
-				}
+				},
+				"x-fern-parameter-name": "id"
 			},
 			{
 				"name": "zone_id",
@@ -37035,8 +37042,8 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "rulesets.account-rulesets.versions.zone-by-tag",
-		"x-fern-sdk-method-name": "tag",
+		"x-fern-sdk-group-name": "rulesets.zone.versions.by-tag",
+		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint": {
@@ -37079,7 +37086,8 @@
 						"magic_transit_ratelimit"
 					],
 					"title": "Phase"
-				}
+				},
+				"x-fern-parameter-name": "phase"
 			},
 			{
 				"name": "zone_id",
@@ -45879,7 +45887,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "rulesets.phases",
+		"x-fern-sdk-group-name": "rulesets.zone.entrypoint",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -45923,7 +45931,8 @@
 						"magic_transit_ratelimit"
 					],
 					"title": "Phase"
-				}
+				},
+				"x-fern-parameter-name": "phase"
 			},
 			{
 				"name": "zone_id",
@@ -46493,7 +46502,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "rulesets.phases.versions",
+		"x-fern-sdk-group-name": "rulesets.zone.entrypoint.versions",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
@@ -46549,7 +46558,8 @@
 						"magic_transit_ratelimit"
 					],
 					"title": "Phase"
-				}
+				},
+				"x-fern-parameter-name": "phase"
 			},
 			{
 				"name": "zone_id",
@@ -55349,7 +55359,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "rulesets.phases.versions",
+		"x-fern-sdk-group-name": "rulesets.zone.entrypoint.versions",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -72497,7 +72507,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "rulesets.rules",
+		"x-fern-sdk-group-name": "rulesets.zone.rules",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},
@@ -89670,7 +89680,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "rulesets",
+		"x-fern-sdk-group-name": "rulesets.zone",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
@@ -106806,7 +106816,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "rulesets.rules",
+		"x-fern-sdk-group-name": "rulesets.zone.rules",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
@@ -106825,7 +106835,8 @@
 					"example": "2f2feab2026849078ba485f918791bdc",
 					"pattern": "^[0-9a-f]{32}$",
 					"title": "Ruleset ID"
-				}
+				},
+				"x-fern-parameter-name": "id"
 			},
 			{
 				"name": "zone_id",
@@ -123986,7 +123997,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "rulesets",
+		"x-fern-sdk-group-name": "rulesets.zone",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},
@@ -124030,7 +124041,8 @@
 						"magic_transit_ratelimit"
 					],
 					"title": "Phase"
-				}
+				},
+				"x-fern-parameter-name": "phase"
 			},
 			{
 				"name": "zone_id",
@@ -141147,7 +141159,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "rulesets.phases",
+		"x-fern-sdk-group-name": "rulesets.zone.entrypoint",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	}

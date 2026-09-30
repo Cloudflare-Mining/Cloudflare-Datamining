@@ -614,13 +614,38 @@
 																					"scopes": "com.cloudflare.api.account"
 																				},
 																				"properties": {
-																					"key": {
-																						"type": "string",
-																						"x-auditable": true
+																					"category": {
+																						"description": "A category used to group permission groups.",
+																						"type": "string"
 																					},
-																					"value": {
+																					"deprecated": {
+																						"description": "Indicates whether the permission group is deprecated.",
+																						"type": "string"
+																					},
+																					"description": {
+																						"description": "Additional information about the permission group.",
+																						"type": "string"
+																					},
+																					"editable": {
+																						"description": "Indicates whether the permission group can be edited.",
+																						"type": "string"
+																					},
+																					"eol_at": {
+																						"description": "The planned end-of-life date and time, when provided.",
 																						"type": "string",
-																						"x-auditable": true
+																						"format": "date-time"
+																					},
+																					"label": {
+																						"description": "A label identifying the permission group.",
+																						"type": "string"
+																					},
+																					"scopes": {
+																						"description": "The scope associated with the permission group.",
+																						"type": "string"
+																					},
+																					"visibility": {
+																						"description": "Indicates the permission group's availability or visibility.",
+																						"type": "string"
 																					}
 																				}
 																			},
@@ -1130,13 +1155,38 @@
 																				"scopes": "com.cloudflare.api.account"
 																			},
 																			"properties": {
-																				"key": {
-																					"type": "string",
-																					"x-auditable": true
+																				"category": {
+																					"description": "A category used to group permission groups.",
+																					"type": "string"
 																				},
-																				"value": {
+																				"deprecated": {
+																					"description": "Indicates whether the permission group is deprecated.",
+																					"type": "string"
+																				},
+																				"description": {
+																					"description": "Additional information about the permission group.",
+																					"type": "string"
+																				},
+																				"editable": {
+																					"description": "Indicates whether the permission group can be edited.",
+																					"type": "string"
+																				},
+																				"eol_at": {
+																					"description": "The planned end-of-life date and time, when provided.",
 																					"type": "string",
-																					"x-auditable": true
+																					"format": "date-time"
+																				},
+																				"label": {
+																					"description": "A label identifying the permission group.",
+																					"type": "string"
+																				},
+																				"scopes": {
+																					"description": "The scope associated with the permission group.",
+																					"type": "string"
+																				},
+																				"visibility": {
+																					"description": "Indicates the permission group's availability or visibility.",
+																					"type": "string"
 																				}
 																			}
 																		},
@@ -1736,13 +1786,38 @@
 																				"scopes": "com.cloudflare.api.account"
 																			},
 																			"properties": {
-																				"key": {
-																					"type": "string",
-																					"x-auditable": true
+																				"category": {
+																					"description": "A category used to group permission groups.",
+																					"type": "string"
 																				},
-																				"value": {
+																				"deprecated": {
+																					"description": "Indicates whether the permission group is deprecated.",
+																					"type": "string"
+																				},
+																				"description": {
+																					"description": "Additional information about the permission group.",
+																					"type": "string"
+																				},
+																				"editable": {
+																					"description": "Indicates whether the permission group can be edited.",
+																					"type": "string"
+																				},
+																				"eol_at": {
+																					"description": "The planned end-of-life date and time, when provided.",
 																					"type": "string",
-																					"x-auditable": true
+																					"format": "date-time"
+																				},
+																				"label": {
+																					"description": "A label identifying the permission group.",
+																					"type": "string"
+																				},
+																				"scopes": {
+																					"description": "The scope associated with the permission group.",
+																					"type": "string"
+																				},
+																				"visibility": {
+																					"description": "Indicates the permission group's availability or visibility.",
+																					"type": "string"
 																				}
 																			}
 																		},
@@ -2373,13 +2448,38 @@
 																				"scopes": "com.cloudflare.api.account"
 																			},
 																			"properties": {
-																				"key": {
-																					"type": "string",
-																					"x-auditable": true
+																				"category": {
+																					"description": "A category used to group permission groups.",
+																					"type": "string"
 																				},
-																				"value": {
+																				"deprecated": {
+																					"description": "Indicates whether the permission group is deprecated.",
+																					"type": "string"
+																				},
+																				"description": {
+																					"description": "Additional information about the permission group.",
+																					"type": "string"
+																				},
+																				"editable": {
+																					"description": "Indicates whether the permission group can be edited.",
+																					"type": "string"
+																				},
+																				"eol_at": {
+																					"description": "The planned end-of-life date and time, when provided.",
 																					"type": "string",
-																					"x-auditable": true
+																					"format": "date-time"
+																				},
+																				"label": {
+																					"description": "A label identifying the permission group.",
+																					"type": "string"
+																				},
+																				"scopes": {
+																					"description": "The scope associated with the permission group.",
+																					"type": "string"
+																				},
+																				"visibility": {
+																					"description": "Indicates the permission group's availability or visibility.",
+																					"type": "string"
 																				}
 																			}
 																		},

@@ -11,7 +11,9 @@
 				"required": true,
 				"schema": {
 					"type": "string",
-					"pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]*$"
+					"maxLength": 63,
+					"minLength": 2,
+					"pattern": "^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9._])?$"
 				}
 			}
 		],
@@ -607,7 +609,9 @@
 				"required": true,
 				"schema": {
 					"type": "string",
-					"pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]*$"
+					"maxLength": 63,
+					"minLength": 2,
+					"pattern": "^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9._])?$"
 				}
 			},
 			{
@@ -1271,7 +1275,7 @@
 	"DELETE /accounts/{account_id}/artifacts/namespaces/{namespace}/tokens/{id}": {
 		"operationId": "artifacts_tokens_revoke",
 		"summary": "Revoke a token",
-		"description": "Revokes an Artifacts repository token.",
+		"description": "Revokes an Artifacts repository token. Token IDs are resolved through an eventually consistent index, so revoking a token within about a second of creating it can return 404; retry after a short delay.",
 		"parameters": [
 			{
 				"name": "namespace",
@@ -1280,7 +1284,9 @@
 				"required": true,
 				"schema": {
 					"type": "string",
-					"pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]*$"
+					"maxLength": 63,
+					"minLength": 2,
+					"pattern": "^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9._])?$"
 				}
 			},
 			{
@@ -2468,7 +2474,9 @@
 				"required": true,
 				"schema": {
 					"type": "string",
-					"pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]*$"
+					"maxLength": 63,
+					"minLength": 2,
+					"pattern": "^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9._])?$"
 				}
 			}
 		],
@@ -3159,7 +3167,9 @@
 				"required": true,
 				"schema": {
 					"type": "string",
-					"pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]*$"
+					"maxLength": 63,
+					"minLength": 2,
+					"pattern": "^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9._])?$"
 				}
 			},
 			{
@@ -3828,7 +3838,9 @@
 				"required": true,
 				"schema": {
 					"type": "string",
-					"pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]*$"
+					"maxLength": 63,
+					"minLength": 2,
+					"pattern": "^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9._])?$"
 				}
 			},
 			{
@@ -4640,7 +4652,9 @@
 				"required": true,
 				"schema": {
 					"type": "string",
-					"pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]*$"
+					"maxLength": 63,
+					"minLength": 2,
+					"pattern": "^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9._])?$"
 				}
 			},
 			{
@@ -5278,7 +5292,9 @@
 				"required": true,
 				"schema": {
 					"type": "string",
-					"pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]*$"
+					"maxLength": 63,
+					"minLength": 2,
+					"pattern": "^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9._])?$"
 				}
 			},
 			{
@@ -6030,7 +6046,9 @@
 				"required": true,
 				"schema": {
 					"type": "string",
-					"pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]*$"
+					"maxLength": 63,
+					"minLength": 2,
+					"pattern": "^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9._])?$"
 				}
 			},
 			{
@@ -6672,7 +6690,9 @@
 				"required": true,
 				"schema": {
 					"type": "string",
-					"pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]*$"
+					"maxLength": 63,
+					"minLength": 2,
+					"pattern": "^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9._])?$"
 				}
 			},
 			{
@@ -7436,7 +7456,9 @@
 				"required": true,
 				"schema": {
 					"type": "string",
-					"pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]*$"
+					"maxLength": 63,
+					"minLength": 2,
+					"pattern": "^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9._])?$"
 				}
 			},
 			{
@@ -8098,7 +8120,9 @@
 				"required": true,
 				"schema": {
 					"type": "string",
-					"pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]*$"
+					"maxLength": 63,
+					"minLength": 2,
+					"pattern": "^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9._])?$"
 				}
 			},
 			{
@@ -8929,7 +8953,9 @@
 				"required": true,
 				"schema": {
 					"type": "string",
-					"pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]*$"
+					"maxLength": 63,
+					"minLength": 2,
+					"pattern": "^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9._])?$"
 				}
 			},
 			{
@@ -9653,7 +9679,9 @@
 							},
 							"namespace": {
 								"type": "string",
-								"pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]*$"
+								"maxLength": 63,
+								"minLength": 2,
+								"pattern": "^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9._])?$"
 							}
 						},
 						"required": [
@@ -10350,7 +10378,9 @@
 				"required": true,
 				"schema": {
 					"type": "string",
-					"pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]*$"
+					"maxLength": 63,
+					"minLength": 2,
+					"pattern": "^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9._])?$"
 				}
 			}
 		],
@@ -11067,7 +11097,9 @@
 				"required": true,
 				"schema": {
 					"type": "string",
-					"pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]*$"
+					"maxLength": 63,
+					"minLength": 2,
+					"pattern": "^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9._])?$"
 				}
 			},
 			{
@@ -11982,7 +12014,9 @@
 				"required": true,
 				"schema": {
 					"type": "string",
-					"pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]*$"
+					"maxLength": 63,
+					"minLength": 2,
+					"pattern": "^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9._])?$"
 				}
 			},
 			{
@@ -13268,7 +13302,9 @@
 				"required": true,
 				"schema": {
 					"type": "string",
-					"pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]*$"
+					"maxLength": 63,
+					"minLength": 2,
+					"pattern": "^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9._])?$"
 				}
 			}
 		],

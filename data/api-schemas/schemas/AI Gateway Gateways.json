@@ -2587,6 +2587,309 @@
 								"type": "boolean",
 								"x-auditable": true
 							},
+							"dlp": {
+								"anyOf": [
+									{
+										"properties": {
+											"action": {
+												"type": "string",
+												"enum": [
+													"BLOCK",
+													"FLAG"
+												]
+											},
+											"enabled": {
+												"type": "boolean"
+											},
+											"profiles": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											}
+										},
+										"required": [
+											"profiles",
+											"enabled",
+											"action"
+										],
+										"type": "object"
+									},
+									{
+										"properties": {
+											"enabled": {
+												"type": "boolean"
+											},
+											"policies": {
+												"type": "array",
+												"items": {
+													"properties": {
+														"action": {
+															"type": "string",
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															]
+														},
+														"check": {
+															"type": "array",
+															"items": {
+																"enum": [
+																	"REQUEST",
+																	"RESPONSE"
+																],
+																"type": "string"
+															}
+														},
+														"enabled": {
+															"type": "boolean"
+														},
+														"id": {
+															"type": "string"
+														},
+														"profiles": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														}
+													},
+													"required": [
+														"id",
+														"enabled",
+														"action",
+														"profiles",
+														"check"
+													],
+													"type": "object"
+												}
+											}
+										},
+										"required": [
+											"enabled",
+											"policies"
+										],
+										"type": "object"
+									}
+								]
+							},
+							"guardrails": {
+								"type": "object",
+								"nullable": true,
+								"properties": {
+									"prompt": {
+										"type": "object",
+										"properties": {
+											"P1": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											},
+											"S1": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											},
+											"S10": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											},
+											"S11": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											},
+											"S12": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											},
+											"S13": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											},
+											"S2": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											},
+											"S3": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											},
+											"S4": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											},
+											"S5": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											},
+											"S6": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											},
+											"S7": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											},
+											"S8": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											},
+											"S9": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											}
+										}
+									},
+									"response": {
+										"type": "object",
+										"properties": {
+											"P1": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											},
+											"S1": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											},
+											"S10": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											},
+											"S11": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											},
+											"S12": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											},
+											"S13": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											},
+											"S2": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											},
+											"S3": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											},
+											"S4": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											},
+											"S5": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											},
+											"S6": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											},
+											"S7": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											},
+											"S8": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											},
+											"S9": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											}
+										}
+									}
+								},
+								"required": [
+									"prompt",
+									"response"
+								],
+								"x-auditable": true
+							},
 							"id": {
 								"description": "Unique identifier of the AI Gateway within the account.",
 								"type": "string",
@@ -2595,6 +2898,11 @@
 								"minLength": 1,
 								"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 								"x-auditable": true
+							},
+							"log_classification": {
+								"type": "boolean",
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"log_management": {
 								"type": "integer",
@@ -2623,6 +2931,45 @@
 								"type": "string",
 								"maxLength": 1024,
 								"minLength": 16,
+								"nullable": true,
+								"x-auditable": true
+							},
+							"otel": {
+								"type": "array",
+								"items": {
+									"properties": {
+										"authorization": {
+											"type": "string",
+											"maxLength": 256
+										},
+										"content_type": {
+											"type": "string",
+											"default": "json",
+											"enum": [
+												"json",
+												"protobuf"
+											]
+										},
+										"headers": {
+											"type": "object",
+											"additionalProperties": {
+												"maxLength": 4096,
+												"type": "string"
+											}
+										},
+										"url": {
+											"type": "string",
+											"format": "uri",
+											"maxLength": 2048
+										}
+									},
+									"required": [
+										"url",
+										"headers"
+									],
+									"type": "object"
+								},
+								"maxItems": 5,
 								"nullable": true,
 								"x-auditable": true
 							},
@@ -2674,10 +3021,182 @@
 								"nullable": true,
 								"x-auditable": true
 							},
+							"spend_limits": {
+								"type": "object",
+								"nullable": true,
+								"properties": {
+									"enabled": {
+										"type": "boolean",
+										"default": false
+									},
+									"rules": {
+										"type": "array",
+										"items": {
+											"properties": {
+												"enabled": {
+													"type": "boolean",
+													"default": true
+												},
+												"id": {
+													"type": "string",
+													"default": "00000000",
+													"minLength": 1,
+													"pattern": "^[a-zA-Z0-9_-]+$"
+												},
+												"limit": {
+													"type": "number",
+													"exclusiveMinimum": true,
+													"minimum": 0
+												},
+												"limitType": {
+													"type": "string",
+													"enum": [
+														"cost"
+													]
+												},
+												"metadata": {
+													"type": "object",
+													"additionalProperties": {
+														"oneOf": [
+															{
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"partition"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"filter"
+																		]
+																	},
+																	"values": {
+																		"type": "array",
+																		"items": {
+																			"type": "string"
+																		}
+																	}
+																},
+																"required": [
+																	"mode",
+																	"values"
+																],
+																"type": "object"
+															}
+														]
+													}
+												},
+												"model": {
+													"type": "object",
+													"properties": {
+														"mode": {
+															"type": "string",
+															"enum": [
+																"filter"
+															]
+														},
+														"values": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														}
+													},
+													"required": [
+														"mode",
+														"values"
+													]
+												},
+												"provider": {
+													"type": "object",
+													"properties": {
+														"mode": {
+															"type": "string",
+															"enum": [
+																"filter"
+															]
+														},
+														"values": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														}
+													},
+													"required": [
+														"mode",
+														"values"
+													]
+												},
+												"technique": {
+													"type": "string",
+													"default": "sliding",
+													"enum": [
+														"fixed",
+														"sliding"
+													]
+												},
+												"window": {
+													"type": "integer",
+													"exclusiveMinimum": true,
+													"minimum": 0
+												}
+											},
+											"required": [
+												"limitType",
+												"limit",
+												"window"
+											],
+											"type": "object"
+										},
+										"default": [],
+										"maxItems": 20
+									}
+								},
+								"x-auditable": true
+							},
 							"store_id": {
 								"type": "string",
 								"nullable": true,
 								"x-stainless-terraform-configurability": "computed_optional"
+							},
+							"stripe": {
+								"type": "object",
+								"nullable": true,
+								"properties": {
+									"authorization": {
+										"type": "string"
+									},
+									"usage_events": {
+										"type": "array",
+										"items": {
+											"properties": {
+												"payload": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"payload"
+											],
+											"type": "object"
+										}
+									}
+								},
+								"required": [
+									"authorization",
+									"usage_events"
+								],
+								"x-auditable": true
 							},
 							"workers_ai_billing_mode": {
 								"description": "Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.",
