@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/workers-auth",
 	"dist-tags": {
-		"latest": "0.10.0"
+		"latest": "0.11.0"
 	},
 	"versions": {
 		"0.1.0": {
@@ -1880,8 +1880,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCmZR8tyRkGYFIcC3FH9PNSukMT2oorQl0Y0dYkZilDOQIhAJCzYb1f/mxCPRVDp40UwmdE2mU5Zufy/WZoaQJampKT"
+						"sig": "MEYCIQCmZR8tyRkGYFIcC3FH9PNSukMT2oorQl0Y0dYkZilDOQIhAJCzYb1f/mxCPRVDp40UwmdE2mU5Zufy/WZoaQJampKT",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -1891,6 +1891,54 @@
 					}
 				},
 				"unpackedSize": 530391
+			}
+		},
+		"0.11.0": {
+			"name": "@cloudflare/workers-auth",
+			"version": "0.11.0",
+			"dependencies": {
+				"undici": "7.29.1",
+				"@cloudflare/workers-utils": "0.45.0"
+			},
+			"devDependencies": {
+				"msw": "2.14.6",
+				"tsup": "8.3.0",
+				"vitest": "4.1.0",
+				"date-fns": "^4.1.0",
+				"smol-toml": "1.9.0",
+				"ts-dedent": "^2.2.0",
+				"@vitest/ui": "4.1.0",
+				"typescript": "5.8.3",
+				"@types/node": "22.15.17",
+				"concurrently": "^8.2.2",
+				"@cloudflare/workers-tsconfig": "0.0.0"
+			},
+			"peerDependencies": {
+				"msw": "2.14.6",
+				"vitest": "^4.1.0"
+			},
+			"dist": {
+				"shasum": "e60eab41ab02daa52039df645a071faa8ebafba6",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-auth/-/workers-auth-0.11.0.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-6BmmVLTYtupL6SDSC7cn3eH3ST7vmurAJ5CF9QRYPT3KI8UPSITDd/YQnJJEWiwEy/JuXyow759+xmJXEOLVeA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQC4p5QPjS1pnYfQoBnwjH7vWdUSYQCpwbdXyQ1EGX52sgIhAMV+bDHqJz0T2nTP5LtzBqETRuJ6uI8xu7n1wNdZ9Zh2",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIEFIWc+eZT5p4LioP7vFldW4Ih+UcrryeDxAM8EaW91SAiEAtGzNKNsT+ae8jqA9Z13soEcl/9T+A6E+cnrWRByF92s="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkers-auth@0.11.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 530501
 			}
 		}
 	}
