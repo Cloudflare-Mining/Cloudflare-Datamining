@@ -1,239 +1,106 @@
-<img width="1362" height="450" alt="Image" src="https://github.com/user-attachments/assets/6f770ae3-0a14-4d2b-9aed-a304ee5446c5" />
+<img width="1362" height="450" alt="sandbox" src="https://github.com/user-attachments/assets/6f770ae3-0a14-4d2b-9aed-a304ee5446c5" />
 
 # Cloudflare Sandbox SDK
 
 [![npm version](https://img.shields.io/npm/v/@cloudflare/sandbox)](https://www.npmjs.com/package/@cloudflare/sandbox)
 [![npm downloads](https://img.shields.io/npm/dw/@cloudflare/sandbox)](https://www.npmjs.com/package/@cloudflare/sandbox)
 
-**Build secure, isolated code execution environments on Cloudflare.**
+Run untrusted or generated code in a Linux sandbox that belongs to one user, task, or session. Your Worker decides who gets a sandbox, which hosts it can reach, and which credentials stay out of it.
 
-The Sandbox SDK lets you run untrusted code safely in isolated containers. Execute commands, manage files, run background processes, and expose services — all from your Workers applications.
+A sandbox is a Durable Object and the [Container](https://developers.cloudflare.com/containers/) it starts. The Durable Object starts the instance and runs commands with the Container API on `this.ctx.container`. `@cloudflare/sandbox` adds three things that API does not have:
 
-Perfect for AI code execution, interactive development environments, data analysis platforms, CI/CD systems, and any application that needs secure code execution at the edge.
+- [`Files`](https://developers.cloudflare.com/sandbox/reference/files/) streams files in and out of the running instance and reports Linux errors such as `ENOENT`.
+- [`S3Mount`](https://developers.cloudflare.com/sandbox/reference/s3-mounts/) mounts an S3-compatible bucket at a path. Your Worker signs each storage request, so the credentials never enter the sandbox.
+- [`DirectoryBackup`](https://developers.cloudflare.com/sandbox/reference/directory-backups/) saves a directory to R2 and restores it into any Container, including one on a newer image. The Container reaches only the one object each operation needs.
 
-## Getting Started
+**[Read the documentation](https://developers.cloudflare.com/sandbox/)**
 
-### Prerequisites
+## Try it
 
-1. Install [Node.js](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) (version 16.17.0 or later)
-2. Ensure Docker is running locally ([see setup guide](https://developers.cloudflare.com/sandbox/get-started/#ensure-docker-is-running-locally))
-3. For deploying to production, sign up for a [Cloudflare account](https://dash.cloudflare.com/sign-up/workers-and-pages)
+Create a project from the minimal template, or deploy it directly:
 
-### 1. Create a new project
-
-Create a new Sandbox SDK project using the minimal template:
-
-```bash
+```sh
 npm create cloudflare@latest -- my-sandbox --template=cloudflare/sandbox-sdk/examples/minimal
-cd my-sandbox
 ```
 
-### 2. Test locally
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/sandbox-sdk/tree/main/examples/minimal)
 
-Start the development server:
+The template gives each name in the URL its own sandbox. At its core is a Durable Object like this one:
 
-```bash
-npm run dev
-```
+```ts
+import { Files } from "@cloudflare/sandbox";
+import { DurableObject } from "cloudflare:workers";
 
-> **Note:** First run builds the Docker container (2-3 minutes). Subsequent runs are much faster.
+export class Sandbox extends DurableObject<Env> {
+  async run(script: string) {
+    const container = this.ctx.container;
+    if (!container) throw new Error("The container binding is not configured");
 
-Test the endpoints:
+    if (!container.running) {
+      container.start({ image: container.images.sandbox, enableInternet: false });
+    }
 
-```bash
-# Execute Python code
-curl http://localhost:8787/run
+    const files = new Files(container);
+    await files.writeFile("/workspace/task.sh", script);
 
-# File operations
-curl http://localhost:8787/file
-```
-
-### 3. Deploy to production
-
-Deploy your Worker and container:
-
-```bash
-npx wrangler deploy
-```
-
-> **Wait for provisioning:** After first deployment, wait 2-3 minutes before making requests.
-
-**📖 [View the complete getting started guide](https://developers.cloudflare.com/sandbox/get-started/)** for detailed instructions and explanations.
-
-## Quick API Example
-
-```typescript
-import { getSandbox, proxyToSandbox, type Sandbox } from '@cloudflare/sandbox';
-
-export { Sandbox } from '@cloudflare/sandbox';
-
-type Env = {
-  Sandbox: DurableObjectNamespace<Sandbox>;
-};
+    const process = await container.exec(["sh", "task.sh"], { cwd: "/workspace" });
+    const { exitCode, stdout } = await process.output();
+    return { exitCode, stdout: new TextDecoder().decode(stdout) };
+  }
+}
 
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-    // Required for preview URLs
-    const proxyResponse = await proxyToSandbox(request, env);
-    if (proxyResponse) return proxyResponse;
-
-    const url = new URL(request.url);
-    const sandbox = getSandbox(env.Sandbox, 'my-sandbox');
-
-    // Execute Python code
-    if (url.pathname === '/run') {
-      const result = await sandbox.exec('python3 -c "print(2 + 2)"');
-      return Response.json({ output: result.stdout, success: result.success });
-    }
-
-    // Work with files
-    if (url.pathname === '/file') {
-      await sandbox.writeFile('/workspace/hello.txt', 'Hello, Sandbox!');
-      const file = await sandbox.readFile('/workspace/hello.txt');
-      return Response.json({ content: file.content });
-    }
-
-    return new Response('Try /run or /file');
-  }
-};
+  async fetch(request, env) {
+    // Authenticate the request, then choose the sandbox for this user or task.
+    const sandbox = env.SANDBOX.getByName("user-123");
+    return Response.json(await sandbox.run(await request.text()));
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-## Sandbox options
+The image needs the helper that `Files` runs, and the Worker needs `nodejs_compat`. Refer to [Requirements](https://developers.cloudflare.com/sandbox/reference/#requirements).
 
-Pass options as the third argument to `getSandbox()` to configure sandbox
-lifetime and container startup metadata:
+## What you can build
 
-```ts
-const sandbox = getSandbox(env.Sandbox, 'tenant-workspace', {
-  sleepAfter: '30m',
-  labels: {
-    tenantId: 'tenant_123',
-    workload: 'code-workspace'
-  }
-});
-```
+| Goal                                   | Guide                                                                                                                              | Example                                                                                                  |
+| -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Run a script and read its output       | [Execute commands](https://developers.cloudflare.com/containers/guides/execute-commands/)                                          | [`workspace`](examples/workspace)                                                                        |
+| Keep a server or build running         | [Run background processes](https://developers.cloudflare.com/sandbox/commands/run-background-processes/)                           | [`process-workspace`](examples/process-workspace)                                                        |
+| Open a shell in the browser            | [Open a terminal in the browser](https://developers.cloudflare.com/sandbox/commands/open-a-terminal-in-the-browser/)               | [`terminal-workspace`](examples/terminal-workspace)                                                      |
+| Process files from a bucket            | [Mount an R2 bucket](https://developers.cloudflare.com/sandbox/files/mount-an-r2-bucket/)                                          | [`artifact-workspace`](examples/artifact-workspace)                                                      |
+| Save a workspace and resume it later   | [Save and restore a sandbox](https://developers.cloudflare.com/sandbox/files/save-and-restore-a-workspace/)                        | [`checkpoint-workspace`](examples/checkpoint-workspace), [`backup-workspace`](examples/backup-workspace) |
+| Preview a web app while you edit it    | [Preview a web application](https://developers.cloudflare.com/sandbox/previews/)                                                   | [`preview-workspace`](examples/preview-workspace)                                                        |
+| Share a port on its own URL            | [Serve previews on their own hostnames](https://developers.cloudflare.com/sandbox/previews/serve-previews-on-their-own-hostnames/) | [`share-workspace`](examples/share-workspace)                                                            |
+| Choose which hosts a sandbox can reach | [Control network access](https://developers.cloudflare.com/sandbox/network/)                                                       | [`outbound-workspace`](examples/outbound-workspace)                                                      |
+| Run a coding agent on a repository     | [Coding agents](https://developers.cloudflare.com/sandbox/coding-agents/)                                                          | [`coding-agents`](examples/coding-agents), [`devin`](devin), [`openai/agents-api`](openai/agents-api)    |
 
-Container labels are attached to the underlying Cloudflare Container for
-analytics and observability. Labels are applied when the container starts; if
-labels are changed while a container is already running, the new labels apply
-the next time the container starts.
+To run JavaScript or Python without a Linux environment, use [Dynamic Workers](https://developers.cloudflare.com/sandbox/concepts/) instead.
 
-## Quick tunnels
+## Coming from 0.x
 
-`sandbox.tunnels.get(port)` exposes a service running inside the
-sandbox on a `*.trycloudflare.com` URL. No Cloudflare account or DNS
-setup required — cloudflared opens a persistent QUIC connection to
-Cloudflare's edge and Cloudflare hands back a hostname.
+Version 0.x provided a `Sandbox` class that owned the Container and ran commands for you. In 1.0, your own Durable Object starts the Container, and this package provides only file operations and bucket mounts. The [migration guide](https://developers.cloudflare.com/sandbox/sdk/migrate/) maps each 0.x API to its replacement. The 0.x source is on the [`v0`](https://github.com/cloudflare/sandbox-sdk/tree/v0) branch.
 
-```ts
-// Inside a Worker with an RPC-transport sandbox:
-const tunnel = await sandbox.tunnels.get(8080);
-console.log(tunnel.url);
-// → https://random-words-here.trycloudflare.com
+## Repository
 
-// Repeated calls for the same port return the same record:
-const same = await sandbox.tunnels.get(8080);
-console.log(same.url === tunnel.url); // true
+| Path                                           | Contents                                                                            |
+| ---------------------------------------------- | ----------------------------------------------------------------------------------- |
+| [`packages/sandbox`](packages/sandbox)         | The `@cloudflare/sandbox` package                                                   |
+| [`crates/sandbox-tools`](crates/sandbox-tools) | `sandbox-shim`, the Linux helper that `Files`, `S3Mount`, and `DirectoryBackup` run |
+| [`images/sandbox-tools`](images/sandbox-tools) | The `cloudflare/sandbox` image that ships `sandbox-shim`                            |
+| [`examples`](examples)                         | Deployable Workers, one per goal                                                    |
 
-// Tear down by port number or by the record:
-await sandbox.tunnels.destroy(8080);
-// or: await sandbox.tunnels.destroy(tunnel);
-```
+To learn how these parts fit together, read [Architecture](docs/architecture.md). The package and `sandbox-shim` exchange frames described in [Shim protocol](docs/shim-protocol.md). [S3 mounts design](docs/s3-mount-design.md) explains `S3Mount` and `S3Gateway`. To add an example, read [Examples](docs/examples.md).
 
-`get()` is idempotent: it consults a per-sandbox cache in Durable
-Object storage, returns the cached record on a hit, and only spawns a
-fresh cloudflared process on a miss. `list()` returns every cached
-tunnel.
+Build and test with Node.js and Docker:
 
-Notes:
-
-- Requires the RPC transport. The route-based transport's `tunnels`
-  stub throws "RPC transport required".
-- URLs do **not** survive a container restart. Cloudflare assigns the
-  hostname during cloudflared's startup handshake, so every restart
-  yields a new URL. The SDK clears its cache on container start, so
-  the next `get(port)` after a restart returns a fresh record.
-- The first fetch through a brand-new URL can take a couple of
-  seconds while DNS propagates, even after `get()` resolves.
-- `*.trycloudflare.com` buffers `text/event-stream` responses.
-  WebSockets work fine.
-- Local builds behind a TLS-intercepting proxy (e.g. Cloudflare WARP)
-  need the host CA bundle injected at build time — see
-  [DOCKER_README.md](../../DOCKER_README.md).
-
-## Documentation
-
-**📖 [Full Documentation](https://developers.cloudflare.com/sandbox/)**
-
-- [Get Started Guide](https://developers.cloudflare.com/sandbox/get-started/) - Step-by-step tutorial
-- [API Reference](https://developers.cloudflare.com/sandbox/api/) - Complete API docs
-- [Guides](https://developers.cloudflare.com/sandbox/guides/) - Execute commands, manage files, expose services
-- [Examples](https://developers.cloudflare.com/sandbox/tutorials/) - AI agents, data analysis, CI/CD pipelines
-
-## Key Features
-
-- **Secure Isolation** - Each sandbox runs in its own container
-- **Edge-Native** - Runs on Cloudflare's global network
-- **Code Interpreter** - Execute Python and JavaScript with rich outputs
-- **File System Access** - Read, write, and manage files
-- **Command Execution** - Run any command with streaming support
-- **Preview URLs** - Expose services with public URLs
-- **Quick tunnels** - Zero-config `*.trycloudflare.com` URLs via `sandbox.tunnels.get(port)`
-- **Git Integration** - Clone repositories directly
-
-## Contributing
-
-We welcome contributions from the community! See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines on:
-
-- Setting up your development environment
-- Creating pull requests
-- Code style and testing requirements
-
-## Development
-
-This repository contains the SDK source code. Quick start:
-
-```bash
-# Clone the repo
-git clone https://github.com/cloudflare/sandbox-sdk
-cd sandbox-sdk
-
-# Install dependencies
+```sh
 npm install
-
-# Run tests
-npm test
-
-# Build the project
-npm run build
-
-# Type checking and linting
 npm run check
+npm test
 ```
 
-## Examples
-
-See the [examples directory](./examples) for complete working examples:
-
-- [Minimal](./examples/minimal) - Start here: exec commands, read/write files
-- [Code Interpreter](./examples/code-interpreter) - Give [gpt-oss](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/) on Workers AI a Python REPL
-- [Claude Code](./examples/claude-code) - Run [Claude Code](https://claude.ai/code) headless on any repo
-- [OpenAI Agents](./examples/openai-agents) - `Shell` and `Editor` tools for [OpenAI Agents SDK](https://openai.github.io/openai-agents-js/)
-- [OpenCode](./examples/opencode) - [OpenCode](https://github.com/sst/opencode) web UI or [SDK](https://opencode.ai/docs/sdk/) in a sandbox
-- [Git Repo Per Sandbox](./examples/git-repo-per-sandbox) - One Artifacts Git repo per sandbox
-- [TypeScript Validator](./examples/typescript-validator) - Build with npm in sandbox, execute in [isolates](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/)
-
-## Status
-
-**Beta** - The SDK is in active development. APIs may change before v1.0.
+[Testing](docs/testing.md) explains what these commands check, how to build behind a TLS-inspecting proxy, and how to test in production. [Releasing](docs/releasing.md) explains how maintainers publish the package and its image.
 
 ## License
 
 [Apache License 2.0](LICENSE)
-
-## Links
-
-- [Documentation](https://developers.cloudflare.com/sandbox/)
-- [GitHub Issues](https://github.com/cloudflare/sandbox-sdk/issues)
-- [Developer Discord](https://discord.cloudflare.com)
-- [Cloudflare Developers](https://twitter.com/CloudflareDev)
