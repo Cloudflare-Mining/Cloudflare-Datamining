@@ -90,7 +90,7 @@ Hack The Box secures a global cybersecurity training platform with Cloudflare, s
 
  Industry 
 
-Hosting 
+Education 
 
  Region 
 

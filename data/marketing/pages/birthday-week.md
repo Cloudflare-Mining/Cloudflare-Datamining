@@ -4,6 +4,42 @@ description: Follow every Cloudflare Birthday Week 2026 announcement.
 image: https://www.cloudflare.com/preview.png
 ---
 
+[ \## \[  Cut your AI spend with AI Gateway's Auto Router \] ](https://blog.cloudflare.com/auto-router/) 
+
+\>  Cloudflare AI Gateway now features a model router that evaluates request complexity using an edge-deployed classifier to select the optimal model, reducing AI spend while maintaining performance. 
+
+[ \## \[  Monetization Gateway beta: charge AI agents for consumption with HTTP 402 \] ](https://blog.cloudflare.com/monetization-gateway-beta/) 
+
+\>  Cloudflare's Monetization Gateway lets eligible sellers charge AI agents for access to websites, APIs, MCP tools, and datasets using HTTP 402 payments. 
+
+[ \## \[  Detect and send production issues straight to your agent \] ](https://blog.cloudflare.com/real-time-issue-detection/) 
+
+\>  You can now use built-in error monitoring in Cloudflare Workers to group production failures and send stack traces, logs, traces, and application context directly to a coding agent to investigate further and open a pull request. 
+
+[ \## \[  Simplifying domains for people and agents \] ](https://blog.cloudflare.com/simplifying-domains/) 
+
+\>  Cloudflare Registrar's new search delivers fast, transparent results across 420+ extensions using Workers, Durable Objects, and WebSockets. Its expanded API and cf CLI also let agents search, register, and transfer domains. 
+
+[ \## \[  Pay Per Use: when AI uses your work, you should get paid \] ](https://blog.cloudflare.com/pay-per-use/) 
+
+\>  Pay Per Use is now in beta. AI companies report when they use publishers' content, and Cloudflare handles billing, payouts, and reporting, so our customers are paid according to use. 
+
+[ \## \[  The Internet has a second audience \] ](https://blog.cloudflare.com/agentic-web/) 
+
+\>  More than half the traffic reaching sites on Cloudflare is now automated, and AI agents are the fastest-growing part of it. We're giving site owners the tools to see who's visiting, decide who gets in, and charge for access. 
+
+[ \## \[  Identify AI model overuse with User Insights \] ](https://blog.cloudflare.com/ai-model-overuse-user-insights/) 
+
+\>  AI Gateway User Insights now adds task, model, turn, and user categories to help teams understand AI adoption and make better model decisions. This is available free to AI Gateway users. 
+
+[ \## \[  Cloudflare Impact reaches $100 million in donations \] ](https://blog.cloudflare.com/100-million-donations/) 
+
+\>  This week, Cloudflare's Impact programs will reach $100 million in donated services. This milestone means that thousands of entities including journalists, civil society, state and local governments, election management bodies, and public schools are being protected from cyberattacks. 
+
+[ \## \[  Cloudflare Containers, rebuilt to scale agent sandboxes \] ](https://blog.cloudflare.com/faster-agent-sandboxes/) 
+
+\>  Cloudflare Containers now start 6x faster, let your agent choose each sandbox's image and instance type at runtime, and support filesystem snapshots in public beta, all controlled from a Durable Object. 
+
 [ \## \[  Adaptive application security for the AI era: how Cloudflare connects code, traffic, and intelligence to stop attacks \] ](https://blog.cloudflare.com/ai-era-framework/) 
 
 \>  Cloudflare introduces an adaptive security framework connecting risk discovery, agent governance, runtime protection, and AI-powered response in a continuous learning loop. 
