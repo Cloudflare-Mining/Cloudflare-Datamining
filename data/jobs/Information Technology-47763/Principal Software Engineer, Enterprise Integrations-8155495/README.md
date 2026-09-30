@@ -3,45 +3,56 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h3><strong>Available Locations</strong></h3>
+<p><strong>Available Locations: </strong>Austin, TX</p>
+<p><strong>About the Department</strong><strong><br></strong></p>
+<p>Cloudflare's Enterprise Integrations Engineering Team designs, builds, and maintains integrations across the SaaS applications used throughout the organization. We're increasingly applying AI, from agentic workflows to LLM-assisted development and automated diagnostics, to build integrations faster, operate them more reliably, and reduce manual toil across the team. Our mission is to create scalable, reliable, and intelligent systems that ensure data flows securely and efficiently between platforms, and to use AI as a force multiplier for how we design, build, and support that work.</p>
+<p>Our team is highly collaborative, values continuous learning, and supports each other through shared ownership and open communication. We work closely with both technical and business teams, conduct regular retrospectives, and are actively evolving how AI tooling changes the way we plan, build, test, and troubleshoot integrations.</p>
+<h4><strong>What You’ll Do</strong></h4>
+<p>We’re looking for a Principal Engineer to establish technical direction across Enterprise Applications and help teams turn that direction into reliable, incremental delivery. You’ll design systems, lead complex cross-team initiatives, influence engineering practices, and remain hands-on with implementation where your contribution has the greatest leverage.</p>
+<p>This role requires navigating ambiguity, adapting technical strategy as conditions change, and building alignment across engineering and business stakeholders. You’ll model responsible AI-assisted engineering, operational excellence, sound judgment, and attention to detail.</p>
+<p><strong>Responsibilities include:</strong></p>
 <ul>
-	<li><strong>San Francisco, CA</strong></li>
+	<li>Establish and communicate technical strategy across multiple teams, translating long-term direction into incremental delivery plans.</li>
+	<li>Lead complex, cross-functional initiatives from problem definition through architecture, implementation, deployment, and operation.</li>
+	<li>Influence technical decisions across teams through design reviews, prototypes, standards, mentoring, and hands-on contributions.</li>
+	<li>Build and extend AI-enabled systems, including agents, evaluation frameworks, MCP servers, and workflow automation.</li>
+	<li>Determine when AI is appropriate and when deterministic software offers a safer, simpler, or more reliable solution.</li>
+	<li>Establish practices for evaluating AI systems, including quality, reliability, security, cost, latency, and human oversight.</li>
+	<li>Improve engineering effectiveness through reusable platforms, operational tooling, automated diagnostics, and development workflows.</li>
+	<li>Partner with business and technical stakeholders to convert ambiguous problems into clear technical strategies and measurable outcomes.</li>
 </ul>
-<h3><strong>About the role</strong></h3>
-<p>Cloudflare is looking for a&nbsp;<strong>Senior Director of Executive Communications </strong>to scale our global Executive Communications Program. This is an exciting opportunity to lead executive communications for a prominent leader pioneering the field, Cloudflare’s co-founder and President—helping to tell her story and share her expertise internally and externally. This role will also be the<strong> architect behind our broader executive communications strategy</strong>—building the frameworks, training, and programs raising the bar for how our entire leadership team communicates globally.</p>
-<p>We are looking for a seasoned, highly strategic communicator who can effortlessly pivot between deep-tech and mainstream storytelling. Additionally, the ideal candidate is AI-forward—someone who naturally embraces and leverages AI tools to streamline production, scale output, and optimize executive workflows.</p>
-<p>This role reports to the Vice President, Global Head of Communications, and sits within a fast-paced, award-winning team.</p>
-<h3><strong>Responsibilities</strong></h3>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li><strong>Office of the President Partnership:</strong> Lead all aspects of communications pertaining to the Office of the President, including related media relations, speaking engagements, public appearances, employee communications, stakeholder engagement, social media, planning, and personal branding.</li>
-	<li><strong>Build &amp; Scale the Executive Comms Program:</strong> Create the blueprint for a broader executive communications program. Establish the core playbooks, central messaging pillars, and training frameworks used to uplevel spokesperson readiness across Cloudflare's leadership.</li>
-	<li><strong>Master the Audience Pivot:</strong> Seamlessly translate highly complex technical concepts (such as AI, cybersecurity, and cloud infrastructure) into engaging, accessible narratives for mainstream business audiences and media—without losing the technical rigor that developer audiences expect.</li>
-	<li><strong>Streamline via AI Integration:</strong> Actively champion and integrate generative AI tools into your daily workflow to research, draft, iterate, and scale executive content efficiently.</li>
-	<li><strong>End-to-End Preparation:</strong> Manage and strategically plan all aspects of how the executive prepares for, shows up at, and maximizes her presence at appearances, events, and communications-focused engagements.</li>
-	<li><strong>Content Creation:</strong> Craft compelling executive messaging, narratives, keynotes, op-eds, and content across internal and external communication channels.</li>
-	<li><strong>Cross-Functional Collaboration:</strong> Partner closely with the executive admin team to ensure alignment with the President’s calendar and trips, while working closely with key PR, IR, and Employee Comms stakeholders to streamline and curate strategic brand narratives.</li>
+	<li>Bachelor's degree in Computer Science or related field, or equivalent work experience</li>
+	<li>10+ years of professional software engineering experience as a guideline</li>
+	<li>Proficiency in at least one backend language.</li>
+	<li>Experience with LLM APIs (Anthropic, OpenAI, etc.)</li>
+	<li>Experience with AI guardrails/governance best practices</li>
+	<li>Demonstrated experience delivering AI-enabled systems beyond experimentation. Candidates should be able to explain their individual contribution, evaluation approach, production constraints, failure modes, and measurable outcomes.</li>
+	<li>Demonstrated experience influencing technical culture and best practices without authority.</li>
+	<li>Familiarity with integration patterns (pub/sub, API-first, CDM, batch processing)</li>
+	<li>Experience working with stakeholders to solve business problems through integration or automation solutions</li>
+	<li>Experience building APIs with proper security and operational practices</li>
+	<li>Experience with observability tooling (e.g. Grafana, Prometheus, Sentry, Kibana, Splunk or similar)</li>
+	<li>Working familiarity with containerized/cloud environments (Kubernetes, or equivalent cloud-native experience)</li>
+	<li>Experience with serverless computing platforms (e.g. AWS Lambda, Google Cloud Functions, Azure Functions, or Cloudflare Workers)</li>
+	<li>Experience with GitLab or other CI/CD tooling</li>
+	<li>Willingness to participate in an on-call rotation for roughly one week every two months</li>
 </ul>
-<h3>Desirable Skills, Knowledge, and Experience</h3>
+<p><strong>Bonus Points:</strong><strong><br></strong></p>
 <ul>
-	<li><strong>Seasoned Comms Experience:</strong> 10+ years of experience working in executive communications for CEOs, top C-level public-company leaders, or international public figures.</li>
-	<li><strong>The "Translator" Ability:</strong> Proven success communicating both to highly technical audiences (developers, IT leaders) and mainstream business/consumer audiences.</li>
-	<li><strong>AI-Forward Mindset:</strong> Demonstrable experience utilizing AI productivity and writing tools to scale executive communications workflows and drive efficiency.</li>
-	<li><strong>Programmatic &amp; Project Management Acumen:</strong> Experience building communication programs or initiatives from the ground up, with a high level of project management discipline across multiple global teams.</li>
-	<li><strong>Impeccable Craft:</strong> Exceptional communication, writing, and presentation skills—with a highly tailored approach to crafting various storylines, speeches, and presentations for unique executive talk tracks.&nbsp;</li>
-	<li><strong>Proactive &amp; Agile:</strong> Creative, hardworking, and flexible professionalism—you thrive in a fast-paced environment and anticipate the next move before it happens. Highly organized when it comes to future vision and daily details.</li>
-	<li><strong>Global Perspective &amp; Presence:</strong> Experience leading initiatives across international teams, with a willingness to travel regularly.</li>
+	<li>Experience with business financial systems, such as Oracle or NetSuite</li>
+	<li>Experience with PostgreSQL</li>
+	<li>Experience with Cloudflare Developer Platform (Workers, Workflows, D1, etc.)</li>
+	<li>Experience with Go, Python and TypeScript</li>
 </ul>
-<p>&nbsp;</p>
-<h3><strong>Compensation</strong></h3>
+<h3>Compensation</h3>
 <p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $226,000 - $310,000</span></li>
-</ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h3>Equity</h3>
+<p>This role is eligible to participate in Cloudflare's equity plan.</p>
+<h3>Benefits</h3>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p>Health &amp; Welfare Benefits</p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -52,14 +63,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<p>Financial Benefits</p>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<p>Time Off</p>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>

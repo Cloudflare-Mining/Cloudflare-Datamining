@@ -5,7 +5,8 @@
 </div>
 <p><strong>Available Locations:&nbsp;</strong></p>
 <ul>
-	<li>Austin, TX (Relocation Assistance provided to those willing to relocate)</li>
+	<li>Austin, TX (preferred)</li>
+	<li>San Francisco, CA</li>
 </ul>
 <p><strong>About the Role </strong></p>
 <p>Cloudflare is scaling its global connectivity and security platform while transforming into an AI-native organization powered by our own AI harness and developer infrastructure. As Senior Director, R&amp;D HR Business Partnering, you will lead a global team of embedded HRBPs supporting senior executives across Engineering, Product, Security, and Research.</p>
@@ -44,6 +45,9 @@
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For San Francisco Bay area the estimated salary range is $304,000 - $380,000</li>
+</ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
