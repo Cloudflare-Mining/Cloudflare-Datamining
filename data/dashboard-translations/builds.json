@@ -1,5 +1,6 @@
 {
 	"builds.product_name": "Workers Builds",
+	"builds.artifacts.validation.import_existing_only": "Cloudflare Artifacts only supports importing existing repositories",
 	"builds.origin_scm.provider_name": "Cursor Origin",
 	"builds.origin_scm.actions.connect": "Connect with Cursor Origin",
 	"builds.origin_scm.actions.continue": "Continue with Cursor Origin",
@@ -266,6 +267,7 @@
 	"builds.forms.triggers.labels.scm_account_option_gitlab": "New GitLab connection",
 	"builds.forms.triggers.labels.scm_account_option_gitlab_internal": "New GitLab (Internal) connection",
 	"builds.forms.triggers.labels.scm_account_option_origin": "New Cursor Origin connection",
+	"builds.forms.triggers.labels.scm_account_option_artifacts": "Create new Artifacts namespace",
 	"builds.forms.triggers.labels.environment_variables": "Not yet supported",
 	"builds.forms.triggers.labels.branch_control_disabled": "Branch control is not yet supported for internal GitLab connections.",
 	"builds.forms.triggers.constraints.deploy_command": "Deploy command must be between 1 and 512 characters long",
