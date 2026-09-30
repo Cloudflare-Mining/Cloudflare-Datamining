@@ -1918,17 +1918,12 @@
 										"minimum": 1
 									},
 									"state": {
-										"description": "Updates the state optionally.",
-										"allOf": [
-											{
-												"description": "Specifies the state of maintenance operations.",
-												"type": "string",
-												"example": "enabled",
-												"enum": [
-													"enabled",
-													"disabled"
-												]
-											}
+										"description": "Specifies the state of maintenance operations.",
+										"type": "string",
+										"example": "enabled",
+										"enum": [
+											"enabled",
+											"disabled"
 										]
 									}
 								}
@@ -2833,17 +2828,12 @@
 										"minimum": 1
 									},
 									"state": {
-										"description": "Updates the state optionally.",
-										"allOf": [
-											{
-												"description": "Specifies the state of maintenance operations.",
-												"type": "string",
-												"example": "enabled",
-												"enum": [
-													"enabled",
-													"disabled"
-												]
-											}
+										"description": "Specifies the state of maintenance operations.",
+										"type": "string",
+										"example": "enabled",
+										"enum": [
+											"enabled",
+											"disabled"
 										]
 									}
 								}

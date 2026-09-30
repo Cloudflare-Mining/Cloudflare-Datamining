@@ -930,33 +930,23 @@
 										"type": "object",
 										"properties": {
 											"state": {
-												"description": "Updates the state optionally.",
-												"allOf": [
-													{
-														"description": "Specifies the state of maintenance operations.",
-														"type": "string",
-														"example": "enabled",
-														"enum": [
-															"enabled",
-															"disabled"
-														]
-													}
+												"description": "Specifies the state of maintenance operations.",
+												"type": "string",
+												"example": "enabled",
+												"enum": [
+													"enabled",
+													"disabled"
 												]
 											},
 											"target_size_mb": {
-												"description": "Updates the target file size optionally.",
-												"allOf": [
-													{
-														"description": "Sets the target file size for compaction in megabytes. Defaults to \"128\".",
-														"type": "string",
-														"example": "128",
-														"enum": [
-															"64",
-															"128",
-															"256",
-															"512"
-														]
-													}
+												"description": "Sets the target file size for compaction in megabytes. Defaults to \"128\".",
+												"type": "string",
+												"example": "128",
+												"enum": [
+													"64",
+													"128",
+													"256",
+													"512"
 												]
 											}
 										}
@@ -977,17 +967,12 @@
 												"minimum": 1
 											},
 											"state": {
-												"description": "Updates the state optionally.",
-												"allOf": [
-													{
-														"description": "Specifies the state of maintenance operations.",
-														"type": "string",
-														"example": "enabled",
-														"enum": [
-															"enabled",
-															"disabled"
-														]
-													}
+												"description": "Specifies the state of maintenance operations.",
+												"type": "string",
+												"example": "enabled",
+												"enum": [
+													"enabled",
+													"disabled"
 												]
 											}
 										}
@@ -1438,33 +1423,23 @@
 										"type": "object",
 										"properties": {
 											"state": {
-												"description": "Updates the state optionally.",
-												"allOf": [
-													{
-														"description": "Specifies the state of maintenance operations.",
-														"type": "string",
-														"example": "enabled",
-														"enum": [
-															"enabled",
-															"disabled"
-														]
-													}
+												"description": "Specifies the state of maintenance operations.",
+												"type": "string",
+												"example": "enabled",
+												"enum": [
+													"enabled",
+													"disabled"
 												]
 											},
 											"target_size_mb": {
-												"description": "Updates the target file size optionally.",
-												"allOf": [
-													{
-														"description": "Sets the target file size for compaction in megabytes. Defaults to \"128\".",
-														"type": "string",
-														"example": "128",
-														"enum": [
-															"64",
-															"128",
-															"256",
-															"512"
-														]
-													}
+												"description": "Sets the target file size for compaction in megabytes. Defaults to \"128\".",
+												"type": "string",
+												"example": "128",
+												"enum": [
+													"64",
+													"128",
+													"256",
+													"512"
 												]
 											}
 										}
@@ -1485,17 +1460,12 @@
 												"minimum": 1
 											},
 											"state": {
-												"description": "Updates the state optionally.",
-												"allOf": [
-													{
-														"description": "Specifies the state of maintenance operations.",
-														"type": "string",
-														"example": "enabled",
-														"enum": [
-															"enabled",
-															"disabled"
-														]
-													}
+												"description": "Specifies the state of maintenance operations.",
+												"type": "string",
+												"example": "enabled",
+												"enum": [
+													"enabled",
+													"disabled"
 												]
 											}
 										}
