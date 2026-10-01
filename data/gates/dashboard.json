@@ -172,6 +172,9 @@
 	"ai-gateway-stripe-integration": {
 		"enabled": true
 	},
+	"ai-gateway-webhook-signing": {
+		"enabled": false
+	},
 	"ai-gateway-wholesale-billing": {
 		"enabled": true
 	},
@@ -638,6 +641,9 @@
 	},
 	"cfone-threat-intelligence-all-users": {
 		"enabled": true
+	},
+	"cfone-threat-intelligence-overview": {
+		"enabled": false
 	},
 	"cfone-threat-intelligence-overview-enabled": {
 		"enabled": false
@@ -1583,7 +1589,7 @@
 		"enabled": true
 	},
 	"images-hosted-analytics": {
-		"enabled": false
+		"enabled": true
 	},
 	"images-provider-transformation": {
 		"enabled": true
