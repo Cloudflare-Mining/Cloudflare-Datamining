@@ -10,15 +10,71 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
-September 30, 2026 [<h2>The Internet has a second audience</h2>](https://blog.cloudflare.com/agentic-web/)
+October 1, 2026 [<h2>Introducing Cloudflare Basin: an open, serverless data platform, now generally available</h2>](https://blog.cloudflare.com/cloudflare-basin/)
 
-More than half the traffic reaching sites on Cloudflare is now automated, and AI agents are the fastest-growing part of it. We're giving site owners the tools to see who's visiting, decide who gets in, and charge for access.
+Cloudflare Basin is built on Apache Iceberg and R2 Object Storage. With general availability, developers can ingest, manage, and query large datasets at scale without paying data egress fees.
 
-![Matthew Conroy](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW1QZW47KMHA09RY62FC.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+![Marc Selwan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455H274J0ZYJ6K4KHKJT25.webp&w=64&h=64&f=webp&fit=cover&position=center)![Micah Wylde](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48960E56E6QTQP000R72JC.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
 
-[Matthew Conroy](https://blog.cloudflare.com/author/matthew-conroy/)
+[Marc Selwan](https://blog.cloudflare.com/author/marc-selwan/) and  [Micah Wylde](https://blog.cloudflare.com/author/micah-wylde/)
 
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3Q3ZZ59Z3P49M2FX7R7F4WQ.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/agentic-web/)
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TBHN0F85Z2NSDVC4T3HF05.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/cloudflare-basin/)
+
+October 1, 2026 [<h2>One year later: Sovereign AI and the fight for choice</h2>](https://blog.cloudflare.com/sovereign-ai-choice-one-year-later/)
+
+AI sovereignty is not a zero-sum game, but many governments now believe it is. Cloudflare's answer: more local open-source models, model-agnostic security tools, and a commitment to giving nations genuine choice.
+
+![Carly Ramsey](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q303KX2VKFJ5MS55V7RX.png&w=64&h=64&f=webp&fit=cover&position=center)![Smrithi Ramesh](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW473MXBXKZQ603RJ5FHA2N6.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Petra Arts](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47228RPQXRFB4WW8P2EB9V.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Carly Ramsey](https://blog.cloudflare.com/author/carly/),  [Smrithi Ramesh](https://blog.cloudflare.com/author/smrithi-ramesh/), and  [Petra Arts](https://blog.cloudflare.com/author/petra/)
+
+October 1, 2026 [<h2>Introducing Workers KV Instant — powered by Quicksilver</h2>](https://blog.cloudflare.com/workers-kv-instant/)
+
+Workers KV Instant delivers sub-2ms p99 read latencies and 250ms global replication across Cloudflare's 300+ edge locations. KV Instant eliminates cold-read penalties and uses the familiar Workers KV API.
+
+![Rob Sutter](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VM3GCX6DGHVJ06XGV8XA.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Brendan Irvine-Broque](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49H9641F9RZN2BA8BPX7HK.JPG&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Rob Sutter](https://blog.cloudflare.com/author/rob/) and  [Brendan Irvine-Broque](https://blog.cloudflare.com/author/brendan-irvine-broque/)
+
+October 1, 2026 [<h2>Cloudflare OS: your company's agent workspace, managed for you</h2>](https://blog.cloudflare.com/managed-cloudflare-os/)
+
+Cloudflare OS gives everyone in your organization an agent workspace that knows how your company works and connects to its data and systems. We're opening the waitlist for fully managed deployments that you'll be able to launch in a few clicks.
+
+![Phillip Jones](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CA63Q819PPAR7M8DTNQ3.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Phillip Jones](https://blog.cloudflare.com/author/phillip/)
+
+October 1, 2026 [<h2>Announcing Cloudflare K2: serverless event streams</h2>](https://blog.cloudflare.com/cloudflare-k2-streams/)
+
+Cloudflare K2 is a serverless event streaming service built directly on top of R2 object storage for high-scale data movement and long-term retention. By decoupling producers and consumers at the edge, K2 enables durable, ordered log streams without the operational overhead of traditional broker clusters.
+
+![Micah Wylde](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48960E56E6QTQP000R72JC.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Marc Selwan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455H274J0ZYJ6K4KHKJT25.webp&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Micah Wylde](https://blog.cloudflare.com/author/micah-wylde/) and  [Marc Selwan](https://blog.cloudflare.com/author/marc-selwan/)
+
+October 1, 2026 [<h2>We want you to build the next Git platform on Cloudflare</h2>](https://blog.cloudflare.com/next-git-platform-on-cloudflare/)
+
+Cloudflare is hosting a competition to see who will build the next Git platform for an era of AI agents. Artifacts is in open beta, with Workers bindings, data jurisdiction controls, and event subscriptions for repository changes.
+
+![Dina Kozlov](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DZ20ZY95S71GB0FPG6GC.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Dillon Mulroy](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45817WZF8X21CSHMRKGEXW.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Zebulon Piasecki](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SPNPQ4FRWZZG3GWEV0VY2J.01M3SPNRCTC9WW528APGP7F8BP.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Dina Kozlov](https://blog.cloudflare.com/author/dina/),  [Dillon Mulroy](https://blog.cloudflare.com/author/dillon-mulroy/), and  [Zebulon Piasecki](https://blog.cloudflare.com/author/zeb/)
+
+October 1, 2026 [<h2>AI Search is now generally available</h2>](https://blog.cloudflare.com/ai-search-ga/)
+
+AI Search is now generally available. It embeds image pixels directly for visual search, runs optical character recognition on scanned PDFs, accepts files up to 10 MiB, and works with any chat model. Here's what's new and how pricing works.
+
+![Gabriel Massadas](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZJT71CZ6R57ZBVBWK0TT.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Nelson Duarte](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49P72CGQX08FQC903Q0E4F.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Ashish Vinodkumar](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SPWCTC1QQAVTDY6S99X3Z0.01M3SPWDEK4887CWK8WK6AVE6D.webp&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Gabriel Massadas](https://blog.cloudflare.com/author/gabriel-massadas/),  [Nelson Duarte](https://blog.cloudflare.com/author/nelson-duarte/), and  [Ashish Vinodkumar](https://blog.cloudflare.com/author/ashish-vinodkumar/)
+
+October 1, 2026 [<h2>Support for modern cryptographic algorithms in Workers</h2>](https://blog.cloudflare.com/workers-ml-kem-ml-dsa-support/)
+
+Cloudflare Workers is adding opt-in support for post-quantum-resistant algorithms ML-KEM and ML-DSA. You can try it today.
+
+![Thibault Meunier](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CG4C7M8Y2P7VRAYHW2RV.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Thibault Meunier](https://blog.cloudflare.com/author/thibault/)
 
 September 30, 2026 [<h2>Cloudflare Impact reaches $100 million in donations</h2>](https://blog.cloudflare.com/100-million-donations/)
 
@@ -84,6 +140,14 @@ Cloudflare Containers now start 6x faster, let your agent choose each sandbox's 
 
 [Thomas Gauvin](https://blog.cloudflare.com/author/thomas-gauvin/),  [Rushil Mehra](https://blog.cloudflare.com/author/rushil-mehra/),  [Gabi Villalonga Simón](https://blog.cloudflare.com/author/gabi-villalonga-simon/), and  [Thomas Lefebvre](https://blog.cloudflare.com/author/thomas/)
 
+September 30, 2026 [<h2>The Internet has a second audience</h2>](https://blog.cloudflare.com/agentic-web/)
+
+More than half the traffic reaching sites on Cloudflare is now automated, and AI agents are the fastest-growing part of it. We're giving site owners the tools to see who's visiting, decide who gets in, and charge for access.
+
+![Matthew Conroy](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW1QZW47KMHA09RY62FC.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Matthew Conroy](https://blog.cloudflare.com/author/matthew-conroy/)
+
 September 29, 2026 [<h2>Using AI to chart a course for our post-quantum migration</h2>](https://blog.cloudflare.com/ai-driven-cryptography-discovery/)
 
 We're building CryptoLabe, an internal AI-powered tool that discovers cryptography across our codebase, surfaces dependencies, and helps us progress toward a full post-quantum migration by 2029. Here's what we've learned so far.
@@ -99,70 +163,6 @@ Twelve years after launching Universal SSL, Cloudflare is applying to become a c
 ![Steve Goldsmith](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497YX7768BEJGS24P0FMX8.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Steve Goldsmith](https://blog.cloudflare.com/author/steve-goldsmith/)
-
-September 29, 2026 [<h2>Adaptive application security for the AI era: how Cloudflare connects code, traffic, and intelligence to stop attacks</h2>](https://blog.cloudflare.com/ai-era-framework/)
-
-Cloudflare introduces an adaptive security framework connecting risk discovery, agent governance, runtime protection, and AI-powered response in a continuous learning loop.
-
-![Daniele Molteni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464793D50Z8QJQK451PK2A.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Jonathan Spies](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SWW1P8GYQNK0PJHA855HYH.01M3SWW2DSKT8EZNDEECX12V5V.webp&w=64&h=64&f=webp&fit=cover&position=center)![Christian Reilly](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3N50B9Z6PNXC2HR0HGCHB6P.01M3N50BQYTR03YB2J2D68J4TS.webp&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Daniele Molteni](https://blog.cloudflare.com/author/daniele/),  [Jonathan Spies](https://blog.cloudflare.com/author/jonathan-spies/), and  [Christian Reilly](https://blog.cloudflare.com/author/christian-reilly/)
-
-September 29, 2026 [<h2>Building a post-quantum certificate authority with Merkle Tree Certificates</h2>](https://blog.cloudflare.com/pq-ca-with-mtcs/)
-
-As post-quantum signatures threaten to inflate TLS handshakes and certificate transparency logs, Merkle Tree Certificates offer a path to compact, auditable authentication. Cloudflare's new certificate authority will support MTC issuance at scale.
-
-![Mari Galicer](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481GPW34N2TYBX476WQC8S.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Mari Galicer](https://blog.cloudflare.com/author/mari/)
-
-September 29, 2026 [<h2>We tested our own WAF with frontier AI models. Here's what we found</h2>](https://blog.cloudflare.com/adaptive-ai-waf-testing/)
-
-We built a WAF tester that adapted each request based on what the WAF blocked or passed. This helped us explore variations that a fixed test might miss. We ran it across six attack categories on an authorized staging environment and discovered detection gaps worth fixing. Here's how the loop worked, what got through, and what we did about it.
-
-![Vikram Grover](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXRZQ9V87C8WK94DX4J9EPSD.webp&w=64&h=64&f=webp&fit=cover&position=center)![Daniele Molteni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464793D50Z8QJQK451PK2A.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Kuber Nandwani](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXRZS93GCE4CXP81WJ1TX25Y.webp&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Vikram Grover](https://blog.cloudflare.com/author/vikram-grover/),  [Daniele Molteni](https://blog.cloudflare.com/author/daniele/), and  [Kuber Nandwani](https://blog.cloudflare.com/author/kuber-nandwani/)
-
-September 29, 2026 [<h2>Introducing Threat Signals: agentic skills for open-source threat intelligence, free for every Cloudflare account</h2>](https://blog.cloudflare.com/threat-signals/)
-
-We are expanding access to Cloudforce One's Threat Events Platform to every Cloudflare account and introducing Threat Signals. Threat Signals automatically parses open-source threat reporting, extracts structured indicators, and connects threat context directly to your WAF rules.
-
-![Emilia Yoffie](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CT8MBEKV0SGZG9P6EEAX.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Victor Niño](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M34XJSCFJDJDCJENXTJQWSM3.01M34XJSZ3Y5A9AFARPYMT9YD5.webp&w=64&h=64&f=webp&fit=cover&position=center)![Brian Seel](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46NT7H3SMGX08DS803DZP9.png&w=64&h=64&f=webp&fit=cover&position=center)![Jacob Crisp](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468SZ92CTQZG9K5AR69G1E.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Emilia Yoffie](https://blog.cloudflare.com/author/emilia-yoffie/),  [Victor Niño](https://blog.cloudflare.com/author/victor-nino/),  [Brian Seel](https://blog.cloudflare.com/author/brian-seel/), and  [Jacob Crisp](https://blog.cloudflare.com/author/jacob-crisp/)
-
-September 29, 2026 [<h2>Is your domain using post-quantum encryption? Now you can see for yourself</h2>](https://blog.cloudflare.com/post-quantum-visibility/)
-
-Cloudflare has added visibility into post-quantum (PQ) encryption in TLS 1.3 directly into HTTP Analytics, Log Explorer, and Logpush. Learn how to make sure your domain is protected with PQ encryption.
-
-![Andrew Depke](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M34Y85BNVY4E7ZMPAC5XW2RT.01M34Y85TM54R8HSGTP30NBKFP.webp&w=64&h=64&f=webp&fit=cover&position=center)![Sophie Park](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3MQZ69R27H7200RAWVEAQ4V.01M3MQZ6XP1DETQYD1V634JYB0.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Sharon Goldberg](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488S3YN4RV24QXC7PM57EC.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Andrew Depke](https://blog.cloudflare.com/author/andrew-depke/),  [Sophie Park](https://blog.cloudflare.com/author/sophie-park/), and  [Sharon Goldberg](https://blog.cloudflare.com/author/goldbe/)
-
-September 29, 2026 [<h2>Enforce positive security with Cloudflare Application Profiles</h2>](https://blog.cloudflare.com/application-profiles/)
-
-Cloudflare learns the structure of your HTTP requests and identifies deviations. You can add a positive security layer that helps reduce attack surface as AI makes it easier for attackers to generate and vary payloads.
-
-![Daniele Molteni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464793D50Z8QJQK451PK2A.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Zhiyuan Zheng](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H03CGFSDPVGKTC145T2G.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Daniele Molteni](https://blog.cloudflare.com/author/daniele/) and  [Zhiyuan Zheng](https://blog.cloudflare.com/author/xmflsct/)
-
-September 29, 2026 [<h2>Preventing quantum downgrade attacks against IPsec</h2>](https://blog.cloudflare.com/ipsec-downgrade-protection/)
-
-A sophisticated attacker with a quantum computer can exploit a protocol design flaw to downgrade post-quantum IPsec tunnels to classical crypto. We helped the IETF develop a transcript authentication extension to prevent these attacks.
-
-![Christopher Patton](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471WT491ZC11M0S5HA34X3.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Amos Paul](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FD25GV5MTTPN5NXN79ES.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Lina Baquero](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXDHSP0NJR8EJ5X72TPSFA2R.webp&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Christopher Patton](https://blog.cloudflare.com/author/christopher-patton/),  [Amos Paul](https://blog.cloudflare.com/author/amos-paul/), and  [Lina Baquero](https://blog.cloudflare.com/author/lina-baquero/)
-
-September 28, 2026 [<h2>Introducing cf: the agentic CLI for the entire Cloudflare API</h2>](https://blog.cloudflare.com/cloudflare-cf-cli-launch/)
-
-We are releasing cf, our new command-line tool that mirrors the entire Cloudflare API and supports programmatic TypeScript configuration. We are also open-sourcing Forge, our internal SDK generator.
-
-![Matt "TK" Taylor](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46YW143XXGWD5TFT0BBYBQ.webp&w=64&h=64&f=webp&fit=cover&position=center)![Samuel Macleod](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498X1ZVM0N111DBDKB3MM1.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Matt "TK" Taylor](https://blog.cloudflare.com/author/matt-tk-taylor/) and  [Samuel Macleod](https://blog.cloudflare.com/author/samuel/)
 
 Load more
 
