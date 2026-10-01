@@ -286,7 +286,7 @@
 		"tags": [
 			"ppu_pricing"
 		],
-		"x-fern-sdk-group-name": "pay-per-crawl.pay-per-use.pricing",
+		"x-fern-sdk-group-name": "pay-per-use.pricing",
 		"x-fern-sdk-method-name": "opt-out-operator-price"
 	},
 	"GET /accounts/{account_id}/pay-per-use/proposals": {
@@ -629,7 +629,7 @@
 		"tags": [
 			"ppu_pricing"
 		],
-		"x-fern-sdk-group-name": "pay-per-crawl.pay-per-use.proposals",
+		"x-fern-sdk-group-name": "pay-per-use.proposals",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/pay-per-use/operators": {
@@ -1098,7 +1098,7 @@
 		"tags": [
 			"ppu_pricing"
 		],
-		"x-fern-sdk-group-name": "pay-per-crawl.pay-per-use.pricing",
+		"x-fern-sdk-group-name": "pay-per-use.pricing",
 		"x-fern-sdk-method-name": "list-operators"
 	},
 	"POST /accounts/{account_id}/pay-per-use/proposals": {
@@ -1485,7 +1485,7 @@
 		"tags": [
 			"ppu_pricing"
 		],
-		"x-fern-sdk-group-name": "pay-per-crawl.pay-per-use.proposals",
+		"x-fern-sdk-group-name": "pay-per-use.proposals",
 		"x-fern-sdk-method-name": "decide"
 	},
 	"POST /zones/{zone_id}/pay-per-use/operators/{operator_id}/price": {
@@ -1959,7 +1959,7 @@
 		"tags": [
 			"ppu_pricing"
 		],
-		"x-fern-sdk-group-name": "pay-per-crawl.pay-per-use.pricing",
+		"x-fern-sdk-group-name": "pay-per-use.pricing",
 		"x-fern-sdk-method-name": "set-operator-price"
 	}
 }

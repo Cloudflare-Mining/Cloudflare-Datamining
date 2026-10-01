@@ -164,7 +164,9 @@
 													"items": {
 														"type": "object",
 														"properties": {
-															"event_details": {},
+															"event_details": {
+																"type": "object"
+															},
 															"id": {
 																"type": "string"
 															},

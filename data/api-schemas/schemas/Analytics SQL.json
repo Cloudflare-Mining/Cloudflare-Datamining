@@ -1,4 +1,881 @@
 {
+	"GET /accounts/{account_tag}/analytics/sql": {
+		"operationId": "sql-api-query-get-account-scoped",
+		"summary": "Query analytics datasets",
+		"description": "Executes a SQL query scoped to the account in the request path. API Gateway forwards the path account in its signed JWT to the existing SQL API handler, so an accountTag predicate or JSON scope is not required. Explicit account scope must match the path account. Any zone restrictions must belong to that account. Query parameters, time ranges, output formats, authorization, and responses follow the legacy query endpoint.",
+		"parameters": [
+			{
+				"name": "account_tag",
+				"in": "path",
+				"description": "Account that authorizes and scopes the request.",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"pattern": "^[a-f0-9]{32}$"
+				},
+				"example": "0123456789abcdef0123456789abcdef"
+			},
+			{
+				"name": "query",
+				"in": "query",
+				"description": "SQL query to execute. A trailing FORMAT selects JSON, JSONEachRow, TabSeparated, or TSV output on any dataset.\n",
+				"required": true,
+				"schema": {
+					"type": "string"
+				},
+				"example": "SELECT edgeResponseStatus FROM events.httpRequests WHERE datetime > '2026-01-01' LIMIT 10"
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Query executed successfully. Columns that the query reaches only through `*` exclude any that the caller is not permitted to read. ClickHouse's default JSON envelope has data, rows, and statistics; explicit FORMAT JSON additionally has typed metadata and rows_before_limit_at_least. Log Explorer's default and FORMAT JSON responses use its existing {data, rows} envelope, without unavailable metadata, pre-limit counts, or statistics. FORMAT JSONEachRow returns newline-delimited JSON objects. FORMAT TabSeparated and TSV return escaped tab-separated rows without a header; Log Explorer serializes nested JSON values as compact JSON text in one field.\n",
+				"content": {
+					"application/json": {
+						"schema": {
+							"oneOf": [
+								{
+									"type": "object",
+									"properties": {
+										"data": {
+											"description": "Query result rows keyed by the selected column names.",
+											"type": "array",
+											"items": {
+												"additionalProperties": true,
+												"type": "object"
+											}
+										},
+										"rows": {
+											"description": "Number of rows in `data`.",
+											"type": "integer",
+											"format": "int64",
+											"minimum": 0
+										},
+										"statistics": {
+											"type": "object",
+											"properties": {
+												"bytes_read": {
+													"description": "Number of source bytes read while executing the query.",
+													"type": "integer",
+													"format": "int64",
+													"minimum": 0
+												},
+												"elapsed_ms": {
+													"description": "Backend execution time in milliseconds.",
+													"type": "integer",
+													"format": "int64",
+													"minimum": 0
+												},
+												"rows_read": {
+													"description": "Number of source rows read while executing the query.",
+													"type": "integer",
+													"format": "int64",
+													"minimum": 0
+												}
+											},
+											"additionalProperties": false,
+											"required": [
+												"elapsed_ms",
+												"rows_read",
+												"bytes_read"
+											]
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"data",
+										"rows",
+										"statistics"
+									]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"data": {
+											"type": "array",
+											"items": {
+												"additionalProperties": true,
+												"type": "object"
+											}
+										},
+										"meta": {
+											"type": "array",
+											"items": {
+												"additionalProperties": false,
+												"properties": {
+													"name": {
+														"type": "string"
+													},
+													"type": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"name",
+													"type"
+												],
+												"type": "object"
+											}
+										},
+										"rows": {
+											"type": "integer",
+											"format": "int64",
+											"minimum": 0
+										},
+										"rows_before_limit_at_least": {
+											"description": "ClickHouse pre-limit count, or rows when unavailable.",
+											"type": "integer",
+											"format": "int64",
+											"minimum": 0
+										},
+										"statistics": {
+											"type": "object",
+											"properties": {
+												"bytes_read": {
+													"description": "Number of source bytes read while executing the query.",
+													"type": "integer",
+													"format": "int64",
+													"minimum": 0
+												},
+												"elapsed_ms": {
+													"description": "Backend execution time in milliseconds.",
+													"type": "integer",
+													"format": "int64",
+													"minimum": 0
+												},
+												"rows_read": {
+													"description": "Number of source rows read while executing the query.",
+													"type": "integer",
+													"format": "int64",
+													"minimum": 0
+												}
+											},
+											"additionalProperties": false,
+											"required": [
+												"elapsed_ms",
+												"rows_read",
+												"bytes_read"
+											]
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"meta",
+										"data",
+										"rows",
+										"rows_before_limit_at_least",
+										"statistics"
+									]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"data": {
+											"description": "Log Explorer query rows keyed by selected column names.",
+											"type": "array",
+											"items": {
+												"additionalProperties": true,
+												"type": "object"
+											}
+										},
+										"rows": {
+											"description": "Number of rows in data.",
+											"type": "integer",
+											"format": "int64",
+											"minimum": 0
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"data",
+										"rows"
+									]
+								}
+							]
+						}
+					},
+					"application/x-ndjson": {
+						"schema": {
+							"description": "FORMAT JSONEachRow emits one JSON object per line, rather than a single JSON document.\n",
+							"type": "string"
+						}
+					},
+					"text/tab-separated-values": {
+						"schema": {
+							"description": "FORMAT TabSeparated (or TSV) emits escaped tab-separated rows without a header.\n",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "The request is malformed, or authentication was rejected by the API gateway before the request reached the SQL service.\n",
+				"content": {
+					"application/json": {
+						"schema": {
+							"oneOf": [
+								{
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "Machine-readable error code.",
+											"type": "integer",
+											"format": "int64",
+											"minimum": 0
+										},
+										"error_chain": {
+											"description": "Additional errors that caused this error.",
+											"type": "array",
+											"items": "[Circular ~.GET /accounts/{account_tag}/analytics/sql.responses.400.content.application/json.schema.oneOf.0]"
+										},
+										"message": {
+											"description": "Human-readable error message.",
+											"type": "string"
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Machine-readable error code.",
+														"type": "integer",
+														"format": "int64",
+														"minimum": 0
+													},
+													"error_chain": {
+														"description": "Additional errors that caused this error.",
+														"type": "array",
+														"items": "[Circular ~.GET /accounts/{account_tag}/analytics/sql.responses.400.content.application/json.schema.oneOf.1.properties.errors.items]"
+													},
+													"message": {
+														"description": "Human-readable error message.",
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"code",
+													"message"
+												]
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Machine-readable error code.",
+														"type": "integer",
+														"format": "int64",
+														"minimum": 0
+													},
+													"error_chain": {
+														"description": "Additional errors that caused this error.",
+														"type": "array",
+														"items": "[Circular ~.GET /accounts/{account_tag}/analytics/sql.responses.400.content.application/json.schema.oneOf.1.properties.messages.items]"
+													},
+													"message": {
+														"description": "Human-readable error message.",
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"code",
+													"message"
+												]
+											}
+										},
+										"result": {
+											"type": "object",
+											"additionalProperties": true,
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												false
+											]
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Authentication failed, the caller is not authorized, or the query references a column the caller is not permitted to read.\n",
+				"content": {
+					"text/plain": {
+						"example": "Authorization error",
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"422": {
+				"description": "The SQL query or its parameters are invalid.",
+				"content": {
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "The query exceeded a resource or request-rate limit.",
+				"headers": {
+					"Retry-After": {
+						"description": "Seconds to wait before retrying. Present when the account request rate limit is exceeded; omitted for query resource limits.\n",
+						"schema": {
+							"type": "integer",
+							"format": "int64",
+							"minimum": 0
+						}
+					}
+				},
+				"content": {
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "An internal error occurred.",
+				"content": {
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"501": {
+				"description": "The query uses a SQL feature that is not implemented.",
+				"content": {
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "A required service is temporarily unavailable.",
+				"content": {
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"507": {
+				"description": "The query exhausted available resources.",
+				"content": {
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Analytics SQL"
+		],
+		"x-api-token-group": [
+			"Account Analytics Read"
+		],
+		"x-fern-audiences": [
+			"sdk"
+		],
+		"x-fern-availability": "alpha",
+		"x-fern-sdk-group-name": "analytics.sql.accounts",
+		"x-fern-sdk-method-name": "get"
+	},
+	"GET /accounts/{account_tag}/analytics/sql/introspection": {
+		"operationId": "sql-api-introspection-account-scoped",
+		"summary": "List available analytics datasets",
+		"description": "Returns the dataset catalogue for the account in the request path. API Gateway forwards the path account in its signed JWT to the existing introspection handler; account_tag is not required as a query parameter. If supplied, it must match the path account. Dataset and column discovery options are identical to the legacy introspection endpoint.",
+		"parameters": [
+			{
+				"name": "account_tag",
+				"in": "path",
+				"description": "Account that authorizes and scopes the request.",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"pattern": "^[a-f0-9]{32}$"
+				},
+				"example": "0123456789abcdef0123456789abcdef"
+			},
+			{
+				"name": "include_columns",
+				"in": "query",
+				"description": "Include column metadata for each returned dataset.",
+				"schema": {
+					"type": "boolean",
+					"default": false
+				}
+			},
+			{
+				"name": "include_custom_attributes",
+				"in": "query",
+				"description": "Include a capped set of custom attribute names and types observed during the preceding seven days. Requires a nonempty dataset_name.\n",
+				"schema": {
+					"type": "boolean",
+					"default": false
+				}
+			},
+			{
+				"name": "include_wae",
+				"in": "query",
+				"description": "Include Workers Analytics Engine datasets, which are discovered from the account's own data. Set to `false` to return only datasets described from the static catalogue, which avoids that lookup.\n",
+				"schema": {
+					"type": "boolean",
+					"default": true
+				}
+			},
+			{
+				"name": "include_lex",
+				"in": "query",
+				"description": "Include Log Explorer datasets, which are listed only where the account has them. Set to `false` to return only datasets described from the static catalogue, which avoids that lookup.\n",
+				"schema": {
+					"type": "boolean",
+					"default": true
+				}
+			},
+			{
+				"name": "dataset_name",
+				"in": "query",
+				"description": "Return only the dataset with this exact name. An empty value is treated as if the parameter had been omitted, and does not filter the catalogue. A name that matches no dataset in this deployment's catalogue is rejected with `422`; a dataset that exists but is not describable here is rejected identically, so the two cases cannot be told apart.\n\nA Workers Analytics Engine dataset is named in full, as `events.analyticsEngine.<dataset_name>`; the namespace on its own returns every such dataset the account has. A `dataset_name` the account does not have is rejected with `422` like any other unknown name.\n",
+				"schema": {
+					"type": "string"
+				},
+				"example": "events.httpRequests"
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Dataset catalogue returned successfully.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"datasets": {
+									"description": "Datasets visible through the Analytics SQL API.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"category": {
+												"description": "Human-readable dataset category from the catalogue metadata.",
+												"type": "string",
+												"example": "HTTP Traffic"
+											},
+											"columns": {
+												"description": "Present when `include_columns` is true.",
+												"type": "array",
+												"items": {
+													"type": "object",
+													"properties": {
+														"data_type": {
+															"description": "SQL data type of the column.",
+															"type": "string",
+															"example": "String"
+														},
+														"description": {
+															"description": "Human-readable description of the column.",
+															"type": "string"
+														},
+														"hidden": {
+															"description": "Whether the column is de-emphasised in column listings. A presentation hint only: a hidden column is still returned here, is still selectable by name, and is still included by `SELECT *`.\n",
+															"type": "boolean"
+														},
+														"name": {
+															"description": "Column name used in SQL queries.",
+															"type": "string",
+															"example": "clientRequestPath"
+														}
+													},
+													"additionalProperties": false,
+													"required": [
+														"name",
+														"description",
+														"data_type",
+														"hidden"
+													]
+												}
+											},
+											"custom_attributes": {
+												"description": "Present when `include_custom_attributes` is true and the dataset supports custom attributes.",
+												"type": "array",
+												"items": {
+													"type": "object",
+													"properties": {
+														"data_type": {
+															"description": "ClickHouse type of the attribute value.",
+															"type": "string",
+															"example": "String"
+														},
+														"name": {
+															"description": "Attribute name.",
+															"type": "string"
+														}
+													},
+													"additionalProperties": false,
+													"required": [
+														"name",
+														"data_type"
+													]
+												}
+											},
+											"description": {
+												"description": "Human-readable description of the dataset.",
+												"type": "string"
+											},
+											"hidden": {
+												"description": "Whether the dataset is de-emphasised in catalogue listings. A presentation hint only: a hidden dataset is still returned here and is just as queryable as any other.\n",
+												"type": "boolean"
+											},
+											"kind": {
+												"description": "What kind of dataset this is. Determines aggregation rules and sampling behavior. Exactly one of `events`, `states`, or `logs` is present.\n",
+												"type": "object",
+												"properties": {
+													"availability": {
+														"description": "Scopes the dataset is enabled for, as reported by the service that owns it. Absent when availability is not applicable to the dataset.",
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"scope": {
+																	"description": "Whether the dataset is enabled for the whole account or for a single zone.",
+																	"type": "string",
+																	"enum": [
+																		"account",
+																		"zone"
+																	]
+																},
+																"zone": {
+																	"description": "Zone tag. Present only when `scope` is `zone`.",
+																	"type": "string",
+																	"example": "023e105f4ecef8ad9ca31a8372d0c353"
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"scope"
+															]
+														}
+													},
+													"events": {
+														"description": "Row-per-event analytics dataset. Aggregations describe the cumulative effect of those events.\n",
+														"type": "object",
+														"additionalProperties": false,
+														"properties": {
+															"sampling": {
+																"description": "Whether the dataset is sampled. `unsampled` means every row is recorded. `adaptive` means Adaptive Bit Rate (ABR) sampling is applied, and aggregates must be weighted accordingly.\n",
+																"type": "string",
+																"enum": [
+																	"unsampled",
+																	"adaptive"
+																]
+															}
+														},
+														"required": [
+															"sampling"
+														]
+													},
+													"logs": {
+														"description": "Row-per-log dataset intended for record retrieval.",
+														"type": "object",
+														"additionalProperties": false,
+														"properties": {
+															"sampling": {
+																"description": "Whether the dataset is sampled. `unsampled` means every row is recorded. `adaptive` means Adaptive Bit Rate (ABR) sampling is applied, and aggregates must be weighted accordingly.\n",
+																"type": "string",
+																"enum": [
+																	"unsampled",
+																	"adaptive"
+																]
+															}
+														},
+														"required": [
+															"sampling"
+														]
+													},
+													"states": {
+														"description": "Snapshot/state dataset. Only `valid_aggregations` are valid aggregations for this dataset.\n",
+														"type": "object",
+														"additionalProperties": false,
+														"properties": {
+															"sampling": {
+																"description": "Whether the dataset is sampled. `unsampled` means every row is recorded. `adaptive` means Adaptive Bit Rate (ABR) sampling is applied, and aggregates must be weighted accordingly.\n",
+																"type": "string",
+																"enum": [
+																	"unsampled",
+																	"adaptive"
+																]
+															},
+															"valid_aggregations": {
+																"description": "Which aggregation function names are allowed for this dataset.",
+																"type": "array",
+																"items": {
+																	"type": "string"
+																},
+																"example": [
+																	"count",
+																	"max"
+																]
+															}
+														},
+														"required": [
+															"sampling",
+															"valid_aggregations"
+														]
+													}
+												},
+												"additionalProperties": false,
+												"maxProperties": 1,
+												"minProperties": 1
+											},
+											"name": {
+												"description": "Dataset name used in SQL queries.",
+												"type": "string",
+												"example": "events.httpRequests"
+											},
+											"title": {
+												"description": "Human-readable title of the dataset.",
+												"type": "string",
+												"example": "HTTP Requests"
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"name",
+											"title",
+											"category",
+											"description",
+											"kind",
+											"hidden"
+										]
+									}
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"datasets"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "The request is malformed, or authentication was rejected by the API gateway before the request reached the SQL service.\n",
+				"content": {
+					"application/json": {
+						"schema": {
+							"oneOf": [
+								{
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "Machine-readable error code.",
+											"type": "integer",
+											"format": "int64",
+											"minimum": 0
+										},
+										"error_chain": {
+											"description": "Additional errors that caused this error.",
+											"type": "array",
+											"items": "[Circular ~.GET /accounts/{account_tag}/analytics/sql/introspection.responses.400.content.application/json.schema.oneOf.0]"
+										},
+										"message": {
+											"description": "Human-readable error message.",
+											"type": "string"
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Machine-readable error code.",
+														"type": "integer",
+														"format": "int64",
+														"minimum": 0
+													},
+													"error_chain": {
+														"description": "Additional errors that caused this error.",
+														"type": "array",
+														"items": "[Circular ~.GET /accounts/{account_tag}/analytics/sql/introspection.responses.400.content.application/json.schema.oneOf.1.properties.errors.items]"
+													},
+													"message": {
+														"description": "Human-readable error message.",
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"code",
+													"message"
+												]
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Machine-readable error code.",
+														"type": "integer",
+														"format": "int64",
+														"minimum": 0
+													},
+													"error_chain": {
+														"description": "Additional errors that caused this error.",
+														"type": "array",
+														"items": "[Circular ~.GET /accounts/{account_tag}/analytics/sql/introspection.responses.400.content.application/json.schema.oneOf.1.properties.messages.items]"
+													},
+													"message": {
+														"description": "Human-readable error message.",
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"code",
+													"message"
+												]
+											}
+										},
+										"result": {
+											"type": "object",
+											"additionalProperties": true,
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												false
+											]
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Authentication failed or the caller does not have Account Analytics Read permission on the specified account.\n",
+				"content": {
+					"text/plain": {
+						"example": "Authorization error",
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"422": {
+				"description": "The request could not be processed. This is returned when the account tag is invalid or unknown, when `include_custom_attributes` is set without a `dataset_name`, when a Workers Analytics Engine `dataset_name` is supplied alongside `include_wae=false` or contains characters a dataset name cannot contain, or when the supplied criteria match no dataset that this deployment can describe — either because no such dataset exists or because it is not describable here. The message names the criteria that matched nothing.\n",
+				"content": {
+					"text/plain": {
+						"example": "Input was invalid: There are no introspectable datasets matching the provided criteria (dataset_name=`events.nonexistent`)",
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "An internal error occurred.",
+				"content": {
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "The authorization service is temporarily unavailable.",
+				"content": {
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Analytics SQL"
+		],
+		"x-api-token-group": [
+			"Account Analytics Read"
+		],
+		"x-fern-audiences": [
+			"sdk"
+		],
+		"x-fern-availability": "alpha",
+		"x-fern-sdk-group-name": "analytics.sql.accounts.introspection",
+		"x-fern-sdk-method-name": "get"
+	},
 	"GET /analytics/sql": {
 		"operationId": "sql-api-query-get",
 		"summary": "Query analytics datasets",
@@ -414,7 +1291,7 @@
 	"GET /analytics/sql/introspection": {
 		"operationId": "sql-api-introspection",
 		"summary": "List available analytics datasets",
-		"description": "Returns the analytics dataset catalogue. By default, the response contains dataset names, titles, categories, descriptions, and kinds. Set `include_columns` to include each dataset's column names, descriptions, and data types. The caller must have Account Analytics Read permission on the account identified by `account_tag`. Dataset names, descriptions, and columns are the same for every authorized account. When `include_custom_attributes` is set, the response also includes custom attribute names and types discovered from that account's own data, which legitimately differs per caller.\n\nThe catalogue lists the datasets this deployment is able to describe, which is not a fixed list. Some datasets are described by the service that owns them and are listed only where that service is available, so the same account may see a different catalogue in different environments, and datasets may appear or disappear without a change to this API. Clients should query the catalogue rather than hard-coding it, and should not treat a dataset's absence as proof that it does not exist.\n\nWorkers Analytics Engine datasets are named by the account that writes them, so they are discovered from that account's own data rather than from a fixed list. They appear as `events.analyticsEngine.<dataset_name>` and differ per account. A dataset is listed for as long as any of its data is retained, so it does not disappear from the catalogue merely because writes have stopped. An account with a very large number of datasets may receive a truncated list. Set `include_wae=false` to omit them.\n\nLog Explorer datasets are listed only where the account has them, so they differ per account and are not part of the static catalogue. Set `include_lex=false` to omit them.\n",
+		"description": "Returns the analytics dataset catalogue. By default, the response contains dataset names, titles, categories, descriptions, kinds, and hidden flags. Set `include_columns` to include each dataset's column names, descriptions, data types, and hidden flags. The caller must have Account Analytics Read permission on the account identified by `account_tag`. Dataset names, descriptions, and columns are the same for every authorized account. When `include_custom_attributes` is set, the response also includes custom attribute names and types discovered from that account's own data, which legitimately differs per caller. `hidden` marks catalogue entries a client should de-emphasise. It has no effect on access: hidden datasets and columns are returned here and remain fully queryable.\n\nThe catalogue lists the datasets this deployment is able to describe, which is not a fixed list. Some datasets are described by the service that owns them and are listed only where that service is available, so the same account may see a different catalogue in different environments, and datasets may appear or disappear without a change to this API. Clients should query the catalogue rather than hard-coding it, and should not treat a dataset's absence as proof that it does not exist.\n\nWorkers Analytics Engine datasets are named by the account that writes them, so they are discovered from that account's own data rather than from a fixed list. They appear as `events.analyticsEngine.<dataset_name>` and differ per account. A dataset is listed for as long as any of its data is retained, so it does not disappear from the catalogue merely because writes have stopped. An account with a very large number of datasets may receive a truncated list. Set `include_wae=false` to omit them.\n\nLog Explorer datasets are listed only where the account has them, so they differ per account and are not part of the static catalogue. Set `include_lex=false` to omit them.\n",
 		"parameters": [
 			{
 				"name": "account_tag",
@@ -507,6 +1384,10 @@
 															"description": "Human-readable description of the column.",
 															"type": "string"
 														},
+														"hidden": {
+															"description": "Whether the column is de-emphasised in column listings. A presentation hint only: a hidden column is still returned here, is still selectable by name, and is still included by `SELECT *`.\n",
+															"type": "boolean"
+														},
 														"name": {
 															"description": "Column name used in SQL queries.",
 															"type": "string",
@@ -517,7 +1398,8 @@
 													"required": [
 														"name",
 														"description",
-														"data_type"
+														"data_type",
+														"hidden"
 													]
 												}
 											},
@@ -547,6 +1429,10 @@
 											"description": {
 												"description": "Human-readable description of the dataset.",
 												"type": "string"
+											},
+											"hidden": {
+												"description": "Whether the dataset is de-emphasised in catalogue listings. A presentation hint only: a hidden dataset is still returned here and is just as queryable as any other.\n",
+												"type": "boolean"
 											},
 											"kind": {
 												"description": "What kind of dataset this is. Determines aggregation rules and sampling behavior. Exactly one of `events`, `states`, or `logs` is present.\n",
@@ -666,7 +1552,8 @@
 											"title",
 											"category",
 											"description",
-											"kind"
+											"kind",
+											"hidden"
 										]
 									}
 								}
@@ -851,6 +1738,535 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "sql",
 		"x-fern-sdk-method-name": "datasets"
+	},
+	"POST /accounts/{account_tag}/analytics/sql": {
+		"operationId": "sql-api-query-post-account-scoped",
+		"summary": "Query analytics datasets",
+		"description": "Executes a SQL query scoped to the account in the request path. API Gateway forwards the path account in its signed JWT to the existing SQL API handler, so an accountTag predicate or JSON scope is not required. Explicit account scope must match the path account. Any zone restrictions must belong to that account. Query parameters, time ranges, output formats, authorization, and responses follow the legacy query endpoint.",
+		"parameters": [
+			{
+				"name": "account_tag",
+				"in": "path",
+				"description": "Account that authorizes and scopes the request.",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"pattern": "^[a-f0-9]{32}$"
+				},
+				"example": "0123456789abcdef0123456789abcdef"
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"params": {
+								"description": "Positional array values for `$1`, `$2`, and similar placeholders, or named object values for placeholders such as `$status`.\n",
+								"oneOf": [
+									{
+										"items": {},
+										"type": "array"
+									},
+									{
+										"additionalProperties": true,
+										"type": "object"
+									}
+								]
+							},
+							"query": {
+								"description": "SQL query to execute. A trailing FORMAT selects JSON, JSONEachRow, TabSeparated, or TSV output on any dataset.\n",
+								"type": "string"
+							},
+							"scope": {
+								"description": "Account or zone scope applied to the query. Include exactly one scope tag. Do not include account or zone tenancy predicates in the SQL query when this field is present.\n",
+								"oneOf": [
+									{
+										"type": "object",
+										"properties": {
+											"accountTag": {
+												"description": "Account tag used to authorize and scope the query. Must be a 32-character lowercase hex string.\n",
+												"type": "string",
+												"example": "0123456789abcdef0123456789abcdef",
+												"pattern": "^[0-9a-f]{32}$",
+												"x-fern-property-name": "account"
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"accountTag"
+										]
+									},
+									{
+										"type": "object",
+										"properties": {
+											"zoneTag": {
+												"description": "Zone tag used to authorize and scope the query. Must be a 32-character lowercase hex string.\n",
+												"type": "string",
+												"example": "023e105f2fd349899d7634a245f8ca0f",
+												"pattern": "^[0-9a-f]{32}$",
+												"x-fern-property-name": "zone"
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"zoneTag"
+										]
+									}
+								]
+							},
+							"time_range": {
+								"allOf": [
+									{
+										"description": "Time bounds applied to the dataset's timestamp column. Do not include timestamp predicates in the SQL query when this field is present.\n",
+										"type": "object",
+										"properties": {
+											"end": {
+												"description": "Inclusive upper bound for the dataset's timestamp column.",
+												"type": "string",
+												"example": "2026-01-02T00:00:00Z",
+												"x-fern-property-name": "until"
+											},
+											"start": {
+												"description": "Inclusive lower bound for the dataset's timestamp column.",
+												"type": "string",
+												"example": "2026-01-01T00:00:00Z",
+												"x-fern-property-name": "since"
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"start"
+										]
+									}
+								],
+								"x-fern-property-name": "time"
+							}
+						},
+						"example": {
+							"params": {
+								"status": 404
+							},
+							"query": "SELECT edgeResponseStatus FROM events.httpRequests WHERE edgeResponseStatus = $status LIMIT 10",
+							"scope": {
+								"accountTag": "0123456789abcdef0123456789abcdef"
+							},
+							"time_range": {
+								"end": "2026-01-02T00:00:00Z",
+								"start": "2026-01-01T00:00:00Z"
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"query"
+						]
+					}
+				},
+				"text/plain": {
+					"example": "SELECT edgeResponseStatus FROM events.httpRequests WHERE datetime > '2026-01-01' LIMIT 10",
+					"schema": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Query executed successfully. Columns that the query reaches only through `*` exclude any that the caller is not permitted to read. ClickHouse's default JSON envelope has data, rows, and statistics; explicit FORMAT JSON additionally has typed metadata and rows_before_limit_at_least. Log Explorer's default and FORMAT JSON responses use its existing {data, rows} envelope, without unavailable metadata, pre-limit counts, or statistics. FORMAT JSONEachRow returns newline-delimited JSON objects. FORMAT TabSeparated and TSV return escaped tab-separated rows without a header; Log Explorer serializes nested JSON values as compact JSON text in one field.\n",
+				"content": {
+					"application/json": {
+						"schema": {
+							"oneOf": [
+								{
+									"type": "object",
+									"properties": {
+										"data": {
+											"description": "Query result rows keyed by the selected column names.",
+											"type": "array",
+											"items": {
+												"additionalProperties": true,
+												"type": "object"
+											}
+										},
+										"rows": {
+											"description": "Number of rows in `data`.",
+											"type": "integer",
+											"format": "int64",
+											"minimum": 0
+										},
+										"statistics": {
+											"type": "object",
+											"properties": {
+												"bytes_read": {
+													"description": "Number of source bytes read while executing the query.",
+													"type": "integer",
+													"format": "int64",
+													"minimum": 0
+												},
+												"elapsed_ms": {
+													"description": "Backend execution time in milliseconds.",
+													"type": "integer",
+													"format": "int64",
+													"minimum": 0
+												},
+												"rows_read": {
+													"description": "Number of source rows read while executing the query.",
+													"type": "integer",
+													"format": "int64",
+													"minimum": 0
+												}
+											},
+											"additionalProperties": false,
+											"required": [
+												"elapsed_ms",
+												"rows_read",
+												"bytes_read"
+											]
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"data",
+										"rows",
+										"statistics"
+									]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"data": {
+											"type": "array",
+											"items": {
+												"additionalProperties": true,
+												"type": "object"
+											}
+										},
+										"meta": {
+											"type": "array",
+											"items": {
+												"additionalProperties": false,
+												"properties": {
+													"name": {
+														"type": "string"
+													},
+													"type": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"name",
+													"type"
+												],
+												"type": "object"
+											}
+										},
+										"rows": {
+											"type": "integer",
+											"format": "int64",
+											"minimum": 0
+										},
+										"rows_before_limit_at_least": {
+											"description": "ClickHouse pre-limit count, or rows when unavailable.",
+											"type": "integer",
+											"format": "int64",
+											"minimum": 0
+										},
+										"statistics": {
+											"type": "object",
+											"properties": {
+												"bytes_read": {
+													"description": "Number of source bytes read while executing the query.",
+													"type": "integer",
+													"format": "int64",
+													"minimum": 0
+												},
+												"elapsed_ms": {
+													"description": "Backend execution time in milliseconds.",
+													"type": "integer",
+													"format": "int64",
+													"minimum": 0
+												},
+												"rows_read": {
+													"description": "Number of source rows read while executing the query.",
+													"type": "integer",
+													"format": "int64",
+													"minimum": 0
+												}
+											},
+											"additionalProperties": false,
+											"required": [
+												"elapsed_ms",
+												"rows_read",
+												"bytes_read"
+											]
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"meta",
+										"data",
+										"rows",
+										"rows_before_limit_at_least",
+										"statistics"
+									]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"data": {
+											"description": "Log Explorer query rows keyed by selected column names.",
+											"type": "array",
+											"items": {
+												"additionalProperties": true,
+												"type": "object"
+											}
+										},
+										"rows": {
+											"description": "Number of rows in data.",
+											"type": "integer",
+											"format": "int64",
+											"minimum": 0
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"data",
+										"rows"
+									]
+								}
+							]
+						}
+					},
+					"application/x-ndjson": {
+						"schema": {
+							"description": "FORMAT JSONEachRow emits one JSON object per line, rather than a single JSON document.\n",
+							"type": "string"
+						}
+					},
+					"text/tab-separated-values": {
+						"schema": {
+							"description": "FORMAT TabSeparated (or TSV) emits escaped tab-separated rows without a header.\n",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "The request is malformed, or authentication was rejected by the API gateway before the request reached the SQL service.\n",
+				"content": {
+					"application/json": {
+						"schema": {
+							"oneOf": [
+								{
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "Machine-readable error code.",
+											"type": "integer",
+											"format": "int64",
+											"minimum": 0
+										},
+										"error_chain": {
+											"description": "Additional errors that caused this error.",
+											"type": "array",
+											"items": "[Circular ~.POST /accounts/{account_tag}/analytics/sql.responses.400.content.application/json.schema.oneOf.0]"
+										},
+										"message": {
+											"description": "Human-readable error message.",
+											"type": "string"
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Machine-readable error code.",
+														"type": "integer",
+														"format": "int64",
+														"minimum": 0
+													},
+													"error_chain": {
+														"description": "Additional errors that caused this error.",
+														"type": "array",
+														"items": "[Circular ~.POST /accounts/{account_tag}/analytics/sql.responses.400.content.application/json.schema.oneOf.1.properties.errors.items]"
+													},
+													"message": {
+														"description": "Human-readable error message.",
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"code",
+													"message"
+												]
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Machine-readable error code.",
+														"type": "integer",
+														"format": "int64",
+														"minimum": 0
+													},
+													"error_chain": {
+														"description": "Additional errors that caused this error.",
+														"type": "array",
+														"items": "[Circular ~.POST /accounts/{account_tag}/analytics/sql.responses.400.content.application/json.schema.oneOf.1.properties.messages.items]"
+													},
+													"message": {
+														"description": "Human-readable error message.",
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"code",
+													"message"
+												]
+											}
+										},
+										"result": {
+											"type": "object",
+											"additionalProperties": true,
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												false
+											]
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Authentication failed, the caller is not authorized, or the query references a column the caller is not permitted to read.\n",
+				"content": {
+					"text/plain": {
+						"example": "Authorization error",
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"422": {
+				"description": "The SQL query or its parameters are invalid.",
+				"content": {
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "The query exceeded a resource or request-rate limit.",
+				"headers": {
+					"Retry-After": {
+						"description": "Seconds to wait before retrying. Present when the account request rate limit is exceeded; omitted for query resource limits.\n",
+						"schema": {
+							"type": "integer",
+							"format": "int64",
+							"minimum": 0
+						}
+					}
+				},
+				"content": {
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "An internal error occurred.",
+				"content": {
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"501": {
+				"description": "The query uses a SQL feature that is not implemented.",
+				"content": {
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "A required service is temporarily unavailable.",
+				"content": {
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"507": {
+				"description": "The query exhausted available resources.",
+				"content": {
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Analytics SQL"
+		],
+		"x-api-token-group": [
+			"Account Analytics Read"
+		],
+		"x-fern-audiences": [
+			"sdk"
+		],
+		"x-fern-availability": "alpha",
+		"x-fern-sdk-group-name": "analytics.sql.accounts",
+		"x-fern-sdk-method-name": "post"
 	},
 	"POST /analytics/sql": {
 		"operationId": "sql-api-query-post",

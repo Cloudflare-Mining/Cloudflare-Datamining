@@ -368,7 +368,7 @@
 		"tags": [
 			"ppu_usage_stats"
 		],
-		"x-fern-sdk-group-name": "pay-per-crawl.pay-per-use.usage-stats",
+		"x-fern-sdk-group-name": "pay-per-use.usage-stats",
 		"x-fern-sdk-method-name": "get-account"
 	},
 	"GET /zones/{zone_id}/pay-per-use/usage-stats": {
@@ -781,7 +781,7 @@
 		"tags": [
 			"ppu_usage_stats"
 		],
-		"x-fern-sdk-group-name": "pay-per-crawl.pay-per-use.usage-stats",
+		"x-fern-sdk-group-name": "pay-per-use.usage-stats",
 		"x-fern-sdk-method-name": "get-zone"
 	}
 }

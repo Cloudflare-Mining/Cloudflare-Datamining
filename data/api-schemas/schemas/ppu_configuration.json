@@ -263,7 +263,7 @@
 		"tags": [
 			"ppu_configuration"
 		],
-		"x-fern-sdk-group-name": "pay-per-crawl.pay-per-use.operator",
+		"x-fern-sdk-group-name": "pay-per-use.operator",
 		"x-fern-sdk-method-name": "get-configuration"
 	},
 	"GET /zones/{zone_id}/pay-per-use/can_be_enabled": {
@@ -499,7 +499,7 @@
 		"tags": [
 			"ppu_configuration"
 		],
-		"x-fern-sdk-group-name": "pay-per-crawl.pay-per-use.zones",
+		"x-fern-sdk-group-name": "pay-per-use.zones",
 		"x-fern-sdk-method-name": "get-can-be-enabled"
 	},
 	"GET /zones/{zone_id}/pay-per-use/configuration": {
@@ -742,13 +742,13 @@
 		"tags": [
 			"ppu_configuration"
 		],
-		"x-fern-sdk-group-name": "pay-per-crawl.pay-per-use.zones",
+		"x-fern-sdk-group-name": "pay-per-use.zones",
 		"x-fern-sdk-method-name": "get-configuration"
 	},
 	"PATCH /accounts/{account_id}/pay-per-use/operator/configuration": {
 		"operationId": "pay-per-crawl.patchPPUOperatorConfiguration",
 		"summary": "Update pay-per-use operator configuration",
-		"description": "Updates one or more fields of an existing pay-per-use operator configuration. Re-enabling a disabled operator requires completed Stripe onboarding; an already-enabled operator is not affected by later Stripe status changes. A Cloudflare-verified operator's name and default price cannot be changed.",
+		"description": "Updates one or more fields of an existing pay-per-use operator configuration. Re-enabling a disabled billable operator requires completed Stripe onboarding, while non-billable operators do not; an already-enabled operator is not affected by later Stripe status changes. A Cloudflare-verified operator's name and default price cannot be changed.",
 		"parameters": [
 			{
 				"description": "account id",
@@ -1111,7 +1111,7 @@
 		"tags": [
 			"ppu_configuration"
 		],
-		"x-fern-sdk-group-name": "pay-per-crawl.pay-per-use.operator",
+		"x-fern-sdk-group-name": "pay-per-use.operator",
 		"x-fern-sdk-method-name": "update-configuration"
 	},
 	"PATCH /accounts/{account_id}/pay-per-use/zones_can_be_enabled": {
@@ -1383,13 +1383,13 @@
 		"tags": [
 			"ppu_configuration"
 		],
-		"x-fern-sdk-group-name": "pay-per-crawl.pay-per-use.zones",
+		"x-fern-sdk-group-name": "pay-per-use.zones",
 		"x-fern-sdk-method-name": "set-can-be-enabled"
 	},
 	"PATCH /zones/{zone_id}/pay-per-use/configuration": {
 		"operationId": "pay-per-crawl.patchPPUZoneConfiguration",
 		"summary": "Update pay-per-use zone configuration",
-		"description": "Enables or disables an existing pay-per-use zone configuration. Omitting enabled leaves the zone unchanged. Enabling a disabled zone requires completed publisher Stripe onboarding; an already-enabled zone is not affected by later Stripe status changes. Disabling starts a disabled period immediately while existing accepted licenses remain active until the start of the next UTC month; re-enabling before expiry clears the schedule and restores those licenses.",
+		"description": "Enables or disables an existing pay-per-use zone configuration. Omitting enabled leaves the zone unchanged. Enabling a disabled billable zone requires completed publisher Stripe onboarding, while non-billable zones do not; an already-enabled zone is not affected by later Stripe status changes. Disabling starts a disabled period immediately while existing accepted licenses remain active until the start of the next UTC month; re-enabling before expiry clears the schedule and restores those licenses.",
 		"parameters": [
 			{
 				"description": "zone id",
@@ -1747,13 +1747,13 @@
 		"tags": [
 			"ppu_configuration"
 		],
-		"x-fern-sdk-group-name": "pay-per-crawl.pay-per-use.zones",
+		"x-fern-sdk-group-name": "pay-per-use.zones",
 		"x-fern-sdk-method-name": "update-configuration"
 	},
 	"PUT /accounts/{account_id}/pay-per-use/operator/configuration": {
 		"operationId": "pay-per-crawl.putPPUOperatorConfiguration",
 		"summary": "Set pay-per-use operator configuration",
-		"description": "Creates or updates the pay-per-use operator configuration for an account. Creating an enabled configuration or re-enabling a disabled operator requires completed Stripe onboarding; an already-enabled operator is not affected by later Stripe status changes. A Cloudflare-verified operator's name and default price cannot be changed.",
+		"description": "Creates or updates the pay-per-use operator configuration for an account. Creating an enabled configuration or re-enabling a disabled billable operator requires completed Stripe onboarding, while non-billable operators do not; an already-enabled operator is not affected by later Stripe status changes. A Cloudflare-verified operator's name and default price cannot be changed.",
 		"parameters": [
 			{
 				"description": "account id",
@@ -2079,7 +2079,7 @@
 		"tags": [
 			"ppu_configuration"
 		],
-		"x-fern-sdk-group-name": "pay-per-crawl.pay-per-use.operator",
+		"x-fern-sdk-group-name": "pay-per-use.operator",
 		"x-fern-sdk-method-name": "set-configuration"
 	}
 }

@@ -682,32 +682,37 @@
 																		]
 																	},
 																	"context_awareness": {
-																		"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
-																		"type": "object",
-																		"properties": {
-																			"enabled": {
-																				"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
-																				"type": "boolean"
-																			},
-																			"skip": {
-																				"description": "Content types to exclude from context analysis and return all matches.",
+																		"allOf": [
+																			{
+																				"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																				"type": "object",
 																				"properties": {
-																					"files": {
-																						"description": "If the content type is a file, skip context analysis and return all matches.",
+																					"enabled": {
+																						"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
 																						"type": "boolean"
+																					},
+																					"skip": {
+																						"description": "Content types to exclude from context analysis and return all matches.",
+																						"type": "object",
+																						"properties": {
+																							"files": {
+																								"description": "If the content type is a file, skip context analysis and return all matches.",
+																								"type": "boolean"
+																							}
+																						},
+																						"required": [
+																							"files"
+																						]
 																					}
 																				},
+																				"deprecated": true,
 																				"required": [
-																					"files"
+																					"enabled",
+																					"skip"
 																				]
 																			}
-																		},
-																		"deprecated": true,
-																		"required": [
-																			"enabled",
-																			"skip"
-																		]
+																		],
+																		"deprecated": true
 																	},
 																	"created_at": {
 																		"description": "When the profile was created.",
@@ -902,7 +907,6 @@
 																								"deprecated": {
 																									"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																									"type": "boolean",
-																									"default": false,
 																									"x-stainless-terraform-configurability": "computed"
 																								},
 																								"enabled": {
@@ -1202,7 +1206,12 @@
 																									"type": "string",
 																									"format": "date-time"
 																								},
-																								"word_list": {}
+																								"word_list": {
+																									"type": "array",
+																									"items": {
+																										"type": "string"
+																									}
+																								}
 																							},
 																							"required": [
 																								"id",
@@ -1440,7 +1449,6 @@
 																								"deprecated": {
 																									"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																									"type": "boolean",
-																									"default": false,
 																									"x-stainless-terraform-configurability": "computed"
 																								},
 																								"enabled": {
@@ -1740,7 +1748,12 @@
 																									"type": "string",
 																									"format": "date-time"
 																								},
-																								"word_list": {}
+																								"word_list": {
+																									"type": "array",
+																									"items": {
+																										"type": "string"
+																									}
+																								}
 																							},
 																							"required": [
 																								"id",
@@ -1832,31 +1845,39 @@
 																		]
 																	},
 																	"context_awareness": {
-																		"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
-																		"type": "object",
-																		"properties": {
-																			"enabled": {
-																				"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
-																				"type": "boolean"
-																			},
-																			"skip": {
-																				"description": "Content types to exclude from context analysis and return all matches.",
+																		"allOf": [
+																			{
+																				"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																				"type": "object",
 																				"properties": {
-																					"files": {
-																						"description": "If the content type is a file, skip context analysis and return all matches.",
+																					"enabled": {
+																						"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
 																						"type": "boolean"
+																					},
+																					"skip": {
+																						"description": "Content types to exclude from context analysis and return all matches.",
+																						"type": "object",
+																						"properties": {
+																							"files": {
+																								"description": "If the content type is a file, skip context analysis and return all matches.",
+																								"type": "boolean"
+																							}
+																						},
+																						"required": [
+																							"files"
+																						]
 																					}
 																				},
+																				"deprecated": true,
 																				"required": [
-																					"files"
+																					"enabled",
+																					"skip"
 																				]
 																			}
-																		},
+																		],
 																		"deprecated": true,
-																		"required": [
-																			"enabled",
-																			"skip"
+																		"x-stainless-skip": [
+																			"terraform"
 																		]
 																	},
 																	"entries": {
@@ -2026,7 +2047,6 @@
 																								"deprecated": {
 																									"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																									"type": "boolean",
-																									"default": false,
 																									"x-stainless-terraform-configurability": "computed"
 																								},
 																								"enabled": {
@@ -2326,7 +2346,12 @@
 																									"type": "string",
 																									"format": "date-time"
 																								},
-																								"word_list": {}
+																								"word_list": {
+																									"type": "array",
+																									"items": {
+																										"type": "string"
+																									}
+																								}
 																							},
 																							"required": [
 																								"id",
@@ -2581,7 +2606,6 @@
 																								"deprecated": {
 																									"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																									"type": "boolean",
-																									"default": false,
 																									"x-stainless-terraform-configurability": "computed"
 																								},
 																								"enabled": {
@@ -2881,7 +2905,12 @@
 																									"type": "string",
 																									"format": "date-time"
 																								},
-																								"word_list": {}
+																								"word_list": {
+																									"type": "array",
+																									"items": {
+																										"type": "string"
+																									}
+																								}
 																							},
 																							"required": [
 																								"id",
@@ -3093,7 +3122,6 @@
 																								"deprecated": {
 																									"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																									"type": "boolean",
-																									"default": false,
 																									"x-stainless-terraform-configurability": "computed"
 																								},
 																								"enabled": {
@@ -3393,7 +3421,12 @@
 																									"type": "string",
 																									"format": "date-time"
 																								},
-																								"word_list": {}
+																								"word_list": {
+																									"type": "array",
+																									"items": {
+																										"type": "string"
+																									}
+																								}
 																							},
 																							"required": [
 																								"id",
@@ -3754,32 +3787,37 @@
 																	]
 																},
 																"context_awareness": {
-																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
-																	"type": "object",
-																	"properties": {
-																		"enabled": {
-																			"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
-																			"type": "boolean"
-																		},
-																		"skip": {
-																			"description": "Content types to exclude from context analysis and return all matches.",
+																	"allOf": [
+																		{
+																			"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																			"type": "object",
 																			"properties": {
-																				"files": {
-																					"description": "If the content type is a file, skip context analysis and return all matches.",
+																				"enabled": {
+																					"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
 																					"type": "boolean"
+																				},
+																				"skip": {
+																					"description": "Content types to exclude from context analysis and return all matches.",
+																					"type": "object",
+																					"properties": {
+																						"files": {
+																							"description": "If the content type is a file, skip context analysis and return all matches.",
+																							"type": "boolean"
+																						}
+																					},
+																					"required": [
+																						"files"
+																					]
 																				}
 																			},
+																			"deprecated": true,
 																			"required": [
-																				"files"
+																				"enabled",
+																				"skip"
 																			]
 																		}
-																	},
-																	"deprecated": true,
-																	"required": [
-																		"enabled",
-																		"skip"
-																	]
+																	],
+																	"deprecated": true
 																},
 																"created_at": {
 																	"description": "When the profile was created.",
@@ -3974,7 +4012,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -4274,7 +4311,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -4512,7 +4554,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -4812,7 +4853,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -4904,31 +4950,39 @@
 																	]
 																},
 																"context_awareness": {
-																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
-																	"type": "object",
-																	"properties": {
-																		"enabled": {
-																			"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
-																			"type": "boolean"
-																		},
-																		"skip": {
-																			"description": "Content types to exclude from context analysis and return all matches.",
+																	"allOf": [
+																		{
+																			"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																			"type": "object",
 																			"properties": {
-																				"files": {
-																					"description": "If the content type is a file, skip context analysis and return all matches.",
+																				"enabled": {
+																					"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
 																					"type": "boolean"
+																				},
+																				"skip": {
+																					"description": "Content types to exclude from context analysis and return all matches.",
+																					"type": "object",
+																					"properties": {
+																						"files": {
+																							"description": "If the content type is a file, skip context analysis and return all matches.",
+																							"type": "boolean"
+																						}
+																					},
+																					"required": [
+																						"files"
+																					]
 																				}
 																			},
+																			"deprecated": true,
 																			"required": [
-																				"files"
+																				"enabled",
+																				"skip"
 																			]
 																		}
-																	},
+																	],
 																	"deprecated": true,
-																	"required": [
-																		"enabled",
-																		"skip"
+																	"x-stainless-skip": [
+																		"terraform"
 																	]
 																},
 																"entries": {
@@ -5098,7 +5152,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -5398,7 +5451,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -5653,7 +5711,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -5953,7 +6010,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -6165,7 +6227,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -6465,7 +6526,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -6814,32 +6880,37 @@
 														]
 													},
 													"context_awareness": {
-														"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
-														"type": "object",
-														"properties": {
-															"enabled": {
-																"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
-																"type": "boolean"
-															},
-															"skip": {
-																"description": "Content types to exclude from context analysis and return all matches.",
+														"allOf": [
+															{
+																"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																"type": "object",
 																"properties": {
-																	"files": {
-																		"description": "If the content type is a file, skip context analysis and return all matches.",
+																	"enabled": {
+																		"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
 																		"type": "boolean"
+																	},
+																	"skip": {
+																		"description": "Content types to exclude from context analysis and return all matches.",
+																		"type": "object",
+																		"properties": {
+																			"files": {
+																				"description": "If the content type is a file, skip context analysis and return all matches.",
+																				"type": "boolean"
+																			}
+																		},
+																		"required": [
+																			"files"
+																		]
 																	}
 																},
+																"deprecated": true,
 																"required": [
-																	"files"
+																	"enabled",
+																	"skip"
 																]
 															}
-														},
-														"deprecated": true,
-														"required": [
-															"enabled",
-															"skip"
-														]
+														],
+														"deprecated": true
 													},
 													"created_at": {
 														"description": "When the profile was created.",
@@ -7034,7 +7105,6 @@
 																				"deprecated": {
 																					"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																					"type": "boolean",
-																					"default": false,
 																					"x-stainless-terraform-configurability": "computed"
 																				},
 																				"enabled": {
@@ -7334,7 +7404,12 @@
 																					"type": "string",
 																					"format": "date-time"
 																				},
-																				"word_list": {}
+																				"word_list": {
+																					"type": "array",
+																					"items": {
+																						"type": "string"
+																					}
+																				}
 																			},
 																			"required": [
 																				"id",
@@ -7572,7 +7647,6 @@
 																				"deprecated": {
 																					"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																					"type": "boolean",
-																					"default": false,
 																					"x-stainless-terraform-configurability": "computed"
 																				},
 																				"enabled": {
@@ -7872,7 +7946,12 @@
 																					"type": "string",
 																					"format": "date-time"
 																				},
-																				"word_list": {}
+																				"word_list": {
+																					"type": "array",
+																					"items": {
+																						"type": "string"
+																					}
+																				}
 																			},
 																			"required": [
 																				"id",
@@ -8215,32 +8294,37 @@
 																	]
 																},
 																"context_awareness": {
-																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
-																	"type": "object",
-																	"properties": {
-																		"enabled": {
-																			"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
-																			"type": "boolean"
-																		},
-																		"skip": {
-																			"description": "Content types to exclude from context analysis and return all matches.",
+																	"allOf": [
+																		{
+																			"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																			"type": "object",
 																			"properties": {
-																				"files": {
-																					"description": "If the content type is a file, skip context analysis and return all matches.",
+																				"enabled": {
+																					"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
 																					"type": "boolean"
+																				},
+																				"skip": {
+																					"description": "Content types to exclude from context analysis and return all matches.",
+																					"type": "object",
+																					"properties": {
+																						"files": {
+																							"description": "If the content type is a file, skip context analysis and return all matches.",
+																							"type": "boolean"
+																						}
+																					},
+																					"required": [
+																						"files"
+																					]
 																				}
 																			},
+																			"deprecated": true,
 																			"required": [
-																				"files"
+																				"enabled",
+																				"skip"
 																			]
 																		}
-																	},
-																	"deprecated": true,
-																	"required": [
-																		"enabled",
-																		"skip"
-																	]
+																	],
+																	"deprecated": true
 																},
 																"created_at": {
 																	"description": "When the profile was created.",
@@ -8435,7 +8519,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -8735,7 +8818,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -8973,7 +9061,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -9273,7 +9360,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -9365,31 +9457,39 @@
 																	]
 																},
 																"context_awareness": {
-																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
-																	"type": "object",
-																	"properties": {
-																		"enabled": {
-																			"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
-																			"type": "boolean"
-																		},
-																		"skip": {
-																			"description": "Content types to exclude from context analysis and return all matches.",
+																	"allOf": [
+																		{
+																			"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																			"type": "object",
 																			"properties": {
-																				"files": {
-																					"description": "If the content type is a file, skip context analysis and return all matches.",
+																				"enabled": {
+																					"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
 																					"type": "boolean"
+																				},
+																				"skip": {
+																					"description": "Content types to exclude from context analysis and return all matches.",
+																					"type": "object",
+																					"properties": {
+																						"files": {
+																							"description": "If the content type is a file, skip context analysis and return all matches.",
+																							"type": "boolean"
+																						}
+																					},
+																					"required": [
+																						"files"
+																					]
 																				}
 																			},
+																			"deprecated": true,
 																			"required": [
-																				"files"
+																				"enabled",
+																				"skip"
 																			]
 																		}
-																	},
+																	],
 																	"deprecated": true,
-																	"required": [
-																		"enabled",
-																		"skip"
+																	"x-stainless-skip": [
+																		"terraform"
 																	]
 																},
 																"entries": {
@@ -9559,7 +9659,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -9859,7 +9958,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -10114,7 +10218,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -10414,7 +10517,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -10626,7 +10734,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -10926,7 +11033,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -11287,32 +11399,37 @@
 																	]
 																},
 																"context_awareness": {
-																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
-																	"type": "object",
-																	"properties": {
-																		"enabled": {
-																			"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
-																			"type": "boolean"
-																		},
-																		"skip": {
-																			"description": "Content types to exclude from context analysis and return all matches.",
+																	"allOf": [
+																		{
+																			"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																			"type": "object",
 																			"properties": {
-																				"files": {
-																					"description": "If the content type is a file, skip context analysis and return all matches.",
+																				"enabled": {
+																					"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
 																					"type": "boolean"
+																				},
+																				"skip": {
+																					"description": "Content types to exclude from context analysis and return all matches.",
+																					"type": "object",
+																					"properties": {
+																						"files": {
+																							"description": "If the content type is a file, skip context analysis and return all matches.",
+																							"type": "boolean"
+																						}
+																					},
+																					"required": [
+																						"files"
+																					]
 																				}
 																			},
+																			"deprecated": true,
 																			"required": [
-																				"files"
+																				"enabled",
+																				"skip"
 																			]
 																		}
-																	},
-																	"deprecated": true,
-																	"required": [
-																		"enabled",
-																		"skip"
-																	]
+																	],
+																	"deprecated": true
 																},
 																"created_at": {
 																	"description": "When the profile was created.",
@@ -11507,7 +11624,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -11807,7 +11923,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -12045,7 +12166,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -12345,7 +12465,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -12437,31 +12562,39 @@
 																	]
 																},
 																"context_awareness": {
-																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
-																	"type": "object",
-																	"properties": {
-																		"enabled": {
-																			"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
-																			"type": "boolean"
-																		},
-																		"skip": {
-																			"description": "Content types to exclude from context analysis and return all matches.",
+																	"allOf": [
+																		{
+																			"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																			"type": "object",
 																			"properties": {
-																				"files": {
-																					"description": "If the content type is a file, skip context analysis and return all matches.",
+																				"enabled": {
+																					"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
 																					"type": "boolean"
+																				},
+																				"skip": {
+																					"description": "Content types to exclude from context analysis and return all matches.",
+																					"type": "object",
+																					"properties": {
+																						"files": {
+																							"description": "If the content type is a file, skip context analysis and return all matches.",
+																							"type": "boolean"
+																						}
+																					},
+																					"required": [
+																						"files"
+																					]
 																				}
 																			},
+																			"deprecated": true,
 																			"required": [
-																				"files"
+																				"enabled",
+																				"skip"
 																			]
 																		}
-																	},
+																	],
 																	"deprecated": true,
-																	"required": [
-																		"enabled",
-																		"skip"
+																	"x-stainless-skip": [
+																		"terraform"
 																	]
 																},
 																"entries": {
@@ -12631,7 +12764,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -12931,7 +13063,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -13186,7 +13323,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -13486,7 +13622,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -13698,7 +13839,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -13998,7 +14138,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -14516,7 +14661,6 @@
 																			"deprecated": {
 																				"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																				"type": "boolean",
-																				"default": false,
 																				"x-stainless-terraform-configurability": "computed"
 																			},
 																			"enabled": {
@@ -14816,7 +14960,12 @@
 																				"type": "string",
 																				"format": "date-time"
 																			},
-																			"word_list": {}
+																			"word_list": {
+																				"type": "array",
+																				"items": {
+																					"type": "string"
+																				}
+																			}
 																		},
 																		"required": [
 																			"id",
@@ -15060,31 +15209,39 @@
 								"nullable": true
 							},
 							"context_awareness": {
-								"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
-								"type": "object",
-								"properties": {
-									"enabled": {
-										"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
-										"type": "boolean"
-									},
-									"skip": {
-										"description": "Content types to exclude from context analysis and return all matches.",
+								"allOf": [
+									{
+										"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 										"type": "object",
 										"properties": {
-											"files": {
-												"description": "If the content type is a file, skip context analysis and return all matches.",
+											"enabled": {
+												"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
 												"type": "boolean"
+											},
+											"skip": {
+												"description": "Content types to exclude from context analysis and return all matches.",
+												"type": "object",
+												"properties": {
+													"files": {
+														"description": "If the content type is a file, skip context analysis and return all matches.",
+														"type": "boolean"
+													}
+												},
+												"required": [
+													"files"
+												]
 											}
 										},
+										"deprecated": true,
 										"required": [
-											"files"
+											"enabled",
+											"skip"
 										]
 									}
-								},
+								],
 								"deprecated": true,
-								"required": [
-									"enabled",
-									"skip"
+								"x-stainless-skip": [
+									"terraform"
 								]
 							},
 							"data_classes": {
@@ -15370,32 +15527,37 @@
 																	]
 																},
 																"context_awareness": {
-																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
-																	"type": "object",
-																	"properties": {
-																		"enabled": {
-																			"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
-																			"type": "boolean"
-																		},
-																		"skip": {
-																			"description": "Content types to exclude from context analysis and return all matches.",
+																	"allOf": [
+																		{
+																			"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																			"type": "object",
 																			"properties": {
-																				"files": {
-																					"description": "If the content type is a file, skip context analysis and return all matches.",
+																				"enabled": {
+																					"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
 																					"type": "boolean"
+																				},
+																				"skip": {
+																					"description": "Content types to exclude from context analysis and return all matches.",
+																					"type": "object",
+																					"properties": {
+																						"files": {
+																							"description": "If the content type is a file, skip context analysis and return all matches.",
+																							"type": "boolean"
+																						}
+																					},
+																					"required": [
+																						"files"
+																					]
 																				}
 																			},
+																			"deprecated": true,
 																			"required": [
-																				"files"
+																				"enabled",
+																				"skip"
 																			]
 																		}
-																	},
-																	"deprecated": true,
-																	"required": [
-																		"enabled",
-																		"skip"
-																	]
+																	],
+																	"deprecated": true
 																},
 																"created_at": {
 																	"description": "When the profile was created.",
@@ -15590,7 +15752,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -15890,7 +16051,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -16128,7 +16294,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -16428,7 +16593,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -16520,31 +16690,39 @@
 																	]
 																},
 																"context_awareness": {
-																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
-																	"type": "object",
-																	"properties": {
-																		"enabled": {
-																			"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
-																			"type": "boolean"
-																		},
-																		"skip": {
-																			"description": "Content types to exclude from context analysis and return all matches.",
+																	"allOf": [
+																		{
+																			"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																			"type": "object",
 																			"properties": {
-																				"files": {
-																					"description": "If the content type is a file, skip context analysis and return all matches.",
+																				"enabled": {
+																					"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
 																					"type": "boolean"
+																				},
+																				"skip": {
+																					"description": "Content types to exclude from context analysis and return all matches.",
+																					"type": "object",
+																					"properties": {
+																						"files": {
+																							"description": "If the content type is a file, skip context analysis and return all matches.",
+																							"type": "boolean"
+																						}
+																					},
+																					"required": [
+																						"files"
+																					]
 																				}
 																			},
+																			"deprecated": true,
 																			"required": [
-																				"files"
+																				"enabled",
+																				"skip"
 																			]
 																		}
-																	},
+																	],
 																	"deprecated": true,
-																	"required": [
-																		"enabled",
-																		"skip"
+																	"x-stainless-skip": [
+																		"terraform"
 																	]
 																},
 																"entries": {
@@ -16714,7 +16892,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -17014,7 +17191,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -17269,7 +17451,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -17569,7 +17750,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -17781,7 +17967,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -18081,7 +18266,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -18329,31 +18519,39 @@
 										"nullable": true
 									},
 									"context_awareness": {
-										"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
-										"type": "object",
-										"properties": {
-											"enabled": {
-												"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
-												"type": "boolean"
-											},
-											"skip": {
-												"description": "Content types to exclude from context analysis and return all matches.",
+										"allOf": [
+											{
+												"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 												"type": "object",
 												"properties": {
-													"files": {
-														"description": "If the content type is a file, skip context analysis and return all matches.",
+													"enabled": {
+														"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
 														"type": "boolean"
+													},
+													"skip": {
+														"description": "Content types to exclude from context analysis and return all matches.",
+														"type": "object",
+														"properties": {
+															"files": {
+																"description": "If the content type is a file, skip context analysis and return all matches.",
+																"type": "boolean"
+															}
+														},
+														"required": [
+															"files"
+														]
 													}
 												},
+												"deprecated": true,
 												"required": [
-													"files"
+													"enabled",
+													"skip"
 												]
 											}
-										},
+										],
 										"deprecated": true,
-										"required": [
-											"enabled",
-											"skip"
+										"x-stainless-skip": [
+											"terraform"
 										]
 									},
 									"entries": {
@@ -18530,32 +18728,37 @@
 																	]
 																},
 																"context_awareness": {
-																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
-																	"type": "object",
-																	"properties": {
-																		"enabled": {
-																			"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
-																			"type": "boolean"
-																		},
-																		"skip": {
-																			"description": "Content types to exclude from context analysis and return all matches.",
+																	"allOf": [
+																		{
+																			"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																			"type": "object",
 																			"properties": {
-																				"files": {
-																					"description": "If the content type is a file, skip context analysis and return all matches.",
+																				"enabled": {
+																					"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
 																					"type": "boolean"
+																				},
+																				"skip": {
+																					"description": "Content types to exclude from context analysis and return all matches.",
+																					"type": "object",
+																					"properties": {
+																						"files": {
+																							"description": "If the content type is a file, skip context analysis and return all matches.",
+																							"type": "boolean"
+																						}
+																					},
+																					"required": [
+																						"files"
+																					]
 																				}
 																			},
+																			"deprecated": true,
 																			"required": [
-																				"files"
+																				"enabled",
+																				"skip"
 																			]
 																		}
-																	},
-																	"deprecated": true,
-																	"required": [
-																		"enabled",
-																		"skip"
-																	]
+																	],
+																	"deprecated": true
 																},
 																"created_at": {
 																	"description": "When the profile was created.",
@@ -18750,7 +18953,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -19050,7 +19252,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -19288,7 +19495,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -19588,7 +19794,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -19680,31 +19891,39 @@
 																	]
 																},
 																"context_awareness": {
-																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
-																	"type": "object",
-																	"properties": {
-																		"enabled": {
-																			"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
-																			"type": "boolean"
-																		},
-																		"skip": {
-																			"description": "Content types to exclude from context analysis and return all matches.",
+																	"allOf": [
+																		{
+																			"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																			"type": "object",
 																			"properties": {
-																				"files": {
-																					"description": "If the content type is a file, skip context analysis and return all matches.",
+																				"enabled": {
+																					"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
 																					"type": "boolean"
+																				},
+																				"skip": {
+																					"description": "Content types to exclude from context analysis and return all matches.",
+																					"type": "object",
+																					"properties": {
+																						"files": {
+																							"description": "If the content type is a file, skip context analysis and return all matches.",
+																							"type": "boolean"
+																						}
+																					},
+																					"required": [
+																						"files"
+																					]
 																				}
 																			},
+																			"deprecated": true,
 																			"required": [
-																				"files"
+																				"enabled",
+																				"skip"
 																			]
 																		}
-																	},
+																	],
 																	"deprecated": true,
-																	"required": [
-																		"enabled",
-																		"skip"
+																	"x-stainless-skip": [
+																		"terraform"
 																	]
 																},
 																"entries": {
@@ -19874,7 +20093,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -20174,7 +20392,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -20429,7 +20652,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -20729,7 +20951,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -20941,7 +21168,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -21241,7 +21467,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -21825,7 +22056,6 @@
 																			"deprecated": {
 																				"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																				"type": "boolean",
-																				"default": false,
 																				"x-stainless-terraform-configurability": "computed"
 																			},
 																			"enabled": {
@@ -22125,7 +22355,12 @@
 																				"type": "string",
 																				"format": "date-time"
 																			},
-																			"word_list": {}
+																			"word_list": {
+																				"type": "array",
+																				"items": {
+																					"type": "string"
+																				}
+																			}
 																		},
 																		"required": [
 																			"id",
@@ -22373,32 +22608,37 @@
 								"nullable": true
 							},
 							"context_awareness": {
-								"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
-								"type": "object",
-								"properties": {
-									"enabled": {
-										"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
-										"type": "boolean"
-									},
-									"skip": {
-										"description": "Content types to exclude from context analysis and return all matches.",
+								"allOf": [
+									{
+										"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 										"type": "object",
 										"properties": {
-											"files": {
-												"description": "If the content type is a file, skip context analysis and return all matches.",
+											"enabled": {
+												"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
 												"type": "boolean"
+											},
+											"skip": {
+												"description": "Content types to exclude from context analysis and return all matches.",
+												"type": "object",
+												"properties": {
+													"files": {
+														"description": "If the content type is a file, skip context analysis and return all matches.",
+														"type": "boolean"
+													}
+												},
+												"required": [
+													"files"
+												]
 											}
 										},
+										"deprecated": true,
 										"required": [
-											"files"
+											"enabled",
+											"skip"
 										]
 									}
-								},
-								"deprecated": true,
-								"required": [
-									"enabled",
-									"skip"
-								]
+								],
+								"deprecated": true
 							},
 							"data_classes": {
 								"description": "Data class IDs to associate with the profile. If omitted, existing associations are unchanged.",
@@ -22722,32 +22962,37 @@
 																	]
 																},
 																"context_awareness": {
-																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
-																	"type": "object",
-																	"properties": {
-																		"enabled": {
-																			"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
-																			"type": "boolean"
-																		},
-																		"skip": {
-																			"description": "Content types to exclude from context analysis and return all matches.",
+																	"allOf": [
+																		{
+																			"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																			"type": "object",
 																			"properties": {
-																				"files": {
-																					"description": "If the content type is a file, skip context analysis and return all matches.",
+																				"enabled": {
+																					"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
 																					"type": "boolean"
+																				},
+																				"skip": {
+																					"description": "Content types to exclude from context analysis and return all matches.",
+																					"type": "object",
+																					"properties": {
+																						"files": {
+																							"description": "If the content type is a file, skip context analysis and return all matches.",
+																							"type": "boolean"
+																						}
+																					},
+																					"required": [
+																						"files"
+																					]
 																				}
 																			},
+																			"deprecated": true,
 																			"required": [
-																				"files"
+																				"enabled",
+																				"skip"
 																			]
 																		}
-																	},
-																	"deprecated": true,
-																	"required": [
-																		"enabled",
-																		"skip"
-																	]
+																	],
+																	"deprecated": true
 																},
 																"created_at": {
 																	"description": "When the profile was created.",
@@ -22942,7 +23187,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -23242,7 +23486,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -23480,7 +23729,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -23780,7 +24028,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -23872,31 +24125,39 @@
 																	]
 																},
 																"context_awareness": {
-																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
-																	"type": "object",
-																	"properties": {
-																		"enabled": {
-																			"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
-																			"type": "boolean"
-																		},
-																		"skip": {
-																			"description": "Content types to exclude from context analysis and return all matches.",
+																	"allOf": [
+																		{
+																			"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																			"type": "object",
 																			"properties": {
-																				"files": {
-																					"description": "If the content type is a file, skip context analysis and return all matches.",
+																				"enabled": {
+																					"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
 																					"type": "boolean"
+																				},
+																				"skip": {
+																					"description": "Content types to exclude from context analysis and return all matches.",
+																					"type": "object",
+																					"properties": {
+																						"files": {
+																							"description": "If the content type is a file, skip context analysis and return all matches.",
+																							"type": "boolean"
+																						}
+																					},
+																					"required": [
+																						"files"
+																					]
 																				}
 																			},
+																			"deprecated": true,
 																			"required": [
-																				"files"
+																				"enabled",
+																				"skip"
 																			]
 																		}
-																	},
+																	],
 																	"deprecated": true,
-																	"required": [
-																		"enabled",
-																		"skip"
+																	"x-stainless-skip": [
+																		"terraform"
 																	]
 																},
 																"entries": {
@@ -24066,7 +24327,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -24366,7 +24626,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -24621,7 +24886,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -24921,7 +25185,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -25133,7 +25402,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -25433,7 +25701,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -25688,31 +25961,39 @@
 								"nullable": true
 							},
 							"context_awareness": {
-								"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
-								"type": "object",
-								"properties": {
-									"enabled": {
-										"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
-										"type": "boolean"
-									},
-									"skip": {
-										"description": "Content types to exclude from context analysis and return all matches.",
+								"allOf": [
+									{
+										"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 										"type": "object",
 										"properties": {
-											"files": {
-												"description": "If the content type is a file, skip context analysis and return all matches.",
+											"enabled": {
+												"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
 												"type": "boolean"
+											},
+											"skip": {
+												"description": "Content types to exclude from context analysis and return all matches.",
+												"type": "object",
+												"properties": {
+													"files": {
+														"description": "If the content type is a file, skip context analysis and return all matches.",
+														"type": "boolean"
+													}
+												},
+												"required": [
+													"files"
+												]
 											}
 										},
+										"deprecated": true,
 										"required": [
-											"files"
+											"enabled",
+											"skip"
 										]
 									}
-								},
+								],
 								"deprecated": true,
-								"required": [
-									"enabled",
-									"skip"
+								"x-stainless-skip": [
+									"terraform"
 								]
 							},
 							"entries": {
@@ -25875,32 +26156,37 @@
 																	]
 																},
 																"context_awareness": {
-																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
-																	"type": "object",
-																	"properties": {
-																		"enabled": {
-																			"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
-																			"type": "boolean"
-																		},
-																		"skip": {
-																			"description": "Content types to exclude from context analysis and return all matches.",
+																	"allOf": [
+																		{
+																			"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																			"type": "object",
 																			"properties": {
-																				"files": {
-																					"description": "If the content type is a file, skip context analysis and return all matches.",
+																				"enabled": {
+																					"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
 																					"type": "boolean"
+																				},
+																				"skip": {
+																					"description": "Content types to exclude from context analysis and return all matches.",
+																					"type": "object",
+																					"properties": {
+																						"files": {
+																							"description": "If the content type is a file, skip context analysis and return all matches.",
+																							"type": "boolean"
+																						}
+																					},
+																					"required": [
+																						"files"
+																					]
 																				}
 																			},
+																			"deprecated": true,
 																			"required": [
-																				"files"
+																				"enabled",
+																				"skip"
 																			]
 																		}
-																	},
-																	"deprecated": true,
-																	"required": [
-																		"enabled",
-																		"skip"
-																	]
+																	],
+																	"deprecated": true
 																},
 																"created_at": {
 																	"description": "When the profile was created.",
@@ -26095,7 +26381,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -26395,7 +26680,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -26633,7 +26923,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -26933,7 +27222,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -27025,31 +27319,39 @@
 																	]
 																},
 																"context_awareness": {
-																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
-																	"type": "object",
-																	"properties": {
-																		"enabled": {
-																			"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
-																			"type": "boolean"
-																		},
-																		"skip": {
-																			"description": "Content types to exclude from context analysis and return all matches.",
+																	"allOf": [
+																		{
+																			"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
 																			"type": "object",
 																			"properties": {
-																				"files": {
-																					"description": "If the content type is a file, skip context analysis and return all matches.",
+																				"enabled": {
+																					"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
 																					"type": "boolean"
+																				},
+																				"skip": {
+																					"description": "Content types to exclude from context analysis and return all matches.",
+																					"type": "object",
+																					"properties": {
+																						"files": {
+																							"description": "If the content type is a file, skip context analysis and return all matches.",
+																							"type": "boolean"
+																						}
+																					},
+																					"required": [
+																						"files"
+																					]
 																				}
 																			},
+																			"deprecated": true,
 																			"required": [
-																				"files"
+																				"enabled",
+																				"skip"
 																			]
 																		}
-																	},
+																	],
 																	"deprecated": true,
-																	"required": [
-																		"enabled",
-																		"skip"
+																	"x-stainless-skip": [
+																		"terraform"
 																	]
 																},
 																"entries": {
@@ -27219,7 +27521,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -27519,7 +27820,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -27774,7 +28080,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -28074,7 +28379,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -28286,7 +28596,6 @@
 																							"deprecated": {
 																								"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																								"type": "boolean",
-																								"default": false,
 																								"x-stainless-terraform-configurability": "computed"
 																							},
 																							"enabled": {
@@ -28586,7 +28895,12 @@
 																								"type": "string",
 																								"format": "date-time"
 																							},
-																							"word_list": {}
+																							"word_list": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
 																						},
 																						"required": [
 																							"id",
@@ -29166,7 +29480,6 @@
 																			"deprecated": {
 																				"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
 																				"type": "boolean",
-																				"default": false,
 																				"x-stainless-terraform-configurability": "computed"
 																			},
 																			"enabled": {
@@ -29466,7 +29779,12 @@
 																				"type": "string",
 																				"format": "date-time"
 																			},
-																			"word_list": {}
+																			"word_list": {
+																				"type": "array",
+																				"items": {
+																					"type": "string"
+																				}
+																			}
 																		},
 																		"required": [
 																			"id",

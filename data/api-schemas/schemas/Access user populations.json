@@ -1,0 +1,1636 @@
+{
+	"DELETE /accounts/{account_id}/access/user_populations/{user_population_id}": {
+		"operationId": "access-user-populations-delete-user-population",
+		"summary": "Delete a user population",
+		"description": "Deletes a user population that is not attached to an application.",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "user_population_id",
+				"required": true,
+				"schema": {
+					"description": "UUID.",
+					"type": "string",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"202": {
+				"description": "Delete user population response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"id": {
+													"description": "UUID.",
+													"type": "string",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"x-auditable": true
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "User population request failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Access user populations"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.user-populations",
+		"x-fern-sdk-method-name": "delete"
+	},
+	"GET /accounts/{account_id}/access/user_populations": {
+		"operationId": "access-user-populations-list-user-populations",
+		"summary": "List user populations",
+		"description": "Lists the user populations in an account.",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"description": "Page number of results.",
+					"type": "integer",
+					"default": 1
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"schema": {
+					"description": "Number of results per page.",
+					"type": "integer",
+					"default": 100,
+					"maximum": 1000
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List user populations response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										},
+										{
+											"properties": {
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"type": "number",
+															"example": 1
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"type": "number",
+															"example": 1
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"type": "number",
+															"example": 20
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"type": "number",
+															"example": 2000
+														},
+														"total_pages": {
+															"description": "The number of total pages in the entire result set.",
+															"type": "number",
+															"example": 100
+														}
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"created_at": {
+														"allOf": [
+															{
+																"type": "string",
+																"x-stainless-skip": true
+															},
+															{
+																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
+																"x-auditable": true
+															}
+														]
+													},
+													"id": {
+														"description": "UUID.",
+														"type": "string",
+														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+														"maxLength": 36,
+														"x-auditable": true
+													},
+													"name": {
+														"description": "The name of the user population. Leading and trailing whitespace is trimmed before validation. After trimming, the name must contain at least one non-whitespace character and must not exceed 128 UTF-8 bytes.\n",
+														"type": "string",
+														"example": "Employees",
+														"maxLength": 128,
+														"minLength": 1,
+														"pattern": "[^\\s]"
+													},
+													"updated_at": {
+														"allOf": [
+															{
+																"type": "string",
+																"x-stainless-skip": true
+															},
+															{
+																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
+																"x-auditable": true
+															}
+														]
+													}
+												},
+												"required": [
+													"id",
+													"name",
+													"created_at",
+													"updated_at"
+												]
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "User population request failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Access user populations"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.user-populations",
+		"x-fern-sdk-method-name": "list"
+	},
+	"GET /accounts/{account_id}/access/user_populations/{user_population_id}": {
+		"operationId": "access-user-populations-get-user-population",
+		"summary": "Get a user population",
+		"description": "Fetches a user population.",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "user_population_id",
+				"required": true,
+				"schema": {
+					"description": "UUID.",
+					"type": "string",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Get user population response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"created_at": {
+													"allOf": [
+														{
+															"type": "string",
+															"x-stainless-skip": true
+														},
+														{
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"x-auditable": true
+														}
+													]
+												},
+												"id": {
+													"description": "UUID.",
+													"type": "string",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"x-auditable": true
+												},
+												"name": {
+													"description": "The name of the user population. Leading and trailing whitespace is trimmed before validation. After trimming, the name must contain at least one non-whitespace character and must not exceed 128 UTF-8 bytes.\n",
+													"type": "string",
+													"example": "Employees",
+													"maxLength": 128,
+													"minLength": 1,
+													"pattern": "[^\\s]"
+												},
+												"updated_at": {
+													"allOf": [
+														{
+															"type": "string",
+															"x-stainless-skip": true
+														},
+														{
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"x-auditable": true
+														}
+													]
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"created_at",
+												"updated_at"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "User population request failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Access user populations"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.user-populations",
+		"x-fern-sdk-method-name": "get"
+	},
+	"POST /accounts/{account_id}/access/user_populations": {
+		"operationId": "access-user-populations-create-user-population",
+		"summary": "Create a user population",
+		"description": "Creates a user population in an account.",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"description": "The name of the user population. Leading and trailing whitespace is trimmed before validation. After trimming, the name must contain at least one non-whitespace character and must not exceed 128 UTF-8 bytes.\n",
+								"type": "string",
+								"example": "Employees",
+								"maxLength": 128,
+								"minLength": 1,
+								"pattern": "[^\\s]"
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"name"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"201": {
+				"description": "Create user population response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"created_at": {
+													"allOf": [
+														{
+															"type": "string",
+															"x-stainless-skip": true
+														},
+														{
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"x-auditable": true
+														}
+													]
+												},
+												"id": {
+													"description": "UUID.",
+													"type": "string",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"x-auditable": true
+												},
+												"name": {
+													"description": "The name of the user population. Leading and trailing whitespace is trimmed before validation. After trimming, the name must contain at least one non-whitespace character and must not exceed 128 UTF-8 bytes.\n",
+													"type": "string",
+													"example": "Employees",
+													"maxLength": 128,
+													"minLength": 1,
+													"pattern": "[^\\s]"
+												},
+												"updated_at": {
+													"allOf": [
+														{
+															"type": "string",
+															"x-stainless-skip": true
+														},
+														{
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"x-auditable": true
+														}
+													]
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"created_at",
+												"updated_at"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "User population request failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Access user populations"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.user-populations",
+		"x-fern-sdk-method-name": "create"
+	},
+	"PUT /accounts/{account_id}/access/user_populations/{user_population_id}": {
+		"operationId": "access-user-populations-update-user-population",
+		"summary": "Update a user population",
+		"description": "Updates a user population's name.",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "user_population_id",
+				"required": true,
+				"schema": {
+					"description": "UUID.",
+					"type": "string",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"description": "The name of the user population. Leading and trailing whitespace is trimmed before validation. After trimming, the name must contain at least one non-whitespace character and must not exceed 128 UTF-8 bytes.\n",
+								"type": "string",
+								"example": "Employees",
+								"maxLength": 128,
+								"minLength": 1,
+								"pattern": "[^\\s]"
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"name"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Update user population response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"created_at": {
+													"allOf": [
+														{
+															"type": "string",
+															"x-stainless-skip": true
+														},
+														{
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"x-auditable": true
+														}
+													]
+												},
+												"id": {
+													"description": "UUID.",
+													"type": "string",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"x-auditable": true
+												},
+												"name": {
+													"description": "The name of the user population. Leading and trailing whitespace is trimmed before validation. After trimming, the name must contain at least one non-whitespace character and must not exceed 128 UTF-8 bytes.\n",
+													"type": "string",
+													"example": "Employees",
+													"maxLength": 128,
+													"minLength": 1,
+													"pattern": "[^\\s]"
+												},
+												"updated_at": {
+													"allOf": [
+														{
+															"type": "string",
+															"x-stainless-skip": true
+														},
+														{
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"x-auditable": true
+														}
+													]
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"created_at",
+												"updated_at"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "User population request failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Access user populations"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.user-populations",
+		"x-fern-sdk-method-name": "update"
+	}
+}

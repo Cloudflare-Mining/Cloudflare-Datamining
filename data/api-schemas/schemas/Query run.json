@@ -1310,6 +1310,10 @@
 																		"type": "integer",
 																		"minimum": 0
 																	},
+																	"endTimeNs": {
+																		"description": "Span end time as a Unix epoch in nanoseconds.",
+																		"type": "string"
+																	},
 																	"error": {
 																		"description": "Error message, present when the log represents an error.",
 																		"type": "string"
@@ -1387,11 +1391,19 @@
 																		"type": "integer",
 																		"minimum": 0
 																	},
+																	"startTimeNs": {
+																		"description": "Span start time as a Unix epoch in nanoseconds.",
+																		"type": "string"
+																	},
 																	"statusCode": {
 																		"description": "HTTP response status code returned by the Worker.",
 																		"type": "integer",
 																		"exclusiveMinimum": true,
 																		"minimum": 0
+																	},
+																	"timestampNs": {
+																		"description": "Event time as a Unix epoch in nanoseconds.",
+																		"type": "string"
 																	},
 																	"traceDuration": {
 																		"description": "Total duration of the entire trace in milliseconds.",
@@ -1838,6 +1850,10 @@
 																	"type": "integer",
 																	"minimum": 0
 																},
+																"endTimeNs": {
+																	"description": "Span end time as a Unix epoch in nanoseconds.",
+																	"type": "string"
+																},
 																"error": {
 																	"description": "Error message, present when the log represents an error.",
 																	"type": "string"
@@ -1915,11 +1931,19 @@
 																	"type": "integer",
 																	"minimum": 0
 																},
+																"startTimeNs": {
+																	"description": "Span start time as a Unix epoch in nanoseconds.",
+																	"type": "string"
+																},
 																"statusCode": {
 																	"description": "HTTP response status code returned by the Worker.",
 																	"type": "integer",
 																	"exclusiveMinimum": true,
 																	"minimum": 0
+																},
+																"timestampNs": {
+																	"description": "Event time as a Unix epoch in nanoseconds.",
+																	"type": "string"
 																},
 																"traceDuration": {
 																	"description": "Total duration of the entire trace in milliseconds.",
