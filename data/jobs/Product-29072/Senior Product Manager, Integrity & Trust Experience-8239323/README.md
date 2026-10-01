@@ -3,26 +3,32 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h2><span style="font-size: 12pt;"><strong>Available locations:&nbsp;<span class="collapsed-field-text">Lisbon, Portugal or London, UK.&nbsp;</span>This role requires two days in office, it is not a fully remote role.</strong></span></h2>
-<h2>About The Team</h2>
-<p>Application Security is responsible for Cloudflare’s fast-growing security product portfolio including WAF, Page Shield, Web Asset Management and API Shield. Being part of Cloudflare means working at internet scale and we are uniquely positioned to tackle challenging problems related to being connected to more networks, websites and customers than any other provider worldwide. Working at great scale by default (to an extent not offered by most other employers in big tech) means pushing boundaries well beyond what commodity solutions like Nginx and Kafka provide out of the box. You’ll be working with custom components that have been created in an engineering-driven and pragmatic way - our code is well-tested and documented and uses modern ecosystems like Go and Rust. This gives you confidence that you will spend your time having an impact and not firefighting!</p>
-<p>You’d be joining a high-profile part of the business that can really accelerate and support your career. Cloudflare has a strong track record of growing in a thoughtful way and hires carefully so we’re confident that you will enjoy working with your colleagues here!</p>
-<h2>About You</h2>
-<p><strong>You must have at least 5 years of professional experience working hands-on as a software developer</strong>. We require proficiency with at least one of Go or Rust, plus exposure to devops tooling like but not limited to Kubernetes, Salt, Kafka or Systemd. Strong Linux / Unix fundamentals will be very helpful. You must have experience working with distributed systems at scale. Experience with cyber security is preferred but not essential.</p>
-<p>Cloudflare’s culture is busy and multifaceted, and people who succeed here are persistent, have a can-do attitude and a genuine willingness to assume good faith in others. This last quality in particular requires them to be empathetic and emotionally intelligent, so you’re someone willing to take responsibility for the culture and environment that you create around you.</p>
-<h2>What You’ll Do</h2>
+<p><strong>Available Locations:&nbsp; Austin or London (Hybrid)&nbsp;</strong></p>
+<h2>About the Role</h2>
+<p>We're hiring the first embedded Lead Product Designer for Cloudflare's Web Integrity &amp; Trust product suite. More than 50% of Internet traffic is automated. Knowing who's human, who's an agent, and who's a malicious actor is core to Cloudflare's strategy, and one of the primary values we sell to our customers.</p>
+<p>Cloudflare sits in front of more than 20% of the web. That vantage point lets us detect automated threats, fraud, and traffic manipulation at a scale and depth no one else can match. Turning that raw signal into something a human can understand, trust, and act on is one of the most interesting design problems in security today — and it's the problem you'll own.</p>
+<p>Our products make probabilistic decisions in an adversarial environment. “Is this traffic truthfully representing who they are?” and "Can we trust this traffic?" doesn't have a clean yes-or-no answer. Our objective is to minimize risk without ever having ground truth. Your job is to make that kind of reasoning legible and controllable to the people who rely on it, from the security analyst running an investigation to the marketing team trying to understand the performance of their most recent campaign.</p>
+<p>This role spans the full arc of how customers work with our product suite, from navigation, configuration, exploring and investigating their traffic, to proving the value of what Cloudflare's network sees. Today those experiences live in disconnected places; a core part of this role is envisioning the coherent product they should become. This role will work directly with the Director of Product and across the PMs who lead each product line</p>
+<p>This is a rare "0-to-1" seat: you'll help define the interaction model for a suite of product categories we are largely inventing, with room to shape not just how it looks but what it fundamentally is.</p>
+<h3>Who you are</h3>
+<p>Note: A portfolio is required for this role. Please include a link to work that shows how you think. The interview process will dive in deeper.</p>
 <ul>
-	<li>Design systems and write code following bleeding edge industry best practices and help others on the team do the same. Review RFCs, technical specifications and code.</li>
-	<li>Deploy and maintain live software-based services at scale (up to 100m requests / second, 1m customers). Take regular shifts as part of the team’s On Call rota.</li>
-	<li>Support and grow other Engineers through knowledge sharing.</li>
-	<li>Keep up to date with trends in detecting current and emerging security risks to web applications and provide input on how these impact Cloudflare’s products.</li>
-	<li>Work with Engineers and Product Managers outside your immediate team in communicating our roadmap and getting things done.</li>
+	<li>A product inventor who works in the medium of design. You've taken genuinely ambiguous, ill-defined problem spaces and defined what the product should be. You can point to work where the concept was yours.</li>
+	<li>You've had to make a complex, high-dimensional system legible to the people who live in it, whether in security, fraud, observability, developer tools, analytics, network operations, finance, or somewhere equally demanding. You don't need a security background, but you need the mind and craft to go deep in one fast.</li>
+	<li>You use AI fluently in your own craft, and you have the judgment to know where it accelerates the work and where it falls short.</li>
+	<li>You bring independent design conviction. You've originated solutions in spaces with little prior art, and you can clearly articulate why a design is right, or why you're pushing back.</li>
+	<li>Exceptional at the full craft — interaction design, information architecture, and especially data visualization — with enough visual polish to make it real and compelling.</li>
+	<li>Someone who wants to obsess over a domain. You want to go deep, and are excited about pushing boundaries in a complex space.</li>
+	<li>Comfortable with a blank page. As the first design lead, you'll set your own process and build alongside your peers and engineers.</li>
 </ul>
-<h2>Benefits</h2>
-<p>Cloudflare offers a positive and stimulating place to work, where you can enjoy friendly relationships with your colleagues and the freedom to have real impact on our products and customers. While the work is demanding, the company is unusual in offering an unlimited leave policy. This is not a “race to the bottom” or proxy for reducing the amount of leave taken; leaders around the company model the behaviour of always taking the time off that they need.</p>
-<p>In addition to a competitive base salary, Cloudflare offers an equity program with stock grants on joining and regular refreshers linked to performance. And in common with other big tech companies, we offer medical and dental insurance, mental health support, a tax efficient defined contributions pension plan and life insurance.</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<h3>Nice to have</h3>
+<ul>
+	<li>Experience as the first or founding designer on a team or product.</li>
+	<li>Exposure to security, trust &amp; safety, fraud / ad fraud (IVT), or ML-driven products.</li>
+	<li>Comfort prototyping in code, or working fluently with engineers who do.</li>
+	<li>Familiarity with how analysts or operations teams actually work day to day.</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

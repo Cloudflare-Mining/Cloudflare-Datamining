@@ -3,26 +3,91 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h2><span style="font-size: 12pt;"><strong>Available locations:&nbsp;<span class="collapsed-field-text">Lisbon, Portugal or London, UK.&nbsp;</span>This role requires two days in office, it is not a fully remote role.</strong></span></h2>
-<h2>About The Team</h2>
-<p>Application Security is responsible for Cloudflare’s fast-growing security product portfolio including WAF, Page Shield, Web Asset Management and API Shield. Being part of Cloudflare means working at internet scale and we are uniquely positioned to tackle challenging problems related to being connected to more networks, websites and customers than any other provider worldwide. Working at great scale by default (to an extent not offered by most other employers in big tech) means pushing boundaries well beyond what commodity solutions like Nginx and Kafka provide out of the box. You’ll be working with custom components that have been created in an engineering-driven and pragmatic way - our code is well-tested and documented and uses modern ecosystems like Go and Rust. This gives you confidence that you will spend your time having an impact and not firefighting!</p>
-<p>You’d be joining a high-profile part of the business that can really accelerate and support your career. Cloudflare has a strong track record of growing in a thoughtful way and hires carefully so we’re confident that you will enjoy working with your colleagues here!</p>
-<h2>About You</h2>
-<p><strong>You must have at least 5 years of professional experience working hands-on as a software developer</strong>. We require proficiency with at least one of Go or Rust, plus exposure to devops tooling like but not limited to Kubernetes, Salt, Kafka or Systemd. Strong Linux / Unix fundamentals will be very helpful. You must have experience working with distributed systems at scale. Experience with cyber security is preferred but not essential.</p>
-<p>Cloudflare’s culture is busy and multifaceted, and people who succeed here are persistent, have a can-do attitude and a genuine willingness to assume good faith in others. This last quality in particular requires them to be empathetic and emotionally intelligent, so you’re someone willing to take responsibility for the culture and environment that you create around you.</p>
-<h2>What You’ll Do</h2>
+<p><strong>Available Locations:</strong> London</p>
+<p><strong>About the Department</strong></p>
+<p>As part of the Cloudflare Infrastructure Engineering organization, our platform SREs are primarily responsible for production reliability. SREs are based&nbsp; in locations in Asia, Europe and the US enabling follow the sun coverage during daytime hours.</p>
+<p>SREs are supported by all engineering teams at Cloudflare who participate in on call schedules for their services. The SRE teams facilitate remediation and follow up of production issues and mature the tooling to enable all engineering teams to self-service on production. Incident follow up work across all engineering teams is prioritized above product innovation and the impact of production incidents influences the priority.&nbsp;</p>
+<p>SREs support two main environments: Edge SRE are focused on edge distribution where most client traffic is served. Core SRE are focused on the core services like control plane, data pipeline and other supporting supporting services&nbsp;&nbsp;</p>
+<p><strong>Who you are</strong></p>
 <ul>
-	<li>Design systems and write code following bleeding edge industry best practices and help others on the team do the same. Review RFCs, technical specifications and code.</li>
-	<li>Deploy and maintain live software-based services at scale (up to 100m requests / second, 1m customers). Take regular shifts as part of the team’s On Call rota.</li>
-	<li>Support and grow other Engineers through knowledge sharing.</li>
-	<li>Keep up to date with trends in detecting current and emerging security risks to web applications and provide input on how these impact Cloudflare’s products.</li>
-	<li>Work with Engineers and Product Managers outside your immediate team in communicating our roadmap and getting things done.</li>
+	<li>
+		<p>You have 5+ years of software engineering, reliability, or operations experience in a customer-focused environment.</p>
+	</li>
+	<li>
+		<p>You have 2+ years experience managing a team of 5 or more engineers on projects in the areas of: distributed systems, tooling, Linux, Internetworking, infrastructure security or infrastructure management</p>
+	</li>
+	<li>
+		<p>You are comfortable collaborating and co-ordinating on cross-team projects and workflows</p>
+	</li>
+	<li>
+		<p>You can provide a strong technical vision for systems and infrastructure teams</p>
+	</li>
+	<li>
+		<p>You have experience building services and systems, have successfully taken projects from inception to production, and are comfortable diving in to provide leadership for major projects when needed</p>
+	</li>
+	<li>
+		<p>You are capable of leading a discussion with upper management, and are able to tailor the level of technical detail to suit your audience</p>
+	</li>
 </ul>
-<h2>Benefits</h2>
-<p>Cloudflare offers a positive and stimulating place to work, where you can enjoy friendly relationships with your colleagues and the freedom to have real impact on our products and customers. While the work is demanding, the company is unusual in offering an unlimited leave policy. This is not a “race to the bottom” or proxy for reducing the amount of leave taken; leaders around the company model the behaviour of always taking the time off that they need.</p>
-<p>In addition to a competitive base salary, Cloudflare offers an equity program with stock grants on joining and regular refreshers linked to performance. And in common with other big tech companies, we offer medical and dental insurance, mental health support, a tax efficient defined contributions pension plan and life insurance.</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>What you'll do</strong></p>
+<p>We are looking for an Engineering Manager to lead the Edge SRE team in London. You will lead and develop a team of SREs that are responsible for Cloudflare edge production and building the tools for all teams to understand and interact with it. You will play a lead role in driving our Platform initiatives for edge services and will be tasked with leading engineers who build tools and best practices for engineering teams to debug in production, measure availability and performance indicators, track and report on thresholds.&nbsp;</p>
+<p>Key responsibilities</p>
+<ul>
+	<li>
+		<p>Lead a team of engineers who are working to keep the Cloudflare edge reliable and scalable</p>
+	</li>
+	<li>
+		<p>Mentor, grow, and empower your team by giving them the skills, confidence and motivation to make decisions</p>
+	</li>
+	<li>
+		<p>Help the individuals on your team to build and execute personal development plans that align with Cloudflare’s goals and objectives</p>
+	</li>
+	<li>
+		<p>Take an active role in prioritizing the roadmap for the SRE Org</p>
+	</li>
+	<li>
+		<p>Drive cross-team and cross-org alignment in engineering, infrastructure and product teams</p>
+	</li>
+	<li>
+		<p>Partner with other Engineering Managers across Cloudflare to achieve reliability outcomes for their services</p>
+	</li>
+	<li>
+		<p>Participate in deep technical design discussions within your team, and across partner teams, and ensure that we're building the right systems and keeping the quality high</p>
+	</li>
+</ul>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<ul>
+	<li>
+		<p>Hands-on experience with software or reliability engineering</p>
+	</li>
+	<li>
+		<p>Experience leading and hiring a team that builds and runs tools and platforms</p>
+	</li>
+	<li>
+		<p>Excel at planning and overseeing execution to meet commitments and deliver with predictability</p>
+	</li>
+	<li>
+		<p>Incident root cause analysis and follow-ups</p>
+	</li>
+	<li>
+		<p>Incident management</p>
+	</li>
+	<li>
+		<p>Comfortable managing teams/projections with deadlines and short release cycles</p>
+	</li>
+	<li>
+		<p>Experience using observability tools such as Jaeger, OpenTracing, ELK, Prometheus, Thanos, Grafana, Clickhouse</p>
+	</li>
+	<li>
+		<p>Experience running and maturing distributed systems</p>
+	</li>
+	<li>
+		<p>Familiarity working with Proxies, DNS, Databases, Internet and Security</p>
+	</li>
+	<li>
+		<p>Experience developing tools and APIs</p>
+	</li>
+</ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
