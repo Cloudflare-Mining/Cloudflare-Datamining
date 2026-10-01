@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/codemods",
 	"dist-tags": {
-		"latest": "0.3.0"
+		"latest": "0.4.0"
 	},
 	"versions": {
 		"0.0.0": {
@@ -166,8 +166,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIA1vvsCm5ehPiYtXksr1K1dRcjUZbwtTo3lacXhJfcLoAiBu5AzCCJYaaPE3jMzDWNs0puaT1q0p29kpqWHByTRkcw=="
+						"sig": "MEQCIA1vvsCm5ehPiYtXksr1K1dRcjUZbwtTo3lacXhJfcLoAiBu5AzCCJYaaPE3jMzDWNs0puaT1q0p29kpqWHByTRkcw==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -177,6 +177,47 @@
 					}
 				},
 				"unpackedSize": 8065668
+			}
+		},
+		"0.4.0": {
+			"name": "@cloudflare/codemods",
+			"version": "0.4.0",
+			"devDependencies": {
+				"tsup": "8.3.0",
+				"vitest": "4.1.0",
+				"tinyglobby": "0.2.16",
+				"typescript": "5.8.3",
+				"@types/node": "22.15.17",
+				"@cloudflare/workers-utils": "0.45.1",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/cli-shared-helpers": "0.2.2",
+				"@cloudflare/shared-ast-primitives": "1.1.0"
+			},
+			"bin": {
+				"cloudflare-codemods": "dist/bin.mjs"
+			},
+			"dist": {
+				"shasum": "2af63c153fe8f3d29883cc7aeafc69397395384a",
+				"tarball": "https://registry.npmjs.org/@cloudflare/codemods/-/codemods-0.4.0.tgz",
+				"fileCount": 10,
+				"integrity": "sha512-qeRpKNXtvqhTtagx/5cLmDaFx/voBhWJ1S6SdFdBkE3OtgcPVz+Q8MtIG26zltW9Z0Icsu2FGBxV5RFmuHI/Bg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCo6Yr8XoYNY8UB7Md9UIkw9MxsEIpQ+TNyBn9ECeSdAQIgKjnCwXhbcgtyxDrSC97PgXBMqNRAzaPU61OKk0FmpzY=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIHDS9bt8VNOkN0KfT/tdkKuWZx6KfarGUzfeuwP+1n0NAiEAwhw1I1Gs2YEM7DqOUvi2rCnI/9vSPsvUsz7i6Tt5jxI="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fcodemods@0.4.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 8074669
 			}
 		}
 	}

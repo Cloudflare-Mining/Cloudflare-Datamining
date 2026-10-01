@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/workers-auth",
 	"dist-tags": {
-		"latest": "0.11.0"
+		"latest": "0.11.1"
 	},
 	"versions": {
 		"0.1.0": {
@@ -1928,12 +1928,60 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIEFIWc+eZT5p4LioP7vFldW4Ih+UcrryeDxAM8EaW91SAiEAtGzNKNsT+ae8jqA9Z13soEcl/9T+A6E+cnrWRByF92s="
+						"sig": "MEUCIEFIWc+eZT5p4LioP7vFldW4Ih+UcrryeDxAM8EaW91SAiEAtGzNKNsT+ae8jqA9Z13soEcl/9T+A6E+cnrWRByF92s=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkers-auth@0.11.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 530501
+			}
+		},
+		"0.11.1": {
+			"name": "@cloudflare/workers-auth",
+			"version": "0.11.1",
+			"dependencies": {
+				"undici": "7.29.1",
+				"@cloudflare/workers-utils": "0.45.1"
+			},
+			"devDependencies": {
+				"msw": "2.14.6",
+				"tsup": "8.3.0",
+				"vitest": "4.1.0",
+				"date-fns": "^4.1.0",
+				"smol-toml": "1.9.0",
+				"ts-dedent": "^2.2.0",
+				"@vitest/ui": "4.1.0",
+				"typescript": "5.8.3",
+				"@types/node": "22.15.17",
+				"concurrently": "^8.2.2",
+				"@cloudflare/workers-tsconfig": "0.0.0"
+			},
+			"peerDependencies": {
+				"msw": "2.14.6",
+				"vitest": "^4.1.0"
+			},
+			"dist": {
+				"shasum": "f4f2d71c582a4095f157d5d0df7af2dc31ebce0b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-auth/-/workers-auth-0.11.1.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-Wau9WbGwuy8doM/Js52u3MmNIgYRLl0uvMnJnc3SiCExlVklHHiRn6N1wMZW24raGfdsu5/05IN/HoKTbq+fPw==",
+				"signatures": [
+					{
+						"sig": "MEQCIH9bdSPfJCDt7Fa0cXlfYX+oEdtzUMefl7drVUPxvRYDAiALM39Z0PtyoqRgnrBT2QSM73SQqJESKJakDXaKF/cncQ==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIQC/DTkWVmxPu8/VaDqwdHLuh3MyvaXtHvHl1bSWpATJuQIgSupME7rQg7Q48hLdMo3ip04zYDYcpWiSu6oaeNNqGR4="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkers-auth@0.11.1",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
