@@ -20,6 +20,14 @@ Cloudflare Basin is built on Apache Iceberg and R2 Object Storage. With general 
 
 [![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TBHN0F85Z2NSDVC4T3HF05.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/cloudflare-basin/)
 
+October 1, 2026 [<h2>Introducing Clef: our open-source decision models, and new RL fine-tuning platform</h2>](https://blog.cloudflare.com/clef-decision-models/)
+
+We are introducing Clef and Clef-flash, open-source decision models hosted on Workers AI for high-speed classification and agentic workflows. Also launching: a new reinforcement learning platform that allows developers to fine-tune decision models using their own data.
+
+![Michelle Chen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R95PPSQQ82Z92P51M550.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Alex Reneau](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WKWJ94JZDRJM354AYKYXG.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Kevin Flansburg](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452TM72EKFE8RQCD3JMXND.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Michelle Chen](https://blog.cloudflare.com/author/michelle/),  [Alex Reneau](https://blog.cloudflare.com/author/alex-reneau/), and  [Kevin Flansburg](https://blog.cloudflare.com/author/kevin-flansburg/)
+
 October 1, 2026 [<h2>One year later: Sovereign AI and the fight for choice</h2>](https://blog.cloudflare.com/sovereign-ai-choice-one-year-later/)
 
 AI sovereignty is not a zero-sum game, but many governments now believe it is. Cloudflare's answer: more local open-source models, model-agnostic security tools, and a commitment to giving nations genuine choice.
@@ -32,9 +40,9 @@ October 1, 2026 [<h2>Introducing Workers KV Instant — powered by Quicksilver</
 
 Workers KV Instant delivers sub-2ms p99 read latencies and 250ms global replication across Cloudflare's 300+ edge locations. KV Instant eliminates cold-read penalties and uses the familiar Workers KV API.
 
-![Rob Sutter](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VM3GCX6DGHVJ06XGV8XA.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Brendan Irvine-Broque](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49H9641F9RZN2BA8BPX7HK.JPG&w=64&h=64&f=webp&fit=cover&position=center)
+![Rob Sutter](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VM3GCX6DGHVJ06XGV8XA.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
 
-[Rob Sutter](https://blog.cloudflare.com/author/rob/) and  [Brendan Irvine-Broque](https://blog.cloudflare.com/author/brendan-irvine-broque/)
+[Rob Sutter](https://blog.cloudflare.com/author/rob/)
 
 October 1, 2026 [<h2>Cloudflare OS: your company's agent workspace, managed for you</h2>](https://blog.cloudflare.com/managed-cloudflare-os/)
 
@@ -155,14 +163,6 @@ We're building CryptoLabe, an internal AI-powered tool that discovers cryptograp
 ![Sharon Goldberg](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488S3YN4RV24QXC7PM57EC.png&w=64&h=64&f=webp&fit=cover&position=center)![Tiago Silva](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M34Y5PD1JFD5WXM3SY93FQ3Q.01M34Y5PYATEYXM7BF3DB95FPM.webp&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Sharon Goldberg](https://blog.cloudflare.com/author/goldbe/) and  [Tiago Silva](https://blog.cloudflare.com/author/tiago-silva/)
-
-September 29, 2026 [<h2>Building a certificate authority for the whole Internet</h2>](https://blog.cloudflare.com/cloudflare-certificate-authority/)
-
-Twelve years after launching Universal SSL, Cloudflare is applying to become a certificate authority. By combining an established root, an ACME-first approach, and Merkle Tree Certificates, we are building a post-quantum CA for the open web.
-
-![Steve Goldsmith](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497YX7768BEJGS24P0FMX8.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Steve Goldsmith](https://blog.cloudflare.com/author/steve-goldsmith/)
 
 Load more
 

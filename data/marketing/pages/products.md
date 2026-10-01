@@ -32,13 +32,15 @@ Storage
 
 [**Artifacts**Git-native versioned storage](/products/artifacts/)
 
+[ **Basin**Ingest, catalog & query data](/products/data-platform/)
+
 [**Cache Reserve**Persistent caching for static content](/products/cache-reserve/)
 
 [**D1**Serverless SQL](/products/d1/)
 
-[**Data Platform**Ingest, Catalog & Query](/products/data-platform/)
-
 [**Hyperdrive**Global databases](/products/hyperdrive/)
+
+[**K2**Publish and subscribe to durable, ordered event streams](/products/k2/)
 
 [**KV**Ultra-fast key-value storage](/products/kv/)
 

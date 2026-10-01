@@ -8,7 +8,7 @@ Play Tetris
 
 Tetris ready.
 
-Cloudflare ChallengeSubmit by October 14
+Cloudflare Challenge/Submit by October 14
 
 # Build the next GitHub.
 
@@ -21,8 +21,6 @@ Build a new way for hundreds of thousands of agents to work on changes concurren
 We want you to build a new way for multiple agents to work on changes concurrently. Feel free to rethink repositories, branches, pull requests, worktrees, code review, and merge conflicts.
 
 **Get creative with it.**
-
-[View Rules](/documents/build-next-gen-git-platform-competition-terms.pdf)
 
 ![](/git-competition/icon-artifacts.svg)
 
@@ -41,6 +39,8 @@ Send a 5 to 10 minute demo, open source code, and instructions to run it by Octo
 **Three teams advance**
 
 Selected teams are announced October 16\. We will fly up to two members from each team to Connect.
+
+[View Rules](/documents/build-next-gen-git-platform-competition-terms.pdf)
 
 ## What finalists get to do.
 

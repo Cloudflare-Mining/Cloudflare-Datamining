@@ -12,7 +12,7 @@ image: https://www.cloudflare.com/preview.png
 
 ##  Two tracks for community builders 
 
- Cloudflare Ambassadors bring builders together through events, shared learning, and content. Community Engineers sustain the open source projects and technical spaces builders rely on. 
+ Explore the role that fits how you already show up for builders. Cloudflare supports people who gather communities, teach what they know, maintain shared tools, and help the ecosystem move faster. 
 
 ####  Cloudflare Ambassadors 
 
@@ -30,7 +30,7 @@ image: https://www.cloudflare.com/preview.png
 * Access to Cloudflare expertise at events
 * Recognition and exclusive swag
 
- Applications closed 
+[  Apply as an Ambassador ](#community-application) 
 
 ####  Community Engineers 
 

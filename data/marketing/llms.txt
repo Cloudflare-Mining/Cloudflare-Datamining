@@ -55,7 +55,7 @@ Workers run on V8 isolates for zero cold starts; Containers support heavier work
 - [KV](https://www.cloudflare.com/products/kv.md): Globally distributed key-value store with <5 ms hot read latency; ideal for config, feature flags, and auth tokens
 - [Queues](https://www.cloudflare.com/products/queues.md): Message queue for reliable async processing between Workers
 - [Hyperdrive](https://www.cloudflare.com/products/hyperdrive.md): Accelerates queries to existing PostgreSQL/MySQL databases from the edge by pooling and caching connections globally
-- [Data Platform](https://www.cloudflare.com/products/data-platform.md): Analytics-ready data warehouse on R2 using Apache Iceberg; ingest via Pipelines, query with R2 SQL, Snowflake, or DuckDB
+- [Basin](https://www.cloudflare.com/products/data-platform.md): Serverless analytics platform on R2 using Apache Iceberg; ingest via Basin Pipelines and query with Basin SQL, Snowflake, or DuckDB
 - [Cache Reserve](https://www.cloudflare.com/products/cache-reserve.md): Persistent CDN caching backed by R2 to reduce origin load for long-tail content
 
 ---

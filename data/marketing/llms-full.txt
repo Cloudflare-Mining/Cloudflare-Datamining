@@ -131,14 +131,77 @@ Build Git-backed features for your users: notebooks, IaC, generated content. No 
 
 ## Related Products
 
+- [K2](/products/k2.md): Durable event streams
 - [Cache Reserve](/products/cache-reserve.md): Persistent caching for static content
 - [D1](/products/d1.md): Serverless SQL
-- [Data Platform](/products/data-platform.md): Ingest, Catalog & Query
-- [Hyperdrive](/products/hyperdrive.md): Global databases
+- [Basin](/products/data-platform.md): Ingest, manage & query analytics data
 
 ---
 
 *This is a markdown version of [https://www.cloudflare.com/products/artifacts](https://www.cloudflare.com/products/artifacts) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cloudflare K2 - Serverless event streaming"
+description: "K2 is serverless event streaming on Cloudflare. Produce, store, and consume event streams without provisioning brokers, sizing clusters, or managing partitions."
+url: "https://www.cloudflare.com/products/k2"
+---
+
+# K2
+
+> K2 enables applications to produce events to a durable, ordered stream. Subscribe to the stream with one or more consumers.
+
+## Key Features
+
+- Serverless event streams
+- Durable storage with configurable retention
+- Atomic batch writes
+- Produce via Workers binding or HTTP
+- Independent subscriptions
+- At-least-once delivery
+
+## Benefits
+
+### Truly serverless
+
+No clusters to manage or scale. Pay only for what you use.
+
+### Long-term retention
+
+Events are stored with configurable TTL, up to one month.
+
+### Flexible consumption
+
+Consume all events from multiple clients, distribute events across a cluster of clients, or both.
+
+## Use Cases
+
+### Real-time analytics pipelines
+
+Collect clickstream, telemetry, and log events from browsers, Workers, and backend services, and process them as they arrive.
+
+### Microservice event buses
+
+Decouple services with a durable, ordered log. Every service can publish, and multiple consumers can read at their own pace.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/k2/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Artifacts](/products/artifacts.md): Git-native versioned storage
+- [Cache Reserve](/products/cache-reserve.md): Persistent caching for static content
+- [D1](/products/d1.md): Serverless SQL
+- [Basin](/products/data-platform.md): Ingest, manage & query analytics data
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/k2](https://www.cloudflare.com/products/k2) for AI/LLM consumption.*
 
 
 ---
@@ -746,9 +809,9 @@ Cache Reserve is part of Cloudflare's storage offerings on the Workers platform.
 ## Related Products
 
 - [Artifacts](/products/artifacts.md): Git-native versioned storage
+- [K2](/products/k2.md): Durable event streams
 - [D1](/products/d1.md): Serverless SQL
-- [Data Platform](/products/data-platform.md): Ingest, Catalog & Query
-- [Hyperdrive](/products/hyperdrive.md): Global databases
+- [Basin](/products/data-platform.md): Ingest, manage & query analytics data
 
 ---
 
@@ -814,9 +877,9 @@ Store user-specific application settings, profiles, and personalization data dir
 ## Related Products
 
 - [Artifacts](/products/artifacts.md): Git-native versioned storage
+- [K2](/products/k2.md): Durable event streams
 - [Cache Reserve](/products/cache-reserve.md): Persistent caching for static content
-- [Data Platform](/products/data-platform.md): Ingest, Catalog & Query
-- [Hyperdrive](/products/hyperdrive.md): Global databases
+- [Basin](/products/data-platform.md): Ingest, manage & query analytics data
 
 ---
 
@@ -826,14 +889,14 @@ Store user-specific application settings, profiles, and personalization data dir
 ---
 
 ---
-title: "Cloudflare Data Platform - Ingest, Catalog & Query"
-description: "Build analytics-ready data warehouses and lakehouses on R2. Stream events via Pipelines, catalog tables with Apache Iceberg, and query with R2 SQL or any compatible engine—all without egress fees."
+title: "Cloudflare Basin - Ingest, Manage & Query"
+description: "Basin is an end-to-end serverless analytics platform built on open standards. Stream and transform events via Basin Pipelines, manage Apache Iceberg tables with Basin Catalog, and query with Basin SQL or any compatible engine—all without egress fees."
 url: "https://www.cloudflare.com/products/data-platform"
 ---
 
-# Data Platform
+# Basin
 
-> Build analytics-ready data warehouses and lakehouses on R2. Stream events via Pipelines, catalog tables with Apache Iceberg, and query with R2 SQL or any compatible engine—all without egress fees.
+> Basin is an end-to-end serverless analytics platform built on open standards. Stream and transform events via Basin Pipelines, manage Apache Iceberg tables with Basin Catalog, and query with Basin SQL or any compatible engine—all without egress fees.
 
 ## Benefits
 
@@ -851,7 +914,7 @@ Stream and process events via HTTP endpoints or Workers bindings. No Apache Kafk
 
 ### SQL at the edge
 
-Query Iceberg tables directly with R2 SQL or the wrangler CLI. Distributed compute, automatic file pruning.
+Query Iceberg tables directly with Basin SQL or the wrangler CLI. Distributed compute, automatic file pruning.
 
 ### No infrastructure
 
@@ -859,7 +922,7 @@ No servers to provision, no clusters to manage. Just define a schema, stream dat
 
 ### Open table format
 
-Apache Iceberg tables means your data is accessible by your favorite query engines—Apache Spark, Snowflake, Trino, DuckDB, and more—via R2 Data Catalog's standard Iceberg REST API.
+Apache Iceberg tables mean your data is accessible by your favorite query engines—Apache Spark, Snowflake, Trino, DuckDB, and more—via Basin Catalog's standard Iceberg REST API.
 
 ## Use Cases
 
@@ -881,16 +944,16 @@ Store data once in R2, query from anywhere. Run Spark jobs in AWS, Snowflake que
 
 ## Resources
 
-- [Full Documentation](https://developers.cloudflare.com/r2/data-catalog/): Complete technical documentation
+- [Full Documentation](https://developers.cloudflare.com/basin/): Complete technical documentation
 - [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
 - [Pricing](/plans.md): See pricing details
 
 ## Related Products
 
 - [Artifacts](/products/artifacts.md): Git-native versioned storage
+- [K2](/products/k2.md): Durable event streams
 - [Cache Reserve](/products/cache-reserve.md): Persistent caching for static content
 - [D1](/products/d1.md): Serverless SQL
-- [Hyperdrive](/products/hyperdrive.md): Global databases
 
 ---
 
@@ -960,9 +1023,9 @@ Swap your connection string - and that's it. Build with your existing databases,
 ## Related Products
 
 - [Artifacts](/products/artifacts.md): Git-native versioned storage
+- [K2](/products/k2.md): Durable event streams
 - [Cache Reserve](/products/cache-reserve.md): Persistent caching for static content
 - [D1](/products/d1.md): Serverless SQL
-- [Data Platform](/products/data-platform.md): Ingest, Catalog & Query
 
 ---
 
@@ -1028,9 +1091,9 @@ Build distributed and resilient web crawlers by using Queues to manage the list 
 ## Related Products
 
 - [Artifacts](/products/artifacts.md): Git-native versioned storage
+- [K2](/products/k2.md): Durable event streams
 - [Cache Reserve](/products/cache-reserve.md): Persistent caching for static content
 - [D1](/products/d1.md): Serverless SQL
-- [Data Platform](/products/data-platform.md): Ingest, Catalog & Query
 
 ---
 
@@ -1041,7 +1104,7 @@ Build distributed and resilient web crawlers by using Queues to manage the list 
 
 ---
 title: "Cloudflare R2 - Egress-Free Object Storage"
-description: "Scalable, durable, affordable object storage with S3-compatible APIs. Near-infinite scale, zero egress fees, progressive migration, and R2 Data Catalog for analytics."
+description: "Scalable, durable, affordable object storage with S3-compatible APIs. Near-infinite scale, zero egress fees, progressive migration, and Basin Catalog for analytics."
 url: "https://www.cloudflare.com/products/r2"
 ---
 
@@ -1077,7 +1140,7 @@ R2 exposes S3 compatible APIs: use your existing tools without a rewrite.
 
 R2 can sit in front of your legacy object storage provider and progressively copy objects as they are requested, taking the complexity of managing data migration.
 
-### R2 Data Catalog
+### Basin Catalog
 
 Use R2's Iceberg-compatible data catalog with your favorite SQL data warehouse to query logs and structured data formats you store in R2.
 
@@ -1112,9 +1175,9 @@ Configure R2 to pull objects from your existing object storage provider as they 
 ## Related Products
 
 - [Artifacts](/products/artifacts.md): Git-native versioned storage
+- [K2](/products/k2.md): Durable event streams
 - [Cache Reserve](/products/cache-reserve.md): Persistent caching for static content
 - [D1](/products/d1.md): Serverless SQL
-- [Data Platform](/products/data-platform.md): Ingest, Catalog & Query
 
 ---
 
@@ -3224,9 +3287,9 @@ Store and retrieve complex information as JSON documents, allowing your data str
 ## Related Products
 
 - [Artifacts](/products/artifacts.md): Git-native versioned storage
+- [K2](/products/k2.md): Durable event streams
 - [Cache Reserve](/products/cache-reserve.md): Persistent caching for static content
 - [D1](/products/d1.md): Serverless SQL
-- [Data Platform](/products/data-platform.md): Ingest, Catalog & Query
 
 ---
 
@@ -4417,14 +4480,15 @@ Time-series analytics at scale
 | Data Points Written | 100,000 / day | $0.25 / million data points |
 | Read Queries | 10,000 / day | $1.00 / million read queries |
 
-#### [Pipelines](https://developers.cloudflare.com/pipelines/)
+#### [Basin Pipelines](https://developers.cloudflare.com/basin-pipelines/)
 
 Transform and route data streams
 
 | Component | Free | Paid |
 |-----------|------|------|
-| Ingestion | — | TBD (free during beta) |
-| Delivery to R2 | — | TBD (free during beta) |
+| Streams (ingress) | Unlimited | Free |
+| SQL transforms | 50 GB / month | $0.04 / GB |
+| Sinks | 50 GB / month | $0.03–$0.06 / GB |
 
 ### Media
 
@@ -4538,6 +4602,7 @@ Third-party tool manager
 | Queues | Standard Operations: 10,000 operations/day included |
 | Hyperdrive | Queries: 100,000 / day |
 | Workers Analytics Engine | Data Points Written: 100,000 / day, Read Queries: 10,000 / day |
+| Basin Pipelines | Streams (ingress): Unlimited, SQL transforms: 50 GB / month, Sinks: 50 GB / month |
 | TURN / SFU | Data Egress: 1,000 GB / month |
 | Images | Unique Transformations: 5,000 / month |
 | Vectorize | Vector Dimensions Queried: 30M queried dimensions / month, Vector Dimensions Stored: 5M stored dimensions |
