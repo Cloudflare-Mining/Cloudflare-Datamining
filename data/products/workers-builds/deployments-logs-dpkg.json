@@ -90,7 +90,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"containerd.io": {
-		"version": "2.3.5-1~ubuntu.24.04~noble",
+		"version": "2.3.6-1~ubuntu.24.04~noble",
 		"short_description": "An open and reliable container runtime",
 		"author": "Containerd team <help@containerd.io>"
 	},
@@ -205,17 +205,17 @@
 		"author": "Docker <support@docker.com>"
 	},
 	"docker-ce": {
-		"version": "5:29.8.1-1~ubuntu.24.04~noble",
+		"version": "5:29.8.2-1~ubuntu.24.04~noble",
 		"short_description": "Docker: the open-source application container engine",
 		"author": "Docker <support@docker.com>"
 	},
 	"docker-ce-cli": {
-		"version": "5:29.8.1-1~ubuntu.24.04~noble",
+		"version": "5:29.8.2-1~ubuntu.24.04~noble",
 		"short_description": "Docker CLI: the open-source application container engine",
 		"author": "Docker <support@docker.com>"
 	},
 	"docker-ce-rootless-extras": {
-		"version": "5:29.8.1-1~ubuntu.24.04~noble",
+		"version": "5:29.8.2-1~ubuntu.24.04~noble",
 		"short_description": "Rootless support for Docker.",
 		"author": "Docker <support@docker.com>"
 	},
@@ -1135,7 +1135,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libgbm1:amd64": {
-		"version": "25.2.8-0ubuntu0.24.04.2",
+		"version": "25.2.8-0ubuntu0.24.04.3",
 		"short_description": "generic buffer management API -- runtime",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -1350,22 +1350,22 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libheif-dev:amd64": {
-		"version": "1.17.6-1ubuntu4.8",
+		"version": "1.17.6-1ubuntu4.9",
 		"short_description": "ISO/IEC 23008-12:2017 HEIF file format decoder - development files",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libheif-plugin-aomdec:amd64": {
-		"version": "1.17.6-1ubuntu4.8",
+		"version": "1.17.6-1ubuntu4.9",
 		"short_description": "ISO/IEC 23008-12:2017 HEIF file format decoder - aomdec plugin",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libheif-plugin-aomenc:amd64": {
-		"version": "1.17.6-1ubuntu4.8",
+		"version": "1.17.6-1ubuntu4.9",
 		"short_description": "ISO/IEC 23008-12:2017 HEIF file format decoder - aomenc plugin",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libheif1:amd64": {
-		"version": "1.17.6-1ubuntu4.8",
+		"version": "1.17.6-1ubuntu4.9",
 		"short_description": "ISO/IEC 23008-12:2017 HEIF file format decoder - shared library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2195,12 +2195,12 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libssl-dev:amd64": {
-		"version": "3.0.13-0ubuntu3.15",
+		"version": "3.0.13-0ubuntu3.16",
 		"short_description": "Secure Sockets Layer toolkit - development files",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libssl3t64:amd64": {
-		"version": "3.0.13-0ubuntu3.15",
+		"version": "3.0.13-0ubuntu3.16",
 		"short_description": "Secure Sockets Layer toolkit - shared libraries",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2317,6 +2317,11 @@
 	"libvips42t64:amd64": {
 		"version": "8.15.1-1.1build4",
 		"short_description": "image processing system good for very large ones",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libwayland-server0:amd64": {
+		"version": "1.22.0-2.1build1",
+		"short_description": "wayland compositor infrastructure - server library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libwebp-dev:amd64": {
@@ -2560,7 +2565,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"linux-libc-dev:amd64": {
-		"version": "6.8.0-142.142",
+		"version": "6.8.0-146.146",
 		"short_description": "Linux Kernel Headers for development",
 		"author": "Ubuntu Kernel Team <kernel-team@lists.ubuntu.com>"
 	},
@@ -2610,7 +2615,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"mesa-libgallium:amd64": {
-		"version": "25.2.8-0ubuntu0.24.04.2",
+		"version": "25.2.8-0ubuntu0.24.04.3",
 		"short_description": "shared infrastructure for Mesa drivers",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2655,7 +2660,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"openssl": {
-		"version": "3.0.13-0ubuntu3.15",
+		"version": "3.0.13-0ubuntu3.16",
 		"short_description": "Secure Sockets Layer toolkit - cryptographic utility",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
