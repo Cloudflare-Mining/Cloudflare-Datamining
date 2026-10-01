@@ -177,8 +177,7 @@
 														"properties": {
 															"authentication": {
 																"description": "Indicates whether the HTTP endpoint requires an API token with K2 produce permission. When false or omitted, the endpoint accepts unauthenticated records.",
-																"type": "boolean",
-																"default": false
+																"type": "boolean"
 															},
 															"cors": {
 																"type": "object",
@@ -444,8 +443,7 @@
 													"properties": {
 														"authentication": {
 															"description": "Indicates whether the HTTP endpoint requires an API token with K2 produce permission. When false or omitted, the endpoint accepts unauthenticated records.",
-															"type": "boolean",
-															"default": false
+															"type": "boolean"
 														},
 														"cors": {
 															"type": "object",
@@ -764,7 +762,7 @@
 	"PATCH /accounts/{account_id}/k2/streams/{stream_id}": {
 		"operationId": "patchV4AccountsByAccount_idK2StreamsByStream_id",
 		"summary": "Update K2 stream",
-		"description": "Update a K2 stream. Each provided input replaces that input's full configuration, so include every `http` setting to keep, such as `authentication` and `cors`. At least one input must remain enabled.",
+		"description": "Update a K2 stream. Omitted `http` settings, such as `authentication` and `cors`, keep their current values while HTTP stays enabled. Disabling HTTP clears its settings. At least one input must remain enabled.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -823,8 +821,7 @@
 										"properties": {
 											"authentication": {
 												"description": "Indicates whether the HTTP endpoint requires an API token with K2 produce permission. When false or omitted, the endpoint accepts unauthenticated records.",
-												"type": "boolean",
-												"default": false
+												"type": "boolean"
 											},
 											"cors": {
 												"type": "object",
@@ -1002,8 +999,7 @@
 													"properties": {
 														"authentication": {
 															"description": "Indicates whether the HTTP endpoint requires an API token with K2 produce permission. When false or omitted, the endpoint accepts unauthenticated records.",
-															"type": "boolean",
-															"default": false
+															"type": "boolean"
 														},
 														"cors": {
 															"type": "object",
@@ -1217,8 +1213,7 @@
 										"properties": {
 											"authentication": {
 												"description": "Indicates whether the HTTP endpoint requires an API token with K2 produce permission. When false or omitted, the endpoint accepts unauthenticated records.",
-												"type": "boolean",
-												"default": false
+												"type": "boolean"
 											},
 											"cors": {
 												"type": "object",
@@ -1415,8 +1410,7 @@
 													"properties": {
 														"authentication": {
 															"description": "Indicates whether the HTTP endpoint requires an API token with K2 produce permission. When false or omitted, the endpoint accepts unauthenticated records.",
-															"type": "boolean",
-															"default": false
+															"type": "boolean"
 														},
 														"cors": {
 															"type": "object",
