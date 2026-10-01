@@ -68,7 +68,8 @@
 	"durable_objects.overview.metrics_overview": "Metrics overview",
 	"durable_objects.overview.past_24_hours": "Past 24 hours",
 	"durable_objects.overview.instances": "Durable Object instances",
-	"durable_objects.overview.instances_description": "The top %{limit} instances from the past 24 hours, by the selected sort. Search and filters are applied before this limit.",
+	"durable_objects.overview.instances_description": "The top %{limit} instances in the selected timeframe, by the selected sort. Search and filters are applied before this limit.",
+	"durable_objects.overview.timeframe": "Timeframe",
 	"durable_objects.overview.instance": "Instance",
 	"durable_objects.overview.all_instances": "All instances",
 	"durable_objects.overview.instances_with_errors": "Instances with errors",
@@ -157,5 +158,13 @@
 	"durable_objects.metrics.filter.placeholder": "Filter by ID or name",
 	"durable_objects.metrics.filter.start_typing": "Start typing an ID or name",
 	"durable_objects.metrics.filter.min_chars": "Type at least 3 characters",
+	"durable_objects.metrics.version_filter.aria_label": "Filter metrics by deployed versions",
+	"durable_objects.metrics.version_filter.all_versions": "All deployed versions",
+	"durable_objects.metrics.version_filter.active_versions": "Actively deployed versions",
+	"durable_objects.metrics.version_filter.specific_versions": "Specific versions",
+	"durable_objects.metrics.version_filter.versions_trigger": "Versions",
+	"durable_objects.metrics.version_filter.versions_trigger_count": "Versions (%{count})",
+	"durable_objects.metrics.version_filter.loading": "Loading Durable Object metrics",
+	"durable_objects.metrics.version_filter.unsupported_metric": "Version filtering isn't available for this metric. Select All deployed versions to view it.",
 	"zoneless_workers.metrics.errors.analytics_out_of_bounds": "Analytics data is not available for the selected time range."
 }
