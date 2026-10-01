@@ -4605,6 +4605,118 @@
 		"__description": "",
 		"requestBodySizeUncached": "Confidence interval for the corresponding point estimate"
 	},
+	"AccountEmailComplaintsAdaptiveGroups": {
+		"__description": "Aggregated email complaints for all zones in an account, with adaptive sampling",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Number of complaints",
+		"dimensions": "List of dimensions to group by"
+	},
+	"AccountEmailComplaintsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Number of complaints, with confidence intervals",
+		"level": "Confidence level that was requested"
+	},
+	"AccountEmailComplaintsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "The date the complaint event was recorded",
+		"datetime": "The date and time the complaint event was recorded",
+		"datetimeFifteenMinutes": "The date and time the complaint event was recorded truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time the complaint event was recorded truncated to five minutes",
+		"datetimeHour": "The date and time the complaint event was recorded truncated to the hour",
+		"datetimeMinute": "The date and time the complaint event was recorded truncated to the minute",
+		"deliveryDate": "The date of the correlated email delivery",
+		"deliveryDatetimeFifteenMinutes": "Time of the correlated email delivery truncated to fifteen minutes",
+		"deliveryDatetimeFiveMinutes": "Time of the correlated email delivery truncated to five minutes",
+		"deliveryDatetimeHour": "Time of the correlated email delivery truncated to the hour",
+		"deliveryDatetimeMinute": "Time of the correlated email delivery truncated to the minute",
+		"deliveryTimestamp": "Time of the correlated email delivery",
+		"isEmailSending": "Whether the complaint is for Email Sending",
+		"provider": "Mailbox provider that sent the complaint",
+		"sendingDomain": "Email Sending domain associated with the complaint",
+		"source": "Complaint report format"
+	},
+	"AccountEmailComplaintsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountEmailComplaintsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountEmailSendingAdaptive": {
+		"__description": "Raw email sending logs for all zones in an account, with adaptive sampling",
+		"arc": "ARC check status of the source email",
+		"datetime": "The date and time the source email was received",
+		"dkim": "DKIM check status of the source email",
+		"dmarc": "DMARC check status of the source email",
+		"envelopeTo": "The envelope recipient email address",
+		"envelopeTos": "<small>DEPRECATED (Use envelopeTo instead):</small> The envelope recipient email address",
+		"errorAttribution": "Whether customer behavior or data caused the rejection: customer, non_customer, or empty when there is no error",
+		"errorCause": "Error type (if any)",
+		"errorDetail": "Detailed error message (if any)",
+		"eventType": "Origin of email (incoming|forward|reply|newEmail)",
+		"from": "The sender email address of the source email",
+		"isLastEvent": "Is this the last event for this email?",
+		"isNDR": "Is this event related to a NDR (bounce) email?",
+		"isSpam": "Source email is spam",
+		"messageId": "The Message-ID header of the source email (if present)",
+		"sampleInterval": "ABR sample interval",
+		"sendingDomain": "Domain from which the email was sent",
+		"sessionId": "Unique identifier for the email log entry (note: retries for the same email may result in multiple log entries)",
+		"spamScore": "Spam score value",
+		"spamThreshold": "Spam threshold value",
+		"spf": "SPF check status of the source email",
+		"status": "The resulting outcome (action) for the email",
+		"subject": "The subject of the source email",
+		"to": "The recipient email address of the source email"
+	},
+	"AccountEmailSendingAdaptiveFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountEmailSendingAdaptiveGroups": {
+		"__description": "Aggregated email sending logs for all zones in an account, with adaptive sampling",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Number of emails processed",
+		"dimensions": "List of dimensions to group by"
+	},
+	"AccountEmailSendingAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Number of emails processed, with confidence intervals",
+		"level": "Confidence level that was requested"
+	},
+	"AccountEmailSendingAdaptiveGroupsDimensions": {
+		"__description": "",
+		"arc": "ARC check status of the source email",
+		"date": "The date the source email was received",
+		"datetime": "The date and time the source email was received",
+		"datetimeFifteenMinutes": "The date and time the source email was received truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time the source email was received truncated to five minutes",
+		"datetimeHour": "The date and time the source email was received truncated to the hour",
+		"datetimeMinute": "The date and time the source email was received truncated to the minute",
+		"dkim": "DKIM check status of the source email",
+		"dmarc": "DMARC check status of the source email",
+		"envelopeTo": "The envelope recipient email address",
+		"envelopeTos": "<small>DEPRECATED (Use envelopeTo instead):</small> The envelope recipient email address",
+		"errorAttribution": "Whether customer behavior or data caused the rejection: customer, non_customer, or empty when there is no error",
+		"errorCause": "Error type (if any)",
+		"eventType": "Origin of email (incoming|forward|reply|newEmail)",
+		"isLastEvent": "Is this the last event for this email?",
+		"isNDR": "Is this event related to a NDR (bounce) email?",
+		"isSpam": "Source email is spam",
+		"sampleInterval": "ABR sample interval",
+		"sendingDomain": "Domain from which the email was sent",
+		"spamScore": "Spam score value",
+		"spamThreshold": "Spam threshold value",
+		"spf": "SPF check status of the source email",
+		"status": "The resulting outcome (action) for the email"
+	},
+	"AccountEmailSendingAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountEmailSendingAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountEmailSendingAdaptiveOrderBy": {
+		"__description": ""
+	},
 	"AccountFbmAttackAnalyticsGroups": {
 		"__description": "FBM analytics metadata for attacks detected by dosd",
 		"attackId": "Unique identifier of the mitigation that matched the packet, if any",
@@ -11400,6 +11512,9 @@
 		"durableObjectsSqlStorageGroups": "",
 		"durableObjectsStorageGroups": "",
 		"durableObjectsSubrequestsAdaptiveGroups": "",
+		"emailComplaintsAdaptiveGroups": "",
+		"emailSendingAdaptive": "",
+		"emailSendingAdaptiveGroups": "",
 		"fbmAttackAnalyticsGroups": "",
 		"firewallEventsAdaptive": "",
 		"firewallEventsAdaptiveGroups": "",
@@ -14547,6 +14662,11 @@
 		"datetimeFiveMinutes": "The date and time the complaint event was recorded truncated to five minutes",
 		"datetimeHour": "The date and time the complaint event was recorded truncated to the hour",
 		"datetimeMinute": "The date and time the complaint event was recorded truncated to the minute",
+		"deliveryDate": "The date of the correlated email delivery",
+		"deliveryDatetimeFifteenMinutes": "Time of the correlated email delivery truncated to fifteen minutes",
+		"deliveryDatetimeFiveMinutes": "Time of the correlated email delivery truncated to five minutes",
+		"deliveryDatetimeHour": "Time of the correlated email delivery truncated to the hour",
+		"deliveryDatetimeMinute": "Time of the correlated email delivery truncated to the minute",
 		"deliveryTimestamp": "Time of the correlated email delivery",
 		"isEmailSending": "Whether the complaint is for Email Sending",
 		"provider": "Mailbox provider that sent the complaint",
@@ -14637,6 +14757,7 @@
 		"dmarc": "DMARC check status of the source email",
 		"envelopeTo": "The envelope recipient email address",
 		"envelopeTos": "<small>DEPRECATED (Use envelopeTo instead):</small> The envelope recipient email address",
+		"errorAttribution": "Whether customer behavior or data caused the rejection: customer, non_customer, or empty when there is no error",
 		"errorCause": "Error type (if any)",
 		"errorDetail": "Detailed error message (if any)",
 		"eventType": "Origin of email (incoming|forward|reply|newEmail)",
@@ -14682,6 +14803,7 @@
 		"dmarc": "DMARC check status of the source email",
 		"envelopeTo": "The envelope recipient email address",
 		"envelopeTos": "<small>DEPRECATED (Use envelopeTo instead):</small> The envelope recipient email address",
+		"errorAttribution": "Whether customer behavior or data caused the rejection: customer, non_customer, or empty when there is no error",
 		"errorCause": "Error type (if any)",
 		"eventType": "Origin of email (incoming|forward|reply|newEmail)",
 		"isLastEvent": "Is this the last event for this email?",
@@ -17330,6 +17452,9 @@
 		"durableObjectsSqlStorageGroups": "Storage metrics for SQL-backed Durable Objects.",
 		"durableObjectsStorageGroups": "Durable Objects storage metrics",
 		"durableObjectsSubrequestsAdaptiveGroups": "Durable Objects subrequests with adaptive sampling",
+		"emailComplaintsAdaptiveGroups": "Aggregated email complaints for all zones in an account, with adaptive sampling",
+		"emailSendingAdaptive": "Raw email sending logs for all zones in an account, with adaptive sampling",
+		"emailSendingAdaptiveGroups": "Aggregated email sending logs for all zones in an account, with adaptive sampling",
 		"fbmAttackAnalyticsGroups": "FBM analytics metadata for attacks detected by dosd",
 		"firewallEventsAdaptive": "Raw Firewall events with adaptive sampling",
 		"firewallEventsAdaptiveGroups": "Aggregated Firewall events with adaptive sampling",
