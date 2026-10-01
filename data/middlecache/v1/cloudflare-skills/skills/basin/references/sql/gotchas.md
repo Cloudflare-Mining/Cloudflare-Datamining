@@ -1,12 +1,12 @@
-# R2 SQL Gotchas
+# Basin SQL Gotchas
 
-Operational pitfalls. For the authoritative list of supported features, unsupported features, and recommended workarounds, pull `https://developers.cloudflare.com/r2-sql/reference/limitations-best-practices/` and `https://developers.cloudflare.com/r2-sql/troubleshooting/`.
+Operational pitfalls. For the authoritative list of supported features, unsupported features, and recommended workarounds, pull `https://developers.cloudflare.com/basin-sql/reference/limitations-best-practices/` and `https://developers.cloudflare.com/basin-sql/troubleshooting/`.
 
 ## Access
 
 - **No Workers binding.** There is no `env.R2_SQL`. Query the REST endpoint via `fetch()` from a Worker ([patterns.md](patterns.md#dashboard-worker)), or use D1 / an external DB for OLTP.
-- Wrangler needs `WRANGLER_R2_SQL_AUTH_TOKEN` — it does **not** reuse the `wrangler login` OAuth session.
-- Open beta: R2 Storage **Admin Read & Write is required even for read-only** queries.
+- Wrangler needs `WRANGLER_BASIN_SQL_AUTH_TOKEN` — it does **not** reuse the `wrangler login` OAuth session.
+- R2 Storage **Admin Read & Write is currently required even for read-only** queries. Verify this in the live authentication docs.
 
 ## Type Safety
 
@@ -28,8 +28,8 @@ No implicit conversions. Timestamps must be RFC3339 with timezone; dates ISO 860
 
 ## Debug Checklist
 
-1. `wrangler r2 bucket catalog enable <bucket>` — catalog on?
-2. `echo $WRANGLER_R2_SQL_AUTH_TOKEN` — token set?
+1. `wrangler basin catalog enable <bucket>` — catalog on?
+2. `echo $WRANGLER_BASIN_SQL_AUTH_TOKEN` — token set?
 3. `SHOW DATABASES` → `SHOW TABLES IN ns` → `DESCRIBE ns.table`
 4. `SELECT COUNT(*) FROM ns.table` — data present?
 5. Add filters incrementally; read `metrics` to tune.

@@ -27,6 +27,28 @@
 			]
 		},
 		{
+			"name": "basin",
+			"description": "Build and troubleshoot Cloudflare Basin analytics workflows with Basin Pipelines, Basin Catalog, and Basin SQL. Use for streaming data into R2 Iceberg tables, managing catalogs, or querying those tables; also use for requests using the former Data Platform, Pipelines, R2 Data Catalog, or R2 SQL names.",
+			"files": [
+				"SKILL.md",
+				"references/catalog/README.md",
+				"references/catalog/api.md",
+				"references/catalog/configuration.md",
+				"references/catalog/gotchas.md",
+				"references/catalog/patterns.md",
+				"references/pipelines/README.md",
+				"references/pipelines/api.md",
+				"references/pipelines/configuration.md",
+				"references/pipelines/gotchas.md",
+				"references/pipelines/patterns.md",
+				"references/sql/README.md",
+				"references/sql/api.md",
+				"references/sql/configuration.md",
+				"references/sql/gotchas.md",
+				"references/sql/patterns.md"
+			]
+		},
+		{
 			"name": "cloudflare",
 			"description": "Discover and choose Cloudflare products for apps, APIs, AI agents, storage, networking, and security. Use for architecture and product selection, including when the user describes a need without naming a Cloudflare product; then find the relevant skill or documentation.",
 			"files": [
@@ -176,11 +198,6 @@
 				"references/pages/configuration.md",
 				"references/pages/gotchas.md",
 				"references/pages/patterns.md",
-				"references/pipelines/README.md",
-				"references/pipelines/api.md",
-				"references/pipelines/configuration.md",
-				"references/pipelines/gotchas.md",
-				"references/pipelines/patterns.md",
 				"references/pulumi/README.md",
 				"references/pulumi/api.md",
 				"references/pulumi/configuration.md",
@@ -191,16 +208,6 @@
 				"references/queues/configuration.md",
 				"references/queues/gotchas.md",
 				"references/queues/patterns.md",
-				"references/r2-data-catalog/README.md",
-				"references/r2-data-catalog/api.md",
-				"references/r2-data-catalog/configuration.md",
-				"references/r2-data-catalog/gotchas.md",
-				"references/r2-data-catalog/patterns.md",
-				"references/r2-sql/README.md",
-				"references/r2-sql/api.md",
-				"references/r2-sql/configuration.md",
-				"references/r2-sql/gotchas.md",
-				"references/r2-sql/patterns.md",
 				"references/r2/README.md",
 				"references/r2/api.md",
 				"references/r2/configuration.md",
@@ -355,6 +362,13 @@
 				"references/rules.md",
 				"references/testing.md",
 				"references/workers.md"
+			]
+		},
+		{
+			"name": "k2",
+			"description": "Build and troubleshoot Cloudflare K2 or K2 Streams durable logs. Use for stream setup, producing from Workers or HTTP, configuring retention and inputs, and consuming through subscriptions.",
+			"files": [
+				"SKILL.md"
 			]
 		},
 		{

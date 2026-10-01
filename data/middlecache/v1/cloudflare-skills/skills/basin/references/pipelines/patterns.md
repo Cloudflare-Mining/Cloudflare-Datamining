@@ -1,6 +1,6 @@
-# Pipelines Patterns
+# Basin Pipelines Patterns
 
-Code-first patterns. For observability dataset/field schemas and Logpush dataset lists, pull `https://developers.cloudflare.com/pipelines/observability/metrics/` and `https://developers.cloudflare.com/pipelines/streams/logpush/`.
+Code-first patterns. For observability dataset/field schemas and Logpush dataset lists, pull `https://developers.cloudflare.com/basin-pipelines/observability/metrics/` and `https://developers.cloudflare.com/basin-pipelines/streams/logpush/`.
 
 ## Fire-and-Forget Producer
 
@@ -56,9 +56,9 @@ export default {
 };
 ```
 
-## Logpush → Pipelines
+## Logpush → Basin Pipelines
 
-Pipelines is a native Logpush destination — ingest Cloudflare logs, transform with SQL, store as Iceberg/Parquet. For the current supported dataset list and field names, pull the Logpush doc above.
+Basin Pipelines is a native Logpush destination — ingest Cloudflare logs, transform with SQL, store as Iceberg/Parquet. For the current supported dataset list and field names, pull the Logpush doc above.
 
 ```sql
 INSERT INTO http_logs_sink
@@ -72,9 +72,9 @@ FROM http_logs_stream
 WHERE EdgeResponseStatus >= 400;
 ```
 
-Configure via Dashboard (**Logpush → Create a job → Pipelines** destination) or API.
+Configure via Dashboard (**Logpush → Create a job → Basin Pipelines** destination) or API.
 
-## Pipelines + Queues Fan-out
+## Basin Pipelines + Queues Fan-out
 
 ```typescript
 await Promise.all([
@@ -83,7 +83,7 @@ await Promise.all([
 ]);
 ```
 
-Use Pipelines for long-term storage + SQL; Queues for immediate processing/retries/DLQ; both for fan-out.
+Use Basin Pipelines for long-term storage + SQL; Queues for immediate processing/retries/DLQ; both for fan-out.
 
 ## Observability (GraphQL Analytics)
 
@@ -99,32 +99,32 @@ curl -X POST "https://api.cloudflare.com/client/v4/graphql" \
 
 ### Detecting Silent Data Loss
 
-If a sink's bucket is deleted or its token expires, events are accepted but lost. Tell-tale: `recordsWritten > 0` but `filesWritten = 0`. Always verify data lands in R2 within the roll interval and R2 SQL returns expected counts.
+If a sink's bucket is deleted or its token expires, events are accepted but lost. Tell-tale: `recordsWritten > 0` but `filesWritten = 0`. Always verify data lands in R2 within the roll interval and Basin SQL returns expected counts.
 
-## Schema Evolution (Immutable Pipelines)
+## Schema Evolution (Immutable Basin Pipelines)
 
-Pipelines can't change. Version + dual-write:
+Basin Pipelines can't change. Version + dual-write:
 
 ```bash
-npx wrangler pipelines streams create events_v2 --schema-file v2.json
+npx wrangler basin pipelines streams create events_v2 --schema-file v2.json
 ```
 ```typescript
 await Promise.all([env.EVENTS_V1.send([event]), env.EVENTS_V2.send([event])]);
-// query across versions with UNION ALL in R2 SQL
+// query across versions with UNION ALL in Basin SQL
 ```
 
 ## End-to-End: Streaming Analytics Dashboard
 
 ```
-External APIs → Collector Worker (cron) → Pipeline → R2 (Iceberg) → Dashboard Worker → R2 SQL
+External APIs → Collector Worker (cron) → Pipeline → R2 (Iceberg) → Dashboard Worker → Basin SQL
 ```
 
-1. Create bucket + enable catalog ([r2-data-catalog](../r2-data-catalog/configuration.md))
+1. Create bucket + enable catalog ([Basin Catalog](../catalog/configuration.md))
 2. Create stream + sink + pipeline (here)
 3. Collector Worker with cron + stream binding (above)
-4. Dashboard Worker querying R2 SQL ([r2-sql/patterns.md](../r2-sql/patterns.md))
+4. Dashboard Worker querying Basin SQL ([sql/patterns.md](../sql/patterns.md))
 5. Enable automatic compaction
 
 ## See Also
 
-- [configuration.md](configuration.md) · [api.md](api.md) · [gotchas.md](gotchas.md) · [r2-sql](../r2-sql/)
+- [configuration.md](configuration.md) · [api.md](api.md) · [gotchas.md](gotchas.md) · [Basin SQL](../sql/)

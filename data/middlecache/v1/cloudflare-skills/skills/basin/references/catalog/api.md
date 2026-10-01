@@ -1,14 +1,14 @@
-# R2 Data Catalog API Selection
+# Basin Catalog API Selection
 
 Use the Iceberg REST catalog through an engine for table reads and writes; use the Cloudflare control-plane API for catalog administration. Copy the catalog connection values from the actual environment as described in [configuration](configuration.md).
 
 | Task | Documentation |
 |------|---------------|
-| Enable or disable catalogs; inspect status, credentials, namespaces, tables, and maintenance configuration | [R2 Data Catalog control-plane API](https://developers.cloudflare.com/api/resources/r2_data_catalog/) — select the affected operation for its schema, pagination, and namespace encoding |
-| Connect and create tables through Python | [PyIceberg configuration](https://developers.cloudflare.com/r2-data-catalog/config-examples/pyiceberg/) |
-| Connect, create, write, and query through Spark | [PySpark configuration](https://developers.cloudflare.com/r2-data-catalog/config-examples/spark-python/) |
-| Plan automatic compaction and snapshot expiration | [Table maintenance](https://developers.cloudflare.com/r2-data-catalog/table-maintenance/) |
-| Delete rows, tables, or associated files | [Deleting data](https://developers.cloudflare.com/r2-data-catalog/deleting-data/) |
+| Enable or disable catalogs; inspect status, credentials, namespaces, tables, and maintenance configuration | [Basin Catalog control-plane API](https://developers.cloudflare.com/api/resources/r2_data_catalog/) — select the affected operation for its schema, pagination, and namespace encoding |
+| Connect and create tables through Python | [PyIceberg configuration](https://developers.cloudflare.com/basin-catalog/config-examples/pyiceberg/) |
+| Connect, create, write, and query through Spark | [PySpark configuration](https://developers.cloudflare.com/basin-catalog/config-examples/spark-python/) |
+| Plan automatic compaction and snapshot expiration | [Table maintenance](https://developers.cloudflare.com/basin-catalog/table-maintenance/) |
+| Delete rows, tables, or associated files | [Deleting data](https://developers.cloudflare.com/basin-catalog/deleting-data/) |
 
 For engine-specific operations beyond these Cloudflare examples, follow the upstream engine documentation linked from the relevant configuration guide and check the installed version. Do not infer engine method signatures from the control-plane API.
 

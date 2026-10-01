@@ -1,13 +1,13 @@
-# R2 SQL Patterns
+# Basin SQL Patterns
 
-Code templates for CLI, REST, and Worker access. For performance/partitioning best practices, pull `https://developers.cloudflare.com/r2-sql/reference/limitations-best-practices/`.
+Code templates for CLI, REST, and Worker access. For performance/partitioning best practices, pull `https://developers.cloudflare.com/basin-sql/reference/limitations-best-practices/`.
 
 ## Wrangler CLI
 
 ```bash
-export WRANGLER_R2_SQL_AUTH_TOKEN=$API_TOKEN
+export WRANGLER_BASIN_SQL_AUTH_TOKEN=$API_TOKEN
 
-npx wrangler r2 sql query "${ACCOUNT_ID}_my-bucket" "
+npx wrangler basin sql query "${ACCOUNT_ID}_my-bucket" "
   SELECT category, COUNT(*) AS cnt, round(AVG(amount), 2) AS avg_amount
   FROM analytics.events
   WHERE __ingest_ts >= '2026-01-01T00:00:00Z'
@@ -19,7 +19,7 @@ npx wrangler r2 sql query "${ACCOUNT_ID}_my-bucket" "
 ```python
 import requests
 
-API = f"https://api.sql.cloudflarestorage.com/api/v1/accounts/{ACCOUNT_ID}/r2-sql/query/{BUCKET}"
+API = f"https://api.sql.cloudflarestorage.com/api/v1/accounts/{ACCOUNT_ID}/basin-sql/query/{BUCKET}"
 HEADERS = {"Authorization": f"Bearer {TOKEN}", "Content-Type": "application/json"}
 
 def r2sql(query):
@@ -35,26 +35,26 @@ rows, metrics = r2sql("SELECT category, COUNT(*) AS cnt FROM analytics.events GR
 
 ```bash
 curl -X POST \
-  "https://api.sql.cloudflarestorage.com/api/v1/accounts/$ACCOUNT_ID/r2-sql/query/$BUCKET" \
+  "https://api.sql.cloudflarestorage.com/api/v1/accounts/$ACCOUNT_ID/basin-sql/query/$BUCKET" \
   -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
   -d '{"query": "SELECT COUNT(*) AS total FROM analytics.events"}'
 ```
 
 ## Dashboard Worker
 
-No R2 SQL binding exists — query the REST endpoint via `fetch()`.
+No Basin SQL binding exists — query the REST endpoint via `fetch()`.
 
 ```typescript
 interface Env { ACCOUNT_ID: string; BUCKET: string; R2_SQL_TOKEN: string; }
 
 async function queryR2SQL(env: Env, query: string) {
-  const url = `https://api.sql.cloudflarestorage.com/api/v1/accounts/${env.ACCOUNT_ID}/r2-sql/query/${env.BUCKET}`;
+  const url = `https://api.sql.cloudflarestorage.com/api/v1/accounts/${env.ACCOUNT_ID}/basin-sql/query/${env.BUCKET}`;
   const resp = await fetch(url, {
     method: "POST",
     headers: { Authorization: `Bearer ${env.R2_SQL_TOKEN}`, "Content-Type": "application/json" },
     body: JSON.stringify({ query }),
   });
-  if (!resp.ok) throw new Error(`R2 SQL ${resp.status}: ${await resp.text()}`);
+  if (!resp.ok) throw new Error(`Basin SQL ${resp.status}: ${await resp.text()}`);
   return (await resp.json() as any).result;
 }
 
@@ -106,13 +106,13 @@ SELECT * FROM logs.requests WHERE __ingest_ts < '<last_ts>' ORDER BY __ingest_ts
 ## Performance (essentials)
 
 - **Always `LIMIT`** (early termination); **filter on partition keys first** (`__ingest_ts` range), then add predicates.
-- **Narrow time ranges**; **compact tables** (file count dominates latency — enable automatic compaction in [r2-data-catalog](../r2-data-catalog/configuration.md)).
+- **Narrow time ranges**; **compact tables** (file count dominates latency — enable automatic compaction in [Basin Catalog](../catalog/configuration.md)).
 - Read response `metrics` (`files_scanned`, `bytes_scanned`) to tune. Full guidance: limitations-best-practices doc.
 
-## Pipelines → R2 SQL
+## Basin Pipelines → Basin SQL
 
-After `npx wrangler pipelines setup` (Data Catalog destination), wait for first flush (3–7 min), then query the table. See [pipelines/patterns.md](../pipelines/patterns.md).
+After `npx wrangler basin pipelines setup` (Basin Catalog destination), wait for first flush (3–7 min), then query the table. See [pipelines/patterns.md](../pipelines/patterns.md).
 
 ## See Also
 
-- [api.md](api.md) · [gotchas.md](gotchas.md) · [r2-data-catalog/patterns.md](../r2-data-catalog/patterns.md)
+- [api.md](api.md) · [gotchas.md](gotchas.md) · [catalog/patterns.md](../catalog/patterns.md)

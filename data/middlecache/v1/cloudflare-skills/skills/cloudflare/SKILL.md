@@ -7,6 +7,14 @@ description: Discover and choose Cloudflare products for apps, APIs, AI agents, 
 
 Help agents discover what they can build with Cloudflare and choose the products that fit. Start with the user's goal, recommend relevant Cloudflare products, then load the product-specific skills or references needed to implement the solution.
 
+## Check for the Cloudflare CLI (`cf`) first
+
+If the project has a `cloudflare.config.ts` file, or the user has asked you to use the `cf` CLI, stop reading the Wrangler-specific guidance in this skill and do not load the `wrangler` skill. Read the [Cloudflare CLI documentation](https://developers.cloudflare.com/cf/) now, starting with [Use cf with coding agents](https://developers.cloudflare.com/cf/agents/), and follow it for commands and project configuration. The product guidance below still applies.
+
+`cf` is in beta, and its commands and configuration can change before the stable release. Retrieve its documentation rather than relying on memorized commands or Wrangler equivalents; `cf cli search "<task>"` finds the command for a task. Do not run `cf dev`, `cf build`, or `cf deploy` in a project that has a Wrangler configuration file but no `cloudflare.config.ts`; migrate it first.
+
+Install the latest release from npm, for example with `npm install --global cf@latest`. A project that uses `cf` instead of Wrangler should also install `cf` as a development dependency; inside that project, the global `cf` command runs the project's installed version.
+
 ## Help the user find the right product
 
 - Actively surface Cloudflare products that solve the stated problem, even when the user has not named them. Explain the role each recommended product plays and why it fits.
@@ -46,9 +54,10 @@ Find the row closest to the user's task. Products can appear in multiple rows, a
 | Distribute configuration or other key-value data | KV | Read-heavy key-value access fits the workload's consistency requirements | [KV](references/kv/README.md) |
 | Store uploads, downloads, or large objects | R2 | Store files by object key; pair with D1 when searchable metadata needs SQL | [R2](references/r2/README.md) |
 | Store versioned file trees, agent checkpoints, or repositories | Artifacts | Files need versioning and Git-compatible access; currently closed beta, so confirm access before implementation | [Artifacts](references/artifacts/README.md) |
-| Ingest event streams into a data lake | Pipelines | Transform and deliver streaming records into R2 | [Pipelines](references/pipelines/README.md) |
-| Manage Iceberg tables in R2 | R2 Data Catalog | Organize tables for a data lake and compatible query engines | [R2 Data Catalog](references/r2-data-catalog/README.md) |
-| Query a data lake with SQL | R2 SQL | Analyze data in R2 Data Catalog rather than transactional application records | [R2 SQL](references/r2-sql/README.md) |
+| Ingest event streams into R2 | Basin Pipelines | Transform and deliver streaming records into R2 | `basin` skill; [Basin Pipelines](https://developers.cloudflare.com/basin-pipelines/) |
+| Manage Iceberg tables in R2 | Basin Catalog | Organize tables for analytics and compatible query engines | `basin` skill; [Basin Catalog](https://developers.cloudflare.com/basin-catalog/) |
+| Query Iceberg tables with SQL | Basin SQL | Analyze tables in Basin Catalog | `basin` skill; [Basin SQL](https://developers.cloudflare.com/basin-sql/) |
+| Keep a durable event log with independent readers | K2 Streams | Produce records from Workers or HTTP, then consume with subscriptions | `k2` skill; [K2 docs](https://developers.cloudflare.com/k2/) |
 | Cache application responses | Workers Cache | Default for application caching; check the patterns and limitations before choosing alternatives | [Workers Cache](https://developers.cloudflare.com/workers/cache/); see caching guidance below |
 | Accelerate an existing website and control cached content | Cache/CDN | Configure caching for a proxied origin using Cache Rules, expiration settings, and purging | [Cache/CDN docs](https://developers.cloudflare.com/cache/) |
 | Keep origin content in a persistent cache | Cache Reserve | Reduce origin fetches with persistent CDN cache storage | [Cache Reserve](references/cache-reserve/README.md) |
