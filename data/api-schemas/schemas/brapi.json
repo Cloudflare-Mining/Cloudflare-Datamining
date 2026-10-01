@@ -644,435 +644,6 @@
 		"x-fern-sdk-group-name": "browser-run.crawl",
 		"x-fern-sdk-method-name": "get"
 	},
-	"GET /accounts/{account_id}/browser-rendering/devtools/browser": {
-		"operationId": "brapi-get_DevtoolsBrowserAcquire",
-		"summary": "Acquire and connect to browser session.",
-		"description": "Acquires and establishes a WebSocket connection to a browser session. Session guardrails may be supplied in the `cf-brapi-guardrails` header as base64url-encoded JSON of the same `guardrails` object the POST body accepts (for example `{\"allowedDomains\":[\"*.example.com\"]}`).",
-		"parameters": [
-			{
-				"name": "account_id",
-				"in": "path",
-				"description": "Account ID.",
-				"required": true,
-				"schema": {
-					"description": "Account ID.",
-					"type": "string"
-				}
-			},
-			{
-				"name": "keep_alive",
-				"in": "query",
-				"description": "Keep-alive time in ms (only valid when acquiring new session).",
-				"schema": {
-					"description": "Keep-alive time in ms (only valid when acquiring new session).",
-					"type": "number",
-					"default": 60000,
-					"maximum": 1200000,
-					"minimum": 10000
-				}
-			},
-			{
-				"name": "lab",
-				"in": "query",
-				"description": "Use experimental browser.",
-				"schema": {
-					"description": "Use experimental browser.",
-					"type": "boolean",
-					"default": false
-				}
-			},
-			{
-				"name": "recording",
-				"in": "query",
-				"schema": {
-					"type": "boolean",
-					"default": false
-				}
-			},
-			{
-				"name": "cf-brapi-guardrails",
-				"in": "header",
-				"description": "Optional base64url-encoded JSON session guardrails (allowedDomains and allowedDomainSets)",
-				"schema": {
-					"description": "Optional base64url-encoded JSON session guardrails (allowedDomains and allowedDomainSets)",
-					"type": "string",
-					"example": "eyJhbGxvd2VkRG9tYWlucyI6WyIqLmV4YW1wbGUuY29tIl19",
-					"nullable": true
-				}
-			}
-		],
-		"responses": {
-			"101": {
-				"description": "WebSocket connection established successfully."
-			},
-			"400": {
-				"description": "Bad request.",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"description": "Error code.",
-												"type": "number"
-											},
-											"message": {
-												"description": "Error message.",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message",
-											"code"
-										],
-										"type": "object"
-									}
-								},
-								"success": {
-									"description": "Response status.",
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"success"
-							]
-						}
-					}
-				}
-			},
-			"429": {
-				"description": "Request failed due to rate limiting.",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"description": "Error code.",
-												"type": "number"
-											},
-											"message": {
-												"description": "Error message.",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message",
-											"code"
-										],
-										"type": "object"
-									}
-								},
-								"success": {
-									"description": "Response status.",
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"success"
-							]
-						}
-					}
-				}
-			},
-			"500": {
-				"description": "Internal server error.",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"description": "Error code.",
-												"type": "number"
-											},
-											"message": {
-												"description": "Error message.",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message",
-											"code"
-										],
-										"type": "object"
-									}
-								},
-								"success": {
-									"description": "Response status.",
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"success"
-							]
-						}
-					}
-				}
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": [],
-				"api_token": []
-			}
-		],
-		"tags": [
-			"brapi"
-		],
-		"x-api-token-group": [
-			"Browser Rendering Write",
-			"Browser Rendering Read"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.brapi.read"
-			],
-			"type": "string"
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		},
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "browser-run.devtools.browser",
-		"x-fern-sdk-method-name": "launch"
-	},
-	"GET /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}": {
-		"operationId": "brapi-get_DevtoolsBrowser",
-		"summary": "Connect to browser session.",
-		"description": "Establishes a WebSocket connection to an existing browser session.",
-		"parameters": [
-			{
-				"name": "account_id",
-				"in": "path",
-				"description": "Account ID.",
-				"required": true,
-				"schema": {
-					"description": "Account ID.",
-					"type": "string"
-				}
-			},
-			{
-				"name": "session_id",
-				"in": "path",
-				"description": "Browser session ID to connect to.",
-				"required": true,
-				"schema": {
-					"description": "Browser session ID to connect to.",
-					"type": "string",
-					"format": "uuid"
-				}
-			},
-			{
-				"name": "keep_alive",
-				"in": "query",
-				"description": "Keep-alive time in ms (only valid when acquiring new session).",
-				"schema": {
-					"description": "Keep-alive time in ms (only valid when acquiring new session).",
-					"type": "number",
-					"default": 60000,
-					"maximum": 1200000,
-					"minimum": 10000
-				}
-			},
-			{
-				"name": "lab",
-				"in": "query",
-				"description": "Use experimental browser.",
-				"schema": {
-					"description": "Use experimental browser.",
-					"type": "boolean",
-					"default": false
-				}
-			},
-			{
-				"name": "recording",
-				"in": "query",
-				"schema": {
-					"type": "boolean",
-					"default": false
-				}
-			},
-			{
-				"name": "cf-brapi-guardrails",
-				"in": "header",
-				"description": "Optional base64url-encoded JSON connection guardrails (mode)",
-				"schema": {
-					"description": "Optional base64url-encoded JSON connection guardrails (mode)",
-					"type": "string",
-					"example": "eyJtb2RlIjoicmVhZG9ubHkifQ",
-					"nullable": true
-				}
-			}
-		],
-		"responses": {
-			"101": {
-				"description": "WebSocket connection established successfully."
-			},
-			"400": {
-				"description": "Bad request.",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"description": "Error code.",
-												"type": "number"
-											},
-											"message": {
-												"description": "Error message.",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message",
-											"code"
-										],
-										"type": "object"
-									}
-								},
-								"success": {
-									"description": "Response status.",
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"success"
-							]
-						}
-					}
-				}
-			},
-			"429": {
-				"description": "Request failed due to rate limiting.",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"description": "Error code.",
-												"type": "number"
-											},
-											"message": {
-												"description": "Error message.",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message",
-											"code"
-										],
-										"type": "object"
-									}
-								},
-								"success": {
-									"description": "Response status.",
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"success"
-							]
-						}
-					}
-				}
-			},
-			"500": {
-				"description": "Internal server error.",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"description": "Error code.",
-												"type": "number"
-											},
-											"message": {
-												"description": "Error message.",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message",
-											"code"
-										],
-										"type": "object"
-									}
-								},
-								"success": {
-									"description": "Response status.",
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"success"
-							]
-						}
-					}
-				}
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": [],
-				"api_token": []
-			}
-		],
-		"tags": [
-			"brapi"
-		],
-		"x-api-token-group": [
-			"Browser Rendering Write",
-			"Browser Rendering Read"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.brapi.read"
-			],
-			"type": "string"
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		},
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "browser-run.devtools.browser",
-		"x-fern-sdk-method-name": "connect"
-	},
 	"GET /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json": {
 		"operationId": "brapi-get_DevtoolsJson",
 		"summary": "List targets.",
@@ -2522,168 +2093,6 @@
 		"x-fern-sdk-group-name": "browser-run.devtools.browser",
 		"x-fern-sdk-method-name": "version"
 	},
-	"GET /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/page/{target_id}": {
-		"operationId": "brapi-get_DevtoolsPage",
-		"summary": "Connect to a specific Chrome DevTools page.",
-		"description": "Establishes a WebSocket connection to a specific Chrome DevTools target or page.",
-		"parameters": [
-			{
-				"name": "account_id",
-				"in": "path",
-				"description": "Account ID.",
-				"required": true,
-				"schema": {
-					"description": "Account ID.",
-					"type": "string"
-				}
-			},
-			{
-				"name": "session_id",
-				"in": "path",
-				"description": "Browser session ID.",
-				"required": true,
-				"schema": {
-					"description": "Browser session ID.",
-					"type": "string",
-					"format": "uuid"
-				}
-			},
-			{
-				"name": "target_id",
-				"in": "path",
-				"description": "Target ID, e.g. page ID.",
-				"required": true,
-				"schema": {
-					"description": "Target ID, e.g. page ID.",
-					"type": "string",
-					"pattern": "^[a-zA-Z0-9]+$"
-				}
-			},
-			{
-				"name": "cf-brapi-guardrails",
-				"in": "header",
-				"description": "Optional base64url-encoded JSON connection guardrails (mode)",
-				"schema": {
-					"description": "Optional base64url-encoded JSON connection guardrails (mode)",
-					"type": "string",
-					"example": "eyJtb2RlIjoicmVhZG9ubHkifQ",
-					"nullable": true
-				}
-			}
-		],
-		"responses": {
-			"101": {
-				"description": "WebSocket connection established successfully."
-			},
-			"400": {
-				"description": "Bad request.",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"description": "Error code.",
-												"type": "number"
-											},
-											"message": {
-												"description": "Error message.",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message",
-											"code"
-										],
-										"type": "object"
-									}
-								},
-								"success": {
-									"description": "Response status.",
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"success"
-							]
-						}
-					}
-				}
-			},
-			"500": {
-				"description": "Internal server error.",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"description": "Error code.",
-												"type": "number"
-											},
-											"message": {
-												"description": "Error message.",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message",
-											"code"
-										],
-										"type": "object"
-									}
-								},
-								"success": {
-									"description": "Response status.",
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"success"
-							]
-						}
-					}
-				}
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": [],
-				"api_token": []
-			}
-		],
-		"tags": [
-			"brapi"
-		],
-		"x-api-token-group": [
-			"Browser Rendering Write",
-			"Browser Rendering Read"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.brapi.read"
-			],
-			"type": "string"
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		},
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "browser-run.devtools.browser.page",
-		"x-fern-sdk-method-name": "get"
-	},
 	"GET /accounts/{account_id}/browser-rendering/devtools/session": {
 		"operationId": "brapi-get_DevtoolsSessionList",
 		"summary": "List sessions.",
@@ -3388,6 +2797,18 @@
 					"default": 5,
 					"maximum": 86400,
 					"minimum": 0
+				}
+			},
+			{
+				"name": "browser",
+				"in": "query",
+				"description": "Rendering backend. Set to `kitesurf` to use Kitesurf (beta).",
+				"schema": {
+					"description": "Rendering backend. Set to `kitesurf` to use Kitesurf (beta).",
+					"type": "string",
+					"enum": [
+						"kitesurf"
+					]
 				}
 			}
 		],
@@ -4523,6 +3944,18 @@
 					"default": 5,
 					"maximum": 86400,
 					"minimum": 0
+				}
+			},
+			{
+				"name": "browser",
+				"in": "query",
+				"description": "Rendering backend. Set to `kitesurf` to use Kitesurf (beta).",
+				"schema": {
+					"description": "Rendering backend. Set to `kitesurf` to use Kitesurf (beta).",
+					"type": "string",
+					"enum": [
+						"kitesurf"
+					]
 				}
 			}
 		],
@@ -7346,6 +6779,18 @@
 					"maximum": 86400,
 					"minimum": 0
 				}
+			},
+			{
+				"name": "browser",
+				"in": "query",
+				"description": "Rendering backend. Set to `kitesurf` to use Kitesurf (beta).",
+				"schema": {
+					"description": "Rendering backend. Set to `kitesurf` to use Kitesurf (beta).",
+					"type": "string",
+					"enum": [
+						"kitesurf"
+					]
+				}
 			}
 		],
 		"requestBody": {
@@ -8395,6 +7840,18 @@
 					"maximum": 86400,
 					"minimum": 0
 				}
+			},
+			{
+				"name": "browser",
+				"in": "query",
+				"description": "Rendering backend. Set to `kitesurf` to use Kitesurf (beta).",
+				"schema": {
+					"description": "Rendering backend. Set to `kitesurf` to use Kitesurf (beta).",
+					"type": "string",
+					"enum": [
+						"kitesurf"
+					]
+				}
 			}
 		],
 		"requestBody": {
@@ -9407,6 +8864,18 @@
 					"maximum": 86400,
 					"minimum": 0
 				}
+			},
+			{
+				"name": "browser",
+				"in": "query",
+				"description": "Rendering backend. Set to `kitesurf` to use Kitesurf (beta).",
+				"schema": {
+					"description": "Rendering backend. Set to `kitesurf` to use Kitesurf (beta).",
+					"type": "string",
+					"enum": [
+						"kitesurf"
+					]
+				}
 			}
 		],
 		"requestBody": {
@@ -10407,6 +9876,18 @@
 					"default": 5,
 					"maximum": 86400,
 					"minimum": 0
+				}
+			},
+			{
+				"name": "browser",
+				"in": "query",
+				"description": "Rendering backend. Set to `kitesurf` to use Kitesurf (beta).",
+				"schema": {
+					"description": "Rendering backend. Set to `kitesurf` to use Kitesurf (beta).",
+					"type": "string",
+					"enum": [
+						"kitesurf"
+					]
 				}
 			}
 		],
@@ -11475,6 +10956,18 @@
 					"default": 5,
 					"maximum": 86400,
 					"minimum": 0
+				}
+			},
+			{
+				"name": "browser",
+				"in": "query",
+				"description": "Rendering backend. Set to `kitesurf` to use Kitesurf (beta).",
+				"schema": {
+					"description": "Rendering backend. Set to `kitesurf` to use Kitesurf (beta).",
+					"type": "string",
+					"enum": [
+						"kitesurf"
+					]
 				}
 			}
 		],
@@ -12571,6 +12064,18 @@
 					"maximum": 86400,
 					"minimum": 0
 				}
+			},
+			{
+				"name": "browser",
+				"in": "query",
+				"description": "Rendering backend. Set to `kitesurf` to use Kitesurf (beta).",
+				"schema": {
+					"description": "Rendering backend. Set to `kitesurf` to use Kitesurf (beta).",
+					"type": "string",
+					"enum": [
+						"kitesurf"
+					]
+				}
 			}
 		],
 		"requestBody": {
@@ -13635,6 +13140,18 @@
 					"default": 5,
 					"maximum": 86400,
 					"minimum": 0
+				}
+			},
+			{
+				"name": "browser",
+				"in": "query",
+				"description": "Rendering backend. Set to `kitesurf` to use Kitesurf (beta).",
+				"schema": {
+					"description": "Rendering backend. Set to `kitesurf` to use Kitesurf (beta).",
+					"type": "string",
+					"enum": [
+						"kitesurf"
+					]
 				}
 			}
 		],

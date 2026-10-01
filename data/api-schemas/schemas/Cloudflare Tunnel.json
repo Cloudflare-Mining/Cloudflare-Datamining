@@ -1054,8 +1054,8 @@
 	},
 	"DELETE /accounts/{account_id}/warp_connector/{tunnel_id}": {
 		"operationId": "cloudflare-tunnel-delete-a-warp-connector-tunnel",
-		"summary": "Delete a Warp Connector Tunnel",
-		"description": "Deletes a Warp Connector Tunnel from an account.",
+		"summary": "Delete a Mesh node",
+		"description": "Deletes a Mesh node from an account.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1082,12 +1082,13 @@
 					"maxLength": 36,
 					"readOnly": true,
 					"x-auditable": true
-				}
+				},
+				"x-fern-parameter-name": "node-id"
 			}
 		],
 		"responses": {
 			"200": {
-				"description": "Delete a Warp Connector Tunnel response",
+				"description": "Delete a Mesh node response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1172,7 +1173,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "A Warp Connector Tunnel that connects your origin to Cloudflare's edge.",
+											"description": "A Mesh node that connects your origin to Cloudflare's edge.",
 											"type": "object",
 											"properties": {
 												"account_tag": {
@@ -1339,7 +1340,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Delete a Warp Connector Tunnel response failure",
+				"description": "Delete a Mesh node response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1426,7 +1427,7 @@
 										{
 											"properties": {
 												"result": {
-													"description": "A Warp Connector Tunnel that connects your origin to Cloudflare's edge.",
+													"description": "A Mesh node that connects your origin to Cloudflare's edge.",
 													"type": "object",
 													"properties": {
 														"account_tag": {
@@ -1702,12 +1703,7 @@
 		"x-fern-sdk-group-name": "mesh.nodes",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true,
-		"x-forge-params": {
-			"tunnel_id": {
-				"flagName": "node-id"
-			}
-		},
-		"x-forge-require-confirmation": "This operation permanently deletes a Mesh node (Warp Connector Tunnel)."
+		"x-forge-require-confirmation": "This operation permanently deletes a Mesh node."
 	},
 	"GET /accounts/{account_id}/cfd_tunnel": {
 		"operationId": "cloudflare-tunnel-list-cloudflare-tunnels",
@@ -5334,7 +5330,7 @@
 														}
 													},
 													{
-														"description": "A Warp Connector Tunnel that connects your origin to Cloudflare's edge.",
+														"description": "A Mesh node that connects your origin to Cloudflare's edge.",
 														"type": "object",
 														"properties": {
 															"account_tag": {
@@ -5815,7 +5811,7 @@
 																}
 															},
 															{
-																"description": "A Warp Connector Tunnel that connects your origin to Cloudflare's edge.",
+																"description": "A Mesh node that connects your origin to Cloudflare's edge.",
 																"type": "object",
 																"properties": {
 																	"account_tag": {
@@ -6101,8 +6097,8 @@
 	},
 	"GET /accounts/{account_id}/warp_connector": {
 		"operationId": "cloudflare-tunnel-list-warp-connector-tunnels",
-		"summary": "List Warp Connector Tunnels",
-		"description": "Lists and filters Warp Connector Tunnels in an account.",
+		"summary": "List Mesh nodes",
+		"description": "Lists and filters Mesh nodes in an account.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -6230,7 +6226,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "List Warp Connector Tunnels response",
+				"description": "List Mesh nodes response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -6359,7 +6355,7 @@
 										"result": {
 											"type": "array",
 											"items": {
-												"description": "A Warp Connector Tunnel that connects your origin to Cloudflare's edge.",
+												"description": "A Mesh node that connects your origin to Cloudflare's edge.",
 												"type": "object",
 												"properties": {
 													"account_tag": {
@@ -6527,7 +6523,7 @@
 				}
 			},
 			"4XX": {
-				"description": "List Warp Connector Tunnels response failure",
+				"description": "List Mesh nodes response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -6658,7 +6654,7 @@
 												"result": {
 													"type": "array",
 													"items": {
-														"description": "A Warp Connector Tunnel that connects your origin to Cloudflare's edge.",
+														"description": "A Mesh node that connects your origin to Cloudflare's edge.",
 														"type": "object",
 														"properties": {
 															"account_tag": {
@@ -6940,8 +6936,8 @@
 	},
 	"GET /accounts/{account_id}/warp_connector/{tunnel_id}": {
 		"operationId": "cloudflare-tunnel-get-a-warp-connector-tunnel",
-		"summary": "Get a Warp Connector Tunnel",
-		"description": "Fetches a single Warp Connector Tunnel.",
+		"summary": "Get a Mesh node",
+		"description": "Fetches a single Mesh node.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -6968,12 +6964,13 @@
 					"maxLength": 36,
 					"readOnly": true,
 					"x-auditable": true
-				}
+				},
+				"x-fern-parameter-name": "node-id"
 			}
 		],
 		"responses": {
 			"200": {
-				"description": "Get a Warp Connector Tunnel response",
+				"description": "Get a Mesh node response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -7058,7 +7055,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "A Warp Connector Tunnel that connects your origin to Cloudflare's edge.",
+											"description": "A Mesh node that connects your origin to Cloudflare's edge.",
 											"type": "object",
 											"properties": {
 												"account_tag": {
@@ -7225,7 +7222,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Get a Warp Connector Tunnel response failure",
+				"description": "Get a Mesh node response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -7312,7 +7309,7 @@
 										{
 											"properties": {
 												"result": {
-													"description": "A Warp Connector Tunnel that connects your origin to Cloudflare's edge.",
+													"description": "A Mesh node that connects your origin to Cloudflare's edge.",
 													"type": "object",
 													"properties": {
 														"account_tag": {
@@ -7589,17 +7586,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mesh.nodes",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true,
-		"x-forge-params": {
-			"tunnel_id": {
-				"flagName": "node-id"
-			}
-		}
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/warp_connector/{tunnel_id}/connections": {
 		"operationId": "cloudflare-tunnel-list-warp-connector-tunnel-connections",
-		"summary": "List WARP Connector Tunnel connections",
-		"description": "Fetches connection details for a WARP Connector Tunnel.",
+		"summary": "List Mesh node connections",
+		"description": "Lists connection details for a Mesh node.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -7626,12 +7618,13 @@
 					"maxLength": 36,
 					"readOnly": true,
 					"x-auditable": true
-				}
+				},
+				"x-fern-parameter-name": "node-id"
 			}
 		],
 		"responses": {
 			"200": {
-				"description": "List WARP Connector Tunnel connections response",
+				"description": "List Mesh node connections response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -7760,7 +7753,7 @@
 										"result": {
 											"type": "array",
 											"items": {
-												"description": "A WARP Connector client that maintains a connection to a Cloudflare data center.",
+												"description": "A Mesh node connector that maintains a connection to a Cloudflare data center.",
 												"type": "object",
 												"properties": {
 													"arch": {
@@ -7769,7 +7762,7 @@
 														"example": "linux_amd64"
 													},
 													"conns": {
-														"description": "The WARP Connector Tunnel connections between your origin and Cloudflare's edge.",
+														"description": "The Mesh node connections between your origin and Cloudflare's edge.",
 														"type": "array",
 														"items": {
 															"properties": {
@@ -7808,7 +7801,7 @@
 																	"example": "2021-01-25T18:22:34.317854Z"
 																},
 																"origin_ip": {
-																	"description": "The public IP address of the host running WARP Connector.",
+																	"description": "The public IP address of the host running the Mesh node connector.",
 																	"allOf": [
 																		{
 																			"type": "string",
@@ -7828,7 +7821,7 @@
 														}
 													},
 													"ha_status": {
-														"description": "The HA status of a WARP Connector client.",
+														"description": "The HA status of a Mesh node connector.",
 														"type": "string",
 														"enum": [
 															"offline",
@@ -7869,7 +7862,7 @@
 				}
 			},
 			"4XX": {
-				"description": "List WARP Connector connections response failure",
+				"description": "List Mesh node connections response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -8000,7 +7993,7 @@
 												"result": {
 													"type": "array",
 													"items": {
-														"description": "A WARP Connector client that maintains a connection to a Cloudflare data center.",
+														"description": "A Mesh node connector that maintains a connection to a Cloudflare data center.",
 														"type": "object",
 														"properties": {
 															"arch": {
@@ -8009,7 +8002,7 @@
 																"example": "linux_amd64"
 															},
 															"conns": {
-																"description": "The WARP Connector Tunnel connections between your origin and Cloudflare's edge.",
+																"description": "The Mesh node connections between your origin and Cloudflare's edge.",
 																"type": "array",
 																"items": {
 																	"properties": {
@@ -8048,7 +8041,7 @@
 																			"example": "2021-01-25T18:22:34.317854Z"
 																		},
 																		"origin_ip": {
-																			"description": "The public IP address of the host running WARP Connector.",
+																			"description": "The public IP address of the host running the Mesh node connector.",
 																			"allOf": [
 																				{
 																					"type": "string",
@@ -8068,7 +8061,7 @@
 																}
 															},
 															"ha_status": {
-																"description": "The HA status of a WARP Connector client.",
+																"description": "The HA status of a Mesh node connector.",
 																"type": "string",
 																"enum": [
 																	"offline",
@@ -8219,17 +8212,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mesh.nodes.connections",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true,
-		"x-forge-params": {
-			"tunnel_id": {
-				"flagName": "node-id"
-			}
-		}
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/warp_connector/{tunnel_id}/connectors/{connector_id}": {
 		"operationId": "cloudflare-tunnel-get-warp-connector-tunnel-connector",
-		"summary": "Get WARP Connector Tunnel connector",
-		"description": "Fetches connector and connection details for a WARP Connector Tunnel.",
+		"summary": "Get a Mesh node connector",
+		"description": "Fetches connector and connection details for a Mesh node.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -8256,7 +8244,8 @@
 					"maxLength": 36,
 					"readOnly": true,
 					"x-auditable": true
-				}
+				},
+				"x-fern-parameter-name": "node-id"
 			},
 			{
 				"name": "connector_id",
@@ -8275,7 +8264,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Get WARP Connector Tunnel connector response",
+				"description": "Get a Mesh node connector response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -8360,7 +8349,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "A WARP Connector client that maintains a connection to a Cloudflare data center.",
+											"description": "A Mesh node connector that maintains a connection to a Cloudflare data center.",
 											"type": "object",
 											"properties": {
 												"arch": {
@@ -8369,7 +8358,7 @@
 													"example": "linux_amd64"
 												},
 												"conns": {
-													"description": "The WARP Connector Tunnel connections between your origin and Cloudflare's edge.",
+													"description": "The Mesh node connections between your origin and Cloudflare's edge.",
 													"type": "array",
 													"items": {
 														"properties": {
@@ -8408,7 +8397,7 @@
 																"example": "2021-01-25T18:22:34.317854Z"
 															},
 															"origin_ip": {
-																"description": "The public IP address of the host running WARP Connector.",
+																"description": "The public IP address of the host running the Mesh node connector.",
 																"allOf": [
 																	{
 																		"type": "string",
@@ -8428,7 +8417,7 @@
 													}
 												},
 												"ha_status": {
-													"description": "The HA status of a WARP Connector client.",
+													"description": "The HA status of a Mesh node connector.",
 													"type": "string",
 													"enum": [
 														"offline",
@@ -8468,7 +8457,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Get WARP Connector Tunnel connector response failure",
+				"description": "Get a Mesh node connector response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -8555,7 +8544,7 @@
 										{
 											"properties": {
 												"result": {
-													"description": "A WARP Connector client that maintains a connection to a Cloudflare data center.",
+													"description": "A Mesh node connector that maintains a connection to a Cloudflare data center.",
 													"type": "object",
 													"properties": {
 														"arch": {
@@ -8564,7 +8553,7 @@
 															"example": "linux_amd64"
 														},
 														"conns": {
-															"description": "The WARP Connector Tunnel connections between your origin and Cloudflare's edge.",
+															"description": "The Mesh node connections between your origin and Cloudflare's edge.",
 															"type": "array",
 															"items": {
 																"properties": {
@@ -8603,7 +8592,7 @@
 																		"example": "2021-01-25T18:22:34.317854Z"
 																	},
 																	"origin_ip": {
-																		"description": "The public IP address of the host running WARP Connector.",
+																		"description": "The public IP address of the host running the Mesh node connector.",
 																		"allOf": [
 																			{
 																				"type": "string",
@@ -8623,7 +8612,7 @@
 															}
 														},
 														"ha_status": {
-															"description": "The HA status of a WARP Connector client.",
+															"description": "The HA status of a Mesh node connector.",
 															"type": "string",
 															"enum": [
 																"offline",
@@ -8773,17 +8762,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mesh.nodes.connectors",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true,
-		"x-forge-params": {
-			"tunnel_id": {
-				"flagName": "node-id"
-			}
-		}
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/warp_connector/{tunnel_id}/token": {
 		"operationId": "cloudflare-tunnel-get-a-warp-connector-tunnel-token",
-		"summary": "Get a Warp Connector Tunnel token",
-		"description": "Gets the token used to associate warp device with a specific Warp Connector tunnel.",
+		"summary": "Get a Mesh node token",
+		"description": "Gets the token used to associate a WARP device with a specific Mesh node.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -8810,12 +8794,13 @@
 					"maxLength": 36,
 					"readOnly": true,
 					"x-auditable": true
-				}
+				},
+				"x-fern-parameter-name": "node-id"
 			}
 		],
 		"responses": {
 			"200": {
-				"description": "Get a Warp Connector Tunnel token response",
+				"description": "Get a Mesh node token response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -8915,7 +8900,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Get a Warp Connector Tunnel token response failure",
+				"description": "Get a Mesh node token response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -9126,12 +9111,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mesh.nodes.token",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true,
-		"x-forge-params": {
-			"tunnel_id": {
-				"flagName": "node-id"
-			}
-		}
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/cfd_tunnel/{tunnel_id}": {
 		"operationId": "cloudflare-tunnel-update-a-cloudflare-tunnel",
@@ -9848,8 +9828,8 @@
 	},
 	"PATCH /accounts/{account_id}/warp_connector/{tunnel_id}": {
 		"operationId": "cloudflare-tunnel-update-a-warp-connector-tunnel",
-		"summary": "Update a Warp Connector Tunnel",
-		"description": "Updates an existing Warp Connector Tunnel.",
+		"summary": "Update a Mesh node",
+		"description": "Updates an existing Mesh node.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -9876,7 +9856,8 @@
 					"maxLength": 36,
 					"readOnly": true,
 					"x-auditable": true
-				}
+				},
+				"x-fern-parameter-name": "node-id"
 			}
 		],
 		"requestBody": {
@@ -9904,7 +9885,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Update a Warp Connector Tunnel response",
+				"description": "Update a Mesh node response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -9989,7 +9970,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "A Warp Connector Tunnel that connects your origin to Cloudflare's edge.",
+											"description": "A Mesh node that connects your origin to Cloudflare's edge.",
 											"type": "object",
 											"properties": {
 												"account_tag": {
@@ -10156,7 +10137,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Update a Warp Connector Tunnel response failure",
+				"description": "Update a Mesh node response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -10243,7 +10224,7 @@
 										{
 											"properties": {
 												"result": {
-													"description": "A Warp Connector Tunnel that connects your origin to Cloudflare's edge.",
+													"description": "A Mesh node that connects your origin to Cloudflare's edge.",
 													"type": "object",
 													"properties": {
 														"account_tag": {
@@ -10518,12 +10499,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mesh.nodes",
 		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true,
-		"x-forge-params": {
-			"tunnel_id": {
-				"flagName": "node-id"
-			}
-		}
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cfd_tunnel": {
 		"operationId": "cloudflare-tunnel-create-a-cloudflare-tunnel",
@@ -10552,14 +10528,19 @@
 						"type": "object",
 						"properties": {
 							"config_src": {
-								"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.",
-								"type": "string",
-								"example": "cloudflare",
-								"default": "local",
-								"enum": [
-									"local",
-									"cloudflare"
-								]
+								"allOf": [
+									{
+										"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.",
+										"type": "string",
+										"example": "cloudflare",
+										"default": "local",
+										"enum": [
+											"local",
+											"cloudflare"
+										]
+									}
+								],
+								"x-fern-property-name": "config-source"
 							},
 							"name": {
 								"description": "A user-friendly name for a tunnel.",
@@ -11235,12 +11216,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true,
-		"x-forge-params": {
-			"config_src": {
-				"flagName": "config-source"
-			}
-		}
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cfd_tunnel/{tunnel_id}/management": {
 		"operationId": "cloudflare-tunnel-get-a-cloudflare-tunnel-management-token",
@@ -11618,8 +11594,8 @@
 	},
 	"POST /accounts/{account_id}/warp_connector": {
 		"operationId": "cloudflare-tunnel-create-a-warp-connector-tunnel",
-		"summary": "Create a Warp Connector Tunnel",
-		"description": "Creates a new Warp Connector Tunnel in an account.",
+		"summary": "Create a Mesh node",
+		"description": "Creates a new Mesh node in an account.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -11662,7 +11638,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Create a Warp Connector Tunnel response",
+				"description": "Create a Mesh node response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -11747,7 +11723,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "A Warp Connector Tunnel that connects your origin to Cloudflare's edge.",
+											"description": "A Mesh node that connects your origin to Cloudflare's edge.",
 											"type": "object",
 											"properties": {
 												"account_tag": {
@@ -11914,7 +11890,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Create a Warp Connector Tunnel response failure",
+				"description": "Create a Mesh node response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -12001,7 +11977,7 @@
 										{
 											"properties": {
 												"result": {
-													"description": "A Warp Connector Tunnel that connects your origin to Cloudflare's edge.",
+													"description": "A Mesh node that connects your origin to Cloudflare's edge.",
 													"type": "object",
 													"properties": {
 														"account_tag": {
@@ -12280,8 +12256,8 @@
 	},
 	"PUT /accounts/{account_id}/warp_connector/{tunnel_id}/failover": {
 		"operationId": "cloudflare-tunnel-manual-failover-warp-connector-tunnel",
-		"summary": "Trigger a manual failover for a WARP Connector Tunnel",
-		"description": "Triggers a manual failover for a specific WARP Connector Tunnel, setting the specified client as the active connector. The tunnel must be configured for high availability (HA) and the client must be linked to the tunnel.",
+		"summary": "Trigger a manual failover for a Mesh node",
+		"description": "Triggers a manual failover for a specific Mesh node, setting the specified client as the active connector. The tunnel must be configured for high availability (HA) and the client must be linked to the tunnel.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -12308,7 +12284,8 @@
 					"maxLength": 36,
 					"readOnly": true,
 					"x-auditable": true
-				}
+				},
+				"x-fern-parameter-name": "node-id"
 			}
 		],
 		"requestBody": {
@@ -12319,12 +12296,17 @@
 						"type": "object",
 						"properties": {
 							"client_id": {
-								"description": "UUID of the Cloudflare Tunnel connector.",
-								"type": "string",
-								"format": "uuid",
-								"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925",
-								"maxLength": 36,
-								"x-auditable": true
+								"allOf": [
+									{
+										"description": "UUID of the Cloudflare Tunnel connector.",
+										"type": "string",
+										"format": "uuid",
+										"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925",
+										"maxLength": 36,
+										"x-auditable": true
+									}
+								],
+								"x-fern-property-name": "connector-id"
 							}
 						},
 						"required": [
@@ -12647,14 +12629,6 @@
 		"x-fern-sdk-group-name": "mesh.nodes",
 		"x-fern-sdk-method-name": "failover",
 		"x-forge-hidden": true,
-		"x-forge-params": {
-			"client_id": {
-				"flagName": "connector-id"
-			},
-			"tunnel_id": {
-				"flagName": "node-id"
-			}
-		},
 		"x-forge-require-confirmation": "This operation triggers a manual failover, changing the active connector for a Mesh node."
 	}
 }

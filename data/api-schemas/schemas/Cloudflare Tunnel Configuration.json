@@ -570,8 +570,8 @@
 	},
 	"GET /accounts/{account_id}/warp_connector/{tunnel_id}/configurations": {
 		"operationId": "cloudflare-tunnel-configuration-get-warp-connector-configuration",
-		"summary": "Get WARP Connector HA configuration",
-		"description": "Gets the high-availability configuration for a WARP Connector tunnel.",
+		"summary": "Get Mesh node HA configuration",
+		"description": "Gets the high-availability configuration for a Mesh node.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -601,7 +601,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Get WARP Connector HA configuration response",
+				"description": "Get Mesh node HA configuration response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -775,7 +775,7 @@
 													"readOnly": true
 												},
 												"ha_mode": {
-													"description": "High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.",
+													"description": "High-availability mode for the Mesh node. `none` means HA is enabled but no provider is configured yet (newly created nodes default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.",
 													"type": "string",
 													"example": "aws",
 													"enum": [
@@ -819,7 +819,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Get WARP Connector HA configuration response failure",
+				"description": "Get Mesh node HA configuration response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1789,8 +1789,8 @@
 	},
 	"PUT /accounts/{account_id}/warp_connector/{tunnel_id}/configurations": {
 		"operationId": "cloudflare-tunnel-configuration-update-warp-connector-configuration",
-		"summary": "Update WARP Connector HA configuration",
-		"description": "Adds or updates the high-availability configuration for a WARP Connector tunnel.",
+		"summary": "Update Mesh node HA configuration",
+		"description": "Adds or updates the high-availability configuration for a Mesh node.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1896,7 +1896,7 @@
 								]
 							},
 							"ha_mode": {
-								"description": "High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.",
+								"description": "High-availability mode for the Mesh node. `none` means HA is enabled but no provider is configured yet (newly created nodes default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.",
 								"type": "string",
 								"example": "aws",
 								"enum": [
@@ -1917,7 +1917,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Update WARP Connector HA configuration response",
+				"description": "Update Mesh node HA configuration response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2091,7 +2091,7 @@
 													"readOnly": true
 												},
 												"ha_mode": {
-													"description": "High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.",
+													"description": "High-availability mode for the Mesh node. `none` means HA is enabled but no provider is configured yet (newly created nodes default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.",
 													"type": "string",
 													"example": "aws",
 													"enum": [
@@ -2135,7 +2135,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Update WARP Connector HA configuration response failure",
+				"description": "Update Mesh node HA configuration response failure",
 				"content": {
 					"application/json": {
 						"schema": {

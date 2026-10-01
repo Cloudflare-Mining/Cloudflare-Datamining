@@ -134,7 +134,7 @@
 													"description": "Lists catalogs in the account.",
 													"type": "array",
 													"items": {
-														"description": "Contains R2 Data Catalog information.",
+														"description": "Contains catalog information.",
 														"type": "object",
 														"properties": {
 															"bucket": {
@@ -583,7 +583,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "Contains R2 Data Catalog information.",
+											"description": "Contains catalog information.",
 											"type": "object",
 											"properties": {
 												"bucket": {

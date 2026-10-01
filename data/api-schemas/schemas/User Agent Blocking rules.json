@@ -1394,7 +1394,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "firewall.ua-rules",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"mode": {
+				"flagName": "action"
+			}
+		}
 	},
 	"PUT /zones/{zone_id}/firewall/ua_rules/{ua_rule_id}": {
 		"operationId": "user-agent-blocking-rules-update-a-user-agent-blocking-rule",
@@ -1861,6 +1866,11 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "firewall.ua-rules",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"mode": {
+				"flagName": "action"
+			}
+		}
 	}
 }

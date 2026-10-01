@@ -1091,7 +1091,7 @@
 	"DELETE /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/tags/{tag}": {
 		"operationId": "namespace-worker-delete-script-tag",
 		"summary": "Delete Workers for Platforms Script Tag",
-		"description": "Delete a tag from a script uploaded to a Workers for Platforms dispatch namespace.",
+		"description": "Delete a tag from a script uploaded to a Workers for Platforms dispatch namespace.\n\nOn `api-version` dates on or after `2026-10-01`, `tag` identifies a key and the operation returns the complete updated tag map. Deleting a missing key succeeds. Earlier versions retain the legacy string-tag behavior and return a null result.\n",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1134,113 +1134,274 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"oneOf": [
+						{
+							"allOf": [
+								{
+									"description": "A typed tag key containing only Unicode letters or numbers, underscores, periods, or hyphens. The complete UTF-8 encoded tag (the key plus `=` and the value when the value is non-empty) must not exceed 1024 bytes. Cloudflare-reserved prefixes are not accepted.",
+									"type": "string",
+									"example": "environment",
+									"maxLength": 256,
+									"minLength": 1
+								}
+							],
+							"x-version-after": "2026-10-01T00:00:00Z"
+						},
+						{
+							"allOf": [
+								{
+									"type": "string",
+									"example": "my-tag",
+									"maxLength": 1024,
+									"pattern": "^[^,&]*$"
+								}
+							],
+							"x-version-before": "2026-10-01T00:00:00Z"
+						}
+					]
+				}
+			},
+			{
+				"description": "Requested API compatibility date in `YYYY-MM-DD[.release]` format (UTC). The optional release suffix contains lowercase letters; for example, `2026-10-01.epoch`.\n\nTyped Worker tag operations require a date on or after `2026-10-01`.\n",
+				"in": "header",
+				"name": "api-version",
+				"schema": {
 					"type": "string",
-					"example": "my-tag",
-					"maxLength": 1024,
-					"pattern": "^[^,&]*$"
+					"example": "2026-10-01.epoch",
+					"pattern": "^\\d{4}-\\d{2}-\\d{2}(\\.[a-z]+)?$"
 				}
 			}
 		],
 		"responses": {
 			"200": {
 				"description": "Delete script tag.",
+				"headers": {
+					"api-version": {
+						"description": "The resolved API compatibility date used to serve this request.",
+						"schema": {
+							"type": "string",
+							"pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+						}
+					}
+				},
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
+							"oneOf": [
 								{
-									"type": "object",
-									"properties": {
-										"errors": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
+															"enum": [
+																true
+															]
 														}
-													}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													]
 												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"messages": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
+												{
+													"properties": {
+														"result": {
+															"description": "Tags associated with the Worker, as a key/value object. Each complete UTF-8 encoded tag (the key plus `=` and the value when the value is non-empty) must not exceed 1024 bytes.",
+															"type": "object",
+															"example": {
+																"environment": "production",
+																"team": "my-team"
+															},
+															"additionalProperties": {
 																"type": "string"
-															}
+															},
+															"maxProperties": 10,
+															"x-auditable": true
 														}
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": true,
-											"enum": [
-												true
+													},
+													"required": [
+														"result"
+													],
+													"type": "object"
+												}
 											]
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
-									]
+									],
+									"x-version-after": "2026-10-01T00:00:00Z"
 								},
 								{
-									"properties": {
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
+															"enum": [
+																true
+															]
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													]
+												},
+												{
+													"properties": {
+														"result": {
+															"type": "object",
+															"enum": [
+																null
+															],
+															"nullable": true
+														}
+													},
+													"type": "object"
+												}
+											]
 										}
-									},
-									"type": "object"
+									],
+									"x-version-before": "2026-10-01T00:00:00Z"
 								}
 							]
 						}
@@ -21856,6 +22017,349 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.settings",
+		"x-fern-sdk-method-name": "edit"
+	},
+	"PATCH /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/tags/{tag}": {
+		"operationId": "namespace-worker-patch-script-tag",
+		"summary": "Update Workers for Platforms Script Tag",
+		"description": "Add or update one tag key/value on a script uploaded to a Workers for Platforms dispatch namespace without replacing its other tags.\n\nThis operation requires an `api-version` on or after `2026-10-01`.\n",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "dispatch_namespace",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Name of the Workers for Platforms dispatch namespace.",
+					"type": "string",
+					"example": "my-dispatch-namespace",
+					"pattern": "^.+$",
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "script_name",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Name of the script.",
+					"type": "string",
+					"example": "this-is_my_script-01",
+					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "tag",
+				"in": "path",
+				"description": "Tag key. Cloudflare-reserved prefixes are not accepted.",
+				"required": true,
+				"schema": {
+					"description": "A typed tag key containing only Unicode letters or numbers, underscores, periods, or hyphens. The complete UTF-8 encoded tag (the key plus `=` and the value when the value is non-empty) must not exceed 1024 bytes. Cloudflare-reserved prefixes are not accepted.",
+					"type": "string",
+					"example": "environment",
+					"maxLength": 256,
+					"minLength": 1
+				}
+			},
+			{
+				"description": "Requested API compatibility date in `YYYY-MM-DD[.release]` format (UTC). The optional release suffix contains lowercase letters; for example, `2026-10-01.epoch`.\n\nTyped Worker tag operations require a date on or after `2026-10-01`.\n",
+				"in": "header",
+				"name": "api-version",
+				"schema": {
+					"type": "string",
+					"example": "2026-10-01.epoch",
+					"pattern": "^\\d{4}-\\d{2}-\\d{2}(\\.[a-z]+)?$"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "The value to assign to the tag key. An empty string is valid. The complete UTF-8 encoded tag (the key plus `=` and the value when the value is non-empty) must not exceed 1024 bytes.",
+						"type": "object",
+						"properties": {
+							"value": {
+								"type": "string",
+								"example": "production"
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"value"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "The complete updated tag map.",
+				"headers": {
+					"api-version": {
+						"description": "The resolved API compatibility date used to serve this request.",
+						"schema": {
+							"type": "string",
+							"pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Tags associated with the Worker, as a key/value object. Each complete UTF-8 encoded tag (the key plus `=` and the value when the value is non-empty) must not exceed 1024 bytes.",
+											"type": "object",
+											"example": {
+												"environment": "production",
+												"team": "my-team"
+											},
+											"additionalProperties": {
+												"type": "string"
+											},
+											"maxProperties": 10,
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Update script tag failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Workers for Platforms"
+		],
+		"x-fern-audiences": [
+			"sdk"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.tags",
 		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/workers/dispatch/namespaces": {

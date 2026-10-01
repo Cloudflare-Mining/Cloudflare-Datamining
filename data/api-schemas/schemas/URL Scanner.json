@@ -1725,6 +1725,22 @@
 																				"message": {
 																					"type": "string"
 																				},
+																				"messageRef": {
+																					"type": "object",
+																					"properties": {
+																						"code": {
+																							"description": "Stable, translatable message code.",
+																							"type": "string",
+																							"example": "check.robotsTxt.valid"
+																						},
+																						"params": {
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"code"
+																					]
+																				},
 																				"status": {
 																					"type": "string",
 																					"example": "pass"
@@ -1832,6 +1848,22 @@
 																				"message": {
 																					"type": "string"
 																				},
+																				"messageRef": {
+																					"type": "object",
+																					"properties": {
+																						"code": {
+																							"description": "Stable, translatable message code.",
+																							"type": "string",
+																							"example": "check.robotsTxt.valid"
+																						},
+																						"params": {
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"code"
+																					]
+																				},
 																				"status": {
 																					"type": "string",
 																					"example": "pass"
@@ -1938,6 +1970,22 @@
 																				},
 																				"message": {
 																					"type": "string"
+																				},
+																				"messageRef": {
+																					"type": "object",
+																					"properties": {
+																						"code": {
+																							"description": "Stable, translatable message code.",
+																							"type": "string",
+																							"example": "check.robotsTxt.valid"
+																						},
+																						"params": {
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"code"
+																					]
 																				},
 																				"status": {
 																					"type": "string",
@@ -2056,6 +2104,22 @@
 																				"message": {
 																					"type": "string"
 																				},
+																				"messageRef": {
+																					"type": "object",
+																					"properties": {
+																						"code": {
+																							"description": "Stable, translatable message code.",
+																							"type": "string",
+																							"example": "check.robotsTxt.valid"
+																						},
+																						"params": {
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"code"
+																					]
+																				},
 																				"status": {
 																					"type": "string",
 																					"example": "fail"
@@ -2162,6 +2226,22 @@
 																				},
 																				"message": {
 																					"type": "string"
+																				},
+																				"messageRef": {
+																					"type": "object",
+																					"properties": {
+																						"code": {
+																							"description": "Stable, translatable message code.",
+																							"type": "string",
+																							"example": "check.robotsTxt.valid"
+																						},
+																						"params": {
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"code"
+																					]
 																				},
 																				"status": {
 																					"type": "string",
@@ -2270,6 +2350,22 @@
 																				"message": {
 																					"type": "string"
 																				},
+																				"messageRef": {
+																					"type": "object",
+																					"properties": {
+																						"code": {
+																							"description": "Stable, translatable message code.",
+																							"type": "string",
+																							"example": "check.robotsTxt.valid"
+																						},
+																						"params": {
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"code"
+																					]
+																				},
 																				"status": {
 																					"type": "string",
 																					"example": "fail"
@@ -2377,6 +2473,22 @@
 																				"message": {
 																					"type": "string"
 																				},
+																				"messageRef": {
+																					"type": "object",
+																					"properties": {
+																						"code": {
+																							"description": "Stable, translatable message code.",
+																							"type": "string",
+																							"example": "check.robotsTxt.valid"
+																						},
+																						"params": {
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"code"
+																					]
+																				},
 																				"status": {
 																					"type": "string",
 																					"example": "fail"
@@ -2483,6 +2595,22 @@
 																				},
 																				"message": {
 																					"type": "string"
+																				},
+																				"messageRef": {
+																					"type": "object",
+																					"properties": {
+																						"code": {
+																							"description": "Stable, translatable message code.",
+																							"type": "string",
+																							"example": "check.robotsTxt.valid"
+																						},
+																						"params": {
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"code"
+																					]
 																				},
 																				"status": {
 																					"type": "string",
@@ -2603,6 +2731,22 @@
 																				"message": {
 																					"type": "string"
 																				},
+																				"messageRef": {
+																					"type": "object",
+																					"properties": {
+																						"code": {
+																							"description": "Stable, translatable message code.",
+																							"type": "string",
+																							"example": "check.robotsTxt.valid"
+																						},
+																						"params": {
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"code"
+																					]
+																				},
 																				"status": {
 																					"type": "string",
 																					"example": "fail"
@@ -2718,6 +2862,22 @@
 																				"message": {
 																					"type": "string"
 																				},
+																				"messageRef": {
+																					"type": "object",
+																					"properties": {
+																						"code": {
+																							"description": "Stable, translatable message code.",
+																							"type": "string",
+																							"example": "check.robotsTxt.valid"
+																						},
+																						"params": {
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"code"
+																					]
+																				},
 																				"status": {
 																					"type": "string",
 																					"example": "fail"
@@ -2824,6 +2984,22 @@
 																				},
 																				"message": {
 																					"type": "string"
+																				},
+																				"messageRef": {
+																					"type": "object",
+																					"properties": {
+																						"code": {
+																							"description": "Stable, translatable message code.",
+																							"type": "string",
+																							"example": "check.robotsTxt.valid"
+																						},
+																						"params": {
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"code"
+																					]
 																				},
 																				"status": {
 																					"type": "string",
@@ -2932,6 +3108,22 @@
 																				"message": {
 																					"type": "string"
 																				},
+																				"messageRef": {
+																					"type": "object",
+																					"properties": {
+																						"code": {
+																							"description": "Stable, translatable message code.",
+																							"type": "string",
+																							"example": "check.robotsTxt.valid"
+																						},
+																						"params": {
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"code"
+																					]
+																				},
 																				"status": {
 																					"type": "string",
 																					"example": "pass"
@@ -3038,6 +3230,22 @@
 																				},
 																				"message": {
 																					"type": "string"
+																				},
+																				"messageRef": {
+																					"type": "object",
+																					"properties": {
+																						"code": {
+																							"description": "Stable, translatable message code.",
+																							"type": "string",
+																							"example": "check.robotsTxt.valid"
+																						},
+																						"params": {
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"code"
+																					]
 																				},
 																				"status": {
 																					"type": "string",
@@ -3157,6 +3365,22 @@
 																				"message": {
 																					"type": "string"
 																				},
+																				"messageRef": {
+																					"type": "object",
+																					"properties": {
+																						"code": {
+																							"description": "Stable, translatable message code.",
+																							"type": "string",
+																							"example": "check.robotsTxt.valid"
+																						},
+																						"params": {
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"code"
+																					]
+																				},
 																				"status": {
 																					"type": "string",
 																					"example": "fail"
@@ -3263,6 +3487,22 @@
 																				},
 																				"message": {
 																					"type": "string"
+																				},
+																				"messageRef": {
+																					"type": "object",
+																					"properties": {
+																						"code": {
+																							"description": "Stable, translatable message code.",
+																							"type": "string",
+																							"example": "check.robotsTxt.valid"
+																						},
+																						"params": {
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"code"
+																					]
 																				},
 																				"status": {
 																					"type": "string",
@@ -3371,6 +3611,22 @@
 																				"message": {
 																					"type": "string"
 																				},
+																				"messageRef": {
+																					"type": "object",
+																					"properties": {
+																						"code": {
+																							"description": "Stable, translatable message code.",
+																							"type": "string",
+																							"example": "check.robotsTxt.valid"
+																						},
+																						"params": {
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"code"
+																					]
+																				},
 																				"status": {
 																					"type": "string",
 																					"example": "fail"
@@ -3477,6 +3733,22 @@
 																				},
 																				"message": {
 																					"type": "string"
+																				},
+																				"messageRef": {
+																					"type": "object",
+																					"properties": {
+																						"code": {
+																							"description": "Stable, translatable message code.",
+																							"type": "string",
+																							"example": "check.robotsTxt.valid"
+																						},
+																						"params": {
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"code"
+																					]
 																				},
 																				"status": {
 																					"type": "string",
@@ -3585,6 +3857,22 @@
 																				"message": {
 																					"type": "string"
 																				},
+																				"messageRef": {
+																					"type": "object",
+																					"properties": {
+																						"code": {
+																							"description": "Stable, translatable message code.",
+																							"type": "string",
+																							"example": "check.robotsTxt.valid"
+																						},
+																						"params": {
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"code"
+																					]
+																				},
 																				"status": {
 																					"type": "string",
 																					"example": "fail"
@@ -3691,6 +3979,22 @@
 																				},
 																				"message": {
 																					"type": "string"
+																				},
+																				"messageRef": {
+																					"type": "object",
+																					"properties": {
+																						"code": {
+																							"description": "Stable, translatable message code.",
+																							"type": "string",
+																							"example": "check.robotsTxt.valid"
+																						},
+																						"params": {
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"code"
+																					]
 																				},
 																				"status": {
 																					"type": "string",
@@ -3799,6 +4103,22 @@
 																				"message": {
 																					"type": "string"
 																				},
+																				"messageRef": {
+																					"type": "object",
+																					"properties": {
+																						"code": {
+																							"description": "Stable, translatable message code.",
+																							"type": "string",
+																							"example": "check.robotsTxt.valid"
+																						},
+																						"params": {
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"code"
+																					]
+																				},
 																				"status": {
 																					"type": "string",
 																					"example": "fail"
@@ -3906,6 +4226,22 @@
 																				"message": {
 																					"type": "string"
 																				},
+																				"messageRef": {
+																					"type": "object",
+																					"properties": {
+																						"code": {
+																							"description": "Stable, translatable message code.",
+																							"type": "string",
+																							"example": "check.robotsTxt.valid"
+																						},
+																						"params": {
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"code"
+																					]
+																				},
 																				"status": {
 																					"type": "string",
 																					"example": "fail"
@@ -4012,6 +4348,22 @@
 																				},
 																				"message": {
 																					"type": "string"
+																				},
+																				"messageRef": {
+																					"type": "object",
+																					"properties": {
+																						"code": {
+																							"description": "Stable, translatable message code.",
+																							"type": "string",
+																							"example": "check.robotsTxt.valid"
+																						},
+																						"params": {
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"code"
+																					]
 																				},
 																				"status": {
 																					"type": "string",

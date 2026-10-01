@@ -141,7 +141,9 @@
 															"format": "A.B.C.D/N",
 															"type": "string"
 														},
-														"example": "192.168.3.4/31"
+														"example": [
+															"192.168.3.4/31"
+														]
 													},
 													"md5_key": {
 														"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline\n(0x0A), quotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09),\nform feed (0x0C), and the question mark (`?`). Requests specifying an MD5 key with one\nor more of these disallowed characters will be rejected.",
@@ -155,7 +157,7 @@
 												]
 											},
 											"bgp_mode": {
-												"description": "The BGP mode for a CNI.\n\nControls the customer-facing data path:\n* `DynamicRouteExchange` — Full BGP: routes flow through to conduit via CRE / bgp-bridge /\nbgp-bridge-receiver.\n* `AdvertiseOnly` — static advertisement via taserver, no routes exchanged with Conduit",
+												"description": "The BGP mode for a CNI.\nOne of the following:\n* `dynamic_route_exchange`\n* `advertise_only`",
 												"type": "string",
 												"enum": [
 													"dynamic_route_exchange",
@@ -308,7 +310,9 @@
 												"format": "A.B.C.D/N",
 												"type": "string"
 											},
-											"example": "192.168.3.4/31"
+											"example": [
+												"192.168.3.4/31"
+											]
 										},
 										"md5_key": {
 											"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline\n(0x0A), quotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09),\nform feed (0x0C), and the question mark (`?`). Requests specifying an MD5 key with one\nor more of these disallowed characters will be rejected.",
@@ -322,7 +326,7 @@
 									]
 								},
 								"bgp_mode": {
-									"description": "The BGP mode for a CNI.\n\nControls the customer-facing data path:\n* `DynamicRouteExchange` — Full BGP: routes flow through to conduit via CRE / bgp-bridge /\nbgp-bridge-receiver.\n* `AdvertiseOnly` — static advertisement via taserver, no routes exchanged with Conduit",
+									"description": "The BGP mode for a CNI.\nOne of the following:\n* `dynamic_route_exchange`\n* `advertise_only`",
 									"type": "string",
 									"enum": [
 										"dynamic_route_exchange",
@@ -456,7 +460,9 @@
 											"format": "A.B.C.D/N",
 											"type": "string"
 										},
-										"example": "192.168.3.4/31"
+										"example": [
+											"192.168.3.4/31"
+										]
 									},
 									"md5_key": {
 										"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline\n(0x0A), quotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09),\nform feed (0x0C), and the question mark (`?`). Requests specifying an MD5 key with one\nor more of these disallowed characters will be rejected.",
@@ -531,7 +537,9 @@
 												"format": "A.B.C.D/N",
 												"type": "string"
 											},
-											"example": "192.168.3.4/31"
+											"example": [
+												"192.168.3.4/31"
+											]
 										},
 										"md5_key": {
 											"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline\n(0x0A), quotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09),\nform feed (0x0C), and the question mark (`?`). Requests specifying an MD5 key with one\nor more of these disallowed characters will be rejected.",
@@ -545,7 +553,7 @@
 									]
 								},
 								"bgp_mode": {
-									"description": "The BGP mode for a CNI.\n\nControls the customer-facing data path:\n* `DynamicRouteExchange` — Full BGP: routes flow through to conduit via CRE / bgp-bridge /\nbgp-bridge-receiver.\n* `AdvertiseOnly` — static advertisement via taserver, no routes exchanged with Conduit",
+									"description": "The BGP mode for a CNI.\nOne of the following:\n* `dynamic_route_exchange`\n* `advertise_only`",
 									"type": "string",
 									"enum": [
 										"dynamic_route_exchange",
@@ -687,7 +695,9 @@
 											"format": "A.B.C.D/N",
 											"type": "string"
 										},
-										"example": "192.168.3.4/31"
+										"example": [
+											"192.168.3.4/31"
+										]
 									},
 									"md5_key": {
 										"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline\n(0x0A), quotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09),\nform feed (0x0C), and the question mark (`?`). Requests specifying an MD5 key with one\nor more of these disallowed characters will be rejected.",
@@ -701,7 +711,7 @@
 								]
 							},
 							"bgp_mode": {
-								"description": "The BGP mode for a CNI.\n\nControls the customer-facing data path:\n* `DynamicRouteExchange` — Full BGP: routes flow through to conduit via CRE / bgp-bridge /\nbgp-bridge-receiver.\n* `AdvertiseOnly` — static advertisement via taserver, no routes exchanged with Conduit",
+								"description": "The BGP mode for a CNI.\nOne of the following:\n* `dynamic_route_exchange`\n* `advertise_only`",
 								"type": "string",
 								"enum": [
 									"dynamic_route_exchange",
@@ -790,7 +800,9 @@
 												"format": "A.B.C.D/N",
 												"type": "string"
 											},
-											"example": "192.168.3.4/31"
+											"example": [
+												"192.168.3.4/31"
+											]
 										},
 										"md5_key": {
 											"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline\n(0x0A), quotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09),\nform feed (0x0C), and the question mark (`?`). Requests specifying an MD5 key with one\nor more of these disallowed characters will be rejected.",
@@ -804,7 +816,7 @@
 									]
 								},
 								"bgp_mode": {
-									"description": "The BGP mode for a CNI.\n\nControls the customer-facing data path:\n* `DynamicRouteExchange` — Full BGP: routes flow through to conduit via CRE / bgp-bridge /\nbgp-bridge-receiver.\n* `AdvertiseOnly` — static advertisement via taserver, no routes exchanged with Conduit",
+									"description": "The BGP mode for a CNI.\nOne of the following:\n* `dynamic_route_exchange`\n* `advertise_only`",
 									"type": "string",
 									"enum": [
 										"dynamic_route_exchange",

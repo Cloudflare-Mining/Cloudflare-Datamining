@@ -282,7 +282,8 @@
 						"managed_challenge"
 					],
 					"x-auditable": true
-				}
+				},
+				"x-fern-parameter-name": "action"
 			},
 			{
 				"name": "configuration.target",
@@ -1697,7 +1698,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.firewall.access-rules",
 		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"mode": {
+				"flagName": "action"
+			}
+		}
 	},
 	"POST /user/firewall/access_rules/rules": {
 		"operationId": "ip-access-rules-for-a-user-create-an-ip-access-rule",
@@ -2254,6 +2260,11 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.firewall.access-rules",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"mode": {
+				"flagName": "action"
+			}
+		}
 	}
 }
