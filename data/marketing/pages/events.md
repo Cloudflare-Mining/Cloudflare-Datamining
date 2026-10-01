@@ -34,6 +34,8 @@ Browse upcoming Cloudflare events around the world.
 
 AmericasEMEAAPJC
 
+[San Francisco, CACloudflare Global Connect 2026Oct 19–21Learn more](https://www.cloudflare.com/connect/)
+
 Orlando, FL
 
 Gartner IT Symposium
@@ -41,8 +43,6 @@ Gartner IT Symposium
 Oct 19–20
 
 Coming soon
-
-[San Francisco, CACloudflare Global Connect 2026Oct 19–21Learn more](https://www.cloudflare.com/connect/)
 
 Atlanta, GA
 
@@ -59,10 +59,6 @@ AWS re:Invent
 Nov 30–Dec 4
 
 Coming soon
-
-Previous events
-
-[Las Vegas, NVBlack Hat USAAug 3–6Learn more](https://fieldmarketing.www.cloudflare.com/CAD-black-hat-2026)
 
 # Build without boundaries
 

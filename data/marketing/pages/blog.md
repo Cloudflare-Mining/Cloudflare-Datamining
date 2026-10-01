@@ -104,7 +104,7 @@ September 29, 2026 [<h2>Adaptive application security for the AI era: how Cloudf
 
 Cloudflare introduces an adaptive security framework connecting risk discovery, agent governance, runtime protection, and AI-powered response in a continuous learning loop.
 
-![Daniele Molteni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464793D50Z8QJQK451PK2A.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Jonathan Spies](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SF1ECCPSP7J9HQD6FKT0.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Christian Reilly](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3N50B9Z6PNXC2HR0HGCHB6P.01M3N50BQYTR03YB2J2D68J4TS.webp&w=64&h=64&f=webp&fit=cover&position=center)
+![Daniele Molteni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464793D50Z8QJQK451PK2A.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Jonathan Spies](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SWW1P8GYQNK0PJHA855HYH.01M3SWW2DSKT8EZNDEECX12V5V.webp&w=64&h=64&f=webp&fit=cover&position=center)![Christian Reilly](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3N50B9Z6PNXC2HR0HGCHB6P.01M3N50BQYTR03YB2J2D68J4TS.webp&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Daniele Molteni](https://blog.cloudflare.com/author/daniele/),  [Jonathan Spies](https://blog.cloudflare.com/author/jonathan-spies/), and  [Christian Reilly](https://blog.cloudflare.com/author/christian-reilly/)
 
