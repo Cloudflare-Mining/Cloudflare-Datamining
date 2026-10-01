@@ -10,15 +10,15 @@ image: https://www.cloudflare.com/preview.png
 
 [  Partner portal login ](https://partners.cloudflare.com/) 
 
-**Be innovative** 
+**Be Innovative** 
 
 Provide your customers with Cloudflare security, speed, programmability, and resilience. 
 
-**Be profitable** 
+**Be Profitable** 
 
 Grow revenue and deliver greater value at scale to rapidly grow your business and expand your reach. 
 
-**Be supported** 
+**Be Supported** 
 
 Count on a company that's easy to work with and invested in your sales, marketing, and enablement growth. 
 
@@ -34,7 +34,7 @@ Cloudflare's connectivity cloud is the digital core that businesses need to tran
 
 [ Partner portal login ](https://partners.cloudflare.com/) 
 
- PowerUP partner program 
+ PowerUP Partner Program 
 
  Our award-winning channel program with four routes-to-revenue — Resell, Manage, Distribute, or Consult — backed by 5-star CRN recognition, partner enablement, and dedicated support. [Learn more](https://www.cloudflare.com/partners/power-up-program/) 
 
@@ -50,7 +50,7 @@ Cloudflare's connectivity cloud is the digital core that businesses need to tran
 
 [Learn more](https://www.cloudflare.com/partners/global-system-integrators/) 
 
- Service providers 
+ Service Providers 
 
  Deliver secure, low-latency connectivity and unlock new revenue opportunities for your customers. 
 

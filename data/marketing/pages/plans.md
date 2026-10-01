@@ -154,14 +154,15 @@ Time-series analytics at scale
 | Data Points Written | 100,000 / day | $0.25 / million data points |
 | Read Queries | 10,000 / day | $1.00 / million read queries |
 
-#### [Pipelines](https://developers.cloudflare.com/pipelines/)
+#### [Basin Pipelines](https://developers.cloudflare.com/basin-pipelines/)
 
 Transform and route data streams
 
 | Component | Free | Paid |
 |-----------|------|------|
-| Ingestion | — | TBD (free during beta) |
-| Delivery to R2 | — | TBD (free during beta) |
+| Streams (ingress) | Unlimited | Free |
+| SQL transforms | 50 GB / month | $0.04 / GB |
+| Sinks | 50 GB / month | $0.03–$0.06 / GB |
 
 ### Media
 
@@ -275,6 +276,7 @@ Third-party tool manager
 | Queues | Standard Operations: 10,000 operations/day included |
 | Hyperdrive | Queries: 100,000 / day |
 | Workers Analytics Engine | Data Points Written: 100,000 / day, Read Queries: 10,000 / day |
+| Basin Pipelines | Streams (ingress): Unlimited, SQL transforms: 50 GB / month, Sinks: 50 GB / month |
 | TURN / SFU | Data Egress: 1,000 GB / month |
 | Images | Unique Transformations: 5,000 / month |
 | Vectorize | Vector Dimensions Queried: 30M queried dimensions / month, Vector Dimensions Stored: 5M stored dimensions |
