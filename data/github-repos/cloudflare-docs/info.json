@@ -35,7 +35,6 @@
 		"cache/purge-edge-case-docs",
 		"cferike-patch-1",
 		"cferike-patch-2",
-		"changelog/attack-signature-detection",
 		"changelog/log-explorer-dataset-configuration",
 		"changelog/queues-jurisdiction-support",
 		"chore/bump-nimbus-0.13.1",
@@ -58,8 +57,6 @@
 		"dario/vitest-plugin-v8-coverage",
 		"dee-3623-client-side-pci-dss",
 		"dee-3828-billing",
-		"dns/dnssec-secondary-presigned-troubleshoot",
-		"dns/firewall-faq-ecs-ratelimit",
 		"docs/DEE-3693-blocking-cdn-cgi-paths-degrades-jsd",
 		"docs/DEE-3702-lex01-log-explorer-logpush-prerequisite",
 		"docs/DEE-3708-api-discovery-requirements-workers-exclusion",
@@ -85,6 +82,8 @@
 		"docs/remove-mcp-remote-guidance",
 		"docs/simplify-vibe-agent-setup",
 		"docs/update-agent-tracing-changelog",
+		"docs/waf-doc-03-removal-notice",
+		"docs/waf-doc-04-sdd-compressed-responses",
 		"docs/workers-storage-decision-ladder",
 		"dominik/do-profiling-lifecycle",
 		"dominik/v8-release-notes",
@@ -93,7 +92,6 @@
 		"dynamic-hyperdrive",
 		"eengstrom/dls-workers-subrequests-rs",
 		"efalcao/email-service-account-api-tokens",
-		"feat/copy-prompt",
 		"feat/flue-reviewer-recommendations",
 		"feat/mongodb-docs",
 		"felix/081826-connect",
@@ -169,7 +167,6 @@
 		"rhett/rename-zt-ingress-ip-heading",
 		"rian/analytics-retention-all-plans",
 		"rian/custom-dashboards-workers-observability",
-		"rian/observability-birthday-week-launch",
 		"rian/observability-docs-preview",
 		"rtownsend/rum-docs-tweak",
 		"sandbox/sandboxes-on-cloudflare",
@@ -194,6 +191,7 @@
 		"tbenn/custom-alerts-docs",
 		"tennyson/crons-local-explorer",
 		"test/nimbus-pr-124-preview",
+		"test/nimbus-pr-187-preview",
 		"test-pr-draft",
 		"test-pr-word-change",
 		"test-preview-mdx",
@@ -212,7 +210,6 @@
 		"workers-recommend-vite-module-registry",
 		"workflows/nested-steps-and-restarts-v2",
 		"yevgen/worker-oom",
-		"yomna/changelog-worker-size-limit",
-		"zein/acc-readonly-role-visibility"
+		"yomna/changelog-worker-size-limit"
 	]
 }
