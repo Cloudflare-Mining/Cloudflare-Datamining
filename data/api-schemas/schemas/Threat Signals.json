@@ -77,6 +77,7 @@
 												"enum": [
 													"free_custom_feed_limit",
 													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
 													"free_tier_reconciliation_failed",
 													"raw_content_expired",
@@ -227,6 +228,7 @@
 												"enum": [
 													"free_custom_feed_limit",
 													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
 													"free_tier_reconciliation_failed",
 													"raw_content_expired",
@@ -427,6 +429,7 @@
 												"enum": [
 													"free_custom_feed_limit",
 													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
 													"free_tier_reconciliation_failed",
 													"raw_content_expired",
@@ -1313,6 +1316,7 @@
 												"enum": [
 													"free_custom_feed_limit",
 													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
 													"free_tier_reconciliation_failed",
 													"raw_content_expired",
@@ -1577,6 +1581,7 @@
 												"enum": [
 													"free_custom_feed_limit",
 													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
 													"free_tier_reconciliation_failed",
 													"raw_content_expired",
@@ -1807,6 +1812,7 @@
 												"enum": [
 													"free_custom_feed_limit",
 													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
 													"free_tier_reconciliation_failed",
 													"raw_content_expired",
@@ -2107,6 +2113,7 @@
 												"enum": [
 													"free_custom_feed_limit",
 													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
 													"free_tier_reconciliation_failed",
 													"raw_content_expired",
@@ -2763,6 +2770,7 @@
 												"enum": [
 													"free_custom_feed_limit",
 													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
 													"free_tier_reconciliation_failed",
 													"raw_content_expired",
@@ -2973,6 +2981,7 @@
 												"enum": [
 													"free_custom_feed_limit",
 													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
 													"free_tier_reconciliation_failed",
 													"raw_content_expired",
@@ -3275,6 +3284,7 @@
 												"enum": [
 													"free_custom_feed_limit",
 													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
 													"free_tier_reconciliation_failed",
 													"raw_content_expired",
@@ -3662,6 +3672,7 @@
 												"enum": [
 													"free_custom_feed_limit",
 													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
 													"free_tier_reconciliation_failed",
 													"raw_content_expired",
@@ -3836,6 +3847,7 @@
 												"enum": [
 													"free_custom_feed_limit",
 													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
 													"free_tier_reconciliation_failed",
 													"raw_content_expired",
@@ -4069,6 +4081,7 @@
 												"enum": [
 													"free_custom_feed_limit",
 													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
 													"free_tier_reconciliation_failed",
 													"raw_content_expired",
@@ -4177,6 +4190,584 @@
 		"x-fern-sdk-method-name": "update",
 		"x-forge-hidden": true
 	},
+	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/skills/{skill_id}/run": {
+		"operationId": "rssArticleSkillRun",
+		"summary": "Run and persist a Threat Signals article skill",
+		"description": "Paid customer operation that always persists a managed default skill or an assigned active custom skill result without exposing diagnostic model data.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "article_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid"
+				}
+			},
+			{
+				"name": "skill_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"anyOf": [
+						{
+							"enum": [
+								"default-tagging-skill",
+								"default-ioc-context-skill",
+								"default-summary-skill"
+							],
+							"type": "string"
+						},
+						{
+							"format": "uuid",
+							"type": "string"
+						}
+					]
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"additionalProperties": false
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Threat Signals response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"free_custom_feed_limit",
+													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"free_custom_feed_limit",
+													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"anyOf": [
+										{
+											"oneOf": [
+												{
+													"properties": {
+														"bullet_points": {
+															"type": "object",
+															"nullable": true,
+															"properties": {
+																"impact": {
+																	"type": "string"
+																},
+																"what_happened": {
+																	"type": "string"
+																},
+																"who_affected": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"what_happened",
+																"who_affected",
+																"impact"
+															]
+														},
+														"persisted": {
+															"type": "boolean",
+															"enum": [
+																true
+															]
+														},
+														"skill_id": {
+															"type": "string",
+															"enum": [
+																"default-summary-skill"
+															]
+														},
+														"skill_version": {
+															"type": "string"
+														},
+														"summary": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"skill_id",
+														"persisted",
+														"summary",
+														"bullet_points",
+														"skill_version"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"persisted": {
+															"type": "boolean",
+															"enum": [
+																true
+															]
+														},
+														"skill_id": {
+															"type": "string",
+															"enum": [
+																"default-tagging-skill"
+															]
+														},
+														"tag_skill_version": {
+															"type": "string"
+														},
+														"tags": {
+															"description": "Final hydrated assignment set; may be empty when no applicable tags are selected.",
+															"type": "array",
+															"items": {
+																"properties": {
+																	"applied_by": {
+																		"type": "string",
+																		"enum": [
+																			"ai",
+																			"analyst",
+																			"system"
+																		]
+																	},
+																	"categoryId": {
+																		"type": "string",
+																		"format": "uuid",
+																		"nullable": true
+																	},
+																	"uuid": {
+																		"type": "string",
+																		"format": "uuid"
+																	},
+																	"value": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"uuid",
+																	"value",
+																	"categoryId",
+																	"applied_by"
+																],
+																"type": "object"
+															}
+														}
+													},
+													"required": [
+														"skill_id",
+														"persisted",
+														"tags",
+														"tag_skill_version"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"article_id": {
+															"type": "string",
+															"format": "uuid"
+														},
+														"custom_output": {
+															"type": "object",
+															"additionalProperties": false,
+															"properties": {
+																"enrichments": {
+																	"type": "array",
+																	"items": {
+																		"additionalProperties": false,
+																		"properties": {
+																			"context": {
+																				"type": "object",
+																				"additionalProperties": false,
+																				"properties": {
+																					"context_snippet": {
+																						"type": "string"
+																					},
+																					"fetched_at": {
+																						"type": "string"
+																					},
+																					"published_at": {
+																						"type": "string"
+																					},
+																					"source_article_id": {
+																						"type": "string",
+																						"format": "uuid"
+																					},
+																					"source_feed_category": {
+																						"type": "string",
+																						"nullable": true
+																					},
+																					"source_feed_id": {
+																						"type": "string",
+																						"format": "uuid"
+																					},
+																					"source_feed_name": {
+																						"type": "string",
+																						"minLength": 1
+																					},
+																					"source_url": {
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"source_article_id",
+																					"source_feed_id",
+																					"source_feed_name",
+																					"source_url",
+																					"published_at",
+																					"fetched_at",
+																					"context_snippet"
+																				]
+																			},
+																			"infrastructure_assessment": {
+																				"type": "object",
+																				"additionalProperties": false,
+																				"properties": {
+																					"affected_scope": {
+																						"type": "string"
+																					},
+																					"explanation": {
+																						"type": "string"
+																					},
+																					"granularity": {
+																						"type": "string",
+																						"enum": [
+																							"exact_indicator",
+																							"subdomain",
+																							"path",
+																							"full_domain",
+																							"unknown"
+																						]
+																					},
+																					"ownership": {
+																						"type": "string",
+																						"enum": [
+																							"actor_owned",
+																							"compromised",
+																							"abused_service",
+																							"unknown"
+																						]
+																					},
+																					"parent_domain_legitimate": {
+																						"type": "boolean",
+																						"nullable": true
+																					}
+																				},
+																				"required": [
+																					"ownership",
+																					"granularity",
+																					"affected_scope",
+																					"explanation"
+																				]
+																			},
+																			"role_classification": {
+																				"type": "object",
+																				"additionalProperties": false,
+																				"properties": {
+																					"alternative_roles": {
+																						"type": "array",
+																						"items": {
+																							"enum": [
+																								"c2",
+																								"dropper",
+																								"phishing_host",
+																								"loader",
+																								"exfil",
+																								"recon"
+																							],
+																							"type": "string"
+																						}
+																					},
+																					"confidence": {
+																						"type": "string",
+																						"enum": [
+																							"high",
+																							"medium",
+																							"low"
+																						]
+																					},
+																					"evidence_snippet": {
+																						"type": "string"
+																					},
+																					"primary_role": {
+																						"type": "string",
+																						"enum": [
+																							"c2",
+																							"dropper",
+																							"phishing_host",
+																							"loader",
+																							"exfil",
+																							"recon",
+																							"unknown"
+																						]
+																					}
+																				},
+																				"required": [
+																					"primary_role",
+																					"confidence",
+																					"evidence_snippet"
+																				]
+																			},
+																			"skill_metadata": {
+																				"type": "object",
+																				"additionalProperties": false,
+																				"properties": {
+																					"processing_method": {
+																						"type": "string",
+																						"enum": [
+																							"llm_refined"
+																						]
+																					},
+																					"skill_name": {
+																						"type": "string",
+																						"enum": [
+																							"ioc-context-skill"
+																						]
+																					},
+																					"skill_version": {
+																						"type": "string",
+																						"enum": [
+																							"1.1.0"
+																						]
+																					}
+																				},
+																				"required": [
+																					"skill_name",
+																					"skill_version",
+																					"processing_method"
+																				]
+																			},
+																			"target_indicator_id": {
+																				"type": "string",
+																				"format": "uuid"
+																			},
+																			"target_indicator_type": {
+																				"type": "string"
+																			},
+																			"target_indicator_value": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"target_indicator_id",
+																			"target_indicator_value",
+																			"target_indicator_type",
+																			"context",
+																			"role_classification",
+																			"infrastructure_assessment",
+																			"skill_metadata"
+																		],
+																		"type": "object"
+																	}
+																},
+																"generated_at": {
+																	"type": "string"
+																},
+																"schema_version": {
+																	"type": "string",
+																	"enum": [
+																		"1.1.0"
+																	]
+																},
+																"source_article_id": {
+																	"type": "string",
+																	"format": "uuid"
+																}
+															},
+															"required": [
+																"schema_version",
+																"generated_at",
+																"source_article_id",
+																"enrichments"
+															]
+														},
+														"custom_skill_version": {
+															"type": "string"
+														},
+														"output_schema": {
+															"type": "string"
+														},
+														"persisted": {
+															"type": "boolean",
+															"enum": [
+																true
+															]
+														},
+														"skill_id": {
+															"type": "string",
+															"enum": [
+																"default-ioc-context-skill"
+															]
+														}
+													},
+													"required": [
+														"skill_id",
+														"persisted",
+														"article_id",
+														"custom_output",
+														"custom_skill_version",
+														"output_schema"
+													],
+													"type": "object"
+												}
+											]
+										},
+										{
+											"properties": {
+												"article_id": {
+													"type": "string",
+													"format": "uuid"
+												},
+												"custom_output": {
+													"description": "JSON value conforming to the skill's output_schema"
+												},
+												"custom_skill_version": {
+													"type": "string"
+												},
+												"output_schema": {
+													"type": "string"
+												},
+												"persisted": {
+													"type": "boolean",
+													"enum": [
+														true
+													]
+												},
+												"skill_id": {
+													"type": "string",
+													"format": "uuid"
+												}
+											},
+											"required": [
+												"persisted",
+												"article_id",
+												"skill_id",
+												"custom_skill_version",
+												"output_schema"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Client error response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Threat Signals"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles.skills",
+		"x-fern-sdk-method-name": "run",
+		"x-forge-hidden": true
+	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/tag": {
 		"operationId": "rssArticleTagGenerate",
 		"summary": "Generate Threat Signals article AI tags",
@@ -4246,6 +4837,7 @@
 												"enum": [
 													"free_custom_feed_limit",
 													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
 													"free_tier_reconciliation_failed",
 													"raw_content_expired",
@@ -4430,6 +5022,7 @@
 												"enum": [
 													"free_custom_feed_limit",
 													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
 													"free_tier_reconciliation_failed",
 													"raw_content_expired",
@@ -4626,6 +5219,7 @@
 												"enum": [
 													"free_custom_feed_limit",
 													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
 													"free_tier_reconciliation_failed",
 													"raw_content_expired",
@@ -4993,6 +5587,7 @@
 												"enum": [
 													"free_custom_feed_limit",
 													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
 													"free_tier_reconciliation_failed",
 													"raw_content_expired",
@@ -5192,6 +5787,7 @@
 												"enum": [
 													"free_custom_feed_limit",
 													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
 													"free_tier_reconciliation_failed",
 													"raw_content_expired",

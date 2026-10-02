@@ -52,6 +52,7 @@
 								"cws_policy_set": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
 								"cws_workload": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
 								"d1_database": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
+								"device": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
 								"durable_object_namespace": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
 								"gateway_list": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
 								"gateway_rule": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
@@ -132,6 +133,7 @@
 											"cws_policy_set",
 											"cws_workload",
 											"d1_database",
+											"device",
 											"durable_object_namespace",
 											"gateway_list",
 											"gateway_rule",
@@ -1075,6 +1077,7 @@
 						"cws_policy_set",
 						"cws_workload",
 						"d1_database",
+						"device",
 						"durable_object_namespace",
 						"gateway_list",
 						"gateway_rule",
@@ -1219,6 +1222,7 @@
 													"cws_policy_set": "#/components/schemas/resource-tagging_tagged_resource_object_cws_policy_set",
 													"cws_workload": "#/components/schemas/resource-tagging_tagged_resource_object_cws_workload",
 													"d1_database": "#/components/schemas/resource-tagging_tagged_resource_object_d1_database",
+													"device": "#/components/schemas/resource-tagging_tagged_resource_object_device",
 													"dns_record": "#/components/schemas/resource-tagging_tagged_resource_object_dns_record",
 													"durable_object_namespace": "#/components/schemas/resource-tagging_tagged_resource_object_durable_object_namespace",
 													"gateway_list": "#/components/schemas/resource-tagging_tagged_resource_object_gateway_list",
@@ -2411,6 +2415,74 @@
 																	"type": "string",
 																	"enum": [
 																		"d1_database"
+																	]
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														},
+														{
+															"description": "Base schema for account-level resources (without type discriminator)",
+															"type": "object",
+															"properties": {
+																"etag": {
+																	"description": "ETag identifier for optimistic concurrency control. Formatted as \"v1:<hash>\" where\nthe hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map\ncanonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat\nETags as opaque strings and pass them back via the If-Match header on write operations.\n",
+																	"type": "string",
+																	"example": "v1:RBNvo1WzZ4oRRq0W9-hkng",
+																	"readOnly": true
+																},
+																"id": {
+																	"description": "Identifies the unique resource.",
+																	"type": "string",
+																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "Human-readable name of the resource.",
+																	"type": "string",
+																	"example": "my-worker-script"
+																},
+																"tags": {
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+																	"type": "object",
+																	"example": {
+																		"environment": "production",
+																		"team": "engineering"
+																	},
+																	"additionalProperties": {
+																		"maxLength": 1024,
+																		"type": "string"
+																	},
+																	"x-auditable": true
+																},
+																"tags_updated_at": {
+																	"description": "Monotonic version of the resource's tags: the timestamp assigned when the\ntags were last written. Returned by read endpoints, by 2PC prepare (the\nversion that will be assigned on commit, unless a concurrent write lands\nfirst, in which case a newer version is assigned), and by 2PC commit (the\nauthoritative committed version). Omitted for untagged resources and\ndelete commits: a deleted resource has no current version, and deletions\nare ordered by event order rather than by version.\n",
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2024-01-15T10:30:00Z",
+																	"readOnly": true
+																}
+															},
+															"required": [
+																"id",
+																"tags",
+																"name",
+																"etag"
+															]
+														}
+													]
+												},
+												{
+													"description": "Response for device resources",
+													"allOf": [
+														{
+															"properties": {
+																"type": {
+																	"type": "string",
+																	"enum": [
+																		"device"
 																	]
 																}
 															},
@@ -4926,6 +4998,7 @@
 							"cws_policy_set",
 							"cws_workload",
 							"d1_database",
+							"device",
 							"dns_record",
 							"durable_object_namespace",
 							"gateway_list",
@@ -5135,6 +5208,7 @@
 														"cws_policy_set": "#/components/schemas/resource-tagging_tagged_resource_object_cws_policy_set",
 														"cws_workload": "#/components/schemas/resource-tagging_tagged_resource_object_cws_workload",
 														"d1_database": "#/components/schemas/resource-tagging_tagged_resource_object_d1_database",
+														"device": "#/components/schemas/resource-tagging_tagged_resource_object_device",
 														"dns_record": "#/components/schemas/resource-tagging_tagged_resource_object_dns_record",
 														"durable_object_namespace": "#/components/schemas/resource-tagging_tagged_resource_object_durable_object_namespace",
 														"gateway_list": "#/components/schemas/resource-tagging_tagged_resource_object_gateway_list",
@@ -6327,6 +6401,74 @@
 																		"type": "string",
 																		"enum": [
 																			"d1_database"
+																		]
+																	}
+																},
+																"required": [
+																	"type"
+																],
+																"type": "object"
+															},
+															{
+																"description": "Base schema for account-level resources (without type discriminator)",
+																"type": "object",
+																"properties": {
+																	"etag": {
+																		"description": "ETag identifier for optimistic concurrency control. Formatted as \"v1:<hash>\" where\nthe hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map\ncanonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat\nETags as opaque strings and pass them back via the If-Match header on write operations.\n",
+																		"type": "string",
+																		"example": "v1:RBNvo1WzZ4oRRq0W9-hkng",
+																		"readOnly": true
+																	},
+																	"id": {
+																		"description": "Identifies the unique resource.",
+																		"type": "string",
+																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																		"x-auditable": true
+																	},
+																	"name": {
+																		"description": "Human-readable name of the resource.",
+																		"type": "string",
+																		"example": "my-worker-script"
+																	},
+																	"tags": {
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+																		"type": "object",
+																		"example": {
+																			"environment": "production",
+																			"team": "engineering"
+																		},
+																		"additionalProperties": {
+																			"maxLength": 1024,
+																			"type": "string"
+																		},
+																		"x-auditable": true
+																	},
+																	"tags_updated_at": {
+																		"description": "Monotonic version of the resource's tags: the timestamp assigned when the\ntags were last written. Returned by read endpoints, by 2PC prepare (the\nversion that will be assigned on commit, unless a concurrent write lands\nfirst, in which case a newer version is assigned), and by 2PC commit (the\nauthoritative committed version). Omitted for untagged resources and\ndelete commits: a deleted resource has no current version, and deletions\nare ordered by event order rather than by version.\n",
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2024-01-15T10:30:00Z",
+																		"readOnly": true
+																	}
+																},
+																"required": [
+																	"id",
+																	"tags",
+																	"name",
+																	"etag"
+																]
+															}
+														]
+													},
+													{
+														"description": "Response for device resources",
+														"allOf": [
+															{
+																"properties": {
+																	"type": {
+																		"type": "string",
+																		"enum": [
+																			"device"
 																		]
 																	}
 																},
@@ -8900,6 +9042,7 @@
 						"cws_policy_set",
 						"cws_workload",
 						"d1_database",
+						"device",
 						"dns_record",
 						"durable_object_namespace",
 						"gateway_list",
@@ -9495,6 +9638,7 @@
 													"cws_policy_set": "#/components/schemas/resource-tagging_tagged_resource_object_cws_policy_set",
 													"cws_workload": "#/components/schemas/resource-tagging_tagged_resource_object_cws_workload",
 													"d1_database": "#/components/schemas/resource-tagging_tagged_resource_object_d1_database",
+													"device": "#/components/schemas/resource-tagging_tagged_resource_object_device",
 													"dns_record": "#/components/schemas/resource-tagging_tagged_resource_object_dns_record",
 													"durable_object_namespace": "#/components/schemas/resource-tagging_tagged_resource_object_durable_object_namespace",
 													"gateway_list": "#/components/schemas/resource-tagging_tagged_resource_object_gateway_list",
@@ -10687,6 +10831,74 @@
 																	"type": "string",
 																	"enum": [
 																		"d1_database"
+																	]
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														},
+														{
+															"description": "Base schema for account-level resources (without type discriminator)",
+															"type": "object",
+															"properties": {
+																"etag": {
+																	"description": "ETag identifier for optimistic concurrency control. Formatted as \"v1:<hash>\" where\nthe hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map\ncanonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat\nETags as opaque strings and pass them back via the If-Match header on write operations.\n",
+																	"type": "string",
+																	"example": "v1:RBNvo1WzZ4oRRq0W9-hkng",
+																	"readOnly": true
+																},
+																"id": {
+																	"description": "Identifies the unique resource.",
+																	"type": "string",
+																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "Human-readable name of the resource.",
+																	"type": "string",
+																	"example": "my-worker-script"
+																},
+																"tags": {
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+																	"type": "object",
+																	"example": {
+																		"environment": "production",
+																		"team": "engineering"
+																	},
+																	"additionalProperties": {
+																		"maxLength": 1024,
+																		"type": "string"
+																	},
+																	"x-auditable": true
+																},
+																"tags_updated_at": {
+																	"description": "Monotonic version of the resource's tags: the timestamp assigned when the\ntags were last written. Returned by read endpoints, by 2PC prepare (the\nversion that will be assigned on commit, unless a concurrent write lands\nfirst, in which case a newer version is assigned), and by 2PC commit (the\nauthoritative committed version). Omitted for untagged resources and\ndelete commits: a deleted resource has no current version, and deletions\nare ordered by event order rather than by version.\n",
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2024-01-15T10:30:00Z",
+																	"readOnly": true
+																}
+															},
+															"required": [
+																"id",
+																"tags",
+																"name",
+																"etag"
+															]
+														}
+													]
+												},
+												{
+													"description": "Response for device resources",
+													"allOf": [
+														{
+															"properties": {
+																"type": {
+																	"type": "string",
+																	"enum": [
+																		"device"
 																	]
 																}
 															},
@@ -12799,6 +13011,7 @@
 								"cws_policy_set": "#/components/schemas/resource-tagging_set_tags_request_account_level_base",
 								"cws_workload": "#/components/schemas/resource-tagging_set_tags_request_account_level_base",
 								"d1_database": "#/components/schemas/resource-tagging_set_tags_request_account_level_base",
+								"device": "#/components/schemas/resource-tagging_set_tags_request_account_level_base",
 								"durable_object_namespace": "#/components/schemas/resource-tagging_set_tags_request_account_level_base",
 								"gateway_list": "#/components/schemas/resource-tagging_set_tags_request_account_level_base",
 								"gateway_rule": "#/components/schemas/resource-tagging_set_tags_request_account_level_base",
@@ -12905,6 +13118,7 @@
 													"cws_policy_set",
 													"cws_workload",
 													"d1_database",
+													"device",
 													"durable_object_namespace",
 													"gateway_list",
 													"gateway_rule",
@@ -13067,6 +13281,7 @@
 													"cws_policy_set": "#/components/schemas/resource-tagging_tagged_resource_object_cws_policy_set",
 													"cws_workload": "#/components/schemas/resource-tagging_tagged_resource_object_cws_workload",
 													"d1_database": "#/components/schemas/resource-tagging_tagged_resource_object_d1_database",
+													"device": "#/components/schemas/resource-tagging_tagged_resource_object_device",
 													"dns_record": "#/components/schemas/resource-tagging_tagged_resource_object_dns_record",
 													"durable_object_namespace": "#/components/schemas/resource-tagging_tagged_resource_object_durable_object_namespace",
 													"gateway_list": "#/components/schemas/resource-tagging_tagged_resource_object_gateway_list",
@@ -14259,6 +14474,74 @@
 																	"type": "string",
 																	"enum": [
 																		"d1_database"
+																	]
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														},
+														{
+															"description": "Base schema for account-level resources (without type discriminator)",
+															"type": "object",
+															"properties": {
+																"etag": {
+																	"description": "ETag identifier for optimistic concurrency control. Formatted as \"v1:<hash>\" where\nthe hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map\ncanonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat\nETags as opaque strings and pass them back via the If-Match header on write operations.\n",
+																	"type": "string",
+																	"example": "v1:RBNvo1WzZ4oRRq0W9-hkng",
+																	"readOnly": true
+																},
+																"id": {
+																	"description": "Identifies the unique resource.",
+																	"type": "string",
+																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "Human-readable name of the resource.",
+																	"type": "string",
+																	"example": "my-worker-script"
+																},
+																"tags": {
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+																	"type": "object",
+																	"example": {
+																		"environment": "production",
+																		"team": "engineering"
+																	},
+																	"additionalProperties": {
+																		"maxLength": 1024,
+																		"type": "string"
+																	},
+																	"x-auditable": true
+																},
+																"tags_updated_at": {
+																	"description": "Monotonic version of the resource's tags: the timestamp assigned when the\ntags were last written. Returned by read endpoints, by 2PC prepare (the\nversion that will be assigned on commit, unless a concurrent write lands\nfirst, in which case a newer version is assigned), and by 2PC commit (the\nauthoritative committed version). Omitted for untagged resources and\ndelete commits: a deleted resource has no current version, and deletions\nare ordered by event order rather than by version.\n",
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2024-01-15T10:30:00Z",
+																	"readOnly": true
+																}
+															},
+															"required": [
+																"id",
+																"tags",
+																"name",
+																"etag"
+															]
+														}
+													]
+												},
+												{
+													"description": "Response for device resources",
+													"allOf": [
+														{
+															"properties": {
+																"type": {
+																	"type": "string",
+																	"enum": [
+																		"device"
 																	]
 																}
 															},
@@ -16717,6 +17000,7 @@
 													"cws_policy_set": "#/components/schemas/resource-tagging_tagged_resource_object_cws_policy_set",
 													"cws_workload": "#/components/schemas/resource-tagging_tagged_resource_object_cws_workload",
 													"d1_database": "#/components/schemas/resource-tagging_tagged_resource_object_d1_database",
+													"device": "#/components/schemas/resource-tagging_tagged_resource_object_device",
 													"dns_record": "#/components/schemas/resource-tagging_tagged_resource_object_dns_record",
 													"durable_object_namespace": "#/components/schemas/resource-tagging_tagged_resource_object_durable_object_namespace",
 													"gateway_list": "#/components/schemas/resource-tagging_tagged_resource_object_gateway_list",
@@ -17909,6 +18193,74 @@
 																	"type": "string",
 																	"enum": [
 																		"d1_database"
+																	]
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														},
+														{
+															"description": "Base schema for account-level resources (without type discriminator)",
+															"type": "object",
+															"properties": {
+																"etag": {
+																	"description": "ETag identifier for optimistic concurrency control. Formatted as \"v1:<hash>\" where\nthe hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map\ncanonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat\nETags as opaque strings and pass them back via the If-Match header on write operations.\n",
+																	"type": "string",
+																	"example": "v1:RBNvo1WzZ4oRRq0W9-hkng",
+																	"readOnly": true
+																},
+																"id": {
+																	"description": "Identifies the unique resource.",
+																	"type": "string",
+																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "Human-readable name of the resource.",
+																	"type": "string",
+																	"example": "my-worker-script"
+																},
+																"tags": {
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+																	"type": "object",
+																	"example": {
+																		"environment": "production",
+																		"team": "engineering"
+																	},
+																	"additionalProperties": {
+																		"maxLength": 1024,
+																		"type": "string"
+																	},
+																	"x-auditable": true
+																},
+																"tags_updated_at": {
+																	"description": "Monotonic version of the resource's tags: the timestamp assigned when the\ntags were last written. Returned by read endpoints, by 2PC prepare (the\nversion that will be assigned on commit, unless a concurrent write lands\nfirst, in which case a newer version is assigned), and by 2PC commit (the\nauthoritative committed version). Omitted for untagged resources and\ndelete commits: a deleted resource has no current version, and deletions\nare ordered by event order rather than by version.\n",
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2024-01-15T10:30:00Z",
+																	"readOnly": true
+																}
+															},
+															"required": [
+																"id",
+																"tags",
+																"name",
+																"etag"
+															]
+														}
+													]
+												},
+												{
+													"description": "Response for device resources",
+													"allOf": [
+														{
+															"properties": {
+																"type": {
+																	"type": "string",
+																	"enum": [
+																		"device"
 																	]
 																}
 															},

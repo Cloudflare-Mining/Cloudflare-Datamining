@@ -932,6 +932,344 @@
 				}
 			},
 			{
+				"name": "searchBranches",
+				"in": "query",
+				"schema": {
+					"description": "JSON-encoded. OR branches of structured search filters. Filters within a branch are AND'd, branches are OR'd, and the result is AND'd with `search`: `AND(search) AND OR(AND(branch 1), ...)`. Max 8 branches of 1-10 conditions each. Not supported for analytics datasets, and `indicator` filters are not yet supported inside branches. Cursor pages carry the original branches, so do not resend them with `cursor`.",
+					"type": "array",
+					"items": {
+						"items": {
+							"anyOf": [
+								{
+									"additionalProperties": false,
+									"properties": {
+										"field": {
+											"type": "string",
+											"enum": [
+												"attacker",
+												"attackerCountry",
+												"category",
+												"createdAt",
+												"date",
+												"event",
+												"indicator",
+												"indicatorType",
+												"mitreAttack",
+												"mitreCapec",
+												"tags",
+												"targetCountry",
+												"targetIndustry",
+												"tlp",
+												"uuid"
+											]
+										},
+										"op": {
+											"type": "string",
+											"enum": [
+												"equals",
+												"not",
+												"gt",
+												"gte",
+												"lt",
+												"lte",
+												"like",
+												"contains",
+												"startsWith",
+												"endsWith",
+												"find"
+											]
+										},
+										"value": {
+											"type": "string",
+											"maxLength": 512,
+											"minLength": 1
+										}
+									},
+									"required": [
+										"field",
+										"op",
+										"value"
+									],
+									"type": "object"
+								},
+								{
+									"additionalProperties": false,
+									"properties": {
+										"field": {
+											"type": "string",
+											"enum": [
+												"attacker",
+												"attackerCountry",
+												"category",
+												"createdAt",
+												"date",
+												"event",
+												"indicator",
+												"indicatorType",
+												"mitreAttack",
+												"mitreCapec",
+												"tags",
+												"targetCountry",
+												"targetIndustry",
+												"tlp",
+												"uuid"
+											]
+										},
+										"op": {
+											"type": "string",
+											"enum": [
+												"in"
+											]
+										},
+										"value": {
+											"type": "array",
+											"items": {
+												"maxLength": 512,
+												"minLength": 1,
+												"type": "string"
+											},
+											"maxItems": 100,
+											"minItems": 1
+										}
+									},
+									"required": [
+										"field",
+										"op",
+										"value"
+									],
+									"type": "object"
+								},
+								{
+									"additionalProperties": false,
+									"properties": {
+										"field": {
+											"type": "string",
+											"enum": [
+												"killChain"
+											]
+										},
+										"op": {
+											"type": "string",
+											"enum": [
+												"equals",
+												"not",
+												"gt",
+												"gte",
+												"lt",
+												"lte"
+											]
+										},
+										"value": {
+											"anyOf": [
+												{
+													"type": "number"
+												},
+												{
+													"pattern": "^-?(?:\\d+\\.?\\d*|\\.\\d+)$",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"required": [
+										"field",
+										"op",
+										"value"
+									],
+									"type": "object"
+								},
+								{
+									"additionalProperties": false,
+									"properties": {
+										"field": {
+											"type": "string",
+											"enum": [
+												"killChain"
+											]
+										},
+										"op": {
+											"type": "string",
+											"enum": [
+												"in"
+											]
+										},
+										"value": {
+											"type": "array",
+											"items": {
+												"anyOf": [
+													{
+														"type": "number"
+													},
+													{
+														"pattern": "^-?(?:\\d+\\.?\\d*|\\.\\d+)$",
+														"type": "string"
+													}
+												]
+											},
+											"maxItems": 100,
+											"minItems": 1
+										}
+									},
+									"required": [
+										"field",
+										"op",
+										"value"
+									],
+									"type": "object"
+								},
+								{
+									"additionalProperties": false,
+									"properties": {
+										"field": {
+											"type": "string",
+											"enum": [
+												"hasChildren"
+											]
+										},
+										"op": {
+											"type": "string",
+											"enum": [
+												"equals",
+												"not",
+												"gt",
+												"gte",
+												"lt",
+												"lte"
+											]
+										},
+										"value": {
+											"anyOf": [
+												{
+													"type": "boolean"
+												},
+												{
+													"enum": [
+														"true"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"false"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														1
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														0
+													],
+													"type": "number"
+												},
+												{
+													"enum": [
+														"1"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														"0"
+													],
+													"type": "string"
+												}
+											]
+										}
+									},
+									"required": [
+										"field",
+										"op",
+										"value"
+									],
+									"type": "object"
+								},
+								{
+									"additionalProperties": false,
+									"properties": {
+										"field": {
+											"type": "string",
+											"enum": [
+												"hasChildren"
+											]
+										},
+										"op": {
+											"type": "string",
+											"enum": [
+												"in"
+											]
+										},
+										"value": {
+											"type": "array",
+											"items": {
+												"anyOf": [
+													{
+														"type": "boolean"
+													},
+													{
+														"enum": [
+															"true"
+														],
+														"type": "string"
+													},
+													{
+														"enum": [
+															"false"
+														],
+														"type": "string"
+													},
+													{
+														"enum": [
+															1
+														],
+														"type": "number"
+													},
+													{
+														"enum": [
+															0
+														],
+														"type": "number"
+													},
+													{
+														"enum": [
+															"1"
+														],
+														"type": "string"
+													},
+													{
+														"enum": [
+															"0"
+														],
+														"type": "string"
+													}
+												]
+											},
+											"maxItems": 100,
+											"minItems": 1
+										}
+									},
+									"required": [
+										"field",
+										"op",
+										"value"
+									],
+									"type": "object"
+								}
+							]
+						},
+						"maxItems": 10,
+						"minItems": 1,
+						"type": "array"
+					},
+					"maxItems": 8,
+					"minItems": 1
+				}
+			},
+			{
 				"name": "page",
 				"in": "query",
 				"schema": {
@@ -4802,7 +5140,342 @@
 										}
 									]
 								},
+								"default": [],
 								"maxItems": 10
+							},
+							"searchBranches": {
+								"description": "OR branches of structured search filters. Filters within a branch are AND'd, branches are OR'd, and the result is AND'd with `search`: `AND(search) AND OR(AND(branch 1), ...)`. Max 8 branches of 1-10 conditions each. Not supported for analytics datasets, and `indicator` filters are not yet supported inside branches. Cursor pages carry the original branches, so do not resend them with `cursor`.",
+								"type": "array",
+								"items": {
+									"items": {
+										"anyOf": [
+											{
+												"additionalProperties": false,
+												"properties": {
+													"field": {
+														"type": "string",
+														"enum": [
+															"attacker",
+															"attackerCountry",
+															"category",
+															"createdAt",
+															"date",
+															"event",
+															"indicator",
+															"indicatorType",
+															"mitreAttack",
+															"mitreCapec",
+															"tags",
+															"targetCountry",
+															"targetIndustry",
+															"tlp",
+															"uuid"
+														]
+													},
+													"op": {
+														"type": "string",
+														"enum": [
+															"equals",
+															"not",
+															"gt",
+															"gte",
+															"lt",
+															"lte",
+															"like",
+															"contains",
+															"startsWith",
+															"endsWith",
+															"find"
+														]
+													},
+													"value": {
+														"type": "string",
+														"maxLength": 512,
+														"minLength": 1
+													}
+												},
+												"required": [
+													"field",
+													"op",
+													"value"
+												],
+												"type": "object"
+											},
+											{
+												"additionalProperties": false,
+												"properties": {
+													"field": {
+														"type": "string",
+														"enum": [
+															"attacker",
+															"attackerCountry",
+															"category",
+															"createdAt",
+															"date",
+															"event",
+															"indicator",
+															"indicatorType",
+															"mitreAttack",
+															"mitreCapec",
+															"tags",
+															"targetCountry",
+															"targetIndustry",
+															"tlp",
+															"uuid"
+														]
+													},
+													"op": {
+														"type": "string",
+														"enum": [
+															"in"
+														]
+													},
+													"value": {
+														"type": "array",
+														"items": {
+															"maxLength": 512,
+															"minLength": 1,
+															"type": "string"
+														},
+														"maxItems": 100,
+														"minItems": 1
+													}
+												},
+												"required": [
+													"field",
+													"op",
+													"value"
+												],
+												"type": "object"
+											},
+											{
+												"additionalProperties": false,
+												"properties": {
+													"field": {
+														"type": "string",
+														"enum": [
+															"killChain"
+														]
+													},
+													"op": {
+														"type": "string",
+														"enum": [
+															"equals",
+															"not",
+															"gt",
+															"gte",
+															"lt",
+															"lte"
+														]
+													},
+													"value": {
+														"anyOf": [
+															{
+																"type": "number"
+															},
+															{
+																"pattern": "^-?(?:\\d+\\.?\\d*|\\.\\d+)$",
+																"type": "string"
+															}
+														]
+													}
+												},
+												"required": [
+													"field",
+													"op",
+													"value"
+												],
+												"type": "object"
+											},
+											{
+												"additionalProperties": false,
+												"properties": {
+													"field": {
+														"type": "string",
+														"enum": [
+															"killChain"
+														]
+													},
+													"op": {
+														"type": "string",
+														"enum": [
+															"in"
+														]
+													},
+													"value": {
+														"type": "array",
+														"items": {
+															"anyOf": [
+																{
+																	"type": "number"
+																},
+																{
+																	"pattern": "^-?(?:\\d+\\.?\\d*|\\.\\d+)$",
+																	"type": "string"
+																}
+															]
+														},
+														"maxItems": 100,
+														"minItems": 1
+													}
+												},
+												"required": [
+													"field",
+													"op",
+													"value"
+												],
+												"type": "object"
+											},
+											{
+												"additionalProperties": false,
+												"properties": {
+													"field": {
+														"type": "string",
+														"enum": [
+															"hasChildren"
+														]
+													},
+													"op": {
+														"type": "string",
+														"enum": [
+															"equals",
+															"not",
+															"gt",
+															"gte",
+															"lt",
+															"lte"
+														]
+													},
+													"value": {
+														"anyOf": [
+															{
+																"type": "boolean"
+															},
+															{
+																"enum": [
+																	"true"
+																],
+																"type": "string"
+															},
+															{
+																"enum": [
+																	"false"
+																],
+																"type": "string"
+															},
+															{
+																"enum": [
+																	1
+																],
+																"type": "number"
+															},
+															{
+																"enum": [
+																	0
+																],
+																"type": "number"
+															},
+															{
+																"enum": [
+																	"1"
+																],
+																"type": "string"
+															},
+															{
+																"enum": [
+																	"0"
+																],
+																"type": "string"
+															}
+														]
+													}
+												},
+												"required": [
+													"field",
+													"op",
+													"value"
+												],
+												"type": "object"
+											},
+											{
+												"additionalProperties": false,
+												"properties": {
+													"field": {
+														"type": "string",
+														"enum": [
+															"hasChildren"
+														]
+													},
+													"op": {
+														"type": "string",
+														"enum": [
+															"in"
+														]
+													},
+													"value": {
+														"type": "array",
+														"items": {
+															"anyOf": [
+																{
+																	"type": "boolean"
+																},
+																{
+																	"enum": [
+																		"true"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"false"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		1
+																	],
+																	"type": "number"
+																},
+																{
+																	"enum": [
+																		0
+																	],
+																	"type": "number"
+																},
+																{
+																	"enum": [
+																		"1"
+																	],
+																	"type": "string"
+																},
+																{
+																	"enum": [
+																		"0"
+																	],
+																	"type": "string"
+																}
+															]
+														},
+														"maxItems": 100,
+														"minItems": 1
+													}
+												},
+												"required": [
+													"field",
+													"op",
+													"value"
+												],
+												"type": "object"
+											}
+										]
+									},
+									"maxItems": 10,
+									"minItems": 1,
+									"type": "array"
+								},
+								"maxItems": 8,
+								"minItems": 1
 							}
 						}
 					}
