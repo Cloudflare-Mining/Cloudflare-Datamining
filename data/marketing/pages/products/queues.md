@@ -55,9 +55,9 @@ Build distributed and resilient web crawlers by using Queues to manage the list 
 ## Related Products
 
 - [Artifacts](/products/artifacts.md): Git-native versioned storage
+- [K2](/products/k2.md): Durable event streams
 - [Cache Reserve](/products/cache-reserve.md): Persistent caching for static content
 - [D1](/products/d1.md): Serverless SQL
-- [Data Platform](/products/data-platform.md): Ingest, Catalog & Query
 
 ---
 

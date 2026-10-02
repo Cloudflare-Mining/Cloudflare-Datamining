@@ -44,10 +44,10 @@ Build Git-backed features for your users: notebooks, IaC, generated content. No 
 
 ## Related Products
 
+- [K2](/products/k2.md): Durable event streams
 - [Cache Reserve](/products/cache-reserve.md): Persistent caching for static content
 - [D1](/products/d1.md): Serverless SQL
-- [Data Platform](/products/data-platform.md): Ingest, Catalog & Query
-- [Hyperdrive](/products/hyperdrive.md): Global databases
+- [Basin](/products/data-platform.md): Ingest, manage & query analytics data
 
 ---
 

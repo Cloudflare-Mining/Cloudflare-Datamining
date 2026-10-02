@@ -1,12 +1,12 @@
 ---
-title: "Cloudflare Data Platform - Ingest, Catalog & Query"
-description: "Build analytics-ready data warehouses and lakehouses on R2. Stream events via Pipelines, catalog tables with Apache Iceberg, and query with R2 SQL or any compatible engine—all without egress fees."
+title: "Cloudflare Basin - Ingest, Manage & Query"
+description: "Basin is an end-to-end serverless analytics platform built on open standards. Stream and transform events via Basin Pipelines, manage Apache Iceberg tables with Basin Catalog, and query with Basin SQL or any compatible engine—all without egress fees."
 url: "https://www.cloudflare.com/products/data-platform"
 ---
 
-# Data Platform
+# Basin
 
-> Build analytics-ready data warehouses and lakehouses on R2. Stream events via Pipelines, catalog tables with Apache Iceberg, and query with R2 SQL or any compatible engine—all without egress fees.
+> Basin is an end-to-end serverless analytics platform built on open standards. Stream and transform events via Basin Pipelines, manage Apache Iceberg tables with Basin Catalog, and query with Basin SQL or any compatible engine—all without egress fees.
 
 ## Benefits
 
@@ -24,7 +24,7 @@ Stream and process events via HTTP endpoints or Workers bindings. No Apache Kafk
 
 ### SQL at the edge
 
-Query Iceberg tables directly with R2 SQL or the wrangler CLI. Distributed compute, automatic file pruning.
+Query Iceberg tables directly with Basin SQL or the wrangler CLI. Distributed compute, automatic file pruning.
 
 ### No infrastructure
 
@@ -32,7 +32,7 @@ No servers to provision, no clusters to manage. Just define a schema, stream dat
 
 ### Open table format
 
-Apache Iceberg tables means your data is accessible by your favorite query engines—Apache Spark, Snowflake, Trino, DuckDB, and more—via R2 Data Catalog's standard Iceberg REST API.
+Apache Iceberg tables mean your data is accessible by your favorite query engines—Apache Spark, Snowflake, Trino, DuckDB, and more—via Basin Catalog's standard Iceberg REST API.
 
 ## Use Cases
 
@@ -54,16 +54,16 @@ Store data once in R2, query from anywhere. Run Spark jobs in AWS, Snowflake que
 
 ## Resources
 
-- [Full Documentation](https://developers.cloudflare.com/r2/data-catalog/): Complete technical documentation
+- [Full Documentation](https://developers.cloudflare.com/basin/): Complete technical documentation
 - [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
 - [Pricing](/plans.md): See pricing details
 
 ## Related Products
 
 - [Artifacts](/products/artifacts.md): Git-native versioned storage
+- [K2](/products/k2.md): Durable event streams
 - [Cache Reserve](/products/cache-reserve.md): Persistent caching for static content
 - [D1](/products/d1.md): Serverless SQL
-- [Hyperdrive](/products/hyperdrive.md): Global databases
 
 ---
 

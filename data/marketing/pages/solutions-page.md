@@ -8,10 +8,6 @@ image: https://www.cloudflare.com/preview.png
 
 #####  Explore solution blueprints tailored to the workloads you are building on Cloudflare. 
 
-**Agentic Commerce** 
-
-Enable trusted commerce for the age of AI agents 
-
 # Build without boundaries
 
  Join thousands of developers who've eliminated infrastructure complexity and deployed globally with Cloudflare. Start building for free — no credit card required. 

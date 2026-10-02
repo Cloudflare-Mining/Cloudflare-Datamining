@@ -23,9 +23,9 @@ Cache Reserve is part of Cloudflare's storage offerings on the Workers platform.
 ## Related Products
 
 - [Artifacts](/products/artifacts.md): Git-native versioned storage
+- [K2](/products/k2.md): Durable event streams
 - [D1](/products/d1.md): Serverless SQL
-- [Data Platform](/products/data-platform.md): Ingest, Catalog & Query
-- [Hyperdrive](/products/hyperdrive.md): Global databases
+- [Basin](/products/data-platform.md): Ingest, manage & query analytics data
 
 ---
 
