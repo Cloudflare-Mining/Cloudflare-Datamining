@@ -20,6 +20,14 @@ Cloudflare is launching eight major updates that bring logs, traces, analytics, 
 
 [![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XHE6D45CDHQVM71QYA6EEJ.01M3XHE6YHC44V1DZB0VG3DCGV.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/one-observability-platform/)
 
+October 2, 2026 [<h2>Streamline: custom video pipelines with Cloudflare Stream and Workers</h2>](https://blog.cloudflare.com/streamline/)
+
+Streamline demonstrates how to build long-running, continuous video processing pipelines by pairing Cloudflare Workers and Durable Objects with a containerized media engine.
+
+![Willi Geiger](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454X9RVT5T3T3CSSAM5SHZ.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Taylor Smith](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4813QG3QG91NYS6ABQTM9R.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Willi Geiger](https://blog.cloudflare.com/author/willi/) and  [Taylor Smith](https://blog.cloudflare.com/author/tsmith/)
+
 October 2, 2026 [<h2>Introducing Web Search API via AI Gateway</h2>](https://blog.cloudflare.com/introducing-web-search-api/)
 
 Cloudflare AI Gateway now supports native web search API integration in partnership with Ceramic.ai, Exa, and Linkup. Developers can now inject real-time web context into model inference calls via AI Gateway, REST APIs, or Workers bindings.
@@ -155,14 +163,6 @@ Cloudflare Basin is built on Apache Iceberg and R2 Object Storage. With general 
 ![Marc Selwan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455H274J0ZYJ6K4KHKJT25.webp&w=64&h=64&f=webp&fit=cover&position=center)![Micah Wylde](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48960E56E6QTQP000R72JC.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Marc Selwan](https://blog.cloudflare.com/author/marc-selwan/) and  [Micah Wylde](https://blog.cloudflare.com/author/micah-wylde/)
-
-September 30, 2026 [<h2>Cloudflare Impact reaches $100 million in donations</h2>](https://blog.cloudflare.com/100-million-donations/)
-
-This week, Cloudflare's Impact programs will reach $100 million in donated services. This milestone means that thousands of entities including journalists, civil society, state and local governments, election management bodies, and public schools are being protected from cyberattacks.
-
-![Patrick Day](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TYR5VCZ5TE2F5PZ2Z1X5.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Patrick Day](https://blog.cloudflare.com/author/patrick-day/)
 
 Load more
 
