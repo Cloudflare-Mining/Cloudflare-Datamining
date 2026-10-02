@@ -271,8 +271,8 @@
 	},
 	"DELETE /accounts/{account_id}/access/users/{user_id}/mfa_authenticators/{authenticator_id}": {
 		"operationId": "zero-trust-users-delete-mfa-authenticator",
-		"summary": "Delete a user's MFA device",
-		"description": "Deletes a specific MFA device, including a PIV key or FIDO2 key enrollment, for a user. This action is only available if MFA is turned on for the organization. Successful deletion revokes the enrollment and returns a null result.",
+		"summary": "Delete a user's authenticator",
+		"description": "Deletes a specific MFA device or passkey, including a PIV key or FIDO2 key enrollment, for a user. Admin deletion remains available when MFA is disabled. Successful deletion revokes the enrollment and returns a null result.",
 		"parameters": [
 			{
 				"name": "user_id",
@@ -547,6 +547,286 @@
 		"x-api-token-group": null,
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.users.mfa.authenticators",
+		"x-fern-sdk-method-name": "delete"
+	},
+	"DELETE /accounts/{account_id}/access/users/{user_id}/passkeys/{authenticator_id}": {
+		"operationId": "zero-trust-users-delete-passkey",
+		"summary": "Delete a user's passkey",
+		"description": "Alias of the authenticator deletion endpoint for passkey management. The identifier is the passkey's authenticator ID from the last-seen identity response. Successful deletion revokes the enrollment and returns a null result.",
+		"parameters": [
+			{
+				"name": "user_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "UUID.",
+					"type": "string",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "authenticator_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier for the MFA device.",
+					"type": "string",
+					"example": "test-authenticator-id-123"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Delete passkey response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"nullable": true
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Delete passkey response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Zero Trust users"
+		],
+		"x-api-token-group": null,
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.users.passkeys",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/access/users": {
@@ -2752,6 +3032,35 @@
 															"example": 2
 														}
 													}
+												},
+												{
+													"properties": {
+														"passkeys": {
+															"description": "Active passkey enrollments for the user.",
+															"type": "array",
+															"items": {
+																"properties": {
+																	"created_at": {
+																		"type": "string",
+																		"format": "date-time"
+																	},
+																	"id": {
+																		"description": "Authenticator ID used to delete the passkey.",
+																		"type": "string"
+																	},
+																	"last_used_at": {
+																		"type": "string",
+																		"format": "date-time"
+																	},
+																	"name": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														}
+													},
+													"type": "object"
 												}
 											]
 										}

@@ -3733,7 +3733,7 @@
 													"description": "Bucket jobs in the current page.",
 													"type": "array",
 													"items": {
-														"description": "Descriptor of a bucket background job, discriminated by `jobType`. Returned when the\ndelete-objects endpoint is invoked with a `prefix` query parameter, and by the Get Bucket\nJob and List Bucket Jobs endpoints. A small operation can already be `COMPLETED` when it\nis returned.\n",
+														"description": "Descriptor of a bucket background job, discriminated by `jobType`. Returned by the\nCreate Bucket Job, Get Bucket Job and List Bucket Jobs endpoints. A small operation can\nalready be `COMPLETED` when it is returned.\n",
 														"discriminator": {
 															"mapping": {
 																"prefixDelete": "#/components/schemas/r2_prefix_delete_job",
@@ -4017,7 +4017,7 @@
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/jobs/{job_id}": {
 		"operationId": "r2-get-bucket-job",
 		"summary": "Get Bucket Job",
-		"description": "Gets the current status of a background job of any type for an R2 bucket. Poll this\nendpoint with the job identifier returned when the operation was submitted until the\nstatus is `COMPLETED`, `FAILED`, or `CANCELLED`.\n",
+		"description": "Gets the current status of a background job of any type for an R2 bucket. Poll this\nendpoint with the job identifier returned by Create Bucket Job until the status is\n`COMPLETED`, `FAILED`, or `CANCELLED`.\n",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -4149,7 +4149,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "Descriptor of a bucket background job, discriminated by `jobType`. Returned when the\ndelete-objects endpoint is invoked with a `prefix` query parameter, and by the Get Bucket\nJob and List Bucket Jobs endpoints. A small operation can already be `COMPLETED` when it\nis returned.\n",
+											"description": "Descriptor of a bucket background job, discriminated by `jobType`. Returned by the\nCreate Bucket Job, Get Bucket Job and List Bucket Jobs endpoints. A small operation can\nalready be `COMPLETED` when it is returned.\n",
 											"discriminator": {
 												"mapping": {
 													"prefixDelete": "#/components/schemas/r2_prefix_delete_job",
@@ -6371,6 +6371,698 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.domains.custom",
 		"x-fern-sdk-method-name": "create"
+	},
+	"POST /accounts/{account_id}/r2/buckets/{bucket_name}/jobs": {
+		"operationId": "r2-create-bucket-job",
+		"summary": "Create Bucket Job",
+		"description": "Creates a background job for an R2 bucket. The `jobType` field selects the job:\n\n- **`prefixDelete`**: deletes every object whose key begins with `prefix`. A non-empty\n  prefix must end in `/`. An empty prefix (`\"\"`) empties the entire bucket.\n- **`storageClassMigration`**: migrates every object in the bucket between storage\n  classes. `sourceStorageClass` and `destinationStorageClass` must be provided together\n  and must differ; omitting both migrates from `InfrequentAccess` to `Standard`.\n\nPoll the returned `id` with the Get Bucket Job endpoint. Small prefix-delete jobs can\nfinish synchronously and return `COMPLETED`. Objects uploaded after a background job\nstarts are not affected by that job.\n\nFor prefix-delete jobs: abort active multipart uploads before submitting the request,\nsince a synchronously completed job does not abort them, and avoid writing objects or\nstarting multipart uploads while a bucket-emptying job is in progress. Each request\ncreates a distinct job, and the number of active prefix-delete jobs is limited per\nbucket; wait for an existing job to finish before retrying a request rejected with\nHTTP 429. A bucket cannot be emptied while event notifications are configured (HTTP 409\n/ error code 10083). To protect a bucket with R2 Data Catalog enabled, send the\n`cf-r2-data-catalog-check` header; a conflict is returned with HTTP 409 / error code\n10081.\n\nPrefix-delete jobs require permission to delete objects; storage-class migration jobs\nrequire permission to write to the bucket.\n",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID that owns the R2 resource.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32
+				}
+			},
+			{
+				"name": "bucket_name",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Name of the bucket.",
+					"type": "string",
+					"example": "example-bucket",
+					"maxLength": 64,
+					"minLength": 3,
+					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
+				"in": "header",
+				"name": "cf-r2-jurisdiction",
+				"schema": {
+					"type": "string",
+					"default": "default",
+					"enum": [
+						"default",
+						"eu",
+						"us",
+						"fedramp",
+						"fedramp-high"
+					]
+				}
+			},
+			{
+				"name": "cf-r2-data-catalog-check",
+				"in": "header",
+				"description": "For prefix-delete jobs, set this header to reject the request when R2 Data Catalog is enabled for the bucket.",
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"examples": {
+						"delete-prefix": {
+							"summary": "Delete every object under a prefix",
+							"value": {
+								"jobType": "prefixDelete",
+								"prefix": "logs/2026/"
+							}
+						},
+						"empty-bucket": {
+							"summary": "Empty the entire bucket",
+							"value": {
+								"jobType": "prefixDelete",
+								"prefix": ""
+							}
+						},
+						"migrate-to-infrequent-access": {
+							"summary": "Migrate every object to Infrequent Access",
+							"value": {
+								"destinationStorageClass": "InfrequentAccess",
+								"jobType": "storageClassMigration",
+								"sourceStorageClass": "Standard"
+							}
+						}
+					},
+					"schema": {
+						"discriminator": {
+							"mapping": {
+								"prefixDelete": "#/components/schemas/r2_create_prefix_delete_job_request",
+								"storageClassMigration": "#/components/schemas/r2_create_storage_class_migration_job_request"
+							},
+							"propertyName": "jobType"
+						},
+						"oneOf": [
+							{
+								"description": "Request body that creates a prefix-delete job.",
+								"type": "object",
+								"properties": {
+									"jobType": {
+										"type": "string",
+										"enum": [
+											"prefixDelete"
+										]
+									},
+									"prefix": {
+										"description": "Prefix matched against object keys. A non-empty value must end in `/`.\nAn empty string empties the entire bucket.\n",
+										"type": "string",
+										"example": "path/to/"
+									}
+								},
+								"additionalProperties": false,
+								"required": [
+									"jobType",
+									"prefix"
+								],
+								"title": "Prefix Delete Job"
+							},
+							{
+								"description": "Request body that creates a storage-class migration job.",
+								"type": "object",
+								"properties": {
+									"destinationStorageClass": {
+										"type": "string",
+										"enum": [
+											"Standard",
+											"InfrequentAccess"
+										]
+									},
+									"jobType": {
+										"type": "string",
+										"enum": [
+											"storageClassMigration"
+										]
+									},
+									"sourceStorageClass": {
+										"type": "string",
+										"enum": [
+											"Standard",
+											"InfrequentAccess"
+										]
+									}
+								},
+								"additionalProperties": false,
+								"required": [
+									"jobType"
+								],
+								"title": "Storage Class Migration Job"
+							}
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "The created job.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"empty-bucket-completed": {
+								"summary": "A small or already empty bucket completed immediately",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"endTime": "2026-07-20T12:00:00Z",
+										"id": "69f94626-a3fe-47bc-9615-e791b4d53c53",
+										"jobType": "prefixDelete",
+										"prefixDelete": {
+											"deletedObjects": 0,
+											"isBucketClear": true,
+											"prefix": ""
+										},
+										"startTime": "2026-07-20T12:00:00Z",
+										"status": "COMPLETED"
+									},
+									"success": true
+								}
+							},
+							"empty-bucket-submitted": {
+								"summary": "Empty Bucket job submitted",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"id": "7f24658b-31d7-4b91-9a12-cb5a2c99b294",
+										"jobType": "prefixDelete",
+										"prefixDelete": {
+											"deletedObjects": 0,
+											"isBucketClear": true,
+											"prefix": ""
+										},
+										"startTime": "2026-07-20T12:00:00Z",
+										"status": "ENQUEUED"
+									},
+									"success": true
+								}
+							},
+							"migration-submitted": {
+								"summary": "Storage-class migration job submitted",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"id": "3c1f9a52-0b8e-4f5d-9d0e-4a1b2c3d4e5f",
+										"jobType": "storageClassMigration",
+										"startTime": "2026-09-04T12:00:00Z",
+										"status": "ENQUEUED",
+										"storageClassMigration": {
+											"destinationStorageClass": "InfrequentAccess",
+											"migratedObjects": 0,
+											"sourceStorageClass": "Standard"
+										}
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Descriptor of a bucket background job, discriminated by `jobType`. Returned by the\nCreate Bucket Job, Get Bucket Job and List Bucket Jobs endpoints. A small operation can\nalready be `COMPLETED` when it is returned.\n",
+											"discriminator": {
+												"mapping": {
+													"prefixDelete": "#/components/schemas/r2_prefix_delete_job",
+													"storageClassMigration": "#/components/schemas/r2_storage_class_migration_job"
+												},
+												"propertyName": "jobType"
+											},
+											"oneOf": [
+												{
+													"description": "Descriptor of a prefix-delete job. An empty prefix indicates a job that empties the\nwhole bucket.\n",
+													"type": "object",
+													"properties": {
+														"endTime": {
+															"description": "When the job finished. Absent while the job is still `ENQUEUED` or `RUNNING`.\n",
+															"type": "string",
+															"format": "date-time"
+														},
+														"id": {
+															"description": "Unique identifier used to poll the job.",
+															"type": "string"
+														},
+														"jobType": {
+															"description": "The job kind.",
+															"type": "string",
+															"enum": [
+																"prefixDelete"
+															]
+														},
+														"prefixDelete": {
+															"description": "Details specific to the prefix-delete job.",
+															"type": "object",
+															"properties": {
+																"deletedObjects": {
+																	"description": "Number of objects deleted by the job so far.",
+																	"type": "integer",
+																	"example": 0
+																},
+																"isBucketClear": {
+																	"description": "True when the job was created to clear the entire bucket. This field can be absent\non jobs created before Empty Bucket job tracking was introduced.\n",
+																	"type": "boolean"
+																},
+																"prefix": {
+																	"description": "The prefix matched against object keys. An empty string means the entire bucket.",
+																	"type": "string",
+																	"example": "path/to/"
+																}
+															},
+															"required": [
+																"prefix",
+																"deletedObjects"
+															]
+														},
+														"startTime": {
+															"description": "When the job was created.",
+															"type": "string",
+															"format": "date-time"
+														},
+														"status": {
+															"description": "Lifecycle status of a bucket background job.",
+															"type": "string",
+															"enum": [
+																"ENQUEUED",
+																"RUNNING",
+																"COMPLETED",
+																"FAILED",
+																"CANCELLED"
+															]
+														}
+													},
+													"required": [
+														"id",
+														"jobType",
+														"status",
+														"startTime",
+														"prefixDelete"
+													]
+												},
+												{
+													"description": "Descriptor of a bucket-wide storage-class migration job.",
+													"type": "object",
+													"properties": {
+														"endTime": {
+															"description": "When the job finished. Absent while the job is still `ENQUEUED` or `RUNNING`.\n",
+															"type": "string",
+															"format": "date-time"
+														},
+														"id": {
+															"description": "Unique identifier used to poll the job.",
+															"type": "string"
+														},
+														"jobType": {
+															"description": "The job kind.",
+															"type": "string",
+															"enum": [
+																"storageClassMigration"
+															]
+														},
+														"startTime": {
+															"description": "When the job was created.",
+															"type": "string",
+															"format": "date-time"
+														},
+														"status": {
+															"description": "Lifecycle status of a bucket background job.",
+															"type": "string",
+															"enum": [
+																"ENQUEUED",
+																"RUNNING",
+																"COMPLETED",
+																"FAILED",
+																"CANCELLED"
+															]
+														},
+														"storageClassMigration": {
+															"type": "object",
+															"properties": {
+																"destinationStorageClass": {
+																	"description": "The storage class objects are migrated to. The source and destination storage\nclasses always differ.\n",
+																	"type": "string",
+																	"enum": [
+																		"Standard",
+																		"InfrequentAccess"
+																	]
+																},
+																"failedBytes": {
+																	"description": "Payload bytes belonging to failed object versions.",
+																	"type": "integer",
+																	"minimum": 0
+																},
+																"failedObjects": {
+																	"description": "Number of object versions that failed migration.",
+																	"type": "integer",
+																	"minimum": 0
+																},
+																"migratedBytes": {
+																	"description": "Object payload bytes migrated successfully. Present for Metadata Worker jobs.",
+																	"type": "integer",
+																	"minimum": 0
+																},
+																"migratedMetadataBytes": {
+																	"description": "Object metadata bytes migrated successfully. Present for Metadata Worker jobs.",
+																	"type": "integer",
+																	"minimum": 0
+																},
+																"migratedObjects": {
+																	"description": "Number of object versions migrated successfully.",
+																	"type": "integer",
+																	"minimum": 0
+																},
+																"skippedBytes": {
+																	"description": "Payload bytes belonging to skipped object versions.",
+																	"type": "integer",
+																	"minimum": 0
+																},
+																"skippedObjects": {
+																	"description": "Number of object versions skipped.",
+																	"type": "integer",
+																	"minimum": 0
+																},
+																"sourceStorageClass": {
+																	"description": "The storage class objects are migrated from.",
+																	"type": "string",
+																	"enum": [
+																		"Standard",
+																		"InfrequentAccess"
+																	]
+																}
+															},
+															"required": [
+																"sourceStorageClass",
+																"destinationStorageClass",
+																"migratedObjects"
+															]
+														}
+													},
+													"required": [
+														"id",
+														"jobType",
+														"status",
+														"startTime",
+														"storageClassMigration"
+													]
+												}
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Prefix-delete conflict. Event notification rules are still configured (error code\n10083), or the Data Catalog check was requested and R2 Data Catalog is enabled for\nthe bucket (error code 10081). Remove the conflicting configuration before retrying.\n",
+				"content": {
+					"application/json": {
+						"examples": {
+							"event-notifications-active": {
+								"summary": "Event notification rules must be removed first",
+								"value": {
+									"errors": [
+										{
+											"code": 10083,
+											"message": "Remove all event notification rules from bucket (example-bucket) before emptying it (account 023e105f4ecef8ad9ca31a8372d0c353)."
+										}
+									],
+									"messages": [
+										"Request failed."
+									],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "Too many active prefix-delete or bucket-emptying jobs. Wait for an existing job to finish, then retry.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"too-many-jobs": {
+								"summary": "The per-bucket active job limit was reached",
+								"value": {
+									"errors": [
+										{
+											"code": 10058,
+											"message": "Too many concurrent prefix delete jobs for this bucket. Please wait for existing jobs to complete."
+										}
+									],
+									"messages": [
+										"Request failed."
+									],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Create Bucket Job response failure. The request body may be invalid, the bucket may not exist, or the caller may not be authorized.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"R2 Bucket"
+		],
+		"x-api-token-group": [
+			"Workers R2 Storage Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets.jobs",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-require-confirmation": "This starts a background job that either permanently deletes every object under the given prefix (every object in the bucket for an empty prefix) or migrates every object in the bucket between storage classes."
 	},
 	"POST /accounts/{account_id}/r2/temp-access-credentials": {
 		"operationId": "r2-create-temp-access-credentials",

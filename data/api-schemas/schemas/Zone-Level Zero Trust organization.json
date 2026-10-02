@@ -117,7 +117,7 @@
 													"type": "object",
 													"properties": {
 														"auth_domain": {
-															"description": "The unique subdomain assigned to your Zero Trust organization.",
+															"description": "The unique subdomain assigned to your Zero Trust organization. Auto-generated if omitted on creation.",
 															"type": "string",
 															"example": "test.cloudflareaccess.com"
 														},
@@ -180,7 +180,7 @@
 															}
 														},
 														"name": {
-															"description": "The name of your Zero Trust organization.",
+															"description": "The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain.",
 															"type": "string",
 															"example": "Widget Corps Internal Applications"
 														},
@@ -394,7 +394,7 @@
 						"type": "object",
 						"properties": {
 							"auth_domain": {
-								"description": "The unique subdomain assigned to your Zero Trust organization.",
+								"description": "The unique subdomain assigned to your Zero Trust organization. Auto-generated if omitted on creation.",
 								"type": "string",
 								"example": "test.cloudflareaccess.com"
 							},
@@ -434,7 +434,7 @@
 								}
 							},
 							"name": {
-								"description": "The name of your Zero Trust organization.",
+								"description": "The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain.",
 								"type": "string",
 								"example": "Widget Corps Internal Applications"
 							},
@@ -455,11 +455,7 @@
 								"type": "string",
 								"example": "720h"
 							}
-						},
-						"required": [
-							"name",
-							"auth_domain"
-						]
+						}
 					}
 				}
 			}
@@ -565,7 +561,7 @@
 											"type": "object",
 											"properties": {
 												"auth_domain": {
-													"description": "The unique subdomain assigned to your Zero Trust organization.",
+													"description": "The unique subdomain assigned to your Zero Trust organization. Auto-generated if omitted on creation.",
 													"type": "string",
 													"example": "test.cloudflareaccess.com"
 												},
@@ -628,7 +624,7 @@
 													}
 												},
 												"name": {
-													"description": "The name of your Zero Trust organization.",
+													"description": "The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain.",
 													"type": "string",
 													"example": "Widget Corps Internal Applications"
 												},
@@ -1026,7 +1022,7 @@
 						"type": "object",
 						"properties": {
 							"auth_domain": {
-								"description": "The unique subdomain assigned to your Zero Trust organization.",
+								"description": "The unique subdomain assigned to your Zero Trust organization. Auto-generated if omitted on creation.",
 								"type": "string",
 								"example": "test.cloudflareaccess.com"
 							},
@@ -1066,7 +1062,7 @@
 								}
 							},
 							"name": {
-								"description": "The name of your Zero Trust organization.",
+								"description": "The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain.",
 								"type": "string",
 								"example": "Widget Corps Internal Applications"
 							},
@@ -1193,7 +1189,7 @@
 											"type": "object",
 											"properties": {
 												"auth_domain": {
-													"description": "The unique subdomain assigned to your Zero Trust organization.",
+													"description": "The unique subdomain assigned to your Zero Trust organization. Auto-generated if omitted on creation.",
 													"type": "string",
 													"example": "test.cloudflareaccess.com"
 												},
@@ -1256,7 +1252,7 @@
 													}
 												},
 												"name": {
-													"description": "The name of your Zero Trust organization.",
+													"description": "The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain.",
 													"type": "string",
 													"example": "Widget Corps Internal Applications"
 												},

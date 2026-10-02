@@ -1,8 +1,8 @@
 {
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/objects": {
 		"operationId": "r2-delete-objects",
-		"summary": "Delete Objects or Empty a Bucket",
-		"description": "Deletes objects from an R2 bucket. Three modes are supported:\n\n1. **Delete by list** (default): Provide a JSON array of object keys in the request body.\n   All listed objects are deleted; per-key errors are reported in the response.\n2. **Delete by prefix**: Provide a non-empty `prefix` query parameter and no request body\n   to delete every object whose key begins with that prefix.\n3. **Empty bucket**: Provide the `prefix` query parameter with an empty value (`?prefix=`)\n   and no request body to delete all objects in the bucket.\n\nPrefix and empty-bucket requests return a job descriptor. Small jobs can finish\nsynchronously and return `COMPLETED`; larger jobs continue in the background. Poll the\nreturned `id` with the Get Bucket Job endpoint. Objects uploaded after a background job\nstarts are not deleted by that job. Abort active multipart uploads before submitting the\nrequest; a synchronously completed job does not abort them. Avoid writing objects or\nstarting multipart uploads while a bucket-emptying job is in progress.\n\nEach repeated or concurrent request creates a distinct job. The number of active jobs is\nlimited per bucket; wait for an existing job to finish before retrying a request rejected\nwith HTTP 429.\n\nA bucket cannot be emptied while event notifications are configured. Remove the event\nnotification rules and retry requests rejected with HTTP 409 / error code 10034. To\nprotect a bucket with R2 Data Catalog enabled, send the `cf-r2-data-catalog-check` header;\na conflict is returned with HTTP 409 / error code 10081.\n\nFor most workloads, we recommend using R2's [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/api/) or a [Worker with an R2 binding](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/) instead.\n",
+		"summary": "Delete Objects",
+		"description": "Deletes the listed objects from an R2 bucket. Provide a JSON array of 1 to 1000 object\nkeys in the request body.\n\nIf any key cannot be deleted (for example, because it does not exist or is locked), the\nremaining keys are still deleted, but the response is HTTP 200 with `success: false`,\n`result: null` and one entry in `errors` per failed key. The entries in `errors` do not\nidentify which key failed.\n\nTo delete every object under a prefix, or to empty a bucket, create a `prefixDelete` job\nwith the Create Bucket Job endpoint instead. The `prefix` query parameter on this endpoint\nis deprecated; it creates the same job, but responses to it carry a `Deprecation` header\nand a message pointing to Create Bucket Job.\n\nFor most workloads, we recommend using R2's [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/api/) or a [Worker with an R2 binding](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/) instead.\n",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -48,11 +48,11 @@
 			{
 				"name": "prefix",
 				"in": "query",
+				"description": "Deprecated. Create a `prefixDelete` job with the Create Bucket Job endpoint instead.\nWhen present, the request body is ignored and a prefix-delete job is created for this\nprefix, exactly as Create Bucket Job does; an empty value empties the bucket. The\nresponse is the job descriptor, with a `Deprecation` header and a deprecation message\nin `messages`.\n",
 				"schema": {
-					"description": "When present, switches the operation to prefix-delete mode. A non-empty value must\nend in `/` and deletes keys beginning with that prefix. Preserve an empty value\n(`?prefix=`) to empty the entire bucket. Omitting this parameter instead selects\ndelete-by-list mode and requires a JSON request body.\n",
-					"type": "string",
-					"example": ""
-				}
+					"type": "string"
+				},
+				"deprecated": true
 			},
 			{
 				"name": "cf-r2-data-catalog-check",
@@ -64,7 +64,7 @@
 			}
 		],
 		"requestBody": {
-			"description": "Required for \"delete by list\" mode (when `prefix` query parameter is omitted).\nA JSON array of object keys to delete. Ignored when `prefix` is provided.\n",
+			"description": "A JSON array of 1 to 1000 object keys to delete. Required unless the deprecated `prefix` parameter is present.",
 			"content": {
 				"application/json": {
 					"schema": {
@@ -75,90 +75,83 @@
 						"example": [
 							"path/to/object-a.txt",
 							"path/to/object-b.txt"
-						]
+						],
+						"maxItems": 1000,
+						"minItems": 1
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
-				"description": "Delete Objects response. Body shape depends on the operation mode:\n- \"delete by list\" returns an array of `{ key }` entries for successfully deleted objects;\n- \"delete by prefix\" returns the prefix-delete job descriptor.\n",
+				"description": "Delete Objects response. When every key is deleted, `result` contains a `{ key }` entry\nfor each deleted object. When any key fails, `success` is `false`, `result` is `null`\nand `errors` has one entry per failed key; the other keys are still deleted. With the\ndeprecated `prefix` parameter, `result` is the created prefix-delete job.\n",
 				"content": {
 					"application/json": {
 						"examples": {
-							"empty-bucket-completed": {
-								"summary": "A small or already empty bucket completed immediately",
+							"all-deleted": {
+								"summary": "Every key was deleted",
 								"value": {
 									"errors": [],
 									"messages": [],
-									"result": {
-										"endTime": "2026-07-20T12:00:00Z",
-										"id": "69f94626-a3fe-47bc-9615-e791b4d53c53",
-										"jobType": "prefixDelete",
-										"prefixDelete": {
-											"deletedObjects": 0,
-											"isBucketClear": true,
-											"prefix": ""
+									"result": [
+										{
+											"key": "path/to/object-a.txt"
 										},
-										"startTime": "2026-07-20T12:00:00Z",
-										"status": "COMPLETED"
-									},
+										{
+											"key": "path/to/object-b.txt"
+										}
+									],
 									"success": true
 								}
 							},
-							"empty-bucket-submitted": {
-								"summary": "Empty Bucket job submitted",
+							"partial-failure": {
+								"summary": "One key did not exist; the other key was deleted",
 								"value": {
-									"errors": [],
+									"errors": [
+										{
+											"code": 10007,
+											"message": "The specified key does not exist."
+										}
+									],
 									"messages": [],
-									"result": {
-										"id": "7f24658b-31d7-4b91-9a12-cb5a2c99b294",
-										"jobType": "prefixDelete",
-										"prefixDelete": {
-											"deletedObjects": 0,
-											"isBucketClear": true,
-											"prefix": ""
-										},
-										"startTime": "2026-07-20T12:00:00Z",
-										"status": "ENQUEUED"
-									},
-									"success": true
+									"result": null,
+									"success": false
 								}
 							}
 						},
 						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "integer",
-												"minimum": 1000
-											},
-											"message": {
+							"oneOf": [
+								{
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
 												"type": "string"
 											}
 										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"type": "string"
-									}
-								},
-								"result": {
-									"oneOf": [
-										{
-											"description": "Per-key delete results returned in \"delete by list\" mode.",
+										"result": {
+											"description": "The deleted objects.",
+											"type": "array",
 											"items": {
 												"description": "Result of a successful object deletion.",
 												"type": "object",
@@ -169,10 +162,107 @@
 														"example": "path/to/my-object.txt"
 													}
 												}
-											},
-											"type": "array"
+											}
 										},
-										{
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"title": "All keys deleted",
+									"type": "object"
+								},
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"deprecated": true,
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"result": {
 											"description": "Descriptor of a prefix-delete job. An empty prefix indicates a job that empties the\nwhole bucket.\n",
 											"type": "object",
 											"properties": {
@@ -240,176 +330,24 @@
 												"startTime",
 												"prefixDelete"
 											]
-										}
-									]
-								},
-								"success": {
-									"description": "Whether the API call was successful.",
-									"type": "boolean",
-									"enum": [
-										true
-									]
-								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							]
-						}
-					}
-				}
-			},
-			"409": {
-				"description": "Empty Bucket conflict. Event notification rules are still configured (error code\n10034), or the Data Catalog check was requested and R2 Data Catalog is enabled for\nthe bucket (error code 10081). Remove the conflicting configuration before retrying.\n",
-				"content": {
-					"application/json": {
-						"examples": {
-							"event-notifications-active": {
-								"summary": "Event notification rules must be removed first",
-								"value": {
-									"errors": [
-										{
-											"code": 10034,
-											"message": "Remove all event notification rules from bucket (example-bucket) before emptying it (account 023e105f4ecef8ad9ca31a8372d0c353)."
-										}
-									],
-									"messages": [
-										"Request failed."
-									],
-									"result": null,
-									"success": false
-								}
-							}
-						},
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "integer",
-												"minimum": 1000
-											},
-											"message": {
-												"type": "string"
-											}
 										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"type": "string"
-									}
-								},
-								"result": {
-									"type": "object",
-									"enum": [
-										null
-									],
-									"nullable": true
-								},
-								"success": {
-									"description": "Whether the API call was successful.",
-									"type": "boolean",
-									"example": false,
-									"enum": [
-										false
-									]
-								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							]
-						}
-					}
-				}
-			},
-			"429": {
-				"description": "Too many active prefix-delete or bucket-emptying jobs. Wait for an existing job to finish, then retry.",
-				"content": {
-					"application/json": {
-						"examples": {
-							"too-many-jobs": {
-								"summary": "The per-bucket active job limit was reached",
-								"value": {
-									"errors": [
-										{
-											"code": 10058,
-											"message": "Too many concurrent prefix delete jobs for this bucket. Please wait for existing jobs to complete."
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"enum": [
+												true
+											]
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									],
-									"messages": [
-										"Request failed."
-									],
-									"result": null,
-									"success": false
+									"title": "Prefix-delete job created (deprecated)",
+									"type": "object"
 								}
-							}
-						},
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "integer",
-												"minimum": 1000
-											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"type": "string"
-									}
-								},
-								"result": {
-									"type": "object",
-									"enum": [
-										null
-									],
-									"nullable": true
-								},
-								"success": {
-									"description": "Whether the API call was successful.",
-									"type": "boolean",
-									"example": false,
-									"enum": [
-										false
-									]
-								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
 							]
 						}
 					}
@@ -489,8 +427,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.objects",
 		"x-fern-sdk-method-name": "bulk-delete",
-		"x-forge-hidden": true,
-		"x-forge-require-confirmation": "This permanently deletes the selected R2 objects. An explicitly empty prefix deletes every object in the bucket while retaining the bucket itself."
+		"x-forge-require-confirmation": "This permanently deletes the listed R2 objects. With the deprecated `prefix` parameter it deletes every object under that prefix, and an empty prefix empties the bucket."
 	},
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/objects/{object_key}": {
 		"operationId": "r2-delete-object",
@@ -1040,8 +977,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.objects",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/objects/{object_key}": {
 		"operationId": "r2-get-object",
