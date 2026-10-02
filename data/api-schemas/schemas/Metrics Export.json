@@ -226,8 +226,7 @@
 		],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "observability.metrics-export",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"POST /accounts/{account_id}/workers/observability/metricsexport": {
 		"operationId": "metricsExport.upsert",
@@ -583,7 +582,6 @@
 		],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "observability.metrics-export",
-		"x-fern-sdk-method-name": "upsert",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "upsert"
 	}
 }

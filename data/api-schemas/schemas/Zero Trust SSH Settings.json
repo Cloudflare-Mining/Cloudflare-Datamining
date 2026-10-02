@@ -344,7 +344,7 @@
 			"Zero Trust SSH Settings"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.gateway.audit-ssh-settings",
+		"x-fern-sdk-group-name": "zero-trust.access.infrastructure.audit-ssh-settings",
 		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/gateway/audit_ssh_settings/rotate_seed": {
@@ -692,7 +692,7 @@
 			"Zero Trust SSH Settings"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.gateway.audit-ssh-settings",
+		"x-fern-sdk-group-name": "zero-trust.access.infrastructure.audit-ssh-settings",
 		"x-fern-sdk-method-name": "rotate-seed"
 	},
 	"PUT /accounts/{account_id}/gateway/audit_ssh_settings": {
@@ -1061,7 +1061,7 @@
 			"Zero Trust SSH Settings"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zero-trust.gateway.audit-ssh-settings",
+		"x-fern-sdk-group-name": "zero-trust.access.infrastructure.audit-ssh-settings",
 		"x-fern-sdk-method-name": "update"
 	}
 }

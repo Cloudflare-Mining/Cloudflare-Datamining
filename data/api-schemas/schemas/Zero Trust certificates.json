@@ -170,6 +170,13 @@
 													"readOnly": true,
 													"x-auditable": true
 												},
+												"region": {
+													"description": "Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.",
+													"type": "string",
+													"example": "wnam",
+													"readOnly": true,
+													"x-auditable": true
+												},
 												"type": {
 													"description": "Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.",
 													"type": "string",
@@ -343,6 +350,13 @@
 															"description": "Provide the entire issuer field of the certificate (read-only).",
 															"type": "string",
 															"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"region": {
+															"description": "Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.",
+															"type": "string",
+															"example": "wnam",
 															"readOnly": true,
 															"x-auditable": true
 														},
@@ -673,6 +687,13 @@
 														"readOnly": true,
 														"x-auditable": true
 													},
+													"region": {
+														"description": "Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.",
+														"type": "string",
+														"example": "wnam",
+														"readOnly": true,
+														"x-auditable": true
+													},
 													"type": {
 														"description": "Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.",
 														"type": "string",
@@ -880,6 +901,13 @@
 																"description": "Provide the entire issuer field of the certificate (read-only).",
 																"type": "string",
 																"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
+																"readOnly": true,
+																"x-auditable": true
+															},
+															"region": {
+																"description": "Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.",
+																"type": "string",
+																"example": "wnam",
 																"readOnly": true,
 																"x-auditable": true
 															},
@@ -1191,6 +1219,13 @@
 													"readOnly": true,
 													"x-auditable": true
 												},
+												"region": {
+													"description": "Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.",
+													"type": "string",
+													"example": "wnam",
+													"readOnly": true,
+													"x-auditable": true
+												},
 												"type": {
 													"description": "Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.",
 													"type": "string",
@@ -1365,6 +1400,13 @@
 															"description": "Provide the entire issuer field of the certificate (read-only).",
 															"type": "string",
 															"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"region": {
+															"description": "Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.",
+															"type": "string",
+															"example": "wnam",
 															"readOnly": true,
 															"x-auditable": true
 														},
@@ -1680,6 +1722,13 @@
 													"readOnly": true,
 													"x-auditable": true
 												},
+												"region": {
+													"description": "Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.",
+													"type": "string",
+													"example": "wnam",
+													"readOnly": true,
+													"x-auditable": true
+												},
 												"type": {
 													"description": "Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.",
 													"type": "string",
@@ -1854,6 +1903,13 @@
 															"description": "Provide the entire issuer field of the certificate (read-only).",
 															"type": "string",
 															"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"region": {
+															"description": "Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.",
+															"type": "string",
+															"example": "wnam",
 															"readOnly": true,
 															"x-auditable": true
 														},
@@ -2164,6 +2220,13 @@
 													"readOnly": true,
 													"x-auditable": true
 												},
+												"region": {
+													"description": "Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.",
+													"type": "string",
+													"example": "wnam",
+													"readOnly": true,
+													"x-auditable": true
+												},
 												"type": {
 													"description": "Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.",
 													"type": "string",
@@ -2337,6 +2400,13 @@
 															"description": "Provide the entire issuer field of the certificate (read-only).",
 															"type": "string",
 															"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"region": {
+															"description": "Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.",
+															"type": "string",
+															"example": "wnam",
 															"readOnly": true,
 															"x-auditable": true
 														},
@@ -2647,6 +2717,13 @@
 													"readOnly": true,
 													"x-auditable": true
 												},
+												"region": {
+													"description": "Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.",
+													"type": "string",
+													"example": "wnam",
+													"readOnly": true,
+													"x-auditable": true
+												},
 												"type": {
 													"description": "Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.",
 													"type": "string",
@@ -2821,6 +2898,13 @@
 															"description": "Provide the entire issuer field of the certificate (read-only).",
 															"type": "string",
 															"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"region": {
+															"description": "Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.",
+															"type": "string",
+															"example": "wnam",
 															"readOnly": true,
 															"x-auditable": true
 														},
