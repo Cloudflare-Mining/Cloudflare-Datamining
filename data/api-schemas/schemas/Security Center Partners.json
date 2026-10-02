@@ -1124,7 +1124,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "The request was successful. CSV output is available to premium accounts when requested with `Accept: text/csv`.",
+				"description": "The request was successful. CSV output is available when requested with `Accept: text/csv`.",
 				"headers": {
 					"X-Collection-Total": {
 						"description": "Total number of items in the collection. Returned with CSV responses.",

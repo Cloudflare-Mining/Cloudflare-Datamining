@@ -1231,7 +1231,7 @@
 								"description": "Usage filters. Filters of different kinds are combined with AND, so a record must match every filter present to be returned.",
 								"type": "object",
 								"properties": {
-									"MetricIds": {
+									"BillableMetricIds": {
 										"description": "Restrict results to rows whose `x_BillableMetricId` matches one of these billable metric ids (e.g. `workers_standard_requests`). Values must be unique.",
 										"type": "array",
 										"items": {
@@ -1331,6 +1331,15 @@
 								},
 								"maxItems": 2,
 								"uniqueItems": true
+							},
+							"Metric": {
+								"description": "Type of cost/usage records to retrieve. `usage` returns unrated usage quantities. Unrelated to `FilterBy.BillableMetricIds`. Defaults to `usage` when omitted.",
+								"type": "string",
+								"example": "usage",
+								"default": "usage",
+								"enum": [
+									"usage"
+								]
 							},
 							"TimePeriod": {
 								"description": "Charge period to query, i.e. when consumption happened, not when it was billed. `From` is inclusive and `To` is exclusive. `From` and `To` must be supplied together; supplying one without the other is an error. When both are omitted the range defaults to the start of the current month through today.",

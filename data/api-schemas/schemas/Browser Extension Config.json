@@ -1322,6 +1322,7 @@
 										"action",
 										"userEmail",
 										"registrationId",
+										"eventId",
 										"policyId",
 										"url",
 										"matchedDlpProfiles",
@@ -1347,6 +1348,7 @@
 												"action",
 												"userEmail",
 												"registrationId",
+												"eventId",
 												"policyId",
 												"url",
 												"matchedDlpProfiles",
@@ -1494,6 +1496,10 @@
 											},
 											"durationMs": {
 												"type": "number"
+											},
+											"eventId": {
+												"description": "Client-generated event ID. Use it to fetch a detection's trace.",
+												"type": "string"
 											},
 											"eventName": {
 												"type": "string"

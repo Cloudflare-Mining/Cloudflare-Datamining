@@ -950,6 +950,14 @@
 														],
 														"x-auditable": true
 													},
+													"mode": {
+														"description": "The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.",
+														"type": "string",
+														"example": "instant",
+														"enum": [
+															"instant"
+														]
+													},
 													"supports_url_encoding": {
 														"description": "True if keys written on the URL will be URL-decoded before storing. For example, if set to \"true\", a key written on the URL as \"%3F\" will be stored as \"?\".",
 														"type": "boolean",
@@ -1211,6 +1219,14 @@
 														"us"
 													],
 													"x-auditable": true
+												},
+												"mode": {
+													"description": "The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.",
+													"type": "string",
+													"example": "instant",
+													"enum": [
+														"instant"
+													]
 												},
 												"supports_url_encoding": {
 													"description": "True if keys written on the URL will be URL-decoded before storing. For example, if set to \"true\", a key written on the URL as \"%3F\" will be stored as \"?\".",
@@ -2162,6 +2178,15 @@
 								],
 								"x-auditable": true
 							},
+							"mode": {
+								"description": "The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.",
+								"type": "string",
+								"example": "instant",
+								"enum": [
+									"instant"
+								],
+								"x-fern-property-name": "namespaceMode"
+							},
 							"title": {
 								"description": "Human-readable string name for a Workers KV namespace.",
 								"type": "string",
@@ -2267,6 +2292,14 @@
 														"us"
 													],
 													"x-auditable": true
+												},
+												"mode": {
+													"description": "The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.",
+													"type": "string",
+													"example": "instant",
+													"enum": [
+														"instant"
+													]
 												},
 												"supports_url_encoding": {
 													"description": "True if keys written on the URL will be URL-decoded before storing. For example, if set to \"true\", a key written on the URL as \"%3F\" will be stored as \"?\".",
@@ -3251,6 +3284,14 @@
 														"us"
 													],
 													"x-auditable": true
+												},
+												"mode": {
+													"description": "The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.",
+													"type": "string",
+													"example": "instant",
+													"enum": [
+														"instant"
+													]
 												},
 												"supports_url_encoding": {
 													"description": "True if keys written on the URL will be URL-decoded before storing. For example, if set to \"true\", a key written on the URL as \"%3F\" will be stored as \"?\".",
