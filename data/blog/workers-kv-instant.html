@@ -1,0 +1,215 @@
+<p>Today, we’re introducing Workers KV Instant, a new mode for Workers KV that pushes your changes globally for instant availability without cold read penalties.</p>
+<p><a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>Workers KV</u></a> has been one of our most popular services on the Developer Platform since <a href="https://blog.cloudflare.com/introducing-workers-kv" target="_blank" rel="noopener noreferrer"><u>launching during Birthday Week in 2018</u></a>. It’s great for quickly accessing data like static assets and user configuration that is written occasionally but read frequently. We use it ourselves across many Cloudflare products.</p>
+<p>We also have another key-value store, Quicksilver, which we’ve <a href="https://blog.cloudflare.com/quicksilver-v2-evolution-of-a-globally-distributed-key-value-store-part-1" target="_blank" rel="noopener noreferrer"><u>blogged about</u></a> many times since <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale" target="_blank" rel="noopener noreferrer"><u>introducing it in 2020</u></a>. We designed Quicksilver for incredibly fast global replication and low-latency access, and nearly every request to Cloudflare looks up at least one key in Quicksilver. People have asked us for years, but we’ve never made Quicksilver available to our customers.</p>
+<p>We’re changing that today with Workers KV Instant. KV Instant mode provides the same API as Workers KV, but powers it using Quicksilver. KV Instant offers 100 times faster p99 reads and immediate updates, with no need to wait for a TTL to expire. It’s not for every type of data, but, for infrequently updated application configuration data —&nbsp;the same thing we use Quicksilver for ourselves — KV Instant shines.&nbsp;</p>
+<h2>100x faster reads than Workers KV</h2>
+<p>KV Instant offers read latency that is over 100 times faster than classic mode, with reads resolving in under two milliseconds even at the 99th percentile of response time (p99), and 95th percentile (p95) times measured in microseconds. Writes are pushed to the edge over 20 times faster, with 99% of all writes replicating in around 250ms.</p>
+<p>These high-performance characteristics of KV Instant make it ideal for reading data in the hot path of your applications, especially flags and settings that should be available globally nearly instantly after they’ve been written.</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 626px;">
+		<colgroup>
+			<col style="width: 96px;">
+			<col style="width: 105px;">
+			<col style="width: 96px;">
+			<col style="width: 113px;">
+			<col style="width: 105px;">
+			<col style="width: 111px;">
+		</colgroup>
+		<tbody>
+			<tr>
+				<td>
+					<p><strong>Mode</strong></p>
+				</td>
+				<td>
+					<p><strong>p99 reads (cached)</strong></p>
+				</td>
+				<td>
+					<p><strong>p99 reads (all)</strong></p>
+				</td>
+				<td>
+					<p><strong>median write replication</strong></p>
+				</td>
+				<td>
+					<p><strong>p95 write replication</strong></p>
+				</td>
+				<td>
+					<p><strong>p99 write replication&nbsp;</strong></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Instant</p>
+				</td>
+				<td>
+					<p>N/A</p>
+				</td>
+				<td>
+					<p>1.62 ms</p>
+				</td>
+				<td>
+					<p>107 ms<sup> (1)</sup></p>
+				</td>
+				<td>
+					<p>181ms<sup> (1)</sup></p>
+				</td>
+				<td>
+					<p>256 ms<sup> (1)</sup></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Classic</p>
+				</td>
+				<td>
+					<p>160 ms</p>
+				</td>
+				<td>
+					<p>287 ms</p>
+				</td>
+				<td>
+					<p>&lt; 1 s<sup> (2, 3)</sup></p>
+				</td>
+				<td>
+					<p>&lt; 1 s<sup> (2, 3)</sup></p>
+				</td>
+				<td>
+					<p>4.38 s<sup> (2)</sup></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p><em>Table notes:</em></p>
+<ol>
+	<li><em>Time to replicate to all edge locations (over 300 as of publication)</em></li>
+	<li><em>Time to replicate across all required storage backends</em></li>
+	<li><em>We do not have sub-second fidelity for replication lag in classic mode</em></li>
+</ol>
+<p>KV Instant is powered by <a href="https://blog.cloudflare.com/quicksilver-v2-evolution-of-a-globally-distributed-key-value-store-part-1" target="_blank" rel="noopener noreferrer"><u>Quicksilver v2</u></a>, a key-value store developed internally by Cloudflare to enable fast global replication and low-latency access on a planet scale.</p>
+<h2>The same simple API as Workers KV — get(), put() list(), delete()</h2>
+<p>KV Instant uses the familiar <a href="https://developers.cloudflare.com/kv/api" target="_blank" rel="noopener noreferrer"><u>Workers KV API</u></a> you build with today.</p>
+<p>For example, let’s say you’re working on a big product launch, and need to be able to switch what’s on the homepage right at 10:13 AM when the product is introduced at the keynote on stage. You need some key that you can read, that introduces near zero latency, you can read on every request no matter the scale, and updates instantly when you change it.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">async </span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(request, env, ctx) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Read the launch flag from KV Instant on every request</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> launched</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">APP_CONFIG</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"new-product-launched"</span><span class="sk-24292e-fff">)) </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "true"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (launched) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Serve the launch homepage</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">({</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">});</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">({</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">});</span></span>
+<span class="line"><span class="sk-24292e-fff">},</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p>Most binding operations are compatible with the Workers KV classic equivalents. There are three key differences when working with KV Instant:</p>
+<ul>
+	<li>You must specify KV Instant mode when creating a KV namespace. (pass the <code>”mode”</code>: <code>“instant”</code> attribute)</li>
+	<li>Metadata is not supported, so <code>getWithMetadata</code> calls always return <code>null</code> and there is no support for passing metadata in <code>put</code>.</li>
+	<li><code>list</code> operations in KV Instant return <em>all</em> matching keys in a namespace; there is no pagination.</li>
+</ul>
+<p>For additional API examples, see <a href="https://developers.cloudflare.com/kv/api/read-key-value-pairs" target="_blank" rel="noopener noreferrer"><u>the Workers KV docs</u></a>.</p>
+<h2>Pricing — reads cost 60% less than classic Workers KV</h2>
+<p>KV Instant is priced to fit the read-heavy, small data workloads it excels at serving. Because we propagate data to every Cloudflare location, using the same <a href="https://blog.cloudflare.com/quicksilver-v2-evolution-of-a-globally-distributed-key-value-store-part-1" target="_blank" rel="noopener noreferrer"><u>Quicksilver</u></a> key-value store we’ve spent years learning how to operate at scale on the hot path of every request, we can offer pricing for reads that is 60% less than Workers KV, and much less than other global configuration products.</p>
+<p>Conversely, storage and Class A operations are significantly more expensive than Workers KV. If you need to store large amounts of data, or update it frequently, Workers KV continues to be a great fit. Each mode is designed for a very different type of data and access pattern.</p>
+<p>KV Instant namespaces are priced in three dimensions: data storage, class A operations, and class B operations.</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 670px;">
+		<colgroup>
+			<col style="width: 158px;">
+			<col style="width: 152px;">
+			<col style="width: 166px;">
+			<col style="width: 194px;">
+		</colgroup>
+		<tbody>
+			<tr>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p><strong>Class B operations (reads)</strong></p>
+				</td>
+				<td>
+					<p><strong>Class A operations (put, delete, list)</strong></p>
+				</td>
+				<td>
+					<p><strong>Storage</strong></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><strong>Workers KV Instant</strong></p>
+				</td>
+				<td>
+					<p>$0.20 per million</p>
+				</td>
+				<td>
+					<p>$0.10 per operation</p>
+				</td>
+				<td>
+					<p>$100 per MB, per month</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><strong>Workers KV</strong></p>
+				</td>
+				<td>
+					<p>$0.50 per million</p>
+				</td>
+				<td>
+					<p>$5.00 per million</p>
+				</td>
+				<td>
+					<p>$0.50 per GB, per month</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p><strong>Storage</strong></p>
+<p>Storage is billed at $100 per MB, per month. Each key can be up to 300 bytes, and values can be any size that does not cause the namespace to exceed one megabyte in total size. KV Instant namespaces can contain up to 10,000 key value pairs of any type.</p>
+<p><strong>Class A operations</strong></p>
+<p>Class A operations&nbsp; (<code>put</code>, <code>delete</code>, and <code>list</code>) are charged at $0.10 per operation. Each key written or deleted counts as one Class A operation. Each list request counts as one Class A operation, <em>regardless of how many keys are returned in the response. </em>A single <code>list</code> operation can return all the key value pairs in a namespace in a single page.</p>
+<p>Because writes must pass through a single system of record, KV Instant also restricts write frequency to one write per namespace per second. This is similar to classic Workers KV’s restriction of one write per key per second, and makes it easier for you to reason about update order in your application.</p>
+<p><strong>Class B operations</strong></p>
+<p>Class B operations (<code>get</code>) are charged at $0.20 per million keys requested, 60% <strong>cheaper</strong> than Workers KV default mode. When requesting multiple keys in a single <code>get</code> operation, each requested key is billed as one class B operation. For example, the following approaches both incur three class B operations and are equivalent from a billing perspective.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Requesting keys via three individual get operations </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// incurs three Class B operations.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> routeAPAC </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-fff"> APP_CONFIG</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"route_APAC"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> routeEUR </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-fff"> APP_CONFIG</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"route_EUR"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> routeNAMER </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-fff"> APP_CONFIG</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"route_NAMER"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Requesting three keys in a single get operation </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// also incurs three Class B operations.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> routes </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-fff"> APP_CONFIG</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">([</span><span class="sk-032f62-99ffe4">"route_APAC"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"route_EUR"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"route_NAMER"</span><span class="sk-24292e-fff">]);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<h2>Workers KV Instant is in private beta</h2>
+<p>KV Instant is launching today in private beta. We’re excited to start working with customers who want to try it, then open it up more widely, and would love to hear from you. You can sign up for the private beta <a href="https://www.cloudflare.com/resource/workers-kv-instant-beta" target="_blank" rel="noopener noreferrer"><u>here</u></a>. Tell us what you’re building!</p>

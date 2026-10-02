@@ -1,0 +1,231 @@
+<p>With&nbsp;traditional Remote Procedure Call (RPC) architectures, there exists a core challenge: producers and consumers must align in scale and in time. If your producers send too much data for your consumers to handle or if your consumers or downstream services become unavailable, events are dropped. This problem is compounded with multiple consumers that need to independently process the data. For example, an ecommerce backend may emit events when transactions are completed, which need to be read by an analytics system and a fraud detection service.</p>
+<p>We&nbsp;can solve this by <em>decoupling</em>&nbsp;our producers and consumers — inserting a service in the middle that absorbs writes while allowing independent readers to consume at their own pace.</p>
+<p>Today we are launching Cloudflare K2 in public beta to solve this problem. K2 is a durable event streaming primitive on the Developer Platform. You send events to a K2 stream, which stores them as an ordered log. Consumers can read them in a variety of ways, for example by splitting up reads across a set of consumers, or delivering all messages to all consumers. It's fully serverless, scales to vast quantities of data, and supports long-term retention, so even long periods of consumer downtime do not lose data.</p>
+<p>Under the hood, K2 implements a partitioned, durable log on top of R2 object storage, which allows it to scale to huge volumes of storage.</p>
+<p>If you’re ready to get started, you can create your first stream in seconds by following <a href="https://developers.cloudflare.com/k2/get-started"><u>the guide here</u></a>.</p>
+<h2>Streams on the edge</h2>
+<p>We first built K2 because <em>we </em>needed a durable buffer on the edge, initially to serve as the ingestion layer for <a href="https://developers.cloudflare.com/pipelines"><u>Basin Pipelines</u></a>. Pipelines is powered by a <a href="https://www.arroyo.dev"><u>stream processing engine</u></a>&nbsp;that operates on a pull-based model, which means some other system has to store events before they are read, transformed, and written to R2. And because we commit to never dropping events once they’re accepted into the Pipelines Stream, that storage has to be durable — meaning it can’t lose data — over potentially long periods of time.</p>
+<p>This is where most companies would deploy Apache Kafka. However, Pipelines runs on the Cloudflare edge, which spans a huge number&nbsp;of servers&nbsp;across over 335 cities. Our unique architecture means we often cannot run traditional distributed systems software like Kafka, and need to rethink how these systems are built and operated.</p>
+<p>For stateful services, in particular, Cloudflare’s global infrastructure presents some challenges: we get relatively small slices of machines, those machines are relatively ephemeral, and networking is often over the public Internet. But our infrastructure also has a few superpowers: it’s close to users wherever they are in the world and has an incredible capacity to scale horizontally.</p>
+<p>In designing the durable buffering system that became K2, we decided to rely on the powerful state primitive we already have: R2. Object storage systems like R2 combine extremely durable storage (<a href="https://developers.cloudflare.com/r2/reference/durability"><u>11 9s!</u></a>) with strongly consistent APIs. Offloading replication and consensus to the storage layer allows us to make the application layer (K2 in this case) radically simpler, cheaper, and higher performance. A secondary benefit is that it separates compute and storage, meaning each can be scaled independently. This allows us to store vast quantities of historical data at low cost.</p>
+<p>How do we build a log on top of object storage? An immediate issue is that R2 — like other object stores — does not support appends, the standard operation on a log. Instead, we must write complete files, or segments, that are large enough to overcome the cost of writing and reading each one. We do this by first accumulating writes in-memory on an edge service. After waiting a short period for data to arrive, we write all events as a segment file. We achieve ordering and strictly incrementing offsets using R2’s atomic operations without needing a separate coordination service.</p>
+<p>While building on R2 has many advantages, there is one downside: higher produce latencies. Writing to object storage is slower than a local disk, and we have to wait for the local batch to accumulate before starting the write. In our initial release of K2, this adds up to about 1 second of produce latency at the 99th percentile of response times.</p>
+<p>We will be sharing more details on the design of K2 in an upcoming technical deep dive.</p>
+<h2>Streams, Queues, or Pipelines?</h2>
+<p>Cloudflare has several existing asynchronous delivery primitives, including <a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer"><u>Queues</u></a>&nbsp;and <a href="https://developers.cloudflare.com/basin-pipelines" target="_blank" rel="noopener noreferrer"><u>Basin Pipelines</u></a>. When should you reach for K2 instead of these existing products?</p>
+<p>There are some superficial similarities between Queues and K2 Streams: both receive events, durably store them, and deliver them to consumers. Queues are designed around tracking individual items of expensive or time consuming work that need to be asynchronously completed. For example, an image processing application may enqueue a user request to be handled by the actual image processing service. They support complex logic on the grain of a particular work item, like retries, delays, and dead-letter queues for failed attempts.</p>
+<p>K2, by contrast, is designed for high-scale data movement, long-term retention, and fan-out consumption. Messages are produced and consumed as batches — enabling efficient processing at the expense of message-level retries. This batching also drives higher producer latency than for queues.</p>
+<p>Basin Pipelines is a serverless ingestion service. You can send your Pipeline JSON events, which can be transformed and written to R2 or a Basin Catalog. We recommend Pipelines when the end result is writing your events to object storage or Iceberg tables, and K2 when doing custom processing or writing to other destinations.</p>
+<h2>Getting started</h2>
+<p>Using K2 involves first creating a stream. You can have many streams across your account for different use cases or types of events. Streams can be created via <a href="https://blog.cloudflare.com/cloudflare-cf-cli-launch"><u>cf</u></a>, Wrangler, the dashboard, or API.</p>
+<p>Let's take the example of collecting and processing product analytics. First, we'll create a stream with cf:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cf</span><span class="sk-032f62-99ffe4"> k2</span><span class="sk-032f62-99ffe4"> streams</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-005cc5-99ffe4"> --name</span><span class="sk-032f62-99ffe4"> app_events</span><span class="sk-005cc5-99ffe4"> --http-enabled</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "id"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "d78b09ee1f50430e9ec92a8af92b0231",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "app_events",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "retention_seconds"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> 604800,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "endpoint"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "https://d78b09ee1f50430e9ec92a8af92b0231.k2.cloudflarestorage.com",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "http"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "enabled"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-005cc5-99ffe4"> true</span><span class="sk-032f62-99ffe4">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "authentication"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-005cc5-99ffe4"> false</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "worker_binding"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "enabled"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-005cc5-99ffe4"> true</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "created_at"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "2026-09-28T15:14:39.053Z",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "modified_at"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "2026-09-28T15:14:39.053Z"</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p>Once we have a stream, we can start producing to it, via an HTTP API or Worker binding. For example, we can <a href="https://developers.cloudflare.com/k2/features/produce/#produce-from-a-worker" target="_blank" rel="noopener noreferrer"><u>configure a Worker binding</u></a> and then produce to it like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">EVENTS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">send</span><span class="sk-24292e-fff">([</span></span>
+<span class="line"><span class="sk-24292e-fff">  {</span></span>
+<span class="line"><span class="sk-24292e-fff">    content: </span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> TextEncoder</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">encode</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-005cc5-fff">      JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">        event: </span><span class="sk-032f62-99ffe4">"page_view"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        path: </span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url).pathname,</span></span>
+<span class="line"><span class="sk-24292e-fff">        timestamp: Date.</span><span class="sk-6f42c1-ffc799">now</span><span class="sk-24292e-fff">(),</span></span>
+<span class="line"><span class="sk-24292e-fff">      }),</span></span>
+<span class="line"><span class="sk-24292e-fff">    ),</span></span>
+<span class="line"><span class="sk-24292e-fff">    headers: { </span><span class="sk-032f62-99ffe4">"content-type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"application/json"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">]);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">result.success) {</span></span>
+<span class="line"><span class="sk-24292e-fff">  console.</span><span class="sk-6f42c1-ffc799">error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Produce failed: ${</span><span class="sk-24292e-fff">result</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">error</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">message</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Failed to record event"</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">    status: result.error.retryable </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-005cc5-ffc799"> 503</span><span class="sk-d73a49-a0a0a0"> :</span><span class="sk-005cc5-ffc799"> 500</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>K2 represents data as bytes, so you can use whatever format or encoding makes sense for your application.</p>
+<p>Now that we have events in a stream, we can create a subscription. Subscriptions divide up work between consumers, enabling <em>read parallelism</em>&nbsp;— scaling out to multiple readers to handle more load than a single server can manage.</p>
+<p>We can create a subscription via the HTTP API.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-032f62-99ffe4"> "https://d78b09ee1f50430e9ec92a8af92b0231.k2.cloudflarestorage.com/subscriptions"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    -H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer ${</span><span class="sk-24292e-fff">CLOUDFLARE_API_TOKEN</span><span class="sk-032f62-99ffe4">}"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    -H</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    --data</span><span class="sk-032f62-99ffe4"> '{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "name": "analytics_processor",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "start_at": { "type": "earliest" }</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    }'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "result"</span><span class="sk-24292e-fff">: { </span><span class="sk-005cc5-ffc799">"id"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"ee13f761783d3823a447a47b572ebf76"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "success"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "errors"</span><span class="sk-24292e-fff">: [],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "messages"</span><span class="sk-24292e-fff">: []</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>With the subscription created, we can then poll it from each of our consumers:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-005cc5-a0a0a0"> \"</span><span class="sk-032f62-99ffe4">https://4d8f5394e3e733debdeca9c65c5b7439.k2.cloudflarestorage.com/subscriptions/ee13f761783d3823a447a47b572ebf76/consume" </span><span class="sk-005cc5-a0a0a0">\</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    -H "Authorization:</span><span class="sk-032f62-99ffe4"> Bearer</span><span class="sk-24292e-fff"> ${CLOUDFLARE_API_TOKEN}</span><span class="sk-032f62-99ffe4">" </span><span class="sk-005cc5-a0a0a0">\</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    -H "Content-Type:</span><span class="sk-032f62-99ffe4"> application/json" </span><span class="sk-005cc5-a0a0a0">\</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    --data '{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "worker_id": "analytics-1",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "max_records": 100</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    }' </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "result"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "batch_id"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"b7e4c9210a3f468d95c2e1068fdb734a"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "leased_until_ms"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1790633929437</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "records"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">      {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "timestamp_ms"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1790633629168</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "content"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"eyJldmVudCI6InBhZ2VfdmlldyJ9"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "headers"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">          "content-type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"application/json"</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">      ...</span></span>
+<span class="line"><span class="sk-24292e-fff">    ]</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "success"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "errors"</span><span class="sk-24292e-fff">: [],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "messages"</span><span class="sk-24292e-fff">: []</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>When a client calls <code>consume</code>, they receive a <em>lease</em>&nbsp;for that particular batch of events for 5 minutes. The client can do one of three things:</p>
+<ul>
+	<li><em>ack</em>&nbsp;the batch, which marks it as processed and ensures it will not be redelivered</li>
+	<li><em>nack</em>&nbsp;(negative ack) it, meaning we’ve failed to process it and would like it to be redelivered</li>
+	<li><em>extend</em>&nbsp;its lease, in case it needs more time to complete processing</li>
+</ul>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-032f62-99ffe4"> "https://d78b09ee1f50430e9ec92a8af92b0231.k2.cloudflarestorage.com/subscriptions/ee13f761783d3823a447a47b572ebf76/batches/b7e4c9210a3f468d95c2e1068fdb734a/ack"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  -H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer ${</span><span class="sk-24292e-fff">CLOUDFLARE_API_TOKEN</span><span class="sk-032f62-99ffe4">}"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  -H</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  --data</span><span class="sk-032f62-99ffe4"> '{ "worker_id": "analytics-1" }'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>This is one way to consume from K2: splitting work amongst multiple consumers such that each consumer gets a portion of the data. Another way to read is with a separate subscription for each consumer — the pub/sub pattern — in which case each consumer sees all of the messages. Or you can mix-and-match between these two approaches, having multiple independent consumer pools.</p>
+<p>See the <a href="https://developers.cloudflare.com/k2"><u>K2 docs</u></a>&nbsp;for full details on the APIs.</p>
+<h2>Pricing and Availability</h2>
+<p>K2 is available today in public beta for accounts with Workers Paid subscriptions, within these limits:</p>
+<ul>
+	<li>Maximum of 10GB of storage used</li>
+	<li>30 MB/s produce per stream</li>
+</ul>
+<p>If you need higher limits, please reach out to the team on Discord or fill out the <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1_eGOxXFGsh4O72fqdvDbYBjzpV3Q6Vf5X3fqpoTHObGFIA/viewform"><u>limit increase form</u></a>.</p>
+<p>Usage of K2 will not be billed during the beta period. Once we begin billing, we anticipate this pricing:</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 192px;">
+		<tbody>
+			<tr>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p>Pricing</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Data Produced</p>
+				</td>
+				<td>
+					<p>$0.04 / GB</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Data Consumed</p>
+				</td>
+				<td>
+					<p>$0.04 / GB</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Data Retained</p>
+				</td>
+				<td>
+					<p>$0.02 / GB / month</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h2>What’s next</h2>
+<p>We have an exciting roadmap for K2 over the coming months, including:</p>
+<ul>
+	<li>Higher write parallelism, up to multi-GB/s streams</li>
+	<li>Message keys and key-based ordering guarantees</li>
+	<li>Push-based worker consumers</li>
+	<li>Express tier with lower produce and end-to-end latencies</li>
+	<li>Drop-in support&nbsp;for Apache Kafka clients</li>
+</ul>
+<p>We’re excited to see what you build on K2! Share your feedback on the <a href="https://discord.com/invite/cloudflaredev"><u>Cloudflare Discord</u></a>.</p>

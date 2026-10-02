@@ -1,0 +1,302 @@
+<p>“Is your WAF ready for frontier AI models?” We keep hearing this question from our customers, so we decided to find out.</p>
+<p>When it comes to exploiting applications, what LLMs are really good at is iterating and mutating attack payloads faster than any human hacker could do. LLMs can use real-time responses to iterate and change their techniques by, for example, testing different encodings, sending the payload in a different part of the HTTP request, or moving to the next vulnerability to test.</p>
+<p>Even before LLMs were around, security engineers used two common approaches to test applications: static and dynamic application security testing. The former analyzes code without executing it to identify vulnerabilities, while the latter probes running applications to find runtime flaws. There are plenty of works scanning code with frontier AI models, including details on <a href="https://blog.cloudflare.com/build-your-own-vulnerability-harness" target="_blank" rel="noopener noreferrer"><u>how to build your own harness.</u></a></p>
+<p>For the project described in this blog post, we took a dynamic approach: making the LLM act as if it was a hacker to evaluate whether a WAF is doing its job. The LLM had no visibility into source code, no view of the WAF's rules, and could only see selected HTTP response data.</p>
+<p>We built a WAF tester that starts from known exploits and then iterates by changing how it is encoded or delivered, sends it again, and uses the response to choose the next variation. A request that was not blocked became a lead for human review, not a confirmed exploit.</p>
+<p>We ran the tester against an authorized customer staging environment across six attack categories and recorded 1,107 attempts. After reviewing the non-blocked requests and removing malformed, benign, duplicate, and out-of-scope observations, the vast majority of the attacks were blocked by the Cloudflare WAF. The requests that got through helped us create new detections to harden our security to benefit all Cloudflare customers.</p>
+<p>Here we will explain how we set up the system, the types of attacks we tested, which attack vectors bypassed the WAF more easily, and how we fixed it. Most importantly, we share what we learned from this process and how this exercise is becoming a foundational building block of our WAF development lifecycle.</p>
+<p>Finally, we offer guidance to help you correctly deploy your WAF in front of your application and, most importantly, patch your software. A payload that bypasses the WAF still needs an exploitable application to succeed, so keeping your stack up-to-date remains one of the strongest defenses against attackers.</p>
+<h2>How the adaptive loop works</h2>
+<p>To test our WAF with frontier models, we built a system that iterates over multiple scenarios. A scenario means choosing one attack category, placing the input in a specific part of the request, starting with a version the WAF already blocked, and giving the tester a fixed number of attempts to try other variations. The loop runs LLM models twice: the first is the proposal call, the second is the review call.</p>
+<p>The first call receives the starting request, the context, a short history of earlier results, and suggests the next variation, then the code builds and sends the request. The review call receives the request context, response status, selected headers, and the response body. The loop stops when mutations stop producing useful variations or when a hard coded attempt limit has been reached.</p>
+<p>Both model calls work without access to WAF internal information. Neither receives rule expressions, rule IDs, WAF Attack Score details, or the identity of the security layer that acted. We implemented the system in Python rather than wrapping an existing penetration-testing tool. It handles HTTP replay, scenario orchestration, state tracking, and result collection.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA////////+fr68/Lz9fP0+fj4+Pj38vTx////////9fT07ejp7+np9O/u9PPw7vHs////////8e7u5t7f6N3d7ufk8O7p7O7o////////8Ozt5Nrc5dna7eTi8O3o7O/o////////8/Dz59/k6d7i8enq9PHv8PPv////////+fj97+rx8evy+PP4+vn79/n4////////////9vT9+Pb//v3//////P7/////////////+Pn/+/r/////////////" alt="" width="715" height="715" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3MTARY7NXCSXH1S1T8ZXEC9.01M3MTAT52J8VRYRBJEAC625K3.png&amp;w=715&amp;h=715&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3MTARY7NXCSXH1S1T8ZXEC9.01M3MTAT52J8VRYRBJEAC625K3.png&amp;w=640&amp;h=640&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3MTARY7NXCSXH1S1T8ZXEC9.01M3MTAT52J8VRYRBJEAC625K3.png&amp;w=715&amp;h=715&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3MTARY7NXCSXH1S1T8ZXEC9.01M3MTAT52J8VRYRBJEAC625K3.png&amp;w=750&amp;h=750&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3MTARY7NXCSXH1S1T8ZXEC9.01M3MTAT52J8VRYRBJEAC625K3.png&amp;w=828&amp;h=828&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3MTARY7NXCSXH1S1T8ZXEC9.01M3MTAT52J8VRYRBJEAC625K3.png&amp;w=1080&amp;h=1080&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3MTARY7NXCSXH1S1T8ZXEC9.01M3MTAT52J8VRYRBJEAC625K3.png&amp;w=1280&amp;h=1280&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3MTARY7NXCSXH1S1T8ZXEC9.01M3MTAT52J8VRYRBJEAC625K3.png&amp;w=1430&amp;h=1430&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3469 2.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3MTARY7NXCSXH1S1T8ZXEC9.01M3MTAT52J8VRYRBJEAC625K3.png&amp;w=1920&amp;h=1920&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1920" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="715" class="pt-portable-image-media"></div>
+</figure>
+<p>In the current implementation, the models do not send requests directly — code controls what happens at each step. Before each request, it checks the target hostname against an allowlist, disables redirects, records the attempt, and enforces the attempt limit. After each request, it records the response and uses the model's review to choose the next predefined step. Response text may appear in a later prompt, so the tester treats it as untrusted input. Neither model call can deploy a rule nor change enforcement.</p>
+<p>The system records structured evidence for each attempt.</p>
+<h2>Six attack categories against one WAF configuration</h2>
+<p>The main run targeted an authorized customer staging environment protected by Cloudflare’s WAF. We used an allowlisted test User-Agent so the customer’s automated-traffic controls would not stop the test before requests reached the WAF.</p>
+<p>We ran 45 scenarios. For each, we looked for ways to deliver the same attack differently: different encoding, different part of the request, or the same destination written another way. Of these, 44 covered six attack categories: <a href="https://www.cloudflare.com/learning/security/threats/cross-site-scripting" target="_blank" rel="noopener noreferrer"><u>cross-site scripting (XSS)</u></a>, <a href="https://www.cloudflare.com/learning/security/threats/sql-injection" target="_blank" rel="noopener noreferrer"><u>SQL injection (SQLi)</u></a>, <a href="https://community.owasp.org/attacks/Command_Injection" target="_blank" rel="noopener noreferrer"><u>command injection (CMDi)</u></a>, <a href="https://en.wikipedia.org/wiki/Server-side_request_forgery" target="_blank" rel="noopener noreferrer"><u>server-side request forgery (SSRF)</u></a>, path traversal or local file inclusion (LFI), and Log4j. The remaining scenario covered log injection, reported separately.</p>
+<p>The WAF in the test zone was configured as follows: <a href="https://developers.cloudflare.com/waf/detections/attack-score" target="_blank" rel="noopener noreferrer"><u>WAF Attack Score</u></a> blocking scores of 30 or below, all <a href="https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset" target="_blank" rel="noopener noreferrer"><u>Cloudflare Managed Ruleset</u></a> enabled, and <a href="https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset" target="_blank" rel="noopener noreferrer"><u>OWASP Core Ruleset</u></a> with Paranoia Level 3.</p>
+<p>For the headline measurement, we recorded whether the WAF blocked each request or not. The results describe the configured WAF boundary as a whole, not the performance of any individual rule or detection mechanism.</p>
+<h2>What adaptation looked like in one recorded session</h2>
+<p>Here is an example of how the LLM adapts a Server-Side Request Forgery (SSRF) attack during the test.</p>
+<p>Cloud metadata services can expose temporary credentials to workloads. An SSRF vulnerability can let an application fetch that data on an attacker's behalf. A WAF can help stop the malicious request before it reaches the application, but it is only one layer of protection.</p>
+<p>In this SSRF scenario, the tester sent the same cloud metadata address in different forms (such as integer, octal, and trailing-dot representations of the same IP) and placed it in different parts of the request. The WAF blocked all of them except one. At attempt 18, the model kept the same request structure as the previous blocked attempt and switched to the trailing-dot form. The client encountered a redirect rather than a WAF block.</p>
+<p>The table below shows selected moments from the session. The hypothesis column summarizes what the model said it was trying before each move. It is not a verbatim transcript, and it is not proof that the explanation was correct.</p>
+<div id="html-block-f64wup3os" class="html-block">
+	<figure class="table">
+		<table>
+			<thead>
+				<tr>
+					<th>
+						Stage
+					</th>
+					<th>
+						Selected moment
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="font-bold">
+						BASELINE
+					</td>
+					<td>
+						<strong>Observed</strong>: The WAF returned a 403 block page for the direct metadata address <span style="font-family:'Courier New', Courier, monospace">169.254.169.254</span><br>
+						<strong>Hypothesis</strong>: The detector might recognize the literal dotted address or metadata path.<br>
+						<strong>Next move</strong>: Represent the same address as the decimal integer <span style="font-family:'Courier New', Courier, monospace">2852039166</span>.
+					</td>
+				</tr>
+				<tr>
+					<td class="font-bold">
+						ATTEMPT 1
+					</td>
+					<td>
+						<strong>Observed</strong>: The decimal representation was blocked.<br>
+						<strong>Hypothesis</strong>: The metadata path or query placement might still trigger detection.<br>
+						<strong>Next move</strong>: Use the octal representation <span style="font-family:'Courier New', Courier, monospace">0251.0376.0251.0376</span> and move the input from the query string to a form body.
+					</td>
+				</tr>
+				<tr>
+					<td class="font-bold">
+						ATTEMPT 2
+					</td>
+					<td>
+						<strong>Observed</strong>: The octal representation in the form body was blocked.<br>
+						<strong>Hypothesis</strong>: The metadata path might still trigger detection regardless of host encoding.<br>
+						<strong>Next move</strong>: Try a hostname-based representation without that path.
+					</td>
+				</tr>
+				<tr>
+					<td class="font-bold bg-[#e2e8f0] text-[#111111]">
+						ATTEMPTS 3–16
+					</td>
+					<td class="bg-[#e2e8f0] text-[#111111]">
+						<i>Omitted from this excerpt. The tester continued exploring host, path, and request-shape combinations.</i>
+					</td>
+				</tr>
+				<tr>
+					<td class="font-bold">
+						ATTEMPT 17
+					</td>
+					<td>
+						<strong>Observed</strong>: The decimal integer host, now used with a later request shape, was blocked.<br>
+						<strong>Hypothesis</strong>: A trailing dot might change what the detector matched without changing the intended destination.<br>
+						<strong>Next move</strong>: Keep the method, input placement, content type, and path form the same; switch to the trailing-dot host form: <span style="font-family:'Courier New', Courier, monospace">169.254.169.254</span>.
+					</td>
+				</tr>
+				<tr>
+					<td class="font-bold">
+						ATTEMPT 18
+					</td>
+					<td>
+						<strong>Observed</strong>: The client encountered a redirect rather than a Cloudflare block page. The run retained an edge-pass observation because the expected mitigation was absent.<br>
+						<strong>Limit</strong>: There was no successful origin response, response body, or evidence that the application fetched metadata.<br>
+						<strong>Next step</strong>: Preserve the request for triage and origin-side validation.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</figure>
+</div>
+<p>Attempts 17 and 18 are an interesting pair: same request structure, different host representation. One was blocked, one was not. That gave us a specific question: does the trailing dot change how the WAF reads the destination? It was a lead to investigate, but not proof that metadata was accessed.</p>
+<p>This was one selected trajectory among 45 scenarios. The next section shows how we counted and triaged the full run.</p>
+<h2>What we found</h2>
+<p>Our tester generated 1,107 attempts and the overall result was strong with XSS, LFI, SQLi, and Log4j having near full coverage. While the run produced useful findings, it also produced noise. After human review, we were left with 49 findings worth investigating, 48 of them belonging to CMDi and SSRF.&nbsp;</p>
+<p>Here is how they break down:</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 669px;">
+		<colgroup>
+			<col style="width: 193px;">
+			<col style="width: 96px;">
+			<col style="width: 380px;">
+		</colgroup>
+		<thead>
+			<tr>
+				<th scope="col">
+					<p><strong>Metric</strong></p>
+				</th>
+				<th scope="col">
+					<p><strong>Value</strong></p>
+				</th>
+				<th scope="col">
+					<p><strong>What it means</strong></p>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<p>Recorded mutation attempts</p>
+				</td>
+				<td>
+					<p>1,107</p>
+				</td>
+				<td>
+					<p>Model iterations across 45 active scenarios; not all produced a usable result</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Post-triage result set</p>
+				</td>
+				<td>
+					<p>607</p>
+				</td>
+				<td>
+					<p>The 558 blocked requests plus 49 documented WAF-relevant findings</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Blocked requests</p>
+				</td>
+				<td>
+					<p>558</p>
+				</td>
+				<td>
+					<p>The WAF stopped these before they reached the application</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>WAF-relevant findings</p>
+				</td>
+				<td>
+					<p>49</p>
+				</td>
+				<td>
+					<p>Documented for remediation analysis after human review</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>The rest did not produce a result worth counting as the model failed to generate a usable HTTP request, some failed before reaching the target, or the payload generated was benign.</p>
+<p>When a request was not blocked, we worked through five questions before counting it as a finding:</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 666px;">
+		<colgroup>
+			<col style="width: 333px;">
+			<col style="width: 333px;">
+		</colgroup>
+		<thead>
+			<tr>
+				<th scope="col">
+					<p><strong>Question</strong></p>
+				</th>
+				<th scope="col">
+					<p><strong>Why it matters</strong></p>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<p>Did the tester actually send a valid request?</p>
+				</td>
+				<td>
+					<p>If the model failed or the request never reached the target, the result tells us nothing about the WAF.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Was the request clearly not blocked?</p>
+				</td>
+				<td>
+					<p>An ambiguous response is not enough to count.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Was the request still malicious?</p>
+				</td>
+				<td>
+					<p>Changing a request to get it past the WAF can also make it harmless.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Did the behavior belong to the WAF?</p>
+				</td>
+				<td>
+					<p>Some attacks only work through DNS or network paths the WAF cannot stop at request time.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Could engineers reproduce it safely?</p>
+				</td>
+				<td>
+					<p>A fix needs a stable test case with a clear expected result.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>We removed anything that failed those checks and combined duplicate cases. What remained became the input for rule, normalization, and mitigation work.</p>
+<h2>Findings became detections</h2>
+<p>Not every finding needed a new rule. Some pointed to gaps in existing <a href="https://developers.cloudflare.com/waf/managed-rules" target="_blank" rel="noopener noreferrer"><u>Managed Rules</u></a> coverage. Others pointed to how the WAF normalized the request or belonged to another security control. We replayed each case and decided where the change should happen.</p>
+<p>We grouped related findings into four sets of candidate rules, validated each finding, and tested candidates against live traffic before any rule could protect customer traffic.</p>
+<p>Before a new or updated rule can protect customer traffic, we check its impact on legitimate traffic and assess false-positive risk. Some of the issues we find when evaluating a new rule candidate include:</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 666px;">
+		<colgroup>
+			<col style="width: 333px;">
+			<col style="width: 333px;">
+		</colgroup>
+		<thead>
+			<tr>
+				<th scope="col">
+					<p><strong>Issue</strong></p>
+				</th>
+				<th scope="col">
+					<p><strong>Next step</strong></p>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<p>Missing or narrow detection</p>
+				</td>
+				<td>
+					<p>Review whether existing rules cover the finding</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Equivalent inputs interpreted differently</p>
+				</td>
+				<td>
+					<p>Engine or normalization review</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>False-positive risk is too high</p>
+				</td>
+				<td>
+					<p>Revise or reject the candidate</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>This work contributed to three changes in Cloudflare's Managed Ruleset: new detections for <a href="https://developers.cloudflare.com/waf/change-log/changelog/#2026-07-21" target="_blank" rel="noopener noreferrer"><u>SSRF - Obfuscated Host</u></a> and <a href="https://developers.cloudflare.com/waf/change-log/changelog/#2026-07-21" target="_blank" rel="noopener noreferrer"><u>SSRF - Restricted Protocol</u></a> in the July 21 release, and improvement of the existing <a href="https://developers.cloudflare.com/waf/change-log/changelog/#2026-08-04" target="_blank" rel="noopener noreferrer"><u>SSRF - Cloud</u></a> rule. The SSRF - Obfuscated Host detection came directly from requests that encoded internal addresses in non-standard numeric forms.</p>
+<h2>What we learned</h2>
+<p>The model was only one part of the test. We ran the same scenarios with two versions of the same model family. They produced different variations – and the same underlying issues appeared in both. Because request replay and evidence capture stayed consistent, we could compare the runs without treating either model's output as ground truth.</p>
+<p>More attempts within one scenario did not always find more. Some scenarios started repeating earlier ideas near the end of the 25-attempt limit. We got broader coverage by testing more starting requests, attack categories, and input locations instead of extending one sequence.</p>
+<p>The model generated requests. We decided which ones mattered. A request that was not blocked still needed replay and human review before it could become a finding, a mitigation, or a regression test. Without that review, there were no findings.</p>
+<h2>What customers can do now</h2>
+<p>WAF is just one layer of detections you can deploy. When you deploy all available protections you increase the effectiveness of your overall stack.&nbsp;</p>
+<p>First of all, check that Managed Rules, WAF Attack Score are <a href="https://developers.cloudflare.com/waf/get-started" target="_blank" rel="noopener noreferrer"><u>set up correctly</u></a> in front of your application. Other tools you can deploy include API Security, Bots and Fraud detection, and Threat Intelligence to strengthen your posture even further. For example, <a href="http://blog.cloudflare.com/application-profiles" target="_blank" rel="noopener noreferrer"><u>positive security controls</u></a> add a different layer: instead of looking only for known attack patterns, they define the request shapes an application expects and identify inputs outside that contract. This drastically reduces your attack surface area.&nbsp;</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA////+v/76+/r3+Xf4OXg5uzn6u/r6O3p/////v/+7/Du5OTh5eXh7Ozp7vDt6+7s////////9PLy6+bl7ebl8+3s9PHx8PDw////////+/b38unr9Orr+vHz+/b39vT2//////////z++PDz+/H0//j7//z++/r8/////////////ff6//n8//////////////////////////3/////////////////////////////////////////////////" alt="" width="715" height="402" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3MTAS0ZN1PNNBWH3S61D881.01M3MTAT26V9K26W3PATRB6Y1P.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3MTAS0ZN1PNNBWH3S61D881.01M3MTAT26V9K26W3PATRB6Y1P.png&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3MTAS0ZN1PNNBWH3S61D881.01M3MTAT26V9K26W3PATRB6Y1P.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3MTAS0ZN1PNNBWH3S61D881.01M3MTAT26V9K26W3PATRB6Y1P.png&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3MTAS0ZN1PNNBWH3S61D881.01M3MTAT26V9K26W3PATRB6Y1P.png&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3MTAS0ZN1PNNBWH3S61D881.01M3MTAT26V9K26W3PATRB6Y1P.png&amp;w=1080&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3MTAS0ZN1PNNBWH3S61D881.01M3MTAT26V9K26W3PATRB6Y1P.png&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3MTAS0ZN1PNNBWH3S61D881.01M3MTAT26V9K26W3PATRB6Y1P.png&amp;w=1430&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Defense in depth combines controls with different roles." loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3MTAS0ZN1PNNBWH3S61D881.01M3MTAT26V9K26W3PATRB6Y1P.png&amp;w=1920&amp;h=1081&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1081" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="402" class="pt-portable-image-media"></div>
+	<figcaption>Defense in depth combines controls with different roles.</figcaption>
+</figure>
+<p>Customers do not need to reproduce this experiment. To maximize the number of rules deployed in front of your application, we recommend running Managed Rules in log first, review matching requests in <a href="https://developers.cloudflare.com/waf/analytics/security-events" target="_blank" rel="noopener noreferrer"><u>Security Events</u></a>, and confirm legitimate traffic is unaffected before moving a rule to Block. Alternatively, customers can reach out to their account team to get <a href="https://blog.cloudflare.com/attack-signature-detection" target="_blank" rel="noopener noreferrer"><u>Attack Signature Detection</u></a> turned on, on their zones. This new feature simplifies how to review matched traffic and how to deploy signature detections. If you already perform application security testing, run those tests against a staging hostname protected by the same Cloudflare controls as production.</p>
+<h2>Next steps</h2>
+<p>By combining adaptive AI-driven testing with human triage and validation, we found detection gaps that fixed tests might miss and turned those findings into stronger WAF protections, improving our block rate. In a future post, we will share results from further testing using a white-box approach, where the model knows both the application’s vulnerabilities and the WAF rules protecting it.</p>

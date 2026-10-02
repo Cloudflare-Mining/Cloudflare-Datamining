@@ -1,0 +1,269 @@
+<p>Today,&nbsp;we’re launching eight major updates that bring your logs, traces, analytics, alerts, dashboards, and exporting into <a href="https://developers.cloudflare.com/observability"><u>one observability platform</u></a>, with simpler and more predictable pricing.</p>
+<p><strong>Here's what's launching:</strong></p>
+<ul>
+	<li><a href="https://blog.cloudflare.com/#1-investigate-all-your-logs-in-one-place">One place to explore logs from across Cloudflare</a></li>
+	<li><a href="https://blog.cloudflare.com/#2-trace-requests-through-our-entire-platform-now-in-open-beta">End-to-end tracing from Cloudflare's edge to your origin</a></li>
+	<li><a href="https://blog.cloudflare.com/#3-have-your-agent-query-observability-data-with-one-unified-sql-api">One unified SQL API for querying Cloudflare data</a></li>
+	<li><a href="https://blog.cloudflare.com/#4-new-pricing-for-all-ingested-and-stored-logs-and-traces">One pricing model for observability data ingested and stored across Cloudflare</a></li>
+	<li><a href="https://blog.cloudflare.com/#5-configure-custom-alerts-on-your-observability-data-now-in-beta">Custom alerts on your observability data</a></li>
+	<li><a href="https://blog.cloudflare.com/#6-see-your-domain-analytics-in-one-place-now-with-30-days-retention">All analytics for your domain in one place, with 30 days of data retention</a></li>
+	<li><a href="https://blog.cloudflare.com/#7-build-custom-dashboards"><u>Custom dashboards built from your observability data</u></a></li>
+	<li><a href="https://blog.cloudflare.com/#8-logpush-is-now-available-on-all-self-serve-plans">Export your data with Logpush -- now available on self-serve plans</a></li>
+</ul>
+<h2>One observability platform&nbsp;for all of Cloudflare</h2>
+<p>Understanding an issue often requires data from more than one Cloudflare product. A spike in 5xx responses could come from a Worker, from your origin, or from Cloudflare failing to connect to your origin globally or regionally. But investigating it today requires knowing which product owns each signal and how to query it.</p>
+<p>Observability should be a platform-wide capability: it should reflect how applications actually behave and give you the complete context needed to resolve an issue. Over the coming months, you’ll see more Cloudflare products, datasets, and workflows become part of this shared observability platform, with more consistent pricing, product experiences, and features. These eight updates are the first step into a more unified Observability problem.</p>
+<h2>1. Investigate all your logs in one place</h2>
+<p>The <a href="https://developers.cloudflare.com/observability/logs"><u>new Logs home&nbsp;</u></a>combines <a href="https://developers.cloudflare.com/workers/observability"><u>Workers Observability</u></a>&nbsp;(for debugging Workers applications and its connected resources) with <a href="https://developers.cloudflare.com/log-explorer"><u>Log Explorer&nbsp;</u></a>(for searching across security logs). You can now choose from log datasets like HTTP events, firewall events, Workers, Containers, R2, and AI Gateway, and use the same investigative tools and capabilities for each.</p>
+<p>Start with an increase in request latency, group it by hostname or data center, narrow the results to affected paths, and inspect individual requests by Ray ID. If the investigation leads to another Cloudflare product, switch datasets without leaving Logs. Support for querying across multiple datasets is coming soon, making it possible to connect related events across products in a single query.<br><br>You can query your logs with raw SQL or with built-in filters to narrow down on specific events. Create visualizations with natural language, and easily investigate and understand detected anomalies.</p>
+<div class="copy-prompt relative my-8 flex w-max max-w-full" data-copy-prompt=""><button type="button" aria-label="Copy prompt" class="copy-prompt__button inline-flex w-max max-w-full shrink-0 items-center justify-center rounded-full font-sans whitespace-nowrap no-underline select-none" data-copy-prompt-button="" data-prompt="&quot;Use cf cli (https://developers.cloudflare.com/cf/) to query my Worker logs/traces using the sql API and tell me about any unusual patterns or trends. If there is nothing unusual, give me a rundown of the past few days of my traffic. If I am not logged in bring me through the auth flow.&quot;" data-copied-label="Prompt copied!" data-copy-prompt-bound="true"><span class="copy-prompt__content inline-flex min-w-0 items-center font-medium"><span class="copy-prompt__logos relative flex h-4 shrink-0 items-center justify-start" aria-hidden="true"><svg viewBox="0 0 256 257" class="size-4 shrink-0" aria-hidden="true">
+					<path fill="#D97757" d="m50.228 170.321 50.357-28.257.843-2.463-.843-1.361h-2.462l-8.426-.518-28.775-.778-24.952-1.037-24.175-1.296-6.092-1.297L0 125.796l.583-3.759 5.12-3.434 7.324.648 16.202 1.101 24.304 1.685 17.629 1.037 26.118 2.722h4.148l.583-1.685-1.426-1.037-1.101-1.037-25.147-17.045-27.22-18.017-14.258-10.37-7.713-5.25-3.888-4.925-1.685-10.758 7-7.713 9.397.649 2.398.648 9.527 7.323 20.35 15.75L94.817 91.9l3.889 3.24 1.555-1.102.195-.777-1.75-2.917-14.453-26.118-15.425-26.572-6.87-11.018-1.814-6.61c-.648-2.723-1.102-4.991-1.102-7.778l7.972-10.823L71.42 0 82.05 1.426l4.472 3.888 6.61 15.101 10.694 23.786 16.591 32.34 4.861 9.592 2.592 8.879.973 2.722h1.685v-1.556l1.36-18.211 2.528-22.36 2.463-28.776.843-8.1 4.018-9.722 7.971-5.25 6.222 2.981 5.12 7.324-.713 4.73-3.046 19.768-5.962 30.98-3.889 20.739h2.268l2.593-2.593 10.499-13.934 17.628-22.036 7.778-8.749 9.073-9.657 5.833-4.601h11.018l8.1 12.055-3.628 12.443-11.342 14.388-9.398 12.184-13.48 18.147-8.426 14.518.778 1.166 2.01-.194 30.46-6.481 16.462-2.982 19.637-3.37 8.88 4.148.971 4.213-3.5 8.62-20.998 5.184-24.628 4.926-36.682 8.685-.454.324.519.648 16.526 1.555 7.065.389h17.304l32.21 2.398 8.426 5.574 5.055 6.805-.843 5.184-12.962 6.611-17.498-4.148-40.83-9.721-14-3.5h-1.944v1.167l11.666 11.406 21.387 19.314 26.767 24.887 1.36 6.157-3.434 4.86-3.63-.518-23.526-17.693-9.073-7.972-20.545-17.304h-1.36v1.814l4.73 6.935 25.017 37.59 1.296 11.536-1.814 3.76-6.481 2.268-7.13-1.297-14.647-20.544-15.1-23.138-12.185-20.739-1.49.843-7.194 77.448-3.37 3.953-7.778 2.981-6.48-4.925-3.436-7.972 3.435-15.749 4.148-20.544 3.37-16.333 3.046-20.285 1.815-6.74-.13-.454-1.49.194-15.295 20.999-23.267 31.433-18.406 19.702-4.407 1.75-7.648-3.954.713-7.064 4.277-6.286 25.47-32.405 15.36-20.092 9.917-11.6-.065-1.686h-.583L44.07 198.125l-12.055 1.555-5.185-4.86.648-7.972 2.463-2.593 20.35-13.999-.064.065Z"></path>
+				</svg><svg viewBox="0 0 24 24" class="size-4 shrink-0 fill-current" fill-rule="evenodd" aria-hidden="true">
+					<path clip-rule="evenodd" d="M8.086.457a6.105 6.105 0 013.046-.415c1.333.153 2.521.72 3.564 1.7a.117.117 0 00.107.029c1.408-.346 2.762-.224 4.061.366l.063.03.154.076c1.357.703 2.33 1.77 2.918 3.198.278.679.418 1.388.421 2.126a5.655 5.655 0 01-.18 1.631.167.167 0 00.04.155 5.982 5.982 0 011.578 2.891c.385 1.901-.01 3.615-1.183 5.14l-.182.22a6.063 6.063 0 01-2.934 1.851.162.162 0 00-.108.102c-.255.736-.511 1.364-.987 1.992-1.199 1.582-2.962 2.462-4.948 2.451-1.583-.008-2.986-.587-4.21-1.736a.145.145 0 00-.14-.032c-.518.167-1.04.191-1.604.185a5.924 5.924 0 01-2.595-.622 6.058 6.058 0 01-2.146-1.781c-.203-.269-.404-.522-.551-.821a7.74 7.74 0 01-.495-1.283 6.11 6.11 0 01-.017-3.064.166.166 0 00.008-.074.115.115 0 00-.037-.064 5.958 5.958 0 01-1.38-2.202 5.196 5.196 0 01-.333-1.589 6.915 6.915 0 01.188-2.132c.45-1.484 1.309-2.648 2.577-3.493.282-.188.55-.334.802-.438.286-.12.573-.22.861-.304a.129.129 0 00.087-.087A6.016 6.016 0 015.635 2.31C6.315 1.464 7.132.846 8.086.457zm-.804 7.85a.848.848 0 00-1.473.842l1.694 2.965-1.688 2.848a.849.849 0 001.46.864l1.94-3.272a.849.849 0 00.007-.854l-1.94-3.393zm5.446 6.24a.849.849 0 000 1.695h4.848a.849.849 0 000-1.696h-4.848z"></path>
+				</svg><svg viewBox="0 0 466.73 532.09" class="size-4 shrink-0 fill-current" aria-hidden="true">
+					<path d="M457.43,125.94L244.42,2.96c-6.84-3.95-15.28-3.95-22.12,0L9.3,125.94c-5.75,3.32-9.3,9.46-9.3,16.11v247.99c0,6.65,3.55,12.79,9.3,16.11l213.01,122.98c6.84,3.95,15.28,3.95,22.12,0l213.01-122.98c5.75-3.32,9.3-9.46,9.3-16.11v-247.99c0-6.65-3.55-12.79-9.3-16.11h-.01ZM444.05,151.99l-205.63,356.16c-1.39,2.4-5.06,1.42-5.06-1.36v-233.21c0-4.66-2.49-8.97-6.53-11.31L24.87,145.67c-2.4-1.39-1.42-5.06,1.36-5.06h411.26c5.84,0,9.49,6.33,6.57,11.39h-.01Z"></path>
+				</svg><svg viewBox="0 0 32 40" class="h-4 w-auto shrink-0 fill-current" aria-hidden="true">
+					<path d="M24 32H8V16H24V32Z" fill-opacity="0.3"></path>
+					<path d="M24 8H8V32H24V8ZM32 40H0V0H32V40Z"></path>
+				</svg></span><span class="copy-prompt__labels relative inline-grid min-w-0 items-center justify-items-start text-start" aria-hidden="true" data-copy-prompt-labels="" style="inline-size: 76.3125px;"><span class="copy-prompt__label" data-copy-prompt-label="">Copy prompt</span><span class="copy-prompt__label-sizer" data-copy-prompt-label-sizer="default">Copy prompt</span><span class="copy-prompt__label-sizer" data-copy-prompt-label-sizer="copied">Prompt copied!</span></span></span></button><span class="sr-only" role="status" aria-live="polite" data-copy-prompt-status=""></span></div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {};
+	var e = 50,
+		t = 150;
+
+	function n(e) {
+		let t = e.dataset.prompt;
+		if (!t) return null;
+		try {
+			let e = JSON.parse(t);
+			return typeof e == `string` && e.trim() ? e : null
+		} catch {
+			return null
+		}
+	}
+
+	function r(r, i) {
+		i && r.querySelectorAll(`[data-copy-prompt]`).forEach(r => {
+			let a = r.querySelector(`[data-copy-prompt-button]`),
+				o = r.querySelector(`[data-copy-prompt-labels]`),
+				s = r.querySelector(`[data-copy-prompt-label]`),
+				c = r.querySelector(`[data-copy-prompt-label-sizer="default"]`),
+				l = r.querySelector(`[data-copy-prompt-label-sizer="copied"]`),
+				u = r.querySelector(`[data-copy-prompt-status]`);
+			if (!a || !u || a.dataset.copyPromptBound === `true`) return;
+			let d = n(a);
+			if (!d) return;
+			a.dataset.copyPromptBound = `true`;
+			let f = s?.textContent ?? ``,
+				p, m, h, g = e => {
+					let t = (e === `copied` ? l : c)?.getBoundingClientRect().width ?? 0;
+					o && t > 0 && (o.style.inlineSize = `${t}px`)
+				};
+			g(`default`);
+			let _ = s?.ownerDocument.fonts;
+			_ && _.ready.then(() => g(r.hasAttribute(`data-copied`) ? `copied` : `default`));
+			let v = (e, n) => {
+				if (!s || !e || (g(n), m && clearTimeout(m), m = void 0, s.classList.remove(`is-exit`, `is-enter-start`), s.textContent === e)) return;
+				let r = s.ownerDocument.defaultView;
+				if (typeof r?.matchMedia == `function` && r.matchMedia(`(prefers-reduced-motion: reduce)`).matches) {
+					s.textContent = e;
+					return
+				}
+				s.classList.add(`is-exit`), m = setTimeout(() => {
+					s.textContent = e, s.classList.remove(`is-exit`), s.classList.add(`is-enter-start`), s.offsetWidth, s.classList.remove(`is-enter-start`), m = void 0
+				}, t)
+			};
+			a.addEventListener(`click`, async () => {
+				try {
+					await i.writeText(d)
+				} catch {
+					return
+				}
+				p && clearTimeout(p), h && clearTimeout(h), u.textContent = ``, r.setAttribute(`data-copied`, ``), v(a.dataset.copiedLabel ?? ``, `copied`), p = setTimeout(() => {
+					u.textContent = a.dataset.copiedLabel ?? ``
+				}, e), h = setTimeout(() => {
+					r.removeAttribute(`data-copied`), u.textContent = ``, v(f, `default`)
+				}, 1550)
+			})
+		})
+	}
+	r(document, navigator.clipboard);
+</script>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA9/b28vHx6Ofn5uTk7Orq8e/v7Ovr4eDg+vr69vb27u3t7Orq8O/v9PPz8e/v5+bm/////Pz89vX18/Ly9/X1+vj49/X17+7u/////////Pv7+vn5/fz8/////fz89vX1//////////////39////////////+/v7/////////////////////////////v7+////////////////////////////////////////////////////////////////" alt="" width="715" height="366" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XHC8MQ4VMGRP0JX5412SDR.png&amp;w=715&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XHC8MQ4VMGRP0JX5412SDR.png&amp;w=640&amp;h=328&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XHC8MQ4VMGRP0JX5412SDR.png&amp;w=715&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XHC8MQ4VMGRP0JX5412SDR.png&amp;w=750&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XHC8MQ4VMGRP0JX5412SDR.png&amp;w=828&amp;h=424&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XHC8MQ4VMGRP0JX5412SDR.png&amp;w=1080&amp;h=553&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XHC8MQ4VMGRP0JX5412SDR.png&amp;w=1280&amp;h=655&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XHC8MQ4VMGRP0JX5412SDR.png&amp;w=1430&amp;h=732&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image4.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XHC8MQ4VMGRP0JX5412SDR.png&amp;w=1920&amp;h=984&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="984" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="366" class="pt-portable-image-media"></div>
+</figure>
+<h2>2. Trace requests through our <strong>entire</strong>&nbsp;platform&nbsp;— now in open beta</h2>
+<p>We’re launching <a href="http://blog.cloudflare.com/cloudflare-tracing"><u>Cloudflare Traces in open beta</u></a>, giving you a request-level view of supported security rules, transformations, cache decisions, routing, Workers, and origin handling. You get to see how your traffic moved through our platform, and connect the dots between how you’ve configured Cloudflare, and how this influences request processing time, routing decisions, and more.</p>
+<p><a href="https://developers.cloudflare.com/observability/traces/configuration"><u>Set a baseline sampling rate</u></a>&nbsp;for continuous visibility, then use <a href="https://developers.cloudflare.com/observability/traces/configuration/#trace-rules"><u>Trace Rules</u></a>&nbsp;to capture specific traffic at a higher rate during an investigation. Target hostnames, paths, IP addresses, or headers, search by <a href="https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id"><u>Ray ID</u></a>, and inspect the resulting spans directly in the Cloudflare dashboard.</p>
+<p>You can export traces over <a href="https://opentelemetry.io" target="_blank" rel="noopener noreferrer"><u>OpenTelemetry</u></a>, while <a href="https://www.w3.org/TR/trace-context" target="_blank" rel="noopener noreferrer"><u>W3C trace context propagation</u></a> lets you accept incoming trace context and pass along context to your origin. Check out the <a href="http://blog.cloudflare.com/cloudflare-tracing" target="_blank" rel="noopener noreferrer">full blog post to learn more about Cloudflare Tracing</a> or give&nbsp; this command to your agent to get started:</p>
+<div class="copy-prompt relative my-8 flex w-max max-w-full" data-copy-prompt=""><button type="button" aria-label="Copy prompt" class="copy-prompt__button inline-flex w-max max-w-full shrink-0 items-center justify-center rounded-full font-sans whitespace-nowrap no-underline select-none" data-copy-prompt-button="" data-prompt="&quot;Using the Cloudflare cf CLI, configure Tracing for my zone with a 10% sampling rate and persist traces in Cloudflare. If I have multiple zones, ask me which one to use.&quot;" data-copied-label="Prompt copied!" data-copy-prompt-bound="true"><span class="copy-prompt__content inline-flex min-w-0 items-center font-medium"><span class="copy-prompt__logos relative flex h-4 shrink-0 items-center justify-start" aria-hidden="true"><svg viewBox="0 0 256 257" class="size-4 shrink-0" aria-hidden="true">
+					<path fill="#D97757" d="m50.228 170.321 50.357-28.257.843-2.463-.843-1.361h-2.462l-8.426-.518-28.775-.778-24.952-1.037-24.175-1.296-6.092-1.297L0 125.796l.583-3.759 5.12-3.434 7.324.648 16.202 1.101 24.304 1.685 17.629 1.037 26.118 2.722h4.148l.583-1.685-1.426-1.037-1.101-1.037-25.147-17.045-27.22-18.017-14.258-10.37-7.713-5.25-3.888-4.925-1.685-10.758 7-7.713 9.397.649 2.398.648 9.527 7.323 20.35 15.75L94.817 91.9l3.889 3.24 1.555-1.102.195-.777-1.75-2.917-14.453-26.118-15.425-26.572-6.87-11.018-1.814-6.61c-.648-2.723-1.102-4.991-1.102-7.778l7.972-10.823L71.42 0 82.05 1.426l4.472 3.888 6.61 15.101 10.694 23.786 16.591 32.34 4.861 9.592 2.592 8.879.973 2.722h1.685v-1.556l1.36-18.211 2.528-22.36 2.463-28.776.843-8.1 4.018-9.722 7.971-5.25 6.222 2.981 5.12 7.324-.713 4.73-3.046 19.768-5.962 30.98-3.889 20.739h2.268l2.593-2.593 10.499-13.934 17.628-22.036 7.778-8.749 9.073-9.657 5.833-4.601h11.018l8.1 12.055-3.628 12.443-11.342 14.388-9.398 12.184-13.48 18.147-8.426 14.518.778 1.166 2.01-.194 30.46-6.481 16.462-2.982 19.637-3.37 8.88 4.148.971 4.213-3.5 8.62-20.998 5.184-24.628 4.926-36.682 8.685-.454.324.519.648 16.526 1.555 7.065.389h17.304l32.21 2.398 8.426 5.574 5.055 6.805-.843 5.184-12.962 6.611-17.498-4.148-40.83-9.721-14-3.5h-1.944v1.167l11.666 11.406 21.387 19.314 26.767 24.887 1.36 6.157-3.434 4.86-3.63-.518-23.526-17.693-9.073-7.972-20.545-17.304h-1.36v1.814l4.73 6.935 25.017 37.59 1.296 11.536-1.814 3.76-6.481 2.268-7.13-1.297-14.647-20.544-15.1-23.138-12.185-20.739-1.49.843-7.194 77.448-3.37 3.953-7.778 2.981-6.48-4.925-3.436-7.972 3.435-15.749 4.148-20.544 3.37-16.333 3.046-20.285 1.815-6.74-.13-.454-1.49.194-15.295 20.999-23.267 31.433-18.406 19.702-4.407 1.75-7.648-3.954.713-7.064 4.277-6.286 25.47-32.405 15.36-20.092 9.917-11.6-.065-1.686h-.583L44.07 198.125l-12.055 1.555-5.185-4.86.648-7.972 2.463-2.593 20.35-13.999-.064.065Z"></path>
+				</svg><svg viewBox="0 0 24 24" class="size-4 shrink-0 fill-current" fill-rule="evenodd" aria-hidden="true">
+					<path clip-rule="evenodd" d="M8.086.457a6.105 6.105 0 013.046-.415c1.333.153 2.521.72 3.564 1.7a.117.117 0 00.107.029c1.408-.346 2.762-.224 4.061.366l.063.03.154.076c1.357.703 2.33 1.77 2.918 3.198.278.679.418 1.388.421 2.126a5.655 5.655 0 01-.18 1.631.167.167 0 00.04.155 5.982 5.982 0 011.578 2.891c.385 1.901-.01 3.615-1.183 5.14l-.182.22a6.063 6.063 0 01-2.934 1.851.162.162 0 00-.108.102c-.255.736-.511 1.364-.987 1.992-1.199 1.582-2.962 2.462-4.948 2.451-1.583-.008-2.986-.587-4.21-1.736a.145.145 0 00-.14-.032c-.518.167-1.04.191-1.604.185a5.924 5.924 0 01-2.595-.622 6.058 6.058 0 01-2.146-1.781c-.203-.269-.404-.522-.551-.821a7.74 7.74 0 01-.495-1.283 6.11 6.11 0 01-.017-3.064.166.166 0 00.008-.074.115.115 0 00-.037-.064 5.958 5.958 0 01-1.38-2.202 5.196 5.196 0 01-.333-1.589 6.915 6.915 0 01.188-2.132c.45-1.484 1.309-2.648 2.577-3.493.282-.188.55-.334.802-.438.286-.12.573-.22.861-.304a.129.129 0 00.087-.087A6.016 6.016 0 015.635 2.31C6.315 1.464 7.132.846 8.086.457zm-.804 7.85a.848.848 0 00-1.473.842l1.694 2.965-1.688 2.848a.849.849 0 001.46.864l1.94-3.272a.849.849 0 00.007-.854l-1.94-3.393zm5.446 6.24a.849.849 0 000 1.695h4.848a.849.849 0 000-1.696h-4.848z"></path>
+				</svg><svg viewBox="0 0 466.73 532.09" class="size-4 shrink-0 fill-current" aria-hidden="true">
+					<path d="M457.43,125.94L244.42,2.96c-6.84-3.95-15.28-3.95-22.12,0L9.3,125.94c-5.75,3.32-9.3,9.46-9.3,16.11v247.99c0,6.65,3.55,12.79,9.3,16.11l213.01,122.98c6.84,3.95,15.28,3.95,22.12,0l213.01-122.98c5.75-3.32,9.3-9.46,9.3-16.11v-247.99c0-6.65-3.55-12.79-9.3-16.11h-.01ZM444.05,151.99l-205.63,356.16c-1.39,2.4-5.06,1.42-5.06-1.36v-233.21c0-4.66-2.49-8.97-6.53-11.31L24.87,145.67c-2.4-1.39-1.42-5.06,1.36-5.06h411.26c5.84,0,9.49,6.33,6.57,11.39h-.01Z"></path>
+				</svg><svg viewBox="0 0 32 40" class="h-4 w-auto shrink-0 fill-current" aria-hidden="true">
+					<path d="M24 32H8V16H24V32Z" fill-opacity="0.3"></path>
+					<path d="M24 8H8V32H24V8ZM32 40H0V0H32V40Z"></path>
+				</svg></span><span class="copy-prompt__labels relative inline-grid min-w-0 items-center justify-items-start text-start" aria-hidden="true" data-copy-prompt-labels="" style="inline-size: 76.3125px;"><span class="copy-prompt__label" data-copy-prompt-label="">Copy prompt</span><span class="copy-prompt__label-sizer" data-copy-prompt-label-sizer="default">Copy prompt</span><span class="copy-prompt__label-sizer" data-copy-prompt-label-sizer="copied">Prompt copied!</span></span></span></button><span class="sr-only" role="status" aria-live="polite" data-copy-prompt-status=""></span></div>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA+/r99vb47Ozu5ubo5+fp6urr6Ojo4uLg/f3/+fn88PDy6urs6+vs7e3u6+vq5eXj/////v7/9vb48PDy8PDx8vLy7+/v6uro/////////Pz/9/f59/f4+fn49vb18PHv/////////////f3///7//////v79+Pj2/////////////////////////////v79////////////////////////////////////////////////////////////////" alt="" width="715" height="319" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE76PJXWGQ86MMXRXPYYED.png&amp;w=715&amp;h=319&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE76PJXWGQ86MMXRXPYYED.png&amp;w=640&amp;h=286&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE76PJXWGQ86MMXRXPYYED.png&amp;w=715&amp;h=319&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE76PJXWGQ86MMXRXPYYED.png&amp;w=750&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE76PJXWGQ86MMXRXPYYED.png&amp;w=828&amp;h=369&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE76PJXWGQ86MMXRXPYYED.png&amp;w=1080&amp;h=482&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE76PJXWGQ86MMXRXPYYED.png&amp;w=1280&amp;h=571&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE76PJXWGQ86MMXRXPYYED.png&amp;w=1430&amp;h=638&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image3.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE76PJXWGQ86MMXRXPYYED.png&amp;w=1920&amp;h=857&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="857" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="319" class="pt-portable-image-media"></div>
+</figure>
+<h2>3. Have your agent query observability data with one unified SQL API</h2>
+<p>Agents also need a consistent way to sift through your observability data, investigate issues, correlate signals, and verify fixes. We’re launching <a href="https://developers.cloudflare.com/analytics/sql-api"><u>a unified SQL API,</u></a>&nbsp;now in beta, for querying telemetry across Cloudflare. Instead of integrating separately with Workers logs, Containers security events, HTTP request logs, and analytics data, people and agents can query them using one SQL dialect, authentication model, and API.</p>
+<p>Your agent can use the new <a href="https://blog.cloudflare.com/cloudflare-cf-cli-launch"><u>Cloudflare CLI</u></a>, <code>cf</code>, to find and run queries from the command line or connect through <a href="https://github.com/cloudflare/mcp"><u>Cloudflare’s Observability MCP</u></a>&nbsp;server to investigate logs, traces and analytics. <a href="https://developers.cloudflare.com/analytics/sql-api/datasets"><u>Dataset schemas, fields, and example queries</u></a>&nbsp;are available to help both people and agents build queries.</p>
+<p>Additionally, we’re also bringing the SQL interface directly into Workers with a&nbsp;<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/analytics-sql"><u>native binding.</u></a>&nbsp;Your Worker can now do things like query <a href="https://developers.cloudflare.com/analytics/analytics-engine"><u>Analytics Engine </u></a>data to meter customer usage and power billing workflows, build customer-facing analytics dashboards, generate health reports, or automate incident investigation without configuring a separate API client.</p>
+<h2>4. New pricing for all ingested and stored logs and traces</h2>
+<p>For all logs and traces ingested and stored on Cloudflare, we are moving to one unified Observability subscription and pricing. Beginning <strong>December 1, 2026</strong>, this pricing model will apply across all plans (effective upon renewal for all Enterprise customers) and cover existing Developer Platform logs, including Workers, Containers, AI Gateway, as well as all tracing data.</p>
+<p>Because logs and traces can vary dramatically in size, the new model is based on the <strong>volume you ingest and store</strong>&nbsp;rather than an event-based count. This pricing adjustment will be. Check out our <a href="https://developers.cloudflare.com/observability/pricing"><u>documentation&nbsp;</u></a>for more details on pricing.</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 384px;">
+		<thead>
+			<tr>
+				<th scope="col">
+					<p>Plan</p>
+				</th>
+				<th scope="col">
+					<p>Included Usage</p>
+				</th>
+				<th scope="col">
+					<p>Retention</p>
+				</th>
+				<th scope="col">
+					<p>Additional usage</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<p>Free</p>
+				</td>
+				<td>
+					<p>0.5 GB of ingestion per day</p>
+				</td>
+				<td>
+					<p>7 days</p>
+				</td>
+				<td>
+					<p>Not available</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Paid and Enterprise</p>
+				</td>
+				<td>
+					<p>50 GB of ingestion <br>10 GB-month of storage per billing cycle</p>
+				</td>
+				<td>
+					<p>Up to 1 year <br>(coming soon)</p>
+				</td>
+				<td>
+					<p>$0.25 per GB ingested<br>$0.10 per GB-month stored</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h2>5. Configure custom alerts on your observability data&nbsp;– now in beta</h2>
+<p>Notifications&nbsp;(<a href="https://developers.cloudflare.com/notifications"><u>now called “Alerts”</u></a>) just got a major upgrade. You can now define custom alerts directly on anything supported by our new unified SQL API, including HTTP request logs, Workers events, Workers Analytics Engine datasets, analytics datasets, traces, and security events.</p>
+<p>Choose a dataset in the dashboard or define the condition using custom SQL. Then select a threshold, anomaly, or SLO, set the evaluation window, and choose where the alert should go. You might alert when origin 5xx responses exceed a threshold for five minutes, a Container repeatedly fails, Worker errors increase after a deployment, or trace latency crosses an expected limit.&nbsp;</p>
+<p>You can send alerts right to tools your teams are already using, including incident management tools, chat platforms, and webhooks. <a href="https://developers.cloudflare.com/notifications/get-started/configure-webhooks" target="_blank" rel="noopener noreferrer"><u>Webhooks are now available on all plans</u></a>, allowing you to route alerts to custom services or even your agent to begin investigating immediately. To get started check out our <a href="https://developers.cloudflare.com/notifications" target="_blank" rel="noopener noreferrer"><u>documentation</u></a> or give this command to your agent:</p>
+<div class="copy-prompt relative my-8 flex w-max max-w-full" data-copy-prompt=""><button type="button" aria-label="Copy prompt" class="copy-prompt__button inline-flex w-max max-w-full shrink-0 items-center justify-center rounded-full font-sans whitespace-nowrap no-underline select-none" data-copy-prompt-button="" data-prompt="&quot;Use cf cli (https://developers.cloudflare.com/cf/) to query my HTTP and Worker analytics using the sql API. Then setup an alert to alert me on bad state (high 5xx, high exception rate, anomalous TTFB/wall time, etc.)\n\nIf I am not logged into cf cli bring me through the auth flow.\n&quot;" data-copied-label="Prompt copied!" data-copy-prompt-bound="true"><span class="copy-prompt__content inline-flex min-w-0 items-center font-medium"><span class="copy-prompt__logos relative flex h-4 shrink-0 items-center justify-start" aria-hidden="true"><svg viewBox="0 0 256 257" class="size-4 shrink-0" aria-hidden="true">
+					<path fill="#D97757" d="m50.228 170.321 50.357-28.257.843-2.463-.843-1.361h-2.462l-8.426-.518-28.775-.778-24.952-1.037-24.175-1.296-6.092-1.297L0 125.796l.583-3.759 5.12-3.434 7.324.648 16.202 1.101 24.304 1.685 17.629 1.037 26.118 2.722h4.148l.583-1.685-1.426-1.037-1.101-1.037-25.147-17.045-27.22-18.017-14.258-10.37-7.713-5.25-3.888-4.925-1.685-10.758 7-7.713 9.397.649 2.398.648 9.527 7.323 20.35 15.75L94.817 91.9l3.889 3.24 1.555-1.102.195-.777-1.75-2.917-14.453-26.118-15.425-26.572-6.87-11.018-1.814-6.61c-.648-2.723-1.102-4.991-1.102-7.778l7.972-10.823L71.42 0 82.05 1.426l4.472 3.888 6.61 15.101 10.694 23.786 16.591 32.34 4.861 9.592 2.592 8.879.973 2.722h1.685v-1.556l1.36-18.211 2.528-22.36 2.463-28.776.843-8.1 4.018-9.722 7.971-5.25 6.222 2.981 5.12 7.324-.713 4.73-3.046 19.768-5.962 30.98-3.889 20.739h2.268l2.593-2.593 10.499-13.934 17.628-22.036 7.778-8.749 9.073-9.657 5.833-4.601h11.018l8.1 12.055-3.628 12.443-11.342 14.388-9.398 12.184-13.48 18.147-8.426 14.518.778 1.166 2.01-.194 30.46-6.481 16.462-2.982 19.637-3.37 8.88 4.148.971 4.213-3.5 8.62-20.998 5.184-24.628 4.926-36.682 8.685-.454.324.519.648 16.526 1.555 7.065.389h17.304l32.21 2.398 8.426 5.574 5.055 6.805-.843 5.184-12.962 6.611-17.498-4.148-40.83-9.721-14-3.5h-1.944v1.167l11.666 11.406 21.387 19.314 26.767 24.887 1.36 6.157-3.434 4.86-3.63-.518-23.526-17.693-9.073-7.972-20.545-17.304h-1.36v1.814l4.73 6.935 25.017 37.59 1.296 11.536-1.814 3.76-6.481 2.268-7.13-1.297-14.647-20.544-15.1-23.138-12.185-20.739-1.49.843-7.194 77.448-3.37 3.953-7.778 2.981-6.48-4.925-3.436-7.972 3.435-15.749 4.148-20.544 3.37-16.333 3.046-20.285 1.815-6.74-.13-.454-1.49.194-15.295 20.999-23.267 31.433-18.406 19.702-4.407 1.75-7.648-3.954.713-7.064 4.277-6.286 25.47-32.405 15.36-20.092 9.917-11.6-.065-1.686h-.583L44.07 198.125l-12.055 1.555-5.185-4.86.648-7.972 2.463-2.593 20.35-13.999-.064.065Z"></path>
+				</svg><svg viewBox="0 0 24 24" class="size-4 shrink-0 fill-current" fill-rule="evenodd" aria-hidden="true">
+					<path clip-rule="evenodd" d="M8.086.457a6.105 6.105 0 013.046-.415c1.333.153 2.521.72 3.564 1.7a.117.117 0 00.107.029c1.408-.346 2.762-.224 4.061.366l.063.03.154.076c1.357.703 2.33 1.77 2.918 3.198.278.679.418 1.388.421 2.126a5.655 5.655 0 01-.18 1.631.167.167 0 00.04.155 5.982 5.982 0 011.578 2.891c.385 1.901-.01 3.615-1.183 5.14l-.182.22a6.063 6.063 0 01-2.934 1.851.162.162 0 00-.108.102c-.255.736-.511 1.364-.987 1.992-1.199 1.582-2.962 2.462-4.948 2.451-1.583-.008-2.986-.587-4.21-1.736a.145.145 0 00-.14-.032c-.518.167-1.04.191-1.604.185a5.924 5.924 0 01-2.595-.622 6.058 6.058 0 01-2.146-1.781c-.203-.269-.404-.522-.551-.821a7.74 7.74 0 01-.495-1.283 6.11 6.11 0 01-.017-3.064.166.166 0 00.008-.074.115.115 0 00-.037-.064 5.958 5.958 0 01-1.38-2.202 5.196 5.196 0 01-.333-1.589 6.915 6.915 0 01.188-2.132c.45-1.484 1.309-2.648 2.577-3.493.282-.188.55-.334.802-.438.286-.12.573-.22.861-.304a.129.129 0 00.087-.087A6.016 6.016 0 015.635 2.31C6.315 1.464 7.132.846 8.086.457zm-.804 7.85a.848.848 0 00-1.473.842l1.694 2.965-1.688 2.848a.849.849 0 001.46.864l1.94-3.272a.849.849 0 00.007-.854l-1.94-3.393zm5.446 6.24a.849.849 0 000 1.695h4.848a.849.849 0 000-1.696h-4.848z"></path>
+				</svg><svg viewBox="0 0 466.73 532.09" class="size-4 shrink-0 fill-current" aria-hidden="true">
+					<path d="M457.43,125.94L244.42,2.96c-6.84-3.95-15.28-3.95-22.12,0L9.3,125.94c-5.75,3.32-9.3,9.46-9.3,16.11v247.99c0,6.65,3.55,12.79,9.3,16.11l213.01,122.98c6.84,3.95,15.28,3.95,22.12,0l213.01-122.98c5.75-3.32,9.3-9.46,9.3-16.11v-247.99c0-6.65-3.55-12.79-9.3-16.11h-.01ZM444.05,151.99l-205.63,356.16c-1.39,2.4-5.06,1.42-5.06-1.36v-233.21c0-4.66-2.49-8.97-6.53-11.31L24.87,145.67c-2.4-1.39-1.42-5.06,1.36-5.06h411.26c5.84,0,9.49,6.33,6.57,11.39h-.01Z"></path>
+				</svg><svg viewBox="0 0 32 40" class="h-4 w-auto shrink-0 fill-current" aria-hidden="true">
+					<path d="M24 32H8V16H24V32Z" fill-opacity="0.3"></path>
+					<path d="M24 8H8V32H24V8ZM32 40H0V0H32V40Z"></path>
+				</svg></span><span class="copy-prompt__labels relative inline-grid min-w-0 items-center justify-items-start text-start" aria-hidden="true" data-copy-prompt-labels="" style="inline-size: 76.3125px;"><span class="copy-prompt__label" data-copy-prompt-label="">Copy prompt</span><span class="copy-prompt__label-sizer" data-copy-prompt-label-sizer="default">Copy prompt</span><span class="copy-prompt__label-sizer" data-copy-prompt-label-sizer="copied">Prompt copied!</span></span></span></button><span class="sr-only" role="status" aria-live="polite" data-copy-prompt-status=""></span></div>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA+fz79fb27uzt6+jq7+/w8vX07vDv5eTj/v//+vv68/Dx8O3u8/P09/n58/X06urp////////+Pf29vP0+vn5/f7++fr78PDw/////////v38/Pn6////////////9vb2////////////////////////////+vr6/////////////////////////////vz7//////////////////////////////z7//////////////////////////////z7" alt="" width="715" height="319" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XHC79NCEBD9739PJEG1BX4.png&amp;w=715&amp;h=319&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XHC79NCEBD9739PJEG1BX4.png&amp;w=640&amp;h=286&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XHC79NCEBD9739PJEG1BX4.png&amp;w=715&amp;h=319&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XHC79NCEBD9739PJEG1BX4.png&amp;w=750&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XHC79NCEBD9739PJEG1BX4.png&amp;w=828&amp;h=369&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XHC79NCEBD9739PJEG1BX4.png&amp;w=1080&amp;h=482&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XHC79NCEBD9739PJEG1BX4.png&amp;w=1280&amp;h=571&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XHC79NCEBD9739PJEG1BX4.png&amp;w=1430&amp;h=638&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image2.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XHC79NCEBD9739PJEG1BX4.png&amp;w=1920&amp;h=857&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="857" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="319" class="pt-portable-image-media"></div>
+</figure>
+<h2>6. See&nbsp;your domain analytics in one place — now with 30 days retention</h2>
+<p>Understanding what is happening on your domain has often meant piecing together metrics from different Cloudflare products. We’re bringing traffic, performance, security, cache, origin, and DNS data together so you can see how they relate. If latency increases, you can quickly see whether it is tied to a specific Cloudflare data center, hostname, or origin.</p>
+<p>In addition, you now get <a href="https://developers.cloudflare.com/analytics/account-and-zone-analytics/zone-analytics"><u>30 days of domain analytics on every plan.</u></a>&nbsp;A full month of history gives you time to investigate issues after they happen, compare today with the same day in previous weeks, and tell the difference between a one-time spike and a longer trend.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA+fL69ens6tXQ4cvD3NLU2dzp0dvrx8/d//v//PP38uTh6tvW6ODh5ujw4Obx1tvl//////7/+/Py9e3q9PDw9fX58PL45+rv//////////3+/Pn3/fz7////+/3+8/X2/////////////v37////////////+Pr5///////////8+/z3////////////9/v5/////////fz2+Pjx/P/8/////v//8/r3/////////Prz9/bv+/77/////P//8vn2" alt="" width="715" height="499" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3Y5WM6SW825JHAF6XANM665.01M3Y5WNRM8N1DW2B1AC94KXZF.png&amp;w=715&amp;h=499&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3Y5WM6SW825JHAF6XANM665.01M3Y5WNRM8N1DW2B1AC94KXZF.png&amp;w=640&amp;h=447&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3Y5WM6SW825JHAF6XANM665.01M3Y5WNRM8N1DW2B1AC94KXZF.png&amp;w=715&amp;h=499&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3Y5WM6SW825JHAF6XANM665.01M3Y5WNRM8N1DW2B1AC94KXZF.png&amp;w=750&amp;h=523&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3Y5WM6SW825JHAF6XANM665.01M3Y5WNRM8N1DW2B1AC94KXZF.png&amp;w=828&amp;h=578&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3Y5WM6SW825JHAF6XANM665.01M3Y5WNRM8N1DW2B1AC94KXZF.png&amp;w=1080&amp;h=754&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3Y5WM6SW825JHAF6XANM665.01M3Y5WNRM8N1DW2B1AC94KXZF.png&amp;w=1280&amp;h=893&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3Y5WM6SW825JHAF6XANM665.01M3Y5WNRM8N1DW2B1AC94KXZF.png&amp;w=1430&amp;h=998&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="domain-analytics.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3Y5WM6SW825JHAF6XANM665.01M3Y5WNRM8N1DW2B1AC94KXZF.png&amp;w=1920&amp;h=1340&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1340" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="499" class="pt-portable-image-media"></div>
+</figure>
+<h2>7. Build custom dashboards</h2>
+<p>Prebuilt dashboards cover common use cases, but applications often use several parts of Cloudflare. With <a href="https://developers.cloudflare.com/analytics/custom-dashboards"><u>Custom Dashboards</u></a>, you can bring together analytics from across Cloudflare, logs and traces from the Workers platform, and security events in one view. Track request volume, errors, latency, storage, and blocked traffic, then share the dashboard with your team. Instead of rebuilding queries during every investigation, you have one place to monitor the signals that matter to your application.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA/f38+fn37+/u7Ozr8fHw9vb18vLx6Ojn/////f389PTz8PDv9fX0+vr59vb17e3s////////+fn49fX0+vr4///9/Pz78vLy/////////v79+vr4/v78////////9/f3/////////////Pz7////////////+vr5/////////////f38////////////+/v6/////////////f37////////////+/v6/////////////f37////////////+vr6" alt="" width="715" height="375" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XHC42Q6QC70QHNQKTWNW44.png&amp;w=715&amp;h=375&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XHC42Q6QC70QHNQKTWNW44.png&amp;w=640&amp;h=336&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XHC42Q6QC70QHNQKTWNW44.png&amp;w=715&amp;h=375&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XHC42Q6QC70QHNQKTWNW44.png&amp;w=750&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XHC42Q6QC70QHNQKTWNW44.png&amp;w=828&amp;h=434&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XHC42Q6QC70QHNQKTWNW44.png&amp;w=1080&amp;h=566&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XHC42Q6QC70QHNQKTWNW44.png&amp;w=1280&amp;h=671&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XHC42Q6QC70QHNQKTWNW44.png&amp;w=1430&amp;h=750&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image5.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XHC42Q6QC70QHNQKTWNW44.png&amp;w=1920&amp;h=1007&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1007" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="375" class="pt-portable-image-media"></div>
+</figure>
+<h2>8. Logpush is now available on all self-serve plans</h2>
+<p><a href="https://developers.cloudflare.com/logs/logpush"><u>Logpush</u></a>, previously available only to Enterprise, is now available on all self-serve plans, letting you export all Cloudflare logs to the tools and destinations you already use. Need to apply filters, perform redaction, enrich events or reshape output before delivery? <a href="https://developers.cloudflare.com/logs/logpush/transformers"><u>Transformers</u></a>&nbsp;is now generally available, letting you apply any SQL transformation without operating a separate ETL pipeline. <br><br>We’re introducing <a href="https://developers.cloudflare.com/changelog/post/2026-09-30-logpush-usage-based-pricing"><u>usage-based pricing</u></a>&nbsp;for Logpush and Transformers. Each includes a free monthly allowance, with simple pricing for additional usage:</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 288px;">
+		<tbody>
+			<tr>
+				<td>
+					<p>Export usage</p>
+				</td>
+				<td>
+					<p>Included each month</p>
+				</td>
+				<td>
+					<p>Additional usage</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Exports to Cloudflare destinations</p>
+				</td>
+				<td>
+					<p>25 GB</p>
+				</td>
+				<td>
+					<p>$0.03 per GB</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Exports to external destinations</p>
+				</td>
+				<td>
+					<p>25 GB</p>
+				</td>
+				<td>
+					<p>$0.10 per GB</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Logpush Transformers</p>
+				</td>
+				<td>
+					<p>1 GB</p>
+				</td>
+				<td>
+					<p>$0.04 per GB</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Visit the <a href="https://developers.cloudflare.com/logs/logpush"><u>documentation</u></a>&nbsp;to get started with Logpush and explore complete pricing details.</p>
+<div class="copy-prompt relative my-8 flex w-max max-w-full" data-copy-prompt=""><button type="button" aria-label="Copy prompt" class="copy-prompt__button inline-flex w-max max-w-full shrink-0 items-center justify-center rounded-full font-sans whitespace-nowrap no-underline select-none" data-copy-prompt-button="" data-prompt="&quot;Use cf CLI (https://developers.cloudflare.com/cf/) to set up a Logpush job that sends my Worker logs/traces to an existing R2 bucket.\nCheck for existing R2 buckets and Logpush jobs first to avoid duplicates. If multiple buckets exist, ask me which one to use. If none exist, guide me through creating one and setting up the required credentials.\nIf I am not logged in, bring me through the authentication flow. Confirm with me before creating or modifying resources, and verify the Logpush job afterward. Never expose credentials or secrets.\n&quot;" data-copied-label="Prompt copied!" data-copy-prompt-bound="true"><span class="copy-prompt__content inline-flex min-w-0 items-center font-medium"><span class="copy-prompt__logos relative flex h-4 shrink-0 items-center justify-start" aria-hidden="true"><svg viewBox="0 0 256 257" class="size-4 shrink-0" aria-hidden="true">
+					<path fill="#D97757" d="m50.228 170.321 50.357-28.257.843-2.463-.843-1.361h-2.462l-8.426-.518-28.775-.778-24.952-1.037-24.175-1.296-6.092-1.297L0 125.796l.583-3.759 5.12-3.434 7.324.648 16.202 1.101 24.304 1.685 17.629 1.037 26.118 2.722h4.148l.583-1.685-1.426-1.037-1.101-1.037-25.147-17.045-27.22-18.017-14.258-10.37-7.713-5.25-3.888-4.925-1.685-10.758 7-7.713 9.397.649 2.398.648 9.527 7.323 20.35 15.75L94.817 91.9l3.889 3.24 1.555-1.102.195-.777-1.75-2.917-14.453-26.118-15.425-26.572-6.87-11.018-1.814-6.61c-.648-2.723-1.102-4.991-1.102-7.778l7.972-10.823L71.42 0 82.05 1.426l4.472 3.888 6.61 15.101 10.694 23.786 16.591 32.34 4.861 9.592 2.592 8.879.973 2.722h1.685v-1.556l1.36-18.211 2.528-22.36 2.463-28.776.843-8.1 4.018-9.722 7.971-5.25 6.222 2.981 5.12 7.324-.713 4.73-3.046 19.768-5.962 30.98-3.889 20.739h2.268l2.593-2.593 10.499-13.934 17.628-22.036 7.778-8.749 9.073-9.657 5.833-4.601h11.018l8.1 12.055-3.628 12.443-11.342 14.388-9.398 12.184-13.48 18.147-8.426 14.518.778 1.166 2.01-.194 30.46-6.481 16.462-2.982 19.637-3.37 8.88 4.148.971 4.213-3.5 8.62-20.998 5.184-24.628 4.926-36.682 8.685-.454.324.519.648 16.526 1.555 7.065.389h17.304l32.21 2.398 8.426 5.574 5.055 6.805-.843 5.184-12.962 6.611-17.498-4.148-40.83-9.721-14-3.5h-1.944v1.167l11.666 11.406 21.387 19.314 26.767 24.887 1.36 6.157-3.434 4.86-3.63-.518-23.526-17.693-9.073-7.972-20.545-17.304h-1.36v1.814l4.73 6.935 25.017 37.59 1.296 11.536-1.814 3.76-6.481 2.268-7.13-1.297-14.647-20.544-15.1-23.138-12.185-20.739-1.49.843-7.194 77.448-3.37 3.953-7.778 2.981-6.48-4.925-3.436-7.972 3.435-15.749 4.148-20.544 3.37-16.333 3.046-20.285 1.815-6.74-.13-.454-1.49.194-15.295 20.999-23.267 31.433-18.406 19.702-4.407 1.75-7.648-3.954.713-7.064 4.277-6.286 25.47-32.405 15.36-20.092 9.917-11.6-.065-1.686h-.583L44.07 198.125l-12.055 1.555-5.185-4.86.648-7.972 2.463-2.593 20.35-13.999-.064.065Z"></path>
+				</svg><svg viewBox="0 0 24 24" class="size-4 shrink-0 fill-current" fill-rule="evenodd" aria-hidden="true">
+					<path clip-rule="evenodd" d="M8.086.457a6.105 6.105 0 013.046-.415c1.333.153 2.521.72 3.564 1.7a.117.117 0 00.107.029c1.408-.346 2.762-.224 4.061.366l.063.03.154.076c1.357.703 2.33 1.77 2.918 3.198.278.679.418 1.388.421 2.126a5.655 5.655 0 01-.18 1.631.167.167 0 00.04.155 5.982 5.982 0 011.578 2.891c.385 1.901-.01 3.615-1.183 5.14l-.182.22a6.063 6.063 0 01-2.934 1.851.162.162 0 00-.108.102c-.255.736-.511 1.364-.987 1.992-1.199 1.582-2.962 2.462-4.948 2.451-1.583-.008-2.986-.587-4.21-1.736a.145.145 0 00-.14-.032c-.518.167-1.04.191-1.604.185a5.924 5.924 0 01-2.595-.622 6.058 6.058 0 01-2.146-1.781c-.203-.269-.404-.522-.551-.821a7.74 7.74 0 01-.495-1.283 6.11 6.11 0 01-.017-3.064.166.166 0 00.008-.074.115.115 0 00-.037-.064 5.958 5.958 0 01-1.38-2.202 5.196 5.196 0 01-.333-1.589 6.915 6.915 0 01.188-2.132c.45-1.484 1.309-2.648 2.577-3.493.282-.188.55-.334.802-.438.286-.12.573-.22.861-.304a.129.129 0 00.087-.087A6.016 6.016 0 015.635 2.31C6.315 1.464 7.132.846 8.086.457zm-.804 7.85a.848.848 0 00-1.473.842l1.694 2.965-1.688 2.848a.849.849 0 001.46.864l1.94-3.272a.849.849 0 00.007-.854l-1.94-3.393zm5.446 6.24a.849.849 0 000 1.695h4.848a.849.849 0 000-1.696h-4.848z"></path>
+				</svg><svg viewBox="0 0 466.73 532.09" class="size-4 shrink-0 fill-current" aria-hidden="true">
+					<path d="M457.43,125.94L244.42,2.96c-6.84-3.95-15.28-3.95-22.12,0L9.3,125.94c-5.75,3.32-9.3,9.46-9.3,16.11v247.99c0,6.65,3.55,12.79,9.3,16.11l213.01,122.98c6.84,3.95,15.28,3.95,22.12,0l213.01-122.98c5.75-3.32,9.3-9.46,9.3-16.11v-247.99c0-6.65-3.55-12.79-9.3-16.11h-.01ZM444.05,151.99l-205.63,356.16c-1.39,2.4-5.06,1.42-5.06-1.36v-233.21c0-4.66-2.49-8.97-6.53-11.31L24.87,145.67c-2.4-1.39-1.42-5.06,1.36-5.06h411.26c5.84,0,9.49,6.33,6.57,11.39h-.01Z"></path>
+				</svg><svg viewBox="0 0 32 40" class="h-4 w-auto shrink-0 fill-current" aria-hidden="true">
+					<path d="M24 32H8V16H24V32Z" fill-opacity="0.3"></path>
+					<path d="M24 8H8V32H24V8ZM32 40H0V0H32V40Z"></path>
+				</svg></span><span class="copy-prompt__labels relative inline-grid min-w-0 items-center justify-items-start text-start" aria-hidden="true" data-copy-prompt-labels="" style="inline-size: 76.3125px;"><span class="copy-prompt__label" data-copy-prompt-label="">Copy prompt</span><span class="copy-prompt__label-sizer" data-copy-prompt-label-sizer="default">Copy prompt</span><span class="copy-prompt__label-sizer" data-copy-prompt-label-sizer="copied">Prompt copied!</span></span></span></button><span class="sr-only" role="status" aria-live="polite" data-copy-prompt-status=""></span></div>
+<h2>What's coming up:</h2>
+<ul>
+	<li><strong>Longer retention for your observability data:</strong>&nbsp;You’ll be able to retain logging and tracing data for up to one year, making it easier to investigate recurring issues, compare historical behavior, and analyze long-term trends.</li>
+	<li><strong>OpenTelemetry API support in Workers:</strong>&nbsp;We’ll continue building out our OpenTelemetry APIs to enable adding attributes to existing spans or getting trace context.</li>
+	<li><strong>Easier metrics export with OpenTelemetry: </strong>You’ll be able to send Cloudflare metrics to OpenTelemetry-compatible destinations and analyze them alongside telemetry from the rest of your stack.</li>
+	<li><strong>New pricing takes effect December 1, 2026: </strong>If you ingest or store observability data on Cloudflare, the unified pricing plan will apply to your usage. We’ll notify you before the change takes effect.</li>
+</ul>
+<h2>Ready to start investigating?</h2>
+<p>We&nbsp;hear you when you say Cloudflare can feel like a black box. These updates are just the beginning of exposing what’s happening, making the underlying data accessible, and giving you the context that you need to act. That transparency matters even more as agents move from writing software to operating it. An agent can only close the loop between a change and its outcome if it can query what happened, identify the failure, and verify the fix.</p>
+<p>By building around <a href="https://opentelemetry.io"><u>OpenTelemetry</u></a>, <a href="https://www.w3.org/TR/trace-context"><u>W3C Trace Context,</u></a>&nbsp;and SQL, we are committed to giving you and your agents standard, portable interfaces to that context. Check out our new <a href="https://developers.cloudflare.com/observability"><u>Observability documentation&nbsp;</u></a>home to learn more.</p>

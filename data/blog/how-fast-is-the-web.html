@@ -1,0 +1,312 @@
+<p>If you work in technology, you’re probably reading this on a powerful laptop or flagship mobile on robust, lightning-fast Wi-Fi. This is fantastic for building software, but often is far removed from the reality facing many who are using that software.</p>
+<p>End users might be nursing a four-year-old budget phone, running low on battery, on a data plan that throttles after 2 GB, living with under-invested public infrastructure, or even just walking into that corner of the gym where the Wi-Fi never seems to work.&nbsp;Multiply this by billions of people around the world and the gap between “works on my machine” and “works for everyone” starts to widen, distorting critical decisions regarding our technology choices and priorities.</p>
+<p>Closing the perception gap with objective data is central to our mission of helping build&nbsp;a better Internet, one that's fast and accessible to everyone, not just those of us using the best hardware.</p>
+<p>That’s why today, we’re sharing a view that offers insight on how real people experience the web, by publishing the Cloudflare BEACON dataset — <strong>B</strong>rowser <strong>E</strong>xperience <strong>A</strong>cross <strong>C</strong>loudflare's <strong>O</strong>bserved <strong>N</strong>etwork. Cloudflare has collected this kind of telemetry for years on behalf of our customers, giving them a customer-specific, detailed understanding of how real users experience their sites. Today, we're opening that view up to everyone.</p>
+<p>BEACON is an anonymized dataset built from billions of real-world performance measurements across 10,000 of the largest websites on our network. It covers every major browser engine, is updated daily in Google BigQuery, and uses standards defined by the community-led <a href="https://rumarchive.com"><u>RUM Archive</u></a><a href="https://rumarchive.com">,</a>&nbsp;a publicly available Real User Monitoring (RUM) database. By expanding the footprint of that project 100-fold, BEACON gives researchers an unprecedented view of how the web performs across browsers, devices, and countries.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA+f//9vz78PPz7u7u8+/v9vPx8/Lw6+7s////+/v78+/v8Ofl9ejk+e3n9u7o7urn//////z69+zq8+Hc+OHY/ufc++rg8efi//////37++vo9d7X+93R/+XW/+nd9ejh///////9/u7q+ODZ/uHU/+na/+3h+ezl//////////Pv+ufg/+jd//Dj//Tq/fPt//////////fz/O3n/+/m//ft//ry//j0//////////j1/PDq//Lq//rx//32//r2" alt="" width="715" height="442" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW03Y63NTVT66FJ88HX38K.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW03Y63NTVT66FJ88HX38K.png&amp;w=640&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW03Y63NTVT66FJ88HX38K.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW03Y63NTVT66FJ88HX38K.png&amp;w=750&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW03Y63NTVT66FJ88HX38K.png&amp;w=828&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW03Y63NTVT66FJ88HX38K.png&amp;w=1080&amp;h=668&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW03Y63NTVT66FJ88HX38K.png&amp;w=1280&amp;h=791&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW03Y63NTVT66FJ88HX38K.png&amp;w=1430&amp;h=884&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW03Y63NTVT66FJ88HX38K.png&amp;w=1920&amp;h=1188&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1188" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="442" class="pt-portable-image-media"></div>
+</figure>
+<h2>What BEACON reveals</h2>
+<p>The Core Web Vitals have long been the de facto standard for measuring perceived performance on the web, and BEACON reports all three:</p>
+<ul>
+	<li>Largest Contentful Paint (LCP): load time</li>
+	<li>Cumulative Layout Shift (CLS): visual stability</li>
+	<li>Interaction to Next Paint (INP): interaction responsiveness</li>
+</ul>
+<p>Because we’re publishing these as full histograms rather than single averages, you can derive any percentile you like. Instead of stopping at P75 (the 75th percentile), you can examine the long tail and see where the industry still struggles to deliver fast experiences for everyone.</p>
+<h3>Who experiences a slower web?</h3>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA2tbj1tLfzsrWyMTQxsPQxsTRwsHOvbvI4N/q3Nvm09Pezc3ZzM7azc7ayMvXwcTQ7O/25+rz3uLr2Nzn2d7n2t/o1dvky9Ld/v//+f7/8PX76/D27PL37vT56e/03+Xs////////////////////////////9/v7////////////////////////////////////////////////////////////////////////////////////////////////" alt="" width="715" height="118" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW029B6K1FRNH3XPPX7VR1.png&amp;w=715&amp;h=118&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW029B6K1FRNH3XPPX7VR1.png&amp;w=640&amp;h=106&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW029B6K1FRNH3XPPX7VR1.png&amp;w=715&amp;h=118&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW029B6K1FRNH3XPPX7VR1.png&amp;w=750&amp;h=124&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW029B6K1FRNH3XPPX7VR1.png&amp;w=828&amp;h=137&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW029B6K1FRNH3XPPX7VR1.png&amp;w=1080&amp;h=178&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW029B6K1FRNH3XPPX7VR1.png&amp;w=1280&amp;h=211&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW029B6K1FRNH3XPPX7VR1.png&amp;w=1430&amp;h=236&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW029B6K1FRNH3XPPX7VR1.png&amp;w=1920&amp;h=318&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="318" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="118" class="pt-portable-image-media"></div>
+	<figcaption>P90 Core Web Vitals in iOS and Android.</figcaption>
+</figure>
+<p><em> </em>WebKit, currently the only browser engine on iOS, performs best on these metrics overall, but that advantage is not universal. In 46 countries where WebKit represents more than 10% of traffic, its LCP, INP, or both are at least 10% worse than those of Blink-based browsers such as Chrome, Edge, and Opera. In Cambodia, for example, WebKit accounts for 17.5% of page views, but its LCP is 50% worse than Blink’s.</p>
+<p>BEACON also includes domain industry classifications from <a href="https://developers.cloudflare.com/api/resources/intel/subresources/domains/subresources/bulks/methods/get"><u>our Intel API</u></a>. Government and Politics, Health, and Safe for Kids stand out as high-performing categories, while Ads, Religion, and Weather typically perform worst:</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA/vz7+fj47/Dy6+3w7vDz8vP27fDy4unp/vz7+fj47/Dy6e3x7e/08PP37PDy4urq/v38+fn57/H06e3z7PD28PP57PH04+zs/////Pz88fT37PD27vL58vX87vT35e/v////////9vj78fT68/f99/r/8/j76vPz/////////P3/9/r9+vz//f//+f3/7/f3/////////////P7//////////v//8/r6/////////////v//////////////9fv7" alt="" width="715" height="631" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CVZVSHQAM412CTZ6ED1JMD.png&amp;w=715&amp;h=631&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CVZVSHQAM412CTZ6ED1JMD.png&amp;w=640&amp;h=565&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CVZVSHQAM412CTZ6ED1JMD.png&amp;w=715&amp;h=631&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CVZVSHQAM412CTZ6ED1JMD.png&amp;w=750&amp;h=662&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CVZVSHQAM412CTZ6ED1JMD.png&amp;w=828&amp;h=731&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CVZVSHQAM412CTZ6ED1JMD.png&amp;w=1080&amp;h=953&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CVZVSHQAM412CTZ6ED1JMD.png&amp;w=1280&amp;h=1130&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CVZVSHQAM412CTZ6ED1JMD.png&amp;w=1430&amp;h=1262&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CVZVSHQAM412CTZ6ED1JMD.png&amp;w=1920&amp;h=1695&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1695" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="631" class="pt-portable-image-media"></div>
+	<figcaption>Query for above table stored as ‘CWVs by Industry’ in BigQuery.</figcaption>
+</figure>
+<p>The additional percentiles expose differences hidden by a single P75 result. In several industries, the slowest experiences fall sharply in the long tail, particularly for visual stability as measured by Cumulative Layout Shift.</p>
+<h3>What makes pages feel slow?</h3>
+<p>BEACON extends the RUM Archive standard with LCP and INP sub-parts that separate the stages of loading and responding to an interaction. We’ll also add these metrics to our Real User Monitoring (RUM) dashboard in the coming weeks. Aggregating them into the suggested ‘Good’, ‘Needs Improvement’, and ‘Poor’ thresholds helps narrow down what needs to be optimized:</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 480px;">
+		<tbody>
+			<tr>
+				<td>
+					<p><strong>LCP Sub-part</strong></p>
+				</td>
+				<td>
+					<p><strong>Document TTFB </strong><br><strong>(Time to First Byte)</strong><br><br>Nothing can be rendered until we have our HTML document.</p>
+				</td>
+				<td>
+					<p><strong>Load Delay</strong><br><br>Is JavaScript dependence slowing discovery of our LCP candidates?</p>
+				</td>
+				<td>
+					<p><strong>Load Duration</strong><br><br>Is bandwidth an issue, with the LCP image/video/webfont taking a long time to download?</p>
+				</td>
+				<td>
+					<p><strong>Render Delay</strong><br><br>When all is ready, is there something blocking the LCP from rendering?</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><em>Good</em></p>
+				</td>
+				<td>
+					<p><code>598ms</code></p>
+				</td>
+				<td>
+					<p><code>76ms</code></p>
+				</td>
+				<td>
+					<p><code>119ms</code></p>
+				</td>
+				<td>
+					<p><code>157ms</code></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><em>Needs Improvement</em></p>
+				</td>
+				<td>
+					<p><code>1015ms</code></p>
+				</td>
+				<td>
+					<p><code>1049ms</code></p>
+				</td>
+				<td>
+					<p><code>199ms</code></p>
+				</td>
+				<td>
+					<p><code>437ms</code></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><em>Poor</em></p>
+				</td>
+				<td>
+					<p><code>1891ms</code></p>
+				</td>
+				<td>
+					<p><code>1485ms</code></p>
+				</td>
+				<td>
+					<p><code>119ms</code></p>
+				</td>
+				<td>
+					<p><code>2002ms</code></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p class="has-text-align-center"><em>The query for the table above and others for every data is stored in BigQuery alongside the dataset as ‘Global LCP Sub-parts’ so you can customize it as you see fit.</em></p>
+<p>The results challenge a common assumption: downloading the resource itself, such as an image, font, or video, typically contributes the least to perceived loading time. For most page views that breach the ‘Good’ threshold, the larger opportunities are discovering the LCP (load time) candidate and unblocking its render. Cloudflare customers can address some resource-discovery delays with <a href="https://blog.cloudflare.com/smart-hints"><u>Smart Hints</u></a>.</p>
+<p>The same workflow breaks down Interaction to Next Paint (INP), our measure of responsiveness, into input delay, processing time, and presentation delay:</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 384px;">
+		<tbody>
+			<tr>
+				<td>
+					<p><strong>INP Sub-part</strong></p>
+				</td>
+				<td>
+					<p><strong>Input Delay</strong><br><br>Are our interactions waiting on the main thread becoming available?</p>
+				</td>
+				<td>
+					<p><strong>Processing Time</strong><br><br>Does processing the interactions themselves block the main thread?</p>
+				</td>
+				<td>
+					<p><strong>Presentation Delay</strong><br><br>How long does it take to paint any update to the screen?</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><em>Good</em></p>
+				</td>
+				<td>
+					<p><code>18ms</code></p>
+				</td>
+				<td>
+					<p><code>55ms</code></p>
+				</td>
+				<td>
+					<p><code>56ms</code></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><em>Needs Improvement</em></p>
+				</td>
+				<td>
+					<p><code>32ms</code></p>
+				</td>
+				<td>
+					<p><code>112ms</code></p>
+				</td>
+				<td>
+					<p><code>111ms</code></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><em>Poor</em></p>
+				</td>
+				<td>
+					<p><code>84ms</code></p>
+				</td>
+				<td>
+					<p><code>284ms</code></p>
+				</td>
+				<td>
+					<p><code>217ms</code></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p class="has-text-align-center"><em>Query for above table stored as ‘Global INP Sub-parts’ in BigQuery</em></p>
+<p>For the slowest interactions, JavaScript execution time covers the longest period but we also see a significant rise in presentation time, which is typically dominated by complex CSS layout recalculations. Cloudflare customers can use tools such as <a href="https://www.cloudflare.com/en-in/application-services/products/zaraz"><u>Zaraz</u></a>&nbsp;to reduce the performance impact of third-party JavaScript.</p>
+<h3>How application architecture changes the picture</h3>
+<p>Speaking of JavaScript, we recently <a href="https://developers.cloudflare.com/changelog/post/2026-08-21-improved-soft-navigation-measurement-for-single-page-applications"><u>added support for Google Chrome’s new Soft Navigations API</u></a>, which provides accurate LCP reporting for client-side navigations commonly used in single-page applications built with frameworks such as React, Vue, Angular, and Svelte.</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 480px;">
+		<tbody>
+			<tr>
+				<td>
+					<p><strong>LCP Percentile</strong></p>
+				</td>
+				<td>
+					<p><strong>P50</strong></p>
+				</td>
+				<td>
+					<p><strong>P75</strong></p>
+				</td>
+				<td>
+					<p><strong>P90</strong></p>
+				</td>
+				<td>
+					<p><strong>P95</strong></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><em>Hard Navigations</em></p>
+				</td>
+				<td>
+					<p><code>791ms</code></p>
+				</td>
+				<td>
+					<p><code>1,421ms</code></p>
+				</td>
+				<td>
+					<p><code>2,636ms</code></p>
+				</td>
+				<td>
+					<p><code>4,122ms</code></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><em>Soft Navigations</em></p>
+				</td>
+				<td>
+					<p><code>274ms</code></p>
+				</td>
+				<td>
+					<p><code>582ms</code></p>
+				</td>
+				<td>
+					<p><code>1,169ms</code></p>
+				</td>
+				<td>
+					<p><code>1,816ms</code></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p class="has-text-align-center"><em>Query for above table stored as ‘Blink - Hard vs Soft Navigations’ in BigQuery</em></p>
+<p>Soft navigations render two to three times faster than hard navigations at every percentile. But they do not eliminate the cost of the initial landing page, which is often considerably heavier:</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 480px;">
+		<tbody>
+			<tr>
+				<td>
+					<p><strong>LCP Percentile</strong></p>
+				</td>
+				<td>
+					<p><strong>P50</strong></p>
+				</td>
+				<td>
+					<p><strong>P75</strong></p>
+				</td>
+				<td>
+					<p><strong>P90</strong></p>
+				</td>
+				<td>
+					<p><strong>P95</strong></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><em>Landing Page</em></p>
+				</td>
+				<td>
+					<p><code>1,370ms</code></p>
+				</td>
+				<td>
+					<p><code>2,681ms</code></p>
+				</td>
+				<td>
+					<p><code>5,397ms</code></p>
+				</td>
+				<td>
+					<p><code>8,940ms</code></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p class="has-text-align-center"><em>Query for above table stored as ‘Blink - Landing Pages’ in BigQuery</em></p>
+<p>For teams choosing this architecture, it’s important to be mindful of tradeoffs: faster subsequent navigations must offset a slower first experience. If users rarely progress beyond the landing page, a heavier initial load may never pay for itself.</p>
+<h3>What can researchers discover by combining data?</h3>
+<p>Because BEACON is an open dataset, its value is not limited to the fields it contains. Researchers can join it with other sources to explore new questions. For example, combining BEACON with the <a href="https://data.worldbank.org/indicator/NY.GDP.PCAP.KN"><u>World Bank Group’s measure of GDP per capita</u></a>&nbsp;reveals how economic conditions correlate with web performance by country:</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="436" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3D2CQZQKQVQX6D8FY3RREKY.01M3D2CRG6S7HCCYKA2SWA2RWT.png&amp;w=715&amp;h=436&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3D2CQZQKQVQX6D8FY3RREKY.01M3D2CRG6S7HCCYKA2SWA2RWT.png&amp;w=640&amp;h=390&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3D2CQZQKQVQX6D8FY3RREKY.01M3D2CRG6S7HCCYKA2SWA2RWT.png&amp;w=715&amp;h=436&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3D2CQZQKQVQX6D8FY3RREKY.01M3D2CRG6S7HCCYKA2SWA2RWT.png&amp;w=750&amp;h=457&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3D2CQZQKQVQX6D8FY3RREKY.01M3D2CRG6S7HCCYKA2SWA2RWT.png&amp;w=828&amp;h=505&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3D2CQZQKQVQX6D8FY3RREKY.01M3D2CRG6S7HCCYKA2SWA2RWT.png&amp;w=1080&amp;h=659&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3D2CQZQKQVQX6D8FY3RREKY.01M3D2CRG6S7HCCYKA2SWA2RWT.png&amp;w=1280&amp;h=781&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3D2CQZQKQVQX6D8FY3RREKY.01M3D2CRG6S7HCCYKA2SWA2RWT.png&amp;w=1430&amp;h=872&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="GDP per Capita vs P75 LCP.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3D2CQZQKQVQX6D8FY3RREKY.01M3D2CRG6S7HCCYKA2SWA2RWT.png&amp;w=1920&amp;h=1171&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1171" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="436" class="pt-portable-image-media"></div>
+	<figcaption>Query for above table stored as ‘Country-level Performance Aggregates’ in BigQuery.</figcaption>
+</figure>
+<p><a href="https://radar.cloudflare.com"><u>Cloudflare Radar</u></a>, our public data insights and visualizations platform,&nbsp;will start using this approach in a new Web Performance section on Radar, featuring correlations of their Internet Quality Index (IQI) data with BEACON data. IQI is an aggregation of the performance benchmarking data that powers our bi-annual network performance updates.</p>
+<p>Pairing BEACON and IQI is particularly compelling because it splits the user experience into its two most influential components: the performance of the website a user is visiting, and the performance of the eyeball network getting them there. Both affect how quickly the page will load, and together they determine whether a visit to a website feels painful or seamless.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA+fr59vb28fDw7e3t7+/v7/Dw6+zs5eTl/Pz8+fn59PTz8fHw8vLy8vPz7+/w6enp/////v79+Pj49vX19vb29/f39PT17+/v/////////f39+/v7/Pz8/f39+vr69fX1////////////////////////////+vr6/////////////////////////////f39////////////////////////////////////////////////////////////////" alt="" width="715" height="376" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW87N5G9JC3ST2RJV98866.01M3CW89EM48V9VDRR5PKPQJBM.png&amp;w=715&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW87N5G9JC3ST2RJV98866.01M3CW89EM48V9VDRR5PKPQJBM.png&amp;w=640&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW87N5G9JC3ST2RJV98866.01M3CW89EM48V9VDRR5PKPQJBM.png&amp;w=715&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW87N5G9JC3ST2RJV98866.01M3CW89EM48V9VDRR5PKPQJBM.png&amp;w=750&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW87N5G9JC3ST2RJV98866.01M3CW89EM48V9VDRR5PKPQJBM.png&amp;w=828&amp;h=435&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW87N5G9JC3ST2RJV98866.01M3CW89EM48V9VDRR5PKPQJBM.png&amp;w=1080&amp;h=568&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW87N5G9JC3ST2RJV98866.01M3CW89EM48V9VDRR5PKPQJBM.png&amp;w=1280&amp;h=673&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW87N5G9JC3ST2RJV98866.01M3CW89EM48V9VDRR5PKPQJBM.png&amp;w=1430&amp;h=752&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Screenshot 2026-09-25 at 1.10.43 PM.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW87N5G9JC3ST2RJV98866.01M3CW89EM48V9VDRR5PKPQJBM.png&amp;w=1920&amp;h=1009&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1009" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="376" class="pt-portable-image-media"></div>
+</figure>
+<p>Early analysis shows the two tend to move together: good web performance usually coincides with good network quality, and vice versa. In the above graphs we see that the higher the bandwidth, the faster the perceived load time (LCP). For example in Europe, the bandwidth is higher relative to other continents, while the LCP is higher overall with the lower end.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA9ff58vT17O3u6Orq6urq6+vr6efo4+Hi9vn69Pf37/Ly7e/u7u/u7+/v7Ozs5+bn+fz8+Pv79fj39Pb19fb19fb08fLx7Ozt/f///P//+v38+vz7+/37+/z69/j38vPz/////////////////////////f39+Pj4/////////////////////////////Pv8//////////////////////////////3+//////////////////////////////7/" alt="" width="715" height="376" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW87JV0HXH3G8HZ4JFZH94.01M3CW88SY8QJCZMJZYP0DPQTK.png&amp;w=715&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW87JV0HXH3G8HZ4JFZH94.01M3CW88SY8QJCZMJZYP0DPQTK.png&amp;w=640&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW87JV0HXH3G8HZ4JFZH94.01M3CW88SY8QJCZMJZYP0DPQTK.png&amp;w=715&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW87JV0HXH3G8HZ4JFZH94.01M3CW88SY8QJCZMJZYP0DPQTK.png&amp;w=750&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW87JV0HXH3G8HZ4JFZH94.01M3CW88SY8QJCZMJZYP0DPQTK.png&amp;w=828&amp;h=435&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW87JV0HXH3G8HZ4JFZH94.01M3CW88SY8QJCZMJZYP0DPQTK.png&amp;w=1080&amp;h=568&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW87JV0HXH3G8HZ4JFZH94.01M3CW88SY8QJCZMJZYP0DPQTK.png&amp;w=1280&amp;h=673&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW87JV0HXH3G8HZ4JFZH94.01M3CW88SY8QJCZMJZYP0DPQTK.png&amp;w=1430&amp;h=752&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Screenshot 2026-09-25 at 1.10.34 PM.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW87JV0HXH3G8HZ4JFZH94.01M3CW88SY8QJCZMJZYP0DPQTK.png&amp;w=1920&amp;h=1009&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1009" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="376" class="pt-portable-image-media"></div>
+</figure>
+<p>The relationship between bandwidth and LCP was expected, but when comparing IQI to Transfer Size we saw something surprising. We would expect that transfer size would be uniform across continents — after all, the content of the sites are typically the same. However, see that Africa has a noticeably smaller transfer size, suggesting less content being downloaded by these users. Although we can’t be sure of the cause, we can observe that in the IQI data Africa has lower bandwidth, which suggests that businesses on the continent are adapting their websites to optimize towards the constraints of network conditions. High-quality eyeball networks are also potentially more forgiving to poorly-optimized websites, while a slow one exacerbates bottlenecks. Each of these hypotheses are potential directions for future analysis.</p>
+<p>The new Web Performance section will explore how common these patterns are, and in particular how often one half of the experience cancels out the gains made by the other. Follow our progress on <a href="https://radar.cloudflare.com"><u>Radar</u></a>.</p>
+<p>We’ll continue to introduce more metrics and more dimensions over time, and <strong>we welcome requests for data you’d like to see next</strong>.</p>
+<h2>How we process all this data and make it useful</h2>
+<h4>Anonymization</h4>
+<p>Publicizing a real-world dataset at this scale brings with it responsibility for privacy. Our Real User Monitoring (RUM) product is already built to be privacy-first, and for BEACON, we also strip out any potential customer website identifiers such as the domain name and URL paths. Ultimately, the community gains valuable insight without compromising the trust of the people and businesses behind it.</p>
+<h4>Normalization</h4>
+<p>For the primary table, including <em>all</em>&nbsp;websites from our data would lead to one of two problems:</p>
+<ol>
+	<li>The largest sites would dominate the data by traffic volume, skewing performance metrics towards their architecture, visitor profiles etc., or:</li>
+	<li>If we instead normalize every site down to the traffic volume smallest website, that would drastically reduce the overall number of records in the data.</li>
+</ol>
+<p>These two extremes made it necessary to scope the dataset to the greatest number of the largest websites on our network to provide maximum diversity across architectures, technologies, geography, and more, all while retaining the total beacon count after normalizing. We found 10,000 to be a good balance: a globally representative sample with enough volume in the 10,000th that when we normalize the data down to their level, the overall dataset still represents billions of daily records&nbsp;collectively.</p>
+<h4>Aggregation</h4>
+<p>Finally, we aggregate records together where they share dimensions such as country, operating system, browser, and connection protocol, and discard any records with fewer than five data points to further guarantee no individual or specific site can be identified.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA9PPx7u3s5OHh393c5OPi6Onn4uXj1djY+/f29fHw6uXk5uHf6ujm7+7t6erp3d7d//3+//f39Ozq8Ojm9O/u+fb19PPy5+fm//////////b0+vPw//r4//////398/Lx///////////////9/////////////v79////////////////////////////////////////////////////////////////////////////////////////////////" alt="" width="715" height="179" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW070MPY4SH24TFNTHWM8D.png&amp;w=715&amp;h=179&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW070MPY4SH24TFNTHWM8D.png&amp;w=640&amp;h=160&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW070MPY4SH24TFNTHWM8D.png&amp;w=715&amp;h=179&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW070MPY4SH24TFNTHWM8D.png&amp;w=750&amp;h=188&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW070MPY4SH24TFNTHWM8D.png&amp;w=828&amp;h=207&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW070MPY4SH24TFNTHWM8D.png&amp;w=1080&amp;h=270&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW070MPY4SH24TFNTHWM8D.png&amp;w=1280&amp;h=320&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW070MPY4SH24TFNTHWM8D.png&amp;w=1430&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3CW070MPY4SH24TFNTHWM8D.png&amp;w=1920&amp;h=480&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="480" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="179" class="pt-portable-image-media"></div>
+</figure>
+<h2>How to get access and contribute</h2>
+<p>BEACON is publicly available <a href="https://console.cloud.google.com/bigquery?ws=%211m4%211m3%213m2%211scf-open-web-performance%212srumarchive"><u>on Google BigQuery</u></a>. We’ve included queries for all the data included in this post as examples you can adapt for your own analysis, and the <a href="https://rumarchive.com/docs/querying"><u>RUM Archive</u></a>&nbsp;website includes further documentation too.</p>
+<p>We’d love to hear what you discover. Share your findings in <a href="https://community.cloudflare.com"><u>our community forum</u></a>&nbsp;or on <a href="https://discord.cloudflare.com"><u>Discord</u></a>.</p>
+<p>BEACON makes it possible to study web performance at a scale and level of geographic and browser diversity that has not previously been publicly available. We hope researchers, browser vendors, developers, and standards groups use it to identify where the web falls short and help make fast experiences available to everyone.</p>
+<p>A special shout out to <a href="https://blog.cloudflare.com/cloudflare-1111-intern-program"><u>Cloudflare’s 1,111 intern project</u></a>.&nbsp;This couldn’t have happened without the hard work of two of our wonderful summer interns, taking the initial idea through to what you see today. Their contributions were instrumental in launching this project. Thanks Chisara Duru and Tong Zhou!<br></p>

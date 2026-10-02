@@ -1,0 +1,419 @@
+<p>Cloudflare Stream is <a href="https://www.cloudflare.com/products/stream"><u>a powerful broadcasting platform</u></a>&nbsp;that, for many of our customers, just works. But what if you wanted to render dynamic annotations on a livestream or create an alternate version of a hosted video with burned-in subtitles? You would need to run a custom video pipeline.</p>
+<p>Today, we’re releasing a new developer playground, Streamline, that demonstrates how you can build a system to deliver these bespoke video experiences on Cloudflare’s Developer Platform. We’ll walk you through how Streamline leverages Workers, Containers, and several media protocols to modify video — and immediately publish that output as livestream or new hosted video. You’ll also have the opportunity to try it for your projects.</p>
+<p>A processing pipeline needs a durable, long-running environment that can run specialized, compiled code with predictable memory and CPU capacity. Video streams can run for minutes or hours, so the media process needs a lifecycle independent of the request that started it. An application should be able to start a pipeline, send its input, inspect it, and stop it without needing to keep a single request open for the entire duration.</p>
+<p>Cloudflare provides the primitives we need. Containers are long-lived runtimes suitable for media processing. Durable Objects help with orchestration. Finally, Workers are perfect for control signaling and monitoring.</p>
+<p>For Streamline, we built a media engine&nbsp;running in a Container to handle media processing in real-time. The Container is controlled by a Worker exposing control, preview, and testing to an agent or user. Processing will continue even if the Worker disconnects. We've architected Streamline with modular components so that the media engine could be replaced with dedicated encoding products in the future.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAAHTlPNU1iUmh+X3KGWmV0R0hPKyowCyY3MUFRRllsZHqPdoiadn2HaGJgT0U+NTxDPkdSU2Nzc4ich5mqi5CWfnRrZldHSUpMREZOWGRyeIyejZ6tkpWZhnltbVxGT05MQT5EU1xncYKShZOgiIqMe29gY1I5R0ZCNi0zR0pTYW15cHqDb3BwYFVESDgWLjAqJxMcNzM6TFFZVVtfTE1JNisKEQAAAAAAHwALLiUsQUJGRklKNzcvCgAAAAAAAAAA" alt="" width="715" height="396" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XKBENJCAB7M1N0K384578G.png&amp;w=715&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XKBENJCAB7M1N0K384578G.png&amp;w=640&amp;h=354&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XKBENJCAB7M1N0K384578G.png&amp;w=715&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XKBENJCAB7M1N0K384578G.png&amp;w=750&amp;h=415&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XKBENJCAB7M1N0K384578G.png&amp;w=828&amp;h=459&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XKBENJCAB7M1N0K384578G.png&amp;w=1080&amp;h=598&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XKBENJCAB7M1N0K384578G.png&amp;w=1280&amp;h=709&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XKBENJCAB7M1N0K384578G.png&amp;w=1430&amp;h=792&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XKBENJCAB7M1N0K384578G.png&amp;w=1920&amp;h=1062&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1062" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="396" class="pt-portable-image-media"></div>
+</figure>
+<h2><strong>Architecture</strong></h2>
+<p>A Streamline deployment consists of two components: the <strong>Media Engine</strong>, which handles media input/output and processing, and a controlling <strong>Application</strong>, which creates, configures, observes, and stops media sessions.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA/fz7+Pb17urq6ebn7e3v8fP16+zt393d//79+vf28Orp7Obn8O/w8/b47vDx4t/g/////vr59Ovr7+fo9PLz+Pv98/b36OTl///////++fDw9Ovt+Pb5/f//+fz+7+zt/////////vb5+PH2/Pv/////////9/T2//////////3//Pf//////////////f3+/////////////vz///////////////////////////////7/////////////////" alt="" width="715" height="290" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XKBFY5MZA5TEY754FQWWJ4.png&amp;w=715&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XKBFY5MZA5TEY754FQWWJ4.png&amp;w=640&amp;h=260&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XKBFY5MZA5TEY754FQWWJ4.png&amp;w=715&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XKBFY5MZA5TEY754FQWWJ4.png&amp;w=750&amp;h=304&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XKBFY5MZA5TEY754FQWWJ4.png&amp;w=828&amp;h=336&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XKBFY5MZA5TEY754FQWWJ4.png&amp;w=1080&amp;h=438&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XKBFY5MZA5TEY754FQWWJ4.png&amp;w=1280&amp;h=519&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XKBFY5MZA5TEY754FQWWJ4.png&amp;w=1430&amp;h=580&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XKBFY5MZA5TEY754FQWWJ4.png&amp;w=1920&amp;h=780&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="780" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="290" class="pt-portable-image-media"></div>
+</figure>
+<p><strong>Media Engine</strong></p>
+<p>The Media Engine has two components:</p>
+<ul>
+	<li><strong>Controller.</strong>&nbsp;This is a control harness written in Go&nbsp;that implements an HTTP server, receives incoming requests, and translates them into operations that can be executed by the media engine.</li>
+	<li><strong>Processor </strong>that performs the actual media processing. The current implementation uses FFmpeg, but that is an internal implementation detail rather than part of the user-facing API.</li>
+</ul>
+<p>The Media Engine is hosted in a Container, and handles all media input/output as well as processing. It can pull RTMPS playback over the network from one Stream Live input and publish RTMPS output to another Stream Live input. It can pull a Cloudflare Stream HLS manifest and its segments to use hosted videos as input. It can accept video input from a source supplied by the controlling application, for example a webcam. It can publish preview video over an outbound WebSocket to a Durable Object relay. An application that needs preview can connect to that relay through its own WebSocket.</p>
+<h3><strong>Application&nbsp;</strong></h3>
+<p>The application is built using Workers, and can be a full-stack browser application, an agent, or an embedded system. It consists of:</p>
+<ul>
+	<li><strong>User interface (UI)</strong>&nbsp;including client logic, identity and access policy. This post uses a browser application as its concrete example, so it also includes a browser interface.</li>
+	<li><strong>Orchestrator</strong>&nbsp;coordinates the session, the Container lifecycle, and preview relay. The orchestrator is implemented by a Durable Object.</li>
+</ul>
+<p>It is possible to run the system locally during development, in which case the container is just a local Docker instance and the Durable Object is not used: there is a single user, the controlling application does not require authorization&nbsp;for local access, and the video preview can connect directly to a WebSocket&nbsp;on localhost.</p>
+<p>When these components are deployed to Cloudflare, an authorized user or agent can visit the Worker to start a new session. This spins up a new Streamline container if needed, manages its lifecycle automatically, exposes an API to perform a number of video manipulation operations, and routes inputs from and outputs back to Cloudflare Stream.</p>
+<p>Time for a technical deep dive on how the system works.</p>
+<h2><strong>Container lifecycle and session management</strong></h2>
+<p>The controlling Worker application initiates a long-running media processing session.&nbsp;After starting the session, the application can disconnect and reconnect safely, while the Container continues processing until the controlling application stops it. We also include a maximum duration to ensure a session is always eventually closed down and can’t run indefinitely, even without external control. While a media processing session is running, the container instance is unavailable for other applications to use.</p>
+<p>A Cloudflare Container will automatically sleep if it has not received any incoming requests since a defined interval. However, in our case, once the pipeline is running, it must continue even if the controlling application disconnects and it receives no requests. We can implement this behavior by overriding the <code>onActivityExpired()</code>&nbsp;callback on the container. If the expiry time has not been reached, then we renew the activity, otherwise we destroy the container.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">async </span><span class="sk-6f42c1-ffc799">onActivityExpired</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">withControlLock</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> session</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">getRelaySessionLocked</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (session?.expiresAt) {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">      this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">renewActivityTimeout</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">destroy</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">  })</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<h2><strong>API</strong></h2>
+<p>The HTTP server implemented by the Go harness and the Durable Object associated with the Container together define the low-level interface to the system. However, we wanted to provide an abstraction over this, so the system is as agnostic as possible to who or what is controlling the session and any unnecessary details of the backend implementation.</p>
+<p>We implement this by exporting two packages from Streamline:</p>
+<ul>
+	<li><code>@cloudflare/streamline/client</code>&nbsp;Defines a high-level, session-based API.</li>
+	<li><code>@cloudflare/streamline/</code>&nbsp;Exposes the Durable Object base class associated with the container. This routes the API requests, implements the preview relay server described below, and provides hooks for security and access policy.</li>
+</ul>
+<p>In a remote deployment, the controlling Worker is expected to import <code>@streamline/cloudflare</code>&nbsp;and define a concrete subclass of the Durable Object exposed by the container that can be used for application-specific logic and storage.</p>
+<p>In local mode, where there is no Durable Object, the frontend defines a thin adapter layer that maintains the session-based API, but connects directly to the local Docker instance with no access controls, etc.</p>
+<p>The example below shows how the controlling application can use the API to access Streamline, prepare a session, and start a video processing pipeline.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> streamline</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> createStreamline</span><span class="sk-24292e-fff">({ baseUrl: </span><span class="sk-032f62-99ffe4">'https://media.example'</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> session</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> streamline.sessions.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> session.</span><span class="sk-6f42c1-ffc799">start</span><span class="sk-24292e-fff">(config)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// At this point the pipeline is running, unless failure occurred.</span></span>
+<span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(result)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p><code>config</code>&nbsp;is a JSON object that defines the processing pipeline to be executed, described more in subsequent sections.</p>
+<p>The table below shows the complete list of all API calls.</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 192px;">
+		<tbody>
+			<tr>
+				<td>
+					<p>Client method</p>
+				</td>
+				<td>
+					<p>Function</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>createStreamline()</code></p>
+				</td>
+				<td>
+					<p>Creates a new Streamline instance.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>streamline.sessions.create()</code></p>
+				</td>
+				<td>
+					<p>Creates a new processing session.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>streamline.sessions.resume(id)</code></p>
+				</td>
+				<td>
+					<p>Reconnects to an existing session.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>session.start(config)</code></p>
+				</td>
+				<td>
+					<p>Starts a new processing pipeline.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>session.ingest(chunk)</code></p>
+				</td>
+				<td>
+					<p>Sends a chunk of video data in “webcam” mode.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>session.annotation(png)</code></p>
+				</td>
+				<td>
+					<p>Updates the transparent annotation overlay.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>session.metrics()</code></p>
+				</td>
+				<td>
+					<p>Receives metrics about the current session.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>session.stop()</code></p>
+				</td>
+				<td>
+					<p>Stops the processing in the current session.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h2><strong>Defining and running a video processing pipeline</strong></h2>
+<p><code>session.start()</code>&nbsp;constructs and runs a processing pipeline. It takes a single argument which is a JSON configuration object defining the processing to be performed:</p>
+<ul>
+	<li>Input(s)</li>
+	<li>Operations</li>
+	<li>Output</li>
+</ul>
+<p>The example below starts a pipeline that takes an RTMP (real-time messaging protocol) broadcast as input (for example, a feed of a Stream Live input receiving an inbound livestream), applies an overlay image with transparency, and sends the output to an RTMP destination (for example, to another Stream Live input for recording or broadcast). This allows the Worker application to create a modified version of a livestream in real time.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> session</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> streamline.sessions.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> session.</span><span class="sk-6f42c1-ffc799">start</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  input: { type: </span><span class="sk-032f62-99ffe4">'rtmp'</span><span class="sk-24292e-fff">, profile: </span><span class="sk-032f62-99ffe4">'primary-input'</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">  pipeline: [</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-24292e-fff">      op: </span><span class="sk-032f62-99ffe4">'overlay'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      params: { image: </span><span class="sk-032f62-99ffe4">'/app/assets/cf-logo.png'</span><span class="sk-24292e-fff">, position: </span><span class="sk-032f62-99ffe4">'top-right'</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-24292e-fff">      op: </span><span class="sk-032f62-99ffe4">'encode'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      params: {</span></span>
+<span class="line"><span class="sk-24292e-fff">        codec: </span><span class="sk-032f62-99ffe4">'h264'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        preset: </span><span class="sk-032f62-99ffe4">'fast'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        bitrate: </span><span class="sk-032f62-99ffe4">'1500k'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        resolution: </span><span class="sk-032f62-99ffe4">'1280x720'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        fps: </span><span class="sk-005cc5-ffc799">30</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">  ],</span></span>
+<span class="line"><span class="sk-24292e-fff">  output: { mode: </span><span class="sk-032f62-99ffe4">'rtmp'</span><span class="sk-24292e-fff">, profile: </span><span class="sk-032f62-99ffe4">'primary-output'</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<h2><strong>Video-on-demand input via HLS</strong></h2>
+<p>Streamline can also ingest streaming video input via HLS (HTTP live streaming), for example a video hosted on Cloudflare Stream. The example below shows how a Worker application could run a pipeline that ingests a Stream video, reads the embedded closed caption subtitles and renders them as text on the video, and sends the output via RTMP, for example to a Stream Live Input for broadcasting or recording of the modified version.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> streamVideoId</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> 'your-cloudflare-stream-video-id'</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> session</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> streamline.sessions.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> session.</span><span class="sk-6f42c1-ffc799">start</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  input: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    type: </span><span class="sk-032f62-99ffe4">'hls'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    url: </span><span class="sk-032f62-99ffe4">`https://videodelivery.net/${</span><span class="sk-24292e-fff">streamVideoId</span><span class="sk-032f62-99ffe4">}/manifest/video.m3u8`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">  pipeline: [</span></span>
+<span class="line"><span class="sk-24292e-fff">    { op: </span><span class="sk-032f62-99ffe4">'subtitle'</span><span class="sk-24292e-fff">, params: { source: </span><span class="sk-032f62-99ffe4">'auto'</span><span class="sk-24292e-fff"> } },</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-24292e-fff">      op: </span><span class="sk-032f62-99ffe4">'encode'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      params: {</span></span>
+<span class="line"><span class="sk-24292e-fff">        codec: </span><span class="sk-032f62-99ffe4">'h264'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        preset: </span><span class="sk-032f62-99ffe4">'fast'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        bitrate: </span><span class="sk-032f62-99ffe4">'1500k'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        resolution: </span><span class="sk-032f62-99ffe4">'1280x720'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        fps: </span><span class="sk-005cc5-ffc799">30</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">  ],</span></span>
+<span class="line"><span class="sk-24292e-fff">  output: { mode: </span><span class="sk-032f62-99ffe4">'rtmp'</span><span class="sk-24292e-fff">, profile: </span><span class="sk-032f62-99ffe4">'default'</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<h2><strong>Sending video to Streamline</strong></h2>
+<p>It’s often useful to be able to quickly preview a processing pipeline by sending video data directly to Streamline, for example from a webcam. An agent or embedded device application&nbsp;may also want to use this capability, for example to send footage from factory cameras for AI analysis, or to combine multiple camera feeds into a composite view.</p>
+<p>The example below creates a pipeline that expects input from the Worker application and produces a preview video output available over a WebSocket&nbsp;(we’ll talk more about the WebSocket&nbsp;preview video below). It applies two filters and an “annotation,” which is an overlay specified as a PNG image that can be updated while the processing is running, for example to implement an animated graphic.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> session</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> streamline.sessions.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> sessionId</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> session.id</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">sessionId) </span><span class="sk-d73a49-a0a0a0">throw</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Session creation returned no session ID'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> viewer</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> openViewer</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'https://media.example'</span><span class="sk-24292e-fff">, sessionId)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> session.</span><span class="sk-6f42c1-ffc799">start</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  input: { type: </span><span class="sk-032f62-99ffe4">'webcam'</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">  pipeline: [</span></span>
+<span class="line"><span class="sk-24292e-fff">    { op: </span><span class="sk-032f62-99ffe4">'filter'</span><span class="sk-24292e-fff">, params: { preset: </span><span class="sk-032f62-99ffe4">'brightness'</span><span class="sk-24292e-fff">, amount: </span><span class="sk-005cc5-ffc799">0.1</span><span class="sk-24292e-fff"> } },</span></span>
+<span class="line"><span class="sk-24292e-fff">    { op: </span><span class="sk-032f62-99ffe4">'filter'</span><span class="sk-24292e-fff">, params: { preset: </span><span class="sk-032f62-99ffe4">'flip'</span><span class="sk-24292e-fff"> } },</span></span>
+<span class="line"><span class="sk-24292e-fff">    { op: </span><span class="sk-032f62-99ffe4">'overlay'</span><span class="sk-24292e-fff">, params: { image: </span><span class="sk-032f62-99ffe4">'annotation'</span><span class="sk-24292e-fff">, position: </span><span class="sk-032f62-99ffe4">'full'</span><span class="sk-24292e-fff"> } },</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-24292e-fff">      op: </span><span class="sk-032f62-99ffe4">'encode'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      params: {</span></span>
+<span class="line"><span class="sk-24292e-fff">        codec: </span><span class="sk-032f62-99ffe4">'h264'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        preset: </span><span class="sk-032f62-99ffe4">'veryfast'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        bitrate: </span><span class="sk-032f62-99ffe4">'1500k'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        resolution: </span><span class="sk-032f62-99ffe4">'1280x720'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        fps: </span><span class="sk-005cc5-ffc799">30</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        gop: </span><span class="sk-005cc5-ffc799">60</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">  ],</span></span>
+<span class="line"><span class="sk-24292e-fff">  output: { mode: </span><span class="sk-032f62-99ffe4">'websocket'</span><span class="sk-24292e-fff">, format: </span><span class="sk-032f62-99ffe4">'fmp4'</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>The code snippet above just starts the pipeline. The controlling Worker is not sending any media to Streamline yet. We’ll discuss the <code>openViewer()</code>&nbsp;function below.</p>
+<p>The Worker application sends video data to Streamline using the <code>session.ingest()</code>&nbsp;call. The example below shows how a web browser application might receive chunks from the webcam and forward them to Streamline.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> stream</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> navigator.mediaDevices.</span><span class="sk-6f42c1-ffc799">getUserMedia</span><span class="sk-24292e-fff">({ video: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">, audio: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> recorder</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> MediaRecorder</span><span class="sk-24292e-fff">(stream, { mimeType: </span><span class="sk-032f62-99ffe4">'video/webm;codecs=vp8,opus'</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> uploadTail </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> Promise</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">resolve</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">recorder.</span><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'dataavailable'</span><span class="sk-24292e-fff">, (</span><span class="sk-e36209-fff">event</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (event.data.size </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">return</span></span>
+<span class="line"><span class="sk-24292e-fff">  uploadTail </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> uploadTail</span></span>
+<span class="line"><span class="sk-24292e-fff">    .</span><span class="sk-6f42c1-ffc799">then</span><span class="sk-24292e-fff">(() </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> session.</span><span class="sk-6f42c1-ffc799">ingest</span><span class="sk-24292e-fff">(event.data))</span></span>
+<span class="line"><span class="sk-24292e-fff">    .</span><span class="sk-6f42c1-ffc799">catch</span><span class="sk-24292e-fff">((</span><span class="sk-e36209-fff">error</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-6f42c1-ffc799"> reportUploadFailure</span><span class="sk-24292e-fff">(error))</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">recorder.</span><span class="sk-6f42c1-ffc799">start</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">250</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<h2><strong>Animated overlay</strong></h2>
+<p>The annotation overlay can be updated using the <code>session.annotation()</code>&nbsp;call. The example below shows how the Worker application could snapshot a canvas and send it to Streamline. This could be done on an animation loop, although the update rate may be limited in practice by the size of the PNG overlay images, the available bandwidth, and processing power.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> canvasPng</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">canvas</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> HTMLCanvasElement</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Blob</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-005cc5-ffc799"> Promise</span><span class="sk-24292e-fff">((</span><span class="sk-e36209-fff">resolve</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">reject</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">    canvas.</span><span class="sk-6f42c1-ffc799">toBlob</span><span class="sk-24292e-fff">((</span><span class="sk-e36209-fff">blob</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      if</span><span class="sk-24292e-fff"> (blob) </span><span class="sk-6f42c1-ffc799">resolve</span><span class="sk-24292e-fff">(blob)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      else</span><span class="sk-6f42c1-ffc799"> reject</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Canvas could not produce a PNG'</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-24292e-fff">    }, </span><span class="sk-032f62-99ffe4">'image/png'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">  })</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> png</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> canvasPng</span><span class="sk-24292e-fff">(overlayCanvas)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> session.</span><span class="sk-6f42c1-ffc799">annotation</span><span class="sk-24292e-fff">(png)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<h2><strong>Receiving preview video from Streamline</strong></h2>
+<p>Streamline can also produce preview video output, by specifying <code>output: { mode: 'websocket' }</code>.</p>
+<p>Streamline uses WebSockets for low-latency preview video delivery back to the controlling application: the container publishes fMP4 fragments to the Durable Object, which forwards them to an output relay available over a WebSocket&nbsp;on the URL <code>/relay/view</code>, relative to the application origin. The application must connect a WebSocket&nbsp;to this URL, and will then receive video data pushed to it as it becomes available from Streamline. The code snippet below shows how a web browser application might display the preview video feed.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> openViewer</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">origin</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">sessionId</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">WebSocket</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> url</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'/relay/view'</span><span class="sk-24292e-fff">, origin)</span></span>
+<span class="line"><span class="sk-24292e-fff">  url.protocol </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> url.protocol </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> 'https:'</span><span class="sk-d73a49-a0a0a0"> ?</span><span class="sk-032f62-99ffe4"> 'wss:'</span><span class="sk-d73a49-a0a0a0"> :</span><span class="sk-032f62-99ffe4"> 'ws:'</span></span>
+<span class="line"><span class="sk-24292e-fff">  url.searchParams.</span><span class="sk-6f42c1-ffc799">set</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'session_id'</span><span class="sk-24292e-fff">, sessionId)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-005cc5-ffc799"> Promise</span><span class="sk-24292e-fff">((</span><span class="sk-e36209-fff">resolve</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">reject</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> socket</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> WebSocket</span><span class="sk-24292e-fff">(url)</span></span>
+<span class="line"><span class="sk-24292e-fff">    socket.binaryType </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> 'arraybuffer'</span></span>
+<span class="line"><span class="sk-24292e-fff">    socket.</span><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'open'</span><span class="sk-24292e-fff">, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-6f42c1-ffc799"> resolve</span><span class="sk-24292e-fff">(socket), { once: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"><span class="sk-24292e-fff">    socket.</span><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'error'</span><span class="sk-24292e-fff">, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-6f42c1-ffc799"> reject</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Preview relay failed'</span><span class="sk-24292e-fff">)), { once: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"><span class="sk-24292e-fff">  })</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> sessionId</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> session.id</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">sessionId) </span><span class="sk-d73a49-a0a0a0">throw</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Session creation returned no session ID'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Connect before session.start(), or the relay rejects the publisher.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> viewer</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> openViewer</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'https://media.example'</span><span class="sk-24292e-fff">, sessionId)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">viewer.</span><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'message'</span><span class="sk-24292e-fff">, (</span><span class="sk-e36209-fff">event</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">typeof</span><span class="sk-24292e-fff"> event.data </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> 'string'</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (event.data </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> '{"type":"eos"}'</span><span class="sk-24292e-fff">) mediaSource.</span><span class="sk-6f42c1-ffc799">endOfStream</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">  sourceBuffer.</span><span class="sk-6f42c1-ffc799">appendBuffer</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Uint8Array</span><span class="sk-24292e-fff">(event.data </span><span class="sk-d73a49-a0a0a0">as</span><span class="sk-6f42c1-ffc799"> ArrayBuffer</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>A production MediaSource player must queue fragments while SourceBuffer.updating is true. In local development, the browser or other controlling application simply opens a WebSocket&nbsp;connection directly on the local container.</p>
+<h2><strong>Currently supported operations</strong></h2>
+<p>In the configuration object passed to <code>session.start()</code>&nbsp;in the examples above, <code>pipeline</code>&nbsp;is an array of operations from the set supported by the underlying media engine. The operation order is currently fixed by the engine; the order specified in the array is not significant. The list of currently supported operations and the order in which they are applied is below.</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 192px;">
+		<tbody>
+			<tr>
+				<td>
+					<p>Operation name</p>
+				</td>
+				<td>
+					<p>Function</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>filter</code></p>
+				</td>
+				<td>
+					<p>Applies filtering operations, e.g. blur, saturation.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>overlay</code></p>
+				</td>
+				<td>
+					<p>Overlays an image referenced by URL or a binary PNG specified separately in a call to <code>annotation()</code>.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>subtitle</code></p>
+				</td>
+				<td>
+					<p>Burns in subtitles.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>encode</code></p>
+				</td>
+				<td>
+					<p>Specifies output encoding parameters.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h2><strong>Security</strong></h2>
+<p>This is Cloudflare, so it is important that security is part of the design rather than an addition at the end. We need to ensure that only authorized users can create a new session or take control of an existing one, and that sessions are isolated from each other. We must treat Stream RTMPS input/output keys as secrets that shouldn’t be leaked to the controlling application. We must ensure that resource use is bounded.</p>
+<p>The owner deployment is kept private using Workers’ <a href="https://developers.cloudflare.com/workers/configuration/cloudflare-access"><u>Access&nbsp;integration</u></a>. The configured owner identity and other allowed users can edit the same shared profiles and start a session while the singleton is idle. The Worker verifies the Access session before accepting control requests and binds the active session to the verified principal. Only one session can run at a time, and a different principal cannot stop or replace the active session.</p>
+<p>Stream Live Input keys are stored in Worker secrets or as write-only shared overrides in Durable Object storage. They are never returned by the settings API or placed in browser storage. The controlling application specifies RTMPS input and output by referring to a named profile. The Worker resolves the profile before contacting the container.</p>
+<p>The preview video stream has two credentials with separate purposes. A Cloudflare Access service token authenticates the container workload to the publisher endpoint. A random per-session capability authorizes publishing only for the currently active relay. The service token is injected by the container's outbound Worker and never enters container memory. The initial deployment uses a temporary path-specific Access Bypass while the per-session capability remains enforced; after deployment and a successful smoke test, the rollout replaces Bypass with Service Auth.</p>
+<p>The owner deployment is intentionally private and singleton-routed. It is not the security model for a public multi-user service.</p>
+<h2><strong>Playground and open source</strong></h2>
+<p>We want you to try out Streamline and start building! So together with this post, we are releasing the system as open source and deploying a public playground.</p>
+<p>The Streamline container can be run locally or deployed on your account. It exports the Worker API for your control application to use.</p>
+<p>There is also an example Worker application with an Astro web frontend that demonstrates Streamline functionality with a few common use cases, including overlays, subtitle decoding, filters and picture-in-picture. There is probe functionality that provides performance metrics and system tracing, and can be useful for debugging the system when developing new features. The example application can be run on a local Astro server, or is set up to be deployed behind Cloudflare Access, so you can control who has access to your Streamline instance.</p>
+<p>Both repositories are available as open source on Cloudflare’s GitHub:</p>
+<ul>
+	<li><a href="https://github.com/cloudflare/streamline" target="_blank" rel="noopener noreferrer">https://github.com/cloudflare/streamline</a>&nbsp;- Media engine,&nbsp;and package exports for applications.</li>
+	<li><a href="https://github.com/cloudflare/streamline-demo" target="_blank" rel="noopener noreferrer">https://github.com/cloudflare/streamline-demo</a>&nbsp;- Example application Worker, Astro frontend, deployment profiles, and Access tooling.</li>
+</ul>
+<p>We have published a public playground deployment of the example application. This is also something a user can deploy if desired. It uses its own Access configuration, one container identity per verified user, one active session per user, global admission control, concurrency, media and session limits, and no ability for one user to replace another user's session.</p>
+<p>You can try the public playground at:</p>
+<ul>
+	<li><a href="https://playground.streamline-video.workers.dev" target="_blank" rel="noopener noreferrer">https://playground.streamline-video.workers.dev</a></li>
+</ul>
+<h2><strong>Where we go from here</strong></h2>
+<p>Streamline demonstrates one way to combine existing managed services, like Stream, with lower-level primitives to build highly customizable media pipelines. In this iteration, Streamline uses Container CPU for media processing, which introduces a bottleneck at higher qualities or frame-rates.</p>
+<p>Moving forward, we’re excited to see how we and our developer community can extend this architecture to &nbsp;build new support for computer vision pipelines, hardware-accelerated media processing, realtime experiences with next generation protocols&nbsp;like WebRTC and MoQ, and ultimately video encoding and decoding primitives natively in Workers.</p>
+<p>Today, we invite you to check out our hosted demo of Streamline&nbsp;to see how powerful these tools can be. From there, check out the codebases we’ve open sourced to see how easy it is to deploy Streamline into your own account&nbsp;and use it to create your own experiences.</p>

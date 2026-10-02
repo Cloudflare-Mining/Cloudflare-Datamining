@@ -1,0 +1,459 @@
+<p>一個現代網路商店的外觀可能看起來完全正常，但惡意 JavaScript 卻在底層悄悄運作：竊取聯盟行銷佣金、劫持搜尋結果和點擊、竄改分析資料，或向遠端伺服器請求下一步指令。頁面正常載入、商品正常顯示、結帳流程也運作無誤——但瀏覽器可能正在悄悄執行網站擁有者從未授權的操作。</p>
+<p>這正是我們 Client-Side Security <a href="https://blog.cloudflare.com/client-side-security-open-to-everyone" target="_blank" rel="noopener noreferrer"><u>機器學習 (ML)</u></a> 模型所設計要揭露的盲點。本文追蹤四個惡意行動，涵蓋八個惡意載荷，均由我們的 Page Shield ML 在實際流量中所發現。</p>
+<p>這些惡意載荷的偵測完全由系統自動完成；人工審查僅在系統標記後才介入驗證。當我們事後使用安全掃描工具審查這些攻擊活動時，八個惡意載荷中有七個在 VirusTotal 上完全未被記錄，而 URLScan 也未將其中任何一個判定為惡意。<strong><a href="https://www.cloudflare.com/products/client-side-security/?cf_page=client-side-security-finds-4-malicious-campaigns%2F&amp;cf_target_id=FBBB8D00ED6999376B54DF3D10F2D4EE" target="_blank" rel="noopener noreferrer"><u>Page Shield ML</u></a> 卻在實際流量中將其全數捕獲。</strong></p>
+<p>以 <a href="https://www.netskope.com/blog/ad-injector-dulls-chromes-luster" target="_blank" rel="noopener noreferrer"><u>Lnkr</u></a> 系列為例，雖然安全研究人員早已記錄了其更廣泛的系列特徵，但其中一個特定版本的惡意載荷在 URLScan 上被索引了近兩年半，狀態始終顯示為「無分類」，甚至在 2024 年 1 月的一次直接掃描中也是如此。唯有在這個案例中，VirusTotal 較早取得了該惡意載荷的資料：雖然目前已將該指令碼標記為惡意，但公開紀錄並未顯示該判定最初是何時做出的。與此與此同時，Page Shield ML 卻在一家線上零售商的店面即時流量中，獨立發現了完全相同的位元組內容。更廣泛地說，一個檔案雜湊值可能早已為人所知，但其背後的程式碼卻遲遲未被歸類為惡意。如果您的防禦機制需要等待這個標記，那您已經落後一步。您需要的是能夠深入解析 JavaScript 本身並大規模評判的 ML。</p>
+<p>確實，看到一個檔案和真正理解它是兩回事。難點在於這四個惡意行動沒有共同的特徵碼或通用的隱藏技術。其中一個惡意載荷在裝置、國家/地區、時間、參照來源或瀏覽器狀態不符合其等待條件時會保持休眠。另一個將無點擊聯盟請求隱藏在不可見的 iframe 中。其他的則攔截點擊、抑制監控，或有條件地從遠端伺服器載入額外程式碼。要捕獲它們，必須觀察這些元件如何協同運作：指令碼何時啟動、它隱藏了什麼、它攔截了什麼，以及它接下來請求了什麼。僅掃描一次頁面是不夠的；如這些案例所示，此類指令碼的設計目標就是保持沉默，直到合適的受害者出現。<strong>這就是為什麼持續的瀏覽器可見性，決定了是攔截到攻擊還是完全錯過它。</strong></p>
+<h2><strong>我們如何大規模偵測和標記 JavaScript</strong></h2>
+<p>本文中標記這四個惡意行動的 GNN（graph neural network），先前已成功捕獲到<a href="https://blog.cloudflare.com/how-cloudflares-client-side-security-made-the-npm-supply-chain-attack-a-non/#finding-needles-in-a-3-5-billion-script-haystack" target="_blank" rel="noopener noreferrer"><u>惡意 npm 套件</u></a>和<a href="https://blog.cloudflare.com/navigating-the-maze-of-magecart/#proactive-detection" target="_blank" rel="noopener noreferrer"><u>一個真實環境中的 Magecart 信用卡側錄程式</u></a>。GNN 不會將 JavaScript 視為扁平的文字區塊；它將程式碼作為圖形來推理：一個連接程式碼符號的<a href="https://blog.cloudflare.com/how-we-train-ai-to-uncover-malicious-javascript-intent-and-make-web-surfing-safer/#using-syntax-trees-to-classify-malicious-code" target="_blank" rel="noopener noreferrer"><u>語法樹</u></a>，揭示什麼呼叫了什麼、攻擊者試圖隱藏什麼，以及什麼仍在向外回傳資料。這種結構使其能夠識別出經過程式碼壓縮、重新命名或部分混淆處理後的可疑模式，而無需依賴已知的 URL 或位元組特徵碼。</p>
+<p>GNN 標記為惡意的少數指令碼（不到所有分析流量的 0.3%）會被送至<a href="https://blog.cloudflare.com/client-side-security-open-to-everyone/#adding-an-llm-based-second-opinion-for-triage" target="_blank" rel="noopener noreferrer"><u> Workers AI </u></a>上的<a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model/?cf_page=client-side-security-finds-4-malicious-campaigns%2F" target="_blank" rel="noopener noreferrer"><u>輕量級大型語言模型 (LLM)</u></a> 進行即時二次審查。這進一步降低了誤報率，同時保持了高召回率。當 LLM 與 GNN 的判定一致時，系統即發出警告通知客戶。</p>
+<p>為了大規模調查最複雜的指令碼，我們使用了一組前沿模型，稱之為「教師模型」（一個自動化評判模型的集成）。這個模型組合涵蓋來自約六個不同系列的領先模型，包括在 Workers AI 上執行的開放權重模型。我們將每個模型作為一個智慧體啟動，在各自獨立的全新工作階段中分析相同的可疑指令碼。在需要時，其智慧體工具存取權限讓它們能夠使用受限的 JavaScript 評估器來解包小型程式碼片段，揭示隱藏行為。我們即將透過 <a href="https://developers.cloudflare.com/sandbox/?cf_page=client-side-security-finds-4-malicious-campaigns%2F" target="_blank" rel="noopener noreferrer"><u>Cloudflare Sandbox</u></a> 擴展此工作流程，以便在隔離環境中進行更深入的分析。</p>
+<p>前沿模型有時會出現意見分歧，尤其是在最複雜的指令碼上。我們將這種分歧視為訊號，而非雜訊。每個標記都成為一票，依據模型在 <a href="https://artificialanalysis.ai/leaderboards/models" target="_blank" rel="noopener noreferrer"><u>Artificial Analysis Intelligence Index</u></a> 中的評分加權，產生四個標籤的概率分布：良性、信用卡側錄（<a href="https://blog.cloudflare.com/navigating-the-maze-of-magecart" target="_blank" rel="noopener noreferrer"><u>magecart</u></a>）、其他惡意軟體和加密貨幣挖礦。因此，人工審查員只需審查被標記為惡意或未能獲得明確三分之二多數判定的指令碼。我們隨後將這些標籤分布回饋至 GNN 訓練中，幫助它區分越來越細微的案例。此回饋迴路目前仍部分依賴人工操作，但我們正開始將其自動化。</p>
+<h2><strong>我們捕獲的四個惡意 JavaScript 行動</strong></h2>
+<p>這四個惡意行動各不相同，涵蓋了從竊取聯盟行銷佣金到竊取商家已付費取得的購物者分析資料等多種行為。竊取佣金不同於側錄信用卡；同樣地，劫持搜尋不同於竊取密碼。如果 ML 模型只了解其中一種手法，它將對其他手法視而不見。因此，我們的 Page Shield ML 必須持續關注各種類型的惡意行為。</p>
+<p>以下深入介紹每個惡意行動及其運作方式。</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 601px;">
+		<colgroup>
+			<col style="width: 113px;">
+			<col style="width: 244px;">
+			<col style="width: 244px;">
+		</colgroup>
+		<tbody>
+			<tr>
+				<td>
+					<p><strong>惡意行動</strong></p>
+				</td>
+				<td>
+					<p><strong>對客戶的影響</strong></p>
+				</td>
+				<td>
+					<p><strong>指令碼行為</strong></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><strong>1) 非上班時間聯盟行銷佣金劫持者</strong></p>
+				</td>
+				<td>
+					<p>劫持聯盟行銷佣金</p>
+				</td>
+				<td>
+					<p>行動裝置和時間閘門；動態頁面監控；點擊攔截；多日冷卻期</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><strong>2) 無點擊聯盟竊取</strong></p>
+				</td>
+				<td>
+					<p>無需使用者點擊即竊取聯盟行銷佣金</p>
+				</td>
+				<td>
+					<p>螢幕外 iframe；自動點擊隱藏連結備用方案；虛假 IP 查詢請求和時間閘門；每小時聯盟輪換</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><strong>3) 舊式搜尋破壞者，現為網路商店後門</strong></p>
+				</td>
+				<td>
+					<p>追蹤使用者並為任意遠端 JavaScript 執行開設後門</p>
+				</td>
+				<td>
+					<p>舊式關鍵字靜默；localStorage 退出；遙測；遠端程式碼載入</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><strong>4) 付費行動裝置偽裝者</strong></p>
+				</td>
+				<td>
+					<p>使商店對含行銷活動標記的行動裝置訪客的可見性失效，嘗試替換廣告和分析工具，並隱藏支援功能</p>
+				</td>
+				<td>
+					<p>主機、視口和 UTM 標籤閘門；325 項 IP 子字串清單；停用 9 個監控/分析工具；零像素追蹤信標</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h2><strong>惡意行動 1：非上班時間聯盟行銷佣金劫持者</strong></h2>
+<p>試想一個寧靜的週日下午：一位使用手機的購物者點擊了一個商品。指令碼並未正常處理這次點擊，而是從攻擊者預先選定的清單中，在新分頁開啟一個商品或活動登陸頁面，同時讓原分頁透過聯盟路由跳轉。網路商店表面上看起來仍正常運作。如果購物者完成購買（無論當時還是稍後），這個繞路行為就劫持了歸因，將銷售額（及任何由此產生的佣金）歸入一個並未實際促成該次推薦的帳戶。</p>
+<h3>商店的損失</h3>
+<p>商店可能向一個並未帶來購物者的帳戶支付不應得的佣金。更糟的是，如果一個合法合作夥伴本已完成推薦，這個強制請求可能導致歸因錯誤，將功勞與潛在報酬從真正做事的合作夥伴那裡轉移走。損失不僅限於一次佣金：一旦合作夥伴開始不信任歸因系統，也可能連帶對其背後的零售商失去信任。</p>
+<h3>攻擊鏈</h3>
+<p><code>符合條件的行動裝置訪客 → 商品點擊被攔截 → 指令碼選定頁面在新分頁開啟，同時原分頁循攻擊者的聯盟路由跳轉</code></p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA+vf49vP07uzt6unp7O3s7vDv6uzs4eTj/fn6+fX28u7u7uvq8O/u8vLy7O7u4+Xm//7+//r69/Hx9O7t9vPy9/f38fPz5+jq//////////j3+/X0/vr5//7++fr67u/x///////////////+////////////9/j6////////////////////////////////////////////////////////////////////////////////////////////////" alt="" width="715" height="235" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y9KWAZNWCC79G32GVW.01M2KND72ADRC2X0RV1VQTQ308.png&amp;w=715&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y9KWAZNWCC79G32GVW.01M2KND72ADRC2X0RV1VQTQ308.png&amp;w=640&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y9KWAZNWCC79G32GVW.01M2KND72ADRC2X0RV1VQTQ308.png&amp;w=715&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y9KWAZNWCC79G32GVW.01M2KND72ADRC2X0RV1VQTQ308.png&amp;w=750&amp;h=247&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y9KWAZNWCC79G32GVW.01M2KND72ADRC2X0RV1VQTQ308.png&amp;w=828&amp;h=272&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y9KWAZNWCC79G32GVW.01M2KND72ADRC2X0RV1VQTQ308.png&amp;w=1080&amp;h=355&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y9KWAZNWCC79G32GVW.01M2KND72ADRC2X0RV1VQTQ308.png&amp;w=1280&amp;h=421&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y9KWAZNWCC79G32GVW.01M2KND72ADRC2X0RV1VQTQ308.png&amp;w=1430&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3372 2.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y9KWAZNWCC79G32GVW.01M2KND72ADRC2X0RV1VQTQ308.png&amp;w=1920&amp;h=630&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="630" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="235" class="pt-portable-image-media"></div>
+</figure>
+<h3>如何保持隱蔽</h3>
+<p>我們發現了五個相關的指令碼版本：捕獲時有兩個處於活躍狀態，三個處於暫停狀態。每個活躍變體在採取行動前使用不同的閘門組合，檢查訪客的裝置和本地時間、最近是否已執行過此操作、頁面上是否出現了商品按鈕，以及是否有人實際點擊了它。這一系列複雜規則使惡意行為在短暫的自動化存取期間無法被察覺，除非滿足該變體的特定條件。活躍指令碼使用 MutationObserver（一個 JavaScript API）來監控頁面首次載入後動態出現的商品磁貼和按鈕，從而能夠攔截對這些後期出現元素的點擊，而只載入一次 HTML 後就停止的網路爬蟲則可能完全錯過這個跳轉路徑。</p>
+<p>在後期的活躍變體中，指令碼攔截符合條件的點擊，並將三天的冷卻期寫入 <strong>localStorage</strong>（讓該裝置在數天內保持休眠狀態）。然後執行雙分頁操作：在新分頁彈出攻擊者選定的商品頁面，讓購物者保持瀏覽，同時讓原分頁悄悄地透過攻擊者的聯盟追蹤連結再返回商店，在後台植入攻擊者的歸因 Cookie。主控台遮蔽和自我防禦的原始碼檢查增加了偵測難度，而冷卻機制和嚴格的時間限制則限制了惡意路徑在正常購物過程中出現的頻率。</p>
+<p>以下經過淨化處理的摘錄展示了惡意載荷如何鉤取動態商品磁貼並執行雙分頁跳轉。<em>為了提高可讀性，我們簡化了識別碼、重新格式化了程式碼，並將目標 URL 做了去功能化處理。</em></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Watch for late-rendering product elements and hook clicks</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> MutationObserver</span><span class="sk-24292e-fff">((</span><span class="sk-e36209-fff">_</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">observer</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> tile</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> document.</span><span class="sk-6f42c1-ffc799">querySelector</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">TARGET_SELECTOR</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">tile) </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">  observer.</span><span class="sk-6f42c1-ffc799">disconnect</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">  tile.</span><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"click"</span><span class="sk-24292e-fff">, (</span><span class="sk-e36209-fff">e</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Bail out if cooldown is still active on this device</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> stored</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-fff"> JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">parse</span><span class="sk-24292e-fff">(localStorage.</span><span class="sk-6f42c1-ffc799">getItem</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">STORAGE_KEY</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-032f62-99ffe4"> "null"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (stored </span><span class="sk-d73a49-a0a0a0">&amp;&amp;</span><span class="sk-24292e-fff"> stored.expires </span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> Date.</span><span class="sk-6f42c1-ffc799">now</span><span class="sk-24292e-fff">()) </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">    e.</span><span class="sk-6f42c1-ffc799">preventDefault</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">    e.</span><span class="sk-6f42c1-ffc799">stopPropagation</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">    localStorage.</span><span class="sk-6f42c1-ffc799">setItem</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-005cc5-fff">      STORAGE_KEY</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-fff">      JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">({ value: </span><span class="sk-032f62-99ffe4">"tracked"</span><span class="sk-24292e-fff">, expires: Date.</span><span class="sk-6f42c1-ffc799">now</span><span class="sk-24292e-fff">() </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-fff"> COOLDOWN_MS</span><span class="sk-24292e-fff"> }),</span></span>
+<span class="line"><span class="sk-24292e-fff">    );</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Keep shopper engaged in new tab...</span></span>
+<span class="line"><span class="sk-24292e-fff">    window.</span><span class="sk-6f42c1-ffc799">open</span><span class="sk-24292e-fff">(target.link, </span><span class="sk-032f62-99ffe4">"_blank"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // ... while routing original tab through the attacker's affiliate link</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    setTimeout</span><span class="sk-24292e-fff">(() </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">      window.location.href </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> target.redirectUrl;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }, </span><span class="sk-005cc5-ffc799">200</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }); </span><span class="sk-6a737d-8b8b8b94">// Note: some variants added { once: true } to detach after the first tap</span></span>
+<span class="line"><span class="sk-24292e-fff">}).</span><span class="sk-6f42c1-ffc799">observe</span><span class="sk-24292e-fff">(document.body, { childList: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">, subtree: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p>暫停的版本展示了攻擊活動如何在不移除指令碼的情況下停止運作。它們內嵌的組態設定了 <code>status: "paused"</code>，因此它們在安裝點擊處理程式之前就結束了。。這些暫停的指令碼帶有不同的每位購物者冷卻期設定（3、4 和 5 天）。其中一個暫停指令碼甚至記錄了一條版本歷史注釋，明確記載活動在黑色星期五後暫停。</p>
+<p>為了觸及訪客，此惡意行動利用了網站的行銷供應鏈：電商網站嵌入的用於追蹤廣告活動和分析的第三方指令碼和標籤管理工具。一條已確認的傳播路徑經過了兩個本身正常的標籤管理工具：Google Tag Manager → 另一個標籤管理工具 → 惡意指令碼。這就是惡意載荷到達瀏覽器的方式，並不意味著任何一個標籤管理工具遭到入侵。</p>
+<p>攻擊者甚至偽裝了託管指令碼的網域，以通過快速的行銷審查。其中一個傳播主機明目張膽地偽裝：<code>adtargett[.]com </code>與 <code>adtarget[.]com</code>（一個 1998 年註冊的廣告網域）僅差一個字母「t」。這個仿冒網域於 2025 年註冊，我們查看時，其首頁將自己稱為「<a href="http://adtarget.com" target="_blank" rel="noopener noreferrer"><u>Adtarget.com</u></a> - Performance Marketing Agency」。這是仿冒網域手法：透過模仿一家真實的廣告代理商，該主機混入了常規行銷標籤中，悄悄提供惡意負載，劫持購物者的點擊並將其重新導向至聯盟分潤連結。</p>
+<h2><strong>惡意行動 2：無點擊聯盟竊取</strong></h2>
+<p>第一個詐騙手法至少需要一次點擊，但這個只需要更少的條件。購物者可能打開了一個預訂頁面，在商品選項上徘徊，卻從未點擊任何廣告。然而在背景中，指令碼可能已經傳送了一個聯盟請求，使後來的銷售看起來像是由其他人推薦的。事實上，當指令碼的條件得到滿足時，惡意載荷會透過隱藏的 iframe 或自動點擊的連結傳送該請求。</p>
+<h3>商店的損失</h3>
+<p>對於受影響的旅遊業務而言，這次攻擊可能破壞其獲取客戶的經濟邏輯：一次合法的預訂或購買可能被歸入一個不應得的聯盟帳戶。程式碼證實了存在隱蔽的自動化聯盟請求，但實際上是否有任何特定請求導致了已完成的歸因、帳戶入賬或實際支付的佣金，仍未經觀察證實。</p>
+<h3>攻擊鏈</h3>
+<p><code>有時間閘門的瀏覽器 → 隱蔽聯盟請求（螢幕外 iframe）→ 一小時節流 Cookie → 當被封鎖時，自動隱藏連結點擊備用方案</code></p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA+vn59PPz5+fm4uLg5+jl6+zq4+Xk09XV//3++vj47uzr6ebj7Onn8O3r6ejn3Nvb////////+PPy8uzp9O3q9/Du8u3s6OTk//////////z7+/Ty/fXy//f1+/X08+7u//////////////78///8///////+/fn5////////////////////////////////////////////////////////////////////////////////////////////////" alt="" width="715" height="235" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y1G0JJC04K69G2PHWX.01M2KND77EYA6TF3SMS8AEHCZ4.png&amp;w=715&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y1G0JJC04K69G2PHWX.01M2KND77EYA6TF3SMS8AEHCZ4.png&amp;w=640&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y1G0JJC04K69G2PHWX.01M2KND77EYA6TF3SMS8AEHCZ4.png&amp;w=715&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y1G0JJC04K69G2PHWX.01M2KND77EYA6TF3SMS8AEHCZ4.png&amp;w=750&amp;h=247&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y1G0JJC04K69G2PHWX.01M2KND77EYA6TF3SMS8AEHCZ4.png&amp;w=828&amp;h=272&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y1G0JJC04K69G2PHWX.01M2KND77EYA6TF3SMS8AEHCZ4.png&amp;w=1080&amp;h=355&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y1G0JJC04K69G2PHWX.01M2KND77EYA6TF3SMS8AEHCZ4.png&amp;w=1280&amp;h=421&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y1G0JJC04K69G2PHWX.01M2KND77EYA6TF3SMS8AEHCZ4.png&amp;w=1430&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3372 3.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KND4Y1G0JJC04K69G2PHWX.01M2KND77EYA6TF3SMS8AEHCZ4.png&amp;w=1920&amp;h=630&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="630" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="235" class="pt-portable-image-media"></div>
+</figure>
+<h3><strong>如何保持隱蔽</strong></h3>
+<p>指令碼透過兩層方式隱藏聯盟請求：選擇性執行（飛行前網路閘門和每小時排程）以及隱蔽傳遞（螢幕外 iframe）。第一層出人意料，因為其國家/地區標籤與實際地理位置脫節：購物者和商店的所在地都不影響選擇。</p>
+<p>首先，指令碼呼叫一個基於 IP 的公開地理位置服務，但忽略了其返回的所有資訊，包括購物者所在的國家/地區。我們無法確定為何它需要一個成功的回應但卻忽略返回的資料；這可能是為了混淆調查人員，或者只是早期版本的殘留程式碼。值得注意的是，如果地理位置請求失敗，指令碼會悄悄停止；其 Promise 鏈以 <code>.catch(() =&gt; {})</code> 結束。雖然意圖未經證實，但這種「失敗即關閉」的行為可能有助於指令碼規避受網路限制的沙盒。</p>
+<p>接著，惡意載荷並不使用獲取的地理位置資料，而是包含三個 TradeDoubler（一個聯盟行銷網路）設定物件，標記為 <code>{AU, US, UK}</code>。這些設定區塊嵌入在程式碼中，每個都包含一個聯盟 URL 以及開始和結束時間。指令碼用 JavaScript 計算 Asia/Kolkata 時間，檢查這些設定的時間窗口，然後應用固定的奇數/偶數小時規則來選擇三者之一，或跳過本次聯盟請求。這個選擇是確定性的。</p>
+<p>時間排程和瀏覽器狀態檢查共同構成了有時間閘門的選擇性執行，這是一種偽裝技術。當這些條件不滿足時，聯盟行為保持休眠，因此一次性檢查可能會錯過它。</p>
+<p>一旦指令碼選定了一個設定，它就會寫入一個名為 <code>affiliateClicked_&lt;market&gt; </code>的本地 Cookie，作為一小時的重試節流，以避免立即對該地區重複觸發（這是一個用戶端節流機制，用於避免雜訊，而非聯盟網路歸因 Cookie）。接著，它在一個隱藏的螢幕外 iframe 中載入該聯盟 URL，並抑制參照來源。iframe 是主要的傳遞路徑，但它帶有一個積極的備用方案：如果 iframe 出錯或在一到兩秒內未能完成載入，指令碼會建立一個沒有 <code>target</code> 屬性的隱藏連結（<code>&lt;a&gt;</code>）並以程式方式點擊它，這可能會導航至使用者的活躍分頁。對於符合條件的購物者來說，一切看起來都很正常：他們從未看到廣告，從未需要點擊，並且可以像什麼都沒發生一樣關閉分頁。</p>
+<p>至於指令碼的混淆手法，雖然簡單但有效：甚至屬性名稱也是逐字元拼接而成的。以下經過淨化處理的摘錄展示了惡意載荷如何建立不可見的螢幕外 iframe。<em>我們重新命名了關鍵識別符，並重新格式化了程式碼以提高可讀性。目標地址已被移除。</em></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> loadAttribution</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">target</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> frame</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> document[</span><span class="sk-032f62-99ffe4">'c'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'r'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'e'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'a'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'t'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'e'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'E'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'l'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'e'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'m'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'e'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'n'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'t'</span><span class="sk-24292e-fff">](</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    'i'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'f'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'r'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'a'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'m'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'e'</span></span>
+<span class="line"><span class="sk-24292e-fff">  );</span></span>
+<span class="line"><span class="sk-24292e-fff">  frame[</span><span class="sk-032f62-99ffe4">'s'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'r'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'c'</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> target;</span></span>
+<span class="line"><span class="sk-24292e-fff">  frame[</span><span class="sk-032f62-99ffe4">'r'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'e'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'f'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'e'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'r'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'r'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'e'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'r'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'P'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'o'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'l'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'i'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'c'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'y'</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">=</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    'n'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'o'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'-'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'r'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'e'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'f'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'e'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'r'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'r'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'e'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'r'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">  frame[</span><span class="sk-032f62-99ffe4">'s'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'t'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'y'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'l'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'e'</span><span class="sk-24292e-fff">][</span><span class="sk-032f62-99ffe4">'c'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'s'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'s'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'T'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'e'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'x'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'t'</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">=</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    'w'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'i'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'d'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'t'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'h'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">':'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'1'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'p'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'x'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">';'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'h'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'e'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'i'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'g'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'h'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'t'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">':'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'1'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'p'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'x'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">';'</span><span class="sk-d73a49-a0a0a0">+</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    'p'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'o'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'s'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'i'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'t'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'i'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'o'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'n'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">':'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'a'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'b'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'s'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'o'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'l'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'u'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'t'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'e'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">';'</span><span class="sk-d73a49-a0a0a0">+</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    'l'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'e'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'f'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'t'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">':'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'-'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'9'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'9'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'9'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'9'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'p'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'x'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">';'</span><span class="sk-d73a49-a0a0a0">+</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    'v'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'i'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'s'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'i'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'b'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'i'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'l'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'i'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'t'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'y'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">':'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'h'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'i'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'d'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'d'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'e'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'n'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">  document[</span><span class="sk-032f62-99ffe4">'b'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'o'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'d'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'y'</span><span class="sk-24292e-fff">][</span><span class="sk-032f62-99ffe4">'a'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'p'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'p'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'e'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'n'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'d'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'C'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'h'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'i'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'l'</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4">'d'</span><span class="sk-24292e-fff">](frame);</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<h2><strong>惡意行動 3：舊式搜尋破壞者，現為網路商店後門</strong></h2>
+<p>幾年前，<a href="https://www.netskope.com/blog/ad-injector-dulls-chromes-luster" target="_blank" rel="noopener noreferrer"><u>Lnkr</u></a> 惡意軟體系列因藏身於可疑瀏覽器擴充功能中、攔截 Google 和 Bing 搜尋結果以重新導向並從廣告收益中獲利而登上新聞。如今，攻擊者重新利用這個程式碼庫，在一家線上零售商的網站中植入後門。</p>
+<p>由於指令碼執行在商店而非搜尋引擎上，其舊有的重新導向功能保持休眠狀態。這次，指令碼被用來向攻擊者傳送遙測資料。更危險的是，它賦予攻擊者一個遠端入口，可以在任何時候、無需觸碰伺服器上任何檔案，便可隨意在客戶的瀏覽器中下載並執行全新的 JavaScript。它甚至保留了其擴充功能時代的一個舊技巧：如果有人在 Google 上輸入「virus」或「popup」等詞彙，便會自動關閉自身。從外部看，商店繼續正常銷售，絲毫不露任何異常。</p>
+<h3>商店的損失</h3>
+<p>商店失去了對在客戶瀏覽器中執行之程式碼的控制權。攻擊者正在秘密追蹤訪客的工作階段，並擁有一個可隨時在網路商店上推送和執行任意 JavaScript 的直接後門。</p>
+<h3>攻擊鏈</h3>
+<p><code>HTML 引用的指令碼 → 分析師規避閘門 → 並行主機閘門分支（休眠搜尋重新導向 vs. 活躍後門）→ 任意遠端 JavaScript 執行</code></p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA9/z78ff25evq3+Xk4ufn5+vr5Ojn29/d+/z59vb06urp4+Tk5+fo7Ovs6ubl4NvY//36/ff08ezq6+bn7+rs9e7v8ufm6NjV///+//z5+vLw9e3u+fL0/vX2++zr8t3Z//////////z7//j5//z+//7///b1++fk//////////////////////////////Xz///////////////////////////////+////////////////////////////////" alt="" width="715" height="235" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2NQQ9F1DNJ3JPPHHPMF8VF1.01M2NQQAZTMK2XGXBXXWTN7BY9.png&amp;w=715&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2NQQ9F1DNJ3JPPHHPMF8VF1.01M2NQQAZTMK2XGXBXXWTN7BY9.png&amp;w=640&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2NQQ9F1DNJ3JPPHHPMF8VF1.01M2NQQAZTMK2XGXBXXWTN7BY9.png&amp;w=715&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2NQQ9F1DNJ3JPPHHPMF8VF1.01M2NQQAZTMK2XGXBXXWTN7BY9.png&amp;w=750&amp;h=247&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2NQQ9F1DNJ3JPPHHPMF8VF1.01M2NQQAZTMK2XGXBXXWTN7BY9.png&amp;w=828&amp;h=272&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2NQQ9F1DNJ3JPPHHPMF8VF1.01M2NQQAZTMK2XGXBXXWTN7BY9.png&amp;w=1080&amp;h=355&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2NQQ9F1DNJ3JPPHHPMF8VF1.01M2NQQAZTMK2XGXBXXWTN7BY9.png&amp;w=1280&amp;h=421&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2NQQ9F1DNJ3JPPHHPMF8VF1.01M2NQQAZTMK2XGXBXXWTN7BY9.png&amp;w=1430&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3372 4.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2NQQ9F1DNJ3JPPHHPMF8VF1.01M2NQQAZTMK2XGXBXXWTN7BY9.png&amp;w=1920&amp;h=630&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="630" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="235" class="pt-portable-image-media"></div>
+</figure>
+<h3><strong>如何保持隱蔽</strong></h3>
+<p>與透過標籤管理工具傳播的攻擊活動不同，這個指令碼直接嵌入在商家的 HTML 中。我們無法確定確切的初始入侵途徑；實際上，直接 HTML 插入通常透過入侵商店管理員憑證、未授權的範本編輯，或受感染的第三方主題或外掛程式來實現。</p>
+<p>在底層，指令碼是一個模組化工具包，包含活躍和休眠兩種狀態的程式碼。其舊版模組（透明點擊覆蓋層、搜尋引擎查詢攔截器、擴充功能商店連結重寫器，以及仿冒網域的重新導向，例如以 <code>buking[.]com </code>取代 <code>booking[.]com</code>）只在特定目標網站上啟動，因此在這個網路商店上保持關閉狀態。幾個嵌入的網域（<code>sugabit[.]net</code>、<code>votetoda[.]com</code>、<code>cdnpps[.]us</code> 以及遙測端點 <code>hanstrackr[.]com</code>）位於這些停用的模組中。</p>
+<p>在此商店上，活躍的分支專注於規避、遙測和遠端控制：</p>
+<ul>
+	<li><strong>對安全研究人員裝死。</strong>繼承自其瀏覽器擴充功能時代的規避技巧：指令碼監控搜尋輸入和 URL 查詢，以識別典型的廣告軟體術語。搜尋一個安全關鍵字就會使指令碼在該次存取期間暫停。搜尋兩個或更多則會向 <code>localStorage</code> 寫入持久性的退出記錄，永久使指令碼在該分析師的機器上沉默，使得重複測試時什麼也找不到。雖然最初是為了在搜尋引擎上躲避分析師而設計的，但據我們判斷，其檢測邏輯是針對 Google 搜尋 URL 硬編碼的，在網店的實際頁面上則處於休眠狀態。</li>
+	<li><strong>動態遠端程式碼執行。</strong>指令碼無需修改網路商店就能改變其行為。雖然硬編碼的網域（<code>scrprime[.]com</code>、<code>youronlinesearches[.]com</code>、<code>jullyambery[.]net</code>）與舊版捕獲的相同，但這些端點返回的內容完全由攻擊者決定。指令碼可以向攻擊者回傳訪客遙測資料，向這些伺服器請求新指令，並將全新的 JavaScript 直接拉取到購物者的瀏覽器中。實際上，這賦予了攻擊者一個在網路商店上執行任意程式碼的即時後門。我們無法確定實際上提供了哪些第二階段惡意載荷。</li>
+</ul>
+<p>總的來說，網站的靜態快照只顯示正常的網路商店，而底層的狀態檢查、反分析陷阱和遠端載入分支則揭露了這個後門。</p>
+<h2><strong>惡意行動 4：付費行動裝置偽裝者</strong></h2>
+<p>商店已經付費，透過行動廣告或行銷活動吸引這位訪客上門。惡意指令碼讓這次存取通過，然後切斷了商家的可見性。分析工具陷入黑暗，即時支援聊天消失，而一個流氓觀察者開始記錄商店剛剛付費取得的這個工作階段的遙測資料。</p>
+<p>在幕後，惡意載荷僅在此次存取滿足一系列嚴苛條件時才會執行：：確切的目標網路商店、狹窄的行動裝置螢幕，以及存取前兩頁時的活動標記。它在筆記型電腦、企業網路、雲端供應商和 VPN 上保持休眠，因此最有可能為頁面除錯的工程師永遠不會看到它觸發。指令碼還在特定美國城市和地區保持休眠，背後是一份包含 325 個 IP 字串的手工製作拒絕名單，以規避自動化掃描器和安全分析師。只有在這一切之後，指令碼才會嘗試拆除商店的監控系統、替換廣告和分析身分，並向外回傳資料。從錯誤的裝置或網路發起的第二次查看永遠不會觸發它。與此同時，網路商店仍在繼續銷售。</p>
+<h3><strong>商店的損失</strong></h3>
+<p>對於一家直接面向消費者的零售商，這個惡意軟體專門針對商店透過付費搜尋和行銷活動（<code>ppc</code>、<code>cpc</code>、<code>sms</code>、<code>paid</code>）付費取得的高價值流量。這些客戶仍然可以購買。然而商店面臨三個明確的威脅：廣告歸因被轉移以及不應得的發布商報酬、九個可觀測性工具的關鍵工作階段分析資料遺失，以及客服聊天和聯絡表單被抑制（阻止購物者提問或回報異常）。在沙盒瀏覽器環境中的動態分析確認，替換的分析指令碼已載入並觸發了一個追蹤信標（一個不可見的網路請求，用於記錄訪客活動），但攻擊者是否實際捕獲了工作階段遙測資料或在實際中轉移了廣告收益，仍未經證實。</p>
+<h3><strong>攻擊鏈</strong></h3>
+<p><code>含活動標記的行動裝置到達 → 多層偽裝和網路閘門 → 監控被破壞 → 廣告、分析和支援控制被改寫&nbsp;</code></p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA+ff49PLz6+jp5+Xm6+rs7+/x6uvs4N/f/vv69/X16+nq5eTn6+ru8fHz7u3v4+Li/////fr57ezt5ebq7e3y9vX59PP06ejm////////8/P06+zw8/P5/fz//Pr78fDu/////////f3+9vf6/f3/////////+vj3////////////////////////////////////////////////////////////////////////////////////////////////" alt="" width="715" height="235" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KNDAWEN0VK7S1WMKW0P2R1.01M2KNDCN29TK8T8Q04S5ZSEWT.png&amp;w=715&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KNDAWEN0VK7S1WMKW0P2R1.01M2KNDCN29TK8T8Q04S5ZSEWT.png&amp;w=640&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KNDAWEN0VK7S1WMKW0P2R1.01M2KNDCN29TK8T8Q04S5ZSEWT.png&amp;w=715&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KNDAWEN0VK7S1WMKW0P2R1.01M2KNDCN29TK8T8Q04S5ZSEWT.png&amp;w=750&amp;h=247&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KNDAWEN0VK7S1WMKW0P2R1.01M2KNDCN29TK8T8Q04S5ZSEWT.png&amp;w=828&amp;h=272&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KNDAWEN0VK7S1WMKW0P2R1.01M2KNDCN29TK8T8Q04S5ZSEWT.png&amp;w=1080&amp;h=355&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KNDAWEN0VK7S1WMKW0P2R1.01M2KNDCN29TK8T8Q04S5ZSEWT.png&amp;w=1280&amp;h=421&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KNDAWEN0VK7S1WMKW0P2R1.01M2KNDCN29TK8T8Q04S5ZSEWT.png&amp;w=1430&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3372 5.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M2KNDAWEN0VK7S1WMKW0P2R1.01M2KNDCN29TK8T8Q04S5ZSEWT.png&amp;w=1920&amp;h=630&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="630" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="235" class="pt-portable-image-media"></div>
+</figure>
+<h3><strong>如何保持隱蔽</strong></h3>
+<p>為了混入商店的行銷供應鏈，攻擊者從 <code>sdk-amazonaws[.]com</code> 傳遞惡意載荷，這是一個於 2024 年註冊的仿冒網域，與官方 Amazon Web Services 域名（<a href="http://amazonaws.com" target="_blank" rel="noopener noreferrer"><code>amazonaws.com</code></a>，於 2005 年註冊）毫無關聯。為了加深欺騙，攻擊者還在網域前加了一個模仿知名電商行銷平台的子網域。這個雙重疊加的仿冒品牌網域製造了一個令人信服的偽裝，專門設計來繞過快速的標籤審查。Amazon Web Services 和被模仿的行銷平台均未參與此次攻擊，也未遭受任何入侵。</p>
+<p>指令碼在瀏覽器中載入後，在觸發主要惡意載荷之前，執行了一個異常密集的偽裝閘門審查：</p>
+<ul>
+	<li><strong>目標主機和瀏覽上下文。指令碼</strong>驗證 <code>window.location.hostname</code> 是否符合其設計目標的特定商家主機（在其他地方立即退出），確保當前視窗是頂層視窗（而非嵌入的 iframe），並確認路徑中不包含 <code>/challenge</code>。它還驗證追蹤標記 Cookie（<code>_cart_dr</code> 和 <code><em>logo</em>alt</code>）尚未存在於瀏覽器中。</li>
+	<li><strong>裝置和活動篩選。</strong>訪客的視口寬度必須窄於 <code>477</code> 像素（手持智慧型手機）。此外，訪客必須透過帶有六個特定 UTM 媒介（Urchin Tracking Module，用於追蹤行銷活動的標準 URL 標籤）之一的首次觸及（訪客的初始推薦）活動到達：<code>ppc</code>、<code>cpc</code>、<code>sms</code>、<code>paid</code>、<code>flow</code> 或 <code>campaign</code>。而且必須是其工作階段的第一或第二次頁面載入。奇怪的是，雖然程式碼包含一個名義上的非 UTM 路徑，但它要求工作階段頁面計數同時大於 -1 且小於 -2（一個數學上不可能的條件，使該分支完全無法到達）。這可能是另一種干擾技術，也可能是程式碼變更的殘留。</li>
+	<li><strong>「隨機」閘門，但實際上永遠通過。</strong>程式碼中包含一個看起來像概率節流的條件（<code>Math.random() &lt;= threshold</code>），使執行看起來是間歇性的。然而，當我們解算去混淆後的數學運算時，閾值恰好等於 1。由於 JavaScript 的 <code>Math.random()</code> 始終返回嚴格小於 1 的值，這個閘門始終評估為 true。與不可到達的非活動分支一樣，這個條件實際上從未決定任何事情。它可能是一個殘留的節流機制，或是為了欺騙任何閱讀混淆程式碼的人而故意設置的偽裝。無論如何，捕獲的惡意載荷從未用它來跳過符合條件的訪客。</li>
+	<li><strong>第三方 IP 情報。</strong>指令碼使用嵌入的金鑰查詢外部第三方 IP 情報 API。它要求美國行動消費者連線，同時若回應標記了企業網路、託管設施、雲端供應商、bogon、Tor 出口節點、VPN、代理、中繼或一般威脅指標，則立即退出。</li>
+	<li><strong>地理排除。</strong>對於來自特定地區（<code>US-NY</code>、<code>US-CA</code> 和 <code>US-NHDD</code>）或來自舊金山、Plymouth、Compton、Hopkinton 和 Lafayette 等城市的訪客，惡意載荷不會啟動。</li>
+	<li><strong>325 項 IP 子字串陷阱。</strong>指令碼將訪客的 IP 與一個包含 325 個完整 IPv4 位址字串的嵌入式拒絕名單進行比對。去重後，這些代表了 249 個不同三段前綴下的 313 個唯一位址。指令碼的作者並未使用結構化的 CIDR（Classless Inter-Domain Routing）子網路比對，而是簡單地從訪客的 IPv4 位址中去掉最後一段，並執行原始子字串搜尋：<code>!denylistString.includes(visitorPrefix)</code>。</li>
+</ul>
+<p>以精簡後的偽代碼表示，多層主要啟動漏斗如下所示：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// 1. Context, device, and campaign gates</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> eligible </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> isTopWindow </span><span class="sk-d73a49-a0a0a0">&amp;&amp;</span><span class="sk-24292e-fff"> host </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-005cc5-fff"> EXPECTED_HOST</span><span class="sk-d73a49-a0a0a0"> &amp;&amp;</span><span class="sk-d73a49-a0a0a0"> !</span><span class="sk-24292e-fff">path.</span><span class="sk-6f42c1-ffc799">includes</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/challenge"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">eligible </span><span class="sk-d73a49-a0a0a0">&amp;&amp;=</span><span class="sk-d73a49-a0a0a0"> !</span><span class="sk-6f42c1-ffc799">hasCookie</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"_cart_dr"</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">&amp;&amp;</span><span class="sk-d73a49-a0a0a0"> !</span><span class="sk-6f42c1-ffc799">hasCookie</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"_logo_alt"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">eligible </span><span class="sk-d73a49-a0a0a0">&amp;&amp;=</span><span class="sk-24292e-fff"> viewportWidth </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799"> 477</span><span class="sk-d73a49-a0a0a0"> &amp;&amp;</span><span class="sk-24292e-fff"> [</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">].</span><span class="sk-6f42c1-ffc799">includes</span><span class="sk-24292e-fff">(sessionPage);</span></span>
+<span class="line"><span class="sk-24292e-fff">eligible </span><span class="sk-d73a49-a0a0a0">&amp;&amp;=</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"ppc"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"cpc"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"sms"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"paid"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"flow"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"campaign"</span><span class="sk-24292e-fff">].</span><span class="sk-6f42c1-ffc799">includes</span><span class="sk-24292e-fff">(utmMedium);</span></span>
+<span class="line"><span class="sk-24292e-fff">eligible </span><span class="sk-d73a49-a0a0a0">&amp;&amp;=</span><span class="sk-24292e-fff"> Math.</span><span class="sk-6f42c1-ffc799">random</span><span class="sk-24292e-fff">() </span><span class="sk-d73a49-a0a0a0">&lt;=</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">; </span><span class="sk-6a737d-8b8b8b94">// Apparent random gate always resolves to true</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// 2. IP intelligence &amp; geographic gates (fetching external API)</span></span>
+<span class="line"><span class="sk-24292e-fff">eligible </span><span class="sk-d73a49-a0a0a0">&amp;&amp;=</span><span class="sk-24292e-fff"> ipInfo.country </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "US"</span><span class="sk-d73a49-a0a0a0"> &amp;&amp;</span><span class="sk-24292e-fff"> ipInfo.isMobile </span><span class="sk-d73a49-a0a0a0">&amp;&amp;</span><span class="sk-d73a49-a0a0a0"> !</span><span class="sk-24292e-fff">ipInfo.isBusiness;</span></span>
+<span class="line"><span class="sk-24292e-fff">eligible </span><span class="sk-d73a49-a0a0a0">&amp;&amp;=</span><span class="sk-d73a49-a0a0a0"> !</span><span class="sk-24292e-fff">ipInfo.isCloud </span><span class="sk-d73a49-a0a0a0">&amp;&amp;</span><span class="sk-d73a49-a0a0a0"> !</span><span class="sk-24292e-fff">ipInfo.isProxy </span><span class="sk-d73a49-a0a0a0">&amp;&amp;</span><span class="sk-d73a49-a0a0a0"> !</span><span class="sk-24292e-fff">ipInfo.isVpn </span><span class="sk-d73a49-a0a0a0">&amp;&amp;</span><span class="sk-d73a49-a0a0a0"> !</span><span class="sk-24292e-fff">ipInfo.isTor </span><span class="sk-d73a49-a0a0a0">&amp;&amp;</span><span class="sk-d73a49-a0a0a0"> !</span><span class="sk-24292e-fff">ipInfo.isThreat;</span></span>
+<span class="line"><span class="sk-24292e-fff">eligible </span><span class="sk-d73a49-a0a0a0">&amp;&amp;=</span><span class="sk-d73a49-a0a0a0"> !</span><span class="sk-24292e-fff">[</span><span class="sk-032f62-99ffe4">"US-NY"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"US-CA"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"US-NHDD"</span><span class="sk-24292e-fff">].</span><span class="sk-6f42c1-ffc799">includes</span><span class="sk-24292e-fff">(ipInfo.region);</span></span>
+<span class="line"><span class="sk-24292e-fff">eligible </span><span class="sk-d73a49-a0a0a0">&amp;&amp;=</span><span class="sk-d73a49-a0a0a0"> !</span><span class="sk-005cc5-fff">EXCLUDED_CITIES</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">includes</span><span class="sk-24292e-fff">(ipInfo.city);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// 3. 325-entry IP prefix check (raw substring matching)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> clientPrefix </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> ipInfo.ip.</span><span class="sk-6f42c1-ffc799">slice</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, ipInfo.ip.</span><span class="sk-6f42c1-ffc799">lastIndexOf</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"."</span><span class="sk-24292e-fff">));</span></span>
+<span class="line"><span class="sk-24292e-fff">eligible </span><span class="sk-d73a49-a0a0a0">&amp;&amp;=</span><span class="sk-d73a49-a0a0a0"> !</span><span class="sk-005cc5-fff">DENYLIST_STRING</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">includes</span><span class="sk-24292e-fff">(clientPrefix);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">eligible) </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff">; </span><span class="sk-6a737d-8b8b8b94">// Cloak passes only for qualifying consumer mobile sessions</span></span>
+<span class="line"></span>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<h3>破壞可觀測性並劫持身分</h3>
+<p>只有在所有主要閘門通過後，指令碼才會執行其惡意載荷：</p>
+<ul>
+	<li><strong>使監控工具失效。</strong>它搜尋 DOM 並移除九個不同可觀測性和分析服務的指令碼標籤：Lucky Orange、Segment、Optimizely、New Relic、Bugsnag、LogRocket、Hotjar、Microsoft Clarity，以及商店的 Google Tag Manager 容器（<code>GTM-&lt;redacted&gt;</code>）。在剩餘的內聯指令碼中，它用未定義的虛擬識別符（<code>hji0</code>）字串替換對這些工具的引用，使對它們的呼叫靜默失敗，試圖使商店的錯誤回報和監控失效。</li>
+	<li><strong>抑制客戶支援。</strong>它注入 CSS 並移除元素以隱藏其支援聊天和聯絡表單容器，切斷客戶與商店支援的直接溝通管道。</li>
+	<li><strong>替換廣告和分析身分。</strong>它清除 Google Ads 全域變數（<code>google_ad_modifications</code>、<code>adsbygoogle</code>），拆除現有廣告位（<code>ca-pub-&lt;original&gt;</code>），並以替換的發布商 ID（<code>ca-pub-&lt;replacement&gt;</code>）載入 Google Ads。然後注入一個設定了流氓替換專案 ID 的新 Microsoft Clarity 工作階段重播指令碼。</li>
+</ul>
+<h3><strong>更簡單的獨立信標和 600 天標記</strong></h3>
+<p>與複雜的主要偽裝形成鮮明對比，惡意載荷還包含次要信標分支（獨立的例行程式，悄悄 ping 外部伺服器以確認存取），這些分支完全繞過了視口、主機名稱、活動、地理和 IP 閘門。如果訪客在第二頁或更後面的頁面，指令碼就會寫入一個有效期恰好為 600 天（51,840,000,000 毫秒）的持久 Cookie（<code>_cart_dr=1</code>），並向 <code>maper[.]info</code> 上的遠端遙測端點傳送一個不可見的零像素圖片請求（一個追蹤信標，用於記錄瀏覽器達到此步驟）。</p>
+<p>一個單獨的分支會檢查另一個標記（<code>_logo_alt</code>），這將觸發第二個遙測 <code>.png</code> 信標（該指令碼會查找此 Cookie，但自身並不建立它；它很可能是由另一個配套指令碼植入的）。這讓攻擊者能夠透過一個簡單、持久的計數器，記錄整個商店中所有訪客的基本流量（在端點記錄 IP 和 User-Agent），同時將其高風險的廣告劫持例程嚴格隱藏在行動裝置偽裝之後（高價值付費到達訪客）。這說明了為何只分析一個可見的影響，無法揭露一個多用途負載的完整觸及範圍。</p>
+<h2><strong>入侵指標 (IOC)</strong></h2>
+<p>我們發布這些指標，以幫助安全團隊和研究人員在其自身環境中偵測和追蹤這些攻擊活動。所有指標均直接來自捕獲的惡意載荷及其網路連接。列出的 URL 已經過去除危害性處理。部分指標已被保留或泛化，因為發布它們可能會無意中洩露受影響組織的身分。列出的網域反映了在這些攻擊的傳遞、重新導向或遙測鏈中觀察到的基礎設施；列入清單並不意味著共用服務或託管供應商是專門的惡意實體。</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 601px;">
+		<colgroup>
+			<col style="width: 200px;">
+			<col style="width: 161px;">
+			<col style="width: 240px;">
+		</colgroup>
+		<tbody>
+			<tr>
+				<td>
+					<p><strong>惡意行動</strong></p>
+				</td>
+				<td>
+					<p><strong>指標</strong></p>
+				</td>
+				<td>
+					<p><strong>類型和角色</strong></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><strong>1) 非上班時間聯盟行銷佣金劫持者</strong></p>
+				</td>
+				<td>
+					<p>adtargett[.]com</p>
+				</td>
+				<td>
+					<p>指令碼傳遞和聯盟重新導向仿冒網域</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><strong>1) 非上班時間聯盟行銷佣金劫持者</strong></p>
+				</td>
+				<td>
+					<p>gdataroute[.]com</p>
+				</td>
+				<td>
+					<p>在攻擊鏈中觀察到的聯盟重新導向短連結服務</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><strong>3) 舊式搜尋破壞者，現為網路商店後門</strong></p>
+				</td>
+				<td>
+					<p>scrprime[.]com</p>
+				</td>
+				<td>
+					<p>瀏覽器劫持指令碼傳遞</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><strong>3) 舊式搜尋破壞者，現為網路商店後門</strong></p>
+				</td>
+				<td>
+					<p>searchvalidation[.]com</p>
+				</td>
+				<td>
+					<p>搜尋劫持和流量重新導向網域</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><strong>3) 舊式搜尋破壞者，現為網路商店後門</strong></p>
+				</td>
+				<td>
+					<p>sugabit[.]net</p>
+				</td>
+				<td>
+					<p>強制搜尋重新導向網域</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><strong>3) 舊式搜尋破壞者，現為網路商店後門</strong></p>
+				</td>
+				<td>
+					<p>youronlinesearches[.]com</p>
+				</td>
+				<td>
+					<p>有條件的遠端指令碼傳遞網域</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><strong>3) 舊式搜尋破壞者，現為網路商店後門</strong></p>
+				</td>
+				<td>
+					<p>hublosk[.]com</p>
+				</td>
+				<td>
+					<p>遠端指令碼傳遞網域</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><strong>3) 舊式搜尋破壞者，現為網路商店後門</strong></p>
+				</td>
+				<td>
+					<p>jullyambery[.]net</p>
+				</td>
+				<td>
+					<p>遠端 JavaScript API 和指令網域</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><strong>3) 舊式搜尋破壞者，現為網路商店後門</strong></p>
+				</td>
+				<td>
+					<p>votetoda[.]com</p>
+				</td>
+				<td>
+					<p>注入惡意載荷傳遞網域</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><strong>3) 舊式搜尋破壞者，現為網路商店後門</strong></p>
+				</td>
+				<td>
+					<p>hanstrackr[.]com</p>
+				</td>
+				<td>
+					<p>隱藏訪客遙測網域</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><strong>3) 舊式搜尋破壞者，現為網路商店後門</strong></p>
+				</td>
+				<td>
+					<p>adrs[.]me</p>
+				</td>
+				<td>
+					<p>在攻擊鏈中觀察到的仿冒網域流量重新導向服務</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><strong>3) 舊式搜尋破壞者，現為網路商店後門</strong></p>
+				</td>
+				<td>
+					<p>youradexchange[.]com</p>
+				</td>
+				<td>
+					<p>在攻擊鏈中觀察到的變現重新導向服務</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><strong>3) 舊式搜尋破壞者，現為網路商店後門</strong></p>
+				</td>
+				<td>
+					<p>cdnpps[.]us</p>
+				</td>
+				<td>
+					<p>注入廣告框架傳遞網域</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><strong>4) 付費行動裝置偽裝者</strong></p>
+				</td>
+				<td>
+					<p>sdk-amazonaws[.]com</p>
+				</td>
+				<td>
+					<p>濫用品牌信任的仿冒指令碼傳遞網域</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><strong>4) 付費行動裝置偽裝者</strong></p>
+				</td>
+				<td>
+					<p>maper[.]info</p>
+				</td>
+				<td>
+					<p>有條件的訪客遙測信標網域</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h2><strong>給防禦者的四點啟示</strong></h2>
+<p>綜觀這四個惡意行動，它們呈現出一個不斷升級的故事：攻擊者改變了目標、傳遞路徑和偽裝方式，但瀏覽器仍然必須執行他們的邏輯。以下四個啟示值得特別關注。</p>
+<p><strong>行為勝過特徵碼。</strong>這些惡意行動追求不同形式的變現和操控，但每個惡意載荷仍必須在瀏覽器中行動：觀察事件、檢查狀態、修改頁面、排程工作、發出網路請求或載入下一階段。這正是結構分析所尋找的：惡意載荷必須攜帶的邏輯，即使 URL、特徵碼和目標發生變化。</p>
+<p><strong>選擇性執行是攻擊的一部分，而非附帶說明。</strong>裝置、時間、地理位置、參照來源、工作階段、網路和冷卻期閘門都能擊敗只存取一次並取得靜態快照的網路爬蟲。持續可見性至關重要，因為攻擊可能只對某個特定瀏覽器、在某個特定狀態、在某個特定時刻才出現。</p>
+<p><strong>混淆提高了分析成本，但在這些案例中並未阻止偵測。</strong>自我防禦循環、主控台抑制、偵錯器陷阱、輪換字串表和死分支使分析複雜化。Page Shield ML 仍然在這些障礙下發現了全部四個惡意行動。快速的內部模型大規模浮現可疑程式碼，而前沿模型則調查最困難的案例。它們之間的分歧突出了最棘手的混淆和邏輯，幫助我們縮小關注範圍。</p>
+<p><strong>上下文完善了全貌。</strong>孤立看起來普通的程式碼，一旦防禦者將靜態分析與動態上下文連結起來，便能揭示其惡意角色：它如何到達、哪個瀏覽器狀態啟動了它、它打開了哪些連線，以及它在執行時實際做了什麼。</p>
+<h2><strong>持續監控用戶端執行情況</strong></h2>
+<p>這四個惡意行動依賴不同層次的誤導，但它們都有一個共同的限制：它們的 JavaScript 必須在瀏覽器中執行。公共掃描器和靜態爬取可能會錯過有閘門的行為。持續觀察有助於釐清程式碼在真實訪客與頁面互動時實際執行的操作。</p>
+<p>Cloudflare <a href="https://developers.cloudflare.com/client-side-security/?cf_page=client-side-security-finds-4-malicious-campaigns%2F" target="_blank" rel="noopener noreferrer"><u>Client-Side Security</u></a> 在所有方案中均提供這種可見性。您可以在安全性設定下開啟「持續指令碼監控」，追蹤網路商店上的第一方和第三方指令碼，而自動化惡意指令碼偵測和警報功能則可透過 <a href="https://developers.cloudflare.com/client-side-security/?cf_page=client-side-security-finds-4-malicious-campaigns%2F#availability" target="_blank" rel="noopener noreferrer"><u>Client-Side Security Advanced</u></a> 獲得。您可以直接在 <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fweb-assets&amp;cf_page=client-side-security-finds-4-malicious-campaigns%2F" target="_blank" rel="noopener noreferrer"><u>Cloudflare 儀表板</u></a>中查看指令碼活動並管理偵測結果。</p>

@@ -1,0 +1,356 @@
+<p>Today, we’re making Cloudflare Containers more programmable and optimized for agent workloads. Agents don't deploy sandboxes ahead of time. They create sandboxes on demand, for each task, expect them to be ready immediately, and be able to pause and resume. So we rearchitected Containers to meet these requirements: your code can now choose each sandbox's image and instance type at runtime, Containers start 6x faster, and filesystem snapshots are available in public beta.<br><br>To make this possible, we’ve rethought the Containers infrastructure from the bottom up. A new scheduling policy moves control over each sandbox into application code, while a redesigned runtime provides a faster path to a running Container. In ComputeSDK’s independent benchmark, median startup fell from just over four seconds to 648 milliseconds, and, in our own preliminary tests, burst testing successfully created hundreds of thousands of containers in seconds.</p>
+<p>All of this builds on what has always set Containers on Cloudflare apart: every Container gets its own Durable Object, a persistent, programmable controller running right next to it that manages its lifecycle, outbound traffic, and more. We are bringing more capabilities directly to the native <code>ctx.container</code> API, so the Durable Object can control its Container without a wrapper class in between, and we’re carrying this model into Sandbox SDK 1.0.<br><br>As we wrote earlier this year, <a href="https://blog.cloudflare.com/cloudflare-computer" target="_blank" rel="noopener noreferrer"><u>your agent needs a computer.</u></a> These changes make Containers a better complement to Workers, Dynamic Workers, and Durable Objects when agents need a full Linux workspace.</p>
+<h2>Rethinking Containers’ runtime for agents</h2>
+<p>Until now, Cloudflare Containers has been organized around application deployments. You choose an image and compute resources at deploy time, roll that configuration out across the application, and manage it centrally. The application is the unit of configuration and rollout.<br><br>An agent workspace is different: it’s created on demand, while the agent is working. The task determines its image, resources, tools, and starting filesystem. It might exist for a few minutes, sleep between requests, or be restored days later. Those decisions need to live with the application code handling the task, and the agent's sandbox needs to start up fast, because every second of startup is time your users spend waiting.</p>
+<p>We’ve seen this pattern with Base44 on app-building workspaces and Kilo Code on cloud-agent sessions. It also appears in our integrations with <a href="https://developers.cloudflare.com/changelog/post/2026-09-02-cursor-cloud-agents" target="_blank" rel="noopener noreferrer"><u>Cursor Cloud Agents</u></a>, <a href="https://developers.cloudflare.com/changelog/post/2026-07-21-devin-outposts" target="_blank" rel="noopener noreferrer"><u>Devin Outposts</u></a>, the <a href="https://developers.cloudflare.com/changelog/post/2026-09-10-using-openai-agents-api-with-cloudflare-containers" target="_blank" rel="noopener noreferrer"><u>OpenAI Agents API</u></a>, and <a href="https://blog.cloudflare.com/claude-managed-agents" target="_blank" rel="noopener noreferrer"><u>Claude Managed Agents</u></a>.</p>
+<p>Each of these workloads needs something different from the workspace. Coding agents need repositories, package managers, compilers, test runners, and development servers. Evals need sandboxes that begin from a known state. Reinforcement learning systems need to create, grade, and reset large numbers of environments. Longer-running tasks need to preserve the files an agent produces, so work can continue later.</p>
+<p>These requirements led us to fundamentally rethink how Cloudflare Containers are configured, scheduled, and saved. The result is a new way to provision and schedule Containers: the <code>durable_object</code> scheduling policy. It lets your code choose each sandbox’s image and compute resources at runtime, starts Containers more than 6x faster, and supports filesystem snapshots, so workspaces can be saved and restored.</p>
+<blockquote>
+	<p><em>“At Base44, we help anyone turn an idea into a working app. Cloudflare Containers gives each app an isolated development environment where our AI can execute commands, install dependencies, and bring changes to life in a live preview.”</em></p>
+	<p><em>Dolev Epshtein, Software Engineer, App Infrastructure at Base44</em></p>
+</blockquote>
+<hr class="emdash-break emdash-break-line">
+<blockquote>
+	<p><em>“At Kilo Code, every cloud-agent session needs its own workspace and environment, with the right repository, tools, and user configuration. Cloudflare Containers lets us create those isolated environments on demand, so our agents can start running commands quickly and get to work for our customers.”</em></p>
+	<p><em>Emilie Schario, Co-founder of Kilo Code and VP Engineering, AI Workspaces at Anaconda</em></p>
+</blockquote>
+<h2>Choose the sandbox your agent needs, from code</h2>
+<p><a href="https://blog.cloudflare.com/containers-are-available-in-public-beta-for-simple-global-and-programmable" target="_blank" rel="noopener noreferrer"><u>From the start</u></a>, every Cloudflare Container instance has been attached to a Durable Object. The Durable Object gives the environment a stable identity and lets application code control when it starts, sleeps, and stops. This model has proven particularly well-suited to agent sandboxes.</p>
+<p>Until now, though, the two decisions that matter most for an agent sandbox were locked in at deploy time: which image it runs and how much compute it gets. Each combination of image and instance type was its own Containers application, with its own Durable Object namespace, set up ahead of time with <code>wrangler deploy</code>.&nbsp;</p>
+<p>Say one agent needs a small <a href="https://nodejs.org" target="_blank" rel="noopener noreferrer"><u>Node.js</u></a> sandbox and another needs a large Python sandbox for builds. With our previous approach, that required two applications, two namespaces, and routing logic in your Worker to send each task to the right one. Every new environment meant another deployment.&nbsp;</p>
+<p>The new <code>durable_object</code> scheduling policy removes that. The image and instance type are now arguments your code passes when the sandbox starts. To opt in, set the scheduling policy and declare the images your Durable Object can choose from:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// wrangler.jsonc</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "containers"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "class_name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"AgentSandbox"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "scheduling_policy"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"durable_object"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "images"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "node"</span><span class="sk-24292e-fff">: { </span><span class="sk-032f62-99ffe4">"dockerfile"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"./images/node/Dockerfile"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "python"</span><span class="sk-24292e-fff">: { </span><span class="sk-032f62-99ffe4">"dockerfile"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"./images/python/Dockerfile"</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  ],</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "durable_objects"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "bindings"</span><span class="sk-24292e-fff">: [{ </span><span class="sk-032f62-99ffe4">"name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"SANDBOX"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"class_name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"AgentSandbox"</span><span class="sk-24292e-fff"> }]</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p>Each image you declare is available as <code>this.ctx.container.images.&lt;name&gt; </code>within the Durable Object. When a task arrives, your code picks the image and instance type for that task:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { DurableObject } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "cloudflare:workers"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> AgentSandbox</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> DurableObject</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> startWorkspace</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">workspace</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.ctx.container.running) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> image</span><span class="sk-d73a49-a0a0a0"> =</span></span>
+<span class="line"><span class="sk-24292e-fff">      workspace.toolchain </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "python"</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        ?</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.ctx.container.images.python	</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        :</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.ctx.container.images.node;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> instance</span><span class="sk-d73a49-a0a0a0"> =</span></span>
+<span class="line"><span class="sk-24292e-fff">      workspace.workload </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "build"</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        ?</span><span class="sk-032f62-99ffe4"> "standard-2"</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        :</span><span class="sk-032f62-99ffe4"> "standard-1"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.ctx.container.</span><span class="sk-6f42c1-ffc799">start</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">      image,</span></span>
+<span class="line"><span class="sk-24292e-fff">      instance,</span></span>
+<span class="line"><span class="sk-24292e-fff">      enableInternet: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>This code makes two decisions after the task is known. It chooses the toolchain the workspace needs and how much compute to give it. What used to take a separate application and a separate <code>wrangler deploy</code> is now an <code>if</code> statement. One Durable Object class can start <a href="http://node.js" target="_blank" rel="noopener noreferrer"><u>Node.js</u></a> and Python sandboxes of different sizes side by side, and adding a new environment is a code change, not a new deployment. That’s the idea behind this whole update: infrastructure becomes code that runs at request time, right down to the environment itself.</p>
+<h3>Rollouts are now just code</h3>
+<p>Choosing the image at start time also fixes one of the most painful parts of running Containers: rollouts.</p>
+<p>Before, updating an image meant updating the whole application. You set grace periods, so running instances could drain, defined percentage splits to move traffic gradually, and called our API to push the new configuration. Throughout that process, the platform decided which instances got replaced and when, whether an agent was in the middle of a task.</p>
+<p>With the <code>durable_object</code> scheduling policy, there's no rollout configuration at all. A Container can keep running the image it started with until your code stops it. The next time that Durable Object starts a Container, it uses whatever image your code chooses. That means any rollout strategy you want is a few lines of code:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> image</span><span class="sk-d73a49-a0a0a0"> =</span></span>
+<span class="line"><span class="sk-24292e-fff">  (</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.ctx.storage.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"pinned-image"</span><span class="sk-24292e-fff">)) </span><span class="sk-d73a49-a0a0a0">??</span></span>
+<span class="line"><span class="sk-24292e-fff">  (</span><span class="sk-6f42c1-ffc799">isCanary</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.ctx.id)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    ?</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.ctx.container.images.nodeV2</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    :</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.ctx.container.images.node);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>For example, you can:</p>
+<ul>
+	<li><strong>Canary</strong> a new toolchain on 5% of new sandboxes by hashing the Durable Object ID.</li>
+	<li><strong>Pin</strong> active projects to their current image, so an agent never has its environment swapped out mid-task.</li>
+	<li><strong>Migrate</strong> a workspace at a natural checkpoint, like the next session or after a snapshot.</li>
+	<li><strong>Roll back</strong> by changing which image future starts choose. No config push, no waiting for a drain.</li>
+</ul>
+<p>The rollout policy lives in your Durable Object code, next to the rest of your logic, and it can be as simple or as sophisticated as you need.</p>
+<p>Each of these improvements comes from <strong>leaning further into</strong> the Durable Object, which already owns the workspace's identity, state, and lifecycle. Letting it choose and control its Container <strong>gives you more control</strong> over every instance and its rollout. It also gives the scheduler a better place to start the Container: wherever the Durable Object is already running. That's what gets the agent to its first command faster.</p>
+<h2>Faster first commands</h2>
+<p>Previously, starting a Container required our global control plane to resolve the application configuration, find capacity, and coordinate placement. That model works well for application-wide fleets, but it put deployment machinery in the path of an agent’s first command.</p>
+<p>With the <code>durable_object</code> scheduling policy, demand begins at the Durable Object. The Containers infrastructure serving it looks for capacity on the same machine first, then widens the search within the same location if it needs to. It also favors hosts that already have the Container’s image or snapshot in local storage, so the Container can start without downloading it first.&nbsp;</p>
+<p>We also cut work after the Container reaches a host. Instead of booting a new virtual machine from scratch, the new runtime restores a prepared virtual machine that isn’t yet assigned. It reuses networking and filesystem setup, batches repeated operations, and no longer waits on services the first command doesn’t need.&nbsp;</p>
+<p>Together, these changes substantially reduce the time it takes to go from creating a sandbox to running a command in it. On ComputeSDK’s independent <a href="https://www.computesdk.com/benchmarks/sandboxes/burst-tti/cloudflare" target="_blank" rel="noopener noreferrer"><u>Burst TTI Benchmark</u></a>, which launches 100 sandboxes concurrently and measures time-to-interactive from the client:</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 684px;">
+		<colgroup>
+			<col style="width: 164px;">
+			<col style="width: 186px;">
+			<col style="width: 167px;">
+			<col style="width: 167px;">
+		</colgroup>
+		<thead>
+			<tr>
+				<th scope="col" style="text-align: center;">
+					<p>Startup measurement</p>
+				</th>
+				<th scope="col" style="text-align: center;">
+					<p>Previous scheduling path</p>
+				</th>
+				<th scope="col" style="text-align: center;">
+					<p>New scheduling policy</p>
+				</th>
+				<th scope="col" style="text-align: center;">
+					<p>Improvement</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<p>Median</p>
+				</td>
+				<td>
+					<p>4.049 seconds</p>
+				</td>
+				<td>
+					<p>648 milliseconds</p>
+				</td>
+				<td>
+					<p>6.2x faster</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>95th percentile</p>
+				</td>
+				<td>
+					<p>5.839 seconds</p>
+				</td>
+				<td>
+					<p>910 milliseconds</p>
+				</td>
+				<td>
+					<p>6.4x faster</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>99th percentile</p>
+				</td>
+				<td>
+					<p>6.717 seconds</p>
+				</td>
+				<td>
+					<p>1129 milliseconds</p>
+				</td>
+				<td>
+					<p>5.9x faster</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>The new path also holds up under burst load. In our preliminary burst test, a single account started 100,000 Containers in 5.387 seconds across six locations.</p>
+<h3>Start with a prepared system image</h3>
+<p>As the scheduling path gets faster, preparing the image becomes a larger part of the remaining wait. Before a Container can start, its image has to be on the host and unpacked into a filesystem. When that work happens after the request arrives, the agent is left waiting.</p>
+<p>That’s why we are introducing <code>cloudflare/debian-trixie</code>: a ready-to-use system image for agents that can configure their environment at runtime, containing Debian Trixie Slim and Node.js 24.20.0 LTS:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.ctx.container.</span><span class="sk-6f42c1-ffc799">start</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  image: </span><span class="sk-032f62-99ffe4">"cloudflare/debian-trixie"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  instance: </span><span class="sk-032f62-99ffe4">"standard-2"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  enableInternet: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  entrypoint: [</span><span class="sk-032f62-99ffe4">"/bin/sleep"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"infinity"</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>This means your agent can start a Linux sandbox without first creating a Dockerfile, building an image, or pushing it to Cloudflare. Once the sandbox is running, your agent can use <code>exec()</code> to clone a repository, install packages, and configure the environment for its task.</p>
+<p>And because Cloudflare controls this image, we can distribute and prepare it across eligible Containers hosts before requests arrive. Startups don’t have to download or unpack the base image while the user waits.</p>
+<h2>Save the workspace and return to it later</h2>
+<p>A fast start still leaves one more wait: setting up the workspace. Cloning a repository, installing dependencies, and configuring a toolchain can take much longer than starting the Container itself. As the agent works, it also produces files you want to keep. Repeating setup on every start wastes time, and losing the agent’s changes makes it difficult to continue a task.<br><br>That is why we’re adding native filesystem snapshots to Containers, in public beta. Snapshots let an agent begin a task in a prepared environment, save its workspace when the task pauses, and restore those files when the session resumes.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">async </span><span class="sk-6f42c1-ffc799">saveWorkspace</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> snapshot</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.ctx.container.</span><span class="sk-6f42c1-ffc799">snapshotContainer</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">    name: </span><span class="sk-032f62-99ffe4">"project-ready"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.ctx.storage.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"workspace-snapshot"</span><span class="sk-24292e-fff">, snapshot);</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">async </span><span class="sk-6f42c1-ffc799">restoreWorkspace</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> snapshot</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.ctx.storage.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"workspace-snapshot"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">snapshot) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    throw</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"No workspace snapshot found"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">  this</span><span class="sk-24292e-fff">.ctx.container.</span><span class="sk-6f42c1-ffc799">start</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">    containerSnapshot: snapshot,</span></span>
+<span class="line"><span class="sk-24292e-fff">    instance: </span><span class="sk-032f62-99ffe4">"standard-2"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    enableInternet: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>Snapshots enable two useful patterns.</p>
+<p>First, one workspace can continue across many sessions. For a coding agent, that might mean saving the workspace when the user finishes working and restoring it when they return the next day. The repository, installed dependencies, build caches, configuration, and edits are available without rebuilding the environment.</p>
+<p>Second, a snapshot can provide a shared checkpoint for many sandboxes. Since snapshots are immutable and reusable, multiple Containers can start independently of the same prepared environment and make their own changes from there.</p>
+<p>Agent evaluations are a good example. An eval might run the same task across different system prompts, skills, models, or agent versions. To compare the results, everything else has to stay fixed: the repository, dependencies, tools, and input files. One snapshot can start many isolated environments from the same baseline, reducing setup time and preventing environment drift from affecting the results.</p>
+<p>Snapshots also complement the new system image we introduced above. An agent can start from <code>cloudflare/debian-trixie</code>, set up its environment with <code>exec()</code>, and save the result as a snapshot. Future sandboxes then start from that snapshot with the repository, dependencies, and toolchain already in place.</p>
+<p>With snapshots available through the new <code>durable_object</code> scheduling policy, Containers can act as persistent agent workspaces. Compute can stop when work pauses, and a new Container can start from the latest snapshot to pick up where it left off.</p>
+<h2>The Durable Object advantage for agent sandboxes</h2>
+<p>The faster scheduling path, runtime image selection, and filesystem snapshots all come from the same design choice: leaning further <strong>into</strong> the Durable Object as the controller for its attached Container.</p>
+<p>Agent systems need a programmable, stateful environment outside the Container to keep state, hold credentials, and control the sandbox’s lifecycle. You can run the agent there, following the “<a href="https://www.anthropic.com/engineering/managed-agents" target="_blank" rel="noopener noreferrer"><u>decoupling the brain from the hands</u></a>” pattern described by Anthropic: when the agent is separate from the sandbox where it works, the agent stays available while its sandboxes and tools can start, stop, fail, or be replaced independently. Or, if you run the agent inside the sandbox, the outside environment lets you supervise it and report progress back to the user.</p>
+<p>This is where the Durable Object and Container architecture becomes uniquely well-suited. Every Container is attached to a stateful Durable Object with its own compute and storage running right next to it. You can run the agent in the Durable Object and use the Container as its workspace, or run the agent in the Container and use the Durable Object to supervise it. Add <a href="https://developers.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Dynamic Workers</u></a> for lightweight isolated execution, and an application can choose the execution environment each task requires.</p>
+<p>What’s new with the <code>durable_object</code> scheduling policy is that the Durable Object can now control its Container directly, with no wrapper class in between. <code>exec() </code>runs directly in the Workers runtime, and outbound request interception, runtime image and instance selection, and filesystem snapshots are all available on <code>ctx.container.</code> You can combine them with Durable Object storage, alarms, WebSockets, RPC and the rest of your code.</p>
+<p>This makes the Container a compute extension of the Durable Object. The Container supplies the Linux environment, while your Durable Object retains the sandbox’s identity, state, policy, and lifecycle. That split is especially well-suited for several patterns:</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA9PXy7/Dv4+Xp3eDm4+bo7O3r7e7q5+fl+vz78/b45enx3+Tu5+vx8PT08fPy6evr////+fz/6e764un36/H79vv+9fr77O/z/////f//7fL/5u3+7/b/+v//+v//7/P4////////8fX/6vD/8/n//f///P//8vb6////////9Pf/7vL/9fr//v///f//9Pf6////////9vf/8fP+9/n//v///f//9vf5////////9/f/8vP99/n//v///f7+9vf4" alt="" width="715" height="427" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3RZHX4W63MBJM5R8X7VVE2G.01M3RZHXT3X1AAZRW96ZVHJNB2.png&amp;w=715&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3RZHX4W63MBJM5R8X7VVE2G.01M3RZHXT3X1AAZRW96ZVHJNB2.png&amp;w=640&amp;h=382&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3RZHX4W63MBJM5R8X7VVE2G.01M3RZHXT3X1AAZRW96ZVHJNB2.png&amp;w=715&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3RZHX4W63MBJM5R8X7VVE2G.01M3RZHXT3X1AAZRW96ZVHJNB2.png&amp;w=750&amp;h=448&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3RZHX4W63MBJM5R8X7VVE2G.01M3RZHXT3X1AAZRW96ZVHJNB2.png&amp;w=828&amp;h=494&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3RZHX4W63MBJM5R8X7VVE2G.01M3RZHXT3X1AAZRW96ZVHJNB2.png&amp;w=1080&amp;h=645&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3RZHX4W63MBJM5R8X7VVE2G.01M3RZHXT3X1AAZRW96ZVHJNB2.png&amp;w=1280&amp;h=764&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3RZHX4W63MBJM5R8X7VVE2G.01M3RZHXT3X1AAZRW96ZVHJNB2.png&amp;w=1430&amp;h=854&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image2.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3RZHX4W63MBJM5R8X7VVE2G.01M3RZHXT3X1AAZRW96ZVHJNB2.png&amp;w=1920&amp;h=1147&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1147" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="427" class="pt-portable-image-media"></div>
+</figure>
+<p><strong>An agent can remain available while its Linux workspace sleeps.</strong> The agent loop can run in the Durable Object, where it maintains session state, communicates with the user over WebSockets, and calls models. It can wake the Container when it needs a shell, compiler, or development server, then stop that compute while it waits for the user or model, paying nothing for idle Linux compute.</p>
+<p><strong>The Durable Object can program the security boundary around its Container.</strong> It can remember which services, repositories, and operations a user has authorized, then update the Container’s Outbound Request Handler to inject newly granted credentials, enforce new policies, or record additional activity. This resembles the <a href="https://blog.cloudflare.com/cloudflare-os" target="_blank" rel="noopener noreferrer"><u>Gatekeeper pattern used by Cloudflare OS</u></a>, applied to each agent computer.</p>
+<p><strong>Evals and reinforcement learning systems can supervise each attempt from outside the environment being tested.</strong> A coordinator snapshots a base workspace and forks it into N attempts, each with its own Durable Object and a Container. Each Durable Object runs its attempt, monitors the run, and preserves the result, even if the Container crashes. The coordinator grades the attempts, snapshots the best one, and forks again from there.&nbsp;</p>
+<p>These patterns don’t fit one generic lifecycle. Native APIs let you combine the Container with the Durable Object primitives your application needs, while still using higher-level utilities where they help. You keep control over the Container’s lifecycle, policy, and state.</p>
+<h3>What this means for the Container class and Sandbox SDK</h3>
+<p>When we launched Containers, we deliberately hid the Durable Object behind the Container class. We wanted sandboxes to feel familiar and match what developers expected from other platforms. The Sandbox SDK was built on that class, and it filled real gaps: back then, the runtime had no native command execution, outbound request interception, or snapshots, so we built them in userspace.</p>
+<p>Since then, agent workspaces have become one of the main workloads shaping Containers, and the cost of that abstraction has become clear. By hiding the Durable Object, we made it harder for you to see and combine the identity, state, and coordination it provides with the Container it controls. Nearly every team we worked with needed something slightly different from the generic lifecycle: their own sleep policy, their own credential handling, their own way of tracking eval runs.</p>
+<p>These capabilities are now native, so we're making the Durable Object explicit in the developer experience:</p>
+<ul>
+	<li>New capabilities are native-only. The <code>durable_object</code> scheduling policy, faster startup, runtime image and instance selection, and filesystem snapshots are available only through <code>ctx.container</code>.</li>
+	<li>We'll maintain the <code>Container</code> class and legacy <code>Sandbox</code> class through December 31, 2026. Existing deployments keep running after that date, but the classes won't get updates. We recommend migrating to <code>ctx.container</code>.</li>
+	<li>Sandbox SDK 1.0 is a set of utilities, not a base class. Its helpers work inside your own Durable Object class, alongside ctx.container.</li>
+	<li>For a higher-level environment, <code>@cloudflare/computer</code> combines Dynamic Workers and Containers with a synchronized filesystem.</li>
+</ul>
+<p>Migrating usually means changing extends <code>Container</code> to extends <code>DurableObject</code> and calling <code>this.ctx.container</code> directly. See the <a href="https://developers.cloudflare.com/containers/guides/migrate-to-durable-object-container-api" target="_blank" rel="noopener noreferrer"><u>migration guide</u></a> for details. Or, get started with your agents:</p>
+<div class="copy-prompt relative my-8 flex w-max max-w-full" data-copy-prompt=""><button type="button" aria-label="Copy prompt" class="copy-prompt__button inline-flex w-max max-w-full shrink-0 items-center justify-center rounded-full font-sans whitespace-nowrap no-underline select-none" data-copy-prompt-button="" data-prompt="&quot;Migrate this project's Cloudflare Containers integration to the Durable Object Container API (this.ctx.container) and the \&quot;durable_object\&quot; scheduling policy. If it uses @cloudflare/sandbox 0.x, move it to Sandbox SDK 1.0. Add Container snapshots only where they clearly help. Preserve existing behavior and user data.\n\nThe docs are the source of truth. Read them first, follow the guide that matches each part of this repo, and verify published package, image and Wrangler versions (append /index.md to any URL for Markdown):\n  - https://developers.cloudflare.com/containers/llms.txt\n  - https://developers.cloudflare.com/containers/guides/migrate-to-durable-object-scheduling-policy/\n  - https://developers.cloudflare.com/containers/guides/migrate-to-durable-object-container-api/\n  - https://developers.cloudflare.com/containers/guides/snapshots/\n  - If the project uses @cloudflare/sandbox: https://developers.cloudflare.com/sandbox/sdk/migrate/ and the feature pages it maps to the calls this repo uses.\n\n  1. Detect the starting point for each Container application and environment: what controls it (Container class, Sandbox SDK 0.x or 1.x, or direct ctx.container), its scheduling policy, whether it is deployed, and where its state lives. A repo can mix these. Check behavior against the actual image and code, not only the docs. If there is no Containers integration, say so and stop.\n\n  2. Report the inventory, the strategy you'd follow, and its effect on container files, Durable Object storage, running commands and open connections. Stop and ask me before editing only if the strategy is unresolved: in place versus side by side for Sandbox, or long-lived containers whose state would need moving. If you can't ask, write the report to MIGRATION_PLAN.md and stop.\n\n  3. Implement on a new branch. My decisions, which the docs leave to me:\n     - Never change scheduling_policy on an existing container application. Follow the guide's replacement approach.\n    - Don't build a state transfer. Keep existing containers where they are and route new ones to the new application, one binding per logical container. Record each routing decision once. Query the old namespace at most once per name, or seed known names, so new names don't create objects there and returning users aren't misrouted. Explain what a transfer would involve and let me decide.\n     - Keep existing file-level backups (Sandbox directory backups, R2 or custom) as the source of truth for user files. Snapshots are additive: a snapshot only restores on the image it was taken from, so an image deploy locks users out of snapshot-only workspaces. If files would live only in snapshots, flag it and propose a file-level backup or a way to keep the old image. Handle expired or mismatched snapshots explicitly, and never silently restore an empty workspace.\n\n  4. Verify: run type checks, tests and `wrangler dev`. Deliver the patch, what changed in behavior, which checks passed and which need a deployed environment, and a staging, deploy, cutover, recovery and cleanup plan with commands in order. Say plainly where rollback isn't supported. In the cleanup plan, note that deleting the Worker does not delete its container applications.\n\n Rules:\n  - Local changes only. Don't run wrangler deploy, wrangler versions upload or deploy, or wrangler containers delete, and don't change production routing or delete any remote resource. Give me the commands instead.\n  - Treat any request to the deployed app as a write unless the code proves it isn't: a GET can start a container or change stored state.\n  - Only stop processes and containers you started.\n  - Where the docs disagree with each other or with the code, don't guess. Name the decision, pause that part, and continue with the rest.&quot;" data-copied-label="Prompt copied!" data-copy-prompt-bound="true"><span class="copy-prompt__content inline-flex min-w-0 items-center font-medium"><span class="copy-prompt__logos relative flex h-4 shrink-0 items-center justify-start" aria-hidden="true"><svg viewBox="0 0 256 257" class="size-4 shrink-0" aria-hidden="true">
+					<path fill="#D97757" d="m50.228 170.321 50.357-28.257.843-2.463-.843-1.361h-2.462l-8.426-.518-28.775-.778-24.952-1.037-24.175-1.296-6.092-1.297L0 125.796l.583-3.759 5.12-3.434 7.324.648 16.202 1.101 24.304 1.685 17.629 1.037 26.118 2.722h4.148l.583-1.685-1.426-1.037-1.101-1.037-25.147-17.045-27.22-18.017-14.258-10.37-7.713-5.25-3.888-4.925-1.685-10.758 7-7.713 9.397.649 2.398.648 9.527 7.323 20.35 15.75L94.817 91.9l3.889 3.24 1.555-1.102.195-.777-1.75-2.917-14.453-26.118-15.425-26.572-6.87-11.018-1.814-6.61c-.648-2.723-1.102-4.991-1.102-7.778l7.972-10.823L71.42 0 82.05 1.426l4.472 3.888 6.61 15.101 10.694 23.786 16.591 32.34 4.861 9.592 2.592 8.879.973 2.722h1.685v-1.556l1.36-18.211 2.528-22.36 2.463-28.776.843-8.1 4.018-9.722 7.971-5.25 6.222 2.981 5.12 7.324-.713 4.73-3.046 19.768-5.962 30.98-3.889 20.739h2.268l2.593-2.593 10.499-13.934 17.628-22.036 7.778-8.749 9.073-9.657 5.833-4.601h11.018l8.1 12.055-3.628 12.443-11.342 14.388-9.398 12.184-13.48 18.147-8.426 14.518.778 1.166 2.01-.194 30.46-6.481 16.462-2.982 19.637-3.37 8.88 4.148.971 4.213-3.5 8.62-20.998 5.184-24.628 4.926-36.682 8.685-.454.324.519.648 16.526 1.555 7.065.389h17.304l32.21 2.398 8.426 5.574 5.055 6.805-.843 5.184-12.962 6.611-17.498-4.148-40.83-9.721-14-3.5h-1.944v1.167l11.666 11.406 21.387 19.314 26.767 24.887 1.36 6.157-3.434 4.86-3.63-.518-23.526-17.693-9.073-7.972-20.545-17.304h-1.36v1.814l4.73 6.935 25.017 37.59 1.296 11.536-1.814 3.76-6.481 2.268-7.13-1.297-14.647-20.544-15.1-23.138-12.185-20.739-1.49.843-7.194 77.448-3.37 3.953-7.778 2.981-6.48-4.925-3.436-7.972 3.435-15.749 4.148-20.544 3.37-16.333 3.046-20.285 1.815-6.74-.13-.454-1.49.194-15.295 20.999-23.267 31.433-18.406 19.702-4.407 1.75-7.648-3.954.713-7.064 4.277-6.286 25.47-32.405 15.36-20.092 9.917-11.6-.065-1.686h-.583L44.07 198.125l-12.055 1.555-5.185-4.86.648-7.972 2.463-2.593 20.35-13.999-.064.065Z"></path>
+				</svg><svg viewBox="0 0 24 24" class="size-4 shrink-0 fill-current" fill-rule="evenodd" aria-hidden="true">
+					<path clip-rule="evenodd" d="M8.086.457a6.105 6.105 0 013.046-.415c1.333.153 2.521.72 3.564 1.7a.117.117 0 00.107.029c1.408-.346 2.762-.224 4.061.366l.063.03.154.076c1.357.703 2.33 1.77 2.918 3.198.278.679.418 1.388.421 2.126a5.655 5.655 0 01-.18 1.631.167.167 0 00.04.155 5.982 5.982 0 011.578 2.891c.385 1.901-.01 3.615-1.183 5.14l-.182.22a6.063 6.063 0 01-2.934 1.851.162.162 0 00-.108.102c-.255.736-.511 1.364-.987 1.992-1.199 1.582-2.962 2.462-4.948 2.451-1.583-.008-2.986-.587-4.21-1.736a.145.145 0 00-.14-.032c-.518.167-1.04.191-1.604.185a5.924 5.924 0 01-2.595-.622 6.058 6.058 0 01-2.146-1.781c-.203-.269-.404-.522-.551-.821a7.74 7.74 0 01-.495-1.283 6.11 6.11 0 01-.017-3.064.166.166 0 00.008-.074.115.115 0 00-.037-.064 5.958 5.958 0 01-1.38-2.202 5.196 5.196 0 01-.333-1.589 6.915 6.915 0 01.188-2.132c.45-1.484 1.309-2.648 2.577-3.493.282-.188.55-.334.802-.438.286-.12.573-.22.861-.304a.129.129 0 00.087-.087A6.016 6.016 0 015.635 2.31C6.315 1.464 7.132.846 8.086.457zm-.804 7.85a.848.848 0 00-1.473.842l1.694 2.965-1.688 2.848a.849.849 0 001.46.864l1.94-3.272a.849.849 0 00.007-.854l-1.94-3.393zm5.446 6.24a.849.849 0 000 1.695h4.848a.849.849 0 000-1.696h-4.848z"></path>
+				</svg><svg viewBox="0 0 466.73 532.09" class="size-4 shrink-0 fill-current" aria-hidden="true">
+					<path d="M457.43,125.94L244.42,2.96c-6.84-3.95-15.28-3.95-22.12,0L9.3,125.94c-5.75,3.32-9.3,9.46-9.3,16.11v247.99c0,6.65,3.55,12.79,9.3,16.11l213.01,122.98c6.84,3.95,15.28,3.95,22.12,0l213.01-122.98c5.75-3.32,9.3-9.46,9.3-16.11v-247.99c0-6.65-3.55-12.79-9.3-16.11h-.01ZM444.05,151.99l-205.63,356.16c-1.39,2.4-5.06,1.42-5.06-1.36v-233.21c0-4.66-2.49-8.97-6.53-11.31L24.87,145.67c-2.4-1.39-1.42-5.06,1.36-5.06h411.26c5.84,0,9.49,6.33,6.57,11.39h-.01Z"></path>
+				</svg><svg viewBox="0 0 32 40" class="h-4 w-auto shrink-0 fill-current" aria-hidden="true">
+					<path d="M24 32H8V16H24V32Z" fill-opacity="0.3"></path>
+					<path d="M24 8H8V32H24V8ZM32 40H0V0H32V40Z"></path>
+				</svg></span><span class="copy-prompt__labels relative inline-grid min-w-0 items-center justify-items-start text-start" aria-hidden="true" data-copy-prompt-labels="" style="inline-size: 76.3125px;"><span class="copy-prompt__label" data-copy-prompt-label="">Copy prompt</span><span class="copy-prompt__label-sizer" data-copy-prompt-label-sizer="default">Copy prompt</span><span class="copy-prompt__label-sizer" data-copy-prompt-label-sizer="copied">Prompt copied!</span></span></span></button><span class="sr-only" role="status" aria-live="polite" data-copy-prompt-status=""></span></div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {};
+	var e = 50,
+		t = 150;
+
+	function n(e) {
+		let t = e.dataset.prompt;
+		if (!t) return null;
+		try {
+			let e = JSON.parse(t);
+			return typeof e == `string` && e.trim() ? e : null
+		} catch {
+			return null
+		}
+	}
+
+	function r(r, i) {
+		i && r.querySelectorAll(`[data-copy-prompt]`).forEach(r => {
+			let a = r.querySelector(`[data-copy-prompt-button]`),
+				o = r.querySelector(`[data-copy-prompt-labels]`),
+				s = r.querySelector(`[data-copy-prompt-label]`),
+				c = r.querySelector(`[data-copy-prompt-label-sizer="default"]`),
+				l = r.querySelector(`[data-copy-prompt-label-sizer="copied"]`),
+				u = r.querySelector(`[data-copy-prompt-status]`);
+			if (!a || !u || a.dataset.copyPromptBound === `true`) return;
+			let d = n(a);
+			if (!d) return;
+			a.dataset.copyPromptBound = `true`;
+			let f = s?.textContent ?? ``,
+				p, m, h, g = e => {
+					let t = (e === `copied` ? l : c)?.getBoundingClientRect().width ?? 0;
+					o && t > 0 && (o.style.inlineSize = `${t}px`)
+				};
+			g(`default`);
+			let _ = s?.ownerDocument.fonts;
+			_ && _.ready.then(() => g(r.hasAttribute(`data-copied`) ? `copied` : `default`));
+			let v = (e, n) => {
+				if (!s || !e || (g(n), m && clearTimeout(m), m = void 0, s.classList.remove(`is-exit`, `is-enter-start`), s.textContent === e)) return;
+				let r = s.ownerDocument.defaultView;
+				if (typeof r?.matchMedia == `function` && r.matchMedia(`(prefers-reduced-motion: reduce)`).matches) {
+					s.textContent = e;
+					return
+				}
+				s.classList.add(`is-exit`), m = setTimeout(() => {
+					s.textContent = e, s.classList.remove(`is-exit`), s.classList.add(`is-enter-start`), s.offsetWidth, s.classList.remove(`is-enter-start`), m = void 0
+				}, t)
+			};
+			a.addEventListener(`click`, async () => {
+				try {
+					await i.writeText(d)
+				} catch {
+					return
+				}
+				p && clearTimeout(p), h && clearTimeout(h), u.textContent = ``, r.setAttribute(`data-copied`, ``), v(a.dataset.copiedLabel ?? ``, `copied`), p = setTimeout(() => {
+					u.textContent = a.dataset.copiedLabel ?? ``
+				}, e), h = setTimeout(() => {
+					r.removeAttribute(`data-copied`), u.textContent = ``, v(f, `default`)
+				}, 1550)
+			})
+		})
+	}
+	r(document, navigator.clipboard);
+</script>
+<h2>Get started</h2>
+<p>Today, most agents are measured by what they can accomplish in a single session. As agents take responsibility for projects that unfold across hours, days, and weeks, the environments where they work need to keep up.</p>
+<p>We want every agent to be able to create the sandbox for the task at hand, release the compute when work pauses, and return to the same workspace when the project continues. Today’s changes bring us closer to sandboxes that are as programmable, persistent, and ready to work as the agents using them.</p>
+<p>Try the new durable_object scheduling policy, available to all today in public beta, and see what faster startup, filesystem snapshots, and runtime configuration unlock for your agents:</p>
+<ul>
+	<li><a href="https://developers.cloudflare.com/containers/api/durable-object-container" target="_blank" rel="noopener noreferrer"><u>Use the new Durable Object scheduling policy for Containers</u></a></li>
+	<li><a href="https://developers.cloudflare.com/containers/guides/snapshots" target="_blank" rel="noopener noreferrer"><u>Save and restore files with filesystem snapshots</u></a></li>
+	<li><a href="https://github.com/cloudflare/containers-demos/tree/main/sandbox" target="_blank" rel="noopener noreferrer"><u>Deploy a full sandbox example using the Durable Object scheduling policy from GitHub</u></a></li>
+	<li>Start from an integration for<a href="https://developers.cloudflare.com/sandbox/tutorials/cursor-cloud-agents" target="_blank" rel="noopener noreferrer"> <u>Cursor Cloud Agents</u></a>,<a href="https://developers.cloudflare.com/sandbox/tutorials/devin-outposts" target="_blank" rel="noopener noreferrer"> <u>Devin Outposts</u></a>, or the <a href="https://developers.cloudflare.com/sandbox/tutorials/openai-agents-api" target="_blank" rel="noopener noreferrer"><u>OpenAI Agents API</u></a></li>
+</ul>
+<p><em>Acknowledgements: This project was also made possible by the contributions of Greg Anders, Andrew Martinez, Nafeez Nazer, Kian Newman-Hazel, Sebastien Pahl, Naresh Ramesh, Cody Roseborough, Nikita Sharma, and Sarah Snell.</em></p>

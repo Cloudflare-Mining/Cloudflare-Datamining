@@ -1,0 +1,263 @@
+<p>在過去一年裡，AI 智慧體對 Wrangler 的使用量急劇攀升。</p>
+<p>2026 年 3 月，AI 智慧體貢獻了 Wrangler 使用量的四分之一，而前一年的佔比還是個位數百分比。上週，智慧體的使用率已達到 48%。</p>
+<p>AI 智慧體是更高產的使用者，每天使用的不同命令數量幾乎翻倍，使用六個或更多命令的可能性幾乎是四倍。</p>
+<p>AI 智慧體喜愛 CLI。但 Wrangler 僅提供約 280 種操作的命令，而 Cloudflare 提供的操作多達數千種。</p>
+<p>今年早些時候，我們曾預告過<a href="https://blog.cloudflare.com/cf-cli-local-explorer" target="_blank" rel="noopener noreferrer"><u>我們的解決方案</u></a>。今天，我們正式推出全新 CLI：cf，讓 AI 智慧體能夠使用每一個 Cloudflare 產品。</p>
+<p>cf 是專為下一代軟體開發打造的 CLI：</p>
+<ul>
+	<li>AI 智慧體可以透過專屬搜尋和引導找到所需的命令，完成任何想做的事情。</li>
+	<li>JSON 是預設介面，對人類使用者提供適於閱讀的輸出，對 AI 智慧體則進行壓縮，以實現最大限度的上下文節省。</li>
+	<li>cloudflare.config.ts 是 Cloudflare 全平台的全新配置格式，從 Workers 開始，將 TypeScript 的安全性和準確性帶給您以及您的智慧體的語言伺服器協議（LSP）。</li>
+	<li>Vite 成為預設工具，帶來業界最佳的本地開發伺服器，以及面向開發者和框架作者的插件套件。</li>
+</ul>
+<p>立即全球安裝公開測試版，隨時隨地執行：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> i</span><span class="sk-005cc5-99ffe4"> -g</span><span class="sk-032f62-99ffe4"> cf</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<div class="copy-prompt relative my-8 flex w-max max-w-full" data-copy-prompt=""><button type="button" aria-label="Copy prompt" class="copy-prompt__button inline-flex w-max max-w-full shrink-0 items-center justify-center rounded-full font-sans whitespace-nowrap no-underline select-none" data-copy-prompt-button="" data-prompt="&quot;Please update your global agent instructions, so you use Cloudflare's new `cf` CLI.\n\nAdd the Markdown below to the user-level instructions file that you load in every project – not this repository's AGENTS.md or CLAUDE.md. Use the file for the agent you are: Claude Code `~/.claude/CLAUDE.md`, Codex `~/.codex/AGENTS.md`, OpenCode `~/.config/opencode/AGENTS.md`, Pi `~/.pi/agent/AGENTS.md`. For any other agent, use its equivalent global rules file; if your global rules can only be set in a settings screen, tell me what to paste there instead. Create the file if it doesn't exist. Keep everything already in it, but replace any existing instruction about Wrangler or the Cloudflare CLI instead of adding a conflicting one. If the same guidance is already there, leave the file as it is. When you're done, tell me the path of the file you changed.\n\n```markdown\n## Cloudflare CLI - cf - v20260928\n\n`cf` is Cloudflare's current CLI and covers the whole Cloudflare platform. Prefer it over Wrangler: create projects with `cf init`, develop with `cf dev`, deploy with `cf deploy`, and manage account resources with `cf <product> …` (for example `cf d1 list`).\n\nWrangler is only for projects that already use it – a `wrangler.jsonc`, `wrangler.json` or `wrangler.toml` file – or when the user asks for it. Keep using Wrangler in those projects unless asked to migrate, and use `cf migrate` in this case.\n\n`cf` commands differ from Wrangler's; check `cf --help` or `cf cli search <what you want to do>` instead of guessing. If a `cf` command fails in a project that doesn't use Wrangler, don't fall back to Wrangler (including `npx wrangler`) without offering to report it.&quot;" data-copied-label="Prompt copied!" data-copy-prompt-bound="true"><span class="copy-prompt__content inline-flex min-w-0 items-center font-medium"><span class="copy-prompt__logos relative flex h-4 shrink-0 items-center justify-start" aria-hidden="true"><svg viewBox="0 0 256 257" class="size-4 shrink-0" aria-hidden="true">
+					<path fill="#D97757" d="m50.228 170.321 50.357-28.257.843-2.463-.843-1.361h-2.462l-8.426-.518-28.775-.778-24.952-1.037-24.175-1.296-6.092-1.297L0 125.796l.583-3.759 5.12-3.434 7.324.648 16.202 1.101 24.304 1.685 17.629 1.037 26.118 2.722h4.148l.583-1.685-1.426-1.037-1.101-1.037-25.147-17.045-27.22-18.017-14.258-10.37-7.713-5.25-3.888-4.925-1.685-10.758 7-7.713 9.397.649 2.398.648 9.527 7.323 20.35 15.75L94.817 91.9l3.889 3.24 1.555-1.102.195-.777-1.75-2.917-14.453-26.118-15.425-26.572-6.87-11.018-1.814-6.61c-.648-2.723-1.102-4.991-1.102-7.778l7.972-10.823L71.42 0 82.05 1.426l4.472 3.888 6.61 15.101 10.694 23.786 16.591 32.34 4.861 9.592 2.592 8.879.973 2.722h1.685v-1.556l1.36-18.211 2.528-22.36 2.463-28.776.843-8.1 4.018-9.722 7.971-5.25 6.222 2.981 5.12 7.324-.713 4.73-3.046 19.768-5.962 30.98-3.889 20.739h2.268l2.593-2.593 10.499-13.934 17.628-22.036 7.778-8.749 9.073-9.657 5.833-4.601h11.018l8.1 12.055-3.628 12.443-11.342 14.388-9.398 12.184-13.48 18.147-8.426 14.518.778 1.166 2.01-.194 30.46-6.481 16.462-2.982 19.637-3.37 8.88 4.148.971 4.213-3.5 8.62-20.998 5.184-24.628 4.926-36.682 8.685-.454.324.519.648 16.526 1.555 7.065.389h17.304l32.21 2.398 8.426 5.574 5.055 6.805-.843 5.184-12.962 6.611-17.498-4.148-40.83-9.721-14-3.5h-1.944v1.167l11.666 11.406 21.387 19.314 26.767 24.887 1.36 6.157-3.434 4.86-3.63-.518-23.526-17.693-9.073-7.972-20.545-17.304h-1.36v1.814l4.73 6.935 25.017 37.59 1.296 11.536-1.814 3.76-6.481 2.268-7.13-1.297-14.647-20.544-15.1-23.138-12.185-20.739-1.49.843-7.194 77.448-3.37 3.953-7.778 2.981-6.48-4.925-3.436-7.972 3.435-15.749 4.148-20.544 3.37-16.333 3.046-20.285 1.815-6.74-.13-.454-1.49.194-15.295 20.999-23.267 31.433-18.406 19.702-4.407 1.75-7.648-3.954.713-7.064 4.277-6.286 25.47-32.405 15.36-20.092 9.917-11.6-.065-1.686h-.583L44.07 198.125l-12.055 1.555-5.185-4.86.648-7.972 2.463-2.593 20.35-13.999-.064.065Z"></path>
+				</svg><svg viewBox="0 0 24 24" class="size-4 shrink-0 fill-current" fill-rule="evenodd" aria-hidden="true">
+					<path clip-rule="evenodd" d="M8.086.457a6.105 6.105 0 013.046-.415c1.333.153 2.521.72 3.564 1.7a.117.117 0 00.107.029c1.408-.346 2.762-.224 4.061.366l.063.03.154.076c1.357.703 2.33 1.77 2.918 3.198.278.679.418 1.388.421 2.126a5.655 5.655 0 01-.18 1.631.167.167 0 00.04.155 5.982 5.982 0 011.578 2.891c.385 1.901-.01 3.615-1.183 5.14l-.182.22a6.063 6.063 0 01-2.934 1.851.162.162 0 00-.108.102c-.255.736-.511 1.364-.987 1.992-1.199 1.582-2.962 2.462-4.948 2.451-1.583-.008-2.986-.587-4.21-1.736a.145.145 0 00-.14-.032c-.518.167-1.04.191-1.604.185a5.924 5.924 0 01-2.595-.622 6.058 6.058 0 01-2.146-1.781c-.203-.269-.404-.522-.551-.821a7.74 7.74 0 01-.495-1.283 6.11 6.11 0 01-.017-3.064.166.166 0 00.008-.074.115.115 0 00-.037-.064 5.958 5.958 0 01-1.38-2.202 5.196 5.196 0 01-.333-1.589 6.915 6.915 0 01.188-2.132c.45-1.484 1.309-2.648 2.577-3.493.282-.188.55-.334.802-.438.286-.12.573-.22.861-.304a.129.129 0 00.087-.087A6.016 6.016 0 015.635 2.31C6.315 1.464 7.132.846 8.086.457zm-.804 7.85a.848.848 0 00-1.473.842l1.694 2.965-1.688 2.848a.849.849 0 001.46.864l1.94-3.272a.849.849 0 00.007-.854l-1.94-3.393zm5.446 6.24a.849.849 0 000 1.695h4.848a.849.849 0 000-1.696h-4.848z"></path>
+				</svg><svg viewBox="0 0 466.73 532.09" class="size-4 shrink-0 fill-current" aria-hidden="true">
+					<path d="M457.43,125.94L244.42,2.96c-6.84-3.95-15.28-3.95-22.12,0L9.3,125.94c-5.75,3.32-9.3,9.46-9.3,16.11v247.99c0,6.65,3.55,12.79,9.3,16.11l213.01,122.98c6.84,3.95,15.28,3.95,22.12,0l213.01-122.98c5.75-3.32,9.3-9.46,9.3-16.11v-247.99c0-6.65-3.55-12.79-9.3-16.11h-.01ZM444.05,151.99l-205.63,356.16c-1.39,2.4-5.06,1.42-5.06-1.36v-233.21c0-4.66-2.49-8.97-6.53-11.31L24.87,145.67c-2.4-1.39-1.42-5.06,1.36-5.06h411.26c5.84,0,9.49,6.33,6.57,11.39h-.01Z"></path>
+				</svg><svg viewBox="0 0 32 40" class="h-4 w-auto shrink-0 fill-current" aria-hidden="true">
+					<path d="M24 32H8V16H24V32Z" fill-opacity="0.3"></path>
+					<path d="M24 8H8V32H24V8ZM32 40H0V0H32V40Z"></path>
+				</svg></span><span class="copy-prompt__labels relative inline-grid min-w-0 items-center justify-items-start text-start" aria-hidden="true" data-copy-prompt-labels="" style="inline-size: 76.3125px;"><span class="copy-prompt__label" data-copy-prompt-label="">Copy prompt</span><span class="copy-prompt__label-sizer" data-copy-prompt-label-sizer="default">Copy prompt</span><span class="copy-prompt__label-sizer" data-copy-prompt-label-sizer="copied">Prompt copied!</span></span></span></button><span class="sr-only" role="status" aria-live="polite" data-copy-prompt-status=""></span></div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {};
+	var e = 50,
+		t = 150;
+
+	function n(e) {
+		let t = e.dataset.prompt;
+		if (!t) return null;
+		try {
+			let e = JSON.parse(t);
+			return typeof e == `string` && e.trim() ? e : null
+		} catch {
+			return null
+		}
+	}
+
+	function r(r, i) {
+		i && r.querySelectorAll(`[data-copy-prompt]`).forEach(r => {
+			let a = r.querySelector(`[data-copy-prompt-button]`),
+				o = r.querySelector(`[data-copy-prompt-labels]`),
+				s = r.querySelector(`[data-copy-prompt-label]`),
+				c = r.querySelector(`[data-copy-prompt-label-sizer="default"]`),
+				l = r.querySelector(`[data-copy-prompt-label-sizer="copied"]`),
+				u = r.querySelector(`[data-copy-prompt-status]`);
+			if (!a || !u || a.dataset.copyPromptBound === `true`) return;
+			let d = n(a);
+			if (!d) return;
+			a.dataset.copyPromptBound = `true`;
+			let f = s?.textContent ?? ``,
+				p, m, h, g = e => {
+					let t = (e === `copied` ? l : c)?.getBoundingClientRect().width ?? 0;
+					o && t > 0 && (o.style.inlineSize = `${t}px`)
+				};
+			g(`default`);
+			let _ = s?.ownerDocument.fonts;
+			_ && _.ready.then(() => g(r.hasAttribute(`data-copied`) ? `copied` : `default`));
+			let v = (e, n) => {
+				if (!s || !e || (g(n), m && clearTimeout(m), m = void 0, s.classList.remove(`is-exit`, `is-enter-start`), s.textContent === e)) return;
+				let r = s.ownerDocument.defaultView;
+				if (typeof r?.matchMedia == `function` && r.matchMedia(`(prefers-reduced-motion: reduce)`).matches) {
+					s.textContent = e;
+					return
+				}
+				s.classList.add(`is-exit`), m = setTimeout(() => {
+					s.textContent = e, s.classList.remove(`is-exit`), s.classList.add(`is-enter-start`), s.offsetWidth, s.classList.remove(`is-enter-start`), m = void 0
+				}, t)
+			};
+			a.addEventListener(`click`, async () => {
+				try {
+					await i.writeText(d)
+				} catch {
+					return
+				}
+				p && clearTimeout(p), h && clearTimeout(h), u.textContent = ``, r.setAttribute(`data-copied`, ``), v(a.dataset.copiedLabel ?? ``, `copied`), p = setTimeout(() => {
+					u.textContent = a.dataset.copiedLabel ?? ``
+				}, e), h = setTimeout(() => {
+					r.removeAttribute(`data-copied`), u.textContent = ``, v(f, `default`)
+				}, 1550)
+			})
+		})
+	}
+	r(document, navigator.clipboard);
+</script>
+<h2><strong>cf 讓您的智慧體能存取整個 Cloudflare API</strong></h2>
+<p>如果您的 AI 智慧體能做到 Cloudflare 能做的一切，會怎樣？這正是我們今年初產生興趣的問題：智慧體變得越來越強大，但它們透過 Cloudflare CLI 所能完成的事情仍然有限。</p>
+<p>Wrangler 是手工建置的，每個產品團隊都以自己的方式為命令開發者體驗做出貢獻。即便只有約 280 條命令路徑，在團隊之間推行統一模式幾乎不可能。<code>d1 info</code>、<code>hyperdrive get</code>、<code>workflows describe</code> 之間的術語不一致，因為每個團隊在不同時期制定了各自的實踐方式。部分團隊花費數千行程式碼建置了完全自定義的體驗，但這些體驗極少被使用，而且各團隊對同一問題採用了不同的解決方案。</p>
+<p>我們希望在標準化現有內容的同時，一次性完成大規模擴展。Cloudflare 全新的統一 API 生成管道 <a href="https://blog.cloudflare.com/forge-open-source-generation-pipeline" target="_blank" rel="noopener noreferrer"><u>Forge</u></a>​ 讓我們能夠做到這一點，其核心理念是直接從支援 API 文件和 SDK 生成的 API 模式中生成 CLI 命令。我們提供的所有內容都有 OpenAPI 模式，只需添加一點額外資訊進行注解，即可將其作為 Forge 生成 CLI 的來源。</p>
+<p>這使我們能夠將 <code>cf</code> 從 Wrangler 多年積累的約 280 個功能，擴展到涵蓋 Cloudflare API 全部超過 3,000 個操作的表面。</p>
+<p>現在，只需將 <code>cf</code> 交給您的 AI 智慧體，就能輕鬆要求它設定 Worker、部署、監控與觀測、用 Cloudflare Access 保護、購買網域，並用 Cloudflare WAF 作為前端，所有操作都能透過單一工具完成。</p>
+<div id="html-block-dlxw9kv9p" class="html-block">
+	<div style="padding-top:56.25%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/dcb3f160888a1d1c67874e614c779f77/iframe?muted=true&amp;preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fdcb3f160888a1d1c67874e614c779f77%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>
+<h2><strong>為從未使用過 cf 的智慧體而建置</strong></h2>
+<p>cf 是為軟體工程的發展軌跡而建置的，智慧體驅動的開發正在從根本上改變軟體的建置和部署方式。今年，我們專注於提供支援這一轉變的工具，cf 是這一努力的集大成之作。cf 從零開始以智慧體為核心進行建置，包含用於智慧體驅動命令發現的創新工具，我們認為這些工具將在不久的將來成為更多 CLI 的標準。</p>
+<p>Wrangler 有一個優勢：多年的文件、部落格和第三方指南已被納入 LLM 的訓練過程。但這也帶來了同樣的劣勢：改變 Wrangler 的工作方式現在與已學習的行為相悖，而鑑於我們希望實現的改進規模，重大變更是不可避免的。</p>
+<p>引入一個 AI 智慧體從未見過的新 CLI 聽起來像是一次巨大的顛覆性變化——但實際上這是我們能做的最乾淨的事情。由於我們所做的設計決策、我們可以進行的上下文注入以及我們可以追加的 AGENTS.md 檔案，以這種方式進行切換實際上比讓智慧體理解它所熟悉的工具的兩個版本之間的主要差異要簡單明了得多。我們在發布時內建了幾項此類面向智慧體的功能，更多功能即將推出。</p>
+<h2><strong>智慧體需要過濾 JSON，而不是查看表格</strong></h2>
+<p>當 AI 智慧體使用 Wrangler 時，它們會在每個命令後附加 <code>--json</code>，然後經常用 <code>jq</code> 過濾輸出以提取欄位子集。但 Wrangler 中只有部分命令支援 <code>--json</code>；許多命令返回的是專為人類在終端機查看而設計的 Unicode 表格。智慧體能夠解讀這些表格，但代價是比 <code>jq</code> 過濾器更多的時間和 token。</p>
+<div id="html-block-9w8bry5hv" class="html-block">
+	<div style="padding-top:56.25%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/161161bbd9415f3b94eb2542f5efc905/iframe?muted=true&amp;preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F161161bbd9415f3b94eb2542f5efc905%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>
+<p>在 cf 中，我們採取了相反的立場：智慧體只需要 JSON，如果智慧體是這個工具未來的主要使用者，那麼 JSON 就應該是預設值。對於極少由人類存取的絕大多數命令來說，這顯然是正確的選擇。</p>
+<p>作為這個 CLI 的人類使用者，您實際上與直接使用它隔了一層。讓 AI 智慧體能夠輕鬆過濾其結果，然後以您要求的任何格式返回該過濾後的清單，比提供您可能永遠不會直接閱讀的表格更為可取。</p>
+<p>但如果您想做一些可能需要真實個人輸入的事情，比如搜尋要購買的網域，該怎麼辦？</p>
+<p>對於您的 AI 智慧體可以透過在長而繁瑣的序列中鏈結命名參數來存取的命令，您只需填寫表單即可。Cf 將 API 的要求分解為一系列經過驗證的輸入，因此即使是要求複雜的網域購買操作，流程也變得簡單易懂。</p>
+<div id="html-block-9djmog3v8" class="html-block">
+	<div style="padding-top:56.25%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/755ffef571dffd64e6f5ec81e3ff0f12/iframe?muted=true&amp;preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F755ffef571dffd64e6f5ec81e3ff0f12%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>
+<p>或者，如果您堅持，也可以直接讓您的智慧體來做。</p>
+<div id="html-block-e17vca39f" class="html-block">
+	<div style="padding-top:56.25%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/97ce66d919010c94fdc0ffd3bcd1ead8/iframe?muted=true&amp;preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F97ce66d919010c94fdc0ffd3bcd1ead8%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>
+<h2><strong>您的智慧體可以自行找到正確的命令</strong></h2>
+<p>在一個有 3,000 條可能路徑的 CLI 中，您的 AI 智慧體如何才能快速找到所需操作而不會讓您的上下文爆炸？為此，我們還新增了 <code>cf cli search</code>。</p>
+<p>這個命令允許您的 AI 智慧體用自然語言詢問需要做什麼，一個小型搜尋索引將根據 API 描述和參數提供合適命令的清單。當智慧體第一次執行 <code>--help</code> 時，我們會自動告知它這個命令。</p>
+<div id="html-block-ieg03v8vg" class="html-block">
+	<div style="padding-top:56.25%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/8e6ddad518337c0c01d90078e7cd5e58/iframe?muted=true&amp;preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F8e6ddad518337c0c01d90078e7cd5e58%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>
+<h2><strong>對智慧體進行型別檢查的設定</strong></h2>
+<p>我們的新設定格式基於 TypeScript，人類和 AI 智慧體都易於解析，並允許您以程式設計方式編寫設定。</p>
+<p>型別化設定對 AI 智慧體極為有用。我們發現，即使沒有對程式設計設定格式的任何先驗背景，智慧體也能夠輕鬆識別並按需編輯設定，即便是像 <code>env</code> 這樣相比 Wrangler 中同名特性已發生重大變化的元素也不例外。所有使用 LSP 外掛程式的智慧體，例如 Claude Code 和 Codex，都能從在上下文中解讀更多設定檔案格式資訊中獲益，並因此給出更精準的建議。</p>
+<p>相比之下，TOML 沒有可存取的模式，JSONC 雖然有關聯模式，但 AI 智慧體很少使用。</p>
+<p>Cloudflare 內部的一些 Wrangler 設定檔案已從超過 5,000 行（每位開發者有許多自定義環境）壓縮了 40%，成為能更高效地建置每位開發者設定的工廠檔案。</p>
+<p>這是透過從同一通用基礎以程式設計方式定義每個環境來實現的，而不是像 Wrangler 中常見的那樣複製 <code>env</code> 區塊。具有多個環境的簡單 Worker 只需切換 Vite 原生<code>模式</code>參數即可在不同設定集之間切換。</p>
+<p>現在，實現此功能的簡單設定看起來像這樣：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">import { bindings, defineConfig } from </span><span class="sk-032f62-99ffe4">"cf/config"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">import </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-d73a49-ffc799"> as</span><span class="sk-24292e-fff"> entrypoint from </span><span class="sk-032f62-99ffe4">"./index.js"</span><span class="sk-24292e-fff"> with { </span><span class="sk-d73a49-a0a0a0">type:</span><span class="sk-032f62-99ffe4"> "cf-worker"</span><span class="sk-24292e-fff"> };</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">export default </span><span class="sk-6f42c1-ffc799">defineConfig</span><span class="sk-24292e-fff">(({ mode }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> ({</span></span>
+<span class="line"><span class="sk-24292e-fff">  worker</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">    name</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "example-worker"</span><span class="sk-24292e-fff">, </span></span>
+<span class="line"><span class="sk-24292e-fff">      entrypoint,</span></span>
+<span class="line"><span class="sk-24292e-fff">      compatibilityDate</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "2026-09-27"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        Environment</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> bindings</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">(`</span><span class="sk-6f42c1-ffc799">This</span><span class="sk-24292e-fff"> is </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">{mode} environment`),</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">}));</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>您可以透過 <code>cf migrate</code> 將您的 Cloudflare Worker 遷移至這個新格式。</p>
+<p>我們同時也提供了一些輔助函式，讓您建構 Worker 的過程更加輕鬆。</p>
+<p><code>bindings</code> 為您的智慧體提供了一個簡便的位置，以便探索開發人員平台提供的所有功能。從環境變數到儲存空間、資料庫和佇列，所有項目都能透過您的編輯器進行自動完成並加以說明。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { bindings, defineConfig } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "cf/config"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-6f42c1-ffc799"> defineConfig</span><span class="sk-24292e-fff">(({ </span><span class="sk-e36209-fff">mode</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> ({</span></span>
+<span class="line"><span class="sk-24292e-fff">  worker: {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // ...</span></span>
+<span class="line"><span class="sk-24292e-fff">    env: {</span></span>
+<span class="line"><span class="sk-24292e-fff">      API_URL: bindings.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-24292e-fff">        mode </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "production"</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">          ?</span><span class="sk-032f62-99ffe4"> "https://example.com"</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">          :</span><span class="sk-032f62-99ffe4"> "https://staging.example.com"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      ),</span></span>
+<span class="line"><span class="sk-24292e-fff">      API_TOKEN: bindings.</span><span class="sk-6f42c1-ffc799">secret</span><span class="sk-24292e-fff">(),</span></span>
+<span class="line"><span class="sk-24292e-fff">      CACHE: bindings.</span><span class="sk-6f42c1-ffc799">kv</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">        id: mode </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "production"</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">          ?</span><span class="sk-032f62-99ffe4"> "production-namespace-id"</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">          :</span><span class="sk-032f62-99ffe4"> "staging-namespace-id"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      }),</span></span>
+<span class="line"><span class="sk-24292e-fff">      DATABASE: bindings.</span><span class="sk-6f42c1-ffc799">d1</span><span class="sk-24292e-fff">({ name: </span><span class="sk-032f62-99ffe4">`example-${</span><span class="sk-24292e-fff">mode</span><span class="sk-032f62-99ffe4">}-database`</span><span class="sk-24292e-fff"> }),</span></span>
+<span class="line"><span class="sk-24292e-fff">      UPLOADS: bindings.</span><span class="sk-6f42c1-ffc799">r2</span><span class="sk-24292e-fff">({ name: </span><span class="sk-032f62-99ffe4">`example-${</span><span class="sk-24292e-fff">mode</span><span class="sk-032f62-99ffe4">}-uploads`</span><span class="sk-24292e-fff"> }),</span></span>
+<span class="line"><span class="sk-24292e-fff">      JOBS: bindings.</span><span class="sk-6f42c1-ffc799">queue</span><span class="sk-24292e-fff"> &lt; { </span><span class="sk-e36209-fff">userId</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff"> } &gt; ({</span></span>
+<span class="line"><span class="sk-24292e-fff">        name: </span><span class="sk-032f62-99ffe4">`example-${</span><span class="sk-24292e-fff">mode</span><span class="sk-032f62-99ffe4">}-jobs`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      }),</span></span>
+<span class="line"><span class="sk-24292e-fff">      AI: bindings.</span><span class="sk-6f42c1-ffc799">ai</span><span class="sk-24292e-fff">(),</span></span>
+<span class="line"><span class="sk-24292e-fff">      SEARCH_INDEX: bindings.</span><span class="sk-6f42c1-ffc799">vectorize</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">        name: </span><span class="sk-032f62-99ffe4">`example-${</span><span class="sk-24292e-fff">mode</span><span class="sk-032f62-99ffe4">}-search`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      }),</span></span>
+<span class="line"><span class="sk-24292e-fff">      API: bindings.</span><span class="sk-6f42c1-ffc799">worker</span><span class="sk-24292e-fff">({ worker: </span><span class="sk-032f62-99ffe4">`example-${</span><span class="sk-24292e-fff">mode</span><span class="sk-032f62-99ffe4">}-api`</span><span class="sk-24292e-fff"> }),</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">}));</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>同樣地，我們也為 <code>triggers</code> 加入了輔助工具。這是一種定義 Worker 觸發條件（如路由、佇列、排程和電子郵件觸發器）的新方法。這些設定不再散落在您的設定檔中，現在您可以透過單一區塊輕鬆找到觸發 Worker 執行的所有動作。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">import { defineConfig, triggers } from </span><span class="sk-032f62-99ffe4">"cf/config"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">export default </span><span class="sk-6f42c1-ffc799">defineConfig</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  worker</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // ...</span></span>
+<span class="line"><span class="sk-24292e-fff">    triggers</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-24292e-fff">      triggers</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">({ pattern</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "example.com/*"</span><span class="sk-24292e-fff"> }),</span></span>
+<span class="line"><span class="sk-24292e-fff">      triggers</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">scheduled</span><span class="sk-24292e-fff">({ schedule</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "0 * * * *"</span><span class="sk-24292e-fff"> }),</span></span>
+<span class="line"><span class="sk-24292e-fff">      triggers</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">queue</span><span class="sk-24292e-fff">({ name</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "jobs"</span><span class="sk-24292e-fff">, maxBatchSize</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-24292e-fff"> }),</span></span>
+<span class="line"><span class="sk-24292e-fff">      triggers</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">email</span><span class="sk-24292e-fff">({ addresses</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"support@example.com"</span><span class="sk-24292e-fff">] }),</span></span>
+<span class="line"><span class="sk-24292e-fff">    ],</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p><code>defineConfig.worker</code> 僅僅是個開始。我們對 cloudflare.config.ts 的願景是，將其作為您管理整個 Cloudflare 服務的方式。您所需的所有產品，以及透過 cf 讓您的智慧體能夠存取的 API，都將能透過型別安全的 (typesafe) 設定來表達。很快，您將能夠透過這個設定檔設定完整的政策、建立區域、配置 DNS 等等。</p>
+<h2><strong>同類最佳的開發體驗</strong></h2>
+<p>當 Wrangler 開始建置 JavaScript Workers 時，<a href="https://vite.dev" target="_blank" rel="noopener noreferrer"><u>Vite</u></a> 還不存在。我們在 Wrangler 中使用 esbuild 來打包您的 Workers。Wrangler 在 :8787 上提供的開發伺服器是 Wrangler 團隊自己建置的，對其進行任何修改都意味著要深入 Miniflare 等 Cloudflare 專屬本地工具的內部。</p>
+<p>Vite 在這方面是一個巨大的進步，它擁有豐富的外掛程式生態系統，提供具備 HMR（熱模組替換）的同類最佳開發伺服器，並使用基於 Rust 的函式庫 Rolldown 進行 tree-shaking 建置。您用 Vite 能做的一切，都可以用 Cloudflare Vite Plugin 來實現。</p>
+<p>Cloudflare Vite Plugin 是我們建議您建置 Workers 的推薦方式，無論您在建置什麼：無論是以前端為主的專案還是後端 API。結合我們的 Vitest 外掛程式，它提供了一個與 Cloudflare Workers runtime 相符的一體化開發和測試環境，讓您直接存取繫結和平台 API。</p>
+<p>cf 預設基於 Vite 建置。您的大多數 Workers 將在 AI 智慧體的協助下輕鬆遷移。其他的可能需要更多時間，這就是為什麼 cf 將繼續委託 Wrangler 來處理需要繼續使用 esbuild 的 JavaScript Workers 以及 Rust 和 Python Workers 的開發與部署。</p>
+<h2><strong>從 Wrangler 遷移</strong></h2>
+<p>將 Worker 從 Wrangler 遷移就像執行 cf migrate 一樣簡單。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cf</span><span class="sk-032f62-99ffe4"> migrate</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>已經使用 Vite 建置的 Workers 將自動轉換為 cloudflare.config.ts。如果您的 Worker 依賴 Wrangler 的 esbuild，cf 將繼續把建置委託給 Wrangler。</p>
+<p>當公開測試版結束時，我們將發布 Wrangler 的最終主要版本，引導您和您的 AI 智慧體使用 cf。在測試版結束後，我們將繼續為 Wrangler 提供 18 個月的維護支援，以便您有時間進行遷移。</p>
+<p>您也可以執行 <code>cf init/deploy</code> 來自動為 Cloudflare 設定新專案，它將為您安裝 Cloudflare Vite Plugin 並建立設定檔案。</p>
+<p>靜態網站仍然不需要設定檔案即可啟動，部署它們就像在您的專案中執行 <code>cf deploy</code> 一樣簡單。</p>
+<p>要使用 cf 啟動一個新的 Hello World 專案，請使用 <code>cf init</code>。</p>
+<p>cf 是開源軟體，有問題可至我們的 <a href="https://github.com/cloudflare/cf" target="_blank" rel="noopener noreferrer"><em><u>GitHub 儲存庫回報</u></em></a>。</p>
+<p></p>

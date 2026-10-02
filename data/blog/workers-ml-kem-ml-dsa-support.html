@@ -1,0 +1,202 @@
+<p>Today, Cloudflare Workers is adding support for post-quantum-resistant algorithms within Web Crypto. These are defined in <a href="https://wicg.github.io/webcrypto-modern-algos" target="_blank" rel="noopener noreferrer"><u>Modern Algorithms in the Web Cryptography API</u></a> draft <a href="https://www.w3.org/standards/types/#reports" target="_blank" rel="noopener noreferrer"><u>community group report</u></a>, and include:</p>
+<ul>
+	<li>ML-KEM-768 and ML-KEM-1024 for key encapsulation</li>
+	<li>ML-DSA-44, ML-DSA-65, and ML-DSA-87 for signatures</li>
+	<li><code>encapsulateBits()</code>, <code>decapsulateBits()</code>, <code>encapsulateKey()</code>, and <code>decapsulateKey()</code></li>
+	<li><code>getPublicKey()</code></li>
+	<li><code>SubtleCrypto.supports()</code></li>
+	<li>JWK import and export for these algorithms</li>
+</ul>
+<p>For developers preparing for the post-quantum transition, these opt-in Web Crypto APIs make it easier to experiment with ML-KEM and ML-DSA without bundling a separate cryptographic implementation. They do not provide a full migration path, but rather building blocks that can be used to validate your integration.</p>
+<p>This support is available behind the <code>webcrypto_modern_algorithms</code> compatibility flag while the specification is still moving.</p>
+<h2>Background</h2>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API" target="_blank" rel="noopener noreferrer"><u>Web Crypto</u></a> is one of those APIs you only notice when it lacks the primitive you need. If you want to experiment with newer post-quantum algorithms in a JavaScript environment, it’s hard. You either cannot build the protocol directly on top of Web Crypto, or you bring your own cryptography implementation in JavaScript or WebAssembly.</p>
+<p>Neither option is ideal. They put the burden of selecting and maintaining cryptographic implementations on implementers, who see their applications get larger as they bundle cryptographic code. And this is work that needs to be reproduced for all downstream libraries. As the ecosystem needs to transition to post-quantum-resistant algorithms <a href="https://blog.cloudflare.com/post-quantum-roadmap" target="_blank" rel="noopener noreferrer"><u>sooner than expected</u></a>, we <a href="https://blog.cloudflare.com/ml-dsa-will-have-to-do" target="_blank" rel="noopener noreferrer"><u>cannot wait</u></a> for better post-quantum algorithms. Developers need access to these primitives now so they can test, evaluate, and improve post-quantum integrations.</p>
+<p>In this post, we’ll explain how you can implement these primitives today, and start to prepare your applications for the post-quantum era.</p>
+<h2>The short version</h2>
+<p>Here is what ML-KEM looks like in Workers. One side has a public key. The other side encapsulates a shared secret to that public key. The holder of the private key decapsulates it and gets the same secret.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> keys</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> crypto.subtle.</span><span class="sk-6f42c1-ffc799">generateKey</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"ML-KEM-768"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">, [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "encapsulateBits"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "decapsulateBits"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">]);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">sharedKey</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">ciphertext</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> crypto.subtle.</span><span class="sk-6f42c1-ffc799">encapsulateBits</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "ML-KEM-768"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  keys.publicKey,</span></span>
+<span class="line"><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> sameSharedKey</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> crypto.subtle.</span><span class="sk-6f42c1-ffc799">decapsulateBits</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "ML-KEM-768"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  keys.privateKey,</span></span>
+<span class="line"><span class="sk-24292e-fff">  ciphertext,</span></span>
+<span class="line"><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p>There is no encryption in that snippet yet. ML-KEM gives both sides shared key material. Protocols such as Hybrid Public Key Encryption (<a href="https://www.rfc-editor.org/rfc/rfc9180.html" target="_blank" rel="noopener noreferrer"><u>HPKE</u></a>) then feed that material into a key schedule and an AEAD such as the AES-GCM algorithm.</p>
+<p>ML-DSA is closer to what most developers have already seen with Ed25519 or ECDSA: generate a key pair, sign bytes, verify bytes.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> data</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> TextEncoder</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">encode</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"hello post-quantum"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">publicKey</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">privateKey</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> crypto.subtle.</span><span class="sk-6f42c1-ffc799">generateKey</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "ML-DSA-44"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  false</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  [</span><span class="sk-032f62-99ffe4">"sign"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"verify"</span><span class="sk-24292e-fff">],</span></span>
+<span class="line"><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> signature</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> crypto.subtle.</span><span class="sk-6f42c1-ffc799">sign</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"ML-DSA-44"</span><span class="sk-24292e-fff">, privateKey, data);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> valid</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> crypto.subtle.</span><span class="sk-6f42c1-ffc799">verify</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "ML-DSA-44"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  publicKey,</span></span>
+<span class="line"><span class="sk-24292e-fff">  signature,</span></span>
+<span class="line"><span class="sk-24292e-fff">  data,</span></span>
+<span class="line"><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>These examples are deliberately small. They are not protocols. They are the JavaScript hooks for cryptographic primitives that protocols need.</p>
+<h2>Why this matters</h2>
+<p>Post-quantum migration is not one switch. It is a lot of protocols, libraries, services, and deployment environments learning how to use different primitives.</p>
+<p>Some of that work is already visible in TLS and SSH. OpenSSH added <a href="https://www.openssh.org/pq.html" target="_blank" rel="noopener noreferrer"><u>support for mlkem768x25519</u></a> in 2024. HPKE has a <a href="https://datatracker.ietf.org/doc/html/draft-ietf-hpke-pq-05" target="_blank" rel="noopener noreferrer"><u>draft for post-quantum and hybrid KEMs</u></a> ongoing at the IETF. The IETF published <a href="https://www.rfc-editor.org/rfc/rfc9964.html" target="_blank" rel="noopener noreferrer"><u>RFC 9964</u></a> for ML-DSA in JOSE, as well as an <a href="https://datatracker.ietf.org/doc/draft-ietf-jose-hpke-pq-pqt" target="_blank" rel="noopener noreferrer"><u>adopted draft</u></a> for JWE using PQ &amp; PQ/T HPKE. HTTP Message Signatures can use <a href="https://www.iana.org/assignments/http-message-signature/http-message-signature.xhtml" target="_blank" rel="noopener noreferrer"><u>different signature algorithms</u></a>, as long as the signer and verifier agree on how to produce and verify the signature.</p>
+<p>To support all these on Cloudflare Workers, developers needed support for the underlying cryptographic primitives within Web Crypto.</p>
+<p>Without it, a Workers developer could still experiment with post-quantum code, but they had to bundle a separate implementation. That is useful for portability and for early experiments, but it is not where we want every production application to end up.</p>
+<h2>Signing JWTs with ML-DSA</h2>
+<p>Signed JSON Web Tokens (JWTs) are a familiar example that protect using JSON Web Signatures (JWS). With a <a href="https://github.com/panva/jose" target="_blank" rel="noopener noreferrer"><u>panva/jose</u></a> library that maps ML-DSA-* algorithms to Web Crypto, the application code is as follows:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-005cc5-fff"> *</span><span class="sk-d73a49-a0a0a0"> as</span><span class="sk-24292e-fff"> jose </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "jose"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> alg</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> "ML-DSA-44"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">publicKey</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">privateKey</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> jose.</span><span class="sk-6f42c1-ffc799">generateKeyPair</span><span class="sk-24292e-fff">(alg);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> jwt</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-24292e-fff"> jose.</span><span class="sk-6f42c1-ffc799">SignJWT</span><span class="sk-24292e-fff">({ sub: </span><span class="sk-032f62-99ffe4">"alice"</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">setProtectedHeader</span><span class="sk-24292e-fff">({ alg })</span></span>
+<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">setIssuedAt</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">setExpirationTime</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"5m"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">sign</span><span class="sk-24292e-fff">(privateKey);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> jose.</span><span class="sk-6f42c1-ffc799">jwtVerify</span><span class="sk-24292e-fff">(jwt, publicKey);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>JWTs are only one example. The larger point is that libraries can delegate ML-DSA operations to the runtime instead of carrying their own implementation for every environment. With Workers supporting ML-DSA natively, libraries can delegate signing to the runtime rather than shipping their own implementation.</p>
+<h2>HPKE and OHTTP</h2>
+<p>ML-KEM is a key encapsulation mechanism. On its own, it gives two parties shared key material. HPKE turns that into a complete encryption construction by adding a key schedule and an AEAD.</p>
+<p>Libraries such as <a href="https://github.com/panva/hpke" target="_blank" rel="noopener noreferrer"><u>panva/hpke</u></a> are already structured around Web Crypto and runtime support. With the Workers runtime exposing ML-KEM, HPKE implementations can use the native primitive where available.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>import * as HPKE from "hpke";</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>const plaintext = new TextEncoder().encode("Hello World!");</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>const suite = new HPKE.CipherSuite(</span></span>
+<span class="line"><span>  HPKE.KEM_ML_KEM_768,</span></span>
+<span class="line"><span>  HPKE.KDF_HKDF_SHA256,</span></span>
+<span class="line"><span>  HPKE.AEAD_AES_128_GCM,</span></span>
+<span class="line"><span>);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>const recipient = await suite.GenerateKeyPair();</span></span>
+<span class="line"><span>const sealed = await suite.Seal(recipient.publicKey, plaintext);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>const opened = await suite.Open(</span></span>
+<span class="line"><span>  recipient.privateKey,</span></span>
+<span class="line"><span>  sealed.encapsulatedSecret,</span></span>
+<span class="line"><span>  sealed.ciphertext,</span></span>
+<span class="line"><span>);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>This is the shape we want for protocols such as <a href="https://datatracker.ietf.org/doc/html/rfc9458" target="_blank" rel="noopener noreferrer"><u>OHTTP</u></a> as well (which we’ve <a href="https://blog.cloudflare.com/stronger-than-a-promise-proving-oblivious-http-privacy-properties" target="_blank" rel="noopener noreferrer"><u>discussed before</u></a>). OHTTP uses HPKE. If HPKE can use a post-quantum KEM through Web Crypto, then that peer can start discussing migrating to a ciphersuite that supports these primitives.</p>
+<p>Libraries may require runtime-specific integration changes. Here, <code>HPKE.CipherSuite</code> selects implementations according to the algorithms available in the runtime.</p>
+<h2>Getting a public key from a private key</h2>
+<p>Several protocols need to publish or derive a public key after loading a private key. Previously, this often meant keeping both around or doing format-specific work.</p>
+<p>The new <code>getPublicKey()</code> helper does the direct thing:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> publicKey</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> crypto.subtle.</span><span class="sk-6f42c1-ffc799">getPublicKey</span><span class="sk-24292e-fff">(privateKey, [</span><span class="sk-032f62-99ffe4">"verify"</span><span class="sk-24292e-fff">]);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>For ML-KEM, the usage is different because public keys encapsulate and private keys decapsulate:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> publicKey</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> crypto.subtle.</span><span class="sk-6f42c1-ffc799">getPublicKey</span><span class="sk-24292e-fff">(privateKey, [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "encapsulateBits"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">]);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>This is a small API that aims to remove code used a lot across libraries that deal with public key cryptography.</p>
+<h2>Checking support</h2>
+<p>Because the API is not yet supported across runtimes, libraries should check for it instead of assuming it exists everywhere.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> (SubtleCrypto.</span><span class="sk-6f42c1-ffc799">supports</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"sign"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"ML-DSA-44"</span><span class="sk-24292e-fff">)) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> keys</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> crypto.subtle.</span><span class="sk-6f42c1-ffc799">generateKey</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"ML-DSA-44"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">false</span><span class="sk-24292e-fff">, [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "sign"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "verify"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  ]);</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>Libraries that run across Workers, <a href="https://github.com/nodejs/node" target="_blank" rel="noopener noreferrer"><u>Node.js</u></a>, <a href="https://github.com/denoland/deno" target="_blank" rel="noopener noreferrer"><u>Deno</u></a>, browsers, and other Web-interoperable runtimes need this kind of check. It also helps when only part of the modern algorithms proposal is implemented.</p>
+<h2>What is supported today</h2>
+<p>The initial Workers implementation supports ML-KEM-768 as a KEM and ML-DSA-44 as a signature algorithm. All require the <code>webcrypto_modern_algorithms</code> flag to <a href="https://developers.cloudflare.com/workers/configuration/compatibility-flags" target="_blank" rel="noopener noreferrer"><u>be set</u></a>.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Include the following in your `wrangler.jsonc`</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	// Opt into modern crypto algorithms</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">	"compatibility_flags"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">		"webcrypto_modern_algorithms"</span></span>
+<span class="line"><span class="sk-24292e-fff">	]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>For completeness, we also support ML-KEM-1024, ML-DSA-65, and ML-DSA-87. ML-KEM-512 is not supported because the BoringSSL version used by Workers does not expose it. Rather than add a separate implementation just for that variant, we are starting with the algorithms available through the native crypto library.</p>
+<p>The most recent list of supported algorithms can always be found on our <a href="https://developers.cloudflare.com/workers/runtime-apis/web-crypto" target="_blank" rel="noopener noreferrer"><u>developer documentation</u></a>.</p>
+<h2>How it’s been implemented</h2>
+<p>Workers run on <a href="https://github.com/cloudflare/workerd" target="_blank" rel="noopener noreferrer"><u>workerd</u></a>. It’s an <a href="https://blog.cloudflare.com/workerd-open-source-workers-runtime" target="_blank" rel="noopener noreferrer"><u>open-source runtime</u></a> built on V8. The implementation adds ML-KEM and ML-DSA support to workerd's Web Crypto layer, backed by BoringSSL primitives.</p>
+<p>This change also adds <a href="https://web-platform-tests.org" target="_blank" rel="noopener noreferrer"><u>Web Platform Tests</u></a> for the modern algorithms API surface, Workers-specific tests for compatibility flag behavior, and TypeScript definitions under the new Workers types.</p>
+<p>We split this out from a <a href="https://github.com/cloudflare/workerd/pull/6403" target="_blank" rel="noopener noreferrer"><u>larger proposal</u></a> from <a href="https://github.com/panva" target="_blank" rel="noopener noreferrer"><u>panva</u></a>. The change discussed in this blog, which is the first part of the modern Web Crypto algorithm specification, focuses on ML-KEM, ML-DSA, helper APIs, and JWK support. Other algorithms from the W3C Web Incubator Community Group (WICG) proposal, such as SHA-3, cSHAKE, TurboSHAKE, and ChaCha20-Poly1305, are not part of this initial change.</p>
+<p>That smaller scope makes review easier. It also gives library authors something concrete to test before the whole modern algorithms proposal is implemented.</p>
+<p>Note that ML-DSA public keys and signatures are <a href="https://blog.cloudflare.com/ml-dsa-will-have-to-do/#the-signature-algorithms" target="_blank" rel="noopener noreferrer"><u>substantially larger</u></a> than RSA or Ed25519. The integration of these algorithms in the runtime improves performance and reduces the need for bundling. However, it does not change the reality that the size of keys, signatures, or ciphertext is increasing, on the wire or when stored.</p>
+<h2>What may come next</h2>
+<p>The <a href="https://wicg.github.io/webcrypto-modern-algos" target="_blank" rel="noopener noreferrer"><u>WICG proposal</u></a> covers more than ML-KEM and ML-DSA. We have not implemented the following from the original contribution by Filip Skokan in <a href="https://github.com/cloudflare/workerd/pull/6403" target="_blank" rel="noopener noreferrer"><u>cloudflare/workerd#6403</u></a>, which will need further review. This includes the SHA-3 hash function, ChaCha20-Poly1305 AEAD (discussion about XChaCha20-Poly1305 in <a href="https://github.com/WICG/webcrypto-modern-algos/issues/1" target="_blank" rel="noopener noreferrer"><u>wicg/webcrypto-modern-algos#1</u></a>), cSHAKE, TurboSHAKE, and HPKE (discussed in <a href="https://github.com/WICG/webcrypto-modern-algos/issues/2" target="_blank" rel="noopener noreferrer"><u>wicg/webcrypto-modern-algos#2</u></a>). An implementation has already been tested against <a href="https://github.com/panva/hpke" target="_blank" rel="noopener noreferrer"><u>panva/hpke</u></a> and <a href="https://github.com/panva/jose" target="_blank" rel="noopener noreferrer"><u>panva/jose</u></a> test suites to verify the implementation.</p>
+<p>There is also a practical question about when this should become default, rather than opt-in. For now, all these algorithms are gated behind a compatibility flag. The API is based on a draft, and we want feedback from library authors before treating it as stable.</p>
+<h2>Start experimenting today</h2>
+<p>This change does not make every protocol post-quantum by itself. It gives Workers developers and library authors the primitives they were missing: ML-KEM for key encapsulation, ML-DSA for signatures, and helper APIs that make those primitives usable through Web Crypto.</p>
+<p>If you maintain a library that currently bundles its own post-quantum implementation, this is a good time to try the native API and tell us what does not fit. The fastest way to find the rough edges is to put real protocol code on top of it. All the details are in <a href="https://developers.cloudflare.com/changelog" target="_blank" rel="noopener noreferrer"><u>our changelog</u></a>.</p>
+<p>We would like to thank Filip Skokan for the original contribution and iterations, Felix Hanau, James Snell, Bas Westerbaan, and Peter Wu for reviewing the code, and Daniel Huigens for co-authoring the specification work this implementation follows.</p>

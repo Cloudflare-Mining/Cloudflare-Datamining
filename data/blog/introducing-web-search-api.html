@@ -1,0 +1,127 @@
+<p>Fun fact: when you use an agent and it needs to fetch a live web page, the agent usually just guesses the URL of the page and then makes a tool call to curl it. This is why you’ll sometimes see web fetches come back with a 404 Not Found, which happens if the agent incorrectly guesses the URL of that information. As you can imagine, it’s not super efficient to randomly guess URLs all the time.</p>
+<p>There is a better way. What if your agent can actually browse the Internet, just like how humans start with a search engine query when we’re looking for information? This is what web search is designed to do — it enables agents to search for relevant data on the Internet and grounds an agent’s responses based on live information.</p>
+<p>Today, we’re announcing Cloudflare’s partnership with web search providers&nbsp;to bring you grounded intelligence via AI Gateway. We’re kicking off this launch with our partners from Ceramic.ai, Exa,&nbsp;and Linkup.</p>
+<h2>What can I do with the Web Search&nbsp;API?</h2>
+<p>AI models are only as good as the context you feed them. Models are typically trained and then frozen at a point in time, operating only on information that existed before their knowledge cut off date. This makes it quite hard to engage with models about recent events, changing APIs, or fast-evolving news.</p>
+<p>Integrating Web Search API directly into your inference pipeline equips your agents with a dynamic context layer. Your applications get fresh, structured snippets from the web injected straight into context, which gives your models access to live information.</p>
+<p>For example, if your agent was building with Cloudflare developer tools, it might miss all the new products and features we’re releasing during this <a href="https://www.cloudflare.com/birthday-week"><u>Birthday Week</u></a>! With web search, you’ll be able to retrieve the latest and greatest documentation and releases, so you can build faster and smarter.</p>
+<h2>Elevating the industry standard for web search</h2>
+<p>At Cloudflare, we believe that crawlers should be honest, transparent, and respect all bot rules and preferences, and that site owners should have meaningful transparency and control over how their content is used.&nbsp;With our launch today, we’re excited to announce that our partners have committed to meeting Cloudflare’s bot crawling standards.<br><br>The crawler used by the web search provider must comply with Cloudflare’s publicly stated requirements for “Verified bots” as <a href="https://developers.cloudflare.com/bots/concepts/bot/verified-bots"><u>defined in our developer documentation</u></a>,&nbsp;and web search responses must include a link to the location of crawled content. These rules are net-positive for a fair Internet, and allow creators to decide what they want to do with their data.</p>
+<p>We’re extremely excited to be taking another step in&nbsp;setting the bar for what it means to be a good crawler on the Internet, and even more proud of the web search partners who have risen to the challenge to uphold these standards with us. When you use web search on Cloudflare, you choose to consume search knowledge from operators committed to providing the transparency, control, and visibility that helps build a better Internet, by identifying their crawlers, respecting robots.txt, and providing the source of search results.</p>
+<h2>Using Web Search API via AI Gateway</h2>
+<p>Cloudflare’s AI Gateway is the flagship integration point for our new Web Search API product. AI Gateway is designed to be the control plane for your applications, with observability, unified billing, security, and access controls all built-in. Naturally, we thought web search would fit right in: you can consume web search with your AI Gateway credits; collect logs and request data on web search calls; and control who gets access to what web search providers.</p>
+<p>Requests show up in your normal AI Gateway observability logs, and web search queries draw down from your AI Gateway credit balance. We will identify partners supporting Zero Data Retention (ZDR), so that you know that your data is not retained. We also offer web search directly at list API pricing from our partners, without any additional markup.&nbsp;More details can be found on the <a href="https://developers.cloudflare.com/web-search"><u>web search developer docs</u></a>.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAAGhoaGRkZFRUVExMTFRUVFxcXFhYWExMTFhYWFBQUERERERERFRUVGBgYFxcXEhISEhISEBAQDg4OEBAQFxcXGhoaGBgYERERFRUVExMTDw8PEhISGRkZHBwcGhoaExMTHR0dGxsbFhYWFhYWGxsbHx8fHh4eFxcXJiYmIyMjHR0dGhoaHh4eIiIiISEhHBwcLS0tKSkpIiIiHR0dICAgIyMjIyMjICAgLy8vLCwsJCQkHx8fICAgJCQkJCQkISEh" alt="" width="715" height="466" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XM9HE47XBWP8CA3AT4B233.png&amp;w=715&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XM9HE47XBWP8CA3AT4B233.png&amp;w=640&amp;h=417&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XM9HE47XBWP8CA3AT4B233.png&amp;w=715&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XM9HE47XBWP8CA3AT4B233.png&amp;w=750&amp;h=489&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XM9HE47XBWP8CA3AT4B233.png&amp;w=828&amp;h=540&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XM9HE47XBWP8CA3AT4B233.png&amp;w=1080&amp;h=704&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XM9HE47XBWP8CA3AT4B233.png&amp;w=1280&amp;h=834&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XM9HE47XBWP8CA3AT4B233.png&amp;w=1430&amp;h=932&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XM9HE47XBWP8CA3AT4B233.png&amp;w=1920&amp;h=1251&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1251" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="466" class="pt-portable-image-media"></div>
+</figure>
+<p>We also support Bring-Your-Own-Key (BYOK) with web search providers, as we do with model inference providers. This way, you’re able to bring your existing organizational setup and get started with AI Gateway and web search in a few simple steps.</p>
+<h4>Direct REST API</h4>
+<p>If you’re making HTTP calls from an existing backend, mobile app, or external service, you can query web search directly through a standard REST endpoint. Simply pass your AI Gateway authentication token, specify your preferred provider in the payload, and it will return web search results.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> https://api.cloudflare.com/client/v4/accounts/</span><span class="sk-24292e-fff">$CLOUDFLARE_ACCOUNT_ID</span><span class="sk-032f62-99ffe4">/ai/websearch/</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  --request</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  --header</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer </span><span class="sk-24292e-fff">$CLOUDFLARE_API_TOKEN</span><span class="sk-032f62-99ffe4">"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  --header</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  --data</span><span class="sk-032f62-99ffe4"> '{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "query": "What are some fun things to do in Salt Lake City as fall approaches?",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "provider": "ceramic",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "limit": 5,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "options": {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "gateway": { "id": "default" }</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    }</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  }'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<h4>Workers Bindings</h4>
+<p>For developers building directly on Cloudflare Workers, integration takes just a line of code. We also have a standalone worker binding that you can use to do web search for your agent:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">websearch</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  gatewayId: </span><span class="sk-032f62-99ffe4">"default"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  query: </span><span class="sk-032f62-99ffe4">"What are some fun things to do in Salt Lake City as fall approaches?"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  provider: </span><span class="sk-032f62-99ffe4">"exa"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  limit: </span><span class="sk-005cc5-ffc799">5</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> results</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> response.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">()</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<h4>Coming soon: Server tools</h4>
+<p>We are actively building native Server Tools directly into AI Gateway. Soon, you won’t need to define tools yourself: they will come built into our control plane so you can spend more time building rather than orchestrating the harness. Web search will be one of the first tools we incorporate into our stack of server tools, and we’re excited for you to try it.</p>
+<p>However, if you’d like to orchestrate web search as a server tool yourself today, you can easily do so with the following Worker code snippet:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> completion</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "@cf/google/gemma-4-26b-a4b-it"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  {</span></span>
+<span class="line"><span class="sk-24292e-fff">    messages: [{ role: </span><span class="sk-032f62-99ffe4">"user"</span><span class="sk-24292e-fff">, content: </span><span class="sk-032f62-99ffe4">"What happened in the last Cloudflare Birthday Week in 2025?"</span><span class="sk-24292e-fff"> }],</span></span>
+<span class="line"><span class="sk-24292e-fff">    tools: [{</span></span>
+<span class="line"><span class="sk-24292e-fff">      type: </span><span class="sk-032f62-99ffe4">"function"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      function: {</span></span>
+<span class="line"><span class="sk-24292e-fff">        name: </span><span class="sk-032f62-99ffe4">"web_search"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        description: </span><span class="sk-032f62-99ffe4">"Search the web for current information."</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        parameters: {</span></span>
+<span class="line"><span class="sk-24292e-fff">          type: </span><span class="sk-032f62-99ffe4">"object"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">          properties: { query: { type: </span><span class="sk-032f62-99ffe4">"string"</span><span class="sk-24292e-fff"> } },</span></span>
+<span class="line"><span class="sk-24292e-fff">          required: [</span><span class="sk-032f62-99ffe4">"query"</span><span class="sk-24292e-fff">],</span></span>
+<span class="line"><span class="sk-24292e-fff">        },</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">    }],</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">  { gateway: { id: </span><span class="sk-032f62-99ffe4">"default"</span><span class="sk-24292e-fff"> } },</span></span>
+<span class="line"><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> toolCall</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> completion.tool_calls?.[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> (toolCall?.name </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "web_search"</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">websearch</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">    gatewayId: </span><span class="sk-032f62-99ffe4">"default"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    query: toolCall.arguments.query,</span></span>
+<span class="line"><span class="sk-24292e-fff">    limit: </span><span class="sk-005cc5-ffc799">5</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  })</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> searchResults</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> response.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> finalResponse</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-24292e-fff">    model,</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-24292e-fff">      messages: [</span></span>
+<span class="line"><span class="sk-24292e-fff">        { role: </span><span class="sk-032f62-99ffe4">"user"</span><span class="sk-24292e-fff">, content: prompt },</span></span>
+<span class="line"><span class="sk-24292e-fff">        {</span></span>
+<span class="line"><span class="sk-24292e-fff">          role: </span><span class="sk-032f62-99ffe4">"tool"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">          name: </span><span class="sk-032f62-99ffe4">"web_search"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">          content: </span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(searchResults),</span></span>
+<span class="line"><span class="sk-24292e-fff">        },</span></span>
+<span class="line"><span class="sk-24292e-fff">      ],</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">    { gateway: { id: </span><span class="sk-032f62-99ffe4">"default"</span><span class="sk-24292e-fff"> } },</span></span>
+<span class="line"><span class="sk-24292e-fff">  )</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<h2>Try it out today!</h2>
+<p>We’re excited to bring web search to our platform and to be doing this with wonderful partners who are championing what it means to be a good steward of the Internet. Please give our new web search tools a try via AI Gateway, the standalone REST API, and other formats in the future. Get started with our <a href="https://developers.cloudflare.com/web-search"><u>developer docs</u></a>&nbsp;today, or try it out on the <a href="https://playground.ai.cloudflare.com"><u>AI Playground</u></a>&nbsp;with your AI Gateway account and key.</p>

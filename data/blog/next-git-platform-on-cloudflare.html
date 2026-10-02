@@ -1,0 +1,204 @@
+<p>GitHub was built for a world where humans write code, organize it into repositories, and collaborate through branches, commits, issues, and pull requests.</p>
+<p>But the next generation of software is going to be built differently because it is going to be built by a different kind of developer: agents.</p>
+<p>Agents are already writing more code than ever before — they’re fixing bugs, building features, writing tests, reviewing changes, updating dependencies, and doing the routine maintenance required to keep an application running.</p>
+<p>So in this new world where you have hundreds, or even thousands, of agents working on the same codebase at the same time, what does the foundation look like?</p>
+<p>How do agents know what other agents are working on? What happens when they make conflicting changes? How do you review everything they produce? How do you keep track of not just what changed, but <em>why</em>&nbsp;a change was made?</p>
+<p>And so the burning question is: <strong>What does the next GitHub look like?</strong></p>
+<p>We want you to help us answer it, by building it out.</p>
+<p>Earlier this year, we launched <a href="https://blog.cloudflare.com/artifacts-git-for-agents-beta"><u>Artifacts</u></a>, a versioned filesystem that speaks Git and can scale to millions of repositories. From the start, we designed Artifacts as a set of programmable primitives that developers could use to build their own products, workflows, and abstractions.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAAnlpCoFtFol1Kol5LnltLmFhNkFZWilZgq2dMrGlQrWtWrWxZq2tXpWdYm2RgkmJpunVXundbuXliuntluXpjtHZiqXJpnG5yx4FfxoFixINpxIRrxYRpwYBotnxtqHh1z4djzodly4dpyohqy4doyYVov4Frsnxx1Ipk0olkzodkzIZjzYZizIVjxYFlu31o1otk04lizoVezIJbzYNbzYNdyIBewHxe1otk04hhzoRby4FXzIFYzYJayX9bwntZ" alt="" width="715" height="396" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SQC6HRKEPPV90RWXN9CTKR.png&amp;w=715&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SQC6HRKEPPV90RWXN9CTKR.png&amp;w=640&amp;h=354&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SQC6HRKEPPV90RWXN9CTKR.png&amp;w=715&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SQC6HRKEPPV90RWXN9CTKR.png&amp;w=750&amp;h=415&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SQC6HRKEPPV90RWXN9CTKR.png&amp;w=828&amp;h=459&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SQC6HRKEPPV90RWXN9CTKR.png&amp;w=1080&amp;h=598&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SQC6HRKEPPV90RWXN9CTKR.png&amp;w=1280&amp;h=709&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SQC6HRKEPPV90RWXN9CTKR.png&amp;w=1430&amp;h=792&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SQC6HRKEPPV90RWXN9CTKR.png&amp;w=1422&amp;h=788&amp;f=webp" data-lightbox-width="1422" data-lightbox-height="788" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="396" class="pt-portable-image-media"></div>
+</figure>
+<p>Artifacts provides the foundation: repositories that can be created and forked programmatically, versioned storage for code and agent context, and the Git operations agents already know how to use.</p>
+<p>With that foundation in place, you can focus on the layer above it: how agents coordinate their work, how changes are reviewed and merged, and what the developer experience should look like when hundreds or thousands of agents are working on the same codebase.</p>
+<p>That is the layer we want you to build.</p>
+<p>Now that Artifacts is in open beta, <a href="http://cloudflare.com/git-competition"><u>we’re holding a competition</u></a>&nbsp;to see who can build the next Git platform on Cloudflare using Workers and Artifacts.</p>
+<h2>Artifacts is in open beta. Here’s why you should build on it</h2>
+<p>When we launched Artifacts, our goal was to make it possible to create a repository for every agent, session, task, or user — and to do that at the scale agents require.</p>
+<p>Since then, we’ve seen developers use Artifacts in a range of ways: Vibe-coding platforms are using it to store the projects their users create. Developers are using it to persist the code and context from agent sessions. Others are creating isolated repositories, so multiple agents can safely work from the same starting point and compare or merge the results later.</p>
+<p>Here are some new capabilities we’ve added since the initial launch.</p>
+<h3>Deploy Artifacts repos to Workers</h3>
+<p>You can now connect an Artifacts repository to a Worker through <a href="https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/artifacts-integration"><u>Workers Builds</u></a>. When you or an agent pushes code to the Artifacts repository, Cloudflare will build the project and, for the production branch, deploy the updated Worker. Pushes to other branches automatically create or update <a href="https://developers.cloudflare.com/workers/previews"><u>Workers Previews</u></a>, giving you an isolated, shareable version of your Worker where you can test changes before they go live.</p>
+<p>You can connect an existing Worker to an Artifacts repository or start a new project and automatically store it in Artifacts.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA+/v69/f38fHx7+/v8/P09/f39PTz6+vq/v79+/v69PT08/Pz9/f4+vr79/f37u7u///////++fn49/f3+/v8/v7/+/v78vLy////////+/v7+vr6/v7//////v7+9vb2/////////Pz8+/v7////////////+Pj4////////+/v7+vr6////////////+vr5////////+fn5+Pj5////////////+vr5////////+Pj49/f4//7/////////+vr5" alt="" width="715" height="559" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SQC8RKCYFADSHXNX2XR1XF.png&amp;w=715&amp;h=559&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SQC8RKCYFADSHXNX2XR1XF.png&amp;w=640&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SQC8RKCYFADSHXNX2XR1XF.png&amp;w=715&amp;h=559&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SQC8RKCYFADSHXNX2XR1XF.png&amp;w=750&amp;h=586&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SQC8RKCYFADSHXNX2XR1XF.png&amp;w=828&amp;h=647&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SQC8RKCYFADSHXNX2XR1XF.png&amp;w=1080&amp;h=844&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SQC8RKCYFADSHXNX2XR1XF.png&amp;w=1280&amp;h=1001&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SQC8RKCYFADSHXNX2XR1XF.png&amp;w=1430&amp;h=1118&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SQC8RKCYFADSHXNX2XR1XF.png&amp;w=896&amp;h=700&amp;f=webp" data-lightbox-width="896" data-lightbox-height="700" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="559" class="pt-portable-image-media"></div>
+</figure>
+<h3>Manage Artifacts directly from Workers</h3>
+<p>You can interact with Artifacts repositories directly from a Worker using an <a href="https://developers.cloudflare.com/artifacts/api/workers-binding"><u>Artifacts binding</u></a>&nbsp;to create or fork repos, inspect files and commits, and issue repo-scoped Git tokens. This makes your Git workflow programmable. When a new task arrives, a Worker can fork the project for an agent, read the files it needs for context, and give it a repository to work in. When the agent pushes a change, your automation can inspect the result and start a review. You define those steps in code to fit how your agents work.</p>
+<p>For example, here’s how to fork a project for a new agent task and read its <code>AGENTS.md</code>&nbsp;for instructions:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">using</span><span class="sk-005cc5-fff"> project</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">ARTIFACTS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"my-project"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">defaultBranch</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> project.</span><span class="sk-6f42c1-ffc799">info</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> workspace</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> project.</span><span class="sk-6f42c1-ffc799">fork</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`task-${</span><span class="sk-24292e-fff">crypto</span><span class="sk-032f62-99ffe4">.</span><span class="sk-6f42c1-ffc799">randomUUID</span><span class="sk-032f62-99ffe4">()</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">using</span><span class="sk-005cc5-fff"> repo</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">ARTIFACTS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(workspace.name);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> instructions</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> repo.</span><span class="sk-6f42c1-ffc799">readFile</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  ref: defaultBranch,</span></span>
+<span class="line"><span class="sk-24292e-fff">  path: </span><span class="sk-032f62-99ffe4">"AGENTS.md"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> agentTask</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  remote: workspace.remote,</span></span>
+<span class="line"><span class="sk-24292e-fff">  token: workspace.token,</span></span>
+<span class="line"><span class="sk-24292e-fff">  instructions: instructions </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> instructions.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">() </span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-fff"> null</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<h3>React to every change with event subscriptions</h3>
+<p>Artifacts publishes events whenever a repository is created, imported, forked, deleted, pushed to, cloned, or fetched. You can subscribe to these events to decide what happens next: run CI, kick off a code review agent, or deploy a change.</p>
+<p>For example, you can subscribe to Artifacts push events and have a Worker start a code review workflow for each push. The Worker passes the repository, branch, and new commit to the Workflow, giving a review agent the context it needs to inspect the change:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> queue</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">batch</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> message</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> batch.messages) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> event</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> message.body;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      if</span><span class="sk-24292e-fff"> (event.type </span><span class="sk-d73a49-a0a0a0">!==</span><span class="sk-032f62-99ffe4"> "cf.artifacts.repo.pushed"</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">continue</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">REVIEW_WORKFLOW</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">        params: {</span></span>
+<span class="line"><span class="sk-24292e-fff">          namespace: event.source.namespace,</span></span>
+<span class="line"><span class="sk-24292e-fff">          repo: event.source.repoName,</span></span>
+<span class="line"><span class="sk-24292e-fff">          ref: event.payload.ref,</span></span>
+<span class="line"><span class="sk-24292e-fff">          commit: event.payload.after,</span></span>
+<span class="line"><span class="sk-24292e-fff">        },</span></span>
+<span class="line"><span class="sk-24292e-fff">      });</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<h3>Data jurisdiction for Artifacts repos</h3>
+<p>You can now <a href="https://developers.cloudflare.com/artifacts/guides/data-localization"><u>choose where Artifacts stores and processes</u></a>&nbsp;your repository data. Set a U.S. or EU jurisdiction when you create a namespace, and every repository created in that namespace will automatically follow the same restriction.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/accounts/</span><span class="sk-24292e-fff">$ACCOUNT_ID</span><span class="sk-032f62-99ffe4">/artifacts/namespaces"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  -H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer </span><span class="sk-24292e-fff">$CLOUDFLARE_API_TOKEN</span><span class="sk-032f62-99ffe4">"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  --json</span><span class="sk-032f62-99ffe4"> '{"namespace":"my-eu-namespace","jurisdiction":"eu"}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<h3>View Artifacts metrics</h3>
+<p>You can now see metrics for your Artifacts repositories in the Cloudflare dashboard. For each repository, you can now see total operations, pulls, pushes, errors, and error rate, helping you understand how the repository is being used and spot failures. You can also query <a href="https://developers.cloudflare.com/artifacts/observability/metrics"><u>Artifacts metrics</u></a>&nbsp;directly to build your own dashboards or monitoring.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA/e7r+e3r8evr7+7v9PP1+Pb39PLy6unq//f1/fTz9PDv8fDx9vX3+/n69/X27Ozs//////389/X18/Pz+fn6/v3++vn67vDw////////+/v69vf3/Pz9/////f7+8vTz/////////v7++vv7////////////9Pf2/////////////P3/////////////9vn4/////////////v//////////////+Pv5////////////////////////////+Pv5" alt="" width="715" height="466" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SQC9MA49HNQD82GBG58EDM.png&amp;w=715&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SQC9MA49HNQD82GBG58EDM.png&amp;w=640&amp;h=417&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SQC9MA49HNQD82GBG58EDM.png&amp;w=715&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SQC9MA49HNQD82GBG58EDM.png&amp;w=750&amp;h=489&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SQC9MA49HNQD82GBG58EDM.png&amp;w=828&amp;h=540&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SQC9MA49HNQD82GBG58EDM.png&amp;w=1080&amp;h=704&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SQC9MA49HNQD82GBG58EDM.png&amp;w=1280&amp;h=834&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SQC9MA49HNQD82GBG58EDM.png&amp;w=1430&amp;h=932&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SQC9MA49HNQD82GBG58EDM.png&amp;w=1848&amp;h=1204&amp;f=webp" data-lightbox-width="1848" data-lightbox-height="1204" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="466" class="pt-portable-image-media"></div>
+</figure>
+<h3>Pricing</h3>
+<p>Artifacts pricing is based on repository operations and the amount of data stored. We will begin billing for Artifacts usage on October 15, 2026.</p>
+<h2>Competition: Build the next Git platform on Cloudflare</h2>
+<p>We want you to build your vision for the Git platform of the agentic era using Cloudflare Workers and Artifacts.</p>
+<p>You could rethink repositories, branches, pull requests, worktrees, code review, and merge conflicts — or build new ways to preserve agent context, compare multiple changes at the same time, and decide which one should ship.</p>
+<p>We aren’t looking for GitHub as it exists today with agents added on top. At a minimum, we want to see multiple agents working on changes concurrently. Beyond that, we want you to get creative — what you think comes next.</p>
+<h3>How to enter</h3>
+<p>Submit:</p>
+<ul>
+	<li>A 5-10 minute video demonstrating what you built, what it enables agents and developers to do, and how it works</li>
+	<li>A link to the source code, which must be provided under a permissive open source license (MIT, Apache, BSD)</li>
+	<li>Instructions for running or trying the project</li>
+</ul>
+<h3>Deadline</h3>
+<p><a href="http://cloudflare.com/git-competition"><u>Submissions</u></a>&nbsp;are open until October 14, 2026.</p>
+<h3>Why should you participate?</h3>
+<p>We’ll select the top three projects and fly up to two members from each team to San Francisco to attend <a href="https://www.cloudflare.com/connect"><u>Cloudflare Connect</u></a>&nbsp;and show what they built.</p>
+<p>The first-place team will also receive $25,000 in Cloudflare credits, along with invitations to the VIP speaker dinner on Monday night at Connect.</p>
+<h2>Get started</h2>
+<p>Artifacts is available&nbsp;in open beta to customers on the Workers Paid plan.</p>
+<p>Get started with your coding agent:<strong>&nbsp;</strong>copy the prompt below to set up your first Artifacts repository and start pushing code to it.</p>
+<div class="copy-prompt relative my-8 flex w-max max-w-full" data-copy-prompt=""><button type="button" aria-label="Copy prompt" class="copy-prompt__button inline-flex w-max max-w-full shrink-0 items-center justify-center rounded-full font-sans whitespace-nowrap no-underline select-none" data-copy-prompt-button="" data-prompt="&quot;Set me up with Cloudflare Artifacts so I can start pushing code to my first repository. Read https://developers.cloudflare.com/artifacts/llms.txt and https://developers.cloudflare.com/cf/llms.txt for current instructions. Use the Cloudflare cf CLI, installing it if needed. Help me authenticate, confirm my account and namespace, and verify Artifacts access. Create a new TypeScript Worker project with an ARTIFACTS binding and use it locally to create a repository on Cloudflare. Push an initial README commit and clone the repository separately to verify it works. Give me the repository's Git remote and instructions for pushing my own code. Keep credentials out of source control, Git configuration, remote URLs, and logs. Do not deploy or change billing settings. Stop the local server afterward. If anything fails, explain the blocker rather than claiming setup is complete.&quot;" data-copied-label="Prompt copied!" data-copy-prompt-bound="true"><span class="copy-prompt__content inline-flex min-w-0 items-center font-medium"><span class="copy-prompt__logos relative flex h-4 shrink-0 items-center justify-start" aria-hidden="true"><svg viewBox="0 0 256 257" class="size-4 shrink-0" aria-hidden="true">
+					<path fill="#D97757" d="m50.228 170.321 50.357-28.257.843-2.463-.843-1.361h-2.462l-8.426-.518-28.775-.778-24.952-1.037-24.175-1.296-6.092-1.297L0 125.796l.583-3.759 5.12-3.434 7.324.648 16.202 1.101 24.304 1.685 17.629 1.037 26.118 2.722h4.148l.583-1.685-1.426-1.037-1.101-1.037-25.147-17.045-27.22-18.017-14.258-10.37-7.713-5.25-3.888-4.925-1.685-10.758 7-7.713 9.397.649 2.398.648 9.527 7.323 20.35 15.75L94.817 91.9l3.889 3.24 1.555-1.102.195-.777-1.75-2.917-14.453-26.118-15.425-26.572-6.87-11.018-1.814-6.61c-.648-2.723-1.102-4.991-1.102-7.778l7.972-10.823L71.42 0 82.05 1.426l4.472 3.888 6.61 15.101 10.694 23.786 16.591 32.34 4.861 9.592 2.592 8.879.973 2.722h1.685v-1.556l1.36-18.211 2.528-22.36 2.463-28.776.843-8.1 4.018-9.722 7.971-5.25 6.222 2.981 5.12 7.324-.713 4.73-3.046 19.768-5.962 30.98-3.889 20.739h2.268l2.593-2.593 10.499-13.934 17.628-22.036 7.778-8.749 9.073-9.657 5.833-4.601h11.018l8.1 12.055-3.628 12.443-11.342 14.388-9.398 12.184-13.48 18.147-8.426 14.518.778 1.166 2.01-.194 30.46-6.481 16.462-2.982 19.637-3.37 8.88 4.148.971 4.213-3.5 8.62-20.998 5.184-24.628 4.926-36.682 8.685-.454.324.519.648 16.526 1.555 7.065.389h17.304l32.21 2.398 8.426 5.574 5.055 6.805-.843 5.184-12.962 6.611-17.498-4.148-40.83-9.721-14-3.5h-1.944v1.167l11.666 11.406 21.387 19.314 26.767 24.887 1.36 6.157-3.434 4.86-3.63-.518-23.526-17.693-9.073-7.972-20.545-17.304h-1.36v1.814l4.73 6.935 25.017 37.59 1.296 11.536-1.814 3.76-6.481 2.268-7.13-1.297-14.647-20.544-15.1-23.138-12.185-20.739-1.49.843-7.194 77.448-3.37 3.953-7.778 2.981-6.48-4.925-3.436-7.972 3.435-15.749 4.148-20.544 3.37-16.333 3.046-20.285 1.815-6.74-.13-.454-1.49.194-15.295 20.999-23.267 31.433-18.406 19.702-4.407 1.75-7.648-3.954.713-7.064 4.277-6.286 25.47-32.405 15.36-20.092 9.917-11.6-.065-1.686h-.583L44.07 198.125l-12.055 1.555-5.185-4.86.648-7.972 2.463-2.593 20.35-13.999-.064.065Z"></path>
+				</svg><svg viewBox="0 0 24 24" class="size-4 shrink-0 fill-current" fill-rule="evenodd" aria-hidden="true">
+					<path clip-rule="evenodd" d="M8.086.457a6.105 6.105 0 013.046-.415c1.333.153 2.521.72 3.564 1.7a.117.117 0 00.107.029c1.408-.346 2.762-.224 4.061.366l.063.03.154.076c1.357.703 2.33 1.77 2.918 3.198.278.679.418 1.388.421 2.126a5.655 5.655 0 01-.18 1.631.167.167 0 00.04.155 5.982 5.982 0 011.578 2.891c.385 1.901-.01 3.615-1.183 5.14l-.182.22a6.063 6.063 0 01-2.934 1.851.162.162 0 00-.108.102c-.255.736-.511 1.364-.987 1.992-1.199 1.582-2.962 2.462-4.948 2.451-1.583-.008-2.986-.587-4.21-1.736a.145.145 0 00-.14-.032c-.518.167-1.04.191-1.604.185a5.924 5.924 0 01-2.595-.622 6.058 6.058 0 01-2.146-1.781c-.203-.269-.404-.522-.551-.821a7.74 7.74 0 01-.495-1.283 6.11 6.11 0 01-.017-3.064.166.166 0 00.008-.074.115.115 0 00-.037-.064 5.958 5.958 0 01-1.38-2.202 5.196 5.196 0 01-.333-1.589 6.915 6.915 0 01.188-2.132c.45-1.484 1.309-2.648 2.577-3.493.282-.188.55-.334.802-.438.286-.12.573-.22.861-.304a.129.129 0 00.087-.087A6.016 6.016 0 015.635 2.31C6.315 1.464 7.132.846 8.086.457zm-.804 7.85a.848.848 0 00-1.473.842l1.694 2.965-1.688 2.848a.849.849 0 001.46.864l1.94-3.272a.849.849 0 00.007-.854l-1.94-3.393zm5.446 6.24a.849.849 0 000 1.695h4.848a.849.849 0 000-1.696h-4.848z"></path>
+				</svg><svg viewBox="0 0 466.73 532.09" class="size-4 shrink-0 fill-current" aria-hidden="true">
+					<path d="M457.43,125.94L244.42,2.96c-6.84-3.95-15.28-3.95-22.12,0L9.3,125.94c-5.75,3.32-9.3,9.46-9.3,16.11v247.99c0,6.65,3.55,12.79,9.3,16.11l213.01,122.98c6.84,3.95,15.28,3.95,22.12,0l213.01-122.98c5.75-3.32,9.3-9.46,9.3-16.11v-247.99c0-6.65-3.55-12.79-9.3-16.11h-.01ZM444.05,151.99l-205.63,356.16c-1.39,2.4-5.06,1.42-5.06-1.36v-233.21c0-4.66-2.49-8.97-6.53-11.31L24.87,145.67c-2.4-1.39-1.42-5.06,1.36-5.06h411.26c5.84,0,9.49,6.33,6.57,11.39h-.01Z"></path>
+				</svg><svg viewBox="0 0 32 40" class="h-4 w-auto shrink-0 fill-current" aria-hidden="true">
+					<path d="M24 32H8V16H24V32Z" fill-opacity="0.3"></path>
+					<path d="M24 8H8V32H24V8ZM32 40H0V0H32V40Z"></path>
+				</svg></span><span class="copy-prompt__labels relative inline-grid min-w-0 items-center justify-items-start text-start" aria-hidden="true" data-copy-prompt-labels="" style="inline-size: 76.3125px;"><span class="copy-prompt__label" data-copy-prompt-label="">Copy prompt</span><span class="copy-prompt__label-sizer" data-copy-prompt-label-sizer="default">Copy prompt</span><span class="copy-prompt__label-sizer" data-copy-prompt-label-sizer="copied">Prompt copied!</span></span></span></button><span class="sr-only" role="status" aria-live="polite" data-copy-prompt-status=""></span></div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {};
+	var e = 50,
+		t = 150;
+
+	function n(e) {
+		let t = e.dataset.prompt;
+		if (!t) return null;
+		try {
+			let e = JSON.parse(t);
+			return typeof e == `string` && e.trim() ? e : null
+		} catch {
+			return null
+		}
+	}
+
+	function r(r, i) {
+		i && r.querySelectorAll(`[data-copy-prompt]`).forEach(r => {
+			let a = r.querySelector(`[data-copy-prompt-button]`),
+				o = r.querySelector(`[data-copy-prompt-labels]`),
+				s = r.querySelector(`[data-copy-prompt-label]`),
+				c = r.querySelector(`[data-copy-prompt-label-sizer="default"]`),
+				l = r.querySelector(`[data-copy-prompt-label-sizer="copied"]`),
+				u = r.querySelector(`[data-copy-prompt-status]`);
+			if (!a || !u || a.dataset.copyPromptBound === `true`) return;
+			let d = n(a);
+			if (!d) return;
+			a.dataset.copyPromptBound = `true`;
+			let f = s?.textContent ?? ``,
+				p, m, h, g = e => {
+					let t = (e === `copied` ? l : c)?.getBoundingClientRect().width ?? 0;
+					o && t > 0 && (o.style.inlineSize = `${t}px`)
+				};
+			g(`default`);
+			let _ = s?.ownerDocument.fonts;
+			_ && _.ready.then(() => g(r.hasAttribute(`data-copied`) ? `copied` : `default`));
+			let v = (e, n) => {
+				if (!s || !e || (g(n), m && clearTimeout(m), m = void 0, s.classList.remove(`is-exit`, `is-enter-start`), s.textContent === e)) return;
+				let r = s.ownerDocument.defaultView;
+				if (typeof r?.matchMedia == `function` && r.matchMedia(`(prefers-reduced-motion: reduce)`).matches) {
+					s.textContent = e;
+					return
+				}
+				s.classList.add(`is-exit`), m = setTimeout(() => {
+					s.textContent = e, s.classList.remove(`is-exit`), s.classList.add(`is-enter-start`), s.offsetWidth, s.classList.remove(`is-enter-start`), m = void 0
+				}, t)
+			};
+			a.addEventListener(`click`, async () => {
+				try {
+					await i.writeText(d)
+				} catch {
+					return
+				}
+				p && clearTimeout(p), h && clearTimeout(h), u.textContent = ``, r.setAttribute(`data-copied`, ``), v(a.dataset.copiedLabel ?? ``, `copied`), p = setTimeout(() => {
+					u.textContent = a.dataset.copiedLabel ?? ``
+				}, e), h = setTimeout(() => {
+					r.removeAttribute(`data-copied`), u.textContent = ``, v(f, `default`)
+				}, 1550)
+			})
+		})
+	}
+	r(document, navigator.clipboard);
+</script>
+<p>You can view or create the Artifacts repositories in the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fartifacts"><u>dashboard</u></a>&nbsp;or if you’re looking to learn more, check out the <a href="https://developers.cloudflare.com/artifacts"><u>documentation</u></a>.</p>

@@ -1,0 +1,533 @@
+<p>Over the last few weeks, there has been lots of buzz around decision models such as <a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev" target="_blank" rel="noopener noreferrer"><u>Typesafe AI’s Jev</u></a> System One model. While classifier models have been around for some time, Jev introduces a new decision model concept into the world of AI — a model that produces bounded structured outputs cheaply, quickly and consistently that can be added into a workflow when a decision is required. These models are capable enough to work over any set of inputs without constantly retraining the model to incorporate new classification categories. This contrasts with the world of Large Language Models (LLMs), which are largely non-deterministic, but are open-ended enough to reason and generate text and tool calls for agentic workloads.&nbsp;</p>
+<p>Today, we’re releasing two Cloudflare-trained decision models, Clef and Clef-flash, <a href="https://developers.cloudflare.com/workers-ai/models/clef" target="_blank" rel="noopener noreferrer"><u>hosted on Workers AI</u></a>. Clef is currently the leader when evaluated against the <a href="https://huggingface.co/spaces/multimodalart/jev-decision-index" target="_blank" rel="noopener noreferrer"><u>Jev Decision Index</u></a>, you can view full results on the <a href="https://clef-evals.workers-ai-mle.workers.dev" target="_blank" rel="noopener noreferrer"><u>live benchmark demo site</u></a>. These models are smarter, faster, and fully Jev-API compatible, so you can experiment with these hosted models easily. We’re fully open-sourcing these <a href="https://huggingface.co/Cloudflare/clef" target="_blank" rel="noopener noreferrer"><u>models on Hugging Face</u></a> under an Apache 2.0 license for you to run locally and experiment with yourselves.&nbsp;</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA9Pb28vPz7u3t7ezs8PDw8vPz7u/v5+bm8/X18fLy7uzs7uzs8vLy9Pb28fPz6+rq8/b28vPz7+3t8e7u9fX1+Pv79vf38O/v+Pv79vf39PLy9fPz+vr6/v///P7+9vX1////////+/n5/Pn5/////////////Pv7////////////////////////////////////////////////////////////////////////////////////////////////" alt="" width="715" height="294" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3W09VBACVT4420YA2SDXZE8.01M3W09YK4NRJQNV2S8HMMCQF0.png&amp;w=715&amp;h=294&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3W09VBACVT4420YA2SDXZE8.01M3W09YK4NRJQNV2S8HMMCQF0.png&amp;w=640&amp;h=263&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3W09VBACVT4420YA2SDXZE8.01M3W09YK4NRJQNV2S8HMMCQF0.png&amp;w=715&amp;h=294&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3W09VBACVT4420YA2SDXZE8.01M3W09YK4NRJQNV2S8HMMCQF0.png&amp;w=750&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3W09VBACVT4420YA2SDXZE8.01M3W09YK4NRJQNV2S8HMMCQF0.png&amp;w=828&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3W09VBACVT4420YA2SDXZE8.01M3W09YK4NRJQNV2S8HMMCQF0.png&amp;w=1080&amp;h=444&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3W09VBACVT4420YA2SDXZE8.01M3W09YK4NRJQNV2S8HMMCQF0.png&amp;w=1280&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3W09VBACVT4420YA2SDXZE8.01M3W09YK4NRJQNV2S8HMMCQF0.png&amp;w=1430&amp;h=588&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="decision-index-vs-latency.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3W09VBACVT4420YA2SDXZE8.01M3W09YK4NRJQNV2S8HMMCQF0.png&amp;w=1920&amp;h=790&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="790" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="294" class="pt-portable-image-media"></div>
+</figure>
+<p>Lastly, we’re excited to debut our new reinforcement learning (RL) product, which allows customers to fine-tune Clef to suit their use cases as well.</p>
+<h2>What is a decision model?</h2>
+<p>A decision model makes classifications to help agents decide how to act, based on certain probabilities. For example, you can pass in a customer support message (inputs) and ask if it is urgent and which team should handle it. A decision model will return typed answers with probabilities (outputs), which your code can use to route the ticket, trigger an escalation, or defer to a human. This means that a human does not necessarily need to be in the loop for agentic decisions anymore — agents can programmatically gather context, make decisions, and take actions on tasks, or defer to a human when needed.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA9/3+9Pr67vPz6u7v6u7x6+/06e7x5evq8vn/8Pb76u/14+ny3ub03eb23ufz4Ojr7vb/7PP+5uz43OT10t74z9761OH23Obu7/f/7fT/5u383OT60d/9zt//1OP73ejz9f3/8vr/7PP/5Oz/3en/3Or/4Oz/5u74/f//+///9fv/8ff/8ff/8vr/8/r/8ff+/////////f///P//////////////+/7//////////////////////////////v//" alt="" width="715" height="376" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TJPNG3PJHDJ88KJZJ7Q29T.png&amp;w=715&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TJPNG3PJHDJ88KJZJ7Q29T.png&amp;w=640&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TJPNG3PJHDJ88KJZJ7Q29T.png&amp;w=715&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TJPNG3PJHDJ88KJZJ7Q29T.png&amp;w=750&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TJPNG3PJHDJ88KJZJ7Q29T.png&amp;w=828&amp;h=435&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TJPNG3PJHDJ88KJZJ7Q29T.png&amp;w=1080&amp;h=568&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TJPNG3PJHDJ88KJZJ7Q29T.png&amp;w=1280&amp;h=673&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TJPNG3PJHDJ88KJZJ7Q29T.png&amp;w=1430&amp;h=752&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TJPNG3PJHDJ88KJZJ7Q29T.png&amp;w=1920&amp;h=1009&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1009" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="376" class="pt-portable-image-media"></div>
+</figure>
+<p>Specifically at Cloudflare, we’ve been testing our new Clef model on our Threat Intelligence team to help us classify website domains. By giving a domain to Clef (with Browser Run) it can quickly identify categories that the domain falls under — for example, it might classify a domain with a 95% chance it is a fashion website, 85% ecommerce, &lt;1% phishing, etc. This classification took our Clef model 2.2s to fetch, render, and classify the website. In contrast, our fastest general LLM gpt-oss-120b took 4.7s in the same workflow, and only returned two classifications. As a user, you can imagine how a 2x savings in latency and results can help us improve our threat intelligence workflows and be faster in identifying malicious or legitimate domains. Generalize this to any use case where you need to make quick programmatic decisions, and you unlock powerful agentic workflows that are able to autonomously decide, reason, and execute.</p>
+<p>In music theory, a clef is a symbol placed at the beginning of a musical staff that assigns specific pitch names to the lines and spaces. A decision model is analogous to a music clef because it helps define the domain of the context and the subsequent notes (actions) that follow it. We chose Clef as the name of our family of decision models, as it serves similar purposes, and the CF hearkens to Cloudflare.</p>
+<h2>How is Clef different from other decision models?</h2>
+<p>Although the market is getting increasingly saturated with decision models, Clef has some unique properties that make us excited to release it to the public. First, it has a vision encoder so it’s able to take in images and classify visual content. This is different from Jev, which only does text classification today. Secondly, our model has a 64k context window (compared to Jev’s 32k), which allows users to squeeze more input state for the model to classify against.</p>
+<p>Third, our model is accurate and powerful, scoring competitively against other decision models on the market across various quality benchmarks. We shortlisted some evaluations below that are important for decision-making as defined by the <a href="https://huggingface.co/spaces/multimodalart/jev-decision-index" target="_blank" rel="noopener noreferrer"><u>Jev Decision Index</u></a> and scored some of the more popular models on the market for it. Check out the table below for benchmarks, or view the scores on our <a href="https://clef-evals.workers-ai-mle.workers.dev" target="_blank" rel="noopener noreferrer">live decision index demo site</a>:</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 678px;">
+		<colgroup>
+			<col style="width: 102px;">
+			<col style="width: 96px;">
+			<col style="width: 96px;">
+			<col style="width: 96px;">
+			<col style="width: 96px;">
+			<col style="width: 96px;">
+			<col style="width: 96px;">
+		</colgroup>
+		<tbody>
+			<tr>
+				<td>
+					<p><strong>Benchmark</strong></p>
+				</td>
+				<td>
+					<p><a href="https://huggingface.co/Cloudflare/clef" target="_blank" rel="noopener noreferrer"><strong><u>Clef</u></strong></a></p>
+				</td>
+				<td>
+					<p><a href="https://huggingface.co/Cloudflare/clef-flash" target="_blank" rel="noopener noreferrer"><strong><u>Clef-flash</u></strong></a></p>
+				</td>
+				<td>
+					<p><a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev" target="_blank" rel="noopener noreferrer"><strong><u>Jev</u></strong></a></p>
+				</td>
+				<td>
+					<p><strong>DiffusionGemma Jev</strong></p>
+				</td>
+				<td>
+					<p><a href="https://huggingface.co/jaredpalmer/kev-9b" target="_blank" rel="noopener noreferrer"><strong><u>Kev 9B</u></strong></a></p>
+				</td>
+				<td>
+					<p><a href="https://huggingface.co/convaiinnovations/laya" target="_blank" rel="noopener noreferrer"><strong><u>Laya</u></strong></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>BFCL · case exact</p>
+				</td>
+				<td>
+					<p>98.47</p>
+				</td>
+				<td>
+					<p><strong>98.76</strong></p>
+				</td>
+				<td>
+					<p>95.75</p>
+				</td>
+				<td>
+					<p>96.52</p>
+				</td>
+				<td>
+					<p>94.51</p>
+				</td>
+				<td>
+					<p>38.13</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>ToolRet · nDCG@10</p>
+				</td>
+				<td>
+					<p><strong>69.19</strong></p>
+				</td>
+				<td>
+					<p>66.43</p>
+				</td>
+				<td>
+					<p>65.28</p>
+				</td>
+				<td>
+					<p>61.21</p>
+				</td>
+				<td>
+					<p>64.26</p>
+				</td>
+				<td>
+					<p>12.69</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>API-Bank · accuracy</p>
+				</td>
+				<td>
+					<p>91.93</p>
+				</td>
+				<td>
+					<p><strong>93.11</strong></p>
+				</td>
+				<td>
+					<p>88.19</p>
+				</td>
+				<td>
+					<p>83.66</p>
+				</td>
+				<td>
+					<p>56.30</p>
+				</td>
+				<td>
+					<p>11.41</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Home appliances · case exact</p>
+				</td>
+				<td>
+					<p>82.95</p>
+				</td>
+				<td>
+					<p><strong>97.73</strong></p>
+				</td>
+				<td>
+					<p>52.27</p>
+				</td>
+				<td>
+					<p>42.05</p>
+				</td>
+				<td>
+					<p>25.00</p>
+				</td>
+				<td>
+					<p>0.00</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>When2Call · accuracy</p>
+				</td>
+				<td>
+					<p>72.37</p>
+				</td>
+				<td>
+					<p>65.58</p>
+				</td>
+				<td>
+					<p><strong>80.97</strong></p>
+				</td>
+				<td>
+					<p>75.44</p>
+				</td>
+				<td>
+					<p>49.62</p>
+				</td>
+				<td>
+					<p>11.94</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>BANKING77 · macro-F1</p>
+				</td>
+				<td>
+					<p><strong>94.20</strong></p>
+				</td>
+				<td>
+					<p>90.93</p>
+				</td>
+				<td>
+					<p>79.74</p>
+				</td>
+				<td>
+					<p>74.28</p>
+				</td>
+				<td>
+					<p>84.83</p>
+				</td>
+				<td>
+					<p>14.29</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CLINC150+OOS · macro-F1</p>
+				</td>
+				<td>
+					<p><strong>97.43</strong></p>
+				</td>
+				<td>
+					<p>66.77</p>
+				</td>
+				<td>
+					<p>89.27</p>
+				</td>
+				<td>
+					<p>83.49</p>
+				</td>
+				<td>
+					<p>79.03</p>
+				</td>
+				<td>
+					<p>3.19</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>BRIGHT · nDCG@10</p>
+				</td>
+				<td>
+					<p>45.91</p>
+				</td>
+				<td>
+					<p>39.26</p>
+				</td>
+				<td>
+					<p><strong>47.52</strong></p>
+				</td>
+				<td>
+					<p>42.94</p>
+				</td>
+				<td>
+					<p>38.53</p>
+				</td>
+				<td>
+					<p>19.90</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Amazon ESCI · macro-F1</p>
+				</td>
+				<td>
+					<p><strong>57.48</strong></p>
+				</td>
+				<td>
+					<p>57.39</p>
+				</td>
+				<td>
+					<p>55.21</p>
+				</td>
+				<td>
+					<p>53.37</p>
+				</td>
+				<td>
+					<p>49.22</p>
+				</td>
+				<td>
+					<p>24.40</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>PhishNChips · accuracy</p>
+				</td>
+				<td>
+					<p>79.60</p>
+				</td>
+				<td>
+					<p>75.05</p>
+				</td>
+				<td>
+					<p>62.55</p>
+				</td>
+				<td>
+					<p><strong>85.35</strong></p>
+				</td>
+				<td>
+					<p>50.75</p>
+				</td>
+				<td>
+					<p>50.15</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>We also ran benchmarks across <a href="https://huggingface.co/collections/typesafe/workflowevals" target="_blank" rel="noopener noreferrer"><u>Typesafe’s own eval suite</u></a> and our Clef models fared well, beating Jev in 3 out of 4 areas. Notably, our Clef-flash performs exceptionally well, given how much faster it is.</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 637px;">
+		<colgroup>
+			<col style="width: 177px;">
+			<col style="width: 147px;">
+			<col style="width: 156px;">
+			<col style="width: 157px;">
+		</colgroup>
+		<tbody>
+			<tr>
+				<td>
+					<p><strong>Workflow</strong></p>
+				</td>
+				<td>
+					<p><a href="https://huggingface.co/Cloudflare/clef" target="_blank" rel="noopener noreferrer"><strong><u>Clef</u></strong></a></p>
+				</td>
+				<td>
+					<p><a href="https://huggingface.co/Cloudflare/clef-flash" target="_blank" rel="noopener noreferrer"><strong><u>Clef-flash</u></strong></a></p>
+				</td>
+				<td>
+					<p><a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev" target="_blank" rel="noopener noreferrer"><strong><u>Jev</u></strong></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Invoice processing</p>
+				</td>
+				<td>
+					<p><strong>64.7</strong></p>
+				</td>
+				<td>
+					<p>57.1</p>
+				</td>
+				<td>
+					<p>61.8</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Customer service</p>
+				</td>
+				<td>
+					<p>76.3</p>
+				</td>
+				<td>
+					<p><strong>77</strong></p>
+				</td>
+				<td>
+					<p>76.0</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Security incidents</p>
+				</td>
+				<td>
+					<p><strong>62.9</strong></p>
+				</td>
+				<td>
+					<p>61.7</p>
+				</td>
+				<td>
+					<p>61.7</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Agent trace observability</p>
+				</td>
+				<td>
+					<p>68.5</p>
+				</td>
+				<td>
+					<p>69.8</p>
+				</td>
+				<td>
+					<p><strong>71.6</strong></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Across the 43 eval benchmarks that we ran, our Clef models beat the decision models on latency (except for Laya which is very fast but trades off quality in the benchmarks above):</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 672px;">
+		<colgroup>
+			<col style="width: 96px;">
+			<col style="width: 96px;">
+			<col style="width: 96px;">
+			<col style="width: 96px;">
+			<col style="width: 96px;">
+			<col style="width: 96px;">
+			<col style="width: 96px;">
+		</colgroup>
+		<tbody>
+			<tr>
+				<td>
+					<p><strong>Benchmark</strong></p>
+				</td>
+				<td>
+					<p><a href="https://huggingface.co/Cloudflare/clef" target="_blank" rel="noopener noreferrer"><strong><u>Clef</u></strong></a></p>
+				</td>
+				<td>
+					<p><a href="https://huggingface.co/Cloudflare/clef-flash" target="_blank" rel="noopener noreferrer"><strong><u>Clef-flash</u></strong></a></p>
+				</td>
+				<td>
+					<p><a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev" target="_blank" rel="noopener noreferrer"><strong><u>Jev</u></strong></a></p>
+				</td>
+				<td>
+					<p><strong>DiffusionGemma Jev</strong></p>
+				</td>
+				<td>
+					<p><a href="https://huggingface.co/jaredpalmer/kev-9b" target="_blank" rel="noopener noreferrer"><strong><u>Kev-9B</u></strong></a></p>
+				</td>
+				<td>
+					<p><a href="https://huggingface.co/convaiinnovations/laya" target="_blank" rel="noopener noreferrer"><strong><u>Laya</u></strong></a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Median latency&nbsp; · ms</p>
+				</td>
+				<td>
+					<p>209.3</p>
+				</td>
+				<td>
+					<p>38.8</p>
+				</td>
+				<td>
+					<p>524.1</p>
+				</td>
+				<td>
+					<p>84.4<br></p>
+				</td>
+				<td>
+					<p>51.4</p>
+				</td>
+				<td>
+					<p><strong>5.8</strong></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>p95 latency · ms</p>
+				</td>
+				<td>
+					<p>238.6</p>
+				</td>
+				<td>
+					<p><strong>122.4</strong></p>
+				</td>
+				<td>
+					<p>536.0</p>
+				</td>
+				<td>
+					<p>211.2<br></p>
+				</td>
+				<td>
+					<p>187.9</p>
+				</td>
+				<td>
+					<p>222.5</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>On top of the latency benefits from the model itself, our Clef models are hosted on Workers AI. Because they are hosted on Cloudflare’s infrastructure, we’re able to take advantage of our GPUs at the edge, leading to low network latency and faster decisions. This means that you could put Clef into the hot path for agents to make decisions and combine that with one of our LLMs on Workers AI to take action.&nbsp;</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> https://api.cloudflare.com/client/v4/accounts/</span><span class="sk-24292e-fff">$CLOUDFLARE_ACCOUNT_ID</span><span class="sk-032f62-99ffe4">/ai/run/@cf/cloudflare/clef</span><span class="sk-005cc5-a0a0a0"> \\</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-005cc5-a0a0a0"> \\</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  -H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer </span><span class="sk-24292e-fff">$CLOUDFLARE_AUTH_TOKEN</span><span class="sk-032f62-99ffe4">"</span><span class="sk-005cc5-a0a0a0"> \\</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  -d</span><span class="sk-032f62-99ffe4"> '{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "model": "clef",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "state": "Checkout has been failing for every customer for the last hour.",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "questions": {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "urgent": { "type": "noul", "instructions": "Is this support request urgent?" },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "team": {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "type": "choice",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "instructions": "Which team should handle this request?",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "criteria": {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">          "billing": "Payments, invoices, and refunds",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">          "technical": "Outages, errors, and configuration",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">          "sales": "Plans and upgrades"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        }</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "severity": {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "type": "score",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "instructions": "How severe is the customer impact?",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "criteria": ["No impact", "Minor", "Major", "Critical"]</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      }</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    }</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  }'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p><br>Clef also produces strictly typed outputs similar to Jev and is fully API-compatible, so you can make the swap extremely easily. The larger Clef model is your more powerful precision model, while the Clef-Flash model is great for latency-critical decisions. The models are enterprise-ready with our guarantee that we don’t read, store, or train on your requests or responses (unless you want to use our fine-tuning product, which we go into below). You can get started with the Clef models today, starting with our <a href="https://developers.cloudflare.com/workers-ai/models/clef" target="_blank" rel="noopener noreferrer"><u>developer documentation</u></a> or play around with the <a href="https://huggingface.co/Cloudflare/clef" target="_blank" rel="noopener noreferrer"><u>open-source model on the Hugging Face repo.</u></a></p>
+<p>If you’d like help tuning Clef for a specific workload, we are also offering fine-tuning services — first as a hands-on partner with our forward-deployed engineer (FDE) team, and then later as a self-serve fine-tuning platform for customers to train and redeploy the model onto Cloudflare.</p>
+<h3>How we trained Clef</h3>
+<p>In the same week that Jev came out, we <a href="https://x.com/michellechen/status/2101091012559151480" target="_blank" rel="noopener noreferrer"><u>posted about some experiments</u></a> we had with our own homegrown decision model. Our demo goes into how we adapted the DiffusionGemma model to output deterministic probabilities by exposing the logprobs that are generated by a large language model. Our initial approach built upon independent research by <a href="https://x.com/mmastrac" target="_blank" rel="noopener noreferrer"><u>Matt Mastracci</u></a>, who has been active in the machine learning (ML) community with sharing new ideas and <a href="https://github.com/vllm-project/vllm/pull/57250" target="_blank" rel="noopener noreferrer"><u>pull requests to vLLM</u></a> inference engine to make DiffusionGemma support stronger.</p>
+<p>Clef builds upon this concept, but uses a different base model as the backbone. We currently use Qwen as the base model and post-trained it to suit decision model use cases. During inference, Clef uses Qwen for a prefill-only pass, then scores the valid schema choices in parallel. The decision step is non-autoregressive, so there’s no intermediate text to generate token by token, making Clef significantly faster than autoregressive LLMs. Rather than generating intermediate text to produce structured answers, Clef and Clef-flash derive schema choices directly from internal backbone representations. This approach relies on a specialized two-stage attention routing process: every valid choice extracts context relevant to the prompt, allowing individual field parameters to cross-attend with other fields and back to the original payload prior to scoring. By leveraging a lexical prior, the model preserves semantic intent across options. Ultimately, the architecture unites option-specific evidence routing, joint cross-field attention, and schema-bound scoring.</p>
+<p>By freezing Qwen3.8-27B for Clef and Qwen3.5-9B for Clef-flash, we jointly optimized the routing head alongside rank-256 low-rank adapters. Our post-training utilizes label-smoothed cross-entropy for valid schema outputs paired with a Brier loss to refine probability calibration. This training leverages our own internal synthetic datasets permutating field orders, prompts, and schema structures. We also developed Reinforcement Learning for Calibrated Decisions (RLCD) to serve as a secondary optimization target, granting partial credit to adjacent ordinal choices, rewarding fully precise record outputs, and applying a reference penalty to prevent distribution shift, giving us better accuracy and generalization.</p>
+<p>This means that we were able to achieve a few novel things with Clef: we improved accuracy of the model in classification, constrained it to output only probabilities instead of text generation, and made it faster than Jev and the base Qwen models.</p>
+<h3>How fine-tuning can extend the capabilities of Clef</h3>
+<p>We heard a lot of internal use cases that required fine-tuning our Clef model to be built into our agentic workflows at Cloudflare. For example, internal teams want a classifier model to be able to evaluate Trust &amp; Safety submissions, help us triage Cloudflare Support requests, or even to be built-in to our Bot products to decide if a crawler is a good bot or bad bot.</p>
+<p>These use cases are incredibly specific and we have had many years of labelled decisions that we could use to train a specific classifier. When you fine-tune a model, you may give up some general purpose performance in exchange for higher accuracy in a specific domain.. Because Cloudflare has more than 15 years of network data across different domains, we can fine-tune a model to fit these specific use cases which is more accurate and faster than our generic Clef model. We’re working with internal teams already to figure out how we can post-train Clef to create powerful ML models that boost our impact and improve workflows across Cloudflare. These internal teams and use cases are the next remit of our new FDE fine-tuning team and basis for our reinforcement learning (RL) product.</p>
+<h3>Our new RL service</h3>
+<p>We are offering a service to help customers fine-tune Clef to suit their workloads with our hands-on FDE team. From that, we’ll learn from our hands-on experiences to build a self-serve platform that customers can use to capture data, fine-tune, and redeploy the model, all on Cloudflare.</p>
+<p>This has actually been a long time coming — we’ve been building our AI platform to have the right primitives where we could be building a custom RL product. The interest in Jev shows the need for a fast, small, specific, classifier model, and we chose this to be our niche to start experimenting with RL environments.</p>
+<p>To do this, we leverage the primitives that we already have built on our Cloudflare platform:</p>
+<ul>
+	<li>Cloudflare AI Gateway – pass all your AI traffic through AI Gateway and automatically create a dataset of requests for your use case</li>
+	<li>Cloudflare Workers AI – generate rollouts against the base Clef model</li>
+	<li>Cloudflare Containers – RL sandbox for scoring and replaying agent actions</li>
+	<li>[NEW] Trainer – update weights of fine-tuned Clef model</li>
+	<li>Cloudflare Workers AI + BYO Model – redeploy the fine-tuned model on Workers AI</li>
+</ul>
+<p>This combines a few work-in-progress pieces of the AI Platform that we’ve been working on, including AI Gateway that captures your AI traffic so you can leverage your own request/response data, Containers for RL Sandboxes, and Workers AI’s Bring Your Own Model (Cog) work that has been progressing since our acquisition of Replicate.&nbsp;</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA///////89/j08/Tw9vf0+Pn59PX16+3s/////v7+9/f18vTx8/b19Pf57vL15urs/////v//9/j48vX08fX38PX76vD34eft////////+vv89ff48/f78Pf+6vH64enw/////////v//+vz9+Pz/9/z/8ff/6O72////////////////////////+v7/8vb8////////////////////////////+/3//////////////////////////////v//" alt="" width="715" height="463" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TJPQEG983EA9PS20PQZS6R.png&amp;w=715&amp;h=463&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TJPQEG983EA9PS20PQZS6R.png&amp;w=640&amp;h=414&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TJPQEG983EA9PS20PQZS6R.png&amp;w=715&amp;h=463&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TJPQEG983EA9PS20PQZS6R.png&amp;w=750&amp;h=486&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TJPQEG983EA9PS20PQZS6R.png&amp;w=828&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TJPQEG983EA9PS20PQZS6R.png&amp;w=1080&amp;h=699&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TJPQEG983EA9PS20PQZS6R.png&amp;w=1280&amp;h=829&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TJPQEG983EA9PS20PQZS6R.png&amp;w=1430&amp;h=926&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TJPQEG983EA9PS20PQZS6R.png&amp;w=1920&amp;h=1243&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1243" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="463" class="pt-portable-image-media"></div>
+</figure>
+<h3>Try it out today</h3>
+<p>We’re excited to launch our first Cloudflare-trained ML model from the Workers AI team today. We’re still early here and have a lot more improvements in store, but it is a wonderful first showcase of the hard work we’ve been doing on the AI Platform team. We believe that Clef has the ability to disrupt the way we use agents, which fits naturally into Cloudflare’s mission of being the agent cloud.</p>
+<p>If you have specific use cases and are already customers of these products — <a href="https://www.cloudflare.com/resource/clef-rl-interest" target="_blank" rel="noopener noreferrer"><u>we’d love to chat with you and be design partners as we experiment in this space.</u></a></p>
+<p>Try out the Clef models hosted on Workers AI, download the <a href="https://huggingface.co/Cloudflare/clef" target="_blank" rel="noopener noreferrer"><u>weights on Hugging Face </u></a>if you’d like to explore for yourself, and reach out if you have fine-tuning use cases you’d like us to help with.</p>
+<p>Our ML team has been growing in impact, from model optimizations to model training research. If you’re interested in joining our mission, <a href="https://www.cloudflare.com/careers" target="_blank" rel="noopener noreferrer"><u>check out our open roles</u></a>.&nbsp;</p>
+<h6></h6>
+<p></p>

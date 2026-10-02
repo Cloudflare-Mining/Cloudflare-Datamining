@@ -1,0 +1,119 @@
+<p>When <a href="https://blog.cloudflare.com/voidzero-joins-cloudflare" target="_blank" rel="noopener noreferrer"><u>VoidZero joined Cloudflare</u></a> four months ago, we made a commitment to open source, promising that Vite, Vitest, Rolldown, Oxc, and Vite+ will stay open source, vendor-agnostic, and community-driven.&nbsp; As part of Cloudflare’s Birthday Week, where Cloudflare gives back to the Internet, we thought it’d be a good time to check in on how we’ve been doing against this commitment.</p>
+<p>In the four months since VoidZero joined Cloudflare, we’ve shipped more than 80 releases, closed over 1,200 issues, and landed some big performance improvements, including:</p>
+<ul>
+	<li><a href="https://oxc.rs/blog/2026-08-18-react-compiler-support" target="_blank" rel="noopener noreferrer"><u>Oxc React Compiler</u></a>, released in August, compiles React.js apps <a href="https://github.com/oxc-project/bench-transformer#react-compiler" target="_blank" rel="noopener noreferrer"><u>10x faster</u></a></li>
+	<li><a href="https://vitest.dev/blog/vitest-5.html" target="_blank" rel="noopener noreferrer"><u>Vitest 5</u></a>, released in September, is <a href="https://github.com/vitest-dev/benchmarks#results-vitest-4110-vs-500" target="_blank" rel="noopener noreferrer"><u>up to 50% faster than Vitest 4</u></a></li>
+	<li><a href="https://oxc.rs/blog/2026-07-22-type-aware-linting-stable" target="_blank" rel="noopener noreferrer"><u>tsgolint</u></a> is now stable, and is <a href="https://github.com/oxc-project/tsgolint/blob/main/benchmarks/README.md" target="_blank" rel="noopener noreferrer"><u>up to 18x faster than ESLint</u></a> in large codebases</li>
+	<li><a href="https://oxc.rs/docs/guide/usage/formatter.html" target="_blank" rel="noopener noreferrer"><u>Oxfmt</u></a>’s JSON, CSS, SCSS, Less, GraphQL, and YAML formatters are now written in Rust, making it <a href="https://github.com/oxc-project/bench-formatter" target="_blank" rel="noopener noreferrer"><u>7x faster than Prettier</u></a></li>
+</ul>
+<p>On top of this, <a href="https://viteplus.dev" target="_blank" rel="noopener noreferrer"><u>Vite+</u></a>, which unifies the entire toolchain with a set of great defaults, is now 1.0. And we’re making progress towards shipping <a href="https://vite.dev/blog/announcing-vite8-1#experimental-bundled-dev-mode" target="_blank" rel="noopener noreferrer"><u>“Bundled Dev” (f.k.a. Full Bundle Mode)</u></a> — a new development mode that has been shaped by working with customers with massive web applications, including Cloudflare’s own dashboard. By being part of Cloudflare, our engineering team gets a much better view into scenarios that only occur in massive codebases.</p>
+<p>VoidZero’s mission is to make the next generation of JavaScript developers more productive than ever before. And in 2026, that means making developers’ agents faster.</p>
+<h2>A faster developer experience for humans and agents</h2>
+<p>Developer experience and performance were always about improving the feedback loop while creating software. But now when we optimize for developer experience, we no longer just optimize for humans —&nbsp;we optimize for agents. And as inference gets faster, the speed of type-checking, linting, or building the code becomes the bottleneck again. The longer those processes take, the longer an agent has to wait before making progress and completing its goals.</p>
+<p>VoidZero has always been focused on performance, but this new era of software has given us even more reason and motivation to make the entire toolchain faster for both agents and humans. And since the tools in the VoidZero toolchain are built on each other, from the compiler (Oxc) to the bundler (Rolldown) to the build tool (Vite), the linter (Oxlint) and the test runner (Vitest), any optimization at one layer automatically benefits everything built on top.</p>
+<h2>Oxc React Compiler — 10x faster compile times for React.js&nbsp;apps</h2>
+<p>We’ve recently shipped the <a href="https://oxc.rs/docs/guide/usage/transformer/react-compiler.html" target="_blank" rel="noopener noreferrer"><u>Oxc React Compiler</u></a>, a rewrite of the <a href="https://react.dev/learn/react-compiler" target="_blank" rel="noopener noreferrer"><u>React Compiler</u></a>, based on the React team’s rewrite in Rust. It is 10x faster than the original Babel implementation, uses less memory, and has a more complete implementation with better error handling. If you use Vite, you can enable the Oxc React Compiler by installing the <code>oxc-transform-react</code> package and enabling the <code>compiler</code> flag:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff"># shell</span></span>
+<span class="line"><span class="sk-24292e-fff">pnpm add </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">D</span><span class="sk-d73a49-a0a0a0"> @</span><span class="sk-24292e-fff">vitejs</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">plugin</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">react</span><span class="sk-d73a49-a0a0a0">@^</span><span class="sk-005cc5-ffc799">6.1</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff"> oxc</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">transform</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">react</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff"># vite</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">config</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">js</span></span>
+<span class="line"><span class="sk-24292e-fff">import { defineConfig } from </span><span class="sk-032f62-99ffe4">"vite"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">import react from </span><span class="sk-032f62-99ffe4">"@vitejs/plugin-react"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">export default </span><span class="sk-6f42c1-ffc799">defineConfig</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  plugins</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> [</span><span class="sk-6f42c1-ffc799">react</span><span class="sk-24292e-fff">({ compiler</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-fff"> true</span><span class="sk-24292e-fff"> })],</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<h2>Vitest 5 — up to 50% faster than Vitest 4</h2>
+<p><a href="https://vitest.dev/blog/vitest-5.html" target="_blank" rel="noopener noreferrer">Vitest 5</a>, released in September, cuts test times by double-digit percentages across many common scenarios.</p>
+<ul>
+	<li><strong>Faster test runs.</strong> Vitest shares transformed files across projects, caches modules on disk, and sends less data between its main process and workers.</li>
+	<li><strong><a href="https://vitest.dev/blog/vitest-5.html#performance-improvements" target="_blank" rel="noopener noreferrer">vitest doctor</a>. </strong>It breaks down setup, import, transform, and test time, then tests other configurations and recommends faster settings.</li>
+	<li><strong><a href="https://vitest.dev/blog/vitest-5.html#trace-view" target="_blank" rel="noopener noreferrer">Trace View</a>.</strong> It records browser interactions, assertions, and DOM snapshots, so you can replay failures or inspect them in an HTML report.</li>
+	<li><strong><a href="https://vitest.dev/blog/vitest-5.html#vi-when" target="_blank" rel="noopener noreferrer">Conditional mocks with vi.when</a>.</strong> Map arguments to responses without writing a manual <code>mockImplementation</code>.</li>
+	<li><a href="https://vitest.dev/blog/vitest-5.html#benchmarking-rewrite" target="_blank" rel="noopener noreferrer"><strong>Better benchmarks</strong></a>. Benchmarks now work like regular tests, with fixtures, hooks, retries, filters, and assertions.</li>
+	<li><a href="https://vitest.dev/blog/vitest-5.html#stricter-assertions" target="_blank" rel="noopener noreferrer"><strong>Fewer false passes</strong></a>. Vitest fails unawaited async assertions, clears mock calls before each test, and adds the <code>--repeats</code> flag to help find intermittent failures.</li>
+</ul>
+<h2>tsgolint — now stable, up to 18x faster than ESLint in large codebases</h2>
+<p><a href="https://oxc.rs/blog/2026-07-22-type-aware-linting-stable.html" target="_blank" rel="noopener noreferrer"><u>tsgolint</u></a>, the type-aware linting engine behind Oxlint, is now stable. It catches bugs that require TypeScript type data while running 12 to 18 times faster than ESLint with typescript-eslint.</p>
+<ul>
+	<li><a href="https://oxc.rs/blog/2026-07-22-type-aware-linting-stable.html#16-new-rules-since-alpha" target="_blank" rel="noopener noreferrer"><u>59 type-aware rules</u></a><strong>.</strong> tsgolint now supports 59 of typescript-eslint's 61 type-aware rules.</li>
+	<li><a href="https://oxc.rs/blog/2026-07-22-type-aware-linting-stable.html#getting-started" target="_blank" rel="noopener noreferrer"><u>One pass for linting and type-checking</u></a><strong>.</strong> Oxlint can share one TypeScript program across both tasks instead of analyzing the project twice.</li>
+</ul>
+<p>Enable type-aware linting and TypeScript diagnostics in your Oxlint config:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { defineConfig } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "oxlint"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-6f42c1-ffc799"> defineConfig</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  options: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    typeAware: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    typeCheck: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<h2>Oxfmt — 7x faster than Prettier with formatters now written in Rust</h2>
+<p><a href="https://oxc.rs/docs/guide/usage/formatter.html" target="_blank" rel="noopener noreferrer"><u>Oxfmt</u></a> brings the speed of the Oxc toolchain to formatting. We rewrote its JSON, CSS, SCSS, Less, GraphQL, and YAML formatters in Rust, making Oxfmt many times faster than Prettier, while keeping Prettier-compatible output and ergonomics.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">pnpm</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-005cc5-99ffe4"> -D</span><span class="sk-032f62-99ffe4"> oxfmt</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">pnpm</span><span class="sk-032f62-99ffe4"> oxfmt</span><span class="sk-005cc5-99ffe4"> --migrate</span><span class="sk-032f62-99ffe4"> prettier</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">pnpm</span><span class="sk-032f62-99ffe4"> oxfmt</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<h2>Bundled Dev — faster dev server for larger apps</h2>
+<p>We’ve made progress towards shipping <a href="https://vite.dev/blog/announcing-vite8-1#experimental-bundled-dev-mode" target="_blank" rel="noopener noreferrer"><u>“Bundled Dev” (f.k.a. Full Bundle Mode),</u></a> which uses Vite’s production bundler during development. This should lead to significant dev server speed-ups in larger applications and reduce network overhead when working with remote sandboxes.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { defineConfig } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "vite"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-6f42c1-ffc799"> defineConfig</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  experimental: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    bundledDev: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>We’re looking forward to bringing Bundled Dev out of experimental status soon. Cloudflare’s Dashboard already uses Bundled Dev for all internal developers.</p>
+<h2>Vite+ is now 1.0 — a unified toolchain</h2>
+<p>Speeding up tools is one way of making humans and agents ship software faster. Another way is by reducing decision fatigue (“Which linter shall I use?”) and providing great defaults. We are excited to announce that <a href="https://voidzero.dev/posts/announcing-vite-plus-1-0" target="_blank" rel="noopener noreferrer"><u>Vite+ is now 1.0</u></a>. Vite+ bundles all of VoidZero’s tools together into a single unified and fast toolchain.</p>
+<p>Vite+ ships with Vite 8, Vitest 5, Rolldown, Oxlint, Oxfmt and task caching built in, and comes with great defaults. Check out the <a href="https://viteplus.dev/guide" target="_blank" rel="noopener noreferrer"><u>Getting Started guide</u></a> to try it out today.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAAMyAhMSIhLSQfIyEaEhcQAAUDAAAACggCQi0qPy4qOC4oLikjIR4aFxARFgsMGRMQTzcySzcxQjYvNjAqKyUiJRgaIxQXIxoZVTw1UTw1RjozOTQuLykmKxweKRgbJx0dVDoyTzsyRDoyNjUuLSomKhwdKRcZJhwbTjMrSTUsPDYtLTMqJSgiJBoXIxISHhgWRSoiQC0kMjIoIjAmGiYdGxYQGwwIFRIOQiYePCohLTAlHC8kFCUbFxQLFggDDw8J" alt="" width="715" height="443" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3JF3B663NP132B5X1EGYZTG.png&amp;w=715&amp;h=443&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3JF3B663NP132B5X1EGYZTG.png&amp;w=640&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3JF3B663NP132B5X1EGYZTG.png&amp;w=715&amp;h=443&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3JF3B663NP132B5X1EGYZTG.png&amp;w=750&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3JF3B663NP132B5X1EGYZTG.png&amp;w=828&amp;h=513&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3JF3B663NP132B5X1EGYZTG.png&amp;w=1080&amp;h=669&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3JF3B663NP132B5X1EGYZTG.png&amp;w=1280&amp;h=793&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3JF3B663NP132B5X1EGYZTG.png&amp;w=1430&amp;h=886&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3JF3B663NP132B5X1EGYZTG.png&amp;w=1920&amp;h=1188&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1188" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="443" class="pt-portable-image-media"></div>
+</figure>
+<h2>Cloudflare’s Open Source Investment</h2>
+<p>VoidZero was born in open source, and we believe a more sustainable open-source ecosystem benefits everyone. <a href="https://opensourcepledge.com/members/voidzero" target="_blank" rel="noopener noreferrer"><u>VoidZero is a proud member of the Open Source Pledge</u></a> and as part of Cloudflare, we have the opportunity to expand that impact.</p>
+<p>Cloudflare committed $1M to a Vite ecosystem fund to support maintainers and contributors in the original announcement. Since then, Cloudflare has <a href="https://blog.cloudflare.com/community-program-refresh" target="_blank" rel="noopener noreferrer"><u>committed an additional $1M to open source</u></a>. Together, we’re doubling down on open source.</p>
+<h2>The open-source toolchain for the entire JavaScript community</h2>
+<p>There is more to come! Features we plan to ship in the next few months include major improvements to Oxc’s parser with up to 3x potential speedup, a re-designed chunking algorithm in Rolldown, and an open-source, self-hostable version of Void, the Vite-native deployment platform built on top of Cloudflare. Cloudflare and VoidZero both recognize our responsibility that we have to developers, and we do not take the community’s trust in us for granted. We’re in this for the long haul.</p>
+<p>We are excited to keep shipping faster tools, and will continue to make every decision with the community in mind, just like we did when raising venture capital, or when we open sourced Vite+, or when we joined Cloudflare. Thank you for continuing to trust us with your projects and apps, supporting us, and building with us.</p>

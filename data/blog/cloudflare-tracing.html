@@ -1,0 +1,197 @@
+<p>Today, we’re introducing <a href="https://developers.cloudflare.com/observability/traces"><u>Cloudflare Traces</u></a>&nbsp;in open&nbsp;beta, extending <a href="https://blog.cloudflare.com/workers-tracing-now-in-open-beta"><u>automatic tracing beyond Workers</u></a>&nbsp;to the rest of the request path. In one trace, you can see supported security rules, transformations, cache decisions, routing, Worker execution, and origin handling, then continue that trace through services running on Cloudflare, at your origin, or elsewhere in your stack.&nbsp;This is a long-term investment in <a href="https://opentelemetry.io"><u>OpenTelemetry</u></a>&nbsp;and in making Cloudflare the most observable part of your stack.</p>
+<p>You can now:</p>
+<ul>
+	<li><strong><a href="https://developers.cloudflare.com/observability/traces/spans"><u>Automatically trace requests across Cloudflare</u></a>: </strong>Capture supported platform operations in one request-level timeline, no additional set up required.</li>
+	<li><strong>Control which requests are traced</strong>: Set a baseline sampling rate, then use <a href="https://developers.cloudflare.com/observability/traces/configuration/#trace-rules"><u>Trace Rules</u></a>&nbsp;to override it for matching traffic.</li>
+	<li><strong>End-to-end trace context propagation:</strong>&nbsp;Accept and forward <a href="https://www.w3.org/TR/trace-context-1/#traceparent-header"><u>W3C traceparent&nbsp;headers</u></a>&nbsp;</li>
+	<li><strong><a href="https://developers.cloudflare.com/observability/traces/#inspect-a-trace"><u>Investigate traces in Cloudflare</u></a>: </strong>View request timelines and span details directly in the Cloudflare dashboard.</li>
+	<li><strong><a href="https://developers.cloudflare.com/observability/export/opentelemetry/#enable-export-for-cloudflare-traces"><u>Export traces with OpenTelemetry</u></a>:</strong>&nbsp;Send your spans to any destination with a compatible Open Telemetry Protocol (OTLP) <a href="https://opentelemetry.io/docs/specs/otlp"><u>endpoint</u></a>.</li>
+</ul>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA+/r99vb47Ozu5ubo5+fp6urr6Ojo4uLg/f3/+fn88PDy6urs6+vs7e3u6+vq5eXj/////v7/9vb48PDy8PDx8vLy7+/v6uro/////////Pz/9/f59/f4+fn49vb18PHv/////////////f3///7//////v79+Pj2/////////////////////////////v79////////////////////////////////////////////////////////////////" alt="" width="715" height="319" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE76PJXWGQ86MMXRXPYYED.png&amp;w=715&amp;h=319&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE76PJXWGQ86MMXRXPYYED.png&amp;w=640&amp;h=286&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE76PJXWGQ86MMXRXPYYED.png&amp;w=715&amp;h=319&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE76PJXWGQ86MMXRXPYYED.png&amp;w=750&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE76PJXWGQ86MMXRXPYYED.png&amp;w=828&amp;h=369&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE76PJXWGQ86MMXRXPYYED.png&amp;w=1080&amp;h=482&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE76PJXWGQ86MMXRXPYYED.png&amp;w=1280&amp;h=571&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE76PJXWGQ86MMXRXPYYED.png&amp;w=1430&amp;h=638&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image3.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE76PJXWGQ86MMXRXPYYED.png&amp;w=1920&amp;h=857&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="857" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="319" class="pt-portable-image-media"></div>
+</figure>
+<p>You can <a href="https://developers.cloudflare.com/observability/traces/#enable-tracing"><u>enable tracing in the Cloudflare dashboard</u></a>&nbsp;on any domain or let your agent set up for you:</p>
+<div class="copy-prompt relative my-8 flex w-max max-w-full" data-copy-prompt=""><button type="button" aria-label="Copy prompt" class="copy-prompt__button inline-flex w-max max-w-full shrink-0 items-center justify-center rounded-full font-sans whitespace-nowrap no-underline select-none" data-copy-prompt-button="" data-prompt="&quot;Using the Cloudflare cf CLI, configure Tracing for my zone with a 10% sampling rate and persist traces in Cloudflare. If I have multiple zones, ask me which one to use.&quot;" data-copied-label="Prompt copied!" data-copy-prompt-bound="true"><span class="copy-prompt__content inline-flex min-w-0 items-center font-medium"><span class="copy-prompt__logos relative flex h-4 shrink-0 items-center justify-start" aria-hidden="true"><svg viewBox="0 0 256 257" class="size-4 shrink-0" aria-hidden="true">
+					<path fill="#D97757" d="m50.228 170.321 50.357-28.257.843-2.463-.843-1.361h-2.462l-8.426-.518-28.775-.778-24.952-1.037-24.175-1.296-6.092-1.297L0 125.796l.583-3.759 5.12-3.434 7.324.648 16.202 1.101 24.304 1.685 17.629 1.037 26.118 2.722h4.148l.583-1.685-1.426-1.037-1.101-1.037-25.147-17.045-27.22-18.017-14.258-10.37-7.713-5.25-3.888-4.925-1.685-10.758 7-7.713 9.397.649 2.398.648 9.527 7.323 20.35 15.75L94.817 91.9l3.889 3.24 1.555-1.102.195-.777-1.75-2.917-14.453-26.118-15.425-26.572-6.87-11.018-1.814-6.61c-.648-2.723-1.102-4.991-1.102-7.778l7.972-10.823L71.42 0 82.05 1.426l4.472 3.888 6.61 15.101 10.694 23.786 16.591 32.34 4.861 9.592 2.592 8.879.973 2.722h1.685v-1.556l1.36-18.211 2.528-22.36 2.463-28.776.843-8.1 4.018-9.722 7.971-5.25 6.222 2.981 5.12 7.324-.713 4.73-3.046 19.768-5.962 30.98-3.889 20.739h2.268l2.593-2.593 10.499-13.934 17.628-22.036 7.778-8.749 9.073-9.657 5.833-4.601h11.018l8.1 12.055-3.628 12.443-11.342 14.388-9.398 12.184-13.48 18.147-8.426 14.518.778 1.166 2.01-.194 30.46-6.481 16.462-2.982 19.637-3.37 8.88 4.148.971 4.213-3.5 8.62-20.998 5.184-24.628 4.926-36.682 8.685-.454.324.519.648 16.526 1.555 7.065.389h17.304l32.21 2.398 8.426 5.574 5.055 6.805-.843 5.184-12.962 6.611-17.498-4.148-40.83-9.721-14-3.5h-1.944v1.167l11.666 11.406 21.387 19.314 26.767 24.887 1.36 6.157-3.434 4.86-3.63-.518-23.526-17.693-9.073-7.972-20.545-17.304h-1.36v1.814l4.73 6.935 25.017 37.59 1.296 11.536-1.814 3.76-6.481 2.268-7.13-1.297-14.647-20.544-15.1-23.138-12.185-20.739-1.49.843-7.194 77.448-3.37 3.953-7.778 2.981-6.48-4.925-3.436-7.972 3.435-15.749 4.148-20.544 3.37-16.333 3.046-20.285 1.815-6.74-.13-.454-1.49.194-15.295 20.999-23.267 31.433-18.406 19.702-4.407 1.75-7.648-3.954.713-7.064 4.277-6.286 25.47-32.405 15.36-20.092 9.917-11.6-.065-1.686h-.583L44.07 198.125l-12.055 1.555-5.185-4.86.648-7.972 2.463-2.593 20.35-13.999-.064.065Z"></path>
+				</svg><svg viewBox="0 0 24 24" class="size-4 shrink-0 fill-current" fill-rule="evenodd" aria-hidden="true">
+					<path clip-rule="evenodd" d="M8.086.457a6.105 6.105 0 013.046-.415c1.333.153 2.521.72 3.564 1.7a.117.117 0 00.107.029c1.408-.346 2.762-.224 4.061.366l.063.03.154.076c1.357.703 2.33 1.77 2.918 3.198.278.679.418 1.388.421 2.126a5.655 5.655 0 01-.18 1.631.167.167 0 00.04.155 5.982 5.982 0 011.578 2.891c.385 1.901-.01 3.615-1.183 5.14l-.182.22a6.063 6.063 0 01-2.934 1.851.162.162 0 00-.108.102c-.255.736-.511 1.364-.987 1.992-1.199 1.582-2.962 2.462-4.948 2.451-1.583-.008-2.986-.587-4.21-1.736a.145.145 0 00-.14-.032c-.518.167-1.04.191-1.604.185a5.924 5.924 0 01-2.595-.622 6.058 6.058 0 01-2.146-1.781c-.203-.269-.404-.522-.551-.821a7.74 7.74 0 01-.495-1.283 6.11 6.11 0 01-.017-3.064.166.166 0 00.008-.074.115.115 0 00-.037-.064 5.958 5.958 0 01-1.38-2.202 5.196 5.196 0 01-.333-1.589 6.915 6.915 0 01.188-2.132c.45-1.484 1.309-2.648 2.577-3.493.282-.188.55-.334.802-.438.286-.12.573-.22.861-.304a.129.129 0 00.087-.087A6.016 6.016 0 015.635 2.31C6.315 1.464 7.132.846 8.086.457zm-.804 7.85a.848.848 0 00-1.473.842l1.694 2.965-1.688 2.848a.849.849 0 001.46.864l1.94-3.272a.849.849 0 00.007-.854l-1.94-3.393zm5.446 6.24a.849.849 0 000 1.695h4.848a.849.849 0 000-1.696h-4.848z"></path>
+				</svg><svg viewBox="0 0 466.73 532.09" class="size-4 shrink-0 fill-current" aria-hidden="true">
+					<path d="M457.43,125.94L244.42,2.96c-6.84-3.95-15.28-3.95-22.12,0L9.3,125.94c-5.75,3.32-9.3,9.46-9.3,16.11v247.99c0,6.65,3.55,12.79,9.3,16.11l213.01,122.98c6.84,3.95,15.28,3.95,22.12,0l213.01-122.98c5.75-3.32,9.3-9.46,9.3-16.11v-247.99c0-6.65-3.55-12.79-9.3-16.11h-.01ZM444.05,151.99l-205.63,356.16c-1.39,2.4-5.06,1.42-5.06-1.36v-233.21c0-4.66-2.49-8.97-6.53-11.31L24.87,145.67c-2.4-1.39-1.42-5.06,1.36-5.06h411.26c5.84,0,9.49,6.33,6.57,11.39h-.01Z"></path>
+				</svg><svg viewBox="0 0 32 40" class="h-4 w-auto shrink-0 fill-current" aria-hidden="true">
+					<path d="M24 32H8V16H24V32Z" fill-opacity="0.3"></path>
+					<path d="M24 8H8V32H24V8ZM32 40H0V0H32V40Z"></path>
+				</svg></span><span class="copy-prompt__labels relative inline-grid min-w-0 items-center justify-items-start text-start" aria-hidden="true" data-copy-prompt-labels="" style="inline-size: 76.3125px;"><span class="copy-prompt__label" data-copy-prompt-label="">Copy prompt</span><span class="copy-prompt__label-sizer" data-copy-prompt-label-sizer="default">Copy prompt</span><span class="copy-prompt__label-sizer" data-copy-prompt-label-sizer="copied">Prompt copied!</span></span></span></button><span class="sr-only" role="status" aria-live="polite" data-copy-prompt-status=""></span></div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {};
+	var e = 50,
+		t = 150;
+
+	function n(e) {
+		let t = e.dataset.prompt;
+		if (!t) return null;
+		try {
+			let e = JSON.parse(t);
+			return typeof e == `string` && e.trim() ? e : null
+		} catch {
+			return null
+		}
+	}
+
+	function r(r, i) {
+		i && r.querySelectorAll(`[data-copy-prompt]`).forEach(r => {
+			let a = r.querySelector(`[data-copy-prompt-button]`),
+				o = r.querySelector(`[data-copy-prompt-labels]`),
+				s = r.querySelector(`[data-copy-prompt-label]`),
+				c = r.querySelector(`[data-copy-prompt-label-sizer="default"]`),
+				l = r.querySelector(`[data-copy-prompt-label-sizer="copied"]`),
+				u = r.querySelector(`[data-copy-prompt-status]`);
+			if (!a || !u || a.dataset.copyPromptBound === `true`) return;
+			let d = n(a);
+			if (!d) return;
+			a.dataset.copyPromptBound = `true`;
+			let f = s?.textContent ?? ``,
+				p, m, h, g = e => {
+					let t = (e === `copied` ? l : c)?.getBoundingClientRect().width ?? 0;
+					o && t > 0 && (o.style.inlineSize = `${t}px`)
+				};
+			g(`default`);
+			let _ = s?.ownerDocument.fonts;
+			_ && _.ready.then(() => g(r.hasAttribute(`data-copied`) ? `copied` : `default`));
+			let v = (e, n) => {
+				if (!s || !e || (g(n), m && clearTimeout(m), m = void 0, s.classList.remove(`is-exit`, `is-enter-start`), s.textContent === e)) return;
+				let r = s.ownerDocument.defaultView;
+				if (typeof r?.matchMedia == `function` && r.matchMedia(`(prefers-reduced-motion: reduce)`).matches) {
+					s.textContent = e;
+					return
+				}
+				s.classList.add(`is-exit`), m = setTimeout(() => {
+					s.textContent = e, s.classList.remove(`is-exit`), s.classList.add(`is-enter-start`), s.offsetWidth, s.classList.remove(`is-enter-start`), m = void 0
+				}, t)
+			};
+			a.addEventListener(`click`, async () => {
+				try {
+					await i.writeText(d)
+				} catch {
+					return
+				}
+				p && clearTimeout(p), h && clearTimeout(h), u.textContent = ``, r.setAttribute(`data-copied`, ``), v(a.dataset.copiedLabel ?? ``, `copied`), p = setTimeout(() => {
+					u.textContent = a.dataset.copiedLabel ?? ``
+				}, e), h = setTimeout(() => {
+					r.removeAttribute(`data-copied`), u.textContent = ``, v(f, `default`)
+				}, 1550)
+			})
+		})
+	}
+	r(document, navigator.clipboard);
+</script>
+<h2>Giving you the visibility we use to debug Cloudflare</h2>
+<p>When our own teams investigate, we use our own internal traces, which often include thousands of spans for a single trace, generated by dozens of services and features. This lets us dig deep into every detail of a given request. We don’t think that visibility should stop at our internal systems. <br><br><a href="https://blog.cloudflare.com/workers-tracing-now-in-open-beta"><u>Workers Tracing</u></a>&nbsp;was our first step toward exposing what happens on our platform. Last year, we launched automatic instrumentation for Worker invocations, including <a href="https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes"><u>outbound fetches and calls to KV, R2, D1, Durable Objects, and other Workers</u></a>. It shows the work performed inside the Workers runtime without requiring tracing code for every operation.</p>
+<p>The goal of Cloudflare Traces is to bring the same level of visibility to <strong>everyone</strong>&nbsp;using Cloudflare, whether you’re building on Cloudflare or just have Cloudflare in front of an origin. You get to see how your traffic moved through our platform, and connect the dots between how you’ve configured Cloudflare, and how this influences request processing time, routing decisions, and more.&nbsp;</p>
+<h2>Follow one request end to end</h2>
+<p>A&nbsp;request’s path through Cloudflare can be complicated! It might pass through security rules, transformations, routing, caching, or proxied to another service entirely.&nbsp;Cloudflare Traces <a href="https://developers.cloudflare.com/observability/traces/spans"><u>records each supported step as a span</u></a>, including its timing, outcome, and relevant attributes. Instead of reconstructing the request from separate logs and configuration, you can see the request’s path through our system&nbsp;in one place.</p>
+<p>You can answer questions like:</p>
+<h3>Why was the request blocked or challenged, and which security rule took action?</h3>
+<p>See when <a href="https://developers.cloudflare.com/observability/traces/spans/#ruleset-phase-spans"><u>custom or managed rules</u></a>&nbsp;evaluated the request, how long evaluation took, and the resulting action. Identify the rule responsible for a block or challenge through its span events.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA9fb28fLy6Onp5OTl5ubm6Ojo5eTk3Nvb+vr59fX07Ozr6Ojm6eno6+vq5+fm3d3c///+/Pv58/Lw7u3q7+/s8PHu6+zq4eLg////////+vn29fTx9/b0+Pn28/Tx6ern/////////////fz6///9/////f378/Tx/////////////////////////////f38////////////////////////////////////////////////////////////////" alt="" width="715" height="278" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE7C96A091RSXKVQZ6Z146.png&amp;w=715&amp;h=278&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE7C96A091RSXKVQZ6Z146.png&amp;w=640&amp;h=249&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE7C96A091RSXKVQZ6Z146.png&amp;w=715&amp;h=278&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE7C96A091RSXKVQZ6Z146.png&amp;w=750&amp;h=292&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE7C96A091RSXKVQZ6Z146.png&amp;w=828&amp;h=322&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE7C96A091RSXKVQZ6Z146.png&amp;w=1080&amp;h=420&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE7C96A091RSXKVQZ6Z146.png&amp;w=1280&amp;h=498&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE7C96A091RSXKVQZ6Z146.png&amp;w=1430&amp;h=556&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image7.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE7C96A091RSXKVQZ6Z146.png&amp;w=1920&amp;h=745&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="745" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="278" class="pt-portable-image-media"></div>
+</figure>
+<h3>Was the URL rewritten by a Transform Rule before it reached the application?</h3>
+<p>You can open the <code>http_request_transform</code>&nbsp;span to see each change, the request component it affected, and the rule responsible. You can also see where the transformation occurred relative to routing and origin handling.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA+/389/j47u/v6urr7O7u7/Lx6+/u4ubl////+vr68e7u7eno8O7s8/Ty7/Lw5ujn//////389e/t8enl9PDs+Pj19Pb06+zr////////+/Pv9uzn+vPu/fv5+vr58fHw//////////j1/PHs//fz///9/v799vX1//////////79//f1//z5////////+vn6//////////////z7///9/////////fv+//////////////7+/////////////vz/" alt="" width="715" height="282" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE79N2WXESWBXHEV6S25AC.png&amp;w=715&amp;h=282&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE79N2WXESWBXHEV6S25AC.png&amp;w=640&amp;h=252&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE79N2WXESWBXHEV6S25AC.png&amp;w=715&amp;h=282&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE79N2WXESWBXHEV6S25AC.png&amp;w=750&amp;h=296&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE79N2WXESWBXHEV6S25AC.png&amp;w=828&amp;h=327&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE79N2WXESWBXHEV6S25AC.png&amp;w=1080&amp;h=426&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE79N2WXESWBXHEV6S25AC.png&amp;w=1280&amp;h=505&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE79N2WXESWBXHEV6S25AC.png&amp;w=1430&amp;h=564&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image8.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE79N2WXESWBXHEV6S25AC.png&amp;w=1920&amp;h=757&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="757" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="282" class="pt-portable-image-media"></div>
+</figure>
+<h3>Which Page Rules, Snippets, or Workers handled or changed the request?</h3>
+<p>The <code>workers_routing</code>&nbsp;span shows whether a route matched, which routing type was used, and the matching route pattern.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA9PT08e/u7eTh697a7OPf7unm6+jo5uHk9vf29PLw8Ojl7+Tg8ejl8u7s7+zt6eXo+/v6+ff19e7s9evo9/Dt+PX09fP07+zu//////79/Pf0+/Tx/vn3//78/Pv79fP1///////////9//37////////////+/v9////////////////////////////////////////////////////////////////////////////////////////////////" alt="" width="715" height="269" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE7AY2H6B2DZ17WTVVPJ7Q.png&amp;w=715&amp;h=269&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE7AY2H6B2DZ17WTVVPJ7Q.png&amp;w=640&amp;h=241&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE7AY2H6B2DZ17WTVVPJ7Q.png&amp;w=715&amp;h=269&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE7AY2H6B2DZ17WTVVPJ7Q.png&amp;w=750&amp;h=282&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE7AY2H6B2DZ17WTVVPJ7Q.png&amp;w=828&amp;h=312&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE7AY2H6B2DZ17WTVVPJ7Q.png&amp;w=1080&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE7AY2H6B2DZ17WTVVPJ7Q.png&amp;w=1280&amp;h=482&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE7AY2H6B2DZ17WTVVPJ7Q.png&amp;w=1430&amp;h=538&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image2.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE7AY2H6B2DZ17WTVVPJ7Q.png&amp;w=1920&amp;h=721&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="721" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="269" class="pt-portable-image-media"></div>
+</figure>
+<h3>Was the response served from cache, and where was time spent between Cloudflare, the origin connection, and the application?</h3>
+<p>You can expand nested cache, upstream, and origin spans to see where the request spent its time. Here, you can see there was a cache miss that went to origin and spent 527ms of the 539ms getting a response.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA7/P17e7v6OTk5eHe5+bj6Ozp5erp3uHj9/v89PT17ujn6+Pf7enl8PHu7PDv5efn/////f399e7s8ufj9u7r+fj19vj27e7u/////////vXz+u7r/vby///+///+9fb1//////////78//f1///8/////////P39////////////////////////////////////////////////////////////////////////////////////////////////" alt="" width="715" height="297" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE7DT8DPBXHKN54FJHF0NJ.png&amp;w=715&amp;h=297&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE7DT8DPBXHKN54FJHF0NJ.png&amp;w=640&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE7DT8DPBXHKN54FJHF0NJ.png&amp;w=715&amp;h=297&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE7DT8DPBXHKN54FJHF0NJ.png&amp;w=750&amp;h=312&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE7DT8DPBXHKN54FJHF0NJ.png&amp;w=828&amp;h=344&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE7DT8DPBXHKN54FJHF0NJ.png&amp;w=1080&amp;h=449&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE7DT8DPBXHKN54FJHF0NJ.png&amp;w=1280&amp;h=532&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE7DT8DPBXHKN54FJHF0NJ.png&amp;w=1430&amp;h=594&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image6.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE7DT8DPBXHKN54FJHF0NJ.png&amp;w=1920&amp;h=796&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="796" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="297" class="pt-portable-image-media"></div>
+</figure>
+<h2>Configure your tracing</h2>
+<p>There is no special&nbsp;instrumentation, config, or plugins required. Once tracing is enabled for a domain, Cloudflare generates these spans automatically. This lets you extend the trace through third-party services and back again by adhering to <a href="https://www.w3.org/TR/trace-context-1/#traceparent-header"><u>open standards</u></a>. From there, you can control which requests are traced using a baseline sampling rate and <a href="https://developers.cloudflare.com/observability/traces/configuration/#trace-rules"><u>Trace Rules</u></a>.</p>
+<h3>Set a baseline sampling rate</h3>
+<p>You can enable tracing on any domain and <a href="https://developers.cloudflare.com/observability/traces/configuration/#head-sampling"><u>set a baseline sampling rate</u></a>&nbsp;to balance visibility, data volume, and cost. You might trace 1% of requests during normal operation, giving you a continuous view of request behavior without collecting a trace for every request.</p>
+<h3>Configure Trace Rules</h3>
+<p><a href="https://developers.cloudflare.com/observability/traces/configuration/#trace-rules"><u>Trace Rules</u></a>&nbsp;let you keep a low baseline sampling rate while capturing complete traces for a specific investigation. If one customer reports a problem, you can trace 100% of traffic for their hostname, source IP, or identifying request header while leaving everyone else at 1%. Or during an investigation, you could trace 100% of requests carrying a temporary debug header, while leaving all other traffic at the baseline. This lets you reproduce an issue without increasing tracing across the entire domain.</p>
+<p>Trace Rules use the same <a href="https://developers.cloudflare.com/ruleset-engine/rules-language"><u>Cloudflare Rules language</u></a>, so you can target paths, methods, headers, IP addresses, geographies, or combinations of those properties.</p>
+<h3>Accept and propagate trace context</h3>
+<p>One of the most common requests we hear is for true distributed tracing: a single trace that follows a request into Cloudflare, through our platform, and onward through the rest of your stack.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA+fr59fX07u3s6+rp8PDv8/T07vDx4uXo9/f38/P06uvu6Ont7/Dy8/b27vLz4ufr9vf38fL16Orx5uny7/L39fn78fb35Ovv+vr79PX56u326e338vf9+v//9vz96vD1////+/3/8fT88PT8+f3/////////8vf7////////+/3/+fv//////////////P7/////////////////////////////////////////////////////////////////" alt="" width="715" height="340" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE753D6PZGPRRR4XFNDZWD.png&amp;w=715&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE753D6PZGPRRR4XFNDZWD.png&amp;w=640&amp;h=304&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE753D6PZGPRRR4XFNDZWD.png&amp;w=715&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE753D6PZGPRRR4XFNDZWD.png&amp;w=750&amp;h=357&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE753D6PZGPRRR4XFNDZWD.png&amp;w=828&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE753D6PZGPRRR4XFNDZWD.png&amp;w=1080&amp;h=514&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE753D6PZGPRRR4XFNDZWD.png&amp;w=1280&amp;h=609&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE753D6PZGPRRR4XFNDZWD.png&amp;w=1430&amp;h=680&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image4.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE753D6PZGPRRR4XFNDZWD.png&amp;w=1920&amp;h=912&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="912" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="340" class="pt-portable-image-media"></div>
+</figure>
+<p>Cloudflare Traces can accept a <a href="https://www.w3.org/TR/trace-context-1/#traceparent-header"><u>W3C traceparent header</u></a>&nbsp;from an incoming request, allowing Cloudflare spans to join a trace that began before the request reached our platform. An <a href="https://developers.cloudflare.com/observability/traces/configuration/#incoming-trace-context"><u>incoming propagation policy</u></a>&nbsp;controls whether Cloudflare accepts that context.</p>
+<p>Cloudflare can also <a href="https://developers.cloudflare.com/observability/traces/configuration/#forward-context-to-your-origin"><u>forward a new traceparent header to your origin</u></a>. Any other instrumented services can extract that context and continue the trace through APIs, databases, and services running on Cloudflare or elsewhere. To view everything as one connected trace, you can send both Cloudflare and application spans to the same OpenTelemetry-compatible backend.</p>
+<h2>Export traces to your observability platform</h2>
+<p>You can export Cloudflare spans over <a href="https://opentelemetry.io/docs/specs/otlp"><u>OTLP</u></a>&nbsp;to a compatible observability platform, where they appear alongside telemetry from the rest of your stack. <a href="https://developers.cloudflare.com/observability/export/opentelemetry/#create-a-destination"><u>Configure an account-level destination</u></a>, then choose which domains send traces to it. This is part of our commitment to <a href="https://opentelemetry.io/docs/what-is-opentelemetry"><u>OpenTelemetry</u></a>: Cloudflare represents request activity as OpenTelemetry spans and delivers them using OTLP, keeping the data portable across observability tools.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA9PL18O/x6enr5+bp6+nt7evu6eXo4Nve+Pf59PT27u7w6+zu8PDy8/L07+3v5uPl/v3/+vr79PX28vP09vf4+fr69vX27ezt////////+fv79/r5+/39/////Pv79PLy/////////v///P79//////////799/Tz///////////////+//////////78+fPx//////////////////////////z6+fDt//////////////////////////z5+O/r" alt="" width="715" height="260" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE782NVN38FX5K674ZXXB2.png&amp;w=715&amp;h=260&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE782NVN38FX5K674ZXXB2.png&amp;w=640&amp;h=233&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE782NVN38FX5K674ZXXB2.png&amp;w=715&amp;h=260&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE782NVN38FX5K674ZXXB2.png&amp;w=750&amp;h=273&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE782NVN38FX5K674ZXXB2.png&amp;w=828&amp;h=301&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE782NVN38FX5K674ZXXB2.png&amp;w=1080&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE782NVN38FX5K674ZXXB2.png&amp;w=1280&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE782NVN38FX5K674ZXXB2.png&amp;w=1430&amp;h=520&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image1.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XE782NVN38FX5K674ZXXB2.png&amp;w=1624&amp;h=590&amp;f=webp" data-lightbox-width="1624" data-lightbox-height="590" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="260" class="pt-portable-image-media"></div>
+</figure>
+<h2>Let your agent investigate Cloudflare Traces</h2>
+<p>When you ask a coding agent to debug a production issue, it might inspect your code and run tests, but it may not be able to see what happened to the request in production. With the <a href="https://github.com/cloudflare/mcp"><u>Cloudflare Observability MCP server</u></a>,&nbsp;your agent can leverage our&nbsp;<a href="https://developers.cloudflare.com/analytics/sql-api"><u>SQL API</u></a>&nbsp;to query your traces (and all of your <a href="http://blog.cloudflare.com/one-observability-platform"><u>observability data</u></a>!), giving it access to your investigation production telemetry.</p>
+<p>Let your agent find the right requests, comparing failed traces with successful ones, and identifying where their spans diverge. Since the agent can also inspect your repository, it can connect those findings to the relevant code, narrow down what needs to change, and help put up a fix for you to review.</p>
+<h2>Pricing</h2>
+<p>Cloudflare Traces will be a part of the <a href="https://developers.cloudflare.com/observability/pricing"><u>unified Cloudflare Observability pricing model</u></a>. Instead of charging by the number of spans/events, pricing is based on how much observability data you ingest and how long you retain it. New pricing will take effect across Cloudflare Tracing (and Workers Tracing!) starting December 1, 2026.</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 384px;">
+		<thead>
+			<tr>
+				<th scope="col">
+					<p>Plan</p>
+				</th>
+				<th scope="col">
+					<p>Included Usage</p>
+				</th>
+				<th scope="col">
+					<p>Retention</p>
+				</th>
+				<th scope="col">
+					<p>Additional Usage</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<p>Free</p>
+				</td>
+				<td>
+					<p>0.5 GB of ingestion per day</p>
+				</td>
+				<td>
+					<p>7 Days</p>
+				</td>
+				<td>
+					<p>Not available</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Paid and Enterprise</p>
+				</td>
+				<td>
+					<p>50 GB of ingestion <br>10 GB-month of storage per billing cycle</p>
+				</td>
+				<td>
+					<p>Up to 1 year&nbsp;<br>(coming soon)</p>
+				</td>
+				<td>
+					<p>$0.25 per GB ingested<br>$0.10 per GB-month stored</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h2>What's next</h2>
+<p>Following the&nbsp;open beta, we plan to launch:</p>
+<ul>
+	<li><strong>Broader automatic instrumentation: </strong>Add more spans across both the HTTP request path (e.g. <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/http"><u>DDoS rules</u></a>, <a href="https://developers.cloudflare.com/cloudflare-one/access-controls"><u>Access</u></a>)&nbsp;and the Workers execution path&nbsp;(e.g. Workflows, Queues, Pipelines).</li>
+	<li><strong>Authenticated context propagation: </strong>Let trusted callers continue an existing trace without accepting context from every incoming request.</li>
+	<li><strong>Ad hoc tracing:</strong>&nbsp;Capture a specific request on demand without changing the baseline sampling rate.</li>
+	<li><strong>OpenTelemetry API support in Workers:</strong>&nbsp;<a href="https://developers.cloudflare.com/workers/observability/traces/custom-spans"><u>Continue building out our OpenTelemetry APIs</u></a>&nbsp;to enable adding attributes to existing spans or getting trace context.</li>
+	<li><strong>Longer retention: </strong>Keep trace data available for up to 365 days for longer-running investigations.</li>
+</ul>
+<h2>Get started</h2>
+<p>Follow the <a href="https://developers.cloudflare.com/observability/traces"><u>Cloudflare Traces documentation</u></a>&nbsp;to trace your first request and tune sampling with Trace Rules. Cloudflare Traces is available in open beta from the dashboard, through the API, or with Terraform, with support for exporting to an OTLP destination.</p>

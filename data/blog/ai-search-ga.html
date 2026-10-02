@@ -1,0 +1,159 @@
+<p>Cloudflare’s AI Search&nbsp;combines Workers AI, Vectorize, R2, and Browser Run into a fully managed index and retrieval pipeline. Since we launched AI Search over a year ago, we’ve seen developers use it to power a wide range of search use cases, from searching internal documentation to powering search for their websites. We use AI Search ourselves to power search on our own blog and developer docs.</p>
+<p>Starting today, AI Search is generally available. And as part of it, we've expanded and improved our support for multimodal formats beyond text, adding native <a href="https://developers.cloudflare.com/ai-search/configuration/models/supported-models/#embedding"><u>image embeddings</u></a>, <a href="https://developers.cloudflare.com/ai-search/configuration/data-source/#images-and-optical-character-recognition"><u>optical character recognition (OCR) for PDFs</u></a>, and <a href="https://developers.cloudflare.com/ai-search/configuration/data-source/#file-limits"><u>support for larger files</u></a>.</p>
+<p>As part of general availability, we’ll start billing for AI Search on <strong>November 1, 2026</strong>, and continue to offer <a href="https://developers.cloudflare.com/ai-search/platform/limits-pricing"><u>a generous free tier</u></a>&nbsp;on all Workers plans.</p>
+<h2>New: multimodal embedding and retrieval</h2>
+<p>An image is more than the sentence used to describe it. Product texture, screenshot state, chart relationships, document layout, and fine visual detail can all disappear when pixels are compressed into a caption.</p>
+<p>AI Search now preserves both signals: it embeds image pixels directly for visual retrieval while retaining captions for textual understanding. To keep these richer representations efficient, AI Search leverages <a href="https://arxiv.org/abs/2205.13147"><u>Matryoshka Representation Learning </u></a>(MRL), allowing smaller embeddings to retain useful information while keeping storage manageable and search fast.</p>
+<p>Although we originally supported retrieval over images, the implementation was naive: we would perform object detection, generate a caption, and then embed that text. This made images searchable, but only through the details captured in the caption. <strong>Now, we do both&nbsp;— caption-based understanding and native image retrieval.</strong></p>
+<p>Native multimodal retrieval is available today with the <a href="https://github.com/QwenLM/Qwen3-VL-Embedding"><u>Qwen3-VL-Embedding</u></a>&nbsp;model. At query time, AI Search checks whether your instance’s embedding model supports images. If it does, a query image is embedded directly by that model, landing in the same vector space as your indexed images and text.</p>
+<p>If your embedding model is text-only, you can still query with an image. AI Search converts the query image to text with ToMarkdown and searches using the resulting caption. This gives every model basic multimodal support, while models with native image support get the full visual signal.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA18/QzsnMtLnCiaS7TY62AHmpAGWINVRM2c7RzMbKqK+7c5SuM3+oAHGfLGWGRlha3dHUzcbLn6m3XYikEXKcKG2XTGyIWWZt49nc087TpbG+ZI6pK3ifP3abXnuSbHyE7OXo39zhusbQhqi/WJGzUYqraI6je5Wa9PL07O3w097mrMfafa7NX5/AbKG1h6us+vz99vr85/H3xt7ulMThZ6/Rba7Cj7q4/P//+v7/7vj+z+b2ncvoarTXbLPHkcC8" alt="" width="715" height="479" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SPF5PBZZHP7JMASQPYRTG2.jpg&amp;w=715&amp;h=479&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SPF5PBZZHP7JMASQPYRTG2.jpg&amp;w=640&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SPF5PBZZHP7JMASQPYRTG2.jpg&amp;w=715&amp;h=479&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SPF5PBZZHP7JMASQPYRTG2.jpg&amp;w=750&amp;h=502&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SPF5PBZZHP7JMASQPYRTG2.jpg&amp;w=828&amp;h=555&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SPF5PBZZHP7JMASQPYRTG2.jpg&amp;w=1080&amp;h=724&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SPF5PBZZHP7JMASQPYRTG2.jpg&amp;w=1280&amp;h=858&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SPF5PBZZHP7JMASQPYRTG2.jpg&amp;w=1430&amp;h=958&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SPF5PBZZHP7JMASQPYRTG2.jpg&amp;w=1920&amp;h=1286&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1286" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="479" class="pt-portable-image-media"></div>
+	<figcaption>Image by joelfotos, via Wikimedia Commons, licensed under CC0 1.0.</figcaption>
+</figure>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 192px;">
+		<tbody>
+			<tr>
+				<td>
+					<p>Caption-based understanding</p>
+				</td>
+				<td>
+					<p>A small bird with black-and-white markings perched among golden fruit and green leaves</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Native Image Retrieval</p>
+				</td>
+				<td>
+					<p>Can match details omitted from the caption: the geometry of the bird’s white eyebrow stripe, its yellow-green plumage, the mixture of smooth and weathered fruit, the leaves’ deeply ribbed texture, and the image’s warm palette and shallow-focus composition.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>The caption is a compressed interpretation of the image. Capturing every potentially useful detail requires long or specialized captions, written with the eventual search query in mind. Native image embeddings preserve visual characteristics without requiring the caption to anticipate which details matter.</p>
+<p>This enables searches that are difficult to express precisely with words. You can describe an image you want to find, provide another image to locate visually similar results, or combine both, such as “a bird with similar markings” or “a bird perched on a leafy branch with plums.” It is useful for product discovery, screenshot matching, charts, diagrams, scanned documents, and other collections where color, texture, composition, or spatial relationships matter.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA/v//+Pn57u/v6Onp6+zs8PLy8fLy7O3t////+/z88vPz7e7u8PHx9fb29PX17u/v/////v7+9vf38/T09vf3+vr6+Pn58vLy////////+vr69/f3+vr6/v7++/v79PT0////////+/v7+Pj4+/v7//7+/Pz89fX1////////+vr69/b2+vn5/f39+/v79fT0////////+fj49fT0+Pf3/Pv7+vn59fT0////////+ff39PPz9/b2+/r6+vn59PPz" alt="" width="715" height="932" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SPF4DQJEF4XQTBF8H37P47.png&amp;w=715&amp;h=932&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SPF4DQJEF4XQTBF8H37P47.png&amp;w=640&amp;h=834&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SPF4DQJEF4XQTBF8H37P47.png&amp;w=715&amp;h=932&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SPF4DQJEF4XQTBF8H37P47.png&amp;w=750&amp;h=978&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SPF4DQJEF4XQTBF8H37P47.png&amp;w=828&amp;h=1079&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SPF4DQJEF4XQTBF8H37P47.png&amp;w=1080&amp;h=1408&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SPF4DQJEF4XQTBF8H37P47.png&amp;w=1280&amp;h=1668&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SPF4DQJEF4XQTBF8H37P47.png&amp;w=1430&amp;h=1864&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SPF4DQJEF4XQTBF8H37P47.png&amp;w=1534&amp;h=1999&amp;f=webp" data-lightbox-width="1534" data-lightbox-height="1999" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="932" class="pt-portable-image-media"></div>
+	<figcaption>The life of an AI Search query</figcaption>
+</figure>
+<p>Here’s how a query moves through AI Search. First, the query is optionally rewritten, then embedded (image queries are embedded directly by multimodal models, or captioned first by text-only models). Vector and keyword search run in parallel, and results are fused and optionally reranked. The top chunks are returned, or passed to a generation model to write an answer.</p>
+<h2>Bigger files and OCR for scanned documents</h2>
+<p>AI Search now accepts your text files (Markdown, HTML, CSV, JSON and similar) and PDFs up to 10 MiB, up from 4 MiB. Many PDFs are really scanned images with no extractable text. For those, <a href="https://developers.cloudflare.com/ai-search/configuration/data-source/#images-and-optical-character-recognition"><u>turn on OCR</u></a>&nbsp;and AI Search reads the text from each page before chunking and embedding it. OCR is available to every account and is billed under the new <a href="https://developers.cloudflare.com/ai-search/platform/limits-pricing"><u>AI Search pricing</u></a>&nbsp;as image processing ingestion tokens.</p>
+<h2>Now in GA: billing and pricing for AI Search</h2>
+<p>During our August 2026 Agents Week, we <a href="https://blog.cloudflare.com/ai-search-easier/#preview-pricing-pricing-you-can-predict"><u>announced&nbsp;preview pricing for AI Search</u></a>. With the product going GA today, we’re announcing billing for AI Search that is going live on November 1, 2026. We’ll send a reminder email before billing is enabled.</p>
+<p>AI Search pricing is designed, so you can estimate your bill before you index a single file. You pay for three things: the content you ingest, the data you store, and the queries you run. The work in between (parsing, chunking, embedding with Workers AI models, keyword indexing, and reranking) is included. There are no instance hours, capacity units, or monthly minimums to size up front, and small projects fit inside the free monthly allotment.</p>
+<p>Ingestion pricing is based on one rate per token with whichever Workers AI embedding model you pick, and tokens are counted the same way for every model. Switching from a text-only embedding model to a multimodal one doesn't change what you pay to ingest, unless you are also processing images (add-on fee). Storage is priced on the size of data in your indices. Querying is priced based on the type of query (semantic vs. full-text) and how many queries you send.</p>
+<p>Estimating your cost comes down to how much content you index, how much you store, and how many queries you expect. Here's the pricing we announced in preview, with one tweak that we’re making: on the free monthly allotment, you will receive 1,000 semantic queries and 1,000 full-text queries (instead of a shared pool of 2,000 queries).</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 288px;">
+		<tbody>
+			<tr>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p>Pricing</p>
+				</td>
+				<td>
+					<p>Free monthly allotment (all Workers plans)</p>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<p>Ingestion</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Base Ingestion</p>
+				</td>
+				<td>
+					<p>$0.75 / 1M tokens</p>
+				</td>
+				<td>
+					<p>5M tokens †</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Image processing (add-on)</p>
+				</td>
+				<td>
+					<p>+$0.50 / 1M tokens</p>
+				</td>
+				<td>
+					<p>5M tokens †</p>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<p>Storage</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Stored data</p>
+				</td>
+				<td>
+					<p>$2.00 / GB-month</p>
+				</td>
+				<td>
+					<p>10 GB</p>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<p>Query</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Semantic (hybrid and vector search)</p>
+				</td>
+				<td>
+					<p>$0.75 / 1k queries</p>
+				</td>
+				<td>
+					<p>1,000 queries</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Full-text</p>
+				</td>
+				<td>
+					<p>$0.10 / 1k queries</p>
+				</td>
+				<td>
+					<p>1,000 queries</p>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<p>Embedding and Reranking</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Ingestion and query</p>
+				</td>
+				<td>
+					<p>Free with select Workers AI models; third-party billed separately</p>
+				</td>
+				<td>
+					<p>N/A</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p><em>† A single pool of 5M ingestion tokens per month, covering any file type currently supported (e.g., text, images).</em></p>
+<h2>What’s next</h2>
+<p>Multimodal embedding support is just the first step; we’re building an ingestion pipeline to support full video and audio processing to allow our customers to search their rich media assets.</p>
+<p>We’re also refactoring the keyword search engine so that it scales better with your content requirements, particularly for when you have big data stores where the current implementation has limits.</p>
+<p>Finally, we’re developing better and simpler ways to enable AI Search and create indexes for websites already running on Cloudflare. This ensures AI agents can discover, explore, and consume content more easily and efficiently.</p>
+<p>Stay tuned for these follow-up announcements and more.</p>
+<p>AI Search is now generally available to enable and use today. Get started with our new multimodal embeddings, bigger files, OCR features, and our new managed instance pricing. Check out the <a href="https://developers.cloudflare.com/ai-search"><u>AI Search developer docs</u></a>&nbsp;for more information.</p>
