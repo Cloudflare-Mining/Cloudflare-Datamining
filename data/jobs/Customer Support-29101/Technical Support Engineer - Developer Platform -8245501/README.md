@@ -3,41 +3,63 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h3><strong>Available Location: Singapore</strong></h3>
-<h3><strong>About the Team</strong></h3>
-<p>The Cloudflare Customer Support Team solves complicated problems and answers technical questions via phone, email, chat and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, we are always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</p>
-<h3><strong>What You'll Do</strong></h3>
-<p>Do you love solving complex technical issues and interacting with people? Are you passionate about providing premium-level support to customers and are a standout colleague? Cloudflare is seeking an experienced <strong>Technical </strong><strong>Support Engineer</strong><strong> for Application Services/Performance </strong>to join our team. You will work with our largest and most technically sophisticated customers on a variety of technical support issues to ensure they can deploy and operate Cloudflare's App Services solutions with confidence.&nbsp;</p>
+<p><strong>Available Locations: </strong>Lisbon, Portugal&nbsp;</p>
+<p><strong>About the Role:&nbsp;</strong></p>
+<p>Do you love solving complex problems and interacting with people? Are you passionate about helping customers and are a standout colleague? Cloudflare is seeking a Technical Customer Support Engineer to join our team. You will work with our customers on a variety of technical support issues as well as the Technical Operations team that is responsible for running our global distributed network. This is a position where you will learn the inner workings of Cloudflare's technology and gain a deeper understanding of internet technologies. You will focus on providing support on our Developer Platform products: Workers, Workers AI, Pages, KV, Stream, R2, D1, DO etc.</p>
+<h3><strong>Examples of desirable skills, knowledge and experience:</strong></h3>
 <ul>
-	<li>Serve as a trusted technical advisor for our Enterprise customers, responding to and resolving inquiries and incidents related to Application Services/Performance, while delivering timely, high-quality and personalized assistance.</li>
-	<li>Work directly with customers to diagnose, troubleshoot and resolve complex technical issues involving DNS, HTTP Errors, IAM, Load Balancing, Caching, CORS, SSL/TLS, Network, and other Application Services/Performance related configurations.</li>
-	<li>Work with Engineering and Operations teams to remediate issues, suggest steps to mitigate, and apply the appropriate mitigation, when applicable.</li>
-	<li>Create and maintain knowledge base articles, technical guides, and troubleshooting documentation for internal and customer use.</li>
-	<li>You have a solid grasp of problem-solving with command line tools (dig/traceroute/curl/tcpdump).</li>
-	<li>You have experience writing scripts in Bash, Python, JavaScript, or other scripting language.</li>
-	<li>You have experience installing and configuring web servers like Apache, Nginx, and IIS.</li>
-	<li>Work with Engineering and Product teams to improve products and tools.</li>
+	<li>You are familiar with Developer Platform products</li>
+	<li>You have previous experience working as part of a team in a customer-facing role</li>
 </ul>
-<h3>What We're Looking For</h3>
 <ul>
-	<li>You must have a minimum of 4 years’ experience working as a Technical Support Engineer supporting globally distributed reverse-proxy CDN platforms, with hands-on expertise in content caching, performance optimization, traffic routing, and edge delivery services similar to Cloudflare’s core network offerings.</li>
-	<li>Exceptional troubleshooting and problem-solving skills, with the ability to simplify complex concepts for customers.</li>
-	<li>Strong customer service orientation and communication skills, both written and verbal.</li>
-	<li>Ability to work independently and collaboratively in a fast-paced, dynamic environment.</li>
-	<li>Strong understanding of L4/L7 protocols and concepts including, TCP/UDP, DNS, HTTP/S, IAM, Load Balancing, Caching, CORS, SSL/TLS, Network with a particular focus on Anycast concepts.</li>
-	<li>Have experience using online diagnostic and monitoring platforms — including DNS lookup tools, global ping and traceroute testers, SSL/TLS configuration analyzers, and synthetic transaction or real-user monitoring services — to troubleshoot DNS resolution, network latency, certificate issues, and global service availability problems.</li>
-	<li>Have experience using investigative observability tools such as Kibana, Grafana, Zabbix, Sentry, and live log-tailing utilities to analyze logs, trace issues, and pinpoint root causes of performance or reliability problems.</li>
-	<li>Confident with command line and tools, including curl, dig, traceroute, openssl, git.</li>
-	<li>Experience in a web development and / or hosting environment such as installing and configuring web servers like Apache, Nginx, Caddy and IIS.</li>
-	<li>You are competent at writing scripts in Bash, Python, JavaScript or other scripting language.</li>
-	<li>You have worked with PostgreSQL, MySQL, MS SQL, and other database servers.</li>
-	<li>Bachelor’s degree in Computer Science, Cybersecurity, or a related field (or equivalent experience).</li>
+	<li>You have experience solving HTTP, DNS and other networking-related problems</li>
+	<li>You have experience with a common web development language (for example, Javascript)</li>
 </ul>
-<h3><strong>Bonus Points For</strong></h3>
 <ul>
-	<li>Experience in a shift-based or global support environment.</li>
-	<li>Familiarity with SLA/KPI metrics and real-time queue management.</li>
+	<li>You understand how the Internet works</li>
 </ul>
+<ul>
+	<li>You have experience working in a support role where you thrived every time you resolved a ticket</li>
+</ul>
+<ul>
+	<li>You are comfortable communicating through various support channels and always put the customer first&nbsp; (Emails, Live Chats, Phone calls and&nbsp; virtual meetings)</li>
+</ul>
+<ul>
+	<li>You are a motivated self-starter and always looking to expand your existing skill set</li>
+</ul>
+<h3><strong>Bonus Points</strong></h3>
+<ul>
+	<li>You are fluent in German, Japanese, French, Spanish, Portuguese or Mandarin</li>
+</ul>
+<ul>
+	<li>You are familiar with Cloudflare and have a site actively using our platform</li>
+</ul>
+<ul>
+	<li>You have a solid grasp of problem-solving with command line tools (curl/dig/traceroute/tcpdump)</li>
+</ul>
+<ul>
+	<li>You are familiar with Nginx, Apache, IIS or any other web servers</li>
+</ul>
+<ul>
+	<li>You are committed to gaining a deeper understanding of the following technologies: DNS /&nbsp; CDN - Cache / SSL / Cloudflare Workers</li>
+</ul>
+<ul>
+	<li>You have worked with PostgreSQL, MySQL, MS SQL or other database servers</li>
+</ul>
+<ul>
+	<li>You have experience with Cloudflare Workers and/or JavaScript&nbsp;</li>
+</ul>
+<ul>
+	<li>You have experience with Video encoding and streaming solutions</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li><span data-sheets-root="1">For Portugal based hires: Estimated annual salary of €37,000-51,000.&nbsp;</span></li>
+</ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
