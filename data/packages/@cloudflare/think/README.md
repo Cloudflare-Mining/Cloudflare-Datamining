@@ -364,9 +364,11 @@ Script execution requires a Worker Loader binding:
 | `getTools()`               | `{}`                               | AI SDK `ToolSet` for the agentic loop                                                                                                                                                                                        |
 | `getMessengers()`          | `{}`                               | Messenger ingress and delivery declarations                                                                                                                                                                                  |
 | `getScheduledTasks()`      | `{}`                               | Code-declared recurring prompts                                                                                                                                                                                              |
+| `getScheduledTasksScope()` | `"root"`                           | Which instances arm declared tasks — `"root"` or `"all"` (sub-agents too)                                                                                                                                                    |
 | `getDefaultTimezone()`     | `undefined`                        | Default timezone for wall-clock schedules                                                                                                                                                                                    |
 | `maxSteps`                 | `10`                               | Max tool-call rounds per turn (property)                                                                                                                                                                                     |
 | `sendReasoning`            | `true`                             | Send reasoning chunks to chat clients                                                                                                                                                                                        |
+| `messageMetadata`          | `undefined`                        | Default writer for server-authored assistant-message metadata (override per turn via `TurnConfig`)                                                                                                                           |
 | `configureSession()`       | identity                           | Configure the default session handle: compaction and search                                                                                                                                                                  |
 | `configureContext()`       | `[]`                               | Declare prompt context blocks. See [Session and context](#session-and-context)                                                                                                                                               |
 | `hydrationByteBudget`      | 32 MiB                             | Byte budget for startup transcript hydration. Charges each row its full stored size, including the continuation rows a large message is split across                                                                         |
@@ -545,6 +547,14 @@ work such as creating a Workflow run or writing a run ledger. Delivery is
 at-least-once; use `idempotencyKey` or `occurrenceKey` for your own durable
 idempotency.
 
+Declared tasks are armed on the **root agent only**. Because
+`getScheduledTasks()` is normally a static declaration, it returns the same
+tasks on every instance of the class, so arming it on sub-agents as well would
+dispatch each occurrence once per live sub-agent on top of the root. Override
+`getScheduledTasksScope()` to return `"all"` when a class genuinely declares
+different tasks per sub-agent — each sub-agent then owns an independent
+schedule.
+
 Static declarations reconcile on startup. If `getScheduledTasks()` reads
 product-owned data that can change while the Durable Object is live, call
 `internal_reconcileScheduledTasks()` after updating that data. During
@@ -600,6 +610,8 @@ The AI SDK-derived contexts spread the SDK's own types at the top level — no i
 `beforeStep` is wired to the AI SDK's `prepareStep` callback. Return a `StepConfig` to override `model`, `toolChoice`, `activeTools`, `instructions`, `messages`, `experimental_context`, or `providerOptions` for the current step. The previous `system` name remains as a deprecated alias. The AI SDK does not expose `output` or `maxSteps` per step — set those at the turn level via `TurnConfig` (returned from `beforeTurn`). `beforeStep` is subclass-only; it is not dispatched to extensions because the prepareStep event surface includes a live `LanguageModel` instance which is not JSON-safe to snapshot.
 
 `TurnConfig` also accepts `sendReasoning` to override whether reasoning chunks are emitted for the current UI message stream. The instance-level `sendReasoning` property defaults to `true`; return `{ sendReasoning: false }` from `beforeTurn` to hide reasoning for a single turn, for example on internal continuation turns.
+
+`TurnConfig.messageMetadata` writes server-authored metadata onto the assistant message a turn persists — the same AI SDK `messageMetadata` callback base `AIChatAgent` + `streamText` accept, now forwarded through Think. It is called with each stream part; return a JSON-serializable object (typically from the `start` and/or `finish` part) and each return is shallow-merged into the message's metadata. An auto-continuation is its own turn: `beforeTurn` runs again with `ctx.continuation: true`, and the continuation persists as a separate assistant message with its own metadata. Its return value is broadcast to clients and persisted, so it must not carry server-only secrets. Set the instance-level `messageMetadata` property for turn-independent metadata (e.g. stamping a `createdAt` timestamp on every assistant message); return `messageMetadata` from `beforeTurn` to override it for a single turn. Because it is a function, configure it from a Think subclass — sandboxed extension hooks cannot provide it over RPC.
 
 `TurnConfig` also accepts stable AI SDK `streamText` call settings such as `maxOutputTokens`, `temperature`, `stopSequences`, `seed`, `maxRetries`, `timeout`, and `headers`. Use them to tune model behavior per turn, for example disabling retries or adding a chunk timeout during recovery flows.
 
@@ -726,6 +738,7 @@ interface TurnConfig {
   maxSteps?: number; // override maxSteps for this turn
   stopWhen?: StopCondition | StopCondition[]; // additional early-exit conditions
   sendReasoning?: boolean; // send reasoning chunks for this turn
+  messageMetadata?: MessageMetadataCallback; // write assistant-message metadata for this turn
   maxOutputTokens?: number;
   temperature?: number;
   topP?: number;
@@ -968,12 +981,19 @@ Tools belong to the child agent; define them with `getTools()` or use
 `configure()` and `getConfig()` persist a JSON-serializable config blob in SQLite — useful for private server-side settings that should survive hibernation and restarts. Pass the config shape as a method generic for typed call sites:
 
 ```ts
+import { Think } from "@cloudflare/think";
+
 type MyConfig = { modelTier: "fast" | "capable"; systemPrompt: string };
+
+const MODEL_IDS = {
+  fast: "@cf/meta/llama-3.1-8b-instruct",
+  capable: "@cf/moonshotai/kimi-k2.7-code"
+} as const;
 
 export class MyAgent extends Think<Env> {
   getModel() {
     const tier = this.getConfig<MyConfig>()?.modelTier ?? "fast";
-    return createWorkersAI({ binding: this.env.AI })(MODEL_IDS[tier]);
+    return MODEL_IDS[tier];
   }
 }
 ```

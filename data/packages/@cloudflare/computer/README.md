@@ -50,8 +50,11 @@ worker-shell and worker-javascript backends additionally need the
 own binding requirements — see [Choosing a backend](#choosing-a-backend).
 
 Optional peer dependencies, installed only if you use the matching
-feature: `ai` and `zod` (for `@cloudflare/computer/tools`),
-`@platformatic/vfs` (for the Node-side VFS provider).
+feature: `zod` for every tools entry point, `ai` for
+`@cloudflare/computer/tools`, and
+`@platformatic/vfs` for the Node-side VFS provider. The pi and TanStack
+AI entry points need nothing beyond `zod`; your agent brings its own
+library.
 
 ## Quick start
 
@@ -238,7 +241,8 @@ Alongside `exec`, the runtime exposes `getExec`, `killExec`, and
 
 | Backend | Import | Runs | Needs |
 | --- | --- | --- | --- |
-| **Container** | `@cloudflare/computer/backends/container` | Shell commands in full Linux userland (real binaries, `npm`, `node`, network) | A Cloudflare Container running `computerd` |
+| **Container** | `@cloudflare/computer/backends/container` | Shell commands in full Linux userland (real binaries, `npm`, `node`, network) | A Cloudflare Container running `computerd`, scheduled by the durable object (`scheduling_policy: "durable_object"`) |
+| **Container (legacy)** | `@cloudflare/computer/backends/container-legacy` | The same | A Cloudflare Container the platform schedules and sizes from the `containers` block |
 | **Worker shell** | `@cloudflare/computer/backends/worker-shell` | Shell commands via [just-bash](https://github.com/vercel-labs/just-bash) in a Dynamic Worker | A Worker Loader binding; `experimental` flag |
 | **Worker JavaScript** | `@cloudflare/computer/backends/worker-javascript` | ECMAScript modules in a fresh Dynamic Worker | A Worker Loader binding; `experimental` flag |
 
@@ -246,7 +250,7 @@ Alongside `exec`, the runtime exposes `getExec`, `killExec`, and
   environment. The container owns its own SQLite-backed VFS and this
   package syncs the two stores across a capnweb WebSocket. See
   [`docs/07_injected_service.md`](../../docs/07_injected_service.md) for
-  the container image, and [`examples/container`](../../examples/container).
+  the container image, and [`examples/container-legacy`](../../examples/container-legacy).
 - **Worker shell** is fast and needs no container. Every filesystem
   operation forwards back to the same Durable Object, so there's no
   second store and no sync round trip. See
@@ -301,6 +305,21 @@ the original text, so untargeted content stays byte-for-byte unchanged. File
 mutations share locks across tool sets for the same workspace, and recursive
 deletion excludes mutations throughout its subtree. See
 [`docs/09_tool_interface.md`](../../docs/09_tool_interface.md).
+
+The same tools, with the same options, come for two more agent
+libraries. Each entry point loads only `zod` and its own code, so
+importing one never pulls in another library.
+
+```ts
+import { createPiTools } from "@cloudflare/computer/tools/pi-ai";
+import { createTanStackTools } from "@cloudflare/computer/tools/tanstack-ai";
+
+// pi: declarations for the model, and a function your loop calls per tool call.
+const { tools, execute } = createPiTools({ workspace });
+
+// TanStack AI: a list for chat({ tools }). This one asks before changing files.
+const tanstackTools = createTanStackTools({ workspace, approve: "mutating" });
+```
 
 ## Git
 
@@ -415,10 +434,12 @@ on a computerd instance.
 | Entrypoint | Purpose |
 | --- | --- |
 | `@cloudflare/computer` | The `Workspace` wrapper, `workspace.runtime`, stub types, the R2 mount, and proxy classes. |
-| `@cloudflare/computer/backends/container` | `CloudflareContainerBackend` and `withWorkspaceContainer`. Pulls in the computerd / capnweb sync plumbing. |
+| `@cloudflare/computer/backends/container-legacy` | `LegacyContainerBackend` and `withLegacyWorkspaceContainer`. Pulls in the computerd / capnweb sync plumbing. |
 | `@cloudflare/computer/backends/worker-shell` | `WorkerShellBackend` and the bundled just-bash runtime. |
 | `@cloudflare/computer/backends/worker-javascript` | `WorkerJavaScriptBackend`, configured libraries, durable imports, `node:fs/promises`, and trusted `ws:git` / `ws:artifacts`. |
 | `@cloudflare/computer/tools` | AI SDK tools for agents: `read`, `ls`, `find`, `grep`, `write`, `edit`, `delete`, and optional `exec` and `publish`. |
+| `@cloudflare/computer/tools/pi-ai` | `createPiTools()`: the same tool set for pi (`@earendil-works/pi-ai`). |
+| `@cloudflare/computer/tools/tanstack-ai` | `createTanStackTools()`: the same tool set for TanStack AI (`@tanstack/ai`). |
 | `@cloudflare/computer/git` | Opt-in `isomorphic-git` glue for checkouts inside the workspace. |
 | `@cloudflare/computer/assets` | `createAssets` — share a workspace file to R2 as a presigned URL. |
 | `@cloudflare/computer/artifacts` | `createArtifact` and its CLI, an optionally session-scoped wrapper over the Cloudflare Artifacts binding. |
@@ -443,7 +464,7 @@ const ws = new Workspace({
   storage: ctx.storage,
   backends: [
     new WorkerShellBackend({ id: "shell", loader: env.LOADER, /* ... */ }),
-    new CloudflareContainerBackend({ id: "sandbox", container: () => this, /* ... */ }),
+    new LegacyContainerBackend({ id: "sandbox", container: () => this, /* ... */ }),
   ],
 });
 
@@ -508,7 +529,7 @@ An adapter for the Cloudflare runtime lives at
   No container.
 - [`examples/worker-javascript`](../../examples/worker-javascript) — the
   same shape, running ECMAScript modules instead of shell commands.
-- [`examples/container`](../../examples/container) — the container
+- [`examples/container-legacy`](../../examples/container-legacy) — the container
   backend running `computerd`.
 - [`examples/think`](../../examples/think) — a chat agent that uses the
   workspace as its working directory.
