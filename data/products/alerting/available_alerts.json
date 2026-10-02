@@ -221,6 +221,124 @@
 			]
 		}
 	],
+	"Custom Analytics": [
+		{
+			"display_name": "Custom Alert",
+			"type": "custom_analytics",
+			"description": "Configure your own alert for your data set",
+			"filter_options": [
+				{
+					"Key": "selectors",
+					"ComparisonOperator": "contains",
+					"Range": "1-n",
+					"AvailableValues": null
+				},
+				{
+					"Key": "alert_trigger_preferences",
+					"ComparisonOperator": "==",
+					"Range": "1-1",
+					"AvailableValues": [
+						{
+							"ID": "zscore_spike",
+							"Description": "algorithm for spikes (positive z-score)"
+						},
+						{
+							"ID": "zscore_drop",
+							"Description": "algorithm for drops (negative z-score)"
+						},
+						{
+							"ID": "zscore_spike_and_drop",
+							"Description": "algorithm for both drops and spikes (z-score)"
+						},
+						{
+							"ID": "slo",
+							"Description": "service level objective algorithm"
+						},
+						{
+							"ID": "threshold",
+							"Description": "threshold that triggers"
+						}
+					]
+				},
+				{
+					"Key": "alert_trigger_preferences_value",
+					"ComparisonOperator": "==",
+					"Range": "0-1",
+					"AvailableValues": null
+				},
+				{
+					"Key": "alert_trigger_preferences_operator",
+					"ComparisonOperator": "==",
+					"Range": "0-1",
+					"AvailableValues": [
+						{
+							"ID": "<",
+							"Description": "less than"
+						},
+						{
+							"ID": ">",
+							"Description": "greater than"
+						},
+						{
+							"ID": "<=",
+							"Description": "less than or equal"
+						},
+						{
+							"ID": ">=",
+							"Description": "greater than or equal"
+						},
+						{
+							"ID": "==",
+							"Description": "equal"
+						},
+						{
+							"ID": "!=",
+							"Description": "not equal"
+						}
+					]
+				},
+				{
+					"Key": "alert_trigger_preferences_short_window",
+					"ComparisonOperator": "==",
+					"Range": "0-1",
+					"AvailableValues": null
+				},
+				{
+					"Key": "alert_trigger_preferences_long_window",
+					"ComparisonOperator": "==",
+					"Range": "0-1",
+					"AvailableValues": null
+				},
+				{
+					"Key": "alert_trigger_preferences_minimum_threshold",
+					"ComparisonOperator": "<=",
+					"Range": "0-1",
+					"AvailableValues": null
+				},
+				{
+					"Key": "source",
+					"ComparisonOperator": "==",
+					"Range": "0-1",
+					"AvailableValues": [
+						{
+							"ID": "workers_analytics_engine",
+							"Description": "Workers Analytics Engine dataset"
+						},
+						{
+							"ID": "sql_api",
+							"Description": "SQL API dataset"
+						}
+					]
+				},
+				{
+					"Key": "execution_interval",
+					"ComparisonOperator": "==",
+					"Range": "0-1",
+					"AvailableValues": null
+				}
+			]
+		}
+	],
 	"DoS Protection": [
 		{
 			"display_name": "HTTP DDoS Attack Alert",
