@@ -3,64 +3,37 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h3>Available Locations</h3>
+<p><strong>Available Locations: </strong>Austin, TX</p>
+<h4><strong>What you'll do</strong></h4>
+<p>We're looking for a Senior Software Engineer to join our WARP Mobile SDK team to help build the future of our mobile security SDKs.</p>
+<h4><strong>Responsibilities</strong></h4>
+<p>In this role, you will define the client architecture and public APIs for native iOS and Android SDKs, working from deep expertise in at least one of those ecosystems. You will establish foundations that are testable, well-documented, lightweight, and straightforward for customer engineering teams to integrate and operate.</p>
+<p>As a senior software engineer, you will set standards for compatibility, diagnostics, performance, and release quality across mobile platforms. You will work closely with product and engineering partners to turn a security problem into a dependable developer product, mentor native mobile engineers, and help resolve complex customer integration issues. You will be successful in this role if you combine strong native engineering judgment and a track record of carrying distributed software from design through production operation.</p>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li>US</li>
+	<li>Deep experience building production software for either<strong> iOS with Swift or Android with Kotlin</strong>, and enough familiarity with the other ecosystem to guide shared architectural decisions</li>
+	<li>Experience designing or <strong>owning customer-distributed SDKs</strong>, libraries, or similarly constrained developer-facing products</li>
+	<li>Experience with <strong>mobile platform security concepts</strong>, including app and device integrity, secure key storage, application signing, authentication, and secure communications</li>
+	<li>Familiarity with native <strong>mobile networking stacks</strong>, HTTP APIs, and the integration challenges introduced by different application architectures and networking libraries</li>
+	<li>Experience <strong>diagnosing production issues</strong> that cross application, SDK, network, and service boundaries, while designing safe diagnostics that do not expose sensitive data</li>
+	<li>Understanding of mobile package distribution, source and binary compatibility, dependency management, and reliable release practices</li>
+	<li>Experience <strong>writing technical designs and aligning decisions</strong> across product, client, backend, edge, and security teams</li>
+	<li>Experience <strong>mentoring engineers</strong> and raising a team's technical bar through design review, code review, and knowledge sharing</li>
+	<li>Empathetic, proactive, and constructive <strong>written and verbal communication skills</strong></li>
+	<li>Proven ability to operate within strict mobile performance budgets, including binary size, battery use, startup time, and main-thread overhead</li>
 </ul>
-<p><strong>Applications will be accepted until November 22, 2026.</strong></p>
-<h2><strong>About the Role</strong></h2>
-<p><strong>Position Overview:</strong> We are seeking a high-velocity, strategic People M&amp;A Leader to own the human side of our mergers and acquisitions end-to-end. In this role, you will be the single designated point person (DRI) and strategic counterpart to our Corporate Development team. You will own the People lifecycle for all deals—from early-stage confirmatory due diligence through post-close integration.&nbsp;</p>
-<p>You will report directly to the VP, Talent who oversees global HRBPs, Talent Acquisition, Employee Relations, and Talent Development. When deal volume is low, you will focus on strategic programs and talent initiatives for our People organization. You are a systems thinker with an ability to foster relationships internally and externally.</p>
-<p>Acting as the ultimate "Hub to the Spokes," you will translate deal rationale into practical execution strategies, coordinating fluidly across Recruiting, Total Rewards, People Operations, Workplace Immigration, IT, Payroll, Employment Legal and other functions. This is a builder role for someone who thrives under compressed timelines, loves creating order out of ambiguity, and is obsessed with delivering a world-class onboarding experience for newly acquired teams.</p>
-<h2><strong>Responsibilities</strong></h2>
+<h4>Bonus Points:</h4>
 <ul>
-	<li><strong>Corporate Development Partnership &amp; Diligence</strong></li>
-	<ul>
-		<li>Serve as the primary People team representative alongside Corporate Development and Legal from deal kickoff through close.</li>
-		<li>Responsibilities will span from the Letter of Intent (LOI) all the way to closing, including mapping key employees, onboarding, and managing the first 30 days—which will then feed directly into your integration work.&nbsp;</li>
-		<li>Lead rapid-fire HR due diligence to assess target company culture, compensation structures, and compliance risks.</li>
-		<li>Evaluate technical talent density and provide critical input into deal structures, focus areas for retention pools, and offer letters.</li>
-		<li>Partner with finance and legal to analyze equity structures, ensuring seamless alignment on equity rollover mechanics and cash/stock retention incentives.</li>
-	</ul>
-	<li><strong>Cross-Functional Orchestration (The Hub to the Spokes)</strong></li>
-	<ul>
-		<li>Mobilize and serve as the conductor and program manager to cross-functional People and G&amp;A teams (Recruiting, Compensation, People Operations, Immigration, Mobility, Payroll, IT) to ensure workstreams are perfectly sequenced (e.g., ensuring visa/immigration verifications clear before offer letters drop).</li>
-		<li>Build the infrastructure, checklists, and automated workflows that don't exist yet to scale our M&amp;A engine.</li>
-		<li>Identify recurring failure modes across deals and implement upstream fixes to continuously optimize our playbooks.</li>
-	</ul>
-	<li><strong>Integration &amp; Elite Talent Retention</strong></li>
-	<ul>
-		<li>Provide a "white-glove" experience to incoming talent, serving as their primary advocate, guide, and escalation point as they navigate our culture and systems.</li>
-		<li>Partner with leadership and Internal Comms to execute empathetic change management, addressing workforce anxiety through transparent communications, FAQs, and town halls.</li>
-		<li>Design and execute organizational mapping and day-1 onboarding schedules to ensure acquired technical teams maintain momentum and feel integrated from day one.</li>
-	</ul>
+	<li>Familiarity with how native SDKs are consumed by cross-platform frameworks such as <strong>React Native and Flutter</strong> is a plus</li>
+	<li>Familiarity with lower-level languages like <strong>C++ or Rust for high-performance</strong>, cross-platform security modules is a plus</li>
 </ul>
-<h2><strong>Desirable Skills, Knowledge, and Experience</strong></h2>
-<ul>
-	<li><strong>Experience:</strong> 6–10+ working in HR M&amp;A.</li>
-	<li><strong>Startup Agility:</strong> Proven track record of building 0-to-1 processes. You excel in fast-moving, unstructured environments where templates are built on the fly.</li>
-	<li><strong>Execution Under Pressure:</strong> Outstanding project management skills; calm under pressure and capable of handling highly confidential data and compressed, unpredictable deal timelines.</li>
-	<li><strong>Technical &amp; Core HR Fluency:</strong> Solid foundational understanding of employment legal basics, high-growth compensation structures, and visa/immigration complexities (critical for international or highly technical talent).</li>
-	<li><strong>Influence Without Authority:</strong> Exceptional communication and relationship-building skills. Ability to earn the trust of elite technical founders and seamlessly align cross-functional internal executives.</li>
-</ul>
-<h3 data-path-to-node="0"><strong data-path-to-node="0" data-index-in-node="0">Compensation</strong></h3>
-<p data-path-to-node="1,0,0">Compensation may be adjusted depending on work location.</p>
-<ul data-path-to-node="1">
-	<li>
-		<p data-path-to-node="1,1,0">For SF, SJ, and Bay Area Metro based hires: Estimated annual salary of $214,000 - $295,000.</p>
-	</li>
-	<li>
-		<p data-path-to-node="1,2,0">For Boston, California - Remote, Connecticut - Remote, DC Metro, Massachusetts - Remote, New Jersey - Remote, New York City, NY Metro, Remote - Washington, Washington (Kirkland), and Washington D.C. based hires: Estimated annual salary of $205,000 - $282,000.</p>
-	</li>
-	<li>
-		<p data-path-to-node="1,3,0">For Colorado - Remote, Illinois - Remote, Maryland - Remote, Minnesota - Remote, Nevada - Remote, New York - Remote, Rhode Island - Remote, and Vermont - Remote based hires: Estimated annual salary of $186,000 - $256,000</p>
-	</li>
-</ul>
-<h3>Equity</h3>
-<p>This role is eligible to participate in Cloudflare's equity plan.</p>
-<h3>Benefits</h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p>Health &amp; Welfare Benefits</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -71,14 +44,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p>Financial Benefits</p>
+<p><strong>Financial Benefits</strong></p>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p>Time Off</p>
+<p><strong>Time Off</strong></p>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
