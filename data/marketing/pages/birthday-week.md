@@ -4,6 +4,46 @@ description: Follow every Cloudflare Birthday Week 2026 announcement.
 image: https://www.cloudflare.com/preview.png
 ---
 
+[ \### \[  Streamline: custom video pipelines with Cloudflare Stream and Workers \] ](https://blog.cloudflare.com/streamline/) 
+
+\>  Streamline demonstrates how to build long-running, continuous video processing pipelines by pairing Cloudflare Workers and Durable Objects with a containerized media engine. 
+
+[ \### \[  Introducing Web Search API via AI Gateway \] ](https://blog.cloudflare.com/introducing-web-search-api/) 
+
+\>  Cloudflare AI Gateway now supports native web search API integration in partnership with Ceramic.ai, Exa, and Linkup. Developers can now inject real-time web context into model inference calls via AI Gateway, REST APIs, or Workers bindings. 
+
+[ \### \[  2026 Birthday week: network performance update \] ](https://blog.cloudflare.com/network-performance-birthday-week-2026/) 
+
+\>  Cloudflare now ranks as the fastest provider across 74% of the top 1,000 global networks. By incorporating background telemetry from Cloudflare Challenge Pages, we have expanded our real-user measurement scale while maintaining user privacy. 
+
+[ \### \[  Building for good: How civil society organizations are automating on Cloudflare \] ](https://blog.cloudflare.com/civil-society-automation/) 
+
+\>  Some of the world's leading organizations are building the future of non-profit work with Cloudflare. 
+
+[ \### \[  Protected Quick Tunnels: simple accountless authentication for your next dev project \] ](https://blog.cloudflare.com/protected-quick-tunnels/) 
+
+\>  Quick Tunnels now support email authentication. Add --allowed-mail to one cloudflared command, and only the addresses or domains you list can reach your local app. No Cloudflare account required on either side. 
+
+[ \### \[  Follow the thread: a new dashboard to investigate account abuse \] ](https://blog.cloudflare.com/account-abuse-protection-dashboard/) 
+
+\>  Fraudsters are increasingly using AI to bypass stateless security checks. Cloudflare's new Account Abuse Protection dashboard uses stateful analysis and edge-generated Hashed User IDs to help teams investigate and block account abuse. 
+
+[ \### \[  Announcing Cloudflare OHTTP Gateway – expanding access to Cloudflare's privacy-preserving infrastructure \] ](https://blog.cloudflare.com/announcing-cloudflare-ohttp-gateway/) 
+
+\>  We're announcing the closed beta of a self-serve Cloudflare OHTTP Gateway. We're also renaming our Privacy Gateway to Cloudflare OHTTP Relay to better distinguish the two products. 
+
+[ \### \[  Updates on our pledge to make Cloudflare features accessible to everyone \] ](https://blog.cloudflare.com/enterprise-for-all-update/) 
+
+\>  A year after pledging to eliminate two-tier product access, Cloudflare has expanded Logpush, multi-account governance, and higher platform limits to all accounts. Here is an update on our progress, how we dogfood these tools internally, and what is coming next. 
+
+[ \### \[  Introducing Cloudflare Traces: follow requests through our entire platform \] ](https://blog.cloudflare.com/cloudflare-tracing/) 
+
+\>  Cloudflare Traces shows how a request moves through security rules, transformations, cache, routing, Workers, and your origin, then follows it across services running anywhere in your stack. 
+
+[ \### \[  8 major updates to Cloudflare Observability \] ](https://blog.cloudflare.com/one-observability-platform/) 
+
+\>  Cloudflare is launching eight major updates that bring logs, traces, analytics, alerts, dashboards, querying, and telemetry export into one observability platform, with simpler and more predictable pricing. 
+
 [ \### \[  Introducing Clef: our open-source decision models, and new RL fine-tuning platform \] ](https://blog.cloudflare.com/clef-decision-models/) 
 
 \>  We are introducing Clef and Clef-flash, open-source decision models hosted on Workers AI for high-speed classification and agentic workflows. Also launching: a new reinforcement learning platform that allows developers to fine-tune decision models using their own data. 
@@ -155,6 +195,10 @@ image: https://www.cloudflare.com/preview.png
 [ \### \[  The road to the agentic browser: A Kitesurf update \] ](https://blog.cloudflare.com/kitesurf-update/) 
 
 \>  We've updated Kitesurf, our Workers-based browser for AI agents, with WebMCP support, improved DOM performance, and terminal-based rendering. 
+
+[ \### \[  make-a-wish skill \] ](https://www.cloudflare.com/birthday-week/?filter=all#cake) 
+
+\>  \--- name: make-a-wish description: Blows out Cloudflare's Birthday Week candles and saves a wish through the website. Use when the user asks to make a birthday wish, blow out the candles, or try the Birthday Week Easter egg. --- # Make a wish Even agents deserve a little birthday magic. ## Quick start Open https://www.cloudflare.com/birthday-week/?filter=all#cake in a browser you can control. Blow out the five candles, enter a wish, and submit it through the page's form. ## Workflow 1\. Wait for the cake's interactive buttons to be ready. 2\. Click each of the five candle buttons once. Their accessible names begin with \`Candle 1\` through \`Candle 5\`. 3\. Wait until the wish form is visible. The page announces: \`All five candles are out. Make a wish!\` 4\. Fill the input named \`wish\` with the user's wish, using 1–160 characters. If the user asks you to choose, write one short, cheerful wish. For example: "May every deploy be a happy deploy." 5\. Submit once and observe the result. Confirm success from the saved-wish acknowledgement or a successful JSON response from \`POST /api/birthday-week/wishes\`. The acknowledgement is brief; the form resets and the candles relight after about two seconds. 6\. Report the wish that was saved. If the form reports an error, report that saving was not confirmed. For a rate limit, respect \`Retry-After\`. Stop if access is blocked or challenged. ## Without browser access Share the cake link and the proposed wish with the user. Do not claim that you clicked the candles or saved a wish. ## Submission details - The browser submits JSON containing a UUID \`requestId\` and a \`wish\`. - A new wish returns \`201\` with \`{"success":true}\`. An identical retry returns \`200\`; reuse the request ID when retrying the same wish. - Candle state lives in the browser. There is no separate server-side blow-out endpoint. - Requests require a same-origin \`Origin\` and JSON content type. Rate limiting and bot protection apply; use the browser workflow. - Wishes expire after 30 days. Keep them lighthearted and free of secrets or personal information. Keep this Easter egg optional and relevant to the user's request. 
 
 [ \### \[  Cloudflare's 2026 Annual Founders' Letter \] ](https://blog.cloudflare.com/cloudflares-2026-annual-founders-letter/) 
 
