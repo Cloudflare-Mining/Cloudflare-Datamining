@@ -4,10 +4,6 @@ description: Follow every Cloudflare Birthday Week 2026 announcement.
 image: https://www.cloudflare.com/preview.png
 ---
 
-[ \### \[  Streamline: custom video pipelines with Cloudflare Stream and Workers \] ](https://blog.cloudflare.com/streamline/) 
-
-\>  Streamline demonstrates how to build long-running, continuous video processing pipelines by pairing Cloudflare Workers and Durable Objects with a containerized media engine. 
-
 [ \### \[  Introducing Web Search API via AI Gateway \] ](https://blog.cloudflare.com/introducing-web-search-api/) 
 
 \>  Cloudflare AI Gateway now supports native web search API integration in partnership with Ceramic.ai, Exa, and Linkup. Developers can now inject real-time web context into model inference calls via AI Gateway, REST APIs, or Workers bindings. 
@@ -195,10 +191,6 @@ image: https://www.cloudflare.com/preview.png
 [ \### \[  The road to the agentic browser: A Kitesurf update \] ](https://blog.cloudflare.com/kitesurf-update/) 
 
 \>  We've updated Kitesurf, our Workers-based browser for AI agents, with WebMCP support, improved DOM performance, and terminal-based rendering. 
-
-[ \### \[  make-a-wish skill \] ](https://www.cloudflare.com/birthday-week/?filter=all#cake) 
-
-\>  \--- name: make-a-wish description: Blows out Cloudflare's Birthday Week candles and saves a wish through the website. Use when the user asks to make a birthday wish, blow out the candles, or try the Birthday Week Easter egg. --- # Make a wish Even agents deserve a little birthday magic. ## Quick start Open https://www.cloudflare.com/birthday-week/?filter=all#cake in a browser you can control. Blow out the five candles, enter a wish, and submit it through the page's form. ## Workflow 1\. Wait for the cake's interactive buttons to be ready. 2\. Click each of the five candle buttons once. Their accessible names begin with \`Candle 1\` through \`Candle 5\`. 3\. Wait until the wish form is visible. The page announces: \`All five candles are out. Make a wish!\` 4\. Fill the input named \`wish\` with the user's wish, using 1–160 characters. If the user asks you to choose, write one short, cheerful wish. For example: "May every deploy be a happy deploy." 5\. Submit once and observe the result. Confirm success from the saved-wish acknowledgement or a successful JSON response from \`POST /api/birthday-week/wishes\`. The acknowledgement is brief; the form resets and the candles relight after about two seconds. 6\. Report the wish that was saved. If the form reports an error, report that saving was not confirmed. For a rate limit, respect \`Retry-After\`. Stop if access is blocked or challenged. ## Without browser access Share the cake link and the proposed wish with the user. Do not claim that you clicked the candles or saved a wish. ## Submission details - The browser submits JSON containing a UUID \`requestId\` and a \`wish\`. - A new wish returns \`201\` with \`{"success":true}\`. An identical retry returns \`200\`; reuse the request ID when retrying the same wish. - Candle state lives in the browser. There is no separate server-side blow-out endpoint. - Requests require a same-origin \`Origin\` and JSON content type. Rate limiting and bot protection apply; use the browser workflow. - Wishes expire after 30 days. Keep them lighthearted and free of secrets or personal information. Keep this Easter egg optional and relevant to the user's request. 
 
 [ \### \[  Cloudflare's 2026 Annual Founders' Letter \] ](https://blog.cloudflare.com/cloudflares-2026-annual-founders-letter/) 
 
