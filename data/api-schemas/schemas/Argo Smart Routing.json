@@ -1,4 +1,487 @@
 {
+	"GET /accounts/{account_id}/argo/count_zones_enabled": {
+		"operationId": "argo-smart-routing-get-count-zones-enabled-for-account",
+		"summary": "Get count of zones with Argo Smart Routing enabled for account",
+		"description": "Returns the number of zones that have Argo Smart Routing enabled for the specified account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Identifier of the account.",
+				"required": true,
+				"schema": {
+					"description": "Specifies the zone associated with the API call.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Count of zones with Argo Smart Routing enabled.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"success": {
+								"summary": "Successful response",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": 5,
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"example": []
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"example": []
+								},
+								"result": {
+									"description": "The number of zones with Argo Smart Routing enabled.",
+									"type": "integer",
+									"example": 3,
+									"minimum": 0
+								},
+								"success": {
+									"description": "Describes a successful API response.",
+									"type": "boolean",
+									"example": true,
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Count zones enabled failure.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"error": {
+								"summary": "Error response",
+								"value": {
+									"errors": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Describes a failed API response.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Argo Smart Routing"
+		],
+		"x-api-token-group": [
+			"Trust and Safety Write",
+			"Trust and Safety Read",
+			"Zone Read",
+			"Zone Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone_settings:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-sdk-group-name": "argo.smart-routing",
+		"x-fern-sdk-method-name": "count-zones-enabled-for-account"
+	},
+	"GET /user/argo/count_zones_enabled": {
+		"operationId": "argo-smart-routing-get-count-zones-enabled-for-user",
+		"summary": "Get count of zones with Argo Smart Routing enabled for user",
+		"description": "Returns the number of zones that have Argo Smart Routing enabled for the authenticated user.",
+		"responses": {
+			"200": {
+				"description": "Count of zones with Argo Smart Routing enabled.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"success": {
+								"summary": "Successful response",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": 3,
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"example": []
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"example": []
+								},
+								"result": {
+									"description": "The number of zones with Argo Smart Routing enabled.",
+									"type": "integer",
+									"example": 3,
+									"minimum": 0
+								},
+								"success": {
+									"description": "Describes a successful API response.",
+									"type": "boolean",
+									"example": true,
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Count zones enabled failure.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"error": {
+								"summary": "Error response",
+								"value": {
+									"errors": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Describes a failed API response.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Argo Smart Routing"
+		],
+		"x-api-token-group": [
+			"Trust and Safety Write",
+			"Trust and Safety Read",
+			"Zone Read",
+			"Zone Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone_settings:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-sdk-group-name": "argo.smart-routing",
+		"x-fern-sdk-method-name": "count-zones-enabled-for-user"
+	},
 	"GET /zones/{zone_id}/argo/smart_routing": {
 		"operationId": "argo-smart-routing-get-argo-smart-routing-setting",
 		"summary": "Get Argo Smart Routing setting",
