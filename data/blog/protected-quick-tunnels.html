@@ -1,0 +1,129 @@
+<p>We launched <a href="https://blog.cloudflare.com/quick-tunnels-anytime-anywhere"><u>Quick Tunnels</u></a>&nbsp;in 2021 to give developers an easy way to share their latest service, application, or project running in their local development environment. A lot has changed since then, but the core use case remains the same.</p>
+<p>Your coding agent has just finished the feature. The dev server is up on <code>localhost:5173</code>, and before you ask, the agent offers to let you try it on your phone. It runs one command and hands you a link:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cloudflared</span><span class="sk-032f62-99ffe4"> tunnel</span><span class="sk-005cc5-99ffe4"> --url</span><span class="sk-032f62-99ffe4"> http://localhost:5173</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p>That command starts a <a href="https://developers.cloudflare.com/tunnel/get-started/quick-tunnels"><u>Quick Tunnel</u></a>. <code>cloudflared</code>, Cloudflare's lightweight connector, publishes your local service at a random <code>trycloudflare.com</code>&nbsp;URL. No account, no domain, no cost. Agents now use Quick Tunnels for the same reason people do: they are the shortest path from a local port to a URL.</p>
+<p>The catch has always been the same. Anyone with the link can open it.</p>
+<p>Starting with <code>cloudflared</code>&nbsp;2026.9.3, you can add <code>--allowed-mail</code>&nbsp;to the command, and your Quick Tunnel only lets in the email addresses and domains you choose. Visitors prove they own one of those addresses with a one-time PIN from <a href="https://www.cloudflare.com/sase/products/access"><u>Cloudflare Access</u></a>.&nbsp;Nobody, on either side, needs a Cloudflare account.</p>
+<div id="html-block-8sottanbv" class="html-block">
+	<div style="padding-top:56.481481481481474%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/9a46912199538c2978c38e7353393b31/iframe?muted=true&amp;preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F9a46912199538c2978c38e7353393b31%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>
+<h2>Agents made Quick Tunnels more popular than ever</h2>
+<p>Agents that write code need somewhere to show you the result. Agents that live on a Mac mini at home need to be reachable from your phone. Model Context Protocol servers on a laptop need a public endpoint before a hosted assistant can call them. Each of these needs a URL, and a Quick Tunnel produces one from a single command an agent can run by itself. There is no signup form for it to get stuck on. Add <code>--<a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#output" target="_blank" rel="noopener noreferrer">output json</a></code>&nbsp;and every log line becomes a JSON object, so the agent can pick out the URL without scraping text.</p>
+<p>Since agents took off, Cloudflare Tunnel and Quick Tunnels adoption has grown exponentially. On September 18, 2026, a link to the Quick Tunnels page climbed to the top of <a href="https://news.ycombinator.com/item?id=49754785"><u>Hacker News</u></a>&nbsp;and gathered more than 800 points and 300 comments. The thread reads like a catalog of agent workflows. One person's AI had found Quick Tunnels on its own to publish a site it had just built. Another called them "insanely helpful when doing agentic work on the go."</p>
+<p>And one <a href="https://news.ycombinator.com/item?id=49756881"><u>commenter</u></a>&nbsp;asked this post answers: <em>"how long until someone's agent sets up a tunnel for the world to see one's most sensitive, private and embarrassing information or insecure work-in-progress app?"</em></p>
+<h2>Control who can access your service</h2>
+<p>Pass an email address to <code>--allowed-mail</code>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cloudflared</span><span class="sk-032f62-99ffe4"> tunnel</span><span class="sk-005cc5-99ffe4"> --url</span><span class="sk-032f62-99ffe4"> http://localhost:8080</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  --allowed-mail</span><span class="sk-032f62-99ffe4"> alice@example.com</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>Alice opens the URL, enters her email address, types in the code sent to her inbox, and reaches your app. Anyone else is stopped before a single request reaches your machine. You still don't create a DNS record, write a configuration file, or open a dashboard.</p>
+<p>To let in more people, repeat the flag or allow an entire domain:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cloudflared</span><span class="sk-032f62-99ffe4"> tunnel</span><span class="sk-005cc5-99ffe4"> --url</span><span class="sk-032f62-99ffe4"> http://localhost:8080</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  --allowed-mail</span><span class="sk-032f62-99ffe4"> alice@example.com</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  --allowed-mail</span><span class="sk-032f62-99ffe4"> bob@example.com</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  --allowed-mail</span><span class="sk-032f62-99ffe4"> '*@example.com'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>If you leave out <code>--allowed-mail</code>, nothing changes. Public Quick Tunnels behave exactly as they always have.</p>
+<p>To change who can get in, stop <code>cloudflared</code>&nbsp;and start a new tunnel. Access ends for everyone the moment the process exits.</p>
+<p>For a stable hostname or richer rules, such as identity provider groups, use <a href="https://developers.cloudflare.com/tunnel/get-started"><u>Cloudflare Tunnel</u></a>&nbsp;with Cloudflare Access. To reach an agent at home from your own devices without any public URL and establish bidirectional connectivity, use <a href="https://blog.cloudflare.com/mesh"><u>Cloudflare Mesh</u></a>.</p>
+<h3>Make it your agent's default</h3>
+<p>Because protection is a single flag, agents can use it as easily as people can. Add one line to the instructions file your coding agent reads, such as <code>AGENTS.md</code>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>When you start a Quick Tunnel, always add --allowed-mail me@example.com.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>From then on, the previews your agent shares should open only for you. Agents don't always follow instructions, so check what it ran: <code>cloudflared</code>&nbsp;prints whether a tunnel uses email authentication and how many rules it holds, without printing the addresses.</p>
+<h3>Start a protected tunnel from Wrangler</h3>
+<p>If you build on Workers, you can start the same kind of tunnel from the latest version of <code>wrangler</code>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> tunnel</span><span class="sk-032f62-99ffe4"> quick-start</span><span class="sk-032f62-99ffe4"> http://localhost:8080</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  --allowed-mail</span><span class="sk-032f62-99ffe4"> alice@example.com</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>Wrangler supports repeated flags, comma-separated values, and wildcard domains, and it removes <code>--allowed-mail</code>&nbsp;values from its debug logs.</p>
+<h2>Cloudflare verifies the email. Your machine decides who gets in.</h2>
+<p></p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA/fz++Pj58PDx7e3t8fHx9fX08vLx6uno/////Pz88/P07+/w8/Pz9/f39PT07Ozr////////9/f48vP09vf4+vv7+Pj48PDw////////+/v+9vf6+vv9/////f399PT1/////////////Pz/////////////+fn7/////////////////////////////v3/////////////////////////////////////////////////////////////////" alt="" width="715" height="352" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3WEQPPSBFQSKRNK84673MEC.png&amp;w=715&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3WEQPPSBFQSKRNK84673MEC.png&amp;w=640&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3WEQPPSBFQSKRNK84673MEC.png&amp;w=715&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3WEQPPSBFQSKRNK84673MEC.png&amp;w=750&amp;h=369&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3WEQPPSBFQSKRNK84673MEC.png&amp;w=828&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3WEQPPSBFQSKRNK84673MEC.png&amp;w=1080&amp;h=532&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3WEQPPSBFQSKRNK84673MEC.png&amp;w=1280&amp;h=630&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3WEQPPSBFQSKRNK84673MEC.png&amp;w=1430&amp;h=704&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Four-step flow. A visitor opens your link, Cloudflare Access verifies their email with a one-time PIN, cloudflared on your machine checks it against your allowed emails, and only invited visitors reach your app." loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3WEQPPSBFQSKRNK84673MEC.png&amp;w=1920&amp;h=944&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="944" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="352" class="pt-portable-image-media"></div>
+</figure>
+<p>When someone opens a protected URL, they land on the Cloudflare Access sign-in page. They enter their email address, then the one-time PIN sent to that mailbox. Email sign-in is built for people using a browser.</p>
+<p>That step answers one question only: does this person control this email address? It doesn't decide whether they're welcome. <code>cloudflared</code>&nbsp;makes that decision on your machine by comparing the verified address with the rules you typed.</p>
+<h2>Where does a policy live when there is no account?</h2>
+<p>Separating those two questions is the core of the design. Authentication proves who a visitor is. Authorization decides whether that visitor gets in. Every Cloudflare product that enforces access rules keeps the authorization half in the same place: your Cloudflare account. A Quick Tunnel doesn't have one. So the hard part was never sending someone a code. It was deciding where the guest list should live.</p>
+<p>We started with four requirements. The design had to:</p>
+<ul>
+	<li>Keep Quick Tunnels accountless, because a signup step would defeat the point of a one-command tunnel.</li>
+	<li>Leave the request path for public Quick Tunnels untouched.</li>
+	<li>Avoid a central policy lookup on every request after a visitor signs in.</li>
+	<li>Protect the privacy of the email addresses developers type into their terminals.</li>
+</ul>
+<p>Our first idea was to put a Cloudflare Access application in front of every Quick Tunnel hostname. Access already checks visitors before traffic reaches <code>cloudflared</code>, so reusing it looked like the shortest path. But hundreds of thousands of Quick Tunnels can be running at once, many for only a few minutes, and each would need its own application and policy. With no account to own them, we would have had to invent a new namespace and route applications dynamically, just to store a list that lives for an afternoon.</p>
+<p>Our second idea was to build the whole flow. <code>cloudflared</code>&nbsp;would hold the rules, and a Tunnel service would send and check the codes. The authorization half of this idea was good: each connector checks its own list, which scales naturally and keeps the rules on the developer's machine. The authentication half was not. Sending a code is the easy part of email login. The hard parts are getting email delivered, stopping abuse, building secure challenges, managing sessions, and serving a sign-in page that is accessible and translated, then operating all of it safely for years. Cloudflare Access has already solved those problems.</p>
+<p>So we kept the best half of each idea. Access verifies that the visitor controls the email address. A small authentication broker running on <a href="https://www.cloudflare.com/products/workers"><u>Cloudflare Workers</u></a>&nbsp;turns that verified identity into a short-lived, signed handoff. The broker is stateless by design. It stores no tunnel policies, no visitor sessions, and no identity records, and it never sees a tunnel's guest list. <code>cloudflared</code>&nbsp;checks the handoff and makes the authorization decision itself, in memory, against the rules you typed.</p>
+<p>The result is the property we cared about most: your guest list never leaves your machine. Cloudflare learns that a tunnel requires email authentication. It doesn't learn who you invited.</p>
+<h2>Following a request through a protected Quick Tunnel</h2>
+<p>A protected tunnel is created the same accountless way as a public one. The only extra thing <code>cloudflared</code>&nbsp;sends is the authentication mode, never your rules. If the service doesn't confirm that mode, <code>cloudflared</code>&nbsp;refuses to start rather than hand you a public URL by mistake.</p>
+<p>The first time a visitor opens the URL:</p>
+<ol>
+	<li><code>cloudflared</code>&nbsp;sees a request with no session. It redirects the browser to <code>login.trycloudflare.com</code>&nbsp;with a random, single-use state tied to that browser and valid for 10 minutes.</li>
+	<li>Cloudflare Access sends a one-time PIN to the visitor's email address and verifies it.</li>
+	<li>The broker checks the Access identity and returns a short-lived, signed assertion bound to the tunnel hostname and to that state. The browser delivers it in a form POST, so it never lands in a URL, browser history, or logs.</li>
+	<li><code>cloudflared</code>&nbsp;verifies the assertion, uses up the state, and checks the email against your rules. On a match, it creates a local session and sends the visitor to the page they asked for. Otherwise, the visitor gets a generic response that reveals nothing about the list.</li>
+	<li>Later requests use that session for up to four hours (less if the visitor's Access sign-in expires sooner), or until you stop <code>cloudflared</code>. There is no central lookup and no policy service.</li>
+</ol>
+<p>The session cookie holds a random value and an expiry time, and nothing about who the visitor is. <code>cloudflared</code>&nbsp;strips authentication credentials before forwarding requests, so your app never sees them and never has to implement a login flow. If any check fails, the request never reaches your local service. A protected tunnel never falls back to public mode.</p>
+<h2>Built by interns</h2>
+<p>Protected Quick Tunnels were shipped by two interns: Hugo Vicente on product and Alessandro Frigerio on engineering. They took it from the product requirements to the authentication broker to the <code>cloudflared</code>&nbsp;release. That's how <a href="https://blog.cloudflare.com/cloudflare-1111-intern-program"><u>internships</u></a>&nbsp;work at Cloudflare: interns own real problems and deliver solutions to production.</p>
+<h2>Try it on your next demo</h2>
+<p>Email protection for Quick Tunnels is free, like Quick Tunnels themselves. <a href="https://developers.cloudflare.com/tunnel/downloads"><u>Install or update </u></a><code>cloudflared</code>, start your local server, and add the <code>--allowed-mail</code>&nbsp;flag: </p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>cloudflared tunnel --url http://localhost:8080 --allowed-mail you@example.com</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>Setup details, matching rules, and limits are in the <a href="https://developers.cloudflare.com/tunnel/get-started/quick-tunnels"><u>Quick Tunnels documentation</u></a>.</p>
+<p>The next time you or your agent shares what you're building, the link will only open for the people you chose.</p>

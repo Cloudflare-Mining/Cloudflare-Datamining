@@ -1,0 +1,136 @@
+<p>From&nbsp;our conversations with companies at every stage of their AI adoption journey, we've seen some common patterns. First, there is an exploration&nbsp;period&nbsp;as you bring on every new tool, dole out API keys freely, and let the tokens flow. Then, you converge&nbsp;on the&nbsp;canonical tools for your organization for agentic coding, for non-technical workflows, for running and deploying agents. As companies formalize their AI adoption, they want to manage and oversee token spend for users, but budgets and rules only go so far. The best savings are the ones users never notice.</p>
+<p>Today, we are releasing Cloudflare's Auto Router in public beta, available through AI Gateway.&nbsp;Set your model to <code>cloudflare/auto</code> and the Auto Router will automatically route each request to a model that is capable enough for the task, without requiring an end user to think about model selection. Our early results using the Auto Router internally through our OpenCode harness show a cost savings of up to 30% when compared to using only frontier models like OpenAI Sol and Anthropic Claude Opus.</p>
+<h3>Why we built this</h3>
+<p>From our own experience tracking AI spend at Cloudflare, we’ve learned managing costs requires a multipronged approach. Previously, we talked about&nbsp;<a href="https://blog.cloudflare.com/ai-gateway-spend-limits"><u>how to set budgets</u></a>&nbsp;and limits around AI spend, and&nbsp;<a href="https://blog.cloudflare.com/identity-aware-ai-gateway"><u>how to see</u></a>&nbsp;who is spending across your organization by linking employees to their AI usage.</p>
+<p>In many harnesses, including OpenCode, Claude Code, and Codex, individual users still select models manually. Of course, not all tasks are created equal, and often individuals end up using models that are overkill&nbsp;for their work. For example, you don't need Opus-level intelligence if you're looking to summarize an email or chat threads. However, you wouldn't want to block that model completely from your security engineering team.</p>
+<p>Our goal is for AI Gateway to be the control plane for organizations deploying AI internally. Because every request from every user, agent, and tool already flows through it, AI Gateway is in a unique position to do more than observe and enforce. Budgets, spend limits, and identity-aware analytics give organizations visibility and guardrails, but they still rely on individuals to make cost-conscious choices request by request. The next step is for the gateway itself to make intelligent decisions on a user's behalf: sending each request to a model that is capable enough for the task. That way, organizations reduce spend automatically, while users keep access to the most capable models when their work actually needs them.</p>
+<h3>The results</h3>
+<p>We use Auto Router internally at Cloudflare within our OpenCode deployment and within <a href="https://blog.cloudflare.com/cloudflare-os"><u>Cloudflare OS</u></a>, our custom agent harness. In our internal usage, we’ve seen results comparable with frontier&nbsp;models for coding tasks.</p>
+<p>Auto Router does best when used across a wide range of knowledge-work tasks, like those typically found in a large organization with work spanning both technical and non-technical teams. We evaluated <code>cloudflare/auto</code>&nbsp;against OpenAI’s GPT-6 Sol and Anthropic’s Claude Opus 5.5 on our internal general knowledge work benchmark. The benchmark uses simulated workspace tools and covers common day-to-day workflows across email, calendars, Slack, files, travel and finance. Each task requires the model to use these tools to produce a verifiable answer or complete an action.</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 480px;">
+		<tbody>
+			<tr>
+				<td>
+					<p>Model</p>
+				</td>
+				<td>
+					<p>Successful Trials</p>
+				</td>
+				<td>
+					<p>Success Rate</p>
+				</td>
+				<td>
+					<p>Total Cost</p>
+				</td>
+				<td>
+					<p>Cost per success</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>cloudflare/auto</p>
+				</td>
+				<td>
+					<p>252/291</p>
+				</td>
+				<td>
+					<p>86.6% (+6.2/−6.9 pp)</p>
+				</td>
+				<td>
+					<p>$2.10</p>
+				</td>
+				<td>
+					<p>$0.0084</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Anthropic Claude Opus 5.5</p>
+				</td>
+				<td>
+					<p>281/291</p>
+				</td>
+				<td>
+					<p>96.6% (+2.7/−3.8 pp)</p>
+				</td>
+				<td>
+					<p>$5.91</p>
+				</td>
+				<td>
+					<p>$0.0210</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>OpenAI GPT-6 Sol</p>
+				</td>
+				<td>
+					<p>245/291</p>
+				</td>
+				<td>
+					<p>84.2% (+6.5/−6.9 pp)</p>
+				</td>
+				<td>
+					<p>$2.64</p>
+				</td>
+				<td>
+					<p>$0.0108</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p><sup><em>97 tasks with three samples per model per task. Parenthetical values show 95% confidence intervals estimated from 10,000 task-level bootstrap resamples, preserving all three repetitions within each task. “pp” indicates percentage points.</em></sup></p>
+<p>Our Auto Router delivered similar performance to other state-of-the-art daily-driver models, coming in at 80% the cost of Sol&nbsp;and 35% the cost of Opus. While that may initially seem surprising, one way to frame the problem a model router solves is through the “jagged frontier” across models. The ability to solve a problem often exists somewhere in this portfolio of models; the router’s job&nbsp;is to choose the right model for each task while balancing quality and price. Savings come from not paying frontier rates for non-frontier work, and they grow with how much of that work you have.</p>
+<p>Another insight is that lower token prices do not always produce lower-cost outcomes. A model that looks cheaper on paper may end up using disproportionately more tokens to solve a problem. A router should minimize predicted trajectory cost, not just load-balance by dollars per million tokens.&nbsp;</p>
+<p>This is already useful today, but it’s only the beginning of what the Auto Router can learn from Cloudflare’s position in the inference path. &nbsp;</p>
+<h3>How it works</h3>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA+vz/9fb86erw5uXq7Ovs8vLw7u7u4ePm////+fr/7+/16+vv8O/w9fXz8fHw5ujq////////9/f78vL19vX0+vj19vbz7O7v/////////v7/+vn6/fn4//v3/Pr28/X0//////////////7+//z5//34//34+fr5//////////////////76///4///6/v78//////////////////75///4///6///9//////////////////75///4///7///+" alt="" width="715" height="400" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QZK8CSR7YG8VYE7QWJ3TY2.png&amp;w=715&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QZK8CSR7YG8VYE7QWJ3TY2.png&amp;w=640&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QZK8CSR7YG8VYE7QWJ3TY2.png&amp;w=715&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QZK8CSR7YG8VYE7QWJ3TY2.png&amp;w=750&amp;h=420&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QZK8CSR7YG8VYE7QWJ3TY2.png&amp;w=828&amp;h=463&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QZK8CSR7YG8VYE7QWJ3TY2.png&amp;w=1080&amp;h=604&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QZK8CSR7YG8VYE7QWJ3TY2.png&amp;w=1280&amp;h=716&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QZK8CSR7YG8VYE7QWJ3TY2.png&amp;w=1430&amp;h=800&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QZK8CSR7YG8VYE7QWJ3TY2.png&amp;w=1920&amp;h=1075&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1075" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="400" class="pt-portable-image-media"></div>
+</figure>
+<p>When you send a request to <code>cloudflare/auto</code>, AI Gateway first builds the <a href="https://developers.cloudflare.com/ai-gateway/features/auto-router/#default-models"><u>pool of models</u></a>&nbsp;that can actually serve it. It filters out models&nbsp;that do not support the request format or execution mode, and accounts for the credentials, billing configuration, access control policies, and spend limits attached to the gateway. It will also filter out unhealthy upstream providers or models during downtime and automatically bring them back into the pool after an outage.</p>
+<p>For the remaining candidates, the router looks at a compact view of the conversation. It considers the most recent messages, prioritizing the newest turns. The conversation is then sent to a multi-head classification model&nbsp;running on Workers AI&nbsp;and deployed on GPUs across our edge network. The classifier produces two sets of signals. First, it assigns probabilities across 14 task categories (like coding, planning, research, data analysis). It then rates the request across four dimensions on a scale from one to five: complexity, ambiguity, stakes, and dependence on earlier context.</p>
+<p>A separate scoring matrix combines those signals with model benchmark results to estimate how well each model fits the request. To calibrate the scoring matrix, we defined the preferred model for a set of example task and difficulty profiles, then adjusted the weights&nbsp;to produce those choices.</p>
+<p>Finally, the router combines expected quality with each model's input and output token prices. On straightforward requests, price carries more weight, so a smaller model can win when it is capable enough. As difficulty rises, the cost penalty falls and stronger models have more room to win. In simplified terms, <code>cloudflare/auto</code>&nbsp;selects the model with the highest utility&nbsp;as defined by:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>utility = expected quality - adaptive cost penalty</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p>For long agentic sessions like debugging or coding, cost is less driven by the model’s list price than by the cost of cache reads, which grows with session length. Switching models throws the cache away and forces a new model to write the whole context again. This can be worth it, as a model with a cheaper cache-read&nbsp;and cache-write prices can pay back the rewrite quickly.</p>
+<p>Rather than completely avoiding model switching, the Auto Router accounts for the cost of cache reads and writes. Within a turn (one user input loop), the cache is hot and switching rarely pays off, so it’s better to keep using the same model. Across turns, the Auto Router applies a switching penalty that grows with the number of tokens already in context. A model that still holds a live cache for the session is priced at its cheaper cache-read rate. Every other candidate is priced at the full cost of rewriting the context, so the deeper the conversation, the more a switch has to earn back, through higher quality results&nbsp;that use fewer tokens overall or cheaper cache rereads. Switching models has another cost: most models can't read another model's reasoning tokens, so a model switch that drops reasoning tokens means that the new model may have to redo it at output prices. In the future, we want to account for this by having the router prefer to stay within the same model family when it switches.</p>
+<p>From there, the router returns a ranked list. AI Gateway attempts the winner first and can move to another eligible model if that provider cannot serve the request.</p>
+<p>This overall design has several benefits. The two-stage architecture (task and dimensions classifier to scoring matrix) means that routing decisions are legible because you can inspect each task’s predicted category and complexity to see how it translated into the model choice. Adjusting the router when a new model is released also does not require retraining — we only add its benchmark-derived weights to the scoring matrix. The same classifier can also support different routing profiles. For example, in addition to <code>cloudflare/auto</code>, we plan to release other routers in the future, including <code>cloudflare/auto-best</code>, which uses the same classification and model pool, but selects the highest expected quality without applying the cost tradeoff.</p>
+<h3>What's next</h3>
+<p>Our release today is only the starting point, and we’re continuing to invest in research and new routing strategies. In the near term, we want to:</p>
+<ul>
+	<li>Expand the models offered through cloudflare/auto</li>
+	<li>Include zero-data-retention requirements when filtering models</li>
+	<li>Account for provider capacity&nbsp;when selecting models</li>
+	<li>Select the appropriate reasoning or thinking level for each request</li>
+	<li>Add full support for the Responses API and WebSockets</li>
+	<li>Explore structured decision models as a first-pass classifier</li>
+</ul>
+<p>The Auto Router is free while in beta. Read more in our <a href="http://developers.cloudflare.com/ai-gateway/features/auto-router"><u>developer documentation</u></a>.</p>
+<p><em>Acknowledgements: This project was also made possible by the efforts of Mats Dodd, Sam Scott, Oliver Yu, and Jeff Rafter.</em></p>
