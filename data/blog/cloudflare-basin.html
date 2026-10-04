@@ -1,0 +1,158 @@
+<p>During Birthday Week 2025, we announced the <a href="https://blog.cloudflare.com/cloudflare-data-platform"><u>Cloudflare Data Platform</u></a>, a suite of products that ingest, store, and query your analytical data. Today, we’re announcing that the platform is generally available, and we’re giving it a new name: <strong>Cloudflare Basin</strong>.</p>
+<p>Basin is a serverless data analytics platform built on <a href="https://iceberg.apache.org"><u>Apache Iceberg</u></a>, the open standard for data lakes, and <a href="https://developers.cloudflare.com/r2"><u>R2 Object Storage</u></a>. The Basin family includes:</p>
+<ul>
+	<li><strong>Basin Pipelines</strong>, formerly Cloudflare Pipelines, receives events from Workers, HTTP, or Cloudflare Logpush, transforms them with SQL, and writes them as Apache Iceberg tables or files in R2.</li>
+	<li><strong>Basin Catalog</strong>, formerly R2 Data Catalog, manages Iceberg metadata and automatically maintains tables to keep them fast and cost-efficient.</li>
+	<li><strong>Basin SQL</strong>, formerly R2 SQL, is our serverless, distributed SQL engine for querying Apache Iceberg tables directly on Cloudflare.</li>
+</ul>
+<p>Basin brings an end-to-end analytics platform to the Developer Platform, enabling you to collect data from a variety of sources, such as apps, infrastructure, devices, and other Cloudflare services, then query it to answer analytical questions.</p>
+<p>We set out to build a data platform last year when we saw two fundamental developments that changed how modern data applications were being built. First, Apache Iceberg emerged as the standard open table format, making data portable across nearly every major query engine. Second, we started seeing developers bring their analytics data to R2 where the lack of egress charges made it practical and cost-efficient to actually access their data from different tools, teams, regions, and cloud providers.</p>
+<p>So, when we launched Basin in open beta, developers — including our billing and infrastructure teams at Cloudflare — immediately started adopting these services for a&nbsp;variety of use cases including using real-time data to optimize e-commerce sites, long-term storage and reporting of billing metrics, and ingesting and querying telemetry from Cloudflare’s infrastructure to measure and improve utilization and efficiency.</p>
+<blockquote><em>“We moved our entire company's data pipeline to Basin Pipelines, Catalog, and SQL, replacing a complex AWS S3 and Athena setup with a cleaner, serverless architecture that reliably handles all of our event data. -Dax Raad, Co-Founder, Anomaly</em></blockquote>
+<p>Our early adopters taught us a great deal about what it means to run an analytics platform on the edge. We spent the past year improving Basin around three specific areas that hone in on what makes analytics in Developer Platform unique: speed, openness, and cost efficiency.</p>
+<p>Basin&nbsp;is built for speed — whether it’s about getting started or executing large queries. You can create a Basin Catalog, set up a Pipeline to ingest data, and query it with Basin SQL in seconds. This matters as we see more data applications being built from prompts to coding agents, which would otherwise have to wait and poll for resources or data. As datasets grow, Basin Catalog compacts metadata and data files to reduce I/O and generates statistics for query planning. Basin SQL uses those statistics to split queries into smaller tasks and distribute them across Workers, keeping queries fast and consistent as datasets scale.</p>
+<p>A large driving force in the development and adoption of Basin is the continued growth we are seeing in the open Apache Iceberg ecosystem. Developers have been rallying around the radical idea that you should own and be in control of your own data — separating the storage layer from the compute layer and allowing you to use the right query engine for the job. With Basin, you can read and write your data using any Iceberg-compatible engine, including PyIceberg, DuckDB, Snowflake, and Apache Spark. That kind of data portability is only possible with free egress, which allows developers to access their data in Cloudflare from the wide variety of tools in the ecosystem, regardless of region or cloud.</p>
+<p>“Bobsled is a data product platform that the world's most advanced data teams use to build and distribute AI-ready data to partners, vendors and customers," said Julien Grobbelaar, Head of Platform at Bobsled. "Basin allows us to build data products that can be made accessible in any region of every major data and AI platform, all at production-grade reliability and a fraction of the cost thanks to zero egress fees.”&nbsp;</p>
+<p>In addition to free egress, our serverless architecture allows us to offer further cost efficiencies to our customers with usage-based pricing. You are only billed when Basin ingests, processes, or queries your data. Developers can build out analytics for hobby projects at little to no cost, while our pricing scales economically for larger enterprise use cases. There are no hourly charges or separate infrastructure costs to worry about.</p>
+<p>If you are ready to get started, refer to the <a href="http://developers.cloudflare.com/basin/get-started/guide"><u>Basin tutorial</u></a>&nbsp;for a step-by-step guide on how to use Basin Pipelines to deliver events to an Apache Iceberg table managed by Basin Catalog, and query them with Basin SQL. Read on to learn more about Basin and where we are going next.</p>
+<h2>Why Basin?</h2>
+<p>We launched these products last year as the Cloudflare Data Platform, which has served us well for the first year of availability. For our GA launch, we decided we needed a new name that encompasses our ambitions for the platform, links together all the products, and is a bit punchier.</p>
+<p>A basin is where rivers from many sources come together to a single point. We felt that Basin perfectly captures how the platform is used: Pipelines brings data into Basin Catalog while Basin SQL makes it instantly queryable. A fun fact: roughly 20% of Earth’s land drains into endorheic basins, much like over 20% of the web sits behind Cloudflare’s network.&nbsp;</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAAcF0taVYiW0cAUD0AUUQWU1AySVY9MlQ/cGY5bWAtZlEAYUgAXk4RWVc0SVk9LVU6dnROdm9DdmMldVsNcF8sZmVDUmRHOVw+g4ZphYJhiHhPiXNGhHVReXldaHVdVm1SlZiDlpV+mY50motwl411jo96gop3d4FspqiapqaXp6GSqJ+QpqKToaKTmp2OkpWEsrKosrCnsa2lsK2lsK+mrq+kqqqdpaKUtrattrSttLKss7Kss7SssrSqr6+iq6eZ" alt="" width="715" height="536" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TBHJX9WGXWD3N702DWC4QP.jpg&amp;w=715&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TBHJX9WGXWD3N702DWC4QP.jpg&amp;w=640&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TBHJX9WGXWD3N702DWC4QP.jpg&amp;w=715&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TBHJX9WGXWD3N702DWC4QP.jpg&amp;w=750&amp;h=562&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TBHJX9WGXWD3N702DWC4QP.jpg&amp;w=828&amp;h=621&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TBHJX9WGXWD3N702DWC4QP.jpg&amp;w=1080&amp;h=810&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TBHJX9WGXWD3N702DWC4QP.jpg&amp;w=1280&amp;h=960&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TBHJX9WGXWD3N702DWC4QP.jpg&amp;w=1430&amp;h=1072&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TBHJX9WGXWD3N702DWC4QP.jpg&amp;w=1920&amp;h=1440&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1440" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="536" class="pt-portable-image-media"></div>
+	<figcaption>Lake Vänern, Sweden - A basin created from tectonic activity 200-300 million years ago.</figcaption>
+</figure>
+<p>Today, Basin is made up of three products: Pipelines, Catalog, and SQL, covering ingestion, storage, and querying, and will expand over time with more products managing the rest of the analytical data lifecycle.</p>
+<h2>Basin Pipelines</h2>
+<p>Before you can query your data, your events need to be ingested, structured to a schema, and written to object storage. This is the role of <a href="http://developers.cloudflare.com/basin-pipelines"><u>Basin Pipelines</u></a>. It accepts events through HTTP endpoints or Workers bindings, processes them according to a SQL query, and delivers them to Basin Catalog as Apache Iceberg tables or R2 as JSON or Parquet files.</p>
+<p>Since our beta launch, users have created tens of thousands of Pipelines for a wide variety of use cases. For example, a common pattern we see is using Pipelines to transform Cloudflare HTTP logs before storing them:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">INSERT INTO</span><span class="sk-24292e-fff"> http_logs_sink</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">SELECT</span></span>
+<span class="line"><span class="sk-24292e-fff">  EdgeResponseStatus,</span></span>
+<span class="line"><span class="sk-24292e-fff">  to_timestamp_micros(EdgeStartTimestamp) </span><span class="sk-d73a49-ffc799">AS</span><span class="sk-24292e-fff"> event_time,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  upper</span><span class="sk-24292e-fff">(ClientRequestMethod) </span><span class="sk-d73a49-ffc799">AS</span><span class="sk-24292e-fff"> method,</span></span>
+<span class="line"><span class="sk-24292e-fff">  sha256(ClientIP) </span><span class="sk-d73a49-ffc799">AS</span><span class="sk-24292e-fff"> hashed_ip</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> http_logs_stream</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">WHERE</span><span class="sk-24292e-fff"> EdgeResponseStatus </span><span class="sk-d73a49-a0a0a0">&gt;=</span><span class="sk-005cc5-ffc799"> 400</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p>Doing this work during ingestion can significantly reduce the storage footprint, reduce noise from dynamic data sources, and can help prevent sensitive or unnecessary values from being written.</p>
+<p>Since the beta, we have greatly expanded the scalability of Pipelines: we now support ingesting up to 3GB/s per stream. We’ve also expanded the feature set and integration with other Cloudflare systems:</p>
+<ul>
+	<li><strong>Cloudflare Logpush integration:</strong>&nbsp;you can transform Cloudflare logs with SQL and store them as compressed Parquet files or Iceberg tables, ready to query with Basin SQL or another engine.</li>
+	<li><strong>Worker bindings are schema-aware.</strong>&nbsp;Running <code>wrangler types</code>&nbsp;generates TypeScript types from a stream's schema, catching missing fields and type mismatches before deployment.</li>
+	<li><strong>Data quality errors are visible.</strong>&nbsp;The dashboard and GraphQL API surface dropped events and distinguish missing fields, type mismatches, parse failures, and null values.</li>
+	<li><strong>The entire ingestion path can be infrastructure as code.</strong>&nbsp;Terraform resources cover the catalog, stream, sink, and the SQL that connects them.</li>
+</ul>
+<p>Next we plan to expand Pipelines capabilities even further, including:</p>
+<ul>
+	<li>Custom partitioning when writing to Basin Catalog</li>
+	<li>Schema migrations, and updatable configuration and Pipelines SQL</li>
+	<li>Support for Iceberg V3, including the Variant type for efficient querying of semi-structured data</li>
+	<li>Stateful processing to support workloads such as streaming aggregations, joins, and incrementally updated materialized views</li>
+</ul>
+<h2>Basin Catalog</h2>
+<p>Basin Catalog was the first product we launched in the family last year. Since then, we’ve seen thousands of developers use Basin Catalog for simple use cases such as giving DuckDB a structured way to access analytics data in R2, all the way to developers building complete enterprise data sharing platforms, fully taking advantage of zero egress fees and easy-to-use APIs.</p>
+<p><a href="http://developers.cloudflare.com/basin-catalog"><u>Basin Catalog</u></a>&nbsp;is the easiest way to get started with Apache Iceberg. Just run:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> basin</span><span class="sk-032f62-99ffe4"> catalog</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> CATALOG_NAME</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>You instantly get a fully managed Apache Iceberg REST catalog that automatically performs routine maintenance required to keep those tables performant and healthy.</p>
+<p>When we announced the Data Platform, Basin Catalog had just added automatic compaction. Since then, it has evolved to maintain healthy tables as your data scales:</p>
+<ul>
+	<li><strong>Per-table compaction policies</strong>&nbsp;let you choose target file sizes based on each table's access pattern.</li>
+	<li><strong>Automatic snapshot expiration</strong>&nbsp;removes old Iceberg snapshots according to a retention policy, while preserving a minimum number of recent snapshots.</li>
+	<li><strong>Unreferenced data-file cleanup</strong>&nbsp;reclaims storage when snapshots expire, without requiring a separate Spark maintenance job.</li>
+	<li><strong>Manifest optimization</strong>&nbsp;consolidates and clusters fragmented manifests by partition before compaction, reducing metadata I/O during query planning.</li>
+</ul>
+<p>We have some exciting features in the works for Basin Catalog including:</p>
+<ul>
+	<li>A new way for compaction to efficiently sort and cluster data for improved query performance</li>
+	<li>More granular auth controls for namespaces and tables</li>
+	<li>Jurisdiction support to adhere to data sovereignty and compliance requirements</li>
+</ul>
+<h2>Basin SQL</h2>
+<p><a href="http://developers.cloudflare.com/basin-sql"><u>Basin SQL</u></a>&nbsp;is our serverless, distributed query engine for Apache Iceberg tables stored in Basin Catalog. It’s designed for reading large datasets and automatically scales across Cloudflare's global network. There are no clusters or resources to provision, just a readily available API for you and your agents to immediately start querying your data.</p>
+<p>At beta launch, Basin SQL was great at filtering and exploring large event and time-series tables. Over the last year, Basin SQL has evolved to support hundreds of functions including:</p>
+<ul>
+	<li>Standard and approximate aggregations, <code>GROUP BY</code>, <code>HAVING</code>, and schema-discovery commands</li>
+	<li>More than 190 scalar and aggregate functions across strings, timestamps, regular expressions, cryptography, statistics, arrays, maps, and structs</li>
+	<li><code>CASE</code>&nbsp;expressions, common table expressions, casting, arithmetic, and <code>EXPLAIN</code></li>
+	<li>Inner, outer, semi, and anti joins; subqueries; self-joins; and multi-table queries</li>
+	<li><code>DISTINCT</code>, <code>UNION</code>, <code>INTERSECT</code>, and <code>EXCEPT</code></li>
+	<li>Window functions, <code>QUALIFY</code>, grouping sets, rollups, and cubes</li>
+	<li>A suite of JSON functions</li>
+</ul>
+<p>Suppose your Pipeline delivers application events into one table and account data into another. You can now join those tables, aggregate activity by customer, rank the results with a window function, and filter the ranking in one query:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">WITH</span><span class="sk-24292e-fff"> account_activity </span><span class="sk-d73a49-ffc799">AS</span><span class="sk-24292e-fff"> (</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">  SELECT</span></span>
+<span class="line"><span class="sk-005cc5-fff">    a</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-fff">plan</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-fff">    e</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-fff">account_id</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    count</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-ffc799">AS</span><span class="sk-24292e-fff"> events,</span></span>
+<span class="line"><span class="sk-24292e-fff">    approx_distinct(</span><span class="sk-005cc5-fff">e</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-fff">user_id</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-ffc799">AS</span><span class="sk-24292e-fff"> active_users</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">  FROM</span><span class="sk-005cc5-fff"> analytics</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-fff">events</span><span class="sk-24292e-fff"> e</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">  JOIN</span><span class="sk-005cc5-fff"> analytics</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-fff">accounts</span><span class="sk-24292e-fff"> a</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">    ON</span><span class="sk-005cc5-fff"> e</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-fff">account_id</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-fff"> a</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-fff">account_id</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">  WHERE</span><span class="sk-005cc5-fff"> e</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-fff">event_time</span><span class="sk-d73a49-a0a0a0"> &gt;=</span><span class="sk-032f62-99ffe4"> '2026-09-01T00:00:00Z'</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">  GROUP BY</span><span class="sk-005cc5-fff"> a</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-fff">plan</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">e</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-fff">account_id</span></span>
+<span class="line"><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">SELECT</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  *</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  rank</span><span class="sk-24292e-fff">() </span><span class="sk-d73a49-ffc799">OVER</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-ffc799">PARTITION</span><span class="sk-d73a49-ffc799"> BY</span><span class="sk-24292e-fff"> plan </span><span class="sk-d73a49-ffc799">ORDER BY</span><span class="sk-24292e-fff"> events </span><span class="sk-d73a49-ffc799">DESC</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-ffc799">AS</span><span class="sk-24292e-fff"> activity_rank</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> account_activity</span></span>
+<span class="line"><span class="sk-24292e-fff">QUALIFY </span><span class="sk-005cc5-ffc799">rank</span><span class="sk-24292e-fff">() </span><span class="sk-d73a49-ffc799">OVER</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-ffc799">PARTITION</span><span class="sk-d73a49-ffc799"> BY</span><span class="sk-24292e-fff"> plan </span><span class="sk-d73a49-ffc799">ORDER BY</span><span class="sk-24292e-fff"> events </span><span class="sk-d73a49-ffc799">DESC</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">&lt;=</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>You can run Basin SQL from Wrangler or the API, or open the built-in editor in the Cloudflare dashboard. The editor provides syntax highlighting and autocomplete, a browser for namespaces and tables, query statistics and plans, and exportable results. It makes the path from a new table to a useful answer a matter of seconds.</p>
+<p>The team isn’t stopping here and is currently working on:</p>
+<ul>
+	<li>Advanced statistics and adaptive&nbsp;scheduling&nbsp;to improve performance and efficiency of queries</li>
+	<li>Full data definition language (DDL)&nbsp;support directly from Basin SQL</li>
+	<li>Iceberg V3 support including support for the VARIANT and geospatial types</li>
+</ul>
+<h2>What comes next</h2>
+<p>Our future vision is that data infrastructure is completely abstracted away. Storage formats, products, and resources are just implementation details — important ones that help enable the important outcomes — but tend to get in the way. We’re building towards a platform where developers start with questions rather than <code>CREATE</code>&nbsp;statements or CLI commands. We’ve laid the foundation for that vision, and now we’re building towards that vision including:</p>
+<ul>
+	<li>Support for the latest Apache Iceberg spec across the entire platform, unlocking more flexible ways to use your data</li>
+	<li>Push-button ingestion sources and destinations, with zero-configuration connections across Cloudflare's developer and observability products</li>
+	<li>Advanced adaptive table-maintenance strategies in Basin Catalog that automatically organize data around real query patterns</li>
+	<li>Continued expansion of SQL compatibility, performance, and observability for increasingly complex analytical workloads</li>
+	<li>More ways to continuously process data in real-time and trigger actions based on the signals within the data</li>
+	<li>Tools for adhering to data compliance and sovereignty rules across the platform</li>
+</ul>
+<p>We will continue to build with open standards: using open formats and protocols, contributing improvements to the projects we depend on, and making sure your data remains available to the broader ecosystem.</p>
+<h2>Get started</h2>
+<p>Basin Pipelines, Basin Catalog, and Basin SQL are generally available today. You can use them together as an end-to-end platform or adopt the parts that fit your existing architecture.</p>
+<p>Follow the <a href="http://developers.cloudflare.com/basin/get-started/guide"><u>getting started tutorial</u></a>&nbsp;to ingest events, create an Apache Iceberg table in Basin Catalog, and query it with Basin SQL. Visit the <a href="http://developers.cloudflare.com/basin"><u>Basin documentation</u></a>&nbsp;for product guides, pricing, limits, and integrations.</p>
+<p>Existing Cloudflare Pipelines, R2 Data Catalog, and R2 SQL configurations will continue to work.</p>
+<p>We are excited to see what you build. Share your feedback with us in the <a href="https://discord.com/invite/cloudflaredev"><u>Cloudflare Developer Discord</u></a>.</p>
