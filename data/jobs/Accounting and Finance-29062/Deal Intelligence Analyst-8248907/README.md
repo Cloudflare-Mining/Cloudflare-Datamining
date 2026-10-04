@@ -15,7 +15,7 @@
 	<li>Build Advanced Dashboards &amp; Analytics: Design and maintain executive dashboards and self-serve reporting systems that provide real-time visibility into deal terms, discount thresholds, win/loss rates, and margin performance across all regions.</li>
 	<li>Transform Ideas into Reality: Work with stakeholders and help them refine their ideas and goals into queries that we’ll automate.</li>
 	<li>Drive Strategic Margin Analysis: Partner closely with Finance, Infrastructure and Deal Desk leadership to dive deep into historic and active pricing data, uncovering insights that ensure our quoting strategies consistently align with margin preservation goals.</li>
-	<li>Develop Data Pipelines: Apply your data engineering skills to build and maintain the ELT/ETL pipelines that extract messy data from Salesforce, CPQ, and billing systems, transforming it into clean, usable semantic models.</li>
+	<li>Develop Data Pipelines: Apply your data engineering skills to build and maintain data cleansing tools that help refine data from Salesforce, CPQ, and billing systems, transforming it into clean, usable semantic models.</li>
 	<li>Power AI Workflows: Assist in integrating structured deal data into Deal Desk tools to help automate routine approvals and surface real-time pricing optimizations to deal managers.</li>
 	<li>Data Storytelling &amp; Enablement: Translate complex datasets into clear, actionable narratives for non-technical stakeholders, empowering the Deal Desk team to use your data products for faster, data-driven negotiations.</li>
 </ul>
@@ -23,16 +23,18 @@
 <ul>
 	<li>3-5+ years of professional experience in Data Analytics, Business Intelligence, or a technical RevOps role, with a strong emphasis on full-stack data problem solving.</li>
 	<li>Experience incorporating data into AI workflows, utilizing LLM orchestration frameworks, or building predictive models.</li>
-	<li>Expert-level SQL and deep proficiency in modern data visualization and BI platforms (e.g., Tableau, Looker, Sigma, PowerBI) to build intuitive executive reporting.</li>
+	<li>Proven experience designing analytical data models; domain expertise in financial and SaaS metrics (e.g. margins, discount rates, ARR, NRR) is a strong plus</li>
 	<li>Strong programming skills in Python (or TypeScript) with hands-on experience building ELT/ETL pipelines, interacting with APIs, and cleaning raw data.</li>
 	<li>Experience designing analytical data models specifically tailored for financial and SaaS business analysis (e.g., margins, discount rates, ARR, NRR).</li>
 	<li>Familiarity with cloud data platforms and an interest in edge computing/serverless architectures (Cloudflare Workers, R2, D1).</li>
-	<li>Domain expertise in CRM data structures (especially Salesforce custom objects), CPQ complexities, and the quote-to-cash lifecycle.</li>
-	<li>Exceptional communication skills with the ability to bridge the gap between technical data systems and strategic Finance operations.</li>
+	<li>Expertise, or interest in learning, CRM data structures (especially Salesforce custom objects), CPQ complexities, and the quote-to-cash lifecycle.</li>
+	<li>Solid communication skills with the ability to bridge the gap between technical data systems and operations.</li>
 </ul>
 <p><strong>Nice-to-Have Skills</strong></p>
-<h4><em>Background working closely with Deal Desk, Finance, or Sales Strategy teams at a high-growth SaaS or technology company.</em></h4>
 <ul>
+	<li>Background working closely with Deal Desk, Finance, RevOps or Sales Strategy teams at a high-growth SaaS or technology company is a plus</li>
+	<li>Strong programming skills in Python (or TypeScript) with hands-on experience building ELT/ETL pipelines, interacting with APIs, and cleaning raw data.</li>
+	<li>SQL and deep proficiency in modern data visualization and BI platforms (e.g., Tableau, Looker, Sigma, PowerBI) to build intuitive executive reporting.</li>
 	<li>Familiarity with data transformation frameworks and orchestration tools (like Airflow).</li>
 	<li>Familiarity with Google Cloud Platform or other analytics databases</li>
 </ul>
