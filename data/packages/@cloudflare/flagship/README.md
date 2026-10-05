@@ -96,6 +96,20 @@ export default {
 };
 ```
 
+## Structured evaluation context
+
+Binding and HTTP modes support nested objects, arrays, and `null` in evaluation context. Dates are recursively converted to ISO-8601 strings.
+
+```typescript
+const checkout = await client.getStringValue('checkout-flow', 'control', {
+  targetingKey: 'user-123',
+  profile: { account: { plan: 'enterprise' } },
+  tags: ['beta', 'internal'],
+});
+```
+
+Primitive-only HTTP context keeps using GET query parameters. Structured context, including `null`, uses the JSON POST endpoint; in browsers this adds a CORS preflight request. Only strings, numbers, booleans, `null`, dates, arrays, and plain objects are supported. Anything else, including cyclic values, resolves with `INVALID_CONTEXT` without making a binding or HTTP call.
+
 ## Caching
 
 The server provider can cache evaluations to avoid a network round-trip (HTTP mode) or binding call (binding mode) for repeated flag/context pairs. Caching is **off by default** and enabled by setting `cacheTtl`:
@@ -110,6 +124,30 @@ new FlagshipServerProvider({
 ```
 
 Each entry is keyed by flag key, type, and the **full evaluation context**, so distinct contexts never share a value. Cache hits resolve with `reason: 'CACHED'`. Disabled flags and errors are never cached. Because freshness is TTL-based, a flag change in Flagship takes effect after the entry expires.
+
+## Local evaluation
+
+Server providers can download flag definitions once and evaluate flags in-process with no network call per evaluation. Definitions refresh lazily in the background (stale-while-revalidate on evaluate).
+
+```typescript
+await OpenFeature.setProviderAndWait(
+  new FlagshipServerProvider({
+    appId: 'your-app-id',
+    accountId: 'your-account-id', // required — used as the rollout hash seed
+    authToken: 'your-read-token', // needs app **read** permission, not evaluate
+    localEvaluation: true,
+    refreshInterval: 30_000, // ms between background refreshes (default 30s)
+  }),
+);
+```
+
+Notes:
+
+- Incompatible with `binding` mode and with `cacheTtl` (there is nothing to cache).
+- `accountId` is always required in local mode, including when `endpoint` is used.
+- With `endpoint`, the URL path must end in `/evaluate` so `/definitions` can be derived.
+- Local evaluations do **not** appear in server-side analytics.
+- See [`examples/server-local.ts`](./examples/server-local.ts).
 
 ## Quick start — browser
 
@@ -134,22 +172,23 @@ const darkMode = client.getBooleanValue('dark-mode', false);
 
 ## Features
 
-| Feature               | Description                                                                  |
-| --------------------- | ---------------------------------------------------------------------------- |
-| OpenFeature compliant | Implements the CNCF OpenFeature specification                                |
-| Workers binding       | Native wrangler binding support — zero HTTP overhead, no auth tokens         |
-| Server + client       | Async per-request (server) and sync cache-based (browser) providers          |
-| Server providers      | `FlagshipServerProvider` works via HTTP or wrangler binding                  |
-| All flag types        | Boolean, string, number, and object (JSON)                                   |
-| Authentication        | `authToken` option adds `Authorization: Bearer` to every request (HTTP only) |
-| Logging               | `logging` option surfaces fetch errors and cache misses (off by default)     |
-| Response caching      | Opt-in per-context TTL + LRU cache via `cacheTtl` (off by default)           |
-| Retries + timeouts    | Configurable retry logic with `AbortController`-based timeouts (HTTP only)   |
-| Custom transport      | Inject `fetch` per client or per call — no global mutation (HTTP only)       |
-| Cancellation          | Caller `AbortSignal` aborts the in-flight request, never retried (HTTP only) |
-| Hooks                 | Built-in `LoggingHook` and `TelemetryHook`                                   |
-| Tree-shakeable        | Server and client bundles are fully isolated                                 |
-| TypeScript            | Strict types throughout                                                      |
+| Feature               | Description                                                                    |
+| --------------------- | ------------------------------------------------------------------------------ |
+| OpenFeature compliant | Implements the CNCF OpenFeature specification                                  |
+| Workers binding       | Native wrangler binding support — zero HTTP overhead, no auth tokens           |
+| Server + client       | Async per-request (server) and sync cache-based (browser) providers            |
+| Server providers      | `FlagshipServerProvider` works via HTTP, local evaluation, or wrangler binding |
+| Local evaluation      | In-process evaluation from downloaded definitions (`localEvaluation: true`)    |
+| All flag types        | Boolean, string, number, and object (JSON)                                     |
+| Authentication        | `authToken` option adds `Authorization: Bearer` to every request (HTTP only)   |
+| Logging               | `logging` option surfaces fetch errors and cache misses (off by default)       |
+| Response caching      | Opt-in per-context TTL + LRU cache via `cacheTtl` (off by default)             |
+| Retries + timeouts    | Configurable retry logic with `AbortController`-based timeouts (HTTP only)     |
+| Custom transport      | Inject `fetch` per client or per call — no global mutation (HTTP only)         |
+| Cancellation          | Caller `AbortSignal` aborts the in-flight request, never retried (HTTP only)   |
+| Hooks                 | Built-in `LoggingHook` and `TelemetryHook`                                     |
+| Tree-shakeable        | Server and client bundles are fully isolated                                   |
+| TypeScript            | Strict types throughout                                                        |
 
 ## Packages
 
