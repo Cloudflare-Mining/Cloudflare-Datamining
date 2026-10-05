@@ -2527,7 +2527,7 @@
 	"GET /accounts/{account_id}/ai-gateway/billing/usage-history": {
 		"operationId": "aig-billing-get-usage-history",
 		"summary": "Get usage history",
-		"description": "Retrieve aggregated usage meter event summaries for the given time range.",
+		"description": "Retrieve AI Gateway usage cost, in US dollars, aggregated by hour or day for the given time range.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2628,6 +2628,7 @@
 											"items": {
 												"properties": {
 													"aggregated_value": {
+														"description": "AI Gateway usage cost in the window, in US dollars.",
 														"type": "number"
 													},
 													"end_time": {

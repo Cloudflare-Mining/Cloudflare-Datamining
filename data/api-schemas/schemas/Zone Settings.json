@@ -3937,6 +3937,65 @@
 														"title": "WebMCP Enabled"
 													},
 													{
+														"description": "Optional per-zone path of the site's own MCP server, used by the WebMCP\nmcp-server-client tool pack to list and call the site's MCP tools from\nthe browser. The path is resolved against the page's origin, so it\napplies to every hostname in the zone. Only takes effect when\nwebmcp_enabled is on and the mcp-server-client pack is active. Leave\nempty to use /mcp. This setting is currently in beta and its behavior\nmay change.",
+														"allOf": [
+															{
+																"properties": {
+																	"editable": {
+																		"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+																		"type": "boolean",
+																		"enum": [
+																			true,
+																			false
+																		],
+																		"readOnly": true
+																	},
+																	"id": {
+																		"description": "Identifier of the zone setting.",
+																		"type": "string",
+																		"example": "development_mode"
+																	},
+																	"modified_on": {
+																		"description": "last time this setting was modified.",
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"nullable": true,
+																		"readOnly": true
+																	},
+																	"value": {
+																		"description": "Current value of the zone setting.",
+																		"example": "on"
+																	}
+																},
+																"required": [
+																	"id",
+																	"value"
+																]
+															},
+															{
+																"properties": {
+																	"id": {
+																		"description": "ID of the zone setting.",
+																		"example": "webmcp_mcp_url",
+																		"enum": [
+																			"webmcp_mcp_url"
+																		]
+																	},
+																	"value": {
+																		"description": "Root-relative path (with optional query string) of this zone's MCP\nendpoint, for example \"/api/mcp\". Surfaced to the injected bridge as the\ndata-mcp-url attribute. Absolute and protocol-relative URLs, fragments,\nand characters outside RFC 3986 paths and queries are rejected. An empty\nvalue clears the override so the bridge uses /mcp.",
+																		"type": "string",
+																		"example": "/mcp",
+																		"default": "",
+																		"maxLength": 2048,
+																		"pattern": "^(/((%[0-9A-Fa-f]{2}|[A-Za-z0-9._~!$&'()*+,;=:@?-])(%[0-9A-Fa-f]{2}|[A-Za-z0-9._~!$&'()*+,;=:@?/-])*)?)?$"
+																	}
+																}
+															}
+														],
+														"title": "WebMCP MCP Endpoint"
+													},
+													{
 														"description": "Optional per-zone override of which bundled WebMCP tool packs the\ninjected bridge.js activates. Only takes effect when webmcp_enabled is\non. Leave empty to use the bridge's default pack set. Unknown pack names\nare ignored by the bridge. This setting is currently in beta and its\nbehavior may change.",
 														"allOf": [
 															{
@@ -8252,6 +8311,65 @@
 														}
 													],
 													"title": "WebMCP Enabled"
+												},
+												{
+													"description": "Optional per-zone path of the site's own MCP server, used by the WebMCP\nmcp-server-client tool pack to list and call the site's MCP tools from\nthe browser. The path is resolved against the page's origin, so it\napplies to every hostname in the zone. Only takes effect when\nwebmcp_enabled is on and the mcp-server-client pack is active. Leave\nempty to use /mcp. This setting is currently in beta and its behavior\nmay change.",
+													"allOf": [
+														{
+															"properties": {
+																"editable": {
+																	"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+																	"type": "boolean",
+																	"enum": [
+																		true,
+																		false
+																	],
+																	"readOnly": true
+																},
+																"id": {
+																	"description": "Identifier of the zone setting.",
+																	"type": "string",
+																	"example": "development_mode"
+																},
+																"modified_on": {
+																	"description": "last time this setting was modified.",
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"nullable": true,
+																	"readOnly": true
+																},
+																"value": {
+																	"description": "Current value of the zone setting.",
+																	"example": "on"
+																}
+															},
+															"required": [
+																"id",
+																"value"
+															]
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "ID of the zone setting.",
+																	"example": "webmcp_mcp_url",
+																	"enum": [
+																		"webmcp_mcp_url"
+																	]
+																},
+																"value": {
+																	"description": "Root-relative path (with optional query string) of this zone's MCP\nendpoint, for example \"/api/mcp\". Surfaced to the injected bridge as the\ndata-mcp-url attribute. Absolute and protocol-relative URLs, fragments,\nand characters outside RFC 3986 paths and queries are rejected. An empty\nvalue clears the override so the bridge uses /mcp.",
+																	"type": "string",
+																	"example": "/mcp",
+																	"default": "",
+																	"maxLength": 2048,
+																	"pattern": "^(/((%[0-9A-Fa-f]{2}|[A-Za-z0-9._~!$&'()*+,;=:@?-])(%[0-9A-Fa-f]{2}|[A-Za-z0-9._~!$&'()*+,;=:@?/-])*)?)?$"
+																}
+															}
+														}
+													],
+													"title": "WebMCP MCP Endpoint"
 												},
 												{
 													"description": "Optional per-zone override of which bundled WebMCP tool packs the\ninjected bridge.js activates. Only takes effect when webmcp_enabled is\non. Leave empty to use the bridge's default pack set. Unknown pack names\nare ignored by the bridge. This setting is currently in beta and its\nbehavior may change.",
@@ -15945,6 +16063,65 @@
 									"title": "WebMCP Enabled"
 								},
 								{
+									"description": "Optional per-zone path of the site's own MCP server, used by the WebMCP\nmcp-server-client tool pack to list and call the site's MCP tools from\nthe browser. The path is resolved against the page's origin, so it\napplies to every hostname in the zone. Only takes effect when\nwebmcp_enabled is on and the mcp-server-client pack is active. Leave\nempty to use /mcp. This setting is currently in beta and its behavior\nmay change.",
+									"allOf": [
+										{
+											"properties": {
+												"editable": {
+													"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+													"type": "boolean",
+													"enum": [
+														true,
+														false
+													],
+													"readOnly": true
+												},
+												"id": {
+													"description": "Identifier of the zone setting.",
+													"type": "string",
+													"example": "development_mode"
+												},
+												"modified_on": {
+													"description": "last time this setting was modified.",
+													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"nullable": true,
+													"readOnly": true
+												},
+												"value": {
+													"description": "Current value of the zone setting.",
+													"example": "on"
+												}
+											},
+											"required": [
+												"id",
+												"value"
+											]
+										},
+										{
+											"properties": {
+												"id": {
+													"description": "ID of the zone setting.",
+													"example": "webmcp_mcp_url",
+													"enum": [
+														"webmcp_mcp_url"
+													]
+												},
+												"value": {
+													"description": "Root-relative path (with optional query string) of this zone's MCP\nendpoint, for example \"/api/mcp\". Surfaced to the injected bridge as the\ndata-mcp-url attribute. Absolute and protocol-relative URLs, fragments,\nand characters outside RFC 3986 paths and queries are rejected. An empty\nvalue clears the override so the bridge uses /mcp.",
+													"type": "string",
+													"example": "/mcp",
+													"default": "",
+													"maxLength": 2048,
+													"pattern": "^(/((%[0-9A-Fa-f]{2}|[A-Za-z0-9._~!$&'()*+,;=:@?-])(%[0-9A-Fa-f]{2}|[A-Za-z0-9._~!$&'()*+,;=:@?/-])*)?)?$"
+												}
+											}
+										}
+									],
+									"title": "WebMCP MCP Endpoint"
+								},
+								{
 									"description": "Optional per-zone override of which bundled WebMCP tool packs the\ninjected bridge.js activates. Only takes effect when webmcp_enabled is\non. Leave empty to use the bridge's default pack set. Unknown pack names\nare ignored by the bridge. This setting is currently in beta and its\nbehavior may change.",
 									"allOf": [
 										{
@@ -20049,6 +20226,65 @@
 														"title": "WebMCP Enabled"
 													},
 													{
+														"description": "Optional per-zone path of the site's own MCP server, used by the WebMCP\nmcp-server-client tool pack to list and call the site's MCP tools from\nthe browser. The path is resolved against the page's origin, so it\napplies to every hostname in the zone. Only takes effect when\nwebmcp_enabled is on and the mcp-server-client pack is active. Leave\nempty to use /mcp. This setting is currently in beta and its behavior\nmay change.",
+														"allOf": [
+															{
+																"properties": {
+																	"editable": {
+																		"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+																		"type": "boolean",
+																		"enum": [
+																			true,
+																			false
+																		],
+																		"readOnly": true
+																	},
+																	"id": {
+																		"description": "Identifier of the zone setting.",
+																		"type": "string",
+																		"example": "development_mode"
+																	},
+																	"modified_on": {
+																		"description": "last time this setting was modified.",
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"nullable": true,
+																		"readOnly": true
+																	},
+																	"value": {
+																		"description": "Current value of the zone setting.",
+																		"example": "on"
+																	}
+																},
+																"required": [
+																	"id",
+																	"value"
+																]
+															},
+															{
+																"properties": {
+																	"id": {
+																		"description": "ID of the zone setting.",
+																		"example": "webmcp_mcp_url",
+																		"enum": [
+																			"webmcp_mcp_url"
+																		]
+																	},
+																	"value": {
+																		"description": "Root-relative path (with optional query string) of this zone's MCP\nendpoint, for example \"/api/mcp\". Surfaced to the injected bridge as the\ndata-mcp-url attribute. Absolute and protocol-relative URLs, fragments,\nand characters outside RFC 3986 paths and queries are rejected. An empty\nvalue clears the override so the bridge uses /mcp.",
+																		"type": "string",
+																		"example": "/mcp",
+																		"default": "",
+																		"maxLength": 2048,
+																		"pattern": "^(/((%[0-9A-Fa-f]{2}|[A-Za-z0-9._~!$&'()*+,;=:@?-])(%[0-9A-Fa-f]{2}|[A-Za-z0-9._~!$&'()*+,;=:@?/-])*)?)?$"
+																	}
+																}
+															}
+														],
+														"title": "WebMCP MCP Endpoint"
+													},
+													{
 														"description": "Optional per-zone override of which bundled WebMCP tool packs the\ninjected bridge.js activates. Only takes effect when webmcp_enabled is\non. Leave empty to use the bridge's default pack set. Unknown pack names\nare ignored by the bridge. This setting is currently in beta and its\nbehavior may change.",
 														"allOf": [
 															{
@@ -21113,6 +21349,14 @@
 													"off",
 													"on"
 												]
+											},
+											{
+												"description": "Root-relative path (with optional query string) of this zone's MCP\nendpoint, for example \"/api/mcp\". Surfaced to the injected bridge as the\ndata-mcp-url attribute. Absolute and protocol-relative URLs, fragments,\nand characters outside RFC 3986 paths and queries are rejected. An empty\nvalue clears the override so the bridge uses /mcp.",
+												"type": "string",
+												"example": "/mcp",
+												"default": "",
+												"maxLength": 2048,
+												"pattern": "^(/((%[0-9A-Fa-f]{2}|[A-Za-z0-9._~!$&'()*+,;=:@?-])(%[0-9A-Fa-f]{2}|[A-Za-z0-9._~!$&'()*+,;=:@?/-])*)?)?$"
 											},
 											{
 												"description": "Comma-separated list of WebMCP tool-pack names to activate for this\nzone (for example, \"c2pa,mcp-server-client\"), surfaced to the injected\nbridge as the data-packs attribute. An empty value clears the override\nso the bridge uses its built-in default pack set.",
@@ -25128,6 +25372,65 @@
 														}
 													],
 													"title": "WebMCP Enabled"
+												},
+												{
+													"description": "Optional per-zone path of the site's own MCP server, used by the WebMCP\nmcp-server-client tool pack to list and call the site's MCP tools from\nthe browser. The path is resolved against the page's origin, so it\napplies to every hostname in the zone. Only takes effect when\nwebmcp_enabled is on and the mcp-server-client pack is active. Leave\nempty to use /mcp. This setting is currently in beta and its behavior\nmay change.",
+													"allOf": [
+														{
+															"properties": {
+																"editable": {
+																	"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+																	"type": "boolean",
+																	"enum": [
+																		true,
+																		false
+																	],
+																	"readOnly": true
+																},
+																"id": {
+																	"description": "Identifier of the zone setting.",
+																	"type": "string",
+																	"example": "development_mode"
+																},
+																"modified_on": {
+																	"description": "last time this setting was modified.",
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"nullable": true,
+																	"readOnly": true
+																},
+																"value": {
+																	"description": "Current value of the zone setting.",
+																	"example": "on"
+																}
+															},
+															"required": [
+																"id",
+																"value"
+															]
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "ID of the zone setting.",
+																	"example": "webmcp_mcp_url",
+																	"enum": [
+																		"webmcp_mcp_url"
+																	]
+																},
+																"value": {
+																	"description": "Root-relative path (with optional query string) of this zone's MCP\nendpoint, for example \"/api/mcp\". Surfaced to the injected bridge as the\ndata-mcp-url attribute. Absolute and protocol-relative URLs, fragments,\nand characters outside RFC 3986 paths and queries are rejected. An empty\nvalue clears the override so the bridge uses /mcp.",
+																	"type": "string",
+																	"example": "/mcp",
+																	"default": "",
+																	"maxLength": 2048,
+																	"pattern": "^(/((%[0-9A-Fa-f]{2}|[A-Za-z0-9._~!$&'()*+,;=:@?-])(%[0-9A-Fa-f]{2}|[A-Za-z0-9._~!$&'()*+,;=:@?/-])*)?)?$"
+																}
+															}
+														}
+													],
+													"title": "WebMCP MCP Endpoint"
 												},
 												{
 													"description": "Optional per-zone override of which bundled WebMCP tool packs the\ninjected bridge.js activates. Only takes effect when webmcp_enabled is\non. Leave empty to use the bridge's default pack set. Unknown pack names\nare ignored by the bridge. This setting is currently in beta and its\nbehavior may change.",

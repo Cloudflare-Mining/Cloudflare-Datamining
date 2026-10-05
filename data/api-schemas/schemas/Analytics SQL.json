@@ -334,7 +334,7 @@
 				}
 			},
 			"422": {
-				"description": "The SQL query or its parameters are invalid.",
+				"description": "The SQL query or its parameters are invalid, including invalid function arguments.",
 				"content": {
 					"text/plain": {
 						"schema": {
@@ -1200,7 +1200,7 @@
 				}
 			},
 			"422": {
-				"description": "The SQL query or its parameters are invalid.",
+				"description": "The SQL query or its parameters are invalid, including invalid function arguments.",
 				"content": {
 					"text/plain": {
 						"schema": {
@@ -2180,7 +2180,7 @@
 				}
 			},
 			"422": {
-				"description": "The SQL query or its parameters are invalid.",
+				"description": "The SQL query or its parameters are invalid, including invalid function arguments.",
 				"content": {
 					"text/plain": {
 						"schema": {
@@ -2696,7 +2696,7 @@
 				}
 			},
 			"422": {
-				"description": "The SQL query or its parameters are invalid.",
+				"description": "The SQL query or its parameters are invalid, including invalid function arguments.",
 				"content": {
 					"text/plain": {
 						"schema": {

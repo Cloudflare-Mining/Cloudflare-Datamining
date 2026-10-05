@@ -43,46 +43,62 @@
 							"type": "object",
 							"properties": {
 								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "integer",
-												"minimum": 1000
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"example": []
+											"example": []
+										}
+									],
+									"minItems": 1
 								},
 								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "integer",
-												"minimum": 1000
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"example": []
+											"example": []
+										}
+									]
 								},
 								"result": {
 									"type": "object",
@@ -111,6 +127,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -132,7 +151,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-side-security.policies",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation permanently deletes the content security rule from the zone."
 	},
 	"GET /zones/{zone_id}/page_shield": {
@@ -228,13 +246,15 @@
 													"type": "object",
 													"nullable": true
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"enabled": {
 													"description": "When true, indicates that Client-Side Security is enabled.",
@@ -268,7 +288,8 @@
 												"use_connection_url_path"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -283,46 +304,62 @@
 							"type": "object",
 							"properties": {
 								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "integer",
-												"minimum": 1000
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"example": []
+											"example": []
+										}
+									],
+									"minItems": 1
 								},
 								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "integer",
-												"minimum": 1000
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"example": []
+											"example": []
+										}
+									]
 								},
 								"result": {
 									"type": "object",
@@ -351,6 +388,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -374,8 +414,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-side-security.settings",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/page_shield/connections": {
 		"operationId": "page-shield-list-connections",
@@ -627,7 +666,8 @@
 											},
 											"required": [
 												"result_info"
-											]
+											],
+											"type": "object"
 										}
 									]
 								},
@@ -636,6 +676,7 @@
 										"result": {
 											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"added_at": {
 														"type": "string",
@@ -740,46 +781,62 @@
 							"type": "object",
 							"properties": {
 								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "integer",
-												"minimum": 1000
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"example": []
+											"example": []
+										}
+									],
+									"minItems": 1
 								},
 								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "integer",
-												"minimum": 1000
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"example": []
+											"example": []
+										}
+									]
 								},
 								"result": {
 									"type": "object",
@@ -808,6 +865,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -831,8 +891,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-side-security.connections",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/page_shield/connections/{connection_id}": {
 		"operationId": "page-shield-get-connection",
@@ -940,13 +999,15 @@
 													"type": "object",
 													"nullable": true
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"added_at": {
 													"type": "string",
@@ -1037,7 +1098,8 @@
 									},
 									"required": [
 										"result"
-									]
+									],
+									"type": "object"
 								}
 							]
 						}
@@ -1052,46 +1114,62 @@
 							"type": "object",
 							"properties": {
 								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "integer",
-												"minimum": 1000
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"example": []
+											"example": []
+										}
+									],
+									"minItems": 1
 								},
 								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "integer",
-												"minimum": 1000
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"example": []
+											"example": []
+										}
+									]
 								},
 								"result": {
 									"type": "object",
@@ -1120,6 +1198,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -1143,8 +1224,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-side-security.connections",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/page_shield/cookies": {
 		"operationId": "page-shield-list-cookies",
@@ -1426,7 +1506,8 @@
 											},
 											"required": [
 												"result_info"
-											]
+											],
+											"type": "object"
 										}
 									]
 								},
@@ -1435,6 +1516,7 @@
 										"result": {
 											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"domain_attribute": {
 														"type": "string",
@@ -1544,46 +1626,62 @@
 							"type": "object",
 							"properties": {
 								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "integer",
-												"minimum": 1000
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"example": []
+											"example": []
+										}
+									],
+									"minItems": 1
 								},
 								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "integer",
-												"minimum": 1000
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"example": []
+											"example": []
+										}
+									]
 								},
 								"result": {
 									"type": "object",
@@ -1612,6 +1710,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -1635,8 +1736,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-side-security.cookies",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/page_shield/cookies/{cookie_id}": {
 		"operationId": "page-shield-get-cookie",
@@ -1744,13 +1844,15 @@
 													"type": "object",
 													"nullable": true
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"domain_attribute": {
 													"type": "string",
@@ -1843,7 +1945,8 @@
 									},
 									"required": [
 										"result"
-									]
+									],
+									"type": "object"
 								}
 							]
 						}
@@ -1858,46 +1961,62 @@
 							"type": "object",
 							"properties": {
 								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "integer",
-												"minimum": 1000
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"example": []
+											"example": []
+										}
+									],
+									"minItems": 1
 								},
 								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "integer",
-												"minimum": 1000
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"example": []
+											"example": []
+										}
+									]
 								},
 								"result": {
 									"type": "object",
@@ -1926,6 +2045,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -1949,8 +2071,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-side-security.cookies",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/page_shield/policies": {
 		"operationId": "page-shield-list-policies",
@@ -2081,7 +2202,8 @@
 											},
 											"required": [
 												"result_info"
-											]
+											],
+											"type": "object"
 										}
 									]
 								},
@@ -2092,6 +2214,7 @@
 											"items": {
 												"allOf": [
 													{
+														"type": "object",
 														"properties": {
 															"action": {
 																"description": "The action to take if the expression matches",
@@ -2150,7 +2273,8 @@
 														},
 														"required": [
 															"id"
-														]
+														],
+														"type": "object"
 													}
 												],
 												"required": [
@@ -2182,46 +2306,62 @@
 							"type": "object",
 							"properties": {
 								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "integer",
-												"minimum": 1000
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"example": []
+											"example": []
+										}
+									],
+									"minItems": 1
 								},
 								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "integer",
-												"minimum": 1000
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"example": []
+											"example": []
+										}
+									]
 								},
 								"result": {
 									"type": "object",
@@ -2250,6 +2390,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -2273,8 +2416,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-side-security.policies",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/page_shield/policies/{policy_id}": {
 		"operationId": "page-shield-get-policy",
@@ -2382,7 +2524,8 @@
 													"type": "object",
 													"nullable": true
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -2391,6 +2534,7 @@
 										"result": {
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"action": {
 															"description": "The action to take if the expression matches",
@@ -2449,7 +2593,8 @@
 													},
 													"required": [
 														"id"
-													]
+													],
+													"type": "object"
 												}
 											],
 											"required": [
@@ -2464,7 +2609,8 @@
 									},
 									"required": [
 										"result"
-									]
+									],
+									"type": "object"
 								}
 							]
 						}
@@ -2479,46 +2625,62 @@
 							"type": "object",
 							"properties": {
 								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "integer",
-												"minimum": 1000
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"example": []
+											"example": []
+										}
+									],
+									"minItems": 1
 								},
 								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "integer",
-												"minimum": 1000
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"example": []
+											"example": []
+										}
+									]
 								},
 								"result": {
 									"type": "object",
@@ -2547,6 +2709,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -2570,8 +2735,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-side-security.policies",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/page_shield/scripts": {
 		"operationId": "page-shield-list-scripts",
@@ -2834,7 +2998,8 @@
 											},
 											"required": [
 												"result_info"
-											]
+											],
+											"type": "object"
 										}
 									]
 								},
@@ -2843,6 +3008,7 @@
 										"result": {
 											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"added_at": {
 														"type": "string",
@@ -3014,46 +3180,62 @@
 							"type": "object",
 							"properties": {
 								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "integer",
-												"minimum": 1000
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"example": []
+											"example": []
+										}
+									],
+									"minItems": 1
 								},
 								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "integer",
-												"minimum": 1000
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"example": []
+											"example": []
+										}
+									]
 								},
 								"result": {
 									"type": "object",
@@ -3082,6 +3264,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -3105,8 +3290,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-side-security.scripts",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/page_shield/scripts/{script_id}": {
 		"operationId": "page-shield-get-script",
@@ -3214,7 +3398,8 @@
 													"type": "object",
 													"nullable": true
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -3223,6 +3408,7 @@
 										"result": {
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"added_at": {
 															"type": "string",
@@ -3460,14 +3646,16 @@
 															],
 															"nullable": true
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										}
 									},
 									"required": [
 										"result"
-									]
+									],
+									"type": "object"
 								}
 							]
 						}
@@ -3484,46 +3672,62 @@
 									"type": "object",
 									"properties": {
 										"errors": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
+													"example": []
+												}
+											],
+											"minItems": 1
 										},
 										"messages": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
+													"example": []
+												}
+											]
 										},
 										"result": {
 											"type": "object",
@@ -3554,6 +3758,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -3577,8 +3784,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-side-security.scripts",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /zones/{zone_id}/page_shield/policies": {
 		"operationId": "page-shield-create-policy",
@@ -3604,6 +3810,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"action": {
 								"description": "The action to take if the expression matches",
@@ -3726,7 +3933,8 @@
 													"type": "object",
 													"nullable": true
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -3735,6 +3943,7 @@
 										"result": {
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"action": {
 															"description": "The action to take if the expression matches",
@@ -3793,7 +4002,8 @@
 													},
 													"required": [
 														"id"
-													]
+													],
+													"type": "object"
 												}
 											],
 											"required": [
@@ -3808,7 +4018,8 @@
 									},
 									"required": [
 										"result"
-									]
+									],
+									"type": "object"
 								}
 							]
 						}
@@ -3823,46 +4034,62 @@
 							"type": "object",
 							"properties": {
 								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "integer",
-												"minimum": 1000
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"example": []
+											"example": []
+										}
+									],
+									"minItems": 1
 								},
 								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "integer",
-												"minimum": 1000
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"example": []
+											"example": []
+										}
+									]
 								},
 								"result": {
 									"type": "object",
@@ -3891,6 +4118,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -3911,8 +4141,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-side-security.policies",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /zones/{zone_id}/page_shield": {
 		"operationId": "page-shield-update-settings",
@@ -3938,6 +4167,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"enabled": {
 								"description": "When true, indicates that Client-Side Security is enabled.",
@@ -4035,20 +4265,10 @@
 												{
 													"properties": {
 														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
+															"type": "object"
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -4057,13 +4277,15 @@
 												"result": {
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"enabled": {
 													"description": "When true, indicates that Client-Side Security is enabled.",
@@ -4097,7 +4319,8 @@
 												"use_connection_url_path"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -4112,46 +4335,62 @@
 							"type": "object",
 							"properties": {
 								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "integer",
-												"minimum": 1000
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"example": []
+											"example": []
+										}
+									],
+									"minItems": 1
 								},
 								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "integer",
-												"minimum": 1000
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"example": []
+											"example": []
+										}
+									]
 								},
 								"result": {
 									"type": "object",
@@ -4180,6 +4419,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -4200,8 +4442,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-side-security.settings",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /zones/{zone_id}/page_shield/policies/{policy_id}": {
 		"operationId": "page-shield-update-policy",
@@ -4240,6 +4481,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"action": {
 								"description": "The action to take if the expression matches",
@@ -4355,7 +4597,8 @@
 													"type": "object",
 													"nullable": true
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -4364,6 +4607,7 @@
 										"result": {
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"action": {
 															"description": "The action to take if the expression matches",
@@ -4422,7 +4666,8 @@
 													},
 													"required": [
 														"id"
-													]
+													],
+													"type": "object"
 												}
 											],
 											"required": [
@@ -4437,7 +4682,8 @@
 									},
 									"required": [
 										"result"
-									]
+									],
+									"type": "object"
 								}
 							]
 						}
@@ -4452,46 +4698,62 @@
 							"type": "object",
 							"properties": {
 								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "integer",
-												"minimum": 1000
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"example": []
+											"example": []
+										}
+									],
+									"minItems": 1
 								},
 								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "integer",
-												"minimum": 1000
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"example": []
+											"example": []
+										}
+									]
 								},
 								"result": {
 									"type": "object",
@@ -4520,6 +4782,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -4540,7 +4805,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-side-security.policies",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

@@ -396,7 +396,46 @@
 									"properties": {
 										"errors": {
 											"type": "array",
-											"items": {},
+											"items": {
+												"description": "A message.",
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "A unique code for this message.",
+														"type": "integer",
+														"example": 10000,
+														"title": "Code"
+													},
+													"message": {
+														"description": "A text description of this message.",
+														"type": "string",
+														"example": "something bad happened",
+														"minLength": 1,
+														"title": "Description"
+													},
+													"source": {
+														"description": "The source of this message.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "A JSON pointer to the field that is the source of the message.",
+																"type": "string",
+																"example": "/rules/0/action",
+																"minLength": 1,
+																"title": "Pointer"
+															}
+														},
+														"required": [
+															"pointer"
+														],
+														"title": "Source"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"title": "Message"
+											},
 											"enum": [
 												[]
 											]
@@ -1148,7 +1187,46 @@
 									"properties": {
 										"errors": {
 											"type": "array",
-											"items": {},
+											"items": {
+												"description": "A message.",
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "A unique code for this message.",
+														"type": "integer",
+														"example": 10000,
+														"title": "Code"
+													},
+													"message": {
+														"description": "A text description of this message.",
+														"type": "string",
+														"example": "something bad happened",
+														"minLength": 1,
+														"title": "Description"
+													},
+													"source": {
+														"description": "The source of this message.",
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "A JSON pointer to the field that is the source of the message.",
+																"type": "string",
+																"example": "/rules/0/action",
+																"minLength": 1,
+																"title": "Pointer"
+															}
+														},
+														"required": [
+															"pointer"
+														],
+														"title": "Source"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"title": "Message"
+											},
 											"enum": [
 												[]
 											]
