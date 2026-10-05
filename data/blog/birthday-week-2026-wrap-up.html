@@ -1,0 +1,455 @@
+<p>We celebrated our 16th birthday last week by sharing how we’re building a better Internet for today’s world. As Matthew and Michelle reflected in <a href="https://blog.cloudflare.com/cloudflares-2026-annual-founders-letter"><u>this year’s Founders’ Letter</u></a>, this year saw some of the most consequential changes in the history of the Internet.</p>
+<p>For the first time, automated traffic surpassed human activity. AI is empowering people to build like never before, leading the Internet to grow massively in scale and unlocking more ambition and creativity. As we witnessed the influence that agent-driven recommendations have on consumer choices, we identified the need for a new approach that creates space for new businesses to succeed.</p>
+<p>Each day of Birthday Week explored a different way we are helping to build the future of the Internet. We began on Monday by strengthening our commitment to open source. Tuesday focused on application security and the post-quantum transition. On Wednesday, we explored new economic models for the agentic Internet. Thursday, we expanded the Developer Platform with new tools for data analysis, storage, AI, and agent development. Finally, we closed out the week by launching features that make Cloudflare faster, easier to operate, and more accessible to everyone. As a special Birthday Week follow-up, we <a href="http://blog.cloudflare.com/one-year-later-1111-interns"><u>shared an update</u></a>&nbsp;on our intern program, <a href="https://blog.cloudflare.com/one-year-later-1111-interns">one year after announcing our goal to hire 1,111 interns</a>. Interns directly contributed to many of the projects launched this week, including EmDash, post-quantum visibility, CryptoLabe, and Protected Quick Tunnels.</p>
+<p>We shipped 46 announcements this week. In case you missed any, here’s the full list of everything we announced during Birthday Week 2026.</p>
+<h3>Monday, September 28 - Commitment to open source</h3>
+<p>With the announcement of our new CLI, which we released alongside the pipeline we use to generate it and our SDKs and docs, we shared how we’re building to support agents and developers as they use Cloudflare — and supporting the projects that you rely on, too.</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 192px;">
+		<tbody>
+			<tr>
+				<td>
+					<p><strong>What</strong></p>
+				</td>
+				<td>
+					<p><strong>In a sentence…</strong></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/cloudflare-cf-cli-launch">Introducing cf: the agentic CLI for the entire Cloudflare API</a></p>
+				</td>
+				<td>
+					<p>The new cf CLI mirrors the Cloudflare API, uses JSON-first output and typed configuration, and gives people and agents one consistent command-line interface.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/forge-open-source-generation-pipeline">Introducing Forge: the open source pipeline for generating SDKs, CLIs, docs, and more</a></p>
+				</td>
+				<td>
+					<p>Forge is a pluggable, open-source pipeline that runs in CI to generate SDKs, CLIs, documentation, and other interfaces directly from API definitions.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/emdash-cms-plugin-registry">Introducing EmDash - the spiritual successor to WordPress that solves plugin security</a></p>
+				</td>
+				<td>
+					<p>EmDash is an open-source, Astro-based serverless CMS that runs plugins in isolated Worker sandboxes with explicitly approved capabilities.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/voidzero-update">Four months of VoidZero at Cloudflare: making the open-source JavaScript toolchain faster for all humans and agents</a></p>
+				</td>
+				<td>
+					<p>Since joining Cloudflare, VoidZero has delivered more than 80 releases across the Vite ecosystem, and its previously commercial Void platform will become fully open source.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/vinext-nextjs-on-vite">Next.js applications, powered by Vite: introducing Vinext 1.0</a></p>
+				</td>
+				<td>
+					<p>Vinext 1.0 turns an AI-built experiment into a production-ready, portable way to run Next.js applications on Vite.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/kitesurf-update">The road to the agentic browser: A Kitesurf update</a></p>
+				</td>
+				<td>
+					<p>Kitesurf, our Workers-based browser for agents, adds WebMCP support, faster DOM operations, broader web compatibility, and terminal-based rendering.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/how-fast-is-the-web">How fast is the web? Explore billions of real-user measurements with BEACON</a></p>
+				</td>
+				<td>
+					<p>BEACON makes billions of anonymized real-user performance measurements from 10,000 major websites available as a public BigQuery dataset.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/rust-workers-emscripten-target">Supporting native Rust in Workers with the new Emscripten target for wasm-bindgen</a></p>
+				</td>
+				<td>
+					<p>Experimental Emscripten target support lets developers bring more native Rust libraries and applications, including progress toward Tokio support, to Workers.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/introducing-the-cold-start">Introducing The Cold Start: pitch your startup live at Cloudflare Connect</a></p>
+				</td>
+				<td>
+					<p>The Cold Start gives five early-stage companies the opportunity to pitch live at Cloudflare Connect and compete for resources to help them grow.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h3>Tuesday, September 29 - Helping secure the agentic Internet</h3>
+<p>Technological progress is rapidly changing how we think about application security. We announced our intention to become a certificate authority, as well as how we’re preparing foundational Internet cryptography for the post-quantum era and adapting application security to counter AI-driven attacks.</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 192px;">
+		<tbody>
+			<tr>
+				<td>
+					<p><strong>What</strong></p>
+				</td>
+				<td>
+					<p><strong>In a sentence…</strong></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/cloudflare-certificate-authority">Building a certificate authority for the whole Internet</a></p>
+				</td>
+				<td>
+					<p>Twelve years after launching Universal SSL, Cloudflare announced its intention to become a public certificate authority (CA) and add resilience to free, automated certificate issuance.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/pq-ca-with-mtcs">Building a post-quantum certificate authority with Merkle Tree Certificates</a></p>
+				</td>
+				<td>
+					<p>Our planned CA will issue free Merkle Tree Certificates designed to make post-quantum authentication practical without imposing large certificate and handshake costs.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/ai-driven-cryptography-discovery">Using AI to chart a course for our post-quantum migration</a></p>
+				</td>
+				<td>
+					<p>CryptoLabe uses AI to find and classify cryptography across our codebase as Cloudflare works toward completing its post-quantum migration by 2029.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/ipsec-downgrade-protection">Preventing quantum downgrade attacks against IPsec</a></p>
+				</td>
+				<td>
+					<p>Cloudflare helped develop an IETF extension that authenticates the full IKEv2 transcript and prevents attackers from downgrading post-quantum IPsec tunnels.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/post-quantum-visibility">Is your domain using post-quantum encryption? Now you can see for yourself</a></p>
+				</td>
+				<td>
+					<p>HTTP Analytics, Log Explorer, and Logpush now show whether requests negotiated post-quantum key exchange, giving customers evidence they can inspect and report.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/application-profiles">Enforce positive security with Cloudflare Application Profiles</a></p>
+				</td>
+				<td>
+					<p>Application Profiles learns the expected structure of HTTP requests so customers can identify deviations and enforce what valid application traffic should look like.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/adaptive-ai-waf-testing">We tested our own WAF with frontier AI models. Here's what we found</a></p>
+				</td>
+				<td>
+					<p>An adaptive AI red-team system found WAF detection gaps across six attack categories, helping us improve normalization and managed rules for customers.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/threat-signals">Introducing Threat Signals: agentic skills for open-source threat intelligence, free for every Cloudflare account</a></p>
+				</td>
+				<td>
+					<p>Threat Signals turns open-source reporting into structured indicators and connects the context to WAF rules, while the Threat Events Platform expands to every account.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/ai-era-framework">Adaptive application security for the AI era: how Cloudflare connects code, traffic, and intelligence to stop attacks</a></p>
+				</td>
+				<td>
+					<p>Our application-security framework connects discovery, governance, runtime protection, investigation, and response in a continuous learning loop.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h3>Wednesday, September 30 - Powering the agent economy</h3>
+<p>With our announcements of Pay Per Use and the release of our Monetization Gateway in beta, we shared how we’re building support for a new economic model that empowers creators to monetize their content and services.</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 192px;">
+		<tbody>
+			<tr>
+				<td>
+					<p><strong>What</strong></p>
+				</td>
+				<td>
+					<p><strong>In a sentence…</strong></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/agentic-web">The Internet has a second audience</a></p>
+				</td>
+				<td>
+					<p>AI agent requests have grown rapidly, and our strategy helps creators see agents, set terms for access, and get paid when agents use their work.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/faster-agent-sandboxes">Cloudflare Containers, rebuilt to scale agent sandboxes</a></p>
+				</td>
+				<td>
+					<p>Containers now has faster startup, flexible image and instance selection, new scheduling controls, and filesystem snapshots for persistent agent workspaces.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/monetization-gateway-beta">Monetization Gateway beta: charge AI agents for consumption with HTTP 402</a></p>
+				</td>
+				<td>
+					<p>Monetization Gateway lets sellers put a price on resources behind Cloudflare and collect agent payments using HTTP 402 and x402.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/pay-per-use">Pay Per Use: when AI uses your work, you should get paid</a></p>
+				</td>
+				<td>
+					<p>Pay Per Use gives enrolled publishers usage reports, billing, and payouts when verified AI buyers use their content.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/simplifying-domains">Simplifying domains for people and agents</a></p>
+				</td>
+				<td>
+					<p>A new domain-search experience and expanded Registrar APIs make it easier for both people and agents to search, register, transfer, and manage domains.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/ai-model-overuse-user-insights">Identify AI model overuse with User Insights</a></p>
+				</td>
+				<td>
+					<p>AI Gateway User Insights identifies tasks, model fit, and overuse, so teams can understand where a smaller or less expensive model may work.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/real-time-issue-detection">Detect and send production issues straight to your agent</a></p>
+				</td>
+				<td>
+					<p>Issues groups Workers errors and sends the relevant stack traces, logs, and traces to coding agents or any webhook for faster investigation.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/auto-router">Cut your AI spend with AI Gateway's Auto Router</a></p>
+				</td>
+				<td>
+					<p>Auto Router classifies each request at the edge and sends it to a suitable model, reducing cost while preserving response quality.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/100-million-donations">Cloudflare Impact reaches $100 million in donations</a></p>
+				</td>
+				<td>
+					<p>Initiatives including Project Galileo, the Athenian Project, and Cloudflare for Campaigns have now delivered more than $100 million in donated services.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h3>Thursday, October 1 - Bringing more of the developer stack to Cloudflare</h3>
+<p>We expanded what is possible to achieve on Cloudflare’s platform with the general availability launch of Cloudflare Basin, our data analytics platform, the launch of K2, a durable serverless event stream, and the announcement of our new contest — inviting developers to build a Git platform designed for agentic development.</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 192px;">
+		<tbody>
+			<tr>
+				<td>
+					<p><strong>What</strong></p>
+				</td>
+				<td>
+					<p><strong>In a sentence…</strong></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/cloudflare-basin">Introducing Cloudflare Basin: an open, serverless data platform, now generally available</a></p>
+				</td>
+				<td>
+					<p>Basin is now generally available, giving developers a serverless platform built on Apache Iceberg and R2 for ingesting, managing, and querying large datasets.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/workers-ml-kem-ml-dsa-support">Support for modern cryptographic algorithms in Workers</a></p>
+				</td>
+				<td>
+					<p>Workers adds opt-in native Web Crypto support for ML-KEM and ML-DSA, giving developers post-quantum primitives without bundling their own implementations.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/ai-search-ga">AI Search is now generally available</a></p>
+				</td>
+				<td>
+					<p>AI Search reaches general availability with visual search, OCR for scanned PDFs, larger files, and support for any chat model.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/next-git-platform-on-cloudflare">We want you to build the next Git platform on Cloudflare</a></p>
+				</td>
+				<td>
+					<p>Artifacts enters open beta and a new competition invites developers to build a Git platform designed for the era of AI agents.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/cloudflare-k2-streams">Announcing Cloudflare K2: serverless event streams</a></p>
+				</td>
+				<td>
+					<p>K2 provides durable, ordered event streams on R2, separating producers and consumers without the operational overhead of managing broker clusters.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/managed-cloudflare-os">Cloudflare OS: your company's agent workspace, managed for you</a></p>
+				</td>
+				<td>
+					<p>Cloudflare OS provides an agent workspace connected to an organization’s data and systems, with a waitlist open for fully managed deployments.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/workers-kv-instant">Introducing Workers KV Instant - powered by Quicksilver</a></p>
+				</td>
+				<td>
+					<p>Workers KV Instant delivers sub-two-millisecond p99 reads and fast global replication across more than 300 locations using the familiar Workers KV API.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/sovereign-ai-choice-one-year-later">One year later: Sovereign AI and the fight for choice</a></p>
+				</td>
+				<td>
+					<p>We are expanding local open-source model choice and model-agnostic security tools, so nations can pursue AI sovereignty without isolation.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/clef-decision-models">Introducing Clef: our open-source decision models, and new RL fine-tuning platform</a></p>
+				</td>
+				<td>
+					<p>Clef and Clef-flash are open-source decision models for fast classification and agent workflows, accompanied by a platform for reinforcement-learning fine-tuning.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h3>Friday, October 2 - Delivering a faster, simpler Internet for everyone</h3>
+<p>We wrapped up the week with major updates to Cloudflare Observability, alongside adding Cloudflare Traces, network performance improvements that make Cloudflare faster, and an announcement on how we’re supporting civil society organizations.</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 192px;">
+		<tbody>
+			<tr>
+				<td>
+					<p><strong>What</strong></p>
+				</td>
+				<td>
+					<p><strong>In a sentence…</strong></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/one-observability-platform">8 major updates to Cloudflare Observability</a></p>
+				</td>
+				<td>
+					<p>Eight updates bring logs, traces, analytics, alerts, dashboards, querying, and telemetry export into one observability platform with simpler pricing.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/cloudflare-tracing">Introducing Cloudflare Traces: follow requests through our entire platform</a></p>
+				</td>
+				<td>
+					<p>Cloudflare Traces provides request-level visibility across security rules, transformations, cache, Workers, services, and origins without requiring an agent or SDK.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/enterprise-for-all-update">Updates on our pledge to make Cloudflare features accessible to everyone</a></p>
+				</td>
+				<td>
+					<p>One year after our pledge, Logpush, multi-account governance, higher platform limits, and other capabilities are available to more customers across plans.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/announcing-cloudflare-ohttp-gateway">Announcing Cloudflare OHTTP Gateway - expanding access to Cloudflare's privacy-preserving infrastructure</a></p>
+				</td>
+				<td>
+					<p>A self-serve OHTTP Gateway enters closed beta, while Privacy Gateway becomes Cloudflare OHTTP Relay to distinguish the two roles.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/account-abuse-protection-dashboard">Follow the thread: a new dashboard to investigate account abuse</a></p>
+				</td>
+				<td>
+					<p>Account Abuse Protection uses stateful analysis and privacy-preserving Hashed User IDs to help teams investigate credential stuffing and fake-account creation.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/protected-quick-tunnels">Protected Quick Tunnels: simple accountless authentication for your next dev project</a></p>
+				</td>
+				<td>
+					<p>Quick Tunnels now support email authentication, letting developers share a local application with selected people or domains without requiring Cloudflare accounts.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/civil-society-automation">Building for good: How civil society organizations are automating on Cloudflare</a></p>
+				</td>
+				<td>
+					<p>Civil society organizations are using Cloudflare’s developer platform to automate and scale work that protects human rights and the public interest.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/network-performance-birthday-week-2026">2026 Birthday week: network performance update</a></p>
+				</td>
+				<td>
+					<p>Using an expanded real-user measurement methodology, Cloudflare now ranks as the fastest provider across 74% of the top 1,000 networks.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/introducing-web-search-api">Introducing Web Search API via AI Gateway</a></p>
+				</td>
+				<td>
+					<p>AI Gateway’s Web Search API brings current web context from multiple providers into model calls through REST APIs, Workers bindings, or customer-managed keys.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://blog.cloudflare.com/streamline">Streamline: custom video pipelines with Cloudflare Stream and Workers</a></p>
+				</td>
+				<td>
+					<p>Streamline is an open-source example for building continuous video pipelines by combining Workers, Durable Objects, and a containerized media engine.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h3>Building the Internet’s next chapter together</h3>
+<p>Across this week’s announcements, we kept returning to a consistent theme: the Internet should continue to open up more opportunities for people to create, contribute, and succeed. That means open tools developers can shape, security that keeps pace with new threats, a fairer exchange between agents and the people whose work they use, and infrastructure designed for the agentic Internet.</p>
+<p>For 16 years, we have been building alongside developers, creators, researchers, customers, partners, and open-source communities. Your ideas, feedback, and willingness to challenge us have shaped Cloudflare, and that collaboration matters now more than ever.</p>
