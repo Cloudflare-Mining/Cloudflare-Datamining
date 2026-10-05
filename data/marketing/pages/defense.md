@@ -16,7 +16,21 @@ Cloudflare's global platform advances Zero Trust and network services, enhances 
 
 ![Illustration of the Pentagon being shielded and protected ](https://cf-assets.www.cloudflare.com/v2/image/la869e4k397bja5195oepidf3j/public_sector_pentagon-image.svg)
 
-![radar and graphs](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/pqa1fib2uh7t5b81clooblij6v/radar-image.jpg)
+![\[Illustration\] TSM Award](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/ep127pm1b51vt06oh3sku0jl1a/illustration_TSM-Awardable-Badge-Black-White-portrait.png)
+
+## Accelerating AI Velocity
+
+![ Icon squared - Cloudflare-access](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/qt0tp7i5i91kf3l3gbqt8dt045/icon_tile_cloudflare-access.png)
+
+###### Access
+
+The Tradewinds Solutions Marketplace (TSM) is the premier offering of Tradewinds, the Department of War's (DoW's) suite of tools and services designed to accelerate the procurement and adoption of AI/ML, digital, and data analytics capabilities.
+
+![Consolidation outline - Tile](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/8csd0esbg53sv4i53i33aiia0q/icon_tile_consolidation.png)
+
+###### Awardable Solution
+
+Cloudflare's awardable solution video has been assessed through complex scoring rubrics and DFARS/FAR competitive procedures (via a Government Selecting Official). Cloudflare offerings are available to Government Customers with a TSM account. Government Customers can create an account at [www.tradewindai.com](http://www.tradewindai.com). Tradewinds is housed in the DoW's Chief Digital and Artificial Intelligence Office.
 
 CONTRACT AWARD
 
@@ -25,6 +39,8 @@ CONTRACT AWARD
 The Scalable Homeland Innovative Enterprise Layered Defense (SHIELD) indefinite-delivery/indefinite-quantity (IDIQ) contract requires key technology partners to help MDA bring innovative capabilities to the warfighter with unprecedented speed and agility.
 
 At Cloudflare, we're ready to accelerate MDA's mission with our high-performance global network, advanced cyber and AI solutions, and scalable developer platform.
+
+![radar and graphs](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/pqa1fib2uh7t5b81clooblij6v/radar-image.jpg)
 
 ## Accomplish mission priorities while readying for the future
 
@@ -70,7 +86,7 @@ FEDRAMP® High Authorized
 
 ![FedRAMP-WAN-Backbone-Orange](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/n00s7r2mfp69pcbtcsshn2am7k/FedRAMP-WAN-Backbone-Orange.png)
 
-Spanning 335 cities in 125 countries and growing, Cloudflare is within 50ms of 95% of the world's Internet-connected population.
+Spanning 335+ cities in 125 countries and growing, Cloudflare is within 50ms of 95% of the world's Internet-connected population.
 
   
 

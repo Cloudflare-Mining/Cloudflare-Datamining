@@ -10,6 +10,24 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+October 5, 2026 [<h2>Everything we launched during Birthday Week 2026</h2>](https://blog.cloudflare.com/birthday-week-2026-wrap-up/)
+
+We celebrated our 16th birthday with 46 announcements across open source, post-quantum security, AI agents, and developer platform upgrades. Here's a day-by-day roundup of everything we shipped.
+
+![Carlos Armada](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GNGVRDMTAZC97MJZE2EC.webp&w=64&h=64&f=webp&fit=cover&position=center)![Meagan Gamache](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M45MAC0G939A1CZ2RDDM9NN1.01M45MACNHN2Z5AH4FH2RK2MN8.webp&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Carlos Armada](https://blog.cloudflare.com/author/carlos-armada/) and  [Meagan Gamache](https://blog.cloudflare.com/author/meagan-gamache/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M45M6F7F4N2RT9KMZ0Q5DRQT.png&w=1200&h=675&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/birthday-week-2026-wrap-up/)
+
+October 5, 2026 [<h2>One year later: the power of 1.1.1.1 interns</h2>](https://blog.cloudflare.com/one-year-later-1111-interns/)
+
+A year after announcing our goal to hire 1,111 interns, more than 750 early-career builders have shipped real products across 48 teams at Cloudflare. From Birthday Week launches to post-quantum security, our interns prove that AI amplifies human potential instead of replacing it.
+
+![Kelly Russell](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494JQK35CVQWMJ4V23VS3X.png&w=64&h=64&f=webp&fit=cover&position=center)![Allan Leinwand](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M34XRD7C14XHZZJXWJACXPR3.01M34XRDQ339N8GQ50DZVN5HY3.webp&w=64&h=64&f=webp&fit=cover&position=center)![Judy Cheong](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45A5M2R0E27EDJQSRPDGEH.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Kelly Russell](https://blog.cloudflare.com/author/kelly-russell/),  [Allan Leinwand](https://blog.cloudflare.com/author/allan-leinwand/), and  [Judy Cheong](https://blog.cloudflare.com/author/judy-cheong/)
+
 October 2, 2026 [<h2>8 major updates to Cloudflare Observability</h2>](https://blog.cloudflare.com/one-observability-platform/)
 
 Cloudflare is launching eight major updates that bring logs, traces, analytics, alerts, dashboards, querying, and telemetry export into one observability platform, with simpler and more predictable pricing.
@@ -17,8 +35,6 @@ Cloudflare is launching eight major updates that bring logs, traces, analytics, 
 ![Nevi Shah](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3YB9DTTT6JXZABS5PH7NZQV.01M3YB9FY7HP0VT0NC74Y1H4PV.png&w=64&h=64&f=webp&fit=cover&position=center)![Arti Kumar](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M34XXNJVWHHM15G3EXN2RY8Z.01M34XXP3AMSX2VXGSTBADXMYW.webp&w=64&h=64&f=webp&fit=cover&position=center)![Tom Benn](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3Y5GWFPMGBSF0DAHH1QGW35.01M3Y5GX41Q98SWFMQ8VS3TMDP.png&w=64&h=64&f=webp&fit=cover&position=center)![Sahidya Devadoss](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R5PW6B560N8E2HCG7X07.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Nevi Shah](https://blog.cloudflare.com/author/nevi/),  [Arti Kumar](https://blog.cloudflare.com/author/arti-kumar/),  [Tom Benn](https://blog.cloudflare.com/author/tom-benn/), and  [Sahidya Devadoss](https://blog.cloudflare.com/author/sahidya-devadoss/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XHE6D45CDHQVM71QYA6EEJ.01M3XHE6YHC44V1DZB0VG3DCGV.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/one-observability-platform/)
 
 October 2, 2026 [<h2>Streamline: custom video pipelines with Cloudflare Stream and Workers</h2>](https://blog.cloudflare.com/streamline/)
 
@@ -147,22 +163,6 @@ AI Search is now generally available. It embeds image pixels directly for visual
 ![Gabriel Massadas](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZJT71CZ6R57ZBVBWK0TT.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Nelson Duarte](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49P72CGQX08FQC903Q0E4F.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Ashish Vinodkumar](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SPWCTC1QQAVTDY6S99X3Z0.01M3SPWDEK4887CWK8WK6AVE6D.webp&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Gabriel Massadas](https://blog.cloudflare.com/author/gabriel-massadas/),  [Nelson Duarte](https://blog.cloudflare.com/author/nelson-duarte/), and  [Ashish Vinodkumar](https://blog.cloudflare.com/author/ashish-vinodkumar/)
-
-October 1, 2026 [<h2>Support for modern cryptographic algorithms in Workers</h2>](https://blog.cloudflare.com/workers-ml-kem-ml-dsa-support/)
-
-Cloudflare Workers is adding opt-in support for post-quantum-resistant algorithms ML-KEM and ML-DSA. You can try it today.
-
-![Thibault Meunier](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CG4C7M8Y2P7VRAYHW2RV.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Thibault Meunier](https://blog.cloudflare.com/author/thibault/)
-
-October 1, 2026 [<h2>Introducing Cloudflare Basin: an open, serverless data platform, now generally available</h2>](https://blog.cloudflare.com/cloudflare-basin/)
-
-Cloudflare Basin is built on Apache Iceberg and R2 Object Storage. With general availability, developers can ingest, manage, and query large datasets at scale without paying data egress fees.
-
-![Marc Selwan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455H274J0ZYJ6K4KHKJT25.webp&w=64&h=64&f=webp&fit=cover&position=center)![Micah Wylde](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48960E56E6QTQP000R72JC.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Marc Selwan](https://blog.cloudflare.com/author/marc-selwan/) and  [Micah Wylde](https://blog.cloudflare.com/author/micah-wylde/)
 
 Load more
 
