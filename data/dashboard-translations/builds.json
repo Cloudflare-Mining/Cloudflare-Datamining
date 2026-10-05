@@ -289,7 +289,6 @@
 	"builds.forms.triggers.defaults.non_production_branch_trigger_name": "Deploy non-production branches",
 	"builds.forms.triggers.submit": "Connect",
 	"builds.forms.triggers.errors.not_ready": "Form submitted before all dependencies loaded",
-	"builds.forms.triggers.errors.token_dependencies_unavailable": "Unable to load the data required to create an API token. Cancel and try again.",
 	"builds.forms.triggers.errors.token_cleanup_failed": "The build token could not be created, and the API token may require manual deletion. Delete the unused token from your API Tokens page before trying again.",
 	"builds.forms.triggers.errors.failed_to_delete_env_vars": "An error occurred while syncing your environment variables. The following variables failed to be deleted: %{commaSeparatedEnvVarList}. Please try again.",
 	"builds.forms.triggers.errors.failed_internal": "An internal error prevented the form from submitting. Please try again.",
