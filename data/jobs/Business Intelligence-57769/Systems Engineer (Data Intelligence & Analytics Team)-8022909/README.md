@@ -3,71 +3,32 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Location:</strong></p>
+<p><strong>Available Locations: Bangalore</strong></p>
+<p><strong>About the team</strong></p>
+<p>The Data Intelligence &amp; Analytics&nbsp; team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service data applications to fuel existing and new business critical initiatives.</p>
+<p><strong>About the role</strong></p>
+<p>We are looking for a Systems Engineer to join our Bangalore team to scale our development efforts on Platform Tooling initiatives. You will work on building data application tools and frameworks which empowers our Internal Teams. You&nbsp; will work closely with the Data Engineers on the team to add new features and maintain our data pipelines written in Go. You can expect to interact with various languages and technologies including, but not limited to Go, React, and Clickhouse.</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Austin, TX</li>
-	<li>Atlanta, GA</li>
-	<li>Denver, CO</li>
-	<li>Seattle</li>
-	<li>Washington DC</li>
+	<li>Design and implement key features of our internal applications</li>
+	<li>Work closely with a cross functional team to design features and solutions that solve critical business problems</li>
+	<li>Contribute in improving an evolving platform architecture for scalability, observability and reliability</li>
+	<li>Continuously involved in knowledge sharing and mentorship</li>
 </ul>
-<p><strong>Job Title: </strong>Senior Systems Engineer, Cloudflare Tunnel</p>
-<p><strong>Role Summary:</strong></p>
-<p>As a <strong>Senior Systems Engineer</strong> on the Cloudflare Tunnel team, you will drive the technical vision and architect for future scale, ensuring our product securely connects any machine to the Cloudflare network. You will be responsible for the strategic design of systems across our high-performance global edge network and microservice clusters, providing cross-functional influence to ensure long-term stability and performance. In this leadership role, you will guide capacity planning and the development of next-generation features for Cloudflare Tunnel, Mesh and Zero Trust Network.</p>
-<p>You will join a team of bright, hard-working, and supportive engineers who are passionate about their craft, and you will be comfortable operating in a fast-paced but sane work environment.</p>
-<p><strong>Role Responsibilities</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Lead the architecture and implementation of complex software systems that comprise Cloudflare Tunnel, including the cross-platform, open-source client and high-performance edge services.</li>
-	<li>Participate in all stages of the software development lifecycle, from designing and documenting systems to writing code, automated tests, and monitoring production deployments.</li>
-	<li>Strategically influence and collaborate with cross-functional stakeholders, including security, network engineering, SRE, and product management, to design and scale technical solutions.</li>
-	<li>Review work from your peers throughout all stages of the development lifecycle to ensure high-quality, maintainable code.</li>
-	<li>Foster a culture of technical excellence through mentorship, proactive code reviews, and establishing engineering standards across the team to ensure high-quality, maintainable code.</li>
-	<li>Debug issues in complex systems and contribute to the maintenance and improvement of operational health.</li>
-	<li>Drive the long-term technical roadmap and identify opportunities for system-wide improvements, ensuring our architecture remains resilient as we scale.</li>
-	<li>Work with a wide range of technologies and programming languages, including Go, Rust, and Typescript, as well as various databases (SQL and No-SQL), Docker, and Kubernetes.</li>
+	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields&nbsp;</li>
+	<li>Experience working with Go, Python, Java, or equivalent programming languages</li>
+	<li>Knowledge of SQL and common relational database systems such as PostgreSQL and MySQL</li>
+	<li>Experience with CI/CD, Gitlab CI</li>
+	<li>Excellent communication &amp; problem solving skills&nbsp;</li>
+	<li>Ability to collaborate with cross functional teams and work through ambiguous business requirements</li>
 </ul>
-<p><strong>Role Requirements</strong></p>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>5+ years of experience in backend software development with a focus on building&nbsp; secure and highly available distributed systems.</li>
-	<li>Strong programming skills in Go, Rust, C++, or a similar systems-level language.</li>
-	<li>Knowledge of modern Unix/Linux development and runtime environments.</li>
-	<li>Grasp of networking protocols in Layers 3-7 of the OSI Model and experience with network programming.</li>
-	<li>Familiarity with microservices and APIs, including RESTful design.</li>
-	<li>Basic understanding of software security and encryption principles.</li>
-	<li>Ability to debug and troubleshoot issues in complex distributed systems.</li>
-	<li>Experience with monitoring and logging tools like Prometheus and Grafana.</li>
-	<li>Experience with containerization and orchestration technologies, such as Docker and Kubernetes.</li>
-	<li>Strong interpersonal and communication skills, demonstrating empathy, teamwork and a sense of ownership.</li>
-</ul>
-<p>&nbsp;</p>
-<p><strong>Compensation</strong><br><strong>Compensation may be adjusted depending on work location.</strong></p>
-<p><strong>For Denver based hires: Estimated annual salary of $168,000 - $231,000.</strong></p>
-<p><strong>For Washington and Washington DC based hires: Estimated annual salary of $185,000 - $254,000.</strong></p>
-<p><strong>Application Deadline: December 1, 2026</strong></p>
-<p><strong>Equity</strong><br>This role is eligible to participate in Cloudflare's equity plan.</p>
-<p><strong>Benefits</strong><br>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S. &nbsp;</p>
-<ul>
-	<li>Health &amp; Welfare Benefits &nbsp;</li>
-	<li>Medical/Rx Insurance &nbsp;</li>
-	<li>Dental Insurance &nbsp;</li>
-	<li>Vision Insurance &nbsp;</li>
-	<li>Flexible Spending Accounts &nbsp;</li>
-	<li>Commuter Spending Accounts &nbsp;</li>
-	<li>Fertility &amp; Family Forming Benefits &nbsp;</li>
-	<li>On-demand mental health support and Employee Assistance Program &nbsp;</li>
-	<li>Global Travel Medical Insurance &nbsp;</li>
-</ul>
-<p><strong>Financial Benefits &nbsp;</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance &nbsp;</li>
-	<li>Life &amp; Accident Insurance &nbsp;</li>
-	<li>401(k) Retirement Savings Plan &nbsp;</li>
-	<li>Employee Stock Participation Plan &nbsp;</li>
-</ul>
-<p><strong>Time Off </strong>&nbsp;</p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave &nbsp;</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>Familiarity with container based deployments such as Docker &amp; Kubernetes</li>
+	<li>Familiarity with Google Cloud Platform or something similar</li>
+	<li>Familiarity with Javascript, Typescript, and React</li>
 </ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>

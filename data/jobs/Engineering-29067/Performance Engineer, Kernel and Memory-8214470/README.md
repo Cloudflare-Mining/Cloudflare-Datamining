@@ -3,71 +3,46 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Location:</strong></p>
+<h3>Available Locations</h3>
 <ul>
-	<li>Austin, TX</li>
-	<li>Atlanta, GA</li>
-	<li>Denver, CO</li>
-	<li>Seattle</li>
+	<li>Austin, US</li>
+	<li>New York, NY</li>
 	<li>Washington DC</li>
 </ul>
-<p><strong>Job Title: </strong>Senior Systems Engineer, Cloudflare Tunnel</p>
-<p><strong>Role Summary:</strong></p>
-<p>As a <strong>Senior Systems Engineer</strong> on the Cloudflare Tunnel team, you will drive the technical vision and architect for future scale, ensuring our product securely connects any machine to the Cloudflare network. You will be responsible for the strategic design of systems across our high-performance global edge network and microservice clusters, providing cross-functional influence to ensure long-term stability and performance. In this leadership role, you will guide capacity planning and the development of next-generation features for Cloudflare Tunnel, Mesh and Zero Trust Network.</p>
-<p>You will join a team of bright, hard-working, and supportive engineers who are passionate about their craft, and you will be comfortable operating in a fast-paced but sane work environment.</p>
-<p><strong>Role Responsibilities</strong></p>
+<h3><strong>About the Role</strong></h3>
+<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers approximately 25 million Internet properties, for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.&nbsp;</p>
+<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</p>
+<p><strong>About the Department</strong></p>
+<p>Cloudflare’s engineering teams build and maintain the systems and products that power our global platform. A global platform which is within approximately 50 milliseconds of about 95% of the Internet connected population, serving on average, over 46 million HTTP requests per second.</p>
+<p><strong>About the Team</strong></p>
+<p>Delivering this platform with high performance and efficiency depends on advanced Linux kernel and hardware capabilities, and that is where this team works.</p>
+<p>The Performance Team owns overall system and application performance across that fleet: resource optimization, instrumentation, and the tooling that lets us see what the hardware is actually doing. System memory sits alongside CPU cycles, network processing, and storage IOPS as a first-class resource, and how the kernel manages it is increasingly the thing that decides how hot we can safely run every machine we own.</p>
+<p>We work upstream first. Several of us maintain or regularly contribute to the Linux kernel, and our default is to fix problems in mainline rather than carry private patches. This role is built on that principle.</p>
+<p><strong>The problem you would own</strong></p>
+<p>Using memory efficiently is one of the highest-leverage problems we have. At our scale, how the kernel's memory-management subsystem behaves under pressure has direct consequences for both performance and cost. As DRAM prices climb, getting more out of the memory we already own is a real lever on infrastructure spend.</p>
+<p>Using custom low-overhead instrumentation on production servers, we have identified several scalability bottlenecks in the kernel memory layer that show up under real workloads. We are looking for an expert to take on these problems, fix them against production workloads, and drive the changes upstream. Solving them lifts efficiency and latency across the entire fleet rather than in one</p>
+<p>Place.</p>
+<p><strong>What you will do</strong></p>
 <ul>
-	<li>Lead the architecture and implementation of complex software systems that comprise Cloudflare Tunnel, including the cross-platform, open-source client and high-performance edge services.</li>
-	<li>Participate in all stages of the software development lifecycle, from designing and documenting systems to writing code, automated tests, and monitoring production deployments.</li>
-	<li>Strategically influence and collaborate with cross-functional stakeholders, including security, network engineering, SRE, and product management, to design and scale technical solutions.</li>
-	<li>Review work from your peers throughout all stages of the development lifecycle to ensure high-quality, maintainable code.</li>
-	<li>Foster a culture of technical excellence through mentorship, proactive code reviews, and establishing engineering standards across the team to ensure high-quality, maintainable code.</li>
-	<li>Debug issues in complex systems and contribute to the maintenance and improvement of operational health.</li>
-	<li>Drive the long-term technical roadmap and identify opportunities for system-wide improvements, ensuring our architecture remains resilient as we scale.</li>
-	<li>Work with a wide range of technologies and programming languages, including Go, Rust, and Typescript, as well as various databases (SQL and No-SQL), Docker, and Kubernetes.</li>
+	<li>Diagnose and fix performance and scalability bottlenecks in the Linux kernel memory-management subsystem, informed by real production telemetry at a scale few environments can offer.</li>
+	<li>Land your work upstream. We expect MM changes to go to mainline first and want you to keep doing the maintainership and review work that earns standing in the community.</li>
+	<li>Build and extend low-overhead kernel instrumentation (tracepoints, BPF, perf) so we keep measuring before we change, and prove the impact afterwards.</li>
+	<li>Partner with kernel, networking, storage, and product engineers across the company to turn observed system behavior into concrete MM improvements.</li>
+	<li>Set technical direction for how Cloudflare uses, tunes, and evolves kernel memory management as we push utilization higher.</li>
 </ul>
-<p><strong>Role Requirements</strong></p>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li>5+ years of experience in backend software development with a focus on building&nbsp; secure and highly available distributed systems.</li>
-	<li>Strong programming skills in Go, Rust, C++, or a similar systems-level language.</li>
-	<li>Knowledge of modern Unix/Linux development and runtime environments.</li>
-	<li>Grasp of networking protocols in Layers 3-7 of the OSI Model and experience with network programming.</li>
-	<li>Familiarity with microservices and APIs, including RESTful design.</li>
-	<li>Basic understanding of software security and encryption principles.</li>
-	<li>Ability to debug and troubleshoot issues in complex distributed systems.</li>
-	<li>Experience with monitoring and logging tools like Prometheus and Grafana.</li>
-	<li>Experience with containerization and orchestration technologies, such as Docker and Kubernetes.</li>
-	<li>Strong interpersonal and communication skills, demonstrating empathy, teamwork and a sense of ownership.</li>
+	<li>Deep expertise in the Linux kernel memory-management subsystem: the page allocator, virtual memory and memory mapping, reclaim, and the locking and concurrency that hold it together.</li>
+	<li>A track record of upstream Linux contribution, ideally including maintainership or sustained work in MM or an adjacent subsystem.</li>
+	<li>Strong systems programming in C, with the judgement to make high-risk changes to shared infrastructure safely.</li>
+	<li>Ability to dive deep into a complex codebase while keeping the fleet-wide picture in mind, and to own a problem and its outcome rather than a single patch.</li>
+	<li>Clear communication with engineers across many teams, since the symptoms of an MM problem usually show up far from the MM code.</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Compensation</strong><br><strong>Compensation may be adjusted depending on work location.</strong></p>
-<p><strong>For Denver based hires: Estimated annual salary of $168,000 - $231,000.</strong></p>
-<p><strong>For Washington and Washington DC based hires: Estimated annual salary of $185,000 - $254,000.</strong></p>
-<p><strong>Application Deadline: December 1, 2026</strong></p>
-<p><strong>Equity</strong><br>This role is eligible to participate in Cloudflare's equity plan.</p>
-<p><strong>Benefits</strong><br>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S. &nbsp;</p>
+<p><strong>Bonuses</strong></p>
 <ul>
-	<li>Health &amp; Welfare Benefits &nbsp;</li>
-	<li>Medical/Rx Insurance &nbsp;</li>
-	<li>Dental Insurance &nbsp;</li>
-	<li>Vision Insurance &nbsp;</li>
-	<li>Flexible Spending Accounts &nbsp;</li>
-	<li>Commuter Spending Accounts &nbsp;</li>
-	<li>Fertility &amp; Family Forming Benefits &nbsp;</li>
-	<li>On-demand mental health support and Employee Assistance Program &nbsp;</li>
-	<li>Global Travel Medical Insurance &nbsp;</li>
-</ul>
-<p><strong>Financial Benefits &nbsp;</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance &nbsp;</li>
-	<li>Life &amp; Accident Insurance &nbsp;</li>
-	<li>401(k) Retirement Savings Plan &nbsp;</li>
-	<li>Employee Stock Participation Plan &nbsp;</li>
-</ul>
-<p><strong>Time Off </strong>&nbsp;</p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave &nbsp;</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>Strong understanding of Linux kernel internals pertaining to memory management</li>
+	<li>Experience troubleshooting and resolving performance issues in large-scale distributed systems.</li>
+	<li>Experience with large scale configuration/deployment management.</li>
 </ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>

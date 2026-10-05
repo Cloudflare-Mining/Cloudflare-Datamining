@@ -3,71 +3,94 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Location:</strong></p>
+<p><strong>Technical Program Manager, Performance and Infrastructure – Engineering PMO</strong></p>
+<p>Cloudflare is seeking a highly skilled, self-motivated Technical Program Manager (TPM) to lead strategic, multi-quarter initiatives within our Performance and Infrastructure organization. As a vital link between Product, Engineering, Capacity Planning, Finance, and Reliability, you will drive a unified strategy from initial conception through to successful execution.</p>
+<p>In this role, you will be deeply involved in gathering requirements, defining deliverables, and reporting on progress. You will manage stakeholder expectations, proactively identify risks and dependencies, and ensure the delivery of predictable, high-impact outcomes.</p>
+<p>The ideal candidate is process-oriented yet remains flexible and iterative. You excel at navigating ambiguous technical challenges, fostering collaboration across teams, and asking the insightful questions necessary to drive stakeholders toward measurable results. This position requires a professional capable of managing complex tradeoffs and coordinating teams across global time zones.</p>
+<p><strong>Key Responsibilities</strong></p>
+<p>As a Senior Technical Program Manager (TPM), you will be responsible for a portfolio of foundational infrastructure initiatives, including program planning, execution cadence and leadership reporting and alignment. This role is a product-minded TPM position that combines technical program discipline with shaping program vision, customer needs, use cases, success measures, and roadmap tradeoffs. This role requires a strong blend of technical acumen, strategic thinking, and organizational leadership.</p>
+<h3><strong>Program and Portfolio Leadership</strong></h3>
 <ul>
-	<li>Austin, TX</li>
-	<li>Atlanta, GA</li>
-	<li>Denver, CO</li>
-	<li>Seattle</li>
-	<li>Washington DC</li>
+	<li>
+		<p><strong>Strategic Planning:</strong> Lead execution for key initiatives, focusing on Infrastructure Efficiency and Engineering Reliability.</p>
+	</li>
+	<li>
+		<p><strong>Leadership Alignment:</strong> Partner with Product and Engineering leaders to establish goals, metrics, and decision frameworks.</p>
+	</li>
+	<li>
+		<p><strong>Portfolio Visibility:</strong> Maintain program plans, roadmaps, dependency maps, and executive status reports.</p>
+	</li>
+	<li>
+		<p><strong>Cross-Functional Alignment:</strong> Align Product, Engineering, Infrastructure, Capacity, Data, Finance, Ops, and Security teams.</p>
+	</li>
+	<li>
+		<p><strong>Decision Management:</strong> Identify tradeoffs early, document decisions, and manage escalations to resolution.</p>
+	</li>
 </ul>
-<p><strong>Job Title: </strong>Senior Systems Engineer, Cloudflare Tunnel</p>
-<p><strong>Role Summary:</strong></p>
-<p>As a <strong>Senior Systems Engineer</strong> on the Cloudflare Tunnel team, you will drive the technical vision and architect for future scale, ensuring our product securely connects any machine to the Cloudflare network. You will be responsible for the strategic design of systems across our high-performance global edge network and microservice clusters, providing cross-functional influence to ensure long-term stability and performance. In this leadership role, you will guide capacity planning and the development of next-generation features for Cloudflare Tunnel, Mesh and Zero Trust Network.</p>
-<p>You will join a team of bright, hard-working, and supportive engineers who are passionate about their craft, and you will be comfortable operating in a fast-paced but sane work environment.</p>
-<p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li>Lead the architecture and implementation of complex software systems that comprise Cloudflare Tunnel, including the cross-platform, open-source client and high-performance edge services.</li>
-	<li>Participate in all stages of the software development lifecycle, from designing and documenting systems to writing code, automated tests, and monitoring production deployments.</li>
-	<li>Strategically influence and collaborate with cross-functional stakeholders, including security, network engineering, SRE, and product management, to design and scale technical solutions.</li>
-	<li>Review work from your peers throughout all stages of the development lifecycle to ensure high-quality, maintainable code.</li>
-	<li>Foster a culture of technical excellence through mentorship, proactive code reviews, and establishing engineering standards across the team to ensure high-quality, maintainable code.</li>
-	<li>Debug issues in complex systems and contribute to the maintenance and improvement of operational health.</li>
-	<li>Drive the long-term technical roadmap and identify opportunities for system-wide improvements, ensuring our architecture remains resilient as we scale.</li>
-	<li>Work with a wide range of technologies and programming languages, including Go, Rust, and Typescript, as well as various databases (SQL and No-SQL), Docker, and Kubernetes.</li>
+	<li>
+		<p><strong>Customer Representation:</strong> Represent internal technical users and integrate their workflows into program planning.</p>
+	</li>
 </ul>
-<p><strong>Role Requirements</strong></p>
+<h3><strong>Infrastructure Efficiency</strong></h3>
 <ul>
-	<li>5+ years of experience in backend software development with a focus on building&nbsp; secure and highly available distributed systems.</li>
-	<li>Strong programming skills in Go, Rust, C++, or a similar systems-level language.</li>
-	<li>Knowledge of modern Unix/Linux development and runtime environments.</li>
-	<li>Grasp of networking protocols in Layers 3-7 of the OSI Model and experience with network programming.</li>
-	<li>Familiarity with microservices and APIs, including RESTful design.</li>
-	<li>Basic understanding of software security and encryption principles.</li>
-	<li>Ability to debug and troubleshoot issues in complex distributed systems.</li>
-	<li>Experience with monitoring and logging tools like Prometheus and Grafana.</li>
-	<li>Experience with containerization and orchestration technologies, such as Docker and Kubernetes.</li>
-	<li>Strong interpersonal and communication skills, demonstrating empathy, teamwork and a sense of ownership.</li>
+	<li>
+		<p><strong>Utilization Insights:</strong> Establish fleet-wide reporting for resource usage (CPU, bandwidth, memory, storage I/O, and RPS) to inform capacity planning and cost-efficiency strategies. Build automations and AI agents to handle routine program administration at scale.</p>
+	</li>
+	<li>
+		<p><strong>Strategic Alignment:</strong> Coordinate shared dependencies across Infrastructure Engineering, Capacity Planning, Traffic Engineering, and Network Infrastructure workstreams where resource management and tracking intersect.</p>
+	</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Compensation</strong><br><strong>Compensation may be adjusted depending on work location.</strong></p>
-<p><strong>For Denver based hires: Estimated annual salary of $168,000 - $231,000.</strong></p>
-<p><strong>For Washington and Washington DC based hires: Estimated annual salary of $185,000 - $254,000.</strong></p>
-<p><strong>Application Deadline: December 1, 2026</strong></p>
-<p><strong>Equity</strong><br>This role is eligible to participate in Cloudflare's equity plan.</p>
-<p><strong>Benefits</strong><br>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S. &nbsp;</p>
+<h3><strong>Engineering Reliability&nbsp;</strong></h3>
 <ul>
-	<li>Health &amp; Welfare Benefits &nbsp;</li>
-	<li>Medical/Rx Insurance &nbsp;</li>
-	<li>Dental Insurance &nbsp;</li>
-	<li>Vision Insurance &nbsp;</li>
-	<li>Flexible Spending Accounts &nbsp;</li>
-	<li>Commuter Spending Accounts &nbsp;</li>
-	<li>Fertility &amp; Family Forming Benefits &nbsp;</li>
-	<li>On-demand mental health support and Employee Assistance Program &nbsp;</li>
-	<li>Global Travel Medical Insurance &nbsp;</li>
+	<li>
+		<p><strong>Program Ownership: </strong>Lead end-to-end chaos engineering, from test planning and execution to results publication.</p>
+	</li>
+	<li>
+		<p><strong>Execution &amp; Readiness: </strong>Coordinate readiness reviews, go/no-go decisions, and safe execution of production resilience tests.</p>
+	</li>
+	<li>
+		<p><strong>Tracking &amp; Reporting: </strong>Track remediation, evaluate program impact, and maintain roadmaps, dashboards, and runbooks.</p>
+	</li>
 </ul>
-<p><strong>Financial Benefits &nbsp;</strong></p>
+<p><strong>Desirable Skills and Knowledge</strong></p>
 <ul>
-	<li>Short and Long Term Disability Insurance &nbsp;</li>
-	<li>Life &amp; Accident Insurance &nbsp;</li>
-	<li>401(k) Retirement Savings Plan &nbsp;</li>
-	<li>Employee Stock Participation Plan &nbsp;</li>
-</ul>
-<p><strong>Time Off </strong>&nbsp;</p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave &nbsp;</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>
+		<p>BS+ in Computer Science, Information Technology, Engineering, or a related field, or equivalent experience.</p>
+	</li>
+	<li>
+		<p>5+ years of technical program management experience, preferably in infrastructure, reliability, performance, data platforms, distributed systems, or large-scale engineering environments.</p>
+	</li>
+	<li>
+		<p>Strong technical fluency with infrastructure systems, telemetry/observability, reliability practices (SLO/SLIs), capacity planning, data pipelines, traffic management, progressive rollouts, or blast-radius reduction.</p>
+	</li>
+	<li>
+		<p>Proven experience partnering with Product and Engineering to clarify vision, represent internal customer workflows, define use cases, prioritize requirements, and measure success.</p>
+	</li>
+	<li>
+		<p>Ability to create realistic project plans, manage dependencies, and oversee execution to meet commitments and deliver with predictability.</p>
+	</li>
+	<li>
+		<p>Excellent communication skills, with the ability to tailor technical complexity for diverse audiences, from engineering teams to executive leadership.</p>
+	</li>
+	<li>
+		<p>Experience working across multiple time zones and multiple cross-functional teams.</p>
+	</li>
+	<li>
+		<p>Fluent with Confluence, Jira, dashboards, and project planning tools.</p>
+	</li>
+	<li>
+		<p>Hands-on experience or a strong competency in leveraging AI productivity tools and development platforms to automate routine program administration, with rigorous human-in-the-loop review of AI output</p>
+	</li>
+	<li>
+		<p>Comfortable managing tight deadlines, changing priorities, and ambiguity</p>
+	</li>
+	<li>
+		<p>Experience with various development and delivery methodologies (Agile, Waterfall, Kaizen, Scrum, or hybrid approaches).</p>
+	</li>
+	<li>
+		<p>Ability to bring structure to ambiguity, act as a self-starter, and drive issues to resolution with empathy and sound judgment.</p>
+	</li>
 </ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>

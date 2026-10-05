@@ -3,70 +3,64 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Location:</strong></p>
+<p><strong>Available Locations:&nbsp;</strong></p>
 <ul>
-	<li>Austin, TX</li>
-	<li>Atlanta, GA</li>
-	<li>Denver, CO</li>
-	<li>Seattle</li>
-	<li>Washington DC</li>
+	<li><strong>Austin, TX</strong></li>
+	<li><strong>San Francisco, CA</strong></li>
 </ul>
-<p><strong>Job Title: </strong>Senior Systems Engineer, Cloudflare Tunnel</p>
-<p><strong>Role Summary:</strong></p>
-<p>As a <strong>Senior Systems Engineer</strong> on the Cloudflare Tunnel team, you will drive the technical vision and architect for future scale, ensuring our product securely connects any machine to the Cloudflare network. You will be responsible for the strategic design of systems across our high-performance global edge network and microservice clusters, providing cross-functional influence to ensure long-term stability and performance. In this leadership role, you will guide capacity planning and the development of next-generation features for Cloudflare Tunnel, Mesh and Zero Trust Network.</p>
-<p>You will join a team of bright, hard-working, and supportive engineers who are passionate about their craft, and you will be comfortable operating in a fast-paced but sane work environment.</p>
-<p><strong>Role Responsibilities</strong></p>
+<p><strong>About the Team</strong></p>
+<p>The Business Operations team sits within the CFO organization and is responsible for core company KPI reporting, incubating new analytics capabilities, and leading or facilitating cross-functional initiatives to design and operationalize high-impact programs. We are looking for an individual with strong analytical horsepower to join the team to provide decision-making support to Cloudflare’s strategic initiatives. The ideal candidate is passionate about problem solving and insight discovery, as well as is excited about rolling the sleeves to prototype MVPs and building high quality processes and tooling that scale with our rapid growth.</p>
+<p><strong>What you'll do&nbsp;</strong></p>
 <ul>
-	<li>Lead the architecture and implementation of complex software systems that comprise Cloudflare Tunnel, including the cross-platform, open-source client and high-performance edge services.</li>
-	<li>Participate in all stages of the software development lifecycle, from designing and documenting systems to writing code, automated tests, and monitoring production deployments.</li>
-	<li>Strategically influence and collaborate with cross-functional stakeholders, including security, network engineering, SRE, and product management, to design and scale technical solutions.</li>
-	<li>Review work from your peers throughout all stages of the development lifecycle to ensure high-quality, maintainable code.</li>
-	<li>Foster a culture of technical excellence through mentorship, proactive code reviews, and establishing engineering standards across the team to ensure high-quality, maintainable code.</li>
-	<li>Debug issues in complex systems and contribute to the maintenance and improvement of operational health.</li>
-	<li>Drive the long-term technical roadmap and identify opportunities for system-wide improvements, ensuring our architecture remains resilient as we scale.</li>
-	<li>Work with a wide range of technologies and programming languages, including Go, Rust, and Typescript, as well as various databases (SQL and No-SQL), Docker, and Kubernetes.</li>
+	<li>Work on complex problems: identify root causes of the challenge and/or underlying business drivers, execute in-depth analyses to translate data into meaningful insights and/or repeatable gadgets or processes&nbsp;</li>
+	<li>Lead projects through the full cycle: from initial scoping, solution design, code execution, QA and to operationalization and enablement&nbsp;&nbsp;</li>
+	<li>Leverage latest AI technologies incl. Cloudflare OS, Developer Platform, emerging best practices to illustrate what can be possible in how we work</li>
+	<li>Synthesize audience relevant findings from the data to achieve alignments and support strategic decision making&nbsp;</li>
+	<li>Assess financial impact of new initiatives, identify approaches to risk mitigation, create forecast model on new metrics as needed&nbsp;</li>
+	<li>Work closely with Data Engineer and Data Science Team to track core KPIs, create visibility on new initiatives and its impact, and to streamline reporting processes as the projects mature&nbsp;</li>
+	<li>Provide ad-hoc analytical support to Finance &amp; Executive Leadership</li>
 </ul>
-<p><strong>Role Requirements</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>5+ years of experience in backend software development with a focus on building&nbsp; secure and highly available distributed systems.</li>
-	<li>Strong programming skills in Go, Rust, C++, or a similar systems-level language.</li>
-	<li>Knowledge of modern Unix/Linux development and runtime environments.</li>
-	<li>Grasp of networking protocols in Layers 3-7 of the OSI Model and experience with network programming.</li>
-	<li>Familiarity with microservices and APIs, including RESTful design.</li>
-	<li>Basic understanding of software security and encryption principles.</li>
-	<li>Ability to debug and troubleshoot issues in complex distributed systems.</li>
-	<li>Experience with monitoring and logging tools like Prometheus and Grafana.</li>
-	<li>Experience with containerization and orchestration technologies, such as Docker and Kubernetes.</li>
-	<li>Strong interpersonal and communication skills, demonstrating empathy, teamwork and a sense of ownership.</li>
+	<li>5+ years of Business Operations, Consulting, Investment Banking or&nbsp; Strategic Finance experience</li>
+	<li>Bachelor's degree, Data Science master or MBA a plus&nbsp;&nbsp;</li>
+	<li><strong>Strategic thinker with strong business acumen</strong>: ability to zoom in with good attention to detail while still keeping the big picture in mind; excel at translating data into actionable insights or programs&nbsp;</li>
+	<li><strong>Clear, concise and proactive communicator</strong>: ability to synthesize complex data or business problems into actionable information to drive results</li>
+	<li><strong>Have a strong modeling foundation: </strong>high proficiency in building thoughtful, complex and auditable business model and present the outcome in an easy-to-understand format</li>
+	<li><strong>Versatility</strong>: Results-oriented, self-starter, thrive in a fast-paced, high-growth environment; high proficiency in SQL or AI assisted coding required</li>
+	<li>Advanced/ working proficiency with English mandatory both written and verbal</li>
 </ul>
 <p>&nbsp;</p>
-<p><strong>Compensation</strong><br><strong>Compensation may be adjusted depending on work location.</strong></p>
-<p><strong>For Denver based hires: Estimated annual salary of $168,000 - $231,000.</strong></p>
-<p><strong>For Washington and Washington DC based hires: Estimated annual salary of $185,000 - $254,000.</strong></p>
-<p><strong>Application Deadline: December 1, 2026</strong></p>
-<p><strong>Equity</strong><br>This role is eligible to participate in Cloudflare's equity plan.</p>
-<p><strong>Benefits</strong><br>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S. &nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>Health &amp; Welfare Benefits &nbsp;</li>
-	<li>Medical/Rx Insurance &nbsp;</li>
-	<li>Dental Insurance &nbsp;</li>
-	<li>Vision Insurance &nbsp;</li>
-	<li>Flexible Spending Accounts &nbsp;</li>
-	<li>Commuter Spending Accounts &nbsp;</li>
-	<li>Fertility &amp; Family Forming Benefits &nbsp;</li>
-	<li>On-demand mental health support and Employee Assistance Program &nbsp;</li>
-	<li>Global Travel Medical Insurance &nbsp;</li>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $130,000 - $179,000</span></li>
 </ul>
-<p><strong>Financial Benefits &nbsp;</strong></p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
-	<li>Short and Long Term Disability Insurance &nbsp;</li>
-	<li>Life &amp; Accident Insurance &nbsp;</li>
-	<li>401(k) Retirement Savings Plan &nbsp;</li>
-	<li>Employee Stock Participation Plan &nbsp;</li>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Time Off </strong>&nbsp;</p>
+<p><strong>Financial Benefits</strong></p>
 <ul>
-	<li>Flexible paid time off covering vacation and sick leave &nbsp;</li>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
