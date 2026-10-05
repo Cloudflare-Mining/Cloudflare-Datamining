@@ -3,6 +3,16 @@
 `@cloudflare/streamline` provides the self-hosted Streamline session API and the
 Cloudflare Durable Object base class that coordinates media sessions.
 
+## Installation
+
+```bash
+npm install @cloudflare/streamline @cloudflare/containers
+```
+
+The package requires Node.js 22.12+ for tooling and a compatible
+`@cloudflare/containers` peer dependency. Applications configure and deploy their
+own Worker and Container image.
+
 ## Session Client
 
 The client models a media pipeline as a session-ID-fenced session. It uses short
@@ -62,10 +72,18 @@ Run the package contract tests:
 
 ```bash
 cd packages/cloudflare
-npm install
+npm ci
 npm test
 ```
 
 The package test suite installs the packed tarball in an isolated consumer before
 release. After publishing, applications can install the released package with
 their normal npm workflow.
+
+Use Node.js 24 and npm 11 for development and Changesets. Changes that affect
+consumers should include a changeset created with `npm run changeset` from this
+directory. GitHub Actions opens a release pull request and publishes to npm using
+trusted publishing after it is merged. See the repository's
+[contribution guide](https://github.com/cloudflare/streamline/blob/main/CONTRIBUTING.md)
+and [release guide](https://github.com/cloudflare/streamline/blob/main/docs/RELEASING.md)
+for details.
