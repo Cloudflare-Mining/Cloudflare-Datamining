@@ -281,6 +281,26 @@
 												"created_from_aisearch_wizard": {
 													"type": "boolean"
 												},
+												"created_from_emdash_plugin": {
+													"type": "object",
+													"additionalProperties": true,
+													"properties": {
+														"type": {
+															"type": "string",
+															"enum": [
+																"native",
+																"rest"
+															]
+														},
+														"version": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"type",
+														"version"
+													]
+												},
 												"worker_domain": {
 													"type": "string"
 												}
@@ -907,7 +927,8 @@
 				"schema": {
 					"type": "string",
 					"example": "my-ai-search"
-				}
+				},
+				"x-fern-parameter-name": "instance-id"
 			},
 			{
 				"name": "name",
@@ -917,7 +938,8 @@
 				"schema": {
 					"type": "string"
 				},
-				"example": "my-namespace"
+				"example": "my-namespace",
+				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"responses": {
@@ -1177,6 +1199,26 @@
 											"properties": {
 												"created_from_aisearch_wizard": {
 													"type": "boolean"
+												},
+												"created_from_emdash_plugin": {
+													"type": "object",
+													"additionalProperties": true,
+													"properties": {
+														"type": {
+															"type": "string",
+															"enum": [
+																"native",
+																"rest"
+															]
+														},
+														"version": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"type",
+														"version"
+													]
 												},
 												"worker_domain": {
 													"type": "string"
@@ -1781,13 +1823,11 @@
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-params": {
 			"id": {
-				"description": "AI Search instance ID.",
-				"flagName": "instance-id"
+				"description": "AI Search instance ID."
 			},
 			"name": {
 				"default": "default",
-				"description": "Namespace to use for this operation.",
-				"flagName": "namespace"
+				"description": "Namespace to use for this operation."
 			}
 		},
 		"x-forge-require-confirmation": "This operation permanently deletes the AI Search instance and all its indexed data."
@@ -2106,6 +2146,26 @@
 												"properties": {
 													"created_from_aisearch_wizard": {
 														"type": "boolean"
+													},
+													"created_from_emdash_plugin": {
+														"type": "object",
+														"additionalProperties": true,
+														"properties": {
+															"type": {
+																"type": "string",
+																"enum": [
+																	"native",
+																	"rest"
+																]
+															},
+															"version": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"type",
+															"version"
+														]
 													},
 													"worker_domain": {
 														"type": "string"
@@ -2947,6 +3007,26 @@
 												"created_from_aisearch_wizard": {
 													"type": "boolean"
 												},
+												"created_from_emdash_plugin": {
+													"type": "object",
+													"additionalProperties": true,
+													"properties": {
+														"type": {
+															"type": "string",
+															"enum": [
+																"native",
+																"rest"
+															]
+														},
+														"version": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"type",
+														"version"
+													]
+												},
 												"worker_domain": {
 													"type": "string"
 												}
@@ -3773,16 +3853,6 @@
 				}
 			},
 			{
-				"name": "namespace",
-				"in": "query",
-				"description": "Filter by namespace.",
-				"schema": {
-					"description": "Filter by namespace.",
-					"type": "string",
-					"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$"
-				}
-			},
-			{
 				"name": "order_by",
 				"in": "query",
 				"description": "Field to order results by.",
@@ -3817,7 +3887,8 @@
 				"schema": {
 					"type": "string"
 				},
-				"example": "my-namespace"
+				"example": "my-namespace",
+				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"responses": {
@@ -4036,6 +4107,26 @@
 												"properties": {
 													"created_from_aisearch_wizard": {
 														"type": "boolean"
+													},
+													"created_from_emdash_plugin": {
+														"type": "object",
+														"additionalProperties": true,
+														"properties": {
+															"type": {
+																"type": "string",
+																"enum": [
+																	"native",
+																	"rest"
+																]
+															},
+															"version": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"type",
+															"version"
+														]
 													},
 													"worker_domain": {
 														"type": "string"
@@ -4595,11 +4686,7 @@
 		"x-forge-params": {
 			"name": {
 				"default": "default",
-				"description": "Namespace to use for this operation.",
-				"flagName": "namespace"
-			},
-			"namespace": {
-				"hidden": true
+				"description": "Namespace to use for this operation."
 			}
 		}
 	},
@@ -4624,7 +4711,8 @@
 				"schema": {
 					"type": "string",
 					"example": "my-ai-search"
-				}
+				},
+				"x-fern-parameter-name": "instance-id"
 			},
 			{
 				"name": "name",
@@ -4634,7 +4722,8 @@
 				"schema": {
 					"type": "string"
 				},
-				"example": "my-namespace"
+				"example": "my-namespace",
+				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"responses": {
@@ -4894,6 +4983,26 @@
 											"properties": {
 												"created_from_aisearch_wizard": {
 													"type": "boolean"
+												},
+												"created_from_emdash_plugin": {
+													"type": "object",
+													"additionalProperties": true,
+													"properties": {
+														"type": {
+															"type": "string",
+															"enum": [
+																"native",
+																"rest"
+															]
+														},
+														"version": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"type",
+														"version"
+													]
 												},
 												"worker_domain": {
 													"type": "string"
@@ -5458,13 +5567,11 @@
 		"x-fern-sdk-method-name": "get",
 		"x-forge-params": {
 			"id": {
-				"description": "AI Search instance ID.",
-				"flagName": "instance-id"
+				"description": "AI Search instance ID."
 			},
 			"name": {
 				"default": "default",
-				"description": "Namespace to use for this operation.",
-				"flagName": "namespace"
+				"description": "Namespace to use for this operation."
 			}
 		}
 	},
@@ -5486,7 +5593,8 @@
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
-				}
+				},
+				"x-fern-parameter-name": "instance-id"
 			},
 			{
 				"name": "account_id",
@@ -5505,7 +5613,8 @@
 				"schema": {
 					"type": "string"
 				},
-				"example": "my-namespace"
+				"example": "my-namespace",
+				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"responses": {
@@ -5678,13 +5787,11 @@
 		"x-fern-sdk-method-name": "stats",
 		"x-forge-params": {
 			"id": {
-				"description": "AI Search instance ID.",
-				"flagName": "instance-id"
+				"description": "AI Search instance ID."
 			},
 			"name": {
 				"default": "default",
-				"description": "Namespace to use for this operation.",
-				"flagName": "namespace"
+				"description": "Namespace to use for this operation."
 			}
 		}
 	},
@@ -5934,6 +6041,26 @@
 								"properties": {
 									"created_from_aisearch_wizard": {
 										"type": "boolean"
+									},
+									"created_from_emdash_plugin": {
+										"type": "object",
+										"additionalProperties": true,
+										"properties": {
+											"type": {
+												"type": "string",
+												"enum": [
+													"native",
+													"rest"
+												]
+											},
+											"version": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"type",
+											"version"
+										]
 									},
 									"worker_domain": {
 										"type": "string"
@@ -6644,6 +6771,26 @@
 											"properties": {
 												"created_from_aisearch_wizard": {
 													"type": "boolean"
+												},
+												"created_from_emdash_plugin": {
+													"type": "object",
+													"additionalProperties": true,
+													"properties": {
+														"type": {
+															"type": "string",
+															"enum": [
+																"native",
+																"rest"
+															]
+														},
+														"version": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"type",
+														"version"
+													]
 												},
 												"worker_domain": {
 													"type": "string"
@@ -7920,6 +8067,46 @@
 					}
 				}
 			},
+			"402": {
+				"description": "Workers ai unified billing required.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
 			"404": {
 				"description": "Not Found",
 				"content": {
@@ -7961,7 +8148,17 @@
 				}
 			},
 			"429": {
-				"description": "Monthly query quota exceeded.",
+				"description": "Monthly query quota exceeded; Workers ai capacity temporarily exceeded",
+				"headers": {
+					"Retry-After": {
+						"description": "Seconds to wait before retrying.",
+						"schema": {
+							"description": "Seconds to wait before retrying.",
+							"type": "string",
+							"example": "10"
+						}
+					}
+				},
 				"content": {
 					"application/json": {
 						"schema": {
@@ -7970,19 +8167,109 @@
 								"errors": {
 									"type": "array",
 									"items": {
-										"properties": {
-											"code": {
-												"type": "number"
+										"anyOf": [
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7069
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
 											},
-											"message": {
-												"type": "string"
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7119
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
 											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
+										]
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"502": {
+				"description": "Ai gateway exception; Workers ai upstream error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"anyOf": [
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7033
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7120
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										]
 									}
 								},
 								"success": {
@@ -8570,7 +8857,17 @@
 				}
 			},
 			"429": {
-				"description": "Monthly query quota exceeded.",
+				"description": "Monthly query quota exceeded; Workers ai capacity temporarily exceeded",
+				"headers": {
+					"Retry-After": {
+						"description": "Seconds to wait before retrying.",
+						"schema": {
+							"description": "Seconds to wait before retrying.",
+							"type": "string",
+							"example": "10"
+						}
+					}
+				},
 				"content": {
 					"application/json": {
 						"schema": {
@@ -8579,19 +8876,109 @@
 								"errors": {
 									"type": "array",
 									"items": {
-										"properties": {
-											"code": {
-												"type": "number"
+										"anyOf": [
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7069
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
 											},
-											"message": {
-												"type": "string"
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7119
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
 											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
+										]
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"502": {
+				"description": "Ai gateway exception; Workers ai upstream error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"anyOf": [
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7033
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7120
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										]
 									}
 								},
 								"success": {
@@ -8661,7 +9048,8 @@
 				"schema": {
 					"type": "string"
 				},
-				"example": "my-namespace"
+				"example": "my-namespace",
+				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"requestBody": {
@@ -8895,6 +9283,26 @@
 								"properties": {
 									"created_from_aisearch_wizard": {
 										"type": "boolean"
+									},
+									"created_from_emdash_plugin": {
+										"type": "object",
+										"additionalProperties": true,
+										"properties": {
+											"type": {
+												"type": "string",
+												"enum": [
+													"native",
+													"rest"
+												]
+											},
+											"version": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"type",
+											"version"
+										]
 									},
 									"worker_domain": {
 										"type": "string"
@@ -9606,6 +10014,26 @@
 												"created_from_aisearch_wizard": {
 													"type": "boolean"
 												},
+												"created_from_emdash_plugin": {
+													"type": "object",
+													"additionalProperties": true,
+													"properties": {
+														"type": {
+															"type": "string",
+															"enum": [
+																"native",
+																"rest"
+															]
+														},
+														"version": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"type",
+														"version"
+													]
+												},
 												"worker_domain": {
 													"type": "string"
 												}
@@ -10254,8 +10682,7 @@
 			},
 			"name": {
 				"default": "default",
-				"description": "Namespace to use for this operation.",
-				"flagName": "namespace"
+				"description": "Namespace to use for this operation."
 			},
 			"source": {
 				"description": "R2 bucket name or HTTP(S) root website URL to index. When type is omitted, the source determines it."
@@ -10286,7 +10713,8 @@
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
-				}
+				},
+				"x-fern-parameter-name": "instance-id"
 			},
 			{
 				"name": "account_id",
@@ -10305,7 +10733,8 @@
 				"schema": {
 					"type": "string"
 				},
-				"example": "my-namespace"
+				"example": "my-namespace",
+				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"requestBody": {
@@ -10909,6 +11338,46 @@
 					}
 				}
 			},
+			"402": {
+				"description": "Workers ai unified billing required.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
 			"404": {
 				"description": "Not Found",
 				"content": {
@@ -10950,7 +11419,17 @@
 				}
 			},
 			"429": {
-				"description": "Monthly query quota exceeded.",
+				"description": "Monthly query quota exceeded; Workers ai capacity temporarily exceeded",
+				"headers": {
+					"Retry-After": {
+						"description": "Seconds to wait before retrying.",
+						"schema": {
+							"description": "Seconds to wait before retrying.",
+							"type": "string",
+							"example": "10"
+						}
+					}
+				},
 				"content": {
 					"application/json": {
 						"schema": {
@@ -10959,19 +11438,109 @@
 								"errors": {
 									"type": "array",
 									"items": {
-										"properties": {
-											"code": {
-												"type": "number"
+										"anyOf": [
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7069
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
 											},
-											"message": {
-												"type": "string"
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7119
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
 											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
+										]
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"502": {
+				"description": "Ai gateway exception; Workers ai upstream error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"anyOf": [
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7033
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7120
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										]
 									}
 								},
 								"success": {
@@ -11018,13 +11587,11 @@
 		"x-fern-sdk-method-name": "chat-completions",
 		"x-forge-params": {
 			"id": {
-				"description": "AI Search instance ID.",
-				"flagName": "instance-id"
+				"description": "AI Search instance ID."
 			},
 			"name": {
 				"default": "default",
-				"description": "Namespace to use for this operation.",
-				"flagName": "namespace"
+				"description": "Namespace to use for this operation."
 			}
 		}
 	},
@@ -11054,7 +11621,8 @@
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
-				}
+				},
+				"x-fern-parameter-name": "instance-id"
 			},
 			{
 				"name": "name",
@@ -11064,7 +11632,8 @@
 				"schema": {
 					"type": "string"
 				},
-				"example": "my-namespace"
+				"example": "my-namespace",
+				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"responses": {
@@ -11155,13 +11724,11 @@
 		"x-fern-sdk-method-name": "purge-cache",
 		"x-forge-params": {
 			"id": {
-				"description": "AI Search instance ID.",
-				"flagName": "instance-id"
+				"description": "AI Search instance ID."
 			},
 			"name": {
 				"default": "default",
-				"description": "Namespace to use for this operation.",
-				"flagName": "namespace"
+				"description": "Namespace to use for this operation."
 			}
 		}
 	},
@@ -11183,7 +11750,8 @@
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
-				}
+				},
+				"x-fern-parameter-name": "instance-id"
 			},
 			{
 				"name": "account_id",
@@ -11202,7 +11770,8 @@
 				"schema": {
 					"type": "string"
 				},
-				"example": "my-namespace"
+				"example": "my-namespace",
+				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"requestBody": {
@@ -11716,7 +12285,17 @@
 				}
 			},
 			"429": {
-				"description": "Monthly query quota exceeded.",
+				"description": "Monthly query quota exceeded; Workers ai capacity temporarily exceeded",
+				"headers": {
+					"Retry-After": {
+						"description": "Seconds to wait before retrying.",
+						"schema": {
+							"description": "Seconds to wait before retrying.",
+							"type": "string",
+							"example": "10"
+						}
+					}
+				},
 				"content": {
 					"application/json": {
 						"schema": {
@@ -11725,19 +12304,109 @@
 								"errors": {
 									"type": "array",
 									"items": {
-										"properties": {
-											"code": {
-												"type": "number"
+										"anyOf": [
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7069
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
 											},
-											"message": {
-												"type": "string"
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7119
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
 											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
+										]
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"502": {
+				"description": "Ai gateway exception; Workers ai upstream error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"anyOf": [
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7033
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7120
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										]
 									}
 								},
 								"success": {
@@ -11784,13 +12453,11 @@
 		"x-fern-sdk-method-name": "search",
 		"x-forge-params": {
 			"id": {
-				"description": "AI Search instance ID.",
-				"flagName": "instance-id"
+				"description": "AI Search instance ID."
 			},
 			"name": {
 				"default": "default",
-				"description": "Namespace to use for this operation.",
-				"flagName": "namespace"
+				"description": "Namespace to use for this operation."
 			},
 			"query": {
 				"description": "Text to search for.",
@@ -12037,6 +12704,26 @@
 								"properties": {
 									"created_from_aisearch_wizard": {
 										"type": "boolean"
+									},
+									"created_from_emdash_plugin": {
+										"type": "object",
+										"additionalProperties": true,
+										"properties": {
+											"type": {
+												"type": "string",
+												"enum": [
+													"native",
+													"rest"
+												]
+											},
+											"version": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"type",
+											"version"
+										]
 									},
 									"worker_domain": {
 										"type": "string"
@@ -12763,6 +13450,26 @@
 											"properties": {
 												"created_from_aisearch_wizard": {
 													"type": "boolean"
+												},
+												"created_from_emdash_plugin": {
+													"type": "object",
+													"additionalProperties": true,
+													"properties": {
+														"type": {
+															"type": "string",
+															"enum": [
+																"native",
+																"rest"
+															]
+														},
+														"version": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"type",
+														"version"
+													]
 												},
 												"worker_domain": {
 													"type": "string"
@@ -13429,7 +14136,8 @@
 				"schema": {
 					"type": "string",
 					"example": "my-ai-search"
-				}
+				},
+				"x-fern-parameter-name": "instance-id"
 			},
 			{
 				"name": "name",
@@ -13439,7 +14147,8 @@
 				"schema": {
 					"type": "string"
 				},
-				"example": "my-namespace"
+				"example": "my-namespace",
+				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"requestBody": {
@@ -13657,6 +14366,26 @@
 								"properties": {
 									"created_from_aisearch_wizard": {
 										"type": "boolean"
+									},
+									"created_from_emdash_plugin": {
+										"type": "object",
+										"additionalProperties": true,
+										"properties": {
+											"type": {
+												"type": "string",
+												"enum": [
+													"native",
+													"rest"
+												]
+											},
+											"version": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"type",
+											"version"
+										]
 									},
 									"worker_domain": {
 										"type": "string"
@@ -14384,6 +15113,26 @@
 												"created_from_aisearch_wizard": {
 													"type": "boolean"
 												},
+												"created_from_emdash_plugin": {
+													"type": "object",
+													"additionalProperties": true,
+													"properties": {
+														"type": {
+															"type": "string",
+															"enum": [
+																"native",
+																"rest"
+															]
+														},
+														"version": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"type",
+														"version"
+													]
+												},
 												"worker_domain": {
 													"type": "string"
 												}
@@ -15027,13 +15776,11 @@
 		"x-fern-sdk-method-name": "update",
 		"x-forge-params": {
 			"id": {
-				"description": "AI Search instance ID.",
-				"flagName": "instance-id"
+				"description": "AI Search instance ID."
 			},
 			"name": {
 				"default": "default",
-				"description": "Namespace to use for this operation.",
-				"flagName": "namespace"
+				"description": "Namespace to use for this operation."
 			},
 			"source": {
 				"description": "R2 bucket name or HTTP(S) root website URL to index."

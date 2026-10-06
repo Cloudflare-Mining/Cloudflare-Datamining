@@ -20,7 +20,8 @@
 				"schema": {
 					"type": "string",
 					"example": "production"
-				}
+				},
+				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"responses": {
@@ -159,8 +160,7 @@
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-params": {
 			"name": {
-				"description": "Namespace to delete.",
-				"flagName": "namespace"
+				"description": "Namespace to delete."
 			}
 		},
 		"x-forge-require-confirmation": "This operation permanently deletes the namespace."
@@ -506,7 +506,8 @@
 				"schema": {
 					"type": "string",
 					"example": "production"
-				}
+				},
+				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"responses": {
@@ -745,8 +746,7 @@
 		"x-fern-sdk-method-name": "get",
 		"x-forge-params": {
 			"name": {
-				"description": "Namespace to retrieve.",
-				"flagName": "namespace"
+				"description": "Namespace to retrieve."
 			}
 		}
 	},
@@ -773,7 +773,8 @@
 					"description": "Current namespace of the instance.",
 					"type": "string",
 					"example": "production"
-				}
+				},
+				"x-fern-parameter-name": "source-namespace"
 			},
 			{
 				"name": "id",
@@ -784,7 +785,8 @@
 					"description": "Instance id.",
 					"type": "string",
 					"example": "my-blog"
-				}
+				},
+				"x-fern-parameter-name": "instance-id"
 			}
 		],
 		"requestBody": {
@@ -797,7 +799,8 @@
 								"description": "Target namespace to move the instance into.",
 								"type": "string",
 								"example": "staging",
-								"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$"
+								"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$",
+								"x-fern-property-name": "destination-namespace"
 							}
 						},
 						"required": [
@@ -983,17 +986,14 @@
 		"x-fern-sdk-method-name": "move",
 		"x-forge-params": {
 			"id": {
-				"description": "AI Search instance ID.",
-				"flagName": "instance-id"
+				"description": "AI Search instance ID."
 			},
 			"name": {
 				"default": "default",
-				"description": "Namespace currently containing the instance.",
-				"flagName": "source-namespace"
+				"description": "Namespace currently containing the instance."
 			},
 			"new_namespace": {
-				"description": "Namespace to move the instance into.",
-				"flagName": "destination-namespace"
+				"description": "Namespace to move the instance into."
 			}
 		}
 	},
@@ -1027,7 +1027,8 @@
 							},
 							"name": {
 								"type": "string",
-								"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$"
+								"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$",
+								"x-fern-property-name": "namespace"
 							},
 							"public_endpoint_params": {
 								"type": "object",
@@ -1464,7 +1465,6 @@
 		"x-forge-params": {
 			"name": {
 				"description": "Name for the new namespace.",
-				"flagName": "namespace",
 				"positional": true
 			}
 		}
@@ -1490,7 +1490,8 @@
 				"schema": {
 					"type": "string",
 					"example": "production"
-				}
+				},
+				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"requestBody": {
@@ -1938,8 +1939,7 @@
 		"x-fern-sdk-method-name": "update",
 		"x-forge-params": {
 			"name": {
-				"description": "Namespace to update.",
-				"flagName": "namespace"
+				"description": "Namespace to update."
 			}
 		}
 	}

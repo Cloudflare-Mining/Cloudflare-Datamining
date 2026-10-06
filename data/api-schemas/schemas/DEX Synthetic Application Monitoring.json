@@ -278,360 +278,109 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"documentation_url": {
-																		"type": "string"
-																	},
-																	"message": {
-																		"type": "string"
-																	},
-																	"source": {
-																		"type": "object",
-																		"properties": {
-																			"pointer": {
-																				"type": "string"
-																			}
-																		}
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"documentation_url": {
-																		"type": "string"
-																	},
-																	"message": {
-																		"type": "string"
-																	},
-																	"source": {
-																		"type": "object",
-																		"properties": {
-																			"pointer": {
-																				"type": "string"
-																			}
-																		}
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"type": "array",
-															"items": {
-																"type": "object"
-															},
-															"nullable": true
-														}
+													"documentation_url": {
+														"type": "string"
 													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "array",
-													"items": {
+													"message": {
+														"type": "string"
+													},
+													"source": {
 														"type": "object",
 														"properties": {
-															"created": {
-																"description": "Date the test was created, in RFC 3339 format.",
-																"type": "string",
-																"format": "date-time",
-																"example": "2023-10-11T00:00:00Z",
-																"readOnly": true,
-																"x-stainless-terraform-configurability": "computed"
-															},
-															"data": {
-																"description": "The configuration object which contains the details for the WARP client to conduct the test.",
-																"type": "object",
-																"properties": {
-																	"host": {
-																		"description": "The desired endpoint to test.",
-																		"type": "string",
-																		"example": "https://dash.cloudflare.com",
-																		"x-auditable": true
-																	},
-																	"kind": {
-																		"description": "The type of test.",
-																		"type": "string",
-																		"example": "http",
-																		"enum": [
-																			"http",
-																			"traceroute"
-																		],
-																		"x-auditable": true
-																	},
-																	"method": {
-																		"description": "The HTTP request method type.",
-																		"type": "string",
-																		"example": "GET",
-																		"enum": [
-																			"GET"
-																		],
-																		"x-auditable": true
-																	}
-																},
-																"example": {
-																	"host": "https://dash.cloudflare.com",
-																	"kind": "http",
-																	"method": "GET"
-																},
-																"required": [
-																	"kind",
-																	"host"
-																]
-															},
-															"description": {
-																"description": "Additional details about the test.",
-																"type": "string",
-																"example": "Checks the dash endpoint every 30 minutes"
-															},
-															"enabled": {
-																"description": "Determines whether or not the test is active.",
-																"type": "boolean",
-																"example": true
-															},
-															"interval": {
-																"description": "How often the test will run.",
-																"type": "string",
-																"example": "30m"
-															},
-															"name": {
-																"description": "The name of the DEX test. Must be unique.",
-																"type": "string",
-																"example": "HTTP dash health check"
-															},
-															"target_policies": {
-																"allOf": [
-																	{
-																		"description": "DEX rules targeted by this test",
-																		"type": "array",
-																		"items": {
-																			"type": "object",
-																			"properties": {
-																				"default": {
-																					"description": "Whether the DEX rule is the account default.",
-																					"type": "boolean",
-																					"x-stainless-terraform-configurability": "computed"
-																				},
-																				"id": {
-																					"description": "The id of the DEX rule.",
-																					"allOf": [
-																						{
-																							"description": "API Resource UUID tag.",
-																							"type": "string",
-																							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																							"maxLength": 36
-																						}
-																					]
-																				},
-																				"name": {
-																					"description": "The name of the DEX rule.",
-																					"type": "string",
-																					"x-stainless-terraform-configurability": "computed"
-																				}
-																			},
-																			"required": [
-																				"id"
-																			]
-																		}
-																	}
-																],
-																"x-stainless-terraform-configurability": "computed_optional"
-															},
-															"targeted": {
-																"type": "boolean",
-																"x-stainless-terraform-configurability": "computed"
-															},
-															"test_id": {
-																"description": "The unique identifier for the test.",
-																"type": "string",
-																"example": "372e67954025e0ba6aaa6d586b9e0b59",
-																"maxLength": 32,
-																"readOnly": true
-															},
-															"updated": {
-																"description": "Date the test was last updated, in RFC 3339 format.",
-																"type": "string",
-																"format": "date-time",
-																"example": "2023-10-11T00:00:00Z",
-																"readOnly": true,
-																"x-stainless-terraform-configurability": "computed"
+															"pointer": {
+																"type": "string"
 															}
-														},
-														"required": [
-															"name",
-															"interval",
-															"enabled",
-															"data"
-														]
+														}
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -655,8 +404,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.tests",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/dex/colos": {
 		"operationId": "dex-endpoints-list-colos",
@@ -974,8 +722,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.colos",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/dex/devices/{device_id}/fleet-status/live": {
 		"operationId": "devices-live-status",
@@ -1993,8 +1740,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.devices",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/dex/devices/{device_id}/fleet-status/over-time": {
 		"operationId": "dex-device-status-over-time",
@@ -3087,8 +2833,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.devices.over-time",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/dex/devices/{device_id}/isps": {
 		"operationId": "dex-endpoints-list-device-isps",
@@ -3570,8 +3315,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.isps",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/dex/devices/dex_tests": {
 		"operationId": "device-dex-test-details",
@@ -4024,8 +3768,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.tests",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/dex/devices/dex_tests/{dex_test_id}": {
 		"operationId": "device-dex-test-get-device-dex-test",
@@ -4433,8 +4176,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.tests",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/dex/fleet-status/devices": {
 		"operationId": "dex-fleet-status-devices",
@@ -5682,8 +5424,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.devices",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/dex/fleet-status/live": {
 		"operationId": "dex-fleet-status-live",
@@ -6053,8 +5794,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.devices.aggregates.live",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/dex/fleet-status/over-time": {
 		"operationId": "dex-fleet-status-over-time",
@@ -6408,8 +6148,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.devices.aggregates.over-time",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/dex/http-tests/{test_id}": {
 		"operationId": "dex-endpoints-http-test-details",
@@ -7251,8 +6990,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.test-results.http",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/dex/http-tests/{test_id}/percentiles": {
 		"operationId": "dex-endpoints-http-test-percentiles",
@@ -7649,8 +7387,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.test-results.http.percentiles",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/dex/tests/overview": {
 		"operationId": "dex-endpoints-list-tests-overview",
@@ -8567,8 +8304,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.overview.tests",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/dex/tests/unique-devices": {
 		"operationId": "dex-endpoints-tests-unique-devices",
@@ -8863,8 +8599,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.overview.tests.unique-devices",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/dex/traceroute-test-results/{test_result_id}/network-path": {
 		"operationId": "dex-endpoints-traceroute-test-result-network-path",
@@ -9262,8 +8997,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.test-results.traceroute.network-path",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/dex/traceroute-tests/{test_id}": {
 		"operationId": "dex-endpoints-traceroute-test-details",
@@ -10046,8 +9780,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.test-results.traceroute",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/dex/traceroute-tests/{test_id}/network-path": {
 		"operationId": "dex-endpoints-traceroute-test-network-path",
@@ -10474,8 +10207,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.tests.network-path",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/dex/traceroute-tests/{test_id}/percentiles": {
 		"operationId": "dex-endpoints-traceroute-test-percentiles",
@@ -10868,8 +10600,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.test-results.traceroute.percentiles",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/dex/devices/dex_tests": {
 		"operationId": "device-dex-test-create-device-dex-test",
@@ -11404,8 +11135,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.tests",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/dex/devices/dex_tests/{dex_test_id}": {
 		"operationId": "device-dex-test-update-device-dex-test",
@@ -11952,7 +11682,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.tests",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

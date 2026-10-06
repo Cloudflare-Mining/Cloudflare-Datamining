@@ -21,7 +21,8 @@
 					"type": "string",
 					"format": "uuid",
 					"example": "62af0db3-c410-40b2-9ee3-0e93f6dd1de0"
-				}
+				},
+				"x-fern-parameter-name": "token-id"
 			}
 		],
 		"responses": {
@@ -207,8 +208,7 @@
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-params": {
 			"id": {
-				"description": "Stored credential record ID.",
-				"flagName": "token-id"
+				"description": "Stored credential record ID."
 			}
 		},
 		"x-forge-require-confirmation": "This operation permanently deletes the stored credential."
@@ -467,7 +467,8 @@
 					"type": "string",
 					"format": "uuid",
 					"example": "62af0db3-c410-40b2-9ee3-0e93f6dd1de0"
-				}
+				},
+				"x-fern-parameter-name": "token-id"
 			}
 		],
 		"responses": {
@@ -664,8 +665,7 @@
 		"x-fern-sdk-method-name": "get",
 		"x-forge-params": {
 			"id": {
-				"description": "Stored credential record ID.",
-				"flagName": "token-id"
+				"description": "Stored credential record ID."
 			}
 		}
 	},
@@ -692,12 +692,14 @@
 						"properties": {
 							"cf_api_id": {
 								"type": "string",
-								"example": "a1b2c3d4e5f6"
+								"example": "a1b2c3d4e5f6",
+								"x-fern-property-name": "api-token-id"
 							},
 							"cf_api_key": {
 								"type": "string",
 								"example": "abc123",
 								"writeOnly": true,
+								"x-fern-property-name": "api-token",
 								"x-sensitive": true
 							},
 							"legacy": {
@@ -865,12 +867,10 @@
 		"x-fern-sdk-method-name": "create",
 		"x-forge-params": {
 			"cf_api_id": {
-				"description": "Cloudflare API token ID.",
-				"flagName": "api-token-id"
+				"description": "Cloudflare API token ID."
 			},
 			"cf_api_key": {
-				"description": "Cloudflare API token value.",
-				"flagName": "api-token"
+				"description": "Cloudflare API token value."
 			},
 			"legacy": {
 				"description": "Whether the credential uses the legacy API key format."
@@ -903,7 +903,8 @@
 					"type": "string",
 					"format": "uuid",
 					"example": "62af0db3-c410-40b2-9ee3-0e93f6dd1de0"
-				}
+				},
+				"x-fern-parameter-name": "token-id"
 			}
 		],
 		"requestBody": {
@@ -914,12 +915,14 @@
 						"properties": {
 							"cf_api_id": {
 								"type": "string",
-								"example": "a1b2c3d4e5f6"
+								"example": "a1b2c3d4e5f6",
+								"x-fern-property-name": "api-token-id"
 							},
 							"cf_api_key": {
 								"type": "string",
 								"example": "abc123",
 								"writeOnly": true,
+								"x-fern-property-name": "api-token",
 								"x-sensitive": true
 							},
 							"legacy": {
@@ -1127,16 +1130,13 @@
 		"x-fern-sdk-method-name": "update",
 		"x-forge-params": {
 			"cf_api_id": {
-				"description": "Cloudflare API token ID.",
-				"flagName": "api-token-id"
+				"description": "Cloudflare API token ID."
 			},
 			"cf_api_key": {
-				"description": "Cloudflare API token value.",
-				"flagName": "api-token"
+				"description": "Cloudflare API token value."
 			},
 			"id": {
-				"description": "Stored credential record ID.",
-				"flagName": "token-id"
+				"description": "Stored credential record ID."
 			},
 			"legacy": {
 				"description": "Whether the credential uses the legacy API key format."

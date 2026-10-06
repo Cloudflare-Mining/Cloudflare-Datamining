@@ -426,8 +426,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.commands",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/dex/commands/{command_id}/downloads/{filename}": {
 		"operationId": "get-commands-command-id-downloads-filename",
@@ -668,8 +667,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.commands.results",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/dex/commands/devices": {
 		"operationId": "get-commands-eligible-devices",
@@ -1055,8 +1053,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.commands.eligible-devices",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/dex/commands/quota": {
 		"operationId": "get-commands-quota",
@@ -1376,8 +1373,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.commands.quota",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/dex/commands": {
 		"operationId": "post-commands",
@@ -1837,7 +1833,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.commands",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

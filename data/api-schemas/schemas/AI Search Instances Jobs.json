@@ -794,7 +794,8 @@
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
-				}
+				},
+				"x-fern-parameter-name": "instance-id"
 			},
 			{
 				"name": "account_id",
@@ -832,7 +833,8 @@
 				"schema": {
 					"type": "string"
 				},
-				"example": "my-namespace"
+				"example": "my-namespace",
+				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"responses": {
@@ -1074,13 +1076,11 @@
 		"x-fern-sdk-method-name": "list",
 		"x-forge-params": {
 			"id": {
-				"description": "AI Search instance ID.",
-				"flagName": "instance-id"
+				"description": "AI Search instance ID."
 			},
 			"name": {
 				"default": "default",
-				"description": "Namespace to use for this operation.",
-				"flagName": "namespace"
+				"description": "Namespace to use for this operation."
 			}
 		}
 	},
@@ -1102,7 +1102,8 @@
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
-				}
+				},
+				"x-fern-parameter-name": "instance-id"
 			},
 			{
 				"name": "job_id",
@@ -1129,7 +1130,8 @@
 				"schema": {
 					"type": "string"
 				},
-				"example": "my-namespace"
+				"example": "my-namespace",
+				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"responses": {
@@ -1297,17 +1299,14 @@
 		"x-fern-sdk-method-name": "get",
 		"x-forge-params": {
 			"id": {
-				"description": "AI Search instance ID.",
-				"flagName": "instance-id"
+				"description": "AI Search instance ID."
 			},
 			"job_id": {
-				"description": "Indexing job ID.",
-				"flagName": "job-id"
+				"description": "Indexing job ID."
 			},
 			"name": {
 				"default": "default",
-				"description": "Namespace to use for this operation.",
-				"flagName": "namespace"
+				"description": "Namespace to use for this operation."
 			}
 		}
 	},
@@ -1329,7 +1328,8 @@
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
-				}
+				},
+				"x-fern-parameter-name": "instance-id"
 			},
 			{
 				"name": "job_id",
@@ -1375,7 +1375,8 @@
 				"schema": {
 					"type": "string"
 				},
-				"example": "my-namespace"
+				"example": "my-namespace",
+				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"responses": {
@@ -1604,17 +1605,14 @@
 		"x-fern-sdk-method-name": "logs",
 		"x-forge-params": {
 			"id": {
-				"description": "AI Search instance ID.",
-				"flagName": "instance-id"
+				"description": "AI Search instance ID."
 			},
 			"job_id": {
-				"description": "Indexing job ID.",
-				"flagName": "job-id"
+				"description": "Indexing job ID."
 			},
 			"name": {
 				"default": "default",
-				"description": "Namespace to use for this operation.",
-				"flagName": "namespace"
+				"description": "Namespace to use for this operation."
 			}
 		}
 	},
@@ -1901,7 +1899,8 @@
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
-				}
+				},
+				"x-fern-parameter-name": "instance-id"
 			},
 			{
 				"name": "job_id",
@@ -1928,7 +1927,8 @@
 				"schema": {
 					"type": "string"
 				},
-				"example": "my-namespace"
+				"example": "my-namespace",
+				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"requestBody": {
@@ -2160,17 +2160,14 @@
 				"hidden": true
 			},
 			"id": {
-				"description": "AI Search instance ID.",
-				"flagName": "instance-id"
+				"description": "AI Search instance ID."
 			},
 			"job_id": {
-				"description": "Indexing job ID.",
-				"flagName": "job-id"
+				"description": "Indexing job ID."
 			},
 			"name": {
 				"default": "default",
-				"description": "Namespace to use for this operation.",
-				"flagName": "namespace"
+				"description": "Namespace to use for this operation."
 			}
 		},
 		"x-forge-require-confirmation": "This operation cancels the running indexing job."
@@ -2491,7 +2488,8 @@
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
-				}
+				},
+				"x-fern-parameter-name": "instance-id"
 			},
 			{
 				"name": "account_id",
@@ -2510,7 +2508,8 @@
 				"schema": {
 					"type": "string"
 				},
-				"example": "my-namespace"
+				"example": "my-namespace",
+				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"requestBody": {
@@ -2783,13 +2782,11 @@
 				"description": "Optional description for the indexing job."
 			},
 			"id": {
-				"description": "AI Search instance ID.",
-				"flagName": "instance-id"
+				"description": "AI Search instance ID."
 			},
 			"name": {
 				"default": "default",
-				"description": "Namespace to use for this operation.",
-				"flagName": "namespace"
+				"description": "Namespace to use for this operation."
 			}
 		}
 	}

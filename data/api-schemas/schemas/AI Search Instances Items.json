@@ -17,7 +17,8 @@
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
-				}
+				},
+				"x-fern-parameter-name": "instance-id"
 			},
 			{
 				"name": "item_id",
@@ -44,7 +45,8 @@
 				"schema": {
 					"type": "string"
 				},
-				"example": "my-namespace"
+				"example": "my-namespace",
+				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"responses": {
@@ -238,17 +240,14 @@
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-params": {
 			"id": {
-				"description": "AI Search instance ID.",
-				"flagName": "instance-id"
+				"description": "AI Search instance ID."
 			},
 			"item_id": {
-				"description": "Indexed item ID.",
-				"flagName": "item-id"
+				"description": "Indexed item ID."
 			},
 			"name": {
 				"default": "default",
-				"description": "Namespace to use for this operation.",
-				"flagName": "namespace"
+				"description": "Namespace to use for this operation."
 			}
 		}
 	},
@@ -270,7 +269,8 @@
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
-				}
+				},
+				"x-fern-parameter-name": "instance-id"
 			},
 			{
 				"name": "account_id",
@@ -385,7 +385,8 @@
 				"schema": {
 					"type": "string"
 				},
-				"example": "my-namespace"
+				"example": "my-namespace",
+				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"responses": {
@@ -694,13 +695,11 @@
 		"x-fern-sdk-method-name": "list",
 		"x-forge-params": {
 			"id": {
-				"description": "AI Search instance ID.",
-				"flagName": "instance-id"
+				"description": "AI Search instance ID."
 			},
 			"name": {
 				"default": "default",
-				"description": "Namespace to use for this operation.",
-				"flagName": "namespace"
+				"description": "Namespace to use for this operation."
 			}
 		}
 	},
@@ -722,7 +721,8 @@
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
-				}
+				},
+				"x-fern-parameter-name": "instance-id"
 			},
 			{
 				"name": "item_id",
@@ -749,7 +749,8 @@
 				"schema": {
 					"type": "string"
 				},
-				"example": "my-namespace"
+				"example": "my-namespace",
+				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"responses": {
@@ -989,17 +990,14 @@
 		"x-fern-sdk-method-name": "get",
 		"x-forge-params": {
 			"id": {
-				"description": "AI Search instance ID.",
-				"flagName": "instance-id"
+				"description": "AI Search instance ID."
 			},
 			"item_id": {
-				"description": "Indexed item ID.",
-				"flagName": "item-id"
+				"description": "Indexed item ID."
 			},
 			"name": {
 				"default": "default",
-				"description": "Namespace to use for this operation.",
-				"flagName": "namespace"
+				"description": "Namespace to use for this operation."
 			}
 		}
 	},
@@ -1021,7 +1019,8 @@
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
-				}
+				},
+				"x-fern-parameter-name": "instance-id"
 			},
 			{
 				"name": "item_id",
@@ -1067,7 +1066,8 @@
 				"schema": {
 					"type": "string"
 				},
-				"example": "my-namespace"
+				"example": "my-namespace",
+				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"responses": {
@@ -1313,17 +1313,14 @@
 		"x-fern-sdk-method-name": "chunks",
 		"x-forge-params": {
 			"id": {
-				"description": "AI Search instance ID.",
-				"flagName": "instance-id"
+				"description": "AI Search instance ID."
 			},
 			"item_id": {
-				"description": "Indexed item ID.",
-				"flagName": "item-id"
+				"description": "Indexed item ID."
 			},
 			"name": {
 				"default": "default",
-				"description": "Namespace to use for this operation.",
-				"flagName": "namespace"
+				"description": "Namespace to use for this operation."
 			}
 		}
 	},
@@ -1345,7 +1342,8 @@
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
-				}
+				},
+				"x-fern-parameter-name": "instance-id"
 			},
 			{
 				"name": "item_id",
@@ -1372,7 +1370,8 @@
 				"schema": {
 					"type": "string"
 				},
-				"example": "my-namespace"
+				"example": "my-namespace",
+				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"responses": {
@@ -1576,17 +1575,14 @@
 		"x-fern-sdk-method-name": "download",
 		"x-forge-params": {
 			"id": {
-				"description": "AI Search instance ID.",
-				"flagName": "instance-id"
+				"description": "AI Search instance ID."
 			},
 			"item_id": {
-				"description": "Indexed item ID.",
-				"flagName": "item-id"
+				"description": "Indexed item ID."
 			},
 			"name": {
 				"default": "default",
-				"description": "Namespace to use for this operation.",
-				"flagName": "namespace"
+				"description": "Namespace to use for this operation."
 			}
 		}
 	},
@@ -1608,7 +1604,8 @@
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
-				}
+				},
+				"x-fern-parameter-name": "instance-id"
 			},
 			{
 				"name": "item_id",
@@ -1653,7 +1650,8 @@
 				"schema": {
 					"type": "string"
 				},
-				"example": "my-namespace"
+				"example": "my-namespace",
+				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"responses": {
@@ -1900,17 +1898,14 @@
 		"x-fern-sdk-method-name": "logs",
 		"x-forge-params": {
 			"id": {
-				"description": "AI Search instance ID.",
-				"flagName": "instance-id"
+				"description": "AI Search instance ID."
 			},
 			"item_id": {
-				"description": "Indexed item ID.",
-				"flagName": "item-id"
+				"description": "Indexed item ID."
 			},
 			"name": {
 				"default": "default",
-				"description": "Namespace to use for this operation.",
-				"flagName": "namespace"
+				"description": "Namespace to use for this operation."
 			}
 		}
 	},
@@ -1932,7 +1927,8 @@
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
-				}
+				},
+				"x-fern-parameter-name": "instance-id"
 			},
 			{
 				"name": "item_id",
@@ -1959,7 +1955,8 @@
 				"schema": {
 					"type": "string"
 				},
-				"example": "my-namespace"
+				"example": "my-namespace",
+				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"requestBody": {
@@ -1975,7 +1972,7 @@
 								]
 							},
 							"wait_for_completion": {
-								"description": "Wait for indexing to fully complete before responding. On RAGs with vector indexing enabled, this additionally waits for Vectorize ingestion confirmation (up to 40s) so the returned item reflects a queryable state. On timeout the item is returned in `running` state and the background alarm continues polling. Defaults to false.",
+								"description": "Wait for indexing before responding. After processing, vector-indexed instances use any time remaining in a 25s wait budget to confirm Vectorize ingestion. Processing itself is not interrupted and can exceed that budget. If confirmation times out, the current item state is returned and background indexing continues. Defaults to false.",
 								"type": "boolean",
 								"default": false
 							}
@@ -2228,14 +2225,11 @@
 													"code": {
 														"type": "number",
 														"enum": [
-															7111
+															7116
 														]
 													},
 													"message": {
-														"type": "string",
-														"enum": [
-															"monthly_ingestion_quota_exceeded"
-														]
+														"type": "string"
 													}
 												},
 												"required": [
@@ -2253,10 +2247,7 @@
 														]
 													},
 													"message": {
-														"type": "string",
-														"enum": [
-															"monthly_storage_quota_exceeded"
-														]
+														"type": "string"
 													}
 												},
 												"required": [
@@ -2274,10 +2265,7 @@
 														]
 													},
 													"message": {
-														"type": "string",
-														"enum": [
-															"ai_search_instance_overloaded"
-														]
+														"type": "string"
 													}
 												},
 												"required": [
@@ -2373,17 +2361,14 @@
 		"x-fern-sdk-method-name": "sync",
 		"x-forge-params": {
 			"id": {
-				"description": "AI Search instance ID.",
-				"flagName": "instance-id"
+				"description": "AI Search instance ID."
 			},
 			"item_id": {
-				"description": "Indexed item ID.",
-				"flagName": "item-id"
+				"description": "Indexed item ID."
 			},
 			"name": {
 				"default": "default",
-				"description": "Namespace to use for this operation.",
-				"flagName": "namespace"
+				"description": "Namespace to use for this operation."
 			},
 			"next_action": {
 				"default": "INDEX",
@@ -2409,7 +2394,8 @@
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
-				}
+				},
+				"x-fern-parameter-name": "instance-id"
 			},
 			{
 				"name": "account_id",
@@ -2428,7 +2414,8 @@
 				"schema": {
 					"type": "string"
 				},
-				"example": "my-namespace"
+				"example": "my-namespace",
+				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"requestBody": {
@@ -2447,7 +2434,7 @@
 								"type": "string"
 							},
 							"wait_for_completion": {
-								"description": "Wait for indexing to fully complete before responding. On RAGs with vector indexing enabled, this additionally waits for Vectorize ingestion confirmation (up to 40s) so the returned item reflects a queryable state. On timeout the item is returned in `running` state and the background alarm continues polling. Defaults to false.",
+								"description": "Wait for indexing before responding. After processing, vector-indexed instances use any time remaining in a 25s wait budget to confirm Vectorize ingestion. Processing itself is not interrupted and can exceed that budget. If confirmation times out, the current item state is returned and background indexing continues. Defaults to false.",
 								"type": "boolean",
 								"default": false
 							}
@@ -2833,10 +2820,7 @@
 														]
 													},
 													"message": {
-														"type": "string",
-														"enum": [
-															"item_write_rate_limited"
-														]
+														"type": "string"
 													}
 												},
 												"required": [
@@ -2850,14 +2834,11 @@
 													"code": {
 														"type": "number",
 														"enum": [
-															7111
+															7116
 														]
 													},
 													"message": {
-														"type": "string",
-														"enum": [
-															"monthly_ingestion_quota_exceeded"
-														]
+														"type": "string"
 													}
 												},
 												"required": [
@@ -2875,10 +2856,7 @@
 														]
 													},
 													"message": {
-														"type": "string",
-														"enum": [
-															"monthly_storage_quota_exceeded"
-														]
+														"type": "string"
 													}
 												},
 												"required": [
@@ -2896,10 +2874,7 @@
 														]
 													},
 													"message": {
-														"type": "string",
-														"enum": [
-															"ai_search_instance_overloaded"
-														]
+														"type": "string"
 													}
 												},
 												"required": [
@@ -2995,13 +2970,11 @@
 		"x-fern-sdk-method-name": "upload",
 		"x-forge-params": {
 			"id": {
-				"description": "AI Search instance ID.",
-				"flagName": "instance-id"
+				"description": "AI Search instance ID."
 			},
 			"name": {
 				"default": "default",
-				"description": "Namespace to use for this operation.",
-				"flagName": "namespace"
+				"description": "Namespace to use for this operation."
 			}
 		}
 	},
@@ -3023,7 +2996,8 @@
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
-				}
+				},
+				"x-fern-parameter-name": "instance-id"
 			},
 			{
 				"name": "account_id",
@@ -3042,7 +3016,8 @@
 				"schema": {
 					"type": "string"
 				},
-				"example": "my-namespace"
+				"example": "my-namespace",
+				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"requestBody": {
@@ -3062,7 +3037,7 @@
 								]
 							},
 							"wait_for_completion": {
-								"description": "Wait for indexing to fully complete before responding. On RAGs with vector indexing enabled, this additionally waits for Vectorize ingestion confirmation (up to 40s) so the returned item reflects a queryable state. On timeout the item is returned in `running` state and the background alarm continues polling. Defaults to false.",
+								"description": "Wait for indexing before responding. After processing, vector-indexed instances use any time remaining in a 25s wait budget to confirm Vectorize ingestion. Processing itself is not interrupted and can exceed that budget. If confirmation times out, the current item state is returned and background indexing continues. Defaults to false.",
 								"type": "boolean",
 								"default": false
 							}
@@ -3349,14 +3324,11 @@
 													"code": {
 														"type": "number",
 														"enum": [
-															7111
+															7116
 														]
 													},
 													"message": {
-														"type": "string",
-														"enum": [
-															"monthly_ingestion_quota_exceeded"
-														]
+														"type": "string"
 													}
 												},
 												"required": [
@@ -3374,10 +3346,7 @@
 														]
 													},
 													"message": {
-														"type": "string",
-														"enum": [
-															"monthly_storage_quota_exceeded"
-														]
+														"type": "string"
 													}
 												},
 												"required": [
@@ -3395,10 +3364,7 @@
 														]
 													},
 													"message": {
-														"type": "string",
-														"enum": [
-															"ai_search_instance_overloaded"
-														]
+														"type": "string"
 													}
 												},
 												"required": [
@@ -3494,13 +3460,11 @@
 		"x-fern-sdk-method-name": "upsert",
 		"x-forge-params": {
 			"id": {
-				"description": "AI Search instance ID.",
-				"flagName": "instance-id"
+				"description": "AI Search instance ID."
 			},
 			"name": {
 				"default": "default",
-				"description": "Namespace to use for this operation.",
-				"flagName": "namespace"
+				"description": "Namespace to use for this operation."
 			},
 			"next_action": {
 				"default": "INDEX",

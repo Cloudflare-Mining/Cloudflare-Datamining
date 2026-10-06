@@ -272,8 +272,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.rules",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/dex/rules": {
 		"operationId": "list-dex-rules",
@@ -755,8 +754,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.rules",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/dex/rules/{rule_id}": {
 		"operationId": "get-dex-rule",
@@ -1148,8 +1146,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.rules",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/dex/rules/{rule_id}": {
 		"operationId": "update-dex-rule",
@@ -1563,8 +1560,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.rules",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"POST /accounts/{account_id}/dex/rules": {
 		"operationId": "create-dex-rule",
@@ -1970,7 +1966,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.rules",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

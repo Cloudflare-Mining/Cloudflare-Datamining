@@ -21,7 +21,8 @@
 				"schema": {
 					"type": "string"
 				},
-				"example": "my-namespace"
+				"example": "my-namespace",
+				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"requestBody": {
@@ -664,6 +665,46 @@
 					}
 				}
 			},
+			"402": {
+				"description": "Workers ai unified billing required.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
 			"404": {
 				"description": "Not Found",
 				"content": {
@@ -705,7 +746,17 @@
 				}
 			},
 			"429": {
-				"description": "Monthly query quota exceeded.",
+				"description": "Monthly query quota exceeded; Workers ai capacity temporarily exceeded",
+				"headers": {
+					"Retry-After": {
+						"description": "Seconds to wait before retrying.",
+						"schema": {
+							"description": "Seconds to wait before retrying.",
+							"type": "string",
+							"example": "10"
+						}
+					}
+				},
 				"content": {
 					"application/json": {
 						"schema": {
@@ -714,19 +765,109 @@
 								"errors": {
 									"type": "array",
 									"items": {
-										"properties": {
-											"code": {
-												"type": "number"
+										"anyOf": [
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7069
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
 											},
-											"message": {
-												"type": "string"
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7119
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
 											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
+										]
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"502": {
+				"description": "Ai gateway exception; Workers ai upstream error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"anyOf": [
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7033
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7120
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										]
 									}
 								},
 								"success": {
@@ -774,8 +915,7 @@
 		"x-forge-params": {
 			"name": {
 				"default": "default",
-				"description": "Namespace to use for this operation.",
-				"flagName": "namespace"
+				"description": "Namespace to use for this operation."
 			}
 		}
 	},
@@ -801,7 +941,8 @@
 				"schema": {
 					"type": "string"
 				},
-				"example": "my-namespace"
+				"example": "my-namespace",
+				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"requestBody": {
@@ -1356,7 +1497,17 @@
 				}
 			},
 			"429": {
-				"description": "Monthly query quota exceeded.",
+				"description": "Monthly query quota exceeded; Workers ai capacity temporarily exceeded",
+				"headers": {
+					"Retry-After": {
+						"description": "Seconds to wait before retrying.",
+						"schema": {
+							"description": "Seconds to wait before retrying.",
+							"type": "string",
+							"example": "10"
+						}
+					}
+				},
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1365,19 +1516,109 @@
 								"errors": {
 									"type": "array",
 									"items": {
-										"properties": {
-											"code": {
-												"type": "number"
+										"anyOf": [
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7069
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
 											},
-											"message": {
-												"type": "string"
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7119
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
 											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
+										]
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"502": {
+				"description": "Ai gateway exception; Workers ai upstream error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"anyOf": [
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7033
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7120
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										]
 									}
 								},
 								"success": {
@@ -1425,8 +1666,7 @@
 		"x-forge-params": {
 			"name": {
 				"default": "default",
-				"description": "Namespace to use for this operation.",
-				"flagName": "namespace"
+				"description": "Namespace to use for this operation."
 			},
 			"query": {
 				"description": "Text to search for.",

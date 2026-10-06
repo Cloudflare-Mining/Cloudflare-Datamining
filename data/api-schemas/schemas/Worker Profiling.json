@@ -1,0 +1,1043 @@
+{
+	"POST /accounts/{account_id}/workers/workers/{worker_id}/versions/{version_id}/profile": {
+		"operationId": "profileWorkerVersion",
+		"summary": "Profile Worker Version",
+		"description": "Captures a CPU or heap profile from a recently active isolate running the specified Worker version. This endpoint requires the Worker profiling feature to be enabled for the account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "worker_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifies the Worker by ID or name.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "version_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifies the version by UUID or UUID prefix with a minimum length of eight characters. Use \"latest\" to select the most recently created version.",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"actor_id": {
+								"description": "Identifies the exact Durable Object actor to profile. Must be specified together with namespace_id. The actor must currently be active and running the requested Worker version.",
+								"type": "string",
+								"pattern": "^[0-9a-fA-F]{64}$"
+							},
+							"duration_ms": {
+								"description": "Profile duration in milliseconds.",
+								"type": "integer",
+								"format": "int32",
+								"maximum": 50000,
+								"minimum": 1000
+							},
+							"namespace_id": {
+								"description": "Identifies the Durable Object namespace containing the actor to profile. Must be specified together with actor_id.",
+								"type": "string"
+							},
+							"profile_type": {
+								"type": "string",
+								"default": "cpu",
+								"enum": [
+									"cpu",
+									"heap"
+								]
+							}
+						},
+						"required": [
+							"duration_ms"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Compressed pprof profile data.",
+				"headers": {
+					"Content-Disposition": {
+						"schema": {
+							"type": "string"
+						}
+					},
+					"Content-Encoding": {
+						"schema": {
+							"type": "string",
+							"enum": [
+								"gzip"
+							]
+						}
+					}
+				},
+				"content": {
+					"application/vnd.google.protobuf": {
+						"schema": {
+							"type": "string",
+							"format": "binary"
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid profiling request or unsupported Worker.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Authentication required or insufficient permissions.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Code indicating that the user is not authorized to perform this action.",
+														"type": "integer",
+														"enum": [
+															10023
+														]
+													},
+													"message": {
+														"description": "Message explaining that the user lacks access to this feature.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												]
+											}
+										}
+									},
+									"required": [
+										"errors"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Authentication required or insufficient permissions.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Code indicating that the user is not authorized to perform this action.",
+														"type": "integer",
+														"enum": [
+															10023
+														]
+													},
+													"message": {
+														"description": "Message explaining that the user lacks access to this feature.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												]
+											}
+										}
+									},
+									"required": [
+										"errors"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "The Worker, a recent execution location, or a loaded isolate was not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "The profiling request rate limit was exceeded.",
+				"headers": {
+					"Retry-After": {
+						"schema": {
+							"type": "integer",
+							"minimum": 0
+						}
+					},
+					"X-RateLimit-Limit": {
+						"schema": {
+							"type": "integer",
+							"minimum": 0
+						}
+					},
+					"X-RateLimit-Remaining": {
+						"schema": {
+							"type": "integer",
+							"minimum": 0
+						}
+					},
+					"X-RateLimit-Reset": {
+						"schema": {
+							"type": "integer",
+							"minimum": 0
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal Server Error - An unexpected server error occurred.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Code indicating that an unknown internal server error has occurred.",
+														"type": "integer",
+														"enum": [
+															10002
+														]
+													},
+													"message": {
+														"description": "Message explaining that an unknown error occurred and providing guidance for reporting the issue.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												]
+											}
+										}
+									},
+									"required": [
+										"errors"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Worker profiling is temporarily unavailable.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Worker Profiling"
+		],
+		"x-fern-availability": "alpha",
+		"x-fern-sdk-group-name": "workers.versions",
+		"x-fern-sdk-method-name": "profile"
+	}
+}
