@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/autoconfig",
 	"dist-tags": {
-		"latest": "0.7.5"
+		"latest": "0.7.6"
 	},
 	"versions": {
 		"0.0.0": {
@@ -1840,12 +1840,60 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIDEZ9UjsixEoW7GEZMPMom0OL4qFuEo08ZdeGV7HzYo6AiEAg1PeeDPvz3elE4rXPTtjTEP/5lG4eBd5IoY/YDRwsOA="
+						"sig": "MEUCIDEZ9UjsixEoW7GEZMPMom0OL4qFuEo08ZdeGV7HzYo6AiEAg1PeeDPvz3elE4rXPTtjTEP/5lG4eBd5IoY/YDRwsOA=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fautoconfig@0.7.5",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 2388016
+			}
+		},
+		"0.7.6": {
+			"name": "@cloudflare/autoconfig",
+			"version": "0.7.6",
+			"dependencies": {
+				"@cloudflare/config": "0.24.0",
+				"@cloudflare/workers-utils": "0.47.0",
+				"@cloudflare/cli-shared-helpers": "0.2.4"
+			},
+			"devDependencies": {
+				"tsup": "8.3.0",
+				"chalk": "5.3.0",
+				"recast": "0.23.11",
+				"vitest": "4.1.0",
+				"esprima": "4.0.1",
+				"semiver": "^1.1.0",
+				"empathic": "^2.0.0",
+				"ts-dedent": "^2.2.0",
+				"typescript": "5.8.3",
+				"@types/node": "22.15.17",
+				"@types/esprima": "^4.0.3",
+				"@netlify/build-info": "10.5.1",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/shared-ast-primitives": "1.1.0"
+			},
+			"dist": {
+				"shasum": "d5d28586494108e0d1a8a4e9eb57083cc962f43b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/autoconfig/-/autoconfig-0.7.6.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-n9A8FUcY542bbH61ja4c8Stdb8RqfpJTL8yBjLPvZvtuYzC9HYPFEzuu/+chPJYUCEGNmpr4Qtz9D55XR/mqcQ==",
+				"signatures": [
+					{
+						"sig": "MEUCICMnV3lxiHQ/3+nxq5n0LbWDnKd2QNon2ccUj2G37d0YAiEA3doVPKYjuxDOhiPvs+GAAc52l4UEDElewJElk8vj/+E=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIQDGDGxrXGRJ/A4JUs7ihhGl/JYoG7dQ9Jk06pLugTJ/kQIgP81qstQwjsocf/y0UDM7Eabl9SzmQdPwZdSOcj8F0Sk="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fautoconfig@0.7.6",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
