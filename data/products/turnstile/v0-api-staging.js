@@ -1576,7 +1576,7 @@
 
 		function Ho(e, t) {
 			var r = hr(e.params, !1, t),
-				n = Dt(e, "b"),
+				n = Dt(e, "g"),
 				a = n === void 0 ? "" : "h/".concat(encodeURIComponent(n), "/");
 			return "".concat(r, "/cdn-cgi/challenge-platform/").concat(a, "fr")
 		}
@@ -1706,7 +1706,7 @@
 		var sn = function(t, r, n, a, u) {
 				var l, d, f = mi(t),
 					s = hr(r.params, !1, a),
-					m = Dt(r, "b"),
+					m = Dt(r, "g"),
 					E = m === void 0 ? "" : "h/".concat(encodeURIComponent(m), "/"),
 					S = Bo("".concat(s, "/cdn-cgi/challenge-platform/").concat(E, "fr/").concat(Lt(t), "/").concat(r.displayLanguage, "/").concat((d = r.params.theme) !== null && d !== void 0 ? d : r.theme, "/").concat(n));
 				if (mt(r), window.top !== window.self) {
@@ -2548,7 +2548,7 @@
 											var Z = y.widgetMap.get(i);
 											Z !== c || Z.isComplete || Z.isResetting || Z.response !== h || (!$ && we !== void 0 && we !== "" && R(we), S(Z, v, $))
 										}, _ = c.params.sitekey, N = kn(), N === void 0 || N === "") return R("Cannot determine Turnstile's embedded location, aborting clearance redemption."), S(c, v, !1), [2];
-									F = Dt(c, "b"), z = F === void 0 ? "" : "h/".concat(encodeURIComponent(F), "/"), q = new URL(N), ge = "https", He = "", se = "".concat(ge, "://").concat(q.host, "/cdn-cgi/challenge-platform/").concat(z, "c/").concat(o).concat(He), fe.label = 1;
+									F = Dt(c, "g"), z = F === void 0 ? "" : "h/".concat(encodeURIComponent(F), "/"), q = new URL(N), ge = "https", He = "", se = "".concat(ge, "://").concat(q.host, "/cdn-cgi/challenge-platform/").concat(z, "c/").concat(o).concat(He), fe.label = 1;
 								case 1:
 									return fe.trys.push([1, 3, , 4]), [4, fetch(se, {
 										body: JSON.stringify({
@@ -2897,7 +2897,7 @@
 											appearance: o.params.appearance,
 											au: y.scriptUrl,
 											cData: o.cData,
-											ch: "d76008a69eab",
+											ch: "4df4a60fa397",
 											chlPageData: o.chlPageData,
 											cs: Wt(o),
 											event: "extraParams",
@@ -3043,7 +3043,7 @@
 					var F = N.cloneNode();
 					w(F, HTMLIFrameElement) || x("Unexpected Error: Cloned widget is not an iframe", 3348);
 					var z = ft(g),
-						q = un(o, g.params.sitekey, g.params, (h = g.rcV) !== null && h !== void 0 ? h : ke, !1, "b", c, y.scriptUrlParsed, Rn(g), z[je] ? z[Je] : void 0);
+						q = un(o, g.params.sitekey, g.params, (h = g.rcV) !== null && h !== void 0 ? h : ke, !1, "g", c, y.scriptUrlParsed, Rn(g), z[je] ? z[Je] : void 0);
 					F.src = q, Mi(F, g), g.iframeOrigin = pt(q), (p = N.parentNode) === null || p === void 0 || p.replaceChild(F, N), On(g, _), g.retryTimeout !== void 0 && window.clearTimeout(g.retryTimeout)
 				}
 
@@ -3217,7 +3217,7 @@
 						Tt[Je] = Wn, Tt[dt] = Dr, Tt[je] = Bi, y.widgetMap.set(ee, Un), fn(y);
 						var be = y.widgetMap.get(ee);
 						be === void 0 && x("Turnstile Initialization Error", 3606), be.chlPageData !== void 0 && be.chlPageData !== "" && Nn(), oe.style.border = "none", oe.style.overflow = "hidden";
-						var Vn = un(ee, Ae, T, ke, !1, "b", ae.New, y.scriptUrlParsed, Rn(be), Tt[je] ? Tt[Je] : void 0);
+						var Vn = un(ee, Ae, T, ke, !1, "g", ae.New, y.scriptUrlParsed, Rn(be), Tt[je] ? Tt[Je] : void 0);
 						be.iframeOrigin = pt(Vn), oe.setAttribute("src", Vn), Mi(oe, be);
 						var Bn = ["cross-origin-isolated", "fullscreen", "autoplay", "keyboard-map", "gamepad", "xr-spatial-tracking"];
 						return G((z = (ge = document.featurePolicy) === null || ge === void 0 || (q = ge.features) === null || q === void 0 ? void 0 : q.call(ge)) !== null && z !== void 0 ? z : [], Fr) && Bn.push(Fr), oe.setAttribute("allow", Bn.join("; ")), oe.setAttribute("sandbox", "allow-same-origin allow-scripts allow-popups"), oe.id = he, oe.title = "Widget containing a Cloudflare security challenge", Xt.appendChild(oe), Cn(oe, be), mr(be), Fi(be, he), ce && K(ce.widgetId, ce.widget), se.appendChild(Xe), be.widgetRenderEndTimeTsMs = Q(), he
