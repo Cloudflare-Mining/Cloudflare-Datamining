@@ -82,9 +82,6 @@
 											},
 											"example": []
 										},
-										"result": {
-											"type": "object"
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"type": "boolean",
@@ -110,7 +107,8 @@
 											],
 											"nullable": true
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -393,9 +391,6 @@
 											},
 											"example": []
 										},
-										"result": {
-											"type": "object"
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"type": "boolean",
@@ -487,7 +482,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -789,9 +785,6 @@
 											},
 											"example": []
 										},
-										"result": {
-											"type": "object"
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"type": "boolean",
@@ -888,7 +881,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1166,9 +1160,6 @@
 											},
 											"example": []
 										},
-										"result": {
-											"type": "object"
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"type": "boolean",
@@ -1198,7 +1189,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1496,9 +1488,6 @@
 											},
 											"example": []
 										},
-										"result": {
-											"type": "object"
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"type": "boolean",
@@ -1595,7 +1584,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1774,8 +1764,7 @@
 				},
 				"type": "boolean"
 			}
-		],
-		"x-forge-hidden": true
+		]
 	},
 	"POST /accounts/{account_id}/d1/database": {
 		"operationId": "d1-create-database",
@@ -1915,9 +1904,6 @@
 											},
 											"example": []
 										},
-										"result": {
-											"type": "object"
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"type": "boolean",
@@ -2014,7 +2000,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2330,9 +2317,6 @@
 											},
 											"example": []
 										},
-										"result": {
-											"type": "object"
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"type": "boolean",
@@ -2408,7 +2392,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2466,9 +2451,6 @@
 											},
 											"example": []
 										},
-										"result": {
-											"type": "object"
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"type": "boolean",
@@ -2523,7 +2505,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2872,9 +2855,6 @@
 											},
 											"example": []
 										},
-										"result": {
-											"type": "object"
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"type": "boolean",
@@ -3036,7 +3016,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -3094,9 +3075,6 @@
 											},
 											"example": []
 										},
-										"result": {
-											"type": "object"
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"type": "boolean",
@@ -3151,7 +3129,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -3488,9 +3467,6 @@
 											},
 											"example": []
 										},
-										"result": {
-											"type": "object"
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"type": "boolean",
@@ -3602,7 +3578,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -3942,9 +3919,6 @@
 											},
 											"example": []
 										},
-										"result": {
-											"type": "object"
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"type": "boolean",
@@ -4080,7 +4054,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -4369,9 +4344,6 @@
 											},
 											"example": []
 										},
-										"result": {
-											"type": "object"
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"type": "boolean",
@@ -4403,7 +4375,8 @@
 															"x-auditable": true
 														},
 														{
-															"description": "The new bookmark representing the state of the database after the restore operation."
+															"description": "The new bookmark representing the state of the database after the restore operation.",
+															"type": "string"
 														}
 													]
 												},
@@ -4422,13 +4395,15 @@
 															"x-auditable": true
 														},
 														{
-															"description": "The bookmark representing the state of the database before the restore operation. Can be used to undo the restore if needed."
+															"description": "The bookmark representing the state of the database before the restore operation. Can be used to undo the restore if needed.",
+															"type": "string"
 														}
 													]
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -4726,9 +4701,6 @@
 											},
 											"example": []
 										},
-										"result": {
-											"type": "object"
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"type": "boolean",
@@ -4825,7 +4797,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
