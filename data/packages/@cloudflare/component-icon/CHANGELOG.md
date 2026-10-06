@@ -1,5 +1,11 @@
 # Change Log
 
+## 13.15.4
+
+### Patch Changes
+
+- 92aa24bd89: Accept React 18 and 19 in the peer ranges of smoke-tested components and styling packages. Keep React keys out of Grid and FormGrid styling props, and emit declarations compatible with React 19 types.
+
 ## 13.15.3
 
 ### Patch Changes
