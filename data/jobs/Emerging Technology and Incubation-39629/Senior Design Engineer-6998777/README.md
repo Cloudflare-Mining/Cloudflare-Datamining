@@ -3,38 +3,25 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: </strong>Lisbon&nbsp;</p>
-<hr>
-<h4><strong>About the Deal Desk Team:</strong></h4>
-<p>The Deal Desk team is a critical component of the Finance function, acting as a strategic partner to the global Sales organization. We are responsible for partnering with sales to structure, negotiate, and close complex deals. We ensure that deals meet the requirements of "good business" while also keeping our customers' best interest in mind. We are committed to building a data-centric and AI-augmented Deal Desk that leverages predictive analytics and automated workflows to optimize pricing in real-time and automate routine approvals, allowing for deeper strategic focus.</p>
-<p><strong>Role Summary:</strong></p>
-<p>As a Sr. Deal Desk Manager, you will be the architect of our AI-driven deal desk, transitioning our sales process from manual workflows to an intelligent, automated engine that spans from initial scoping to final execution. By leveraging agentic workflows and automated data layers, the focus shifts to high-judgment architecture for non-standard enterprise deals. The objective is to serve as a high-influence "Sales Co-pilot," using AI-driven insights to maximize deal velocity and Long-Term Value (LTV) while relentlessly reducing friction through iterative process automation.</p>
-<p><strong>What you’ll do:</strong></p>
+<h3>Available Locations |&nbsp;Austin, US</h3>
+<h3>About the Role</h3>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<h3>Responsibilities</h3>
 <ul>
-	<li>Orchestrate Strategic Deal Architecture: Lead the structuring and execution of non-standard, high-value enterprise deals, providing high-judgment guidance that balances competitive differentiation with long-term business health.</li>
-	<li>Sales Co-pilot &amp; Strategic Influence: Serve as a strategic partner to Sales leadership, utilizing AI-driven data to maximize deal velocity, improve LTV, and ensure discovery reflects true customer needs. Perform analysis on pricing and deal terms, leveraging AI insights to recommend "next best action" for deal structuring and margin optimization.</li>
-	<li>Curate and Tune AI Agents: Manage the enterprise deal approval ecosystem by tuning automated agents and models to ensure compliance and accuracy at scale.</li>
-	<li>Drive Process Iteration: Partner with cross-functional teams (Legal, Finance, Product) to build, streamline, and automate deal desk processes, architecting autonomous approval workflows and focusing on reducing field friction through relentless automation.</li>
-	<li>Champion AI &amp; Automation Integration: Champion the integration of LLMs and generative AI tools to automate deal desk workflows, significantly reducing deal cycle times. Identify bottlenecks and implement AI-powered productivity solutions.</li>
+	<li>In this role, you will collaborate with a team of Design Engineers and Systems Engineers.</li>
+	<li>You will help design and develop frontend experiences that improve overall developer experience throughout our dashboard.</li>
+	<li>You will own your code from inception to release and bring attention to detail to the work you complete for both coding patterns &amp; visual aesthetics.</li>
+	<li>On any given day, you might be working in Figma collaborating on designs or inspiration, developing new components and user interactions, polishing existing pages, or improving developer experience in any number of ways you might imagine.</li>
+	<li>You can expect to interact with a variety of languages and technologies. We primarily use Typescript and React.</li>
 </ul>
-<p><strong>Required Skills &amp; Experience:</strong></p>
+<h3>Desirable Skills, Knowledge, and Experience</h3>
 <ul>
-	<li>6-8+ years of Deal Desk, FP&amp;A, Revenue Operations, or similar experience, with a proven track record of supporting large-scale enterprise sales motions; 3+ years of deal desk experience preferred.</li>
-	<li>Financial &amp; Sales Acumen: Solid understanding of SaaS metrics, pricing models, and financial concepts like ARR, Gross Margin, churn, and profitability. Experience with revenue recognition principles (e.g., ASC 606) is highly desirable. Experience selling software is a bonus.</li>
-	<li>Contract &amp; Pricing Knowledge: Experience drafting and interpreting commercial contracts, with a focus on terms that impact revenue recognition and financial risk. Ability to analyze and recommend the best course of action for complex pricing and licensing situations.</li>
-	<li>Data &amp; AI Literacy: Proficiency in leveraging agentic workflows and prompt engineering to scale influence, extract insights from large datasets, and automate repetitive operational tasks and internal documentation.</li>
-	<li>Algorithmic Thinking: The ability to understand and audit automated pricing models to ensure alignment with long-term company goals.</li>
-	<li>Strategic Influence: Demonstrated ability to navigate complex, cross-functional negotiations and make high-judgment decisions in fast-paced environments.</li>
-	<li>Process Design Mindset: A relentless focus on iterative automation and the ability to translate complex business policies into streamlined, automated logic.</li>
-	<li>Communication Excellence: Exceptional written and oral communication skills, capable of explaining complex deal structures and financial data to both technical and executive stakeholders.</li>
+	<li>5+ years of experience working with distributed systems.</li>
+	<li>Experience designing and building frontend applications.</li>
+	<li>Solid understanding of cloud primitives and how they work together to build distributed systems.</li>
+	<li>Knowledge of at least one modern strongly-typed programming language: we primarily use TypeScript.</li>
+	<li>Experience debugging, optimizing and identifying failure modes in large-scale frontend applications.</li>
 </ul>
-<p><strong>Nice-to-Have Skills:</strong></p>
-<ul>
-	<li>Experience in software sales or sales operations, providing a "boots on the ground" perspective of the sales cycle.</li>
-	<li>Deep knowledge of Cloud/SaaS infrastructure and the global cybersecurity competitive landscape.</li>
-</ul>
-<p>If you're excited by fast-paced innovation, dedicated to driving global growth, and want to help build a better internet, we'd love to hear from you.</p>
-<p><strong>&nbsp;</strong></p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
