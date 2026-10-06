@@ -1,5 +1,20 @@
 [
 	{
+		"id": "8e37c87ee0900bb8386f54fd27382a93",
+		"name": "Resource Library Read",
+		"description": "Can view Resource Library applications.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "ea047b23601d07321ca4f0d8de902612",
 		"name": "Cloudflare Access SCIM Population Admin",
 		"description": "Can view and edit Cloudflare Access SCIM Populations.",
@@ -2010,25 +2025,6 @@
 			"waf": {
 				"read": true,
 				"edit": true
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "75312cadbc1dce48bfcd654da1a2ce03",
-		"name": "Hyperdrive Readonly",
-		"description": "Can read Hyperdrive database configurations.",
-		"permissions": {
-			"query_cache": {
-				"read": true,
-				"edit": false
 			},
 			"zone": {
 				"read": true,
