@@ -3989,6 +3989,90 @@
 			}
 		}
 	],
+	"SERVERS /produce": [
+		{
+			"description": "The stream's endpoint, also returned as `endpoint` on the stream.",
+			"url": "https://{stream_id}.k2.cloudflarestorage.com",
+			"variables": {
+				"stream_id": {
+					"default": "053e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Specifies the public ID of the K2 stream."
+				}
+			}
+		}
+	],
+	"SERVERS /subscriptions": [
+		{
+			"description": "The stream's endpoint, also returned as `endpoint` on the stream.",
+			"url": "https://{stream_id}.k2.cloudflarestorage.com",
+			"variables": {
+				"stream_id": {
+					"default": "053e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Specifies the public ID of the K2 stream."
+				}
+			}
+		}
+	],
+	"SERVERS /subscriptions/{subscription_id}": [
+		{
+			"description": "The stream's endpoint, also returned as `endpoint` on the stream.",
+			"url": "https://{stream_id}.k2.cloudflarestorage.com",
+			"variables": {
+				"stream_id": {
+					"default": "053e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Specifies the public ID of the K2 stream."
+				}
+			}
+		}
+	],
+	"SERVERS /subscriptions/{subscription_id}/batches/{batch_id}/ack": [
+		{
+			"description": "The stream's endpoint, also returned as `endpoint` on the stream.",
+			"url": "https://{stream_id}.k2.cloudflarestorage.com",
+			"variables": {
+				"stream_id": {
+					"default": "053e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Specifies the public ID of the K2 stream."
+				}
+			}
+		}
+	],
+	"SERVERS /subscriptions/{subscription_id}/batches/{batch_id}/extend": [
+		{
+			"description": "The stream's endpoint, also returned as `endpoint` on the stream.",
+			"url": "https://{stream_id}.k2.cloudflarestorage.com",
+			"variables": {
+				"stream_id": {
+					"default": "053e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Specifies the public ID of the K2 stream."
+				}
+			}
+		}
+	],
+	"SERVERS /subscriptions/{subscription_id}/batches/{batch_id}/nack": [
+		{
+			"description": "The stream's endpoint, also returned as `endpoint` on the stream.",
+			"url": "https://{stream_id}.k2.cloudflarestorage.com",
+			"variables": {
+				"stream_id": {
+					"default": "053e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Specifies the public ID of the K2 stream."
+				}
+			}
+		}
+	],
+	"SERVERS /subscriptions/{subscription_id}/consume": [
+		{
+			"description": "The stream's endpoint, also returned as `endpoint` on the stream.",
+			"url": "https://{stream_id}.k2.cloudflarestorage.com",
+			"variables": {
+				"stream_id": {
+					"default": "053e105f4ecef8ad9ca31a8372d0c353",
+					"description": "Specifies the public ID of the K2 stream."
+				}
+			}
+		}
+	],
 	"X-FORGE-COMMANDS /zones/{zone_id}/snippets/{snippet_name}/content": {
 		"snippets": {
 			"description": "Lightweight JavaScript snippets that run on requests before Workers — for quick header modifications and redirects",

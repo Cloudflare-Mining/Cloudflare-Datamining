@@ -39,6 +39,40 @@
 						"schema": {
 							"type": "object",
 							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
 								"result": {
 									"type": "object"
 								},
@@ -50,7 +84,9 @@
 							},
 							"required": [
 								"success",
-								"result"
+								"result",
+								"errors",
+								"messages"
 							]
 						}
 					}
@@ -58,6 +94,9 @@
 			},
 			"4XX": {
 				"description": "Indicates an error in deleting a K2 stream."
+			},
+			"5XX": {
+				"description": "Indicates a server error."
 			}
 		},
 		"security": [
@@ -80,8 +119,240 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "k2.streams",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": false
+		"x-fern-sdk-method-name": "delete"
+	},
+	"DELETE /subscriptions/{subscription_id}": {
+		"operationId": "deleteK2SubscriptionsBySubscription_id",
+		"summary": "Delete subscription",
+		"description": "Delete a subscription and its position in the stream. Requires an API token with K2 consume permission.",
+		"parameters": [
+			{
+				"name": "subscription_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Specifies the ID of the subscription.",
+					"type": "string",
+					"example": "7c1e9b2a4d6f4e8a9b0c1d2e3f4a5b6c",
+					"pattern": "^[a-f0-9]{32}$"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Indicates the deleted subscription.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"id": {
+											"description": "Specifies the ID of the subscription.",
+											"type": "string",
+											"example": "7c1e9b2a4d6f4e8a9b0c1d2e3f4a5b6c",
+											"pattern": "^[a-f0-9]{32}$"
+										}
+									},
+									"required": [
+										"id"
+									]
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Indicates a missing stream or subscription, or failed authorization.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Indicates a server error. Retry with backoff when the error is retryable.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"workers_k2_other"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "k2.streams.subscriptions",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/k2/streams": {
 		"operationId": "getV4AccountsByAccount_idK2Streams",
@@ -139,6 +410,40 @@
 						"schema": {
 							"type": "object",
 							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
 								"result": {
 									"type": "array",
 									"items": {
@@ -155,75 +460,37 @@
 												"example": "https://053e105f4ecef8ad9ca31a8372d0c353.k2.cloudflarestorage.com"
 											},
 											"http": {
-												"oneOf": [
-													{
-														"additionalProperties": false,
-														"properties": {
-															"enabled": {
-																"description": "Indicates whether the HTTP endpoint accepts records.",
-																"type": "boolean",
-																"enum": [
-																	false
-																]
-															}
-														},
-														"required": [
-															"enabled"
-														],
-														"type": "object"
+												"description": "Configures the HTTP endpoint. Disabling HTTP keeps `authentication` and `cors`, so enabling it again restores them.",
+												"type": "object",
+												"properties": {
+													"authentication": {
+														"description": "Indicates whether the HTTP endpoint requires an API token with K2 produce permission. When false, the endpoint accepts unauthenticated records. Defaults to true when HTTP is enabled without a stored value.",
+														"type": "boolean"
 													},
-													{
-														"additionalProperties": false,
+													"cors": {
+														"type": "object",
 														"properties": {
-															"authentication": {
-																"description": "Indicates whether the HTTP endpoint requires an API token with K2 produce permission. When false or omitted, the endpoint accepts unauthenticated records.",
-																"type": "boolean"
-															},
-															"cors": {
-																"type": "object",
-																"properties": {
-																	"origins": {
-																		"description": "Allows requests from these HTTP or HTTPS origins. Use a wildcard only as the sole origin.",
-																		"oneOf": [
-																			{
-																				"items": {
-																					"enum": [
-																						"*"
-																					],
-																					"type": "string"
-																				},
-																				"maxItems": 1,
-																				"minItems": 1,
-																				"type": "array"
-																			},
-																			{
-																				"items": {
-																					"format": "uri",
-																					"pattern": "^https?://[^/?#@]+$",
-																					"type": "string"
-																				},
-																				"maxItems": 5,
-																				"type": "array",
-																				"uniqueItems": true
-																			}
-																		]
-																	}
+															"origins": {
+																"description": "Allows browser requests from these HTTP or HTTPS origins. Use a wildcard only as the sole origin. An empty list blocks cross-origin browser requests. Defaults to `['*']` when HTTP is enabled without stored origins.",
+																"type": "array",
+																"items": {
+																	"pattern": "^(\\*|https?://[^/?#@]+)$",
+																	"type": "string"
 																},
-																"additionalProperties": false
-															},
-															"enabled": {
-																"description": "Indicates whether the HTTP endpoint accepts records.",
-																"type": "boolean",
-																"enum": [
-																	true
-																]
+																"maxItems": 5,
+																"uniqueItems": true
 															}
 														},
-														"required": [
-															"enabled"
-														],
-														"type": "object"
+														"additionalProperties": false
+													},
+													"enabled": {
+														"description": "Indicates whether the HTTP endpoint accepts records.",
+														"type": "boolean"
 													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"enabled"
 												]
 											},
 											"id": {
@@ -334,7 +601,9 @@
 							"required": [
 								"success",
 								"result",
-								"result_info"
+								"result_info",
+								"errors",
+								"messages"
 							]
 						}
 					}
@@ -342,6 +611,9 @@
 			},
 			"4XX": {
 				"description": "Indicates an error in listing K2 streams."
+			},
+			"5XX": {
+				"description": "Indicates a server error."
 			}
 		},
 		"security": [
@@ -364,8 +636,7 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "k2.streams",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": false
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/k2/streams/{stream_id}": {
 		"operationId": "getV4AccountsByAccount_idK2StreamsByStream_id",
@@ -407,6 +678,40 @@
 						"schema": {
 							"type": "object",
 							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
 								"result": {
 									"type": "object",
 									"properties": {
@@ -421,75 +726,37 @@
 											"example": "https://053e105f4ecef8ad9ca31a8372d0c353.k2.cloudflarestorage.com"
 										},
 										"http": {
-											"oneOf": [
-												{
-													"additionalProperties": false,
-													"properties": {
-														"enabled": {
-															"description": "Indicates whether the HTTP endpoint accepts records.",
-															"type": "boolean",
-															"enum": [
-																false
-															]
-														}
-													},
-													"required": [
-														"enabled"
-													],
-													"type": "object"
+											"description": "Configures the HTTP endpoint. Disabling HTTP keeps `authentication` and `cors`, so enabling it again restores them.",
+											"type": "object",
+											"properties": {
+												"authentication": {
+													"description": "Indicates whether the HTTP endpoint requires an API token with K2 produce permission. When false, the endpoint accepts unauthenticated records. Defaults to true when HTTP is enabled without a stored value.",
+													"type": "boolean"
 												},
-												{
-													"additionalProperties": false,
+												"cors": {
+													"type": "object",
 													"properties": {
-														"authentication": {
-															"description": "Indicates whether the HTTP endpoint requires an API token with K2 produce permission. When false or omitted, the endpoint accepts unauthenticated records.",
-															"type": "boolean"
-														},
-														"cors": {
-															"type": "object",
-															"properties": {
-																"origins": {
-																	"description": "Allows requests from these HTTP or HTTPS origins. Use a wildcard only as the sole origin.",
-																	"oneOf": [
-																		{
-																			"items": {
-																				"enum": [
-																					"*"
-																				],
-																				"type": "string"
-																			},
-																			"maxItems": 1,
-																			"minItems": 1,
-																			"type": "array"
-																		},
-																		{
-																			"items": {
-																				"format": "uri",
-																				"pattern": "^https?://[^/?#@]+$",
-																				"type": "string"
-																			},
-																			"maxItems": 5,
-																			"type": "array",
-																			"uniqueItems": true
-																		}
-																	]
-																}
+														"origins": {
+															"description": "Allows browser requests from these HTTP or HTTPS origins. Use a wildcard only as the sole origin. An empty list blocks cross-origin browser requests. Defaults to `['*']` when HTTP is enabled without stored origins.",
+															"type": "array",
+															"items": {
+																"pattern": "^(\\*|https?://[^/?#@]+)$",
+																"type": "string"
 															},
-															"additionalProperties": false
-														},
-														"enabled": {
-															"description": "Indicates whether the HTTP endpoint accepts records.",
-															"type": "boolean",
-															"enum": [
-																true
-															]
+															"maxItems": 5,
+															"uniqueItems": true
 														}
 													},
-													"required": [
-														"enabled"
-													],
-													"type": "object"
+													"additionalProperties": false
+												},
+												"enabled": {
+													"description": "Indicates whether the HTTP endpoint accepts records.",
+													"type": "boolean"
 												}
+											},
+											"additionalProperties": false,
+											"required": [
+												"enabled"
 											]
 										},
 										"id": {
@@ -575,7 +842,9 @@
 							},
 							"required": [
 								"success",
-								"result"
+								"result",
+								"errors",
+								"messages"
 							]
 						}
 					}
@@ -583,6 +852,9 @@
 			},
 			"4XX": {
 				"description": "Indicates an error in retrieving a K2 stream."
+			},
+			"5XX": {
+				"description": "Indicates a server error."
 			}
 		},
 		"security": [
@@ -605,8 +877,7 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "k2.streams",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": false
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/k2/streams/{stream_id}/subscriptions": {
 		"operationId": "getV4AccountsByAccount_idK2StreamsByStream_idSubscriptions",
@@ -648,6 +919,40 @@
 						"schema": {
 							"type": "object",
 							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
 								"result": {
 									"type": "array",
 									"items": {
@@ -726,7 +1031,9 @@
 							},
 							"required": [
 								"success",
-								"result"
+								"result",
+								"errors",
+								"messages"
 							]
 						}
 					}
@@ -734,6 +1041,9 @@
 			},
 			"4XX": {
 				"description": "Missing stream or insufficient K2 read permission."
+			},
+			"5XX": {
+				"description": "Indicates a server error."
 			}
 		},
 		"security": [
@@ -756,13 +1066,275 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "k2.streams.subscriptions",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": false
+		"x-fern-sdk-method-name": "list"
+	},
+	"GET /subscriptions/{subscription_id}": {
+		"operationId": "getK2SubscriptionsBySubscription_id",
+		"summary": "Get subscription",
+		"description": "Get a subscription. Requires an API token with K2 consume permission.",
+		"parameters": [
+			{
+				"name": "subscription_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Specifies the ID of the subscription.",
+					"type": "string",
+					"example": "7c1e9b2a4d6f4e8a9b0c1d2e3f4a5b6c",
+					"pattern": "^[a-f0-9]{32}$"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Indicates the subscription.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"created_at": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"id": {
+											"description": "Specifies the ID of the subscription.",
+											"type": "string",
+											"example": "7c1e9b2a4d6f4e8a9b0c1d2e3f4a5b6c",
+											"pattern": "^[a-f0-9]{32}$"
+										},
+										"modified_at": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"name": {
+											"type": "string"
+										},
+										"start_at": {
+											"type": "object",
+											"properties": {
+												"type": {
+													"type": "string",
+													"enum": [
+														"earliest",
+														"latest"
+													]
+												}
+											},
+											"required": [
+												"type"
+											]
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"start_at",
+										"created_at",
+										"modified_at"
+									]
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Indicates a missing stream or subscription, or failed authorization.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Indicates a server error. Retry with backoff when the error is retryable.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"workers_k2_other"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "k2.streams.subscriptions",
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/k2/streams/{stream_id}": {
 		"operationId": "patchV4AccountsByAccount_idK2StreamsByStream_id",
 		"summary": "Update K2 stream",
-		"description": "Update a K2 stream. Omitted `http` settings, such as `authentication` and `cors`, keep their current values while HTTP stays enabled. Disabling HTTP clears its settings. At least one input must remain enabled.",
+		"description": "Update a K2 stream. Omitted `http` settings, such as `authentication` and `cors`, keep their current values. Disabling HTTP keeps them, so enabling HTTP again restores them. At least one input must remain enabled.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -799,75 +1371,37 @@
 						"type": "object",
 						"properties": {
 							"http": {
-								"oneOf": [
-									{
-										"additionalProperties": false,
-										"properties": {
-											"enabled": {
-												"description": "Indicates whether the HTTP endpoint accepts records.",
-												"type": "boolean",
-												"enum": [
-													false
-												]
-											}
-										},
-										"required": [
-											"enabled"
-										],
-										"type": "object"
+								"description": "Configures the HTTP endpoint. Disabling HTTP keeps `authentication` and `cors`, so enabling it again restores them.",
+								"type": "object",
+								"properties": {
+									"authentication": {
+										"description": "Indicates whether the HTTP endpoint requires an API token with K2 produce permission. When false, the endpoint accepts unauthenticated records. Defaults to true when HTTP is enabled without a stored value.",
+										"type": "boolean"
 									},
-									{
-										"additionalProperties": false,
+									"cors": {
+										"type": "object",
 										"properties": {
-											"authentication": {
-												"description": "Indicates whether the HTTP endpoint requires an API token with K2 produce permission. When false or omitted, the endpoint accepts unauthenticated records.",
-												"type": "boolean"
-											},
-											"cors": {
-												"type": "object",
-												"properties": {
-													"origins": {
-														"description": "Allows requests from these HTTP or HTTPS origins. Use a wildcard only as the sole origin.",
-														"oneOf": [
-															{
-																"items": {
-																	"enum": [
-																		"*"
-																	],
-																	"type": "string"
-																},
-																"maxItems": 1,
-																"minItems": 1,
-																"type": "array"
-															},
-															{
-																"items": {
-																	"format": "uri",
-																	"pattern": "^https?://[^/?#@]+$",
-																	"type": "string"
-																},
-																"maxItems": 5,
-																"type": "array",
-																"uniqueItems": true
-															}
-														]
-													}
+											"origins": {
+												"description": "Allows browser requests from these HTTP or HTTPS origins. Use a wildcard only as the sole origin. An empty list blocks cross-origin browser requests. Defaults to `['*']` when HTTP is enabled without stored origins.",
+												"type": "array",
+												"items": {
+													"pattern": "^(\\*|https?://[^/?#@]+)$",
+													"type": "string"
 												},
-												"additionalProperties": false
-											},
-											"enabled": {
-												"description": "Indicates whether the HTTP endpoint accepts records.",
-												"type": "boolean",
-												"enum": [
-													true
-												]
+												"maxItems": 5,
+												"uniqueItems": true
 											}
 										},
-										"required": [
-											"enabled"
-										],
-										"type": "object"
+										"additionalProperties": false
+									},
+									"enabled": {
+										"description": "Indicates whether the HTTP endpoint accepts records.",
+										"type": "boolean"
 									}
+								},
+								"additionalProperties": false,
+								"required": [
+									"enabled"
 								]
 							},
 							"retention_seconds": {
@@ -949,7 +1483,8 @@
 							"required": [
 								"http",
 								"worker_binding"
-							]
+							],
+							"type": "object"
 						}
 					}
 				}
@@ -963,6 +1498,40 @@
 						"schema": {
 							"type": "object",
 							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
 								"result": {
 									"type": "object",
 									"properties": {
@@ -977,75 +1546,37 @@
 											"example": "https://053e105f4ecef8ad9ca31a8372d0c353.k2.cloudflarestorage.com"
 										},
 										"http": {
-											"oneOf": [
-												{
-													"additionalProperties": false,
-													"properties": {
-														"enabled": {
-															"description": "Indicates whether the HTTP endpoint accepts records.",
-															"type": "boolean",
-															"enum": [
-																false
-															]
-														}
-													},
-													"required": [
-														"enabled"
-													],
-													"type": "object"
+											"description": "Configures the HTTP endpoint. Disabling HTTP keeps `authentication` and `cors`, so enabling it again restores them.",
+											"type": "object",
+											"properties": {
+												"authentication": {
+													"description": "Indicates whether the HTTP endpoint requires an API token with K2 produce permission. When false, the endpoint accepts unauthenticated records. Defaults to true when HTTP is enabled without a stored value.",
+													"type": "boolean"
 												},
-												{
-													"additionalProperties": false,
+												"cors": {
+													"type": "object",
 													"properties": {
-														"authentication": {
-															"description": "Indicates whether the HTTP endpoint requires an API token with K2 produce permission. When false or omitted, the endpoint accepts unauthenticated records.",
-															"type": "boolean"
-														},
-														"cors": {
-															"type": "object",
-															"properties": {
-																"origins": {
-																	"description": "Allows requests from these HTTP or HTTPS origins. Use a wildcard only as the sole origin.",
-																	"oneOf": [
-																		{
-																			"items": {
-																				"enum": [
-																					"*"
-																				],
-																				"type": "string"
-																			},
-																			"maxItems": 1,
-																			"minItems": 1,
-																			"type": "array"
-																		},
-																		{
-																			"items": {
-																				"format": "uri",
-																				"pattern": "^https?://[^/?#@]+$",
-																				"type": "string"
-																			},
-																			"maxItems": 5,
-																			"type": "array",
-																			"uniqueItems": true
-																		}
-																	]
-																}
+														"origins": {
+															"description": "Allows browser requests from these HTTP or HTTPS origins. Use a wildcard only as the sole origin. An empty list blocks cross-origin browser requests. Defaults to `['*']` when HTTP is enabled without stored origins.",
+															"type": "array",
+															"items": {
+																"pattern": "^(\\*|https?://[^/?#@]+)$",
+																"type": "string"
 															},
-															"additionalProperties": false
-														},
-														"enabled": {
-															"description": "Indicates whether the HTTP endpoint accepts records.",
-															"type": "boolean",
-															"enum": [
-																true
-															]
+															"maxItems": 5,
+															"uniqueItems": true
 														}
 													},
-													"required": [
-														"enabled"
-													],
-													"type": "object"
+													"additionalProperties": false
+												},
+												"enabled": {
+													"description": "Indicates whether the HTTP endpoint accepts records.",
+													"type": "boolean"
 												}
+											},
+											"additionalProperties": false,
+											"required": [
+												"enabled"
 											]
 										},
 										"id": {
@@ -1131,7 +1662,9 @@
 							},
 							"required": [
 								"success",
-								"result"
+								"result",
+								"errors",
+								"messages"
 							]
 						}
 					}
@@ -1139,6 +1672,9 @@
 			},
 			"4XX": {
 				"description": "Indicates an error in updating a K2 stream."
+			},
+			"5XX": {
+				"description": "Indicates a server error."
 			}
 		},
 		"security": [
@@ -1161,13 +1697,12 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "k2.streams",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": false
+		"x-fern-sdk-method-name": "update"
 	},
 	"POST /accounts/{account_id}/k2/streams": {
 		"operationId": "postV4AccountsByAccount_idK2Streams",
 		"summary": "Create K2 stream",
-		"description": "Create a new K2 stream.",
+		"description": "Create a new K2 stream. HTTP is disabled when `http` is omitted. Enabled HTTP requires authentication and allows all origins unless `authentication` or `cors` say otherwise. At least one input must be enabled.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1191,74 +1726,43 @@
 						"type": "object",
 						"properties": {
 							"http": {
-								"oneOf": [
+								"default": {
+									"enabled": false
+								},
+								"allOf": [
 									{
-										"additionalProperties": false,
-										"properties": {
-											"enabled": {
-												"description": "Indicates whether the HTTP endpoint accepts records.",
-												"type": "boolean",
-												"enum": [
-													false
-												]
-											}
-										},
-										"required": [
-											"enabled"
-										],
-										"type": "object"
-									},
-									{
-										"additionalProperties": false,
+										"description": "Configures the HTTP endpoint. Disabling HTTP keeps `authentication` and `cors`, so enabling it again restores them.",
+										"type": "object",
 										"properties": {
 											"authentication": {
-												"description": "Indicates whether the HTTP endpoint requires an API token with K2 produce permission. When false or omitted, the endpoint accepts unauthenticated records.",
+												"description": "Indicates whether the HTTP endpoint requires an API token with K2 produce permission. When false, the endpoint accepts unauthenticated records. Defaults to true when HTTP is enabled without a stored value.",
 												"type": "boolean"
 											},
 											"cors": {
 												"type": "object",
 												"properties": {
 													"origins": {
-														"description": "Allows requests from these HTTP or HTTPS origins. Use a wildcard only as the sole origin.",
-														"oneOf": [
-															{
-																"items": {
-																	"enum": [
-																		"*"
-																	],
-																	"type": "string"
-																},
-																"maxItems": 1,
-																"minItems": 1,
-																"type": "array"
-															},
-															{
-																"items": {
-																	"format": "uri",
-																	"pattern": "^https?://[^/?#@]+$",
-																	"type": "string"
-																},
-																"maxItems": 5,
-																"type": "array",
-																"uniqueItems": true
-															}
-														]
+														"description": "Allows browser requests from these HTTP or HTTPS origins. Use a wildcard only as the sole origin. An empty list blocks cross-origin browser requests. Defaults to `['*']` when HTTP is enabled without stored origins.",
+														"type": "array",
+														"items": {
+															"pattern": "^(\\*|https?://[^/?#@]+)$",
+															"type": "string"
+														},
+														"maxItems": 5,
+														"uniqueItems": true
 													}
 												},
 												"additionalProperties": false
 											},
 											"enabled": {
 												"description": "Indicates whether the HTTP endpoint accepts records.",
-												"type": "boolean",
-												"enum": [
-													true
-												]
+												"type": "boolean"
 											}
 										},
+										"additionalProperties": false,
 										"required": [
 											"enabled"
-										],
-										"type": "object"
+										]
 									}
 								]
 							},
@@ -1354,13 +1858,12 @@
 								}
 							},
 							"required": [
-								"http",
 								"worker_binding"
-							]
+							],
+							"type": "object"
 						},
 						"required": [
-							"name",
-							"http"
+							"name"
 						]
 					}
 				}
@@ -1374,6 +1877,40 @@
 						"schema": {
 							"type": "object",
 							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
 								"result": {
 									"type": "object",
 									"properties": {
@@ -1388,75 +1925,37 @@
 											"example": "https://053e105f4ecef8ad9ca31a8372d0c353.k2.cloudflarestorage.com"
 										},
 										"http": {
-											"oneOf": [
-												{
-													"additionalProperties": false,
-													"properties": {
-														"enabled": {
-															"description": "Indicates whether the HTTP endpoint accepts records.",
-															"type": "boolean",
-															"enum": [
-																false
-															]
-														}
-													},
-													"required": [
-														"enabled"
-													],
-													"type": "object"
+											"description": "Configures the HTTP endpoint. Disabling HTTP keeps `authentication` and `cors`, so enabling it again restores them.",
+											"type": "object",
+											"properties": {
+												"authentication": {
+													"description": "Indicates whether the HTTP endpoint requires an API token with K2 produce permission. When false, the endpoint accepts unauthenticated records. Defaults to true when HTTP is enabled without a stored value.",
+													"type": "boolean"
 												},
-												{
-													"additionalProperties": false,
+												"cors": {
+													"type": "object",
 													"properties": {
-														"authentication": {
-															"description": "Indicates whether the HTTP endpoint requires an API token with K2 produce permission. When false or omitted, the endpoint accepts unauthenticated records.",
-															"type": "boolean"
-														},
-														"cors": {
-															"type": "object",
-															"properties": {
-																"origins": {
-																	"description": "Allows requests from these HTTP or HTTPS origins. Use a wildcard only as the sole origin.",
-																	"oneOf": [
-																		{
-																			"items": {
-																				"enum": [
-																					"*"
-																				],
-																				"type": "string"
-																			},
-																			"maxItems": 1,
-																			"minItems": 1,
-																			"type": "array"
-																		},
-																		{
-																			"items": {
-																				"format": "uri",
-																				"pattern": "^https?://[^/?#@]+$",
-																				"type": "string"
-																			},
-																			"maxItems": 5,
-																			"type": "array",
-																			"uniqueItems": true
-																		}
-																	]
-																}
+														"origins": {
+															"description": "Allows browser requests from these HTTP or HTTPS origins. Use a wildcard only as the sole origin. An empty list blocks cross-origin browser requests. Defaults to `['*']` when HTTP is enabled without stored origins.",
+															"type": "array",
+															"items": {
+																"pattern": "^(\\*|https?://[^/?#@]+)$",
+																"type": "string"
 															},
-															"additionalProperties": false
-														},
-														"enabled": {
-															"description": "Indicates whether the HTTP endpoint accepts records.",
-															"type": "boolean",
-															"enum": [
-																true
-															]
+															"maxItems": 5,
+															"uniqueItems": true
 														}
 													},
-													"required": [
-														"enabled"
-													],
-													"type": "object"
+													"additionalProperties": false
+												},
+												"enabled": {
+													"description": "Indicates whether the HTTP endpoint accepts records.",
+													"type": "boolean"
 												}
+											},
+											"additionalProperties": false,
+											"required": [
+												"enabled"
 											]
 										},
 										"id": {
@@ -1542,7 +2041,9 @@
 							},
 							"required": [
 								"success",
-								"result"
+								"result",
+								"errors",
+								"messages"
 							]
 						}
 					}
@@ -1550,6 +2051,9 @@
 			},
 			"4XX": {
 				"description": "Indicates an error in creating a K2 stream."
+			},
+			"5XX": {
+				"description": "Indicates a server error."
 			}
 		},
 		"security": [
@@ -1572,7 +2076,1526 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "k2.streams",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": false
+		"x-fern-sdk-method-name": "create"
+	},
+	"POST /produce": {
+		"operationId": "postK2Produce",
+		"summary": "Produce records",
+		"description": "Appends a batch of records to the stream. The batch is written atomically, so either every record is stored or none are. Requests are limited to 5 MB, compressed and decompressed, and each record to 1 MB. Gzip bodies are accepted when `Content-Encoding` is `gzip`. Requires an API token with K2 produce permission unless the stream's HTTP input sets `authentication` to false. Errors use a `success` and `error` body instead of the `errors` array.",
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"records": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"content": {
+											"description": "The record payload, encoded as standard base64. Empty content is valid.",
+											"example": "eyJvcmRlcl9pZCI6MTAwMX0=",
+											"type": "string"
+										},
+										"headers": {
+											"description": "Metadata about the record, as string keys and values.",
+											"type": "object",
+											"example": {
+												"event-type": "order.created"
+											},
+											"additionalProperties": {
+												"type": "string"
+											},
+											"maxProperties": 32
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"content"
+									]
+								},
+								"minItems": 1
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"records"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Indicates that every record in the batch was stored.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Indicates an invalid request, a missing stream or HTTP input, or failed authorization. No records were stored.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"type": "integer",
+											"example": 10211
+										},
+										"message": {
+											"type": "string",
+											"example": "K2 is temporarily unavailable"
+										},
+										"retryable": {
+											"description": "Indicates whether you can retry the batch with backoff. K2 stored none of its records.",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"code",
+										"message",
+										"retryable"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Indicates a server error. Retry with backoff when the error is retryable.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"type": "integer",
+											"example": 10211
+										},
+										"message": {
+											"type": "string",
+											"example": "K2 is temporarily unavailable"
+										},
+										"retryable": {
+											"description": "Indicates whether you can retry the batch with backoff. K2 stored none of its records.",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"code",
+										"message",
+										"retryable"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{}
+		],
+		"tags": [
+			"workers_k2_other"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "k2.streams",
+		"x-fern-sdk-method-name": "produce"
+	},
+	"POST /subscriptions": {
+		"operationId": "postK2Subscriptions",
+		"summary": "Create subscription",
+		"description": "Create a subscription, which reads the stream from its own position. Creating a subscription with an existing name returns the existing subscription. A stream can have up to 100 subscriptions. Requires an API token with K2 consume permission.",
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"description": "Specifies the name of the subscription. Creating a subscription with an existing name returns the existing subscription.",
+								"type": "string",
+								"example": "orders_processor",
+								"pattern": "^[A-Za-z0-9_-]{1,128}$"
+							},
+							"start_at": {
+								"type": "object",
+								"additionalProperties": false,
+								"properties": {
+									"type": {
+										"description": "Starts at the oldest retained record or at the end of the stream.",
+										"type": "string",
+										"enum": [
+											"earliest",
+											"latest"
+										]
+									}
+								},
+								"required": [
+									"type"
+								]
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"name",
+							"start_at"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Indicates the created or existing subscription.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"id": {
+											"description": "Specifies the ID of the subscription.",
+											"type": "string",
+											"example": "7c1e9b2a4d6f4e8a9b0c1d2e3f4a5b6c",
+											"pattern": "^[a-f0-9]{32}$"
+										}
+									},
+									"required": [
+										"id"
+									]
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Indicates an invalid request, a missing stream, the subscription limit, or failed authorization.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Indicates a server error. Retry with backoff when the error is retryable.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"workers_k2_other"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "k2.streams.subscriptions",
+		"x-fern-sdk-method-name": "create"
+	},
+	"POST /subscriptions/{subscription_id}/batches/{batch_id}/ack": {
+		"operationId": "postK2SubscriptionsBySubscription_idBatchesByBatch_idAck",
+		"summary": "Acknowledge batch",
+		"description": "Confirm that the worker processed a batch, so K2 does not deliver it again. Acknowledging an unknown, already acknowledged, or reassigned batch also succeeds. Requires an API token with K2 consume permission.",
+		"parameters": [
+			{
+				"name": "subscription_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Specifies the ID of the subscription.",
+					"type": "string",
+					"example": "7c1e9b2a4d6f4e8a9b0c1d2e3f4a5b6c",
+					"pattern": "^[a-f0-9]{32}$"
+				}
+			},
+			{
+				"name": "batch_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Specifies the ID of a delivered batch, from the Consume response.",
+					"type": "string",
+					"example": "2f8d4c6b1a3e4f5d8c7b9a0e1d2c3b4a",
+					"pattern": "^[a-f0-9]{32}$"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"worker_id": {
+								"description": "Identifies the consumer process. Each worker holds at most one batch at a time.",
+								"type": "string",
+								"example": "worker-1",
+								"maxLength": 256,
+								"minLength": 1
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"worker_id"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Indicates the batch is acknowledged or no longer pending.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Indicates an invalid request, a missing stream or subscription, a lost lease, or failed authorization.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Indicates a server error. Retry with backoff when the error is retryable.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"workers_k2_other"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "k2.streams.subscriptions.batches",
+		"x-fern-sdk-method-name": "ack"
+	},
+	"POST /subscriptions/{subscription_id}/batches/{batch_id}/extend": {
+		"operationId": "postK2SubscriptionsBySubscription_idBatchesByBatch_idExtend",
+		"summary": "Extend batch lease",
+		"description": "Extend the lease on a batch the worker still holds to 5 minutes from now. Returns 409 with code 10218 when the worker no longer holds the lease; stop processing the batch and call Consume again. Requires an API token with K2 consume permission.",
+		"parameters": [
+			{
+				"name": "subscription_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Specifies the ID of the subscription.",
+					"type": "string",
+					"example": "7c1e9b2a4d6f4e8a9b0c1d2e3f4a5b6c",
+					"pattern": "^[a-f0-9]{32}$"
+				}
+			},
+			{
+				"name": "batch_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Specifies the ID of a delivered batch, from the Consume response.",
+					"type": "string",
+					"example": "2f8d4c6b1a3e4f5d8c7b9a0e1d2c3b4a",
+					"pattern": "^[a-f0-9]{32}$"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"worker_id": {
+								"description": "Identifies the consumer process. Each worker holds at most one batch at a time.",
+								"type": "string",
+								"example": "worker-1",
+								"maxLength": 256,
+								"minLength": 1
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"worker_id"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Indicates the new lease expiry.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"leased_until_ms": {
+											"description": "Shows the new lease expiry, in epoch milliseconds.",
+											"type": "integer",
+											"example": 1759738200000
+										}
+									},
+									"required": [
+										"leased_until_ms"
+									]
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Indicates an invalid request, a missing stream or subscription, a lost lease, or failed authorization.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Indicates a server error. Retry with backoff when the error is retryable.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"workers_k2_other"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "k2.streams.subscriptions.batches",
+		"x-fern-sdk-method-name": "extend"
+	},
+	"POST /subscriptions/{subscription_id}/batches/{batch_id}/nack": {
+		"operationId": "postK2SubscriptionsBySubscription_idBatchesByBatch_idNack",
+		"summary": "Release batch",
+		"description": "Returns a batch to the subscription for redelivery. The next Consume request from any worker receives them under a new `batch_id`. Releasing an unknown or already settled batch also succeeds. Requires an API token with K2 consume permission.",
+		"parameters": [
+			{
+				"name": "subscription_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Specifies the ID of the subscription.",
+					"type": "string",
+					"example": "7c1e9b2a4d6f4e8a9b0c1d2e3f4a5b6c",
+					"pattern": "^[a-f0-9]{32}$"
+				}
+			},
+			{
+				"name": "batch_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Specifies the ID of a delivered batch, from the Consume response.",
+					"type": "string",
+					"example": "2f8d4c6b1a3e4f5d8c7b9a0e1d2c3b4a",
+					"pattern": "^[a-f0-9]{32}$"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"worker_id": {
+								"description": "Identifies the consumer process. Each worker holds at most one batch at a time.",
+								"type": "string",
+								"example": "worker-1",
+								"maxLength": 256,
+								"minLength": 1
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"worker_id"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Indicates the batch is released or no longer pending.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Indicates an invalid request, a missing stream or subscription, a lost lease, or failed authorization.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Indicates a server error. Retry with backoff when the error is retryable.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"workers_k2_other"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "k2.streams.subscriptions.batches",
+		"x-fern-sdk-method-name": "nack"
+	},
+	"POST /subscriptions/{subscription_id}/consume": {
+		"operationId": "postK2SubscriptionsBySubscription_idConsume",
+		"summary": "Consume records",
+		"description": "Returns the next batch of records and leases it to the worker for 5 minutes. ACK the batch after processing it, NACK it to have it redelivered, or extend the lease if processing takes longer. When no records are available, the response has no records and a null `batch_id`. Returns 429 with code 10216 when every parallel read slot for the subscription is leased, and 409 with code 10217 while this worker has a read in progress; retry both. Requires an API token with K2 consume permission.",
+		"parameters": [
+			{
+				"name": "subscription_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Specifies the ID of the subscription.",
+					"type": "string",
+					"example": "7c1e9b2a4d6f4e8a9b0c1d2e3f4a5b6c",
+					"pattern": "^[a-f0-9]{32}$"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"max_records": {
+								"description": "Sets the maximum number of records to return.",
+								"type": "integer",
+								"example": 100,
+								"maximum": 10000,
+								"minimum": 1
+							},
+							"worker_id": {
+								"description": "Identifies the consumer process. Each worker holds at most one batch at a time.",
+								"type": "string",
+								"example": "worker-1",
+								"maxLength": 256,
+								"minLength": 1
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"worker_id",
+							"max_records"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Indicates a leased batch, or no records.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"batch_id": {
+											"description": "Identifies the delivered batch for ACK, NACK, and extend. Null when the response contains no records.",
+											"type": "string",
+											"nullable": true,
+											"pattern": "^[a-f0-9]{32}$"
+										},
+										"leased_until_ms": {
+											"description": "Shows when the lease on the batch expires, in epoch milliseconds. ACK or NACK the batch before then. Null when the response contains no records.",
+											"type": "integer",
+											"example": 1759737900000,
+											"nullable": true
+										},
+										"records": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"content": {
+														"description": "The record payload, encoded as standard base64.",
+														"example": "eyJvcmRlcl9pZCI6MTAwMX0=",
+														"format": "byte",
+														"type": "string"
+													},
+													"headers": {
+														"description": "Lists the metadata the producer attached to the record. Omitted when the record carries none.",
+														"type": "object",
+														"additionalProperties": {
+															"type": "string"
+														}
+													},
+													"timestamp_ms": {
+														"description": "Shows when K2 received the record, in epoch milliseconds.",
+														"type": "integer",
+														"example": 1759737600000
+													}
+												},
+												"required": [
+													"timestamp_ms",
+													"content"
+												]
+											}
+										}
+									},
+									"required": [
+										"batch_id",
+										"leased_until_ms",
+										"records"
+									]
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Indicates an invalid request, a missing stream or subscription, a busy subscription or worker, or failed authorization.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Indicates a server error. Retry with backoff when the error is retryable.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"workers_k2_other"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "k2.streams.subscriptions",
+		"x-fern-sdk-method-name": "consume"
 	}
 }
