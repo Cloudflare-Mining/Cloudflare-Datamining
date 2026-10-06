@@ -8,7 +8,9 @@ function camelCaseToDash(str) {
 // Our export needs to be an object keyed by the icon type (e.g. { 'workers': WorkersIcon })
 // Here we import each default export individually, and then create a single object to export
 function defaultIndexTemplate(filePaths) {
-  let indexString = filePaths
+  let indexString = "import type { ComponentType, SVGProps } from 'react';\n";
+
+  indexString += filePaths
     .map(filePath => {
       const basename = path.basename(filePath, path.extname(filePath));
       const exportName = /^\d/.test(basename) ? `Svg${basename}` : basename;
@@ -16,7 +18,10 @@ function defaultIndexTemplate(filePaths) {
     })
     .join('\n');
 
-  indexString += '\nexport default {\n';
+  indexString +=
+    '\ntype IconComponent = ComponentType<SVGProps<SVGSVGElement>>;\n' +
+    'const iconMap = <Name extends string>(icons: Record<Name, IconComponent>) =>\n  icons;\n' +
+    'export default iconMap({\n';
 
   indexString += filePaths
     .map(filePath => {
@@ -28,7 +33,7 @@ function defaultIndexTemplate(filePaths) {
     })
     .join('\n');
 
-  indexString += '\n};';
+  indexString += '\n});';
 
   return indexString;
 }

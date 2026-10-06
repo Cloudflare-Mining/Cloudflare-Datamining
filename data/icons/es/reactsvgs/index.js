@@ -246,7 +246,10 @@ import PriceSolid from './PriceSolid';
 import ReliabilityTimerOutline from './ReliabilityTimerOutline';
 import ReliabilityTimerSolid from './ReliabilityTimerSolid';
 import SecurityFingerprint from './SecurityFingerprint';
-export default {
+
+var iconMap = icons => icons;
+
+export default iconMap({
   dlp: Dlp,
   'account-analytics-logo': AccountAnalyticsLogo,
   'add-member': AddMember,
@@ -495,4 +498,4 @@ export default {
   'zero-trust-risk-scoring': ZeroTrustRiskScoring,
   'zerotrust-casb-logo': ZerotrustCasbLogo,
   'zerotrust-networks-logo': ZerotrustNetworksLogo
-};
+});
