@@ -1503,6 +1503,86 @@
 		"aiSearchCount": "Confidence interval for the corresponding point estimate",
 		"searchCount": "Confidence interval for the corresponding point estimate"
 	},
+	"AccountAiSearchFulltextQueriesAdaptiveGroups": {
+		"__description": "Sample-weighted estimate of AI Search full-text queries. Logical operations are not deduplicated, so retries may be counted more than once.",
+		"avg": "The average of values for a metric per dimension",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Sample-weighted estimate of full-text queries; retries are not deduplicated",
+		"dimensions": "List of dimensions to group by"
+	},
+	"AccountAiSearchFulltextQueriesAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": "Average sample interval"
+	},
+	"AccountAiSearchFulltextQueriesAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Sample-weighted estimate of full-text queries; retries are not deduplicated, with confidence intervals",
+		"level": "Confidence level that was requested"
+	},
+	"AccountAiSearchFulltextQueriesAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "The date of the billing event",
+		"datetime": "The date and time of the billing event",
+		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time truncated to five minutes",
+		"datetimeHour": "The date and time truncated to the hour",
+		"datetimeMinute": "The date and time truncated to the minute",
+		"instanceId": "Public AI Search instance identifier",
+		"namespaceId": "AI Search namespace identifier",
+		"tier": "Billing tier at the time of the event (free or paid)"
+	},
+	"AccountAiSearchFulltextQueriesAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountAiSearchFulltextQueriesAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountAiSearchImageProcessingTokensAdaptiveGroups": {
+		"__description": "Sample-weighted estimate of AI Search image processing tokens. Logical operations are not deduplicated, so retries may be counted more than once.",
+		"avg": "The average of values for a metric per dimension",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Sample-weighted estimate of image processing events; retries are not deduplicated",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountAiSearchImageProcessingTokensAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": "Average sample interval"
+	},
+	"AccountAiSearchImageProcessingTokensAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Sample-weighted estimate of image processing events; retries are not deduplicated, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountAiSearchImageProcessingTokensAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "The date of the billing event",
+		"datetime": "The date and time of the billing event",
+		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time truncated to five minutes",
+		"datetimeHour": "The date and time truncated to the hour",
+		"datetimeMinute": "The date and time truncated to the minute",
+		"imageSource": "Source of the processed image",
+		"instanceId": "Public AI Search instance identifier",
+		"namespaceId": "AI Search namespace identifier",
+		"tier": "Billing tier at the time of the event (free or paid)",
+		"tokenCountMethod": "Method used to count image processing tokens"
+	},
+	"AccountAiSearchImageProcessingTokensAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountAiSearchImageProcessingTokensAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountAiSearchImageProcessingTokensAdaptiveGroupsSum": {
+		"__description": "",
+		"tokens": "Sample-weighted estimate of image processing tokens; retries are not deduplicated"
+	},
+	"AccountAiSearchImageProcessingTokensAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"tokens": "Confidence interval for the corresponding point estimate"
+	},
 	"AccountAiSearchIngestedItemsAdaptiveGroups": {
 		"__description": "AI Search Ingested Items Analytics",
 		"avg": "The average of values for a metric per dimension",
@@ -1569,6 +1649,51 @@
 		"totalTokens": "Confidence interval for the corresponding point estimate",
 		"vectorizeDurationMs": "Confidence interval for the corresponding point estimate"
 	},
+	"AccountAiSearchIngestionTokensAdaptiveGroups": {
+		"__description": "Sample-weighted estimate of AI Search ingestion tokens. Logical operations are not deduplicated, so retries may be counted more than once.",
+		"avg": "The average of values for a metric per dimension",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Sample-weighted estimate of ingestion events; retries are not deduplicated",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountAiSearchIngestionTokensAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": "Average sample interval"
+	},
+	"AccountAiSearchIngestionTokensAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Sample-weighted estimate of ingestion events; retries are not deduplicated, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountAiSearchIngestionTokensAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "The date of the billing event",
+		"datetime": "The date and time of the billing event",
+		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time truncated to five minutes",
+		"datetimeHour": "The date and time truncated to the hour",
+		"datetimeMinute": "The date and time truncated to the minute",
+		"instanceId": "Public AI Search instance identifier",
+		"namespaceId": "AI Search namespace identifier",
+		"tier": "Billing tier at the time of the event (free or paid)",
+		"tokenCountMethod": "Method used to count ingestion tokens"
+	},
+	"AccountAiSearchIngestionTokensAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountAiSearchIngestionTokensAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountAiSearchIngestionTokensAdaptiveGroupsSum": {
+		"__description": "",
+		"tokens": "Sample-weighted estimate of ingestion tokens; retries are not deduplicated"
+	},
+	"AccountAiSearchIngestionTokensAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"tokens": "Confidence interval for the corresponding point estimate"
+	},
 	"AccountAiSearchPublicEventsAdaptiveGroups": {
 		"__description": "AI Search public endpoint analytics: searches, result clicks and view-more interactions reported by the public search snippet",
 		"avg": "The average of values for a metric per dimension",
@@ -1630,6 +1755,94 @@
 	"AccountAiSearchPublicEventsAdaptiveGroupsUniq": {
 		"__description": "",
 		"searchIdCount": "The number of distinct requests to the public endpoint that reported these events"
+	},
+	"AccountAiSearchSemanticQueriesAdaptiveGroups": {
+		"__description": "Sample-weighted estimate of AI Search semantic queries. Logical operations are not deduplicated, so retries may be counted more than once.",
+		"avg": "The average of values for a metric per dimension",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Sample-weighted estimate of semantic queries; retries are not deduplicated",
+		"dimensions": "List of dimensions to group by"
+	},
+	"AccountAiSearchSemanticQueriesAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": "Average sample interval"
+	},
+	"AccountAiSearchSemanticQueriesAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Sample-weighted estimate of semantic queries; retries are not deduplicated, with confidence intervals",
+		"level": "Confidence level that was requested"
+	},
+	"AccountAiSearchSemanticQueriesAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "The date of the billing event",
+		"datetime": "The date and time of the billing event",
+		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time truncated to five minutes",
+		"datetimeHour": "The date and time truncated to the hour",
+		"datetimeMinute": "The date and time truncated to the minute",
+		"instanceId": "Public AI Search instance identifier",
+		"namespaceId": "AI Search namespace identifier",
+		"retrievalType": "Type of semantic retrieval performed",
+		"tier": "Billing tier at the time of the event (free or paid)"
+	},
+	"AccountAiSearchSemanticQueriesAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountAiSearchSemanticQueriesAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountAiSearchStorageAdaptiveGroups": {
+		"__description": "Sample-weighted estimate of AI Search storage byte-hours from hourly per-instance byte observations. Observations are not deduplicated, so duplicate rows may be counted more than once.",
+		"avg": "The average of values for a metric per dimension",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Sample-weighted estimate of hourly storage observations; duplicate observations are not deduplicated",
+		"dimensions": "List of dimensions to group by",
+		"max": "The maximum value for a metric per dimension",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountAiSearchStorageAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": "Average sample interval"
+	},
+	"AccountAiSearchStorageAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Sample-weighted estimate of hourly storage observations; duplicate observations are not deduplicated, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountAiSearchStorageAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "The date of the billing event",
+		"datetime": "The date and time of the billing event",
+		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time truncated to five minutes",
+		"datetimeHour": "The date and time truncated to the hour",
+		"datetimeMinute": "The date and time truncated to the minute",
+		"instanceId": "Public AI Search instance identifier",
+		"namespaceId": "AI Search namespace identifier",
+		"tier": "Billing tier at the time of the event (free or paid)"
+	},
+	"AccountAiSearchStorageAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountAiSearchStorageAdaptiveGroupsMax": {
+		"__description": "",
+		"bytes": "Peak single-instance hourly byte observation, not the account total"
+	},
+	"AccountAiSearchStorageAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountAiSearchStorageAdaptiveGroupsSum": {
+		"__description": "",
+		"byteHours": "Sample-weighted estimate of total storage byte-hours; duplicate observations are not deduplicated",
+		"metadataByteHours": "Sample-weighted estimate of metadata byte-hours; duplicate observations are not deduplicated",
+		"payloadByteHours": "Sample-weighted estimate of payload byte-hours; duplicate observations are not deduplicated"
+	},
+	"AccountAiSearchStorageAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"byteHours": "Confidence interval for the corresponding point estimate",
+		"metadataByteHours": "Confidence interval for the corresponding point estimate",
+		"payloadByteHours": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountArtifactsEventsAdaptiveGroups": {
 		"__description": "Artifacts events with adaptive sampling",
@@ -6586,7 +6799,10 @@
 	"AccountImagesHostedRequestsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"cacheStatus": "Cache status returned for the image request",
+		"clientASNDescription": "Organisation owning the ASN of the client that originated the image request",
+		"clientAsn": "ASN of the client that originated the image request",
 		"clientCountryName": "Country where the image request originated",
+		"clientRefererHost": "Hostname from the image request Referer header",
 		"coloName": "Cloudflare data centre that served the image request",
 		"contentType": "Content type returned for the image request",
 		"date": "The date the image request was served",
@@ -6597,8 +6813,11 @@
 		"datetimeMinute": "The date and time the image request was served, truncated to the minute",
 		"formatPreference": "Requested image format preference",
 		"httpStatus": "HTTP response status returned for the image request",
+		"imageId": "Identifier of the requested image. Note: high-cardinality - prefer filtering over grouping for large time windows",
 		"isFlexibleVariant": "1 when the request used a flexible variant, otherwise 0",
 		"isSigned": "1 when the image request used a signed URL, otherwise 0",
+		"userAgentBrowser": "Browser parsed from the image request User-Agent header",
+		"userAgentOS": "OS parsed from the image request User-Agent header",
 		"variant": "Requested image variant"
 	},
 	"AccountImagesHostedRequestsAdaptiveGroupsFilter_InputObject": {
@@ -6627,7 +6846,10 @@
 	"AccountImagesHostedRequestsStagingAdaptiveGroupsDimensions": {
 		"__description": "",
 		"cacheStatus": "Cache status returned for the image request",
+		"clientASNDescription": "Organisation owning the ASN of the client that originated the image request",
+		"clientAsn": "ASN of the client that originated the image request",
 		"clientCountryName": "Country where the image request originated",
+		"clientRefererHost": "Hostname from the image request Referer header",
 		"coloName": "Cloudflare data centre that served the image request",
 		"contentType": "Content type returned for the image request",
 		"date": "The date the image request was served",
@@ -6638,8 +6860,11 @@
 		"datetimeMinute": "The date and time the image request was served, truncated to the minute",
 		"formatPreference": "Requested image format preference",
 		"httpStatus": "HTTP response status returned for the image request",
+		"imageId": "Identifier of the requested image. Note: high-cardinality - prefer filtering over grouping for large time windows",
 		"isFlexibleVariant": "1 when the request used a flexible variant, otherwise 0",
 		"isSigned": "1 when the image request used a signed URL, otherwise 0",
+		"userAgentBrowser": "Browser parsed from the image request User-Agent header",
+		"userAgentOS": "OS parsed from the image request User-Agent header",
 		"variant": "Requested image variant"
 	},
 	"AccountImagesHostedRequestsStagingAdaptiveGroupsFilter_InputObject": {
@@ -10539,7 +10764,8 @@
 		"datetimeMinute": "Message operation timestamp, truncated to start of an minute",
 		"datetimeSixHours": "Message operation timestamp, truncated to start of six hour window",
 		"outcome": "The outcome of the operation. Only applicable to DeleteMessage action types. Can be 'success', 'dlq', or 'fail'. Always 'none' for other operations.",
-		"queueId": "The ID of the Queue"
+		"queueId": "The ID of the Queue",
+		"tag": "Value of a specific resource tag on the queue. Returns an empty string when the tag is absent or its value is empty. Requires the name argument."
 	},
 	"AccountQueueMessageOperationsAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -10753,7 +10979,8 @@
 		"eyeballRegion": "The region from which the request originated (WNAM, ENAM, WEUR, EEUR, APAC, SAM, OC, AFR, ME)",
 		"objectName": "The name of the R2 object, if applicable to this request",
 		"responseStatusCode": "HTTP status code returned by R2",
-		"storageClass": "The storage class that applies to this request"
+		"storageClass": "The storage class that applies to this request",
+		"tag": "Value of a specific resource tag on the bucket. Returns an empty string when the tag is absent or its value is empty. Requires the name argument."
 	},
 	"AccountR2OperationsAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -11454,8 +11681,13 @@
 		"aiInferenceAdaptive": "",
 		"aiInferenceAdaptiveGroups": "",
 		"aiSearchAPIAdaptiveGroups": "",
+		"aiSearchFulltextQueriesAdaptiveGroups": "",
+		"aiSearchImageProcessingTokensAdaptiveGroups": "",
 		"aiSearchIngestedItemsAdaptiveGroups": "",
+		"aiSearchIngestionTokensAdaptiveGroups": "",
 		"aiSearchPublicEventsAdaptiveGroups": "",
+		"aiSearchSemanticQueriesAdaptiveGroups": "",
+		"aiSearchStorageAdaptiveGroups": "",
 		"artifactsEventsAdaptiveGroups": "",
 		"artifactsStorageAdaptiveGroups": "",
 		"auditLogsGroups": "",
@@ -17394,8 +17626,13 @@
 		"aiInferenceAdaptive": "AI Inference logs with adaptive sampling",
 		"aiInferenceAdaptiveGroups": "Aggregated AI Inference logs with adaptive sampling",
 		"aiSearchAPIAdaptiveGroups": "AI Search API Search Analytics",
+		"aiSearchFulltextQueriesAdaptiveGroups": "Sample-weighted estimate of AI Search full-text queries. Logical operations are not deduplicated, so retries may be counted more than once.",
+		"aiSearchImageProcessingTokensAdaptiveGroups": "Sample-weighted estimate of AI Search image processing tokens. Logical operations are not deduplicated, so retries may be counted more than once.",
 		"aiSearchIngestedItemsAdaptiveGroups": "AI Search Ingested Items Analytics",
+		"aiSearchIngestionTokensAdaptiveGroups": "Sample-weighted estimate of AI Search ingestion tokens. Logical operations are not deduplicated, so retries may be counted more than once.",
 		"aiSearchPublicEventsAdaptiveGroups": "AI Search public endpoint analytics: searches, result clicks and view-more interactions reported by the public search snippet",
+		"aiSearchSemanticQueriesAdaptiveGroups": "Sample-weighted estimate of AI Search semantic queries. Logical operations are not deduplicated, so retries may be counted more than once.",
+		"aiSearchStorageAdaptiveGroups": "Sample-weighted estimate of AI Search storage byte-hours from hourly per-instance byte observations. Observations are not deduplicated, so duplicate rows may be counted more than once.",
 		"artifactsEventsAdaptiveGroups": "Artifacts events with adaptive sampling",
 		"artifactsStorageAdaptiveGroups": "Artifacts repository storage snapshots with adaptive sampling",
 		"auditLogsGroups": "Audit log events grouped by account, time, actor, action, and resource dimensions.",
