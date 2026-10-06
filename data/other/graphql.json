@@ -10765,7 +10765,7 @@
 		"datetimeSixHours": "Message operation timestamp, truncated to start of six hour window",
 		"outcome": "The outcome of the operation. Only applicable to DeleteMessage action types. Can be 'success', 'dlq', or 'fail'. Always 'none' for other operations.",
 		"queueId": "The ID of the Queue",
-		"tag": "Value of a specific resource tag on the queue. Returns an empty string when the tag is absent or its value is empty. Requires the name argument."
+		"tag": "Beta. Currently only available on selected accounts. Value of a specific resource tag on the queue. Returns an empty string when the tag is absent or its value is empty. Requires the name argument."
 	},
 	"AccountQueueMessageOperationsAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -10980,7 +10980,7 @@
 		"objectName": "The name of the R2 object, if applicable to this request",
 		"responseStatusCode": "HTTP status code returned by R2",
 		"storageClass": "The storage class that applies to this request",
-		"tag": "Value of a specific resource tag on the bucket. Returns an empty string when the tag is absent or its value is empty. Requires the name argument."
+		"tag": "Beta. Currently only available on selected accounts. Value of a specific resource tag on the bucket. Returns an empty string when the tag is absent or its value is empty. Requires the name argument."
 	},
 	"AccountR2OperationsAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -14925,7 +14925,7 @@
 		"isNDR": "Is this event related to a NDR (bounce) email?",
 		"isSpam": "Source email is spam",
 		"messageId": "The Message-ID header of the source email (if present)",
-		"ruleMatched": "The UUID of the routing rule matched by the source email",
+		"ruleMatched": "The UUID of the routing rule matched by the source email (empty if no rule matched)",
 		"sampleInterval": "ABR sample interval",
 		"sessionId": "Unique identifier for the email log entry (note: retries for the same email may result in multiple log entries)",
 		"spamScore": "Spam score value",
@@ -14965,7 +14965,7 @@
 		"isLastEvent": "Is this the last event for this email?",
 		"isNDR": "Is this event related to a NDR (bounce) email?",
 		"isSpam": "Source email is spam",
-		"ruleMatched": "The UUID of the routing rule matched by the source email",
+		"ruleMatched": "The UUID of the routing rule matched by the source email (empty if no rule matched)",
 		"sampleInterval": "ABR sample interval",
 		"spamScore": "Spam score value",
 		"spamThreshold": "Spam threshold value",
