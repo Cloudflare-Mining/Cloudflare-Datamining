@@ -27,6 +27,19 @@
 					"AvailableValues": null
 				}
 			]
+		},
+		{
+			"display_name": "Leaked Service Token Alert",
+			"type": "leaked_service_token_alert",
+			"description": "Alerts when a service token credential has been detected as leaked",
+			"filter_options": [
+				{
+					"Key": "token_id",
+					"ComparisonOperator": "==",
+					"Range": "0-n",
+					"AvailableValues": null
+				}
+			]
 		}
 	],
 	"Billing": [
