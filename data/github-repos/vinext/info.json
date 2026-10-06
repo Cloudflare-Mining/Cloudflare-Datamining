@@ -237,6 +237,7 @@
 		"fix/client-output-filename-overrides",
 		"fix/client-trace-metadata-esm-1782072684",
 		"fix/dev-basepath-outside-requests",
+		"fix/dev-cancelled-request-body",
 		"fix/dev-cold-start-threshold",
 		"fix/dev-overlay-build-error-recovery-flake",
 		"fix/fflate-override",
@@ -347,6 +348,7 @@
 		"probes/10-prerender-special-error",
 		"refactor/cli-command-framework",
 		"repro/app-router-shared-layout-identity",
-		"seo/consolidate-brand-signals"
+		"seo/consolidate-brand-signals",
+		"web/benchmarks-swr-revalidate"
 	]
 }
