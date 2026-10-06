@@ -20,8 +20,7 @@
 <p>We work upstream first. Several of us maintain or regularly contribute to the Linux kernel, and our default is to fix problems in mainline rather than carry private patches. This role is built on that principle.</p>
 <p><strong>The problem you would own</strong></p>
 <p>Using memory efficiently is one of the highest-leverage problems we have. At our scale, how the kernel's memory-management subsystem behaves under pressure has direct consequences for both performance and cost. As DRAM prices climb, getting more out of the memory we already own is a real lever on infrastructure spend.</p>
-<p>Using custom low-overhead instrumentation on production servers, we have identified several scalability bottlenecks in the kernel memory layer that show up under real workloads. We are looking for an expert to take on these problems, fix them against production workloads, and drive the changes upstream. Solving them lifts efficiency and latency across the entire fleet rather than in one</p>
-<p>Place.</p>
+<p>Using custom low-overhead instrumentation on production servers, we have identified several scalability bottlenecks in the kernel memory layer that show up under real workloads. We are looking for an expert to take on these problems, fix them against production workloads, and drive the changes upstream. Solving them lifts efficiency and latency across the entire fleet rather than in one place.</p>
 <p><strong>What you will do</strong></p>
 <ul>
 	<li>Diagnose and fix performance and scalability bottlenecks in the Linux kernel memory-management subsystem, informed by real production telemetry at a scale few environments can offer.</li>

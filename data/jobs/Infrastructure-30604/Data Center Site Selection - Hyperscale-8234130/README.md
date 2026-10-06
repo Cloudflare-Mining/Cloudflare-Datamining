@@ -3,53 +3,58 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: USA - Remote&nbsp;</strong></p>
-<p style="text-align: left;"><strong>About Us</strong></p>
-<p style="text-align: left;">At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers trillions of requests per month. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare have all web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was recognized by the World Economic Forum as a Technology Pioneer and named to Entrepreneur Magazine’s Top Company Cultures list.</p>
-<p style="text-align: left;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;&nbsp;</p>
-<p style="text-align: left;"><strong>About the Department&nbsp;</strong></p>
-<p style="text-align: left;">Marketing builds awareness, drives acquisition, and expands usage by developing innovative, breakthrough campaigns that are delivered through multiple channels, including our website, blog, emails, social media, events, and advertising. Product Marketing plays a central role by partnering throughout the company to deliver customer insights, take new and existing products to market, and develop content that fuels growth campaigns.</p>
-<p style="text-align: left;"><strong>About the Role</strong></p>
-<p style="text-align: left;">Technical Product Marketing Manager</p>
-<p style="text-align: left;">Cloudflare is looking for an experienced technical product marketer to join our <a href="https://www.cloudflare.com/sase/">Cloudflare One</a> (Our SASE/Zero Trust platform) product marketing team. This is a high-impact, results-oriented role, where you will work directly with sales, product management, engineering and marketing to take new solutions to market. You will develop messaging and campaigns that drive acquisition and expansion. The team building these solutions are currently at the leading of AI security for the enterprise and you will be responsible for helping communicate how they work to our audience.</p>
-<p style="text-align: left;">Successful candidates will have a passion for helping organizations improve their security posture and protect their data from cyberattacks. You will have a drive to understand the cloud security market, articulate product details, and elevate our messaging to deliver breakthrough initiatives and standout content. You will enjoy this role if you like working with fast-paced teams, finding creative ways to tell a story, and having autonomy to drive your initiatives.</p>
-<p style="text-align: left;">This role is a part of our global Cloudflare One team which comprises all the roles we need to take our solution to market, such as sales, technical sales and marketing.. This role reports to our Cloudflare One leader.&nbsp;&nbsp;</p>
-<p style="text-align: left;"><strong>Responsibilities include:</strong></p>
-<ul style="text-align: left;">
-	<li>Develop messaging and content that drives awareness, evaluation and adoption of our IT and AI security products</li>
-	<li>Leveraging AI to do research, build content and automate tasks</li>
-	<li>Own go-to-market activities for key cloud security products.&nbsp;</li>
-	<li>Acquire deep customer knowledge through market research, customer interviews and segmentation analysis.&nbsp;</li>
-	<li>Develop and execute integrated marketing campaigns to drive demand for products and solutions.</li>
-	<li>Partner with product management and be the voice of the product.</li>
-	<li>Create the internal and external facing content to enable our sales team to effectively position and sell Cloudflare’s security services&nbsp;</li>
-	<li>Partner with our analyst relations team to establish Cloudflare as a security leader.</li>
-	<li>Successfully launch new services to customers and partners.</li>
-</ul>
-<p style="text-align: left;"><strong>Requirements</strong></p>
-<ul style="text-align: left;">
-	<li>4+ years of experience in content or product marketing with at least some experience in an IT or security-focused role&nbsp;</li>
-	<li>Aptitude and energy for written and verbal communication, especially to technical audiences&nbsp;</li>
-	<li>The ability to understand complex security related trends and applicability to the portfolio.</li>
-	<li>Experience with building AI harnesses and automating many aspects of your role. (But not someone who relies on AI to do their job)</li>
-	<li>Excellent written and verbal communication skills.</li>
-	<li>Ability to effectively influence both internal and external stakeholders across all levels of the organization.</li>
-	<li>Ability to manage ambiguity and navigate unforeseen obstacles gracefully.</li>
-	<li>Deep curiosity, excellent listening skills ,empathy, and ability to get things done in a collaborative team environment.</li>
-	<li>A passion for Cloudflare’s mission and the success of our customers, partners, and community.</li>
-</ul>
-<h2>Compensation</h2>
+<p><strong>Available Locations: </strong>San Francisco, Austin, Seattle, or New York</p>
+<h3>About the Role</h3>
+<p>The Data Center Strategy team needs a site-selection manager who has closed NNN and wholesale leases at MW scale. You find the site, underwrite it, and get the paper signed.</p>
+<p>The binding constraint is usually power: available MW, interconnection, substation work, and when the site actually energizes. You also have to be right about land or campus control, fiber, water, flood and seismic, permitting, and latency onto Cloudflare’s network.</p>
+<p>The commercial work is NNN paper and the structures next to it: modified gross, FRI, wholesale dedicated-room, powered shell, build-to-suit, sale-leaseback, joint venture. Base rent, OpEx and tax passthroughs, escalators, work letters, landlord delivery, PUE treatment, delay credits, SLAs, ramp, expansion options, ROFR, exit and renewal.</p>
+<p>You build the pipeline (developers, brokers, wholesale operators, power developers, utilities), run technical diligence, and take a TCO / cost-per-MW / NPV pack to leadership for the capital ask. Several of these will be live at once, across markets. Legal, capacity planning, network strategy, energy, security, operations, and finance all sit in the process. You own it through execution.</p>
+<h3>What you get to do in this role:</h3>
 <ul>
-	<li>For SF, SJ, and Bay Area Metro based hires: Estimated annual salary of $170,000 - $234,000.</li>
-	<li>For Boston, California - Remote, Connecticut - Remote, DC Metro, Massachusetts - Remote, New Jersey - Remote, New York City, NY Metro, Remote - Washington, Washington (Kirkland), and Washington D.C. based hires: Estimated annual salary of $163,000 - $224,000.</li>
-	<li>For Colorado - Remote, Illinois - Remote, Maryland - Remote, Minnesota - Remote, Nevada - Remote, New York - Remote, Rhode Island - Remote, and Vermont - Remote based hires: Estimated annual base salary of $148,000 - $204,000.</li>
-	<li>
-		<div>CO Application Deadline: January 4, 2027.</div>
-	</li>
+	<li>Build and run a pipeline of MW-scale sites: developers, landlords, wholesale operators, power developers, utilities</li>
+	<li>Lead technical diligence: power availability and energization, electrical topology and redundancy, rack density and cooling (including liquid), fiber diversity, PUE, geotech, permitting, commissioning evidence, network latency</li>
+	<li>Run the deal from long list through RFP, site visit, LOI, lease or powered-shell, work letter, and signature (campuses, dedicated buildings, dedicated halls, core expansions, BTS)</li>
+	<li>Negotiate NNN / triple-net and the structures next to it (modified gross, FRI, wholesale dedicated-room, powered shell, BTS, sale-leaseback, JV): $/kW-month, NRC/MRC, escalators, PUE, delay credits, SLAs, ramp, expansion rights, ROFR, exit and renewal</li>
+	<li>Keep landlord scope and Cloudflare scope explicit, including power to dedicated PDU and tenant fit-out</li>
+	<li>Build the TCO / cost-per-MW / NPV case and take the capital ask to leadership</li>
+	<li>Work with legal, operations, capacity planning, network strategy, energy, and security on requirements and delivery dates</li>
+	<li>Run QBRs with campus landlords. Represent Cloudflare with landlord executives and at industry events.</li>
+	<li>Put MW, rent, passthroughs, NRC, and unit cost into the annual data center budget. Check rent and NNN recovery invoices against the lease.</li>
+	<li>Travel as needed (expect ~30%)</li>
+	<li>Other duties as assigned</li>
 </ul>
-<p><strong>Equity</strong></p>
+<h3>Skills/Experience:</h3>
+<ul>
+	<li>10+ years selecting or leasing hyperscale or wholesale data centers, or planning MW-scale infrastructure, at a cloud, internet, content, or colocation company</li>
+	<li>Closed NNN / triple-net leases as tenant or buy-side advisor, or the wholesale equivalents (modified gross, FRI, dedicated-hall, powered shell). Colo order forms and rack-level MRC do not count.</li>
+	<li>Can underwrite $/kW-month or $/MW, escalators, OpEx passthrough, tenant improvement / work letters, TCO, and lease NPV, and take that pack to leadership</li>
+	<li>Has led technical diligence on candidate sites (power, electrical topology, cooling, fiber, PUE, commissioning), not only commercial terms</li>
+	<li>Knows how utility interconnection and substation timelines actually work</li>
+	<li>Can run several site processes at once, across time zones, with incomplete information</li>
+	<li>Has taken a campus or BTS lease from LOI to execution</li>
+	<li>Willing to travel ~30%</li>
+	<li>International deal experience preferred</li>
+	<li>Bachelor’s degree or equivalent experience required</li>
+</ul>
+<h3>Nice to have:</h3>
+<ul>
+	<li>Sale-leaseback, JV, or PPA / power-procurement work</li>
+	<li>Existing relationships with developers, wholesale operators, brokers, or utilities</li>
+	<li>High-density / liquid-cooling site constraints</li>
+	<li>Network (fiber diversity, latency, MMR)</li>
+	<li>Government incentives or economic-development agreements</li>
+	<li>Another language</li>
+</ul>
+<h3>Compensation</h3>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For Bay Area based hires: Estimated annual salary of $166,000 - $271,000</li>
+	<li><span data-sheets-root="1">For New York based hires: Estimated annual salary of $158,000 - $257,000&nbsp;</span></li>
+	<li><span data-sheets-root="1">For Seattle based hires: Estimated annual Salary of $158,000 - $257,000&nbsp;</span></li>
+</ul>
+<h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
+<h3>Benefits</h3>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
 <h3>Health &amp; Welfare Benefits</h3>
 <ul>

@@ -3,25 +3,42 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available locations: </strong>Austin, TX</p>
-<p><strong>About the Department</strong></p>
-<p>Cloudforce One is Cloudflare’s threat operations and research team, responsible for identifying and disrupting cyber threats ranging from sophisticated cyber criminal activity to nation-state sponsored advanced persistent threats (APTs).&nbsp; Cloudforce One works in close partnership with external organizations and internal Cloudflare teams, continuously developing operational tradecraft and expanding ever-growing sources of threat intelligence to enable expedited threat hunting and remediation.&nbsp; Members of Cloudforce One are at the helm of leveraging an incredibly vast and varied set of data points that only one of the world’s largest global networks can provide.&nbsp; The team is able to analyze these unique data points, at massive scale and efficiency, synthesizing findings into actionable threat intelligence to better protect our customers.</p>
-<p><strong>About the Role</strong></p>
-<p>Cloudflare is a system spanning the globe, on a mission to make the internet better, safer, and more powerful everyday. To help fulfill this mission, we are seeking a talented Security Detections Engineer to identify, track, and defeat sophisticated threats and abuse across our platform. In this position, you will examine and mitigate threats in real-time, leveraging emerging technologies to build detections that protect millions of people from various forms of attacks and abuse. Your efforts will help us in our constant pursuit of reaching far beyond today’s security market.</p>
-<p>As a Detection and Mitigation Engineer, your analytical thinking and quick action will be the key to our success. You will identify Tactics, Techniques, and Procedures (TTPs) of ongoing and ever-evolving cyber attacks to protect our global customer base. You will work in close collaboration with team members to develop new and innovative ways to present and interact with our unique insights. You will stop the adversary.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Available Locations:&nbsp;</strong></p>
 <ul>
-	<li>Experience in one of the following: Data analysis, Metadata analysis, or Network Traffic analysis</li>
-	<li>A passion for analyzing attacker TTPs at varying levels</li>
-	<li>Ability to understand the latest security trends as they relate to platform threats and abuse</li>
-	<li>Experience using a comprehensive data analysis platform and rule configuration</li>
-	<li>Understanding of the cyber threat landscape, cyber intelligence, and working knowledge of threat actors and their techniques</li>
-	<li>Experience tracking and analyzing cyber campaigns utilizing technical Indicators of Compromise (IOCs)</li>
-	<li>Working knowledge of SQL and devising SQL queries</li>
-	<li>Python or other scripting experience</li>
-	<li>Ability to synthesize technical information and document it in a non-technical manner through both graphical and verbal representation</li>
-	<li>Capable and comfortable communicating actionable threat intelligence to both technical and executive-level stakeholders</li>
+	<li><strong>Austin, TX (preferred)</strong></li>
+	<li><strong>Dallas, TX</strong></li>
+	<li><strong>Houston, TX</strong></li>
+	<li><strong>San Antonio, TX</strong></li>
 </ul>
+<p><strong>Role Summary</strong></p>
+<p>We are looking for an experienced Senior Sales Compensation Analyst to join our team within the Finance &amp; Business Operations Function. As a key team member of a high-visibility organization, this role will provide both technical and operational support to Cloudflare’s Global Commissions Program &amp; Strategy, in close collaboration with the Sales Compensation Design team, GTM Finance, and Sales Operations teams.&nbsp;</p>
+<p><strong>&nbsp;</strong></p>
+<p><strong>Role Responsibilities</strong></p>
+<ul>
+	<li>Ensure the accurate and timely delivery of Compensation Plans, Incentive Statements, and commission payments for Cloudflare’s Global Sales organization.</li>
+	<li>Serve as a trusted partner to the Sales Team by resolving inquiries, clarifying plan policies, and managing disputes with empathy and a customer-first mindset.</li>
+	<li>Drive alignment amongst cross-functional stakeholders and project manage timely collection of key calculation inputs such as quotas, organizational updates, attainment data.</li>
+	<li>Own sales performance analytics by uncovering actionable insights and enhancing systematic visibility for Sales leadership and key business stakeholders.</li>
+	<li>Lead User Acceptance Testing (UAT) and support ongoing configuration, design, and enhancements within the Varicent ICM platform.</li>
+	<li>Collaborate with the Sales Compensation Design team to evaluate the feasibility of proposed plan changes and ensure timely, accurate implementation.</li>
+	<li>Develop and scale standardized processes, documentation, and desktop procedures to ensure consistency and operational efficiency across all commission-related workflows.</li>
+</ul>
+<p><strong>&nbsp;</strong></p>
+<p><strong>About You:</strong></p>
+<ul>
+	<li>5+ years of either FP&amp;A, Consulting, Sales Operations, Data Analytics, Sales Compensation experience. Experience in a growth technology company is a plus.</li>
+	<li>You are a highly detail-oriented, data-driven truth-seeker with a passion for uncovering discrepancies, identifying edge cases, and validating complex calculations to ensure precision and accuracy.</li>
+	<li>Demonstrated expertise in Excel or Google Sheets, including advanced financial modeling, data analysis, and scenario planning to support strategic decision-making</li>
+	<li>Firm grasp of the commission administrative process flow, including plan document distribution; transaction crediting; incentive calculations; payment file preparation; and issue resolution.&nbsp;</li>
+	<li>Proven track record of building strong relationships and influencing business partners. You are comfortable interfacing with business partners outside of your direct team, and understand the rigor and caliber of deliverables required to work with them.</li>
+	<li>Communication: Clear, concise communicator; ability to synthesize complex data or business problems into actionable information to drive results</li>
+	<li>Operations: You seek out efficiency, leveraging tools, automation or other means to scale process and deliver more accurate results</li>
+	<li>Versatility: Ability to multitask and thrive in a fast-paced, high-growth environment, zooming in with good attention to detail while still keeping the big picture in mind</li>
+	<li>Project Management: Results-oriented, self-starter, organized, team-focused, and a strong work ethic, leveraging relationships to ensure deadlines are met</li>
+	<li>Experience with the Varicent ICM tool is a plus.</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

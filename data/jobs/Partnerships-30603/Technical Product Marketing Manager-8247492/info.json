@@ -12,7 +12,7 @@
 	],
 	"internal_job_id": 3568416,
 	"location": {
-		"name": "In-Office"
+		"name": "Distributed"
 	},
 	"metadata": [
 		{
@@ -25,7 +25,16 @@
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Austin, TX"
+				"Austin, TX",
+				"Chicago, IL",
+				"Houston, TX",
+				"Los Angeles, CA",
+				"New York, NY",
+				"Phoenix, AZ",
+				"San Diego, CA",
+				"San Francisco, CA",
+				"Seattle, WA",
+				"US"
 			],
 			"value_type": "multi_select"
 		},
@@ -40,7 +49,7 @@
 		}
 	],
 	"id": 8247492,
-	"updated_at": "2026-10-06T11:15:18-04:00",
+	"updated_at": "2026-10-06T14:07:05-04:00",
 	"requisition_id": "CF1_AMER_TBH#24014",
 	"title": "Technical Product Marketing Manager",
 	"company_name": "Cloudflare",
@@ -60,6 +69,83 @@
 			"id": 19983,
 			"name": "Austin, TX",
 			"location": "Austin, TX, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19990,
+			"name": "New York, NY",
+			"location": "New York, New York, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19991,
+			"name": "San Francisco, CA",
+			"location": "San Francisco, CA, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 20015,
+			"name": "Boston, MA",
+			"location": "Boston, MA, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 44776,
+			"name": "Chicago, IL",
+			"location": "Chicago, Illinois, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 62226,
+			"name": "Los Angeles, CA",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 66815,
+			"name": "Atlanta, GA",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 72960,
+			"name": "Seattle, WA",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 74079,
+			"name": "Phoenix, AZ ",
+			"location": "Phoenix, Arizona, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 75375,
+			"name": "Remote US",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 76874,
+			"name": "Houston, TX",
+			"location": "Houston, Texas, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 77305,
+			"name": "Minneapolis, MN",
+			"location": null,
 			"child_ids": [],
 			"parent_id": 48752
 		}
