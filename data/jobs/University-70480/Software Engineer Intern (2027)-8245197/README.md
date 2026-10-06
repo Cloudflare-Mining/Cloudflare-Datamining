@@ -3,27 +3,48 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h4><strong>About the Deal Desk Team</strong></h4>
-<p>The Deal Desk team is a critical component of the Finance function, serving as a trusted advisor to critical internal stakeholders as deal architect working on structuring, negotiating, approving and closing large complex commitment deals while balancing margin preservation, compliance, and velocity. We are committed to building a data-centric and AI-augmented Deal Desk that leverages predictive analytics and automated workflows to optimize pricing in real-time and automate routine approvals, allowing for deeper strategic focus.</p>
-<p><strong>Available Location: Singapore</strong></p>
-<p><strong>Role Summary</strong></p>
-<p>As a Deal Desk Manager, you will be the architect of our AI-driven deal desk, transitioning our sales process from manual workflows to an intelligent, automated engine that spans from initial scoping to final execution. By leveraging agentic workflows and automated data layers, the focus shifts to high-judgment architecture for non-standard enterprise deals. The objective is to serve as a high-influence "Sales Co-pilot," using AI-driven insights to maximize deal velocity and Long-Term Value (LTV) while relentlessly reducing friction through iterative process automation.</p>
-<p><strong>What you’ll do</strong></p>
+<p><strong>Available Locations</strong></p>
 <ul>
-	<li>Orchestrate Strategic Deal Architecture: Lead the structuring and execution of non-standard, high-value enterprise deals, providing high-judgment guidance that balances competitive differentiation with long-term business health. Build creative financial models and custom discount strategies that align customer usage patterns with corporate revenue goals.</li>
-	<li>Sales Co-pilot &amp; Strategic Influence: Serve as a strategic partner to Sales leadership, utilizing data driven insights and workflows to maximize deal velocity, improve LTV, and ensure discovery reflects true customer needs. Perform analysis on pricing and deal terms, leveraging AI insights to recommend "next best action" for deal structuring and margin optimization. Drive consensus across internal stakeholders (Legal, Finance, Revenue Recognition, Compliance and Product) to negotiate viable compromises on non-standard commercial, financial, and legal terms while safeguarding corporate margin thresholds and risk tolerance.</li>
-	<li>Champion AI, Curate and Tune AI Agents for Automation Integration: Manage the enterprise deal approval ecosystem by tuning automated agents and models to ensure compliance and accuracy at scale. Champion the integration of LLMs and generative AI tools to automate deal desk workflows, significantly reducing deal cycle times. Identify bottlenecks and implement AI-powered productivity solutions.</li>
-	<li>Drive Process Iteration: Partner with cross-functional teams (Legal, Finance, Product) to build, streamline, and automate deal desk processes, architecting autonomous approval workflows and focusing on reducing field friction through relentless automation.</li>
+	<li>Lisbon, PT</li>
 </ul>
-<p><strong>Role Specifications &amp; Qualifications</strong></p>
+<p><strong>Available Terms</strong></p>
 <ul>
-	<li>Minimum 8+ years of Deal Desk, FP&amp;A, Revenue Operations, or similar experience with a proven track record supporting large-scale enterprise sales motions; 3+ years of direct deal desk experience (deal analysis, deal governance and customer negotiation) preferred</li>
-	<li><strong>Financial &amp; Sales Acumen: </strong>Solid understanding of SaaS metrics, pricing models, and financial concepts like ARR, Gross Margin, churn, and profitability. Experience with revenue recognition principles (e.g., ASC 606) is highly desirable. Experience selling software is a bonus</li>
-	<li><strong>Contract &amp; Pricing Knowledge: </strong>Experience drafting and interpreting commercial contracts, with a focus on terms that impact revenue recognition and financial risk. Ability to analyze and recommend the best course of action for complex pricing and licensing situations</li>
-	<li><strong>Data &amp; AI Literacy: </strong>Proficiency in leveraging agentic workflows and prompt engineering to scale influence, extract insights from large datasets, and automate repetitive operational tasks and internal documentation. Ability to understand and audit automated pricing models to ensure alignment with long-term company goals.Relentless focus on iterative automation and translating complex business policies into streamlined, automated logic</li>
-	<li><strong>Strategic Influence &amp; Negotiation: </strong>Demonstrated ability to navigate complex, internal cross-functional negotiations and make high-judgment decisions in fast-paced environments. Partner directly with Sales Management and Account Executives&nbsp; during external customer negotiations, equipping them with counter-proposal options or directly engaging in client commercial discussions to structure win-win enterprise agreements</li>
-	<li><strong>Communication: </strong>Serve as the single point of contact between Sales, Finance, Revenue Recognition (ASC 606), Legal, and Product Management on advising deal constructing and managing deal escalation. Skilled in commercial negotiation strategy, advising Sales on customer-facing concessions, and directly engaging in external negotiations with customer procurement/legal teams to drive deal closure. Exceptional written and oral communication skills, capable of explaining complex deal structures and financial data to both technical and executive stakeholders</li>
-	<li>Language Preference: Additional proficiency in Mandarin or Japanese would be beneficial for engaging with customers and stakeholders in relevant APJC markets.</li>
+	<li>Winter/Spring (January - May 2027)&nbsp;</li>
+	<li>Summer (May - September 2027)</li>
+</ul>
+<p><strong>About the Role</strong></p>
+<p>Anytime we push code, it automatically affects the millions of Internet properties (powering websites, remote teams, APIs, mobile apps, etc.) running on our global network. Cloudflare's network is one of the largest in the world and spans over 330 cities in more than 125 countries. What's more, Cloudflare operates within 50 milliseconds of 95% of the Internet-connected population globally (for context, the blink of an eye is 300-400 milliseconds!). We are passionate about making the Internet more secure, reliable, and faster for everyone.</p>
+<p>Cloudflare’s Engineering teams build and run the software that handles the massive amount of traffic that flows through our network. We also have teams that build the UI and control plane for our software, using modern patterns and libraries in a microservices-based architecture. Technologies include: Typescript/Javascript, Go, Rust, C/C++ and Python.</p>
+<p>The ideal intern is passionate about making the Internet a better place. You will work alongside experienced engineers. You will push code this internship that touches hundreds of millions of web surfers. We like to get things done, so we are looking for interns who are curious, proactive, and able to complete projects. This is a great opportunity for engineers who want to learn to develop at Internet scale.</p>
+<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
+<p><strong>Responsibilities</strong></p>
+<ul>
+	<li>Ship and deliver projects over 12-14 weeks with autonomy and support.</li>
+	<li>Work cross-functionally with various teams.</li>
+	<li>Work closely with a mentor to guide you through the internship and help with career goals.</li>
+	<li>Build your network across the company through our various in and out of office socials, networking programs, Employee Resource Group (ERG) programs, and Activity Groups.</li>
+	<li>Present your project to the entire company at the end of the internship.</li>
+	<li>Connect and learn from our executives and leadership team including our co-founders.</li>
+	<li>Learn and develop skills through our professional development workshops.</li>
+	<li>Write for our <a href="https://blog.cloudflare.com/">Cloudflare blog</a> and be featured on <a href="http://cloudflare.tv/">Cloudflare.tv</a> sessions.&nbsp;</li>
+</ul>
+<p><strong>Desirable Skills, Knowledge and Experience</strong></p>
+<ul>
+	<li>Currently pursuing a degree or program in Computer Science, Engineering, Mathematics, Statistics or relevant field to the role.</li>
+	<li>Demonstrated critical thinking skills and drive to learn and adapt new technologies.</li>
+	<li>Curiosity, empathy and ability to get things done.</li>
+	<li>Ability to commit to a full-time (40 hours/week Monday - Friday) for a minimum 12 week internship.</li>
+	<li>In office 3-5 days a week in Lisbon, PT.</li>
+</ul>
+<p><strong>Bonus Points</strong></p>
+<p>Demonstrated passion for software development, such as personal projects, open-source contributions, or experience with our developer platform using&nbsp;<a href="https://www.cloudflare.com/students/">Cloudflare for Students.</a></p>
+<ul>
+	<li>For Portugal based hires: the monthly salary is €2,450.</li>
+</ul>
+<p><strong>Please note</strong></p>
+<ul>
+	<li>We will be hiring interns on a rolling basis until all roles are filled.</li>
+	<li>We are not considering remote or part-time for either terms. This is a full-time (40hr/week internship) with in-person expectations; standard business hours are typically 9:00 AM – 6:00 PM. You should not be enrolled in classes, which would conflict with full-time commitment.</li>
 </ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>

@@ -3,7 +3,7 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Location: Austin, Champaign</strong></p>
+<p><strong>Locations: Austin TX, Champaign IL, Lisbon Portugal, London England</strong></p>
 <p><strong>About The Team:</strong></p>
 <p>Cloudflare is redefining the way networks are run at scale. Our Network Services product suite puts the connectivity, scale, and performance of Cloudflare’s global network in front of customers’ network infrastructure and private networks, providing a single pane of glass for network connectivity, visibility, and operating network functions like BGP, WAN optimization, and more. We are a team of engineers and product managers who obsess over quickly building products that solve real customer problems using innovative technologies and techniques which leverage Cloudflare’s unique architecture and global network footprint.</p>
 <p><strong>About the role</strong></p>
@@ -30,6 +30,86 @@
 	<li>Able to work across teams and level common, sustainable solutions</li>
 	<li>Creative, open-minded, collaborative problem solver</li>
 	<li>Focus on clarity in written and verbal communication</li>
+</ul>
+<h3 data-path-to-node="0"><strong data-path-to-node="0" data-index-in-node="0">Compensation</strong></h3>
+<ul data-path-to-node="1">
+	<li>
+		<p data-path-to-node="1,0,0">Compensation may be adjusted depending on work location.</p>
+	</li>
+	<li>
+		<p data-path-to-node="1,1,0">For Champaign IL based hires: Estimated annual salary of $168,000 - $210,000.</p>
+	</li>
+</ul>
+<ul data-path-to-node="3">
+	<li>
+		<p data-path-to-node="3,0,0">For Portugal based hires: Estimated annual salary is between €66,000 - 83,000.</p>
+	</li>
+</ul>
+<h3 data-path-to-node="4"><strong data-path-to-node="4" data-index-in-node="0">Equity</strong></h3>
+<ul data-path-to-node="5">
+	<li>
+		<p data-path-to-node="5,0,0">This role is eligible to participate in Cloudflare's equity plan.</p>
+	</li>
+</ul>
+<h3 data-path-to-node="6"><strong data-path-to-node="6" data-index-in-node="0">Benefits</strong></h3>
+<ul data-path-to-node="7">
+	<li>
+		<p id="p-rc_1d504e3d74e8c0aa-28" data-path-to-node="7,0,0"><span class="citation-226 citation-227 citation-end-227">Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in<sup class="superscript" data-turn-source-index="1"></sup></span><span class="citation-226 citation-end-226"> the United States, and benefits may vary for employees based outside the U.S.</span></p>
+	</li>
+	<li>
+		<p id="p-rc_1d504e3d74e8c0aa-28" data-path-to-node="7,0,0">Health &amp; Welfare Benefits</p>
+		<ul data-path-to-node="7">
+			<li>
+				<p id="p-rc_1d504e3d74e8c0aa-29" data-path-to-node="7,1,1,0,0"><span class="citation-225 citation-end-225">Medical/Rx Insurance</span></p>
+			</li>
+			<li>
+				<p id="p-rc_1d504e3d74e8c0aa-29" data-path-to-node="7,1,1,0,0"><span class="citation-224 citation-end-224">Dental Insurance</span></p>
+			</li>
+			<li>
+				<p id="p-rc_1d504e3d74e8c0aa-29" data-path-to-node="7,1,1,0,0">Vision Insurance</p>
+			</li>
+			<li>
+				<p id="p-rc_1d504e3d74e8c0aa-29" data-path-to-node="7,1,1,0,0"><span class="citation-222 citation-end-222">Flexible Spending Accounts</span></p>
+			</li>
+			<li>
+				<p id="p-rc_1d504e3d74e8c0aa-29" data-path-to-node="7,1,1,0,0"><span class="citation-221 citation-end-221">Commuter Spending Accounts</span></p>
+			</li>
+			<li>
+				<p id="p-rc_1d504e3d74e8c0aa-34" data-path-to-node="7,1,1,5,0"><span class="citation-220 citation-end-220">Fertility &amp; Family Forming Benefits</span></p>
+			</li>
+			<li>
+				<p id="p-rc_1d504e3d74e8c0aa-34" data-path-to-node="7,1,1,5,0"><span class="citation-219 citation-end-219">On-demand mental health support and Employee Assistance Program</span></p>
+			</li>
+			<li><span class="citation-219 citation-end-219"><span class="citation-218 citation-end-218">Global Travel Medical Insurance</span></span></li>
+		</ul>
+	</li>
+	<li>
+		<p id="p-rc_1d504e3d74e8c0aa-36" data-path-to-node="7,1,1,7,0">Financial Benefits</p>
+		<div class="source-inline-chip-container luminous-sources ng-star-inserted">&nbsp;</div>
+		<ul data-path-to-node="7,1,1">
+			<li>Short and Long Term Disability Insurance</li>
+			<li>
+				<p data-path-to-node="7,2,1,1,0">Life &amp; Accident Insurance</p>
+			</li>
+			<li>
+				<p data-path-to-node="7,2,1,2,0">401(k) Retirement Savings Plan</p>
+			</li>
+			<li>
+				<p data-path-to-node="7,2,1,3,0">Employee Stock Participation Plan</p>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<p data-path-to-node="7,3,0">Time Off</p>
+		<ul data-path-to-node="7,3,1">
+			<li>
+				<p data-path-to-node="7,3,1,0,0">Flexible paid time off covering vacation and sick leave</p>
+			</li>
+			<li>
+				<p data-path-to-node="7,3,1,1,0">Leave programs, including parental, pregnancy health, medical, and bereavement leave</p>
+			</li>
+		</ul>
+	</li>
 </ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
