@@ -383,6 +383,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "observability.destinations",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.destinations",
+				"x-fern-sdk-method-name": "delete"
+			}
+		],
 		"x-forge-require-confirmation": "This operation deletes the destination."
 	},
 	"GET /accounts/{account_id}/workers/observability/destinations": {
@@ -774,7 +780,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "observability.destinations",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.destinations",
+				"x-fern-sdk-method-name": "list"
+			}
+		]
 	},
 	"PATCH /accounts/{account_id}/workers/observability/destinations/{slug}": {
 		"operationId": "destination.update",
@@ -1203,7 +1215,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "observability.destinations",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.destinations",
+				"x-fern-sdk-method-name": "update"
+			}
+		]
 	},
 	"POST /accounts/{account_id}/workers/observability/destinations": {
 		"operationId": "destination.create",
@@ -1653,6 +1671,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "observability.destinations",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.destinations",
+				"x-fern-sdk-method-name": "create"
+			}
+		]
 	}
 }

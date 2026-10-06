@@ -1,0 +1,1241 @@
+{
+	"GET /accounts/{account_id}/workers/observability/agents/sessions": {
+		"operationId": "agents.sessions.list",
+		"summary": "List Agent sessions",
+		"description": "List the Sessions of one Agent in one Worker service observed in the window, most recently active first. A Session groups the Traces containing an invocation of the Agent with the same gen_ai.conversation.id. Results describe observed activity in the window, not complete history.",
+		"parameters": [
+			{
+				"name": "service",
+				"in": "query",
+				"description": "Worker service that emitted the Agent invocations.",
+				"required": true,
+				"schema": {
+					"description": "Worker service that emitted the Agent invocations.",
+					"type": "string",
+					"maxLength": 512,
+					"minLength": 1
+				}
+			},
+			{
+				"name": "agent",
+				"in": "query",
+				"description": "Agent name reported by the invocations (gen_ai.agent.name).",
+				"required": true,
+				"schema": {
+					"description": "Agent name reported by the invocations (gen_ai.agent.name).",
+					"type": "string",
+					"maxLength": 512,
+					"minLength": 1
+				}
+			},
+			{
+				"name": "from",
+				"in": "query",
+				"description": "Start of the window, as Unix epoch milliseconds. Clamped to the 7-day retention period.",
+				"required": true,
+				"schema": {
+					"description": "Start of the window, as Unix epoch milliseconds. Clamped to the 7-day retention period.",
+					"type": "integer",
+					"minimum": 0
+				}
+			},
+			{
+				"name": "to",
+				"in": "query",
+				"description": "End of the window, as Unix epoch milliseconds. Must be later than from.",
+				"required": true,
+				"schema": {
+					"description": "End of the window, as Unix epoch milliseconds. Must be later than from.",
+					"type": "integer",
+					"minimum": 0
+				}
+			},
+			{
+				"name": "cursor",
+				"in": "query",
+				"description": "Opaque cursor returned in result_info.cursors.after.",
+				"schema": {
+					"description": "Opaque cursor returned in result_info.cursors.after.",
+					"type": "string",
+					"maxLength": 2048,
+					"minLength": 1
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"schema": {
+					"type": "integer",
+					"maximum": 100,
+					"minimum": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Successful request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"enum": [
+													"Successful request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"agentId": {
+												"description": "Agent instance identifier from the earliest invocation that reports one.",
+												"type": "string"
+											},
+											"agentName": {
+												"description": "Agent name (gen_ai.agent.name) reported by the Session's invocations.",
+												"type": "string"
+											},
+											"conversationId": {
+												"description": "GenAI conversation identifier (gen_ai.conversation.id) for the Session.",
+												"type": "string"
+											},
+											"inputTokens": {
+												"description": "Input tokens reported by the Session's chat spans; spans without usage are skipped, and the field is omitted when none report it.",
+												"type": "number"
+											},
+											"lastActiveMs": {
+												"description": "End of this Agent's last observed invocation in the Session, as Unix epoch milliseconds. Sessions are ordered by this value. Agent activity, not Trace end: work that continues in a Trace after the Agent returns is not included; per-run Trace times are on the Session runs endpoint.",
+												"type": "number"
+											},
+											"models": {
+												"description": "Distinct models reported by chat spans.",
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"outputTokens": {
+												"description": "Output tokens reported by the Session's chat spans; spans without usage are skipped, and the field is omitted when none report it.",
+												"type": "number"
+											},
+											"providers": {
+												"description": "Distinct GenAI providers reported by chat spans.",
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"serviceName": {
+												"description": "Worker service that emitted the Session's Agent invocations.",
+												"type": "string"
+											},
+											"sessionDurationMs": {
+												"description": "Elapsed time from sessionStartMs to lastActiveMs.",
+												"type": "number"
+											},
+											"sessionStartMs": {
+												"description": "Start of this Agent's first observed invocation in the Session, as Unix epoch milliseconds. Agent activity, not Trace start.",
+												"type": "number"
+											},
+											"spanCount": {
+												"description": "Total spans across the Session's observed Traces.",
+												"type": "number"
+											},
+											"status": {
+												"description": "Whether an error was observed; not a completeness or successful-completion guarantee.",
+												"type": "string",
+												"enum": [
+													"observed_no_error",
+													"error"
+												]
+											},
+											"traceCount": {
+												"description": "Distinct observed Traces in the window; not conversational Turns.",
+												"type": "number"
+											}
+										},
+										"required": [
+											"conversationId",
+											"serviceName",
+											"agentName",
+											"sessionStartMs",
+											"lastActiveMs",
+											"sessionDurationMs",
+											"traceCount",
+											"spanCount",
+											"status",
+											"models",
+											"providers"
+										]
+									}
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "integer",
+											"minimum": 0
+										},
+										"cursors": {
+											"type": "object",
+											"properties": {
+												"after": {
+													"type": "string",
+													"nullable": true
+												}
+											},
+											"required": [
+												"after"
+											]
+										},
+										"per_page": {
+											"type": "integer",
+											"minimum": 1
+										}
+									},
+									"required": [
+										"per_page",
+										"count",
+										"cursors"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result",
+								"result_info"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Bad Request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Unauthorized"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Forbidden"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "Too many requests",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Too many requests"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Internal error"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"504": {
+				"description": "Gateway timeout",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Gateway timeout"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"tags": [
+			"Agents"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write",
+			"Workers Observability Read"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "observability.agents.sessions",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.agents.sessions",
+				"x-fern-sdk-method-name": "list"
+			}
+		]
+	},
+	"GET /accounts/{account_id}/workers/observability/agents/sessions/{conversationId}/runs": {
+		"operationId": "agents.sessions.runs.list",
+		"summary": "List Agent session runs",
+		"description": "List the Trace-level runs of one Session, newest invocation first. A run is a Trace containing an invocation of the Agent in the Conversation; the Agent need not own the Trace.",
+		"parameters": [
+			{
+				"name": "conversationId",
+				"in": "path",
+				"description": "GenAI conversation identifier (gen_ai.conversation.id) of the Session.",
+				"required": true,
+				"schema": {
+					"description": "GenAI conversation identifier (gen_ai.conversation.id) of the Session.",
+					"type": "string",
+					"maxLength": 512,
+					"minLength": 1
+				}
+			},
+			{
+				"name": "service",
+				"in": "query",
+				"description": "Worker service that emitted the Agent invocations.",
+				"required": true,
+				"schema": {
+					"description": "Worker service that emitted the Agent invocations.",
+					"type": "string",
+					"maxLength": 512,
+					"minLength": 1
+				}
+			},
+			{
+				"name": "agent",
+				"in": "query",
+				"description": "Agent name reported by the invocations (gen_ai.agent.name).",
+				"required": true,
+				"schema": {
+					"description": "Agent name reported by the invocations (gen_ai.agent.name).",
+					"type": "string",
+					"maxLength": 512,
+					"minLength": 1
+				}
+			},
+			{
+				"name": "from",
+				"in": "query",
+				"description": "Start of the window, as Unix epoch milliseconds. Clamped to the 7-day retention period.",
+				"required": true,
+				"schema": {
+					"description": "Start of the window, as Unix epoch milliseconds. Clamped to the 7-day retention period.",
+					"type": "integer",
+					"minimum": 0
+				}
+			},
+			{
+				"name": "to",
+				"in": "query",
+				"description": "End of the window, as Unix epoch milliseconds. Must be later than from.",
+				"required": true,
+				"schema": {
+					"description": "End of the window, as Unix epoch milliseconds. Must be later than from.",
+					"type": "integer",
+					"minimum": 0
+				}
+			},
+			{
+				"name": "cursor",
+				"in": "query",
+				"description": "Opaque cursor returned in result_info.cursors.after.",
+				"schema": {
+					"description": "Opaque cursor returned in result_info.cursors.after.",
+					"type": "string",
+					"maxLength": 2048,
+					"minLength": 1
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"schema": {
+					"type": "integer",
+					"maximum": 100,
+					"minimum": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Successful request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"enum": [
+													"Successful request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"agentId": {
+												"description": "ID from the earliest agent invocation that provides one.",
+												"type": "string"
+											},
+											"agentName": {
+												"description": "Name from the earliest agent invocation that provides one.",
+												"type": "string"
+											},
+											"conversationId": {
+												"description": "Conversation ID from the earliest invocation that provides one.",
+												"type": "string"
+											},
+											"errors": {
+												"description": "Distinct errors reported by spans in the run.",
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"inputTokens": {
+												"description": "Input tokens summed across chat spans in the run's trace; informational, not billing data.",
+												"type": "number"
+											},
+											"models": {
+												"description": "Distinct models reported by chat spans across the run's trace.",
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"outputTokens": {
+												"description": "Output tokens summed across chat spans in the run's trace; informational, not billing data.",
+												"type": "number"
+											},
+											"providers": {
+												"description": "Distinct GenAI providers reported by chat spans in the run.",
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"services": {
+												"description": "Worker services represented in the run's trace.",
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"spans": {
+												"description": "Number of spans in the run's trace.",
+												"type": "number"
+											},
+											"status": {
+												"description": "Observed run status.",
+												"type": "string",
+												"enum": [
+													"completed",
+													"error"
+												]
+											},
+											"traceDurationMs": {
+												"description": "Total trace duration in milliseconds.",
+												"type": "number"
+											},
+											"traceEndMs": {
+												"description": "End of the run's trace as a Unix epoch in milliseconds.",
+												"type": "number"
+											},
+											"traceId": {
+												"description": "Trace identifier for this agent run.",
+												"type": "string"
+											},
+											"traceStartMs": {
+												"description": "Start of the run's trace as a Unix epoch in milliseconds.",
+												"type": "number"
+											}
+										},
+										"required": [
+											"traceId",
+											"traceStartMs",
+											"traceEndMs",
+											"traceDurationMs",
+											"spans",
+											"services",
+											"errors",
+											"status",
+											"models",
+											"providers"
+										]
+									}
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "integer",
+											"minimum": 0
+										},
+										"cursors": {
+											"type": "object",
+											"properties": {
+												"after": {
+													"type": "string",
+													"nullable": true
+												}
+											},
+											"required": [
+												"after"
+											]
+										},
+										"per_page": {
+											"type": "integer",
+											"minimum": 1
+										}
+									},
+									"required": [
+										"per_page",
+										"count",
+										"cursors"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result",
+								"result_info"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Bad Request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Unauthorized"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Forbidden"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "Too many requests",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Too many requests"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Internal error"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"504": {
+				"description": "Gateway timeout",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Gateway timeout"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"tags": [
+			"Agents"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write",
+			"Workers Observability Read"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "observability.agents.sessions",
+		"x-fern-sdk-method-name": "runs",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.agents.sessions",
+				"x-fern-sdk-method-name": "runs"
+			}
+		],
+		"x-forge-params": {
+			"conversationId": {
+				"positional": true,
+				"required": true
+			}
+		}
+	}
+}

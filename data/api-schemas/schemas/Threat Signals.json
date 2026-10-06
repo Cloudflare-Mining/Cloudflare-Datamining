@@ -60,6 +60,16 @@
 											"code": {
 												"type": "number"
 											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
 											"expected": {
 												"type": "string"
 											},
@@ -75,7 +85,7 @@
 											"reason": {
 												"type": "string",
 												"enum": [
-													"free_custom_feed_limit",
+													"threat_signals_feed_limit",
 													"free_custom_skills_disabled",
 													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
@@ -211,6 +221,16 @@
 											"code": {
 												"type": "number"
 											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
 											"expected": {
 												"type": "string"
 											},
@@ -226,7 +246,7 @@
 											"reason": {
 												"type": "string",
 												"enum": [
-													"free_custom_feed_limit",
+													"threat_signals_feed_limit",
 													"free_custom_skills_disabled",
 													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
@@ -412,6 +432,16 @@
 											"code": {
 												"type": "number"
 											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
 											"expected": {
 												"type": "string"
 											},
@@ -427,7 +457,7 @@
 											"reason": {
 												"type": "string",
 												"enum": [
-													"free_custom_feed_limit",
+													"threat_signals_feed_limit",
 													"free_custom_skills_disabled",
 													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
@@ -1299,6 +1329,16 @@
 											"code": {
 												"type": "number"
 											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
 											"expected": {
 												"type": "string"
 											},
@@ -1314,7 +1354,7 @@
 											"reason": {
 												"type": "string",
 												"enum": [
-													"free_custom_feed_limit",
+													"threat_signals_feed_limit",
 													"free_custom_skills_disabled",
 													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
@@ -1564,6 +1604,16 @@
 											"code": {
 												"type": "number"
 											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
 											"expected": {
 												"type": "string"
 											},
@@ -1579,7 +1629,7 @@
 											"reason": {
 												"type": "string",
 												"enum": [
-													"free_custom_feed_limit",
+													"threat_signals_feed_limit",
 													"free_custom_skills_disabled",
 													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
@@ -1795,6 +1845,16 @@
 											"code": {
 												"type": "number"
 											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
 											"expected": {
 												"type": "string"
 											},
@@ -1810,7 +1870,7 @@
 											"reason": {
 												"type": "string",
 												"enum": [
-													"free_custom_feed_limit",
+													"threat_signals_feed_limit",
 													"free_custom_skills_disabled",
 													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
@@ -1832,6 +1892,16 @@
 										"count": {
 											"description": "Number of feeds on this page.",
 											"type": "integer"
+										},
+										"custom_feed_count": {
+											"description": "The current count of custom feeds for the account.",
+											"type": "integer",
+											"minimum": 0
+										},
+										"custom_feed_limit": {
+											"description": "The resolved custom feed limit for the account.",
+											"type": "integer",
+											"minimum": 0
 										},
 										"feeds": {
 											"type": "array",
@@ -1933,13 +2003,138 @@
 										"count",
 										"page",
 										"per_page",
-										"total_count"
+										"total_count",
+										"custom_feed_limit",
+										"custom_feed_count"
 									]
 								},
 								"success": {
 									"type": "boolean",
 									"enum": [
 										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Service temporarily unavailable (maintenance, overload, or degraded dependencies).",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"threat_signals_feed_limit",
+													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"threat_signals_feed_limit",
+													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
 									]
 								}
 							},
@@ -2096,6 +2291,16 @@
 											"code": {
 												"type": "number"
 											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
 											"expected": {
 												"type": "string"
 											},
@@ -2111,7 +2316,7 @@
 											"reason": {
 												"type": "string",
 												"enum": [
-													"free_custom_feed_limit",
+													"threat_signals_feed_limit",
 													"free_custom_skills_disabled",
 													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
@@ -2753,6 +2958,16 @@
 											"code": {
 												"type": "number"
 											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
 											"expected": {
 												"type": "string"
 											},
@@ -2768,7 +2983,7 @@
 											"reason": {
 												"type": "string",
 												"enum": [
-													"free_custom_feed_limit",
+													"threat_signals_feed_limit",
 													"free_custom_skills_disabled",
 													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
@@ -2964,6 +3179,16 @@
 											"code": {
 												"type": "number"
 											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
 											"expected": {
 												"type": "string"
 											},
@@ -2979,7 +3204,7 @@
 											"reason": {
 												"type": "string",
 												"enum": [
-													"free_custom_feed_limit",
+													"threat_signals_feed_limit",
 													"free_custom_skills_disabled",
 													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
@@ -3267,6 +3492,16 @@
 											"code": {
 												"type": "number"
 											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
 											"expected": {
 												"type": "string"
 											},
@@ -3282,7 +3517,7 @@
 											"reason": {
 												"type": "string",
 												"enum": [
-													"free_custom_feed_limit",
+													"threat_signals_feed_limit",
 													"free_custom_skills_disabled",
 													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
@@ -3655,6 +3890,16 @@
 											"code": {
 												"type": "number"
 											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
 											"expected": {
 												"type": "string"
 											},
@@ -3670,7 +3915,7 @@
 											"reason": {
 												"type": "string",
 												"enum": [
-													"free_custom_feed_limit",
+													"threat_signals_feed_limit",
 													"free_custom_skills_disabled",
 													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
@@ -3830,6 +4075,16 @@
 											"code": {
 												"type": "number"
 											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
 											"expected": {
 												"type": "string"
 											},
@@ -3845,7 +4100,7 @@
 											"reason": {
 												"type": "string",
 												"enum": [
-													"free_custom_feed_limit",
+													"threat_signals_feed_limit",
 													"free_custom_skills_disabled",
 													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
@@ -4064,6 +4319,16 @@
 											"code": {
 												"type": "number"
 											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
 											"expected": {
 												"type": "string"
 											},
@@ -4079,7 +4344,7 @@
 											"reason": {
 												"type": "string",
 												"enum": [
-													"free_custom_feed_limit",
+													"threat_signals_feed_limit",
 													"free_custom_skills_disabled",
 													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
@@ -4259,6 +4524,16 @@
 											"code": {
 												"type": "number"
 											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
 											"expected": {
 												"type": "string"
 											},
@@ -4274,7 +4549,7 @@
 											"reason": {
 												"type": "string",
 												"enum": [
-													"free_custom_feed_limit",
+													"threat_signals_feed_limit",
 													"free_custom_skills_disabled",
 													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
@@ -4297,6 +4572,16 @@
 											"code": {
 												"type": "number"
 											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
 											"expected": {
 												"type": "string"
 											},
@@ -4312,7 +4597,7 @@
 											"reason": {
 												"type": "string",
 												"enum": [
-													"free_custom_feed_limit",
+													"threat_signals_feed_limit",
 													"free_custom_skills_disabled",
 													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
@@ -4820,6 +5105,16 @@
 											"code": {
 												"type": "number"
 											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
 											"expected": {
 												"type": "string"
 											},
@@ -4835,7 +5130,7 @@
 											"reason": {
 												"type": "string",
 												"enum": [
-													"free_custom_feed_limit",
+													"threat_signals_feed_limit",
 													"free_custom_skills_disabled",
 													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
@@ -5005,6 +5300,16 @@
 											"code": {
 												"type": "number"
 											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
 											"expected": {
 												"type": "string"
 											},
@@ -5020,7 +5325,7 @@
 											"reason": {
 												"type": "string",
 												"enum": [
-													"free_custom_feed_limit",
+													"threat_signals_feed_limit",
 													"free_custom_skills_disabled",
 													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
@@ -5202,6 +5507,16 @@
 											"code": {
 												"type": "number"
 											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
 											"expected": {
 												"type": "string"
 											},
@@ -5217,7 +5532,7 @@
 											"reason": {
 												"type": "string",
 												"enum": [
-													"free_custom_feed_limit",
+													"threat_signals_feed_limit",
 													"free_custom_skills_disabled",
 													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
@@ -5332,8 +5647,374 @@
 					}
 				}
 			},
+			"403": {
+				"description": "Access forbidden.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"threat_signals_feed_limit",
+													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"threat_signals_feed_limit",
+													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Service temporarily unavailable (maintenance, overload, or degraded dependencies).",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"threat_signals_feed_limit",
+													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"threat_signals_feed_limit",
+													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
 			"4XX": {
-				"description": "Client error response."
+				"description": "Client error response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"threat_signals_feed_limit",
+													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"threat_signals_feed_limit",
+													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
 			}
 		},
 		"security": [
@@ -5570,6 +6251,16 @@
 											"code": {
 												"type": "number"
 											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
 											"expected": {
 												"type": "string"
 											},
@@ -5585,7 +6276,7 @@
 											"reason": {
 												"type": "string",
 												"enum": [
-													"free_custom_feed_limit",
+													"threat_signals_feed_limit",
 													"free_custom_skills_disabled",
 													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",
@@ -5770,6 +6461,16 @@
 											"code": {
 												"type": "number"
 											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
 											"expected": {
 												"type": "string"
 											},
@@ -5785,7 +6486,7 @@
 											"reason": {
 												"type": "string",
 												"enum": [
-													"free_custom_feed_limit",
+													"threat_signals_feed_limit",
 													"free_custom_skills_disabled",
 													"free_skill_run_disabled",
 													"free_tier_reconciliation_in_progress",

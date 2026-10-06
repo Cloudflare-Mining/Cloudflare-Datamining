@@ -397,6 +397,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.issues.automations",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.issues.automations",
+				"x-fern-sdk-method-name": "delete"
+			}
+		],
 		"x-forge-require-confirmation": "This operation deletes the issue automation."
 	},
 	"DELETE /accounts/{account_id}/workers/observability/issues/groups/{groupId}": {
@@ -722,6 +728,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.issues",
 		"x-fern-sdk-method-name": "ungroup",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.issues",
+				"x-fern-sdk-method-name": "ungroup"
+			}
+		],
 		"x-forge-params": {
 			"groupId": {
 				"positional": true,
@@ -1242,6 +1254,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.issues",
 		"x-fern-sdk-method-name": "remove",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.issues",
+				"x-fern-sdk-method-name": "remove"
+			}
+		],
 		"x-forge-params": {
 			"groupId": {
 				"positional": true,
@@ -1846,7 +1864,13 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.issues",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.issues",
+				"x-fern-sdk-method-name": "list"
+			}
+		]
 	},
 	"GET /accounts/{account_id}/workers/observability/issues/{issueId}": {
 		"operationId": "issues.get",
@@ -2343,7 +2367,13 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.issues",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.issues",
+				"x-fern-sdk-method-name": "get"
+			}
+		]
 	},
 	"GET /accounts/{account_id}/workers/observability/issues/{issueId}/occurrences": {
 		"operationId": "issues.occurrences.list",
@@ -3147,6 +3177,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.issues",
 		"x-fern-sdk-method-name": "occurrences",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.issues",
+				"x-fern-sdk-method-name": "occurrences"
+			}
+		],
 		"x-forge-params": {
 			"issueId": {
 				"positional": true,
@@ -3555,7 +3591,13 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.issues.automations",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.issues.automations",
+				"x-fern-sdk-method-name": "list"
+			}
+		]
 	},
 	"GET /accounts/{account_id}/workers/observability/issues/automations/{automationId}": {
 		"operationId": "issues.automations.get",
@@ -3955,7 +3997,13 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.issues.automations",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.issues.automations",
+				"x-fern-sdk-method-name": "get"
+			}
+		]
 	},
 	"GET /accounts/{account_id}/workers/observability/issues/summary": {
 		"operationId": "issues.summary",
@@ -4288,7 +4336,13 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.issues",
-		"x-fern-sdk-method-name": "summary"
+		"x-fern-sdk-method-name": "summary",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.issues",
+				"x-fern-sdk-method-name": "summary"
+			}
+		]
 	},
 	"PATCH /accounts/{account_id}/workers/observability/issues/{issueId}": {
 		"operationId": "issues.patch",
@@ -4761,7 +4815,13 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.issues",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.issues",
+				"x-fern-sdk-method-name": "update"
+			}
+		]
 	},
 	"POST /accounts/{account_id}/workers/observability/issues/{issueId}/notification-runs": {
 		"operationId": "issues.notificationRuns.create",
@@ -5242,6 +5302,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.issues",
 		"x-fern-sdk-method-name": "notify",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.issues",
+				"x-fern-sdk-method-name": "notify"
+			}
+		],
 		"x-forge-params": {
 			"issueId": {
 				"positional": true,
@@ -5680,7 +5746,13 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.issues.automations",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.issues.automations",
+				"x-fern-sdk-method-name": "create"
+			}
+		]
 	},
 	"POST /accounts/{account_id}/workers/observability/issues/groups": {
 		"operationId": "issues.groups.create",
@@ -6203,7 +6275,13 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.issues",
-		"x-fern-sdk-method-name": "group"
+		"x-fern-sdk-method-name": "group",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.issues",
+				"x-fern-sdk-method-name": "group"
+			}
+		]
 	},
 	"POST /accounts/{account_id}/workers/observability/issues/groups/{groupId}/members": {
 		"operationId": "issues.groups.members.add",
@@ -6732,6 +6810,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.issues",
 		"x-fern-sdk-method-name": "add",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.issues",
+				"x-fern-sdk-method-name": "add"
+			}
+		],
 		"x-forge-params": {
 			"groupId": {
 				"positional": true,
@@ -7180,6 +7264,12 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.issues.automations",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.issues.automations",
+				"x-fern-sdk-method-name": "update"
+			}
+		]
 	}
 }

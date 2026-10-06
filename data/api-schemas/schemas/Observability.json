@@ -365,7 +365,13 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.tracing.rules",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.tracing.rules",
+				"x-fern-sdk-method-name": "delete"
+			}
+		]
 	},
 	"DELETE /zones/{zone_id}/observability/tracing/settings": {
 		"operationId": "zone.observability.tracing.settings.delete",
@@ -724,7 +730,13 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.tracing.settings",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.tracing.settings",
+				"x-fern-sdk-method-name": "delete"
+			}
+		]
 	},
 	"GET /zones/{zone_id}/observability/tracing/rules": {
 		"operationId": "zone.observability.tracing.rules.get",
@@ -1092,7 +1104,13 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.tracing.rules",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.tracing.rules",
+				"x-fern-sdk-method-name": "get"
+			}
+		]
 	},
 	"GET /zones/{zone_id}/observability/tracing/settings": {
 		"operationId": "zone.observability.tracing.settings.get",
@@ -1451,7 +1469,13 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.tracing.settings",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.tracing.settings",
+				"x-fern-sdk-method-name": "get"
+			}
+		]
 	},
 	"PATCH /zones/{zone_id}/observability/tracing/settings": {
 		"operationId": "zone.observability.tracing.settings.update",
@@ -1862,7 +1886,13 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.tracing.settings",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.tracing.settings",
+				"x-fern-sdk-method-name": "update"
+			}
+		]
 	},
 	"PUT /zones/{zone_id}/observability/tracing/rules": {
 		"operationId": "zone.observability.tracing.rules.update",
@@ -2298,6 +2328,12 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.tracing.rules",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.tracing.rules",
+				"x-fern-sdk-method-name": "update"
+			}
+		]
 	}
 }

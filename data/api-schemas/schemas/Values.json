@@ -908,6 +908,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "observability.telemetry",
-		"x-fern-sdk-method-name": "values"
+		"x-fern-sdk-method-name": "values",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.telemetry",
+				"x-fern-sdk-method-name": "values"
+			}
+		]
 	}
 }

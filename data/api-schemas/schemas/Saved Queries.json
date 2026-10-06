@@ -666,6 +666,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "observability.queries",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.queries",
+				"x-fern-sdk-method-name": "delete"
+			}
+		],
 		"x-forge-require-confirmation": "This operation deletes the saved query."
 	},
 	"GET /accounts/{account_id}/workers/observability/queries": {
@@ -1373,7 +1379,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "observability.queries",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.queries",
+				"x-fern-sdk-method-name": "list"
+			}
+		]
 	},
 	"GET /accounts/{account_id}/workers/observability/queries/{queryId}": {
 		"operationId": "queries.get",
@@ -2042,7 +2054,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "observability.queries",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.queries",
+				"x-fern-sdk-method-name": "get"
+			}
+		]
 	},
 	"PATCH /accounts/{account_id}/workers/observability/queries/{queryId}": {
 		"operationId": "queries.patch",
@@ -3107,7 +3125,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "observability.queries",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.queries",
+				"x-fern-sdk-method-name": "edit"
+			}
+		]
 	},
 	"POST /accounts/{account_id}/workers/observability/queries": {
 		"operationId": "queries.post",
@@ -4162,6 +4186,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "observability.queries",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.queries",
+				"x-fern-sdk-method-name": "create"
+			}
+		]
 	}
 }

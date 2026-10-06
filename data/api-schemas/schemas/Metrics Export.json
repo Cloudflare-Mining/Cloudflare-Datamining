@@ -226,7 +226,13 @@
 		],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "observability.metrics-export",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.metrics-export",
+				"x-fern-sdk-method-name": "list"
+			}
+		]
 	},
 	"POST /accounts/{account_id}/workers/observability/metricsexport": {
 		"operationId": "metricsExport.upsert",
@@ -582,6 +588,12 @@
 		],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "observability.metrics-export",
-		"x-fern-sdk-method-name": "upsert"
+		"x-fern-sdk-method-name": "upsert",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.metrics-export",
+				"x-fern-sdk-method-name": "upsert"
+			}
+		]
 	}
 }

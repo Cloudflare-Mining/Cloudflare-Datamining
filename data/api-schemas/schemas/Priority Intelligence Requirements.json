@@ -569,6 +569,704 @@
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
+	"POST /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/filters/generate": {
+		"operationId": "post_PirFilterGenerate",
+		"summary": "Generate event filters from a PIR",
+		"description": "Translates a natural-language Priority Intelligence Requirement into Threat Events `searchBranches` with Workers AI. Terms that cannot be expressed as event filters are returned in `unresolved_terms`. Nothing is stored or executed.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"requirement": {
+								"description": "Natural-language Priority Intelligence Requirement.",
+								"type": "string",
+								"example": "Track North Korean or Russian actors phishing banks in the United States",
+								"maxLength": 4000,
+								"minLength": 1
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"requirement"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Generated filters",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"threat_signals_feed_limit",
+													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"threat_signals_feed_limit",
+													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"additionalProperties": false,
+									"properties": {
+										"branches": {
+											"description": "Event List `searchBranches`: filters within a branch are ANDed, branches are ORed. Empty when coverage is `none`.",
+											"type": "array",
+											"items": {
+												"items": {
+													"anyOf": [
+														{
+															"additionalProperties": false,
+															"properties": {
+																"field": {
+																	"type": "string",
+																	"enum": [
+																		"attacker",
+																		"attackerCountry",
+																		"category",
+																		"createdAt",
+																		"date",
+																		"event",
+																		"indicator",
+																		"indicatorType",
+																		"mitreAttack",
+																		"mitreCapec",
+																		"tags",
+																		"targetCountry",
+																		"targetIndustry",
+																		"tlp",
+																		"uuid"
+																	]
+																},
+																"op": {
+																	"type": "string",
+																	"enum": [
+																		"equals",
+																		"not",
+																		"gt",
+																		"gte",
+																		"lt",
+																		"lte",
+																		"like",
+																		"contains",
+																		"startsWith",
+																		"endsWith",
+																		"find"
+																	]
+																},
+																"value": {
+																	"type": "string",
+																	"maxLength": 512,
+																	"minLength": 1
+																}
+															},
+															"required": [
+																"field",
+																"op",
+																"value"
+															],
+															"type": "object"
+														},
+														{
+															"additionalProperties": false,
+															"properties": {
+																"field": {
+																	"type": "string",
+																	"enum": [
+																		"attacker",
+																		"attackerCountry",
+																		"category",
+																		"createdAt",
+																		"date",
+																		"event",
+																		"indicator",
+																		"indicatorType",
+																		"mitreAttack",
+																		"mitreCapec",
+																		"tags",
+																		"targetCountry",
+																		"targetIndustry",
+																		"tlp",
+																		"uuid"
+																	]
+																},
+																"op": {
+																	"type": "string",
+																	"enum": [
+																		"in"
+																	]
+																},
+																"value": {
+																	"type": "array",
+																	"items": {
+																		"maxLength": 512,
+																		"minLength": 1,
+																		"type": "string"
+																	},
+																	"maxItems": 100,
+																	"minItems": 1
+																}
+															},
+															"required": [
+																"field",
+																"op",
+																"value"
+															],
+															"type": "object"
+														},
+														{
+															"additionalProperties": false,
+															"properties": {
+																"field": {
+																	"type": "string",
+																	"enum": [
+																		"killChain"
+																	]
+																},
+																"op": {
+																	"type": "string",
+																	"enum": [
+																		"equals",
+																		"not",
+																		"gt",
+																		"gte",
+																		"lt",
+																		"lte"
+																	]
+																},
+																"value": {
+																	"anyOf": [
+																		{
+																			"type": "number"
+																		},
+																		{
+																			"pattern": "^-?(?:\\d+\\.?\\d*|\\.\\d+)$",
+																			"type": "string"
+																		}
+																	]
+																}
+															},
+															"required": [
+																"field",
+																"op",
+																"value"
+															],
+															"type": "object"
+														},
+														{
+															"additionalProperties": false,
+															"properties": {
+																"field": {
+																	"type": "string",
+																	"enum": [
+																		"killChain"
+																	]
+																},
+																"op": {
+																	"type": "string",
+																	"enum": [
+																		"in"
+																	]
+																},
+																"value": {
+																	"type": "array",
+																	"items": {
+																		"anyOf": [
+																			{
+																				"type": "number"
+																			},
+																			{
+																				"pattern": "^-?(?:\\d+\\.?\\d*|\\.\\d+)$",
+																				"type": "string"
+																			}
+																		]
+																	},
+																	"maxItems": 100,
+																	"minItems": 1
+																}
+															},
+															"required": [
+																"field",
+																"op",
+																"value"
+															],
+															"type": "object"
+														},
+														{
+															"additionalProperties": false,
+															"properties": {
+																"field": {
+																	"type": "string",
+																	"enum": [
+																		"hasChildren"
+																	]
+																},
+																"op": {
+																	"type": "string",
+																	"enum": [
+																		"equals",
+																		"not",
+																		"gt",
+																		"gte",
+																		"lt",
+																		"lte"
+																	]
+																},
+																"value": {
+																	"anyOf": [
+																		{
+																			"type": "boolean"
+																		},
+																		{
+																			"enum": [
+																				"true"
+																			],
+																			"type": "string"
+																		},
+																		{
+																			"enum": [
+																				"false"
+																			],
+																			"type": "string"
+																		},
+																		{
+																			"enum": [
+																				1
+																			],
+																			"type": "number"
+																		},
+																		{
+																			"enum": [
+																				0
+																			],
+																			"type": "number"
+																		},
+																		{
+																			"enum": [
+																				"1"
+																			],
+																			"type": "string"
+																		},
+																		{
+																			"enum": [
+																				"0"
+																			],
+																			"type": "string"
+																		}
+																	]
+																}
+															},
+															"required": [
+																"field",
+																"op",
+																"value"
+															],
+															"type": "object"
+														},
+														{
+															"additionalProperties": false,
+															"properties": {
+																"field": {
+																	"type": "string",
+																	"enum": [
+																		"hasChildren"
+																	]
+																},
+																"op": {
+																	"type": "string",
+																	"enum": [
+																		"in"
+																	]
+																},
+																"value": {
+																	"type": "array",
+																	"items": {
+																		"anyOf": [
+																			{
+																				"type": "boolean"
+																			},
+																			{
+																				"enum": [
+																					"true"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"false"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					1
+																				],
+																				"type": "number"
+																			},
+																			{
+																				"enum": [
+																					0
+																				],
+																				"type": "number"
+																			},
+																			{
+																				"enum": [
+																					"1"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"enum": [
+																					"0"
+																				],
+																				"type": "string"
+																			}
+																		]
+																	},
+																	"maxItems": 100,
+																	"minItems": 1
+																}
+															},
+															"required": [
+																"field",
+																"op",
+																"value"
+															],
+															"type": "object"
+														}
+													]
+												},
+												"maxItems": 10,
+												"minItems": 1,
+												"type": "array"
+											},
+											"maxItems": 8
+										},
+										"coverage": {
+											"description": "`full`: every term resolved. `partial`: some terms are unresolved. `none`: no filter could be generated.",
+											"type": "string",
+											"enum": [
+												"full",
+												"partial",
+												"none"
+											]
+										},
+										"intent": {
+											"description": "Structured intent extracted from the requirement, before catalog resolution.",
+											"type": "object",
+											"additionalProperties": false,
+											"properties": {
+												"clauses": {
+													"type": "array",
+													"items": {
+														"additionalProperties": false,
+														"properties": {
+															"actors": {
+																"type": "array",
+																"items": {
+																	"maxLength": 200,
+																	"minLength": 1,
+																	"type": "string"
+																},
+																"maxItems": 20
+															},
+															"attacker_countries": {
+																"type": "array",
+																"items": {
+																	"maxLength": 200,
+																	"minLength": 1,
+																	"type": "string"
+																},
+																"maxItems": 20
+															},
+															"categories": {
+																"type": "array",
+																"items": {
+																	"maxLength": 200,
+																	"minLength": 1,
+																	"type": "string"
+																},
+																"maxItems": 20
+															},
+															"cves": {
+																"type": "array",
+																"items": {
+																	"maxLength": 200,
+																	"minLength": 1,
+																	"type": "string"
+																},
+																"maxItems": 20
+															},
+															"keywords": {
+																"type": "array",
+																"items": {
+																	"maxLength": 200,
+																	"minLength": 1,
+																	"type": "string"
+																},
+																"maxItems": 5
+															},
+															"target_countries": {
+																"type": "array",
+																"items": {
+																	"maxLength": 200,
+																	"minLength": 1,
+																	"type": "string"
+																},
+																"maxItems": 20
+															},
+															"target_industries": {
+																"type": "array",
+																"items": {
+																	"maxLength": 200,
+																	"minLength": 1,
+																	"type": "string"
+																},
+																"maxItems": 20
+															},
+															"techniques": {
+																"type": "array",
+																"items": {
+																	"maxLength": 200,
+																	"minLength": 1,
+																	"type": "string"
+																},
+																"maxItems": 20
+															}
+														},
+														"required": [
+															"actors",
+															"attacker_countries",
+															"target_countries",
+															"target_industries",
+															"categories",
+															"techniques",
+															"cves",
+															"keywords"
+														],
+														"type": "object"
+													},
+													"maxItems": 8,
+													"minItems": 1
+												},
+												"indicators": {
+													"type": "array",
+													"items": {
+														"maxLength": 200,
+														"minLength": 1,
+														"type": "string"
+													},
+													"maxItems": 20
+												},
+												"unsupported_terms": {
+													"type": "array",
+													"items": {
+														"maxLength": 200,
+														"minLength": 1,
+														"type": "string"
+													},
+													"maxItems": 20
+												}
+											},
+											"required": [
+												"clauses",
+												"indicators",
+												"unsupported_terms"
+											]
+										},
+										"model": {
+											"description": "Workers AI model used for intent extraction.",
+											"type": "string"
+										},
+										"unresolved_terms": {
+											"description": "Requirement terms that could not be expressed as event filters.",
+											"type": "array",
+											"items": {
+												"properties": {
+													"reason": {
+														"type": "string",
+														"enum": [
+															"unknown_country",
+															"unknown_industry",
+															"unknown_category",
+															"no_matching_category",
+															"invalid_keyword",
+															"branch_limit",
+															"indicators_not_supported",
+															"no_matching_field"
+														]
+													},
+													"term": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"term",
+													"reason"
+												],
+												"type": "object"
+											}
+										}
+									},
+									"required": [
+										"branches",
+										"intent",
+										"unresolved_terms",
+										"coverage",
+										"model"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid requirement"
+			},
+			"429": {
+				"description": "Rate limit exceeded"
+			},
+			"502": {
+				"description": "Filter generation failed"
+			},
+			"503": {
+				"description": "Filter generation is not configured"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Priority Intelligence Requirements"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.filters",
+		"x-fern-sdk-method-name": "generate",
+		"x-forge-hidden": true
+	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/interests": {
 		"operationId": "post_PirInterestCreate",
 		"summary": "Create an account interest for PIR Option 2",

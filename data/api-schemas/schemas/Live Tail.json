@@ -641,7 +641,13 @@
 		],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "observability.telemetry",
-		"x-fern-sdk-method-name": "live-tail"
+		"x-fern-sdk-method-name": "live-tail",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.telemetry",
+				"x-fern-sdk-method-name": "live-tail"
+			}
+		]
 	},
 	"POST /accounts/{account_id}/workers/observability/telemetry/live-tail/heartbeat": {
 		"operationId": "telemetry.live-tail.heartbeat.get",
@@ -845,6 +851,12 @@
 		],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "observability.telemetry",
-		"x-fern-sdk-method-name": "heartbeat"
+		"x-fern-sdk-method-name": "heartbeat",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.telemetry",
+				"x-fern-sdk-method-name": "heartbeat"
+			}
+		]
 	}
 }

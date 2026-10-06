@@ -479,6 +479,12 @@
 		],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "observability",
-		"x-fern-sdk-method-name": "usage"
+		"x-fern-sdk-method-name": "usage",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y",
+				"x-fern-sdk-method-name": "usage"
+			}
+		]
 	}
 }

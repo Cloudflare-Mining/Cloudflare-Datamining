@@ -890,7 +890,7 @@
 														"example": true
 													},
 													"finding_type_id": {
-														"description": "The finding type this policy is associated with. Immutable after creation; changing it replaces the policy.",
+														"description": "The finding type this policy is associated with. Immutable after creation; attempts to change it via update are rejected.",
 														"type": "string",
 														"format": "uuid",
 														"example": "5a7d9e2f-1b3c-4d5e-8f6a-7b8c9d0e1f2a"
@@ -1533,7 +1533,7 @@
 													"example": true
 												},
 												"finding_type_id": {
-													"description": "The finding type this policy is associated with. Immutable after creation; changing it replaces the policy.",
+													"description": "The finding type this policy is associated with. Immutable after creation; attempts to change it via update are rejected.",
 													"type": "string",
 													"format": "uuid",
 													"example": "5a7d9e2f-1b3c-4d5e-8f6a-7b8c9d0e1f2a"
@@ -2040,10 +2040,10 @@
 		"x-fern-sdk-group-name": "zero-trust.casb.policies",
 		"x-fern-sdk-method-name": "get"
 	},
-	"GET /accounts/{account_id}/data-security/posture/policies/logs": {
-		"operationId": "ListPolicyLogs",
-		"summary": "List policy invocation logs (deprecated)",
-		"description": "Deprecated: use `GET /accounts/{account_id}/data-security/posture/policy_logs`, which returns identical results. This path will be removed.\n\nReturns a list of policy invocation logs for the given account, sourced from ClickHouse via Ready Analytics. Each entry represents one execution of a policy against a finding instance, including the actions (remediation jobs and webhooks) it dispatched.\n\nResults are scoped to the requesting account's CASB integrations. The `integration_id` query parameter, when supplied, is intersected against the account's integration allowlist; values outside the allowlist are silently dropped.\n\nPagination is offset-based. The response does not include a total row count; clients should treat a result with fewer than `per_page` entries as the end of the list.\n",
+	"GET /accounts/{account_id}/data-security/posture/policy_logs": {
+		"operationId": "ListPolicyLogEntries",
+		"summary": "List policy invocation logs",
+		"description": "Returns a list of policy invocation logs for the given account, sourced from ClickHouse via Ready Analytics. Each entry represents one execution of a policy against a finding instance, including the actions (remediation jobs and webhooks) it dispatched.\n\nResults are scoped to the requesting account's CASB integrations. The `integration_id` query parameter, when supplied, is intersected against the account's integration allowlist; values outside the allowlist are silently dropped.\n\nPagination is offset-based. The response does not include a total row count; clients should treat a result with fewer than `per_page` entries as the end of the list.\n",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID for the user making the request.",
@@ -2965,7 +2965,6 @@
 				}
 			}
 		},
-		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -3321,7 +3320,7 @@
 													"example": true
 												},
 												"finding_type_id": {
-													"description": "The finding type this policy is associated with. Immutable after creation; changing it replaces the policy.",
+													"description": "The finding type this policy is associated with. Immutable after creation; attempts to change it via update are rejected.",
 													"type": "string",
 													"format": "uuid",
 													"example": "5a7d9e2f-1b3c-4d5e-8f6a-7b8c9d0e1f2a"
@@ -4169,7 +4168,7 @@
 													"example": true
 												},
 												"finding_type_id": {
-													"description": "The finding type this policy is associated with. Immutable after creation; changing it replaces the policy.",
+													"description": "The finding type this policy is associated with. Immutable after creation; attempts to change it via update are rejected.",
 													"type": "string",
 													"format": "uuid",
 													"example": "5a7d9e2f-1b3c-4d5e-8f6a-7b8c9d0e1f2a"

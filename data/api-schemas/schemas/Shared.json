@@ -2413,7 +2413,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "observability.shared-queries",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.shared-queries",
+				"x-fern-sdk-method-name": "get"
+			}
+		]
 	},
 	"POST /accounts/{account_id}/workers/observability/shared/query": {
 		"operationId": "shared.query.post",
@@ -3464,6 +3470,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "observability.shared-queries",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.shared-queries",
+				"x-fern-sdk-method-name": "create"
+			}
+		]
 	}
 }
