@@ -311,6 +311,7 @@
 		"perf/client-pages-router-detection",
 		"perf/document-only-router-runtime",
 		"perf/import-meta-url-scan-skip-cache",
+		"perf/large-pages-router-dev-cold-start",
 		"perf/nav-fetch-before-template-learning",
 		"perf/nav-yield-before-prefetched-commit",
 		"perf/offload-large-transforms",
@@ -343,6 +344,8 @@
 		"probes/06-response-store-no-store",
 		"probes/07-real-status-storage",
 		"probes/08-suspense-special-error-parity",
+		"probes/09-metadata-head-placement",
+		"probes/10-prerender-special-error",
 		"refactor/cli-command-framework",
 		"repro/app-router-shared-layout-identity",
 		"seo/consolidate-brand-signals"
