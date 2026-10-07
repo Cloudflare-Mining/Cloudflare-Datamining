@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+October 7, 2026 [<h2>Building an evidence-grounded agentic security operations harness on Cloudflare</h2>](https://blog.cloudflare.com/agentic-security-operations/)
+
+Cloudflare Managed Defense uses a team of specialized AI agents built on Workers and global network telemetry to analyze security alerts. By separating deterministic evidence collection from model inference, the system delivers grounded recommendations to Managed Defense Analysts.
+
+![Deanna Tran](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M32RWM8D9ND7N90HFR9H9QQT.01M32RWMV6K9V55M6CMKAXE9PC.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Javier Castro](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4674A41YFNM3KJ161Z4WRB.png&w=64&h=64&f=webp&fit=cover&position=center)![Jacob Crisp](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468SZ92CTQZG9K5AR69G1E.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Blake Darché](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46VFGSFTVH9S7TKX7T5BAC.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Deanna Tran](https://blog.cloudflare.com/author/deanna-tran/),  [Javier Castro](https://blog.cloudflare.com/author/javier/),  [Jacob Crisp](https://blog.cloudflare.com/author/jacob-crisp/), and  [Blake Darché](https://blog.cloudflare.com/author/blake/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M32R921QMDZ1S2MHB3M7Q85H.01M32R93AJ8Q0D22GYW0163M3F.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/agentic-security-operations/)
+
 October 6, 2026 [<h2>The keys to the Internet change on October 11. Are you ready?</h2>](https://blog.cloudflare.com/root-ksk-2024-rollover/)
 
 On October 11, 2026, the DNS root switches to a new key-signing key (KSK-2024). Learn what this means for you, and how RFC 8509 trust anchor sentinels allow you to test whether your DNS resolver is ready for the rollover.
@@ -17,8 +27,6 @@ On October 11, 2026, the DNS root switches to a new key-signing key (KSK-2024).
 ![Sebastiaan Neuteboom](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GH720TA5A2634QYMAXZR.png&w=64&h=64&f=webp&fit=cover&position=center)![James Godlewski](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M48ZN7537R9D7AB9PWK3P0Q9.01M48ZN84M75FBR63MKDCQTCED.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Sebastiaan Neuteboom](https://blog.cloudflare.com/author/sebastiaan-neuteboom/) and  [James Godlewski](https://blog.cloudflare.com/author/james-godlewski/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M490CTJ7YDMNAYZRST2FH35F.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/root-ksk-2024-rollover/)
 
 October 5, 2026 [<h2>Everything we launched during Birthday Week 2026</h2>](https://blog.cloudflare.com/birthday-week-2026-wrap-up/)
 
@@ -155,14 +163,6 @@ Cloudflare K2 is a serverless event streaming service built directly on top of R
 ![Micah Wylde](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48960E56E6QTQP000R72JC.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Marc Selwan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455H274J0ZYJ6K4KHKJT25.webp&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Micah Wylde](https://blog.cloudflare.com/author/micah-wylde/) and  [Marc Selwan](https://blog.cloudflare.com/author/marc-selwan/)
-
-October 1, 2026 [<h2>We want you to build the next Git platform on Cloudflare</h2>](https://blog.cloudflare.com/next-git-platform-on-cloudflare/)
-
-Cloudflare is hosting a competition to see who will build the next Git platform for an era of AI agents. Artifacts is in open beta, with Workers bindings, data jurisdiction controls, and event subscriptions for repository changes.
-
-![Dina Kozlov](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DZ20ZY95S71GB0FPG6GC.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Dillon Mulroy](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45817WZF8X21CSHMRKGEXW.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Zebulon Piasecki](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SPNPQ4FRWZZG3GWEV0VY2J.01M3SPNRCTC9WW528APGP7F8BP.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Dina Kozlov](https://blog.cloudflare.com/author/dina/),  [Dillon Mulroy](https://blog.cloudflare.com/author/dillon-mulroy/), and  [Zebulon Piasecki](https://blog.cloudflare.com/author/zeb/)
 
 Load more
 
