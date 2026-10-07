@@ -164,7 +164,7 @@
 		"enabled": true
 	},
 	"ai-gateway-webhook-signing": {
-		"enabled": false
+		"enabled": true
 	},
 	"ai-gateway-wholesale-billing": {
 		"enabled": true
@@ -391,6 +391,9 @@
 		"enabled": true
 	},
 	"billing-immediate-downgrade-cancellation-enabled": {
+		"enabled": false
+	},
+	"billing-invoices-status-filter": {
 		"enabled": false
 	},
 	"billing-legacy-plan-pricing": {
@@ -698,6 +701,9 @@
 	},
 	"custom-ps-alerts": {
 		"enabled": true
+	},
+	"d1-account-insights": {
+		"enabled": false
 	},
 	"d1-jurisdiction-ui": {
 		"enabled": true
@@ -1033,6 +1039,9 @@
 	"deseng-ssl-tls-kumo": {
 		"enabled": true
 	},
+	"deseng-subscription-updates": {
+		"enabled": false
+	},
 	"deseng-subscriptions-redesign": {
 		"enabled": true
 	},
@@ -1049,6 +1058,9 @@
 		"enabled": false
 	},
 	"deseng-update-email-flow": {
+		"enabled": false
+	},
+	"deseng-user-api-token": {
 		"enabled": false
 	},
 	"deseng-user-token": {
@@ -1860,7 +1872,7 @@
 		"enabled": false
 	},
 	"managed-defense-reporting-overview": {
-		"enabled": false
+		"enabled": true
 	},
 	"mapbox-removal": {
 		"enabled": true
