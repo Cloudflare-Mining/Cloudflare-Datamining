@@ -15251,7 +15251,16 @@ declare module "cloudflare:email" {
  * Evaluation context for targeting rules.
  * Keys are attribute names (e.g. "userId", "country"), values are the attribute values.
  */
-type FlagshipEvaluationContext = Record<string, string | number | boolean>;
+type FlagshipEvaluationContextValue =
+  | string
+  | number
+  | boolean
+  | null
+  | FlagshipEvaluationContextValue[]
+  | {
+      [key: string]: FlagshipEvaluationContextValue;
+    };
+type FlagshipEvaluationContext = Record<string, FlagshipEvaluationContextValue>;
 interface FlagshipEvaluationDetails<T> {
   flagKey: string;
   value: T;
@@ -15260,6 +15269,13 @@ interface FlagshipEvaluationDetails<T> {
   errorCode?: string | undefined;
   errorMessage?: string | undefined;
 }
+type FlagshipWidenedValue<T> = T extends boolean
+  ? boolean
+  : T extends string
+    ? string
+    : T extends number
+      ? number
+      : T;
 interface FlagshipEvaluationError extends Error {}
 /**
  * Feature flags binding for evaluating feature flags from a Cloudflare Workers script.
@@ -15286,12 +15302,39 @@ declare abstract class Flagship {
    * @param flagKey The key of the flag to evaluate.
    * @param defaultValue Optional default value returned when evaluation fails.
    * @param context Optional evaluation context for targeting rules.
+   * @deprecated Use getValue() instead.
    */
   get(
     flagKey: string,
     defaultValue?: unknown,
     context?: FlagshipEvaluationContext,
   ): Promise<unknown>;
+  /**
+   * Get a flag value, inferring its expected type from the default value.
+   * @param flagKey The key of the flag to evaluate.
+   * @param defaultValue Default value returned when evaluation fails or the flag type does not match.
+   * @param context Optional evaluation context for targeting rules.
+   */
+  getValue<
+    T extends boolean | string | number | Record<string, unknown> | unknown[],
+  >(
+    flagKey: string,
+    defaultValue: T,
+    context?: FlagshipEvaluationContext,
+  ): Promise<FlagshipWidenedValue<T>>;
+  /**
+   * Get a flag value with full evaluation details, inferring its expected type from the default value.
+   * @param flagKey The key of the flag to evaluate.
+   * @param defaultValue Default value returned when evaluation fails or the flag type does not match.
+   * @param context Optional evaluation context for targeting rules.
+   */
+  getDetails<
+    T extends boolean | string | number | Record<string, unknown> | unknown[],
+  >(
+    flagKey: string,
+    defaultValue: T,
+    context?: FlagshipEvaluationContext,
+  ): Promise<FlagshipEvaluationDetails<FlagshipWidenedValue<T>>>;
   /**
    * Get a boolean flag value.
    * @param flagKey The key of the flag to evaluate.
@@ -16195,6 +16238,11 @@ declare namespace Rpc {
         T extends Map<unknown, infer U> ? Serializable<U> : never
       >
     | Set<T extends Set<infer U> ? Serializable<U> : never>
+    | ReadonlyMap<
+        T extends ReadonlyMap<infer U, unknown> ? Serializable<U> : never,
+        T extends ReadonlyMap<unknown, infer U> ? Serializable<U> : never
+      >
+    | ReadonlySet<T extends ReadonlySet<infer U> ? Serializable<U> : never>
     | ReadonlyArray<T extends ReadonlyArray<infer U> ? Serializable<U> : never>
     | {
         [K in keyof T]: K extends number | string ? Serializable<T[K]> : never;
@@ -16237,19 +16285,23 @@ declare namespace Rpc {
       ? Map<Stubify<K>, Stubify<V>>
       : T extends Set<infer V>
         ? Set<Stubify<V>>
-        : T extends Array<infer V>
-          ? Array<Stubify<V>>
-          : T extends ReadonlyArray<infer V>
-            ? ReadonlyArray<Stubify<V>>
-            : T extends BaseType
-              ? T
-              : T extends {
-                    [key: string | number]: any;
-                  }
-                ? {
-                    [K in keyof T]: Stubify<T[K]>;
-                  }
-                : T;
+        : T extends ReadonlyMap<infer K, infer V>
+          ? ReadonlyMap<Stubify<K>, Stubify<V>>
+          : T extends ReadonlySet<infer V>
+            ? ReadonlySet<Stubify<V>>
+            : T extends Array<infer V>
+              ? Array<Stubify<V>>
+              : T extends ReadonlyArray<infer V>
+                ? ReadonlyArray<Stubify<V>>
+                : T extends BaseType
+                  ? T
+                  : T extends {
+                        [key: string | number]: any;
+                      }
+                    ? {
+                        [K in keyof T]: Stubify<T[K]>;
+                      }
+                    : T;
   // Recursively rewrite all `Stub<T>`s with the corresponding `T`s.
   // Note we use `StubBase` instead of `Stub` here to avoid circular dependencies:
   // `Stub` depends on `Provider`, which depends on `Unstubify`, which would depend on `Stub`.
@@ -16260,19 +16312,23 @@ declare namespace Rpc {
         ? Map<Unstubify<K>, Unstubify<V>>
         : T extends Set<infer V>
           ? Set<Unstubify<V>>
-          : T extends Array<infer V>
-            ? Array<Unstubify<V>>
-            : T extends ReadonlyArray<infer V>
-              ? ReadonlyArray<Unstubify<V>>
-              : T extends BaseType
-                ? T
-                : T extends {
-                      [key: string | number]: unknown;
-                    }
-                  ? {
-                      [K in keyof T]: Unstubify<T[K]>;
-                    }
-                  : T;
+          : T extends ReadonlyMap<infer K, infer V>
+            ? ReadonlyMap<Unstubify<K>, Unstubify<V>>
+            : T extends ReadonlySet<infer V>
+              ? ReadonlySet<Unstubify<V>>
+              : T extends Array<infer V>
+                ? Array<Unstubify<V>>
+                : T extends ReadonlyArray<infer V>
+                  ? ReadonlyArray<Unstubify<V>>
+                  : T extends BaseType
+                    ? T
+                    : T extends {
+                          [key: string | number]: unknown;
+                        }
+                      ? {
+                          [K in keyof T]: Unstubify<T[K]>;
+                        }
+                      : T;
   type UnstubifyAll<A extends any[]> = {
     [I in keyof A]: Unstubify<A[I]>;
   };
