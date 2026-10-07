@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+October 6, 2026 [<h2>The keys to the Internet change on October 11. Are you ready?</h2>](https://blog.cloudflare.com/root-ksk-2024-rollover/)
+
+On October 11, 2026, the DNS root switches to a new key-signing key (KSK-2024). Learn what this means for you, and how RFC 8509 trust anchor sentinels allow you to test whether your DNS resolver is ready for the rollover.
+
+![Sebastiaan Neuteboom](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GH720TA5A2634QYMAXZR.png&w=64&h=64&f=webp&fit=cover&position=center)![James Godlewski](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M48ZN7537R9D7AB9PWK3P0Q9.01M48ZN84M75FBR63MKDCQTCED.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Sebastiaan Neuteboom](https://blog.cloudflare.com/author/sebastiaan-neuteboom/) and  [James Godlewski](https://blog.cloudflare.com/author/james-godlewski/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M490CTJ7YDMNAYZRST2FH35F.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/root-ksk-2024-rollover/)
+
 October 5, 2026 [<h2>Everything we launched during Birthday Week 2026</h2>](https://blog.cloudflare.com/birthday-week-2026-wrap-up/)
 
 We celebrated our 16th birthday with 46 announcements across open source, post-quantum security, AI agents, and developer platform upgrades. Here's a day-by-day roundup of everything we shipped.
@@ -17,8 +27,6 @@ We celebrated our 16th birthday with 46 announcements across open source, post-q
 ![Carlos Armada](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GNGVRDMTAZC97MJZE2EC.webp&w=64&h=64&f=webp&fit=cover&position=center)![Meagan Gamache](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M45MAC0G939A1CZ2RDDM9NN1.01M45MACNHN2Z5AH4FH2RK2MN8.webp&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Carlos Armada](https://blog.cloudflare.com/author/carlos-armada/) and  [Meagan Gamache](https://blog.cloudflare.com/author/meagan-gamache/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M45M6F7F4N2RT9KMZ0Q5DRQT.png&w=1200&h=675&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/birthday-week-2026-wrap-up/)
 
 October 5, 2026 [<h2>One year later: the power of 1.1.1.1 interns</h2>](https://blog.cloudflare.com/one-year-later-1111-interns/)
 
@@ -155,14 +163,6 @@ Cloudflare is hosting a competition to see who will build the next Git platform 
 ![Dina Kozlov](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DZ20ZY95S71GB0FPG6GC.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Dillon Mulroy](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45817WZF8X21CSHMRKGEXW.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Zebulon Piasecki](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SPNPQ4FRWZZG3GWEV0VY2J.01M3SPNRCTC9WW528APGP7F8BP.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Dina Kozlov](https://blog.cloudflare.com/author/dina/),  [Dillon Mulroy](https://blog.cloudflare.com/author/dillon-mulroy/), and  [Zebulon Piasecki](https://blog.cloudflare.com/author/zeb/)
-
-October 1, 2026 [<h2>AI Search is now generally available</h2>](https://blog.cloudflare.com/ai-search-ga/)
-
-AI Search is now generally available. It embeds image pixels directly for visual search, runs optical character recognition on scanned PDFs, accepts files up to 10 MiB, and works with any chat model. Here's what's new and how pricing works.
-
-![Gabriel Massadas](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZJT71CZ6R57ZBVBWK0TT.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Nelson Duarte](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49P72CGQX08FQC903Q0E4F.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Ashish Vinodkumar](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3SPWCTC1QQAVTDY6S99X3Z0.01M3SPWDEK4887CWK8WK6AVE6D.webp&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Gabriel Massadas](https://blog.cloudflare.com/author/gabriel-massadas/),  [Nelson Duarte](https://blog.cloudflare.com/author/nelson-duarte/), and  [Ashish Vinodkumar](https://blog.cloudflare.com/author/ashish-vinodkumar/)
 
 Load more
 
