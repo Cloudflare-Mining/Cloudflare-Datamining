@@ -6,6 +6,7 @@
 <h2><strong>Available Locations</strong></h2>
 <ul>
 	<li>San Francisco</li>
+	<li>Austin</li>
 </ul>
 <h2><strong>About the Role</strong></h2>
 <p>The Strategy organization operates as a high-velocity engine at the intersection of business, technology, and go-to-market execution, driving enterprise growth, global expansion, market innovation, and strategic execution. Our multi-disciplinary team spans seven core strategic pillars: Network &amp; Infrastructure Strategy, Industry Solutions, Strategic Partnerships, International Expansion, Executive Customer Engagements &amp; Product Operations, Corporate Development &amp; M&amp;A, and AI-driven Operational Innovation. As primary connective tissue across the enterprise, we collaborate closely with Sales, Product &amp; Engineering, Finance, Legal, and Policy to translate corporate vision into measurable, real-world execution.</p>

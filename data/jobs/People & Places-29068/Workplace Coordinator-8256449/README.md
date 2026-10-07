@@ -3,42 +3,14 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: <span class="collapsed-field-text">Austin, TX, New York, NY, Seattle, WA</span>&nbsp;</strong></p>
-<h3><strong>About the Role</strong></h3>
-<p>Cloudflare One brings together secure access, network connectivity, and data protection. Our products generate massive amounts of signals about how people and agents access applications, use the network, and handle data—but a security practitioner needs more than isolated events. They need to understand what happened, whether it is unusual, why it matters, and what to investigate next.</p>
-<p>The UEBA (User and Entity Behavior Analytics) team builds the systems behind those answers. We ingest and evaluate Cloudflare One signals, produce high fidelity user-risk events, maintain risk scores, and make that information available to customer-facing experiences and other Cloudflare services. Today, we are focused on expanding our behavioral detections and improving the clarity of the resulting investigations and integrations.</p>
-<p>As a Systems Engineer, you will build and operate production services in this pipeline. You might implement a detection for an unusual pattern of DNS activity or data movement, improve how events contribute to a user’s risk score, or make risk-event history easier for customers to investigate. You will own well-defined projects through design, implementation, testing, rollout, and operational follow-through, working with other engineers, Product, and partner teams across Cloudflare.</p>
-<h3><strong>Responsibilities</strong></h3>
-<ul>
-	<li><strong>Build behavioral detections</strong>. Turn product requirements and available telemetry into production-ready detections across signals such as Access, Gateway, DNS, device posture, and data protection. Define the data dependencies, evaluation approach, and how you will assess signal quality before release.</li>
-	<li><strong>Make risk understandable</strong>. Help connect detection output to event history, logs, and customer-facing investigations so practitioners can see what triggered a finding and how a user’s risk changed.</li>
-	<li><strong>Design &amp; Scale Infrastructure</strong>: Architect, deploy, and maintain robust distributed systems, focusing on high availability, low latency, and horizontal scalability.</li>
-	<li><strong>Collaborate across teams</strong>. Collaborate with Product and engineers in Access, Gateway, Analytics and Reporting, Logs, and other data-producing or data-consuming teams to agree on event contracts and deliver end-to-end functionality.</li>
-	<li><strong>Ensure Reliability</strong>. Participate in architecture reviews, capacity planning, and proactive system health monitoring to guarantee maximum uptime and resilience.</li>
-</ul>
-<h3><strong>Desirable Skills, Knowledge, and Experience</strong></h3>
-<ul>
-	<li>3+ years of professional experience building, testing, and operating backend or distributed systems in production.</li>
-	<li>Strong proficiency in at least one systems programming language (e.g., Go, Rust, C/C++) with a track record of writing clean, maintainable code.</li>
-	<li>3+ years of practical experience with databases and data-intensive services—for example, PostgreSQL, ClickHouse, or comparable relational or analytical stores.</li>
-	<li>Experience reasoning about event-driven systems: message delivery, duplicate or late events, state, failure recovery, and safe changes to live consumers or APIs.</li>
-	<li>Clear written and verbal communication, and an ability to work through technical decisions with product and engineering partners.</li>
-	<li>Experience using metrics, logs, traces, profiling, and experiments to understand production behavior and validate improvements</li>
-	<li>Bring strong opinions, clear judgment, and a willingness to revise your view when data, users, or production reality prove otherwise.</li>
-</ul>
-<h3><strong>Bonus Points</strong></h3>
-<ul>
-	<li>Experience with security analytics, fraud or abuse detection, identity, Zero Trust, SASE, or network telemetry.</li>
-	<li>Familiarity with Kafka or other streaming systems; Kubernetes; and high-volume event processing.</li>
-	<li>Experience with statistical baselines, anomaly detection, time-windowed aggregation, or evaluating false positives and detection coverage.</li>
-	<li>Familiarity with DNS, HTTP, authentication events, data-loss-prevention signals, or endpoint-security integrations.</li>
-	<li>Experience with distributed state, caches, object storage, or safe migration of a legacy production service.</li>
-</ul>
-<p>&nbsp;</p>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location and level.</p>
-<p>New York and Seattle Estimated Base salary $150,000 - $206,000.</p>
-<p>Austin Texas Estimated Base salary $136,000 - $187,000.</p>
+<p><strong>Available Locations: Munich - Germany (5 days a week in office)</strong></p>
+<p><strong>About the role</strong></p>
+<p>The Places Team at Cloudflare is looking for a proactive and enthusiastic Office Coordinator<br>to support and elevate the day-to-day operations of our growing Munich office. In this role, you'll<br>be the first point of contact for employees, guests, and vendors - ensuring a welcoming,<br>well-organized, and high-functioning workspace that reflects our culture and values.<br>You’ll partner with teams across the region, support local events and programs, and help drive<br>smooth daily operations with a hospitality mindset and strong attention to detail. This role is<br>ideal for someone who thrives in fast-paced environments, loves solving problems, and takes<br>pride in creating great experiences.<br>This role reports to the Regional Workplace Operations Manager</p>
+<p><strong>Responsibilities</strong></p>
+<p>● Be the face of the office, warmly greet employees, visitors, candidates, and vendors<br>● Own the flow of the day-to-day: maintain an organized, tidy, and fully operational office<br>● Serve as the go-to for onsite support: respond to employee questions, manage email<br>and ticket queues, and handle administrative needs<br>● Manage incoming mail, including confidential mail handling, and assist with shipments<br>when necessary<br>● Support internal events and team gatherings, including setup, teardown, and food<br>ordering<br>● Manage snack and lunch programs, ensuring variety and alignment with sustainability<br>goals<br>● Order and maintain office and pantry supplies - keeping spaces stocked, functional, and<br>inviting<br>● Partner with vendors: support onboarding, place purchase orders, and track services<br>● Flag and triage maintenance or security issues, coordinating resolution with relevant<br>teams<br>● Support office moves, including desk reconfigurations and seating assignments;<br>contribute to space planning and long-term office growth strategy<br>● Assist in onboarding new hires and welcoming international visitors<br>● Collaborate closely with other EMEA offices (especially Paris and Amsterdam) to ensure<br>alignment and provide remote support as needed<br>● Contribute to regional Places team initiatives and planning efforts<br>Requirements<br>● 2+ years of experience in office coordination, hospitality, executive support, or operations<br>in a fast-paced environment</p>
+<p>● Friendly, patient, and service-minded, with strong communication and interpersonal skills<br>● Detail-oriented and highly organized - no task is too small to sweat<br>● Experience supporting a growing office of 75+ employees<br>● Proven ability to manage vendors and juggle multiple projects<br>● Fluent in German and proficient in English<br>● Confident working independently and as part of a distributed team<br>● Comfortable using Google Workspace and productivity tools<br>● Able to commit to being onsite full-time</p>
+<p><strong>Nice to Have</strong></p>
+<p>● First Aid certification (or willingness to obtain - training provided)<br>● Familiarity with German occupational health &amp; safety standards<br>● Experience supporting offices across regions</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

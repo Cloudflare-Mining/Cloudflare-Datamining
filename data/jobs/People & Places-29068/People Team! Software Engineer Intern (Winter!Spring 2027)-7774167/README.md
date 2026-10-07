@@ -3,38 +3,53 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: Austin Texas</strong></p>
-<p><strong>Internship Details: 3 days in office (12 week internship, January - May)</strong></p>
-<h3><u>About the Role</u></h3>
-<div>
-	<p>Cloudflare's People&nbsp;<span class="il">Analytics</span>&nbsp;organization transforms enterprise workforce data into a governed, trusted source of truth that informs company-wide reporting, regulatory compliance, and AI-enabled decision support.&nbsp;As a Data Engineering Intern, you'll help build and extend a modern data warehouse that unifies HR, recruiting, and performance systems, and contribute to an AI-powered&nbsp;<span class="il">analytics</span>&nbsp;agent allowing stakeholders to query workforce data in natural language.</p>
-</div>
-<div>
-	<p>This position suits a candidate with an understanding of SQL and data modeling principles, and an interest in data governance, quality assurance, and the responsible application of artificial intelligence within enterprise systems. The intern will collaborate closely with our data engineering team and cross-functional business partners, gaining practical experience in cloud-based data warehousing, ELT pipeline development, and applied AI infrastructure.</p>
-</div>
-<div>
-	<h3><u>What You'll Build &amp; Do</u></h3>
-</div>
-<div>
-	<ul>
-		<li><strong>Data Pipeline Development:</strong>&nbsp;Design, develop, and implement ELT pipelines to integrate additional enterprise data sources into a centralized cloud data warehouse.</li>
-		<li><strong>Data Governance:&nbsp;</strong>Support the implementation of historical data retention frameworks, automated data lifecycle management policies, and ongoing data quality validation processes to ensure warehouse accuracy and regulatory compliance.</li>
-		<li><strong>Data Quality Assurance:</strong>&nbsp;Conduct root-cause&nbsp;<span class="il">analysis</span>&nbsp;to identify and remediate data integrity issues, including calculation discrepancies and record inconsistencies.</li>
-		<li><strong>AI-Enabled&nbsp;<span class="il">Analytics</span>&nbsp;Support:&nbsp;</strong>Contribute to the expansion of the semantic data layer underlying an internal AI&nbsp;<span class="il">analytics</span>&nbsp;platform, ensuring new capabilities are delivered in a manner that safeguards sensitive personal information.</li>
-		<li><strong>Cross-Functional Collaboration:&nbsp;</strong>Partner with stakeholders across People Operations, Compensation, Talent Acquisition, and Engineering to translate business requirements into scalable, reliable data solutions.</li>
-	</ul>
-</div>
-<div>
-	<h3><u>Qualifications</u></h3>
-</div>
-<div>
-	<ul>
-		<li>Currently enrolled in a graduate program in Computer Science, Data Engineering, Statistics, or a related discipline</li>
-		<li>Demonstrated proficiency in SQL; working knowledge of Python and cloud-based data warehouse platforms (e.g., BigQuery) preferred</li>
-		<li>Strong interest in data governance, information privacy, and the responsible deployment of artificial intelligence systems</li>
-		<li>Excellent attention to detail and a demonstrated ability to methodically identify and resolve data quality issues.</li>
-	</ul>
-</div>
+<p><strong>Available Location: </strong>Austin</p>
+<h3>About the Role</h3>
+<p>Join the People Innovation Lab to rapidly build and deploy internal enterprise applications and tooling for the Cloudflare People &amp; Places organization, focused on making work smarter.</p>
+<ul>
+	<li>You will build production features in a sprint-based team.</li>
+	<li>Work is guided by the IT Customer Zero team and deployed on Cloudflare infrastructure.</li>
+	<li>Strong fundamentals and fast ramp-up ability are essential.</li>
+</ul>
+<h3>What You'll Build &amp; Do</h3>
+<ul>
+	<li>Build and ship full-stack features, clean production code, and integrations for internal tools.</li>
+	<li>Write and review code, work in sprints (managing tickets/blockers), and coordinate with the other intern.</li>
+	<li>Effectively use AI-assisted coding tools.</li>
+	<li>Demo working products to leadership.</li>
+</ul>
+<h3>Requirements &amp; Qualifications</h3>
+<p><strong>Minimum Requirements</strong></p>
+<ul>
+	<li>Pursuing CS, Software Engineering, or related degree (or equivalent experience).</li>
+	<li>Ability to build and demonstrate a working web application.</li>
+	<li>Proficient in JavaScript/TypeScript and comfortable with one back-end language/framework.</li>
+	<li>Solid understanding of end-to-end web app functionality (HTTP, APIs, data persistence, deployment).</li>
+	<li>Experience with shared codebases (Git, meaningful commits).</li>
+</ul>
+<p><strong>Preferred Qualifications</strong></p>
+<ul>
+	<li>Familiarity with serverless/edge computing.</li>
+	<li>Experience with a modern front-end framework (React, Vue, Svelte, etc.) and/or MCPs/APIs, data modeling, or systems design (for back-end seat).</li>
+	<li>Experience using AI-assisted development tools (Cursor, Windsurf, OpenCode).</li>
+	<li>Prior sprint-based team experience.</li>
+	<li>For UI seat: experience with design systems, Figma, or strong interaction design sense.</li>
+</ul>
+<h3>What We Provide</h3>
+<ul>
+	<li>Opportunity to solve real problems with AI and code.</li>
+	<li>Mentorship, dedicated manager, regular 1:1s, and structured support.</li>
+	<li>Real sprint work with production deliverables.</li>
+	<li>Access to Cloudflare's full intern cohort (community, events, network).</li>
+	<li>A portfolio artifact: production-deployed code and a shipped product demo.</li>
+</ul>
+<h3>The Team's Vision</h3>
+<p>The team is building AI agents for the People organization that can reason, act, and coordinate without constant human input. You will contribute to this foundation and gain firsthand experience.</p>
+<p><strong><em>We value fundamentals, curiosity, and fast learning.</em></strong></p>
+<p>&nbsp;</p>
+<p><strong>Internship Duration:</strong> 12 weeks</p>
+<p><strong data-path-to-node="3,0" data-index-in-node="30">Schedule:</strong> Full-time (3 days per week in office)&nbsp;</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

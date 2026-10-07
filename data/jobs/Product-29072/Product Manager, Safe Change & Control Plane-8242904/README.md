@@ -3,42 +3,59 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: </strong>Austin, TX | London, UK | Lisbon, Portugal</p>
-<h4><strong>About the Department</strong></h4>
-<p>The Product Management team at Cloudflare steers the strategy, roadmap, and execution that powers a faster, more secure internet. As part of the Zero Trust Security organization, our mission is to redefine corporate networking and security. We build solutions that protect users, devices, and data globally without sacrificing performance, replacing legacy architectures with our modern, identity-aware global network.</p>
-<h4><strong>About the role</strong></h4>
-<p>You will own the vision, strategy, roadmap, and execution for the Cloudflare One Browser Extension. You will also work alongside the Digital Experience Monitoring (DEX) and WARP Client teams, heavily influencing their direction and owning selected initiatives as customer needs and business priorities evolve.</p>
-<p>This role combines focused ownership with range. You will take an emerging product from early adoption to a scaled enterprise capability, while moving across adjacent Cloudflare One priorities where strong product leadership is needed. More than narrow domain expertise, success requires exceptional problem solving, sound judgment, and the ability to quickly understand and lead in new technical areas. This work will help advance Cloudflare’s long-term position in SASE and SSE.</p>
-<p>This is a high-judgment role. Success requires navigating conflicting customer signals, making trade-offs with incomplete information, and building trust across engineering and sales teams—work that demands human context and accountability and cannot be delegated to automation.</p>
-<h4><strong>Responsibilities</strong></h4>
+<p>Available Locations:<strong> London </strong>or<strong> Austin</strong><br><br>At Cloudflare, our mission is to build a better Internet by giving customers control on they might introduce configuration changes so that they are safe, reliable, and predictable at scale.</p>
+<p>We are looking for a Product Manager to lead <strong>Safe Change</strong> for Cloudflare’s control plane. In this role, you will define how customers preview, stage, roll out, monitor, and recover from configuration changes. You will also shape platform foundations that enable internal teams to deploy changes with higher confidence, stronger guardrails, and lower operational risk.</p>
+<p>Cloudflare’s control plane converts dashboard and API changes into global network configurations. Today’s enterprise customers expect robust change-management features: deployment previews, gradual rollouts, quick rollbacks, versioning, traffic segmentation, data residency, auditability, and verification of applied state.</p>
+<p>You will own a high-leverage product domain spanning distributed systems, reliability, developer experience, and enterprise governance. Working closely with engineering and product leaders across the entire platform. You will help turn proven deployment safety patterns into reusable platform primitives across Cloudflare.</p>
+<p>This technical, highly collaborative role requires navigating architectural tradeoffs with engineers, evaluating risk and compliance with enterprise customers, and partnering with product and go-to-market teams to drive platform adoption.</p>
+<h2>What you’ll do</h2>
+<p>As a member of a growing team of infrastructure product managers your responsibilities include:</p>
 <ul>
-	<li><strong>Own Browser Extension:</strong> Set the strategy, roadmap, and execution plan for Cloudflare One Browser Extension. Grow it into a trusted enterprise product that addresses meaningful browser security and visibility needs, integrates naturally with Cloudflare One, and earns sustained customer adoption.</li>
-	<li><strong>Shape the Enterprise Client and Digital Experience:</strong> Work alongside the WARP Client and DEX teams to improve how customers deploy, operate, and troubleshoot Cloudflare One. Influence product direction, connect customer needs across the browser, device, and network, and own selected initiatives when dedicated leadership will accelerate an important outcome.</li>
-	<li><strong>Drive Product Strategy:</strong> Connect browser, device, and network capabilities into a coherent Cloudflare One experience. Set clear priorities across products at different stages of maturity and adjust ownership as new opportunities emerge.</li>
-	<li><strong>Talk to Customers:</strong> Work directly with enterprise security, networking, and IT teams to understand their most important problems. Translate those needs into focused product decisions without overfitting to individual customer requests.</li>
-	<li><strong>Cross-Functional Leadership:</strong> Collaborate closely with Engineering, Product Marketing, Sales, Support, and adjacent product teams to deliver high-impact products from concept to global launch.</li>
-	<li><strong>Data-Informed Decision Making:</strong> Analyze product usage, reliability, support signals, market trends, and competitive capabilities to identify opportunities, make trade-offs, and measure customer outcomes.</li>
+	<li>Represent the customer, be it internal or external. Be the champion and voice of customers. Build intimate, personal customer relationships. Bring the customer's voice into the creation process.</li>
+	<li>Develop the product vision for your area. Ensure that your vision can work not just for your current set of customers, but for 10 or even 100 times your current set.&nbsp;</li>
+	<li>Evangelize the vision so that all stakeholders are aligned, have context and understand where we are going.</li>
+	<li>Make data-driven roadmap decisions.&nbsp; Make tough tactical prioritization decisions based off of data you collect, curate, and disseminate.&nbsp; Build trust with stakeholders by ensuring that your roadmap is understandable and sensible based on the data you present.</li>
+	<li>Measure success. Own the measures used to define success for your product. Success measures must be defined at the inception of a product and tracked throughout its lifecycle. Make measures visible to all stakeholders and interpret them into actionable conclusions and new hypotheses.</li>
+	<li>Author use cases and prioritize requirements. Translate observations and customer feedback into a prioritized product backlog.&nbsp; Author use cases based on specific real-world product applications and extrapolate detailed product requirements for the scenarios.</li>
+	<li>Collaborate across teams. We win or lose as a team. Product managers play a critical role in creating alignment between engineering teams and stakeholders. A collaborative attitude is essential to the job.</li>
 </ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<h2>Examples of desirable skills, knowledge, and experience</h2>
+<p>The ideal candidate is customer-focused, data-driven, methodical and thrives in a goal-oriented and data-driven environment.&nbsp; You have a deep technical understanding of the observability space and outstanding communication and collaboration skills.&nbsp; You are able to work with a diverse group, get consensus, and drive the product forward.&nbsp; You are execution focused, you emphasize getting things done while paying attention to important details. You have a passion for building frameworks that scale massively and make it easy for all teams to get the most out of data as you.&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
 <ul>
-	<li><strong>Demonstrated Product Leadership:</strong> Experience managing technically complex B2B products through the full product lifecycle, with a record of finding the right problem, setting a clear direction, and shipping products customers value.</li>
-	<li><strong>AI Fluency:</strong> Demonstrated experience using AI assistants, coding tools, and agentic workflows to accelerate product work. You should be comfortable in an AI-native environment where tools like OpenCode are standard infrastructure, not optional perks.</li>
-	<li><strong>Strategic Problem Solving:</strong> Proven track record of quickly understanding unfamiliar problem spaces, turning ambiguous technical challenges into clear plans, and prioritizing the work that will have the greatest impact.</li>
-	<li><strong>Exceptional Communication:</strong> Strong ability to articulate complex technical concepts clearly to both engineering teams and non-technical business stakeholders.</li>
-	<li><strong>Judgment Under Ambiguity:</strong> Proven ability to synthesize incomplete or conflicting signals, make difficult trade-offs, and take accountability for outcomes.</li>
+	<li>4+ years of previous product management experience</li>
+	<li>Domain expertise in making deployment decisions based on data.&nbsp; You have been there, done that as either an architect or product owner for safe change or very closely related technology space</li>
+	<li>Distributed systems experience that allows you to drive the scaling strategy for deployment as our scale grows both on volume and number of internal customers supporting.</li>
+	<li>Experience presenting new products and features to customers – whether as a developer, analyst or product manager. You are enthusiastic about taking something you have helped build and sharing it with the world</li>
+	<li>Strong customer and stakeholder empathy. You must be the voice of engineering, customers, support, or ops at any given time. You must be able to channel many points of view into a strategic roadmap and deliverables that provide elegant solutions to all requirements.</li>
+	<li>Exceptional communication, presentation, organizational and analytical skills</li>
+	<li>Demonstrated ability to lead, drive consensus and deliver in a matrixed organization with multiple stakeholders</li>
+	<li>Experience working with large and complex data sets (SQL, Postgres, Prometheus, etc.).&nbsp; You are skilled at proving points with data and can quickly show others how to do so.</li>
+	<li>Experience with telemetry pipelines (Metrics/Traces) and a very good understanding of modern observability platforms&nbsp;</li>
+	<li>Ability to communicate complex technical concepts to all audiences</li>
 </ul>
-<h4><strong>Bonus Points:</strong></h4>
+<h2>Bonus points</h2>
 <ul>
-	<li>Working knowledge of modern browsers and enterprise client software, including deployment, configuration, update lifecycles, telemetry, security controls, and operating-system constraints.</li>
-	<li>Ability to reason across endpoint, DNS, HTTP, TLS, proxy, VPN, Wi-Fi, ISP, and application layers and turn difficult diagnostic problems into clear product experiences.</li>
-	<li>Experience with Chromium-based browsers, browser extension APIs, managed browser deployment, or device management platforms.</li>
-	<li>Experience with Digital Experience Monitoring, endpoint observability, synthetic testing, or network diagnostics.</li>
-	<li>Understanding of Zero Trust and SASE products such as secure web gateways, data loss prevention, remote browser isolation, Zero Trust Network Access, and enterprise VPN clients.</li>
-	<li>Experience designing privacy-sensitive telemetry and administrative controls for enterprise products.</li>
+	<li>BS/MS in a technology- or business-related field</li>
+	<li>Experience with deployment platforms, release engineering, progressive delivery, feature flags, GitOps, IaC, or incident management.</li>
+	<li>Background in networking, security, CDN, edge computing, observability, or large-scale SaaS environments.</li>
+	<li>Hands-on experience with APIs, CLIs, telemetry tools, or scripting (e.g., Python, Go, JavaScript).</li>
+	<li>Experience building platform capabilities adopted by multiple product teams.</li>
+	<li>Experience working with enterprise customers subject to strict change-management, compliance, or data residency mandates.</li>
 </ul>
+<h2>What success looks like</h2>
+<p>A successful Product Manager will establish Safe Change as an adopted, trusted platform capability across Cloudflare. First-year success includes:</p>
+<ul>
+	<li>A clear product strategy and roadmap for Safe Customer Change, aligned with internal rollout and control plane initiatives.</li>
+	<li>Shipped customer capabilities for previewing and staging rollouts, backed by measurable adoption and safety metrics.</li>
+	<li>Strong cross-functional partnerships with product and engineering teams integrating safe-change capabilities.</li>
+	<li>A clear trajectory from near-term safety tooling to core control plane features (versioning, rollback, segmentation, data residency).</li>
+	<li>Measurable reduction in operational risk, redundant tooling, and execution ambiguity across change workflows.</li>
+</ul>
+<p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
-<p>For Portugal based hires: Estimated annual salary is between €55,000 - €76,000.</p>
+<p>&nbsp;</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
@@ -66,7 +83,6 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
