@@ -2,7 +2,7 @@
 	"GET /accounts/{account_id}/workers/observability/usage": {
 		"operationId": "usage.get",
 		"summary": "Get event count",
-		"description": "Event counts broken down by dataset and service, bucketed by day, for up to 90 days. The top-level events field is the sum of all breakdown counts.",
+		"description": "Event counts and sizes broken down by dataset and service, bucketed by day, for up to 90 days. The top-level events field is the sum of all breakdown counts.",
 		"parameters": [
 			{
 				"name": "from",
@@ -70,7 +70,7 @@
 									"type": "object",
 									"properties": {
 										"breakdown": {
-											"description": "Event counts grouped by dataset and service, bucketed by day.",
+											"description": "Event counts and sizes grouped by dataset and service, bucketed by day.",
 											"type": "array",
 											"items": {
 												"properties": {
@@ -86,6 +86,10 @@
 														"description": "Dataset name (e.g. 'workers', 'queues').",
 														"type": "string"
 													},
+													"eventSize": {
+														"description": "ABR-adjusted total event size in bytes for this bucket.",
+														"type": "number"
+													},
 													"service": {
 														"description": "Worker or service name that produced the events.",
 														"type": "string"
@@ -95,7 +99,8 @@
 													"bin",
 													"dataset",
 													"service",
-													"count"
+													"count",
+													"eventSize"
 												],
 												"type": "object"
 											}

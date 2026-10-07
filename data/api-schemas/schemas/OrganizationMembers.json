@@ -2,7 +2,7 @@
 	"DELETE /organizations/{organization_id}/members/{member_id}": {
 		"operationId": "Members_delete",
 		"summary": "Delete organization member",
-		"description": "Delete a membership to a particular Organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
+		"description": "Delete a membership to a particular Organization.\n\nAuthentication: A Global API key for a user with\n`com.cloudflare.api.tenant.unit.member.delete` is required. User API Tokens are not\ncurrently supported.",
 		"parameters": [
 			{
 				"name": "organization_id",
@@ -105,7 +105,7 @@
 		"tags": [
 			"OrganizationMembers"
 		],
-		"x-fern-availability": "beta",
+		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "organization.member",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true,
@@ -114,7 +114,7 @@
 	"GET /organizations/{organization_id}/members": {
 		"operationId": "Members_list",
 		"summary": "List organization members",
-		"description": "List memberships for an Organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
+		"description": "List memberships for an Organization.\n\nAuthentication: A Global API key for a user with\n`com.cloudflare.api.tenant.unit.member.list` is required. User API Tokens are not currently\nsupported.",
 		"parameters": [
 			{
 				"name": "organization_id",
@@ -412,7 +412,7 @@
 		"tags": [
 			"OrganizationMembers"
 		],
-		"x-fern-availability": "beta",
+		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "organization.member",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
@@ -420,7 +420,7 @@
 	"GET /organizations/{organization_id}/members/{member_id}": {
 		"operationId": "Members_retrieve",
 		"summary": "Get organization member",
-		"description": "Retrieve a single membership from an Organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
+		"description": "Retrieve a single membership from an Organization.\n\nAuthentication: A Global API key for a user with\n`com.cloudflare.api.tenant.unit.member.read` is required. User API Tokens are not currently\nsupported.",
 		"parameters": [
 			{
 				"name": "organization_id",
@@ -640,7 +640,7 @@
 		"tags": [
 			"OrganizationMembers"
 		],
-		"x-fern-availability": "beta",
+		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "organization.member",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
@@ -648,7 +648,7 @@
 	"POST /organizations/{organization_id}/members": {
 		"operationId": "Members_create",
 		"summary": "Create organization member",
-		"description": "Create a membership that grants access to a specific Organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
+		"description": "Create a membership that grants access to a specific Organization.\n\nAuthentication: A Global API key for a user with\n`com.cloudflare.api.tenant.unit.member.create` is required. User API Tokens are not\ncurrently supported.",
 		"parameters": [
 			{
 				"name": "organization_id",
@@ -899,7 +899,7 @@
 		"tags": [
 			"OrganizationMembers"
 		],
-		"x-fern-availability": "beta",
+		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "organization.member",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
@@ -907,7 +907,7 @@
 	"POST /organizations/{organization_id}/members:batchCreate": {
 		"operationId": "Members_batchCreate",
 		"summary": "Batch create organization members",
-		"description": "Batch create multiple memberships that grant access to a specific Organization.",
+		"description": "Batch create multiple memberships that grant access to a specific Organization.\n\nAuthentication: A Global API key for a user with\n`com.cloudflare.api.tenant.unit.member.create` is required. User API Tokens are not\ncurrently supported.",
 		"parameters": [
 			{
 				"name": "organization_id",
@@ -1165,7 +1165,7 @@
 		"tags": [
 			"OrganizationMembers"
 		],
-		"x-fern-availability": "beta",
+		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "organization.member.batch",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true

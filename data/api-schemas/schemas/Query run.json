@@ -1323,6 +1323,11 @@
 																		"description": "Templatized version of the error message used for grouping similar errors.",
 																		"type": "string"
 																	},
+																	"eventSize": {
+																		"description": "Size of the stored telemetry event in bytes.",
+																		"type": "integer",
+																		"minimum": 0
+																	},
 																	"fingerprint": {
 																		"description": "Content-based fingerprint used to group similar events.",
 																		"type": "string"
@@ -1862,6 +1867,11 @@
 																"errorTemplate": {
 																	"description": "Templatized version of the error message used for grouping similar errors.",
 																	"type": "string"
+																},
+																"eventSize": {
+																	"description": "Size of the stored telemetry event in bytes.",
+																	"type": "integer",
+																	"minimum": 0
 																},
 																"fingerprint": {
 																	"description": "Content-based fingerprint used to group similar events.",

@@ -41,6 +41,16 @@
 				"example": "cdate,desc"
 			},
 			{
+				"name": "search",
+				"in": "query",
+				"description": "Free-text search. Returns reports whose report ID starts with the term or whose domain contains the term, both case-insensitively. Surrounding whitespace is ignored, and an empty value is treated as absent. Combined with the other filters using AND.",
+				"schema": {
+					"type": "string",
+					"maxLength": 255
+				},
+				"example": "example.com"
+			},
+			{
 				"name": "domain",
 				"in": "query",
 				"description": "Filter by domain name related to the abuse report",
@@ -322,6 +332,9 @@
 						}
 					}
 				}
+			},
+			"400": {
+				"description": "Invalid account or query parameters, including a search term longer than 255 characters."
 			},
 			"401": {
 				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the\n`Trust and Safety Read` or `Trust and Safety Write` permission for\nthis account.",

@@ -375,24 +375,9 @@
 				}
 			},
 			"401": {
-				"description": "Authentication required. Provide a valid API token or key.",
+				"description": "Authentication required. Provide a valid API token or key.\n\nInvalid API token response:\n```json\n{\"success\":false,\"errors\":[{\"code\":10000,\"message\":\"Authentication error\"}],\"messages\":[],\"result\":null}\n```\n",
 				"content": {
 					"application/json": {
-						"examples": {
-							"no_auth": {
-								"summary": "Missing authentication",
-								"value": {
-									"errors": [
-										{
-											"code": 11003,
-											"message": "art.api.resource.insufficient_permissions"
-										}
-									],
-									"result": null,
-									"success": false
-								}
-							}
-						},
 						"schema": {
 							"type": "object",
 							"properties": {
@@ -447,7 +432,7 @@
 				}
 			},
 			"403": {
-				"description": "Insufficient permissions. The authenticated user does not have access to the requested dataset or account.\n",
+				"description": "Insufficient permissions. The authenticated user does not have access to the requested dataset or account. An account tag mismatch returns this error with an empty `messages` array.\n",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -466,20 +451,6 @@
 											"message": "API in beta: expect breaking changes."
 										}
 									],
-									"result": null,
-									"success": false
-								}
-							},
-							"wrong_account": {
-								"summary": "Account tag mismatch",
-								"value": {
-									"errors": [
-										{
-											"code": 11003,
-											"message": "art.api.resource.insufficient_permissions"
-										}
-									],
-									"messages": [],
 									"result": null,
 									"success": false
 								}
@@ -554,10 +525,10 @@
 		"x-api-token-group": [
 			"Zero Trust Read"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "analytics.query",
 		"x-fern-sdk-method-name": "summary",
-		"x-forge-hidden": true
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/analytics/query/{dataset}/timeseries": {
 		"operationId": "art-analytics-query-timeseries",
@@ -967,24 +938,9 @@
 				}
 			},
 			"401": {
-				"description": "Authentication required. Provide a valid API token or key.",
+				"description": "Authentication required. Provide a valid API token or key.\n\nInvalid API token response:\n```json\n{\"success\":false,\"errors\":[{\"code\":10000,\"message\":\"Authentication error\"}],\"messages\":[],\"result\":null}\n```\n",
 				"content": {
 					"application/json": {
-						"examples": {
-							"no_auth": {
-								"summary": "Missing authentication",
-								"value": {
-									"errors": [
-										{
-											"code": 11003,
-											"message": "art.api.resource.insufficient_permissions"
-										}
-									],
-									"result": null,
-									"success": false
-								}
-							}
-						},
 						"schema": {
 							"type": "object",
 							"properties": {
@@ -1039,7 +995,7 @@
 				}
 			},
 			"403": {
-				"description": "Insufficient permissions. The authenticated user does not have access to the requested dataset or account.\n",
+				"description": "Insufficient permissions. The authenticated user does not have access to the requested dataset or account. An account tag mismatch returns this error with an empty `messages` array.\n",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -1058,20 +1014,6 @@
 											"message": "API in beta: expect breaking changes."
 										}
 									],
-									"result": null,
-									"success": false
-								}
-							},
-							"wrong_account": {
-								"summary": "Account tag mismatch",
-								"value": {
-									"errors": [
-										{
-											"code": 11003,
-											"message": "art.api.resource.insufficient_permissions"
-										}
-									],
-									"messages": [],
 									"result": null,
 									"success": false
 								}
@@ -1146,10 +1088,10 @@
 		"x-api-token-group": [
 			"Zero Trust Read"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "analytics.query",
 		"x-fern-sdk-method-name": "timeseries",
-		"x-forge-hidden": true
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/analytics/query/{dataset}/top-n": {
 		"operationId": "art-analytics-query-top-n",
@@ -1333,7 +1275,8 @@
 										"type": "integer",
 										"format": "int64",
 										"example": 10,
-										"minimum": 1
+										"minimum": 1,
+										"x-fern-property-name": "limit"
 									},
 									"orderBy": {
 										"description": "Specifies the stat name for sorting results in descending order. Requires a valid stat for the target dataset.",
@@ -1547,24 +1490,9 @@
 				}
 			},
 			"401": {
-				"description": "Authentication required. Provide a valid API token or key.",
+				"description": "Authentication required. Provide a valid API token or key.\n\nInvalid API token response:\n```json\n{\"success\":false,\"errors\":[{\"code\":10000,\"message\":\"Authentication error\"}],\"messages\":[],\"result\":null}\n```\n",
 				"content": {
 					"application/json": {
-						"examples": {
-							"no_auth": {
-								"summary": "Missing authentication",
-								"value": {
-									"errors": [
-										{
-											"code": 11003,
-											"message": "art.api.resource.insufficient_permissions"
-										}
-									],
-									"result": null,
-									"success": false
-								}
-							}
-						},
 						"schema": {
 							"type": "object",
 							"properties": {
@@ -1619,7 +1547,7 @@
 				}
 			},
 			"403": {
-				"description": "Insufficient permissions. The authenticated user does not have access to the requested dataset or account.\n",
+				"description": "Insufficient permissions. The authenticated user does not have access to the requested dataset or account. An account tag mismatch returns this error with an empty `messages` array.\n",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -1638,20 +1566,6 @@
 											"message": "API in beta: expect breaking changes."
 										}
 									],
-									"result": null,
-									"success": false
-								}
-							},
-							"wrong_account": {
-								"summary": "Account tag mismatch",
-								"value": {
-									"errors": [
-										{
-											"code": 11003,
-											"message": "art.api.resource.insufficient_permissions"
-										}
-									],
-									"messages": [],
 									"result": null,
 									"success": false
 								}
@@ -1726,14 +1640,9 @@
 		"x-api-token-group": [
 			"Zero Trust Read"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "analytics.query",
 		"x-fern-sdk-method-name": "top-n",
-		"x-forge-hidden": true,
-		"x-forge-params": {
-			"n": {
-				"flagName": "limit"
-			}
-		}
+		"x-stability": "beta"
 	}
 }
