@@ -753,7 +753,7 @@
 	"PATCH /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}": {
 		"operationId": "ai-search-move-instance",
 		"summary": "Move an instance to a different namespace.",
-		"description": "Moves an instance from its current namespace to the specified target namespace. Use 'default' with --destination-namespace to move the instance back to the default namespace. Fails with 400 if the target namespace already has an instance with the same id (ids must be unique within a namespace — the same id can exist in different namespaces). Search for Agents instances cannot move to another namespace.",
+		"description": "Moves an instance from its current namespace to the specified target namespace. Use 'default' with --destination-namespace to move the instance back to the default namespace. Fails with 400 if the target namespace already has an instance with the same id (ids must be unique within a namespace — the same id can exist in different namespaces).",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -918,7 +918,7 @@
 				}
 			},
 			"409": {
-				"description": "Search for agents instance cannot move namespace. Instance modified concurrently please retry move.",
+				"description": "Instance modified concurrently please retry move.",
 				"content": {
 					"application/json": {
 						"schema": {

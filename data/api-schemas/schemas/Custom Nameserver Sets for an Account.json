@@ -491,7 +491,7 @@
 																		"x-auditable": true
 																	},
 																	"ip_set": {
-																		"description": "Selects the account-specific IP set that supplies the nameserver addresses. The account's entitlement determines the maximum value. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
+																		"description": "Selects the account-specific IP set that supplies the nameserver addresses. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
 																		"type": "integer",
 																		"format": "int64",
 																		"example": 1,
@@ -594,7 +594,7 @@
 																		"x-auditable": true
 																	},
 																	"ip_set": {
-																		"description": "Selects the account-specific IP set that supplies the nameserver addresses. The account's entitlement determines the maximum value. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
+																		"description": "Selects the account-specific IP set that supplies the nameserver addresses. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
 																		"type": "integer",
 																		"format": "int64",
 																		"example": 1,
@@ -1017,7 +1017,7 @@
 																	"x-auditable": true
 																},
 																"ip_set": {
-																	"description": "Selects the account-specific IP set that supplies the nameserver addresses. The account's entitlement determines the maximum value. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
+																	"description": "Selects the account-specific IP set that supplies the nameserver addresses. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
 																	"type": "integer",
 																	"format": "int64",
 																	"example": 1,
@@ -1120,7 +1120,7 @@
 																	"x-auditable": true
 																},
 																"ip_set": {
-																	"description": "Selects the account-specific IP set that supplies the nameserver addresses. The account's entitlement determines the maximum value. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
+																	"description": "Selects the account-specific IP set that supplies the nameserver addresses. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
 																	"type": "integer",
 																	"format": "int64",
 																	"example": 1,
@@ -1420,7 +1420,7 @@
 								"x-auditable": true
 							},
 							"ip_set": {
-								"description": "Selects the account-specific IP set that supplies the nameserver addresses. The account's entitlement determines the maximum value. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
+								"description": "Selects the account-specific IP set that supplies the nameserver addresses. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
 								"type": "integer",
 								"format": "int64",
 								"example": 1,
@@ -1588,7 +1588,7 @@
 																	"x-auditable": true
 																},
 																"ip_set": {
-																	"description": "Selects the account-specific IP set that supplies the nameserver addresses. The account's entitlement determines the maximum value. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
+																	"description": "Selects the account-specific IP set that supplies the nameserver addresses. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
 																	"type": "integer",
 																	"format": "int64",
 																	"example": 1,
@@ -1691,7 +1691,7 @@
 																	"x-auditable": true
 																},
 																"ip_set": {
-																	"description": "Selects the account-specific IP set that supplies the nameserver addresses. The account's entitlement determines the maximum value. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
+																	"description": "Selects the account-specific IP set that supplies the nameserver addresses. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
 																	"type": "integer",
 																	"format": "int64",
 																	"example": 1,

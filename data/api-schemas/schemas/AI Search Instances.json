@@ -5797,8 +5797,8 @@
 	},
 	"POST /accounts/{account_id}/ai-search/instances": {
 		"operationId": "ai-search-create-instance",
-		"summary": "Create an AI Search instance (Search for Agents requires the default namespace).",
-		"description": "Create a new AI Search instance with the given configuration. If type is omitted or null, a non-blank HTTP(S) source infers web-crawler and an existing R2 bucket source infers r2. A missing or blank source without a type creates a managed upload-only instance. Search for Agents instances require the default namespace.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead.",
+		"summary": "Create an AI Search instance.",
+		"description": "Create a new AI Search instance with the given configuration. If type is omitted or null, a non-blank HTTP(S) source infers web-crawler and any other source infers r2; r2 sources must name an existing bucket. A missing or blank source without a type creates a managed upload-only instance.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -7367,7 +7367,7 @@
 				}
 			},
 			"409": {
-				"description": "Search for Agents hostname belongs to another namespace (7106) or Search for Agents metadata requires the default namespace (7109).",
+				"description": "Conflict.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -9028,8 +9028,8 @@
 	},
 	"POST /accounts/{account_id}/ai-search/namespaces/{name}/instances": {
 		"operationId": "ai-search-namespace-create-instance",
-		"summary": "Create an AI Search instance (Search for Agents requires the default namespace).",
-		"description": "Create a new AI Search instance with the given configuration. If type is omitted or null, a non-blank HTTP(S) source infers web-crawler and an existing R2 bucket source infers r2. A missing or blank source without a type creates a managed upload-only instance. Search for Agents instances require the default namespace.",
+		"summary": "Create an AI Search instance.",
+		"description": "Create a new AI Search instance with the given configuration. If type is omitted or null, a non-blank HTTP(S) source infers web-crawler and any other source infers r2; r2 sources must name an existing bucket. A missing or blank source without a type creates a managed upload-only instance.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -10609,7 +10609,7 @@
 				}
 			},
 			"409": {
-				"description": "Search for Agents hostname belongs to another namespace (7106) or Search for Agents metadata requires the default namespace (7109).",
+				"description": "Conflict.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -12467,8 +12467,8 @@
 	},
 	"PUT /accounts/{account_id}/ai-search/instances/{id}": {
 		"operationId": "ai-search-update-instance",
-		"summary": "Update an AI Search instance (Search for Agents metadata requires the default namespace).",
-		"description": "Update an AI Search instance. Submitting Search for Agents metadata requires the default namespace; omitting or removing it is allowed elsewhere. Submit Search for Agents metadata and restrictive or unknown public endpoint changes or custom domains in separate PUT requests, even when resubmitting unchanged metadata.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead.",
+		"summary": "Update an AI Search instance.",
+		"description": "Update the configuration of an AI Search instance.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -14046,7 +14046,7 @@
 				}
 			},
 			"409": {
-				"description": "Instance status modified concurrently, Search for Agents hostname used by another namespace, Search for Agents metadata submitted outside the default namespace (7109), or Search for Agents metadata combined with a pre-commit public endpoint or custom domain change (7110; split into separate PUT requests).",
+				"description": "Instance status modified concurrently please retry.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -14117,8 +14117,8 @@
 	},
 	"PUT /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}": {
 		"operationId": "ai-search-namespace-update-instance",
-		"summary": "Update an AI Search instance (Search for Agents metadata requires the default namespace).",
-		"description": "Update an AI Search instance. Submitting Search for Agents metadata requires the default namespace; omitting or removing it is allowed elsewhere. Submit Search for Agents metadata and restrictive or unknown public endpoint changes or custom domains in separate PUT requests, even when resubmitting unchanged metadata.",
+		"summary": "Update an AI Search instance.",
+		"description": "Update the configuration of an AI Search instance.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -15708,7 +15708,7 @@
 				}
 			},
 			"409": {
-				"description": "Instance status modified concurrently, Search for Agents hostname used by another namespace, Search for Agents metadata submitted outside the default namespace (7109), or Search for Agents metadata combined with a pre-commit public endpoint or custom domain change (7110; split into separate PUT requests).",
+				"description": "Instance status modified concurrently please retry.",
 				"content": {
 					"application/json": {
 						"schema": {
