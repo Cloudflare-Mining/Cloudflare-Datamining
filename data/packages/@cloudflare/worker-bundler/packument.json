@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/worker-bundler",
 	"dist-tags": {
-		"latest": "0.2.5"
+		"latest": "0.2.6"
 	},
 	"versions": {
 		"0.0.0": {
@@ -495,8 +495,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQC1a/hjwr8CLKCkg9aTZnCYiho8CtewDTTXvNKKb4hOyAIgTBZGt7mBD82NS0FQdMgJsv+G9XTAETLcjq165GjvrBY="
+						"sig": "MEUCIQC1a/hjwr8CLKCkg9aTZnCYiho8CtewDTTXvNKKb4hOyAIgTBZGt7mBD82NS0FQdMgJsv+G9XTAETLcjq165GjvrBY=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -506,6 +506,53 @@
 					}
 				},
 				"unpackedSize": 26042065
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.2.6": {
+			"name": "@cloudflare/worker-bundler",
+			"version": "0.2.6",
+			"dependencies": {
+				"fflate": "^0.8.2",
+				"semver": "^7.8.5",
+				"sucrase": "^3.35.1",
+				"smol-toml": "^1.7.2",
+				"typescript": "^6.0.3",
+				"esbuild-wasm": "0.28.1",
+				"@typescript/vfs": "^1.6.4",
+				"es-module-lexer": "^2.2.0",
+				"resolve.exports": "^2.0.3"
+			},
+			"devDependencies": {
+				"tsdown": "^0.22.3",
+				"esbuild": "^0.28.1",
+				"@types/semver": "^7.7.1",
+				"@cloudflare/workers-types": "^5.20260729.1"
+			},
+			"dist": {
+				"shasum": "b2eba1b224d3c4422fdec3c13e9262fff3f45301",
+				"tarball": "https://registry.npmjs.org/@cloudflare/worker-bundler/-/worker-bundler-0.2.6.tgz",
+				"fileCount": 13,
+				"integrity": "sha512-sepIAqELILFuzB4vj9VMEHYx2LtO6fXDuan8dijDKtRIyr/arJuHTIRipsrU5gByhdWUAT4nAyPWuWzHOyrSSg==",
+				"signatures": [
+					{
+						"sig": "MEQCIFlMqufYncNPupg7N2QJuXRJW4PIY6JoOBn3tkQ1JIXnAiBVoH5vDO6RL/UqCa13ImGjNTpM/b6bxdwbRIg3XcvK2A==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIEArMq/cpgB+f8x2Rf9ai6OTh3Cq2yVk63Kb82Uii+4KAiAZOVGmBanUr2UU6EfThm1yPJ38hNuOGOmKdrLWCnSR2Q=="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworker-bundler@0.2.6",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 26042576
 			},
 			"engines": {
 				"node": ">=22"
