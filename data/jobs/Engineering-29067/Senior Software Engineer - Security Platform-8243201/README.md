@@ -3,61 +3,67 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h3><strong>Available Locations: Austin, Lisbon, or London (Hybrid)</strong></h3>
+<h3>Available Locations</h3>
+<ul>
+	<li>Atlanta, US</li>
+	<li>Austin, US</li>
+	<li>Denver, US</li>
+	<li>New York, US</li>
+	<li>San Francisco, US</li>
+	<li>Seattle, US</li>
+	<li>Washington DC, US</li>
+	<li>Canada</li>
+</ul>
 <h3>About the Role</h3>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<p>The Workers Runtime team delivers features and improvements to our Runtime which actually executes customer code at the edge. We care deeply about increasing performance, improving JS API surface area and compiled language support through WebAssembly, and optimizing to meet the next 10x increase in scale. The Runtime is a hostile environment - system resources such as memory, cpu, I/O, etc need to be managed extremely carefully and security must be foundational in everything we do.</p>
-<p>Our work is deeply systems-oriented. We build and maintain the C++ and Rust codebase that embeds the JavaScript engine, manages isolate lifecycles, enforces resource limits (CPU, memory, I/O), and orchestrates how customer scripts are loaded, cached, and executed. We operate in a hostile multi-tenant environment where security must be foundational — from side-channel attack mitigations to isolate sandboxing — and performance is measured in microseconds.</p>
+<p>The Security Platform team is an infrastructure/developer tools group tasked with building and operating powerful, resilient, and secure infrastructure and systems that enable other engineering teams to deliver products to our customers efficiently and securely. We are responsible for secrets management, internal certificate authorities/PKI, machine and workload identity, and more. We are not a policy, audit, or compliance team, but rather an infrastructure engineering/software development one.</p>
 <h3>Responsibilities</h3>
-<p>You will lead the Workers Runtime - Edge team, owning the runtime service in production across Cloudflare’s fleet and driving the architectural evolution of the platform.</p>
+<p>You’ll build and operate secure and resilient distributed systems for secrets and key management, running across our network that spans more than 310 cities in over 120 countries. Our focus is strengthening/re-architecting internal PKI and machine/workload identity. You’ll run and support the systems we build, both in an operational sense and by helping other internal developers use them. You will participate in the On Call rotation for emergency incident response. You’ll consult on the design and architecture of new systems and products to ensure they are built securely and use our services correctly.</p>
+<h3>Required skills</h3>
 <ul>
-	<li>Lead a team of senior systems engineers working in C++ and Rust on one of Cloudflare’s most performance-critical and security-sensitive services.</li>
-	<li>Drive major infrastructure initiatives, including migrating legacy systems, redesigning core abstractions, and laying the groundwork for next-generation runtime architecture.</li>
-	<li>Own reliability and release safety for a service handling tens of millions of requests per second.</li>
-	<li>Improve release processes, invest in health monitoring and automated rollback, and help the team ship changes confidently at scale.</li>
-	<li>Make prioritisation calls between customer-unblocking feature work and foundational investment in security, reliability, and developer velocity.</li>
-	<li>Partner closely with adjacent teams across the Developer Platform to ensure the runtime supports the broader product roadmap, including compute, storage, networking, and observability.</li>
-	<li>Hire, grow, and develop strong systems engineers; set clear expectations, provide technical mentorship, and create an environment where people do their best work.</li>
-</ul>
-<h3>Desirable Skills, Knowledge &amp; Experience</h3>
-<ul>
-	<li>Experience leading a team.</li>
-	<li>Comfortable leading and hiring a team that builds low-level distributed systems.</li>
-	<li>Strong planning skills, with experience creating teams and overseeing execution to meet commitments predictably.</li>
-	<li>Comfortable building developer-loved APIs that scale.</li>
-	<li>Track record of leading a team through hiring, onboarding, and professional development.</li>
-	<li>Ability to explain both the “why” and the “how.”</li>
-	<li>Experience implementing tools, process improvements, internal instrumentation, methodologies, and resolving blockages.</li>
-	<li>At least 4 years of recent professional experience with C++ or Rust.</li>
-	<li>Solid understanding of computer science fundamentals, including data structures, algorithms, and object-oriented or functional design.</li>
-	<li>Deep understanding of the web and technologies such as web browsers, HTTP, JavaScript, and WebAssembly.</li>
-	<li>Strong understanding of Linux systems programming, process models, and networking.</li>
-</ul>
-<h3>Bonus Points</h3>
-<ul>
-	<li>Experience building high-performance distributed systems.</li>
-	<li>Experience working with cloud platforms, especially server-less platforms.</li>
-	<li>Experience with the internals of JS engines such as V8, SpiderMonkey, or JavaScriptCore.</li>
-	<li>Experience with standalone WebAssembly runtimes such as Wasmtime, Wasmer, Lucet, etc.</li>
-	<li>Deep Linux/UNIX systems, kernel, or networking knowledge.</li>
-	<li>Contributions to large open source projects.</li>
-	<li>Experience working in low-latency real-time environments such as game streaming, game engine architecture, high-frequency trading, or payment systems.</li>
-	<li>Experience debugging, optimizing, and identifying failure modes in a large-scale Linux-based distributed system.</li>
-</ul>
-<h3><strong>Compensation</strong></h3>
-<p><strong>Compensation may be adjusted depending on work location.</strong></p>
-<p><strong>● </strong>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated annual salary of $220,000 - $303,000</p>
-<p data-path-to-node="1">● For Portugal based hires: Estimated annual salary is between €89,000 - €122,000.</p>
-<ul data-path-to-node="2">
 	<li>
-		<p data-path-to-node="2,0,0">The final offer will be inclusive of time exemption, in alignment with the applicable law and collective bargaining agreements.</p>
+		<p>Software development and distributed systems design expertise.</p>
+	</li>
+	<li>
+		<p>Linux/UNIX system administration proficiency.</p>
+	</li>
+	<li>
+		<p>Strong security background with a focus on implementation, not policy/compliance.</p>
 	</li>
 </ul>
-<h3 data-path-to-node="3"><strong data-path-to-node="3" data-index-in-node="0">Equity</strong></h3>
-<p data-path-to-node="4">This role is eligible to participate in Cloudflare’s equity plan.</p>
-<h3><strong>Benefits</strong></h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<h3><strong>Health &amp; Welfare Benefits</strong></h3>
+<h3>Bonus/nice-to-have skills</h3>
+<ul>
+	<li>
+		<p>Track record of contributing to open source security or distributed systems projects.</p>
+	</li>
+	<li>
+		<p>Cryptography background and ability to work with cryptosystems at the primitives level.</p>
+	</li>
+	<li>
+		<p>Experience with HSMs, TPMs, or other platform TEEs (e.g. AMD SEV, Intel SGX, Apple Secure Enclave).</p>
+	</li>
+	<li>
+		<p>Familiarity with HashiCorp Vault or OpenBao, or similar.</p>
+	</li>
+	<li>
+		<p>Familiarity with Go and/or Python + Salt specifically.</p>
+	</li>
+</ul>
+<h3>Compensation</h3>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For California based hires: Estimated annual salary of $194,000 - $266,000</li>
+	<li>For Colorado based hires: Estimated annual salary of $168,000 - $231,000</li>
+	<li>For New York based hires: Estimated annual salary of $185,000 - $254,000</li>
+	<li>For Washington based hires: Estimated annual salary of $185,000 - $254,000</li>
+	<li>For Washington DC based hires: Estimated annual salary of $185,000 - $254,000</li>
+	<li>For Canada based hires: Estimated annual salary of $150,000 - $206,000</li>
+</ul>
+<h3>Applications will be accepted until December 25, 2026.</h3>
+<h3>Equity</h3>
+<p>This role is eligible to participate in Cloudflare's equity plan.</p>
+<h3>Benefits</h3>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p>Health &amp; Welfare Benefits</p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -68,14 +74,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<h3><strong>Financial Benefits</strong></h3>
+<p>Financial Benefits</p>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<h3><strong>Time Off</strong></h3>
+<p>Time Off</p>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
