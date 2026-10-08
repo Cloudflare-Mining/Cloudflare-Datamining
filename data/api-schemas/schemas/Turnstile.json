@@ -331,8 +331,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "turnstile.widgets",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/challenges/widgets": {
 		"operationId": "accounts-turnstile-widgets-list",
@@ -700,8 +699,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "turnstile.widgets",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/challenges/widgets/{sitekey}": {
 		"operationId": "accounts-turnstile-widget-get",
@@ -1037,8 +1035,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "turnstile.widgets",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/challenges/widgets": {
 		"operationId": "accounts-turnstile-widget-create",
@@ -1091,15 +1088,20 @@
 								"x-auditable": true
 							},
 							"mode": {
-								"description": "Widget Mode",
-								"type": "string",
-								"example": "invisible",
-								"enum": [
-									"non-interactive",
-									"invisible",
-									"managed"
+								"allOf": [
+									{
+										"description": "Widget Mode",
+										"type": "string",
+										"example": "invisible",
+										"enum": [
+											"non-interactive",
+											"invisible",
+											"managed"
+										],
+										"x-auditable": true
+									}
 								],
-								"x-auditable": true
+								"x-fern-property-name": "widget-mode"
 							},
 							"name": {
 								"description": "Human readable widget name. Not unique. Cloudflare suggests that you\nset this to a meaningful string to make it easier to identify your\nwidget, and where it is used.\n",
@@ -1500,10 +1502,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "turnstile.widgets",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true,
 		"x-forge-params": {
 			"mode": {
-				"flagName": "widget-mode"
+				"description": "Widget mode"
 			}
 		}
 	},
@@ -1857,8 +1858,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "turnstile.widgets",
-		"x-fern-sdk-method-name": "rotate-secret",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "rotate-secret"
 	},
 	"PUT /accounts/{account_id}/challenges/widgets/{sitekey}": {
 		"operationId": "accounts-turnstile-widget-update",
@@ -1911,15 +1911,20 @@
 								"x-auditable": true
 							},
 							"mode": {
-								"description": "Widget Mode",
-								"type": "string",
-								"example": "invisible",
-								"enum": [
-									"non-interactive",
-									"invisible",
-									"managed"
+								"allOf": [
+									{
+										"description": "Widget Mode",
+										"type": "string",
+										"example": "invisible",
+										"enum": [
+											"non-interactive",
+											"invisible",
+											"managed"
+										],
+										"x-auditable": true
+									}
 								],
-								"x-auditable": true
+								"x-fern-property-name": "widget-mode"
 							},
 							"name": {
 								"description": "Human readable widget name. Not unique. Cloudflare suggests that you\nset this to a meaningful string to make it easier to identify your\nwidget, and where it is used.\n",
@@ -2284,10 +2289,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "turnstile.widgets",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true,
 		"x-forge-params": {
 			"mode": {
-				"flagName": "widget-mode"
+				"description": "Widget mode"
 			}
 		}
 	}

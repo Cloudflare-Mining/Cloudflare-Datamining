@@ -766,6 +766,389 @@
 		"x-fern-sdk-group-name": "workflows.instances",
 		"x-fern-sdk-method-name": "delete"
 	},
+	"DELETE /accounts/{account_id}/workflows/concurrency/{key_id}": {
+		"operationId": "wor-delete-concurrency-key",
+		"summary": "Delete a concurrency key",
+		"description": "Deletes a concurrency key. Fails while any workflow’s latest version references the key. The key disappears immediately, but steps already holding it keep their slots until they finish and still count against a key re-created with the same name.",
+		"parameters": [
+			{
+				"name": "key_id",
+				"in": "path",
+				"description": "Identifier of the concurrency key.",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid"
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Concurrency key deleted.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"maxItems": 0
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"status": {
+											"type": "string",
+											"enum": [
+												"ok"
+											]
+										},
+										"success": {
+											"type": "boolean",
+											"nullable": true
+										}
+									},
+									"required": [
+										"success",
+										"status"
+									]
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"cursor": {
+											"type": "string"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										},
+										"total_pages": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"per_page",
+										"count",
+										"total_count"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Concurrency keys are not enabled for this account.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Concurrency key not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Concurrency key is referenced by deployed workflow versions.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Workflows"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.workers.write",
+				"com.cloudflare.api.workers.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "workflows.concurrency",
+		"x-fern-sdk-method-name": "delete"
+	},
 	"GET /accounts/{account_id}/triggers/{script_name}": {
 		"operationId": "wor-get-script-triggers",
 		"summary": "Get script triggers",
@@ -3330,238 +3713,6 @@
 		"x-fern-sdk-group-name": "workflows.instances.step",
 		"x-fern-sdk-method-name": "get"
 	},
-	"GET /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/subscribe": {
-		"operationId": "wor-subscribe-workflow-instance-events",
-		"summary": "Subscribe to workflow instance events",
-		"description": "Opens a WebSocket that streams workflow instance events.",
-		"parameters": [
-			{
-				"name": "workflow_name",
-				"in": "path",
-				"required": true,
-				"schema": {
-					"type": "string",
-					"maxLength": 64,
-					"minLength": 1,
-					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$"
-				}
-			},
-			{
-				"name": "instance_id",
-				"in": "path",
-				"description": "Instance identifier. User-created instances match `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` (max 100 characters); cron-triggered instances can use a longer, system-generated id derived from the cron expression.",
-				"required": true,
-				"schema": {
-					"type": "string",
-					"maxLength": 271,
-					"minLength": 1
-				}
-			},
-			{
-				"name": "cursor",
-				"in": "query",
-				"description": "Last event ID already received.",
-				"schema": {
-					"type": "integer"
-				}
-			},
-			{
-				"name": "filter",
-				"in": "query",
-				"description": "Workflow event types to include. Send multiple event types by repeating the filter query parameter.",
-				"schema": {
-					"type": "array",
-					"items": {
-						"enum": [
-							"workflow_queued",
-							"workflow_started",
-							"workflow_running",
-							"workflow_paused",
-							"workflow_waiting_for_pause",
-							"workflow_waiting",
-							"workflow_completed",
-							"workflow_errored",
-							"workflow_terminated",
-							"step_started",
-							"step_completed",
-							"step_errored",
-							"attempt_started",
-							"attempt_completed",
-							"attempt_errored",
-							"sleep_started",
-							"sleep_completed",
-							"wait_started",
-							"wait_completed",
-							"wait_timed_out",
-							"rollback_started",
-							"rollback_step_started",
-							"rollback_step_completed",
-							"rollback_step_errored",
-							"rollback_attempt_started",
-							"rollback_attempt_completed",
-							"rollback_attempt_errored",
-							"rollback_completed",
-							"rollback_errored"
-						],
-						"type": "string"
-					}
-				}
-			},
-			{
-				"name": "account_id",
-				"in": "path",
-				"required": true,
-				"schema": {
-					"type": "string"
-				}
-			}
-		],
-		"responses": {
-			"101": {
-				"description": "WebSocket subscription established."
-			},
-			"400": {
-				"description": "Invalid subscription options.",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "number"
-											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"type": "string"
-									}
-								},
-								"result": {
-									"type": "object",
-									"enum": [
-										null
-									],
-									"nullable": true
-								},
-								"success": {
-									"type": "boolean",
-									"enum": [
-										false
-									]
-								}
-							},
-							"required": [
-								"success",
-								"messages",
-								"errors",
-								"result"
-							]
-						}
-					}
-				}
-			},
-			"404": {
-				"description": "Instance not found.",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "number"
-											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"type": "string"
-									}
-								},
-								"result": {
-									"type": "object",
-									"enum": [
-										null
-									],
-									"nullable": true
-								},
-								"success": {
-									"type": "boolean",
-									"enum": [
-										false
-									]
-								}
-							},
-							"required": [
-								"success",
-								"messages",
-								"errors",
-								"result"
-							]
-						}
-					}
-				}
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": [],
-				"api_token": []
-			}
-		],
-		"tags": [
-			"Workflows"
-		],
-		"x-api-token-group": [
-			"Workers Tail Read",
-			"Workers Scripts Write",
-			"Workers Scripts Read"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.workers.write",
-				"com.cloudflare.api.workers.read"
-			]
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		},
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workflows.instances",
-		"x-fern-sdk-method-name": "subscribe"
-	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/subscribe/token": {
 		"operationId": "wor-create-workflow-instance-subscription-token",
 		"summary": "Create a workflow instance event subscription token",
@@ -6022,6 +6173,672 @@
 		"x-fern-sdk-group-name": "workflows.versions",
 		"x-fern-sdk-method-name": "graph"
 	},
+	"GET /accounts/{account_id}/workflows/concurrency": {
+		"operationId": "wor-list-concurrency-keys",
+		"summary": "List concurrency keys",
+		"description": "Lists the account-scoped concurrency keys.",
+		"parameters": [
+			{
+				"name": "per_page",
+				"in": "query",
+				"schema": {
+					"type": "number",
+					"default": 10,
+					"maximum": 100,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "page",
+				"in": "query",
+				"schema": {
+					"type": "number",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List of concurrency keys.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"maxItems": 0
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"created_on": {
+												"type": "string",
+												"format": "date-time"
+											},
+											"id": {
+												"description": "Stable identifier of the concurrency key.",
+												"type": "string",
+												"format": "uuid"
+											},
+											"limit": {
+												"description": "Maximum number of steps that may concurrently hold this key.",
+												"type": "integer",
+												"exclusiveMinimum": true,
+												"maximum": 9007199254740991,
+												"minimum": 0
+											},
+											"name": {
+												"description": "Unique (per account) name of the concurrency key. Referenced by workflow steps via step config.",
+												"type": "string",
+												"maxLength": 255,
+												"minLength": 1
+											}
+										},
+										"required": [
+											"id",
+											"name",
+											"limit",
+											"created_on"
+										],
+										"type": "object"
+									}
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"cursor": {
+											"type": "string"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										},
+										"total_pages": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"per_page",
+										"count",
+										"total_count"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Concurrency keys are not enabled for this account.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Workflows"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.workers.write",
+				"com.cloudflare.api.workers.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "workflows.concurrency",
+		"x-fern-sdk-method-name": "list"
+	},
+	"GET /accounts/{account_id}/workflows/concurrency/{key_id}": {
+		"operationId": "wor-get-concurrency-key",
+		"summary": "Get concurrency key details",
+		"description": "Retrieves a concurrency key and the workflows whose latest version references it.",
+		"parameters": [
+			{
+				"name": "key_id",
+				"in": "path",
+				"description": "Identifier of the concurrency key.",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid"
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Concurrency key details.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"maxItems": 0
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"created_on": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"id": {
+											"description": "Stable identifier of the concurrency key.",
+											"type": "string",
+											"format": "uuid"
+										},
+										"limit": {
+											"description": "Maximum number of steps that may concurrently hold this key.",
+											"type": "integer",
+											"exclusiveMinimum": true,
+											"maximum": 9007199254740991,
+											"minimum": 0
+										},
+										"name": {
+											"description": "Unique (per account) name of the concurrency key. Referenced by workflow steps via step config.",
+											"type": "string",
+											"maxLength": 255,
+											"minLength": 1
+										},
+										"referencing_workflows": {
+											"description": "Workflows whose latest deployed version references this key. Blocks deletion while non-empty.",
+											"type": "array",
+											"items": {
+												"properties": {
+													"version_id": {
+														"type": "string",
+														"format": "uuid"
+													},
+													"workflow_name": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"workflow_name",
+													"version_id"
+												],
+												"type": "object"
+											}
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"limit",
+										"created_on",
+										"referencing_workflows"
+									]
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"cursor": {
+											"type": "string"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										},
+										"total_pages": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"per_page",
+										"count",
+										"total_count"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Concurrency keys are not enabled for this account.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Concurrency key not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Workflows"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.workers.write",
+				"com.cloudflare.api.workers.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "workflows.concurrency",
+		"x-fern-sdk-method-name": "get"
+	},
 	"GET /accounts/{account_id}/workflows/settings": {
 		"operationId": "wor-get-workflow-settings",
 		"summary": "Get account settings",
@@ -7148,6 +7965,370 @@
 				}
 			}
 		]
+	},
+	"PATCH /accounts/{account_id}/workflows/concurrency/{key_id}": {
+		"operationId": "wor-update-concurrency-key",
+		"summary": "Update a concurrency key",
+		"description": "Updates the limit of a concurrency key. Applies to instances that start after the change.",
+		"parameters": [
+			{
+				"name": "key_id",
+				"in": "path",
+				"description": "Identifier of the concurrency key.",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid"
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"limit": {
+								"description": "Maximum number of steps that may concurrently hold this key.",
+								"type": "integer",
+								"exclusiveMinimum": true,
+								"maximum": 9007199254740991,
+								"minimum": 0
+							}
+						},
+						"required": [
+							"limit"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "The updated concurrency key.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"maxItems": 0
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"created_on": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"id": {
+											"description": "Stable identifier of the concurrency key.",
+											"type": "string",
+											"format": "uuid"
+										},
+										"limit": {
+											"description": "Maximum number of steps that may concurrently hold this key.",
+											"type": "integer",
+											"exclusiveMinimum": true,
+											"maximum": 9007199254740991,
+											"minimum": 0
+										},
+										"name": {
+											"description": "Unique (per account) name of the concurrency key. Referenced by workflow steps via step config.",
+											"type": "string",
+											"maxLength": 255,
+											"minLength": 1
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"limit",
+										"created_on"
+									]
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"cursor": {
+											"type": "string"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										},
+										"total_pages": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"per_page",
+										"count",
+										"total_count"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Concurrency keys are not enabled for this account.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Concurrency key not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Workflows"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.workers.write",
+				"com.cloudflare.api.workers.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "workflows.concurrency",
+		"x-fern-sdk-method-name": "edit"
 	},
 	"PATCH /accounts/{account_id}/workflows/settings": {
 		"operationId": "wor-update-workflow-settings",
@@ -9099,6 +10280,367 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "workflows.instances.batch",
 		"x-fern-sdk-method-name": "terminate"
+	},
+	"POST /accounts/{account_id}/workflows/concurrency": {
+		"operationId": "wor-create-concurrency-key",
+		"summary": "Create a concurrency key",
+		"description": "Creates an account-scoped concurrency key. Limits count steps still in flight from a previously deleted key of the same name.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"limit": {
+								"description": "Maximum number of steps that may concurrently hold this key.",
+								"type": "integer",
+								"exclusiveMinimum": true,
+								"maximum": 9007199254740991,
+								"minimum": 0
+							},
+							"name": {
+								"description": "Unique (per account) name of the concurrency key. Referenced by workflow steps via step config.",
+								"type": "string",
+								"maxLength": 255,
+								"minLength": 1
+							}
+						},
+						"required": [
+							"name",
+							"limit"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "The created concurrency key.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"maxItems": 0
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"created_on": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"id": {
+											"description": "Stable identifier of the concurrency key.",
+											"type": "string",
+											"format": "uuid"
+										},
+										"limit": {
+											"description": "Maximum number of steps that may concurrently hold this key.",
+											"type": "integer",
+											"exclusiveMinimum": true,
+											"maximum": 9007199254740991,
+											"minimum": 0
+										},
+										"name": {
+											"description": "Unique (per account) name of the concurrency key. Referenced by workflow steps via step config.",
+											"type": "string",
+											"maxLength": 255,
+											"minLength": 1
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"limit",
+										"created_on"
+									]
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"cursor": {
+											"type": "string"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										},
+										"total_pages": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"per_page",
+										"count",
+										"total_count"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Concurrency keys are not enabled for this account.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "A concurrency key with this name already exists.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Workflows"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.workers.write",
+				"com.cloudflare.api.workers.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "workflows.concurrency",
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/triggers/{script_name}": {
 		"operationId": "wor-replace-script-triggers",

@@ -826,21 +826,26 @@
 						"type": "object",
 						"properties": {
 							"config": {
-								"type": "object",
-								"properties": {
-									"min_extension_version": {
-										"description": "Minimum required browser extension version.",
-										"type": "string"
-									},
-									"team_name": {
-										"description": "Access team name. The service derives `team_domain` as `<team_name>.cloudflareaccess.com`.",
-										"type": "string",
-										"pattern": "^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$"
+								"allOf": [
+									{
+										"type": "object",
+										"properties": {
+											"min_extension_version": {
+												"description": "Minimum required browser extension version.",
+												"type": "string"
+											},
+											"team_name": {
+												"description": "Access team name. The service derives `team_domain` as `<team_name>.cloudflareaccess.com`.",
+												"type": "string",
+												"pattern": "^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$"
+											}
+										},
+										"required": [
+											"team_name"
+										]
 									}
-								},
-								"required": [
-									"team_name"
-								]
+								],
+								"x-fern-property-name": "browser-config"
 							}
 						},
 						"required": [
@@ -1991,6 +1996,667 @@
 		"x-fern-sdk-method-name": "search",
 		"x-stability": "beta"
 	},
+	"POST /accounts/{account_id}/browser-extension/config/logs/extension-events/timeseries": {
+		"operationId": "accounts-browser-extension-config-extension-events-timeseries",
+		"summary": "Query browser extension event timeseries",
+		"description": "Returns browser extension event counts grouped by time bucket and the requested\n`groupBy` fields. Accepts the same filters as event log search. When `resolution` is\nomitted, ranges shorter than 10 days use `1 hours` buckets and ranges of 10 days or\nmore use `1 days`. Empty buckets are omitted. Results over 10000 slots return 400.\n",
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"filters": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"field": {
+											"type": "string",
+											"enum": [
+												"timestamp",
+												"durationMs",
+												"eventName",
+												"action",
+												"userEmail",
+												"registrationId",
+												"eventId",
+												"policyId",
+												"url",
+												"matchedDlpProfiles",
+												"inventoryExtensionId",
+												"inventoryExtensionName",
+												"inventoryExtensionVersion"
+											]
+										},
+										"op": {
+											"type": "string",
+											"enum": [
+												"eq",
+												"neq",
+												"in",
+												"notIn",
+												"contains",
+												"notContains",
+												"includes",
+												"notIncludes",
+												"gte",
+												"lte"
+											]
+										},
+										"value": {
+											"oneOf": [
+												{
+													"maxLength": 2048,
+													"minLength": 1,
+													"type": "string"
+												},
+												{
+													"format": "int64",
+													"minimum": 0,
+													"type": "integer"
+												},
+												{
+													"items": {
+														"maxLength": 2048,
+														"minLength": 1,
+														"type": "string"
+													},
+													"maxItems": 20,
+													"minItems": 1,
+													"type": "array"
+												},
+												{
+													"items": {
+														"format": "int64",
+														"minimum": 0,
+														"type": "integer"
+													},
+													"maxItems": 20,
+													"minItems": 1,
+													"type": "array"
+												}
+											]
+										}
+									},
+									"required": [
+										"field",
+										"op",
+										"value"
+									]
+								},
+								"maxItems": 20
+							},
+							"from": {
+								"description": "Start of the query range (inclusive).",
+								"type": "string",
+								"format": "date-time",
+								"maxLength": 64
+							},
+							"groupBy": {
+								"description": "Fields to group each bucket by. Each requested field is returned on every slot.\nAn empty array returns one total per bucket.\n",
+								"type": "array",
+								"items": {
+									"enum": [
+										"eventName",
+										"action"
+									],
+									"type": "string"
+								},
+								"default": [
+									"eventName"
+								],
+								"maxItems": 2,
+								"uniqueItems": true
+							},
+							"resolution": {
+								"description": "Bucket size, for example `15 minutes`, `1 hours`, or `1 days`. Defaults to\n`1 hours` for ranges shorter than 10 days and `1 days` otherwise. A request must not\nproduce more than 1440 buckets.\n",
+								"type": "string",
+								"example": "1 hours",
+								"maxLength": 32,
+								"pattern": "^(hour|day|[1-9][0-9]{0,3} (minute|hour|day)s?)$"
+							},
+							"stats": {
+								"type": "array",
+								"items": {
+									"enum": [
+										"eventsTotal"
+									],
+									"type": "string"
+								},
+								"default": [
+									"eventsTotal"
+								],
+								"maxItems": 1,
+								"minItems": 1
+							},
+							"to": {
+								"description": "End of the query range (exclusive). The range must not exceed 30 days.",
+								"type": "string",
+								"format": "date-time",
+								"maxLength": 64
+							}
+						},
+						"required": [
+							"from",
+							"to"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Browser extension event timeseries response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"maxItems": 0
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"resolution": {
+											"description": "Bucket size used for the query.",
+											"type": "string",
+											"example": "1 hours"
+										},
+										"slots": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"action": {
+														"description": "Present when `action` is in `groupBy`.",
+														"type": "string"
+													},
+													"eventName": {
+														"description": "Present when `eventName` is in `groupBy`.",
+														"type": "string"
+													},
+													"eventsTotal": {
+														"type": "integer",
+														"minimum": 0
+													},
+													"timestamp": {
+														"description": "Start of the time bucket.",
+														"type": "string",
+														"format": "date-time"
+													}
+												},
+												"required": [
+													"timestamp",
+													"eventsTotal"
+												]
+											}
+										}
+									},
+									"required": [
+										"resolution",
+										"slots"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid request body or account ID.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Authentication failed.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "The authenticated user is not authorized to access this account, the Browser Extension service is not enabled for this account, or service availability could not be verified for this account.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"413": {
+				"description": "Invalid request body or account ID.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal server error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"502": {
+				"description": "Internal server error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Internal server error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Browser Extension Config"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "browser-extension.config.logs.extension-events",
+		"x-fern-sdk-method-name": "timeseries",
+		"x-stability": "beta"
+	},
 	"PUT /accounts/{account_id}/browser-extension/config": {
 		"operationId": "accounts-browser-extension-config-put",
 		"summary": "Update browser extension configuration",
@@ -2003,21 +2669,26 @@
 						"type": "object",
 						"properties": {
 							"config": {
-								"type": "object",
-								"properties": {
-									"min_extension_version": {
-										"description": "Minimum required browser extension version.",
-										"type": "string"
-									},
-									"team_name": {
-										"description": "Access team name. The service derives `team_domain` as `<team_name>.cloudflareaccess.com`.",
-										"type": "string",
-										"pattern": "^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$"
+								"allOf": [
+									{
+										"type": "object",
+										"properties": {
+											"min_extension_version": {
+												"description": "Minimum required browser extension version.",
+												"type": "string"
+											},
+											"team_name": {
+												"description": "Access team name. The service derives `team_domain` as `<team_name>.cloudflareaccess.com`.",
+												"type": "string",
+												"pattern": "^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$"
+											}
+										},
+										"required": [
+											"team_name"
+										]
 									}
-								},
-								"required": [
-									"team_name"
-								]
+								],
+								"x-fern-property-name": "browser-config"
 							}
 						},
 						"required": [

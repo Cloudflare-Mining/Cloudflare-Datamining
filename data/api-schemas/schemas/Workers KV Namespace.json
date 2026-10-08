@@ -31,12 +31,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Remove a Namespace response.",
@@ -511,9 +505,9 @@
 			"Workers KV Storage Write"
 		],
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "kv.bulk-deprecated",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/values/{key_name}": {
 		"operationId": "workers-kv-namespace-delete-key-value-pair",
@@ -558,12 +552,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "Delete key-value pair response.",
@@ -1511,6 +1499,10 @@
 														"example": 1577836800
 													},
 													"metadata": {
+														"description": "Arbitrary JSON that is associated with a key.",
+														"example": {
+															"someMetadataKey": "someMetadataValue"
+														},
 														"allOf": [
 															{
 																"anyOf": [
@@ -1538,12 +1530,6 @@
 																],
 																"x-stainless-override-schema": {
 																	"type": "unknown"
-																}
-															},
-															{
-																"description": "Arbitrary JSON that is associated with a key.",
-																"example": {
-																	"someMetadataKey": "someMetadataValue"
 																}
 															}
 														]
@@ -1812,6 +1798,10 @@
 								{
 									"properties": {
 										"result": {
+											"description": "Arbitrary JSON that is associated with a key.",
+											"example": {
+												"someMetadataKey": "someMetadataValue"
+											},
 											"allOf": [
 												{
 													"anyOf": [
@@ -1839,12 +1829,6 @@
 													],
 													"x-stainless-override-schema": {
 														"type": "unknown"
-													}
-												},
-												{
-													"description": "Arbitrary JSON that is associated with a key.",
-													"example": {
-														"someMetadataKey": "someMetadataValue"
 													}
 												}
 											]
@@ -2941,6 +2925,7 @@
 																		"example": 1578435000
 																	},
 																	"metadata": {
+																		"description": "The metadata associated with the key.",
 																		"allOf": [
 																			{
 																				"anyOf": [
@@ -2969,13 +2954,11 @@
 																				"x-stainless-override-schema": {
 																					"type": "unknown"
 																				}
-																			},
-																			{
-																				"description": "The metadata associated with the key."
 																			}
 																		]
 																	},
 																	"value": {
+																		"description": "The value associated with the key.",
 																		"allOf": [
 																			{
 																				"anyOf": [
@@ -3004,9 +2987,6 @@
 																				"x-stainless-override-schema": {
 																					"type": "unknown"
 																				}
-																			},
-																			{
-																				"description": "The value associated with the key."
 																			}
 																		]
 																	}
@@ -3496,6 +3476,10 @@
 									"maxLength": 512
 								},
 								"metadata": {
+									"description": "Arbitrary JSON that is associated with a key.",
+									"example": {
+										"someMetadataKey": "someMetadataValue"
+									},
 									"allOf": [
 										{
 											"anyOf": [
@@ -3523,12 +3507,6 @@
 											],
 											"x-stainless-override-schema": {
 												"type": "unknown"
-											}
-										},
-										{
-											"description": "Arbitrary JSON that is associated with a key.",
-											"example": {
-												"someMetadataKey": "someMetadataValue"
 											}
 										}
 									]
@@ -3879,6 +3857,10 @@
 						"type": "object",
 						"properties": {
 							"metadata": {
+								"description": "Associates arbitrary JSON data with a key/value pair.",
+								"example": {
+									"someMetadataKey": "someMetadataValue"
+								},
 								"allOf": [
 									{
 										"anyOf": [
@@ -3906,12 +3888,6 @@
 										],
 										"x-stainless-override-schema": {
 											"type": "unknown"
-										}
-									},
-									{
-										"description": "Associates arbitrary JSON data with a key/value pair.",
-										"example": {
-											"someMetadataKey": "someMetadataValue"
 										}
 									}
 								]

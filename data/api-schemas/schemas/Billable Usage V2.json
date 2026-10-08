@@ -2,7 +2,7 @@
 	"GET /accounts/{account_id}/billable/usage": {
 		"operationId": "billable-usage-v2-get-account-usage",
 		"summary": "Get Account Usage (Version 2, Alpha, Restricted)",
-		"description": "Returns cost and usage data for a single Cloudflare account, aligned\nwith the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/)\nCost and Usage dataset specification.\n\nEach record represents one billable metric for one account on one day.\nThis includes all metered usage, including usage that falls within\nfree-tier allowances and may result in zero cost.\n\n**Note:** Cost and pricing fields are not yet populated and\nwill be absent from responses until billing integration is complete.\n\nWhen `from` and `to` are omitted, defaults to the start of the current\nmonth through today. The maximum date range is 31 days.\n",
+		"description": "Returns cost and usage data for a single Cloudflare account, aligned\nwith the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/)\nCost and Usage dataset specification.\n\nEach record represents one billable metric for one account on one day.\nThis includes all metered usage, including usage that falls within\nfree-tier allowances and may result in zero cost.\n\n**Note:** This endpoint serves `usage` records only; cost and pricing\nfields are absent from responses. To retrieve rated costs, use `POST`\non the same path with `Metric: cost`.\n\nWhen `from` and `to` are omitted, defaults to the start of the current\nmonth through today. The maximum date range is 31 days.\n",
 		"parameters": [
 			{
 				"description": "Identifies the Cloudflare account.",
@@ -153,7 +153,7 @@
 											"ChargeDescription": {
 												"description": "Self-contained summary of the charge's purpose and price.",
 												"type": "string",
-												"example": "Workers Standard Requests — daily usage"
+												"example": "Workers Standard Requests"
 											},
 											"ChargeFrequency": {
 												"description": "Indicates how often a charge occurs. Currently only \"Usage-Based\" is supported.",
@@ -332,7 +332,6 @@
 											"ChargeCategory",
 											"ChargeFrequency",
 											"ChargeDescription",
-											"ConsumedQuantity",
 											"ConsumedUnit"
 										]
 									}
@@ -742,7 +741,7 @@
 	"GET /organizations/{organization_id}/billable/usage": {
 		"operationId": "billable-usage-v2-get-organization-usage",
 		"summary": "Get Organization Usage (Version 2, Alpha, Restricted)",
-		"description": "Returns cost and usage data for all accounts within an organization,\naligned with the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/)\nCost and Usage dataset specification.\n\nEach record represents one billable metric for one account on one day.\nThis includes all metered usage, including usage that falls within\nfree-tier allowances and may result in zero cost. The response\nincludes usage for every account belonging to the specified\norganization.\n\n**Note:** Cost and pricing fields are not yet populated and\nwill be absent from responses until billing integration is complete.\n\nWhen `from` and `to` are omitted, defaults to the start of the current\nmonth through today. The maximum date range is 31 days.\n\nAn organization with no accounts, or an organization ID that does not\nexist, returns a successful response with an empty result set rather\nthan an error.\n",
+		"description": "Returns cost and usage data for all accounts within an organization,\naligned with the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/)\nCost and Usage dataset specification.\n\nEach record represents one billable metric for one account on one day.\nThis includes all metered usage, including usage that falls within\nfree-tier allowances and may result in zero cost. The response\nincludes usage for every account belonging to the specified\norganization.\n\n**Note:** This endpoint serves `usage` records only; cost and pricing\nfields are absent from responses. Rated costs are available per\naccount via `POST /accounts/{account_id}/billable/usage` with\n`Metric: cost`.\n\nWhen `from` and `to` are omitted, defaults to the start of the current\nmonth through today. The maximum date range is 31 days.\n\nAn organization with no accounts, or an organization ID that does not\nexist, returns a successful response with an empty result set rather\nthan an error.\n",
 		"parameters": [
 			{
 				"description": "Identifies the Cloudflare organization.",
@@ -893,7 +892,7 @@
 											"ChargeDescription": {
 												"description": "Self-contained summary of the charge's purpose and price.",
 												"type": "string",
-												"example": "Workers Standard Requests — daily usage"
+												"example": "Workers Standard Requests"
 											},
 											"ChargeFrequency": {
 												"description": "Indicates how often a charge occurs. Currently only \"Usage-Based\" is supported.",
@@ -1072,7 +1071,6 @@
 											"ChargeCategory",
 											"ChargeFrequency",
 											"ChargeDescription",
-											"ConsumedQuantity",
 											"ConsumedUnit"
 										]
 									}
@@ -1204,7 +1202,7 @@
 	"POST /accounts/{account_id}/billable/usage": {
 		"operationId": "billable-usage-v2-query-account-usage",
 		"summary": "Query Account Usage (Version 2, Alpha, Restricted)",
-		"description": "Returns cost and usage data for a single Cloudflare account, aligned\nwith the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/)\nCost and Usage dataset specification.\n\nThis is the filterable counterpart to `GET` on the same path. It is a\nread-only operation and requires only the `#billing:read` permission;\n`POST` is used so that filter criteria can be supplied in a request body\nrather than in the query string.\n\nEach record represents one billable metric for one account on one day.\nThis includes all metered usage, including usage that falls within\nfree-tier allowances and may result in zero cost.\n\n**Note:** Cost and pricing fields are not yet populated and\nwill be absent from responses until billing integration is complete.\n\nThe request body is optional. When it is omitted, or when `TimePeriod`\nis omitted, the range defaults to the start of the current month through\ntoday. The maximum date range is 31 days.\n\nFilters of different kinds are combined with AND. Values within one tag\nfilter are combined with OR. Filter values that do not match usage\nproduce an empty result set.\n\nResults can be grouped by up to two groups, in any combination of\ndimension keys and resource-tag keys. Tag groups are returned in the\n`Tags` field. Usage without a requested tag remains in an untagged\ngroup, with that key omitted from `Tags`.\n\nRequests that use tag filtering or tag grouping return HTTP 400 when the\nunderlying usage data source does not support tags.\n\nRequests that use dimension grouping return HTTP 400 when the\nunderlying usage data source does not support dimensions.\n",
+		"description": "Returns cost and usage data for a single Cloudflare account, aligned\nwith the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/)\nCost and Usage dataset specification.\n\nThis is the filterable counterpart to `GET` on the same path. It is a\nread-only operation and requires only the `#billing:read` permission;\n`POST` is used so that filter criteria can be supplied in a request body\nrather than in the query string.\n\nEach record represents one billable metric for one account on one day.\nThis includes all metered usage, including usage that falls within\nfree-tier allowances and may result in zero cost.\n\n**Note:** Cost and pricing fields are populated only when `Metric`\nis `cost`; otherwise they are absent from responses.\n\nThe request body is optional. When it is omitted, or when `TimePeriod`\nis omitted, the range defaults to the start of the current month through\ntoday. The maximum date range is 31 days.\n\nFilters of different kinds are combined with AND. Values within one tag\nfilter are combined with OR. Filter values that do not match usage\nproduce an empty result set.\n\nResults can be grouped by up to two groups, in any combination of\ndimension keys and resource-tag keys. Tag groups are returned in the\n`Tags` field. Usage without a requested tag remains in an untagged\ngroup, with that key omitted from `Tags`.\n\nRequests that use tag filtering or tag grouping return HTTP 400 when the\nunderlying usage data source does not support tags.\n\nRequests that use dimension grouping return HTTP 400 when the\nunderlying usage data source does not support dimensions.\n",
 		"parameters": [
 			{
 				"description": "Identifies the Cloudflare account.",
@@ -1333,12 +1331,13 @@
 								"uniqueItems": true
 							},
 							"Metric": {
-								"description": "Type of cost/usage records to retrieve. `usage` returns unrated usage quantities. Unrelated to `FilterBy.BillableMetricIds`. Defaults to `usage` when omitted.",
+								"description": "Type of cost/usage records to retrieve. `usage` returns unrated usage quantities. `cost` returns rated usage with cost and pricing fields; it is available only on `POST` account usage and only when the underlying usage data source is ClickHouse (other sources return an empty result set). Requests that combine `cost` with `GroupBy` or `FilterBy.Tags` return HTTP 400. Unrelated to `FilterBy.BillableMetricIds`. Defaults to `usage` when omitted.",
 								"type": "string",
 								"example": "usage",
 								"default": "usage",
 								"enum": [
-									"usage"
+									"usage",
+									"cost"
 								]
 							},
 							"TimePeriod": {
@@ -1481,7 +1480,7 @@
 											"ChargeDescription": {
 												"description": "Self-contained summary of the charge's purpose and price.",
 												"type": "string",
-												"example": "Workers Standard Requests — daily usage"
+												"example": "Workers Standard Requests"
 											},
 											"ChargeFrequency": {
 												"description": "Indicates how often a charge occurs. Currently only \"Usage-Based\" is supported.",
@@ -1660,7 +1659,6 @@
 											"ChargeCategory",
 											"ChargeFrequency",
 											"ChargeDescription",
-											"ConsumedQuantity",
 											"ConsumedUnit"
 										]
 									}
