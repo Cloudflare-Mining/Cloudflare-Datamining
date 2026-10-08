@@ -44,14 +44,6 @@ Oct 19–20
 
 Coming soon
 
-Atlanta, GA
-
-Immerse Atlanta
-
-Nov 12–13
-
-Coming soon
-
 Las Vegas, NV
 
 AWS re:Invent
