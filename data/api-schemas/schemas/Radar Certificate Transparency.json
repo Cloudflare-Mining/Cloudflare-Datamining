@@ -204,8 +204,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.ct.authorities",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /radar/ct/authorities/{ca_slug}": {
 		"operationId": "radar-get-certificate-authority-details",
@@ -503,8 +502,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.ct.authorities",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/ct/logs": {
 		"operationId": "radar-get-certificate-logs",
@@ -717,8 +715,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.ct.logs",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /radar/ct/logs/{log_slug}": {
 		"operationId": "radar-get-certificate-log-details",
@@ -1027,8 +1024,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.ct.logs",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/ct/summary/{dimension}": {
 		"operationId": "radar-get-ct-summary",
@@ -1815,8 +1811,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.ct",
-		"x-fern-sdk-method-name": "summary",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "summary"
 	},
 	"GET /radar/ct/timeseries": {
 		"operationId": "radar-get-ct-timeseries",
@@ -2453,8 +2448,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.ct",
-		"x-fern-sdk-method-name": "timeseries",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "timeseries"
 	},
 	"GET /radar/ct/timeseries_groups/{dimension}": {
 		"operationId": "radar-get-ct-timeseries-group",
@@ -3356,7 +3350,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.ct",
-		"x-fern-sdk-method-name": "timeseries-groups",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "timeseries-groups"
 	}
 }

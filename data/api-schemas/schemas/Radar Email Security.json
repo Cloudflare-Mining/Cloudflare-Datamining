@@ -475,8 +475,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.email.security",
-		"x-fern-sdk-method-name": "summary-v2",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "summary-v2"
 	},
 	"GET /radar/email/security/summary/arc": {
 		"operationId": "radar-get-email-security-summary-by-arc",
@@ -923,9 +922,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.email.security.summary",
 		"x-fern-sdk-method-name": "arc",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Email Security Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/summary_v2/) instead."
 	},
 	"GET /radar/email/security/summary/dkim": {
@@ -1373,9 +1372,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.email.security.summary",
 		"x-fern-sdk-method-name": "dkim",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Email Security Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/summary_v2/) instead."
 	},
 	"GET /radar/email/security/summary/dmarc": {
@@ -1823,9 +1822,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.email.security.summary",
 		"x-fern-sdk-method-name": "dmarc",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Email Security Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/summary_v2/) instead."
 	},
 	"GET /radar/email/security/summary/malicious": {
@@ -2284,9 +2283,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.email.security.summary",
 		"x-fern-sdk-method-name": "malicious",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Email Security Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/summary_v2/) instead."
 	},
 	"GET /radar/email/security/summary/spam": {
@@ -2745,9 +2744,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.email.security.summary",
 		"x-fern-sdk-method-name": "spam",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Email Security Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/summary_v2/) instead."
 	},
 	"GET /radar/email/security/summary/spf": {
@@ -3195,9 +3194,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.email.security.summary",
 		"x-fern-sdk-method-name": "spf",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Email Security Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/summary_v2/) instead."
 	},
 	"GET /radar/email/security/summary/spoof": {
@@ -3656,9 +3655,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.email.security.summary",
 		"x-fern-sdk-method-name": "spoof",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Email Security Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/summary_v2/) instead."
 	},
 	"GET /radar/email/security/summary/threat_category": {
@@ -4131,9 +4130,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.email.security.summary",
 		"x-fern-sdk-method-name": "threat-category",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Email Security Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/summary_v2/) instead."
 	},
 	"GET /radar/email/security/summary/tls_version": {
@@ -4587,9 +4586,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.email.security.summary",
 		"x-fern-sdk-method-name": "tls-version",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Email Security Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/summary_v2/) instead."
 	},
 	"GET /radar/email/security/timeseries_groups/{dimension}": {
@@ -5118,8 +5117,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.email.security",
-		"x-fern-sdk-method-name": "timeseries-groups-v2",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "timeseries-groups-v2"
 	},
 	"GET /radar/email/security/timeseries_groups/arc": {
 		"operationId": "radar-get-email-security-timeseries-group-by-arc",
@@ -5603,9 +5601,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.email.security.timeseries-groups",
 		"x-fern-sdk-method-name": "arc",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Email Security Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/email/security/timeseries_groups/dkim": {
@@ -6090,9 +6088,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.email.security.timeseries-groups",
 		"x-fern-sdk-method-name": "dkim",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Email Security Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/email/security/timeseries_groups/dmarc": {
@@ -6577,9 +6575,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.email.security.timeseries-groups",
 		"x-fern-sdk-method-name": "dmarc",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Email Security Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/email/security/timeseries_groups/malicious": {
@@ -7072,9 +7070,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.email.security.timeseries-groups",
 		"x-fern-sdk-method-name": "malicious",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Email Security Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/email/security/timeseries_groups/spam": {
@@ -7567,9 +7565,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.email.security.timeseries-groups",
 		"x-fern-sdk-method-name": "spam",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Email Security Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/email/security/timeseries_groups/spf": {
@@ -8054,9 +8052,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.email.security.timeseries-groups",
 		"x-fern-sdk-method-name": "spf",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Email Security Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/email/security/timeseries_groups/spoof": {
@@ -8549,9 +8547,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.email.security.timeseries-groups",
 		"x-fern-sdk-method-name": "spoof",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Email Security Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/email/security/timeseries_groups/threat_category": {
@@ -9064,9 +9062,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.email.security.timeseries-groups",
 		"x-fern-sdk-method-name": "threat-category",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Email Security Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/email/security/timeseries_groups/tls_version": {
@@ -9560,9 +9558,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.email.security.timeseries-groups",
 		"x-fern-sdk-method-name": "tls-version",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Email Security Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/security/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/email/security/top/tlds": {
@@ -10031,8 +10029,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.email.security.top.tlds",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/email/security/top/tlds/malicious/{malicious}": {
 		"operationId": "radar-get-email-security-top-tlds-by-malicious",
@@ -10515,8 +10512,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.email.security.top.tlds.malicious",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/email/security/top/tlds/spam/{spam}": {
 		"operationId": "radar-get-email-security-top-tlds-by-spam",
@@ -10999,8 +10995,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.email.security.top.tlds.spam",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/email/security/top/tlds/spoof/{spoof}": {
 		"operationId": "radar-get-email-security-top-tlds-by-spoof",
@@ -11483,7 +11478,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.email.security.top.tlds.spoof",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	}
 }

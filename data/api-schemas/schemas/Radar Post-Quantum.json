@@ -372,8 +372,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.post-quantum.origin",
-		"x-fern-sdk-method-name": "summary",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "summary"
 	},
 	"GET /radar/post_quantum/origin/timeseries_groups/{dimension}": {
 		"operationId": "radar-get-origin-post-quantum-timeseries-groups",
@@ -794,8 +793,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.post-quantum.origin",
-		"x-fern-sdk-method-name": "timeseries-groups",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "timeseries-groups"
 	},
 	"GET /radar/post_quantum/tls/support": {
 		"operationId": "radar-get-post-quantum-tls-support",
@@ -947,7 +945,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.post-quantum.tls",
-		"x-fern-sdk-method-name": "support",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "support"
 	}
 }

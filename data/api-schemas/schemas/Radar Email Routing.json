@@ -487,8 +487,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.email.routing",
-		"x-fern-sdk-method-name": "summary-v2",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "summary-v2"
 	},
 	"GET /radar/email/routing/summary/arc": {
 		"operationId": "radar-get-email-routing-summary-by-arc",
@@ -950,9 +949,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.email.routing.summary",
 		"x-fern-sdk-method-name": "arc",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Email Routing Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/routing/methods/summary_v2/) instead."
 	},
 	"GET /radar/email/routing/summary/dkim": {
@@ -1415,9 +1414,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.email.routing.summary",
 		"x-fern-sdk-method-name": "dkim",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Email Routing Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/routing/methods/summary_v2/) instead."
 	},
 	"GET /radar/email/routing/summary/dmarc": {
@@ -1880,9 +1879,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.email.routing.summary",
 		"x-fern-sdk-method-name": "dmarc",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Email Routing Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/routing/methods/summary_v2/) instead."
 	},
 	"GET /radar/email/routing/summary/encrypted": {
@@ -2339,9 +2338,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.email.routing.summary",
 		"x-fern-sdk-method-name": "encrypted",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Email Routing Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/routing/methods/summary_v2/) instead."
 	},
 	"GET /radar/email/routing/summary/ip_version": {
@@ -2798,9 +2797,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.email.routing.summary",
 		"x-fern-sdk-method-name": "ip-version",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Email Routing Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/routing/methods/summary_v2/) instead."
 	},
 	"GET /radar/email/routing/summary/spf": {
@@ -3263,9 +3262,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.email.routing.summary",
 		"x-fern-sdk-method-name": "spf",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Email Routing Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/routing/methods/summary_v2/) instead."
 	},
 	"GET /radar/email/routing/timeseries_groups/{dimension}": {
@@ -3806,8 +3805,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.email.routing",
-		"x-fern-sdk-method-name": "timeseries-groups-v2",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "timeseries-groups-v2"
 	},
 	"GET /radar/email/routing/timeseries_groups/arc": {
 		"operationId": "radar-get-email-routing-timeseries-group-by-arc",
@@ -4306,9 +4304,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.email.routing.timeseries-groups",
 		"x-fern-sdk-method-name": "arc",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Email Routing Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/routing/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/email/routing/timeseries_groups/dkim": {
@@ -4808,9 +4806,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.email.routing.timeseries-groups",
 		"x-fern-sdk-method-name": "dkim",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Email Routing Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/routing/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/email/routing/timeseries_groups/dmarc": {
@@ -5310,9 +5308,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.email.routing.timeseries-groups",
 		"x-fern-sdk-method-name": "dmarc",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Email Routing Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/routing/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/email/routing/timeseries_groups/encrypted": {
@@ -5803,9 +5801,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.email.routing.timeseries-groups",
 		"x-fern-sdk-method-name": "encrypted",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Email Routing Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/routing/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/email/routing/timeseries_groups/ip_version": {
@@ -6296,9 +6294,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.email.routing.timeseries-groups",
 		"x-fern-sdk-method-name": "ip-version",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Email Routing Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/routing/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/email/routing/timeseries_groups/spf": {
@@ -6798,9 +6796,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.email.routing.timeseries-groups",
 		"x-fern-sdk-method-name": "spf",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Email Routing Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/email/subresources/routing/methods/timeseries_groups_v2/) instead."
 	}
 }

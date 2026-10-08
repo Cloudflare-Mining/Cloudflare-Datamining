@@ -388,8 +388,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.traffic-anomalies",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/traffic_anomalies/{uuid}": {
 		"operationId": "radar-get-traffic-anomaly-by-uuid",
@@ -614,8 +613,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.traffic-anomalies",
-		"x-fern-sdk-method-name": "get-by-id",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get-by-id"
 	},
 	"GET /radar/traffic_anomalies/locations": {
 		"operationId": "radar-get-traffic-anomalies-top",
@@ -811,7 +809,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.traffic-anomalies.locations",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	}
 }

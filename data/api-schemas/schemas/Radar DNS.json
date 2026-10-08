@@ -722,8 +722,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.dns",
-		"x-fern-sdk-method-name": "summary-v2",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "summary-v2"
 	},
 	"GET /radar/dns/summary/cache_hit": {
 		"operationId": "radar-get-dns-summary-by-cache-hit-status",
@@ -1315,9 +1314,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.dns.summary",
 		"x-fern-sdk-method-name": "cache-hit",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar DNS Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/dns/methods/summary_v2/) instead."
 	},
 	"GET /radar/dns/summary/dnssec": {
@@ -1924,9 +1923,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.dns.summary",
 		"x-fern-sdk-method-name": "dnssec",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar DNS Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/dns/methods/summary_v2/) instead."
 	},
 	"GET /radar/dns/summary/dnssec_aware": {
@@ -2519,9 +2518,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.dns.summary",
 		"x-fern-sdk-method-name": "dnssec-aware",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar DNS Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/dns/methods/summary_v2/) instead."
 	},
 	"GET /radar/dns/summary/dnssec_e2e": {
@@ -3114,9 +3113,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.dns.summary",
 		"x-fern-sdk-method-name": "dnssec-e2e",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar DNS Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/dns/methods/summary_v2/) instead."
 	},
 	"GET /radar/dns/summary/ip_version": {
@@ -3709,9 +3708,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.dns.summary",
 		"x-fern-sdk-method-name": "ip-version",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar DNS Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/dns/methods/summary_v2/) instead."
 	},
 	"GET /radar/dns/summary/matching_answer": {
@@ -4304,9 +4303,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.dns.summary",
 		"x-fern-sdk-method-name": "matching-answer",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar DNS Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/dns/methods/summary_v2/) instead."
 	},
 	"GET /radar/dns/summary/protocol": {
@@ -4895,9 +4894,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.dns.summary",
 		"x-fern-sdk-method-name": "protocol",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar DNS Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/dns/methods/summary_v2/) instead."
 	},
 	"GET /radar/dns/summary/query_type": {
@@ -5392,9 +5391,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.dns.summary",
 		"x-fern-sdk-method-name": "query-type",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar DNS Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/dns/methods/summary_v2/) instead."
 	},
 	"GET /radar/dns/summary/response_code": {
@@ -5959,9 +5958,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.dns.summary",
 		"x-fern-sdk-method-name": "response-code",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar DNS Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/dns/methods/summary_v2/) instead."
 	},
 	"GET /radar/dns/summary/response_ttl": {
@@ -6589,9 +6588,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.dns.summary",
 		"x-fern-sdk-method-name": "response-ttl",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar DNS Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/dns/methods/summary_v2/) instead."
 	},
 	"GET /radar/dns/timeseries": {
@@ -7323,8 +7322,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.dns",
-		"x-fern-sdk-method-name": "timeseries",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "timeseries"
 	},
 	"GET /radar/dns/timeseries_groups/{dimension}": {
 		"operationId": "radar-get-dns-timeseries-group",
@@ -8115,8 +8113,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.dns",
-		"x-fern-sdk-method-name": "timeseries-groups-v2",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "timeseries-groups-v2"
 	},
 	"GET /radar/dns/timeseries_groups/cache_hit": {
 		"operationId": "radar-get-dns-timeseries-group-by-cache-hit-status",
@@ -8742,9 +8739,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.dns.timeseries-groups",
 		"x-fern-sdk-method-name": "cache-hit",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar DNS Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/dns/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/dns/timeseries_groups/dnssec": {
@@ -9391,9 +9388,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.dns.timeseries-groups",
 		"x-fern-sdk-method-name": "dnssec",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar DNS Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/dns/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/dns/timeseries_groups/dnssec_aware": {
@@ -10020,9 +10017,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.dns.timeseries-groups",
 		"x-fern-sdk-method-name": "dnssec-aware",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar DNS Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/dns/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/dns/timeseries_groups/dnssec_e2e": {
@@ -10649,9 +10646,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.dns.timeseries-groups",
 		"x-fern-sdk-method-name": "dnssec-e2e",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar DNS Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/dns/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/dns/timeseries_groups/ip_version": {
@@ -11278,9 +11275,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.dns.timeseries-groups",
 		"x-fern-sdk-method-name": "ip-version",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar DNS Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/dns/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/dns/timeseries_groups/matching_answer": {
@@ -11907,9 +11904,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.dns.timeseries-groups",
 		"x-fern-sdk-method-name": "matching-answer",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar DNS Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/dns/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/dns/timeseries_groups/protocol": {
@@ -12538,9 +12535,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.dns.timeseries-groups",
 		"x-fern-sdk-method-name": "protocol",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar DNS Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/dns/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/dns/timeseries_groups/query_type": {
@@ -13091,9 +13088,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.dns.timeseries-groups",
 		"x-fern-sdk-method-name": "query-type",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar DNS Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/dns/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/dns/timeseries_groups/response_code": {
@@ -13714,9 +13711,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.dns.timeseries-groups",
 		"x-fern-sdk-method-name": "response-code",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar DNS Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/dns/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/dns/timeseries_groups/response_ttl": {
@@ -14393,9 +14390,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.dns.timeseries-groups",
 		"x-fern-sdk-method-name": "response-ttl",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar DNS Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/dns/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/dns/top/ases": {
@@ -15097,8 +15094,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.dns.top",
-		"x-fern-sdk-method-name": "ases",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "ases"
 	},
 	"GET /radar/dns/top/locations": {
 		"operationId": "radar-get-dns-top-locations",
@@ -15816,7 +15812,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.dns.top",
-		"x-fern-sdk-method-name": "locations",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "locations"
 	}
 }

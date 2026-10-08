@@ -383,6 +383,552 @@
 		"x-fern-sdk-group-name": "addressing.prefixes",
 		"x-fern-sdk-method-name": "delete"
 	},
+	"GET /accounts/{account_id}/addressing/loa_documents": {
+		"operationId": "ip-address-management-prefixes-list-loa-documents",
+		"summary": "List LOA Documents",
+		"description": "List all LOA documents uploaded under the account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier of a Cloudflare account.",
+					"type": "string",
+					"example": "258def64c72dae45f3e4c8516e2111f2",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List LOA Documents response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										},
+										{
+											"properties": {
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"type": "number",
+															"example": 1
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"type": "number",
+															"example": 1
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"type": "number",
+															"example": 20
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"type": "number",
+															"example": 2000
+														},
+														"total_pages": {
+															"description": "The number of total pages in the entire result set.",
+															"type": "number",
+															"example": 100
+														}
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"account_id": {
+														"description": "Identifier of a Cloudflare account.",
+														"type": "string",
+														"example": "258def64c72dae45f3e4c8516e2111f2",
+														"maxLength": 32,
+														"x-auditable": true
+													},
+													"auto_generated": {
+														"description": "Whether the LOA has been auto-generated for the prefix owner by Cloudflare.",
+														"type": "boolean",
+														"example": true,
+														"x-auditable": true
+													},
+													"created": {
+														"type": "string",
+														"format": "date-time",
+														"example": "2014-01-01T05:20:00.12345Z",
+														"x-auditable": true
+													},
+													"filename": {
+														"description": "Name of LOA document. Max file size 10MB, and supported filetype is pdf.",
+														"type": "string",
+														"example": "site_loa_doc.pdf",
+														"x-auditable": true
+													},
+													"id": {
+														"description": "Identifier for the uploaded LOA document.",
+														"type": "string",
+														"example": "d933b1530bc56c9953cf8ce166da8004",
+														"maxLength": 32,
+														"nullable": true,
+														"x-auditable": true
+													},
+													"size_bytes": {
+														"description": "File size of the uploaded LOA document.",
+														"type": "integer",
+														"example": 444,
+														"x-auditable": true
+													},
+													"verified": {
+														"description": "Whether the LOA has been verified by Cloudflare staff.",
+														"type": "boolean",
+														"example": true,
+														"x-auditable": true
+													},
+													"verified_at": {
+														"description": "Timestamp of the moment the LOA was marked as validated.",
+														"type": "string",
+														"format": "date-time",
+														"nullable": true,
+														"x-auditable": true
+													}
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "List LOA Documents response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"type": "object",
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
+															"enum": [
+																true
+															]
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													]
+												},
+												{
+													"properties": {
+														"result_info": {
+															"type": "object",
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service.",
+																	"type": "number",
+																	"example": 1
+																},
+																"page": {
+																	"description": "Current page within paginated list of results.",
+																	"type": "number",
+																	"example": 1
+																},
+																"per_page": {
+																	"description": "Number of results per page of results.",
+																	"type": "number",
+																	"example": 20
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters.",
+																	"type": "number",
+																	"example": 2000
+																},
+																"total_pages": {
+																	"description": "The number of total pages in the entire result set.",
+																	"type": "number",
+																	"example": 100
+																}
+															}
+														}
+													},
+													"type": "object"
+												}
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"account_id": {
+																"description": "Identifier of a Cloudflare account.",
+																"type": "string",
+																"example": "258def64c72dae45f3e4c8516e2111f2",
+																"maxLength": 32,
+																"x-auditable": true
+															},
+															"auto_generated": {
+																"description": "Whether the LOA has been auto-generated for the prefix owner by Cloudflare.",
+																"type": "boolean",
+																"example": true,
+																"x-auditable": true
+															},
+															"created": {
+																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
+																"x-auditable": true
+															},
+															"filename": {
+																"description": "Name of LOA document. Max file size 10MB, and supported filetype is pdf.",
+																"type": "string",
+																"example": "site_loa_doc.pdf",
+																"x-auditable": true
+															},
+															"id": {
+																"description": "Identifier for the uploaded LOA document.",
+																"type": "string",
+																"example": "d933b1530bc56c9953cf8ce166da8004",
+																"maxLength": 32,
+																"nullable": true,
+																"x-auditable": true
+															},
+															"size_bytes": {
+																"description": "File size of the uploaded LOA document.",
+																"type": "integer",
+																"example": 444,
+																"x-auditable": true
+															},
+															"verified": {
+																"description": "Whether the LOA has been verified by Cloudflare staff.",
+																"type": "boolean",
+																"example": true,
+																"x-auditable": true
+															},
+															"verified_at": {
+																"description": "Timestamp of the moment the LOA was marked as validated.",
+																"type": "string",
+																"format": "date-time",
+																"nullable": true,
+																"x-auditable": true
+															}
+														}
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"IP Address Management Prefixes"
+		],
+		"x-api-token-group": [
+			"Magic Transit Read",
+			"Magic Transit Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.loa-documents",
+		"x-fern-sdk-method-name": "list"
+	},
 	"GET /accounts/{account_id}/addressing/loa_documents/{loa_document_id}/download": {
 		"operationId": "ip-address-management-prefixes-download-loa-document",
 		"summary": "Download LOA Document",

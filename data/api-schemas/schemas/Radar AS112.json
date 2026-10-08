@@ -561,8 +561,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.as112",
-		"x-fern-sdk-method-name": "summary-v2",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "summary-v2"
 	},
 	"GET /radar/as112/summary/dnssec": {
 		"operationId": "radar-get-dns-as112-timeseries-by-dnssec",
@@ -1109,9 +1108,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.as112.summary",
 		"x-fern-sdk-method-name": "dnssec",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar AS112 Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/as112/methods/summary_v2/) instead."
 	},
 	"GET /radar/as112/summary/edns": {
@@ -1659,9 +1658,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.as112.summary",
 		"x-fern-sdk-method-name": "edns",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar AS112 Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/as112/methods/summary_v2/) instead."
 	},
 	"GET /radar/as112/summary/ip_version": {
@@ -2209,9 +2208,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.as112.summary",
 		"x-fern-sdk-method-name": "ip-version",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar AS112 Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/as112/methods/summary_v2/) instead."
 	},
 	"GET /radar/as112/summary/protocol": {
@@ -2755,9 +2754,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.as112.summary",
 		"x-fern-sdk-method-name": "protocol",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar AS112 Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/as112/methods/summary_v2/) instead."
 	},
 	"GET /radar/as112/summary/query_type": {
@@ -3207,9 +3206,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.as112.summary",
 		"x-fern-sdk-method-name": "query-type",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar AS112 Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/as112/methods/summary_v2/) instead."
 	},
 	"GET /radar/as112/summary/response_codes": {
@@ -3729,9 +3728,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.as112.summary",
 		"x-fern-sdk-method-name": "response-codes",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar AS112 Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/as112/methods/summary_v2/) instead."
 	},
 	"GET /radar/as112/timeseries": {
@@ -4310,8 +4309,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.as112",
-		"x-fern-sdk-method-name": "timeseries",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "timeseries"
 	},
 	"GET /radar/as112/timeseries_groups/{dimension}": {
 		"operationId": "radar-get-dns-as112-timeseries-group",
@@ -4925,8 +4923,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.as112",
-		"x-fern-sdk-method-name": "timeseries-groups-v2",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "timeseries-groups-v2"
 	},
 	"GET /radar/as112/timeseries_groups/dnssec": {
 		"operationId": "radar-get-dns-as112-timeseries-group-by-dnssec",
@@ -5507,9 +5504,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.as112.timeseries-groups",
 		"x-fern-sdk-method-name": "dnssec",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar AS112 Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/as112/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/as112/timeseries_groups/edns": {
@@ -6091,9 +6088,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.as112.timeseries-groups",
 		"x-fern-sdk-method-name": "edns",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar AS112 Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/as112/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/as112/timeseries_groups/ip_version": {
@@ -6675,9 +6672,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.as112.timeseries-groups",
 		"x-fern-sdk-method-name": "ip-version",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar AS112 Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/as112/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/as112/timeseries_groups/protocol": {
@@ -7261,9 +7258,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.as112.timeseries-groups",
 		"x-fern-sdk-method-name": "protocol",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar AS112 Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/as112/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/as112/timeseries_groups/query_type": {
@@ -7769,9 +7766,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.as112.timeseries-groups",
 		"x-fern-sdk-method-name": "query-type",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar AS112 Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/as112/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/as112/timeseries_groups/response_codes": {
@@ -8347,9 +8344,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.as112.timeseries-groups",
 		"x-fern-sdk-method-name": "response-codes",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar AS112 Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/as112/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/as112/top/locations": {
@@ -8744,8 +8741,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.as112.top",
-		"x-fern-sdk-method-name": "locations",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "locations"
 	},
 	"GET /radar/as112/top/locations/dnssec/{dnssec}": {
 		"operationId": "radar-get-dns-as112-top-locations-by-dnssec",
@@ -9154,8 +9150,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.as112.top",
-		"x-fern-sdk-method-name": "dnssec",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "dnssec"
 	},
 	"GET /radar/as112/top/locations/edns/{edns}": {
 		"operationId": "radar-get-dns-as112-top-locations-by-edns",
@@ -9564,8 +9559,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.as112.top",
-		"x-fern-sdk-method-name": "edns",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edns"
 	},
 	"GET /radar/as112/top/locations/ip_version/{ip_version}": {
 		"operationId": "radar-get-dns-as112-top-locations-by-ip-version",
@@ -9973,7 +9967,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.as112.top",
-		"x-fern-sdk-method-name": "ip-version",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "ip-version"
 	}
 }

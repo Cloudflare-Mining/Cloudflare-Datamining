@@ -220,6 +220,11 @@
 												"description": "RFI UUID",
 												"type": "string"
 											},
+											"priority_id": {
+												"description": "Raw stored Threat Intelligence priority. Values 64, 128, and 192 are authoritative; clients display null, 32, 255, and unsupported values as Unknown.",
+												"type": "integer",
+												"nullable": true
+											},
 											"projectType": {
 												"description": "Project type",
 												"type": "string"
@@ -420,6 +425,11 @@
 										"urgent",
 										"critical"
 									]
+								},
+								"priority_id": {
+									"description": "Raw stored Threat Intelligence priority. Values 64, 128, and 192 are authoritative; clients display null, 32, 255, and unsupported values as Unknown.",
+									"type": "integer",
+									"nullable": true
 								},
 								"readable_id": {
 									"description": "Human-readable ID",
@@ -843,6 +853,11 @@
 										"critical"
 									]
 								},
+								"priority_id": {
+									"description": "Raw stored Threat Intelligence priority. Values 64, 128, and 192 are authoritative; clients display null, 32, 255, and unsupported values as Unknown.",
+									"type": "integer",
+									"nullable": true
+								},
 								"readable_id": {
 									"description": "Human-readable ID",
 									"type": "string",
@@ -1263,6 +1278,11 @@
 										"urgent",
 										"critical"
 									]
+								},
+								"priority_id": {
+									"description": "Raw stored Threat Intelligence priority. Values 64, 128, and 192 are authoritative; clients display null, 32, 255, and unsupported values as Unknown.",
+									"type": "integer",
+									"nullable": true
 								},
 								"readable_id": {
 									"description": "Human-readable ID",

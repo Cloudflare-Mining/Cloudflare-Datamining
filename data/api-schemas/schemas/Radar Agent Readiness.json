@@ -39,7 +39,9 @@
 						"maxLength": 100,
 						"type": "string"
 					},
-					"example": "News & Media"
+					"example": [
+						"News & Media"
+					]
 				}
 			},
 			{
@@ -263,7 +265,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.agent-readiness",
-		"x-fern-sdk-method-name": "summary",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "summary"
 	}
 }

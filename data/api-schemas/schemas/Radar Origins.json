@@ -166,8 +166,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.origins",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /radar/origins/{slug}": {
 		"operationId": "radar-get-origin-details",
@@ -307,8 +306,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.origins",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/origins/summary/{dimension}": {
 		"operationId": "radar-get-origins-summary",
@@ -751,8 +749,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.origins",
-		"x-fern-sdk-method-name": "summary",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "summary"
 	},
 	"GET /radar/origins/timeseries": {
 		"operationId": "radar-get-origins-timeseries",
@@ -1208,8 +1205,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.origins",
-		"x-fern-sdk-method-name": "timeseries",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "timeseries"
 	},
 	"GET /radar/origins/timeseries_groups/{dimension}": {
 		"operationId": "radar-get-origins-timeseries-group",
@@ -1720,7 +1716,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.origins",
-		"x-fern-sdk-method-name": "timeseries-groups",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "timeseries-groups"
 	}
 }

@@ -416,9 +416,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.netflows",
 		"x-fern-sdk-method-name": "summary",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Get Network Traffic Distribution By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/netflows/methods/summary_v2/) instead."
 	},
 	"GET /radar/netflows/summary/{dimension}": {
@@ -870,8 +870,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.netflows",
-		"x-fern-sdk-method-name": "summary-v2",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "summary-v2"
 	},
 	"GET /radar/netflows/timeseries": {
 		"operationId": "radar-get-netflows-timeseries",
@@ -1353,8 +1352,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.netflows",
-		"x-fern-sdk-method-name": "timeseries",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "timeseries"
 	},
 	"GET /radar/netflows/timeseries_groups/{dimension}": {
 		"operationId": "radar-get-netflows-timeseries-group",
@@ -1874,8 +1872,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.netflows",
-		"x-fern-sdk-method-name": "timeseries-groups",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "timeseries-groups"
 	},
 	"GET /radar/netflows/top/ases": {
 		"operationId": "radar-get-netflows-top-ases",
@@ -2295,8 +2292,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.netflows.top",
-		"x-fern-sdk-method-name": "ases",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "ases"
 	},
 	"GET /radar/netflows/top/locations": {
 		"operationId": "radar-get-netflows-top-locations",
@@ -2716,7 +2712,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.netflows.top",
-		"x-fern-sdk-method-name": "locations",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "locations"
 	}
 }

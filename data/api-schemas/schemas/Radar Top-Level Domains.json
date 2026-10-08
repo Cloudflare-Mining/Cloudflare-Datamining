@@ -197,8 +197,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.tlds",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /radar/tlds/{tld}": {
 		"operationId": "radar-get-tld-details",
@@ -330,8 +329,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.tlds",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/tlds/performance/summary/{dimension}": {
 		"operationId": "radar-get-tlds-performance-summary",
@@ -771,8 +769,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.tlds.performance",
-		"x-fern-sdk-method-name": "summary",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "summary"
 	},
 	"GET /radar/tlds/performance/timeseries_groups/{dimension}": {
 		"operationId": "radar-get-tlds-performance-timeseries-groups",
@@ -1266,7 +1263,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.tlds.performance",
-		"x-fern-sdk-method-name": "timeseries-groups",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "timeseries-groups"
 	}
 }

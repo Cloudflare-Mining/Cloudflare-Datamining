@@ -849,6 +849,449 @@
 		"x-fern-sdk-group-name": "addressing.address-maps.accounts",
 		"x-fern-sdk-method-name": "delete"
 	},
+	"DELETE /accounts/{account_id}/addressing/address_maps/{address_map_id}/ips": {
+		"operationId": "ip-address-management-address-maps-remove-multiple-ips-from-an-address-map",
+		"summary": "Remove Multiple IPs from an Address Map",
+		"description": "Remove multiple IPs from a particular address map.",
+		"parameters": [
+			{
+				"name": "address_map_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier of an Address Map.",
+					"type": "string",
+					"example": "055817b111884e0227e1be16a0be6ee0",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier of a Cloudflare account.",
+					"type": "string",
+					"example": "258def64c72dae45f3e4c8516e2111f2",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"ips": {
+								"type": "array",
+								"items": {
+									"description": "An IPv4 or IPv6 address.",
+									"type": "string",
+									"example": "192.0.2.1",
+									"x-auditable": true
+								}
+							}
+						},
+						"required": [
+							"ips"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Remove Multiple IPs from an Address Map response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result_info": {
+											"type": "object",
+											"properties": {
+												"count": {
+													"description": "Total number of results for the requested service.",
+													"type": "number",
+													"example": 1
+												},
+												"page": {
+													"description": "Current page within paginated list of results.",
+													"type": "number",
+													"example": 1
+												},
+												"per_page": {
+													"description": "Number of results per page of results.",
+													"type": "number",
+													"example": 20
+												},
+												"total_count": {
+													"description": "Total results available without any search parameters.",
+													"type": "number",
+													"example": 2000
+												},
+												"total_pages": {
+													"description": "The number of total pages in the entire result set.",
+													"type": "number",
+													"example": 100
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Remove Multiple IPs from an Address Map response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										},
+										{
+											"properties": {
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"type": "number",
+															"example": 1
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"type": "number",
+															"example": 1
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"type": "number",
+															"example": 20
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"type": "number",
+															"example": 2000
+														},
+														"total_pages": {
+															"description": "The number of total pages in the entire result set.",
+															"type": "number",
+															"example": 100
+														}
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"IP Address Management Address Maps"
+		],
+		"x-api-token-group": [
+			"Address Maps Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.address-maps.ips",
+		"x-fern-sdk-method-name": "delete-bulk"
+	},
 	"DELETE /accounts/{account_id}/addressing/address_maps/{address_map_id}/ips/{ip_address}": {
 		"operationId": "ip-address-management-address-maps-remove-an-ip-from-an-address-map",
 		"summary": "Remove an IP from an Address Map",
@@ -1278,6 +1721,450 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.address-maps.ips",
 		"x-fern-sdk-method-name": "delete"
+	},
+	"DELETE /accounts/{account_id}/addressing/address_maps/{address_map_id}/zones": {
+		"operationId": "ip-address-management-address-maps-remove-multiple-zones-from-an-address-map",
+		"summary": "Remove Multiple Zones from an Address Map",
+		"description": "Remove multiple zones as members of a particular address map.",
+		"parameters": [
+			{
+				"name": "address_map_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier of an Address Map.",
+					"type": "string",
+					"example": "055817b111884e0227e1be16a0be6ee0",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier of a Cloudflare account.",
+					"type": "string",
+					"example": "258def64c72dae45f3e4c8516e2111f2",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"zones": {
+								"type": "array",
+								"items": {
+									"description": "Identifier of a zone.",
+									"type": "string",
+									"example": "8ac8489932db6327334c9b6d58544cfe",
+									"maxLength": 32,
+									"x-auditable": true
+								}
+							}
+						},
+						"required": [
+							"zones"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Remove Multiple Zones from an Address Map response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result_info": {
+											"type": "object",
+											"properties": {
+												"count": {
+													"description": "Total number of results for the requested service.",
+													"type": "number",
+													"example": 1
+												},
+												"page": {
+													"description": "Current page within paginated list of results.",
+													"type": "number",
+													"example": 1
+												},
+												"per_page": {
+													"description": "Number of results per page of results.",
+													"type": "number",
+													"example": 20
+												},
+												"total_count": {
+													"description": "Total results available without any search parameters.",
+													"type": "number",
+													"example": 2000
+												},
+												"total_pages": {
+													"description": "The number of total pages in the entire result set.",
+													"type": "number",
+													"example": 100
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Remove Multiple Zones from an Address Map response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										},
+										{
+											"properties": {
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"type": "number",
+															"example": 1
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"type": "number",
+															"example": 1
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"type": "number",
+															"example": 20
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"type": "number",
+															"example": 2000
+														},
+														"total_pages": {
+															"description": "The number of total pages in the entire result set.",
+															"type": "number",
+															"example": 100
+														}
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"IP Address Management Address Maps"
+		],
+		"x-api-token-group": [
+			"Address Maps Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.address-maps.zones",
+		"x-fern-sdk-method-name": "delete-bulk"
 	},
 	"DELETE /accounts/{account_id}/addressing/address_maps/{address_map_id}/zones/{member_zone_id}": {
 		"operationId": "ip-address-management-address-maps-remove-a-zone-membership-from-an-address-map",
@@ -3499,7 +4386,7 @@
 			}
 		},
 		"responses": {
-			"200": {
+			"201": {
 				"description": "Create Address Map response",
 				"content": {
 					"application/json": {
@@ -4093,6 +4980,887 @@
 		"x-fern-sdk-group-name": "addressing.address-maps",
 		"x-fern-sdk-method-name": "create"
 	},
+	"POST /accounts/{account_id}/addressing/address_maps/{address_map_id}/ips": {
+		"operationId": "ip-address-management-address-maps-add-multiple-ips-to-an-address-map",
+		"summary": "Add Multiple IPs to an Address Map",
+		"description": "Add multiple IPs to a particular address map.",
+		"parameters": [
+			{
+				"name": "address_map_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier of an Address Map.",
+					"type": "string",
+					"example": "055817b111884e0227e1be16a0be6ee0",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier of a Cloudflare account.",
+					"type": "string",
+					"example": "258def64c72dae45f3e4c8516e2111f2",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"ips": {
+								"type": "array",
+								"items": {
+									"description": "An IPv4 or IPv6 address.",
+									"type": "string",
+									"example": "192.0.2.1",
+									"x-auditable": true
+								}
+							}
+						},
+						"required": [
+							"ips"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"201": {
+				"description": "Add Multiple IPs to an Address Map response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result_info": {
+											"type": "object",
+											"properties": {
+												"count": {
+													"description": "Total number of results for the requested service.",
+													"type": "number",
+													"example": 1
+												},
+												"page": {
+													"description": "Current page within paginated list of results.",
+													"type": "number",
+													"example": 1
+												},
+												"per_page": {
+													"description": "Number of results per page of results.",
+													"type": "number",
+													"example": 20
+												},
+												"total_count": {
+													"description": "Total results available without any search parameters.",
+													"type": "number",
+													"example": 2000
+												},
+												"total_pages": {
+													"description": "The number of total pages in the entire result set.",
+													"type": "number",
+													"example": 100
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Add Multiple IPs to an Address Map response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										},
+										{
+											"properties": {
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"type": "number",
+															"example": 1
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"type": "number",
+															"example": 1
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"type": "number",
+															"example": 20
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"type": "number",
+															"example": 2000
+														},
+														"total_pages": {
+															"description": "The number of total pages in the entire result set.",
+															"type": "number",
+															"example": 100
+														}
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"IP Address Management Address Maps"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.address-maps.ips",
+		"x-fern-sdk-method-name": "update-bulk"
+	},
+	"POST /accounts/{account_id}/addressing/address_maps/{address_map_id}/zones": {
+		"operationId": "ip-address-management-address-maps-add-multiple-zones-to-an-address-map",
+		"summary": "Add Multiple Zones to an Address Map",
+		"description": "Add multiple zones as members of a particular address map.",
+		"parameters": [
+			{
+				"name": "address_map_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier of an Address Map.",
+					"type": "string",
+					"example": "055817b111884e0227e1be16a0be6ee0",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier of a Cloudflare account.",
+					"type": "string",
+					"example": "258def64c72dae45f3e4c8516e2111f2",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"zones": {
+								"type": "array",
+								"items": {
+									"description": "Identifier of a zone.",
+									"type": "string",
+									"example": "8ac8489932db6327334c9b6d58544cfe",
+									"maxLength": 32,
+									"x-auditable": true
+								}
+							}
+						},
+						"required": [
+							"zones"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"201": {
+				"description": "Add Multiple Zones to an Address Map response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result_info": {
+											"type": "object",
+											"properties": {
+												"count": {
+													"description": "Total number of results for the requested service.",
+													"type": "number",
+													"example": 1
+												},
+												"page": {
+													"description": "Current page within paginated list of results.",
+													"type": "number",
+													"example": 1
+												},
+												"per_page": {
+													"description": "Number of results per page of results.",
+													"type": "number",
+													"example": 20
+												},
+												"total_count": {
+													"description": "Total results available without any search parameters.",
+													"type": "number",
+													"example": 2000
+												},
+												"total_pages": {
+													"description": "The number of total pages in the entire result set.",
+													"type": "number",
+													"example": 100
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Add Multiple Zones to an Address Map response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										},
+										{
+											"properties": {
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"type": "number",
+															"example": 1
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"type": "number",
+															"example": 1
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"type": "number",
+															"example": 20
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"type": "number",
+															"example": 2000
+														},
+														"total_pages": {
+															"description": "The number of total pages in the entire result set.",
+															"type": "number",
+															"example": 100
+														}
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"IP Address Management Address Maps"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "addressing.address-maps.zones",
+		"x-fern-sdk-method-name": "update-bulk"
+	},
 	"PUT /accounts/{account_id}/addressing/address_maps/{address_map_id}/accounts/{member_account_id}": {
 		"operationId": "ip-address-management-address-maps-add-an-account-membership-to-an-address-map",
 		"summary": "Add an account membership to an Address Map",
@@ -4136,7 +5904,7 @@
 			}
 		],
 		"responses": {
-			"200": {
+			"201": {
 				"description": "Add an account membership to an Address Map response",
 				"content": {
 					"application/json": {
@@ -4563,7 +6331,7 @@
 			}
 		],
 		"responses": {
-			"200": {
+			"201": {
 				"description": "Add an IP to an Address Map response",
 				"content": {
 					"application/json": {
@@ -4994,7 +6762,7 @@
 			}
 		],
 		"responses": {
-			"200": {
+			"201": {
 				"description": "Add a zone membership to an Address Map response",
 				"content": {
 					"application/json": {

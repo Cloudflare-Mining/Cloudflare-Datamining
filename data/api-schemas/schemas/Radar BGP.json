@@ -436,8 +436,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.hijacks.events",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /radar/bgp/ips/timeseries": {
 		"operationId": "radar-get-bgp-ips-timeseries",
@@ -973,8 +972,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.ips",
-		"x-fern-sdk-method-name": "timeseries",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "timeseries"
 	},
 	"GET /radar/bgp/ips/top/ases": {
 		"operationId": "radar-get-bgp-ips-top-ases",
@@ -1178,8 +1176,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.ips.top",
-		"x-fern-sdk-method-name": "ases",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "ases"
 	},
 	"GET /radar/bgp/leaks/events": {
 		"operationId": "radar-get-bgp-route-leak-events",
@@ -1534,8 +1531,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.leaks.events",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /radar/bgp/routes/ases": {
 		"operationId": "radar-get-bgp-routes-asns",
@@ -1791,8 +1787,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.routes",
-		"x-fern-sdk-method-name": "ases",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "ases"
 	},
 	"GET /radar/bgp/routes/moas": {
 		"operationId": "radar-get-bgp-pfx2as-moas",
@@ -1994,8 +1989,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.routes",
-		"x-fern-sdk-method-name": "moas",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "moas"
 	},
 	"GET /radar/bgp/routes/paths/{asn}": {
 		"operationId": "radar-get-bgp-routes-paths",
@@ -2250,8 +2244,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.routes.paths",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /radar/bgp/routes/pfx2as": {
 		"operationId": "radar-get-bgp-pfx2as",
@@ -2458,8 +2451,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.routes",
-		"x-fern-sdk-method-name": "pfx2as",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "pfx2as"
 	},
 	"GET /radar/bgp/routes/realtime": {
 		"operationId": "radar-get-bgp-routes-realtime",
@@ -2768,8 +2760,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.routes",
-		"x-fern-sdk-method-name": "realtime",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "realtime"
 	},
 	"GET /radar/bgp/routes/stats": {
 		"operationId": "radar-get-bgp-routes-stats",
@@ -3002,8 +2993,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.routes",
-		"x-fern-sdk-method-name": "stats",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "stats"
 	},
 	"GET /radar/bgp/routes/upstreams/{asn}/timeseries": {
 		"operationId": "radar-get-bgp-routes-upstreams-timeseries",
@@ -3242,8 +3232,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.routes.upstreams",
-		"x-fern-sdk-method-name": "timeseries",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "timeseries"
 	},
 	"GET /radar/bgp/rpki/aspa/changes": {
 		"operationId": "radar-get-bgp-rpki-aspa-changes",
@@ -3522,8 +3511,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.rpki.aspa",
-		"x-fern-sdk-method-name": "changes",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "changes"
 	},
 	"GET /radar/bgp/rpki/aspa/snapshot": {
 		"operationId": "radar-get-bgp-rpki-aspa-snapshot",
@@ -3754,8 +3742,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.rpki.aspa",
-		"x-fern-sdk-method-name": "snapshot",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "snapshot"
 	},
 	"GET /radar/bgp/rpki/aspa/timeseries": {
 		"operationId": "radar-get-bgp-rpki-aspa-timeseries",
@@ -3980,8 +3967,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.rpki.aspa",
-		"x-fern-sdk-method-name": "timeseries",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "timeseries"
 	},
 	"GET /radar/bgp/rpki/roas/timeseries": {
 		"operationId": "radar-get-bgp-rpki-roas-timeseries",
@@ -4218,8 +4204,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.rpki.roas",
-		"x-fern-sdk-method-name": "timeseries",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "timeseries"
 	},
 	"GET /radar/bgp/timeseries": {
 		"operationId": "radar-get-bgp-timeseries",
@@ -4627,8 +4612,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp",
-		"x-fern-sdk-method-name": "timeseries",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "timeseries"
 	},
 	"GET /radar/bgp/top/ases": {
 		"operationId": "radar-get-bgp-top-ases",
@@ -4918,8 +4902,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.top.ases",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/bgp/top/ases/prefixes": {
 		"operationId": "radar-get-bgp-top-asns-by-prefixes",
@@ -5078,8 +5061,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.top.ases",
-		"x-fern-sdk-method-name": "prefixes",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "prefixes"
 	},
 	"GET /radar/bgp/top/prefixes": {
 		"operationId": "radar-get-bgp-top-prefixes",
@@ -5345,7 +5327,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.top",
-		"x-fern-sdk-method-name": "prefixes",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "prefixes"
 	}
 }

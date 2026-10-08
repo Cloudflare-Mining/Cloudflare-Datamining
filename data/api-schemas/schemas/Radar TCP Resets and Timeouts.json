@@ -419,8 +419,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.tcp-resets-timeouts",
-		"x-fern-sdk-method-name": "summary",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "summary"
 	},
 	"GET /radar/tcp_resets_timeouts/timeseries_groups": {
 		"operationId": "radar-get-tcp-resets-timeouts-timeseries-group",
@@ -893,7 +892,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.tcp-resets-timeouts",
-		"x-fern-sdk-method-name": "timeseries-groups",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "timeseries-groups"
 	}
 }

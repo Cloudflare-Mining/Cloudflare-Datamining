@@ -420,8 +420,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.ai.inference",
-		"x-fern-sdk-method-name": "summary-v2",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "summary-v2"
 	},
 	"GET /radar/ai/inference/summary/model": {
 		"operationId": "radar-get-ai-inference-summary-by-model",
@@ -791,9 +790,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.ai.inference.summary",
 		"x-fern-sdk-method-name": "model",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar AI Inference Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/ai/subresources/inference/methods/summary_v2/) instead."
 	},
 	"GET /radar/ai/inference/summary/task": {
@@ -1163,9 +1162,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.ai.inference.summary",
 		"x-fern-sdk-method-name": "task",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar AI Inference Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/ai/subresources/inference/methods/summary_v2/) instead."
 	},
 	"GET /radar/ai/inference/timeseries_groups/{dimension}": {
@@ -1653,8 +1652,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.ai.inference",
-		"x-fern-sdk-method-name": "timeseries-groups-v2",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "timeseries-groups-v2"
 	},
 	"GET /radar/ai/inference/timeseries_groups/model": {
 		"operationId": "radar-get-ai-inference-timeseries-group-by-model",
@@ -2070,9 +2068,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.ai.inference.timeseries-groups.summary",
 		"x-fern-sdk-method-name": "model",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar AI Inference Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/ai/subresources/inference/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/ai/inference/timeseries_groups/task": {
@@ -2489,9 +2487,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.ai.inference.timeseries-groups.summary",
 		"x-fern-sdk-method-name": "task",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar AI Inference Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/ai/subresources/inference/methods/timeseries_groups_v2/) instead."
 	}
 }

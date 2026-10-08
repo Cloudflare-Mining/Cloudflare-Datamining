@@ -409,9 +409,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.verified-bots.top",
 		"x-fern-sdk-method-name": "bots",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Bots API](https://developers.cloudflare.com/api/resources/radar/subresources/bots/) instead."
 	},
 	"GET /radar/verified_bots/top/categories": {
@@ -814,9 +814,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.verified-bots.top",
 		"x-fern-sdk-method-name": "categories",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Bots API](https://developers.cloudflare.com/api/resources/radar/subresources/bots/) instead."
 	}
 }

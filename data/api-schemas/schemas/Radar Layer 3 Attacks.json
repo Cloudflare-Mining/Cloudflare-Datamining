@@ -457,8 +457,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.attacks.layer3",
-		"x-fern-sdk-method-name": "summary-v2",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "summary-v2"
 	},
 	"GET /radar/attacks/layer3/summary/bitrate": {
 		"operationId": "radar-get-attacks-layer3-summary-by-bitrate",
@@ -921,9 +920,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.attacks.layer3.summary",
 		"x-fern-sdk-method-name": "bitrate",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Attacks Layer 3 Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/attacks/subresources/layer3/methods/summary_v2/) instead."
 	},
 	"GET /radar/attacks/layer3/summary/duration": {
@@ -1394,9 +1393,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.attacks.layer3.summary",
 		"x-fern-sdk-method-name": "duration",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Attacks Layer 3 Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/attacks/subresources/layer3/methods/summary_v2/) instead."
 	},
 	"GET /radar/attacks/layer3/summary/industry": {
@@ -1840,9 +1839,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.attacks.layer3.summary",
 		"x-fern-sdk-method-name": "industry",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Attacks Layer 3 Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/attacks/subresources/layer3/methods/summary_v2/) instead."
 	},
 	"GET /radar/attacks/layer3/summary/ip_version": {
@@ -2268,9 +2267,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.attacks.layer3.summary",
 		"x-fern-sdk-method-name": "ip-version",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Attacks Layer 3 Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/attacks/subresources/layer3/methods/summary_v2/) instead."
 	},
 	"GET /radar/attacks/layer3/summary/protocol": {
@@ -2709,9 +2708,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.attacks.layer3.summary",
 		"x-fern-sdk-method-name": "protocol",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Attacks Layer 3 Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/attacks/subresources/layer3/methods/summary_v2/) instead."
 	},
 	"GET /radar/attacks/layer3/summary/vector": {
@@ -3156,9 +3155,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.attacks.layer3.summary",
 		"x-fern-sdk-method-name": "vector",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Attacks Layer 3 Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/attacks/subresources/layer3/methods/summary_v2/) instead."
 	},
 	"GET /radar/attacks/layer3/summary/vertical": {
@@ -3602,9 +3601,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.attacks.layer3.summary",
 		"x-fern-sdk-method-name": "vertical",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Attacks Layer 3 Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/attacks/subresources/layer3/methods/summary_v2/) instead."
 	},
 	"GET /radar/attacks/layer3/timeseries": {
@@ -4119,8 +4118,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.attacks.layer3",
-		"x-fern-sdk-method-name": "timeseries",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "timeseries"
 	},
 	"GET /radar/attacks/layer3/timeseries_groups/{dimension}": {
 		"operationId": "radar-get-attacks-layer3-timeseries-group",
@@ -4645,8 +4643,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.attacks.layer3",
-		"x-fern-sdk-method-name": "timeseries-groups-v2",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "timeseries-groups-v2"
 	},
 	"GET /radar/attacks/layer3/timeseries_groups/bitrate": {
 		"operationId": "radar-get-attacks-layer3-timeseries-group-by-bitrate",
@@ -5175,9 +5172,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.attacks.layer3.timeseries-groups",
 		"x-fern-sdk-method-name": "bitrate",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Attacks Layer 3 Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/attacks/subresources/layer3/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/attacks/layer3/timeseries_groups/duration": {
@@ -5717,9 +5714,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.attacks.layer3.timeseries-groups",
 		"x-fern-sdk-method-name": "duration",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Attacks Layer 3 Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/attacks/subresources/layer3/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/attacks/layer3/timeseries_groups/industry": {
@@ -6226,9 +6223,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.attacks.layer3.timeseries-groups",
 		"x-fern-sdk-method-name": "industry",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Attacks Layer 3 Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/attacks/subresources/layer3/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/attacks/layer3/timeseries_groups/ip_version": {
@@ -6711,9 +6708,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.attacks.layer3.timeseries-groups",
 		"x-fern-sdk-method-name": "ip-version",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Attacks Layer 3 Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/attacks/subresources/layer3/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/attacks/layer3/timeseries_groups/protocol": {
@@ -7215,9 +7212,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.attacks.layer3.timeseries-groups",
 		"x-fern-sdk-method-name": "protocol",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Attacks Layer 3 Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/attacks/subresources/layer3/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/attacks/layer3/timeseries_groups/vector": {
@@ -7724,9 +7721,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.attacks.layer3.timeseries-groups",
 		"x-fern-sdk-method-name": "vector",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Attacks Layer 3 Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/attacks/subresources/layer3/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/attacks/layer3/timeseries_groups/vertical": {
@@ -8233,9 +8230,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.attacks.layer3.timeseries-groups",
 		"x-fern-sdk-method-name": "vertical",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Attacks Layer 3 Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/attacks/subresources/layer3/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/attacks/layer3/top/attacks": {
@@ -8720,8 +8717,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.attacks.layer3.top",
-		"x-fern-sdk-method-name": "attacks",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "attacks"
 	},
 	"GET /radar/attacks/layer3/top/industry": {
 		"operationId": "radar-get-attacks-layer3-top-industries",
@@ -9143,9 +9139,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.attacks.layer3.top",
 		"x-fern-sdk-method-name": "industry",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Attacks Layer 3 Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/attacks/subresources/layer3/methods/summary_v2/) instead."
 	},
 	"GET /radar/attacks/layer3/top/locations/origin": {
@@ -9578,8 +9574,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.attacks.layer3.top.locations",
-		"x-fern-sdk-method-name": "origin",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "origin"
 	},
 	"GET /radar/attacks/layer3/top/locations/target": {
 		"operationId": "radar-get-attacks-layer3-top-target-locations",
@@ -10011,8 +10006,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.attacks.layer3.top.locations",
-		"x-fern-sdk-method-name": "target",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "target"
 	},
 	"GET /radar/attacks/layer3/top/vertical": {
 		"operationId": "radar-get-attacks-layer3-top-verticals",
@@ -10434,9 +10428,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.attacks.layer3.top",
 		"x-fern-sdk-method-name": "vertical",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use [Radar Attacks Layer 3 Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/attacks/subresources/layer3/methods/summary_v2/) instead."
 	}
 }

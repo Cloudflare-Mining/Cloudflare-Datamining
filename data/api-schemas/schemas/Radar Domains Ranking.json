@@ -286,8 +286,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.ranking.domain",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/ranking/timeseries_groups": {
 		"operationId": "radar-get-ranking-domain-timeseries",
@@ -377,7 +376,9 @@
 						"maxLength": 100,
 						"type": "string"
 					},
-					"example": "News & Media"
+					"example": [
+						"News & Media"
+					]
 				}
 			},
 			{
@@ -757,8 +758,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.ranking",
-		"x-fern-sdk-method-name": "timeseries-groups",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "timeseries-groups"
 	},
 	"GET /radar/ranking/top": {
 		"operationId": "radar-get-ranking-top-domains",
@@ -812,7 +812,9 @@
 						"maxLength": 100,
 						"type": "string"
 					},
-					"example": "News & Media"
+					"example": [
+						"News & Media"
+					]
 				}
 			},
 			{
@@ -1192,7 +1194,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.ranking",
-		"x-fern-sdk-method-name": "top",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "top"
 	}
 }

@@ -220,8 +220,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.entities.asns",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /radar/entities/asns/{asn}": {
 		"operationId": "radar-get-entities-asn-by-id",
@@ -443,8 +442,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.entities.asns",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/entities/asns/{asn}/as_set": {
 		"operationId": "radar-get-asns-as-set",
@@ -633,8 +631,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.entities.asns",
-		"x-fern-sdk-method-name": "as-set",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "as-set"
 	},
 	"GET /radar/entities/asns/{asn}/rel": {
 		"operationId": "radar-get-asns-rel",
@@ -824,8 +821,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.entities.asns",
-		"x-fern-sdk-method-name": "rel",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "rel"
 	},
 	"GET /radar/entities/asns/botnet_threat_feed": {
 		"operationId": "radar-get-as-botnet-threat-feed",
@@ -1092,8 +1088,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.entities.asns",
-		"x-fern-sdk-method-name": "botnet-threat-feed",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "botnet-threat-feed"
 	},
 	"GET /radar/entities/asns/ip": {
 		"operationId": "radar-get-entities-asn-by-ip",
@@ -1317,7 +1312,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.entities.asns",
-		"x-fern-sdk-method-name": "ip",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "ip"
 	}
 }

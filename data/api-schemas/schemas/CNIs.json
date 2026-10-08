@@ -135,7 +135,7 @@
 														"minimum": 0
 													},
 													"extra_prefixes": {
-														"description": "Extra set of static prefixes to advertise to the customer's end of the session",
+														"description": "Extra set of static prefixes to advertise to the customer's end of the session\nPrefixes containing host bits will be normalized to contain network bits only.\nDuplicates are not allowed.",
 														"type": "array",
 														"items": {
 															"format": "A.B.C.D/N",
@@ -304,7 +304,7 @@
 											"minimum": 0
 										},
 										"extra_prefixes": {
-											"description": "Extra set of static prefixes to advertise to the customer's end of the session",
+											"description": "Extra set of static prefixes to advertise to the customer's end of the session\nPrefixes containing host bits will be normalized to contain network bits only.\nDuplicates are not allowed.",
 											"type": "array",
 											"items": {
 												"format": "A.B.C.D/N",
@@ -454,7 +454,7 @@
 										"minimum": 0
 									},
 									"extra_prefixes": {
-										"description": "Extra set of static prefixes to advertise to the customer's end of the session",
+										"description": "Extra set of static prefixes to advertise to the customer's end of the session\nPrefixes containing host bits will be normalized to contain network bits only.\nDuplicates are not allowed.",
 										"type": "array",
 										"items": {
 											"format": "A.B.C.D/N",
@@ -531,7 +531,7 @@
 											"minimum": 0
 										},
 										"extra_prefixes": {
-											"description": "Extra set of static prefixes to advertise to the customer's end of the session",
+											"description": "Extra set of static prefixes to advertise to the customer's end of the session\nPrefixes containing host bits will be normalized to contain network bits only.\nDuplicates are not allowed.",
 											"type": "array",
 											"items": {
 												"format": "A.B.C.D/N",
@@ -689,7 +689,7 @@
 										"minimum": 0
 									},
 									"extra_prefixes": {
-										"description": "Extra set of static prefixes to advertise to the customer's end of the session",
+										"description": "Extra set of static prefixes to advertise to the customer's end of the session\nPrefixes containing host bits will be normalized to contain network bits only.\nDuplicates are not allowed.",
 										"type": "array",
 										"items": {
 											"format": "A.B.C.D/N",
@@ -794,7 +794,7 @@
 											"minimum": 0
 										},
 										"extra_prefixes": {
-											"description": "Extra set of static prefixes to advertise to the customer's end of the session",
+											"description": "Extra set of static prefixes to advertise to the customer's end of the session\nPrefixes containing host bits will be normalized to contain network bits only.\nDuplicates are not allowed.",
 											"type": "array",
 											"items": {
 												"format": "A.B.C.D/N",

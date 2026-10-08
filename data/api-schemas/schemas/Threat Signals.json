@@ -1269,6 +1269,202 @@
 		"x-fern-sdk-method-name": "get-content",
 		"x-forge-hidden": true
 	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/skills": {
+		"operationId": "rssArticleCustomSkillsList",
+		"summary": "List Threat Signals article custom skills",
+		"description": "Lists active custom skills currently assigned to the article's feed and whether each has a stored output. Output content and skill configuration are retrieved separately.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "article_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Threat Signals response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"threat_signals_feed_limit",
+													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"description": "Number of returned custom skills, capped at 20.",
+											"type": "integer",
+											"maximum": 20,
+											"minimum": 0
+										},
+										"skills": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"name": {
+														"description": "Current custom skill name.",
+														"type": "string"
+													},
+													"output_saved_at": {
+														"description": "RFC3339 time at which the stored output row was last written; null when no output is stored.",
+														"type": "string",
+														"format": "date-time",
+														"nullable": true
+													},
+													"output_status": {
+														"description": "Whether a stored output is available for this article and custom skill.",
+														"type": "string",
+														"enum": [
+															"available",
+															"no_output"
+														]
+													},
+													"output_validation_status": {
+														"description": "Validation classification for the stored output. `unknown` denotes a legacy historical validation state; null when no output is stored.",
+														"type": "string",
+														"enum": [
+															"valid",
+															"invalid_json",
+															"schema_invalid",
+															"unknown"
+														],
+														"nullable": true
+													},
+													"skill_id": {
+														"description": "UUID of the active custom skill.",
+														"type": "string",
+														"format": "uuid"
+													}
+												},
+												"required": [
+													"skill_id",
+													"name",
+													"output_status",
+													"output_saved_at",
+													"output_validation_status"
+												],
+												"type": "object"
+											},
+											"maxItems": 20
+										}
+									},
+									"required": [
+										"count",
+										"skills"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Client error response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Threat Signals"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles.skills",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
+	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/skills/{skill_id}/output": {
 		"operationId": "rssArticleSkillOutputGet",
 		"summary": "Get Threat Signals article skill output",
@@ -1374,28 +1570,75 @@
 									"type": "object",
 									"properties": {
 										"article_id": {
+											"description": "Article UUID that received the skill output.",
 											"type": "string",
 											"format": "uuid"
 										},
 										"custom_output": {
-											"description": "Skill output. Parsed JSON when the stored output is valid JSON, otherwise the raw string."
+											"description": "Untrusted model output: parsed JSON when the stored completion text is valid JSON, otherwise raw text. Consumers must safely render or escape it.",
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "number"
+												},
+												{
+													"type": "boolean"
+												},
+												{
+													"nullable": true,
+													"type": "string"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"type": "object"
+												}
+											]
+										},
+										"custom_output_parse_status": {
+											"description": "Whether custom_output was parsed from the stored completion text.",
+											"type": "string",
+											"enum": [
+												"parsed",
+												"invalid_json"
+											]
+										},
+										"custom_output_validation_status": {
+											"description": "Non-blocking validation classification for untrusted model output. `unknown` is retained only for historical rows.",
+											"type": "string",
+											"enum": [
+												"valid",
+												"invalid_json",
+												"schema_invalid",
+												"unknown"
+											]
 										},
 										"custom_skill_version": {
+											"description": "Custom Skill version that produced the output. Null when historical metadata is unavailable.",
 											"type": "string",
 											"nullable": true
 										},
 										"output_schema": {
-											"description": "JSON-encoded output schema of the skill. Null when the skill no longer exists.",
+											"description": "JSON-encoded output schema. Null when historical skill metadata is unavailable.",
 											"type": "string",
 											"nullable": true
 										},
 										"skill_id": {
+											"description": "Custom Skill UUID that produced the output.",
 											"type": "string"
 										}
 									},
 									"required": [
 										"article_id",
 										"skill_id",
+										"custom_output",
+										"custom_output_parse_status",
+										"custom_output_validation_status",
 										"custom_skill_version",
 										"output_schema"
 									]
@@ -4982,11 +5225,53 @@
 										{
 											"properties": {
 												"article_id": {
+													"description": "Article UUID that received the skill output.",
 													"type": "string",
 													"format": "uuid"
 												},
 												"custom_output": {
-													"description": "JSON value conforming to the skill's output_schema"
+													"description": "Untrusted model output: parsed JSON when the stored completion text is valid JSON, otherwise raw text. Consumers must safely render or escape it.",
+													"anyOf": [
+														{
+															"type": "string"
+														},
+														{
+															"type": "number"
+														},
+														{
+															"type": "boolean"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"additionalProperties": true,
+															"type": "object"
+														}
+													]
+												},
+												"custom_output_parse_status": {
+													"description": "Whether custom_output was parsed from the stored completion text.",
+													"type": "string",
+													"enum": [
+														"parsed",
+														"invalid_json"
+													]
+												},
+												"custom_output_validation_status": {
+													"description": "Non-blocking validation classification for untrusted model output. `unknown` is retained only for historical rows.",
+													"type": "string",
+													"enum": [
+														"valid",
+														"invalid_json",
+														"schema_invalid",
+														"unknown"
+													]
 												},
 												"custom_skill_version": {
 													"type": "string"
@@ -5006,11 +5291,14 @@
 												}
 											},
 											"required": [
-												"persisted",
 												"article_id",
 												"skill_id",
+												"custom_output",
+												"custom_output_parse_status",
+												"custom_output_validation_status",
 												"custom_skill_version",
-												"output_schema"
+												"output_schema",
+												"persisted"
 											],
 											"type": "object"
 										}
@@ -6205,7 +6493,10 @@
 								"minLength": 1
 							},
 							"type": {
+								"description": "Optional label; does not affect execution. Defaults to \"summary\".",
 								"type": "string",
+								"example": "summary",
+								"default": "summary",
 								"enum": [
 									"summary",
 									"tags"
@@ -6214,7 +6505,6 @@
 						},
 						"required": [
 							"name",
-							"type",
 							"prompt",
 							"output_schema"
 						]
@@ -6422,7 +6712,8 @@
 									"format": "uuid",
 									"type": "string"
 								},
-								"maxItems": 20
+								"maxItems": 20,
+								"uniqueItems": true
 							}
 						},
 						"required": [

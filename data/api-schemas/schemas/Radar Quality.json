@@ -426,8 +426,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.quality.iqi",
-		"x-fern-sdk-method-name": "summary",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "summary"
 	},
 	"GET /radar/quality/iqi/timeseries_groups": {
 		"operationId": "radar-get-quality-index-timeseries-group",
@@ -904,8 +903,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.quality.iqi",
-		"x-fern-sdk-method-name": "timeseries-groups",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "timeseries-groups"
 	},
 	"GET /radar/quality/speed/histogram": {
 		"operationId": "radar-get-quality-speed-histogram",
@@ -1335,8 +1333,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.quality.speed",
-		"x-fern-sdk-method-name": "histogram",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "histogram"
 	},
 	"GET /radar/quality/speed/summary": {
 		"operationId": "radar-get-quality-speed-summary",
@@ -1748,8 +1745,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.quality.speed",
-		"x-fern-sdk-method-name": "summary",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "summary"
 	},
 	"GET /radar/quality/speed/top/ases": {
 		"operationId": "radar-get-quality-speed-top-ases",
@@ -2199,8 +2195,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.quality.speed.top",
-		"x-fern-sdk-method-name": "ases",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "ases"
 	},
 	"GET /radar/quality/speed/top/locations": {
 		"operationId": "radar-get-quality-speed-top-locations",
@@ -2650,7 +2645,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.quality.speed.top",
-		"x-fern-sdk-method-name": "locations",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "locations"
 	}
 }
