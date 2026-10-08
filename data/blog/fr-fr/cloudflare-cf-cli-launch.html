@@ -1,0 +1,263 @@
+<p>Au cours de l’année écoulée, l’utilisation de Wrangler par les agents a explosé.</p>
+<p>En mars 2026, les agents étaient à l’origine d’un quart de l’utilisation de Wrangler, contre des pourcentages à un chiffre l’année précédente. La semaine dernière, la part d’utilisation par les agents a atteint 48&nbsp;%.</p>
+<p>Les agents sont des utilisateurs plus prolifiques&nbsp;: ils utilisent presque deux fois plus de commandes distinctes par jour et sont presque quatre fois plus susceptibles d’utiliser six commandes ou plus.</p>
+<p>Les agents adorent les interfaces de ligne de commande&nbsp;(CLI). Or, Wrangler ne propose des commandes que pour environ 280&nbsp;opérations, là où Cloudflare en propose des milliers.</p>
+<p>Plus tôt cette année, nous vous avons laissé entrevoir <a href="https://blog.cloudflare.com/cf-cli-local-explorer" target="_blank" rel="noopener noreferrer">comment nous comptions résoudre ce problème</a>, et aujourd’hui, nous donnons aux agents la capacité d’utiliser tous les produits Cloudflare en introduisant une nouvelle CLI&nbsp;: cf.</p>
+<p>cf est une CLI conçue pour la nouvelle génération du développement logiciel&nbsp;:</p>
+<ul>
+	<li>Les agents peuvent trouver la commande exacte dont ils ont besoin pour accomplir n’importe quelle tâche grâce à des fonctionnalités de recherche et de guidage sur mesure.</li>
+	<li>Le format JSON est l’interface par défaut, formaté de manière lisible par les humains et condensé pour les agents, afin de maximiser les économies de contexte.</li>
+	<li>cloudflare.config.ts est le nouveau format de configuration pour l’ensemble de Cloudflare, en commençant par Workers ; il apporte la sécurité et la précision de TypeScript à votre protocole de serveur de langage (Language Server Protocol LSP) et à celui de votre agent.</li>
+	<li>Vite devient le serveur par défaut, offrant le meilleur serveur de développement local ainsi qu’une suite de plugins pour les développeurs et les créateurs de frameworks.</li>
+</ul>
+<p>Installez la bêta ouverte dès aujourd’hui partout dans le monde et exécutez-la depuis n’importe où&nbsp;:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> i</span><span class="sk-005cc5-99ffe4"> -g</span><span class="sk-032f62-99ffe4"> cf</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<div class="copy-prompt relative my-8 flex w-max max-w-full" data-copy-prompt=""><button type="button" aria-label="Copy prompt" class="copy-prompt__button inline-flex w-max max-w-full shrink-0 items-center justify-center rounded-full font-sans whitespace-nowrap no-underline select-none" data-copy-prompt-button="" data-prompt="&quot;Please update your global agent instructions, so you use Cloudflare's new `cf` CLI.\n\nAdd the Markdown below to the user-level instructions file that you load in every project – not this repository's AGENTS.md or CLAUDE.md. Use the file for the agent you are: Claude Code `~/.claude/CLAUDE.md`, Codex `~/.codex/AGENTS.md`, OpenCode `~/.config/opencode/AGENTS.md`, Pi `~/.pi/agent/AGENTS.md`. For any other agent, use its equivalent global rules file; if your global rules can only be set in a settings screen, tell me what to paste there instead. Create the file if it doesn't exist. Keep everything already in it, but replace any existing instruction about Wrangler or the Cloudflare CLI instead of adding a conflicting one. If the same guidance is already there, leave the file as it is. When you're done, tell me the path of the file you changed.\n\n```markdown\n## Cloudflare CLI - cf - v20260928\n\n`cf` is Cloudflare's current CLI and covers the whole Cloudflare platform. Prefer it over Wrangler: create projects with `cf init`, develop with `cf dev`, deploy with `cf deploy`, and manage account resources with `cf <product> …` (for example `cf d1 list`).\n\nWrangler is only for projects that already use it – a `wrangler.jsonc`, `wrangler.json` or `wrangler.toml` file – or when the user asks for it. Keep using Wrangler in those projects unless asked to migrate, and use `cf migrate` in this case.\n\n`cf` commands differ from Wrangler's; check `cf --help` or `cf cli search <what you want to do>` instead of guessing. If a `cf` command fails in a project that doesn't use Wrangler, don't fall back to Wrangler (including `npx wrangler`) without offering to report it.&quot;" data-copied-label="Prompt copied!" data-copy-prompt-bound="true"><span class="copy-prompt__content inline-flex min-w-0 items-center font-medium"><span class="copy-prompt__logos relative flex h-4 shrink-0 items-center justify-start" aria-hidden="true"><svg viewBox="0 0 256 257" class="size-4 shrink-0" aria-hidden="true">
+					<path fill="#D97757" d="m50.228 170.321 50.357-28.257.843-2.463-.843-1.361h-2.462l-8.426-.518-28.775-.778-24.952-1.037-24.175-1.296-6.092-1.297L0 125.796l.583-3.759 5.12-3.434 7.324.648 16.202 1.101 24.304 1.685 17.629 1.037 26.118 2.722h4.148l.583-1.685-1.426-1.037-1.101-1.037-25.147-17.045-27.22-18.017-14.258-10.37-7.713-5.25-3.888-4.925-1.685-10.758 7-7.713 9.397.649 2.398.648 9.527 7.323 20.35 15.75L94.817 91.9l3.889 3.24 1.555-1.102.195-.777-1.75-2.917-14.453-26.118-15.425-26.572-6.87-11.018-1.814-6.61c-.648-2.723-1.102-4.991-1.102-7.778l7.972-10.823L71.42 0 82.05 1.426l4.472 3.888 6.61 15.101 10.694 23.786 16.591 32.34 4.861 9.592 2.592 8.879.973 2.722h1.685v-1.556l1.36-18.211 2.528-22.36 2.463-28.776.843-8.1 4.018-9.722 7.971-5.25 6.222 2.981 5.12 7.324-.713 4.73-3.046 19.768-5.962 30.98-3.889 20.739h2.268l2.593-2.593 10.499-13.934 17.628-22.036 7.778-8.749 9.073-9.657 5.833-4.601h11.018l8.1 12.055-3.628 12.443-11.342 14.388-9.398 12.184-13.48 18.147-8.426 14.518.778 1.166 2.01-.194 30.46-6.481 16.462-2.982 19.637-3.37 8.88 4.148.971 4.213-3.5 8.62-20.998 5.184-24.628 4.926-36.682 8.685-.454.324.519.648 16.526 1.555 7.065.389h17.304l32.21 2.398 8.426 5.574 5.055 6.805-.843 5.184-12.962 6.611-17.498-4.148-40.83-9.721-14-3.5h-1.944v1.167l11.666 11.406 21.387 19.314 26.767 24.887 1.36 6.157-3.434 4.86-3.63-.518-23.526-17.693-9.073-7.972-20.545-17.304h-1.36v1.814l4.73 6.935 25.017 37.59 1.296 11.536-1.814 3.76-6.481 2.268-7.13-1.297-14.647-20.544-15.1-23.138-12.185-20.739-1.49.843-7.194 77.448-3.37 3.953-7.778 2.981-6.48-4.925-3.436-7.972 3.435-15.749 4.148-20.544 3.37-16.333 3.046-20.285 1.815-6.74-.13-.454-1.49.194-15.295 20.999-23.267 31.433-18.406 19.702-4.407 1.75-7.648-3.954.713-7.064 4.277-6.286 25.47-32.405 15.36-20.092 9.917-11.6-.065-1.686h-.583L44.07 198.125l-12.055 1.555-5.185-4.86.648-7.972 2.463-2.593 20.35-13.999-.064.065Z"></path>
+				</svg><svg viewBox="0 0 24 24" class="size-4 shrink-0 fill-current" fill-rule="evenodd" aria-hidden="true">
+					<path clip-rule="evenodd" d="M8.086.457a6.105 6.105 0 013.046-.415c1.333.153 2.521.72 3.564 1.7a.117.117 0 00.107.029c1.408-.346 2.762-.224 4.061.366l.063.03.154.076c1.357.703 2.33 1.77 2.918 3.198.278.679.418 1.388.421 2.126a5.655 5.655 0 01-.18 1.631.167.167 0 00.04.155 5.982 5.982 0 011.578 2.891c.385 1.901-.01 3.615-1.183 5.14l-.182.22a6.063 6.063 0 01-2.934 1.851.162.162 0 00-.108.102c-.255.736-.511 1.364-.987 1.992-1.199 1.582-2.962 2.462-4.948 2.451-1.583-.008-2.986-.587-4.21-1.736a.145.145 0 00-.14-.032c-.518.167-1.04.191-1.604.185a5.924 5.924 0 01-2.595-.622 6.058 6.058 0 01-2.146-1.781c-.203-.269-.404-.522-.551-.821a7.74 7.74 0 01-.495-1.283 6.11 6.11 0 01-.017-3.064.166.166 0 00.008-.074.115.115 0 00-.037-.064 5.958 5.958 0 01-1.38-2.202 5.196 5.196 0 01-.333-1.589 6.915 6.915 0 01.188-2.132c.45-1.484 1.309-2.648 2.577-3.493.282-.188.55-.334.802-.438.286-.12.573-.22.861-.304a.129.129 0 00.087-.087A6.016 6.016 0 015.635 2.31C6.315 1.464 7.132.846 8.086.457zm-.804 7.85a.848.848 0 00-1.473.842l1.694 2.965-1.688 2.848a.849.849 0 001.46.864l1.94-3.272a.849.849 0 00.007-.854l-1.94-3.393zm5.446 6.24a.849.849 0 000 1.695h4.848a.849.849 0 000-1.696h-4.848z"></path>
+				</svg><svg viewBox="0 0 466.73 532.09" class="size-4 shrink-0 fill-current" aria-hidden="true">
+					<path d="M457.43,125.94L244.42,2.96c-6.84-3.95-15.28-3.95-22.12,0L9.3,125.94c-5.75,3.32-9.3,9.46-9.3,16.11v247.99c0,6.65,3.55,12.79,9.3,16.11l213.01,122.98c6.84,3.95,15.28,3.95,22.12,0l213.01-122.98c5.75-3.32,9.3-9.46,9.3-16.11v-247.99c0-6.65-3.55-12.79-9.3-16.11h-.01ZM444.05,151.99l-205.63,356.16c-1.39,2.4-5.06,1.42-5.06-1.36v-233.21c0-4.66-2.49-8.97-6.53-11.31L24.87,145.67c-2.4-1.39-1.42-5.06,1.36-5.06h411.26c5.84,0,9.49,6.33,6.57,11.39h-.01Z"></path>
+				</svg><svg viewBox="0 0 32 40" class="h-4 w-auto shrink-0 fill-current" aria-hidden="true">
+					<path d="M24 32H8V16H24V32Z" fill-opacity="0.3"></path>
+					<path d="M24 8H8V32H24V8ZM32 40H0V0H32V40Z"></path>
+				</svg></span><span class="copy-prompt__labels relative inline-grid min-w-0 items-center justify-items-start text-start" aria-hidden="true" data-copy-prompt-labels="" style="inline-size: 76.3125px;"><span class="copy-prompt__label" data-copy-prompt-label="">Copy prompt</span><span class="copy-prompt__label-sizer" data-copy-prompt-label-sizer="default">Copy prompt</span><span class="copy-prompt__label-sizer" data-copy-prompt-label-sizer="copied">Prompt copied!</span></span></span></button><span class="sr-only" role="status" aria-live="polite" data-copy-prompt-status=""></span></div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {};
+	var e = 50,
+		t = 150;
+
+	function n(e) {
+		let t = e.dataset.prompt;
+		if (!t) return null;
+		try {
+			let e = JSON.parse(t);
+			return typeof e == `string` && e.trim() ? e : null
+		} catch {
+			return null
+		}
+	}
+
+	function r(r, i) {
+		i && r.querySelectorAll(`[data-copy-prompt]`).forEach(r => {
+			let a = r.querySelector(`[data-copy-prompt-button]`),
+				o = r.querySelector(`[data-copy-prompt-labels]`),
+				s = r.querySelector(`[data-copy-prompt-label]`),
+				c = r.querySelector(`[data-copy-prompt-label-sizer="default"]`),
+				l = r.querySelector(`[data-copy-prompt-label-sizer="copied"]`),
+				u = r.querySelector(`[data-copy-prompt-status]`);
+			if (!a || !u || a.dataset.copyPromptBound === `true`) return;
+			let d = n(a);
+			if (!d) return;
+			a.dataset.copyPromptBound = `true`;
+			let f = s?.textContent ?? ``,
+				p, m, h, g = e => {
+					let t = (e === `copied` ? l : c)?.getBoundingClientRect().width ?? 0;
+					o && t > 0 && (o.style.inlineSize = `${t}px`)
+				};
+			g(`default`);
+			let _ = s?.ownerDocument.fonts;
+			_ && _.ready.then(() => g(r.hasAttribute(`data-copied`) ? `copied` : `default`));
+			let v = (e, n) => {
+				if (!s || !e || (g(n), m && clearTimeout(m), m = void 0, s.classList.remove(`is-exit`, `is-enter-start`), s.textContent === e)) return;
+				let r = s.ownerDocument.defaultView;
+				if (typeof r?.matchMedia == `function` && r.matchMedia(`(prefers-reduced-motion: reduce)`).matches) {
+					s.textContent = e;
+					return
+				}
+				s.classList.add(`is-exit`), m = setTimeout(() => {
+					s.textContent = e, s.classList.remove(`is-exit`), s.classList.add(`is-enter-start`), s.offsetWidth, s.classList.remove(`is-enter-start`), m = void 0
+				}, t)
+			};
+			a.addEventListener(`click`, async () => {
+				try {
+					await i.writeText(d)
+				} catch {
+					return
+				}
+				p && clearTimeout(p), h && clearTimeout(h), u.textContent = ``, r.setAttribute(`data-copied`, ``), v(a.dataset.copiedLabel ?? ``, `copied`), p = setTimeout(() => {
+					u.textContent = a.dataset.copiedLabel ?? ``
+				}, e), h = setTimeout(() => {
+					r.removeAttribute(`data-copied`), u.textContent = ``, v(f, `default`)
+				}, 1550)
+			})
+		})
+	}
+	r(document, navigator.clipboard);
+</script>
+<h2><strong>cf donne à votre agent accès à l’ensemble de l’API Cloudflare</strong></h2>
+<p>Et si votre agent pouvait accomplir tout ce dont Cloudflare est capable ? C’est la question qui a éveillé notre intérêt en début d’année&nbsp;: si les agents devenaient toujours plus puissants, ce qu’ils pouvaient accomplir avec la CLI de Cloudflare restait limité.</p>
+<p>Wrangler a été développé de manière artisanale, chaque équipe produit contribuant et adoptant sa propre approche de l’expérience développeur de commandes. Harmoniser les pratiques des différentes équipes s’est avéré pratiquement impossible, même sur nos quelque 280&nbsp;parcours de commandes. Nous nous trouvions face à une terminologie incohérente entre <code>d1 info</code>, <code>hyperdrive get</code> et <code>workflows describe</code>, chaque équipe ayant développé ses propres pratiques à différents moments. Certaines équipes ont développé des expériences entièrement personnalisées, représentant des milliers de lignes de code, qui n’ont été que très rarement utilisées, tandis que d’autres ont adopté des approches différentes pour résoudre les mêmes problèmes.</p>
+<p>Nous voulions à la fois standardiser l’existant et procéder à une expansion massive, le tout en une seule fois. <a href="https://blog.cloudflare.com/forge-open-source-generation-pipeline" target="_blank" rel="noopener noreferrer"><u>Forge</u></a>, le nouveau pipeline unifié de génération d’API de Cloudflare, nous a permis d’y parvenir, en s’appuyant sur le principe de générer nos commandes CLI directement à partir du schéma d’API qui alimente notre documentation d’API et notre génération de SDK. Tout ce que nous proposons dispose d’un schéma OpenAPI ; il suffit d’y ajouter quelques annotations supplémentaires pour pouvoir l’utiliser comme source pour générer une CLI avec Forge.</p>
+<p>Cela nous permet de développer <code>cf</code>, en évoluant des quelque 280&nbsp;fonctions accumulées par Wrangler pour englober l’intégralité de la surface de l’API Cloudflare, soit plus de 3 000&nbsp;opérations.</p>
+<p>Désormais, il suffit de fournir <code>cf</code> à votre agent et de lui demander de configurer une instance Workers, de la déployer, de la surveiller, de la protéger avec Cloudflare Access, d’acheter un nom de domaine, puis de le sécuriser avec le pare-feu WAF de Cloudflare&nbsp;– et tout cela, depuis un outil unique.</p>
+<div id="html-block-dlxw9kv9p" class="html-block">
+	<div style="padding-top:56.25%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/dcb3f160888a1d1c67874e614c779f77/iframe?muted=true&amp;preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fdcb3f160888a1d1c67874e614c779f77%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>
+<h2><strong>Développer une solution pour un agent qui n’a jamais utilisé cf</strong></h2>
+<p>cf a été développé pour accompagner la trajectoire du génie logiciel, à une époque où le développement agentique transforme radicalement l’approche du développement et du déploiement d’applications. Cette année, nous avons priorisé la fourniture d’outils destinés à accompagner cette évolution, une démarche qui a abouti au lancement de cf. cf a été fondamentalement développé en tenant compte des agents, et inclut des outils novateurs conçus pour la découverte de commandes par les agents, qui deviendra, selon nous, la norme dans de nombreuses CLI dans un avenir proche.</p>
+<p>Wrangler bénéficiait d’un avantage&nbsp;: des années de documentation, d’articles de blog et de guides tiers ont été assimilées pendant le processus d’entraînement des LLM. Il présentait toutefois le désavantage inverse&nbsp;: modifier le fonctionnement de Wrangler va désormais à l’encontre des comportements appris, et un changement considérable serait inévitable au vu de l’ampleur des améliorations que nous souhaitons apporter.</p>
+<p>Introduire une nouvelle CLI que les agents n’ont jamais vu semble être une rupture majeure, mais c’est en réalité la démarche la plus saine que nous puissions adopter. Grâce aux décisions architecturales que nous avons prises, aux injections de contexte que nous pouvons effectuer et aux fichiers AGENTS.md que nous pouvons ajouter, opérer un tel changement est en réalité moins déroutant pour un agent que de lui demander de contextualiser les différences majeures entre deux versions d’un outil qu’il connaît déjà. Nous lançons cette version en y intégrant quelques-unes de ces fonctionnalités pensées pour les agents, et d’autres suivront prochainement.</p>
+<h2><strong>Les agents doivent filtrer du JSON, pas analyser des tableaux</strong></h2>
+<p>Lorsque les agents utilisent Wrangler, ils ajoutent <code>--json</code> à chaque commande qu’ils exécutent, puis filtrent généralement le résultat avec <code>jq</code> afin d’en extraire un sous-ensemble de champs. Or, seules certaines commandes de Wrangler prenaient en charge l’indicateur <code>--json</code> ; beaucoup renvoyaient des tableaux en caractères Unicode, conçus pour des utilisateurs humains consultant l’affichage dans leur terminal. Les agents peuvent les interpréter, mais cela leur demande plus de temps et plus de tokens qu’un filtre <code>jq</code>.</p>
+<div id="html-block-9w8bry5hv" class="html-block">
+	<div style="padding-top:56.25%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/161161bbd9415f3b94eb2542f5efc905/iframe?muted=true&amp;preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F161161bbd9415f3b94eb2542f5efc905%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>
+<p>Dans cf, nous adoptons la démarche inverse&nbsp;: les agents ont uniquement besoin de JSON, et si les agents sont appelés à devenir les utilisateurs principaux de cet outil, JSON doit logiquement devenir le choix par défaut. Pour la grande majorité des commandes, qui ne seront que rarement utilisées par des opérateurs humains, c’est de toute évidence la bonne décision.</p>
+<p>En tant qu’utilisateur humain de cette CLI, vous êtes, en réalité, un intermédiaire en retrait d’un niveau de son utilisation directe. Il est préférable que les agents puissent facilement filtrer leurs résultats, puis vous présenter cette liste filtrée dans le format de votre choix que de vous fournir des tableaux que vous ne lirez probablement jamais directement.</p>
+<p>Mais qu’en est-il si vous cherchez à accomplir une action qui nécessite une réelle saisie personnelle, par exemple, rechercher un nom de domaine à acheter ?</p>
+<p>Pour les commandes auxquelles votre agent peut accéder en enchaînant des paramètres nommés dans une longue et fastidieuse séquence, vous pouvez simplement remplir un formulaire. cf décompose les exigences de l’API en une série de saisies validées, transformant l’achat d’un nom de domaine (même avec des exigences complexes) en une démarche simple à réaliser.</p>
+<div id="html-block-9djmog3v8" class="html-block">
+	<div style="padding-top:56.25%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/755ffef571dffd64e6f5ec81e3ff0f12/iframe?muted=true&amp;preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F755ffef571dffd64e6f5ec81e3ff0f12%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>
+<p>Ou, si vous y tenez vraiment, demandez simplement à votre agent de s’en occuper.</p>
+<div id="html-block-e17vca39f" class="html-block">
+	<div style="padding-top:56.25%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/97ce66d919010c94fdc0ffd3bcd1ead8/iframe?muted=true&amp;preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F97ce66d919010c94fdc0ffd3bcd1ead8%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>
+<h2><strong>Votre agent peut trouver la bonne commande par lui-même</strong></h2>
+<p>Avec 3 000&nbsp;itinéraires possibles dans une CLI, comment votre agent peut-il identifier rapidement l’opération dont il a besoin sans saturer vos informations de contexte ? C’est la raison pour laquelle nous avons également ajouté <code>cf cli search</code>.</p>
+<p>Cette commande permet à votre agent de formuler en langage naturel la tâche qu’il souhaite accomplir, et un index de recherche léger lui renvoie une liste de commandes appropriées, établie en fonction de leur description d’API et de leurs paramètres. Nous informons automatiquement votre agent de l’existence de cette commande lorsqu’il exécute <code>--help</code> pour la première fois.</p>
+<div id="html-block-ieg03v8vg" class="html-block">
+	<div style="padding-top:56.25%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/8e6ddad518337c0c01d90078e7cd5e58/iframe?muted=true&amp;preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F8e6ddad518337c0c01d90078e7cd5e58%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>
+<h2><strong>Une configuration avec vérification de type pour votre agent</strong></h2>
+<p>Notre nouveau format de configuration repose sur TypeScript ; facile à analyser pour les humains et les agents, il vous permet d’écrire votre configuration de façon programmatique.</p>
+<p>Une configuration typée s’avère extrêmement utile pour les agents. Nous avons constaté que, même sans connaissance préalable du format de configuration programmatique, les agents parviennent facilement à identifier et modifier la configuration à la demande, même pour des éléments comme <code>env</code>, dont le fonctionnement a considérablement changé par rapport à la fonctionnalité du même nom dans Wrangler. Tous les agents utilisant des plugins LSP, comme Claude Code et Codex, tirent parti d’une meilleure capacité d’interprétation contextuelle du fichier de configuration, qui leur permet de formuler des suggestions beaucoup plus précises.</p>
+<p>Comparez cela au format TOML, qui ne proposait pas de schéma accessible, ou à JSONC, dont le schéma associé était rarement utilisé par les agents.</p>
+<p>Certains fichiers de configuration Wrangler internes à Cloudflare ont été condensés de 40&nbsp;%, passant de plus de 5 000&nbsp;lignes avec de nombreux environnements personnalisés par développeur à des fichiers « d’usine » qui génèrent plus efficacement la configuration de chaque développeur.</p>
+<p>Ce résultat est obtenu en définissant programmatiquement chaque environnement à partir d’une même base universelle, au lieu de dupliquer des blocs <code>env</code> comme c’était l’usage dans Wrangler. Une instance Workers simple comportant plusieurs environnements bascule désormais simplement vers l’argument <code>mode</code> natif de Vite pour passer d’un ensemble de configuration à un autre.</p>
+<p>Une configuration simple permettant d’appliquer cette approche se présente désormais comme ceci&nbsp;:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">import { bindings, defineConfig } from </span><span class="sk-032f62-99ffe4">"cf/config"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">import </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-d73a49-ffc799"> as</span><span class="sk-24292e-fff"> entrypoint from </span><span class="sk-032f62-99ffe4">"./index.js"</span><span class="sk-24292e-fff"> with { </span><span class="sk-d73a49-a0a0a0">type:</span><span class="sk-032f62-99ffe4"> "cf-worker"</span><span class="sk-24292e-fff"> };</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">export default </span><span class="sk-6f42c1-ffc799">defineConfig</span><span class="sk-24292e-fff">(({ mode }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> ({</span></span>
+<span class="line"><span class="sk-24292e-fff">  worker</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">    name</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "example-worker"</span><span class="sk-24292e-fff">, </span></span>
+<span class="line"><span class="sk-24292e-fff">      entrypoint,</span></span>
+<span class="line"><span class="sk-24292e-fff">      compatibilityDate</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "2026-09-27"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        Environment</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> bindings</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">(`</span><span class="sk-6f42c1-ffc799">This</span><span class="sk-24292e-fff"> is </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">{mode} environment`),</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">}));</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>Vous pouvez migrer votre instance Cloudflare Workers vers ce nouveau format via la commande <code>cf migrate</code>.</p>
+<p>Nous vous proposons également plusieurs fonctions d’assistance,&nbsp;grâce auxquelles le développement de votre instance Workers devient un jeu d’enfant.</p>
+<p><code>bindings</code> offre à votre agent un espace centralisé depuis lequel découvrir tout ce que propose la plateforme pour développeurs. Toutes les ressources, des variables d’environnement au stockage, aux bases de données et aux files d’attente, peuvent être automatiquement suggérées et expliquées par votre éditeur.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { bindings, defineConfig } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "cf/config"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-6f42c1-ffc799"> defineConfig</span><span class="sk-24292e-fff">(({ </span><span class="sk-e36209-fff">mode</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> ({</span></span>
+<span class="line"><span class="sk-24292e-fff">  worker: {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // ...</span></span>
+<span class="line"><span class="sk-24292e-fff">    env: {</span></span>
+<span class="line"><span class="sk-24292e-fff">      API_URL: bindings.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-24292e-fff">        mode </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "production"</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">          ?</span><span class="sk-032f62-99ffe4"> "https://example.com"</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">          :</span><span class="sk-032f62-99ffe4"> "https://staging.example.com"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      ),</span></span>
+<span class="line"><span class="sk-24292e-fff">      API_TOKEN: bindings.</span><span class="sk-6f42c1-ffc799">secret</span><span class="sk-24292e-fff">(),</span></span>
+<span class="line"><span class="sk-24292e-fff">      CACHE: bindings.</span><span class="sk-6f42c1-ffc799">kv</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">        id: mode </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "production"</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">          ?</span><span class="sk-032f62-99ffe4"> "production-namespace-id"</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">          :</span><span class="sk-032f62-99ffe4"> "staging-namespace-id"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      }),</span></span>
+<span class="line"><span class="sk-24292e-fff">      DATABASE: bindings.</span><span class="sk-6f42c1-ffc799">d1</span><span class="sk-24292e-fff">({ name: </span><span class="sk-032f62-99ffe4">`example-${</span><span class="sk-24292e-fff">mode</span><span class="sk-032f62-99ffe4">}-database`</span><span class="sk-24292e-fff"> }),</span></span>
+<span class="line"><span class="sk-24292e-fff">      UPLOADS: bindings.</span><span class="sk-6f42c1-ffc799">r2</span><span class="sk-24292e-fff">({ name: </span><span class="sk-032f62-99ffe4">`example-${</span><span class="sk-24292e-fff">mode</span><span class="sk-032f62-99ffe4">}-uploads`</span><span class="sk-24292e-fff"> }),</span></span>
+<span class="line"><span class="sk-24292e-fff">      JOBS: bindings.</span><span class="sk-6f42c1-ffc799">queue</span><span class="sk-24292e-fff"> &lt; { </span><span class="sk-e36209-fff">userId</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff"> } &gt; ({</span></span>
+<span class="line"><span class="sk-24292e-fff">        name: </span><span class="sk-032f62-99ffe4">`example-${</span><span class="sk-24292e-fff">mode</span><span class="sk-032f62-99ffe4">}-jobs`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      }),</span></span>
+<span class="line"><span class="sk-24292e-fff">      AI: bindings.</span><span class="sk-6f42c1-ffc799">ai</span><span class="sk-24292e-fff">(),</span></span>
+<span class="line"><span class="sk-24292e-fff">      SEARCH_INDEX: bindings.</span><span class="sk-6f42c1-ffc799">vectorize</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">        name: </span><span class="sk-032f62-99ffe4">`example-${</span><span class="sk-24292e-fff">mode</span><span class="sk-032f62-99ffe4">}-search`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      }),</span></span>
+<span class="line"><span class="sk-24292e-fff">      API: bindings.</span><span class="sk-6f42c1-ffc799">worker</span><span class="sk-24292e-fff">({ worker: </span><span class="sk-032f62-99ffe4">`example-${</span><span class="sk-24292e-fff">mode</span><span class="sk-032f62-99ffe4">}-api`</span><span class="sk-24292e-fff"> }),</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">}));</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>De la même manière, nous avons intégré une fonction d’aide pour les déclencheurs&nbsp;(<code>triggers</code>), qui constituent la nouvelle façon de définir les routes, les files d’attente, les plannings et les déclencheurs d’e-mails pour votre instance Workers. Plutôt que de travailler avec des déclencheurs disséminés dans votre fichier de configuration, vous pouvez désormais retrouver facilement, dans un seul bloc, les actions susceptibles de déclencher l’exécution de votre instance Workers.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">import { defineConfig, triggers } from </span><span class="sk-032f62-99ffe4">"cf/config"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">export default </span><span class="sk-6f42c1-ffc799">defineConfig</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  worker</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // ...</span></span>
+<span class="line"><span class="sk-24292e-fff">    triggers</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-24292e-fff">      triggers</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">({ pattern</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "example.com/*"</span><span class="sk-24292e-fff"> }),</span></span>
+<span class="line"><span class="sk-24292e-fff">      triggers</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">scheduled</span><span class="sk-24292e-fff">({ schedule</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "0 * * * *"</span><span class="sk-24292e-fff"> }),</span></span>
+<span class="line"><span class="sk-24292e-fff">      triggers</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">queue</span><span class="sk-24292e-fff">({ name</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "jobs"</span><span class="sk-24292e-fff">, maxBatchSize</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-24292e-fff"> }),</span></span>
+<span class="line"><span class="sk-24292e-fff">      triggers</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">email</span><span class="sk-24292e-fff">({ addresses</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"support@example.com"</span><span class="sk-24292e-fff">] }),</span></span>
+<span class="line"><span class="sk-24292e-fff">    ],</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p><code>defineConfig.worker</code> n’est que le point de départ. Notre objectif, avec cloudflare.config.ts, est de proposer un outil central de gestion pour l’ensemble de l’écosystème Cloudflare. Chaque produit dont vous avez besoin (ainsi que son API, qui sera accessible à votre agent via cf) pourra être exprimé à travers une configuration fortement typée. Bientôt, vous pourrez configurer des politiques complètes, paramétrer des zones, gérer le DNS et bien davantage via ce fichier de configuration.</p>
+<h2><strong>Une expérience de développement inégalée</strong></h2>
+<p>Quand Wrangler a commencé à développer des instances Workers JavaScript, <a href="https://vite.dev" target="_blank" rel="noopener noreferrer"><u>Vite</u></a> n’existait pas encore. À la place, nous utilisions esbuild dans Wrangler pour bundler vos instances Workers. Le serveur de développement que proposait Wrangler sur le port&nbsp;: 8787 était un outil créé par notre équipe spécialiste de Wrangler, et la moindre modification impliquait de s’immerger longuement dans les arcanes d’outils locaux spécifiques à Cloudflare, comme Miniflare.</p>
+<p>Vite offre une amélioration considérable à cet égard&nbsp;: il propose un vaste écosystème de plugins, l’un des meilleurs serveurs de développement du marché avec remplacement des modules à chaud (Hot Module Replacement, HMR) et des builds qui utilisent Rolldown, une bibliothèque écrite en langage Rust, pour l’élimination du code mort (ou « <em>tree-shaking</em> »). Tout ce que vous pouvez accomplir avec Vite est réalisable avec le plugin Vite pour Cloudflare.</p>
+<p>Le plugin Vite pour Cloudflare constitue la méthode recommandée pour développer des instances Workers, quelle que soit la nature de votre projet&nbsp;: qu’il s’agisse d’un projet orienté frontend ou d’une API backend. Associé à notre plugin Vitest, il offre un environnement de développement et de test cohérent, qui correspond au runtime Workers et vous donne un accès direct aux bindings et aux API de la plateforme.</p>
+<p>cf est développé dans Vite, par défaut. La plupart de vos instances Workers pourront être migrées avec facilité, grâce aux agents. Pour d’autres, la migration pourra demander plus de temps ; c’est pourquoi cf continuera de déléguer à Wrangler la gestion du développement et du déploiement des instances Workers JavaScript qui doivent continuer à utiliser esbuild, ainsi que des instances Workers Rust et Python.</p>
+<h2><strong>Migration depuis Wrangler</strong></h2>
+<p>Migrer une instance Workers depuis Wrangler est aussi simple qu’exécuter la commande cf migrate</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cf</span><span class="sk-032f62-99ffe4"> migrate</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>Les instances Workers qui développent déjà des applications avec Vite seront automatiquement converties vers cloudflare.config.ts. Si votre instance Workers s’appuie sur Wrangler pour esbuild, cf continuera de déléguer les builds à Wrangler.</p>
+<p>À la fin de la bêta ouverte, nous publierons une dernière version majeure de Wrangler qui vous guidera, vous et votre agent, vers l’utilisation de cf. Nous maintiendrons le support de Wrangler pendant 18&nbsp;mois après la fin de la bêta, afin de vous laisser le temps d’effectuer la migration.</p>
+<p>Vous pouvez également configurer automatiquement de nouveaux projets pour Cloudflare en exécutant <code>cf init/deploy</code>, qui installera le plugin Vite pour Cloudflare et créera votre fichier de configuration</p>
+<p>Les sites statiques ne nécessitent toujours aucun fichier de configuration pour démarrer, et leur déploiement est aussi simple que le fait d’exécuter <code>cf deploy</code> dans votre projet.</p>
+<p>Pour démarrer un nouveau projet «&nbsp;Hello World&nbsp;» avec cf, utilisez la commande <code>cf init</code>.</p>
+<p><em>cf est un projet open source et les problèmes peuvent être <a href="https://github.com/cloudflare/cf" target="_blank" rel="noopener noreferrer"><u>signalés sur notre dépôt GitHub</u></a></em>.</p>
+<p></p>

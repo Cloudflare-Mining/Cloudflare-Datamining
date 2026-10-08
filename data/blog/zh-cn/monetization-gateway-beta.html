@@ -1,0 +1,101 @@
+<p>今天，我们正式推出 Cloudflare Monetization Gateway 封闭测试版，并展示四个已在生产环境中运行的客户案例。自三个月前我们<a href="https://blog.cloudflare.com/monetization-gateway" target="_blank" rel="noopener noreferrer"><u>宣布该计划</u></a>以来，我们与客户密切合作，使 Gateway 变得更快、更灵活、更易用。</p>
+<p>通过简单几次点击，Monetization Gateway 让域名所有者可以向智能体收取访问其网站、API、MCP 工具或数据集的费用。立即在 <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fmonetize%2Fmonetization-gateway" target="_blank" rel="noopener noreferrer"><u>Cloudflare </u>仪表板</a> 申请访问权限。</p>
+<h3><strong>智能体的兴起与机器支付的普及</strong></h3>
+<p>如今，大多数软件企业通过订阅或预付费积分销售产品。这些商业模式要求买家进行相当大的前期经济投入，因此买家只能订阅少数符合预算的服务。然而，这一商业模式与互联网流量的主要来源——智能体——的运作方式并不契合。</p>
+<p>智能体追求结果，无论是来自直接问题还是隐性需求。为了实现一个目标，智能体可能会访问新站点、调用 MCP 工具或摄取数据流。全球各地的企业都希望处于关键路径中，帮助智能体获得更好的结果。这有助于企业在新用户所在之处触达他们、从为智能体回答所做的贡献中获得报酬，并在无头智能体商务领域占据领先地位。</p>
+<p>企业需要将商业模式与智能体的消费模式对齐，才能抓住这一机遇。支付必须与智能体的消费单位相匹配：按请求、按搜索查询、按 token 计费。当今主流的支付基础设施无法支持这一需求。这些支付基础设施假设买家能够接受高延迟、只进行大额交易，以及买家是卖家已知或可识别的实体。智能体所需恰恰相反：低成本、快速且可靠的支付基础设施，能够在最小人工干预下安全扩展。</p>
+<p>卖家和买家都将被激励去将商业模式与消费对齐，并使用能帮助他们实现这一目标的支付网络。如今，稳定币交易及其底层区块链网络已能够满足这些要求。随着时间推移，我们可能会看到现有网络引入新方案或新型支付网络涌现。Monetization Gateway 的存在就是为了确保卖家能专注于自身产品，买家能获得可预期的购买体验。</p>
+<h3><strong>基于Monetization Gateway进行开发</strong></h3>
+<p>Monetization Gateway 让卖家能够对 Cloudflare 网络背后的任何资源向智能体按用量收费。它专为每次请求即代表一次使用的资源而设计，如 API、工具和数据。高价值内容则不同：一个页面可能被爬取一次，却被使用千次。为此，<a href="http://blog.cloudflare.com/pay-per-use" target="_blank" rel="noopener noreferrer"><u>Pay Per Use</u></a> 提供了一个由经过验证的可信买家组成的网络，每次使用都会上报并付费。</p>
+<p>该网关使用 HTTP 402 Payment Required 状态码，使买家可以通过 HTTP 内联方式为资源提供支付，与请求资源本身同步进行。这是一个重要的区别，因为不存在跳转到结账页面的重定向，也无需调用单独的支付 API。</p>
+<p>卖家定义哪些请求需要付款、费用金额以及付款接收地址。买家收到支付指令，签署授权，并在支付结算后获得资源。</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA////////8/X37O/z7vL38vb68vT27O3t////////8/X46+707fD48vX78vX37e/v////////9Pb76+727PD58vX98/b67/Ly////////9vj97fD57/H89ff/9vj98vT0////////+vv/8fP79Pb/+vv/+/z/9vb3////////////9/j++vv/////////+vj4////////////+/z//////////////fn5/////////////f3//////////////vn6" alt="" width="715" height="578" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBNG70D3G5H51X2D2D2WV.png&amp;w=715&amp;h=578&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBNG70D3G5H51X2D2D2WV.png&amp;w=640&amp;h=517&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBNG70D3G5H51X2D2D2WV.png&amp;w=715&amp;h=578&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBNG70D3G5H51X2D2D2WV.png&amp;w=750&amp;h=606&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBNG70D3G5H51X2D2D2WV.png&amp;w=828&amp;h=669&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBNG70D3G5H51X2D2D2WV.png&amp;w=1080&amp;h=873&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBNG70D3G5H51X2D2D2WV.png&amp;w=1280&amp;h=1035&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBNG70D3G5H51X2D2D2WV.png&amp;w=1430&amp;h=1156&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBNG70D3G5H51X2D2D2WV.png&amp;w=1999&amp;h=1615&amp;q=100&amp;f=webp" data-lightbox-width="1999" data-lightbox-height="1615" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="578" class="pt-portable-image-media"></div>
+</figure>
+<p>最简单的理解方式是将其视为“智能体专用付费墙”。卖家只需几秒钟和几次点击即可上线，确定要收费的目标群体，并确保买家在完成支付前无法访问相关资源。</p>
+<p>除了易于实施之外，我们还为卖家提供了一整套开箱即用的定价和变现功能。您可以编写匹配请求任何部分（如 URL、请求头或查询参数）的定价规则，并从多种定价方案中选择。其余工作由我们来处理：通过 <a href="https://docs.cdp.coinbase.com/x402/seller/facilitator" target="_blank" rel="noopener noreferrer"><u>Coinbase x402 Facilitator</u></a> 进行支付验证和结算，处理失败和重试，提供分析报告，以及跟进 x402 协议的变更。支付在 <a href="https://www.base.org" target="_blank" rel="noopener noreferrer"><u>Base</u></a> 区块链上以 USDC 结算，USDC 是一种与美元挂钩的稳定币。未来，我们计划帮助卖家让自己的服务对智能体可见，公开所有交易日志，支持更多支付基础设施，并整合身份原语。</p>
+<p>让我们看看客户今天是如何在生产中使用它的。</p>
+<h3><strong>Cloudflare AI Gateway：为推理付费</strong></h3>
+<p><a href="https://www.cloudflare.com/products/ai-gateway" target="_blank" rel="noopener noreferrer"><u>Cloudflare 的 AI Gateway</u></a> 是一个控制平面和模型市场，让开发者只需一个 API 密钥即可访问数百个AI模型。我们的目标是在生态系统中运营最丰富的模型目录，并让尽可能多的客户使用。AI Gateway 允许客户<a href="https://developers.cloudflare.com/ai-gateway/features/unified-billing" target="_blank" rel="noopener noreferrer"><u>购买积分</u></a>，可用于所有 AI Gateway 消费。但随着越来越多的智能体持有钱包，以维持积分余额作为唯一使用方式会带来不必要的摩擦。</p>
+<p>从今天起，美国本土Cloudflare客户可以通过添加请求头 <code>PAYMENT-METHOD: x402</code>，在请求时为特定模型集的推理付费。详细说明请参阅我们的 <a href="https://developers.cloudflare.com/ai-gateway/features/machine-payments" target="_blank" rel="noopener noreferrer"><u>AI Gateway 开发人员文档</u></a>。未来，您可以期待看到HTTP 402状态码原生集成到更多 Cloudflare 基础设施产品中。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ curl -iX POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run" \</span></span>
+<span class="line"><span>  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \</span></span>
+<span class="line"><span>  --header "Payment-Method: x402" \</span></span>
+<span class="line"><span>  --header "Content-Type: application/json" \</span></span>
+<span class="line"><span>  --data '{</span></span>
+<span class="line"><span>    "model": "z-ai/glm-4.7-flash",</span></span>
+<span class="line"><span>    "input": {</span></span>
+<span class="line"><span>      "max_tokens": 9001,</span></span>
+<span class="line"><span>      "messages": [</span></span>
+<span class="line"><span>        {</span></span>
+<span class="line"><span>          "role": "user",</span></span>
+<span class="line"><span>          "content": "What is Cloudflare?"</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>      ]</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>  }'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p>AI Gateway 拥有复杂的定价引擎，负责每个 token 的计费方式。我们联合设计了 Monetization Gateway，以满足源端控制定价的需求。启用此配置后，Monetization Gateway 直接从卖家（AI Gateway）请求定价信息。对 AI Gateway 而言，这意味着可以依赖其现有定价模块，无需在 Monetization Gateway 中维护规则目录。</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA//v4/vf08u3t6urr7O/x8PT17/Py6evq//37//n39vHw7u7v8PL09Pf58/X27e7t//////z7+vX18/P09ff5+Pz+9/n68fLx//////////r6+fj5+vz//f//+/7/9fb1//////////3+/Pz9/v//////////+Pn4//////////////7/////////////+vz6/////////////////////////////P77/////////////////////////////P77" alt="" width="715" height="526" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBQRZ3BXBS0C4Z04GFXS6.png&amp;w=715&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBQRZ3BXBS0C4Z04GFXS6.png&amp;w=640&amp;h=471&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBQRZ3BXBS0C4Z04GFXS6.png&amp;w=715&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBQRZ3BXBS0C4Z04GFXS6.png&amp;w=750&amp;h=552&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBQRZ3BXBS0C4Z04GFXS6.png&amp;w=828&amp;h=609&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBQRZ3BXBS0C4Z04GFXS6.png&amp;w=1080&amp;h=795&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBQRZ3BXBS0C4Z04GFXS6.png&amp;w=1280&amp;h=942&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBQRZ3BXBS0C4Z04GFXS6.png&amp;w=1430&amp;h=1052&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBQRZ3BXBS0C4Z04GFXS6.png&amp;w=1999&amp;h=1471&amp;q=100&amp;f=webp" data-lightbox-width="1999" data-lightbox-height="1471" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="526" class="pt-portable-image-media"></div>
+</figure>
+<p>需要从源端设置价格？<a href="https://blog.cloudflare.com/#">发邮件给我们</a>，我们将帮助您开始使用。</p>
+<h3>Ceramic.ai：为网络搜索付费</h3>
+<blockquote><em>“网络是为人类买家而建的——那些注册并输入信用卡的人。智能体需要自主行动，支付正是实现这一目标的方式。搜索是每个智能体最先需要的功能之一，因此它也应该是智能体最先能够购买的功能之一。”——Dr. Anna Patterson，创始人，Ceramic.ai</em></blockquote>
+<p>如果推理是思考，那么搜索就是现实检验。<a href="http://ceramic.ai" target="_blank" rel="noopener noreferrer"><u>Ceramic.ai</u></a> 提供专为智能体构建的网络搜索 API。<a href="http://ceramic.ai" target="_blank" rel="noopener noreferrer">Ceramic.ai </a>维护着一个包含超过 400 亿个页面的专有索引，并针对机器调用方对其技术栈的每一层进行了优化，可在 50 毫秒内返回搜索结果。以这样的速度，智能体可以在整个任务过程中反复搜索。</p>
+<p>这使搜索成为智能体原生支付的天然契合点。搜索是智能体购买的最具弹性的事物之一。一个简单的问题可能只需一次查询，而复杂的调查任务可能需要数百次。当智能体可以自行为搜索付费时，就不再需要根据预先设定的预算来分配查询次数。它可以根据任务决定搜索深度，在需要更多证据时多花费一些。</p>
+<p><a href="http://ceramic.ai" target="_blank" rel="noopener noreferrer"><u>Ceramic.ai</u></a> 使用 Monetization Gateway 的固定定价变现方案，让智能体无需 API 密钥即可执行搜索。使用<a href="https://github.com/CeramicTeam/ceramic-x402-search-agent" target="_blank" rel="noopener noreferrer"><u>演示</u></a>和 <u><a href="http://ceramic.ai" target="_blank" rel="noopener noreferrer">Ceramic.ai </a><a href="https://docs.ceramic.ai" target="_blank" rel="noopener noreferrer">文档</a></u>了解更多。</p>
+<h2>Stocktwits：为股票信号付费</h2>
+<blockquote><em>“智能体改变了数据的消费方式。客户无需签署订阅或谈判企业许可证，智能体可以在需要时请求所需的确切内容。对个别请求收费的能力为 Stocktwits 开辟了一种全新的数据开放方式。”——Howard Lindzon，创始人兼 CEO，Stocktwits</em></blockquote>
+<p>当股票开始波动时，交易者首先问的问题之一是：其他人都在说什么？</p>
+<p>18 年来，这一对话一直在 <a href="https://stocktwits.com" target="_blank" rel="noopener noreferrer"><u>Stocktwits </u></a>上进行。Stocktwits 于 2008 年推出，率先引入了现金标签（如 $<a href="https://stocktwits.com/symbol/NET" target="_blank" rel="noopener noreferrer">NET</a>），以围绕个股组织市场对话。如今，超过 1000 万人使用 Stocktwits 跟踪市场、分享想法，并了解其他投资者的讨论。</p>
+<p>由于 Stocktwits 专为投资者打造，它能实时呈现散户投资者正在关注和讨论的内容。Stocktwits 将这些活动转化为信号，包括：</p>
+<ul>
+	<li><strong>情绪：</strong>关于某只股票代码的近期帖子主要是看多还是看空</li>
+	<li><strong>消息量：</strong>某只股票代码相对其典型活动产生了多少讨论</li>
+	<li><strong>关注者：</strong>有多少 Stocktwits 用户关注某只股票代码，衡量散户持续关注度</li>
+	<li><strong>趋势：</strong>哪些股票代码正在最快速地吸引关注</li>
+</ul>
+<p>这些信号长期以来通过 Stocktwits 现有的数据产品提供。Monetization Gateway 为新型客户——即需要按需获取市场背景的 AI 智能体——创造了额外的分发渠道。例如，一个监控投资组合或研究投资标的的智能体，可以查看 $NET 周边讨论是否升温、情绪是否偏向看多或看空，或有多少投资者关注该股票代码。无需传统数据许可证，开发者只需为其智能体实际发出的个别请求付费。</p>
+<p>最初，Stocktwits 为这些请求建立了一个独立的面向智能体的路径，并在其前端部署了 Cloudflare 的 Monetization Gateway。现有的 API 和企业数据产品保持不变。每个请求单独定价，使 Stocktwits 能够在保留现有数据产品和许可模式的同时，让 AI 智能体可以访问其市场信号。<a href="https://api-docs.stocktwits.com/#tag--Monetization-Gateway-(x402)" target="_blank" rel="noopener noreferrer"><u>立即查看他们的文档开始使用</u></a>。</p>
+<h3><strong>API2PDF：为 API 访问付费</strong></h3>
+<p><a href="https://api2pdf.com" target="_blank" rel="noopener noreferrer"><u>API2PDF</u></a> 是一个 REST API，帮助开发者从 HTML 和 Office 文档生成 PDF。自 2018 年上线以来，API2PDF 观察到越来越多的 AI 智能体将开发者引导至其服务，现已将其视为一级客户。</p>
+<p>API2PDF 的基于消费的定价模型根据完成每个请求所需的带宽和计算资源向客户收费。以前，客户在使用该服务前需要创建账户并获取 API 密钥。第一个月后还需提供信用卡，导致转化率下降超过50%。API2PDF 现在使用 Monetization Gateway，当用户或智能体在没有API密钥的情况下发出请求时，返回 HTTP 402 响应。由于每个请求的计算和带宽成本是可变的，API2PDF 使用可变定价告知智能体单次请求可能产生的最高费用。客户完成支付后，API2PDF 处理请求并仅结算实际消耗量。</p>
+<p>智能体面临与开发者相同的自建还是购买的决策。需要 PDF 的智能体可以消耗 token 自行生成，或花费不到一分钱委托 API2PDF 这类专业 API 来正确完成。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -iX</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-032f62-99ffe4"> https://v2.api2pdf.com/chrome/pdf/html</span><span class="sk-005cc5-99ffe4"> --header</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-005cc5-99ffe4"> --data</span><span class="sk-032f62-99ffe4"> '{"html":"&lt;p&gt;Hello from an AI agent&lt;/p&gt;"}'</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">HTTP/2</span><span class="sk-005cc5-ffc799"> 402</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">content-type:</span><span class="sk-032f62-99ffe4"> application/json</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">payment-required:</span><span class="sk-032f62-99ffe4"> eyJ4NDAy...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<h4><strong>立即开始</strong></h4>
+<p>Monetization Gateway 目前以封闭测试版向符合条件的美国本土卖家和买家开放，更多地区的支持即将推出。如果您有兴趣让您的产品支持智能体，欢迎联系我们。请在 <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fmonetize%2Fmonetization-gateway" target="_blank" rel="noopener noreferrer"><u>Cloudflare 仪表板</u></a> 填写入驻申请，并查阅我们的 <u>开发人员文档</u>，我们将尽快与您联系。如有任何问题、想法，或希望帮助我们扩大智能体支付规模，欢迎发送电子<a href="https://blog.cloudflare.com/#">邮件</a>。</p>
+<p><em>我们衷心感谢合作伙伴的贡献与反馈，没有他们，这次发布将无法实现。特别感谢 Cloudflare AI Gateway 的 Vail Gold 和 Jeff Rafter；Ceramic.ai 的 Dr. Anna Patterson、Sean Costello、Sadé Ried 和 Autumn Yuan；Stocktwits的Leo Gorkin、Ethan Berk和Santiago Sanchez；以及 API2PDF 的 Zack Schwartz。</em></p>

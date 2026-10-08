@@ -1,0 +1,101 @@
+<p>오늘 Cloudflare Monetization Gateway를 클로즈드 베타로 제공하며, 현재 프로덕션에서 운영 중인 네 가지 고객 사례를 소개합니다. 3개월 전 <a href="https://blog.cloudflare.com/monetization-gateway" target="_blank" rel="noopener noreferrer"><u>계획을 발표</u></a>한 이후 고객과 긴밀히 협력하여 Gateway를 빠르고 유연하며 사용하기 편리하게 만들어 왔습니다.</p>
+<p>Monetization Gateway를 사용하면 도메인 소유자가 몇 번의 클릭만으로 에이전트에게 웹사이트, API, MCP 도구 또는 데이터셋 액세스 요금을 부과할 수 있습니다. 오늘 <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fmonetize%2Fmonetization-gateway" target="_blank" rel="noopener noreferrer"><u>Cloudflare Dashboard</u></a>에서 액세스를 신청하세요.</p>
+<h3><strong>에이전트와 머신 결제의 확산</strong></h3>
+<p>오늘날 대부분의 소프트웨어 기업은 구독 또는 선불 크레딧으로 제품을 판매합니다. 이러한 비즈니스 모델에서는 구매자가 상당한 비용을 미리 지출해야 하므로, 구매자는 예산 범위 내에서 소수의 서비스만 구독하게 됩니다. 그러나 이 비즈니스 모델은 인터넷 트래픽의 주된 원천인 에이전트의 작동 방식과 맞지 않습니다.</p>
+<p>에이전트는 결과를 추구합니다. 직접적인 질문에서 비롯되든 암묵적인 요청에서 비롯되든 마찬가지입니다. 결과를 달성하기 위해 에이전트는 새로운 사이트를 방문하고, MCP 도구를 호출하거나, 데이터 피드를 가져올 수 있습니다. 전 세계 기업은 에이전트가 더 나은 결과를 얻도록 돕는 핵심 경로에 자리하고 싶어합니다. 이를 통해 새로운 사용자가 있는 곳에서 이들을 만나고, 에이전트의 답변에 제공한 입력에 대한 대가를 받고, 헤드리스 에이전틱 커머스에서 선도적인 위치를 차지할 수 있습니다.</p>
+<p>기업은 이 기회를 포착하기 위해 비즈니스 모델을 에이전트의 사용 패턴에 맞게 조정해야 합니다. 결제는 에이전트의 사용 단위인 요청당, 검색 쿼리당, 토큰당 방식과 일치해야 합니다. 오늘날 널리 쓰이는 결제 네트워크는 이를 지원하지 못합니다. 이러한 결제 네트워크는 구매자가 긴 대기 시간을 감수하고, 큰 금액으로만 거래하며, 판매자가 잘 알고 있거나 식별할 수 있는 주체라고 가정합니다. 에이전트가 원하는 것은 그 반대입니다. 최소한의 사람 개입으로 안전하게 확장할 수 있는 저렴하고 빠르며 신뢰할 수 있는 결제 네트워크입니다.</p>
+<p>판매자와 구매자는 사용량에 맞춰 비즈니스 모델을 조정할 유인을 갖게 되며, 이를 가능하게 하는 결제 네트워크를 사용하게 될 것입니다. 현재 스테이블코인 거래와 이를 뒷받침하는 블록체인 네트워크는 이러한 요구사항을 충족할 수 있습니다. 시간이 지나면서 기존 네트워크가 솔루션을 도입하거나 새로운 결제 네트워크가 등장할 수 있습니다. Monetization Gateway는 판매자가 제품에 집중하고 구매자가 예측 가능한 구매 경험을 얻을 수 있도록 돕기 위해 존재합니다.</p>
+<h3><strong>Monetization Gateway로 구축하기</strong></h3>
+<p>Monetization Gateway를 통해 판매자는 Cloudflare 네트워크 뒤의 모든 리소스에 대해 에이전트에게 사용량 기준 요금을 부과할 수 있습니다. API, 도구, 데이터처럼 요청 한 번이 곧 사용 한 번인 리소스에 최적화되어 있습니다. 고가치 콘텐츠는 다릅니다. 페이지가 한 번 크롤링되어 천 번 사용될 수 있습니다. 이 경우 <a href="http://blog.cloudflare.com/pay-per-use" target="_blank" rel="noopener noreferrer"><u>Pay Per Use</u></a>가 각 사용을 보고하고 비용을 지불하는 검증된 구매자로 구성된 신뢰할 수 있는 네트워크를 제공합니다.</p>
+<p>게이트웨이는 HTTP 402 Payment Required 상태 코드를 사용하여 구매자가 리소스를 요청하는 HTTP 요청 안에서 결제를 제안할 수 있도록 합니다. 체크아웃 페이지로 리디렉션하거나 별도의 결제 API를 호출할 필요가 없다는 점이 중요한 차이입니다.</p>
+<p>판매자는 어떤 요청에 결제가 필요한지, 가격은 얼마인지, 결제를 어디로 보낼지 정의합니다. 구매자는 결제 지침을 받고, 결제 승인에 서명하며, 정산이 완료되면 리소스를 받습니다.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA////////8/X37O/z7vL38vb68vT27O3t////////8/X46+707fD48vX78vX37e/v////////9Pb76+727PD58vX98/b67/Ly////////9vj97fD57/H89ff/9vj98vT0////////+vv/8fP79Pb/+vv/+/z/9vb3////////////9/j++vv/////////+vj4////////////+/z//////////////fn5/////////////f3//////////////vn6" alt="" width="715" height="578" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBNG70D3G5H51X2D2D2WV.png&amp;w=715&amp;h=578&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBNG70D3G5H51X2D2D2WV.png&amp;w=640&amp;h=517&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBNG70D3G5H51X2D2D2WV.png&amp;w=715&amp;h=578&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBNG70D3G5H51X2D2D2WV.png&amp;w=750&amp;h=606&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBNG70D3G5H51X2D2D2WV.png&amp;w=828&amp;h=669&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBNG70D3G5H51X2D2D2WV.png&amp;w=1080&amp;h=873&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBNG70D3G5H51X2D2D2WV.png&amp;w=1280&amp;h=1035&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBNG70D3G5H51X2D2D2WV.png&amp;w=1430&amp;h=1156&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBNG70D3G5H51X2D2D2WV.png&amp;w=1999&amp;h=1615&amp;q=100&amp;f=webp" data-lightbox-width="1999" data-lightbox-height="1615" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="578" class="pt-portable-image-media"></div>
+</figure>
+<p>가장 간단히 말하면, 이를 '에이전트를 위한 페이월'이라고 생각할 수 있습니다. 판매자는 몇 번의 클릭만으로 몇 초 만에 서비스를 시작하고, 요금을 부과할 대상을 지정하며, 결제가 완료되기 전까지 구매자가 리소스에 액세스하지 못하도록 할 수 있습니다.</p>
+<p>구현이 간편할 뿐만 아니라, 판매자가 바로 사용할 수 있는 다양한 가격 책정 및 수익화 기능도 제공합니다. URL, 헤더 또는 쿼리 매개변수 등 요청의 모든 부분과 일치하는 가격 책정 규칙을 작성하고 여러 가격 책정 방식 중에서 선택할 수 있습니다. 나머지는 우리가 처리합니다. <a href="https://docs.cdp.coinbase.com/x402/seller/facilitator" target="_blank" rel="noopener noreferrer"><u>Coinbase x402 Facilitator</u></a>를 통한 결제 검증 및 정산, 실패 및 재시도, 분석, x402 프로토콜 변경 사항 대응까지 포함됩니다. 결제는 미국 달러에 연동된 스테이블코인인 USDC를 사용하여 <a href="https://www.base.org" target="_blank" rel="noopener noreferrer"><u>Base</u></a> 블록체인에서 정산됩니다. 앞으로 에이전트가 판매자의 서비스를 찾을 수 있도록 지원하고, 모든 거래의 로그를 제공하며, 추가 결제 네트워크를 지원하고, 신원 기본 요소를 통합할 계획입니다.</p>
+<p>고객들이 현재 프로덕션에서 어떻게 사용하고 있는지 살펴보겠습니다.</p>
+<h3><strong>Cloudflare AI Gateway: 추론 비용 결제</strong></h3>
+<p><a href="https://www.cloudflare.com/products/ai-gateway" target="_blank" rel="noopener noreferrer"><u>Cloudflare의 AI Gateway</u></a>는 개발자가 단일 API 키로 수백 개의 AI 모델에 액세스할 수 있는 제어 플레인이자 모델 마켓플레이스입니다. 에코시스템에서 가장 풍부한 모델 카탈로그를 운영하고 최대한 많은 고객이 이를 사용할 수 있도록 하는 것이 목표입니다. AI Gateway를 통해 고객은 AI Gateway 전반의 사용량에 쓸 수 있는 <a href="https://developers.cloudflare.com/ai-gateway/features/unified-billing" target="_blank" rel="noopener noreferrer"><u>크레딧을 구매</u></a>할 수 있습니다. 하지만 더 많은 에이전트가 지갑을 갖게 되면서, 크레딧 잔액만을 유일한 사용 방식으로 유지하면 불필요한 마찰이 생깁니다.</p>
+<p>오늘부터 미국 소재 Cloudflare 고객은 헤더 <code>PAYMENT-METHOD: x402</code>를 추가하면 일부 모델에 요청할 때 추론 비용을 결제할 수 있습니다. 자세한 안내는 <a href="https://developers.cloudflare.com/ai-gateway/features/machine-payments" target="_blank" rel="noopener noreferrer"><u>AI Gateway Developer Docs</u></a>에서 확인하세요. 앞으로 Cloudflare의 더 많은 인프라 제품에 HTTP 402 상태 코드가 네이티브로 내장될 예정입니다.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ curl -iX POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run" \</span></span>
+<span class="line"><span>  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \</span></span>
+<span class="line"><span>  --header "Payment-Method: x402" \</span></span>
+<span class="line"><span>  --header "Content-Type: application/json" \</span></span>
+<span class="line"><span>  --data '{</span></span>
+<span class="line"><span>    "model": "z-ai/glm-4.7-flash",</span></span>
+<span class="line"><span>    "input": {</span></span>
+<span class="line"><span>      "max_tokens": 9001,</span></span>
+<span class="line"><span>      "messages": [</span></span>
+<span class="line"><span>        {</span></span>
+<span class="line"><span>          "role": "user",</span></span>
+<span class="line"><span>          "content": "What is Cloudflare?"</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>      ]</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>  }'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p>AI Gateway에는 각 토큰의 요금 청구 방식을 처리하는 복잡한 가격 책정 엔진이 있습니다. 우리는 오리진에서 제어하는 가격 책정 요구사항을 충족하도록 Monetization Gateway를 공동 설계했습니다. 이 구성이 활성화되면 Monetization Gateway는 판매자(AI Gateway)로부터 직접 가격 정보를 요청합니다. AI Gateway의 경우 Monetization Gateway에 별도의 규칙 카탈로그를 유지하지 않고도 기존 가격 책정 모듈을 활용할 수 있다는 의미입니다.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA//v4/vf08u3t6urr7O/x8PT17/Py6evq//37//n39vHw7u7v8PL09Pf58/X27e7t//////z7+vX18/P09ff5+Pz+9/n68fLx//////////r6+fj5+vz//f//+/7/9fb1//////////3+/Pz9/v//////////+Pn4//////////////7/////////////+vz6/////////////////////////////P77/////////////////////////////P77" alt="" width="715" height="526" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBQRZ3BXBS0C4Z04GFXS6.png&amp;w=715&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBQRZ3BXBS0C4Z04GFXS6.png&amp;w=640&amp;h=471&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBQRZ3BXBS0C4Z04GFXS6.png&amp;w=715&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBQRZ3BXBS0C4Z04GFXS6.png&amp;w=750&amp;h=552&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBQRZ3BXBS0C4Z04GFXS6.png&amp;w=828&amp;h=609&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBQRZ3BXBS0C4Z04GFXS6.png&amp;w=1080&amp;h=795&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBQRZ3BXBS0C4Z04GFXS6.png&amp;w=1280&amp;h=942&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBQRZ3BXBS0C4Z04GFXS6.png&amp;w=1430&amp;h=1052&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3QKBQRZ3BXBS0C4Z04GFXS6.png&amp;w=1999&amp;h=1471&amp;q=100&amp;f=webp" data-lightbox-width="1999" data-lightbox-height="1471" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="526" class="pt-portable-image-media"></div>
+</figure>
+<p>오리진에서 가격을 설정해야 하나요? <a href="mailto:x402@cloudflare.com" target="_blank" rel="noopener noreferrer">이메일을 보내주시면</a> 시작할 수 있도록 도와드리겠습니다.</p>
+<h3>Ceramic.ai: 웹 검색 비용 결제</h3>
+<blockquote><em>"웹은 인간 구매자를 위해 만들어졌습니다. 가입하고 카드 정보를 입력하는 사람을 위해서요. 에이전트는 스스로 행동해야 하며, 결제는 이를 가능하게 하는 수단입니다. 검색은 모든 에이전트가 가장 먼저 필요로 하는 기능 중 하나이므로, 에이전트가 가장 먼저 구매할 수 있는 것 중 하나여야 합니다." — Dr. Anna Patterson, 창업자, Ceramic.ai</em></blockquote>
+<p>추론이 사고 과정이라면, 검색은 현실 확인입니다. <a href="http://ceramic.ai" target="_blank" rel="noopener noreferrer"><u>Ceramic.ai</u></a>는 에이전트를 위해 구축된 웹 검색 API를 제공합니다. Ceramic.ai는 400억 개 이상의 페이지로 구성된 독점 인덱스를 보유하고 있으며, 머신 기반 호출자를 위해 스택의 모든 레이어를 최적화하여 최단 50밀리초 만에 검색 결과를 반환합니다. 이 정도 속도라면 에이전트는 작업을 수행하는 동안 반복해서 검색할 수 있습니다.</p>
+<p>따라서 검색은 에이전트 네이티브 결제에 자연스럽게 잘 맞습니다. 검색은 에이전트가 구매하는 항목 중 사용량 변동 폭이 가장 큰 편입니다. 간단한 질문에는 쿼리 한 번이면 될 수 있지만, 복잡한 조사 작업에는 수백 번의 쿼리가 필요할 수 있습니다. 에이전트가 스스로 검색 비용을 지불할 수 있다면 누군가 미리 정한 예산에 맞춰 쿼리 수를 아낄 필요가 없습니다. 작업에 따라 얼마나 깊이 검색할지 결정하고, 더 많은 근거가 필요할 때 더 많이 지출할 수 있습니다.</p>
+<p><a href="http://ceramic.ai" target="_blank" rel="noopener noreferrer">Ceramic.ai</a>는 Monetization Gateway의 고정 가격 수익화 방식을 사용하여 에이전트가 API 키 없이 비용을 지불하고 검색을 실행할 수 있도록 합니다. <a href="https://github.com/CeramicTeam/ceramic-x402-search-agent" target="_blank" rel="noopener noreferrer"><u>데모</u></a>와 <u><a href="http://ceramic.ai" target="_blank" rel="noopener noreferrer">Ceramic.ai</a><a href="https://docs.ceramic.ai" target="_blank" rel="noopener noreferrer"> 문서</a></u>를 통해 자세히 알아보세요.</p>
+<h3>Stocktwits: 주식 신호 비용 결제</h3>
+<blockquote><em>"에이전트는 데이터가 소비되는 방식을 바꿉니다. 고객이 구독을 신청하거나 기업용 라이선스를 협상하는 대신, 에이전트는 필요한 것을 필요한 순간에 정확히 요청할 수 있습니다. 개별 요청에 요금을 부과할 수 있게 되면 Stocktwits가 데이터를 제공하는 완전히 새로운 방식이 열립니다." — Howard Lindzon, 창업자 겸 CEO, Stocktwits</em></blockquote>
+<p>주식이 움직이기 시작할 때, 트레이더들이 가장 먼저 묻는 질문 중 하나는 '다들 뭐라고 하나요?'입니다.</p>
+<p>18년간 그 대화는 <a href="https://stocktwits.com" target="_blank" rel="noopener noreferrer"><u>Stocktwits</u></a>에서 이어져 왔습니다. 2008년에 출시된 Stocktwits는 개별 주식에 관한 시장 대화를 종목별로 정리하기 위해 캐시태그($NET 등)를 처음 도입했습니다. 현재 1,000만 명 이상이 Stocktwits를 통해 시장을 팔로우하고, 아이디어를 공유하며, 다른 투자자들이 무엇을 말하는지 확인합니다.</p>
+<p>Stocktwits는 투자자를 위해 특별히 구축되었기 때문에 리테일 투자자들이 무엇을 주목하고 논의하는지 실시간으로 보여줍니다. Stocktwits는 이러한 활동을 다음과 같은 신호로 변환합니다:</p>
+<ul>
+	<li><strong>센티멘트:</strong> 특정 티커에 관한 최근 게시물이 주로 강세인지 약세인지</li>
+	<li><strong>메시지 볼륨:</strong> 특정 티커가 평소 활동량과 비교해 얼마나 많은 대화를 생성하고 있는지</li>
+	<li><strong>팔로워:</strong> 특정 티커를 팔로우하는 Stocktwits 사용자 수(리테일 투자자의 지속적인 관심도를 보여주는 지표)</li>
+	<li><strong>트렌딩:</strong> 어떤 티커가 가장 빠르게 관심을 얻고 있는지</li>
+</ul>
+<p>이러한 신호는 Stocktwits의 기존 데이터 제품을 통해 오랫동안 제공되어 왔습니다. Monetization Gateway는 새로운 유형의 고객, 즉 필요할 때 시장 맥락을 요청하는 AI 에이전트를 위한 추가 유통 채널을 제공합니다. 예를 들어, 포트폴리오를 모니터링하거나 투자를 조사하는 에이전트는 $NET 관련 대화가 급증하고 있는지, 센티멘트가 강세 또는 약세로 치우치고 있는지, 또는 얼마나 많은 투자자가 해당 티커를 팔로우하는지 확인할 수 있습니다. 기존의 데이터 라이선스를 요구하는 대신 개발자는 에이전트가 실제로 수행하는 개별 요청에 대해 결제할 수 있습니다.</p>
+<p>Stocktwits는 이러한 요청을 위해 별도의 에이전트용 경로를 구축했으며, 그 앞단에 Cloudflare의 Monetization Gateway를 배치했습니다. 기존 API와 기업용 데이터 제품은 변경되지 않습니다. 각 요청은 개별적으로 가격이 책정되므로 Stocktwits는 기존 데이터 제품과 라이선스 모델을 유지하면서 AI 에이전트가 시장 신호에 액세스할 수 있게 합니다. 지금 <a href="https://api-docs.stocktwits.com/#tag--Monetization-Gateway-(x402)" target="_blank" rel="noopener noreferrer"><u>Stocktwits 문서에서 시작하세요</u></a>.</p>
+<h3>API2PDF: API 액세스 비용 결제</h3>
+<p><a href="https://api2pdf.com" target="_blank" rel="noopener noreferrer"><u>API2PDF</u></a>는 개발자가 HTML과 Office 문서로 PDF를 생성할 수 있게 해주는 REST API입니다. 2018년 출시 이후 API2PDF는 AI 에이전트가 개발자를 서비스로 안내하는 경우가 늘고 있으며, 이제 이들을 하나의 정식 고객 유형으로 대우합니다.</p>
+<p>API2PDF의 사용량 기반 가격 책정 모델은 각 요청을 처리하는 데 필요한 대역폭과 컴퓨팅 사용량에 따라 고객에게 요금을 청구합니다. 이전에는 서비스를 사용하기 전에 계정을 만들고 API 키를 발급받아야 했습니다. 첫 달 이후에는 신용카드 정보를 입력해야 했는데, 이로 인해 전환율이 50% 이상 하락했습니다. API2PDF는 이제 Monetization Gateway를 사용하여 사용자 또는 에이전트가 API 키 없이 요청할 때 HTTP 402 응답을 반환합니다. 요청마다 컴퓨팅 및 대역폭 비용이 달라지기 때문에, API2PDF는 가변 가격 책정을 사용하여 에이전트에게 단일 요청에 들 수 있는 최대 비용을 알려줍니다. 클라이언트가 결제를 완료하면 API2PDF는 요청을 처리하고 실제 사용량만 정산합니다.</p>
+<p>에이전트도 개발자와 마찬가지로 직접 구축할지 외부 서비스를 이용할지 선택해야 합니다. PDF가 필요한 에이전트는 토큰을 소모해 직접 생성하거나, API2PDF 같은 전문 API에 1센트의 극히 일부를 지불하고 제대로 처리하도록 할 수 있습니다.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -iX</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-032f62-99ffe4"> https://v2.api2pdf.com/chrome/pdf/html</span><span class="sk-005cc5-99ffe4"> --header</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-005cc5-99ffe4"> --data</span><span class="sk-032f62-99ffe4"> '{"html":"&lt;p&gt;Hello from an AI agent&lt;/p&gt;"}'</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">HTTP/2</span><span class="sk-005cc5-ffc799"> 402</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">content-type:</span><span class="sk-032f62-99ffe4"> application/json</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">payment-required:</span><span class="sk-032f62-99ffe4"> eyJ4NDAy...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<h3><strong>지금 시작하세요</strong></h3>
+<p>Monetization Gateway는 자격을 갖춘 미국 소재 판매자와 구매자를 위한 클로즈드 베타로 제공되며, 앞으로 지원 지역이 확대될 예정입니다. 제품을 에이전트 네이티브로 만들고 싶다면 연락해 주세요. <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fmonetize%2Fmonetization-gateway" target="_blank" rel="noopener noreferrer"><u>Cloudflare Dashboard</u></a>에서 온보딩 신청서를 작성하고, <a href="https://developers.cloudflare.com/monetization-gateway" target="_blank" rel="noopener noreferrer"><u>Developer Docs</u></a>를 확인하세요. 곧 연락드리겠습니다. 질문이나 아이디어가 있거나 에이전틱 결제를 확장하는 데 도움을 주고 싶다면 <a href="mailto:x402@cloudflare.com" target="_blank" rel="noopener noreferrer">이메일</a>을 보내주세요.</p>
+<p><em>파트너의 기여와 피드백에 진심으로 감사드립니다. 이분들이 없었다면 이번 출시는 불가능했을 것입니다. Cloudflare AI Gateway의 Vail Gold와 Jeff Rafter; <a href="http://ceramic.ai" target="_blank" rel="noopener noreferrer">Ceramic.ai</a>의 Dr. Anna Patterson, Sean Costello, Sadé Ried, Autumn Yuan; Stocktwits의 Leo Gorkin, Ethan Berk, Santiago Sanchez; 그리고 API2PDF의 Zack Schwartz께 감사드립니다.</em></p>
