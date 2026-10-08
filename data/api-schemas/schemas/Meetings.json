@@ -1493,9 +1493,8 @@
 																			}
 																		},
 																		"language": {
-																			"description": "Specifies the language code for transcription to ensure accurate results.",
+																			"description": "Specifies the language code for transcription to ensure accurate results. If omitted, the language is auto-detected for post-meeting (Whisper) transcription.",
 																			"type": "string",
-																			"default": "en-US",
 																			"enum": [
 																				"en-US",
 																				"en-IN",
@@ -2057,9 +2056,8 @@
 												}
 											},
 											"language": {
-												"description": "Specifies the language code for transcription to ensure accurate results.",
+												"description": "Specifies the language code for transcription to ensure accurate results. If omitted, the language is auto-detected for post-meeting (Whisper) transcription.",
 												"type": "string",
-												"default": "en-US",
 												"enum": [
 													"en-US",
 													"en-IN",
@@ -3220,9 +3218,8 @@
 																			}
 																		},
 																		"language": {
-																			"description": "Specifies the language code for transcription to ensure accurate results.",
+																			"description": "Specifies the language code for transcription to ensure accurate results. If omitted, the language is auto-detected for post-meeting (Whisper) transcription.",
 																			"type": "string",
-																			"default": "en-US",
 																			"enum": [
 																				"en-US",
 																				"en-IN",
@@ -3613,9 +3610,8 @@
 												}
 											},
 											"language": {
-												"description": "Specifies the language code for transcription to ensure accurate results.",
+												"description": "Specifies the language code for transcription to ensure accurate results. If omitted, the language is auto-detected for post-meeting (Whisper) transcription.",
 												"type": "string",
-												"default": "en-US",
 												"enum": [
 													"en-US",
 													"en-IN",
@@ -4776,9 +4772,8 @@
 																			}
 																		},
 																		"language": {
-																			"description": "Specifies the language code for transcription to ensure accurate results.",
+																			"description": "Specifies the language code for transcription to ensure accurate results. If omitted, the language is auto-detected for post-meeting (Whisper) transcription.",
 																			"type": "string",
-																			"default": "en-US",
 																			"enum": [
 																				"en-US",
 																				"en-IN",
@@ -5294,9 +5289,8 @@
 												}
 											},
 											"language": {
-												"description": "Specifies the language code for transcription to ensure accurate results.",
+												"description": "Specifies the language code for transcription to ensure accurate results. If omitted, the language is auto-detected for post-meeting (Whisper) transcription.",
 												"type": "string",
-												"default": "en-US",
 												"enum": [
 													"en-US",
 													"en-IN",
@@ -6457,9 +6451,8 @@
 																			}
 																		},
 																		"language": {
-																			"description": "Specifies the language code for transcription to ensure accurate results.",
+																			"description": "Specifies the language code for transcription to ensure accurate results. If omitted, the language is auto-detected for post-meeting (Whisper) transcription.",
 																			"type": "string",
-																			"default": "en-US",
 																			"enum": [
 																				"en-US",
 																				"en-IN",
