@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/cli-shared-helpers",
 	"dist-tags": {
-		"latest": "0.2.4"
+		"latest": "0.2.5"
 	},
 	"versions": {
 		"0.0.1": {
@@ -1685,12 +1685,52 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIHG/nlLGXSObBohFykvf+vCUxbmTAz6W6C2LtfsMTXj1AiEAgOueRgeJPgwPa2pW6DcANrTReVHvxSJvmxjaQxN4wrU="
+						"sig": "MEUCIHG/nlLGXSObBohFykvf+vCUxbmTAz6W6C2LtfsMTXj1AiEAgOueRgeJPgwPa2pW6DcANrTReVHvxSJvmxjaQxN4wrU=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fcli-shared-helpers@0.2.4",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 52263
+			}
+		},
+		"0.2.5": {
+			"name": "@cloudflare/cli-shared-helpers",
+			"version": "0.2.5",
+			"dependencies": {
+				"chalk": "5.3.0",
+				"ci-info": "4.4.0",
+				"log-update": "5.0.1",
+				"@clack/core": "1.2.0",
+				"cross-spawn": "7.0.6",
+				"@cloudflare/workers-utils": "0.47.1"
+			},
+			"devDependencies": {
+				"tsdown": "^0.15.9",
+				"@types/cross-spawn": "^6.0.2",
+				"@cloudflare/workers-tsconfig": "0.0.0"
+			},
+			"dist": {
+				"shasum": "06829b8b4aeafb5b3b4b7be84370ef032d76951b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/cli-shared-helpers/-/cli-shared-helpers-0.2.5.tgz",
+				"fileCount": 26,
+				"integrity": "sha512-kCX3UdqvXgvScIw4qfduX3aEcg2r+5pNosXmNnmAexVwkBtkLH+KrkZo+6Ym1nPK18Ov2VSugIp/lFTLb1Fyww==",
+				"signatures": [
+					{
+						"sig": "MEUCIBHfjT5CyVzvuL1es5/8QXmLaS2lqG3niGYm2gw213w0AiEA/55YENbUxvqyiGpn/I3xrPECqDcGWb52YJpcPzoHPNs=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIQDDW3FGf7Jz2gMAxrHzhx5fA0/ao/lRbKdMfS/dg8c+VAIgOpAVKVkWI+qcyRj4O8NzTo3bD0BfLaC/RWy7SQuiegk="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fcli-shared-helpers@0.2.5",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}

@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/runtime-types",
 	"dist-tags": {
-		"latest": "0.1.8"
+		"latest": "0.1.9"
 	},
 	"versions": {
 		"0.0.0": {
@@ -359,8 +359,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQD0SRz1CFltLs+EaeyWSrTy0os+zrD2JnWU1knr61Z7hQIhAL2aM2VcE0L9W27CjRcgFsteKCh2sPieXA2zdtJ3Vj2A"
+						"sig": "MEYCIQD0SRz1CFltLs+EaeyWSrTy0os+zrD2JnWU1knr61Z7hQIhAL2aM2VcE0L9W27CjRcgFsteKCh2sPieXA2zdtJ3Vj2A",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -370,6 +370,45 @@
 					}
 				},
 				"unpackedSize": 10755
+			}
+		},
+		"0.1.9": {
+			"name": "@cloudflare/runtime-types",
+			"version": "0.1.9",
+			"dependencies": {
+				"workerd": "1.20261006.1",
+				"miniflare": "5.20261006.1-alpha"
+			},
+			"devDependencies": {
+				"tsdown": "0.16.3",
+				"vitest": "4.1.0",
+				"typescript": "5.8.3",
+				"@types/node": "22.15.17",
+				"@cloudflare/workers-utils": "0.47.1",
+				"@cloudflare/workers-tsconfig": "0.0.0"
+			},
+			"dist": {
+				"shasum": "23c264eed5bb99d8fe6f68dab3cee4f171f8a42e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/runtime-types/-/runtime-types-0.1.9.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-T3LcgIUw2VMWCw/50deozY/Iqu9j1NN3xbYGTmYbLvGk1a8aNZHplwf/JknYmqSVHZU4eHqsFpkn8IID2W4W/A==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCLouIgRQwVPQquzmRyN6VUA2gy0JQaCU/2enMyq4PHuAIhALZ0rjJSbFijLkQI5DJqgUidFITqgbn9WWGeVtm6TXd8",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIQDDvIW6AUY5tVIfRspk07MPgpGbcPFjHFsM/B3L+qYRYwIgR2SvtJBSyELiuqU8xtwPQDU1YvnaZjFMc2lUIfQXYVU="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fruntime-types@0.1.9",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 10759
 			}
 		}
 	}
