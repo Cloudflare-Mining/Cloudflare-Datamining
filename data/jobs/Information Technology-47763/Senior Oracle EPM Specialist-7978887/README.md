@@ -3,64 +3,40 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: Austin, TX&nbsp;</strong></p>
-<p><strong>What You’ll Do</strong></p>
-<p>The Argo team was formed to own a very important aspect of Cloudflare's systems: enable more reliable network connectivity for Cloudflare’s products than the Internet itself provides.<br><br>Almost all products in Cloudflare’s portfolio are or will be powered by Argo technology, including CDN, Spectrum, Magic Transit, Stream, Workers, Workers AI, R2, WARP, and more. As a member of the Argo team, you’ll be a key technical contributor to the cutting edge network software infrastructure used by those products.</p>
-<p>You will work closely with various Engineering teams to translate their requirements into new capabilities on the platform. Likewise you will partner with Network Engineering and SRE to ensure that the technology makes the best use of Cloudflare's world-class edge network.</p>
-<p>You will participate in all stages of the software development lifecycle, from designing and documenting systems, to writing code and automated tests, to planning, managing, and monitoring production software deployments. You will work with a wide range of technologies and programming languages, including Rust, Go, Linux networking, ClickHouse, PostgreSQL, Grafana, Kubernetes, and more. You will use AI-powered tools and systems as part of your daily workflow to analyze and extend codebases, introspect production systems and datasets, and accelerate problem-solving.</p>
-<p>Engineering teams at Cloudflare operate a Run What You Build model, including ours. We are responsible for the health of our system and participate in our team's on-call rotation as part of operational responsibilities.</p>
-<p>Because you’ll be solving problems of massive scale and significance, you are a growth-oriented individual who enjoys being outside of your comfort zone. You are comfortable in a fast-paced but sensible work environment. You value curiosity and empathy and lead with these values.</p>
-<p><strong>Must-Have Skills</strong></p>
+<p><strong>Job Title:</strong> <strong>Senior </strong><strong>Oracle EPM Specialist</strong></p>
+<p><strong>Role Summary</strong> This critical role is responsible for ensuring smooth financial operations throughout the close cycles by maintaining the stability, security, and high performance of Oracle GL and Oracle EPM environments. The EPM Specialist will absorb knowledge transfer from implementation partners and serve as the primary operational lead for Financial Consolidation and Close - FCCS, Account Reconciliation - ARCS, Profitability and Cost Management - PCMCS, and Enterprise Data Management - EDMCS. A core aspect of the job involves collaborating cross-functionally with IT and business teams to understand downstream system impacts, manage critical system handshakes, and oversee regular maintenance. Partnering closely with Financial Systems leadership, you will help translate the strategic roadmap into reality.&nbsp;</p>
+<p><strong>Key Responsibilities</strong></p>
 <ul>
-	<li>Systems-level programming experience in Go, Rust, C, or C++. We use Rust extensively, and while experience with the language isn't required a willingness to learn it is.</li>
-	<li>A solid grasp of networking protocols in Layers 3 and 4 of the OSI Model.</li>
-	<li>Knowledge of HTTP, TLS, and CDN networks.</li>
-	<li>Experience in implementing secure and highly-available distributed systems.</li>
-	<li>Experience with monitoring, alerting, and debugging large-scale distributed systems.</li>
-	<li>Experience participating in an on-call rotation.</li>
-	<li>Strong collaboration and communication skills.</li>
-	<li>Experience/interest in network performance monitoring and tuning.</li>
-	<li>Willingness to adopt and integrate AI tools and systems into your engineering workflow.</li>
+	<li><strong>Cross-Functional System Execution:</strong> Work closely with finance, IT, and cross-functional teams to implement roadmap initiatives and evaluate downstream impacts.</li>
+	<li><strong>Troubleshooting &amp; Resolution:</strong> Investigate and resolve data load, mapping, validation, and calculation issues. Track and resolve recurring or critical issues through Oracle Service Requests</li>
+	<li><strong>Financial Module Ownership:</strong> Define and own the functional configuration roadmap for key financial modules, including General Ledger<strong>.</strong></li>
+	<li><strong>Compliance and System Configuration:</strong> Directly design and configure Oracle Fusion to ensure enforcement of critical financial compliance standards (e.g., ASC 606/IFRS 15, SOX).</li>
+	<li><strong>Data Integration Management:</strong> Administer Data Exchange pipelines, import/export definitions, and update EDM subscriptions to keep metadata aligned. Manage calculation rules, consolidations, and cash flow mappings.</li>
+	<li><strong>Maintenance &amp; Patching:</strong> Review release notes and perform patch regression testing on monthly EPM patches, promoting updates safely across DEV, TEST, and PROD pods.</li>
+	<li><strong>System Support &amp; Operations:</strong> Manage and monitor user access control, including assigning predefined and application roles. Provide functional support during close cycles, assisting users with application navigation, workflows, and Smart View queries.</li>
+	<li><strong>PCMCS &amp; Profitability Management:</strong> Maintain and configure Profitability and Cost Management (PCMCS) applications, managing allocation rules, cost assignment logic, and data model builds.</li>
+	<li><strong>Solution Architecture &amp; Development:</strong> Partner with leadership to design, build, and optimize scalable EPM data models and solutions. Translate business requirements into technical architecture and execute complex development work across FCCS, ARCS, PCMCS and EDMCS.</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<p><strong>Role Requirements (Must-Have Skills)</strong></p>
 <ul>
-	<li>Knowledge of TCP/IP and Internet routing.</li>
-	<li>Professional systems-level programming experience in Rust.</li>
-	<li>Working knowledge of statistical-analysis techniques and control theory.</li>
-	<li>Experience building tools and APIs.</li>
-	<li>Experience using AI-assisted development tools (e.g., code completion, codebase analysis, log/data exploration) in a professional setting.</li>
+	<li><strong>Active Oracle Cloud EPM Certification(s)</strong> (e.g., Financial Consolidation and Close (FCCS), Account Reconciliation (ARCS), Enterprise Data Management (EDMCS), Profitability and Cost Management (PCMCS) or EPM Data Integration).</li>
+	<li>Strong hands-on experience managing and supporting core Oracle Cloud EPM modules, specifically FCCS, ARCS, EDMCS, and PCMCS.</li>
+	<li>Proven ability to manage daily operations, including integrations, consolidations, and reconciliations.</li>
+	<li>Exceptional troubleshooting skills, specifically regarding Smart View installations, connection settings, and resolving setup conflicts.</li>
+	<li>Experience managing user security, access roles, and maintaining compliance governance.</li>
+	<li>Ability to perform monthly/quarterly close operations and execute environment health checks.</li>
+	<li>Exceptional communication skills with the ability to partner effectively with cross-functional IT and business teams to evaluate inbound and outbound data flows and build architectural solutions.</li>
 </ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<p><strong>Nice-to-Have Skills</strong></p>
 <ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
+	<li>Familiarity with Oracle Integration Cloud (OIC).</li>
+	<li>Familiarity or experience with Oracle Tax Reporting (TRCS), as future roadmap capabilities may expand into this area.</li>
+	<li>Experience with Risk Control Matrix (RCM) functionality to monitor Segregation of Duties (SOD) controls between ERP and EPM systems.</li>
+	<li>Prior experience with other Finance Planning tools (e.g., PBCS, Adaptive Planning, Planful, Pigment, OneStream, etc is a plus).</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
 <ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
+	<li>Conceptual understanding of Generative AI, Large Language Models (LLMs), or Agentic AI frameworks</li>
 </ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
-<p>&nbsp;</p>
-<p>More information on the team:&nbsp;</p>
-<p><a href="https://blog.cloudflare.com/orpheus-saves-internet-requests-while-maintaining-speed/">https://blog.cloudflare.com/orpheus-saves-internet-requests-while-maintaining-speed/</a></p>
-<p>https://blog.cloudflare.com/orpheus/</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

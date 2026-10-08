@@ -3,41 +3,37 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations:&nbsp;</strong></p>
+<p><strong>Available Location: Singapore</strong></p>
+<p><strong>Role summary</strong></p>
+<p>We are seeking a People Operations Specialist for a 6-month contract to support day-to-day HR operations with a strong emphasis on process automation, AI-assisted workflows, and scalable service delivery. Partnering closely with People Operations Manager, Specialists and cross-functional teams, you will execute core administrative tasks while actively identifying, testing, and implementing efficiency gains to reduce manual effort and improve data quality across the team.</p>
+<p><strong>What this role will do</strong></p>
+<p>Core Operations &amp; Service Delivery</p>
 <ul>
-	<li><strong>Austin, TX (preferred)</strong></li>
-	<li><strong>Dallas, TX</strong></li>
-	<li><strong>Houston, TX</strong></li>
-	<li><strong>San Antonio, TX</strong></li>
+	<li>Support end-to-end employee lifecycle processes, including onboarding, internal transfers, organizational changes, and offboarding, ensuring a positive experience for employees throughout the APJC region.</li>
+	<li>Maintain high data accuracy across HR systems, complete transactions with strict attention to detail, and escalate complex exceptions appropriately.</li>
+	<li>Collaborate with internal stakeholders across the regions to ensure consistent and timely execution of HR processes.</li>
 </ul>
-<p><strong>Role Summary</strong></p>
-<p>We are looking for an experienced Senior Sales Compensation Analyst to join our team within the Finance &amp; Business Operations Function. As a key team member of a high-visibility organization, this role will provide both technical and operational support to Cloudflare’s Global Commissions Program &amp; Strategy, in close collaboration with the Sales Compensation Design team, GTM Finance, and Sales Operations teams.&nbsp;</p>
-<p><strong>&nbsp;</strong></p>
-<p><strong>Role Responsibilities</strong></p>
+<p>Automation &amp; Continuous Improvement</p>
 <ul>
-	<li>Ensure the accurate and timely delivery of Compensation Plans, Incentive Statements, and commission payments for Cloudflare’s Global Sales organization.</li>
-	<li>Serve as a trusted partner to the Sales Team by resolving inquiries, clarifying plan policies, and managing disputes with empathy and a customer-first mindset.</li>
-	<li>Drive alignment amongst cross-functional stakeholders and project manage timely collection of key calculation inputs such as quotas, organizational updates, attainment data.</li>
-	<li>Own sales performance analytics by uncovering actionable insights and enhancing systematic visibility for Sales leadership and key business stakeholders.</li>
-	<li>Lead User Acceptance Testing (UAT) and support ongoing configuration, design, and enhancements within the Varicent ICM platform.</li>
-	<li>Collaborate with the Sales Compensation Design team to evaluate the feasibility of proposed plan changes and ensure timely, accurate implementation.</li>
-	<li>Develop and scale standardized processes, documentation, and desktop procedures to ensure consistency and operational efficiency across all commission-related workflows.</li>
+	<li>Identify repetitive, manual tasks across People Operations workflows and leverage AI tools, automation, and templates to improve turnaround times.</li>
+	<li>Assist in testing, validating, and refining new automation opportunities and AI-driven solutions.</li>
+	<li>Monitor, track, and analyze operational data to identify process bottlenecks and recommend continuous improvement initiatives.</li>
 </ul>
-<p><strong>&nbsp;</strong></p>
-<p><strong>About You:</strong></p>
+<p>Process Standardization &amp; Knowledge Management</p>
 <ul>
-	<li>5+ years of either FP&amp;A, Consulting, Sales Operations, Data Analytics, Sales Compensation experience. Experience in a growth technology company is a plus.</li>
-	<li>You are a highly detail-oriented, data-driven truth-seeker with a passion for uncovering discrepancies, identifying edge cases, and validating complex calculations to ensure precision and accuracy.</li>
-	<li>Demonstrated expertise in Excel or Google Sheets, including advanced financial modeling, data analysis, and scenario planning to support strategic decision-making</li>
-	<li>Firm grasp of the commission administrative process flow, including plan document distribution; transaction crediting; incentive calculations; payment file preparation; and issue resolution.&nbsp;</li>
-	<li>Proven track record of building strong relationships and influencing business partners. You are comfortable interfacing with business partners outside of your direct team, and understand the rigor and caliber of deliverables required to work with them.</li>
-	<li>Communication: Clear, concise communicator; ability to synthesize complex data or business problems into actionable information to drive results</li>
-	<li>Operations: You seek out efficiency, leveraging tools, automation or other means to scale process and deliver more accurate results</li>
-	<li>Versatility: Ability to multitask and thrive in a fast-paced, high-growth environment, zooming in with good attention to detail while still keeping the big picture in mind</li>
-	<li>Project Management: Results-oriented, self-starter, organized, team-focused, and a strong work ethic, leveraging relationships to ensure deadlines are met</li>
-	<li>Experience with the Varicent ICM tool is a plus.</li>
+	<li>Standardize and maintain SOPs, knowledge base content, templates, and onboarding checklists.</li>
+	<li>Develop self-service resources and clear communications that enhance the overall employee experience.</li>
 </ul>
-<p>&nbsp;</p>
+<h4><strong>Requirement</strong></h4>
+<ul>
+	<li>Relevant experience in HR operations, shared services, or similar administrative support roles.</li>
+	<li>Highly organized with strong attention to detail, excellent problem-solving abilities, and effective time management skills.</li>
+	<li>Proficient in working with data and skilled in Excel or Google Sheets for analysis and reporting.</li>
+	<li>Customer-focused mindset with a genuine passion for supporting colleagues and delivering exceptional service.</li>
+	<li>Effective communicator, able to clearly articulate information both verbally and in writing to employees across the APJC region.</li>
+	<li>Adaptable and thrives in a fast-paced, dynamic environment, with the ability to manage shifting priorities efficiently.</li>
+	<li>Familiarity with Workday or Zendesk would be an advantage.</li>
+</ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>

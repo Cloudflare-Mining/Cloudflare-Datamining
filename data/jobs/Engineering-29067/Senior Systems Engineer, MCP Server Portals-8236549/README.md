@@ -44,7 +44,7 @@
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of €66,000-91,000&nbsp;</span></li>
+	<li><span data-sheets-root="1">For Portugal based hires: Estimated annual salary of €66,000-91,000&nbsp;</span></li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>

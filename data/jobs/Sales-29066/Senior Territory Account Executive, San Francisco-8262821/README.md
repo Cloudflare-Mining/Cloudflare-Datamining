@@ -3,48 +3,53 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h3>Available Locations</h3>
+<h3><strong>Available Location: San Francisco Bay area<br></strong></h3>
+<p><strong>About the Department</strong></p>
+<p>Account Executives, Channel Account Managers, Business Development Representatives, Solution Engineers, Customer Success, and Sales Operations - all working together help our customers adopt Cloudflare and create great Internet-enabled experiences. The sales team at Cloudflare helps customers solve real, technical problems while creating the revenue streams that help the company provide free service to millions in our community.</p>
+<p><strong>About this Role</strong></p>
+<p>This role within the mid-market segment focuses on both the acquisition of new Territory accounts, as well as the expansion of existing customer accounts.&nbsp; Within the mid-market segment, you will work a set of accounts in the territory sub-segments. The ideal candidate will have both a sales and technical background that enables them to drive customer engagement from technical professionals through to senior executive levels, and across Security, Network, Development and Infrastructure teams.&nbsp;&nbsp;</p>
+<p><strong>Key Responsibilities</strong></p>
 <ul>
-	<li>Austin, US</li>
+	<li>Develop and execute a comprehensive account/territory plan to achieve quarterly sales and annual revenue targets in a defined territory and/or account list.</li>
+	<li>Drive new business acquisition (new customer logos), customer expansion (upsell and cross sell Cloudflare solutions), and renewal within your territory.</li>
+	<li>Engage in account mapping sessions with partners, including training new partners on our technology and GTM strategies.</li>
+	<li>Developing scalable relationships with target partners, to expand partner ecosystem in a specific region.</li>
+	<li>Build a robust sales pipeline through continual engagement and nurturing of key prospect accounts.</li>
+	<li>Understand customer use-cases and how they pair with Cloudflare’s portfolio solutions in order to identify new sales opportunities.</li>
+	<li>Craft and communicate compelling value propositions for Cloudflare services. Drive awareness through regular outbound campaigns on product and feature roadmap updates.&nbsp;</li>
+	<li>Accurately forecast commercial outcomes by running a consistent sales process, including driving next step expectations and contract negotiations.</li>
+	<li>As a trusted advisor, build long-term strategic relationships with key accounts, to ensure customer adoption, retention and expansion. Regularly evaluate usage trends and articulate value to show Cloudflare impact and provide strategic recommendations during business reviews.&nbsp;</li>
+	<li>Network across different business units with each of your accounts, and multi-thread to identify and engage new divisional buyers.</li>
+	<li>Position Cloudflare's platform in each of your target customers, including Cloudflare One and the Connectivity Cloud to realize our full potential in every customer.</li>
+	<li>Operate internally as a liaison with cross-functional teams to share key customer feedback and insights to improve customer experience and further investments with Cloudflare.</li>
 </ul>
-<h3><strong>About the Team</strong></h3>
-<p>Cloudflare handles traffic for almost 25% of the Internet. That’s a lot of data. On the Town Lake team, our mission is to make that data accessible and valuable for users across the company. We connect data from dozens of source systems and make it available so that any user in the company can answer any question in 5 minutes or less, using SQL or plain english.&nbsp;</p>
-<p>We’re building a modern, agentic-first data lakehouse platform based on Trino and Apache Iceberg, and all the supporting services for ingestion, transformation access control, governance, dashboarding and agentic access are built on Cloudflare's own platform. R2 and R2 Data Catalog for storage, Workers and Workers AI for compute, Workflows for orchestration, Durable Objects and D1 for state, Cloudflare Access for authentication.&nbsp;</p>
-<p>This is a small but growing team already having an outsized and highly visible impact at the company. If you’re looking for an opportunity to make a splash, have a foundational say in a new, exciting and growing platform, and steer the direction on the frontier of data platforms, this team might be a good fit for you.</p>
-<p>Read more about our platform in the Cloudflare blog (https://blog.cloudflare.com/our-unified-data-platform/).&nbsp;</p>
-<h3><strong>What You’ll Do</strong></h3>
-<p>We are looking for an experienced, product-minded principal software engineer to help take Town Lake from a fast-growing internal platform into the foundational data infrastructure for the entire company.&nbsp;</p>
-<p>You’ll lead technical architecture and drive implementation for services across our whole stack, covering areas such as access control, an ingestion framework, AI-driven data classification, a semantic and governance layer, data product/ELT platform, a dashboarding and query tool, and more.</p>
-<p>We are an agentic first team: we leverage AI deeply and comprehensively to accelerate development and make things possible that wouldn’t be otherwise, and all our tools and services are agentic first for our users and the products they build on top of them.</p>
-<p>Town Lake is already used by dozens of teams across Cloudflare including Billing, Trust &amp; Safety, Developer Platform, GTM and Support organizations. This is a high-impact, high-visibility role where you’ll work with critical teams across the company to solve real and interesting problems.</p>
-<h3><strong>What You’ll Do</strong></h3>
+<p><strong>Requirements:</strong></p>
 <ul>
-	<li>Define, design and execute strategic technical architecture for highly visible, highly critical data infrastructure at the company.</li>
-	<li>Lead the design and development of tools and infrastructure to improve and scale our data infrastructure at Cloudflare.</li>
-	<li>Lead the design and development of data pipelines and data products to serve customers throughout the company, including tools to automate delivery of those services.</li>
-	<li>Become a subject matter expert across both our data platforms, tools and infrastructures as well as our data itself to guide and enable stakeholders with data needs.</li>
-	<li>Work across our tech stack, which includes Kubernetes, Trino, Iceberg, Clickhouse, and PostgreSQL, with software built using Go, Javascript/Typescript, Python, and others.</li>
-	<li>Mentor and support junior engineers on the team, reinforcing a culture of exceptional delivery and accountability on the team.<br><br></li>
+	<li>3+ years of direct B2B selling experience</li>
+	<li>Strong interpersonal communication (verbal and written) and organizational skills</li>
+	<li>Self-motivated; entrepreneurial spirit</li>
+	<li>Comfortable working in a fast paced dynamic environment</li>
+	<li>Bachelor's degree required</li>
+	<li>Demonstrated analytical and quantitative abilities</li>
+	<li>Software and system skills are a must (SFDC, Tableau, G-suite, MSFT suite)</li>
 </ul>
-<h3><strong>Must-Have Skills</strong></h3>
+<h3><strong>Examples of desirable skills, knowledge and experience:</strong></h3>
 <ul>
-	<li>8+ years of experience as a software engineer with a focus on designing, building and scaling data infrastructure</li>
-	<li>Proven experience leading technical initiatives in a cross-functional context, working with multiple stakeholders and driving value delivery.</li>
-	<li>Extensive experience with data infrastructure at scale, including tools like Trino, Spark, Iceberg/Delta Lake, Kafka, Clickhouse, PostgreSQL</li>
-	<li>Experience designing, building and debugging data pipelines at scale</li>
-	<li>Proficient using backend languages like Go, Python, Typescript, and Rust, along with SQL</li>
-	<li>Excellent analytical skills, with a focus on understanding data and how stakeholders use it to drive value</li>
-	<li>Strong communication skills, especially around articulating technical concepts for technical and non-technical audiences<br>Experience creating and using agentic development workflows and an AI-first mentality<br><br></li>
+	<li>5+ years in Software/SaaS/Security Sales &amp; Channel management.</li>
+	<li>Existing relationships and/or strong familiarity of the partner ecosystem in the region that they cover.</li>
+	<li>Understanding of cloud infrastructure ecosystem and cloud security is highly preferred.</li>
+	<li>Experience working in a start-up environment.</li>
+	<li>Ability to travel up to 25% of the time.</li>
+	<li>Technical competence strongly preferred.</li>
 </ul>
-<h3><strong>Nice-to-Have Skills</strong></h3>
-<ul>
-	<li>Experience with data orchestration and infrastructure platforms like Airflow and DBT<br>Experience deploying and managing infrastructure in Kubernetes<br>Experience with data governance platforms and processes, with a focus on privacy and auditability<br>Knowledge about machine learning models and MLOps<br><br></li>
-</ul>
-<h3><strong>Equity</strong></h3>
-<p>This role is eligible to participate in Cloudflare's equity plan.</p>
-<h3><strong>Benefits</strong></h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p>Health &amp; Welfare Benefits</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<p>For Bay Area-based hires: Estimated annual salary of $244,000 - $336,000</p>
+<p>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.</p>
+<p><strong>Equity</strong><br>The role is eligible to participate in Cloudflare's equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -55,19 +60,26 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p>Financial Benefits</p>
+<p><strong>Financial Benefits</strong></p>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p>Time Off</p>
+<p><strong>Time Off</strong></p>
 <ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>
+		<ul>
+			<li>Flexible paid time off covering vacation and sick leave</li>
+			<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+		</ul>
+	</li>
 </ul>
-<p>&nbsp;</p>
+<div id="te-floating-button-container"></div>
+<div id="te-floating-button-container"></div>
+<div id="te-floating-button-container"></div>
+<div id="te-floating-button-container"></div>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
