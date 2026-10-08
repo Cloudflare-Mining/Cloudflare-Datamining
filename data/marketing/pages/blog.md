@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+October 8, 2026 [<h2>Bridging technical depth and usability: The story behind Radar's redesign</h2>](https://blog.cloudflare.com/radar-redesign/)
+
+We redesigned Cloudflare Radar to make real-time global traffic and outage data accessible to a wider audience — including journalists, less technical researchers, and everyday users. By introducing an interactive map and standardized components, we simplified navigation while preserving technical depth.
+
+![Sophia Alfred](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M34XNPH605RFZSSKT2WGV62K.01M34XNQ1CGJKMAJX9V0QX0V78.webp&w=64&h=64&f=webp&fit=cover&position=center)![Lai Yi Ohlsen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DGMNXAW2CZQQAX92W97V.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Sophia Alfred](https://blog.cloudflare.com/author/sophia-alfred/) and  [Lai Yi Ohlsen](https://blog.cloudflare.com/author/lai-yi-ohlsen/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4DWXM8QH1FEK7XDTCR1RVA5.01M4DWXN5TGFT9XA1WXDCVYJ4B.png&w=2400&h=1350&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/radar-redesign/)
+
 October 7, 2026 [<h2>Building an evidence-grounded agentic security operations harness on Cloudflare</h2>](https://blog.cloudflare.com/agentic-security-operations/)
 
 Cloudflare Managed Defense uses a team of specialized AI agents built on Workers and global network telemetry to analyze security alerts. By separating deterministic evidence collection from model inference, the system delivers grounded recommendations to Managed Defense Analysts.
@@ -17,8 +27,6 @@ Cloudflare Managed Defense uses a team of specialized AI agents built on Workers
 ![Deanna Tran](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M32RWM8D9ND7N90HFR9H9QQT.01M32RWMV6K9V55M6CMKAXE9PC.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Javier Castro](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4674A41YFNM3KJ161Z4WRB.png&w=64&h=64&f=webp&fit=cover&position=center)![Jacob Crisp](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468SZ92CTQZG9K5AR69G1E.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Blake Darché](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46VFGSFTVH9S7TKX7T5BAC.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Deanna Tran](https://blog.cloudflare.com/author/deanna-tran/),  [Javier Castro](https://blog.cloudflare.com/author/javier/),  [Jacob Crisp](https://blog.cloudflare.com/author/jacob-crisp/), and  [Blake Darché](https://blog.cloudflare.com/author/blake/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M32R921QMDZ1S2MHB3M7Q85H.01M32R93AJ8Q0D22GYW0163M3F.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/agentic-security-operations/)
 
 October 6, 2026 [<h2>The keys to the Internet change on October 11. Are you ready?</h2>](https://blog.cloudflare.com/root-ksk-2024-rollover/)
 
@@ -155,14 +163,6 @@ Cloudflare OS gives everyone in your organization an agent workspace that knows 
 ![Phillip Jones](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CA63Q819PPAR7M8DTNQ3.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Phillip Jones](https://blog.cloudflare.com/author/phillip/)
-
-October 1, 2026 [<h2>Announcing Cloudflare K2: serverless event streams</h2>](https://blog.cloudflare.com/cloudflare-k2-streams/)
-
-Cloudflare K2 is a serverless event streaming service built directly on top of R2 object storage for high-scale data movement and long-term retention. By decoupling producers and consumers at the edge, K2 enables durable, ordered log streams without the operational overhead of traditional broker clusters.
-
-![Micah Wylde](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48960E56E6QTQP000R72JC.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Marc Selwan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455H274J0ZYJ6K4KHKJT25.webp&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Micah Wylde](https://blog.cloudflare.com/author/micah-wylde/) and  [Marc Selwan](https://blog.cloudflare.com/author/marc-selwan/)
 
 Load more
 
