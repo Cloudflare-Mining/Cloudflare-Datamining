@@ -965,6 +965,7 @@
 	"magic.routes.unified.type_tooltip.system": "Reserved system subnet — managed by Cloudflare. Used for internal addressing (Cloudflare Mesh IPs, Cloudflare source IPs, initial resolved IPs for hostname routing). Cannot be deleted.",
 	"magic.routes.unified.type.system": "System",
 	"magic.routes.unified.mk2_banner": "Your account uses the legacy routing engine where Tunnel routes always take precedence over WAN routes regardless of prefix length. <0>Upgrade to Unified Routing</0> to enable longest-prefix-match evaluation.",
+	"magic.routes.unified.mk3_banner": "Your account is using Unified Routing mode. <0>Learn more</0>.",
 	"magic.routes.unified.delete.title": "Delete route",
 	"magic.routes.unified.edit.title": "Edit route",
 	"magic.routes.unified.edit.error.server": "Failed to update route. Please try again.",
