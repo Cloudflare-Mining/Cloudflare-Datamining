@@ -424,7 +424,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "content-scan.expressions",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation deletes a Content Scanning custom expression."
 	},
 	"GET /zones/{zone_id}/content-upload-scan/payloads": {
@@ -834,8 +833,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "content-scan.expressions",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/content-upload-scan/settings": {
 		"operationId": "waf-content-scanning-get-status",
@@ -1101,8 +1099,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "content-scan",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /zones/{zone_id}/content-upload-scan/payloads/{expression_id}": {
 		"operationId": "waf-content-scanning-update-custom-scan-expression",
@@ -1550,8 +1547,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "content-scan.expressions",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"POST /zones/{zone_id}/content-upload-scan/disable": {
 		"operationId": "waf-content-scanning-disable",
@@ -2421,8 +2417,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "content-scan.expressions",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /zones/{zone_id}/content-upload-scan/settings": {
 		"operationId": "waf-content-scanning-update-settings",
@@ -2712,7 +2707,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "content-scan",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation toggles Content Scanning for a zone."
 	}
 }

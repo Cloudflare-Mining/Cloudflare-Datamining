@@ -111,42 +111,48 @@
 										"result": {
 											"type": "array",
 											"items": {
-												"type": "object",
-												"properties": {
-													"destination_conf": {
-														"description": "Unique WebSocket address that will receive messages from Cloudflare’s edge.",
-														"type": "string",
-														"format": "uri",
-														"example": "wss://logs.cloudflare.com/instant-logs/ws/sessions/99d471b1ca3c23cc8e30b6acec5db987",
-														"maxLength": 4096,
-														"x-auditable": true
-													},
-													"fields": {
-														"description": "Comma-separated list of fields.",
-														"type": "string",
-														"example": "ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestURI,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID",
-														"x-auditable": true
-													},
-													"filter": {
-														"description": "Filters to drill down into specific events.",
-														"type": "string",
-														"example": "{\"where\":{\"and\":[{\"key\":\"ClientCountry\",\"operator\":\"neq\",\"value\":\"ca\"}]}}",
-														"x-auditable": true
-													},
-													"sample": {
-														"description": "The sample parameter is the sample rate of the records set by the client: \"sample\": 1 is 100% of records \"sample\": 10 is 10% and so on.",
-														"type": "integer",
-														"example": 1,
-														"x-auditable": true
-													},
-													"session_id": {
-														"description": "Unique session id of the job.",
-														"type": "string",
-														"example": "99d471b1ca3c23cc8e30b6acec5db987",
-														"x-auditable": true
+												"allOf": [
+													{
+														"type": "object",
+														"properties": {
+															"destination_conf": {
+																"description": "Unique WebSocket address that will receive messages from Cloudflare’s edge.",
+																"type": "string",
+																"format": "uri",
+																"example": "wss://logs.cloudflare.com/instant-logs/ws/sessions/99d471b1ca3c23cc8e30b6acec5db987",
+																"maxLength": 4096,
+																"x-auditable": true
+															},
+															"fields": {
+																"description": "Comma-separated list of fields.",
+																"type": "string",
+																"example": "ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestURI,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID",
+																"x-auditable": true
+															},
+															"filter": {
+																"description": "Filters to drill down into specific events.",
+																"type": "string",
+																"example": "{\"where\":{\"and\":[{\"key\":\"ClientCountry\",\"operator\":\"neq\",\"value\":\"ca\"}]}}",
+																"x-auditable": true
+															},
+															"sample": {
+																"description": "The sample parameter is the sample rate of the records set by the client: \"sample\": 1 is 100% of records \"sample\": 10 is 10% and so on.",
+																"type": "integer",
+																"example": 1,
+																"x-auditable": true
+															},
+															"session_id": {
+																"description": "Unique session id of the job.",
+																"type": "string",
+																"example": "99d471b1ca3c23cc8e30b6acec5db987",
+																"x-auditable": true
+															}
+														},
+														"nullable": true
 													}
-												},
-												"nullable": true
+												],
+												"nullable": true,
+												"type": "object"
 											}
 										}
 									},
@@ -252,42 +258,48 @@
 												"result": {
 													"type": "array",
 													"items": {
-														"type": "object",
-														"properties": {
-															"destination_conf": {
-																"description": "Unique WebSocket address that will receive messages from Cloudflare’s edge.",
-																"type": "string",
-																"format": "uri",
-																"example": "wss://logs.cloudflare.com/instant-logs/ws/sessions/99d471b1ca3c23cc8e30b6acec5db987",
-																"maxLength": 4096,
-																"x-auditable": true
-															},
-															"fields": {
-																"description": "Comma-separated list of fields.",
-																"type": "string",
-																"example": "ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestURI,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID",
-																"x-auditable": true
-															},
-															"filter": {
-																"description": "Filters to drill down into specific events.",
-																"type": "string",
-																"example": "{\"where\":{\"and\":[{\"key\":\"ClientCountry\",\"operator\":\"neq\",\"value\":\"ca\"}]}}",
-																"x-auditable": true
-															},
-															"sample": {
-																"description": "The sample parameter is the sample rate of the records set by the client: \"sample\": 1 is 100% of records \"sample\": 10 is 10% and so on.",
-																"type": "integer",
-																"example": 1,
-																"x-auditable": true
-															},
-															"session_id": {
-																"description": "Unique session id of the job.",
-																"type": "string",
-																"example": "99d471b1ca3c23cc8e30b6acec5db987",
-																"x-auditable": true
+														"allOf": [
+															{
+																"type": "object",
+																"properties": {
+																	"destination_conf": {
+																		"description": "Unique WebSocket address that will receive messages from Cloudflare’s edge.",
+																		"type": "string",
+																		"format": "uri",
+																		"example": "wss://logs.cloudflare.com/instant-logs/ws/sessions/99d471b1ca3c23cc8e30b6acec5db987",
+																		"maxLength": 4096,
+																		"x-auditable": true
+																	},
+																	"fields": {
+																		"description": "Comma-separated list of fields.",
+																		"type": "string",
+																		"example": "ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestURI,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID",
+																		"x-auditable": true
+																	},
+																	"filter": {
+																		"description": "Filters to drill down into specific events.",
+																		"type": "string",
+																		"example": "{\"where\":{\"and\":[{\"key\":\"ClientCountry\",\"operator\":\"neq\",\"value\":\"ca\"}]}}",
+																		"x-auditable": true
+																	},
+																	"sample": {
+																		"description": "The sample parameter is the sample rate of the records set by the client: \"sample\": 1 is 100% of records \"sample\": 10 is 10% and so on.",
+																		"type": "integer",
+																		"example": 1,
+																		"x-auditable": true
+																	},
+																	"session_id": {
+																		"description": "Unique session id of the job.",
+																		"type": "string",
+																		"example": "99d471b1ca3c23cc8e30b6acec5db987",
+																		"x-auditable": true
+																	}
+																},
+																"nullable": true
 															}
-														},
-														"nullable": true
+														],
+														"nullable": true,
+														"type": "object"
 													}
 												}
 											},
@@ -433,8 +445,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logpush.edge",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /zones/{zone_id}/logpush/edge/jobs": {
 		"operationId": "post-zones-zone_id-logpush-edge-jobs",
@@ -582,40 +593,46 @@
 									"properties": {
 										"result": {
 											"type": "object",
-											"properties": {
-												"destination_conf": {
-													"description": "Unique WebSocket address that will receive messages from Cloudflare’s edge.",
-													"type": "string",
-													"format": "uri",
-													"example": "wss://logs.cloudflare.com/instant-logs/ws/sessions/99d471b1ca3c23cc8e30b6acec5db987",
-													"maxLength": 4096,
-													"x-auditable": true
-												},
-												"fields": {
-													"description": "Comma-separated list of fields.",
-													"type": "string",
-													"example": "ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestURI,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID",
-													"x-auditable": true
-												},
-												"filter": {
-													"description": "Filters to drill down into specific events.",
-													"type": "string",
-													"example": "{\"where\":{\"and\":[{\"key\":\"ClientCountry\",\"operator\":\"neq\",\"value\":\"ca\"}]}}",
-													"x-auditable": true
-												},
-												"sample": {
-													"description": "The sample parameter is the sample rate of the records set by the client: \"sample\": 1 is 100% of records \"sample\": 10 is 10% and so on.",
-													"type": "integer",
-													"example": 1,
-													"x-auditable": true
-												},
-												"session_id": {
-													"description": "Unique session id of the job.",
-													"type": "string",
-													"example": "99d471b1ca3c23cc8e30b6acec5db987",
-													"x-auditable": true
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"destination_conf": {
+															"description": "Unique WebSocket address that will receive messages from Cloudflare’s edge.",
+															"type": "string",
+															"format": "uri",
+															"example": "wss://logs.cloudflare.com/instant-logs/ws/sessions/99d471b1ca3c23cc8e30b6acec5db987",
+															"maxLength": 4096,
+															"x-auditable": true
+														},
+														"fields": {
+															"description": "Comma-separated list of fields.",
+															"type": "string",
+															"example": "ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestURI,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID",
+															"x-auditable": true
+														},
+														"filter": {
+															"description": "Filters to drill down into specific events.",
+															"type": "string",
+															"example": "{\"where\":{\"and\":[{\"key\":\"ClientCountry\",\"operator\":\"neq\",\"value\":\"ca\"}]}}",
+															"x-auditable": true
+														},
+														"sample": {
+															"description": "The sample parameter is the sample rate of the records set by the client: \"sample\": 1 is 100% of records \"sample\": 10 is 10% and so on.",
+															"type": "integer",
+															"example": 1,
+															"x-auditable": true
+														},
+														"session_id": {
+															"description": "Unique session id of the job.",
+															"type": "string",
+															"example": "99d471b1ca3c23cc8e30b6acec5db987",
+															"x-auditable": true
+														}
+													},
+													"nullable": true
 												}
-											},
+											],
 											"nullable": true
 										}
 									},
@@ -725,40 +742,46 @@
 											"properties": {
 												"result": {
 													"type": "object",
-													"properties": {
-														"destination_conf": {
-															"description": "Unique WebSocket address that will receive messages from Cloudflare’s edge.",
-															"type": "string",
-															"format": "uri",
-															"example": "wss://logs.cloudflare.com/instant-logs/ws/sessions/99d471b1ca3c23cc8e30b6acec5db987",
-															"maxLength": 4096,
-															"x-auditable": true
-														},
-														"fields": {
-															"description": "Comma-separated list of fields.",
-															"type": "string",
-															"example": "ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestURI,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID",
-															"x-auditable": true
-														},
-														"filter": {
-															"description": "Filters to drill down into specific events.",
-															"type": "string",
-															"example": "{\"where\":{\"and\":[{\"key\":\"ClientCountry\",\"operator\":\"neq\",\"value\":\"ca\"}]}}",
-															"x-auditable": true
-														},
-														"sample": {
-															"description": "The sample parameter is the sample rate of the records set by the client: \"sample\": 1 is 100% of records \"sample\": 10 is 10% and so on.",
-															"type": "integer",
-															"example": 1,
-															"x-auditable": true
-														},
-														"session_id": {
-															"description": "Unique session id of the job.",
-															"type": "string",
-															"example": "99d471b1ca3c23cc8e30b6acec5db987",
-															"x-auditable": true
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"destination_conf": {
+																	"description": "Unique WebSocket address that will receive messages from Cloudflare’s edge.",
+																	"type": "string",
+																	"format": "uri",
+																	"example": "wss://logs.cloudflare.com/instant-logs/ws/sessions/99d471b1ca3c23cc8e30b6acec5db987",
+																	"maxLength": 4096,
+																	"x-auditable": true
+																},
+																"fields": {
+																	"description": "Comma-separated list of fields.",
+																	"type": "string",
+																	"example": "ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestURI,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID",
+																	"x-auditable": true
+																},
+																"filter": {
+																	"description": "Filters to drill down into specific events.",
+																	"type": "string",
+																	"example": "{\"where\":{\"and\":[{\"key\":\"ClientCountry\",\"operator\":\"neq\",\"value\":\"ca\"}]}}",
+																	"x-auditable": true
+																},
+																"sample": {
+																	"description": "The sample parameter is the sample rate of the records set by the client: \"sample\": 1 is 100% of records \"sample\": 10 is 10% and so on.",
+																	"type": "integer",
+																	"example": 1,
+																	"x-auditable": true
+																},
+																"session_id": {
+																	"description": "Unique session id of the job.",
+																	"type": "string",
+																	"example": "99d471b1ca3c23cc8e30b6acec5db987",
+																	"x-auditable": true
+																}
+															},
+															"nullable": true
 														}
-													},
+													],
 													"nullable": true
 												}
 											},
@@ -904,7 +927,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logpush.edge",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

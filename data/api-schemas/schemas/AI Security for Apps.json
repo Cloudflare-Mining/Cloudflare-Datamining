@@ -418,8 +418,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-security.custom-topics",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/ai-security/settings": {
 		"operationId": "ai-security-settings-get",
@@ -792,8 +791,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-security",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PUT /zones/{zone_id}/ai-security/custom-topics": {
 		"operationId": "ai-security-custom-topics-put",
@@ -1257,7 +1255,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-security.custom-topics",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation overwrites the AI Security for Apps custom topics for a zone."
 	},
 	"PUT /zones/{zone_id}/ai-security/settings": {
@@ -1650,7 +1647,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-security",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation toggles AI Security for Apps for a zone."
 	}
 }
