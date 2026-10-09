@@ -4583,6 +4583,390 @@
 		],
 		"x-forge-require-confirmation": "This reverts the D1 database to a previous point in time. Data written after the bookmark will be lost."
 	},
+	"POST /accounts/{account_id}/d1/database/{database_id}/undelete": {
+		"operationId": "d1-undelete-database",
+		"summary": "Undelete D1 Database",
+		"description": "Restore a deleted D1 database. The database is restored with the name it had when it was deleted,\nunless `new_name` is provided. The restored database counts against the account's limits.\nUndeleting a database that is not deleted succeeds without changes, unless `new_name` differs from its current name which errors.\n\nOnce a database is undeleted, Time Travel (point-in-time recovery) cannot restore it to a bookmark or\ntimestamp at or before the undeletion. Only states after the undeletion can be restored.\n",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "database_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "D1 database identifier (UUID).",
+					"type": "string",
+					"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+					"readOnly": true,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"new_name": {
+								"description": "Restore the database with this name instead of the name it had when it was deleted. Required if another database in the account already uses that name.",
+								"allOf": [
+									{
+										"description": "D1 database name.",
+										"type": "string",
+										"example": "my-database",
+										"pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]*$",
+										"x-auditable": true
+									}
+								]
+							}
+						},
+						"additionalProperties": false
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Returns the undeleted D1 database's metadata",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "The details of the D1 database.",
+											"type": "object",
+											"properties": {
+												"created_at": {
+													"description": "Specifies the timestamp the resource was created as an ISO8601 string.",
+													"type": "string",
+													"format": "date-time",
+													"example": "2022-11-15T18:25:44.442097Z",
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"file_size": {
+													"description": "The D1 database's size, in bytes.",
+													"type": "number",
+													"example": 12,
+													"x-auditable": true
+												},
+												"jurisdiction": {
+													"description": "Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.",
+													"type": "string",
+													"example": "eu",
+													"enum": [
+														"eu",
+														"fedramp",
+														"us"
+													],
+													"nullable": true,
+													"x-auditable": true
+												},
+												"name": {
+													"description": "D1 database name.",
+													"type": "string",
+													"example": "my-database",
+													"pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]*$",
+													"x-auditable": true
+												},
+												"num_tables": {
+													"description": "The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.",
+													"type": "number",
+													"example": 12,
+													"deprecated": true,
+													"x-auditable": true
+												},
+												"read_replication": {
+													"description": "Configuration for D1 read replication.",
+													"type": "object",
+													"properties": {
+														"mode": {
+															"description": "The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used.",
+															"type": "string",
+															"example": "auto",
+															"enum": [
+																"auto",
+																"disabled"
+															],
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"mode"
+													]
+												},
+												"uuid": {
+													"description": "D1 database identifier (UUID).",
+													"type": "string",
+													"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"version": {
+													"type": "string",
+													"example": "production",
+													"pattern": "^(alpha|beta|production)$",
+													"x-auditable": true
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Undelete D1 database response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"D1"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "d1",
+		"x-fern-sdk-method-name": "undelete",
+		"x-forge-epilogue": "This command acts on remote D1 Databases.",
+		"x-forge-globals": [
+			{
+				"alias": "v",
+				"description": "Show version number",
+				"name": "version",
+				"required": {
+					"default": false
+				},
+				"type": "boolean"
+			},
+			{
+				"description": "Run as if Wrangler was started in the specified directory instead of the current working directory",
+				"name": "cwd",
+				"required": {
+					"default": "."
+				},
+				"type": "string"
+			},
+			{
+				"alias": "c",
+				"description": "Path to Wrangler configuration file",
+				"name": "config",
+				"required": {
+					"default": "./wrangler.toml"
+				},
+				"type": "string"
+			},
+			{
+				"alias": "e",
+				"description": "Environment to use for operations, and for selecting .env and .dev.vars files",
+				"name": "env",
+				"required": {
+					"default": "dev"
+				},
+				"type": "string"
+			},
+			{
+				"description": "Path to an .env file to load",
+				"name": "env-file",
+				"required": {
+					"default": "./.env"
+				},
+				"type": "string"
+			},
+			{
+				"alias": "x-provision",
+				"description": "Experimental: Enable automatic resource provisioning",
+				"name": "experimental-provision",
+				"required": {
+					"default": true
+				},
+				"type": "boolean"
+			},
+			{
+				"alias": "x-auto-create",
+				"description": "Automatically provision draft bindings with new resources",
+				"name": "experimental-auto-create",
+				"required": {
+					"default": true
+				},
+				"type": "boolean"
+			}
+		],
+		"x-forge-require-confirmation": "After undeleting, Time Travel cannot restore the D1 database to a point in time at or before the undeletion."
+	},
 	"PUT /accounts/{account_id}/d1/database/{database_id}": {
 		"operationId": "d1-update-database",
 		"summary": "Update D1 Database",

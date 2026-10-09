@@ -316,6 +316,24 @@
 					"example": "production"
 				},
 				"deprecated": true
+			},
+			{
+				"name": "previews_enabled",
+				"in": "query",
+				"schema": {
+					"description": "Whether previews are routable for the domain.",
+					"type": "boolean",
+					"example": false
+				}
+			},
+			{
+				"name": "enabled",
+				"in": "query",
+				"schema": {
+					"description": "Whether the configured hostname is routable for the domain.",
+					"type": "boolean",
+					"example": true
+				}
 			}
 		],
 		"responses": {
@@ -462,6 +480,14 @@
 														"readOnly": true,
 														"x-auditable": true
 													},
+													"enabled": {
+														"description": "Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.",
+														"type": "boolean",
+														"example": true,
+														"default": true,
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
 													"environment": {
 														"description": "Worker environment associated with the domain.",
 														"type": "string",
@@ -482,6 +508,14 @@
 														"example": "dbe10b4bc17c295377eabd600e1787fd",
 														"readOnly": true,
 														"x-auditable": true
+													},
+													"previews_enabled": {
+														"description": "Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.",
+														"type": "boolean",
+														"example": false,
+														"default": false,
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"service": {
 														"description": "Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.",
@@ -511,7 +545,9 @@
 													"zone_id",
 													"zone_name",
 													"hostname",
-													"service"
+													"service",
+													"previews_enabled",
+													"enabled"
 												]
 											}
 										}
@@ -793,6 +829,14 @@
 													"readOnly": true,
 													"x-auditable": true
 												},
+												"enabled": {
+													"description": "Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.",
+													"type": "boolean",
+													"example": true,
+													"default": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
 												"environment": {
 													"description": "Worker environment associated with the domain.",
 													"type": "string",
@@ -813,6 +857,14 @@
 													"example": "dbe10b4bc17c295377eabd600e1787fd",
 													"readOnly": true,
 													"x-auditable": true
+												},
+												"previews_enabled": {
+													"description": "Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.",
+													"type": "boolean",
+													"example": false,
+													"default": false,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"service": {
 													"description": "Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.",
@@ -842,7 +894,9 @@
 												"zone_id",
 												"zone_name",
 												"hostname",
-												"service"
+												"service",
+												"previews_enabled",
+												"enabled"
 											]
 										}
 									},
@@ -1028,6 +1082,14 @@
 										"readOnly": true,
 										"x-auditable": true
 									},
+									"enabled": {
+										"description": "Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.",
+										"type": "boolean",
+										"example": true,
+										"default": true,
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
+									},
 									"environment": {
 										"description": "Worker environment associated with the domain.",
 										"type": "string",
@@ -1048,6 +1110,14 @@
 										"example": "dbe10b4bc17c295377eabd600e1787fd",
 										"readOnly": true,
 										"x-auditable": true
+									},
+									"previews_enabled": {
+										"description": "Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.",
+										"type": "boolean",
+										"example": false,
+										"default": false,
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"service": {
 										"description": "Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.",
@@ -1077,7 +1147,9 @@
 									"zone_id",
 									"zone_name",
 									"hostname",
-									"service"
+									"service",
+									"previews_enabled",
+									"enabled"
 								]
 							},
 							{
@@ -1194,6 +1266,14 @@
 													"readOnly": true,
 													"x-auditable": true
 												},
+												"enabled": {
+													"description": "Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.",
+													"type": "boolean",
+													"example": true,
+													"default": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
 												"environment": {
 													"description": "Worker environment associated with the domain.",
 													"type": "string",
@@ -1214,6 +1294,14 @@
 													"example": "dbe10b4bc17c295377eabd600e1787fd",
 													"readOnly": true,
 													"x-auditable": true
+												},
+												"previews_enabled": {
+													"description": "Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.",
+													"type": "boolean",
+													"example": false,
+													"default": false,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"service": {
 													"description": "Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.",
@@ -1243,7 +1331,9 @@
 												"zone_id",
 												"zone_name",
 												"hostname",
-												"service"
+												"service",
+												"previews_enabled",
+												"enabled"
 											]
 										}
 									},

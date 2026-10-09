@@ -522,6 +522,14 @@
 														"example": "2014-01-01T05:20:00.12345Z",
 														"readOnly": true
 													},
+													"dns64_enabled": {
+														"description": "Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.",
+														"type": "boolean",
+														"example": false,
+														"default": false,
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "optional"
+													},
 													"dns_destination_ips_id": {
 														"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
 														"type": "string",
@@ -910,6 +918,14 @@
 																"format": "date-time",
 																"example": "2014-01-01T05:20:00.12345Z",
 																"readOnly": true
+															},
+															"dns64_enabled": {
+																"description": "Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.",
+																"type": "boolean",
+																"example": false,
+																"default": false,
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"dns_destination_ips_id": {
 																"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
@@ -1401,6 +1417,14 @@
 													"example": "2014-01-01T05:20:00.12345Z",
 													"readOnly": true
 												},
+												"dns64_enabled": {
+													"description": "Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.",
+													"type": "boolean",
+													"example": false,
+													"default": false,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "optional"
+												},
 												"dns_destination_ips_id": {
 													"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
 													"type": "string",
@@ -1756,6 +1780,14 @@
 															"format": "date-time",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"readOnly": true
+														},
+														"dns64_enabled": {
+															"description": "Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.",
+															"type": "boolean",
+															"example": false,
+															"default": false,
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"dns_destination_ips_id": {
 															"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
@@ -2159,6 +2191,14 @@
 								"default": false,
 								"x-auditable": true
 							},
+							"dns64_enabled": {
+								"description": "Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.",
+								"type": "boolean",
+								"example": false,
+								"default": false,
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "optional"
+							},
 							"dns_destination_ips_id": {
 								"description": "Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.",
 								"type": "string",
@@ -2460,6 +2500,14 @@
 													"format": "date-time",
 													"example": "2014-01-01T05:20:00.12345Z",
 													"readOnly": true
+												},
+												"dns64_enabled": {
+													"description": "Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.",
+													"type": "boolean",
+													"example": false,
+													"default": false,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"dns_destination_ips_id": {
 													"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
@@ -2816,6 +2864,14 @@
 															"format": "date-time",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"readOnly": true
+														},
+														"dns64_enabled": {
+															"description": "Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.",
+															"type": "boolean",
+															"example": false,
+															"default": false,
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"dns_destination_ips_id": {
 															"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
@@ -3228,6 +3284,14 @@
 								"default": false,
 								"x-auditable": true
 							},
+							"dns64_enabled": {
+								"description": "Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.",
+								"type": "boolean",
+								"example": false,
+								"default": false,
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "optional"
+							},
 							"dns_destination_ips_id": {
 								"description": "Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.",
 								"type": "string",
@@ -3529,6 +3593,14 @@
 													"format": "date-time",
 													"example": "2014-01-01T05:20:00.12345Z",
 													"readOnly": true
+												},
+												"dns64_enabled": {
+													"description": "Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.",
+													"type": "boolean",
+													"example": false,
+													"default": false,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"dns_destination_ips_id": {
 													"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
@@ -3885,6 +3957,14 @@
 															"format": "date-time",
 															"example": "2014-01-01T05:20:00.12345Z",
 															"readOnly": true
+														},
+														"dns64_enabled": {
+															"description": "Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.",
+															"type": "boolean",
+															"example": false,
+															"default": false,
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"dns_destination_ips_id": {
 															"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
