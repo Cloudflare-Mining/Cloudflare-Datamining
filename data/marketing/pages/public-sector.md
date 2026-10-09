@@ -606,7 +606,7 @@ Someone from Cloudflare will be in touch with you shortly.
 - Defend public-facing apps
 - Fight online fraud
 
-[Learn more   ](https://www.cloudflare.com/sase/)
+[Learn more  ](https://www.cloudflare.com/sase/)
 
 ![Registrar tile - Icon](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/ce6a263qj52g1djjeebd8svk02/icon_tile_cloudflare-registrar.png)
 
@@ -616,7 +616,7 @@ Someone from Cloudflare will be in touch with you shortly.
 - Modernize networks
 - Maximize efficiency
 
-[Learn more   ](https://www.cloudflare.com/application-services/)
+[Learn more  ](https://www.cloudflare.com/application-services/)
 
 ![Code Js tile - Icon](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/ds766966257cbaj51kn7mmht7t/icon_tile_code-js.png)
 
@@ -626,7 +626,7 @@ Someone from Cloudflare will be in touch with you shortly.
 - Boost productivity
 - Simplify deployment
 
-[Learn more   ](https://ai.cloudflare.com/)
+[Learn more  ](https://ai.cloudflare.com/)
 
 ![Fedramp map - blue - image](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/5iil3cc0r50k38aua81pak732g/pop_fedramp_wan_backbone-blue.png)
 
@@ -662,37 +662,37 @@ We're delivering innovations like AI-powered cyber defenses and quantum-safe cry
 
 ###### Cybersecurity and Infrastructure Security Agency (CISA)
 
-[See why   ](https://blog.cloudflare.com/helping-keep-governments-safe-and-secure/)
+[See why  ](https://blog.cloudflare.com/helping-keep-governments-safe-and-secure/)
 
 ![Arizona Department of Homeland  Security - Logo thumbnail](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/2mdq8i6teh2bt68f803a4tiv4v/Arizona-Homeland-logo.png)
 
 ###### Arizona Department of Homeland Security (DHS)
 
-[See why   ](https://www.cloudflare.com/case-studies/state-of-arizona/)
+[See why  ](https://www.cloudflare.com/case-studies/state-of-arizona/)
 
 ![Oklahoma Office of Management  and Enterprise Services - Logo thumbnail](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/bi3t67qpcl6jl6s93bqmnm6e7j/oklahoma-logo_thumbnail.png)
 
 ###### Oklahoma Office of Management and Enterprise Services (OMES)
 
-[See why   ](https://www.cloudflare.com/case-studies/state-of-oklahoma-omes/)
+[See why  ](https://www.cloudflare.com/case-studies/state-of-oklahoma-omes/)
 
 ![Lawrence Berkeley National Laboratory - Logo](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/35gu64qo151hp5bfv6aii59i2u/berkeley_lab-thumbnail.png)
 
 ###### Lawrence Berkeley National Laboratory
 
-[See why   ](https://www.cloudflare.com/case-studies/lawrence-berkeley-national-laboratory/)
+[See why  ](https://www.cloudflare.com/case-studies/lawrence-berkeley-national-laboratory/)
 
 ![Godwin Heights Public School District - Logo](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/gfjqg2a5a17dt1talfc4abbq6c/godwin_heights-thumbnail.png)
 
 ###### Godwin Heights Public School District
 
-[See why   ](https://www.cloudflare.com/case-studies/godwin-heights-public-school-district/)
+[See why  ](https://www.cloudflare.com/case-studies/godwin-heights-public-school-district/)
 
 ![Mount Pleasant Independent School District - Logo](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/fpt3msd2id3af6lrbv06a1hk3c/mpisd_logo-thumbnail.png)
 
 ###### Mount Pleasant Independent School District
 
-[See why   ](https://www.cloudflare.com/case-studies/mpisd/)
+[See why  ](https://www.cloudflare.com/case-studies/mpisd/)
 
 ## Discover key solutions for your organization
 
@@ -734,7 +734,7 @@ Partner with Cloudflare for an enduring strategic advantage through modern zero 
 
 ###### Secure web apps and APIs
 
-[Application services   ](https://www.cloudflare.com/application-services/)
+[Application services  ](https://www.cloudflare.com/application-services/)
 
 Protect apps and APIs from abuse, powered by built-in threat intelligence
 
@@ -742,7 +742,7 @@ Protect apps and APIs from abuse, powered by built-in threat intelligence
 
 ###### Accelerate zero trust security
 
-[SASE and SSE services   ](https://www.cloudflare.com/cybersecurity/)
+[SASE and SSE services  ](https://www.cloudflare.com/cybersecurity/)
 
 Securely connect users to apps while filtering harmful web content
 
@@ -750,7 +750,7 @@ Securely connect users to apps while filtering harmful web content
 
 ###### Mitigate DDoS attacks
 
-[DDoS protection   ](https://www.cloudflare.com/ddos/)
+[DDoS protection  ](https://www.cloudflare.com/ddos/)
 
 Mitigate DDoS attacks at both the network and application layers
 
@@ -758,7 +758,7 @@ Mitigate DDoS attacks at both the network and application layers
 
 ###### Simplify DNS services
 
-[DNS services   ](https://www.cloudflare.com/application-services/products/dns/)
+[DNS services  ](https://www.cloudflare.com/application-services/products/dns/)
 
 Gain enterprise-grade authoritative DNS with the fastest response time
 
@@ -766,7 +766,7 @@ Gain enterprise-grade authoritative DNS with the fastest response time
 
 ###### Stop phishing and ransomware
 
-[Email security   ](https://www.cloudflare.com/sase/products/email-security/)
+[Email security  ](https://www.cloudflare.com/sase/products/email-security/)
 
 Block phishing attacks and email-borne malware before it impacts users
 
@@ -774,7 +774,7 @@ Block phishing attacks and email-borne malware before it impacts users
 
 ###### Modernize networks
 
-[Network services   ](https://www.cloudflare.com/sase/products/wan/)
+[Network services  ](https://www.cloudflare.com/sase/products/wan/)
 
 Get started with Cloudflare for Government today - Card - Modernize networks - Backside link
 
@@ -1372,7 +1372,7 @@ Someone from Cloudflare will be in touch with you shortly.
 
 Since Cloudflare signed CISA's Secure by Design pledge, we are continuously enhancing the security of our products, ensuring that users are better protected from evolving threats.
 
-[Learn more   ](https://blog.cloudflare.com/advancing-account-security-as-part-of-cloudflare-commitment-to-cisa-secure-by-design-pledge/)
+[Learn more  ](https://blog.cloudflare.com/advancing-account-security-as-part-of-cloudflare-commitment-to-cisa-secure-by-design-pledge/)
 
 ![Design pledge - thumbnail](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/teufkmalrd43rd4h0p58j6fd2b/design_pledge-thumbnail.png)
 
@@ -1380,7 +1380,7 @@ Since Cloudflare signed CISA's Secure by Design pledge, we are continuously enha
 
 Cloudflare develops and deploys AI technologies ethically, and we do not train large language models (LLMs) ourselves. Customers never need to worry that their data is used to train LLMs.
 
-[Learn more   ](https://www.cloudflare.com/trust-hub/responsible-ai/)
+[Learn more  ](https://www.cloudflare.com/trust-hub/responsible-ai/)
 
 ![Wcag - Thumbnail](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/ggmdhonl5l37n3f0m5s8kust0n/wcag-thumbnail.png)
 
@@ -1388,7 +1388,7 @@ Cloudflare develops and deploys AI technologies ethically, and we do not train l
 
 Cloudflare is delivering key features that make the Internet accessible to everyone, while complying with the latest Web Content Accessibility Guidelines (WCAG) and Section 508 of the Rehabilitation Act.
 
-[Learn more   ](https://blog.cloudflare.com/advancing-account-security-as-part-of-cloudflare-commitment-to-cisa-secure-by-design-pledge/)
+[Learn more  ](https://blog.cloudflare.com/advancing-account-security-as-part-of-cloudflare-commitment-to-cisa-secure-by-design-pledge/)
 
 ## Resources
 
@@ -1400,7 +1400,7 @@ Solution brief
 
 Learn how the NIST Cybersecurity Framework and Cloudflare help you effectively manage cyber risk
 
-[Learn more   ](https://cfl.re/cloudflare-for-NIST-CSF)
+[Learn more  ](https://cfl.re/cloudflare-for-NIST-CSF)
 
 ![Post-quantum cryptography](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/vmjknbj7695jb39hkc28v3di37/Blog_Thumbnail-template_7.png)
 
@@ -1410,7 +1410,7 @@ White paper
 
 Get a detailed mapping of Cloudflare's capabilities to the NIST Cybersecurity Framework
 
-[Learn more   ](https://cfl.re/nist-csf-2-0-whitepaper)
+[Learn more  ](https://cfl.re/nist-csf-2-0-whitepaper)
 
 ![Insight thumbnail - rocket](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/rfnl01liul36h8b0jeb0iari6m/insights-thumbnail-rocket.png)
 
@@ -1420,7 +1420,7 @@ Solution brief
 
 See how Cloudflare can help maximize efficiency in your organization
 
-[Learn more   ](https://cfl.re/cloudflare-for-efficiency-sb)
+[Learn more  ](https://cfl.re/cloudflare-for-efficiency-sb)
 
 ![Security signals](https://cf-assets.www.cloudflare.com/dzlvafdwdttg/1YoyUXhrcRl7z9EY8FstSL/411645472ac080535a228e7516b948b5/Insights-Thumbnail-5.png)
 
@@ -1430,7 +1430,7 @@ Solution brief
 
 Learn how Cloudflare helps you comply with Trusted Internet Connections requirements
 
-[Learn more   ](https://cfl.re/cloudflare-for-tic-3-0-sb)
+[Learn more  ](https://cfl.re/cloudflare-for-tic-3-0-sb)
 
 ![Whitepaper image](https://cf-assets.www.cloudflare.com/dzlvafdwdttg/4WrhAF89gX5WDdQqm7Q1qy/7f4675f6ff696faa8f16322ad0ebf921/Whitepaper-Thumbnail-4_1__1_.svg)
 
@@ -1440,7 +1440,7 @@ White paper
 
 Get a detailed mapping of Cloudflare's capabilities to Trusted Internet Connections requirements
 
-[Learn more   ](https://cf-assets.www.cloudflare.com/slt3lc6tev37/2R61MGgzaK176bv0FrF1DP/b58e3d69761c4b630189e50f8f5c6af1/Sector-TIC3.0-Whitepaper_RD4.pdf)
+[Learn more  ](https://cf-assets.www.cloudflare.com/slt3lc6tev37/2R61MGgzaK176bv0FrF1DP/b58e3d69761c4b630189e50f8f5c6af1/Sector-TIC3.0-Whitepaper_RD4.pdf)
 
 ![Whitepaper - Thumbnail 5 ](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/0ol92u83cp7qp5itmqk317pb57/whitepaper-thumbnail-5.png)
 
@@ -1450,7 +1450,7 @@ White paper
 
 Advance data protection and CMMC/GLBA compliance for Higher Education institutions
 
-[Learn more   ](https://cfl.re/cloudflare-for-education-compliance-white-paper)
+[Learn more  ](https://cfl.re/cloudflare-for-education-compliance-white-paper)
 
 ## Explore trends that are vital to your mission
 
@@ -1460,7 +1460,7 @@ Advance data protection and CMMC/GLBA compliance for Higher Education institutio
 
 Accelerate your AI vision with Cloudflare's unified security, connectivity, and developer platform
 
-[Learn more   ](https://www.cloudflare.com/ai-solution/)
+[Learn more  ](https://www.cloudflare.com/ai-solution/)
 
 ![Performance wrench - Icon](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/j5smh4mail2abd0oqpj167bk0d/icon_tile_performance-wrench.png)
 
@@ -1468,7 +1468,7 @@ Accelerate your AI vision with Cloudflare's unified security, connectivity, and 
 
 4 initiatives to enhance cybersecurity and build resilience
 
-[Learn more   ](https://www.cloudflare.com/the-net/top-of-mind-technology/cyber-resilience/)
+[Learn more  ](https://www.cloudflare.com/the-net/top-of-mind-technology/cyber-resilience/)
 
 ![Constellation - Icon](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/ar31cab6ml76tdol5k2jai8m3s/icon_tile_workers-constellation.png)
 
@@ -1476,7 +1476,7 @@ Accelerate your AI vision with Cloudflare's unified security, connectivity, and 
 
 What is being done about the threat quantum computing poses to encryption? NIST's first post-quantum cryptographic standards
 
-[Learn more   ](https://www.cloudflare.com/pqc/)
+[Learn more  ](https://www.cloudflare.com/pqc/)
 
 ## Protect, connect and build the future of public sector today
 

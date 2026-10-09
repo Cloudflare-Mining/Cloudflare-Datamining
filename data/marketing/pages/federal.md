@@ -20,7 +20,7 @@ Get every capability, everywhere. Our unique approach to FedRAMP authorization m
 - Defend public-facing apps
 - Fight online fraud
 
-[Learn more   ](https://www.cloudflare.com/sase/)
+[Learn more  ](https://www.cloudflare.com/sase/)
 
 ![Registrar tile - Icon](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/ce6a263qj52g1djjeebd8svk02/icon_tile_cloudflare-registrar.png)
 
@@ -30,7 +30,7 @@ Get every capability, everywhere. Our unique approach to FedRAMP authorization m
 - Modernize networks
 - Maximize efficiency
 
-[Learn more   ](https://www.cloudflare.com/application-services/)
+[Learn more  ](https://www.cloudflare.com/application-services/)
 
 ![Code Js tile - Icon](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/ds766966257cbaj51kn7mmht7t/icon_tile_code-js.png)
 
@@ -40,7 +40,7 @@ Get every capability, everywhere. Our unique approach to FedRAMP authorization m
 - Boost productivity
 - Simplify deployment
 
-[Learn more   ](https://ai.cloudflare.com/)
+[Learn more  ](https://ai.cloudflare.com/)
 
 ![Fedramp map - blue - image](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/5iil3cc0r50k38aua81pak732g/pop_fedramp_wan_backbone-blue.png)
 
@@ -112,7 +112,7 @@ Reduce costs by 50% or more when you adopt Cloudflare's efficient and extensive 
 
 CISA and Cloudflare safeguard federal agencies with DNS filtering that prevents users from reaching malicious websites
 
-[Learn more   ](https://blog.cloudflare.com/helping-keep-governments-safe-and-secure/)
+[Learn more  ](https://blog.cloudflare.com/helping-keep-governments-safe-and-secure/)
 
 ![Registrar tile - Icon](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/ce6a263qj52g1djjeebd8svk02/icon_tile_cloudflare-registrar.png)
 
@@ -120,7 +120,7 @@ CISA and Cloudflare safeguard federal agencies with DNS filtering that prevents 
 
 CISA selected Cloudflare to provide managed name servers for the .gov zone and authoritative DNS for .gov domain names
 
-[Learn more   ](https://www.cloudflare.com/press/press-releases/2023/cloudflare-wins-cisa-contract-for-dns-services/)
+[Learn more  ](https://www.cloudflare.com/press/press-releases/2023/cloudflare-wins-cisa-contract-for-dns-services/)
 
 ## See how Cloudflare helps agencies accomplish their goals
 
@@ -178,7 +178,7 @@ Key results:
 
 ###### Secure web apps and APIs
 
-[Application services   ](https://www.cloudflare.com/application-services/)
+[Application services  ](https://www.cloudflare.com/application-services/)
 
 Protect apps and APIs from abuse, powered by built-in threat intelligence
 
@@ -186,7 +186,7 @@ Protect apps and APIs from abuse, powered by built-in threat intelligence
 
 ###### Accelerate zero trust security
 
-[SASE and SSE services   ](https://www.cloudflare.com/cybersecurity/)
+[SASE and SSE services  ](https://www.cloudflare.com/cybersecurity/)
 
 Securely connect users to apps while filtering harmful web content
 
@@ -194,7 +194,7 @@ Securely connect users to apps while filtering harmful web content
 
 ###### Mitigate DDoS attacks
 
-[DDoS protection   ](https://www.cloudflare.com/ddos/)
+[DDoS protection  ](https://www.cloudflare.com/ddos/)
 
 Mitigate DDoS attacks at both the network and application layers
 
@@ -202,7 +202,7 @@ Mitigate DDoS attacks at both the network and application layers
 
 ###### Simplify DNS services
 
-[DNS services   ](https://www.cloudflare.com/application-services/products/dns/)
+[DNS services  ](https://www.cloudflare.com/application-services/products/dns/)
 
 Gain enterprise-grade authoritative DNS with the fastest response time
 
@@ -210,7 +210,7 @@ Gain enterprise-grade authoritative DNS with the fastest response time
 
 ###### Stop phishing and ransomware
 
-[Email security   ](https://www.cloudflare.com/sase/products/email-security/)
+[Email security  ](https://www.cloudflare.com/sase/products/email-security/)
 
 Block phishing attacks and email-borne malware before it impacts users
 
@@ -218,7 +218,7 @@ Block phishing attacks and email-borne malware before it impacts users
 
 ###### Modernize networks
 
-[Network services   ](https://www.cloudflare.com/sase/products/wan/)
+[Network services  ](https://www.cloudflare.com/sase/products/wan/)
 
 Get started with Cloudflare for Government today - Card - Modernize networks - Backside link
 
@@ -234,7 +234,7 @@ Article
 
 ###### Boosting government efficiency with AI agents
 
-[Read   ](https://www.cloudflare.com/the-net/government/ai-agents-public-sector/)
+[Read  ](https://www.cloudflare.com/the-net/government/ai-agents-public-sector/)
 
 ![Background image](https://cf-assets.www.cloudflare.com/dzlvafdwdttg/6awcN9lu1EaqsPyIZyUhvm/66f4ccb9fdee71e9140dbd06e232ef46/Insights-Thumbnail-2.png)
 
@@ -242,7 +242,7 @@ Article
 
 ###### Transforming digital services for government
 
-[Read   ](https://www.cloudflare.com/the-net/government/transform-gov-services/)
+[Read  ](https://www.cloudflare.com/the-net/government/transform-gov-services/)
 
 ![Background image](https://cf-assets.www.cloudflare.com/dzlvafdwdttg/tjyhBi5602dBIk7UO7xb6/49bc98d2fbb2c0733ca54dbbe2b7e4f8/Insights-Thumbnail-4.png)
 
@@ -250,7 +250,7 @@ Article
 
 ###### Quantum threats are real — is your security ready?
 
-[Read   ](https://www.cloudflare.com/the-net/top-of-mind-technology/post-quantum-security/)
+[Read  ](https://www.cloudflare.com/the-net/top-of-mind-technology/post-quantum-security/)
 
 ![Security signals](https://cf-assets.www.cloudflare.com/dzlvafdwdttg/1YoyUXhrcRl7z9EY8FstSL/411645472ac080535a228e7516b948b5/Insights-Thumbnail-5.png)
 
@@ -258,7 +258,7 @@ Article
 
 ###### Modern security innovations and trends: From AI to quantum
 
-[Read   ](https://www.cloudflare.com/the-net/modern-security-innovations-ai/)
+[Read  ](https://www.cloudflare.com/the-net/modern-security-innovations-ai/)
 
 ![Security signals](https://cf-assets.www.cloudflare.com/dzlvafdwdttg/1YoyUXhrcRl7z9EY8FstSL/411645472ac080535a228e7516b948b5/Insights-Thumbnail-5.png)
 
@@ -266,7 +266,7 @@ Solution brief
 
 ###### Learn how the NIST CSF and Cloudflare help you manage cyber risk
 
-[Learn more   ](https://cfl.re/cloudflare-for-NIST-CSF)
+[Learn more  ](https://cfl.re/cloudflare-for-NIST-CSF)
 
 ![Whitepaper - Thumbnail 5 ](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/0ol92u83cp7qp5itmqk317pb57/whitepaper-thumbnail-5.png)
 
@@ -274,7 +274,7 @@ White paper
 
 ###### Get a detailed mapping of Cloudflare's capabilities to the NIST CSF 2.0
 
-[Read   ](https://cfl.re/nist-csf-2-0-whitepaper)
+[Read  ](https://cfl.re/nist-csf-2-0-whitepaper)
 
 ![2025 Gartner CNAP MQ](https://cf-assets.www.cloudflare.com/dzlvafdwdttg/1md9HF80UDFu5OiEzBFIl9/2fd375ffe350f7c8014c0926666656c5/Press-releases-Thumbnail-2.png)
 
@@ -282,7 +282,7 @@ Solution brief
 
 ###### See how Cloudflare can help maximize efficiency in your organization
 
-[Read   ](https://cfl.re/cloudflare-for-efficiency-sb)
+[Read  ](https://cfl.re/cloudflare-for-efficiency-sb)
 
 ![Ebook - Thumbnail 2](https://cf-assets.www.cloudflare.com/dzlvafdwdttg/44DmXQ8eFsmXZeTgwGPwkn/7263b430d78f18e18d945de4692bdc29/Ebook-Thumbnail-_2.svg)
 
@@ -290,7 +290,7 @@ Ebook
 
 ###### Learn 5 critical considerations for mitigating DDoS attacks
 
-[Read   ](https://www.cloudflare.com/lp/ddos-mitigation-ebook/)
+[Read  ](https://www.cloudflare.com/lp/ddos-mitigation-ebook/)
 
 ## Protect, connect and build the future of government today
 
@@ -300,7 +300,7 @@ Ebook
 
 Get easy, instant access to Cloudflare security and performance services.
 
-[Try it out   ](https://dash.cloudflare.com/sign-up/)
+[Try it out  ](https://dash.cloudflare.com/sign-up/)
 
 ![Constellation Icon](https://cf-assets.www.cloudflare.com/dzlvafdwdttg/3o96rYCOx6VOx7F316KwCx/b5d6c97da4994cf2588ed36fd82c0c20/Constellation.svg)
 
@@ -308,7 +308,7 @@ Get easy, instant access to Cloudflare security and performance services.
 
 Get a personalized recommendation for your specific needs.
 
-[Find the right plan   ](https://www.cloudflare.com/about-your-website/)
+[Find the right plan  ](https://www.cloudflare.com/about-your-website/)
 
 ![Innovation Thinking Icon ](https://cf-assets.www.cloudflare.com/dzlvafdwdttg/1OnP5oJNO4uAH6f5So09bO/24f8e053ffa56a8099c8ba6a4325743e/innovation-thinking.svg)
 
@@ -316,4 +316,4 @@ Get a personalized recommendation for your specific needs.
 
 Have questions or want to get a demo? Connect with one of our experts.
 
-[Talk to us   ](https://www.cloudflare.com/plans/enterprise/contact/)
+[Talk to us  ](https://www.cloudflare.com/plans/enterprise/contact/)

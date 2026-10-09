@@ -54,7 +54,7 @@ Mitigate risk with modern, future-ready security capabilities
 - Protect mission-critical applications
 - Enhance detection and response with actionable threat intelligence
 
-[Learn more   ](https://www.cloudflare.com/cybersecurity/)
+[Learn more  ](https://www.cloudflare.com/cybersecurity/)
 
 ![CDN - Image](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/8d3r6g73jd4f98hlvmrsv7i57p/icon_tile_connect-2.png)
 
@@ -66,7 +66,7 @@ Connect warfighters and mission partners wherever they are
 - High reliability with 100% uptime SLA
 - High capacity with direct connections to nearly every service provider
 
-[Learn more   ](https://www.cloudflare.com/network/)
+[Learn more  ](https://www.cloudflare.com/network/)
 
 ![Performance acceleration rocket - Icon](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/o499rmnqll0f110mi1r7k1n73d/icon_tile_performance-accelerationg-rocket.png)
 
@@ -78,7 +78,7 @@ Build modern applications for enduring strategic advantage
 - Leverage included AI models
 - Deploy and scale serverless code
 
-[Learn more   ](https://www.cloudflare.com/developer-platform/)
+[Learn more  ](https://www.cloudflare.com/developer-platform/)
 
 FEDRAMP® High Authorized
 
@@ -122,7 +122,7 @@ Top use cases
 
 Gain a high-performance Domain Name System (DNS) service that defends against cyber attacks.
 
-[Learn more   ](https://www.cloudflare.com/application-services/products/dns/)
+[Learn more  ](https://www.cloudflare.com/application-services/products/dns/)
 
 ![Web Application Firewall - Image](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/hg3edd89p5539fqjf9skpsqu2s/icon_tile_security-waf.png)
 
@@ -130,7 +130,7 @@ Gain a high-performance Domain Name System (DNS) service that defends against cy
 
 Block threats and zero-day exploits with an industry-leading web application firewall (WAF).
 
-[Learn more   ](https://www.cloudflare.com/application-services/products/waf/)
+[Learn more  ](https://www.cloudflare.com/application-services/products/waf/)
 
 ![threat icon](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/0rsdgjc9rd03hd3g6v90v0fn21/icon_tile_ddos-attack.png)
 
@@ -138,7 +138,7 @@ Block threats and zero-day exploits with an industry-leading web application fir
 
 End the destructive distributed denial-of-service (DDoS) attacks that impact availability and uptime.
 
-[Learn more   ](https://www.cloudflare.com/ddos/)
+[Learn more  ](https://www.cloudflare.com/ddos/)
 
 ![Performance acceleration rocket](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/o499rmnqll0f110mi1r7k1n73d/icon_tile_performance-accelerationg-rocket.png)
 
@@ -146,7 +146,7 @@ End the destructive distributed denial-of-service (DDoS) attacks that impact ava
 
 Accelerate, secure and scale web applications for peak performance and reliability.
 
-[Learn more   ](https://www.cloudflare.com/application-services/products/)
+[Learn more  ](https://www.cloudflare.com/application-services/products/)
 
 ![Analytics network icon](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/avgj9kf8f57ld77iasb5gdsl3p/icon_tile_analytics-network.png)
 
@@ -154,7 +154,7 @@ Accelerate, secure and scale web applications for peak performance and reliabili
 
 Connect warfighters, allies, mission partners and with unparalleled speed and efficiency.
 
-[Learn more   ](https://www.cloudflare.com/network-services/)
+[Learn more  ](https://www.cloudflare.com/network-services/)
 
 ![Security Shield - Icon](https://cf-assets.www.cloudflare.com/v2/image/8hfcfei4gh5dtfqq0n94mrrr7j/icon_security-shield-tile.svg)
 
@@ -162,7 +162,7 @@ Connect warfighters, allies, mission partners and with unparalleled speed and ef
 
 Replace insecure VPNs with fast, reliable Zero Trust Network Access (ZTNA).
 
-[Learn more   ](https://www.cloudflare.com/sase/products/access/)
+[Learn more  ](https://www.cloudflare.com/sase/products/access/)
 
 Ready for the future
 
@@ -170,7 +170,7 @@ Ready for the future
 
 Defend against "harvest now, decrypt later" attacks by transitioning to post-quantum cryptography with Cloudflare
 
-[Learn more   ](https://www.cloudflare.com/pqc/)
+[Learn more  ](https://www.cloudflare.com/pqc/)
 
 ![honeycomb cube diagram](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/pa995dnjc960v26lmgrfchqb5u/Cube-diagram.png)
 
@@ -180,7 +180,7 @@ Defend against "harvest now, decrypt later" attacks by transitioning to post-qua
 
 Build and deploy ambitious applications to Cloudflare's global network with full-stack AI building blocks
 
-[Learn more   ](https://ai.cloudflare.com/)
+[Learn more  ](https://ai.cloudflare.com/)
 
 ## Resources
 
@@ -190,7 +190,7 @@ Solution brief
 
 ###### Discover how the NIST CSF and Cloudflare helps agencies manage cyber risk
 
-[Get solution brief   ](https://cfl.re/cloudflare-for-NIST-CSF)
+[Get solution brief  ](https://cfl.re/cloudflare-for-NIST-CSF)
 
 ![Report thumbnail](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/o4o0cdkq5p1ihf9moic0e0en3d/report_thumbnail_template_4.png)
 
@@ -198,7 +198,7 @@ Report
 
 ###### Cloudflare named a Leader in Forrester Wave for WAF for 2025
 
-[Read report   ](https://www.cloudflare.com/lp/forrester-wave-waf-2025/)
+[Read report  ](https://www.cloudflare.com/lp/forrester-wave-waf-2025/)
 
 ![Thumbnail - Insight - Template 1 Lightbulb](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/qah4sakhoh4onb8r1b4vnav162/thumbnail_insights-1.png)
 
@@ -206,7 +206,7 @@ Insight
 
 ###### Future-proof your security against emerging post-quantum threats
 
-[Learn more   ](https://www.cloudflare.com/pqc/)
+[Learn more  ](https://www.cloudflare.com/pqc/)
 
 ![Thumbnail - Insight - Template 1 Lightbulb](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/qah4sakhoh4onb8r1b4vnav162/thumbnail_insights-1.png)
 
@@ -214,7 +214,7 @@ Insight
 
 ###### Protecting data from AI: Pros and cons of AI-enhanced development
 
-[Learn more   ](https://www.cloudflare.com/the-net/data-protection-ai/)
+[Learn more  ](https://www.cloudflare.com/the-net/data-protection-ai/)
 
 ![Thumbnail - Report - Template 1 Graphs](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/rthfe6ssgl69vc67id4580mf42/thumbnail_report_template-1-graphs.png)
 
@@ -222,7 +222,7 @@ Solution brief
 
 ###### Build and deploy ambitious AI applications to Cloudflare's global network
 
-[Get solution brief   ](https://ai.cloudflare.com/)
+[Get solution brief  ](https://ai.cloudflare.com/)
 
 ![Thumbnail - Insight - Template 1 Lightbulb](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/qah4sakhoh4onb8r1b4vnav162/thumbnail_insights-1.png)
 
@@ -230,7 +230,7 @@ Insight
 
 ###### Public sector spotlight series: Reimagining public sector's digital future
 
-[Learn more   ](https://www.cloudflare.com/the-net/public-sector-digital/)
+[Learn more  ](https://www.cloudflare.com/the-net/public-sector-digital/)
 
 ## Gain an enduring strategic advantage today with Cloudflare
 
@@ -240,7 +240,7 @@ Insight
 
 Get easy, instant access to Cloudflare security and performance services.
 
-[Start here   ](https://dash.cloudflare.com/sign-up/)
+[Start here  ](https://dash.cloudflare.com/sign-up/)
 
 ![Innovation Thinking Icon ](https://cf-assets.www.cloudflare.com/dzlvafdwdttg/1OnP5oJNO4uAH6f5So09bO/24f8e053ffa56a8099c8ba6a4325743e/innovation-thinking.svg)
 
@@ -248,7 +248,7 @@ Get easy, instant access to Cloudflare security and performance services.
 
 Get a personalized recommendation for your specific needs.
 
-[Find the right plan   ](https://www.cloudflare.com/about-your-website/)
+[Find the right plan  ](https://www.cloudflare.com/about-your-website/)
 
 ![Security Shield Protection Icon](https://cf-assets.www.cloudflare.com/dzlvafdwdttg/7CvNwSY8XCo90yNwqJkkiX/c476a3043f6bc66918b34c36e5d6533b/security-shield-protection-2.svg)
 
@@ -256,4 +256,4 @@ Get a personalized recommendation for your specific needs.
 
 Have questions or want to get a demo? Get in touch with our dedicated DoD team.
 
-[dod@cloudflare.com   ](mailto:dod@cloudflare.com)
+[dod@cloudflare.com  ](mailto:dod@cloudflare.com)

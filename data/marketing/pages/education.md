@@ -599,7 +599,7 @@ Mitigate cyber security risk and enhance resilience
 - Adopt Zero Trust architectures
 - Achieve and maintain compliance
 
-[Learn more   ](https://www.cloudflare.com/cybersecurity/)
+[Learn more  ](https://www.cloudflare.com/cybersecurity/)
 
 ![Performance acceleration rocket - Icon](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/o499rmnqll0f110mi1r7k1n73d/icon_tile_performance-accelerationg-rocket.png)
 
@@ -611,7 +611,7 @@ Improve user experiences and operational efficiency
 - Optimize experiences for everyone
 - Reduce operational costs
 
-[Learn more   ](https://www.cloudflare.com/application-services/)
+[Learn more  ](https://www.cloudflare.com/application-services/)
 
 ![Server origin - Tile](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/h1ace804ud0j59djun552nok79/icon_tile_server-origin.png)
 
@@ -623,7 +623,7 @@ Build and deploy applications globally quickly and easily
 - Leverage included AI models
 - Deploy serverless code instantly
 
-[Learn more   ](https://www.cloudflare.com/developer-platform/)
+[Learn more  ](https://www.cloudflare.com/developer-platform/)
 
 GLOBAL NETWORK
 
@@ -718,7 +718,7 @@ Chief Technology Officer, Mount Pleasant International School District
 
 Cloudflare achieved a FedRAMP High authorization and also maintains GovRAMP Moderate Authorized.
 
-[Learn more   ](https://www.cloudflare.com/federal/)
+[Learn more  ](https://www.cloudflare.com/federal/)
 
 #### IRAP
 
@@ -726,7 +726,7 @@ Cloudflare achieved a FedRAMP High authorization and also maintains GovRAMP Mode
 
 The IRAP security assessment helps Australian organizations validate that vital security controls are in place. Cloudflare has been assessed at the IRAP Protected level for high-impact, non-secret government data.
 
-[Learn more   ](https://blog.cloudflare.com/irap-protected-assessment/)
+[Learn more  ](https://blog.cloudflare.com/irap-protected-assessment/)
 
 #### ENS
 
@@ -734,7 +734,7 @@ The IRAP security assessment helps Australian organizations validate that vital 
 
 The National Security Framework (ENS) establishes key security requirements for public sector information systems in Spain. Cloudflare achieved an ENS Certificate of Conformity at the High security level.
 
-[Learn more   ](https://www.cloudflare.com/trust-hub/compliance-resources/ens/)
+[Learn more  ](https://www.cloudflare.com/trust-hub/compliance-resources/ens/)
 
 ## Modernize your digital foundation with Cloudflare today
 
@@ -742,37 +742,37 @@ The National Security Framework (ENS) establishes key security requirements for 
 
 Gain a high-performance Domain Name System (DNS) service that defends against cyber attacks.
 
-[Learn more   ](https://www.cloudflare.com/application-services/products/dns/)
+[Learn more  ](https://www.cloudflare.com/application-services/products/dns/)
 
 ###### Web app protection
 
 Block threats and zero-day exploits with an industry-leading web application firewall (WAF).
 
-[Learn more   ](https://www.cloudflare.com/application-services/products/waf/)
+[Learn more  ](https://www.cloudflare.com/application-services/products/waf/)
 
 ###### DDoS prevention
 
 End the destructive distributed denial-of-service (DDoS) attacks that impact availability and uptime.
 
-[Learn more   ](https://www.cloudflare.com/ddos/)
+[Learn more  ](https://www.cloudflare.com/ddos/)
 
 ###### Email security
 
 Protect all users from phishing,  link-based attacks, and business email compromise.
 
-[Learn more   ](https://www.cloudflare.com/sase/products/email-security/)
+[Learn more  ](https://www.cloudflare.com/sase/products/email-security/)
 
 ###### Secure network access
 
 Replace outdated, insecure VPNs with modern, reliable Zero Trust Network Access (ZTNA).
 
-[Learn more   ](https://www.cloudflare.com/sase/products/access/)
+[Learn more  ](https://www.cloudflare.com/sase/products/access/)
 
 ###### Developer platform
 
 Build, deploy, and deliver applications from a unified platform with the power of AI
 
-[Learn more   ](https://www.cloudflare.com/developer-platform/products/)
+[Learn more  ](https://www.cloudflare.com/developer-platform/products/)
 
 ## Project Cybersafe Schools
 
@@ -792,7 +792,7 @@ Cloudflare's Project Cybersafe Schools provides eligible K-12 public school dist
 
 Accelerate AI in higher education with key insights from IDC
 
-[Get whitepaper   ](https://cf-assets.www.cloudflare.com/dzlvafdwdttg/bmi2GlH983EXULuGGMDLN/c2e4a47a46ad1f18de99cfb5fedac884/AI_in_HED_IDC_FINAL__1_.pdf)
+[Get whitepaper  ](https://cf-assets.www.cloudflare.com/dzlvafdwdttg/bmi2GlH983EXULuGGMDLN/c2e4a47a46ad1f18de99cfb5fedac884/AI_in_HED_IDC_FINAL__1_.pdf)
 
 ![Report thumbnail](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/o4o0cdkq5p1ihf9moic0e0en3d/report_thumbnail_template_4.png)
 
@@ -800,7 +800,7 @@ Accelerate AI in higher education with key insights from IDC
 
 Realize the full power and potential of AI in higher education
 
-[Watch now   ](https://www.cloudflare.com/lp/realizing-the-full-promise-and-potential-of-ai-in-higher-education/)
+[Watch now  ](https://www.cloudflare.com/lp/realizing-the-full-promise-and-potential-of-ai-in-higher-education/)
 
 ![Thumbnail - Insight - Template 1 Lightbulb](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/qah4sakhoh4onb8r1b4vnav162/thumbnail_insights-1.png)
 
@@ -808,7 +808,7 @@ Realize the full power and potential of AI in higher education
 
 Stop ghost student fraud with modern bot management
 
-[Get solution brief   ](https://cfl.re/cloudflare-for-education-stopping-ghost-student-fraud)
+[Get solution brief  ](https://cfl.re/cloudflare-for-education-stopping-ghost-student-fraud)
 
 ![Whitepaper - Thumbnail 5 ](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/0ol92u83cp7qp5itmqk317pb57/whitepaper-thumbnail-5.png)
 
@@ -816,7 +816,7 @@ Stop ghost student fraud with modern bot management
 
 Advancing data protection and compliance in Higher Education
 
-[Get whitepaper   ](https://cfl.re/cloudflare-for-education-compliance-white-paper)
+[Get whitepaper  ](https://cfl.re/cloudflare-for-education-compliance-white-paper)
 
 ![Thumbnail - Insight - Template 1 Lightbulb](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/qah4sakhoh4onb8r1b4vnav162/thumbnail_insights-1.png)
 
@@ -824,7 +824,7 @@ Advancing data protection and compliance in Higher Education
 
 Learn the top 5 reasons why a modern WAF is critical in higher education
 
-[Get solution brief   ](https://cfl.re/top-5-reasons-or-waf-higher-education)
+[Get solution brief  ](https://cfl.re/top-5-reasons-or-waf-higher-education)
 
 ![Ebook thumbnail - version 1](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/1i13cecpnd7h51ess4m2gasc1q/thumbnail_ebook-1.png)
 
@@ -832,7 +832,7 @@ Learn the top 5 reasons why a modern WAF is critical in higher education
 
 Public sector spotlight series: Reimagining public sector's digital future
 
-[Read now   ](https://www.cloudflare.com/the-net/public-sector-digital/)
+[Read now  ](https://www.cloudflare.com/the-net/public-sector-digital/)
 
 ### Make Cloudflare your modern digital foundation today
 
@@ -842,10 +842,10 @@ Public sector spotlight series: Reimagining public sector's digital future
 
 Get easy, instant access to Cloudflare security and performance services.
 
-[Start here   ](https://dash.cloudflare.com/sign-up/)
+[Start here  ](https://dash.cloudflare.com/sign-up/)
 
 ###### Need help choosing?
 
 Get a personalized recommendation for your specific needs.
 
-[Find the right plan   ](https://www.cloudflare.com/about-your-website/)
+[Find the right plan  ](https://www.cloudflare.com/about-your-website/)

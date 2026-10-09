@@ -606,7 +606,7 @@ Mitigate risk with advanced cybersecurity capabilities
 - Prevent disruptive cyberattacks
 - Prepare for post-quantum threats
 
-[Learn more   ](https://www.cloudflare.com/cybersecurity/)
+[Learn more  ](https://www.cloudflare.com/cybersecurity/)
 
 ![Performance acceleration rocket](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/o499rmnqll0f110mi1r7k1n73d/icon_tile_performance-accelerationg-rocket.png)
 
@@ -618,7 +618,7 @@ Improve user experiences and ensure availability
 - Optimize web user experiences
 - Avoid network congestion
 
-[Learn more   ](https://www.cloudflare.com/application-services/)
+[Learn more  ](https://www.cloudflare.com/application-services/)
 
 ![CDN - Image](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/8d3r6g73jd4f98hlvmrsv7i57p/icon_tile_connect-2.png)
 
@@ -630,7 +630,7 @@ Innovative and efficient developer platform
 - Deploy serverless code instantly
 - Reduce costs with zero egress fees
 
-[Learn more   ](https://www.cloudflare.com/developer-platform/)
+[Learn more  ](https://www.cloudflare.com/developer-platform/)
 
 ![Pop fedramp wan - Backbone orange](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/25ce9gde9933hb5qo05ta8ai0u/pop_fedramp_wan-backbone-orange.png)
 
@@ -769,7 +769,7 @@ Advance your AI initiatives with Cloudflare's unified security, connectivity, an
 
 CDS partners with Cloudflare to ensure the security and performance of a solution for the UK Government
 
-[Learn more   ](https://www.cloudflare.com/case-studies/cds-uk-government/)
+[Learn more  ](https://www.cloudflare.com/case-studies/cds-uk-government/)
 
 ![Berkeley lab - Thumbnail](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/k3svkt5nfh3r71il6bqis3t91r/berkeley_lab-thumbnail.png)
 
@@ -777,7 +777,7 @@ CDS partners with Cloudflare to ensure the security and performance of a solutio
 
 Lawrence Berkeley National Laboratory chooses Cloudflare as its Zero Trust security partner to protect critical research data.
 
-[Learn more   ](https://www.cloudflare.com/case-studies/lawrence-berkeley-national-laboratory/)
+[Learn more  ](https://www.cloudflare.com/case-studies/lawrence-berkeley-national-laboratory/)
 
 ![Eesti raudtee - Thumbnail](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/sri0cgumvp1otcb0f3bdf6a77j/eesti_raudtee-thumbnail.png)
 
@@ -785,7 +785,7 @@ Lawrence Berkeley National Laboratory chooses Cloudflare as its Zero Trust secur
 
 Estonian Railways reduces complexity by modernizing application access and network security with Cloudflare.
 
-[Learn more   ](https://www.cloudflare.com/case-studies/estonian-railways/)
+[Learn more  ](https://www.cloudflare.com/case-studies/estonian-railways/)
 
 ## Discover solutions for your organization
 
@@ -837,7 +837,7 @@ Whitepaper
 
 ###### Learn how Cloudflare helps you manage risk with the NIST CSF
 
-[Read now   ](https://cfl.re/cloudflare-for-defense-ncs-security-brief)
+[Read now  ](https://cfl.re/cloudflare-for-defense-ncs-security-brief)
 
 ![Whitepaper - Thumbnail 5 ](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/0ol92u83cp7qp5itmqk317pb57/whitepaper-thumbnail-5.png)
 
@@ -845,7 +845,7 @@ Whitepaper
 
 ###### Learn about AI Use Cases that are defining the future of government
 
-[Read now   ](https://cfl.re/the-ai-blueprint-four-use-cases-defining-the-future-of-the-public-sector)
+[Read now  ](https://cfl.re/the-ai-blueprint-four-use-cases-defining-the-future-of-the-public-sector)
 
 ![Insight thumbnail - rocket](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/rfnl01liul36h8b0jeb0iari6m/insights-thumbnail-rocket.png)
 
@@ -853,7 +853,7 @@ Solution brief
 
 ###### Read about Cloudflare support for ENS, Spain's national security scheme
 
-[Learn more   ](https://cfl.re/45eFfbz)
+[Learn more  ](https://cfl.re/45eFfbz)
 
 ![Thumbnail - Insight - Template 1 Lightbulb](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/qah4sakhoh4onb8r1b4vnav162/thumbnail_insights-1.png)
 
@@ -861,7 +861,7 @@ Solution brief
 
 ###### Learn about Cloudflare's security solutions for defense agencies
 
-[Read now   ](https://cfl.re/nist-csf-2-0-whitepaper)
+[Read now  ](https://cfl.re/nist-csf-2-0-whitepaper)
 
 ![Insights - thumbnail 2](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/cn29qrviq91ehdeoo8fhan260g/insights-thumbnail_2.png)
 
@@ -869,7 +869,7 @@ Solution brief
 
 ###### Understand Cloudflare's unique FedRAMP approach that maximizes mission capability
 
-[Learn more   ](https://cfl.re/3YHm1s5)
+[Learn more  ](https://cfl.re/3YHm1s5)
 
 ![Insights - thumbnail](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/igotn6bnmp47j2kj8061b3l36o/Insights-Thumbnail_5.webp)
 
@@ -877,7 +877,7 @@ Solution brief
 
 ###### Explore Cloudflare's solutions for the Trusted Internet Connections (TIC) 3.0 program
 
-[Read now   ](https://cfl.re/3A7EJjd)
+[Read now  ](https://cfl.re/3A7EJjd)
 
 ## Cloudflare for government
 
@@ -887,7 +887,7 @@ Solution brief
 
 Get easy, instant access to Cloudflare security and performance services.
 
-[Start for free   ](https://dash.cloudflare.com/sign-up/)
+[Start for free  ](https://dash.cloudflare.com/sign-up/)
 
 ![Constellation Icon](https://cf-assets.www.cloudflare.com/dzlvafdwdttg/3o96rYCOx6VOx7F316KwCx/b5d6c97da4994cf2588ed36fd82c0c20/Constellation.svg)
 
@@ -895,7 +895,7 @@ Get easy, instant access to Cloudflare security and performance services.
 
 Get a personalized recommendation for your specific needs.
 
-[Find the right plan   ](https://www.cloudflare.com/about-your-website/)
+[Find the right plan  ](https://www.cloudflare.com/about-your-website/)
 
 ![Innovation Thinking Icon ](https://cf-assets.www.cloudflare.com/dzlvafdwdttg/1OnP5oJNO4uAH6f5So09bO/24f8e053ffa56a8099c8ba6a4325743e/innovation-thinking.svg)
 
@@ -903,4 +903,4 @@ Get a personalized recommendation for your specific needs.
 
 Have questions or want to get a demo? Connect with one of our experts.
 
-[Contact us   ](https://www.cloudflare.com/plans/enterprise/contact/)
+[Contact us  ](https://www.cloudflare.com/plans/enterprise/contact/)

@@ -1224,7 +1224,7 @@ Threat report
 
 Cloudflare participates in global operation to disrupt EvilTokens Phishing-as-a-Service
 
-[Read now   ](https://www.cloudflare.com/threat-intelligence/research/report/cloudflare-participates-in-global-operation-to-disrupt-eviltokens-phishing-as-a-service/)
+[Read now  ](https://www.cloudflare.com/threat-intelligence/research/report/cloudflare-participates-in-global-operation-to-disrupt-eviltokens-phishing-as-a-service/)
 
 ![Cloudforce One - Latest Threat - Adversarial deception: a study of indirect prompt code injection - Image](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/6grb2ajved4n35cc5dn7in6o6v/Analysis_of_multi-language_deception_of_AI_code_reviewers.png)
 
@@ -1232,7 +1232,7 @@ Threat report
 
 Adversarial deception: a study of indirect prompt code injection
 
-[Read now   ](https://cloudflare.com/cloudforce-one/research/adversarial-deception-a-study-of-indirect-prompt-code-injection/)
+[Read now  ](https://cloudflare.com/cloudforce-one/research/adversarial-deception-a-study-of-indirect-prompt-code-injection/)
 
 ![Cloudflare participates in global operation to disrupt Tycoon 2FA - image](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/08shp5vu3t49j9i2i3lesbjh11/Tycoon_2FA_e.webp)
 
@@ -1240,7 +1240,7 @@ Threat report
 
 Cloudflare participates in global operation to disrupt Tycoon 2FA
 
-[Read now   ](https://www.cloudflare.com/threat-intelligence/research/report/tycoon-2fa-takedown/)
+[Read now  ](https://www.cloudflare.com/threat-intelligence/research/report/tycoon-2fa-takedown/)
 
 ![Cloudforce One - Latest threat research - Card 1 - Image](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/fkobe9g36t311dkjhoot5gru7s/threat_icon2_rat.png)
 
@@ -1248,7 +1248,7 @@ Campaign snapshot
 
 Vercel-hosted RMM abuse campaign evolves with Telegram C2 for victim filtering
 
-[Read now   ](https://www.cloudflare.com/cloudforce-one/research/report/vercel-hosted-rmm-abuse-campaign-evolves-with-telegram-c2-for-victim-filtering/)
+[Read now  ](https://www.cloudflare.com/cloudforce-one/research/report/vercel-hosted-rmm-abuse-campaign-evolves-with-telegram-c2-for-victim-filtering/)
 
 ![Cloudforce One - Latest threat research - Card 2 - Image](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/v2acfl5mg54gr0reohm027vn2i/threat_icon2_mountain.png)
 
@@ -1256,7 +1256,7 @@ Threat report
 
 Aisuru botnet: Early October attacks escalate into record-setting DDoS activity
 
-[Read now   ](https://www.cloudflare.com/threat-intelligence/research/report/aisuru-botnet/)
+[Read now  ](https://www.cloudflare.com/threat-intelligence/research/report/aisuru-botnet/)
 
 ![Cloudforce One - Latest threat research - Card 3 - Image](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/nj4teqsdtt7dp7ik4m9qpir264/threat_icon2_fox.png)
 
@@ -1264,7 +1264,7 @@ Threat report
 
 Cloudflare participates in global operation to disrupt RaccoonO365
 
-[Read now   ](https://www.cloudflare.com/threat-intelligence/research/report/cloudflare-participates-in-global-operation-to-disrupt-raccoono365/)
+[Read now  ](https://www.cloudflare.com/threat-intelligence/research/report/cloudflare-participates-in-global-operation-to-disrupt-raccoono365/)
 
 [See all threat insights](https://www.cloudflare.com/cloudforce-one/research/)
 

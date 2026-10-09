@@ -10,15 +10,31 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+October 9, 2026 [<h2>Deno is joining Cloudflare</h2>](https://blog.cloudflare.com/deno-joins-cloudflare/)
+
+The Deno team is joining Cloudflare to radically simplify self-hosting Workers and Durable Objects, so developers can use the same primitives in more places.
+
+![Kenton Varda](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DEXVTQSPFW8ZSKE70KPZ.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Ryan Dahl](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4ENFKW4YTVQWHFZ3QZQ493D.01M4ENFMVKQXFWHGEVAERPHSEE.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Kenton Varda](https://blog.cloudflare.com/author/kenton-varda/) and  [Ryan Dahl](https://blog.cloudflare.com/author/ryan-dahl/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4EN399YDFNQMGM5VG6EHTNS.01M4EN39V1RNGJ3FBS356QEAB5.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/deno-joins-cloudflare/)
+
+October 9, 2026 [<h2>Introducing on-demand CPU and memory profiling with flamegraphs for Workers and Durable Objects</h2>](https://blog.cloudflare.com/workers-on-demand-profiling/)
+
+On-demand CPU and memory profiling for Cloudflare Workers and Durable Objects is now available. Now you can generate interactive flamegraphs directly in production to quickly track down memory leaks and performance bottlenecks.
+
+![Dominik Picheta](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P5G8RRA9GKFZA6BYERZ1.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Dominik Picheta](https://blog.cloudflare.com/author/dominik/)
+
 October 8, 2026 [<h2>Bridging technical depth and usability: The story behind Radar's redesign</h2>](https://blog.cloudflare.com/radar-redesign/)
 
 We redesigned Cloudflare Radar to make real-time global traffic and outage data accessible to a wider audience — including journalists, less technical researchers, and everyday users. By introducing an interactive map and standardized components, we simplified navigation while preserving technical depth.
 
-![Sophia Alfred](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M34XNPH605RFZSSKT2WGV62K.01M34XNQ1CGJKMAJX9V0QX0V78.webp&w=64&h=64&f=webp&fit=cover&position=center)![Lai Yi Ohlsen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DGMNXAW2CZQQAX92W97V.png&w=64&h=64&f=webp&fit=cover&position=center)
+![Sophia Alfred](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M34XNPH605RFZSSKT2WGV62K.01M34XNQ1CGJKMAJX9V0QX0V78.webp&w=64&h=64&f=webp&fit=cover&position=center)![Lai Yi Ohlsen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DGMNXAW2CZQQAX92W97V.png&w=64&h=64&f=webp&fit=cover&position=center)![Nuno Pereira](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463BH7YG5WV285FY6MG1BA.png&w=64&h=64&f=webp&fit=cover&position=center)
 
-[Sophia Alfred](https://blog.cloudflare.com/author/sophia-alfred/) and  [Lai Yi Ohlsen](https://blog.cloudflare.com/author/lai-yi-ohlsen/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4DWXM8QH1FEK7XDTCR1RVA5.01M4DWXN5TGFT9XA1WXDCVYJ4B.png&w=2400&h=1350&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/radar-redesign/)
+[Sophia Alfred](https://blog.cloudflare.com/author/sophia-alfred/),  [Lai Yi Ohlsen](https://blog.cloudflare.com/author/lai-yi-ohlsen/), and  [Nuno Pereira](https://blog.cloudflare.com/author/nuno-pereira/)
 
 October 7, 2026 [<h2>Building an evidence-grounded agentic security operations harness on Cloudflare</h2>](https://blog.cloudflare.com/agentic-security-operations/)
 
@@ -147,22 +163,6 @@ AI sovereignty is not a zero-sum game, but many governments now believe it is. C
 ![Carly Ramsey](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q303KX2VKFJ5MS55V7RX.png&w=64&h=64&f=webp&fit=cover&position=center)![Smrithi Ramesh](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW473MXBXKZQ603RJ5FHA2N6.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Petra Arts](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47228RPQXRFB4WW8P2EB9V.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Carly Ramsey](https://blog.cloudflare.com/author/carly/),  [Smrithi Ramesh](https://blog.cloudflare.com/author/smrithi-ramesh/), and  [Petra Arts](https://blog.cloudflare.com/author/petra/)
-
-October 1, 2026 [<h2>Introducing Workers KV Instant — powered by Quicksilver</h2>](https://blog.cloudflare.com/workers-kv-instant/)
-
-Workers KV Instant delivers sub-2ms p99 read latencies and 250ms global replication across Cloudflare's 300+ edge locations. KV Instant eliminates cold-read penalties and uses the familiar Workers KV API.
-
-![Rob Sutter](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VM3GCX6DGHVJ06XGV8XA.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Rob Sutter](https://blog.cloudflare.com/author/rob/)
-
-October 1, 2026 [<h2>Cloudflare OS: your company's agent workspace, managed for you</h2>](https://blog.cloudflare.com/managed-cloudflare-os/)
-
-Cloudflare OS gives everyone in your organization an agent workspace that knows how your company works and connects to its data and systems. We're opening the waitlist for fully managed deployments that you'll be able to launch in a few clicks.
-
-![Phillip Jones](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CA63Q819PPAR7M8DTNQ3.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Phillip Jones](https://blog.cloudflare.com/author/phillip/)
 
 Load more
 
