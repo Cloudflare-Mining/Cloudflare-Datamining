@@ -3,55 +3,33 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: Austin, TX, San Francisco, CA,</strong><strong> New York City, NY&nbsp;</strong></p>
-<p><strong>Role Summary</strong></p>
-<p>The Senior Revenue Accountant’s primary responsibility is ensuring the Company’s revenue recognition is in compliance with US GAAP and Company policies, while leaning heavily into AI-driven automation to enhance process efficiency and scalability. The role is both advisory and operational in nature, helping business partners make informed decisions while managing complex accounting processes—including token-based usage and evolving AI-related revenue streams—through the adoption of innovative, automated tools.</p>
-<p><strong>Role Responsibilities</strong></p>
+<p><strong>What you’ll do</strong></p>
+<p>In this role, you’ll help build and maintain Data Security products as a Software Engineer. These products empower customers to gain deep visibility into Cloud/SaaS security opportunities and into trends in their network traffic and product use. As an engineer on the team, you will focus on building new functionality into our APIs and distributed code while ensuring the performance and reliability of our services which ingest millions of data points each day. You’ll be joining a team of bright, knowledge-seeking engineers who are truly missionaries in solving the security and network visibility challenges for our customers.</p>
+<p><strong>Technologies we use:</strong></p>
 <ul>
-	<li>Participates in accounting close activities, including:</li>
-	<ul>
-		<li>Leverage AI and automation tools to streamline close processes (ie flux analysis automation, enhancing reconciliations, automating large datasets)</li>
-		<li>Partnering with other teams (legal, sales, etc.) to interpret, research, discuss, and / or process deal reviews</li>
-		<li>Complete contract accounting of executed customer contracts</li>
-		<li>Preparation / review of journal entries</li>
-		<li>Preparation / review of reconciliations and related financial analysis for management and external reporting</li>
-	</ul>
-	<li>Participates in Company-wide AI driven initiatives and cross-functional projects that directly impact or relate to the revenue accounting area, particularly increasing the revenue analytical capabilities&nbsp;</li>
-	<li>Proactively identify and implement AI-driven automation solutions to transform revenue accounting workflows, prioritizing process efficiency, scalability, and reduction of manual effort.</li>
-	<li>Adopt a "clean sheet" methodology to evaluate operational processes, specifically leveraging generative AI and advanced automation tools to streamline complex tasks and enhance overall accuracy.</li>
-	<li>Stay current on the latest financial accounting and reporting developments and U.S GAAP reporting requirements, as applicable.</li>
-	<li>Mentors and supports junior members of the team and provides feedback</li>
-	<li>Communicates any problems to senior management timely</li>
-	<li>Present findings and solutions to the management team, while considering global impacts and subsequent guidance to influence other regions where appropriate to adopt a consistent process and policy</li>
-	<li>Establish and track Key Performance Indicators (KPI’s)</li>
-	<li>Prepares schedules in support of the external audit process while also utilizing AI capabilities to streamline any workbooks&nbsp;</li>
-	<li>Coordinates with the auditors on accounting issues and audit related queries</li>
-	<li>Reviews and maintains controls as the business environment changes as a result of process, system and policy enhancements. Includes risk assessment and review of risk areas</li>
+	<li>Products are written in Go, Python, and Typescript.</li>
+	<li>Code runs on Kubernetes, Cloudflare Workers, AWS, GCP, Azure.</li>
+	<li>We utilize Postgres as our data store, Redis as our cache, and Kafka as our message broker.</li>
+	<li>Our frontend is written in Typescript and React.</li>
+	<li>For service monitoring we use Prometheus and Grafana.</li>
+	<li>For service logging we use Elasticsearch and Kibana.</li>
+	<li>For product analytics we use Clickhouse and BigQuery.&nbsp;</li>
 </ul>
-<p><strong>Must-Have Skills</strong></p>
+<p><strong>Examples of desirable skills, knowledge, and experience:</strong></p>
 <ul>
-	<li>Bachelor’s degree in Accounting, or a related field, or advanced experience</li>
-	<li>Active CPA</li>
-	<li>Accounting/Audit firm experience preferred&nbsp;</li>
-	<li>4+ years of experience in accounting roles</li>
-	<li>Proven ability to leverage AI and automation tools to drive process efficiencies, data analysis, and workflow improvements.</li>
-	<li>Strong understanding of revenue accounting rules under ASC 606</li>
-	<li>Experience working with revenue related systems such as billing systems, ERP, and revenue recognition tool / subledger</li>
-	<li>Revenue accounting for SaaS revenue recognition and understanding of multi-element arrangements</li>
-	<li>Ability to work effectively with various departments, particularly Sales</li>
-	<li>Ability to manage multiple priorities</li>
-	<li>Flexibility to work under time constraints and deadlines</li>
-	<li>Must be meticulous, detail oriented, and organized</li>
-	<li>Strong interpersonal and communication skills</li>
-	<li>Ability to work independently, yet cooperatively and constructively in a team environment</li>
-	<li>Highly proficient in advanced MS Excel</li>
+	<li>3+ years of professional experience building and managing reliable and performant software systems at scale, preferably with technologies like: Go, Python, Postgres</li>
+	<li>Passion for making the digital world a more secure place</li>
+	<li>Excellent debugging and optimization skills</li>
+	<li>Willingness, curiosity, and enthusiasm to learn new programming languages, technologies and systems</li>
+	<li>Strong interpersonal and communication skills. Caring and empathy are coveted traits here!</li>
 </ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<p>San Francisco Estimated Base salary $131,000 - $180,000.</p>
-<p>New York Estimated Base salary $126,000 - $173,000.</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Bonus</strong></p>
+<ul>
+	<li>Frontend programming experience in Typescript/Javascript</li>
+	<li>Previous experience working with third-party API integrations</li>
+	<li>Previous experience working on security products</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
