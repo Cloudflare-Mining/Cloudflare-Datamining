@@ -485,9 +485,9 @@ export declare const scheduler: Scheduler;
 export declare const performance: Performance;
 export declare const Cloudflare: Cloudflare;
 export declare const origin: string;
-export declare const Buffer: any;
-export declare const process: any;
-export declare const global: ServiceWorkerGlobalScope;
+export declare var Buffer: any;
+export declare var process: any;
+export declare var global: ServiceWorkerGlobalScope;
 export declare function setImmediate(
   $function: (...param0: any[]) => void,
   ...args: any[]
@@ -4597,6 +4597,7 @@ export interface Tracing {
 }
 export declare abstract class Span {
   get isTraced(): boolean;
+  spanContext(): TracingSpanContext;
   setAttribute(key: string, value: boolean | number | string): this;
   setAttributes(
     attributes: Record<string, boolean | number | string | undefined>,
@@ -4631,6 +4632,11 @@ export type TracingSpanStatusCode = "unset" | "ok" | "error";
 export interface TracingSpanStatus {
   code: TracingSpanStatusCode;
   message?: string;
+}
+export interface TracingSpanContext {
+  traceId: string;
+  spanId: string;
+  traceFlags: number;
 }
 /**
  * Represents the identity of a user authenticated via Cloudflare Access.
