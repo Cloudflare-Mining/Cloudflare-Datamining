@@ -20,6 +20,14 @@ The Deno team is joining Cloudflare to radically simplify self-hosting Workers a
 
 [![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4EN399YDFNQMGM5VG6EHTNS.01M4EN39V1RNGJ3FBS356QEAB5.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/deno-joins-cloudflare/)
 
+October 9, 2026 [<h2>Introducing Clef-omni with full multimodality, plus a faster Clef and a cheaper Clef-flash</h2>](https://blog.cloudflare.com/clef-faster-cheaper-multimodal/)
+
+We are expanding the Clef decision model family with Clef-omni, natively processing audio, video, images, and text in a single pipeline. We've also lowered Clef-flash pricing and boosted Clef inference speeds by up to 2.0x.
+
+![Michelle Chen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R95PPSQQ82Z92P51M550.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Alex Reneau](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WKWJ94JZDRJM354AYKYXG.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Kevin Jain](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GNE2XZCQVHB7T7FJEJ54.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Michelle Chen](https://blog.cloudflare.com/author/michelle/),  [Alex Reneau](https://blog.cloudflare.com/author/alex-reneau/), and  [Kevin Jain](https://blog.cloudflare.com/author/kevin-jain/)
+
 October 9, 2026 [<h2>Introducing on-demand CPU and memory profiling with flamegraphs for Workers and Durable Objects</h2>](https://blog.cloudflare.com/workers-on-demand-profiling/)
 
 On-demand CPU and memory profiling for Cloudflare Workers and Durable Objects is now available. Now you can generate interactive flamegraphs directly in production to quickly track down memory leaks and performance bottlenecks.
@@ -155,14 +163,6 @@ We are introducing Clef and Clef-flash, open-source decision models hosted on Wo
 ![Michelle Chen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R95PPSQQ82Z92P51M550.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Alex Reneau](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WKWJ94JZDRJM354AYKYXG.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Kevin Flansburg](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452TM72EKFE8RQCD3JMXND.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Michelle Chen](https://blog.cloudflare.com/author/michelle/),  [Alex Reneau](https://blog.cloudflare.com/author/alex-reneau/), and  [Kevin Flansburg](https://blog.cloudflare.com/author/kevin-flansburg/)
-
-October 1, 2026 [<h2>One year later: Sovereign AI and the fight for choice</h2>](https://blog.cloudflare.com/sovereign-ai-choice-one-year-later/)
-
-AI sovereignty is not a zero-sum game, but many governments now believe it is. Cloudflare's answer: more local open-source models, model-agnostic security tools, and a commitment to giving nations genuine choice.
-
-![Carly Ramsey](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q303KX2VKFJ5MS55V7RX.png&w=64&h=64&f=webp&fit=cover&position=center)![Smrithi Ramesh](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW473MXBXKZQ603RJ5FHA2N6.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Petra Arts](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47228RPQXRFB4WW8P2EB9V.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Carly Ramsey](https://blog.cloudflare.com/author/carly/),  [Smrithi Ramesh](https://blog.cloudflare.com/author/smrithi-ramesh/), and  [Petra Arts](https://blog.cloudflare.com/author/petra/)
 
 Load more
 
