@@ -4862,9 +4862,9 @@
 																				"x-auditable": true
 																			},
 																			"version_id": {
-																				"description": "Identifier for the version to inherit the binding from, which can be the version ID or the literal \"latest\" to inherit from the latest version. Defaults to inheriting the binding from the latest version.",
+																				"description": "Identifier for the version to inherit the binding from. This can be a version ID, or the literal \"latest\" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to \"latest\". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only \"latest\" and reject a version ID with error 10057.",
 																				"type": "string",
-																				"example": "8969331f-7192-434c-9938-6aea24ed58bf",
+																				"example": "latest",
 																				"default": "latest",
 																				"x-auditable": true
 																			}
@@ -6311,9 +6311,9 @@
 																				"x-auditable": true
 																			},
 																			"version_id": {
-																				"description": "Identifier for the version to inherit the binding from, which can be the version ID or the literal \"latest\" to inherit from the latest version. Defaults to inheriting the binding from the latest version.",
+																				"description": "Identifier for the version to inherit the binding from. This can be a version ID, or the literal \"latest\" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to \"latest\". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only \"latest\" and reject a version ID with error 10057.",
 																				"type": "string",
-																				"example": "8969331f-7192-434c-9938-6aea24ed58bf",
+																				"example": "latest",
 																				"default": "latest",
 																				"x-auditable": true
 																			}
@@ -11588,9 +11588,9 @@
 																	"x-auditable": true
 																},
 																"version_id": {
-																	"description": "Identifier for the version to inherit the binding from, which can be the version ID or the literal \"latest\" to inherit from the latest version. Defaults to inheriting the binding from the latest version.",
+																	"description": "Identifier for the version to inherit the binding from. This can be a version ID, or the literal \"latest\" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to \"latest\". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only \"latest\" and reject a version ID with error 10057.",
 																	"type": "string",
-																	"example": "8969331f-7192-434c-9938-6aea24ed58bf",
+																	"example": "latest",
 																	"default": "latest",
 																	"x-auditable": true
 																}
@@ -13037,9 +13037,9 @@
 																	"x-auditable": true
 																},
 																"version_id": {
-																	"description": "Identifier for the version to inherit the binding from, which can be the version ID or the literal \"latest\" to inherit from the latest version. Defaults to inheriting the binding from the latest version.",
+																	"description": "Identifier for the version to inherit the binding from. This can be a version ID, or the literal \"latest\" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to \"latest\". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only \"latest\" and reject a version ID with error 10057.",
 																	"type": "string",
-																	"example": "8969331f-7192-434c-9938-6aea24ed58bf",
+																	"example": "latest",
 																	"default": "latest",
 																	"x-auditable": true
 																}
@@ -15933,9 +15933,9 @@
 																				"x-auditable": true
 																			},
 																			"version_id": {
-																				"description": "Identifier for the version to inherit the binding from, which can be the version ID or the literal \"latest\" to inherit from the latest version. Defaults to inheriting the binding from the latest version.",
+																				"description": "Identifier for the version to inherit the binding from. This can be a version ID, or the literal \"latest\" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to \"latest\". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only \"latest\" and reject a version ID with error 10057.",
 																				"type": "string",
-																				"example": "8969331f-7192-434c-9938-6aea24ed58bf",
+																				"example": "latest",
 																				"default": "latest",
 																				"x-auditable": true
 																			}
@@ -17382,9 +17382,9 @@
 																				"x-auditable": true
 																			},
 																			"version_id": {
-																				"description": "Identifier for the version to inherit the binding from, which can be the version ID or the literal \"latest\" to inherit from the latest version. Defaults to inheriting the binding from the latest version.",
+																				"description": "Identifier for the version to inherit the binding from. This can be a version ID, or the literal \"latest\" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to \"latest\". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only \"latest\" and reject a version ID with error 10057.",
 																				"type": "string",
-																				"example": "8969331f-7192-434c-9938-6aea24ed58bf",
+																				"example": "latest",
 																				"default": "latest",
 																				"x-auditable": true
 																			}
@@ -21091,7 +21091,7 @@
 			{
 				"name": "bindings_inherit",
 				"in": "query",
-				"description": "When set to \"strict\", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.",
+				"description": "When set to \"strict\", the upload will fail with error 10057 if any `inherit` type bindings cannot be resolved against the latest uploaded version of the Worker, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped.",
 				"schema": {
 					"type": "string",
 					"enum": [
@@ -21783,9 +21783,9 @@
 																	"x-auditable": true
 																},
 																"version_id": {
-																	"description": "Identifier for the version to inherit the binding from, which can be the version ID or the literal \"latest\" to inherit from the latest version. Defaults to inheriting the binding from the latest version.",
+																	"description": "Identifier for the version to inherit the binding from. This can be a version ID, or the literal \"latest\" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to \"latest\". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only \"latest\" and reject a version ID with error 10057.",
 																	"type": "string",
-																	"example": "8969331f-7192-434c-9938-6aea24ed58bf",
+																	"example": "latest",
 																	"default": "latest",
 																	"x-auditable": true
 																}

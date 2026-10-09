@@ -574,7 +574,8 @@
 				"schema": {
 					"type": "string",
 					"deprecated": true
-				}
+				},
+				"x-fern-parameter-name": "ai-gateway-provider"
 			},
 			{
 				"name": "request_content_type",

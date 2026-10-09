@@ -1646,7 +1646,8 @@
 				"schema": {
 					"type": "string",
 					"example": "workers-ai"
-				}
+				},
+				"x-fern-parameter-name": "ai-gateway-provider"
 			}
 		],
 		"responses": {

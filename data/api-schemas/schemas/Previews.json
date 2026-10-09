@@ -23,7 +23,8 @@
 				"schema": {
 					"description": "Identifier for the Worker, which can be ID or name.",
 					"type": "string"
-				}
+				},
+				"x-fern-parameter-name": "worker"
 			},
 			{
 				"name": "preview_id",
@@ -32,7 +33,8 @@
 				"schema": {
 					"description": "Identifier for the Preview, which can be ID, slug, or URL-encoded name.",
 					"type": "string"
-				}
+				},
+				"x-fern-parameter-name": "name"
 			},
 			{
 				"name": "force",
@@ -263,13 +265,10 @@
 		"x-api-token-group": [
 			"Workers Scripts Write"
 		],
-		"x-fern-audiences": [
-			"sdk"
-		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "workers.previews",
+		"x-fern-sdk-group-name": "previews",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-require-confirmation": "This will permanently delete the preview."
+		"x-forge-require-confirmation": "This operation permanently deletes the Preview."
 	},
 	"GET /accounts/{account_id}/workers/workers/{worker_id}/previews": {
 		"operationId": "workers.previews.list",
