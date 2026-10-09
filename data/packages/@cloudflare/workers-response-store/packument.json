@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/workers-response-store",
 	"dist-tags": {
-		"latest": "1.0.1"
+		"latest": "1.1.0"
 	},
 	"versions": {
 		"0.0.0": {
@@ -201,8 +201,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQD4XlvzccCVKVnSH9uKu4vvCcaBcEU5BFYFOzqc1ZT0TAIgASLWcS8dI03/fBOcDjCnLE0EHjJXAjvlgZ88QqCBx3o="
+						"sig": "MEUCIQD4XlvzccCVKVnSH9uKu4vvCcaBcEU5BFYFOzqc1ZT0TAIgASLWcS8dI03/fBOcDjCnLE0EHjJXAjvlgZ88QqCBx3o=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -212,6 +212,46 @@
 					}
 				},
 				"unpackedSize": 115642
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"1.1.0": {
+			"name": "@cloudflare/workers-response-store",
+			"version": "1.1.0",
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@1.1.0",
+				"vitest": "5.0.3",
+				"wrangler": "^4.118.0",
+				"miniflare": "5.20260730.0-alpha",
+				"vite-plus": "1.1.0",
+				"typescript": "^7.0.0",
+				"@types/node": "^25.9.2",
+				"@cloudflare/workers-types": "5.20261004.1"
+			},
+			"dist": {
+				"shasum": "7425709a8e730b7cd4080e19ab435f67feb017c5",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-response-store/-/workers-response-store-1.1.0.tgz",
+				"fileCount": 17,
+				"integrity": "sha512-qQnh6eP7+cQmLntL8xii48lw6tdvJsr2Lnsk7ZLUyFdIGA6llrM0IskVxqzPshDJXS40iRHWBcgxNXmrOwSyeQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIGKqFB+Myuyb/bfhkafMiZ2EZYs5d6q4J1vg7VSxyFImAiEA3EE48hfHRhkmYjd2XaljpBwHB1gcfplq7TacRyp+YiQ=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIGI5j93hFgD1ocSJ33zyscaR4Ox3852LJhqDaf45Z+HjAiAqqwAB+0m+1DomDD2BAtTQTMTn0aQ6k18eQdsoAwrlyw=="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkers-response-store@1.1.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 133197
 			},
 			"engines": {
 				"node": ">=22"
