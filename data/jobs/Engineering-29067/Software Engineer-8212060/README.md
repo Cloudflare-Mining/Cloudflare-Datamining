@@ -3,56 +3,32 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h3><strong>About the Role</strong></h3>
-<h3>We are looking for a Software Engineer to design, build, and scale internal platforms and software tools that power our infrastructure operations. You will treat operational challenges as software problems, developing clean services and developer platforms that make managing our global infrastructure reliable, fast, and effortless.</h3>
+<p><strong>About the Role</strong></p>
+<p><strong>Location: Bengaluru (Hybrid mode)<br>Exp: 3-15yrs</strong></p>
+<p>We are looking for a Software Engineer to design, build, and scale internal platforms and software tools that power our infrastructure operations. You will treat operational challenges as software problems, developing clean services and developer platforms that make managing our global infrastructure reliable, fast, and effortless.</p>
 <p><strong>Responsibilities</strong></p>
 <ul>
-	<li>
-		<p><strong>Build Infrastructure Software:</strong> Architect, write, and maintain scalable services, APIs, and tools that automate infrastructure provisioning, configuration, and runtime operations.</p>
-	</li>
-	<li>
-		<p><strong>Streamline Developer Workflows:</strong> Develop platform software and self-service tools that reduce operational toil, enabling engineering teams to deploy and manage resources safely and efficiently.</p>
-	</li>
-	<li>
-		<p><strong>Drive Engineering Best Practices:</strong> Apply standard software engineering practices—including modular design, code reviews, automated testing, and CI/CD—to infrastructure codebases and tooling.</p>
-	</li>
-	<li>
-		<p><strong>Ensure System Reliability:</strong> Write observability frameworks, automated testing pipelines, and self-healing tools to maintain high availability and proactively catch operational failures.</p>
-	</li>
-	<li>
-		<p><strong>Collaborate Cross-Functionally:</strong> Partner closely with Security, Systems, and Product Engineering teams to integrate infrastructure software seamlessly across the application lifecycle.</p>
-	</li>
+	<li><strong>Build Infrastructure Software:</strong> Architect, write, and maintain scalable services, APIs, and tools that automate infrastructure provisioning, configuration, and runtime operations.<br><br></li>
+	<li><strong>Streamline Developer Workflows:</strong> Develop platform software and self-service tools that reduce operational toil, enabling engineering teams to deploy and manage resources safely and efficiently.<br><br></li>
+	<li><strong>Drive Engineering Best Practices:</strong> Apply standard software engineering practices—including modular design, code reviews, automated testing, and CI/CD—to infrastructure codebases and tooling.<br><br></li>
+	<li><strong>Ensure System Reliability:</strong> Write observability frameworks, automated testing pipelines, and self-healing tools to maintain high availability and proactively catch operational failures.<br><br></li>
+	<li><strong>Collaborate Cross-Functionally:</strong> Partner closely with Security, Systems, and Product Engineering teams to integrate infrastructure software seamlessly across the application lifecycle.<br><br></li>
 </ul>
 <p><strong>Desirable Skills, Knowledge, and Experience</strong></p>
 <ul>
-	<li>
-		<p>Demonstrable experience as a Software Engineer building production software, with an emphasis on backend systems, APIs, or developer platform tools.</p>
-	</li>
-	<li>
-		<p>Strong proficiency in modern programming languages (e.g., Go, Python, Java, or Rust) with a track record of writing clean, testable, and maintainable code.</p>
-	</li>
-	<li>
-		<p>Solid understanding of software design patterns, API architecture (REST, gRPC), and data structures applied to operational tooling.</p>
-	</li>
-	<li>
-		<p>Hands-on experience with Infrastructure as Code frameworks (e.g., Terraform, Ansible) and programmatically interacting with infrastructure APIs.</p>
-	</li>
-	<li>
-		<p>Strong analytical, debugging, and system troubleshooting skills to diagnose issues across both application logic and underlying infrastructure.</p>
-	</li>
+	<li>Demonstrable experience as a Software Engineer building production software, with an emphasis on backend systems, APIs, or developer platform tools.<br><br></li>
+	<li>Strong proficiency in modern programming languages (e.g., Go, Python, Java, or Rust) with a track record of writing clean, testable, and maintainable code.<br><br></li>
+	<li>Solid understanding of software design patterns, API architecture (REST, gRPC), and data structures applied to operational tooling.<br><br></li>
+	<li>Hands-on experience with Infrastructure as Code frameworks (e.g., Terraform, Ansible) and programmatically interacting with infrastructure APIs.<br><br></li>
+	<li>Strong analytical, debugging, and system troubleshooting skills to diagnose issues across both application logic and underlying infrastructure.<br><br></li>
 </ul>
 <p><strong>Bonus Points</strong></p>
 <ul>
-	<li>
-		<p>Experience writing software that interacts with cloud providers (AWS, GCP, or Azure) or container orchestration platforms (Kubernetes, Docker).</p>
-	</li>
-	<li>
-		<p>Familiarity with building robust CI/CD systems, automated integration testing, or continuous deployment tooling.</p>
-	</li>
-	<li>
-		<p>Active contributions to open-source developer tools, CLI applications, or infrastructure platforms.</p>
-	</li>
+	<li>Experience writing software that interacts with cloud providers (AWS, GCP, or Azure) or container orchestration platforms (Kubernetes, Docker).<br><br></li>
+	<li>Familiarity with building robust CI/CD systems, automated integration testing, or continuous deployment tooling.<br><br></li>
+	<li>Active contributions to open-source developer tools, CLI applications, or infrastructure platforms.<br><br></li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
