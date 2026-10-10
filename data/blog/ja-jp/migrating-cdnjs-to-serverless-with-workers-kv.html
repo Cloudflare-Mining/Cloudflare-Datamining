@@ -8,7 +8,7 @@
 <p>cdnjsは水面下で稼働していますが、<a href="https://w3techs.com/technologies/overview/content_delivery" target="_blank" rel="noopener noreferrer">11%以上</a>のWebサイトで使用され、インターネットをはるかに速くし、さらに信頼性の高い場所に変えてくれています。7月、cdnjsはおよそ190億件ものリクエストを処理しました。データの量は3.46PB（ペタバイト）です。</p>
 <h3>ファイルの保存場所</h3>
 <div id="html-block-k14" class="html-block">
-	<p><img style="border-width:0px" src="http://staging.blog.mrk.cfdata.org/content/images/2020/09/image5-2.png" alt="" width="400" height="333"></p>
+	<p><img style="border-width:0px" src="/_emdash/api/media/file/01M4E5XC7T8T3T82ZA0BT872MK.png" alt="" width="400" height="333"></p>
 </div>
 <p>cdnjsがインターネットのスピードアップさせていますが、もちろん魔法ではありません。</p>
 <p>これまでは、Cloudflareのコアデータセンター１か所で<a href="https://www.cloudflare.com/load-balancing" target="_blank" rel="noopener noreferrer">負荷分散された</a>マシンの多くは、cdnjs.cloudflare.comのオリジンとして機能する補助記憶装置から定期的にcdnjsファイルをプルしてきました。新しいファイルがリクエストされると、Cloudflareが<a href="https://www.cloudflare.com/learning/cdn/what-is-caching" target="_blank" rel="noopener noreferrer">キャッシュ</a>して、どのデータセンターからでも迅速に取得できるようにしました。</p>
@@ -42,7 +42,7 @@
 <p>インターネット料金を支払っている場合、<a href="https://blog.cloudflare.com/the-relative-cost-of-bandwidth-around-the-world">帯域幅が高額</a>になってしまうのはお分かりでしょう。そのため、すべての最新ブラウザで、利用可能なときは常に、<a href="https://blog.cloudflare.com/efficiently-compressing-dynamically-generated-53805">圧縮されたWebコンテンツ</a>を取得することにします。同様にCloudflare内でも、帯域幅を削減するために、可能な時は常に徹底して圧縮されたコンテンツを処理して<a href="https://blog.cloudflare.com/results-experimenting-brotli">オンザフライ圧縮を試行</a>してみました。その結果、<a href="https://github.com/google/brotli" target="_blank" rel="noopener noreferrer">Brotli</a> フォームと<a href="https://www.gzip.org" target="_blank" rel="noopener noreferrer">gzip</a>フォームの両方でWorkers KVに書き込んで、早めにすべてのcdnjsファイルを圧縮することに決めました。そうすることで、レイテンシー要件がなくなり、オンザフライ圧縮よりも圧力レベルを高くすることができました。</p>
 <p>つまり今、cdnjsファイルは速くてコンパクトに処理できているということです！</p>
 <div id="html-block-k4a" class="html-block">
-	<p><a href="http://staging.blog.mrk.cfdata.org/content/images/2020/09/image7-1.png" target="_blank"><img style="border-width:0px" src="http://staging.blog.mrk.cfdata.org/content/images/2020/09/image7-1.png" width="800" height="498" alt=""></a></p>
+	<p><a href="https://blog.cloudflare.com/_emdash/api/media/file/01KW46WQTDFDD9FAB5J2Q4AEKS.png" target="_blank"><img style="border-width:0px" src="/_emdash/api/media/file/01KW46WQTDFDD9FAB5J2Q4AEKS.png" width="800" height="498" alt=""></a></p>
 </div>
 <h3>cdnjsの大変身</h3>
 <p>今日では、cdnjsのJavaScriptライブラリを含めたい場合にまず、GitHub上のPRを当社の新しいリポジトリ<a href="https://github.com/cdnjs/packages" target="_blank" rel="noopener noreferrer">cdnjs/package</a>に作成します。リポジトリは50MBで簡単にクローンでき、何千ものJSONファイルで構成されます。JSONファイルはそれぞれcdnjsパッケージとnpmまたはgitからどのように自動更新されるかを記述します。ファイルが（<a href="https://github.com/cdnjs/tools" target="_blank" rel="noopener noreferrer">新規ボット</a>によって）自動化されたCIに検証されると、メンテナーがマージし、パッケージは自動的に、自動更新サービスでエンロールされます。</p>

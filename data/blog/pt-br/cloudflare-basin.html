@@ -1,0 +1,158 @@
+<p>Durante a Semana de Aniversário 2025, anunciamos o <a href="https://blog.cloudflare.com/cloudflare-data-platform" target="_blank" rel="noopener noreferrer"><u>Cloudflare Data Platform</u></a>, um conjunto de produtos que ingere, armazena e consulta seus dados analíticos. Hoje, anunciamos que a plataforma está em disponibilidade geral, e estamos dando a ela um novo nome: <strong>Cloudflare Basin</strong>.</p>
+<p>O Basin é uma plataforma de análise de dados sem servidor construída sobre <a href="https://iceberg.apache.org" target="_blank" rel="noopener noreferrer"><u>Apache Iceberg</u></a>, o padrão aberto para data lakes, e o <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2 Object Storage</u></a>. A família Basin inclui:</p>
+<ul>
+	<li><strong>Basin Pipelines</strong>, anteriormente Cloudflare Pipelines, recebe eventos de Workers, HTTP ou Cloudflare Logpush, transforma-os com SQL e os grava como tabelas Apache Iceberg ou arquivos no R2.</li>
+	<li><strong>Basin Catalog</strong>, anteriormente R2 Data Catalog, gerencia metadados do Iceberg e realiza manutenção automática das tabelas para mantê-las rápidas e com eficiência de custos.</li>
+	<li><strong>Basin SQL</strong>, anteriormente R2 SQL, é o nosso mecanismo de consultas SQL distribuído e sem servidor para consultar tabelas Apache Iceberg diretamente na Cloudflare.</li>
+</ul>
+<p>O Basin traz uma plataforma de análise completa para a plataforma para desenvolvedores, permitindo que você colete dados de diversas fontes, como aplicativos, infraestrutura, dispositivos e outros serviços da Cloudflare, e depois os consulte para responder perguntas analíticas.</p>
+<p>Decidimos criar uma plataforma de dados no ano passado quando identificamos dois desenvolvimentos fundamentais que mudaram a forma como os aplicativos de dados modernos estavam sendo desenvolvidos. Primeiro, o Apache Iceberg emergiu como o formato de tabela aberto padrão, tornando os dados portáteis em praticamente todos os principais mecanismos de consultas. Segundo, começamos a ver desenvolvedores trazendo seus dados analíticos para o R2, onde a ausência de taxas de saída tornava prático e econômico o acesso real aos dados por diferentes ferramentas, equipes, regiões e provedores de nuvem.</p>
+<p>Assim, quando lançamos o Basin em beta aberto, desenvolvedores, incluindo nossas equipes de faturamento e infraestrutura na Cloudflare, começaram imediatamente a adotar esses serviços para vários casos de uso, incluindo o uso de dados em tempo real para otimizar sites de comércio eletrônico, armazenamento de longo prazo e relatórios de métricas de faturamento, além de ingestão e consulta de telemetria da infraestrutura da Cloudflare para medir e melhorar a utilização e a eficiência.</p>
+<blockquote><em>Migramos todo o pipeline de dados de nossa empresa para o Basin Pipelines, Catalog e SQL, substituindo uma configuração complexa de AWS S3 e Athena por uma arquitetura sem servidor mais limpa que processa de forma confiável todos os nossos dados de eventos. - Dax Raad, cofundador da Anomaly</em></blockquote>
+<p>Nossos primeiros adotantes nos ensinaram muito sobre o que significa executar uma plataforma de análise na borda. Passamos o último ano aprimorando o Basin em torno de três áreas específicas que identificam com precisão o que torna a análise na plataforma para desenvolvedores única: velocidade, abertura e eficiência de custos.</p>
+<p>O Basin foi criado para ser rápido, seja para começar a usar ou para executar consultas de grande porte. Você pode criar um Basin Catalog, configurar um Pipeline para ingerir dados e consultá-los com o Basin SQL em segundos. Isso importa à medida que vemos mais aplicativos de dados sendo criados de prompts a agentes de codificação, que de outra forma teriam que aguardar e fazer pool por recursos ou dados. À medida que os conjuntos de dados aumentam, o Basin Catalog realiza compactação de metadados e arquivos de dados para reduzir E/S e gera estatísticas para planejamento de consultas. O Basin SQL usa essas estatísticas para dividir consultas em tarefas menores e distribuí-las pelos Workers, mantendo as consultas rápidas e consistentes conforme os conjuntos de dados escalam.</p>
+<p>Um dos principais impulsionadores do desenvolvimento e da adoção do Basin é o crescimento contínuo do ecossistema aberto do Apache Iceberg. Os desenvolvedores têm aderido à ideia inovadora de que você deve ser proprietário e ter controle dos seus próprios dados, separando a camada de armazenamento da camada de computação e permitindo que você use o mecanismo de consultas certo para o trabalho. Com o Basin, você pode ler e gravar seus dados usando qualquer mecanismo compatível com o Iceberg, incluindo PyIceberg, DuckDB, Snowflake e Apache Spark. Esse tipo de portabilidade de dados só é possível com taxas de saída gratuitas, o que permite que os desenvolvedores acessem seus dados na Cloudflare a partir da ampla variedade de ferramentas do ecossistema, independentemente de região ou nuvem.</p>
+<p>"A Bobsled é uma plataforma de produtos de dados que as equipes de dados mais avançadas do mundo usam para criar e distribuir dados prontos para IA a parceiros, fornecedores e clientes", disse Julien Grobbelaar, Head of Platform da Bobsled. "O Basin nos permite criar produtos de dados que podem ser disponibilizados em qualquer região de todas as principais plataformas de dados e IA, tudo com confiabilidade em nível de produção e uma fração do custo graças às taxas de saída zero."</p>
+<p>Além da saída gratuita, nossa arquitetura sem servidor nos permite oferecer ainda mais eficiência de custos aos nossos clientes com preços baseados em uso. Você só é cobrado quando o Basin ingere, processa ou consulta seus dados. Os desenvolvedores podem criar análises para projetos de hobby com pouco ou nenhum custo, enquanto nossos preços escalam economicamente para casos de uso empresariais maiores. Não há cobranças por hora nem custos de infraestrutura separados com os quais se preocupar.</p>
+<p>Se você está pronto para começar, consulte o <a href="http://developers.cloudflare.com/basin/get-started/guide" target="_blank" rel="noopener noreferrer"><u>tutorial do Basin</u></a> para um guia passo a passo sobre como usar o Basin Pipelines para entregar eventos a uma tabela Apache Iceberg gerenciada pelo Basin Catalog e consultá-los com o Basin SQL. Continue lendo para saber mais sobre o Basin e para onde vamos em seguida.</p>
+<h2><strong>Por que usar o Basin?</strong></h2>
+<p>Lançamos esses produtos no ano passado como Cloudflare Data Platform, nome que nos atendeu bem no primeiro ano de disponibilidade. Para o nosso lançamento em disponibilidade geral, decidimos que precisávamos de um novo nome que englobasse nossas ambições para a plataforma, unisse todos os produtos e fosse um pouco mais marcante.</p>
+<p>Uma bacia é o local onde rios provenientes de diversas fontes convergem para um único ponto. Sentimos que Basin captura perfeitamente como a plataforma é usada: o Pipelines traz dados para o Basin Catalog, enquanto o Basin SQL os torna imediatamente consultáveis. Curiosidade: aproximadamente 20% da superfície terrestre da Terra drena para bacias endorreicas, assim como mais de 20% da web fica por trás da rede da Cloudflare.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAAcF0taVYiW0cAUD0AUUQWU1AySVY9MlQ/cGY5bWAtZlEAYUgAXk4RWVc0SVk9LVU6dnROdm9DdmMldVsNcF8sZmVDUmRHOVw+g4ZphYJhiHhPiXNGhHVReXldaHVdVm1SlZiDlpV+mY50motwl411jo96gop3d4FspqiapqaXp6GSqJ+QpqKToaKTmp2OkpWEsrKosrCnsa2lsK2lsK+mrq+kqqqdpaKUtrattrSttLKss7Kss7SssrSqr6+iq6eZ" alt="" width="715" height="536" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TBHJX9WGXWD3N702DWC4QP.jpg&amp;w=715&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TBHJX9WGXWD3N702DWC4QP.jpg&amp;w=640&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TBHJX9WGXWD3N702DWC4QP.jpg&amp;w=715&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TBHJX9WGXWD3N702DWC4QP.jpg&amp;w=750&amp;h=562&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TBHJX9WGXWD3N702DWC4QP.jpg&amp;w=828&amp;h=621&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TBHJX9WGXWD3N702DWC4QP.jpg&amp;w=1080&amp;h=810&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TBHJX9WGXWD3N702DWC4QP.jpg&amp;w=1280&amp;h=960&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3TBHJX9WGXWD3N702DWC4QP.jpg&amp;w=1430&amp;h=1072&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_emdash/api/media/file/01M3TBHJX9WGXWD3N702DWC4QP.jpg" data-lightbox-width="1999" data-lightbox-height="1499" data-lightbox-skip-prefetch="" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="536" class="pt-portable-image-media"></div>
+	<figcaption>Lago Vänern, Suécia - Uma bacia criada pela atividade tectônica há 200-300 milhões de anos.</figcaption>
+</figure>
+<p>Hoje, o Basin é composto por três produtos: Pipelines, Catalog e SQL, cobrindo ingestão, armazenamento e consulta, e se expandirá ao longo do tempo com mais produtos gerenciando o restante do ciclo de vida dos dados analíticos.</p>
+<h2><strong>Basin Pipelines</strong></h2>
+<p>Antes de poder consultar seus dados, seus eventos precisam ser ingeridos, estruturados em um esquema e gravados no armazenamento de objetos. Esse é o papel do <a href="http://developers.cloudflare.com/basin-pipelines" target="_blank" rel="noopener noreferrer"><u>Basin Pipelines</u></a>. Ele aceita eventos por meio de endpoints HTTP ou vinculações do Workers, processa-os de acordo com uma consulta SQL e os entrega ao Basin Catalog como tabelas Apache Iceberg ou ao R2 como arquivos JSON ou Parquet.</p>
+<p>Desde o lançamento do beta, os usuários criaram dezenas de milhares de Pipelines para uma grande variedade de casos de uso. Por exemplo, um padrão comum que vemos é o uso do Pipelines para transformar logs HTTP da Cloudflare antes de armazená-los:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">INSERT INTO</span><span class="sk-24292e-fff"> http_logs_sink</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">SELECT</span></span>
+<span class="line"><span class="sk-24292e-fff">  EdgeResponseStatus,</span></span>
+<span class="line"><span class="sk-24292e-fff">  to_timestamp_micros(EdgeStartTimestamp) </span><span class="sk-d73a49-ffc799">AS</span><span class="sk-24292e-fff"> event_time,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  upper</span><span class="sk-24292e-fff">(ClientRequestMethod) </span><span class="sk-d73a49-ffc799">AS</span><span class="sk-24292e-fff"> method,</span></span>
+<span class="line"><span class="sk-24292e-fff">  sha256(ClientIP) </span><span class="sk-d73a49-ffc799">AS</span><span class="sk-24292e-fff"> hashed_ip</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> http_logs_stream</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">WHERE</span><span class="sk-24292e-fff"> EdgeResponseStatus </span><span class="sk-d73a49-a0a0a0">&gt;=</span><span class="sk-005cc5-ffc799"> 400</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p>Fazer esse trabalho durante a ingestão pode reduzir significativamente o espaço de armazenamento, reduzir o ruído de fontes de dados dinâmicas e ajudar a evitar que valores sensíveis ou desnecessários sejam gravados.</p>
+<p>Desde o beta, expandimos bastante a escalabilidade do Pipelines: agora oferecemos suporte à ingestão de até 3 GB/s por stream. Também ampliamos o conjunto de recursos e a integração com outros sistemas da Cloudflare:</p>
+<ul>
+	<li><strong>Integração com o Cloudflare Logpush:</strong> você pode transformar logs da Cloudflare com SQL e armazená-los como arquivos Parquet comprimidos ou tabelas Iceberg, prontos para consulta com o Basin SQL ou outro mecanismo.</li>
+	<li><strong>As vinculações do Workers são cientes do esquema.</strong> Executar wrangler types gera tipos TypeScript a partir do esquema de um stream, detectando campos ausentes e incompatibilidades de tipo antes da implantação.</li>
+	<li><strong>Os erros de qualidade de dados ficam visíveis.</strong> O painel e a API GraphQL exibem eventos descartados e distinguem campos ausentes, incompatibilidades de tipo, falhas de análise e valores nulos.</li>
+	<li><strong>Todo o fluxo de ingestão pode ser implementado como infraestrutura como código.</strong> Os recursos do Terraform abrangem o catálogo, o stream, o sink e o SQL que os conecta.</li>
+</ul>
+<p>Em seguida, planejamos expandir ainda mais os recursos do Pipelines, incluindo:</p>
+<ul>
+	<li>Particionamento personalizado ao gravar no Basin Catalog</li>
+	<li>Migrações de esquema e configuração e Pipelines SQL atualizáveis</li>
+	<li>Suporte ao Iceberg V3, incluindo o tipo Variant para consulta eficiente de dados semiestruturados</li>
+	<li>Processamento com estado para apoiar cargas de trabalho como agregações de streaming, junções e visualizações materializadas atualizadas de forma incremental</li>
+</ul>
+<h2><strong>Basin Catalog</strong></h2>
+<p>O Basin Catalog foi o primeiro produto que lançamos na família no ano passado. Desde então, vimos milhares de desenvolvedores usar o Basin Catalog para casos de uso simples, como dar ao DuckDB uma forma estruturada de acessar dados analíticos no R2, até desenvolvedores criando plataformas completas de compartilhamento de dados empresariais, aproveitando ao máximo as taxas de saída zero e as APIs fáceis de usar.</p>
+<p>O <a href="http://developers.cloudflare.com/basin-catalog" target="_blank" rel="noopener noreferrer"><u>Basin Catalog</u></a> é a forma mais fácil de começar com o Apache Iceberg. Basta executar:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> basin</span><span class="sk-032f62-99ffe4"> catalog</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> CATALOG_NAME</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>Você obtém instantaneamente um catálogo REST do Apache Iceberg totalmente gerenciado que realiza automaticamente a manutenção de rotina necessária para manter o desempenho e a integridade das tabelas.</p>
+<p>Quando anunciamos a Data Platform, o Basin Catalog tinha acabado de adicionar compactação automática. Desde então, evoluiu para manter a integridade das tabelas&nbsp; conforme seus dados escalam:</p>
+<ul>
+	<li><strong>Políticas de compactação por tabela</strong> permitem que você escolha tamanhos de arquivo alvo com base no padrão de acesso de cada tabela.</li>
+	<li><strong>A expiração automática de snapshots</strong> remove snapshots antigos do Iceberg de acordo com uma política de retenção, preservando um número mínimo de snapshots recentes.</li>
+	<li><strong>A limpeza de arquivos de dados não referenciados</strong> recupera armazenamento quando os snapshots expiram, sem exigir um job de manutenção separado do Spark.</li>
+	<li><strong>A otimização de manifesto</strong> consolida e agrupa manifestos fragmentados por partição antes da compactação, reduzindo a E/S de metadados durante o planejamento de consultas.</li>
+</ul>
+<p>Temos alguns recursos interessantes em desenvolvimento para o Basin Catalog, incluindo:</p>
+<ul>
+	<li>Uma nova forma de compactação para classificar e agrupar dados de forma eficiente visando melhor desempenho de consultas</li>
+	<li>Controles de autenticação mais granulares para namespaces e tabelas</li>
+	<li>Compatibilidade com jurisdições para aderir a requisitos de soberania de dados e conformidade de dados</li>
+</ul>
+<h2><strong>Basin SQL</strong></h2>
+<p>O <a href="http://developers.cloudflare.com/basin-sql" target="_blank" rel="noopener noreferrer"><u>Basin SQL</u></a> é o nosso mecanismo de consultas distribuído e sem servidor para tabelas Apache Iceberg armazenadas no Basin Catalog. Ele foi projetado para leitura de grandes conjuntos de dados e escala automaticamente pela rede global da Cloudflare. Não há clusters ou recursos para provisionar, apenas uma API prontamente disponível para você e seus agentes começarem a consultar seus dados imediatamente.</p>
+<p>No lançamento do beta, o Basin SQL era excelente para filtrar e explorar grandes tabelas de eventos e séries temporais. Ao longo do último ano, o Basin SQL evoluiu para oferecer suporte a centenas de funções, incluindo:</p>
+<ul>
+	<li>Agregações padrão e aproximadas, <code>GROUP BY</code>, <code>HAVING</code> e comandos de descoberta de esquema</li>
+	<li>Mais de 190 funções escalares e de agregação para strings, timestamps, expressões regulares, criptografia, estatísticas, arrays, maps e structs</li>
+	<li>Expressões <code>CASE</code>, expressões de tabela comuns, casting, aritmética e <code>EXPLAIN</code></li>
+	<li>Joins do tipo inner, outer, semi e anti; subconsultas; self-joins; e consultas com múltiplas tabelas</li>
+	<li><code>DISTINCT</code>, <code>UNION</code>, <code>INTERSECT</code> e <code>EXCEPT</code></li>
+	<li>Funções de janela, <code>QUALIFY</code>, conjuntos de agrupamento, rollups e cubes</li>
+	<li>Um conjunto de funções JSON</li>
+</ul>
+<p>Suponha que seu Pipeline entregue eventos de aplicativos em uma tabela e dados de conta em outra. Agora você pode unir essas tabelas, agregar a atividade por cliente, classificar os resultados com uma função de janela e filtrar a classificação em uma única consulta:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">WITH</span><span class="sk-24292e-fff"> account_activity </span><span class="sk-d73a49-ffc799">AS</span><span class="sk-24292e-fff"> (</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">  SELECT</span></span>
+<span class="line"><span class="sk-005cc5-fff">    a</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-fff">plan</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-fff">    e</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-fff">account_id</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    count</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-ffc799">AS</span><span class="sk-24292e-fff"> events,</span></span>
+<span class="line"><span class="sk-24292e-fff">    approx_distinct(</span><span class="sk-005cc5-fff">e</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-fff">user_id</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-ffc799">AS</span><span class="sk-24292e-fff"> active_users</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">  FROM</span><span class="sk-005cc5-fff"> analytics</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-fff">events</span><span class="sk-24292e-fff"> e</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">  JOIN</span><span class="sk-005cc5-fff"> analytics</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-fff">accounts</span><span class="sk-24292e-fff"> a</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">    ON</span><span class="sk-005cc5-fff"> e</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-fff">account_id</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-fff"> a</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-fff">account_id</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">  WHERE</span><span class="sk-005cc5-fff"> e</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-fff">event_time</span><span class="sk-d73a49-a0a0a0"> &gt;=</span><span class="sk-032f62-99ffe4"> '2026-09-01T00:00:00Z'</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">  GROUP BY</span><span class="sk-005cc5-fff"> a</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-fff">plan</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">e</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-fff">account_id</span></span>
+<span class="line"><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">SELECT</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  *</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  rank</span><span class="sk-24292e-fff">() </span><span class="sk-d73a49-ffc799">OVER</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-ffc799">PARTITION</span><span class="sk-d73a49-ffc799"> BY</span><span class="sk-24292e-fff"> plan </span><span class="sk-d73a49-ffc799">ORDER BY</span><span class="sk-24292e-fff"> events </span><span class="sk-d73a49-ffc799">DESC</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-ffc799">AS</span><span class="sk-24292e-fff"> activity_rank</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> account_activity</span></span>
+<span class="line"><span class="sk-24292e-fff">QUALIFY </span><span class="sk-005cc5-ffc799">rank</span><span class="sk-24292e-fff">() </span><span class="sk-d73a49-ffc799">OVER</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-ffc799">PARTITION</span><span class="sk-d73a49-ffc799"> BY</span><span class="sk-24292e-fff"> plan </span><span class="sk-d73a49-ffc799">ORDER BY</span><span class="sk-24292e-fff"> events </span><span class="sk-d73a49-ffc799">DESC</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">&lt;=</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>Você pode executar o Basin SQL pelo Wrangler, pela API ou abrir o editor integrado no painel da Cloudflare. O editor oferece destaque de sintaxe e preenchimento automático , um navegador de namespaces e tabelas, estatísticas e planos de consulta e resultados exportáveis. Isso transforma o processo, de uma nova tabela até uma resposta útil, em uma tarefa de poucos segundos.</p>
+<p>A equipe não para por aqui e atualmente está trabalhando em:</p>
+<ul>
+	<li>Estatísticas avançadas e agendamento adaptativo para melhorar o desempenho e a eficiência das consultas</li>
+	<li>Suporte completo a linguagem de definição de dados (DDL) diretamente do Basin SQL</li>
+	<li>Suporte ao Iceberg V3, incluindo suporte para os tipos VARIANT e geoespacial</li>
+</ul>
+<h2><strong>O que vem a seguir</strong></h2>
+<p>Nossa visão futura é que a infraestrutura de dados seja completamente abstraída. Formatos de armazenamento, produtos e recursos são apenas detalhes de implementação, detalhes importantes que ajudam a viabilizar os resultados importantes, mas tendem a atrapalhar. Estamos criando uma plataforma onde os desenvolvedores começam com perguntas em vez de instruções <code>CREATE</code> ou comandos CLI. Estabelecemos a base para essa visão e agora estamos desenvolvendo essa visão, incluindo:</p>
+<ul>
+	<li>Suporte para as especificações mais recentes do Apache Iceberg em toda a plataforma, desbloqueando formas mais flexíveis de usar seus dados</li>
+	<li>Fontes e destinos de ingestão com um clique, com conexões sem configuração em todos os produtos de desenvolvimento e observabilidade da Cloudflare</li>
+	<li>Estratégias avançadas de manutenção adaptativa de tabelas no Basin Catalog que organizam automaticamente os dados em torno de padrões de consulta reais</li>
+	<li>Expansão contínua de compatibilidade, desempenho e observabilidade de SQL para cargas de trabalho analíticas cada vez mais complexas</li>
+	<li>Mais formas de processar dados continuamente em tempo real e acionar ações com base nos sinais contidos nos dados</li>
+	<li>Ferramentas para aderir a regras de conformidade e soberania de dados em toda a plataforma</li>
+</ul>
+<p>Continuaremos a desenvolver com padrões abertos: usando formatos e protocolos abertos, contribuindo com melhorias para os projetos dos quais dependemos e garantindo que seus dados permaneçam disponíveis para o ecossistema mais amplo.</p>
+<h2><strong>Comece agora</strong></h2>
+<p>O Basin Pipelines, o Basin Catalog e o Basin SQL estão em disponibilidade geral hoje. Você pode usá-los juntos como uma plataforma completa ou adotar as partes que se encaixam em sua arquitetura existente.</p>
+<p>Siga o <a href="http://developers.cloudflare.com/basin/get-started/guide" target="_blank" rel="noopener noreferrer"><u>tutorial de introdução</u></a> para ingerir eventos, criar uma tabela Apache Iceberg no Basin Catalog e consultá-la com o Basin SQL. Visite a <a href="http://developers.cloudflare.com/basin" target="_blank" rel="noopener noreferrer"><u>documentação do Basin</u></a> para guias de produtos, preços, limites e integrações.</p>
+<p>As configurações existentes do Cloudflare Pipelines, R2 Data Catalog e R2 SQL continuarão funcionando.</p>
+<p>Estamos animados para ver o que você vai criar. Compartilhe seu feedback conosco no <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>Cloudflare Developer Discord</u></a>.</p>

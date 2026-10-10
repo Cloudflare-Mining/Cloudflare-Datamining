@@ -8,7 +8,7 @@
 <p>While cdnjs operates behind the scenes, it is used by <a href="https://w3techs.com/technologies/overview/content_delivery" target="_blank" rel="noopener noreferrer">over 11%</a> of websites, making the Internet a much faster and more reliable place. In July, cdnjs served almost <a href="https://github.com/cdnjs/cf-stats/blob/master/2020/cdnjs_July_2020.md" target="_blank" rel="noopener noreferrer">190 billion requests</a>—an enormous 3.46PB of data.</p>
 <h3>Where are the files stored?</h3>
 <div id="html-block-k1d" class="html-block">
-	<p><img style="border-width:0px" src="http://staging.blog.mrk.cfdata.org/content/images/2020/09/image5-2.png" alt="" width="400" height="333"></p>
+	<p><img style="border-width:0px" src="/_emdash/api/media/file/01M4E5XC7T8T3T82ZA0BT872MK.png" alt="" width="400" height="333"></p>
 </div>
 <p>While cdnjs speeds up the Internet, it certainly isn’t magic!</p>
 <p>Historically, a number of <a href="https://www.cloudflare.com/load-balancing" target="_blank" rel="noopener noreferrer">load-balanced</a> machines at one of Cloudflare’s core data centers would periodically pull cdnjs files from a backing store, acting as the origin for cdnjs.cloudflare.com. When a new file is requested, it is <a href="https://www.cloudflare.com/learning/cdn/what-is-caching" target="_blank" rel="noopener noreferrer">cached</a> by Cloudflare, allowing it to be fetched quickly from any of our data centers.</p>
@@ -42,7 +42,7 @@
 <p>This means we now serve cdnjs files faster and smaller!</p>
 <h3>A complete makeover for cdnjs</h3>
 <div id="html-block-k4m" class="html-block">
-	<p><a href="http://staging.blog.mrk.cfdata.org/content/images/2020/09/image7-1.png" target="_blank"><img style="border-width:0px" src="http://staging.blog.mrk.cfdata.org/content/images/2020/09/image7-1.png" width="800" height="498" alt=""></a></p>
+	<p><a href="https://blog.cloudflare.com/_emdash/api/media/file/01KW46WQTDFDD9FAB5J2Q4AEKS.png" target="_blank"><img style="border-width:0px" src="/_emdash/api/media/file/01KW46WQTDFDD9FAB5J2Q4AEKS.png" width="800" height="498" alt=""></a></p>
 </div>
 <p>Today, if you want to include your JavaScript library in cdnjs, you first create a PR on GitHub to our new repository <a href="https://github.com/cdnjs/packages" target="_blank" rel="noopener noreferrer">cdnjs/packages</a>. The repo is easily cloneable at 50MB and consists of thousands of JSON files, each describing a cdnjs package and how it is auto-updated from npm or git. Once your file is validated by our automated CI—powered by a <a href="https://github.com/cdnjs/tools" target="_blank" rel="noopener noreferrer">new bot</a>—and merged by a maintainer, your package would be automatically enrolled in our auto-update service.</p>
 <p>In the new system, security and maintainability are prioritized. For starters, cdnjs version files are created by our bot, minimizing the possibility of human error when merging a new version. While the JSON files in <a href="https://github.com/cdnjs/packages" target="_blank" rel="noopener noreferrer">cdnjs/packages</a> are added by error-prone humans, they are inspected by our bot before being approved by a maintainer. Each file is automatically validated against a <a href="https://github.com/cdnjs/tools/blob/master/schema_human.json" target="_blank" rel="noopener noreferrer">JSON schema</a>, as well as checked for popularity on npm or GitHub.</p>

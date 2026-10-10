@@ -8,7 +8,7 @@
 <p>尽管 cdnjs 在幕后运作，但有<a href="https://w3techs.com/technologies/overview/content_delivery" target="_blank" rel="noopener noreferrer">超过 11%</a> 的网站使用它，使互联网变得更加快速、更加可靠。在 7 月份，cdnjs 服务了将近 <a href="https://github.com/cdnjs/cf-stats/blob/master/2020/cdnjs_July_2020.md" target="_blank" rel="noopener noreferrer">1900 亿个请求</a>，涉及的数据量达到了 3.46PB。</p>
 <h3>文件存储在哪里？</h3>
 <div id="html-block-k1d" class="html-block">
-	<p><img style="border-width:0px" src="http://staging.blog.mrk.cfdata.org/content/images/2020/09/image5-2.png" alt="" width="400" height="333"></p>
+	<p><img style="border-width:0px" src="/_emdash/api/media/file/01M4E5XC7T8T3T82ZA0BT872MK.png" alt="" width="400" height="333"></p>
 </div>
 <p>cdnjs 加快了互联网速度，凭借的当然不是魔法！</p>
 <p>在过去，Cloudflare 某个核心数据中心的若干<a href="https://www.cloudflare.com/load-balancing" target="_blank" rel="noopener noreferrer">负载均衡</a>服务器会定期从后备存储中提取 cdnjs 文件，充当 cdnjs.cloudflare.com 的源站。有人请求了新文件时，Cloudflare 会将它<a href="https://www.cloudflare.com/learning/cdn/what-is-caching" target="_blank" rel="noopener noreferrer">缓存</a> ，从而能够从我们的任何数据中心快速获取到这个文件。</p>
@@ -42,7 +42,7 @@
 <p>如果您支付过互联网账单，就会知道<a href="https://blog.cloudflare.com/the-relative-cost-of-bandwidth-around-the-world">带宽有多么昂贵</a>！因此，所有现代浏览器都会尽可能<a href="https://blog.cloudflare.com/efficiently-compressing-dynamically-generated-53805">获取压缩的 Web 内容</a>。同样在 Cloudflare，我们经常试验通过<a href="https://blog.cloudflare.com/results-experimenting-brotli">即时压缩</a>来减小我们的带宽，只要被接受，我们就将压缩后的内容提供给浏览者。结果，我们决定提前压缩所有 cdnjs 文件，并将它们以最佳的 <a href="https://github.com/google/brotli" target="_blank" rel="noopener noreferrer">Brotli</a> 和 <a href="https://www.gzip.org" target="_blank" rel="noopener noreferrer">gzip</a> 形式写入 Workers KV。这样，我们可以使用比即时压缩时更高的压缩级别，因为不再有延迟方面的要求。</p>
 <p>如此一来，我们可以更快的速度提供更小的 cdnjs 文件！</p>
 <div id="html-block-k4m" class="html-block">
-	<p><a href="http://staging.blog.mrk.cfdata.org/content/images/2020/09/image7-1.png" target="_blank"><img style="border-width:0px" src="http://staging.blog.mrk.cfdata.org/content/images/2020/09/image7-1.png" width="800" height="498" alt=""></a></p>
+	<p><a href="https://blog.cloudflare.com/_emdash/api/media/file/01KW46WQTDFDD9FAB5J2Q4AEKS.png" target="_blank"><img style="border-width:0px" src="/_emdash/api/media/file/01KW46WQTDFDD9FAB5J2Q4AEKS.png" width="800" height="498" alt=""></a></p>
 </div>
 <h3>全面改造 cdnjs</h3>
 <p>现在，如果您要将自己的 JavaScript 库包含在 cdnjs 中，首先在 GitHub 上创建一个对我们新存储库 <a href="https://github.com/cdnjs/packages" target="_blank" rel="noopener noreferrer">cdnjs/packages</a> 的 PR。这个存储库很容易克隆，大小仅为 50MB，由数千个 JSON 文件构成，各自描述一个 cdnjs 程序包并说明如何从 npm 或 git 自动更新。当您的文件获得我们新版自动 CI 的验证（由<a href="https://github.com/cdnjs/tools" target="_blank" rel="noopener noreferrer">新版机器人</a>提供支持），并由维护人员进行合并后，您的程序包就会自动登记到我们的自动更新服务中。</p>
