@@ -74,9 +74,6 @@
 				"references/api/configuration.md",
 				"references/api/gotchas.md",
 				"references/api/patterns.md",
-				"references/artifacts/README.md",
-				"references/artifacts/api.md",
-				"references/artifacts/configuration.md",
 				"references/bindings/README.md",
 				"references/bindings/api.md",
 				"references/bindings/configuration.md",
@@ -167,16 +164,6 @@
 				"references/r2/configuration.md",
 				"references/r2/gotchas.md",
 				"references/r2/patterns.md",
-				"references/realtime-sfu/README.md",
-				"references/realtime-sfu/api.md",
-				"references/realtime-sfu/configuration.md",
-				"references/realtime-sfu/gotchas.md",
-				"references/realtime-sfu/patterns.md",
-				"references/realtimekit/README.md",
-				"references/realtimekit/api.md",
-				"references/realtimekit/configuration.md",
-				"references/realtimekit/gotchas.md",
-				"references/realtimekit/patterns.md",
 				"references/secrets-store/README.md",
 				"references/secrets-store/api.md",
 				"references/secrets-store/configuration.md",
@@ -239,16 +226,6 @@
 				"references/workers-ai/configuration.md",
 				"references/workers-ai/gotchas.md",
 				"references/workers-ai/patterns.md",
-				"references/workers-for-platforms/README.md",
-				"references/workers-for-platforms/api.md",
-				"references/workers-for-platforms/configuration.md",
-				"references/workers-for-platforms/gotchas.md",
-				"references/workers-for-platforms/patterns.md",
-				"references/workers-vpc/README.md",
-				"references/workers-vpc/api.md",
-				"references/workers-vpc/configuration.md",
-				"references/workers-vpc/gotchas.md",
-				"references/workers-vpc/patterns.md",
 				"references/workflows/README.md",
 				"references/workflows/api.md",
 				"references/workflows/configuration.md",
@@ -369,6 +346,13 @@
 				"references/configuration.md",
 				"references/platform-apis.md",
 				"references/runtime-patterns.md"
+			]
+		},
+		{
+			"name": "workers-profiling",
+			"description": "Profile or debug CPU usage and memory allocation in deployed Cloudflare Workers and Durable Objects. Then use this information to optimize your code.",
+			"files": [
+				"SKILL.md"
 			]
 		},
 		{

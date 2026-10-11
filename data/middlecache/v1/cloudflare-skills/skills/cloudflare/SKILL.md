@@ -40,7 +40,7 @@ Find the row closest to the user's task. Products can appear in multiple rows, a
 | Control team, CI, or service-account access to Developer Platform resources | Roles, scopes, and permission policies | Choose the least-privilege role and a scope supported for the member, User Group, or API token | [Roles and permissions](https://developers.cloudflare.com/workers/authorization/index.md); `wrangler` skill for CLI access |
 | Maintain an existing Pages deployment | Pages + Pages Functions | Update an existing site or its server endpoints; use Workers for new projects | [Pages](references/pages/README.md); [Pages Functions](references/pages-functions/README.md) |
 | Move a Pages project to Workers | Workers + Workers Static Assets | The task calls for migrating the hosting platform | [Pages migration guide](https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/index.md) |
-| Let customers deploy code on your platform | Workers for Platforms | Run and manage customer Workers with per-customer controls | [Workers for Platforms](references/workers-for-platforms/README.md) |
+| Let customers deploy code on your platform | Workers for Platforms | Run and manage customer Workers with per-customer controls | [Workers for Platforms docs](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/index.md) |
 | Let customers use their own domains with your app | Cloudflare for SaaS | Manage custom hostnames, TLS certificates, and origin routing; check hostname validation and apex-domain plan requirements. Combine with Workers for Platforms when customers also deploy code | [SaaS docs](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/index.md) |
 | Connect a Worker to storage or another service | Bindings | Give the Worker access to configured resources through its environment | [Bindings](references/bindings/README.md) |
 | Run containerized services or Linux software | Containers | The workload needs a container image or software outside the Workers runtime | [Containers](references/containers/README.md) |
@@ -53,7 +53,7 @@ Find the row closest to the user's task. Products can appear in multiple rows, a
 | Connect to an existing PostgreSQL or MySQL database | Hyperdrive | Keep the existing database and optimize connections from Workers | [Hyperdrive](references/hyperdrive/README.md) |
 | Distribute configuration or other key-value data | KV | Read-heavy key-value access fits the workload's consistency requirements | [KV](references/kv/README.md) |
 | Store uploads, downloads, or large objects | R2 | Store files by object key; pair with D1 when searchable metadata needs SQL | [R2](references/r2/README.md) |
-| Store versioned file trees, agent checkpoints, or repositories | Artifacts | Files need versioning and Git-compatible access; currently closed beta, so confirm access before implementation | [Artifacts](references/artifacts/README.md) |
+| Store versioned file trees, agent checkpoints, or repositories | Artifacts | Files need versioning and Git-compatible access; currently closed beta, so confirm access before implementation | [Artifacts docs](https://developers.cloudflare.com/artifacts/index.md) |
 | Ingest event streams into R2 | Basin Pipelines | Transform and deliver streaming records into R2 | `basin` skill; [Basin Pipelines](https://developers.cloudflare.com/basin-pipelines/index.md) |
 | Manage Iceberg tables in R2 | Basin Catalog | Organize tables for analytics and compatible query engines | `basin` skill; [Basin Catalog](https://developers.cloudflare.com/basin-catalog/index.md) |
 | Query Iceberg tables with SQL | Basin SQL | Analyze tables in Basin Catalog | `basin` skill; [Basin SQL](https://developers.cloudflare.com/basin-sql/index.md) |
@@ -76,7 +76,7 @@ Find the row closest to the user's task. Products can appear in multiple rows, a
 | Configure HTTPS and certificates | SSL/TLS | Secure connections from visitors to Cloudflare and from Cloudflare to the origin | [SSL/TLS docs](https://developers.cloudflare.com/ssl/index.md) |
 | Distribute traffic across origins and fail over unhealthy servers | Load Balancing | Use health checks and traffic steering for multiple origin servers | [Load Balancing docs](https://developers.cloudflare.com/load-balancing/index.md) |
 | Connect an existing server to Cloudflare | Cloudflare Tunnel | Reach an origin without a publicly routable IP address | [Tunnel](references/tunnel/README.md) |
-| Connect Workers to private services | Workers VPC | Access services in private networks from a Worker | [Workers VPC](references/workers-vpc/README.md) |
+| Connect Workers to private services | Workers VPC | Access services in private networks from a Worker | [Workers VPC docs](https://developers.cloudflare.com/workers-vpc/index.md) |
 | Require employee login before accessing an internal app | Access | Put identity-based access policies in front of an internal application | `cloudflare-one` skill; [Access docs](https://developers.cloudflare.com/cloudflare-one/access-controls/index.md) |
 | Protect access to internal applications and networks | Cloudflare One | Apply identity and network access policies | `cloudflare-one` skill; [Cloudflare One docs](https://developers.cloudflare.com/cloudflare-one/index.md) |
 | Migrate existing access and network security configurations | Cloudflare One | The task is a supported migration to Cloudflare One | `cloudflare-one-migrations` skill; [Cloudflare One docs](https://developers.cloudflare.com/cloudflare-one/index.md) |
@@ -98,8 +98,8 @@ Find the row closest to the user's task. Products can appear in multiple rows, a
 | Prove a claim without identifying or tracking the user | Privacy Pass | Use privacy-preserving tokens in a supported integration | [Privacy Pass docs](https://developers.cloudflare.com/privacy-pass/index.md) |
 | Store, resize, transform, and deliver images | Cloudflare Images | Use managed image processing and delivery | [Images](references/images/README.md) |
 | Encode, store, and deliver live or on-demand video | Stream | Use managed video infrastructure | [Stream](references/stream/README.md) |
-| Build an audio/video calling application with SDKs | RealtimeKit | Use application-level SDKs for calls and meetings | [RealtimeKit](references/realtimekit/README.md) |
-| Build custom real-time media infrastructure | Realtime SFU | Control the application while using a selective forwarding unit for media | [Realtime SFU](references/realtime-sfu/README.md) |
+| Build an audio/video calling application with SDKs | RealtimeKit | Use application-level SDKs for calls and meetings | [RealtimeKit docs](https://developers.cloudflare.com/realtime/realtimekit/index.md) |
+| Build custom real-time media infrastructure | Realtime SFU | Control the application while using a selective forwarding unit for media | [Realtime SFU docs](https://developers.cloudflare.com/realtime/sfu/index.md) |
 | Relay WebRTC connections through restrictive networks | TURN Service | Clients need a connectivity relay | [TURN](references/turn/README.md) |
 | Deliver live media over QUIC | MoQ | Use the Media over QUIC protocol; check current compatibility and availability | [MoQ docs](https://developers.cloudflare.com/moq/index.md) |
 | Send transactional email | Email Service | Send application-generated messages | `cloudflare-email-service` skill; [Email Service docs](https://developers.cloudflare.com/email-service/index.md) |
@@ -118,6 +118,7 @@ Find the row closest to the user's task. Products can appear in multiple rows, a
 | Manage infrastructure as code | Terraform or Pulumi | Use Terraform for declarative configuration or Pulumi for infrastructure in programming languages | [Terraform](references/terraform/README.md); [Pulumi](references/pulumi/README.md) |
 | Automate account or product configuration through an API | Cloudflare REST API | Manage resources programmatically; prefer bindings for supported operations inside Workers | [REST API](references/api/README.md) |
 | Debug failures and trace application requests | Workers Logs and Traces | Investigate runtime errors and execution paths | [Observability](references/observability/README.md) |
+| Profile CPU usage or memory allocations in deployed Workers or Durable Objects | Workers profiling | Investigate CPU and memory issues in production | [workers-profiling skill](../workers-profiling/SKILL.md) |
 | Process Worker execution events in code | Tail Workers | Build custom log or exception processing | [Tail Workers](references/tail-workers/README.md) |
 | Export Worker logs to another system | Workers Logpush | Deliver logs to a supported external destination | [Logpush docs](https://developers.cloudflare.com/workers/observability/logs/logpush/index.md) |
 | Measure custom application events | Workers Analytics Engine | Analyze high-cardinality event data written from Workers | [Analytics Engine](references/analytics-engine/README.md) |

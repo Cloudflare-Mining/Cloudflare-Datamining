@@ -143,5 +143,5 @@ Dataset names follow a consistent pattern visible in the schema:
 - [GraphQL API Explorer](https://graphql.cloudflare.com/)
 - [Observability Reference](../observability/) - Workers Logs, Tail Workers, console logging
 - [Analytics Engine Reference](../analytics-engine/) - Custom high-cardinality analytics via Workers
-- [Web Analytics Reference](../web-analytics/) - Client-side (RUM) analytics
-- [API Reference](../api/) - REST API, SDKs, authentication basics
+- [Web Analytics docs](https://developers.cloudflare.com/web-analytics/index.md) - Client-side (RUM) analytics
+- [Cloudflare API docs](https://developers.cloudflare.com/fundamentals/api/index.md) - REST API, SDKs, authentication basics
