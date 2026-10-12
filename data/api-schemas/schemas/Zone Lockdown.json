@@ -170,7 +170,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "firewall.lockdowns",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation deletes the Zone Lockdown rule from the zone."
 	},
 	"GET /zones/{zone_id}/firewall/lockdowns": {
@@ -689,8 +688,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "firewall.lockdowns",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/firewall/lockdowns/{lock_downs_id}": {
 		"operationId": "zone-lockdown-get-a-zone-lockdown-rule",
@@ -1063,8 +1061,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "firewall.lockdowns",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /zones/{zone_id}/firewall/lockdowns": {
 		"operationId": "zone-lockdown-create-a-zone-lockdown-rule",
@@ -1514,8 +1511,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "firewall.lockdowns",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /zones/{zone_id}/firewall/lockdowns/{lock_downs_id}": {
 		"operationId": "zone-lockdown-update-a-zone-lockdown-rule",
@@ -1959,7 +1955,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "firewall.lockdowns",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

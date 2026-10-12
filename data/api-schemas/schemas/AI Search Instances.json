@@ -7367,7 +7367,7 @@
 				}
 			},
 			"409": {
-				"description": "Conflict.",
+				"description": "Search for agents hostname used by another namespace; Search for agents requires default namespace; Ai search instance deletion in progress",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -7376,19 +7376,62 @@
 								"errors": {
 									"type": "array",
 									"items": {
-										"properties": {
-											"code": {
-												"type": "number"
+										"anyOf": [
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7106
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
 											},
-											"message": {
-												"type": "string"
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7109
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7124
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
 											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
+										]
 									}
 								},
 								"success": {
@@ -10609,7 +10652,7 @@
 				}
 			},
 			"409": {
-				"description": "Conflict.",
+				"description": "Search for agents hostname used by another namespace; Search for agents requires default namespace; Ai search instance deletion in progress",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -10618,19 +10661,62 @@
 								"errors": {
 									"type": "array",
 									"items": {
-										"properties": {
-											"code": {
-												"type": "number"
+										"anyOf": [
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7106
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
 											},
-											"message": {
-												"type": "string"
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7109
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											{
+												"properties": {
+													"code": {
+														"type": "number",
+														"enum": [
+															7124
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
 											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
+										]
 									}
 								},
 								"success": {

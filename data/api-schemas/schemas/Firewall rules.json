@@ -436,8 +436,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.rules",
-		"x-fern-sdk-method-name": "bulk-delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "bulk-delete"
 	},
 	"DELETE /zones/{zone_id}/firewall/rules/{rule_id}": {
 		"operationId": "firewall-rules-delete-a-firewall-rule",
@@ -859,8 +858,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.rules",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /zones/{zone_id}/firewall/rules": {
 		"operationId": "firewall-rules-list-firewall-rules",
@@ -1337,8 +1335,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.rules",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/firewall/rules/{rule_id}": {
 		"operationId": "firewall-rules-get-a-firewall-rule",
@@ -1760,8 +1757,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.rules",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /zones/{zone_id}/firewall/rules": {
 		"operationId": "firewall-rules-update-priority-of-firewall-rules",
@@ -2197,8 +2193,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.rules",
-		"x-fern-sdk-method-name": "bulk-edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "bulk-edit"
 	},
 	"PATCH /zones/{zone_id}/firewall/rules/{rule_id}": {
 		"operationId": "firewall-rules-update-priority-of-a-firewall-rule",
@@ -2649,8 +2644,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.rules",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /zones/{zone_id}/firewall/rules": {
 		"operationId": "firewall-rules-create-firewall-rules",
@@ -3175,8 +3169,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.rules",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /zones/{zone_id}/firewall/rules": {
 		"operationId": "firewall-rules-update-firewall-rules",
@@ -3612,8 +3605,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.rules",
-		"x-fern-sdk-method-name": "bulk-update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "bulk-update"
 	},
 	"PUT /zones/{zone_id}/firewall/rules/{rule_id}": {
 		"operationId": "firewall-rules-update-a-firewall-rule",
@@ -4135,7 +4127,6 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.rules",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

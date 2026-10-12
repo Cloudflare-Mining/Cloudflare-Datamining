@@ -516,7 +516,8 @@
 													"format": "uuid",
 													"type": "string"
 												},
-												"nullable": true
+												"nullable": true,
+												"x-stainless-collection-type": "set"
 											},
 											"created_at": {
 												"type": "string",
@@ -568,7 +569,8 @@
 													"format": "uuid",
 													"type": "string"
 												},
-												"nullable": true
+												"nullable": true,
+												"x-stainless-collection-type": "set"
 											},
 											"rego_raise_error": {
 												"description": "Whether OPA builtin failures are raised as runtime evaluation errors",
@@ -973,7 +975,8 @@
 												"format": "uuid",
 												"type": "string"
 											},
-											"nullable": true
+											"nullable": true,
+											"x-stainless-collection-type": "set"
 										},
 										"created_at": {
 											"type": "string",
@@ -1025,7 +1028,8 @@
 												"format": "uuid",
 												"type": "string"
 											},
-											"nullable": true
+											"nullable": true,
+											"x-stainless-collection-type": "set"
 										},
 										"rego_raise_error": {
 											"description": "Whether OPA builtin failures are raised as runtime evaluation errors",
@@ -1320,7 +1324,8 @@
 									"format": "uuid",
 									"type": "string"
 								},
-								"nullable": true
+								"nullable": true,
+								"x-stainless-collection-type": "set"
 							},
 							"default_mode": {
 								"description": "Default traffic mode: ALLOW or BLOCK",
@@ -1350,6 +1355,7 @@
 							"on_error_action": {
 								"description": "Action for runtime Rego errors. Omit to use BLOCK.",
 								"type": "string",
+								"default": "BLOCK",
 								"enum": [
 									"BLOCK",
 									"SKIP"
@@ -1362,11 +1368,13 @@
 									"format": "uuid",
 									"type": "string"
 								},
-								"nullable": true
+								"nullable": true,
+								"x-stainless-collection-type": "set"
 							},
 							"rego_raise_error": {
 								"description": "Whether OPA builtin failures are raised as runtime evaluation errors. Omit to use the default true value.",
-								"type": "boolean"
+								"type": "boolean",
+								"default": true
 							},
 							"tags": {
 								"description": "Tags to attach. Keys are limited to 256 UTF-8 bytes and values to 1024 UTF-8 bytes.",
@@ -1472,7 +1480,8 @@
 												"format": "uuid",
 												"type": "string"
 											},
-											"nullable": true
+											"nullable": true,
+											"x-stainless-collection-type": "set"
 										},
 										"created_at": {
 											"type": "string",
@@ -1524,7 +1533,8 @@
 												"format": "uuid",
 												"type": "string"
 											},
-											"nullable": true
+											"nullable": true,
+											"x-stainless-collection-type": "set"
 										},
 										"rego_raise_error": {
 											"description": "Whether OPA builtin failures are raised as runtime evaluation errors",
@@ -1830,7 +1840,8 @@
 									"format": "uuid",
 									"type": "string"
 								},
-								"nullable": true
+								"nullable": true,
+								"x-stainless-collection-type": "set"
 							},
 							"default_mode": {
 								"description": "Default traffic mode: ALLOW or BLOCK",
@@ -1872,7 +1883,8 @@
 									"format": "uuid",
 									"type": "string"
 								},
-								"nullable": true
+								"nullable": true,
+								"x-stainless-collection-type": "set"
 							},
 							"rego_raise_error": {
 								"description": "Whether OPA builtin failures are raised as runtime evaluation errors. Omit to preserve the current value.",
@@ -1982,7 +1994,8 @@
 												"format": "uuid",
 												"type": "string"
 											},
-											"nullable": true
+											"nullable": true,
+											"x-stainless-collection-type": "set"
 										},
 										"created_at": {
 											"type": "string",
@@ -2034,7 +2047,8 @@
 												"format": "uuid",
 												"type": "string"
 											},
-											"nullable": true
+											"nullable": true,
+											"x-stainless-collection-type": "set"
 										},
 										"rego_raise_error": {
 											"description": "Whether OPA builtin failures are raised as runtime evaluation errors",

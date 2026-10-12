@@ -3179,7 +3179,7 @@
 	"POST /accounts/{account_id}/ai-gateway/billing/topup": {
 		"operationId": "aig-billing-create-topup",
 		"summary": "Create a top-up",
-		"description": "Create a credit top-up for the given account, charged to the account's default payment method.",
+		"description": "Create a credit top-up for the given account, charged to the account's default payment method. Requires a dashboard session; API token, OAuth, and service credentials receive 403.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3527,13 +3527,8 @@
 			"AI Gateway"
 		],
 		"x-api-token-group": [
-			"AI Gateway Write"
+			"Billing Write"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.aig"
-			]
-		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -3838,13 +3833,8 @@
 			"AI Gateway"
 		],
 		"x-api-token-group": [
-			"AI Gateway Write"
+			"Billing Write"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.aig"
-			]
-		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,

@@ -525,17 +525,58 @@
 												"readOnly": true
 											},
 											"data": {
-												"description": "Arbitrary JSON document with at most 100 nesting levels. PostgreSQL-normalized JSON must not exceed 65536 bytes; exponent-form numbers count at expanded decimal size.",
+												"description": "Arbitrary non-null JSON document with at most 100 nesting levels. Nested null values are supported. PostgreSQL-normalized JSON must not exceed 65536 bytes; exponent-form numbers count at expanded decimal size.",
 												"allOf": [
 													{
 														"anyOf": [
 															{
-																"additionalProperties": "[Circular ~.GET /accounts/{account_id}/cws/rego-metadata.responses.200.content.application/json.schema.properties.result.items.properties.data.allOf.0]",
-																"nullable": true,
+																"additionalProperties": {
+																	"anyOf": [
+																		{
+																			"additionalProperties": "[Circular ~.GET /accounts/{account_id}/cws/rego-metadata.responses.200.content.application/json.schema.properties.result.items.properties.data.allOf.0.anyOf.0.additionalProperties]",
+																			"nullable": true,
+																			"type": "object"
+																		},
+																		{
+																			"items": "[Circular ~.GET /accounts/{account_id}/cws/rego-metadata.responses.200.content.application/json.schema.properties.result.items.properties.data.allOf.0.anyOf.0.additionalProperties]",
+																			"type": "array"
+																		},
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"type": "number"
+																		},
+																		{
+																			"type": "boolean"
+																		}
+																	]
+																},
 																"type": "object"
 															},
 															{
-																"items": "[Circular ~.GET /accounts/{account_id}/cws/rego-metadata.responses.200.content.application/json.schema.properties.result.items.properties.data.allOf.0]",
+																"items": {
+																	"anyOf": [
+																		{
+																			"additionalProperties": "[Circular ~.GET /accounts/{account_id}/cws/rego-metadata.responses.200.content.application/json.schema.properties.result.items.properties.data.allOf.0.anyOf.1.items]",
+																			"nullable": true,
+																			"type": "object"
+																		},
+																		{
+																			"items": "[Circular ~.GET /accounts/{account_id}/cws/rego-metadata.responses.200.content.application/json.schema.properties.result.items.properties.data.allOf.0.anyOf.1.items]",
+																			"type": "array"
+																		},
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"type": "number"
+																		},
+																		{
+																			"type": "boolean"
+																		}
+																	]
+																},
 																"type": "array"
 															},
 															{
@@ -960,17 +1001,58 @@
 											"readOnly": true
 										},
 										"data": {
-											"description": "Arbitrary JSON document with at most 100 nesting levels. PostgreSQL-normalized JSON must not exceed 65536 bytes; exponent-form numbers count at expanded decimal size.",
+											"description": "Arbitrary non-null JSON document with at most 100 nesting levels. Nested null values are supported. PostgreSQL-normalized JSON must not exceed 65536 bytes; exponent-form numbers count at expanded decimal size.",
 											"allOf": [
 												{
 													"anyOf": [
 														{
-															"additionalProperties": "[Circular ~.GET /accounts/{account_id}/cws/rego-metadata/{rego_metadata_id}.responses.200.content.application/json.schema.properties.result.properties.data.allOf.0]",
-															"nullable": true,
+															"additionalProperties": {
+																"anyOf": [
+																	{
+																		"additionalProperties": "[Circular ~.GET /accounts/{account_id}/cws/rego-metadata/{rego_metadata_id}.responses.200.content.application/json.schema.properties.result.properties.data.allOf.0.anyOf.0.additionalProperties]",
+																		"nullable": true,
+																		"type": "object"
+																	},
+																	{
+																		"items": "[Circular ~.GET /accounts/{account_id}/cws/rego-metadata/{rego_metadata_id}.responses.200.content.application/json.schema.properties.result.properties.data.allOf.0.anyOf.0.additionalProperties]",
+																		"type": "array"
+																	},
+																	{
+																		"type": "string"
+																	},
+																	{
+																		"type": "number"
+																	},
+																	{
+																		"type": "boolean"
+																	}
+																]
+															},
 															"type": "object"
 														},
 														{
-															"items": "[Circular ~.GET /accounts/{account_id}/cws/rego-metadata/{rego_metadata_id}.responses.200.content.application/json.schema.properties.result.properties.data.allOf.0]",
+															"items": {
+																"anyOf": [
+																	{
+																		"additionalProperties": "[Circular ~.GET /accounts/{account_id}/cws/rego-metadata/{rego_metadata_id}.responses.200.content.application/json.schema.properties.result.properties.data.allOf.0.anyOf.1.items]",
+																		"nullable": true,
+																		"type": "object"
+																	},
+																	{
+																		"items": "[Circular ~.GET /accounts/{account_id}/cws/rego-metadata/{rego_metadata_id}.responses.200.content.application/json.schema.properties.result.properties.data.allOf.0.anyOf.1.items]",
+																		"type": "array"
+																	},
+																	{
+																		"type": "string"
+																	},
+																	{
+																		"type": "number"
+																	},
+																	{
+																		"type": "boolean"
+																	}
+																]
+															},
 															"type": "array"
 														},
 														{
@@ -1280,17 +1362,58 @@
 						"type": "object",
 						"properties": {
 							"data": {
-								"description": "Arbitrary JSON payload with at most 100 nesting levels. PostgreSQL-normalized JSON must not exceed 65536 bytes; exponent-form numbers count at expanded decimal size.",
+								"description": "Arbitrary non-null JSON payload with at most 100 nesting levels. Nested null values are supported. PostgreSQL-normalized JSON must not exceed 65536 bytes; exponent-form numbers count at expanded decimal size.",
 								"allOf": [
 									{
 										"anyOf": [
 											{
-												"additionalProperties": "[Circular ~.POST /accounts/{account_id}/cws/rego-metadata.requestBody.content.application/json.schema.properties.data.allOf.0]",
-												"nullable": true,
+												"additionalProperties": {
+													"anyOf": [
+														{
+															"additionalProperties": "[Circular ~.POST /accounts/{account_id}/cws/rego-metadata.requestBody.content.application/json.schema.properties.data.allOf.0.anyOf.0.additionalProperties]",
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"items": "[Circular ~.POST /accounts/{account_id}/cws/rego-metadata.requestBody.content.application/json.schema.properties.data.allOf.0.anyOf.0.additionalProperties]",
+															"type": "array"
+														},
+														{
+															"type": "string"
+														},
+														{
+															"type": "number"
+														},
+														{
+															"type": "boolean"
+														}
+													]
+												},
 												"type": "object"
 											},
 											{
-												"items": "[Circular ~.POST /accounts/{account_id}/cws/rego-metadata.requestBody.content.application/json.schema.properties.data.allOf.0]",
+												"items": {
+													"anyOf": [
+														{
+															"additionalProperties": "[Circular ~.POST /accounts/{account_id}/cws/rego-metadata.requestBody.content.application/json.schema.properties.data.allOf.0.anyOf.1.items]",
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"items": "[Circular ~.POST /accounts/{account_id}/cws/rego-metadata.requestBody.content.application/json.schema.properties.data.allOf.0.anyOf.1.items]",
+															"type": "array"
+														},
+														{
+															"type": "string"
+														},
+														{
+															"type": "number"
+														},
+														{
+															"type": "boolean"
+														}
+													]
+												},
 												"type": "array"
 											},
 											{
@@ -1416,17 +1539,58 @@
 											"readOnly": true
 										},
 										"data": {
-											"description": "Arbitrary JSON document with at most 100 nesting levels. PostgreSQL-normalized JSON must not exceed 65536 bytes; exponent-form numbers count at expanded decimal size.",
+											"description": "Arbitrary non-null JSON document with at most 100 nesting levels. Nested null values are supported. PostgreSQL-normalized JSON must not exceed 65536 bytes; exponent-form numbers count at expanded decimal size.",
 											"allOf": [
 												{
 													"anyOf": [
 														{
-															"additionalProperties": "[Circular ~.POST /accounts/{account_id}/cws/rego-metadata.responses.201.content.application/json.schema.properties.result.properties.data.allOf.0]",
-															"nullable": true,
+															"additionalProperties": {
+																"anyOf": [
+																	{
+																		"additionalProperties": "[Circular ~.POST /accounts/{account_id}/cws/rego-metadata.responses.201.content.application/json.schema.properties.result.properties.data.allOf.0.anyOf.0.additionalProperties]",
+																		"nullable": true,
+																		"type": "object"
+																	},
+																	{
+																		"items": "[Circular ~.POST /accounts/{account_id}/cws/rego-metadata.responses.201.content.application/json.schema.properties.result.properties.data.allOf.0.anyOf.0.additionalProperties]",
+																		"type": "array"
+																	},
+																	{
+																		"type": "string"
+																	},
+																	{
+																		"type": "number"
+																	},
+																	{
+																		"type": "boolean"
+																	}
+																]
+															},
 															"type": "object"
 														},
 														{
-															"items": "[Circular ~.POST /accounts/{account_id}/cws/rego-metadata.responses.201.content.application/json.schema.properties.result.properties.data.allOf.0]",
+															"items": {
+																"anyOf": [
+																	{
+																		"additionalProperties": "[Circular ~.POST /accounts/{account_id}/cws/rego-metadata.responses.201.content.application/json.schema.properties.result.properties.data.allOf.0.anyOf.1.items]",
+																		"nullable": true,
+																		"type": "object"
+																	},
+																	{
+																		"items": "[Circular ~.POST /accounts/{account_id}/cws/rego-metadata.responses.201.content.application/json.schema.properties.result.properties.data.allOf.0.anyOf.1.items]",
+																		"type": "array"
+																	},
+																	{
+																		"type": "string"
+																	},
+																	{
+																		"type": "number"
+																	},
+																	{
+																		"type": "boolean"
+																	}
+																]
+															},
 															"type": "array"
 														},
 														{
@@ -1747,17 +1911,58 @@
 						"type": "object",
 						"properties": {
 							"data": {
-								"description": "Arbitrary JSON payload with at most 100 nesting levels. PostgreSQL-normalized JSON must not exceed 65536 bytes; exponent-form numbers count at expanded decimal size.",
+								"description": "Arbitrary non-null JSON payload with at most 100 nesting levels. Nested null values are supported. PostgreSQL-normalized JSON must not exceed 65536 bytes; exponent-form numbers count at expanded decimal size.",
 								"allOf": [
 									{
 										"anyOf": [
 											{
-												"additionalProperties": "[Circular ~.PUT /accounts/{account_id}/cws/rego-metadata/{rego_metadata_id}.requestBody.content.application/json.schema.properties.data.allOf.0]",
-												"nullable": true,
+												"additionalProperties": {
+													"anyOf": [
+														{
+															"additionalProperties": "[Circular ~.PUT /accounts/{account_id}/cws/rego-metadata/{rego_metadata_id}.requestBody.content.application/json.schema.properties.data.allOf.0.anyOf.0.additionalProperties]",
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"items": "[Circular ~.PUT /accounts/{account_id}/cws/rego-metadata/{rego_metadata_id}.requestBody.content.application/json.schema.properties.data.allOf.0.anyOf.0.additionalProperties]",
+															"type": "array"
+														},
+														{
+															"type": "string"
+														},
+														{
+															"type": "number"
+														},
+														{
+															"type": "boolean"
+														}
+													]
+												},
 												"type": "object"
 											},
 											{
-												"items": "[Circular ~.PUT /accounts/{account_id}/cws/rego-metadata/{rego_metadata_id}.requestBody.content.application/json.schema.properties.data.allOf.0]",
+												"items": {
+													"anyOf": [
+														{
+															"additionalProperties": "[Circular ~.PUT /accounts/{account_id}/cws/rego-metadata/{rego_metadata_id}.requestBody.content.application/json.schema.properties.data.allOf.0.anyOf.1.items]",
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"items": "[Circular ~.PUT /accounts/{account_id}/cws/rego-metadata/{rego_metadata_id}.requestBody.content.application/json.schema.properties.data.allOf.0.anyOf.1.items]",
+															"type": "array"
+														},
+														{
+															"type": "string"
+														},
+														{
+															"type": "number"
+														},
+														{
+															"type": "boolean"
+														}
+													]
+												},
 												"type": "array"
 											},
 											{
@@ -1883,17 +2088,58 @@
 											"readOnly": true
 										},
 										"data": {
-											"description": "Arbitrary JSON document with at most 100 nesting levels. PostgreSQL-normalized JSON must not exceed 65536 bytes; exponent-form numbers count at expanded decimal size.",
+											"description": "Arbitrary non-null JSON document with at most 100 nesting levels. Nested null values are supported. PostgreSQL-normalized JSON must not exceed 65536 bytes; exponent-form numbers count at expanded decimal size.",
 											"allOf": [
 												{
 													"anyOf": [
 														{
-															"additionalProperties": "[Circular ~.PUT /accounts/{account_id}/cws/rego-metadata/{rego_metadata_id}.responses.200.content.application/json.schema.properties.result.properties.data.allOf.0]",
-															"nullable": true,
+															"additionalProperties": {
+																"anyOf": [
+																	{
+																		"additionalProperties": "[Circular ~.PUT /accounts/{account_id}/cws/rego-metadata/{rego_metadata_id}.responses.200.content.application/json.schema.properties.result.properties.data.allOf.0.anyOf.0.additionalProperties]",
+																		"nullable": true,
+																		"type": "object"
+																	},
+																	{
+																		"items": "[Circular ~.PUT /accounts/{account_id}/cws/rego-metadata/{rego_metadata_id}.responses.200.content.application/json.schema.properties.result.properties.data.allOf.0.anyOf.0.additionalProperties]",
+																		"type": "array"
+																	},
+																	{
+																		"type": "string"
+																	},
+																	{
+																		"type": "number"
+																	},
+																	{
+																		"type": "boolean"
+																	}
+																]
+															},
 															"type": "object"
 														},
 														{
-															"items": "[Circular ~.PUT /accounts/{account_id}/cws/rego-metadata/{rego_metadata_id}.responses.200.content.application/json.schema.properties.result.properties.data.allOf.0]",
+															"items": {
+																"anyOf": [
+																	{
+																		"additionalProperties": "[Circular ~.PUT /accounts/{account_id}/cws/rego-metadata/{rego_metadata_id}.responses.200.content.application/json.schema.properties.result.properties.data.allOf.0.anyOf.1.items]",
+																		"nullable": true,
+																		"type": "object"
+																	},
+																	{
+																		"items": "[Circular ~.PUT /accounts/{account_id}/cws/rego-metadata/{rego_metadata_id}.responses.200.content.application/json.schema.properties.result.properties.data.allOf.0.anyOf.1.items]",
+																		"type": "array"
+																	},
+																	{
+																		"type": "string"
+																	},
+																	{
+																		"type": "number"
+																	},
+																	{
+																		"type": "boolean"
+																	}
+																]
+															},
 															"type": "array"
 														},
 														{

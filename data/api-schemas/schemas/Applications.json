@@ -5076,7 +5076,7 @@
 	"GET /accounts/{account_id}/resource-library/applications": {
 		"operationId": "getResourceLibraryApplications",
 		"summary": "List applications",
-		"description": "List the applications available to an account, both the applications Cloudflare\ncurates and the custom applications the account has defined.\n\nResults are paginated. Use `filter` and `search` to narrow the list, `order_by` to\nsort it, and `fields` to reduce each result to only the properties you need.\nUse `lookup` to find complete application names mentioned in a rule sentence,\nignoring case. Lookup does not correct misspellings. It ranks matches by\nrelevance and uses the same filters, fields, and pagination as listing.\n`lookup` cannot be combined with `search`.\n\nThe authenticated principal must have access to the account identified by\n`account_id`.\n",
+		"description": "List the applications available to an account, both the applications Cloudflare\ncurates and the custom applications the account has defined.\n\nResults are paginated. Use `filter` and `search` to narrow the list, `order_by` to\nsort it, and `fields` to reduce each result to only the properties you need.\nUse `lookup` to find complete application names mentioned in a rule sentence,\nignoring case. Lookup does not correct misspellings. It ranks matches by\nrelevance and uses the same filters, fields, and pagination as listing.\n`lookup` cannot be combined with `search`.\n\nInvalid UTF-8 or a NUL character (U+0000) in any query parameter name or value\nreturns `400`.\n\nThe authenticated principal must have access to the account identified by\n`account_id`.\n",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -5138,7 +5138,7 @@
 			{
 				"name": "lookup",
 				"in": "query",
-				"description": "Find complete, case-insensitive application name mentions in a phrase or\nrule sentence. Misspelled names do not match. Returns matching applications\nranked by relevance. Must be between 2 and 1000 characters. Uses the same\nfilters, fields, and pagination as listing. `search` cannot be combined\nwith lookup. Results are ranked by relevance, so `order_by` is ignored.\n",
+				"description": "Find complete, case-insensitive application name mentions in a phrase or\nrule sentence. Misspelled names do not match. Returns matching applications\nranked by relevance. Must be between 2 and 1000 characters, with no control\ncharacters other than tab and line breaks. Uses the same\nfilters, fields, and pagination as listing. `search` cannot be combined\nwith lookup. Results are ranked by relevance, so `order_by` is ignored.\nTo keep the text out of URLs, send it to `POST .../applications/lookup` instead.\n",
 				"schema": {
 					"type": "string",
 					"maxLength": 1000,
@@ -7720,7 +7720,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "Update the network matchers for the application. The service preserves omitted\nmatcher lists; send an empty array to clear a list. The resulting application must\ncontain at least one hostname or IP subnet. Support domains and port/protocol pairs\ndo not satisfy this requirement.\n",
+						"description": "Update the network matchers for the application. The service preserves omitted\nmatcher lists; send an empty array to clear a list. The resulting application must\ncontain at least one hostname or IP subnet. Support domains and port/protocol pairs\ndo not satisfy this requirement.\nA NUL character (U+0000) in any string value returns `400`.\n",
 						"type": "object",
 						"properties": {
 							"hostnames": {
@@ -9671,7 +9671,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "Defines a custom application. At least one hostname or IP subnet is required.\nSupport domains and port/protocol pairs do not satisfy this requirement.\n",
+						"description": "Defines a custom application. At least one hostname or IP subnet is required.\nSupport domains and port/protocol pairs do not satisfy this requirement.\nA NUL character (U+0000) in any string value returns `400`.\n",
 						"type": "object",
 						"properties": {
 							"category_id": {
@@ -10215,5 +10215,849 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.applications",
 		"x-fern-sdk-method-name": "create"
+	},
+	"POST /accounts/{account_id}/resource-library/applications/lookup": {
+		"operationId": "lookupResourceLibraryApplications",
+		"summary": "Look up applications in a rule sentence",
+		"description": "Find complete application names mentioned in a rule sentence, ignoring case.\nLookup does not correct misspellings. Matches are ranked by relevance.\n\nThis endpoint takes the rule sentence in the request body, so the text stays out\nof URLs and request logs. Use it instead of the `lookup` query parameter on the\nlist endpoint when the text may contain sensitive content.\n\n`fields`, `limit`, and `filter` work the same way as on the list endpoint and are\npassed as query parameters. Results are not paged: `offset`, `order_by`, `search`,\nand `lookup` query parameters return `400`. Unknown request body properties also\nreturn `400`. Invalid UTF-8 or a NUL character (U+0000) in any query parameter\nname or value returns `400`.\n\nThe authenticated principal must have access to the account identified by\n`account_id`.\n",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"type": "string"
+				},
+				"example": "023e105f4ecef8ad9ca31a8372d0c353"
+			},
+			{
+				"name": "filter",
+				"in": "query",
+				"description": "Filter matches using the same `key:value` filters as the list endpoint.",
+				"schema": {
+					"type": "string"
+				},
+				"example": "supported:GATEWAY"
+			},
+			{
+				"name": "limit",
+				"in": "query",
+				"description": "Maximum number of matches to return. Defaults to 25; values are clamped to 1–250.",
+				"schema": {
+					"type": "integer",
+					"default": 25
+				}
+			},
+			{
+				"name": "fields",
+				"in": "query",
+				"description": "Return only the listed properties on each application, as a comma-separated list.\nAccepts the same properties as the list endpoint. `id` is always returned.\nOmit this parameter to receive the full application object.\n",
+				"schema": {
+					"type": "string"
+				},
+				"example": "id,name"
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"lookup": {
+								"description": "Rule sentence to search for complete application names. Leading and trailing\nwhitespace is trimmed before the length is checked. Control characters other\nthan tab and line breaks return `400`.\n",
+								"type": "string",
+								"example": "block access to Google Chat",
+								"maxLength": 1000,
+								"minLength": 2
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"lookup"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Applications mentioned in the rule sentence, ranked by relevance.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Indicates whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										},
+										{
+											"properties": {
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"count": {
+															"description": "Returns the number of results in this response.",
+															"type": "number",
+															"example": 10
+														},
+														"page": {
+															"description": "Returns the zero-based result offset, not a page number.",
+															"type": "number",
+															"example": 0
+														},
+														"per_page": {
+															"description": "Returns the effective `limit` for this response.",
+															"type": "number",
+															"example": 25
+														},
+														"total_count": {
+															"description": "Returns the number of results matching the request before pagination.",
+															"type": "number",
+															"example": 2000
+														},
+														"total_pages": {
+															"description": "Returns the number of pages at the effective `limit`, including 0 when there are no matches.",
+															"type": "number",
+															"example": 80
+														}
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Returns the list of applications.",
+											"type": "array",
+											"items": {
+												"description": "Describes one application in a list response. The response returns every property below unless `fields` narrows it. Treat all properties except `id` as optional.",
+												"type": "object",
+												"properties": {
+													"application_confidence_score": {
+														"description": "Confidence score for the application. Returns -1 when no score is available.",
+														"type": "number",
+														"format": "float",
+														"example": 0.92
+													},
+													"application_score_composition": {
+														"description": "Returns the score composition breakdown for the application.",
+														"type": "object",
+														"example": {
+															"categories": [
+																{
+																	"confidence": 0.95,
+																	"name": "Security"
+																}
+															],
+															"plan": "free"
+														},
+														"nullable": true
+													},
+													"application_source": {
+														"description": "Returns the application source.",
+														"type": "string",
+														"example": "cloudflare"
+													},
+													"application_type": {
+														"description": "Returns the application type.",
+														"type": "string",
+														"example": "Human Resources"
+													},
+													"application_type_description": {
+														"description": "Returns the application type description.",
+														"type": "string",
+														"example": "Applications used to manage employees and workforce tools."
+													},
+													"category_id": {
+														"description": "Numeric identifier for an application category.",
+														"type": "integer",
+														"format": "int64",
+														"example": 12,
+														"maximum": 4294967295,
+														"minimum": 1
+													},
+													"created_at": {
+														"description": "Returns the application creation time.",
+														"type": "string",
+														"example": "2025-01-01T00:00:00Z"
+													},
+													"gen_ai_score": {
+														"description": "GenAI score for the application. Returns -1 when no score is available.",
+														"type": "number",
+														"format": "float",
+														"example": 1.5
+													},
+													"hostnames": {
+														"description": "Hostnames matched by the application.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
+														"example": [
+															"example.com",
+															"foo.com"
+														],
+														"x-stainless-collection-type": "set"
+													},
+													"human_id": {
+														"description": "Human-readable identifier for the application.",
+														"type": "string",
+														"example": "HR"
+													},
+													"id": {
+														"description": "Numeric identifier for the application.",
+														"type": "integer",
+														"format": "int64",
+														"example": 498,
+														"maximum": 4294967295,
+														"minimum": 0
+													},
+													"ip_subnets": {
+														"description": "IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
+														"example": [
+															"192.168.1.0/24",
+															"2001:db8::/48"
+														],
+														"x-stainless-collection-type": "set"
+													},
+													"name": {
+														"description": "Application name.",
+														"type": "string",
+														"example": "HR"
+													},
+													"port_protocols": {
+														"description": "Ports matched by the application, in `protocol/port` or inclusive `protocol/start-end` format (for example, `tcp/443` or `udp/10000-20000`). TCP and UDP ports must be between 0 and 65535.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
+														"example": [
+															"tcp/443",
+															"udp/10000-20000"
+														],
+														"x-stainless-collection-type": "set"
+													},
+													"review_status": {
+														"description": "The account-specific Gateway review status. Applications with no assigned review status are returned as `unreviewed`.",
+														"type": "string",
+														"enum": [
+															"approved",
+															"unapproved",
+															"in_review",
+															"unreviewed"
+														]
+													},
+													"support_domains": {
+														"description": "Support domains matched by the application.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
+														"example": [
+															"example.com",
+															"foo.com"
+														],
+														"x-stainless-collection-type": "set"
+													},
+													"supported": {
+														"description": "Cloudflare products that support this application.",
+														"type": "array",
+														"items": {
+															"enum": [
+																"GATEWAY",
+																"ACCESS",
+																"CASB"
+															],
+															"type": "string"
+														},
+														"example": [
+															"GATEWAY",
+															"ACCESS"
+														],
+														"x-stainless-collection-type": "set"
+													},
+													"updated_at": {
+														"description": "Returns the application update time.",
+														"type": "string",
+														"example": "2025-01-01T00:00:00Z"
+													},
+													"version": {
+														"description": "Returns the application version.",
+														"type": "string",
+														"example": "2025-01-01T00:00:00Z"
+													}
+												},
+												"required": [
+													"id"
+												]
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "The authenticated principal does not have access to the requested account.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"502": {
+				"description": "Application review statuses could not be retrieved.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Application review statuses were requested but are not available.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Lookup applications response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Applications"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "accounts.applications",
+		"x-fern-sdk-method-name": "lookup"
 	}
 }

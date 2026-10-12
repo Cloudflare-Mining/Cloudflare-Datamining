@@ -534,7 +534,7 @@
 												]
 											},
 											"entries": {
-												"description": "Per-domain action overrides",
+												"description": "Per-domain action overrides. Each domain appears at most once.",
 												"type": "array",
 												"items": {
 													"type": "object",
@@ -560,7 +560,8 @@
 														"action"
 													]
 												},
-												"nullable": true
+												"nullable": true,
+												"x-stainless-collection-type": "set"
 											},
 											"id": {
 												"description": "Server-assigned UUID",
@@ -969,7 +970,7 @@
 											]
 										},
 										"entries": {
-											"description": "Per-domain action overrides",
+											"description": "Per-domain action overrides. Each domain appears at most once.",
 											"type": "array",
 											"items": {
 												"type": "object",
@@ -995,7 +996,8 @@
 													"action"
 												]
 											},
-											"nullable": true
+											"nullable": true,
+											"x-stainless-collection-type": "set"
 										},
 										"id": {
 											"description": "Server-assigned UUID",
@@ -1289,7 +1291,7 @@
 								]
 							},
 							"entries": {
-								"description": "Domain entries for this ACL",
+								"description": "Domain entries for this ACL. Each domain must appear at most once.",
 								"type": "array",
 								"items": {
 									"type": "object",
@@ -1315,7 +1317,8 @@
 										"action"
 									]
 								},
-								"nullable": true
+								"nullable": true,
+								"x-stainless-collection-type": "set"
 							},
 							"name": {
 								"description": "Name of the domain ACL",
@@ -1425,7 +1428,7 @@
 											]
 										},
 										"entries": {
-											"description": "Per-domain action overrides",
+											"description": "Per-domain action overrides. Each domain appears at most once.",
 											"type": "array",
 											"items": {
 												"type": "object",
@@ -1451,7 +1454,8 @@
 													"action"
 												]
 											},
-											"nullable": true
+											"nullable": true,
+											"x-stainless-collection-type": "set"
 										},
 										"id": {
 											"description": "Server-assigned UUID",
@@ -1756,7 +1760,7 @@
 								]
 							},
 							"entries": {
-								"description": "Replacement set of domain entries",
+								"description": "Replacement set of domain entries. Each domain must appear at most once.",
 								"type": "array",
 								"items": {
 									"type": "object",
@@ -1782,7 +1786,8 @@
 										"action"
 									]
 								},
-								"nullable": true
+								"nullable": true,
+								"x-stainless-collection-type": "set"
 							},
 							"name": {
 								"description": "Name of the domain ACL",
@@ -1892,7 +1897,7 @@
 											]
 										},
 										"entries": {
-											"description": "Per-domain action overrides",
+											"description": "Per-domain action overrides. Each domain appears at most once.",
 											"type": "array",
 											"items": {
 												"type": "object",
@@ -1918,7 +1923,8 @@
 													"action"
 												]
 											},
-											"nullable": true
+											"nullable": true,
+											"x-stainless-collection-type": "set"
 										},
 										"id": {
 											"description": "Server-assigned UUID",

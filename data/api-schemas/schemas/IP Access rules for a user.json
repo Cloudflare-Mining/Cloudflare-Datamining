@@ -259,7 +259,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.firewall.access-rules",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation deletes the user-level IP Access Rule and affects every zone owned by the user."
 	},
 	"GET /user/firewall/access_rules/rules": {
@@ -283,7 +282,7 @@
 					],
 					"x-auditable": true
 				},
-				"x-fern-parameter-name": "action"
+				"x-fern-parameter-name": "access-rule-mode"
 			},
 			{
 				"name": "configuration.target",
@@ -809,8 +808,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.firewall.access-rules",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /user/firewall/access_rules/rules/{rule_id}": {
 		"operationId": "ip-access-rules-for-a-user-get-an-ip-access-rule",
@@ -1238,8 +1236,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.firewall.access-rules",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /user/firewall/access_rules/rules/{rule_id}": {
 		"operationId": "ip-access-rules-for-a-user-update-an-ip-access-rule",
@@ -1266,17 +1263,22 @@
 						"type": "object",
 						"properties": {
 							"mode": {
-								"description": "The action to apply to a matched request.",
-								"type": "string",
-								"example": "challenge",
-								"enum": [
-									"block",
-									"challenge",
-									"whitelist",
-									"js_challenge",
-									"managed_challenge"
+								"allOf": [
+									{
+										"description": "The action to apply to a matched request.",
+										"type": "string",
+										"example": "challenge",
+										"enum": [
+											"block",
+											"challenge",
+											"whitelist",
+											"js_challenge",
+											"managed_challenge"
+										],
+										"x-auditable": true
+									}
 								],
-								"x-auditable": true
+								"x-fern-property-name": "access-rule-mode"
 							},
 							"notes": {
 								"description": "An informative summary of the rule, typically used as a reminder or explanation.",
@@ -1697,13 +1699,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.firewall.access-rules",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true,
-		"x-forge-params": {
-			"mode": {
-				"flagName": "action"
-			}
-		}
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /user/firewall/access_rules/rules": {
 		"operationId": "ip-access-rules-for-a-user-create-an-ip-access-rule",
@@ -1819,17 +1815,22 @@
 								]
 							},
 							"mode": {
-								"description": "The action to apply to a matched request.",
-								"type": "string",
-								"example": "challenge",
-								"enum": [
-									"block",
-									"challenge",
-									"whitelist",
-									"js_challenge",
-									"managed_challenge"
+								"allOf": [
+									{
+										"description": "The action to apply to a matched request.",
+										"type": "string",
+										"example": "challenge",
+										"enum": [
+											"block",
+											"challenge",
+											"whitelist",
+											"js_challenge",
+											"managed_challenge"
+										],
+										"x-auditable": true
+									}
 								],
-								"x-auditable": true
+								"x-fern-property-name": "access-rule-mode"
 							},
 							"notes": {
 								"default": "",
@@ -2259,12 +2260,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.firewall.access-rules",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true,
-		"x-forge-params": {
-			"mode": {
-				"flagName": "action"
-			}
-		}
+		"x-fern-sdk-method-name": "create"
 	}
 }
