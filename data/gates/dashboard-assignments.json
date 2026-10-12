@@ -98,39 +98,15 @@
 	"ai-gateway-provider-keys": {
 		"true": 100
 	},
-	"ai-gateway-spend-limits": {
-		"true": 100
-	},
 	"ai-gateway-stripe-integration": {
 		"false": 100
-	},
-	"ai-gateway-workers-ai-billing-mode": {
-		"true": 100
 	},
 	"ai-gateway-zdr": {
 		"true": 100
 	},
-	"aig-access": {
-		"true": 100
-	},
 	"aig-billing-list-cards": {
-		"true": 9,
-		"false": 91
-	},
-	"aig-insights-cloudflare-auto-upsell": {
-		"true": 100
-	},
-	"aig-insights-custom-attribution": {
-		"true": 100
-	},
-	"aig-route-builder-undo": {
-		"true": 100
-	},
-	"aig-topup-eligibility": {
-		"true": 100
-	},
-	"aig-unified-catalog-detail-view": {
-		"true": 100
+		"true": 25,
+		"false": 75
 	},
 	"aig-wobs-dataset": {
 		"false": 100
@@ -354,6 +330,9 @@
 	},
 	"control-plane-large-orgs-memberships": {
 		"true": 100
+	},
+	"control-plane-residency": {
+		"false": 100
 	},
 	"csam-scanner-third-party": {
 		"true": 100

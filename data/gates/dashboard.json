@@ -142,9 +142,6 @@
 	"ai-gateway-insights-conversation-analysis": {
 		"enabled": true
 	},
-	"ai-gateway-insights-log-analysis": {
-		"enabled": true
-	},
 	"ai-gateway-log-push": {
 		"enabled": false
 	},
@@ -160,9 +157,6 @@
 	"ai-gateway-provider-keys": {
 		"enabled": true
 	},
-	"ai-gateway-spend-limits": {
-		"enabled": true
-	},
 	"ai-gateway-stripe-custom-payloads": {
 		"enabled": false
 	},
@@ -173,9 +167,6 @@
 		"enabled": true
 	},
 	"ai-gateway-wholesale-billing": {
-		"enabled": true
-	},
-	"ai-gateway-workers-ai-billing-mode": {
 		"enabled": true
 	},
 	"ai-gateway-zdr": {
@@ -199,37 +190,16 @@
 	"ai-support-oauth": {
 		"enabled": true
 	},
-	"aig-access": {
-		"enabled": true
-	},
 	"aig-billing-list-cards": {
-		"enabled": true
-	},
-	"aig-catalog-multi-provider": {
-		"enabled": false
-	},
-	"aig-catalog-multi-provider-spike": {
-		"enabled": false
-	},
-	"aig-insights-cloudflare-auto-upsell": {
-		"enabled": true
-	},
-	"aig-insights-custom-attribution": {
 		"enabled": true
 	},
 	"aig-model-aliases": {
 		"enabled": false
 	},
+	"aig-new-dash-settings": {
+		"enabled": false
+	},
 	"aig-policies": {
-		"enabled": true
-	},
-	"aig-route-builder-undo": {
-		"enabled": true
-	},
-	"aig-topup-eligibility": {
-		"enabled": true
-	},
-	"aig-unified-catalog-detail-view": {
 		"enabled": true
 	},
 	"aig-wobs-dataset": {
@@ -615,6 +585,9 @@
 	"cfone-egress-intelligence-enabled": {
 		"enabled": true
 	},
+	"cfone-pir-filters": {
+		"enabled": false
+	},
 	"cfone-rfi-stakeout-v2": {
 		"enabled": true
 	},
@@ -674,6 +647,9 @@
 	},
 	"control-plane-large-orgs-v1": {
 		"enabled": false
+	},
+	"control-plane-residency": {
+		"enabled": true
 	},
 	"cp-dra-playground": {
 		"enabled": false
