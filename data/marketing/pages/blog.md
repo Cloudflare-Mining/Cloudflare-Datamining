@@ -20,6 +20,14 @@ The Deno team is joining Cloudflare to radically simplify self-hosting Workers a
 
 [![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4EN399YDFNQMGM5VG6EHTNS.01M4EN39V1RNGJ3FBS356QEAB5.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/deno-joins-cloudflare/)
 
+October 12, 2026 [<h2>Filter, reshape, and redact logs before export with Transformers</h2>](https://blog.cloudflare.com/transformers-on-logpush/)
+
+Logpush now supports Transformers, allowing teams to filter, redact, and reshape log streams using SQL before export. Powered by Apache DataFusion and Apache Arrow, Transformers apply those changes directly to log data before it reaches the destination.
+
+![Rob Taylor](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4HA8WWRNYKRM3E810362ZES.01M4HA8YT8FMQMHFAFN7AMMEKD.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Sahidya Devadoss](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R5PW6B560N8E2HCG7X07.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Rob Taylor](https://blog.cloudflare.com/author/rob-taylor/) and  [Sahidya Devadoss](https://blog.cloudflare.com/author/sahidya-devadoss/)
+
 October 9, 2026 [<h2>Introducing Clef-omni with full multimodality, plus a faster Clef and a cheaper Clef-flash</h2>](https://blog.cloudflare.com/clef-faster-cheaper-multimodal/)
 
 We are expanding the Clef decision model family with Clef-omni, natively processing audio, video, images, and text in a single pipeline. We've also lowered Clef-flash pricing and boosted Clef inference speeds by up to 2.0x.
@@ -155,14 +163,6 @@ Cloudflare now ranks as the fastest provider across 74% of the top 1,000 global 
 ![Lai Yi Ohlsen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DGMNXAW2CZQQAX92W97V.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Lai Yi Ohlsen](https://blog.cloudflare.com/author/lai-yi-ohlsen/)
-
-October 1, 2026 [<h2>Introducing Clef: our open-source decision models, and new RL fine-tuning platform</h2>](https://blog.cloudflare.com/clef-decision-models/)
-
-We are introducing Clef and Clef-flash, open-source decision models hosted on Workers AI for high-speed classification and agentic workflows. Also launching: a new reinforcement learning platform that allows developers to fine-tune decision models using their own data.
-
-![Michelle Chen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R95PPSQQ82Z92P51M550.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Alex Reneau](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WKWJ94JZDRJM354AYKYXG.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Kevin Flansburg](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452TM72EKFE8RQCD3JMXND.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Michelle Chen](https://blog.cloudflare.com/author/michelle/),  [Alex Reneau](https://blog.cloudflare.com/author/alex-reneau/), and  [Kevin Flansburg](https://blog.cloudflare.com/author/kevin-flansburg/)
 
 Load more
 
