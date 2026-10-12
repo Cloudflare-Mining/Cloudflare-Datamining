@@ -1250,6 +1250,36 @@
 		"is_selectable": true
 	},
 	{
+		"id": "d53395fae6e94699ae103cb9c98fa4f4",
+		"name": "Cloud Workload Security Deployment",
+		"description": "Grants deployment targets access to deployment bundles and metrics ingestion in an account.",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "cloudflare_one_and_zero_trust",
+		"is_selectable": true
+	},
+	{
+		"id": "cfcbe618502b47378b5f93927ece1add",
+		"name": "Cloud Workload Security Read",
+		"description": "Grants read access to Cloud Workload Security resources.",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "cloudflare_one_and_zero_trust",
+		"is_selectable": true
+	},
+	{
+		"id": "3142a1c737b1429491c8d419a3a1192d",
+		"name": "Cloud Workload Security Write",
+		"description": "Grants read and write access to Cloud Workload Security resources.",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "cloudflare_one_and_zero_trust",
+		"is_selectable": true
+	},
+	{
 		"id": "65ec50cbde3d4c838bbe7500024d5745",
 		"name": "Cloudchamber Read",
 		"description": "Grants read access to Cloudchamber deployments",
