@@ -234,6 +234,7 @@
 		"feat/static-prerender-build",
 		"fix/action-bound-args-binding",
 		"fix/ancestor-loading-shared-layout",
+		"fix/app-config-rewrite-post-mw-request",
 		"fix/app-pages-fallback-sees-middleware-overrides-v2",
 		"fix/app-router-dynamic-root-not-found",
 		"fix/app-router-node-image-middleware",
@@ -255,6 +256,7 @@
 		"fix/dev-overlay-build-error-recovery-flake",
 		"fix/dynamic-pages-loadable",
 		"fix/fetch-cache-cf-key",
+		"fix/fetch-cache-unkeyable-body",
 		"fix/fflate-override",
 		"fix/font-local-adjust-fallback",
 		"fix/hybrid-encoded-path-followups",
@@ -368,7 +370,9 @@
 		"repro/app-router-shared-layout-identity",
 		"seo/consolidate-brand-signals",
 		"test/interception-guarded-owner-descendant",
+		"test/response-store-self-contained-conditional",
 		"test/use-cache-formdata-order",
+		"test/use-cache-passthrough-children-workerd",
 		"web/benchmarks-swr-revalidate"
 	]
 }
