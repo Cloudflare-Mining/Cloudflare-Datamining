@@ -22,7 +22,6 @@
 	"default_branch": "main",
 	"branches": [
 		"automation/update-forge",
-		"cf-docs",
 		"changeset-release/main",
 		"codex/expand-secrets-file-dotenv",
 		"codex/fix-161-path-params",
@@ -37,11 +36,10 @@
 		"investigate/issue-69",
 		"investigate/issue-99",
 		"investigate/issue-100",
-		"james/dependencies-instrumentation-env",
 		"main",
 		"remove-x-forge-globals",
-		"renovate/chalk-6.x",
-		"renovate/msw-3.x",
-		"sk/forge-wasm"
+		"sk/forge-wasm",
+		"sk/rm-fern",
+		"sk/switch-to-new-forge"
 	]
 }
