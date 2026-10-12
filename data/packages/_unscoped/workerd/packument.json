@@ -2,7 +2,7 @@
 	"name": "workerd",
 	"dist-tags": {
 		"beta": "0.20250124.2",
-		"latest": "1.20261011.1"
+		"latest": "1.20261012.1"
 	},
 	"versions": {
 		"0.0.1": {
@@ -15062,12 +15062,45 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQCcfPtb5dzeNzUKGazQv5TF2BDuZnCn8QyIRhv6XQf9UgIgEzZ8ZG44oUNDZYsjBgeeXwMUdDQhl9i+sEzFdTj7p5E="
+						"sig": "MEUCIQCcfPtb5dzeNzUKGazQv5TF2BDuZnCn8QyIRhv6XQf9UgIgEzZ8ZG44oUNDZYsjBgeeXwMUdDQhl9i+sEzFdTj7p5E=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/workerd@1.20261011.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 5003673
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"1.20261012.1": {
+			"name": "workerd",
+			"version": "1.20261012.1",
+			"bin": {
+				"workerd": "bin/workerd"
+			},
+			"dist": {
+				"shasum": "f44775bf6873fb32218a2cb69d23810cda8d9c6e",
+				"tarball": "https://registry.npmjs.org/workerd/-/workerd-1.20261012.1.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-tEHoMPsMga0seVjxfsR8Pd3f8IRqYwkq++dTUKI5Gdgj6zuSDluYwisydq+dn90SsIACwBquJUQ1nBpcOqaWTA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCSydT4yMLDLpKJuV6trM4jWJm9oYFYa58tJhZBdcyG6gIgUDTCNEFIXaS053Z8tjTEiDFV/MOiE1a3RtRLO9ANh40=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIB6dDDjUv4Vk72T1d3IwVCvV/wB/s2GLNCFBOYKB6wplAiEAxAq0C/JR6ZSrig262BlCYe0a050DFIVZldM1FRZpP2w="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/workerd@1.20261012.1",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
