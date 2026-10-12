@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/8264664?gh_jid=8264664",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/8268432?gh_jid=8268432",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -10,7 +10,7 @@
 			"demographic_data_consent_applies": false
 		}
 	],
-	"internal_job_id": 3575997,
+	"internal_job_id": 3577599,
 	"location": {
 		"name": "Hybrid"
 	},
@@ -18,14 +18,16 @@
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "4100 - Infrastructure Engineering",
+			"value": "5620 - Deal Desk",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Austin, US"
+				"Austin, US",
+				"Denver, CO",
+				"Seattle, WA"
 			],
 			"value_type": "multi_select"
 		},
@@ -33,41 +35,49 @@
 			"id": 46546702,
 			"name": "Career Site Department",
 			"value": [
-				"Engineering"
+				"Accounting & Finance",
+				"Pricing & Monetization"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 8264664,
-	"updated_at": "2026-10-09T07:28:16-04:00",
+	"id": 8268432,
+	"updated_at": "2026-10-12T11:20:44-04:00",
 	"requisition_id": null,
-	"title": "Software Engineer",
+	"title": "Deal Desk Manager",
 	"company_name": "Cloudflare",
-	"first_published": "2026-10-09T07:28:16-04:00",
+	"first_published": "2026-10-12T11:20:44-04:00",
 	"language": "en",
 	"application_deadline": null,
 	"departments": [
 		{
-			"id": 29067,
-			"name": "Engineering",
+			"id": 29062,
+			"name": "Accounting and Finance",
 			"child_ids": [],
 			"parent_id": null
 		}
 	],
 	"offices": [
 		{
-			"id": 19988,
-			"name": "London, United Kingdom",
-			"location": "London, United Kingdom",
+			"id": 19983,
+			"name": "Austin, TX",
+			"location": "Austin, TX, United States",
 			"child_ids": [],
-			"parent_id": 74843
+			"parent_id": 48752
 		},
 		{
-			"id": 63782,
-			"name": "Lisbon, Portugal",
-			"location": "Lisboa, Lisboa, Portugal",
+			"id": 65527,
+			"name": "Denver, CO",
+			"location": "Denver, Colorado, United States",
 			"child_ids": [],
-			"parent_id": 74843
+			"parent_id": 48752
+		},
+		{
+			"id": 72960,
+			"name": "Seattle, WA",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 48752
 		}
 	],
 	"ai_disclaimer": null,
