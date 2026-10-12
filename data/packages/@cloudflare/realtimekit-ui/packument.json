@@ -1,8 +1,8 @@
 {
 	"name": "@cloudflare/realtimekit-ui",
 	"dist-tags": {
-		"latest": "2.0.3",
-		"staging": "2.0.3-staging.11"
+		"staging": "2.0.4-staging.1",
+		"latest": "2.0.3"
 	},
 	"versions": {
 		"0.0.0": {
@@ -3045,8 +3045,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQDHZa73mEPVf/A2AKD0wYtMQKvKNjZrLPnuxlOE238PlgIhANKoaF897vQmaAe50oL2FOtZp2KZJPAO0cQDunreIt5q"
+						"sig": "MEYCIQDHZa73mEPVf/A2AKD0wYtMQKvKNjZrLPnuxlOE238PlgIhANKoaF897vQmaAe50oL2FOtZp2KZJPAO0cQDunreIt5q",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -3056,6 +3056,40 @@
 					}
 				},
 				"unpackedSize": 28721175
+			}
+		},
+		"2.0.4-staging.1": {
+			"name": "@cloudflare/realtimekit-ui",
+			"version": "2.0.4-staging.1",
+			"dependencies": {
+				"hark": "^1.2.3",
+				"hls.js": "^1.5.17",
+				"lodash-es": "^4.17.21",
+				"@floating-ui/dom": "^1.7.4",
+				"resize-observer-polyfill": "^1.5.1"
+			},
+			"dist": {
+				"shasum": "c0bf07724bc3b99da05beb46031a0e466044b2fd",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui/-/realtimekit-ui-2.0.4-staging.1.tgz",
+				"fileCount": 1268,
+				"integrity": "sha512-cUQ2i+CwG5KkUBOJFi9OX62VFQ1Ugj5aH79euGZ9hm9suBXBWkb6vyoh3eFHL3ZxL2KaNj650XIlzCzR6tyGyQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIBZ/lKO1Znb0fTg8vl2ScGesMoe7Qe3/u+PK0D/bJ2BIAiAH/TNQxurSzu79x7hl1ICIEaIM6Iv50y/p47TRxiMPeA==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIGVn9mZXcFivGuWRV5UpWKtEkh3kqglqWU7fcKQ+Bi2kAiA8t1QiNsq/zc/H5pSd0ZKHcZEmTNwje4XtD4sBSmoZzg=="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2frealtimekit-ui@2.0.4-staging.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 28721162
 			}
 		}
 	}
