@@ -208,19 +208,8 @@
 														"type": "integer",
 														"minimum": 1000
 													},
-													"documentation_url": {
-														"type": "string"
-													},
 													"message": {
 														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
 													}
 												},
 												"required": [
@@ -229,8 +218,7 @@
 												],
 												"type": "object",
 												"uniqueItems": true
-											},
-											"example": []
+											}
 										},
 										"messages": {
 											"type": "array",
@@ -240,19 +228,8 @@
 														"type": "integer",
 														"minimum": 1000
 													},
-													"documentation_url": {
-														"type": "string"
-													},
 													"message": {
 														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
 													}
 												},
 												"required": [
@@ -261,8 +238,7 @@
 												],
 												"type": "object",
 												"uniqueItems": true
-											},
-											"example": []
+											}
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
@@ -392,19 +368,8 @@
 																"type": "integer",
 																"minimum": 1000
 															},
-															"documentation_url": {
-																"type": "string"
-															},
 															"message": {
 																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
 															}
 														},
 														"required": [
@@ -413,8 +378,7 @@
 														],
 														"type": "object",
 														"uniqueItems": true
-													},
-													"example": []
+													}
 												}
 											],
 											"minLength": 1
@@ -430,19 +394,8 @@
 																"type": "integer",
 																"minimum": 1000
 															},
-															"documentation_url": {
-																"type": "string"
-															},
 															"message": {
 																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
 															}
 														},
 														"required": [
@@ -451,8 +404,7 @@
 														],
 														"type": "object",
 														"uniqueItems": true
-													},
-													"example": []
+													}
 												}
 											]
 										},
@@ -508,7 +460,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "request-tracers.traces",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

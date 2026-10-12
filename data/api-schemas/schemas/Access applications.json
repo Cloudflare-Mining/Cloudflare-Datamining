@@ -1982,7 +1982,7 @@
 																		"example": true
 																	},
 																	"session_duration": {
-																		"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																		"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																		"type": "string",
 																		"example": "24h",
 																		"default": "24h"
@@ -2032,7 +2032,8 @@
 																				"not": {
 																					"enum": [
 																						"end_user"
-																					]
+																					],
+																					"type": "string"
 																				},
 																				"type": "string"
 																			}
@@ -8506,7 +8507,7 @@
 																				"example": true
 																			},
 																			"session_duration": {
-																				"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																				"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																				"type": "string",
 																				"example": "24h",
 																				"default": "24h"
@@ -8556,7 +8557,8 @@
 																						"not": {
 																							"enum": [
 																								"end_user"
-																							]
+																							],
+																							"type": "string"
 																						},
 																						"type": "string"
 																					}
@@ -11930,7 +11932,7 @@
 																				"example": true
 																			},
 																			"session_duration": {
-																				"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																				"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																				"type": "string",
 																				"example": "24h",
 																				"default": "24h"
@@ -11980,7 +11982,8 @@
 																						"not": {
 																							"enum": [
 																								"end_user"
-																							]
+																							],
+																							"type": "string"
 																						},
 																						"type": "string"
 																					}
@@ -14426,7 +14429,7 @@
 																				"example": "Admin Site"
 																			},
 																			"session_duration": {
-																				"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																				"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																				"type": "string",
 																				"example": "24h",
 																				"default": "24h"
@@ -16978,7 +16981,7 @@
 																				"example": "Admin Site"
 																			},
 																			"session_duration": {
-																				"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																				"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																				"type": "string",
 																				"example": "24h",
 																				"default": "24h"
@@ -19448,7 +19451,7 @@
 																				"example": "Admin Site"
 																			},
 																			"session_duration": {
-																				"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																				"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																				"type": "string",
 																				"example": "24h",
 																				"default": "24h"
@@ -21918,7 +21921,7 @@
 																				"example": "Admin Site"
 																			},
 																			"session_duration": {
-																				"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																				"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																				"type": "string",
 																				"example": "24h",
 																				"default": "24h"
@@ -26794,6 +26797,12 @@
 																				"type": "string",
 																				"example": "Admin Site"
 																			},
+																			"session_duration": {
+																				"description": "The maximum duration of a connection to this application's targets. Connections are terminated once it elapses. Must be in the format `30m` or `2h45m`, in whole seconds. Valid time units are: s, m, h.",
+																				"type": "string",
+																				"example": "8h",
+																				"default": "24h"
+																			},
 																			"type": {
 																				"allOf": [
 																					{
@@ -30663,7 +30672,7 @@
 																				"example": true
 																			},
 																			"session_duration": {
-																				"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																				"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																				"type": "string",
 																				"example": "24h",
 																				"default": "24h"
@@ -30713,7 +30722,8 @@
 																						"not": {
 																							"enum": [
 																								"end_user"
-																							]
+																							],
+																							"type": "string"
 																						},
 																						"type": "string"
 																					}
@@ -33930,7 +33940,7 @@
 																		]
 																	},
 																	"session_duration": {
-																		"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																		"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																		"type": "string",
 																		"example": "24h",
 																		"default": "24h"
@@ -37145,7 +37155,7 @@
 																		]
 																	},
 																	"session_duration": {
-																		"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																		"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																		"type": "string",
 																		"example": "24h",
 																		"default": "24h"
@@ -41249,7 +41259,7 @@
 																	"example": true
 																},
 																"session_duration": {
-																	"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																	"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																	"type": "string",
 																	"example": "24h",
 																	"default": "24h"
@@ -41299,7 +41309,8 @@
 																			"not": {
 																				"enum": [
 																					"end_user"
-																				]
+																				],
+																				"type": "string"
 																			},
 																			"type": "string"
 																		}
@@ -47773,7 +47784,7 @@
 																			"example": true
 																		},
 																		"session_duration": {
-																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																			"type": "string",
 																			"example": "24h",
 																			"default": "24h"
@@ -47823,7 +47834,8 @@
 																					"not": {
 																						"enum": [
 																							"end_user"
-																						]
+																						],
+																						"type": "string"
 																					},
 																					"type": "string"
 																				}
@@ -51197,7 +51209,7 @@
 																			"example": true
 																		},
 																		"session_duration": {
-																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																			"type": "string",
 																			"example": "24h",
 																			"default": "24h"
@@ -51247,7 +51259,8 @@
 																					"not": {
 																						"enum": [
 																							"end_user"
-																						]
+																						],
+																						"type": "string"
 																					},
 																					"type": "string"
 																				}
@@ -53693,7 +53706,7 @@
 																			"example": "Admin Site"
 																		},
 																		"session_duration": {
-																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																			"type": "string",
 																			"example": "24h",
 																			"default": "24h"
@@ -56245,7 +56258,7 @@
 																			"example": "Admin Site"
 																		},
 																		"session_duration": {
-																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																			"type": "string",
 																			"example": "24h",
 																			"default": "24h"
@@ -58715,7 +58728,7 @@
 																			"example": "Admin Site"
 																		},
 																		"session_duration": {
-																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																			"type": "string",
 																			"example": "24h",
 																			"default": "24h"
@@ -61185,7 +61198,7 @@
 																			"example": "Admin Site"
 																		},
 																		"session_duration": {
-																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																			"type": "string",
 																			"example": "24h",
 																			"default": "24h"
@@ -66061,6 +66074,12 @@
 																			"type": "string",
 																			"example": "Admin Site"
 																		},
+																		"session_duration": {
+																			"description": "The maximum duration of a connection to this application's targets. Connections are terminated once it elapses. Must be in the format `30m` or `2h45m`, in whole seconds. Valid time units are: s, m, h.",
+																			"type": "string",
+																			"example": "8h",
+																			"default": "24h"
+																		},
 																		"type": {
 																			"allOf": [
 																				{
@@ -69930,7 +69949,7 @@
 																			"example": true
 																		},
 																		"session_duration": {
-																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																			"type": "string",
 																			"example": "24h",
 																			"default": "24h"
@@ -69980,7 +69999,8 @@
 																					"not": {
 																						"enum": [
 																							"end_user"
-																						]
+																						],
+																						"type": "string"
 																					},
 																					"type": "string"
 																				}
@@ -73197,7 +73217,7 @@
 																	]
 																},
 																"session_duration": {
-																	"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																	"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																	"type": "string",
 																	"example": "24h",
 																	"default": "24h"
@@ -76412,7 +76432,7 @@
 																	]
 																},
 																"session_duration": {
-																	"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																	"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																	"type": "string",
 																	"example": "24h",
 																	"default": "24h"
@@ -81011,7 +81031,7 @@
 												"example": true
 											},
 											"session_duration": {
-												"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+												"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 												"type": "string",
 												"example": "24h",
 												"default": "24h"
@@ -81061,7 +81081,8 @@
 														"not": {
 															"enum": [
 																"end_user"
-															]
+															],
+															"type": "string"
 														},
 														"type": "string"
 													}
@@ -88227,7 +88248,7 @@
 														"example": true
 													},
 													"session_duration": {
-														"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+														"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 														"type": "string",
 														"example": "24h",
 														"default": "24h"
@@ -88277,7 +88298,8 @@
 																"not": {
 																	"enum": [
 																		"end_user"
-																	]
+																	],
+																	"type": "string"
 																},
 																"type": "string"
 															}
@@ -91997,7 +92019,7 @@
 														"example": true
 													},
 													"session_duration": {
-														"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+														"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 														"type": "string",
 														"example": "24h",
 														"default": "24h"
@@ -92047,7 +92069,8 @@
 																"not": {
 																	"enum": [
 																		"end_user"
-																	]
+																	],
+																	"type": "string"
 																},
 																"type": "string"
 															}
@@ -94839,7 +94862,7 @@
 														"example": "Admin Site"
 													},
 													"session_duration": {
-														"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+														"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 														"type": "string",
 														"example": "24h",
 														"default": "24h"
@@ -97384,7 +97407,7 @@
 														"example": "Admin Site"
 													},
 													"session_duration": {
-														"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+														"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 														"type": "string",
 														"example": "24h",
 														"default": "24h"
@@ -99847,7 +99870,7 @@
 														"example": "Admin Site"
 													},
 													"session_duration": {
-														"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+														"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 														"type": "string",
 														"example": "24h",
 														"default": "24h"
@@ -102310,7 +102333,7 @@
 														"example": "Admin Site"
 													},
 													"session_duration": {
-														"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+														"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 														"type": "string",
 														"example": "24h",
 														"default": "24h"
@@ -107172,6 +107195,12 @@
 														"type": "string",
 														"example": "Admin Site"
 													},
+													"session_duration": {
+														"description": "The maximum duration of a connection to this application's targets. Connections are terminated once it elapses. Must be in the format `30m` or `2h45m`, in whole seconds. Valid time units are: s, m, h.",
+														"type": "string",
+														"example": "8h",
+														"default": "24h"
+													},
 													"type": {
 														"allOf": [
 															{
@@ -110981,7 +111010,7 @@
 														"example": true
 													},
 													"session_duration": {
-														"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+														"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 														"type": "string",
 														"example": "24h",
 														"default": "24h"
@@ -111031,7 +111060,8 @@
 																"not": {
 																	"enum": [
 																		"end_user"
-																	]
+																	],
+																	"type": "string"
 																},
 																"type": "string"
 															}
@@ -114241,7 +114271,7 @@
 												]
 											},
 											"session_duration": {
-												"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+												"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 												"type": "string",
 												"example": "24h",
 												"default": "24h"
@@ -117449,7 +117479,7 @@
 												]
 											},
 											"session_duration": {
-												"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+												"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 												"type": "string",
 												"example": "24h",
 												"default": "24h"
@@ -121412,7 +121442,7 @@
 																			"example": true
 																		},
 																		"session_duration": {
-																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																			"type": "string",
 																			"example": "24h",
 																			"default": "24h"
@@ -121462,7 +121492,8 @@
 																					"not": {
 																						"enum": [
 																							"end_user"
-																						]
+																						],
+																						"type": "string"
 																					},
 																					"type": "string"
 																				}
@@ -127936,7 +127967,7 @@
 																					"example": true
 																				},
 																				"session_duration": {
-																					"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																					"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																					"type": "string",
 																					"example": "24h",
 																					"default": "24h"
@@ -127986,7 +128017,8 @@
 																							"not": {
 																								"enum": [
 																									"end_user"
-																								]
+																								],
+																								"type": "string"
 																							},
 																							"type": "string"
 																						}
@@ -131360,7 +131392,7 @@
 																					"example": true
 																				},
 																				"session_duration": {
-																					"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																					"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																					"type": "string",
 																					"example": "24h",
 																					"default": "24h"
@@ -131410,7 +131442,8 @@
 																							"not": {
 																								"enum": [
 																									"end_user"
-																								]
+																								],
+																								"type": "string"
 																							},
 																							"type": "string"
 																						}
@@ -133856,7 +133889,7 @@
 																					"example": "Admin Site"
 																				},
 																				"session_duration": {
-																					"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																					"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																					"type": "string",
 																					"example": "24h",
 																					"default": "24h"
@@ -136408,7 +136441,7 @@
 																					"example": "Admin Site"
 																				},
 																				"session_duration": {
-																					"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																					"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																					"type": "string",
 																					"example": "24h",
 																					"default": "24h"
@@ -138878,7 +138911,7 @@
 																					"example": "Admin Site"
 																				},
 																				"session_duration": {
-																					"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																					"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																					"type": "string",
 																					"example": "24h",
 																					"default": "24h"
@@ -141348,7 +141381,7 @@
 																					"example": "Admin Site"
 																				},
 																				"session_duration": {
-																					"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																					"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																					"type": "string",
 																					"example": "24h",
 																					"default": "24h"
@@ -146224,6 +146257,12 @@
 																					"type": "string",
 																					"example": "Admin Site"
 																				},
+																				"session_duration": {
+																					"description": "The maximum duration of a connection to this application's targets. Connections are terminated once it elapses. Must be in the format `30m` or `2h45m`, in whole seconds. Valid time units are: s, m, h.",
+																					"type": "string",
+																					"example": "8h",
+																					"default": "24h"
+																				},
 																				"type": {
 																					"allOf": [
 																						{
@@ -150093,7 +150132,7 @@
 																					"example": true
 																				},
 																				"session_duration": {
-																					"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																					"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																					"type": "string",
 																					"example": "24h",
 																					"default": "24h"
@@ -150143,7 +150182,8 @@
 																							"not": {
 																								"enum": [
 																									"end_user"
-																								]
+																								],
+																								"type": "string"
 																							},
 																							"type": "string"
 																						}
@@ -153360,7 +153400,7 @@
 																			]
 																		},
 																		"session_duration": {
-																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																			"type": "string",
 																			"example": "24h",
 																			"default": "24h"
@@ -156575,7 +156615,7 @@
 																			]
 																		},
 																		"session_duration": {
-																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																			"type": "string",
 																			"example": "24h",
 																			"default": "24h"
@@ -160403,7 +160443,7 @@
 																	"example": true
 																},
 																"session_duration": {
-																	"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																	"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																	"type": "string",
 																	"example": "24h",
 																	"default": "24h"
@@ -160453,7 +160493,8 @@
 																			"not": {
 																				"enum": [
 																					"end_user"
-																				]
+																				],
+																				"type": "string"
 																			},
 																			"type": "string"
 																		}
@@ -166927,7 +166968,7 @@
 																			"example": true
 																		},
 																		"session_duration": {
-																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																			"type": "string",
 																			"example": "24h",
 																			"default": "24h"
@@ -166977,7 +167018,8 @@
 																					"not": {
 																						"enum": [
 																							"end_user"
-																						]
+																						],
+																						"type": "string"
 																					},
 																					"type": "string"
 																				}
@@ -170351,7 +170393,7 @@
 																			"example": true
 																		},
 																		"session_duration": {
-																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																			"type": "string",
 																			"example": "24h",
 																			"default": "24h"
@@ -170401,7 +170443,8 @@
 																					"not": {
 																						"enum": [
 																							"end_user"
-																						]
+																						],
+																						"type": "string"
 																					},
 																					"type": "string"
 																				}
@@ -172847,7 +172890,7 @@
 																			"example": "Admin Site"
 																		},
 																		"session_duration": {
-																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																			"type": "string",
 																			"example": "24h",
 																			"default": "24h"
@@ -175399,7 +175442,7 @@
 																			"example": "Admin Site"
 																		},
 																		"session_duration": {
-																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																			"type": "string",
 																			"example": "24h",
 																			"default": "24h"
@@ -177869,7 +177912,7 @@
 																			"example": "Admin Site"
 																		},
 																		"session_duration": {
-																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																			"type": "string",
 																			"example": "24h",
 																			"default": "24h"
@@ -180339,7 +180382,7 @@
 																			"example": "Admin Site"
 																		},
 																		"session_duration": {
-																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																			"type": "string",
 																			"example": "24h",
 																			"default": "24h"
@@ -185215,6 +185258,12 @@
 																			"type": "string",
 																			"example": "Admin Site"
 																		},
+																		"session_duration": {
+																			"description": "The maximum duration of a connection to this application's targets. Connections are terminated once it elapses. Must be in the format `30m` or `2h45m`, in whole seconds. Valid time units are: s, m, h.",
+																			"type": "string",
+																			"example": "8h",
+																			"default": "24h"
+																		},
 																		"type": {
 																			"allOf": [
 																				{
@@ -189084,7 +189133,7 @@
 																			"example": true
 																		},
 																		"session_duration": {
-																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																			"type": "string",
 																			"example": "24h",
 																			"default": "24h"
@@ -189134,7 +189183,8 @@
 																					"not": {
 																						"enum": [
 																							"end_user"
-																						]
+																						],
+																						"type": "string"
 																					},
 																					"type": "string"
 																				}
@@ -192351,7 +192401,7 @@
 																	]
 																},
 																"session_duration": {
-																	"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																	"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																	"type": "string",
 																	"example": "24h",
 																	"default": "24h"
@@ -195566,7 +195616,7 @@
 																	]
 																},
 																"session_duration": {
-																	"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																	"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																	"type": "string",
 																	"example": "24h",
 																	"default": "24h"
@@ -199686,7 +199736,7 @@
 												"example": true
 											},
 											"session_duration": {
-												"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+												"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 												"type": "string",
 												"example": "24h",
 												"default": "24h"
@@ -199736,7 +199786,8 @@
 														"not": {
 															"enum": [
 																"end_user"
-															]
+															],
+															"type": "string"
 														},
 														"type": "string"
 													}
@@ -206902,7 +206953,7 @@
 														"example": true
 													},
 													"session_duration": {
-														"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+														"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 														"type": "string",
 														"example": "24h",
 														"default": "24h"
@@ -206952,7 +207003,8 @@
 																"not": {
 																	"enum": [
 																		"end_user"
-																	]
+																	],
+																	"type": "string"
 																},
 																"type": "string"
 															}
@@ -210672,7 +210724,7 @@
 														"example": true
 													},
 													"session_duration": {
-														"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+														"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 														"type": "string",
 														"example": "24h",
 														"default": "24h"
@@ -210722,7 +210774,8 @@
 																"not": {
 																	"enum": [
 																		"end_user"
-																	]
+																	],
+																	"type": "string"
 																},
 																"type": "string"
 															}
@@ -213514,7 +213567,7 @@
 														"example": "Admin Site"
 													},
 													"session_duration": {
-														"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+														"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 														"type": "string",
 														"example": "24h",
 														"default": "24h"
@@ -216059,7 +216112,7 @@
 														"example": "Admin Site"
 													},
 													"session_duration": {
-														"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+														"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 														"type": "string",
 														"example": "24h",
 														"default": "24h"
@@ -218522,7 +218575,7 @@
 														"example": "Admin Site"
 													},
 													"session_duration": {
-														"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+														"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 														"type": "string",
 														"example": "24h",
 														"default": "24h"
@@ -220985,7 +221038,7 @@
 														"example": "Admin Site"
 													},
 													"session_duration": {
-														"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+														"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 														"type": "string",
 														"example": "24h",
 														"default": "24h"
@@ -225847,6 +225900,12 @@
 														"type": "string",
 														"example": "Admin Site"
 													},
+													"session_duration": {
+														"description": "The maximum duration of a connection to this application's targets. Connections are terminated once it elapses. Must be in the format `30m` or `2h45m`, in whole seconds. Valid time units are: s, m, h.",
+														"type": "string",
+														"example": "8h",
+														"default": "24h"
+													},
 													"type": {
 														"allOf": [
 															{
@@ -229656,7 +229715,7 @@
 														"example": true
 													},
 													"session_duration": {
-														"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+														"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 														"type": "string",
 														"example": "24h",
 														"default": "24h"
@@ -229706,7 +229765,8 @@
 																"not": {
 																	"enum": [
 																		"end_user"
-																	]
+																	],
+																	"type": "string"
 																},
 																"type": "string"
 															}
@@ -232916,7 +232976,7 @@
 												]
 											},
 											"session_duration": {
-												"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+												"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 												"type": "string",
 												"example": "24h",
 												"default": "24h"
@@ -236124,7 +236184,7 @@
 												]
 											},
 											"session_duration": {
-												"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+												"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 												"type": "string",
 												"example": "24h",
 												"default": "24h"
@@ -240087,7 +240147,7 @@
 																			"example": true
 																		},
 																		"session_duration": {
-																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																			"type": "string",
 																			"example": "24h",
 																			"default": "24h"
@@ -240137,7 +240197,8 @@
 																					"not": {
 																						"enum": [
 																							"end_user"
-																						]
+																						],
+																						"type": "string"
 																					},
 																					"type": "string"
 																				}
@@ -246611,7 +246672,7 @@
 																					"example": true
 																				},
 																				"session_duration": {
-																					"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																					"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																					"type": "string",
 																					"example": "24h",
 																					"default": "24h"
@@ -246661,7 +246722,8 @@
 																							"not": {
 																								"enum": [
 																									"end_user"
-																								]
+																								],
+																								"type": "string"
 																							},
 																							"type": "string"
 																						}
@@ -250035,7 +250097,7 @@
 																					"example": true
 																				},
 																				"session_duration": {
-																					"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																					"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																					"type": "string",
 																					"example": "24h",
 																					"default": "24h"
@@ -250085,7 +250147,8 @@
 																							"not": {
 																								"enum": [
 																									"end_user"
-																								]
+																								],
+																								"type": "string"
 																							},
 																							"type": "string"
 																						}
@@ -252531,7 +252594,7 @@
 																					"example": "Admin Site"
 																				},
 																				"session_duration": {
-																					"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																					"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																					"type": "string",
 																					"example": "24h",
 																					"default": "24h"
@@ -255083,7 +255146,7 @@
 																					"example": "Admin Site"
 																				},
 																				"session_duration": {
-																					"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																					"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																					"type": "string",
 																					"example": "24h",
 																					"default": "24h"
@@ -257553,7 +257616,7 @@
 																					"example": "Admin Site"
 																				},
 																				"session_duration": {
-																					"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																					"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																					"type": "string",
 																					"example": "24h",
 																					"default": "24h"
@@ -260023,7 +260086,7 @@
 																					"example": "Admin Site"
 																				},
 																				"session_duration": {
-																					"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																					"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																					"type": "string",
 																					"example": "24h",
 																					"default": "24h"
@@ -264899,6 +264962,12 @@
 																					"type": "string",
 																					"example": "Admin Site"
 																				},
+																				"session_duration": {
+																					"description": "The maximum duration of a connection to this application's targets. Connections are terminated once it elapses. Must be in the format `30m` or `2h45m`, in whole seconds. Valid time units are: s, m, h.",
+																					"type": "string",
+																					"example": "8h",
+																					"default": "24h"
+																				},
 																				"type": {
 																					"allOf": [
 																						{
@@ -268768,7 +268837,7 @@
 																					"example": true
 																				},
 																				"session_duration": {
-																					"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																					"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																					"type": "string",
 																					"example": "24h",
 																					"default": "24h"
@@ -268818,7 +268887,8 @@
 																							"not": {
 																								"enum": [
 																									"end_user"
-																								]
+																								],
+																								"type": "string"
 																							},
 																							"type": "string"
 																						}
@@ -272035,7 +272105,7 @@
 																			]
 																		},
 																		"session_duration": {
-																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																			"type": "string",
 																			"example": "24h",
 																			"default": "24h"
@@ -275250,7 +275320,7 @@
 																			]
 																		},
 																		"session_duration": {
-																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																			"type": "string",
 																			"example": "24h",
 																			"default": "24h"
@@ -279078,7 +279148,7 @@
 																	"example": true
 																},
 																"session_duration": {
-																	"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																	"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																	"type": "string",
 																	"example": "24h",
 																	"default": "24h"
@@ -279128,7 +279198,8 @@
 																			"not": {
 																				"enum": [
 																					"end_user"
-																				]
+																				],
+																				"type": "string"
 																			},
 																			"type": "string"
 																		}
@@ -285602,7 +285673,7 @@
 																			"example": true
 																		},
 																		"session_duration": {
-																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																			"type": "string",
 																			"example": "24h",
 																			"default": "24h"
@@ -285652,7 +285723,8 @@
 																					"not": {
 																						"enum": [
 																							"end_user"
-																						]
+																						],
+																						"type": "string"
 																					},
 																					"type": "string"
 																				}
@@ -289026,7 +289098,7 @@
 																			"example": true
 																		},
 																		"session_duration": {
-																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																			"type": "string",
 																			"example": "24h",
 																			"default": "24h"
@@ -289076,7 +289148,8 @@
 																					"not": {
 																						"enum": [
 																							"end_user"
-																						]
+																						],
+																						"type": "string"
 																					},
 																					"type": "string"
 																				}
@@ -291522,7 +291595,7 @@
 																			"example": "Admin Site"
 																		},
 																		"session_duration": {
-																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																			"type": "string",
 																			"example": "24h",
 																			"default": "24h"
@@ -294074,7 +294147,7 @@
 																			"example": "Admin Site"
 																		},
 																		"session_duration": {
-																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																			"type": "string",
 																			"example": "24h",
 																			"default": "24h"
@@ -296544,7 +296617,7 @@
 																			"example": "Admin Site"
 																		},
 																		"session_duration": {
-																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																			"type": "string",
 																			"example": "24h",
 																			"default": "24h"
@@ -299014,7 +299087,7 @@
 																			"example": "Admin Site"
 																		},
 																		"session_duration": {
-																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																			"type": "string",
 																			"example": "24h",
 																			"default": "24h"
@@ -303890,6 +303963,12 @@
 																			"type": "string",
 																			"example": "Admin Site"
 																		},
+																		"session_duration": {
+																			"description": "The maximum duration of a connection to this application's targets. Connections are terminated once it elapses. Must be in the format `30m` or `2h45m`, in whole seconds. Valid time units are: s, m, h.",
+																			"type": "string",
+																			"example": "8h",
+																			"default": "24h"
+																		},
 																		"type": {
 																			"allOf": [
 																				{
@@ -307759,7 +307838,7 @@
 																			"example": true
 																		},
 																		"session_duration": {
-																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																			"type": "string",
 																			"example": "24h",
 																			"default": "24h"
@@ -307809,7 +307888,8 @@
 																					"not": {
 																						"enum": [
 																							"end_user"
-																						]
+																						],
+																						"type": "string"
 																					},
 																					"type": "string"
 																				}
@@ -311026,7 +311106,7 @@
 																	]
 																},
 																"session_duration": {
-																	"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																	"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																	"type": "string",
 																	"example": "24h",
 																	"default": "24h"
@@ -314241,7 +314321,7 @@
 																	]
 																},
 																"session_duration": {
-																	"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.",
+																	"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																	"type": "string",
 																	"example": "24h",
 																	"default": "24h"

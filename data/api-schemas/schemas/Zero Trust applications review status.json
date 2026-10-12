@@ -375,9 +375,9 @@
 			"Zero Trust applications review status"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.apps.review.status",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"PUT /accounts/{account_id}/gateway/apps/review_status": {
 		"operationId": "zero-trust-applications-review-status-update",
@@ -799,8 +799,8 @@
 			"Zero Trust applications review status"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.apps.review.status",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

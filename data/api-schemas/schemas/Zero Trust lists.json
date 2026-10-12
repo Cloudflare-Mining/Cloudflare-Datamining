@@ -3437,9 +3437,9 @@
 			"Zero Trust lists"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.gateway.lists",
-		"x-fern-sdk-method-name": "upload",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "upload"
 	},
 	"PUT /accounts/{account_id}/gateway/lists/{list_id}": {
 		"operationId": "zero-trust-lists-update-zero-trust-list",

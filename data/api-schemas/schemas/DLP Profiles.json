@@ -261,6 +261,283 @@
 		"x-fern-sdk-group-name": "zero-trust.dlp.profiles.custom",
 		"x-fern-sdk-method-name": "delete"
 	},
+	"DELETE /accounts/{account_id}/dlp/profiles/integration/{profile_id}": {
+		"operationId": "dlp-profiles-delete-integration-profile",
+		"summary": "Delete integration profile",
+		"description": "Deletes a DLP integration profile whose integration no longer exists. If the profile owns\nentries, `recursive=1` is required. This also deletes the entries and removes all references to\nthem, as listed by the references endpoint.",
+		"parameters": [
+			{
+				"name": "recursive",
+				"in": "query",
+				"description": "Set to `1` to also delete the entries owned by the profile and remove all references to\nthem, as listed by the references endpoint. Required if the profile owns any entries.\nDefaults to `0`.",
+				"schema": {
+					"type": "integer",
+					"format": "int32",
+					"maximum": 1,
+					"minimum": 0
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "profile_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Delete integration profile response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"nullable": true
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Delete integration profile failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"DLP Profiles"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.dlp.profiles.integration",
+		"x-fern-sdk-method-name": "delete",
+		"x-stainless-skip": [
+			"terraform"
+		]
+	},
 	"DELETE /accounts/{account_id}/dlp/profiles/predefined/{profile_id}": {
 		"operationId": "dlp-profiles-delete-predefined-profile",
 		"summary": "Delete predefined profile",
@@ -11244,6 +11521,387 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.dlp.profiles.custom",
 		"x-fern-sdk-method-name": "get"
+	},
+	"GET /accounts/{account_id}/dlp/profiles/integration/{profile_id}/references": {
+		"operationId": "dlp-profiles-list-integration-profile-references",
+		"summary": "List integration profile references",
+		"description": "Lists the profiles and data classes that reference the entries of a DLP integration profile,\nshows how each data class would change if the profile is deleted with `recursive=1`, and\nreports whether the integration that manages the profile still exists.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "profile_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List integration profile references response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "The profiles and data classes that reference the entries of an integration profile, and how\nthey will change if the profile is deleted with `recursive=1`.",
+											"type": "object",
+											"properties": {
+												"data_classes": {
+													"description": "Data classes that reference entries owned by this profile, sorted by ID.",
+													"type": "array",
+													"items": {
+														"description": "A data class that references an entry owned by an integration profile.",
+														"type": "object",
+														"properties": {
+															"current_expression": {
+																"description": "The expression of the data class before the profile is deleted.",
+																"type": "string"
+															},
+															"id": {
+																"description": "The ID of the data class.",
+																"type": "string",
+																"format": "uuid"
+															},
+															"name": {
+																"description": "The name of the data class.",
+																"type": "string"
+															},
+															"resulting_expression": {
+																"description": "The expression with every condition on this profile's entries removed, or `null` if no\ncondition would remain. The profile cannot be deleted until data classes with a `null`\nvalue are updated or deleted.",
+																"type": "string",
+																"nullable": true
+															}
+														},
+														"required": [
+															"id",
+															"name",
+															"current_expression",
+															"resulting_expression"
+														]
+													}
+												},
+												"entries": {
+													"description": "Entries owned by this profile, sorted by ID.",
+													"type": "array",
+													"items": {
+														"description": "An entry owned by an integration profile, along with the profiles and data classes that\nreference it.",
+														"type": "object",
+														"properties": {
+															"id": {
+																"description": "The ID of the entry.",
+																"type": "string",
+																"format": "uuid"
+															},
+															"name": {
+																"description": "The name of the entry.",
+																"type": "string"
+															},
+															"referenced_by_data_classes": {
+																"description": "Data classes that reference this entry, sorted by ID.",
+																"type": "array",
+																"items": {
+																	"description": "A data class that references an entry.",
+																	"type": "object",
+																	"properties": {
+																		"id": {
+																			"description": "The ID of the data class.",
+																			"type": "string",
+																			"format": "uuid"
+																		},
+																		"name": {
+																			"description": "The name of the data class.",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"name"
+																	]
+																}
+															},
+															"referenced_by_profiles": {
+																"description": "Other profiles that share this entry, sorted by ID.",
+																"type": "array",
+																"items": {
+																	"description": "Computed entry field for a profile that an entry is shared into.",
+																	"type": "object",
+																	"properties": {
+																		"id": {
+																			"type": "string",
+																			"format": "uuid"
+																		},
+																		"name": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"name"
+																	]
+																}
+															}
+														},
+														"required": [
+															"id",
+															"name",
+															"referenced_by_profiles",
+															"referenced_by_data_classes"
+														]
+													}
+												},
+												"integration_exists": {
+													"description": "Whether the integration that manages this profile still exists in CASB. The profile cannot\nbe deleted while this is `true`.",
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"integration_exists",
+												"entries",
+												"data_classes"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "List integration profile references failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"DLP Profiles"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.dlp.profiles.integration.references",
+		"x-fern-sdk-method-name": "list",
+		"x-stainless-skip": [
+			"terraform"
+		]
 	},
 	"GET /accounts/{account_id}/dlp/profiles/predefined/{profile_id}": {
 		"operationId": "dlp-profiles-get-predefined-profile",

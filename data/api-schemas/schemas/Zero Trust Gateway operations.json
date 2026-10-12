@@ -471,9 +471,9 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.gateway.operations",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/gateway/operations/{operation_id}": {
 		"operationId": "zero-trust-gateway-operations-zero-trust-gateway-operation-details",
@@ -893,8 +893,8 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.gateway.operations",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	}
 }

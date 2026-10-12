@@ -2717,9 +2717,9 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.gateway.egress-cidr-pairs",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/gateway/logging": {
 		"operationId": "zero-trust-accounts-get-logging-settings-for-the-zero-trust-account",

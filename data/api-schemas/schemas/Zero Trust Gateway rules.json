@@ -8766,9 +8766,9 @@
 			"Zero Trust Gateway rules"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.gateway.rules",
-		"x-fern-sdk-method-name": "bulk-edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "bulk-edit"
 	},
 	"PATCH /accounts/{account_id}/gateway/rules/{rule_id}": {
 		"operationId": "zero-trust-gateway-rules-patch-zero-trust-gateway-rule",
@@ -10845,9 +10845,9 @@
 			"Zero Trust Gateway rules"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.gateway.rules",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/gateway/rules": {
 		"operationId": "zero-trust-gateway-rules-create-zero-trust-gateway-rule",

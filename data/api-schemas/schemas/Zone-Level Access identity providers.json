@@ -517,6 +517,7 @@
 																			"google",
 																			"linkedin",
 																			"oidc",
+																			"duo",
 																			"okta",
 																			"onelogin",
 																			"pingone",
@@ -670,6 +671,7 @@
 																			"google",
 																			"linkedin",
 																			"oidc",
+																			"duo",
 																			"okta",
 																			"onelogin",
 																			"pingone",
@@ -811,6 +813,7 @@
 																			"google",
 																			"linkedin",
 																			"oidc",
+																			"duo",
 																			"okta",
 																			"onelogin",
 																			"pingone",
@@ -933,6 +936,7 @@
 																			"google",
 																			"linkedin",
 																			"oidc",
+																			"duo",
 																			"okta",
 																			"onelogin",
 																			"pingone",
@@ -1055,6 +1059,7 @@
 																			"google",
 																			"linkedin",
 																			"oidc",
+																			"duo",
 																			"okta",
 																			"onelogin",
 																			"pingone",
@@ -1177,6 +1182,7 @@
 																			"google",
 																			"linkedin",
 																			"oidc",
+																			"duo",
 																			"okta",
 																			"onelogin",
 																			"pingone",
@@ -1328,6 +1334,7 @@
 																			"google",
 																			"linkedin",
 																			"oidc",
+																			"duo",
 																			"okta",
 																			"onelogin",
 																			"pingone",
@@ -1450,6 +1457,7 @@
 																			"google",
 																			"linkedin",
 																			"oidc",
+																			"duo",
 																			"okta",
 																			"onelogin",
 																			"pingone",
@@ -1619,6 +1627,141 @@
 																			"google",
 																			"linkedin",
 																			"oidc",
+																			"duo",
+																			"okta",
+																			"onelogin",
+																			"pingone",
+																			"yandex",
+																			"cloudflare"
+																		]
+																	}
+																},
+																"required": [
+																	"name",
+																	"type",
+																	"config"
+																]
+															},
+															{
+																"properties": {
+																	"config": {
+																		"type": "object",
+																		"properties": {
+																			"client_id": {
+																				"description": "The client ID from the Duo Generic OIDC Relying Party metadata.",
+																				"type": "string",
+																				"example": "DIABC123678901234567"
+																			},
+																			"client_secret": {
+																				"description": "The client secret from the Duo Generic OIDC Relying Party metadata.",
+																				"type": "string",
+																				"example": "<your client secret>",
+																				"x-sensitive": true
+																			},
+																			"issuer_url": {
+																				"description": "The issuer URL from the Duo Generic OIDC Relying Party metadata.",
+																				"type": "string",
+																				"format": "uri",
+																				"example": "https://sso-abc1def2.sso.duosecurity.com/oidc/DIABC123678901234567"
+																			}
+																		}
+																	},
+																	"type": {
+																		"type": "string",
+																		"enum": [
+																			"duo"
+																		]
+																	}
+																},
+																"type": "object"
+															}
+														],
+														"title": "Duo"
+													},
+													{
+														"type": "object",
+														"allOf": [
+															{
+																"type": "object",
+																"properties": {
+																	"config": {
+																		"description": "The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+																		"type": "object"
+																	},
+																	"id": {
+																		"description": "UUID.",
+																		"type": "string",
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"maxLength": 36,
+																		"x-auditable": true
+																	},
+																	"name": {
+																		"description": "The name of the identity provider, shown to users on the login page.",
+																		"type": "string",
+																		"example": "Widget Corps IDP"
+																	},
+																	"scim_config": {
+																		"description": "The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.",
+																		"type": "object",
+																		"properties": {
+																			"enabled": {
+																				"description": "A flag to enable or disable SCIM for the identity provider.",
+																				"type": "boolean",
+																				"default": false,
+																				"x-stainless-terraform-configurability": "computed_optional"
+																			},
+																			"identity_update_behavior": {
+																				"description": "Indicates how a SCIM event updates a user identity used for policy evaluation. Use \"automatic\" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use \"reauth\" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With \"reauth\" identities will not contain fields from the SCIM user resource. With \"no_action\" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.",
+																				"type": "string",
+																				"default": "no_action",
+																				"enum": [
+																					"automatic",
+																					"reauth",
+																					"no_action"
+																				],
+																				"x-stainless-terraform-configurability": "computed_optional"
+																			},
+																			"scim_base_url": {
+																				"description": "The base URL of Cloudflare's SCIM V2.0 API endpoint.",
+																				"type": "string",
+																				"readOnly": true
+																			},
+																			"seat_deprovision": {
+																				"description": "A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.",
+																				"type": "boolean",
+																				"default": false,
+																				"x-stainless-terraform-configurability": "computed_optional"
+																			},
+																			"secret": {
+																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
+																				"type": "string",
+																				"readOnly": true,
+																				"x-sensitive": true
+																			},
+																			"user_deprovision": {
+																				"description": "A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.",
+																				"type": "boolean",
+																				"default": false,
+																				"x-stainless-terraform-configurability": "computed_optional"
+																			}
+																		}
+																	},
+																	"type": {
+																		"description": "The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+																		"type": "string",
+																		"example": "onetimepin",
+																		"enum": [
+																			"onetimepin",
+																			"azureAD",
+																			"saml",
+																			"centrify",
+																			"facebook",
+																			"github",
+																			"google-apps",
+																			"google",
+																			"linkedin",
+																			"oidc",
+																			"duo",
 																			"okta",
 																			"onelogin",
 																			"pingone",
@@ -1755,6 +1898,7 @@
 																			"google",
 																			"linkedin",
 																			"oidc",
+																			"duo",
 																			"okta",
 																			"onelogin",
 																			"pingone",
@@ -1891,6 +2035,7 @@
 																			"google",
 																			"linkedin",
 																			"oidc",
+																			"duo",
 																			"okta",
 																			"onelogin",
 																			"pingone",
@@ -2027,6 +2172,7 @@
 																			"google",
 																			"linkedin",
 																			"oidc",
+																			"duo",
 																			"okta",
 																			"onelogin",
 																			"pingone",
@@ -2204,6 +2350,7 @@
 																			"google",
 																			"linkedin",
 																			"oidc",
+																			"duo",
 																			"okta",
 																			"onelogin",
 																			"pingone",
@@ -2326,6 +2473,7 @@
 																			"google",
 																			"linkedin",
 																			"oidc",
+																			"duo",
 																			"okta",
 																			"onelogin",
 																			"pingone",
@@ -2446,6 +2594,7 @@
 																			"google",
 																			"linkedin",
 																			"oidc",
+																			"duo",
 																			"okta",
 																			"onelogin",
 																			"pingone",
@@ -2846,6 +2995,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -2999,6 +3149,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -3140,6 +3291,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -3262,6 +3414,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -3384,6 +3537,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -3506,6 +3660,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -3657,6 +3812,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -3779,6 +3935,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -3948,6 +4105,141 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
+																		"okta",
+																		"onelogin",
+																		"pingone",
+																		"yandex",
+																		"cloudflare"
+																	]
+																}
+															},
+															"required": [
+																"name",
+																"type",
+																"config"
+															]
+														},
+														{
+															"properties": {
+																"config": {
+																	"type": "object",
+																	"properties": {
+																		"client_id": {
+																			"description": "The client ID from the Duo Generic OIDC Relying Party metadata.",
+																			"type": "string",
+																			"example": "DIABC123678901234567"
+																		},
+																		"client_secret": {
+																			"description": "The client secret from the Duo Generic OIDC Relying Party metadata.",
+																			"type": "string",
+																			"example": "<your client secret>",
+																			"x-sensitive": true
+																		},
+																		"issuer_url": {
+																			"description": "The issuer URL from the Duo Generic OIDC Relying Party metadata.",
+																			"type": "string",
+																			"format": "uri",
+																			"example": "https://sso-abc1def2.sso.duosecurity.com/oidc/DIABC123678901234567"
+																		}
+																	}
+																},
+																"type": {
+																	"type": "string",
+																	"enum": [
+																		"duo"
+																	]
+																}
+															},
+															"type": "object"
+														}
+													],
+													"title": "Duo"
+												},
+												{
+													"type": "object",
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"config": {
+																	"description": "The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+																	"type": "object"
+																},
+																"id": {
+																	"description": "UUID.",
+																	"type": "string",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"maxLength": 36,
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "The name of the identity provider, shown to users on the login page.",
+																	"type": "string",
+																	"example": "Widget Corps IDP"
+																},
+																"scim_config": {
+																	"description": "The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.",
+																	"type": "object",
+																	"properties": {
+																		"enabled": {
+																			"description": "A flag to enable or disable SCIM for the identity provider.",
+																			"type": "boolean",
+																			"default": false,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"identity_update_behavior": {
+																			"description": "Indicates how a SCIM event updates a user identity used for policy evaluation. Use \"automatic\" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use \"reauth\" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With \"reauth\" identities will not contain fields from the SCIM user resource. With \"no_action\" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.",
+																			"type": "string",
+																			"default": "no_action",
+																			"enum": [
+																				"automatic",
+																				"reauth",
+																				"no_action"
+																			],
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"scim_base_url": {
+																			"description": "The base URL of Cloudflare's SCIM V2.0 API endpoint.",
+																			"type": "string",
+																			"readOnly": true
+																		},
+																		"seat_deprovision": {
+																			"description": "A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.",
+																			"type": "boolean",
+																			"default": false,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"secret": {
+																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"type": "string",
+																			"readOnly": true,
+																			"x-sensitive": true
+																		},
+																		"user_deprovision": {
+																			"description": "A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.",
+																			"type": "boolean",
+																			"default": false,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		}
+																	}
+																},
+																"type": {
+																	"description": "The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+																	"type": "string",
+																	"example": "onetimepin",
+																	"enum": [
+																		"onetimepin",
+																		"azureAD",
+																		"saml",
+																		"centrify",
+																		"facebook",
+																		"github",
+																		"google-apps",
+																		"google",
+																		"linkedin",
+																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -4084,6 +4376,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -4220,6 +4513,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -4356,6 +4650,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -4533,6 +4828,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -4655,6 +4951,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -4949,6 +5246,7 @@
 													"google",
 													"linkedin",
 													"oidc",
+													"duo",
 													"okta",
 													"onelogin",
 													"pingone",
@@ -5102,6 +5400,7 @@
 													"google",
 													"linkedin",
 													"oidc",
+													"duo",
 													"okta",
 													"onelogin",
 													"pingone",
@@ -5243,6 +5542,7 @@
 													"google",
 													"linkedin",
 													"oidc",
+													"duo",
 													"okta",
 													"onelogin",
 													"pingone",
@@ -5365,6 +5665,7 @@
 													"google",
 													"linkedin",
 													"oidc",
+													"duo",
 													"okta",
 													"onelogin",
 													"pingone",
@@ -5487,6 +5788,7 @@
 													"google",
 													"linkedin",
 													"oidc",
+													"duo",
 													"okta",
 													"onelogin",
 													"pingone",
@@ -5609,6 +5911,7 @@
 													"google",
 													"linkedin",
 													"oidc",
+													"duo",
 													"okta",
 													"onelogin",
 													"pingone",
@@ -5760,6 +6063,7 @@
 													"google",
 													"linkedin",
 													"oidc",
+													"duo",
 													"okta",
 													"onelogin",
 													"pingone",
@@ -5882,6 +6186,7 @@
 													"google",
 													"linkedin",
 													"oidc",
+													"duo",
 													"okta",
 													"onelogin",
 													"pingone",
@@ -6051,6 +6356,141 @@
 													"google",
 													"linkedin",
 													"oidc",
+													"duo",
+													"okta",
+													"onelogin",
+													"pingone",
+													"yandex",
+													"cloudflare"
+												]
+											}
+										},
+										"required": [
+											"name",
+											"type",
+											"config"
+										]
+									},
+									{
+										"properties": {
+											"config": {
+												"type": "object",
+												"properties": {
+													"client_id": {
+														"description": "The client ID from the Duo Generic OIDC Relying Party metadata.",
+														"type": "string",
+														"example": "DIABC123678901234567"
+													},
+													"client_secret": {
+														"description": "The client secret from the Duo Generic OIDC Relying Party metadata.",
+														"type": "string",
+														"example": "<your client secret>",
+														"x-sensitive": true
+													},
+													"issuer_url": {
+														"description": "The issuer URL from the Duo Generic OIDC Relying Party metadata.",
+														"type": "string",
+														"format": "uri",
+														"example": "https://sso-abc1def2.sso.duosecurity.com/oidc/DIABC123678901234567"
+													}
+												}
+											},
+											"type": {
+												"type": "string",
+												"enum": [
+													"duo"
+												]
+											}
+										},
+										"type": "object"
+									}
+								],
+								"title": "Duo"
+							},
+							{
+								"type": "object",
+								"allOf": [
+									{
+										"type": "object",
+										"properties": {
+											"config": {
+												"description": "The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+												"type": "object"
+											},
+											"id": {
+												"description": "UUID.",
+												"type": "string",
+												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+												"maxLength": 36,
+												"x-auditable": true
+											},
+											"name": {
+												"description": "The name of the identity provider, shown to users on the login page.",
+												"type": "string",
+												"example": "Widget Corps IDP"
+											},
+											"scim_config": {
+												"description": "The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.",
+												"type": "object",
+												"properties": {
+													"enabled": {
+														"description": "A flag to enable or disable SCIM for the identity provider.",
+														"type": "boolean",
+														"default": false,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"identity_update_behavior": {
+														"description": "Indicates how a SCIM event updates a user identity used for policy evaluation. Use \"automatic\" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use \"reauth\" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With \"reauth\" identities will not contain fields from the SCIM user resource. With \"no_action\" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.",
+														"type": "string",
+														"default": "no_action",
+														"enum": [
+															"automatic",
+															"reauth",
+															"no_action"
+														],
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"scim_base_url": {
+														"description": "The base URL of Cloudflare's SCIM V2.0 API endpoint.",
+														"type": "string",
+														"readOnly": true
+													},
+													"seat_deprovision": {
+														"description": "A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.",
+														"type": "boolean",
+														"default": false,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"secret": {
+														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"type": "string",
+														"readOnly": true,
+														"x-sensitive": true
+													},
+													"user_deprovision": {
+														"description": "A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.",
+														"type": "boolean",
+														"default": false,
+														"x-stainless-terraform-configurability": "computed_optional"
+													}
+												}
+											},
+											"type": {
+												"description": "The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+												"type": "string",
+												"example": "onetimepin",
+												"enum": [
+													"onetimepin",
+													"azureAD",
+													"saml",
+													"centrify",
+													"facebook",
+													"github",
+													"google-apps",
+													"google",
+													"linkedin",
+													"oidc",
+													"duo",
 													"okta",
 													"onelogin",
 													"pingone",
@@ -6187,6 +6627,7 @@
 													"google",
 													"linkedin",
 													"oidc",
+													"duo",
 													"okta",
 													"onelogin",
 													"pingone",
@@ -6323,6 +6764,7 @@
 													"google",
 													"linkedin",
 													"oidc",
+													"duo",
 													"okta",
 													"onelogin",
 													"pingone",
@@ -6459,6 +6901,7 @@
 													"google",
 													"linkedin",
 													"oidc",
+													"duo",
 													"okta",
 													"onelogin",
 													"pingone",
@@ -6636,6 +7079,7 @@
 													"google",
 													"linkedin",
 													"oidc",
+													"duo",
 													"okta",
 													"onelogin",
 													"pingone",
@@ -6758,6 +7202,7 @@
 													"google",
 													"linkedin",
 													"oidc",
+													"duo",
 													"okta",
 													"onelogin",
 													"pingone",
@@ -6987,6 +7432,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -7140,6 +7586,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -7281,6 +7728,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -7403,6 +7851,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -7525,6 +7974,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -7647,6 +8097,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -7798,6 +8249,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -7920,6 +8372,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -8089,6 +8542,141 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
+																		"okta",
+																		"onelogin",
+																		"pingone",
+																		"yandex",
+																		"cloudflare"
+																	]
+																}
+															},
+															"required": [
+																"name",
+																"type",
+																"config"
+															]
+														},
+														{
+															"properties": {
+																"config": {
+																	"type": "object",
+																	"properties": {
+																		"client_id": {
+																			"description": "The client ID from the Duo Generic OIDC Relying Party metadata.",
+																			"type": "string",
+																			"example": "DIABC123678901234567"
+																		},
+																		"client_secret": {
+																			"description": "The client secret from the Duo Generic OIDC Relying Party metadata.",
+																			"type": "string",
+																			"example": "<your client secret>",
+																			"x-sensitive": true
+																		},
+																		"issuer_url": {
+																			"description": "The issuer URL from the Duo Generic OIDC Relying Party metadata.",
+																			"type": "string",
+																			"format": "uri",
+																			"example": "https://sso-abc1def2.sso.duosecurity.com/oidc/DIABC123678901234567"
+																		}
+																	}
+																},
+																"type": {
+																	"type": "string",
+																	"enum": [
+																		"duo"
+																	]
+																}
+															},
+															"type": "object"
+														}
+													],
+													"title": "Duo"
+												},
+												{
+													"type": "object",
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"config": {
+																	"description": "The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+																	"type": "object"
+																},
+																"id": {
+																	"description": "UUID.",
+																	"type": "string",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"maxLength": 36,
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "The name of the identity provider, shown to users on the login page.",
+																	"type": "string",
+																	"example": "Widget Corps IDP"
+																},
+																"scim_config": {
+																	"description": "The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.",
+																	"type": "object",
+																	"properties": {
+																		"enabled": {
+																			"description": "A flag to enable or disable SCIM for the identity provider.",
+																			"type": "boolean",
+																			"default": false,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"identity_update_behavior": {
+																			"description": "Indicates how a SCIM event updates a user identity used for policy evaluation. Use \"automatic\" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use \"reauth\" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With \"reauth\" identities will not contain fields from the SCIM user resource. With \"no_action\" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.",
+																			"type": "string",
+																			"default": "no_action",
+																			"enum": [
+																				"automatic",
+																				"reauth",
+																				"no_action"
+																			],
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"scim_base_url": {
+																			"description": "The base URL of Cloudflare's SCIM V2.0 API endpoint.",
+																			"type": "string",
+																			"readOnly": true
+																		},
+																		"seat_deprovision": {
+																			"description": "A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.",
+																			"type": "boolean",
+																			"default": false,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"secret": {
+																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"type": "string",
+																			"readOnly": true,
+																			"x-sensitive": true
+																		},
+																		"user_deprovision": {
+																			"description": "A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.",
+																			"type": "boolean",
+																			"default": false,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		}
+																	}
+																},
+																"type": {
+																	"description": "The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+																	"type": "string",
+																	"example": "onetimepin",
+																	"enum": [
+																		"onetimepin",
+																		"azureAD",
+																		"saml",
+																		"centrify",
+																		"facebook",
+																		"github",
+																		"google-apps",
+																		"google",
+																		"linkedin",
+																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -8225,6 +8813,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -8361,6 +8950,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -8497,6 +9087,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -8674,6 +9265,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -8796,6 +9388,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -9102,6 +9695,7 @@
 													"google",
 													"linkedin",
 													"oidc",
+													"duo",
 													"okta",
 													"onelogin",
 													"pingone",
@@ -9255,6 +9849,7 @@
 													"google",
 													"linkedin",
 													"oidc",
+													"duo",
 													"okta",
 													"onelogin",
 													"pingone",
@@ -9396,6 +9991,7 @@
 													"google",
 													"linkedin",
 													"oidc",
+													"duo",
 													"okta",
 													"onelogin",
 													"pingone",
@@ -9518,6 +10114,7 @@
 													"google",
 													"linkedin",
 													"oidc",
+													"duo",
 													"okta",
 													"onelogin",
 													"pingone",
@@ -9640,6 +10237,7 @@
 													"google",
 													"linkedin",
 													"oidc",
+													"duo",
 													"okta",
 													"onelogin",
 													"pingone",
@@ -9762,6 +10360,7 @@
 													"google",
 													"linkedin",
 													"oidc",
+													"duo",
 													"okta",
 													"onelogin",
 													"pingone",
@@ -9913,6 +10512,7 @@
 													"google",
 													"linkedin",
 													"oidc",
+													"duo",
 													"okta",
 													"onelogin",
 													"pingone",
@@ -10035,6 +10635,7 @@
 													"google",
 													"linkedin",
 													"oidc",
+													"duo",
 													"okta",
 													"onelogin",
 													"pingone",
@@ -10204,6 +10805,141 @@
 													"google",
 													"linkedin",
 													"oidc",
+													"duo",
+													"okta",
+													"onelogin",
+													"pingone",
+													"yandex",
+													"cloudflare"
+												]
+											}
+										},
+										"required": [
+											"name",
+											"type",
+											"config"
+										]
+									},
+									{
+										"properties": {
+											"config": {
+												"type": "object",
+												"properties": {
+													"client_id": {
+														"description": "The client ID from the Duo Generic OIDC Relying Party metadata.",
+														"type": "string",
+														"example": "DIABC123678901234567"
+													},
+													"client_secret": {
+														"description": "The client secret from the Duo Generic OIDC Relying Party metadata.",
+														"type": "string",
+														"example": "<your client secret>",
+														"x-sensitive": true
+													},
+													"issuer_url": {
+														"description": "The issuer URL from the Duo Generic OIDC Relying Party metadata.",
+														"type": "string",
+														"format": "uri",
+														"example": "https://sso-abc1def2.sso.duosecurity.com/oidc/DIABC123678901234567"
+													}
+												}
+											},
+											"type": {
+												"type": "string",
+												"enum": [
+													"duo"
+												]
+											}
+										},
+										"type": "object"
+									}
+								],
+								"title": "Duo"
+							},
+							{
+								"type": "object",
+								"allOf": [
+									{
+										"type": "object",
+										"properties": {
+											"config": {
+												"description": "The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+												"type": "object"
+											},
+											"id": {
+												"description": "UUID.",
+												"type": "string",
+												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+												"maxLength": 36,
+												"x-auditable": true
+											},
+											"name": {
+												"description": "The name of the identity provider, shown to users on the login page.",
+												"type": "string",
+												"example": "Widget Corps IDP"
+											},
+											"scim_config": {
+												"description": "The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.",
+												"type": "object",
+												"properties": {
+													"enabled": {
+														"description": "A flag to enable or disable SCIM for the identity provider.",
+														"type": "boolean",
+														"default": false,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"identity_update_behavior": {
+														"description": "Indicates how a SCIM event updates a user identity used for policy evaluation. Use \"automatic\" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use \"reauth\" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With \"reauth\" identities will not contain fields from the SCIM user resource. With \"no_action\" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.",
+														"type": "string",
+														"default": "no_action",
+														"enum": [
+															"automatic",
+															"reauth",
+															"no_action"
+														],
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"scim_base_url": {
+														"description": "The base URL of Cloudflare's SCIM V2.0 API endpoint.",
+														"type": "string",
+														"readOnly": true
+													},
+													"seat_deprovision": {
+														"description": "A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.",
+														"type": "boolean",
+														"default": false,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"secret": {
+														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
+														"type": "string",
+														"readOnly": true,
+														"x-sensitive": true
+													},
+													"user_deprovision": {
+														"description": "A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.",
+														"type": "boolean",
+														"default": false,
+														"x-stainless-terraform-configurability": "computed_optional"
+													}
+												}
+											},
+											"type": {
+												"description": "The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+												"type": "string",
+												"example": "onetimepin",
+												"enum": [
+													"onetimepin",
+													"azureAD",
+													"saml",
+													"centrify",
+													"facebook",
+													"github",
+													"google-apps",
+													"google",
+													"linkedin",
+													"oidc",
+													"duo",
 													"okta",
 													"onelogin",
 													"pingone",
@@ -10340,6 +11076,7 @@
 													"google",
 													"linkedin",
 													"oidc",
+													"duo",
 													"okta",
 													"onelogin",
 													"pingone",
@@ -10476,6 +11213,7 @@
 													"google",
 													"linkedin",
 													"oidc",
+													"duo",
 													"okta",
 													"onelogin",
 													"pingone",
@@ -10612,6 +11350,7 @@
 													"google",
 													"linkedin",
 													"oidc",
+													"duo",
 													"okta",
 													"onelogin",
 													"pingone",
@@ -10789,6 +11528,7 @@
 													"google",
 													"linkedin",
 													"oidc",
+													"duo",
 													"okta",
 													"onelogin",
 													"pingone",
@@ -10911,6 +11651,7 @@
 													"google",
 													"linkedin",
 													"oidc",
+													"duo",
 													"okta",
 													"onelogin",
 													"pingone",
@@ -11140,6 +11881,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -11293,6 +12035,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -11434,6 +12177,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -11556,6 +12300,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -11678,6 +12423,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -11800,6 +12546,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -11951,6 +12698,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -12073,6 +12821,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -12242,6 +12991,141 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
+																		"okta",
+																		"onelogin",
+																		"pingone",
+																		"yandex",
+																		"cloudflare"
+																	]
+																}
+															},
+															"required": [
+																"name",
+																"type",
+																"config"
+															]
+														},
+														{
+															"properties": {
+																"config": {
+																	"type": "object",
+																	"properties": {
+																		"client_id": {
+																			"description": "The client ID from the Duo Generic OIDC Relying Party metadata.",
+																			"type": "string",
+																			"example": "DIABC123678901234567"
+																		},
+																		"client_secret": {
+																			"description": "The client secret from the Duo Generic OIDC Relying Party metadata.",
+																			"type": "string",
+																			"example": "<your client secret>",
+																			"x-sensitive": true
+																		},
+																		"issuer_url": {
+																			"description": "The issuer URL from the Duo Generic OIDC Relying Party metadata.",
+																			"type": "string",
+																			"format": "uri",
+																			"example": "https://sso-abc1def2.sso.duosecurity.com/oidc/DIABC123678901234567"
+																		}
+																	}
+																},
+																"type": {
+																	"type": "string",
+																	"enum": [
+																		"duo"
+																	]
+																}
+															},
+															"type": "object"
+														}
+													],
+													"title": "Duo"
+												},
+												{
+													"type": "object",
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"config": {
+																	"description": "The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+																	"type": "object"
+																},
+																"id": {
+																	"description": "UUID.",
+																	"type": "string",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"maxLength": 36,
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "The name of the identity provider, shown to users on the login page.",
+																	"type": "string",
+																	"example": "Widget Corps IDP"
+																},
+																"scim_config": {
+																	"description": "The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.",
+																	"type": "object",
+																	"properties": {
+																		"enabled": {
+																			"description": "A flag to enable or disable SCIM for the identity provider.",
+																			"type": "boolean",
+																			"default": false,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"identity_update_behavior": {
+																			"description": "Indicates how a SCIM event updates a user identity used for policy evaluation. Use \"automatic\" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use \"reauth\" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With \"reauth\" identities will not contain fields from the SCIM user resource. With \"no_action\" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.",
+																			"type": "string",
+																			"default": "no_action",
+																			"enum": [
+																				"automatic",
+																				"reauth",
+																				"no_action"
+																			],
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"scim_base_url": {
+																			"description": "The base URL of Cloudflare's SCIM V2.0 API endpoint.",
+																			"type": "string",
+																			"readOnly": true
+																		},
+																		"seat_deprovision": {
+																			"description": "A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.",
+																			"type": "boolean",
+																			"default": false,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"secret": {
+																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
+																			"type": "string",
+																			"readOnly": true,
+																			"x-sensitive": true
+																		},
+																		"user_deprovision": {
+																			"description": "A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.",
+																			"type": "boolean",
+																			"default": false,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		}
+																	}
+																},
+																"type": {
+																	"description": "The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+																	"type": "string",
+																	"example": "onetimepin",
+																	"enum": [
+																		"onetimepin",
+																		"azureAD",
+																		"saml",
+																		"centrify",
+																		"facebook",
+																		"github",
+																		"google-apps",
+																		"google",
+																		"linkedin",
+																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -12378,6 +13262,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -12514,6 +13399,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -12650,6 +13536,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -12827,6 +13714,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",
@@ -12949,6 +13837,7 @@
 																		"google",
 																		"linkedin",
 																		"oidc",
+																		"duo",
 																		"okta",
 																		"onelogin",
 																		"pingone",

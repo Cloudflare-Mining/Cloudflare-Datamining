@@ -1,0 +1,2554 @@
+{
+	"DELETE /accounts/{account_id}/access/user_populations/{user_population_id}/users/{user_id}": {
+		"operationId": "access-user-populations-delete-user",
+		"summary": "Delete a user population user",
+		"description": "Deletes a SCIM user from a user population.",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "user_population_id",
+				"required": true,
+				"schema": {
+					"description": "UUID.",
+					"type": "string",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "user_id",
+				"required": true,
+				"schema": {
+					"description": "The SCIM user identifier.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"204": {
+				"description": "The SCIM user was deleted."
+			},
+			"4XX": {
+				"description": "User population request failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Access user population users"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.user-populations.users",
+		"x-fern-sdk-method-name": "delete"
+	},
+	"GET /accounts/{account_id}/access/user_populations/{user_population_id}/users": {
+		"operationId": "access-user-populations-list-users",
+		"summary": "List users in a user population",
+		"description": "Lists SCIM users in a user population.",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "user_population_id",
+				"required": true,
+				"schema": {
+					"description": "UUID.",
+					"type": "string",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "filter",
+				"schema": {
+					"description": "A SCIM filter expression.",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "startIndex",
+				"schema": {
+					"description": "The 1-based index of the first result to return.",
+					"type": "integer",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"in": "query",
+				"name": "count",
+				"schema": {
+					"description": "The maximum number of results to return.",
+					"type": "integer",
+					"minimum": 0
+				}
+			},
+			{
+				"in": "query",
+				"name": "attributes",
+				"schema": {
+					"description": "Comma-separated SCIM attributes to return.",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "excludedAttributes",
+				"schema": {
+					"description": "Comma-separated SCIM attributes to exclude from the response.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List SCIM users response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"Resources": {
+													"type": "array",
+													"items": {
+														"description": "A SCIM User resource. Additional SCIM extension attributes are supported.",
+														"type": "object",
+														"properties": {
+															"active": {
+																"type": "boolean"
+															},
+															"displayName": {
+																"type": "string"
+															},
+															"emails": {
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"properties": {
+																		"primary": {
+																			"type": "boolean"
+																		},
+																		"type": {
+																			"type": "string"
+																		},
+																		"value": {
+																			"type": "string"
+																		}
+																	}
+																}
+															},
+															"externalId": {
+																"type": "string"
+															},
+															"id": {
+																"type": "string",
+																"readOnly": true
+															},
+															"meta": {
+																"type": "object",
+																"properties": {
+																	"created": {
+																		"type": "string",
+																		"format": "date-time"
+																	},
+																	"lastModified": {
+																		"type": "string",
+																		"format": "date-time"
+																	},
+																	"location": {
+																		"type": "string",
+																		"format": "uri"
+																	},
+																	"resourceType": {
+																		"type": "string"
+																	},
+																	"version": {
+																		"type": "string"
+																	}
+																}
+															},
+															"name": {
+																"type": "object",
+																"properties": {
+																	"familyName": {
+																		"type": "string"
+																	},
+																	"formatted": {
+																		"type": "string"
+																	},
+																	"givenName": {
+																		"type": "string"
+																	},
+																	"honorificPrefix": {
+																		"type": "string"
+																	},
+																	"honorificSuffix": {
+																		"type": "string"
+																	},
+																	"middleName": {
+																		"type": "string"
+																	}
+																}
+															},
+															"schemas": {
+																"description": "The SCIM schemas that apply to this resource.",
+																"type": "array",
+																"items": {
+																	"type": "string"
+																}
+															},
+															"userName": {
+																"type": "string"
+															}
+														},
+														"additionalProperties": true
+													}
+												},
+												"itemsPerPage": {
+													"type": "integer"
+												},
+												"schemas": {
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												},
+												"startIndex": {
+													"type": "integer"
+												},
+												"totalResults": {
+													"type": "integer"
+												}
+											},
+											"required": [
+												"schemas",
+												"totalResults",
+												"startIndex",
+												"itemsPerPage",
+												"Resources"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "User population request failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Access user population users"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.user-populations.users",
+		"x-fern-sdk-method-name": "list"
+	},
+	"GET /accounts/{account_id}/access/user_populations/{user_population_id}/users/{user_id}": {
+		"operationId": "access-user-populations-get-user",
+		"summary": "Get a user population user",
+		"description": "Fetches a SCIM user from a user population.",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "user_population_id",
+				"required": true,
+				"schema": {
+					"description": "UUID.",
+					"type": "string",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "user_id",
+				"required": true,
+				"schema": {
+					"description": "The SCIM user identifier.",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "attributes",
+				"schema": {
+					"description": "Comma-separated SCIM attributes to return.",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "excludedAttributes",
+				"schema": {
+					"description": "Comma-separated SCIM attributes to exclude from the response.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Get SCIM user response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A SCIM User resource. Additional SCIM extension attributes are supported.",
+											"type": "object",
+											"properties": {
+												"active": {
+													"type": "boolean"
+												},
+												"displayName": {
+													"type": "string"
+												},
+												"emails": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"primary": {
+																"type": "boolean"
+															},
+															"type": {
+																"type": "string"
+															},
+															"value": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"externalId": {
+													"type": "string"
+												},
+												"id": {
+													"type": "string",
+													"readOnly": true
+												},
+												"meta": {
+													"type": "object",
+													"properties": {
+														"created": {
+															"type": "string",
+															"format": "date-time"
+														},
+														"lastModified": {
+															"type": "string",
+															"format": "date-time"
+														},
+														"location": {
+															"type": "string",
+															"format": "uri"
+														},
+														"resourceType": {
+															"type": "string"
+														},
+														"version": {
+															"type": "string"
+														}
+													}
+												},
+												"name": {
+													"type": "object",
+													"properties": {
+														"familyName": {
+															"type": "string"
+														},
+														"formatted": {
+															"type": "string"
+														},
+														"givenName": {
+															"type": "string"
+														},
+														"honorificPrefix": {
+															"type": "string"
+														},
+														"honorificSuffix": {
+															"type": "string"
+														},
+														"middleName": {
+															"type": "string"
+														}
+													}
+												},
+												"schemas": {
+													"description": "The SCIM schemas that apply to this resource.",
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												},
+												"userName": {
+													"type": "string"
+												}
+											},
+											"additionalProperties": true
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "User population request failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Access user population users"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.user-populations.users",
+		"x-fern-sdk-method-name": "get"
+	},
+	"PATCH /accounts/{account_id}/access/user_populations/{user_population_id}/users/{user_id}": {
+		"operationId": "access-user-populations-update-user",
+		"summary": "Update a user population user",
+		"description": "Updates a SCIM user in a user population.",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "user_population_id",
+				"required": true,
+				"schema": {
+					"description": "UUID.",
+					"type": "string",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "user_id",
+				"required": true,
+				"schema": {
+					"description": "The SCIM user identifier.",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"Operations": {
+								"type": "array",
+								"items": {
+									"properties": {
+										"op": {
+											"type": "string",
+											"enum": [
+												"add",
+												"remove",
+												"replace"
+											]
+										},
+										"path": {
+											"type": "string"
+										},
+										"value": {}
+									},
+									"required": [
+										"op"
+									],
+									"type": "object"
+								}
+							},
+							"schemas": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							}
+						},
+						"required": [
+							"Operations"
+						]
+					}
+				},
+				"application/scim+json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"Operations": {
+								"type": "array",
+								"items": {
+									"properties": {
+										"op": {
+											"type": "string",
+											"enum": [
+												"add",
+												"remove",
+												"replace"
+											]
+										},
+										"path": {
+											"type": "string"
+										},
+										"value": {}
+									},
+									"required": [
+										"op"
+									],
+									"type": "object"
+								}
+							},
+							"schemas": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							}
+						},
+						"required": [
+							"Operations"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Update SCIM user response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A SCIM User resource. Additional SCIM extension attributes are supported.",
+											"type": "object",
+											"properties": {
+												"active": {
+													"type": "boolean"
+												},
+												"displayName": {
+													"type": "string"
+												},
+												"emails": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"primary": {
+																"type": "boolean"
+															},
+															"type": {
+																"type": "string"
+															},
+															"value": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"externalId": {
+													"type": "string"
+												},
+												"id": {
+													"type": "string",
+													"readOnly": true
+												},
+												"meta": {
+													"type": "object",
+													"properties": {
+														"created": {
+															"type": "string",
+															"format": "date-time"
+														},
+														"lastModified": {
+															"type": "string",
+															"format": "date-time"
+														},
+														"location": {
+															"type": "string",
+															"format": "uri"
+														},
+														"resourceType": {
+															"type": "string"
+														},
+														"version": {
+															"type": "string"
+														}
+													}
+												},
+												"name": {
+													"type": "object",
+													"properties": {
+														"familyName": {
+															"type": "string"
+														},
+														"formatted": {
+															"type": "string"
+														},
+														"givenName": {
+															"type": "string"
+														},
+														"honorificPrefix": {
+															"type": "string"
+														},
+														"honorificSuffix": {
+															"type": "string"
+														},
+														"middleName": {
+															"type": "string"
+														}
+													}
+												},
+												"schemas": {
+													"description": "The SCIM schemas that apply to this resource.",
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												},
+												"userName": {
+													"type": "string"
+												}
+											},
+											"additionalProperties": true
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "User population request failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Access user population users"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.user-populations.users",
+		"x-fern-sdk-method-name": "update"
+	},
+	"POST /accounts/{account_id}/access/user_populations/{user_population_id}/users": {
+		"operationId": "access-user-populations-create-user",
+		"summary": "Create a user population user",
+		"description": "Creates a SCIM user in a user population.",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "user_population_id",
+				"required": true,
+				"schema": {
+					"description": "UUID.",
+					"type": "string",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "A SCIM User resource. Additional SCIM extension attributes are supported.",
+						"type": "object",
+						"properties": {
+							"active": {
+								"type": "boolean"
+							},
+							"displayName": {
+								"type": "string"
+							},
+							"emails": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"primary": {
+											"type": "boolean"
+										},
+										"type": {
+											"type": "string"
+										},
+										"value": {
+											"type": "string"
+										}
+									}
+								}
+							},
+							"externalId": {
+								"type": "string"
+							},
+							"id": {
+								"type": "string",
+								"readOnly": true
+							},
+							"meta": {
+								"type": "object",
+								"properties": {
+									"created": {
+										"type": "string",
+										"format": "date-time"
+									},
+									"lastModified": {
+										"type": "string",
+										"format": "date-time"
+									},
+									"location": {
+										"type": "string",
+										"format": "uri"
+									},
+									"resourceType": {
+										"type": "string"
+									},
+									"version": {
+										"type": "string"
+									}
+								}
+							},
+							"name": {
+								"type": "object",
+								"properties": {
+									"familyName": {
+										"type": "string"
+									},
+									"formatted": {
+										"type": "string"
+									},
+									"givenName": {
+										"type": "string"
+									},
+									"honorificPrefix": {
+										"type": "string"
+									},
+									"honorificSuffix": {
+										"type": "string"
+									},
+									"middleName": {
+										"type": "string"
+									}
+								}
+							},
+							"schemas": {
+								"description": "The SCIM schemas that apply to this resource.",
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							},
+							"userName": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": true
+					}
+				},
+				"application/scim+json": {
+					"schema": {
+						"description": "A SCIM User resource. Additional SCIM extension attributes are supported.",
+						"type": "object",
+						"properties": {
+							"active": {
+								"type": "boolean"
+							},
+							"displayName": {
+								"type": "string"
+							},
+							"emails": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"primary": {
+											"type": "boolean"
+										},
+										"type": {
+											"type": "string"
+										},
+										"value": {
+											"type": "string"
+										}
+									}
+								}
+							},
+							"externalId": {
+								"type": "string"
+							},
+							"id": {
+								"type": "string",
+								"readOnly": true
+							},
+							"meta": {
+								"type": "object",
+								"properties": {
+									"created": {
+										"type": "string",
+										"format": "date-time"
+									},
+									"lastModified": {
+										"type": "string",
+										"format": "date-time"
+									},
+									"location": {
+										"type": "string",
+										"format": "uri"
+									},
+									"resourceType": {
+										"type": "string"
+									},
+									"version": {
+										"type": "string"
+									}
+								}
+							},
+							"name": {
+								"type": "object",
+								"properties": {
+									"familyName": {
+										"type": "string"
+									},
+									"formatted": {
+										"type": "string"
+									},
+									"givenName": {
+										"type": "string"
+									},
+									"honorificPrefix": {
+										"type": "string"
+									},
+									"honorificSuffix": {
+										"type": "string"
+									},
+									"middleName": {
+										"type": "string"
+									}
+								}
+							},
+							"schemas": {
+								"description": "The SCIM schemas that apply to this resource.",
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							},
+							"userName": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": true
+					}
+				}
+			}
+		},
+		"responses": {
+			"201": {
+				"description": "Create SCIM user response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A SCIM User resource. Additional SCIM extension attributes are supported.",
+											"type": "object",
+											"properties": {
+												"active": {
+													"type": "boolean"
+												},
+												"displayName": {
+													"type": "string"
+												},
+												"emails": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"primary": {
+																"type": "boolean"
+															},
+															"type": {
+																"type": "string"
+															},
+															"value": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"externalId": {
+													"type": "string"
+												},
+												"id": {
+													"type": "string",
+													"readOnly": true
+												},
+												"meta": {
+													"type": "object",
+													"properties": {
+														"created": {
+															"type": "string",
+															"format": "date-time"
+														},
+														"lastModified": {
+															"type": "string",
+															"format": "date-time"
+														},
+														"location": {
+															"type": "string",
+															"format": "uri"
+														},
+														"resourceType": {
+															"type": "string"
+														},
+														"version": {
+															"type": "string"
+														}
+													}
+												},
+												"name": {
+													"type": "object",
+													"properties": {
+														"familyName": {
+															"type": "string"
+														},
+														"formatted": {
+															"type": "string"
+														},
+														"givenName": {
+															"type": "string"
+														},
+														"honorificPrefix": {
+															"type": "string"
+														},
+														"honorificSuffix": {
+															"type": "string"
+														},
+														"middleName": {
+															"type": "string"
+														}
+													}
+												},
+												"schemas": {
+													"description": "The SCIM schemas that apply to this resource.",
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												},
+												"userName": {
+													"type": "string"
+												}
+											},
+											"additionalProperties": true
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "User population request failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Access user population users"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.user-populations.users",
+		"x-fern-sdk-method-name": "create"
+	},
+	"PUT /accounts/{account_id}/access/user_populations/{user_population_id}/users/{user_id}": {
+		"operationId": "access-user-populations-replace-user",
+		"summary": "Replace a user population user",
+		"description": "Replaces a SCIM user in a user population.",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "user_population_id",
+				"required": true,
+				"schema": {
+					"description": "UUID.",
+					"type": "string",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "user_id",
+				"required": true,
+				"schema": {
+					"description": "The SCIM user identifier.",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "A SCIM User resource. Additional SCIM extension attributes are supported.",
+						"type": "object",
+						"properties": {
+							"active": {
+								"type": "boolean"
+							},
+							"displayName": {
+								"type": "string"
+							},
+							"emails": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"primary": {
+											"type": "boolean"
+										},
+										"type": {
+											"type": "string"
+										},
+										"value": {
+											"type": "string"
+										}
+									}
+								}
+							},
+							"externalId": {
+								"type": "string"
+							},
+							"id": {
+								"type": "string",
+								"readOnly": true
+							},
+							"meta": {
+								"type": "object",
+								"properties": {
+									"created": {
+										"type": "string",
+										"format": "date-time"
+									},
+									"lastModified": {
+										"type": "string",
+										"format": "date-time"
+									},
+									"location": {
+										"type": "string",
+										"format": "uri"
+									},
+									"resourceType": {
+										"type": "string"
+									},
+									"version": {
+										"type": "string"
+									}
+								}
+							},
+							"name": {
+								"type": "object",
+								"properties": {
+									"familyName": {
+										"type": "string"
+									},
+									"formatted": {
+										"type": "string"
+									},
+									"givenName": {
+										"type": "string"
+									},
+									"honorificPrefix": {
+										"type": "string"
+									},
+									"honorificSuffix": {
+										"type": "string"
+									},
+									"middleName": {
+										"type": "string"
+									}
+								}
+							},
+							"schemas": {
+								"description": "The SCIM schemas that apply to this resource.",
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							},
+							"userName": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": true
+					}
+				},
+				"application/scim+json": {
+					"schema": {
+						"description": "A SCIM User resource. Additional SCIM extension attributes are supported.",
+						"type": "object",
+						"properties": {
+							"active": {
+								"type": "boolean"
+							},
+							"displayName": {
+								"type": "string"
+							},
+							"emails": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"primary": {
+											"type": "boolean"
+										},
+										"type": {
+											"type": "string"
+										},
+										"value": {
+											"type": "string"
+										}
+									}
+								}
+							},
+							"externalId": {
+								"type": "string"
+							},
+							"id": {
+								"type": "string",
+								"readOnly": true
+							},
+							"meta": {
+								"type": "object",
+								"properties": {
+									"created": {
+										"type": "string",
+										"format": "date-time"
+									},
+									"lastModified": {
+										"type": "string",
+										"format": "date-time"
+									},
+									"location": {
+										"type": "string",
+										"format": "uri"
+									},
+									"resourceType": {
+										"type": "string"
+									},
+									"version": {
+										"type": "string"
+									}
+								}
+							},
+							"name": {
+								"type": "object",
+								"properties": {
+									"familyName": {
+										"type": "string"
+									},
+									"formatted": {
+										"type": "string"
+									},
+									"givenName": {
+										"type": "string"
+									},
+									"honorificPrefix": {
+										"type": "string"
+									},
+									"honorificSuffix": {
+										"type": "string"
+									},
+									"middleName": {
+										"type": "string"
+									}
+								}
+							},
+							"schemas": {
+								"description": "The SCIM schemas that apply to this resource.",
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							},
+							"userName": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": true
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Replace SCIM user response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A SCIM User resource. Additional SCIM extension attributes are supported.",
+											"type": "object",
+											"properties": {
+												"active": {
+													"type": "boolean"
+												},
+												"displayName": {
+													"type": "string"
+												},
+												"emails": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"primary": {
+																"type": "boolean"
+															},
+															"type": {
+																"type": "string"
+															},
+															"value": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"externalId": {
+													"type": "string"
+												},
+												"id": {
+													"type": "string",
+													"readOnly": true
+												},
+												"meta": {
+													"type": "object",
+													"properties": {
+														"created": {
+															"type": "string",
+															"format": "date-time"
+														},
+														"lastModified": {
+															"type": "string",
+															"format": "date-time"
+														},
+														"location": {
+															"type": "string",
+															"format": "uri"
+														},
+														"resourceType": {
+															"type": "string"
+														},
+														"version": {
+															"type": "string"
+														}
+													}
+												},
+												"name": {
+													"type": "object",
+													"properties": {
+														"familyName": {
+															"type": "string"
+														},
+														"formatted": {
+															"type": "string"
+														},
+														"givenName": {
+															"type": "string"
+														},
+														"honorificPrefix": {
+															"type": "string"
+														},
+														"honorificSuffix": {
+															"type": "string"
+														},
+														"middleName": {
+															"type": "string"
+														}
+													}
+												},
+												"schemas": {
+													"description": "The SCIM schemas that apply to this resource.",
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												},
+												"userName": {
+													"type": "string"
+												}
+											},
+											"additionalProperties": true
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "User population request failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Access user population users"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.user-populations.users",
+		"x-fern-sdk-method-name": "replace"
+	}
+}
