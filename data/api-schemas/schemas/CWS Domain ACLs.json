@@ -1,0 +1,2180 @@
+{
+	"DELETE /accounts/{account_id}/cws/domain-acls/{domain_acl_id}": {
+		"operationId": "cws-delete-domain-acl",
+		"summary": "Delete a domain ACL",
+		"description": "Deletes the domain ACL if it is not attached to a deployment.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"name": "domain_acl_id",
+				"in": "path",
+				"description": "ID of the domain ACL to delete",
+				"required": true,
+				"schema": {
+					"description": "ID of the domain ACL to delete",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"id": {
+											"type": "string",
+											"format": "uuid"
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"id"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Domain ACLs"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.domain-acls",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-require-confirmation": "Delete this domain ACL?",
+		"x-stability": "beta"
+	},
+	"GET /accounts/{account_id}/cws/domain-acls": {
+		"operationId": "cws-list-domain-acls",
+		"summary": "List domain ACLs",
+		"description": "Returns a paginated list of domain access control lists in the account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"name": "cursor",
+				"in": "query",
+				"description": "Pagination cursor from previous response",
+				"schema": {
+					"description": "Pagination cursor from previous response",
+					"type": "string"
+				},
+				"explode": false
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"description": "Number of items per page (1-100, default 20)",
+				"schema": {
+					"description": "Number of items per page (1-100, default 20)",
+					"type": "integer",
+					"format": "int64",
+					"default": 20,
+					"maximum": 100,
+					"minimum": 1
+				},
+				"explode": false
+			},
+			{
+				"name": "order",
+				"in": "query",
+				"description": "Field to order results by (default: created_at)",
+				"schema": {
+					"description": "Field to order results by (default: created_at)",
+					"type": "string",
+					"default": "created_at",
+					"enum": [
+						"name",
+						"created_at",
+						"updated_at"
+					]
+				},
+				"explode": false
+			},
+			{
+				"name": "direction",
+				"in": "query",
+				"description": "Sort direction (default: asc)",
+				"schema": {
+					"description": "Sort direction (default: asc)",
+					"type": "string",
+					"default": "asc",
+					"enum": [
+						"asc",
+						"desc"
+					]
+				},
+				"explode": false
+			},
+			{
+				"name": "name",
+				"in": "query",
+				"description": "Filter by domain ACL name (case-insensitive substring match)",
+				"schema": {
+					"description": "Filter by domain ACL name (case-insensitive substring match)",
+					"type": "string"
+				},
+				"explode": false
+			},
+			{
+				"name": "deployment_id",
+				"in": "query",
+				"description": "Filter to domain ACLs attached to this deployment",
+				"schema": {
+					"description": "Filter to domain ACLs attached to this deployment",
+					"type": "string",
+					"format": "uuid"
+				},
+				"explode": false
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"created_at": {
+												"type": "string",
+												"format": "date-time",
+												"readOnly": true
+											},
+											"default_action": {
+												"description": "Action applied when no entry matches the request domain",
+												"type": "string",
+												"enum": [
+													"ALLOW",
+													"BLOCK"
+												]
+											},
+											"entries": {
+												"description": "Per-domain action overrides",
+												"type": "array",
+												"items": {
+													"type": "object",
+													"properties": {
+														"action": {
+															"description": "Per-domain decision overriding the parent ACL's default_action",
+															"type": "string",
+															"enum": [
+																"ALLOW",
+																"BLOCK"
+															]
+														},
+														"domain": {
+															"description": "Hostname or domain pattern, capped at 255 UTF-8 bytes",
+															"type": "string",
+															"maxLength": 255,
+															"minLength": 1
+														}
+													},
+													"additionalProperties": false,
+													"required": [
+														"domain",
+														"action"
+													]
+												},
+												"nullable": true
+											},
+											"id": {
+												"description": "Server-assigned UUID",
+												"type": "string",
+												"format": "uuid",
+												"readOnly": true
+											},
+											"name": {
+												"description": "Human-readable name; unique per account",
+												"type": "string",
+												"maxLength": 100,
+												"minLength": 1
+											},
+											"updated_at": {
+												"type": "string",
+												"format": "date-time",
+												"readOnly": true
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"id",
+											"name",
+											"default_action",
+											"entries",
+											"created_at",
+											"updated_at"
+										]
+									},
+									"nullable": true
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "integer",
+											"format": "int64"
+										},
+										"cursor": {
+											"type": "string"
+										},
+										"per_page": {
+											"type": "integer",
+											"format": "int64"
+										},
+										"total_count": {
+											"type": "integer",
+											"format": "int64"
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"per_page",
+										"count",
+										"total_count"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"result_info",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Domain ACLs"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.domain-acls",
+		"x-fern-sdk-method-name": "list",
+		"x-stability": "beta"
+	},
+	"GET /accounts/{account_id}/cws/domain-acls/{domain_acl_id}": {
+		"operationId": "cws-get-domain-acl",
+		"summary": "Get a domain ACL by ID",
+		"description": "Returns the domain access control list with the specified ID.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"name": "domain_acl_id",
+				"in": "path",
+				"description": "ID of the domain ACL to retrieve",
+				"required": true,
+				"schema": {
+					"description": "ID of the domain ACL to retrieve",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"created_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										},
+										"default_action": {
+											"description": "Action applied when no entry matches the request domain",
+											"type": "string",
+											"enum": [
+												"ALLOW",
+												"BLOCK"
+											]
+										},
+										"entries": {
+											"description": "Per-domain action overrides",
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"action": {
+														"description": "Per-domain decision overriding the parent ACL's default_action",
+														"type": "string",
+														"enum": [
+															"ALLOW",
+															"BLOCK"
+														]
+													},
+													"domain": {
+														"description": "Hostname or domain pattern, capped at 255 UTF-8 bytes",
+														"type": "string",
+														"maxLength": 255,
+														"minLength": 1
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"domain",
+													"action"
+												]
+											},
+											"nullable": true
+										},
+										"id": {
+											"description": "Server-assigned UUID",
+											"type": "string",
+											"format": "uuid",
+											"readOnly": true
+										},
+										"name": {
+											"description": "Human-readable name; unique per account",
+											"type": "string",
+											"maxLength": 100,
+											"minLength": 1
+										},
+										"updated_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"id",
+										"name",
+										"default_action",
+										"entries",
+										"created_at",
+										"updated_at"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Domain ACLs"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.domain-acls",
+		"x-fern-sdk-method-name": "get",
+		"x-stability": "beta"
+	},
+	"POST /accounts/{account_id}/cws/domain-acls": {
+		"operationId": "cws-create-domain-acl",
+		"summary": "Create a new domain ACL",
+		"description": "Creates a domain access control list with its default action and entries.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"default_action": {
+								"description": "Default action when no entry matches",
+								"type": "string",
+								"enum": [
+									"ALLOW",
+									"BLOCK"
+								]
+							},
+							"entries": {
+								"description": "Domain entries for this ACL",
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"action": {
+											"description": "Per-domain decision overriding the parent ACL's default_action",
+											"type": "string",
+											"enum": [
+												"ALLOW",
+												"BLOCK"
+											]
+										},
+										"domain": {
+											"description": "Hostname or domain pattern, capped at 255 UTF-8 bytes",
+											"type": "string",
+											"maxLength": 255,
+											"minLength": 1
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"domain",
+										"action"
+									]
+								},
+								"nullable": true
+							},
+							"name": {
+								"description": "Name of the domain ACL",
+								"type": "string",
+								"maxLength": 100,
+								"minLength": 1
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"name",
+							"default_action",
+							"entries"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"201": {
+				"description": "Created",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"created_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										},
+										"default_action": {
+											"description": "Action applied when no entry matches the request domain",
+											"type": "string",
+											"enum": [
+												"ALLOW",
+												"BLOCK"
+											]
+										},
+										"entries": {
+											"description": "Per-domain action overrides",
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"action": {
+														"description": "Per-domain decision overriding the parent ACL's default_action",
+														"type": "string",
+														"enum": [
+															"ALLOW",
+															"BLOCK"
+														]
+													},
+													"domain": {
+														"description": "Hostname or domain pattern, capped at 255 UTF-8 bytes",
+														"type": "string",
+														"maxLength": 255,
+														"minLength": 1
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"domain",
+													"action"
+												]
+											},
+											"nullable": true
+										},
+										"id": {
+											"description": "Server-assigned UUID",
+											"type": "string",
+											"format": "uuid",
+											"readOnly": true
+										},
+										"name": {
+											"description": "Human-readable name; unique per account",
+											"type": "string",
+											"maxLength": 100,
+											"minLength": 1
+										},
+										"updated_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"id",
+										"name",
+										"default_action",
+										"entries",
+										"created_at",
+										"updated_at"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Domain ACLs"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.domain-acls",
+		"x-fern-sdk-method-name": "create",
+		"x-stability": "beta"
+	},
+	"PUT /accounts/{account_id}/cws/domain-acls/{domain_acl_id}": {
+		"operationId": "cws-update-domain-acl",
+		"summary": "Update a domain ACL and replace its entries",
+		"description": "Replaces the domain access control list's name, default action, and entries.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"name": "domain_acl_id",
+				"in": "path",
+				"description": "ID of the domain ACL to update",
+				"required": true,
+				"schema": {
+					"description": "ID of the domain ACL to update",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"default_action": {
+								"description": "Default action when no entry matches",
+								"type": "string",
+								"enum": [
+									"ALLOW",
+									"BLOCK"
+								]
+							},
+							"entries": {
+								"description": "Replacement set of domain entries",
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"action": {
+											"description": "Per-domain decision overriding the parent ACL's default_action",
+											"type": "string",
+											"enum": [
+												"ALLOW",
+												"BLOCK"
+											]
+										},
+										"domain": {
+											"description": "Hostname or domain pattern, capped at 255 UTF-8 bytes",
+											"type": "string",
+											"maxLength": 255,
+											"minLength": 1
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"domain",
+										"action"
+									]
+								},
+								"nullable": true
+							},
+							"name": {
+								"description": "Name of the domain ACL",
+								"type": "string",
+								"maxLength": 100,
+								"minLength": 1
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"name",
+							"default_action",
+							"entries"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"created_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										},
+										"default_action": {
+											"description": "Action applied when no entry matches the request domain",
+											"type": "string",
+											"enum": [
+												"ALLOW",
+												"BLOCK"
+											]
+										},
+										"entries": {
+											"description": "Per-domain action overrides",
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"action": {
+														"description": "Per-domain decision overriding the parent ACL's default_action",
+														"type": "string",
+														"enum": [
+															"ALLOW",
+															"BLOCK"
+														]
+													},
+													"domain": {
+														"description": "Hostname or domain pattern, capped at 255 UTF-8 bytes",
+														"type": "string",
+														"maxLength": 255,
+														"minLength": 1
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"domain",
+													"action"
+												]
+											},
+											"nullable": true
+										},
+										"id": {
+											"description": "Server-assigned UUID",
+											"type": "string",
+											"format": "uuid",
+											"readOnly": true
+										},
+										"name": {
+											"description": "Human-readable name; unique per account",
+											"type": "string",
+											"maxLength": 100,
+											"minLength": 1
+										},
+										"updated_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"id",
+										"name",
+										"default_action",
+										"entries",
+										"created_at",
+										"updated_at"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Domain ACLs"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.domain-acls",
+		"x-fern-sdk-method-name": "update",
+		"x-stability": "beta"
+	}
+}

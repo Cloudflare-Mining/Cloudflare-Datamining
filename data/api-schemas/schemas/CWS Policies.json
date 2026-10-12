@@ -1,0 +1,2404 @@
+{
+	"DELETE /accounts/{account_id}/cws/policies/{policy_id}": {
+		"operationId": "cws-delete-policy",
+		"summary": "Delete a policy",
+		"description": "Deletes the policy and cascades its policy-set membership rows. The policy sets remain.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"name": "policy_id",
+				"in": "path",
+				"description": "ID of the policy to delete",
+				"required": true,
+				"schema": {
+					"description": "ID of the policy to delete",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"id": {
+											"type": "string",
+											"format": "uuid"
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"id"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Policies"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.policies",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-require-confirmation": "Delete this policy?",
+		"x-stability": "beta"
+	},
+	"GET /accounts/{account_id}/cws/policies": {
+		"operationId": "cws-list-policies",
+		"summary": "List policies",
+		"description": "Returns a paginated list of policies in the account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"name": "cursor",
+				"in": "query",
+				"description": "Pagination cursor from previous response",
+				"schema": {
+					"description": "Pagination cursor from previous response",
+					"type": "string"
+				},
+				"explode": false
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"description": "Number of items per page (1-100, default 20)",
+				"schema": {
+					"description": "Number of items per page (1-100, default 20)",
+					"type": "integer",
+					"format": "int64",
+					"default": 20,
+					"maximum": 100,
+					"minimum": 1
+				},
+				"explode": false
+			},
+			{
+				"name": "order",
+				"in": "query",
+				"description": "Field to order results by (default: created_at)",
+				"schema": {
+					"description": "Field to order results by (default: created_at)",
+					"type": "string",
+					"default": "created_at",
+					"enum": [
+						"name",
+						"created_at",
+						"updated_at"
+					]
+				},
+				"explode": false
+			},
+			{
+				"name": "direction",
+				"in": "query",
+				"description": "Sort direction (default: asc)",
+				"schema": {
+					"description": "Sort direction (default: asc)",
+					"type": "string",
+					"default": "asc",
+					"enum": [
+						"asc",
+						"desc"
+					]
+				},
+				"explode": false
+			},
+			{
+				"name": "name",
+				"in": "query",
+				"description": "Filter by policy name (case-insensitive substring match)",
+				"schema": {
+					"description": "Filter by policy name (case-insensitive substring match)",
+					"type": "string"
+				},
+				"explode": false
+			},
+			{
+				"name": "policy_set_id",
+				"in": "query",
+				"description": "Filter to policies attached to (members of) this policy set",
+				"schema": {
+					"description": "Filter to policies attached to (members of) this policy set",
+					"type": "string",
+					"format": "uuid"
+				},
+				"explode": false
+			},
+			{
+				"name": "package_path",
+				"in": "query",
+				"description": "Filter by package path (case-sensitive literal substring match)",
+				"schema": {
+					"description": "Filter by package path (case-sensitive literal substring match)",
+					"type": "string"
+				},
+				"explode": false
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"created_at": {
+												"type": "string",
+												"format": "date-time",
+												"readOnly": true
+											},
+											"description": {
+												"description": "Optional free-form description.",
+												"type": "string",
+												"maxLength": 1024
+											},
+											"entrypoint": {
+												"description": "Non-function rule declared in rego_source. Evaluation uses data.<package_path>.<entrypoint>.",
+												"type": "string",
+												"maxLength": 255,
+												"pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+											},
+											"filter": {
+												"description": "Optional filter expression that determines whether this policy applies. Null means the policy applies to every request. Maximum 4096 UTF-8 bytes.",
+												"type": "string",
+												"maxLength": 4096,
+												"minLength": 1,
+												"nullable": true
+											},
+											"id": {
+												"description": "Server-assigned UUID",
+												"type": "string",
+												"format": "uuid",
+												"readOnly": true
+											},
+											"name": {
+												"description": "Human-readable name; unique per account",
+												"type": "string",
+												"maxLength": 100,
+												"minLength": 1
+											},
+											"package_path": {
+												"description": "Dotted path derived from rego_source. Begins with policy. and is unique per account.",
+												"type": "string",
+												"maxLength": 1024,
+												"readOnly": true
+											},
+											"rego_source": {
+												"description": "Inline Rego source with a package beginning with \"policy.\" Maximum 16384 UTF-8 bytes.",
+												"type": "string",
+												"maxLength": 16384,
+												"minLength": 1
+											},
+											"tags": {
+												"description": "Tags attached to this policy",
+												"type": "object",
+												"additionalProperties": {
+													"type": "string"
+												}
+											},
+											"updated_at": {
+												"type": "string",
+												"format": "date-time",
+												"readOnly": true
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"tags",
+											"id",
+											"name",
+											"filter",
+											"package_path",
+											"entrypoint",
+											"rego_source",
+											"created_at",
+											"updated_at"
+										]
+									},
+									"nullable": true
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "integer",
+											"format": "int64"
+										},
+										"cursor": {
+											"type": "string"
+										},
+										"per_page": {
+											"type": "integer",
+											"format": "int64"
+										},
+										"total_count": {
+											"type": "integer",
+											"format": "int64"
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"per_page",
+										"count",
+										"total_count"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"result_info",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Policies"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.policies",
+		"x-fern-sdk-method-name": "list",
+		"x-stability": "beta"
+	},
+	"GET /accounts/{account_id}/cws/policies/{policy_id}": {
+		"operationId": "cws-get-policy",
+		"summary": "Get a policy by ID",
+		"description": "Returns the policy with the specified ID.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"name": "policy_id",
+				"in": "path",
+				"description": "ID of the policy to retrieve",
+				"required": true,
+				"schema": {
+					"description": "ID of the policy to retrieve",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"created_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										},
+										"description": {
+											"description": "Optional free-form description.",
+											"type": "string",
+											"maxLength": 1024
+										},
+										"entrypoint": {
+											"description": "Non-function rule declared in rego_source. Evaluation uses data.<package_path>.<entrypoint>.",
+											"type": "string",
+											"maxLength": 255,
+											"pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+										},
+										"filter": {
+											"description": "Optional filter expression that determines whether this policy applies. Null means the policy applies to every request. Maximum 4096 UTF-8 bytes.",
+											"type": "string",
+											"maxLength": 4096,
+											"minLength": 1,
+											"nullable": true
+										},
+										"id": {
+											"description": "Server-assigned UUID",
+											"type": "string",
+											"format": "uuid",
+											"readOnly": true
+										},
+										"name": {
+											"description": "Human-readable name; unique per account",
+											"type": "string",
+											"maxLength": 100,
+											"minLength": 1
+										},
+										"package_path": {
+											"description": "Dotted path derived from rego_source. Begins with policy. and is unique per account.",
+											"type": "string",
+											"maxLength": 1024,
+											"readOnly": true
+										},
+										"rego_source": {
+											"description": "Inline Rego source with a package beginning with \"policy.\" Maximum 16384 UTF-8 bytes.",
+											"type": "string",
+											"maxLength": 16384,
+											"minLength": 1
+										},
+										"tags": {
+											"description": "Tags attached to this policy",
+											"type": "object",
+											"additionalProperties": {
+												"type": "string"
+											}
+										},
+										"updated_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"tags",
+										"id",
+										"name",
+										"filter",
+										"package_path",
+										"entrypoint",
+										"rego_source",
+										"created_at",
+										"updated_at"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Policies"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.policies",
+		"x-fern-sdk-method-name": "get",
+		"x-stability": "beta"
+	},
+	"POST /accounts/{account_id}/cws/policies": {
+		"operationId": "cws-create-policy",
+		"summary": "Create a new policy",
+		"description": "Creates a policy from inline Rego source and an entrypoint. Omit filter to apply the policy to every request.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"description": {
+								"description": "Optional free-form description.",
+								"type": "string",
+								"maxLength": 1024
+							},
+							"entrypoint": {
+								"description": "Non-function rule declared in rego_source. Evaluation uses data.<package_path>.<entrypoint>.",
+								"type": "string",
+								"maxLength": 255,
+								"pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+							},
+							"filter": {
+								"description": "Optional filter expression that determines whether this policy applies. Omit or set null to apply the policy to every request. Maximum 4096 UTF-8 bytes.",
+								"type": "string",
+								"maxLength": 4096,
+								"minLength": 1,
+								"nullable": true
+							},
+							"name": {
+								"description": "Name of the policy",
+								"type": "string",
+								"maxLength": 100,
+								"minLength": 1
+							},
+							"rego_source": {
+								"description": "Inline Rego source with a package beginning with \"policy.\" Maximum 16384 UTF-8 bytes.",
+								"type": "string",
+								"maxLength": 16384,
+								"minLength": 1
+							},
+							"tags": {
+								"description": "Tags to attach. Keys are limited to 256 UTF-8 bytes and values to 1024 UTF-8 bytes.",
+								"type": "object",
+								"additionalProperties": {
+									"type": "string"
+								},
+								"maxProperties": 10
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"name",
+							"entrypoint",
+							"rego_source"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"201": {
+				"description": "Created",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"created_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										},
+										"description": {
+											"description": "Optional free-form description.",
+											"type": "string",
+											"maxLength": 1024
+										},
+										"entrypoint": {
+											"description": "Non-function rule declared in rego_source. Evaluation uses data.<package_path>.<entrypoint>.",
+											"type": "string",
+											"maxLength": 255,
+											"pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+										},
+										"filter": {
+											"description": "Optional filter expression that determines whether this policy applies. Null means the policy applies to every request. Maximum 4096 UTF-8 bytes.",
+											"type": "string",
+											"maxLength": 4096,
+											"minLength": 1,
+											"nullable": true
+										},
+										"id": {
+											"description": "Server-assigned UUID",
+											"type": "string",
+											"format": "uuid",
+											"readOnly": true
+										},
+										"name": {
+											"description": "Human-readable name; unique per account",
+											"type": "string",
+											"maxLength": 100,
+											"minLength": 1
+										},
+										"package_path": {
+											"description": "Dotted path derived from rego_source. Begins with policy. and is unique per account.",
+											"type": "string",
+											"maxLength": 1024,
+											"readOnly": true
+										},
+										"rego_source": {
+											"description": "Inline Rego source with a package beginning with \"policy.\" Maximum 16384 UTF-8 bytes.",
+											"type": "string",
+											"maxLength": 16384,
+											"minLength": 1
+										},
+										"tags": {
+											"description": "Tags attached to this policy",
+											"type": "object",
+											"additionalProperties": {
+												"type": "string"
+											}
+										},
+										"updated_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"tags",
+										"id",
+										"name",
+										"filter",
+										"package_path",
+										"entrypoint",
+										"rego_source",
+										"created_at",
+										"updated_at"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Service Unavailable — retry the request after the indicated delay.",
+				"headers": {
+					"Retry-After": {
+						"description": "Suggested delay in seconds before retrying.",
+						"schema": {
+							"type": "string"
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Policies"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.policies",
+		"x-fern-sdk-method-name": "create",
+		"x-stability": "beta"
+	},
+	"PUT /accounts/{account_id}/cws/policies/{policy_id}": {
+		"operationId": "cws-update-policy",
+		"summary": "Update a policy",
+		"description": "Replaces the policy's configuration. Omit filter to apply the policy to every request. Omit tags to preserve them; use {} to clear them.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"name": "policy_id",
+				"in": "path",
+				"description": "ID of the policy to update",
+				"required": true,
+				"schema": {
+					"description": "ID of the policy to update",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"description": {
+								"description": "Optional free-form description.",
+								"type": "string",
+								"maxLength": 1024
+							},
+							"entrypoint": {
+								"description": "Non-function rule declared in rego_source. Evaluation uses data.<package_path>.<entrypoint>.",
+								"type": "string",
+								"maxLength": 255,
+								"pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+							},
+							"filter": {
+								"description": "Optional filter expression that determines whether this policy applies. Omit or set null to apply the policy to every request. Maximum 4096 UTF-8 bytes.",
+								"type": "string",
+								"maxLength": 4096,
+								"minLength": 1,
+								"nullable": true
+							},
+							"name": {
+								"description": "Name of the policy",
+								"type": "string",
+								"maxLength": 100,
+								"minLength": 1
+							},
+							"rego_source": {
+								"description": "Inline Rego source with a package beginning with \"policy.\" Maximum 16384 UTF-8 bytes.",
+								"type": "string",
+								"maxLength": 16384,
+								"minLength": 1
+							},
+							"tags": {
+								"description": "Replacement tag set. Omit to preserve existing tags; use {} to clear. Keys are limited to 256 UTF-8 bytes and values to 1024 UTF-8 bytes.",
+								"type": "object",
+								"additionalProperties": {
+									"type": "string"
+								},
+								"maxProperties": 10
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"name",
+							"entrypoint",
+							"rego_source"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"created_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										},
+										"description": {
+											"description": "Optional free-form description.",
+											"type": "string",
+											"maxLength": 1024
+										},
+										"entrypoint": {
+											"description": "Non-function rule declared in rego_source. Evaluation uses data.<package_path>.<entrypoint>.",
+											"type": "string",
+											"maxLength": 255,
+											"pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+										},
+										"filter": {
+											"description": "Optional filter expression that determines whether this policy applies. Null means the policy applies to every request. Maximum 4096 UTF-8 bytes.",
+											"type": "string",
+											"maxLength": 4096,
+											"minLength": 1,
+											"nullable": true
+										},
+										"id": {
+											"description": "Server-assigned UUID",
+											"type": "string",
+											"format": "uuid",
+											"readOnly": true
+										},
+										"name": {
+											"description": "Human-readable name; unique per account",
+											"type": "string",
+											"maxLength": 100,
+											"minLength": 1
+										},
+										"package_path": {
+											"description": "Dotted path derived from rego_source. Begins with policy. and is unique per account.",
+											"type": "string",
+											"maxLength": 1024,
+											"readOnly": true
+										},
+										"rego_source": {
+											"description": "Inline Rego source with a package beginning with \"policy.\" Maximum 16384 UTF-8 bytes.",
+											"type": "string",
+											"maxLength": 16384,
+											"minLength": 1
+										},
+										"tags": {
+											"description": "Tags attached to this policy",
+											"type": "object",
+											"additionalProperties": {
+												"type": "string"
+											}
+										},
+										"updated_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"tags",
+										"id",
+										"name",
+										"filter",
+										"package_path",
+										"entrypoint",
+										"rego_source",
+										"created_at",
+										"updated_at"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Service Unavailable — retry the request after the indicated delay.",
+				"headers": {
+					"Retry-After": {
+						"description": "Suggested delay in seconds before retrying.",
+						"schema": {
+							"type": "string"
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Policies"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.policies",
+		"x-fern-sdk-method-name": "update",
+		"x-stability": "beta"
+	}
+}

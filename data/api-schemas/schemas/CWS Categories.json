@@ -1,0 +1,3344 @@
+{
+	"GET /cws/categories/apis": {
+		"operationId": "cws-list-category-apis",
+		"summary": "List category APIs",
+		"description": "Returns distinct active API names across every application or beneath an exact application name.",
+		"parameters": [
+			{
+				"name": "cursor",
+				"in": "query",
+				"description": "Pagination cursor from previous response",
+				"schema": {
+					"description": "Pagination cursor from previous response",
+					"type": "string"
+				},
+				"explode": false
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"description": "Number of items per page (1-100, default 20)",
+				"schema": {
+					"description": "Number of items per page (1-100, default 20)",
+					"type": "integer",
+					"format": "int64",
+					"default": 20,
+					"maximum": 100,
+					"minimum": 1
+				},
+				"explode": false
+			},
+			{
+				"name": "application",
+				"in": "query",
+				"description": "Exact case-sensitive application name. Omit to search every application.",
+				"schema": {
+					"description": "Exact case-sensitive application name. Omit to search every application.",
+					"type": "string",
+					"minLength": 1
+				},
+				"explode": false
+			},
+			{
+				"name": "name",
+				"in": "query",
+				"description": "Case-insensitive substring search over API names.",
+				"schema": {
+					"description": "Case-insensitive substring search over API names.",
+					"type": "string"
+				},
+				"explode": false
+			},
+			{
+				"name": "variants",
+				"in": "query",
+				"description": "Include the routing identities represented by each API name. Defaults to false.",
+				"schema": {
+					"description": "Include the routing identities represented by each API name. Defaults to false.",
+					"type": "boolean"
+				},
+				"explode": false
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"ancestors": {
+												"description": "Application and API paths associated with this name",
+												"type": "array",
+												"items": {
+													"type": "object",
+													"properties": {
+														"kind": {
+															"type": "string"
+														},
+														"name": {
+															"type": "string"
+														}
+													},
+													"additionalProperties": false,
+													"required": [
+														"kind",
+														"name"
+													]
+												}
+											},
+											"name": {
+												"description": "API or operation name",
+												"type": "string"
+											},
+											"variants": {
+												"description": "Routing identities represented by this name",
+												"type": "array",
+												"items": {
+													"type": "object",
+													"properties": {
+														"id": {
+															"type": "string",
+															"format": "uuid",
+															"readOnly": true
+														},
+														"key": {
+															"type": "string"
+														},
+														"parent_id": {
+															"type": "string",
+															"format": "uuid"
+														}
+													},
+													"additionalProperties": false,
+													"required": [
+														"id",
+														"key"
+													]
+												},
+												"nullable": true
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"name",
+											"ancestors"
+										]
+									},
+									"nullable": true
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "integer",
+											"format": "int64"
+										},
+										"cursor": {
+											"type": "string"
+										},
+										"per_page": {
+											"type": "integer",
+											"format": "int64"
+										},
+										"total_count": {
+											"type": "integer",
+											"format": "int64"
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"per_page",
+										"count",
+										"total_count"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"result_info",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Categories"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.cws.categories",
+		"x-fern-sdk-method-name": "list-apis",
+		"x-stability": "beta"
+	},
+	"GET /cws/categories/applications": {
+		"operationId": "cws-list-category-applications",
+		"summary": "List category applications",
+		"description": "Returns active applications and their stable keys.",
+		"parameters": [
+			{
+				"name": "cursor",
+				"in": "query",
+				"description": "Pagination cursor from previous response",
+				"schema": {
+					"description": "Pagination cursor from previous response",
+					"type": "string"
+				},
+				"explode": false
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"description": "Number of items per page (1-100, default 20)",
+				"schema": {
+					"description": "Number of items per page (1-100, default 20)",
+					"type": "integer",
+					"format": "int64",
+					"default": 20,
+					"maximum": 100,
+					"minimum": 1
+				},
+				"explode": false
+			},
+			{
+				"name": "name",
+				"in": "query",
+				"description": "Case-insensitive substring search over application names.",
+				"schema": {
+					"description": "Case-insensitive substring search over application names.",
+					"type": "string"
+				},
+				"explode": false
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"key": {
+												"description": "Stable application key used by version routes",
+												"type": "string"
+											},
+											"name": {
+												"description": "Application name",
+												"type": "string"
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"name",
+											"key"
+										]
+									},
+									"nullable": true
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "integer",
+											"format": "int64"
+										},
+										"cursor": {
+											"type": "string"
+										},
+										"per_page": {
+											"type": "integer",
+											"format": "int64"
+										},
+										"total_count": {
+											"type": "integer",
+											"format": "int64"
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"per_page",
+										"count",
+										"total_count"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"result_info",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Categories"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.cws.categories",
+		"x-fern-sdk-method-name": "list-applications",
+		"x-stability": "beta"
+	},
+	"GET /cws/categories/applications/{application_key}/versions": {
+		"operationId": "cws-list-category-application-versions",
+		"summary": "List application versions",
+		"description": "Lists immutable category bundle versions for an application.",
+		"parameters": [
+			{
+				"name": "cursor",
+				"in": "query",
+				"description": "Pagination cursor from previous response",
+				"schema": {
+					"description": "Pagination cursor from previous response",
+					"type": "string"
+				},
+				"explode": false
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"description": "Number of items per page (1-100, default 20)",
+				"schema": {
+					"description": "Number of items per page (1-100, default 20)",
+					"type": "integer",
+					"format": "int64",
+					"default": 20,
+					"maximum": 100,
+					"minimum": 1
+				},
+				"explode": false
+			},
+			{
+				"name": "application_key",
+				"in": "path",
+				"description": "Stable application key.",
+				"required": true,
+				"schema": {
+					"description": "Stable application key.",
+					"type": "string",
+					"maxLength": 255,
+					"minLength": 1,
+					"pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"bundle_format": {
+												"type": "string",
+												"enum": [
+													"v1"
+												],
+												"readOnly": true
+											},
+											"bundle_hash": {
+												"type": "string",
+												"readOnly": true
+											},
+											"category_count": {
+												"type": "integer",
+												"format": "int64",
+												"readOnly": true
+											},
+											"created_at": {
+												"type": "string",
+												"format": "date-time",
+												"readOnly": true
+											},
+											"definition_count": {
+												"type": "integer",
+												"format": "int64",
+												"readOnly": true
+											},
+											"group_count": {
+												"type": "integer",
+												"format": "int64",
+												"readOnly": true
+											},
+											"id": {
+												"type": "string",
+												"format": "uuid",
+												"readOnly": true
+											},
+											"metadata": {
+												"type": "object",
+												"additionalProperties": {
+													"anyOf": [
+														{
+															"additionalProperties": "[Circular ~.GET /cws/categories/applications/{application_key}/versions.responses.200.content.application/json.schema.properties.result.items.properties.metadata.additionalProperties]",
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"items": "[Circular ~.GET /cws/categories/applications/{application_key}/versions.responses.200.content.application/json.schema.properties.result.items.properties.metadata.additionalProperties]",
+															"type": "array"
+														},
+														{
+															"type": "string"
+														},
+														{
+															"type": "number"
+														},
+														{
+															"type": "boolean"
+														}
+													]
+												},
+												"readOnly": true
+											},
+											"version": {
+												"type": "string",
+												"readOnly": true
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"id",
+											"version",
+											"bundle_format",
+											"bundle_hash",
+											"category_count",
+											"definition_count",
+											"group_count",
+											"metadata",
+											"created_at"
+										]
+									},
+									"nullable": true
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "integer",
+											"format": "int64"
+										},
+										"cursor": {
+											"type": "string"
+										},
+										"per_page": {
+											"type": "integer",
+											"format": "int64"
+										},
+										"total_count": {
+											"type": "integer",
+											"format": "int64"
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"per_page",
+										"count",
+										"total_count"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"result_info",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Categories"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.cws.categories.versions",
+		"x-fern-sdk-method-name": "list",
+		"x-stability": "beta"
+	},
+	"GET /cws/categories/applications/{application_key}/versions/{version_tag}": {
+		"operationId": "cws-get-category-application-version",
+		"summary": "Get an application version",
+		"description": "Returns a pinned immutable category bundle version.",
+		"parameters": [
+			{
+				"name": "application_key",
+				"in": "path",
+				"description": "Stable application key.",
+				"required": true,
+				"schema": {
+					"description": "Stable application key.",
+					"type": "string",
+					"maxLength": 255,
+					"minLength": 1,
+					"pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+				}
+			},
+			{
+				"name": "version_tag",
+				"in": "path",
+				"description": "Immutable application version identifier.",
+				"required": true,
+				"schema": {
+					"description": "Immutable application version identifier.",
+					"type": "string",
+					"maxLength": 255,
+					"minLength": 1,
+					"pattern": "^[A-Za-z0-9][A-Za-z0-9._~-]*$"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK",
+				"headers": {
+					"Cache-Control": {
+						"schema": {
+							"description": "Caching policy for this immutable version.",
+							"type": "string"
+						}
+					},
+					"ETag": {
+						"schema": {
+							"description": "Opaque quoted immutable version validator, possibly with a weak-validator prefix.",
+							"type": "string"
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"bundle": {
+											"type": "object",
+											"properties": {
+												"format": {
+													"type": "string",
+													"enum": [
+														"v1"
+													],
+													"readOnly": true
+												},
+												"groups": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"description": {
+																"type": "string"
+															},
+															"id": {
+																"type": "string",
+																"format": "uuid",
+																"readOnly": true
+															},
+															"kind": {
+																"type": "string"
+															},
+															"legacy_id": {
+																"type": "integer",
+																"format": "int64"
+															},
+															"member_ids": {
+																"type": "array",
+																"items": {
+																	"format": "uuid",
+																	"type": "string"
+																}
+															},
+															"metadata": {
+																"type": "object",
+																"additionalProperties": {
+																	"anyOf": [
+																		{
+																			"additionalProperties": "[Circular ~.GET /cws/categories/applications/{application_key}/versions/{version_tag}.responses.200.content.application/json.schema.properties.result.properties.bundle.properties.groups.items.properties.metadata.additionalProperties]",
+																			"nullable": true,
+																			"type": "object"
+																		},
+																		{
+																			"items": "[Circular ~.GET /cws/categories/applications/{application_key}/versions/{version_tag}.responses.200.content.application/json.schema.properties.result.properties.bundle.properties.groups.items.properties.metadata.additionalProperties]",
+																			"type": "array"
+																		},
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"type": "number"
+																		},
+																		{
+																			"type": "boolean"
+																		}
+																	]
+																}
+															},
+															"name": {
+																"type": "string"
+															},
+															"scope": {
+																"type": "object",
+																"properties": {
+																	"id": {
+																		"type": "string",
+																		"format": "uuid",
+																		"readOnly": true
+																	},
+																	"kind": {
+																		"type": "string"
+																	}
+																},
+																"additionalProperties": false,
+																"required": [
+																	"id",
+																	"kind"
+																]
+															}
+														},
+														"additionalProperties": false,
+														"required": [
+															"id",
+															"kind",
+															"name",
+															"scope",
+															"member_ids"
+														]
+													}
+												},
+												"root": {
+													"type": "object",
+													"properties": {
+														"children": {
+															"type": "array",
+															"items": "[Circular ~.GET /cws/categories/applications/{application_key}/versions/{version_tag}.responses.200.content.application/json.schema.properties.result.properties.bundle.properties.root]"
+														},
+														"definitions": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"id": {
+																		"type": "string",
+																		"format": "uuid",
+																		"readOnly": true
+																	},
+																	"metadata": {
+																		"type": "object",
+																		"additionalProperties": {
+																			"anyOf": [
+																				{
+																					"additionalProperties": "[Circular ~.GET /cws/categories/applications/{application_key}/versions/{version_tag}.responses.200.content.application/json.schema.properties.result.properties.bundle.properties.root.properties.definitions.items.properties.metadata.additionalProperties]",
+																					"nullable": true,
+																					"type": "object"
+																				},
+																				{
+																					"items": "[Circular ~.GET /cws/categories/applications/{application_key}/versions/{version_tag}.responses.200.content.application/json.schema.properties.result.properties.bundle.properties.root.properties.definitions.items.properties.metadata.additionalProperties]",
+																					"type": "array"
+																				},
+																				{
+																					"type": "string"
+																				},
+																				{
+																					"type": "number"
+																				},
+																				{
+																					"type": "boolean"
+																				}
+																			]
+																		}
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"spec": {
+																		"type": "object",
+																		"additionalProperties": {
+																			"anyOf": [
+																				{
+																					"additionalProperties": "[Circular ~.GET /cws/categories/applications/{application_key}/versions/{version_tag}.responses.200.content.application/json.schema.properties.result.properties.bundle.properties.root.properties.definitions.items.properties.spec.additionalProperties]",
+																					"nullable": true,
+																					"type": "object"
+																				},
+																				{
+																					"items": "[Circular ~.GET /cws/categories/applications/{application_key}/versions/{version_tag}.responses.200.content.application/json.schema.properties.result.properties.bundle.properties.root.properties.definitions.items.properties.spec.additionalProperties]",
+																					"type": "array"
+																				},
+																				{
+																					"type": "string"
+																				},
+																				{
+																					"type": "number"
+																				},
+																				{
+																					"type": "boolean"
+																				}
+																			]
+																		}
+																	}
+																},
+																"additionalProperties": false,
+																"required": [
+																	"id",
+																	"spec"
+																]
+															}
+														},
+														"description": {
+															"type": "string"
+														},
+														"id": {
+															"type": "string",
+															"format": "uuid",
+															"readOnly": true
+														},
+														"key": {
+															"type": "string"
+														},
+														"kind": {
+															"type": "string"
+														},
+														"legacy_id": {
+															"type": "integer",
+															"format": "int64"
+														},
+														"metadata": {
+															"type": "object",
+															"additionalProperties": {
+																"anyOf": [
+																	{
+																		"additionalProperties": "[Circular ~.GET /cws/categories/applications/{application_key}/versions/{version_tag}.responses.200.content.application/json.schema.properties.result.properties.bundle.properties.root.properties.metadata.additionalProperties]",
+																		"nullable": true,
+																		"type": "object"
+																	},
+																	{
+																		"items": "[Circular ~.GET /cws/categories/applications/{application_key}/versions/{version_tag}.responses.200.content.application/json.schema.properties.result.properties.bundle.properties.root.properties.metadata.additionalProperties]",
+																		"type": "array"
+																	},
+																	{
+																		"type": "string"
+																	},
+																	{
+																		"type": "number"
+																	},
+																	{
+																		"type": "boolean"
+																	}
+																]
+															}
+														},
+														"name": {
+															"type": "string"
+														}
+													},
+													"additionalProperties": false,
+													"required": [
+														"id",
+														"kind",
+														"key",
+														"name",
+														"definitions"
+													]
+												}
+											},
+											"additionalProperties": false,
+											"required": [
+												"format",
+												"root"
+											]
+										},
+										"bundle_format": {
+											"type": "string",
+											"enum": [
+												"v1"
+											],
+											"readOnly": true
+										},
+										"bundle_hash": {
+											"type": "string",
+											"readOnly": true
+										},
+										"category_count": {
+											"type": "integer",
+											"format": "int64",
+											"readOnly": true
+										},
+										"created_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										},
+										"definition_count": {
+											"type": "integer",
+											"format": "int64",
+											"readOnly": true
+										},
+										"group_count": {
+											"type": "integer",
+											"format": "int64",
+											"readOnly": true
+										},
+										"id": {
+											"type": "string",
+											"format": "uuid",
+											"readOnly": true
+										},
+										"metadata": {
+											"type": "object",
+											"additionalProperties": {
+												"anyOf": [
+													{
+														"additionalProperties": "[Circular ~.GET /cws/categories/applications/{application_key}/versions/{version_tag}.responses.200.content.application/json.schema.properties.result.properties.metadata.additionalProperties]",
+														"nullable": true,
+														"type": "object"
+													},
+													{
+														"items": "[Circular ~.GET /cws/categories/applications/{application_key}/versions/{version_tag}.responses.200.content.application/json.schema.properties.result.properties.metadata.additionalProperties]",
+														"type": "array"
+													},
+													{
+														"type": "string"
+													},
+													{
+														"type": "number"
+													},
+													{
+														"type": "boolean"
+													}
+												]
+											},
+											"readOnly": true
+										},
+										"version": {
+											"type": "string",
+											"readOnly": true
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"bundle",
+										"id",
+										"version",
+										"bundle_format",
+										"bundle_hash",
+										"category_count",
+										"definition_count",
+										"group_count",
+										"metadata",
+										"created_at"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Service Unavailable — retry the request after the indicated delay.",
+				"headers": {
+					"Retry-After": {
+						"description": "Suggested delay in seconds before retrying.",
+						"schema": {
+							"type": "string"
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Categories"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.cws.categories.versions",
+		"x-fern-sdk-method-name": "get",
+		"x-stability": "beta"
+	},
+	"GET /cws/categories/applications/{application_key}/versions/latest": {
+		"operationId": "cws-get-latest-category-application-version",
+		"summary": "Get the latest application version",
+		"description": "Returns the latest immutable category bundle and supports conditional retrieval with If-None-Match.",
+		"parameters": [
+			{
+				"name": "application_key",
+				"in": "path",
+				"description": "Stable application key.",
+				"required": true,
+				"schema": {
+					"description": "Stable application key.",
+					"type": "string",
+					"maxLength": 255,
+					"minLength": 1,
+					"pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+				}
+			},
+			{
+				"name": "If-None-Match",
+				"in": "header",
+				"description": "Previously received bundle ETag. A match returns 304 without a response body.",
+				"schema": {
+					"description": "Previously received bundle ETag. A match returns 304 without a response body.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK",
+				"headers": {
+					"Cache-Control": {
+						"schema": {
+							"description": "Requires caches to revalidate this mutable latest-version pointer.",
+							"type": "string"
+						}
+					},
+					"ETag": {
+						"schema": {
+							"description": "Opaque quoted latest-version validator, possibly with a weak-validator prefix.",
+							"type": "string"
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"bundle": {
+											"type": "object",
+											"properties": {
+												"format": {
+													"type": "string",
+													"enum": [
+														"v1"
+													],
+													"readOnly": true
+												},
+												"groups": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"description": {
+																"type": "string"
+															},
+															"id": {
+																"type": "string",
+																"format": "uuid",
+																"readOnly": true
+															},
+															"kind": {
+																"type": "string"
+															},
+															"legacy_id": {
+																"type": "integer",
+																"format": "int64"
+															},
+															"member_ids": {
+																"type": "array",
+																"items": {
+																	"format": "uuid",
+																	"type": "string"
+																}
+															},
+															"metadata": {
+																"type": "object",
+																"additionalProperties": {
+																	"anyOf": [
+																		{
+																			"additionalProperties": "[Circular ~.GET /cws/categories/applications/{application_key}/versions/latest.responses.200.content.application/json.schema.properties.result.properties.bundle.properties.groups.items.properties.metadata.additionalProperties]",
+																			"nullable": true,
+																			"type": "object"
+																		},
+																		{
+																			"items": "[Circular ~.GET /cws/categories/applications/{application_key}/versions/latest.responses.200.content.application/json.schema.properties.result.properties.bundle.properties.groups.items.properties.metadata.additionalProperties]",
+																			"type": "array"
+																		},
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"type": "number"
+																		},
+																		{
+																			"type": "boolean"
+																		}
+																	]
+																}
+															},
+															"name": {
+																"type": "string"
+															},
+															"scope": {
+																"type": "object",
+																"properties": {
+																	"id": {
+																		"type": "string",
+																		"format": "uuid",
+																		"readOnly": true
+																	},
+																	"kind": {
+																		"type": "string"
+																	}
+																},
+																"additionalProperties": false,
+																"required": [
+																	"id",
+																	"kind"
+																]
+															}
+														},
+														"additionalProperties": false,
+														"required": [
+															"id",
+															"kind",
+															"name",
+															"scope",
+															"member_ids"
+														]
+													}
+												},
+												"root": {
+													"type": "object",
+													"properties": {
+														"children": {
+															"type": "array",
+															"items": "[Circular ~.GET /cws/categories/applications/{application_key}/versions/latest.responses.200.content.application/json.schema.properties.result.properties.bundle.properties.root]"
+														},
+														"definitions": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"id": {
+																		"type": "string",
+																		"format": "uuid",
+																		"readOnly": true
+																	},
+																	"metadata": {
+																		"type": "object",
+																		"additionalProperties": {
+																			"anyOf": [
+																				{
+																					"additionalProperties": "[Circular ~.GET /cws/categories/applications/{application_key}/versions/latest.responses.200.content.application/json.schema.properties.result.properties.bundle.properties.root.properties.definitions.items.properties.metadata.additionalProperties]",
+																					"nullable": true,
+																					"type": "object"
+																				},
+																				{
+																					"items": "[Circular ~.GET /cws/categories/applications/{application_key}/versions/latest.responses.200.content.application/json.schema.properties.result.properties.bundle.properties.root.properties.definitions.items.properties.metadata.additionalProperties]",
+																					"type": "array"
+																				},
+																				{
+																					"type": "string"
+																				},
+																				{
+																					"type": "number"
+																				},
+																				{
+																					"type": "boolean"
+																				}
+																			]
+																		}
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"spec": {
+																		"type": "object",
+																		"additionalProperties": {
+																			"anyOf": [
+																				{
+																					"additionalProperties": "[Circular ~.GET /cws/categories/applications/{application_key}/versions/latest.responses.200.content.application/json.schema.properties.result.properties.bundle.properties.root.properties.definitions.items.properties.spec.additionalProperties]",
+																					"nullable": true,
+																					"type": "object"
+																				},
+																				{
+																					"items": "[Circular ~.GET /cws/categories/applications/{application_key}/versions/latest.responses.200.content.application/json.schema.properties.result.properties.bundle.properties.root.properties.definitions.items.properties.spec.additionalProperties]",
+																					"type": "array"
+																				},
+																				{
+																					"type": "string"
+																				},
+																				{
+																					"type": "number"
+																				},
+																				{
+																					"type": "boolean"
+																				}
+																			]
+																		}
+																	}
+																},
+																"additionalProperties": false,
+																"required": [
+																	"id",
+																	"spec"
+																]
+															}
+														},
+														"description": {
+															"type": "string"
+														},
+														"id": {
+															"type": "string",
+															"format": "uuid",
+															"readOnly": true
+														},
+														"key": {
+															"type": "string"
+														},
+														"kind": {
+															"type": "string"
+														},
+														"legacy_id": {
+															"type": "integer",
+															"format": "int64"
+														},
+														"metadata": {
+															"type": "object",
+															"additionalProperties": {
+																"anyOf": [
+																	{
+																		"additionalProperties": "[Circular ~.GET /cws/categories/applications/{application_key}/versions/latest.responses.200.content.application/json.schema.properties.result.properties.bundle.properties.root.properties.metadata.additionalProperties]",
+																		"nullable": true,
+																		"type": "object"
+																	},
+																	{
+																		"items": "[Circular ~.GET /cws/categories/applications/{application_key}/versions/latest.responses.200.content.application/json.schema.properties.result.properties.bundle.properties.root.properties.metadata.additionalProperties]",
+																		"type": "array"
+																	},
+																	{
+																		"type": "string"
+																	},
+																	{
+																		"type": "number"
+																	},
+																	{
+																		"type": "boolean"
+																	}
+																]
+															}
+														},
+														"name": {
+															"type": "string"
+														}
+													},
+													"additionalProperties": false,
+													"required": [
+														"id",
+														"kind",
+														"key",
+														"name",
+														"definitions"
+													]
+												}
+											},
+											"additionalProperties": false,
+											"required": [
+												"format",
+												"root"
+											]
+										},
+										"bundle_format": {
+											"type": "string",
+											"enum": [
+												"v1"
+											],
+											"readOnly": true
+										},
+										"bundle_hash": {
+											"type": "string",
+											"readOnly": true
+										},
+										"category_count": {
+											"type": "integer",
+											"format": "int64",
+											"readOnly": true
+										},
+										"created_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										},
+										"definition_count": {
+											"type": "integer",
+											"format": "int64",
+											"readOnly": true
+										},
+										"group_count": {
+											"type": "integer",
+											"format": "int64",
+											"readOnly": true
+										},
+										"id": {
+											"type": "string",
+											"format": "uuid",
+											"readOnly": true
+										},
+										"metadata": {
+											"type": "object",
+											"additionalProperties": {
+												"anyOf": [
+													{
+														"additionalProperties": "[Circular ~.GET /cws/categories/applications/{application_key}/versions/latest.responses.200.content.application/json.schema.properties.result.properties.metadata.additionalProperties]",
+														"nullable": true,
+														"type": "object"
+													},
+													{
+														"items": "[Circular ~.GET /cws/categories/applications/{application_key}/versions/latest.responses.200.content.application/json.schema.properties.result.properties.metadata.additionalProperties]",
+														"type": "array"
+													},
+													{
+														"type": "string"
+													},
+													{
+														"type": "number"
+													},
+													{
+														"type": "boolean"
+													}
+												]
+											},
+											"readOnly": true
+										},
+										"version": {
+											"type": "string",
+											"readOnly": true
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"bundle",
+										"id",
+										"version",
+										"bundle_format",
+										"bundle_hash",
+										"category_count",
+										"definition_count",
+										"group_count",
+										"metadata",
+										"created_at"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"304": {
+				"description": "Not Modified - the supplied If-None-Match matches the latest application bundle.",
+				"headers": {
+					"Cache-Control": {
+						"description": "Cache revalidation policy.",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"ETag": {
+						"description": "Current opaque quoted application version validator, possibly with a weak-validator prefix.",
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Service Unavailable — retry the request after the indicated delay.",
+				"headers": {
+					"Retry-After": {
+						"description": "Suggested delay in seconds before retrying.",
+						"schema": {
+							"type": "string"
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Categories"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.cws.categories.versions",
+		"x-fern-sdk-method-name": "get-latest",
+		"x-stability": "beta"
+	},
+	"GET /cws/categories/operations": {
+		"operationId": "cws-list-category-operations",
+		"summary": "List category operations",
+		"description": "Returns distinct active operation names across every path and supports independent exact application and API ancestor filters.",
+		"parameters": [
+			{
+				"name": "cursor",
+				"in": "query",
+				"description": "Pagination cursor from previous response",
+				"schema": {
+					"description": "Pagination cursor from previous response",
+					"type": "string"
+				},
+				"explode": false
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"description": "Number of items per page (1-100, default 20)",
+				"schema": {
+					"description": "Number of items per page (1-100, default 20)",
+					"type": "integer",
+					"format": "int64",
+					"default": 20,
+					"maximum": 100,
+					"minimum": 1
+				},
+				"explode": false
+			},
+			{
+				"name": "application",
+				"in": "query",
+				"description": "Exact case-sensitive application ancestor name. Omit to search every application.",
+				"schema": {
+					"description": "Exact case-sensitive application ancestor name. Omit to search every application.",
+					"type": "string",
+					"minLength": 1
+				},
+				"explode": false
+			},
+			{
+				"name": "api",
+				"in": "query",
+				"description": "Exact case-sensitive API ancestor name. Omit to search every API.",
+				"schema": {
+					"description": "Exact case-sensitive API ancestor name. Omit to search every API.",
+					"type": "string",
+					"minLength": 1
+				},
+				"explode": false
+			},
+			{
+				"name": "name",
+				"in": "query",
+				"description": "Case-insensitive substring search over operation names.",
+				"schema": {
+					"description": "Case-insensitive substring search over operation names.",
+					"type": "string"
+				},
+				"explode": false
+			},
+			{
+				"name": "variants",
+				"in": "query",
+				"description": "Include the routing identities represented by each operation name. Defaults to false.",
+				"schema": {
+					"description": "Include the routing identities represented by each operation name. Defaults to false.",
+					"type": "boolean"
+				},
+				"explode": false
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"ancestors": {
+												"description": "Application and API paths associated with this name",
+												"type": "array",
+												"items": {
+													"type": "object",
+													"properties": {
+														"kind": {
+															"type": "string"
+														},
+														"name": {
+															"type": "string"
+														}
+													},
+													"additionalProperties": false,
+													"required": [
+														"kind",
+														"name"
+													]
+												}
+											},
+											"name": {
+												"description": "API or operation name",
+												"type": "string"
+											},
+											"variants": {
+												"description": "Routing identities represented by this name",
+												"type": "array",
+												"items": {
+													"type": "object",
+													"properties": {
+														"id": {
+															"type": "string",
+															"format": "uuid",
+															"readOnly": true
+														},
+														"key": {
+															"type": "string"
+														},
+														"parent_id": {
+															"type": "string",
+															"format": "uuid"
+														}
+													},
+													"additionalProperties": false,
+													"required": [
+														"id",
+														"key"
+													]
+												},
+												"nullable": true
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"name",
+											"ancestors"
+										]
+									},
+									"nullable": true
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "integer",
+											"format": "int64"
+										},
+										"cursor": {
+											"type": "string"
+										},
+										"per_page": {
+											"type": "integer",
+											"format": "int64"
+										},
+										"total_count": {
+											"type": "integer",
+											"format": "int64"
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"per_page",
+										"count",
+										"total_count"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"result_info",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Categories"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.cws.categories",
+		"x-fern-sdk-method-name": "list-operations",
+		"x-stability": "beta"
+	}
+}

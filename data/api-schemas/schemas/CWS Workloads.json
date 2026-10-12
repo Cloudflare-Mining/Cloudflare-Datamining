@@ -1,0 +1,2066 @@
+{
+	"DELETE /accounts/{account_id}/cws/workloads/{workload_id}": {
+		"operationId": "cws-delete-workload",
+		"summary": "Delete a workload",
+		"description": "Deletes the workload if it is not targeted by a policy set.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"name": "workload_id",
+				"in": "path",
+				"description": "ID of the workload to delete",
+				"required": true,
+				"schema": {
+					"description": "ID of the workload to delete",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"id": {
+											"type": "string",
+											"format": "uuid"
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"id"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Workloads"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.workloads",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-require-confirmation": "Delete this workload?",
+		"x-stability": "beta"
+	},
+	"GET /accounts/{account_id}/cws/workloads": {
+		"operationId": "cws-list-workloads",
+		"summary": "List workloads",
+		"description": "Returns a paginated list of workloads in the account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"name": "cursor",
+				"in": "query",
+				"description": "Pagination cursor from previous response",
+				"schema": {
+					"description": "Pagination cursor from previous response",
+					"type": "string"
+				},
+				"explode": false
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"description": "Number of items per page (1-100, default 20)",
+				"schema": {
+					"description": "Number of items per page (1-100, default 20)",
+					"type": "integer",
+					"format": "int64",
+					"default": 20,
+					"maximum": 100,
+					"minimum": 1
+				},
+				"explode": false
+			},
+			{
+				"name": "order",
+				"in": "query",
+				"description": "Field to order results by (default: created_at)",
+				"schema": {
+					"description": "Field to order results by (default: created_at)",
+					"type": "string",
+					"default": "created_at",
+					"enum": [
+						"name",
+						"created_at",
+						"updated_at"
+					]
+				},
+				"explode": false
+			},
+			{
+				"name": "direction",
+				"in": "query",
+				"description": "Sort direction (default: asc)",
+				"schema": {
+					"description": "Sort direction (default: asc)",
+					"type": "string",
+					"default": "asc",
+					"enum": [
+						"asc",
+						"desc"
+					]
+				},
+				"explode": false
+			},
+			{
+				"name": "name",
+				"in": "query",
+				"description": "Filter by workload name (case-insensitive substring match)",
+				"schema": {
+					"description": "Filter by workload name (case-insensitive substring match)",
+					"type": "string"
+				},
+				"explode": false
+			},
+			{
+				"name": "policy_set_id",
+				"in": "query",
+				"description": "Filter to workloads attached to this policy set",
+				"schema": {
+					"description": "Filter to workloads attached to this policy set",
+					"type": "string",
+					"format": "uuid"
+				},
+				"explode": false
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"created_at": {
+												"type": "string",
+												"format": "date-time",
+												"readOnly": true
+											},
+											"description": {
+												"description": "Optional free-form description.",
+												"type": "string",
+												"maxLength": 1024
+											},
+											"filter": {
+												"description": "Filter expression selecting the requests this workload matches. Maximum 4096 UTF-8 bytes.",
+												"type": "string",
+												"maxLength": 4096,
+												"minLength": 1
+											},
+											"id": {
+												"description": "Server-assigned UUID",
+												"type": "string",
+												"format": "uuid",
+												"readOnly": true
+											},
+											"name": {
+												"description": "Human-readable handle; unique per account.",
+												"type": "string",
+												"maxLength": 100,
+												"minLength": 1
+											},
+											"tags": {
+												"description": "Tags attached to this workload",
+												"type": "object",
+												"additionalProperties": {
+													"type": "string"
+												}
+											},
+											"updated_at": {
+												"type": "string",
+												"format": "date-time",
+												"readOnly": true
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"tags",
+											"id",
+											"name",
+											"filter",
+											"created_at",
+											"updated_at"
+										]
+									},
+									"nullable": true
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "integer",
+											"format": "int64"
+										},
+										"cursor": {
+											"type": "string"
+										},
+										"per_page": {
+											"type": "integer",
+											"format": "int64"
+										},
+										"total_count": {
+											"type": "integer",
+											"format": "int64"
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"per_page",
+										"count",
+										"total_count"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"result_info",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Workloads"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.workloads",
+		"x-fern-sdk-method-name": "list",
+		"x-stability": "beta"
+	},
+	"GET /accounts/{account_id}/cws/workloads/{workload_id}": {
+		"operationId": "cws-get-workload",
+		"summary": "Get a workload by ID",
+		"description": "Returns the workload with the specified ID.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"name": "workload_id",
+				"in": "path",
+				"description": "ID of the workload to retrieve",
+				"required": true,
+				"schema": {
+					"description": "ID of the workload to retrieve",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"created_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										},
+										"description": {
+											"description": "Optional free-form description.",
+											"type": "string",
+											"maxLength": 1024
+										},
+										"filter": {
+											"description": "Filter expression selecting the requests this workload matches. Maximum 4096 UTF-8 bytes.",
+											"type": "string",
+											"maxLength": 4096,
+											"minLength": 1
+										},
+										"id": {
+											"description": "Server-assigned UUID",
+											"type": "string",
+											"format": "uuid",
+											"readOnly": true
+										},
+										"name": {
+											"description": "Human-readable handle; unique per account.",
+											"type": "string",
+											"maxLength": 100,
+											"minLength": 1
+										},
+										"tags": {
+											"description": "Tags attached to this workload",
+											"type": "object",
+											"additionalProperties": {
+												"type": "string"
+											}
+										},
+										"updated_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"tags",
+										"id",
+										"name",
+										"filter",
+										"created_at",
+										"updated_at"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Workloads"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.workloads",
+		"x-fern-sdk-method-name": "get",
+		"x-stability": "beta"
+	},
+	"POST /accounts/{account_id}/cws/workloads": {
+		"operationId": "cws-create-workload",
+		"summary": "Create a new workload",
+		"description": "Creates a reusable workload selector from a filter expression.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"description": {
+								"description": "Optional free-form description.",
+								"type": "string",
+								"maxLength": 1024
+							},
+							"filter": {
+								"description": "Filter expression selecting the requests this workload matches. Maximum 4096 UTF-8 bytes.",
+								"type": "string",
+								"maxLength": 4096,
+								"minLength": 1
+							},
+							"name": {
+								"description": "Human-readable handle; unique per account.",
+								"type": "string",
+								"maxLength": 100,
+								"minLength": 1
+							},
+							"tags": {
+								"description": "Tags to attach. Keys are limited to 256 UTF-8 bytes and values to 1024 UTF-8 bytes.",
+								"type": "object",
+								"additionalProperties": {
+									"type": "string"
+								},
+								"maxProperties": 10
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"name",
+							"filter"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"201": {
+				"description": "Created",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"created_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										},
+										"description": {
+											"description": "Optional free-form description.",
+											"type": "string",
+											"maxLength": 1024
+										},
+										"filter": {
+											"description": "Filter expression selecting the requests this workload matches. Maximum 4096 UTF-8 bytes.",
+											"type": "string",
+											"maxLength": 4096,
+											"minLength": 1
+										},
+										"id": {
+											"description": "Server-assigned UUID",
+											"type": "string",
+											"format": "uuid",
+											"readOnly": true
+										},
+										"name": {
+											"description": "Human-readable handle; unique per account.",
+											"type": "string",
+											"maxLength": 100,
+											"minLength": 1
+										},
+										"tags": {
+											"description": "Tags attached to this workload",
+											"type": "object",
+											"additionalProperties": {
+												"type": "string"
+											}
+										},
+										"updated_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"tags",
+										"id",
+										"name",
+										"filter",
+										"created_at",
+										"updated_at"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Workloads"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.workloads",
+		"x-fern-sdk-method-name": "create",
+		"x-stability": "beta"
+	},
+	"PUT /accounts/{account_id}/cws/workloads/{workload_id}": {
+		"operationId": "cws-update-workload",
+		"summary": "Update a workload",
+		"description": "Replaces the workload's configuration. Omit tags to preserve them; use {} to clear them.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"name": "workload_id",
+				"in": "path",
+				"description": "ID of the workload to update",
+				"required": true,
+				"schema": {
+					"description": "ID of the workload to update",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"description": {
+								"description": "Optional free-form description.",
+								"type": "string",
+								"maxLength": 1024
+							},
+							"filter": {
+								"description": "Filter expression selecting the requests this workload matches. Maximum 4096 UTF-8 bytes.",
+								"type": "string",
+								"maxLength": 4096,
+								"minLength": 1
+							},
+							"name": {
+								"description": "Human-readable handle; unique per account.",
+								"type": "string",
+								"maxLength": 100,
+								"minLength": 1
+							},
+							"tags": {
+								"description": "Replacement tag set. Omit to preserve existing tags; use {} to clear. Keys are limited to 256 UTF-8 bytes and values to 1024 UTF-8 bytes.",
+								"type": "object",
+								"additionalProperties": {
+									"type": "string"
+								},
+								"maxProperties": 10
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"name",
+							"filter"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"created_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										},
+										"description": {
+											"description": "Optional free-form description.",
+											"type": "string",
+											"maxLength": 1024
+										},
+										"filter": {
+											"description": "Filter expression selecting the requests this workload matches. Maximum 4096 UTF-8 bytes.",
+											"type": "string",
+											"maxLength": 4096,
+											"minLength": 1
+										},
+										"id": {
+											"description": "Server-assigned UUID",
+											"type": "string",
+											"format": "uuid",
+											"readOnly": true
+										},
+										"name": {
+											"description": "Human-readable handle; unique per account.",
+											"type": "string",
+											"maxLength": 100,
+											"minLength": 1
+										},
+										"tags": {
+											"description": "Tags attached to this workload",
+											"type": "object",
+											"additionalProperties": {
+												"type": "string"
+											}
+										},
+										"updated_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"tags",
+										"id",
+										"name",
+										"filter",
+										"created_at",
+										"updated_at"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Workloads"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.workloads",
+		"x-fern-sdk-method-name": "update",
+		"x-stability": "beta"
+	}
+}

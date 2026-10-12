@@ -1,0 +1,2290 @@
+{
+	"DELETE /accounts/{account_id}/cws/policy-sets/{policy_set_id}": {
+		"operationId": "cws-delete-policy-set",
+		"summary": "Delete a policy set",
+		"description": "Deletes the policy set and cascades its deployment attachment and policy and workload membership rows. The referenced deployments, policies, and workloads remain.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"name": "policy_set_id",
+				"in": "path",
+				"description": "ID of the policy set to delete",
+				"required": true,
+				"schema": {
+					"description": "ID of the policy set to delete",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"id": {
+											"type": "string",
+											"format": "uuid"
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"id"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Policy Sets"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.policy-sets",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-require-confirmation": "Delete this policy set?",
+		"x-stability": "beta"
+	},
+	"GET /accounts/{account_id}/cws/policy-sets": {
+		"operationId": "cws-list-policy-sets",
+		"summary": "List policy sets",
+		"description": "Returns a paginated list of policy sets in the account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"name": "cursor",
+				"in": "query",
+				"description": "Pagination cursor from previous response",
+				"schema": {
+					"description": "Pagination cursor from previous response",
+					"type": "string"
+				},
+				"explode": false
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"description": "Number of items per page (1-100, default 20)",
+				"schema": {
+					"description": "Number of items per page (1-100, default 20)",
+					"type": "integer",
+					"format": "int64",
+					"default": 20,
+					"maximum": 100,
+					"minimum": 1
+				},
+				"explode": false
+			},
+			{
+				"name": "order",
+				"in": "query",
+				"description": "Field to order results by (default: created_at)",
+				"schema": {
+					"description": "Field to order results by (default: created_at)",
+					"type": "string",
+					"default": "created_at",
+					"enum": [
+						"name",
+						"created_at",
+						"updated_at"
+					]
+				},
+				"explode": false
+			},
+			{
+				"name": "direction",
+				"in": "query",
+				"description": "Sort direction (default: asc)",
+				"schema": {
+					"description": "Sort direction (default: asc)",
+					"type": "string",
+					"default": "asc",
+					"enum": [
+						"asc",
+						"desc"
+					]
+				},
+				"explode": false
+			},
+			{
+				"name": "name",
+				"in": "query",
+				"description": "Filter by policy set name (case-insensitive substring match)",
+				"schema": {
+					"description": "Filter by policy set name (case-insensitive substring match)",
+					"type": "string"
+				},
+				"explode": false
+			},
+			{
+				"name": "deployment_id",
+				"in": "query",
+				"description": "Filter to policy sets attached to this deployment",
+				"schema": {
+					"description": "Filter to policy sets attached to this deployment",
+					"type": "string",
+					"format": "uuid"
+				},
+				"explode": false
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"created_at": {
+												"type": "string",
+												"format": "date-time",
+												"readOnly": true
+											},
+											"description": {
+												"description": "Optional free-form description.",
+												"type": "string",
+												"maxLength": 1024
+											},
+											"exclude_workload_ids": {
+												"description": "IDs of workloads that exclude matching requests. Exclusions take precedence.",
+												"type": "array",
+												"items": {
+													"format": "uuid",
+													"type": "string"
+												},
+												"nullable": true
+											},
+											"id": {
+												"description": "Server-assigned UUID",
+												"type": "string",
+												"format": "uuid",
+												"readOnly": true
+											},
+											"include_workload_ids": {
+												"description": "IDs of workloads that include matching requests. Empty includes all requests before exclusions.",
+												"type": "array",
+												"items": {
+													"format": "uuid",
+													"type": "string"
+												},
+												"nullable": true
+											},
+											"name": {
+												"description": "Human-readable name; unique per account",
+												"type": "string",
+												"maxLength": 100,
+												"minLength": 1
+											},
+											"policies": {
+												"description": "Member policies and their per-membership enforcement mode",
+												"type": "array",
+												"items": {
+													"type": "object",
+													"properties": {
+														"enforce": {
+															"description": "Whether this policy should enforce when it matches. False keeps the policy attached for non-enforcing evaluation.",
+															"type": "boolean"
+														},
+														"policy_id": {
+															"description": "ID of the member policy",
+															"type": "string",
+															"format": "uuid"
+														}
+													},
+													"additionalProperties": false,
+													"required": [
+														"policy_id",
+														"enforce"
+													]
+												},
+												"nullable": true
+											},
+											"tags": {
+												"description": "Tags attached to this policy set",
+												"type": "object",
+												"additionalProperties": {
+													"type": "string"
+												}
+											},
+											"updated_at": {
+												"type": "string",
+												"format": "date-time",
+												"readOnly": true
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"tags",
+											"id",
+											"name",
+											"policies",
+											"include_workload_ids",
+											"exclude_workload_ids",
+											"created_at",
+											"updated_at"
+										]
+									},
+									"nullable": true
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "integer",
+											"format": "int64"
+										},
+										"cursor": {
+											"type": "string"
+										},
+										"per_page": {
+											"type": "integer",
+											"format": "int64"
+										},
+										"total_count": {
+											"type": "integer",
+											"format": "int64"
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"per_page",
+										"count",
+										"total_count"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"result_info",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Policy Sets"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.policy-sets",
+		"x-fern-sdk-method-name": "list",
+		"x-stability": "beta"
+	},
+	"GET /accounts/{account_id}/cws/policy-sets/{policy_set_id}": {
+		"operationId": "cws-get-policy-set",
+		"summary": "Get a policy set by ID",
+		"description": "Returns the policy set with the specified ID.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"name": "policy_set_id",
+				"in": "path",
+				"description": "ID of the policy set to retrieve",
+				"required": true,
+				"schema": {
+					"description": "ID of the policy set to retrieve",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"created_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										},
+										"description": {
+											"description": "Optional free-form description.",
+											"type": "string",
+											"maxLength": 1024
+										},
+										"exclude_workload_ids": {
+											"description": "IDs of workloads that exclude matching requests. Exclusions take precedence.",
+											"type": "array",
+											"items": {
+												"format": "uuid",
+												"type": "string"
+											},
+											"nullable": true
+										},
+										"id": {
+											"description": "Server-assigned UUID",
+											"type": "string",
+											"format": "uuid",
+											"readOnly": true
+										},
+										"include_workload_ids": {
+											"description": "IDs of workloads that include matching requests. Empty includes all requests before exclusions.",
+											"type": "array",
+											"items": {
+												"format": "uuid",
+												"type": "string"
+											},
+											"nullable": true
+										},
+										"name": {
+											"description": "Human-readable name; unique per account",
+											"type": "string",
+											"maxLength": 100,
+											"minLength": 1
+										},
+										"policies": {
+											"description": "Member policies and their per-membership enforcement mode",
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"enforce": {
+														"description": "Whether this policy should enforce when it matches. False keeps the policy attached for non-enforcing evaluation.",
+														"type": "boolean"
+													},
+													"policy_id": {
+														"description": "ID of the member policy",
+														"type": "string",
+														"format": "uuid"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"policy_id",
+													"enforce"
+												]
+											},
+											"nullable": true
+										},
+										"tags": {
+											"description": "Tags attached to this policy set",
+											"type": "object",
+											"additionalProperties": {
+												"type": "string"
+											}
+										},
+										"updated_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"tags",
+										"id",
+										"name",
+										"policies",
+										"include_workload_ids",
+										"exclude_workload_ids",
+										"created_at",
+										"updated_at"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Policy Sets"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.policy-sets",
+		"x-fern-sdk-method-name": "get",
+		"x-stability": "beta"
+	},
+	"POST /accounts/{account_id}/cws/policy-sets": {
+		"operationId": "cws-create-policy-set",
+		"summary": "Create a new policy set",
+		"description": "Creates a policy set containing the specified policies and workload targets.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"description": {
+								"description": "Optional free-form description.",
+								"type": "string",
+								"maxLength": 1024
+							},
+							"exclude_workload_ids": {
+								"description": "Workload IDs that exclude matching requests. Exclusions take precedence.",
+								"type": "array",
+								"items": {
+									"format": "uuid",
+									"type": "string"
+								},
+								"nullable": true
+							},
+							"include_workload_ids": {
+								"description": "Workload IDs that include matching requests. Empty or omitted includes all requests before exclusions.",
+								"type": "array",
+								"items": {
+									"format": "uuid",
+									"type": "string"
+								},
+								"nullable": true
+							},
+							"name": {
+								"description": "Name of the policy set",
+								"type": "string",
+								"maxLength": 100,
+								"minLength": 1
+							},
+							"policies": {
+								"description": "Policies to include with per-membership enforcement mode",
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"enforce": {
+											"description": "Whether this policy should enforce when it matches. Defaults to true; false keeps the policy attached for non-enforcing evaluation.",
+											"type": "boolean",
+											"default": true
+										},
+										"policy_id": {
+											"description": "ID of the member policy",
+											"type": "string",
+											"format": "uuid"
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"policy_id"
+									]
+								},
+								"nullable": true
+							},
+							"tags": {
+								"description": "Tags to attach. Keys are limited to 256 UTF-8 bytes and values to 1024 UTF-8 bytes.",
+								"type": "object",
+								"additionalProperties": {
+									"type": "string"
+								},
+								"maxProperties": 10
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"name",
+							"policies"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"201": {
+				"description": "Created",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"created_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										},
+										"description": {
+											"description": "Optional free-form description.",
+											"type": "string",
+											"maxLength": 1024
+										},
+										"exclude_workload_ids": {
+											"description": "IDs of workloads that exclude matching requests. Exclusions take precedence.",
+											"type": "array",
+											"items": {
+												"format": "uuid",
+												"type": "string"
+											},
+											"nullable": true
+										},
+										"id": {
+											"description": "Server-assigned UUID",
+											"type": "string",
+											"format": "uuid",
+											"readOnly": true
+										},
+										"include_workload_ids": {
+											"description": "IDs of workloads that include matching requests. Empty includes all requests before exclusions.",
+											"type": "array",
+											"items": {
+												"format": "uuid",
+												"type": "string"
+											},
+											"nullable": true
+										},
+										"name": {
+											"description": "Human-readable name; unique per account",
+											"type": "string",
+											"maxLength": 100,
+											"minLength": 1
+										},
+										"policies": {
+											"description": "Member policies and their per-membership enforcement mode",
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"enforce": {
+														"description": "Whether this policy should enforce when it matches. False keeps the policy attached for non-enforcing evaluation.",
+														"type": "boolean"
+													},
+													"policy_id": {
+														"description": "ID of the member policy",
+														"type": "string",
+														"format": "uuid"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"policy_id",
+													"enforce"
+												]
+											},
+											"nullable": true
+										},
+										"tags": {
+											"description": "Tags attached to this policy set",
+											"type": "object",
+											"additionalProperties": {
+												"type": "string"
+											}
+										},
+										"updated_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"tags",
+										"id",
+										"name",
+										"policies",
+										"include_workload_ids",
+										"exclude_workload_ids",
+										"created_at",
+										"updated_at"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Policy Sets"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.policy-sets",
+		"x-fern-sdk-method-name": "create",
+		"x-stability": "beta"
+	},
+	"PUT /accounts/{account_id}/cws/policy-sets/{policy_set_id}": {
+		"operationId": "cws-update-policy-set",
+		"summary": "Update a policy set",
+		"description": "Replaces the policy set's configuration. Omit tags to preserve them; use {} to clear them.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"name": "policy_set_id",
+				"in": "path",
+				"description": "ID of the policy set to update",
+				"required": true,
+				"schema": {
+					"description": "ID of the policy set to update",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"description": {
+								"description": "Optional free-form description.",
+								"type": "string",
+								"maxLength": 1024
+							},
+							"exclude_workload_ids": {
+								"description": "Replacement set of excluded workload IDs. Exclusions take precedence.",
+								"type": "array",
+								"items": {
+									"format": "uuid",
+									"type": "string"
+								},
+								"nullable": true
+							},
+							"include_workload_ids": {
+								"description": "Replacement set of included workload IDs. Empty or omitted includes all requests before exclusions.",
+								"type": "array",
+								"items": {
+									"format": "uuid",
+									"type": "string"
+								},
+								"nullable": true
+							},
+							"name": {
+								"description": "Name of the policy set",
+								"type": "string",
+								"maxLength": 100,
+								"minLength": 1
+							},
+							"policies": {
+								"description": "Replacement set of policies with per-membership enforcement mode",
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"enforce": {
+											"description": "Whether this policy should enforce when it matches. Defaults to true; false keeps the policy attached for non-enforcing evaluation.",
+											"type": "boolean",
+											"default": true
+										},
+										"policy_id": {
+											"description": "ID of the member policy",
+											"type": "string",
+											"format": "uuid"
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"policy_id"
+									]
+								},
+								"nullable": true
+							},
+							"tags": {
+								"description": "Replacement tag set. Omit to preserve existing tags; use {} to clear. Keys are limited to 256 UTF-8 bytes and values to 1024 UTF-8 bytes.",
+								"type": "object",
+								"additionalProperties": {
+									"type": "string"
+								},
+								"maxProperties": 10
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"name",
+							"policies"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"created_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										},
+										"description": {
+											"description": "Optional free-form description.",
+											"type": "string",
+											"maxLength": 1024
+										},
+										"exclude_workload_ids": {
+											"description": "IDs of workloads that exclude matching requests. Exclusions take precedence.",
+											"type": "array",
+											"items": {
+												"format": "uuid",
+												"type": "string"
+											},
+											"nullable": true
+										},
+										"id": {
+											"description": "Server-assigned UUID",
+											"type": "string",
+											"format": "uuid",
+											"readOnly": true
+										},
+										"include_workload_ids": {
+											"description": "IDs of workloads that include matching requests. Empty includes all requests before exclusions.",
+											"type": "array",
+											"items": {
+												"format": "uuid",
+												"type": "string"
+											},
+											"nullable": true
+										},
+										"name": {
+											"description": "Human-readable name; unique per account",
+											"type": "string",
+											"maxLength": 100,
+											"minLength": 1
+										},
+										"policies": {
+											"description": "Member policies and their per-membership enforcement mode",
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"enforce": {
+														"description": "Whether this policy should enforce when it matches. False keeps the policy attached for non-enforcing evaluation.",
+														"type": "boolean"
+													},
+													"policy_id": {
+														"description": "ID of the member policy",
+														"type": "string",
+														"format": "uuid"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"policy_id",
+													"enforce"
+												]
+											},
+											"nullable": true
+										},
+										"tags": {
+											"description": "Tags attached to this policy set",
+											"type": "object",
+											"additionalProperties": {
+												"type": "string"
+											}
+										},
+										"updated_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"tags",
+										"id",
+										"name",
+										"policies",
+										"include_workload_ids",
+										"exclude_workload_ids",
+										"created_at",
+										"updated_at"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Policy Sets"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.policy-sets",
+		"x-fern-sdk-method-name": "update",
+		"x-stability": "beta"
+	}
+}

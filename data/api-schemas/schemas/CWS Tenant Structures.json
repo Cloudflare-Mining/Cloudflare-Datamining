@@ -1,0 +1,4836 @@
+{
+	"DELETE /accounts/{account_id}/cws/tenant-structures/{structure_id}": {
+		"operationId": "cws-delete-tenant-structure",
+		"summary": "Delete a tenant structure",
+		"description": "Deletes the tenant structure and all nodes in its hierarchy.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"name": "structure_id",
+				"in": "path",
+				"description": "ID of the tenant structure to delete",
+				"required": true,
+				"schema": {
+					"description": "ID of the tenant structure to delete",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"id": {
+											"type": "string",
+											"format": "uuid"
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"id"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Tenant Structures"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.tenant-structures",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-require-confirmation": "Delete this tenant structure?",
+		"x-stability": "beta"
+	},
+	"DELETE /accounts/{account_id}/cws/tenant-structures/{structure_id}/nodes/{node_id}": {
+		"operationId": "cws-delete-tenant-node",
+		"summary": "Delete a tenant node",
+		"description": "Deletes a childless node from the tenant hierarchy.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"name": "structure_id",
+				"in": "path",
+				"description": "ID of the parent tenant structure",
+				"required": true,
+				"schema": {
+					"description": "ID of the parent tenant structure",
+					"type": "string",
+					"format": "uuid"
+				}
+			},
+			{
+				"name": "node_id",
+				"in": "path",
+				"description": "ID of the node to delete",
+				"required": true,
+				"schema": {
+					"description": "ID of the node to delete",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"id": {
+											"type": "string",
+											"format": "uuid"
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"id"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Tenant Structures"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.tenant-structures.nodes",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-require-confirmation": "Delete this tenant node?",
+		"x-stability": "beta"
+	},
+	"GET /accounts/{account_id}/cws/tenant-structures": {
+		"operationId": "cws-list-tenant-structures",
+		"summary": "List tenant structures for an account",
+		"description": "Returns a paginated list of tenant structures in the account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"name": "cursor",
+				"in": "query",
+				"description": "Pagination cursor from previous response",
+				"schema": {
+					"description": "Pagination cursor from previous response",
+					"type": "string"
+				},
+				"explode": false
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"description": "Number of items per page (1-100, default 20)",
+				"schema": {
+					"description": "Number of items per page (1-100, default 20)",
+					"type": "integer",
+					"format": "int64",
+					"default": 20,
+					"maximum": 100,
+					"minimum": 1
+				},
+				"explode": false
+			},
+			{
+				"name": "order",
+				"in": "query",
+				"description": "Field to order results by (default: created_at)",
+				"schema": {
+					"description": "Field to order results by (default: created_at)",
+					"type": "string",
+					"default": "created_at",
+					"enum": [
+						"name",
+						"created_at",
+						"updated_at"
+					]
+				},
+				"explode": false
+			},
+			{
+				"name": "direction",
+				"in": "query",
+				"description": "Sort direction (default: asc)",
+				"schema": {
+					"description": "Sort direction (default: asc)",
+					"type": "string",
+					"default": "asc",
+					"enum": [
+						"asc",
+						"desc"
+					]
+				},
+				"explode": false
+			},
+			{
+				"name": "name",
+				"in": "query",
+				"description": "Filter by tenant structure name (case-insensitive substring match)",
+				"schema": {
+					"description": "Filter by tenant structure name (case-insensitive substring match)",
+					"type": "string"
+				},
+				"explode": false
+			},
+			{
+				"name": "import_path",
+				"in": "query",
+				"description": "Filter by import path (case-sensitive literal substring match)",
+				"schema": {
+					"description": "Filter by import path (case-sensitive literal substring match)",
+					"type": "string"
+				},
+				"explode": false
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"application": {
+												"description": "Platform this structure models. Immutable after creation; determines valid node kinds and identifier formats.",
+												"type": "string",
+												"enum": [
+													"aws",
+													"cloudflare"
+												]
+											},
+											"created_at": {
+												"type": "string",
+												"format": "date-time",
+												"readOnly": true
+											},
+											"id": {
+												"description": "Server-assigned UUID",
+												"type": "string",
+												"format": "uuid",
+												"readOnly": true
+											},
+											"import_path": {
+												"description": "Optional unique Rego mount path in the form tenant.<application>.<name>. The application segment must match application; omitted when unmounted.",
+												"type": "string",
+												"maxLength": 255,
+												"minLength": 1,
+												"pattern": "^tenant\\.(aws|cloudflare)\\.[A-Za-z_][A-Za-z0-9_]*$"
+											},
+											"name": {
+												"description": "Human-readable name; unique per account",
+												"type": "string",
+												"maxLength": 100,
+												"minLength": 1
+											},
+											"updated_at": {
+												"type": "string",
+												"format": "date-time",
+												"readOnly": true
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"id",
+											"name",
+											"application",
+											"created_at",
+											"updated_at"
+										]
+									},
+									"nullable": true
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "integer",
+											"format": "int64"
+										},
+										"cursor": {
+											"type": "string"
+										},
+										"per_page": {
+											"type": "integer",
+											"format": "int64"
+										},
+										"total_count": {
+											"type": "integer",
+											"format": "int64"
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"per_page",
+										"count",
+										"total_count"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"result_info",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Tenant Structures"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.tenant-structures",
+		"x-fern-sdk-method-name": "list",
+		"x-stability": "beta"
+	},
+	"GET /accounts/{account_id}/cws/tenant-structures/{structure_id}": {
+		"operationId": "cws-get-tenant-structure",
+		"summary": "Get a tenant structure by ID",
+		"description": "Returns the tenant structure with the specified ID.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"name": "structure_id",
+				"in": "path",
+				"description": "ID of the tenant structure to retrieve",
+				"required": true,
+				"schema": {
+					"description": "ID of the tenant structure to retrieve",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"application": {
+											"description": "Platform this structure models. Immutable after creation; determines valid node kinds and identifier formats.",
+											"type": "string",
+											"enum": [
+												"aws",
+												"cloudflare"
+											]
+										},
+										"created_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										},
+										"id": {
+											"description": "Server-assigned UUID",
+											"type": "string",
+											"format": "uuid",
+											"readOnly": true
+										},
+										"import_path": {
+											"description": "Optional unique Rego mount path in the form tenant.<application>.<name>. The application segment must match application; omitted when unmounted.",
+											"type": "string",
+											"maxLength": 255,
+											"minLength": 1,
+											"pattern": "^tenant\\.(aws|cloudflare)\\.[A-Za-z_][A-Za-z0-9_]*$"
+										},
+										"name": {
+											"description": "Human-readable name; unique per account",
+											"type": "string",
+											"maxLength": 100,
+											"minLength": 1
+										},
+										"updated_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"id",
+										"name",
+										"application",
+										"created_at",
+										"updated_at"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Tenant Structures"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.tenant-structures",
+		"x-fern-sdk-method-name": "get",
+		"x-stability": "beta"
+	},
+	"GET /accounts/{account_id}/cws/tenant-structures/{structure_id}/nodes": {
+		"operationId": "cws-list-tenant-nodes",
+		"summary": "List nodes for a tenant structure",
+		"description": "Returns a paginated list of nodes in the tenant structure.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"name": "structure_id",
+				"in": "path",
+				"description": "ID of the parent tenant structure",
+				"required": true,
+				"schema": {
+					"description": "ID of the parent tenant structure",
+					"type": "string",
+					"format": "uuid"
+				}
+			},
+			{
+				"name": "cursor",
+				"in": "query",
+				"description": "Pagination cursor from previous response",
+				"schema": {
+					"description": "Pagination cursor from previous response",
+					"type": "string"
+				},
+				"explode": false
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"description": "Number of items per page (1-100, default 20)",
+				"schema": {
+					"description": "Number of items per page (1-100, default 20)",
+					"type": "integer",
+					"format": "int64",
+					"default": 20,
+					"maximum": 100,
+					"minimum": 1
+				},
+				"explode": false
+			},
+			{
+				"name": "order",
+				"in": "query",
+				"description": "Field to order results by (default: created_at)",
+				"schema": {
+					"description": "Field to order results by (default: created_at)",
+					"type": "string",
+					"default": "created_at",
+					"enum": [
+						"name",
+						"created_at",
+						"updated_at"
+					]
+				},
+				"explode": false
+			},
+			{
+				"name": "direction",
+				"in": "query",
+				"description": "Sort direction (default: asc)",
+				"schema": {
+					"description": "Sort direction (default: asc)",
+					"type": "string",
+					"default": "asc",
+					"enum": [
+						"asc",
+						"desc"
+					]
+				},
+				"explode": false
+			},
+			{
+				"name": "node_kind",
+				"in": "query",
+				"description": "Filter by exact node kind",
+				"schema": {
+					"description": "Filter by exact node kind",
+					"type": "string"
+				},
+				"explode": false
+			},
+			{
+				"name": "native_id",
+				"in": "query",
+				"description": "Filter by exact cloud-native identifier",
+				"schema": {
+					"description": "Filter by exact cloud-native identifier",
+					"type": "string"
+				},
+				"explode": false
+			},
+			{
+				"name": "name",
+				"in": "query",
+				"description": "Filter by node name (case-insensitive substring match)",
+				"schema": {
+					"description": "Filter by node name (case-insensitive substring match)",
+					"type": "string"
+				},
+				"explode": false
+			},
+			{
+				"name": "parent",
+				"in": "query",
+				"description": "Filter by exact parent native ID",
+				"schema": {
+					"description": "Filter by exact parent native ID",
+					"type": "string"
+				},
+				"explode": false
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"created_at": {
+												"type": "string",
+												"format": "date-time",
+												"readOnly": true
+											},
+											"id": {
+												"description": "Server-assigned UUID",
+												"type": "string",
+												"format": "uuid",
+												"readOnly": true
+											},
+											"name": {
+												"description": "Display name (e.g. an OU or account name), mutable. Optional; empty by default.",
+												"type": "string",
+												"maxLength": 100
+											},
+											"native_id": {
+												"description": "Cloud-native identifier of this node, unique within the structure; the parent-reference target. Shape depends on the structure's application. Immutable after create.",
+												"type": "string",
+												"maxLength": 255,
+												"minLength": 1
+											},
+											"node_kind": {
+												"description": "Position in the tree. Legal values depend on the structure's application (aws: root/ou/account; cloudflare: org/account/zone). At most one root per structure. Immutable after create.",
+												"type": "string",
+												"maxLength": 64,
+												"minLength": 1
+											},
+											"parent": {
+												"description": "Native ID of this node's parent. Required for non-root nodes and omitted for the root. The parent must be in the same structure and able to contain this node kind.",
+												"type": "string",
+												"maxLength": 255
+											},
+											"updated_at": {
+												"type": "string",
+												"format": "date-time",
+												"readOnly": true
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"id",
+											"node_kind",
+											"native_id",
+											"created_at",
+											"updated_at"
+										]
+									},
+									"nullable": true
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "integer",
+											"format": "int64"
+										},
+										"cursor": {
+											"type": "string"
+										},
+										"per_page": {
+											"type": "integer",
+											"format": "int64"
+										},
+										"total_count": {
+											"type": "integer",
+											"format": "int64"
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"per_page",
+										"count",
+										"total_count"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"result_info",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Tenant Structures"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.tenant-structures.nodes",
+		"x-fern-sdk-method-name": "list",
+		"x-stability": "beta"
+	},
+	"GET /accounts/{account_id}/cws/tenant-structures/{structure_id}/nodes/{node_id}": {
+		"operationId": "cws-get-tenant-node",
+		"summary": "Get a tenant node by ID",
+		"description": "Returns the tenant node with the specified ID.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"name": "structure_id",
+				"in": "path",
+				"description": "ID of the parent tenant structure",
+				"required": true,
+				"schema": {
+					"description": "ID of the parent tenant structure",
+					"type": "string",
+					"format": "uuid"
+				}
+			},
+			{
+				"name": "node_id",
+				"in": "path",
+				"description": "ID of the node to retrieve",
+				"required": true,
+				"schema": {
+					"description": "ID of the node to retrieve",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"created_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										},
+										"id": {
+											"description": "Server-assigned UUID",
+											"type": "string",
+											"format": "uuid",
+											"readOnly": true
+										},
+										"name": {
+											"description": "Display name (e.g. an OU or account name), mutable. Optional; empty by default.",
+											"type": "string",
+											"maxLength": 100
+										},
+										"native_id": {
+											"description": "Cloud-native identifier of this node, unique within the structure; the parent-reference target. Shape depends on the structure's application. Immutable after create.",
+											"type": "string",
+											"maxLength": 255,
+											"minLength": 1
+										},
+										"node_kind": {
+											"description": "Position in the tree. Legal values depend on the structure's application (aws: root/ou/account; cloudflare: org/account/zone). At most one root per structure. Immutable after create.",
+											"type": "string",
+											"maxLength": 64,
+											"minLength": 1
+										},
+										"parent": {
+											"description": "Native ID of this node's parent. Required for non-root nodes and omitted for the root. The parent must be in the same structure and able to contain this node kind.",
+											"type": "string",
+											"maxLength": 255
+										},
+										"updated_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"id",
+										"node_kind",
+										"native_id",
+										"created_at",
+										"updated_at"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Tenant Structures"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.tenant-structures.nodes",
+		"x-fern-sdk-method-name": "get",
+		"x-stability": "beta"
+	},
+	"POST /accounts/{account_id}/cws/tenant-structures": {
+		"operationId": "cws-create-tenant-structure",
+		"summary": "Create a tenant structure",
+		"description": "Creates an empty tenant hierarchy for the selected cloud application.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"application": {
+								"description": "Platform this structure models. Immutable after creation.",
+								"type": "string",
+								"enum": [
+									"aws",
+									"cloudflare"
+								]
+							},
+							"import_path": {
+								"description": "Optional unique Rego mount path in the form tenant.<application>.<name>; application must match. Omit to leave unmounted.",
+								"type": "string",
+								"maxLength": 255,
+								"minLength": 1,
+								"pattern": "^tenant\\.(aws|cloudflare)\\.[A-Za-z_][A-Za-z0-9_]*$"
+							},
+							"name": {
+								"description": "Human-readable name; unique per account",
+								"type": "string",
+								"maxLength": 100,
+								"minLength": 1
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"name",
+							"application"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"201": {
+				"description": "Created",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"application": {
+											"description": "Platform this structure models. Immutable after creation; determines valid node kinds and identifier formats.",
+											"type": "string",
+											"enum": [
+												"aws",
+												"cloudflare"
+											]
+										},
+										"created_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										},
+										"id": {
+											"description": "Server-assigned UUID",
+											"type": "string",
+											"format": "uuid",
+											"readOnly": true
+										},
+										"import_path": {
+											"description": "Optional unique Rego mount path in the form tenant.<application>.<name>. The application segment must match application; omitted when unmounted.",
+											"type": "string",
+											"maxLength": 255,
+											"minLength": 1,
+											"pattern": "^tenant\\.(aws|cloudflare)\\.[A-Za-z_][A-Za-z0-9_]*$"
+										},
+										"name": {
+											"description": "Human-readable name; unique per account",
+											"type": "string",
+											"maxLength": 100,
+											"minLength": 1
+										},
+										"updated_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"id",
+										"name",
+										"application",
+										"created_at",
+										"updated_at"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Tenant Structures"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.tenant-structures",
+		"x-fern-sdk-method-name": "create",
+		"x-stability": "beta"
+	},
+	"POST /accounts/{account_id}/cws/tenant-structures/{structure_id}/nodes": {
+		"operationId": "cws-create-tenant-node",
+		"summary": "Add a node to a tenant structure",
+		"description": "Adds a validated cloud-native node to the tenant hierarchy.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"name": "structure_id",
+				"in": "path",
+				"description": "ID of the parent tenant structure",
+				"required": true,
+				"schema": {
+					"description": "ID of the parent tenant structure",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"description": "Display name (e.g. an OU or account name), mutable. Optional; empty by default.",
+								"type": "string",
+								"maxLength": 100
+							},
+							"native_id": {
+								"description": "Cloud-native identifier of this node, unique within the structure; the parent-reference target. Shape depends on the structure's application. Immutable after create.",
+								"type": "string",
+								"maxLength": 255,
+								"minLength": 1
+							},
+							"node_kind": {
+								"description": "Position in the tree. Legal values depend on the structure's application (aws: root/ou/account; cloudflare: org/account/zone). At most one root per structure. Immutable after create.",
+								"type": "string",
+								"maxLength": 64,
+								"minLength": 1
+							},
+							"parent": {
+								"description": "Native ID of this node's parent. Required for non-root nodes and omitted for the root. The parent must be in the same structure and able to contain this node kind.",
+								"type": "string",
+								"maxLength": 255
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"node_kind",
+							"native_id"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"201": {
+				"description": "Created",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"created_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										},
+										"id": {
+											"description": "Server-assigned UUID",
+											"type": "string",
+											"format": "uuid",
+											"readOnly": true
+										},
+										"name": {
+											"description": "Display name (e.g. an OU or account name), mutable. Optional; empty by default.",
+											"type": "string",
+											"maxLength": 100
+										},
+										"native_id": {
+											"description": "Cloud-native identifier of this node, unique within the structure; the parent-reference target. Shape depends on the structure's application. Immutable after create.",
+											"type": "string",
+											"maxLength": 255,
+											"minLength": 1
+										},
+										"node_kind": {
+											"description": "Position in the tree. Legal values depend on the structure's application (aws: root/ou/account; cloudflare: org/account/zone). At most one root per structure. Immutable after create.",
+											"type": "string",
+											"maxLength": 64,
+											"minLength": 1
+										},
+										"parent": {
+											"description": "Native ID of this node's parent. Required for non-root nodes and omitted for the root. The parent must be in the same structure and able to contain this node kind.",
+											"type": "string",
+											"maxLength": 255
+										},
+										"updated_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"id",
+										"node_kind",
+										"native_id",
+										"created_at",
+										"updated_at"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Tenant Structures"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.tenant-structures.nodes",
+		"x-fern-sdk-method-name": "create",
+		"x-stability": "beta"
+	},
+	"POST /accounts/{account_id}/cws/tenant-structures/{structure_id}/nodes/batch": {
+		"operationId": "cws-batch-tenant-nodes",
+		"summary": "Apply a batch of tenant node mutations",
+		"description": "Atomically validates and applies 1 to 500 unordered node operations. Creates may reference new parents but cannot reuse a native_id deleted in the same batch. Maximum body size: 1 MiB.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"name": "structure_id",
+				"in": "path",
+				"description": "ID of the parent tenant structure",
+				"required": true,
+				"schema": {
+					"description": "ID of the parent tenant structure",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"creates": {
+								"description": "Nodes to create; parents may be created elsewhere in this request",
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"name": {
+											"description": "Display name (e.g. an OU or account name), mutable. Optional; empty by default.",
+											"type": "string",
+											"maxLength": 100
+										},
+										"native_id": {
+											"description": "Cloud-native identifier of this node, unique within the structure; the parent-reference target. Shape depends on the structure's application. Immutable after create.",
+											"type": "string",
+											"maxLength": 255,
+											"minLength": 1
+										},
+										"node_kind": {
+											"description": "Position in the tree. Legal values depend on the structure's application (aws: root/ou/account; cloudflare: org/account/zone). At most one root per structure. Immutable after create.",
+											"type": "string",
+											"maxLength": 64,
+											"minLength": 1
+										},
+										"parent": {
+											"description": "Native ID of this node's parent. Required for non-root nodes and omitted for the root. The parent must be in the same structure and able to contain this node kind.",
+											"type": "string",
+											"maxLength": 255
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"node_kind",
+										"native_id"
+									]
+								}
+							},
+							"deletes": {
+								"description": "Nodes to delete; every descendant that will not be reparented must also be deleted",
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"id": {
+											"description": "ID of the node to delete",
+											"type": "string",
+											"format": "uuid"
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"id"
+									]
+								}
+							},
+							"updates": {
+								"description": "Nodes whose mutable fields should be fully replaced",
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"id": {
+											"description": "ID of the node to update",
+											"type": "string",
+											"format": "uuid"
+										},
+										"name": {
+											"description": "Full replacement display name",
+											"type": "string",
+											"maxLength": 100
+										},
+										"parent": {
+											"description": "Full replacement parent native ID; omit for the root",
+											"type": "string",
+											"maxLength": 255
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"id"
+									]
+								}
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"creates",
+							"updates",
+							"deletes"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"created": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"created_at": {
+														"type": "string",
+														"format": "date-time",
+														"readOnly": true
+													},
+													"id": {
+														"description": "Server-assigned UUID",
+														"type": "string",
+														"format": "uuid",
+														"readOnly": true
+													},
+													"name": {
+														"description": "Display name (e.g. an OU or account name), mutable. Optional; empty by default.",
+														"type": "string",
+														"maxLength": 100
+													},
+													"native_id": {
+														"description": "Cloud-native identifier of this node, unique within the structure; the parent-reference target. Shape depends on the structure's application. Immutable after create.",
+														"type": "string",
+														"maxLength": 255,
+														"minLength": 1
+													},
+													"node_kind": {
+														"description": "Position in the tree. Legal values depend on the structure's application (aws: root/ou/account; cloudflare: org/account/zone). At most one root per structure. Immutable after create.",
+														"type": "string",
+														"maxLength": 64,
+														"minLength": 1
+													},
+													"parent": {
+														"description": "Native ID of this node's parent. Required for non-root nodes and omitted for the root. The parent must be in the same structure and able to contain this node kind.",
+														"type": "string",
+														"maxLength": 255
+													},
+													"updated_at": {
+														"type": "string",
+														"format": "date-time",
+														"readOnly": true
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"id",
+													"node_kind",
+													"native_id",
+													"created_at",
+													"updated_at"
+												]
+											}
+										},
+										"deleted": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"id": {
+														"type": "string",
+														"format": "uuid"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"id"
+												]
+											}
+										},
+										"updated": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"created_at": {
+														"type": "string",
+														"format": "date-time",
+														"readOnly": true
+													},
+													"id": {
+														"description": "Server-assigned UUID",
+														"type": "string",
+														"format": "uuid",
+														"readOnly": true
+													},
+													"name": {
+														"description": "Display name (e.g. an OU or account name), mutable. Optional; empty by default.",
+														"type": "string",
+														"maxLength": 100
+													},
+													"native_id": {
+														"description": "Cloud-native identifier of this node, unique within the structure; the parent-reference target. Shape depends on the structure's application. Immutable after create.",
+														"type": "string",
+														"maxLength": 255,
+														"minLength": 1
+													},
+													"node_kind": {
+														"description": "Position in the tree. Legal values depend on the structure's application (aws: root/ou/account; cloudflare: org/account/zone). At most one root per structure. Immutable after create.",
+														"type": "string",
+														"maxLength": 64,
+														"minLength": 1
+													},
+													"parent": {
+														"description": "Native ID of this node's parent. Required for non-root nodes and omitted for the root. The parent must be in the same structure and able to contain this node kind.",
+														"type": "string",
+														"maxLength": 255
+													},
+													"updated_at": {
+														"type": "string",
+														"format": "date-time",
+														"readOnly": true
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"id",
+													"node_kind",
+													"native_id",
+													"created_at",
+													"updated_at"
+												]
+											}
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"created",
+										"updated",
+										"deleted"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Service Unavailable — retry the request after the indicated delay.",
+				"headers": {
+					"Retry-After": {
+						"description": "Suggested delay in seconds before retrying.",
+						"schema": {
+							"type": "string"
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Tenant Structures"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.tenant-structures.nodes",
+		"x-fern-sdk-method-name": "batch",
+		"x-forge-require-confirmation": "Apply this tenant node batch?",
+		"x-stability": "beta"
+	},
+	"PUT /accounts/{account_id}/cws/tenant-structures/{structure_id}": {
+		"operationId": "cws-update-tenant-structure",
+		"summary": "Update a tenant structure",
+		"description": "Updates the tenant structure's name and import path; its application remains immutable.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"name": "structure_id",
+				"in": "path",
+				"description": "ID of the tenant structure to update",
+				"required": true,
+				"schema": {
+					"description": "ID of the tenant structure to update",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"application": {
+								"description": "Platform this structure models. Must match the existing value.",
+								"type": "string",
+								"enum": [
+									"aws",
+									"cloudflare"
+								]
+							},
+							"import_path": {
+								"description": "Optional unique Rego mount path in the form tenant.<application>.<name>; application must match. Omit to clear.",
+								"type": "string",
+								"maxLength": 255,
+								"minLength": 1,
+								"pattern": "^tenant\\.(aws|cloudflare)\\.[A-Za-z_][A-Za-z0-9_]*$"
+							},
+							"name": {
+								"description": "Human-readable name; unique per account",
+								"type": "string",
+								"maxLength": 100,
+								"minLength": 1
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"name",
+							"application"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"application": {
+											"description": "Platform this structure models. Immutable after creation; determines valid node kinds and identifier formats.",
+											"type": "string",
+											"enum": [
+												"aws",
+												"cloudflare"
+											]
+										},
+										"created_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										},
+										"id": {
+											"description": "Server-assigned UUID",
+											"type": "string",
+											"format": "uuid",
+											"readOnly": true
+										},
+										"import_path": {
+											"description": "Optional unique Rego mount path in the form tenant.<application>.<name>. The application segment must match application; omitted when unmounted.",
+											"type": "string",
+											"maxLength": 255,
+											"minLength": 1,
+											"pattern": "^tenant\\.(aws|cloudflare)\\.[A-Za-z_][A-Za-z0-9_]*$"
+										},
+										"name": {
+											"description": "Human-readable name; unique per account",
+											"type": "string",
+											"maxLength": 100,
+											"minLength": 1
+										},
+										"updated_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"id",
+										"name",
+										"application",
+										"created_at",
+										"updated_at"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Tenant Structures"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.tenant-structures",
+		"x-fern-sdk-method-name": "update",
+		"x-stability": "beta"
+	},
+	"PUT /accounts/{account_id}/cws/tenant-structures/{structure_id}/nodes/{node_id}": {
+		"operationId": "cws-update-tenant-node",
+		"summary": "Update a tenant node",
+		"description": "Updates the node's display name or parent while preserving its immutable identity fields.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID (32-character hexadecimal string)",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID (32-character hexadecimal string)",
+					"type": "string",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"name": "structure_id",
+				"in": "path",
+				"description": "ID of the parent tenant structure",
+				"required": true,
+				"schema": {
+					"description": "ID of the parent tenant structure",
+					"type": "string",
+					"format": "uuid"
+				}
+			},
+			{
+				"name": "node_id",
+				"in": "path",
+				"description": "ID of the node to update",
+				"required": true,
+				"schema": {
+					"description": "ID of the node to update",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"description": "Display name (e.g. an OU or account name), mutable. Optional; empty by default.",
+								"type": "string",
+								"maxLength": 100
+							},
+							"native_id": {
+								"description": "Cloud-native identifier of this node, unique within the structure; the parent-reference target. Shape depends on the structure's application. Immutable after create.",
+								"type": "string",
+								"maxLength": 255,
+								"minLength": 1
+							},
+							"node_kind": {
+								"description": "Position in the tree. Legal values depend on the structure's application (aws: root/ou/account; cloudflare: org/account/zone). At most one root per structure. Immutable after create.",
+								"type": "string",
+								"maxLength": 64,
+								"minLength": 1
+							},
+							"parent": {
+								"description": "Native ID of this node's parent. Required for non-root nodes and omitted for the root. The parent must be in the same structure and able to contain this node kind.",
+								"type": "string",
+								"maxLength": 255
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"node_kind",
+							"native_id"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"created_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										},
+										"id": {
+											"description": "Server-assigned UUID",
+											"type": "string",
+											"format": "uuid",
+											"readOnly": true
+										},
+										"name": {
+											"description": "Display name (e.g. an OU or account name), mutable. Optional; empty by default.",
+											"type": "string",
+											"maxLength": 100
+										},
+										"native_id": {
+											"description": "Cloud-native identifier of this node, unique within the structure; the parent-reference target. Shape depends on the structure's application. Immutable after create.",
+											"type": "string",
+											"maxLength": 255,
+											"minLength": 1
+										},
+										"node_kind": {
+											"description": "Position in the tree. Legal values depend on the structure's application (aws: root/ou/account; cloudflare: org/account/zone). At most one root per structure. Immutable after create.",
+											"type": "string",
+											"maxLength": 64,
+											"minLength": 1
+										},
+										"parent": {
+											"description": "Native ID of this node's parent. Required for non-root nodes and omitted for the root. The parent must be in the same structure and able to contain this node kind.",
+											"type": "string",
+											"maxLength": 255
+										},
+										"updated_at": {
+											"type": "string",
+											"format": "date-time",
+											"readOnly": true
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"id",
+										"node_kind",
+										"native_id",
+										"created_at",
+										"updated_at"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Tenant Structures"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.cws.tenant-structures.nodes",
+		"x-fern-sdk-method-name": "update",
+		"x-stability": "beta"
+	}
+}

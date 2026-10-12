@@ -1,0 +1,463 @@
+{
+	"GET /cws/filter-schema": {
+		"operationId": "cws-get-filter-schema",
+		"summary": "Get filter fields",
+		"description": "Returns separate policy and workload field catalogs with metadata and UI hints for building filter expressions.",
+		"responses": {
+			"200": {
+				"description": "OK",
+				"headers": {
+					"Cache-Control": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"policy_fields": {
+											"description": "Fields available in policy filter expressions, in display order",
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"deprecated": {
+														"description": "True when the field is retained for compatibility but should be hidden in new UI",
+														"type": "boolean"
+													},
+													"false_label": {
+														"description": "Label for the false state of a bool field",
+														"type": "string"
+													},
+													"field_type": {
+														"description": "Semantic value type of the field (e.g. text, ip_address, host, uri_path, http_method, protocol, int, bool)",
+														"type": "string"
+													},
+													"map": {
+														"description": "True for a string-keyed (map) field, indexed with wf_string[\"key\"]",
+														"type": "boolean"
+													},
+													"operators": {
+														"description": "Advisory operator labels for filter builders; some labels are not expression tokens",
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
+														"nullable": true
+													},
+													"splat": {
+														"description": "True for a multi-valued (array) field, membership-tested with any(wf_string[*] == ...)",
+														"type": "boolean"
+													},
+													"true_label": {
+														"description": "Label for the true state of a bool field",
+														"type": "string"
+													},
+													"ui_string": {
+														"description": "Short human-readable name suitable for a form label",
+														"type": "string"
+													},
+													"values": {
+														"description": "Advisory value suggestions for an enum field (a hint for populating a builder UI, not a server-enforced set)",
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
+														"nullable": true
+													},
+													"wf_string": {
+														"description": "Identifier used in filter expressions, e.g. \"http.request.host\"",
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"wf_string",
+													"field_type",
+													"splat",
+													"map",
+													"operators",
+													"ui_string",
+													"deprecated"
+												]
+											},
+											"nullable": true
+										},
+										"workload_fields": {
+											"description": "Fields available in workload filter expressions, in display order",
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"deprecated": {
+														"description": "True when the field is retained for compatibility but should be hidden in new UI",
+														"type": "boolean"
+													},
+													"false_label": {
+														"description": "Label for the false state of a bool field",
+														"type": "string"
+													},
+													"field_type": {
+														"description": "Semantic value type of the field (e.g. text, ip_address, host, uri_path, http_method, protocol, int, bool)",
+														"type": "string"
+													},
+													"map": {
+														"description": "True for a string-keyed (map) field, indexed with wf_string[\"key\"]",
+														"type": "boolean"
+													},
+													"operators": {
+														"description": "Advisory operator labels for filter builders; some labels are not expression tokens",
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
+														"nullable": true
+													},
+													"splat": {
+														"description": "True for a multi-valued (array) field, membership-tested with any(wf_string[*] == ...)",
+														"type": "boolean"
+													},
+													"true_label": {
+														"description": "Label for the true state of a bool field",
+														"type": "string"
+													},
+													"ui_string": {
+														"description": "Short human-readable name suitable for a form label",
+														"type": "string"
+													},
+													"values": {
+														"description": "Advisory value suggestions for an enum field (a hint for populating a builder UI, not a server-enforced set)",
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
+														"nullable": true
+													},
+													"wf_string": {
+														"description": "Identifier used in filter expressions, e.g. \"http.request.host\"",
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"wf_string",
+													"field_type",
+													"splat",
+													"map",
+													"operators",
+													"ui_string",
+													"deprecated"
+												]
+											},
+											"nullable": true
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"policy_fields",
+										"workload_fields"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"pointer"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"nullable": true
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"CWS Filter Schema"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.cws.filter-schema",
+		"x-fern-sdk-method-name": "get",
+		"x-stability": "beta"
+	}
+}
