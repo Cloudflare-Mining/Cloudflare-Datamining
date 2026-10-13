@@ -5126,6 +5126,801 @@
 			]
 		},
 		{
+			"name": "workerd/src/workerd/server/compiled-bindings.capnp:Global",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "text",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "data",
+					"annotations": {},
+					"type": "Data"
+				},
+				{
+					"name": "json",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "fetcher",
+					"annotations": {},
+					"type": "UInt32"
+				},
+				{
+					"name": "loopbackServiceStub",
+					"annotations": {},
+					"type": "UInt32"
+				},
+				{
+					"name": "kvNamespace",
+					"annotations": {},
+					"type": "UInt32"
+				},
+				{
+					"name": "r2Bucket",
+					"annotations": {},
+					"type": "workerd/src/workerd/server/compiled-bindings.capnp:Global.r2Bucket"
+				},
+				{
+					"name": "queue",
+					"annotations": {},
+					"type": "UInt32"
+				},
+				{
+					"name": "analyticsEngine",
+					"annotations": {},
+					"type": "workerd/src/workerd/server/compiled-bindings.capnp:Global.analyticsEngine"
+				},
+				{
+					"name": "hyperdrive",
+					"annotations": {},
+					"type": "workerd/src/workerd/server/compiled-bindings.capnp:Global.hyperdrive"
+				},
+				{
+					"name": "cryptoKey",
+					"annotations": {},
+					"type": "workerd/src/workerd/server/compiled-bindings.capnp:Global.cryptoKey"
+				},
+				{
+					"name": "ephemeralActorNamespace",
+					"annotations": {},
+					"type": "UInt32"
+				},
+				{
+					"name": "loopbackEphemeralActorNamespace",
+					"annotations": {},
+					"type": "workerd/src/workerd/server/compiled-bindings.capnp:Global.loopbackEphemeralActorNamespace"
+				},
+				{
+					"name": "durableActorNamespace",
+					"annotations": {},
+					"type": "workerd/src/workerd/server/compiled-bindings.capnp:Global.durableActorNamespace"
+				},
+				{
+					"name": "loopbackDurableActorNamespace",
+					"annotations": {},
+					"type": "workerd/src/workerd/server/compiled-bindings.capnp:Global.loopbackDurableActorNamespace"
+				},
+				{
+					"name": "actorClass",
+					"annotations": {},
+					"type": "UInt32"
+				},
+				{
+					"name": "loopbackActorClass",
+					"annotations": {},
+					"type": "UInt32"
+				},
+				{
+					"name": "wrapped",
+					"annotations": {},
+					"type": "workerd/src/workerd/server/compiled-bindings.capnp:Global.wrapped"
+				},
+				{
+					"name": "unsafeEval",
+					"annotations": {},
+					"type": "Void"
+				},
+				{
+					"name": "memoryCache",
+					"annotations": {},
+					"type": "workerd/src/workerd/server/compiled-bindings.capnp:Global.memoryCache"
+				},
+				{
+					"name": "workerLoader",
+					"annotations": {},
+					"type": "UInt32"
+				},
+				{
+					"name": "workerdDebugPort",
+					"annotations": {},
+					"type": "Void"
+				}
+			]
+		},
+		{
+			"name": "workerd/server/workerd.capnp:Worker.Binding.DurableObjectNamespaceDesignator.RetryPolicy",
+			"fields": [
+				{
+					"name": "maxAttempts",
+					"annotations": {},
+					"type": "UInt32"
+				},
+				{
+					"name": "timeoutMs",
+					"annotations": {},
+					"type": "UInt32"
+				}
+			]
+		},
+		{
+			"name": "workerd/server/workerd.capnp:Worker.Binding.CryptoKey",
+			"fields": [
+				{
+					"name": "raw",
+					"annotations": {},
+					"type": "Data"
+				},
+				{
+					"name": "hex",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "base64",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "pkcs8",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "spki",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "jwk",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "algorithm",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:Worker.Binding.CryptoKey.algorithm"
+				},
+				{
+					"name": "extractable",
+					"annotations": {},
+					"type": "Bool"
+				},
+				{
+					"name": "usages",
+					"annotations": {},
+					"type": "List(workerd/server/workerd.capnp:Worker.Binding.CryptoKey.Usage)"
+				}
+			]
+		},
+		{
+			"name": "workerd/server/workerd.capnp:Worker.Binding.Type",
+			"fields": [
+				{
+					"name": "unspecified",
+					"annotations": {},
+					"type": "Void"
+				},
+				{
+					"name": "text",
+					"annotations": {},
+					"type": "Void"
+				},
+				{
+					"name": "data",
+					"annotations": {},
+					"type": "Void"
+				},
+				{
+					"name": "json",
+					"annotations": {},
+					"type": "Void"
+				},
+				{
+					"name": "wasm",
+					"annotations": {},
+					"type": "Void"
+				},
+				{
+					"name": "cryptoKey",
+					"annotations": {},
+					"type": "List(workerd/server/workerd.capnp:Worker.Binding.CryptoKey.Usage)"
+				},
+				{
+					"name": "service",
+					"annotations": {},
+					"type": "Void"
+				},
+				{
+					"name": "durableObjectNamespace",
+					"annotations": {},
+					"type": "Void"
+				},
+				{
+					"name": "kvNamespace",
+					"annotations": {},
+					"type": "Void"
+				},
+				{
+					"name": "r2Bucket",
+					"annotations": {},
+					"type": "Void"
+				},
+				{
+					"name": "obsolete0",
+					"annotations": {},
+					"type": "Void"
+				},
+				{
+					"name": "queue",
+					"annotations": {},
+					"type": "Void"
+				},
+				{
+					"name": "analyticsEngine",
+					"annotations": {},
+					"type": "Void"
+				},
+				{
+					"name": "hyperdrive",
+					"annotations": {},
+					"type": "Void"
+				},
+				{
+					"name": "durableObjectClass",
+					"annotations": {},
+					"type": "Void"
+				},
+				{
+					"name": "workerdDebugPort",
+					"annotations": {},
+					"type": "Void"
+				}
+			]
+		},
+		{
+			"name": "workerd/server/workerd.capnp:Worker.Binding",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "unspecified",
+					"annotations": {},
+					"type": "Void"
+				},
+				{
+					"name": "parameter",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:Worker.Binding.parameter"
+				},
+				{
+					"name": "text",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "data",
+					"annotations": {},
+					"type": "Data"
+				},
+				{
+					"name": "json",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "wasmModule",
+					"annotations": {},
+					"type": "Data"
+				},
+				{
+					"name": "cryptoKey",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:Worker.Binding.CryptoKey"
+				},
+				{
+					"name": "service",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:ServiceDesignator"
+				},
+				{
+					"name": "durableObjectNamespace",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:Worker.Binding.DurableObjectNamespaceDesignator"
+				},
+				{
+					"name": "kvNamespace",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:ServiceDesignator"
+				},
+				{
+					"name": "r2Bucket",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:ServiceDesignator"
+				},
+				{
+					"name": "obsolete0",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:ServiceDesignator"
+				},
+				{
+					"name": "wrapped",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:Worker.Binding.WrappedBinding"
+				},
+				{
+					"name": "queue",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:ServiceDesignator"
+				},
+				{
+					"name": "fromEnvironment",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "analyticsEngine",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:ServiceDesignator"
+				},
+				{
+					"name": "hyperdrive",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:Worker.Binding.hyperdrive"
+				},
+				{
+					"name": "unsafeEval",
+					"annotations": {},
+					"type": "Void"
+				},
+				{
+					"name": "memoryCache",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:Worker.Binding.memoryCache"
+				},
+				{
+					"name": "durableObjectClass",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:ServiceDesignator"
+				},
+				{
+					"name": "workerLoader",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:Worker.Binding.workerLoader"
+				},
+				{
+					"name": "workerdDebugPort",
+					"annotations": {},
+					"type": "Void"
+				}
+			]
+		},
+		{
+			"name": "workerd/server/workerd.capnp:ServiceDesignator",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "entrypoint",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "props",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:ServiceDesignator.props"
+				}
+			]
+		},
+		{
+			"name": "workerd/server/workerd.capnp:Worker.Binding.MemoryCacheLimits",
+			"fields": [
+				{
+					"name": "maxKeys",
+					"annotations": {},
+					"type": "UInt32"
+				},
+				{
+					"name": "maxValueSize",
+					"annotations": {},
+					"type": "UInt32"
+				},
+				{
+					"name": "maxTotalValueSize",
+					"annotations": {},
+					"type": "UInt64"
+				}
+			]
+		},
+		{
+			"name": "workerd/server/workerd.capnp:Worker.Binding.DurableObjectNamespaceDesignator",
+			"fields": [
+				{
+					"name": "className",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "serviceName",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "retryPolicy",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:Worker.Binding.DurableObjectNamespaceDesignator.RetryPolicy"
+				}
+			]
+		},
+		{
+			"name": "workerd/server/workerd.capnp:Worker.Binding.WrappedBinding",
+			"fields": [
+				{
+					"name": "moduleName",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "entrypoint",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "innerBindings",
+					"annotations": {},
+					"type": "List(workerd/server/workerd.capnp:Worker.Binding)"
+				}
+			]
+		},
+		{
+			"name": "workerd/server/workerd.capnp:Worker",
+			"fields": [
+				{
+					"name": "modules",
+					"annotations": {},
+					"type": "List(workerd/server/workerd.capnp:Worker.Module)"
+				},
+				{
+					"name": "serviceWorkerScript",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "inherit",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "compatibilityDate",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "compatibilityFlags",
+					"annotations": {},
+					"type": "List(Text)"
+				},
+				{
+					"name": "bindings",
+					"annotations": {},
+					"type": "List(workerd/server/workerd.capnp:Worker.Binding)"
+				},
+				{
+					"name": "globalOutbound",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:ServiceDesignator"
+				},
+				{
+					"name": "durableObjectNamespaces",
+					"annotations": {},
+					"type": "List(workerd/server/workerd.capnp:Worker.DurableObjectNamespace)"
+				},
+				{
+					"name": "durableObjectUniqueKeyModifier",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "durableObjectStorage",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:Worker.durableObjectStorage"
+				},
+				{
+					"name": "cacheApiOutbound",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:ServiceDesignator"
+				},
+				{
+					"name": "moduleFallback",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "tails",
+					"annotations": {},
+					"type": "List(workerd/server/workerd.capnp:ServiceDesignator)"
+				},
+				{
+					"name": "streamingTails",
+					"annotations": {},
+					"type": "List(workerd/server/workerd.capnp:ServiceDesignator)"
+				},
+				{
+					"name": "containerEngine",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:Worker.containerEngine"
+				},
+				{
+					"name": "accessBlobHeader",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "accessBindingService",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:ServiceDesignator"
+				},
+				{
+					"name": "workflowsEngine",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:WorkflowsEngine"
+				}
+			]
+		},
+		{
+			"name": "workerd/server/workerd.capnp:Worker.DockerConfiguration",
+			"fields": [
+				{
+					"name": "socketPath",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "containerEgressInterceptorImage",
+					"annotations": {},
+					"type": "Text"
+				}
+			]
+		},
+		{
+			"name": "workerd/server/workerd.capnp:Worker.Module",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "esModule",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "commonJsModule",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "text",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "data",
+					"annotations": {},
+					"type": "Data"
+				},
+				{
+					"name": "wasm",
+					"annotations": {},
+					"type": "Data"
+				},
+				{
+					"name": "json",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "obsolete",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "pythonModule",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "obsoletePythonRequirement",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "namedExports",
+					"annotations": {},
+					"type": "List(Text)"
+				}
+			]
+		},
+		{
+			"name": "workerd/server/workerd.capnp:Worker.DurableObjectNamespace",
+			"fields": [
+				{
+					"name": "className",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "uniqueKey",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "ephemeralLocal",
+					"annotations": {},
+					"type": "Void"
+				},
+				{
+					"name": "preventEviction",
+					"annotations": {},
+					"type": "Bool"
+				},
+				{
+					"name": "enableSql",
+					"annotations": {},
+					"type": "Bool"
+				},
+				{
+					"name": "container",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:Worker.DurableObjectNamespace.ContainerOptions"
+				}
+			]
+		},
+		{
+			"name": "workerd/server/workerd.capnp:WorkflowsEngine",
+			"fields": [
+				{
+					"name": "actorClass",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:ServiceDesignator"
+				},
+				{
+					"name": "workflows",
+					"annotations": {},
+					"type": "List(workerd/server/workerd.capnp:WorkflowsEngine.Workflow)"
+				}
+			]
+		},
+		{
+			"name": "workerd/server/workerd.capnp:Worker.DurableObjectNamespace.ContainerOptions",
+			"fields": [
+				{
+					"name": "imageName",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "privileges",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:Worker.DurableObjectNamespace.ContainerOptions.ContainerPrivileges"
+				},
+				{
+					"name": "images",
+					"annotations": {},
+					"type": "List(workerd/server/workerd.capnp:Worker.DurableObjectNamespace.ContainerOptions.NamedImage)"
+				}
+			]
+		},
+		{
+			"name": "workerd/server/workerd.capnp:Worker.DurableObjectNamespace.ContainerOptions.ContainerPrivileges",
+			"fields": [
+				{
+					"name": "capabilities",
+					"annotations": {},
+					"type": "List(Text)"
+				},
+				{
+					"name": "devices",
+					"annotations": {},
+					"type": "List(workerd/server/workerd.capnp:Worker.DurableObjectNamespace.ContainerOptions.ContainerPrivileges.Device)"
+				},
+				{
+					"name": "securityOpt",
+					"annotations": {},
+					"type": "List(Text)"
+				}
+			]
+		},
+		{
+			"name": "workerd/server/workerd.capnp:Worker.DurableObjectNamespace.ContainerOptions.NamedImage",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "image",
+					"annotations": {},
+					"type": "Text"
+				}
+			]
+		},
+		{
+			"name": "workerd/server/workerd.capnp:Worker.DurableObjectNamespace.ContainerOptions.ContainerPrivileges.Device",
+			"fields": [
+				{
+					"name": "pathOnHost",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "pathInContainer",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "cgroupPermissions",
+					"annotations": {},
+					"type": "Text"
+				}
+			]
+		},
+		{
+			"name": "workerd/server/workerd.capnp:WorkflowsEngine.Workflow",
+			"fields": [
+				{
+					"name": "className",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "name",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "bindingService",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:ServiceDesignator"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/compiled-bindings.capnp:Globals",
+			"fields": [
+				{
+					"name": "globals",
+					"annotations": {},
+					"type": "List(workerd/src/workerd/server/compiled-bindings.capnp:Global)"
+				}
+			]
+		},
+		{
 			"name": "workerd/src/workerd/server/docker-api.capnp:Docker",
 			"fields": []
 		},
@@ -7047,7 +7842,7 @@
 			]
 		},
 		{
-			"name": "workerd/src/workerd/server/workerd.capnp:Service",
+			"name": "workerd/server/workerd.capnp:Service",
 			"fields": [
 				{
 					"name": "name",
@@ -7062,27 +7857,27 @@
 				{
 					"name": "worker",
 					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:Worker"
+					"type": "workerd/server/workerd.capnp:Worker"
 				},
 				{
 					"name": "network",
 					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:Network"
+					"type": "workerd/server/workerd.capnp:Network"
 				},
 				{
 					"name": "external",
 					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:ExternalServer"
+					"type": "workerd/server/workerd.capnp:ExternalServer"
 				},
 				{
 					"name": "disk",
 					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:DiskDirectory"
+					"type": "workerd/server/workerd.capnp:DiskDirectory"
 				}
 			]
 		},
 		{
-			"name": "workerd/src/workerd/server/workerd.capnp:Socket",
+			"name": "workerd/server/workerd.capnp:Socket",
 			"fields": [
 				{
 					"name": "name",
@@ -7097,42 +7892,42 @@
 				{
 					"name": "http",
 					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:HttpOptions"
+					"type": "workerd/server/workerd.capnp:HttpOptions"
 				},
 				{
 					"name": "https",
 					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:Socket.https"
+					"type": "workerd/server/workerd.capnp:Socket.https"
 				},
 				{
 					"name": "service",
 					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator"
+					"type": "workerd/server/workerd.capnp:ServiceDesignator"
 				},
 				{
 					"name": "tcp",
 					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:Socket.tcp"
+					"type": "workerd/server/workerd.capnp:Socket.tcp"
 				},
 				{
 					"name": "udp",
 					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:Socket.udp"
+					"type": "workerd/server/workerd.capnp:Socket.udp"
 				}
 			]
 		},
 		{
-			"name": "workerd/src/workerd/server/workerd.capnp:Extension",
+			"name": "workerd/server/workerd.capnp:Extension",
 			"fields": [
 				{
 					"name": "modules",
 					"annotations": {},
-					"type": "List(workerd/src/workerd/server/workerd.capnp:Extension.Module)"
+					"type": "List(workerd/server/workerd.capnp:Extension.Module)"
 				}
 			]
 		},
 		{
-			"name": "workerd/src/workerd/server/workerd.capnp:LoggingOptions",
+			"name": "workerd/server/workerd.capnp:LoggingOptions",
 			"fields": [
 				{
 					"name": "structuredLogging",
@@ -7152,17 +7947,17 @@
 			]
 		},
 		{
-			"name": "workerd/src/workerd/server/workerd.capnp:Config",
+			"name": "workerd/server/workerd.capnp:Config",
 			"fields": [
 				{
 					"name": "services",
 					"annotations": {},
-					"type": "List(workerd/src/workerd/server/workerd.capnp:Service)"
+					"type": "List(workerd/server/workerd.capnp:Service)"
 				},
 				{
 					"name": "sockets",
 					"annotations": {},
-					"type": "List(workerd/src/workerd/server/workerd.capnp:Socket)"
+					"type": "List(workerd/server/workerd.capnp:Socket)"
 				},
 				{
 					"name": "v8Flags",
@@ -7172,7 +7967,7 @@
 				{
 					"name": "extensions",
 					"annotations": {},
-					"type": "List(workerd/src/workerd/server/workerd.capnp:Extension)"
+					"type": "List(workerd/server/workerd.capnp:Extension)"
 				},
 				{
 					"name": "autogates",
@@ -7187,107 +7982,12 @@
 				{
 					"name": "logging",
 					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:LoggingOptions"
+					"type": "workerd/server/workerd.capnp:LoggingOptions"
 				}
 			]
 		},
 		{
-			"name": "workerd/src/workerd/server/workerd.capnp:Worker",
-			"fields": [
-				{
-					"name": "modules",
-					"annotations": {},
-					"type": "List(workerd/src/workerd/server/workerd.capnp:Worker.Module)"
-				},
-				{
-					"name": "serviceWorkerScript",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "inherit",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "compatibilityDate",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "compatibilityFlags",
-					"annotations": {},
-					"type": "List(Text)"
-				},
-				{
-					"name": "bindings",
-					"annotations": {},
-					"type": "List(workerd/src/workerd/server/workerd.capnp:Worker.Binding)"
-				},
-				{
-					"name": "globalOutbound",
-					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator"
-				},
-				{
-					"name": "durableObjectNamespaces",
-					"annotations": {},
-					"type": "List(workerd/src/workerd/server/workerd.capnp:Worker.DurableObjectNamespace)"
-				},
-				{
-					"name": "durableObjectUniqueKeyModifier",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "durableObjectStorage",
-					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:Worker.durableObjectStorage"
-				},
-				{
-					"name": "cacheApiOutbound",
-					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator"
-				},
-				{
-					"name": "moduleFallback",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "tails",
-					"annotations": {},
-					"type": "List(workerd/src/workerd/server/workerd.capnp:ServiceDesignator)"
-				},
-				{
-					"name": "streamingTails",
-					"annotations": {},
-					"type": "List(workerd/src/workerd/server/workerd.capnp:ServiceDesignator)"
-				},
-				{
-					"name": "containerEngine",
-					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:Worker.containerEngine"
-				},
-				{
-					"name": "accessBlobHeader",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "accessBindingService",
-					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator"
-				},
-				{
-					"name": "workflowsEngine",
-					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:WorkflowsEngine"
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:Network",
+			"name": "workerd/server/workerd.capnp:Network",
 			"fields": [
 				{
 					"name": "allow",
@@ -7302,12 +8002,12 @@
 				{
 					"name": "tlsOptions",
 					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:TlsOptions"
+					"type": "workerd/server/workerd.capnp:TlsOptions"
 				}
 			]
 		},
 		{
-			"name": "workerd/src/workerd/server/workerd.capnp:ExternalServer",
+			"name": "workerd/server/workerd.capnp:ExternalServer",
 			"fields": [
 				{
 					"name": "address",
@@ -7317,22 +8017,22 @@
 				{
 					"name": "http",
 					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:HttpOptions"
+					"type": "workerd/server/workerd.capnp:HttpOptions"
 				},
 				{
 					"name": "https",
 					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:ExternalServer.https"
+					"type": "workerd/server/workerd.capnp:ExternalServer.https"
 				},
 				{
 					"name": "tcp",
 					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:ExternalServer.tcp"
+					"type": "workerd/server/workerd.capnp:ExternalServer.tcp"
 				}
 			]
 		},
 		{
-			"name": "workerd/src/workerd/server/workerd.capnp:DiskDirectory",
+			"name": "workerd/server/workerd.capnp:DiskDirectory",
 			"fields": [
 				{
 					"name": "path",
@@ -7352,582 +8052,12 @@
 			]
 		},
 		{
-			"name": "workerd/src/workerd/server/workerd.capnp:Worker.DockerConfiguration",
-			"fields": [
-				{
-					"name": "socketPath",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "containerEgressInterceptorImage",
-					"annotations": {},
-					"type": "Text"
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:Worker.Module",
-			"fields": [
-				{
-					"name": "name",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "esModule",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "commonJsModule",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "text",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "data",
-					"annotations": {},
-					"type": "Data"
-				},
-				{
-					"name": "wasm",
-					"annotations": {},
-					"type": "Data"
-				},
-				{
-					"name": "json",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "obsolete",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "pythonModule",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "obsoletePythonRequirement",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "namedExports",
-					"annotations": {},
-					"type": "List(Text)"
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:Worker.Binding",
-			"fields": [
-				{
-					"name": "name",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "unspecified",
-					"annotations": {},
-					"type": "Void"
-				},
-				{
-					"name": "parameter",
-					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.parameter"
-				},
-				{
-					"name": "text",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "data",
-					"annotations": {},
-					"type": "Data"
-				},
-				{
-					"name": "json",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "wasmModule",
-					"annotations": {},
-					"type": "Data"
-				},
-				{
-					"name": "cryptoKey",
-					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.CryptoKey"
-				},
-				{
-					"name": "service",
-					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator"
-				},
-				{
-					"name": "durableObjectNamespace",
-					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.DurableObjectNamespaceDesignator"
-				},
-				{
-					"name": "kvNamespace",
-					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator"
-				},
-				{
-					"name": "r2Bucket",
-					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator"
-				},
-				{
-					"name": "obsolete0",
-					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator"
-				},
-				{
-					"name": "wrapped",
-					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.WrappedBinding"
-				},
-				{
-					"name": "queue",
-					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator"
-				},
-				{
-					"name": "fromEnvironment",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "analyticsEngine",
-					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator"
-				},
-				{
-					"name": "hyperdrive",
-					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.hyperdrive"
-				},
-				{
-					"name": "unsafeEval",
-					"annotations": {},
-					"type": "Void"
-				},
-				{
-					"name": "memoryCache",
-					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.memoryCache"
-				},
-				{
-					"name": "durableObjectClass",
-					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator"
-				},
-				{
-					"name": "workerLoader",
-					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.workerLoader"
-				},
-				{
-					"name": "workerdDebugPort",
-					"annotations": {},
-					"type": "Void"
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator",
-			"fields": [
-				{
-					"name": "name",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "entrypoint",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "props",
-					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator.props"
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:Worker.DurableObjectNamespace",
-			"fields": [
-				{
-					"name": "className",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "uniqueKey",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "ephemeralLocal",
-					"annotations": {},
-					"type": "Void"
-				},
-				{
-					"name": "preventEviction",
-					"annotations": {},
-					"type": "Bool"
-				},
-				{
-					"name": "enableSql",
-					"annotations": {},
-					"type": "Bool"
-				},
-				{
-					"name": "container",
-					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:Worker.DurableObjectNamespace.ContainerOptions"
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:WorkflowsEngine",
-			"fields": [
-				{
-					"name": "actorClass",
-					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator"
-				},
-				{
-					"name": "workflows",
-					"annotations": {},
-					"type": "List(workerd/src/workerd/server/workerd.capnp:WorkflowsEngine.Workflow)"
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.Type",
-			"fields": [
-				{
-					"name": "unspecified",
-					"annotations": {},
-					"type": "Void"
-				},
-				{
-					"name": "text",
-					"annotations": {},
-					"type": "Void"
-				},
-				{
-					"name": "data",
-					"annotations": {},
-					"type": "Void"
-				},
-				{
-					"name": "json",
-					"annotations": {},
-					"type": "Void"
-				},
-				{
-					"name": "wasm",
-					"annotations": {},
-					"type": "Void"
-				},
-				{
-					"name": "cryptoKey",
-					"annotations": {},
-					"type": "List(workerd/src/workerd/server/workerd.capnp:Worker.Binding.CryptoKey.Usage)"
-				},
-				{
-					"name": "service",
-					"annotations": {},
-					"type": "Void"
-				},
-				{
-					"name": "durableObjectNamespace",
-					"annotations": {},
-					"type": "Void"
-				},
-				{
-					"name": "kvNamespace",
-					"annotations": {},
-					"type": "Void"
-				},
-				{
-					"name": "r2Bucket",
-					"annotations": {},
-					"type": "Void"
-				},
-				{
-					"name": "obsolete0",
-					"annotations": {},
-					"type": "Void"
-				},
-				{
-					"name": "queue",
-					"annotations": {},
-					"type": "Void"
-				},
-				{
-					"name": "analyticsEngine",
-					"annotations": {},
-					"type": "Void"
-				},
-				{
-					"name": "hyperdrive",
-					"annotations": {},
-					"type": "Void"
-				},
-				{
-					"name": "durableObjectClass",
-					"annotations": {},
-					"type": "Void"
-				},
-				{
-					"name": "workerdDebugPort",
-					"annotations": {},
-					"type": "Void"
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.MemoryCacheLimits",
-			"fields": [
-				{
-					"name": "maxKeys",
-					"annotations": {},
-					"type": "UInt32"
-				},
-				{
-					"name": "maxValueSize",
-					"annotations": {},
-					"type": "UInt32"
-				},
-				{
-					"name": "maxTotalValueSize",
-					"annotations": {},
-					"type": "UInt64"
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.CryptoKey",
-			"fields": [
-				{
-					"name": "raw",
-					"annotations": {},
-					"type": "Data"
-				},
-				{
-					"name": "hex",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "base64",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "pkcs8",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "spki",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "jwk",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "algorithm",
-					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.CryptoKey.algorithm"
-				},
-				{
-					"name": "extractable",
-					"annotations": {},
-					"type": "Bool"
-				},
-				{
-					"name": "usages",
-					"annotations": {},
-					"type": "List(workerd/src/workerd/server/workerd.capnp:Worker.Binding.CryptoKey.Usage)"
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.DurableObjectNamespaceDesignator",
-			"fields": [
-				{
-					"name": "className",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "serviceName",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "retryPolicy",
-					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.DurableObjectNamespaceDesignator.RetryPolicy"
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.WrappedBinding",
-			"fields": [
-				{
-					"name": "moduleName",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "entrypoint",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "innerBindings",
-					"annotations": {},
-					"type": "List(workerd/src/workerd/server/workerd.capnp:Worker.Binding)"
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.DurableObjectNamespaceDesignator.RetryPolicy",
-			"fields": [
-				{
-					"name": "maxAttempts",
-					"annotations": {},
-					"type": "UInt32"
-				},
-				{
-					"name": "timeoutMs",
-					"annotations": {},
-					"type": "UInt32"
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:Worker.DurableObjectNamespace.ContainerOptions",
-			"fields": [
-				{
-					"name": "imageName",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "privileges",
-					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:Worker.DurableObjectNamespace.ContainerOptions.ContainerPrivileges"
-				},
-				{
-					"name": "images",
-					"annotations": {},
-					"type": "List(workerd/src/workerd/server/workerd.capnp:Worker.DurableObjectNamespace.ContainerOptions.NamedImage)"
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:Worker.DurableObjectNamespace.ContainerOptions.ContainerPrivileges",
-			"fields": [
-				{
-					"name": "capabilities",
-					"annotations": {},
-					"type": "List(Text)"
-				},
-				{
-					"name": "devices",
-					"annotations": {},
-					"type": "List(workerd/src/workerd/server/workerd.capnp:Worker.DurableObjectNamespace.ContainerOptions.ContainerPrivileges.Device)"
-				},
-				{
-					"name": "securityOpt",
-					"annotations": {},
-					"type": "List(Text)"
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:Worker.DurableObjectNamespace.ContainerOptions.NamedImage",
-			"fields": [
-				{
-					"name": "name",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "image",
-					"annotations": {},
-					"type": "Text"
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:Worker.DurableObjectNamespace.ContainerOptions.ContainerPrivileges.Device",
-			"fields": [
-				{
-					"name": "pathOnHost",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "pathInContainer",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "cgroupPermissions",
-					"annotations": {},
-					"type": "Text"
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:WorkflowsEngine.Workflow",
-			"fields": [
-				{
-					"name": "className",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "name",
-					"annotations": {},
-					"type": "Text"
-				},
-				{
-					"name": "bindingService",
-					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator"
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:TlsOptions",
+			"name": "workerd/server/workerd.capnp:TlsOptions",
 			"fields": [
 				{
 					"name": "keypair",
 					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:TlsOptions.Keypair"
+					"type": "workerd/server/workerd.capnp:TlsOptions.Keypair"
 				},
 				{
 					"name": "requireClientCerts",
@@ -7947,7 +8077,7 @@
 				{
 					"name": "minVersion",
 					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:TlsOptions.Version"
+					"type": "workerd/server/workerd.capnp:TlsOptions.Version"
 				},
 				{
 					"name": "cipherList",
@@ -7957,7 +8087,7 @@
 			]
 		},
 		{
-			"name": "workerd/src/workerd/server/workerd.capnp:TlsOptions.Keypair",
+			"name": "workerd/server/workerd.capnp:TlsOptions.Keypair",
 			"fields": [
 				{
 					"name": "privateKey",
@@ -7972,12 +8102,12 @@
 			]
 		},
 		{
-			"name": "workerd/src/workerd/server/workerd.capnp:HttpOptions",
+			"name": "workerd/server/workerd.capnp:HttpOptions",
 			"fields": [
 				{
 					"name": "style",
 					"annotations": {},
-					"type": "workerd/src/workerd/server/workerd.capnp:HttpOptions.Style"
+					"type": "workerd/server/workerd.capnp:HttpOptions.Style"
 				},
 				{
 					"name": "forwardedProtoHeader",
@@ -7992,12 +8122,12 @@
 				{
 					"name": "injectRequestHeaders",
 					"annotations": {},
-					"type": "List(workerd/src/workerd/server/workerd.capnp:HttpOptions.Header)"
+					"type": "List(workerd/server/workerd.capnp:HttpOptions.Header)"
 				},
 				{
 					"name": "injectResponseHeaders",
 					"annotations": {},
-					"type": "List(workerd/src/workerd/server/workerd.capnp:HttpOptions.Header)"
+					"type": "List(workerd/server/workerd.capnp:HttpOptions.Header)"
 				},
 				{
 					"name": "capnpConnectHost",
@@ -8007,7 +8137,7 @@
 			]
 		},
 		{
-			"name": "workerd/src/workerd/server/workerd.capnp:HttpOptions.Header",
+			"name": "workerd/server/workerd.capnp:HttpOptions.Header",
 			"fields": [
 				{
 					"name": "name",
@@ -8022,7 +8152,7 @@
 			]
 		},
 		{
-			"name": "workerd/src/workerd/server/workerd.capnp:Extension.Module",
+			"name": "workerd/server/workerd.capnp:Extension.Module",
 			"fields": [
 				{
 					"name": "name",
@@ -8042,7 +8172,7 @@
 			]
 		},
 		{
-			"name": "workerd/src/workerd/server/workerd.capnp:FallbackServiceRequest.Attribute",
+			"name": "workerd/server/workerd.capnp:FallbackServiceRequest.Attribute",
 			"fields": [
 				{
 					"name": "name",
@@ -8057,7 +8187,7 @@
 			]
 		},
 		{
-			"name": "workerd/src/workerd/server/workerd.capnp:FallbackServiceRequest",
+			"name": "workerd/server/workerd.capnp:FallbackServiceRequest",
 			"fields": [
 				{
 					"name": "type",
@@ -8082,7 +8212,7 @@
 				{
 					"name": "attributes",
 					"annotations": {},
-					"type": "List(workerd/src/workerd/server/workerd.capnp:FallbackServiceRequest.Attribute)"
+					"type": "List(workerd/server/workerd.capnp:FallbackServiceRequest.Attribute)"
 				}
 			]
 		}
@@ -8587,42 +8717,7 @@
 			]
 		},
 		{
-			"name": "workerd/src/workerd/server/log-schema.capnp:LogEntry.LogLevel",
-			"enumerants": [
-				{
-					"name": "debug",
-					"annotations": {
-						"name": "debug"
-					}
-				},
-				{
-					"name": "info",
-					"annotations": {
-						"name": "info"
-					}
-				},
-				{
-					"name": "warning",
-					"annotations": {
-						"name": "warn"
-					}
-				},
-				{
-					"name": "error",
-					"annotations": {
-						"name": "error"
-					}
-				},
-				{
-					"name": "fatal",
-					"annotations": {
-						"name": "fatal"
-					}
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.CryptoKey.Usage",
+			"name": "workerd/server/workerd.capnp:Worker.Binding.CryptoKey.Usage",
 			"enumerants": [
 				{
 					"name": "encrypt",
@@ -8659,7 +8754,42 @@
 			]
 		},
 		{
-			"name": "workerd/src/workerd/server/workerd.capnp:TlsOptions.Version",
+			"name": "workerd/src/workerd/server/log-schema.capnp:LogEntry.LogLevel",
+			"enumerants": [
+				{
+					"name": "debug",
+					"annotations": {
+						"name": "debug"
+					}
+				},
+				{
+					"name": "info",
+					"annotations": {
+						"name": "info"
+					}
+				},
+				{
+					"name": "warning",
+					"annotations": {
+						"name": "warn"
+					}
+				},
+				{
+					"name": "error",
+					"annotations": {
+						"name": "error"
+					}
+				},
+				{
+					"name": "fatal",
+					"annotations": {
+						"name": "fatal"
+					}
+				}
+			]
+		},
+		{
+			"name": "workerd/server/workerd.capnp:TlsOptions.Version",
 			"enumerants": [
 				{
 					"name": "goodDefault",
@@ -8688,7 +8818,7 @@
 			]
 		},
 		{
-			"name": "workerd/src/workerd/server/workerd.capnp:HttpOptions.Style",
+			"name": "workerd/server/workerd.capnp:HttpOptions.Style",
 			"enumerants": [
 				{
 					"name": "host",
@@ -8868,8 +8998,9 @@
 		"workerd/src/workerd/server/channel-token.capnp",
 		"workerd/src/workerd/server/channel-token.capnp:ChannelToken.rpcTokenMagic",
 		"workerd/src/workerd/server/channel-token.capnp:ChannelToken.storageTokenMagic",
+		"workerd/src/workerd/server/compiled-bindings.capnp",
+		"workerd/server/workerd.capnp",
 		"workerd/src/workerd/server/docker-api.capnp",
-		"workerd/src/workerd/server/log-schema.capnp",
-		"workerd/src/workerd/server/workerd.capnp"
+		"workerd/src/workerd/server/log-schema.capnp"
 	]
 }
