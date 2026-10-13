@@ -456,7 +456,32 @@
 													"metadata": {
 														"description": "Absent for urls that never reached a fetch.",
 														"type": "object",
+														"additionalProperties": false,
 														"properties": {
+															"lastModified": {
+																"description": "Value of the Last-Modified response header, when provided by the origin.",
+																"type": "string"
+															},
+															"og:description": {
+																"description": "Open Graph description of the crawled page.",
+																"type": "string"
+															},
+															"og:image": {
+																"description": "Open Graph image of the crawled page.",
+																"type": "string"
+															},
+															"og:site_name": {
+																"description": "Open Graph site name of the crawled page.",
+																"type": "string"
+															},
+															"og:title": {
+																"description": "Open Graph title of the crawled page.",
+																"type": "string"
+															},
+															"og:type": {
+																"description": "Open Graph type of the crawled page.",
+																"type": "string"
+															},
 															"status": {
 																"description": "HTTP status code of the crawled page.",
 																"type": "number"
@@ -6528,7 +6553,8 @@
 									"devtools",
 									"tab",
 									"full"
-								]
+								],
+								"x-fern-property-name": "view-mode"
 							},
 							"targetId": {
 								"description": "Target ID (page) to connect to. If omitted, auto-resolves to the first active page.",

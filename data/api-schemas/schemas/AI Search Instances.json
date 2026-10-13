@@ -2,7 +2,7 @@
 	"DELETE /accounts/{account_id}/ai-search/instances/{id}": {
 		"operationId": "ai-search-delete-instance",
 		"summary": "Delete an AI Search instance.",
-		"description": "Permanently delete an AI Search instance and all its indexed data.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead.",
+		"description": "Deletes an AI Search instance and all its indexed data permanently.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{namespace}/instances (and descendant paths) instead.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -219,7 +219,7 @@
 											"x-auditable": true
 										},
 										"index_method": {
-											"description": "Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.",
+											"description": "Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances.",
 											"type": "object",
 											"default": {
 												"keyword": true,
@@ -346,7 +346,7 @@
 													"type": "object",
 													"properties": {
 														"disabled": {
-															"description": "Disable chat completions endpoint for this public endpoint",
+															"description": "Disable chat completions endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -356,7 +356,7 @@
 													"description": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).",
 													"type": "array",
 													"items": {
-														"description": "Custom domain hostname (must be a Verified zone on this account).",
+														"description": "Custom domain hostname. Must belong to a Verified zone on this account.",
 														"example": "search.example.com",
 														"maxLength": 253,
 														"minLength": 1,
@@ -384,7 +384,7 @@
 															"default": "Finds exactly what you're looking for"
 														},
 														"disabled": {
-															"description": "Disable MCP endpoint for this public endpoint",
+															"description": "Disable MCP endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -415,7 +415,7 @@
 													"type": "object",
 													"properties": {
 														"disabled": {
-															"description": "Disable search endpoint for this public endpoint",
+															"description": "Disable search endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -475,7 +475,7 @@
 													"maxItems": 3
 												},
 												"keyword_match_mode": {
-													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.",
+													"description": "Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted on an update, the existing stored value stays unchanged; when never set, search falls back to 'and'.",
 													"type": "string",
 													"enum": [
 														"and",
@@ -513,7 +513,7 @@
 											"nullable": true,
 											"properties": {
 												"exclude_items": {
-													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.",
+													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts have a limit of 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
 														"maxLength": 500,
@@ -528,7 +528,7 @@
 													"maxItems": 10
 												},
 												"include_items": {
-													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.",
+													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts have a limit of 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
 														"maxLength": 500,
@@ -556,7 +556,7 @@
 													},
 													"properties": {
 														"discover_options": {
-															"description": "Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.",
+															"description": "Options for parse_type 'discover', where Browser Run discovers URLs through link following and sitemaps. Ignored for 'sitemap'.",
 															"type": "object",
 															"properties": {
 																"depth": {
@@ -568,7 +568,7 @@
 																	"minimum": 1
 																},
 																"include_external_links": {
-																	"description": "Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.",
+																	"description": "Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own.",
 																	"type": "boolean",
 																	"example": false,
 																	"default": false
@@ -612,7 +612,7 @@
 															"type": "object",
 															"properties": {
 																"content_selector": {
-																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.",
+																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays.",
 																	"type": "array",
 																	"items": {
 																		"properties": {
@@ -624,7 +624,7 @@
 																				"minLength": 1
 																			},
 																			"selector": {
-																				"description": "CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, \\). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.",
+																				"description": "CSS selector to extract content from pages matching the path pattern. Disallowed characters: ;, `, $, {, }, \\. Must target a single element; if multiple elements match, the crawler ignores the selector and uses the full page.",
 																				"type": "string",
 																				"example": "article div.post-body",
 																				"maxLength": 200,
@@ -651,7 +651,7 @@
 																	"minItems": 1
 																},
 																"include_headers": {
-																	"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).",
+																	"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must use RFC-7230 token characters, excluding spaces, colons, and control characters. Values must use HTAB and printable ASCII only, excluding CR and LF.",
 																	"type": "object",
 																	"example": {
 																		"cache-control": "no-cache, no-store"
@@ -686,7 +686,7 @@
 															}
 														},
 														"parse_type": {
-															"description": "How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.",
+															"description": "How the crawler finds URLs. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to belong to a Verified zone on this account.",
 															"type": "string",
 															"example": "sitemap",
 															"default": "sitemap",
@@ -906,10 +906,10 @@
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-require-confirmation": "This operation permanently deletes the AI Search instance and all its indexed data."
 	},
-	"DELETE /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}": {
+	"DELETE /accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}": {
 		"operationId": "ai-search-namespace-delete-instance",
 		"summary": "Delete an AI Search instance.",
-		"description": "Permanently delete an AI Search instance and all its indexed data.",
+		"description": "Deletes an AI Search instance and all its indexed data permanently.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -931,12 +931,14 @@
 				"x-fern-parameter-name": "instance-id"
 			},
 			{
-				"name": "name",
+				"name": "namespace",
 				"in": "path",
-				"description": "Namespace name",
+				"description": "Namespace name.",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"default": "default",
+					"x-stainless-terraform-configurability": "computed_optional"
 				},
 				"example": "my-namespace",
 				"x-fern-parameter-name": "namespace"
@@ -1138,7 +1140,7 @@
 											"x-auditable": true
 										},
 										"index_method": {
-											"description": "Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.",
+											"description": "Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances.",
 											"type": "object",
 											"default": {
 												"keyword": true,
@@ -1265,7 +1267,7 @@
 													"type": "object",
 													"properties": {
 														"disabled": {
-															"description": "Disable chat completions endpoint for this public endpoint",
+															"description": "Disable chat completions endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -1275,7 +1277,7 @@
 													"description": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).",
 													"type": "array",
 													"items": {
-														"description": "Custom domain hostname (must be a Verified zone on this account).",
+														"description": "Custom domain hostname. Must belong to a Verified zone on this account.",
 														"example": "search.example.com",
 														"maxLength": 253,
 														"minLength": 1,
@@ -1303,7 +1305,7 @@
 															"default": "Finds exactly what you're looking for"
 														},
 														"disabled": {
-															"description": "Disable MCP endpoint for this public endpoint",
+															"description": "Disable MCP endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -1334,7 +1336,7 @@
 													"type": "object",
 													"properties": {
 														"disabled": {
-															"description": "Disable search endpoint for this public endpoint",
+															"description": "Disable search endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -1394,7 +1396,7 @@
 													"maxItems": 3
 												},
 												"keyword_match_mode": {
-													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.",
+													"description": "Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted on an update, the existing stored value stays unchanged; when never set, search falls back to 'and'.",
 													"type": "string",
 													"enum": [
 														"and",
@@ -1432,7 +1434,7 @@
 											"nullable": true,
 											"properties": {
 												"exclude_items": {
-													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.",
+													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts have a limit of 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
 														"maxLength": 500,
@@ -1447,7 +1449,7 @@
 													"maxItems": 10
 												},
 												"include_items": {
-													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.",
+													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts have a limit of 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
 														"maxLength": 500,
@@ -1475,7 +1477,7 @@
 													},
 													"properties": {
 														"discover_options": {
-															"description": "Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.",
+															"description": "Options for parse_type 'discover', where Browser Run discovers URLs through link following and sitemaps. Ignored for 'sitemap'.",
 															"type": "object",
 															"properties": {
 																"depth": {
@@ -1487,7 +1489,7 @@
 																	"minimum": 1
 																},
 																"include_external_links": {
-																	"description": "Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.",
+																	"description": "Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own.",
 																	"type": "boolean",
 																	"example": false,
 																	"default": false
@@ -1531,7 +1533,7 @@
 															"type": "object",
 															"properties": {
 																"content_selector": {
-																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.",
+																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays.",
 																	"type": "array",
 																	"items": {
 																		"properties": {
@@ -1543,7 +1545,7 @@
 																				"minLength": 1
 																			},
 																			"selector": {
-																				"description": "CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, \\). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.",
+																				"description": "CSS selector to extract content from pages matching the path pattern. Disallowed characters: ;, `, $, {, }, \\. Must target a single element; if multiple elements match, the crawler ignores the selector and uses the full page.",
 																				"type": "string",
 																				"example": "article div.post-body",
 																				"maxLength": 200,
@@ -1570,7 +1572,7 @@
 																	"minItems": 1
 																},
 																"include_headers": {
-																	"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).",
+																	"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must use RFC-7230 token characters, excluding spaces, colons, and control characters. Values must use HTAB and printable ASCII only, excluding CR and LF.",
 																	"type": "object",
 																	"example": {
 																		"cache-control": "no-cache, no-store"
@@ -1605,7 +1607,7 @@
 															}
 														},
 														"parse_type": {
-															"description": "How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.",
+															"description": "How the crawler finds URLs. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to belong to a Verified zone on this account.",
 															"type": "string",
 															"example": "sitemap",
 															"default": "sitemap",
@@ -1825,7 +1827,7 @@
 			"id": {
 				"description": "AI Search instance ID."
 			},
-			"name": {
+			"namespace": {
 				"default": "default",
 				"description": "Namespace to use for this operation."
 			}
@@ -1835,7 +1837,7 @@
 	"GET /accounts/{account_id}/ai-search/instances": {
 		"operationId": "ai-search-list-instances",
 		"summary": "List AI Search instances.",
-		"description": "List all AI Search instances in the account.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead.",
+		"description": "Lists all AI Search instances in the account.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{namespace}/instances (and descendant paths) instead.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1884,9 +1886,9 @@
 			{
 				"name": "hostname",
 				"in": "query",
-				"description": "Filter by exact Search for Agents hostname (case-insensitive).",
+				"description": "Return only instances with this exact Search for Agents hostname (case-insensitive).",
 				"schema": {
-					"description": "Filter by exact Search for Agents hostname (case-insensitive).",
+					"description": "Return only instances with this exact Search for Agents hostname (case-insensitive).",
 					"type": "string",
 					"maxLength": 253,
 					"minLength": 1
@@ -1895,9 +1897,9 @@
 			{
 				"name": "namespace",
 				"in": "query",
-				"description": "Filter by namespace.",
+				"description": "Return only instances in this namespace.",
 				"schema": {
-					"description": "Filter by namespace.",
+					"description": "Return only instances in this namespace.",
 					"type": "string",
 					"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$"
 				}
@@ -2388,7 +2390,7 @@
 																		"type": "boolean"
 																	},
 																	"limit": {
-																		"description": "Maximum number of pages to crawl. New values are capped at 100000; instances configured before that cap may report a higher stored value, which the crawler clamps at run time.",
+																		"description": "Maximum number of pages to crawl. New values have a maximum of 100000; instances configured before that cap may report a higher stored value, which the crawler clamps at run time.",
 																		"type": "number",
 																		"maximum": 100000,
 																		"minimum": 1
@@ -2649,7 +2651,7 @@
 				}
 			},
 			"400": {
-				"description": "Input Validation Error",
+				"description": "Input Validation Error.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2728,7 +2730,7 @@
 	"GET /accounts/{account_id}/ai-search/instances/{id}": {
 		"operationId": "ai-search-fetch-instance",
 		"summary": "Get an AI Search instance.",
-		"description": "Retrieve the configuration and status of an AI Search instance.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead.",
+		"description": "Retrieve the configuration and status of an AI Search instance.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{namespace}/instances (and descendant paths) instead.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2945,7 +2947,7 @@
 											"x-auditable": true
 										},
 										"index_method": {
-											"description": "Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.",
+											"description": "Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances.",
 											"type": "object",
 											"default": {
 												"keyword": true,
@@ -3072,7 +3074,7 @@
 													"type": "object",
 													"properties": {
 														"disabled": {
-															"description": "Disable chat completions endpoint for this public endpoint",
+															"description": "Disable chat completions endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -3082,7 +3084,7 @@
 													"description": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).",
 													"type": "array",
 													"items": {
-														"description": "Custom domain hostname (must be a Verified zone on this account).",
+														"description": "Custom domain hostname. Must belong to a Verified zone on this account.",
 														"example": "search.example.com",
 														"maxLength": 253,
 														"minLength": 1,
@@ -3110,7 +3112,7 @@
 															"default": "Finds exactly what you're looking for"
 														},
 														"disabled": {
-															"description": "Disable MCP endpoint for this public endpoint",
+															"description": "Disable MCP endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -3141,7 +3143,7 @@
 													"type": "object",
 													"properties": {
 														"disabled": {
-															"description": "Disable search endpoint for this public endpoint",
+															"description": "Disable search endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -3201,7 +3203,7 @@
 													"maxItems": 3
 												},
 												"keyword_match_mode": {
-													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.",
+													"description": "Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted on an update, the existing stored value stays unchanged; when never set, search falls back to 'and'.",
 													"type": "string",
 													"enum": [
 														"and",
@@ -3239,7 +3241,7 @@
 											"nullable": true,
 											"properties": {
 												"exclude_items": {
-													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.",
+													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts have a limit of 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
 														"maxLength": 500,
@@ -3254,7 +3256,7 @@
 													"maxItems": 10
 												},
 												"include_items": {
-													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.",
+													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts have a limit of 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
 														"maxLength": 500,
@@ -3282,7 +3284,7 @@
 													},
 													"properties": {
 														"discover_options": {
-															"description": "Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.",
+															"description": "Options for parse_type 'discover', where Browser Run discovers URLs through link following and sitemaps. Ignored for 'sitemap'.",
 															"type": "object",
 															"properties": {
 																"depth": {
@@ -3294,7 +3296,7 @@
 																	"minimum": 1
 																},
 																"include_external_links": {
-																	"description": "Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.",
+																	"description": "Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own.",
 																	"type": "boolean",
 																	"example": false,
 																	"default": false
@@ -3338,7 +3340,7 @@
 															"type": "object",
 															"properties": {
 																"content_selector": {
-																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.",
+																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays.",
 																	"type": "array",
 																	"items": {
 																		"properties": {
@@ -3350,7 +3352,7 @@
 																				"minLength": 1
 																			},
 																			"selector": {
-																				"description": "CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, \\). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.",
+																				"description": "CSS selector to extract content from pages matching the path pattern. Disallowed characters: ;, `, $, {, }, \\. Must target a single element; if multiple elements match, the crawler ignores the selector and uses the full page.",
 																				"type": "string",
 																				"example": "article div.post-body",
 																				"maxLength": 200,
@@ -3377,7 +3379,7 @@
 																	"minItems": 1
 																},
 																"include_headers": {
-																	"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).",
+																	"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must use RFC-7230 token characters, excluding spaces, colons, and control characters. Values must use HTAB and printable ASCII only, excluding CR and LF.",
 																	"type": "object",
 																	"example": {
 																		"cache-control": "no-cache, no-store"
@@ -3412,7 +3414,7 @@
 															}
 														},
 														"parse_type": {
-															"description": "How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.",
+															"description": "How the crawler finds URLs. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to belong to a Verified zone on this account.",
 															"type": "string",
 															"example": "sitemap",
 															"default": "sitemap",
@@ -3594,7 +3596,7 @@
 	"GET /accounts/{account_id}/ai-search/instances/{id}/stats": {
 		"operationId": "ai-search-stats",
 		"summary": "Get instance statistics.",
-		"description": "Retrieve usage and indexing statistics for an AI Search instance.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead.",
+		"description": "Retrieve usage and indexing statistics for an AI Search instance.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{namespace}/instances (and descendant paths) instead.",
 		"parameters": [
 			{
 				"name": "id",
@@ -3636,7 +3638,7 @@
 											"type": "integer"
 										},
 										"degraded": {
-											"description": "True when status counts are unavailable (e.g. legacy stats query exceeded D1 statement-size limit). Counts are omitted in this case.",
+											"description": "True when the API cannot compute status counts (e.g. the legacy stats query exceeded the D1 statement-size limit). The response omits counts in this case.",
 											"type": "boolean"
 										},
 										"engine": {
@@ -3723,7 +3725,7 @@
 				}
 			},
 			"404": {
-				"description": "Not Found",
+				"description": "Not Found.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3792,10 +3794,10 @@
 		"x-fern-sdk-group-name": "ai-search",
 		"x-fern-sdk-method-name": "stats"
 	},
-	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances": {
+	"GET /accounts/{account_id}/ai-search/namespaces/{namespace}/instances": {
 		"operationId": "ai-search-namespace-list-instances",
 		"summary": "List AI Search instances.",
-		"description": "List all AI Search instances in the account.",
+		"description": "Lists all AI Search instances in the account.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3805,6 +3807,19 @@
 					"type": "string",
 					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
+			},
+			{
+				"name": "namespace",
+				"in": "path",
+				"description": "Namespace name.",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"default": "default",
+					"x-stainless-terraform-configurability": "computed_optional"
+				},
+				"example": "my-namespace",
+				"x-fern-parameter-name": "namespace"
 			},
 			{
 				"name": "page",
@@ -3844,9 +3859,9 @@
 			{
 				"name": "hostname",
 				"in": "query",
-				"description": "Filter by exact Search for Agents hostname (case-insensitive).",
+				"description": "Return only instances with this exact Search for Agents hostname (case-insensitive).",
 				"schema": {
-					"description": "Filter by exact Search for Agents hostname (case-insensitive).",
+					"description": "Return only instances with this exact Search for Agents hostname (case-insensitive).",
 					"type": "string",
 					"maxLength": 253,
 					"minLength": 1
@@ -3878,17 +3893,6 @@
 						"desc"
 					]
 				}
-			},
-			{
-				"name": "name",
-				"in": "path",
-				"description": "Namespace name",
-				"required": true,
-				"schema": {
-					"type": "string"
-				},
-				"example": "my-namespace",
-				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"responses": {
@@ -4349,7 +4353,7 @@
 																		"type": "boolean"
 																	},
 																	"limit": {
-																		"description": "Maximum number of pages to crawl. New values are capped at 100000; instances configured before that cap may report a higher stored value, which the crawler clamps at run time.",
+																		"description": "Maximum number of pages to crawl. New values have a maximum of 100000; instances configured before that cap may report a higher stored value, which the crawler clamps at run time.",
 																		"type": "number",
 																		"maximum": 100000,
 																		"minimum": 1
@@ -4610,7 +4614,7 @@
 				}
 			},
 			"400": {
-				"description": "Input Validation Error",
+				"description": "Input Validation Error.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4684,13 +4688,13 @@
 		"x-fern-sdk-group-name": "ai-search",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-params": {
-			"name": {
+			"namespace": {
 				"default": "default",
 				"description": "Namespace to use for this operation."
 			}
 		}
 	},
-	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}": {
+	"GET /accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}": {
 		"operationId": "ai-search-namespace-fetch-instance",
 		"summary": "Get an AI Search instance.",
 		"description": "Retrieve the configuration and status of an AI Search instance.",
@@ -4715,12 +4719,14 @@
 				"x-fern-parameter-name": "instance-id"
 			},
 			{
-				"name": "name",
+				"name": "namespace",
 				"in": "path",
-				"description": "Namespace name",
+				"description": "Namespace name.",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"default": "default",
+					"x-stainless-terraform-configurability": "computed_optional"
 				},
 				"example": "my-namespace",
 				"x-fern-parameter-name": "namespace"
@@ -4922,7 +4928,7 @@
 											"x-auditable": true
 										},
 										"index_method": {
-											"description": "Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.",
+											"description": "Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances.",
 											"type": "object",
 											"default": {
 												"keyword": true,
@@ -5049,7 +5055,7 @@
 													"type": "object",
 													"properties": {
 														"disabled": {
-															"description": "Disable chat completions endpoint for this public endpoint",
+															"description": "Disable chat completions endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -5059,7 +5065,7 @@
 													"description": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).",
 													"type": "array",
 													"items": {
-														"description": "Custom domain hostname (must be a Verified zone on this account).",
+														"description": "Custom domain hostname. Must belong to a Verified zone on this account.",
 														"example": "search.example.com",
 														"maxLength": 253,
 														"minLength": 1,
@@ -5087,7 +5093,7 @@
 															"default": "Finds exactly what you're looking for"
 														},
 														"disabled": {
-															"description": "Disable MCP endpoint for this public endpoint",
+															"description": "Disable MCP endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -5118,7 +5124,7 @@
 													"type": "object",
 													"properties": {
 														"disabled": {
-															"description": "Disable search endpoint for this public endpoint",
+															"description": "Disable search endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -5178,7 +5184,7 @@
 													"maxItems": 3
 												},
 												"keyword_match_mode": {
-													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.",
+													"description": "Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted on an update, the existing stored value stays unchanged; when never set, search falls back to 'and'.",
 													"type": "string",
 													"enum": [
 														"and",
@@ -5216,7 +5222,7 @@
 											"nullable": true,
 											"properties": {
 												"exclude_items": {
-													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.",
+													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts have a limit of 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
 														"maxLength": 500,
@@ -5231,7 +5237,7 @@
 													"maxItems": 10
 												},
 												"include_items": {
-													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.",
+													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts have a limit of 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
 														"maxLength": 500,
@@ -5259,7 +5265,7 @@
 													},
 													"properties": {
 														"discover_options": {
-															"description": "Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.",
+															"description": "Options for parse_type 'discover', where Browser Run discovers URLs through link following and sitemaps. Ignored for 'sitemap'.",
 															"type": "object",
 															"properties": {
 																"depth": {
@@ -5271,7 +5277,7 @@
 																	"minimum": 1
 																},
 																"include_external_links": {
-																	"description": "Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.",
+																	"description": "Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own.",
 																	"type": "boolean",
 																	"example": false,
 																	"default": false
@@ -5315,7 +5321,7 @@
 															"type": "object",
 															"properties": {
 																"content_selector": {
-																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.",
+																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays.",
 																	"type": "array",
 																	"items": {
 																		"properties": {
@@ -5327,7 +5333,7 @@
 																				"minLength": 1
 																			},
 																			"selector": {
-																				"description": "CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, \\). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.",
+																				"description": "CSS selector to extract content from pages matching the path pattern. Disallowed characters: ;, `, $, {, }, \\. Must target a single element; if multiple elements match, the crawler ignores the selector and uses the full page.",
 																				"type": "string",
 																				"example": "article div.post-body",
 																				"maxLength": 200,
@@ -5354,7 +5360,7 @@
 																	"minItems": 1
 																},
 																"include_headers": {
-																	"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).",
+																	"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must use RFC-7230 token characters, excluding spaces, colons, and control characters. Values must use HTAB and printable ASCII only, excluding CR and LF.",
 																	"type": "object",
 																	"example": {
 																		"cache-control": "no-cache, no-store"
@@ -5389,7 +5395,7 @@
 															}
 														},
 														"parse_type": {
-															"description": "How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.",
+															"description": "How the crawler finds URLs. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to belong to a Verified zone on this account.",
 															"type": "string",
 															"example": "sitemap",
 															"default": "sitemap",
@@ -5569,13 +5575,13 @@
 			"id": {
 				"description": "AI Search instance ID."
 			},
-			"name": {
+			"namespace": {
 				"default": "default",
 				"description": "Namespace to use for this operation."
 			}
 		}
 	},
-	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/stats": {
+	"GET /accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/stats": {
 		"operationId": "ai-search-namespace-stats",
 		"summary": "Get instance statistics.",
 		"description": "Retrieve usage and indexing statistics for an AI Search instance.",
@@ -5606,12 +5612,14 @@
 				}
 			},
 			{
-				"name": "name",
+				"name": "namespace",
 				"in": "path",
-				"description": "Namespace name",
+				"description": "Namespace name.",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"default": "default",
+					"x-stainless-terraform-configurability": "computed_optional"
 				},
 				"example": "my-namespace",
 				"x-fern-parameter-name": "namespace"
@@ -5632,7 +5640,7 @@
 											"type": "integer"
 										},
 										"degraded": {
-											"description": "True when status counts are unavailable (e.g. legacy stats query exceeded D1 statement-size limit). Counts are omitted in this case.",
+											"description": "True when the API cannot compute status counts (e.g. the legacy stats query exceeded the D1 statement-size limit). The response omits counts in this case.",
 											"type": "boolean"
 										},
 										"engine": {
@@ -5719,7 +5727,7 @@
 				}
 			},
 			"404": {
-				"description": "Not Found",
+				"description": "Not Found.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -5789,7 +5797,7 @@
 			"id": {
 				"description": "AI Search instance ID."
 			},
-			"name": {
+			"namespace": {
 				"default": "default",
 				"description": "Namespace to use for this operation."
 			}
@@ -5798,7 +5806,7 @@
 	"POST /accounts/{account_id}/ai-search/instances": {
 		"operationId": "ai-search-create-instance",
 		"summary": "Create an AI Search instance.",
-		"description": "Create a new AI Search instance with the given configuration. If type is omitted or null, a non-blank HTTP(S) source infers web-crawler and any other source infers r2; r2 sources must name an existing bucket. A missing or blank source without a type creates a managed upload-only instance.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead.",
+		"description": "Create a new AI Search instance with the given configuration. If type is omitted or null, a non-blank HTTP(S) source infers web-crawler and any other source infers r2; r2 sources must name an existing bucket. A missing or blank source without a type creates a managed upload-only instance.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{namespace}/instances (and descendant paths) instead.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -5986,7 +5994,7 @@
 								"x-auditable": true
 							},
 							"index_method": {
-								"description": "Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.",
+								"description": "Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances.",
 								"type": "object",
 								"default": {
 									"keyword": true,
@@ -6081,7 +6089,7 @@
 										"type": "object",
 										"properties": {
 											"disabled": {
-												"description": "Disable chat completions endpoint for this public endpoint",
+												"description": "Disable chat completions endpoint for this public endpoint.",
 												"type": "boolean",
 												"default": false
 											}
@@ -6091,7 +6099,7 @@
 										"description": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).",
 										"type": "array",
 										"items": {
-											"description": "Custom domain hostname (must be a Verified zone on this account).",
+											"description": "Custom domain hostname. Must belong to a Verified zone on this account.",
 											"example": "search.example.com",
 											"maxLength": 253,
 											"minLength": 1,
@@ -6119,7 +6127,7 @@
 												"default": "Finds exactly what you're looking for"
 											},
 											"disabled": {
-												"description": "Disable MCP endpoint for this public endpoint",
+												"description": "Disable MCP endpoint for this public endpoint.",
 												"type": "boolean",
 												"default": false
 											}
@@ -6150,7 +6158,7 @@
 										"type": "object",
 										"properties": {
 											"disabled": {
-												"description": "Disable search endpoint for this public endpoint",
+												"description": "Disable search endpoint for this public endpoint.",
 												"type": "boolean",
 												"default": false
 											}
@@ -6210,7 +6218,7 @@
 										"maxItems": 3
 									},
 									"keyword_match_mode": {
-										"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.",
+										"description": "Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted on an update, the existing stored value stays unchanged; when never set, search falls back to 'and'.",
 										"type": "string",
 										"enum": [
 											"and",
@@ -6248,7 +6256,7 @@
 								"nullable": true,
 								"properties": {
 									"exclude_items": {
-										"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.",
+										"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts have a limit of 10 rules; contact support to raise it.",
 										"type": "array",
 										"items": {
 											"maxLength": 500,
@@ -6263,7 +6271,7 @@
 										"maxItems": 10
 									},
 									"include_items": {
-										"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.",
+										"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts have a limit of 10 rules; contact support to raise it.",
 										"type": "array",
 										"items": {
 											"maxLength": 500,
@@ -6291,7 +6299,7 @@
 										},
 										"properties": {
 											"discover_options": {
-												"description": "Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.",
+												"description": "Options for parse_type 'discover', where Browser Run discovers URLs through link following and sitemaps. Ignored for 'sitemap'.",
 												"type": "object",
 												"properties": {
 													"depth": {
@@ -6303,7 +6311,7 @@
 														"minimum": 1
 													},
 													"include_external_links": {
-														"description": "Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.",
+														"description": "Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own.",
 														"type": "boolean",
 														"example": false,
 														"default": false
@@ -6347,7 +6355,7 @@
 												"type": "object",
 												"properties": {
 													"content_selector": {
-														"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.",
+														"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays.",
 														"type": "array",
 														"items": {
 															"properties": {
@@ -6359,7 +6367,7 @@
 																	"minLength": 1
 																},
 																"selector": {
-																	"description": "CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, \\). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.",
+																	"description": "CSS selector to extract content from pages matching the path pattern. Disallowed characters: ;, `, $, {, }, \\. Must target a single element; if multiple elements match, the crawler ignores the selector and uses the full page.",
 																	"type": "string",
 																	"example": "article div.post-body",
 																	"maxLength": 200,
@@ -6386,7 +6394,7 @@
 														"minItems": 1
 													},
 													"include_headers": {
-														"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).",
+														"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must use RFC-7230 token characters, excluding spaces, colons, and control characters. Values must use HTAB and printable ASCII only, excluding CR and LF.",
 														"type": "object",
 														"example": {
 															"cache-control": "no-cache, no-store"
@@ -6421,7 +6429,7 @@
 												}
 											},
 											"parse_type": {
-												"description": "How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.",
+												"description": "How the crawler finds URLs. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to belong to a Verified zone on this account.",
 												"type": "string",
 												"example": "sitemap",
 												"default": "sitemap",
@@ -6710,7 +6718,7 @@
 											"x-auditable": true
 										},
 										"index_method": {
-											"description": "Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.",
+											"description": "Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances.",
 											"type": "object",
 											"default": {
 												"keyword": true,
@@ -6837,7 +6845,7 @@
 													"type": "object",
 													"properties": {
 														"disabled": {
-															"description": "Disable chat completions endpoint for this public endpoint",
+															"description": "Disable chat completions endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -6847,7 +6855,7 @@
 													"description": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).",
 													"type": "array",
 													"items": {
-														"description": "Custom domain hostname (must be a Verified zone on this account).",
+														"description": "Custom domain hostname. Must belong to a Verified zone on this account.",
 														"example": "search.example.com",
 														"maxLength": 253,
 														"minLength": 1,
@@ -6875,7 +6883,7 @@
 															"default": "Finds exactly what you're looking for"
 														},
 														"disabled": {
-															"description": "Disable MCP endpoint for this public endpoint",
+															"description": "Disable MCP endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -6906,7 +6914,7 @@
 													"type": "object",
 													"properties": {
 														"disabled": {
-															"description": "Disable search endpoint for this public endpoint",
+															"description": "Disable search endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -6966,7 +6974,7 @@
 													"maxItems": 3
 												},
 												"keyword_match_mode": {
-													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.",
+													"description": "Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted on an update, the existing stored value stays unchanged; when never set, search falls back to 'and'.",
 													"type": "string",
 													"enum": [
 														"and",
@@ -7004,7 +7012,7 @@
 											"nullable": true,
 											"properties": {
 												"exclude_items": {
-													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.",
+													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts have a limit of 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
 														"maxLength": 500,
@@ -7019,7 +7027,7 @@
 													"maxItems": 10
 												},
 												"include_items": {
-													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.",
+													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts have a limit of 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
 														"maxLength": 500,
@@ -7047,7 +7055,7 @@
 													},
 													"properties": {
 														"discover_options": {
-															"description": "Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.",
+															"description": "Options for parse_type 'discover', where Browser Run discovers URLs through link following and sitemaps. Ignored for 'sitemap'.",
 															"type": "object",
 															"properties": {
 																"depth": {
@@ -7059,7 +7067,7 @@
 																	"minimum": 1
 																},
 																"include_external_links": {
-																	"description": "Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.",
+																	"description": "Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own.",
 																	"type": "boolean",
 																	"example": false,
 																	"default": false
@@ -7103,7 +7111,7 @@
 															"type": "object",
 															"properties": {
 																"content_selector": {
-																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.",
+																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays.",
 																	"type": "array",
 																	"items": {
 																		"properties": {
@@ -7115,7 +7123,7 @@
 																				"minLength": 1
 																			},
 																			"selector": {
-																				"description": "CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, \\). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.",
+																				"description": "CSS selector to extract content from pages matching the path pattern. Disallowed characters: ;, `, $, {, }, \\. Must target a single element; if multiple elements match, the crawler ignores the selector and uses the full page.",
 																				"type": "string",
 																				"example": "article div.post-body",
 																				"maxLength": 200,
@@ -7142,7 +7150,7 @@
 																	"minItems": 1
 																},
 																"include_headers": {
-																	"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).",
+																	"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must use RFC-7230 token characters, excluding spaces, colons, and control characters. Values must use HTAB and printable ASCII only, excluding CR and LF.",
 																	"type": "object",
 																	"example": {
 																		"cache-control": "no-cache, no-store"
@@ -7177,7 +7185,7 @@
 															}
 														},
 														"parse_type": {
-															"description": "How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.",
+															"description": "How the crawler finds URLs. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to belong to a Verified zone on this account.",
 															"type": "string",
 															"example": "sitemap",
 															"default": "sitemap",
@@ -7367,7 +7375,17 @@
 				}
 			},
 			"409": {
-				"description": "Search for agents hostname used by another namespace; Search for agents requires default namespace; Ai search instance deletion in progress",
+				"description": "Search for agents hostname used by another namespace; Search for agents requires default namespace; Ai search instance deletion in progress.",
+				"headers": {
+					"Retry-After": {
+						"description": "Seconds to wait before retrying.",
+						"schema": {
+							"description": "Seconds to wait before retrying.",
+							"type": "string",
+							"example": "10"
+						}
+					}
+				},
 				"content": {
 					"application/json": {
 						"schema": {
@@ -7482,7 +7500,7 @@
 	"POST /accounts/{account_id}/ai-search/instances/{id}/chat/completions": {
 		"operationId": "ai-search-instance-chat-completion",
 		"summary": "Chat Completions",
-		"description": "Performs a chat completion request against an AI Search instance, using indexed content as context for generating responses.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead.",
+		"description": "Performs a chat completion request against an AI Search instance, using indexed content as context for generating responses.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{namespace}/instances (and descendant paths) instead.",
 		"parameters": [
 			{
 				"name": "id",
@@ -7536,7 +7554,7 @@
 										}
 									},
 									"custom_metadata": {
-										"description": "Metadata added to AI Gateway logs for requests triggered by this operation. Accepts up to 2 string, number, or boolean entries. Keys 'ai-search', 'task', 'origin', and keys beginning with 'cf.' are reserved.",
+										"description": "Metadata added to AI Gateway logs for requests this operation triggers. Accepts up to 2 string, number, or boolean entries. Reserved keys: 'ai-search', 'task', 'origin', and any key beginning with 'cf.'.",
 										"type": "object",
 										"example": {
 											"test": true,
@@ -7646,7 +7664,7 @@
 												]
 											},
 											"keyword_match_mode": {
-												"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'.",
+												"description": "Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'.",
 												"type": "string",
 												"enum": [
 													"and",
@@ -7998,6 +8016,16 @@
 													"key"
 												]
 											},
+											"media_end_ms": {
+												"description": "Audio/video transcript chunks only: end, in milliseconds from the start of the media (whole seconds), of the last transcript section the matched chunk covers. Describes the matched chunk before any context expansion, not the expanded `text`.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"media_start_ms": {
+												"description": "Audio/video transcript chunks only: start, in milliseconds from the start of the media (whole seconds), of the transcript section the matched chunk begins in. Describes the matched chunk before any context expansion, not the expanded `text`.",
+												"type": "integer",
+												"minimum": 0
+											},
 											"score": {
 												"type": "number",
 												"maximum": 1,
@@ -8034,6 +8062,14 @@
 														"minimum": 0
 													}
 												}
+											},
+											"source_media_type": {
+												"description": "Audio/video transcript chunks only: type of the source media file. Omitted for all other chunks.",
+												"type": "string",
+												"enum": [
+													"audio",
+													"video"
+												]
 											},
 											"text": {
 												"type": "string"
@@ -8151,7 +8187,7 @@
 				}
 			},
 			"404": {
-				"description": "Not Found",
+				"description": "Not Found.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -8191,7 +8227,7 @@
 				}
 			},
 			"429": {
-				"description": "Monthly query quota exceeded; Workers ai capacity temporarily exceeded",
+				"description": "Monthly query quota exceeded; Workers ai capacity temporarily exceeded.",
 				"headers": {
 					"Retry-After": {
 						"description": "Seconds to wait before retrying.",
@@ -8266,7 +8302,7 @@
 				}
 			},
 			"502": {
-				"description": "Ai gateway exception; Workers ai upstream error",
+				"description": "Ai gateway exception; Workers ai upstream error.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -8362,7 +8398,7 @@
 	"POST /accounts/{account_id}/ai-search/instances/{id}/search": {
 		"operationId": "ai-search-instance-search",
 		"summary": "Search",
-		"description": "Executes a semantic search query against an AI Search instance to find relevant indexed content.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead.",
+		"description": "Executes a semantic search query against an AI Search instance to find relevant indexed content.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{namespace}/instances (and descendant paths) instead.",
 		"parameters": [
 			{
 				"name": "id",
@@ -8416,7 +8452,7 @@
 										}
 									},
 									"custom_metadata": {
-										"description": "Metadata added to AI Gateway logs for requests triggered by this operation. Accepts up to 2 string, number, or boolean entries. Keys 'ai-search', 'task', 'origin', and keys beginning with 'cf.' are reserved.",
+										"description": "Metadata added to AI Gateway logs for requests this operation triggers. Accepts up to 2 string, number, or boolean entries. Reserved keys: 'ai-search', 'task', 'origin', and any key beginning with 'cf.'.",
 										"type": "object",
 										"example": {
 											"test": true,
@@ -8526,7 +8562,7 @@
 												]
 											},
 											"keyword_match_mode": {
-												"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'.",
+												"description": "Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'.",
 												"type": "string",
 												"enum": [
 													"and",
@@ -8737,6 +8773,16 @@
 															"key"
 														]
 													},
+													"media_end_ms": {
+														"description": "Audio/video transcript chunks only: end, in milliseconds from the start of the media (whole seconds), of the last transcript section the matched chunk covers. Describes the matched chunk before any context expansion, not the expanded `text`.",
+														"type": "integer",
+														"minimum": 0
+													},
+													"media_start_ms": {
+														"description": "Audio/video transcript chunks only: start, in milliseconds from the start of the media (whole seconds), of the transcript section the matched chunk begins in. Describes the matched chunk before any context expansion, not the expanded `text`.",
+														"type": "integer",
+														"minimum": 0
+													},
 													"score": {
 														"type": "number",
 														"maximum": 1,
@@ -8773,6 +8819,14 @@
 																"minimum": 0
 															}
 														}
+													},
+													"source_media_type": {
+														"description": "Audio/video transcript chunks only: type of the source media file. Omitted for all other chunks.",
+														"type": "string",
+														"enum": [
+															"audio",
+															"video"
+														]
 													},
 													"text": {
 														"type": "string"
@@ -8860,7 +8914,7 @@
 				}
 			},
 			"404": {
-				"description": "Not Found",
+				"description": "Not Found.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -8900,7 +8954,7 @@
 				}
 			},
 			"429": {
-				"description": "Monthly query quota exceeded; Workers ai capacity temporarily exceeded",
+				"description": "Monthly query quota exceeded; Workers ai capacity temporarily exceeded.",
 				"headers": {
 					"Retry-After": {
 						"description": "Seconds to wait before retrying.",
@@ -8975,7 +9029,7 @@
 				}
 			},
 			"502": {
-				"description": "Ai gateway exception; Workers ai upstream error",
+				"description": "Ai gateway exception; Workers ai upstream error.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -9069,7 +9123,7 @@
 		"x-fern-sdk-group-name": "ai-search",
 		"x-fern-sdk-method-name": "search"
 	},
-	"POST /accounts/{account_id}/ai-search/namespaces/{name}/instances": {
+	"POST /accounts/{account_id}/ai-search/namespaces/{namespace}/instances": {
 		"operationId": "ai-search-namespace-create-instance",
 		"summary": "Create an AI Search instance.",
 		"description": "Create a new AI Search instance with the given configuration. If type is omitted or null, a non-blank HTTP(S) source infers web-crawler and any other source infers r2; r2 sources must name an existing bucket. A missing or blank source without a type creates a managed upload-only instance.",
@@ -9084,12 +9138,14 @@
 				}
 			},
 			{
-				"name": "name",
+				"name": "namespace",
 				"in": "path",
-				"description": "Namespace name",
+				"description": "Namespace name.",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"default": "default",
+					"x-stainless-terraform-configurability": "computed_optional"
 				},
 				"example": "my-namespace",
 				"x-fern-parameter-name": "namespace"
@@ -9271,7 +9327,7 @@
 								"x-auditable": true
 							},
 							"index_method": {
-								"description": "Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.",
+								"description": "Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances.",
 								"type": "object",
 								"default": {
 									"keyword": true,
@@ -9366,7 +9422,7 @@
 										"type": "object",
 										"properties": {
 											"disabled": {
-												"description": "Disable chat completions endpoint for this public endpoint",
+												"description": "Disable chat completions endpoint for this public endpoint.",
 												"type": "boolean",
 												"default": false
 											}
@@ -9376,7 +9432,7 @@
 										"description": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).",
 										"type": "array",
 										"items": {
-											"description": "Custom domain hostname (must be a Verified zone on this account).",
+											"description": "Custom domain hostname. Must belong to a Verified zone on this account.",
 											"example": "search.example.com",
 											"maxLength": 253,
 											"minLength": 1,
@@ -9404,7 +9460,7 @@
 												"default": "Finds exactly what you're looking for"
 											},
 											"disabled": {
-												"description": "Disable MCP endpoint for this public endpoint",
+												"description": "Disable MCP endpoint for this public endpoint.",
 												"type": "boolean",
 												"default": false
 											}
@@ -9435,7 +9491,7 @@
 										"type": "object",
 										"properties": {
 											"disabled": {
-												"description": "Disable search endpoint for this public endpoint",
+												"description": "Disable search endpoint for this public endpoint.",
 												"type": "boolean",
 												"default": false
 											}
@@ -9495,7 +9551,7 @@
 										"maxItems": 3
 									},
 									"keyword_match_mode": {
-										"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.",
+										"description": "Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted on an update, the existing stored value stays unchanged; when never set, search falls back to 'and'.",
 										"type": "string",
 										"enum": [
 											"and",
@@ -9533,7 +9589,7 @@
 								"nullable": true,
 								"properties": {
 									"exclude_items": {
-										"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.",
+										"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts have a limit of 10 rules; contact support to raise it.",
 										"type": "array",
 										"items": {
 											"maxLength": 500,
@@ -9548,7 +9604,7 @@
 										"maxItems": 10
 									},
 									"include_items": {
-										"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.",
+										"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts have a limit of 10 rules; contact support to raise it.",
 										"type": "array",
 										"items": {
 											"maxLength": 500,
@@ -9576,7 +9632,7 @@
 										},
 										"properties": {
 											"discover_options": {
-												"description": "Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.",
+												"description": "Options for parse_type 'discover', where Browser Run discovers URLs through link following and sitemaps. Ignored for 'sitemap'.",
 												"type": "object",
 												"properties": {
 													"depth": {
@@ -9588,7 +9644,7 @@
 														"minimum": 1
 													},
 													"include_external_links": {
-														"description": "Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.",
+														"description": "Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own.",
 														"type": "boolean",
 														"example": false,
 														"default": false
@@ -9632,7 +9688,7 @@
 												"type": "object",
 												"properties": {
 													"content_selector": {
-														"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.",
+														"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays.",
 														"type": "array",
 														"items": {
 															"properties": {
@@ -9644,7 +9700,7 @@
 																	"minLength": 1
 																},
 																"selector": {
-																	"description": "CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, \\). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.",
+																	"description": "CSS selector to extract content from pages matching the path pattern. Disallowed characters: ;, `, $, {, }, \\. Must target a single element; if multiple elements match, the crawler ignores the selector and uses the full page.",
 																	"type": "string",
 																	"example": "article div.post-body",
 																	"maxLength": 200,
@@ -9671,7 +9727,7 @@
 														"minItems": 1
 													},
 													"include_headers": {
-														"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).",
+														"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must use RFC-7230 token characters, excluding spaces, colons, and control characters. Values must use HTAB and printable ASCII only, excluding CR and LF.",
 														"type": "object",
 														"example": {
 															"cache-control": "no-cache, no-store"
@@ -9706,7 +9762,7 @@
 												}
 											},
 											"parse_type": {
-												"description": "How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.",
+												"description": "How the crawler finds URLs. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to belong to a Verified zone on this account.",
 												"type": "string",
 												"example": "sitemap",
 												"default": "sitemap",
@@ -9995,7 +10051,7 @@
 											"x-auditable": true
 										},
 										"index_method": {
-											"description": "Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.",
+											"description": "Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances.",
 											"type": "object",
 											"default": {
 												"keyword": true,
@@ -10122,7 +10178,7 @@
 													"type": "object",
 													"properties": {
 														"disabled": {
-															"description": "Disable chat completions endpoint for this public endpoint",
+															"description": "Disable chat completions endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -10132,7 +10188,7 @@
 													"description": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).",
 													"type": "array",
 													"items": {
-														"description": "Custom domain hostname (must be a Verified zone on this account).",
+														"description": "Custom domain hostname. Must belong to a Verified zone on this account.",
 														"example": "search.example.com",
 														"maxLength": 253,
 														"minLength": 1,
@@ -10160,7 +10216,7 @@
 															"default": "Finds exactly what you're looking for"
 														},
 														"disabled": {
-															"description": "Disable MCP endpoint for this public endpoint",
+															"description": "Disable MCP endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -10191,7 +10247,7 @@
 													"type": "object",
 													"properties": {
 														"disabled": {
-															"description": "Disable search endpoint for this public endpoint",
+															"description": "Disable search endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -10251,7 +10307,7 @@
 													"maxItems": 3
 												},
 												"keyword_match_mode": {
-													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.",
+													"description": "Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted on an update, the existing stored value stays unchanged; when never set, search falls back to 'and'.",
 													"type": "string",
 													"enum": [
 														"and",
@@ -10289,7 +10345,7 @@
 											"nullable": true,
 											"properties": {
 												"exclude_items": {
-													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.",
+													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts have a limit of 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
 														"maxLength": 500,
@@ -10304,7 +10360,7 @@
 													"maxItems": 10
 												},
 												"include_items": {
-													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.",
+													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts have a limit of 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
 														"maxLength": 500,
@@ -10332,7 +10388,7 @@
 													},
 													"properties": {
 														"discover_options": {
-															"description": "Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.",
+															"description": "Options for parse_type 'discover', where Browser Run discovers URLs through link following and sitemaps. Ignored for 'sitemap'.",
 															"type": "object",
 															"properties": {
 																"depth": {
@@ -10344,7 +10400,7 @@
 																	"minimum": 1
 																},
 																"include_external_links": {
-																	"description": "Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.",
+																	"description": "Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own.",
 																	"type": "boolean",
 																	"example": false,
 																	"default": false
@@ -10388,7 +10444,7 @@
 															"type": "object",
 															"properties": {
 																"content_selector": {
-																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.",
+																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays.",
 																	"type": "array",
 																	"items": {
 																		"properties": {
@@ -10400,7 +10456,7 @@
 																				"minLength": 1
 																			},
 																			"selector": {
-																				"description": "CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, \\). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.",
+																				"description": "CSS selector to extract content from pages matching the path pattern. Disallowed characters: ;, `, $, {, }, \\. Must target a single element; if multiple elements match, the crawler ignores the selector and uses the full page.",
 																				"type": "string",
 																				"example": "article div.post-body",
 																				"maxLength": 200,
@@ -10427,7 +10483,7 @@
 																	"minItems": 1
 																},
 																"include_headers": {
-																	"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).",
+																	"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must use RFC-7230 token characters, excluding spaces, colons, and control characters. Values must use HTAB and printable ASCII only, excluding CR and LF.",
 																	"type": "object",
 																	"example": {
 																		"cache-control": "no-cache, no-store"
@@ -10462,7 +10518,7 @@
 															}
 														},
 														"parse_type": {
-															"description": "How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.",
+															"description": "How the crawler finds URLs. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to belong to a Verified zone on this account.",
 															"type": "string",
 															"example": "sitemap",
 															"default": "sitemap",
@@ -10652,7 +10708,17 @@
 				}
 			},
 			"409": {
-				"description": "Search for agents hostname used by another namespace; Search for agents requires default namespace; Ai search instance deletion in progress",
+				"description": "Search for agents hostname used by another namespace; Search for agents requires default namespace; Ai search instance deletion in progress.",
+				"headers": {
+					"Retry-After": {
+						"description": "Seconds to wait before retrying.",
+						"schema": {
+							"description": "Seconds to wait before retrying.",
+							"type": "string",
+							"example": "10"
+						}
+					}
+				},
 				"content": {
 					"application/json": {
 						"schema": {
@@ -10766,7 +10832,7 @@
 				"description": "Unique ID for the new AI Search instance.",
 				"positional": true
 			},
-			"name": {
+			"namespace": {
 				"default": "default",
 				"description": "Namespace to use for this operation."
 			},
@@ -10781,7 +10847,7 @@
 			}
 		}
 	},
-	"POST /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/chat/completions": {
+	"POST /accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/chat/completions": {
 		"operationId": "ai-search-namespace-instance-chat-completion",
 		"summary": "Chat Completions",
 		"description": "Performs a chat completion request against an AI Search instance, using indexed content as context for generating responses.",
@@ -10812,12 +10878,14 @@
 				}
 			},
 			{
-				"name": "name",
+				"name": "namespace",
 				"in": "path",
-				"description": "Namespace name",
+				"description": "Namespace name.",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"default": "default",
+					"x-stainless-terraform-configurability": "computed_optional"
 				},
 				"example": "my-namespace",
 				"x-fern-parameter-name": "namespace"
@@ -10850,7 +10918,7 @@
 										}
 									},
 									"custom_metadata": {
-										"description": "Metadata added to AI Gateway logs for requests triggered by this operation. Accepts up to 2 string, number, or boolean entries. Keys 'ai-search', 'task', 'origin', and keys beginning with 'cf.' are reserved.",
+										"description": "Metadata added to AI Gateway logs for requests this operation triggers. Accepts up to 2 string, number, or boolean entries. Reserved keys: 'ai-search', 'task', 'origin', and any key beginning with 'cf.'.",
 										"type": "object",
 										"example": {
 											"test": true,
@@ -10960,7 +11028,7 @@
 												]
 											},
 											"keyword_match_mode": {
-												"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'.",
+												"description": "Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'.",
 												"type": "string",
 												"enum": [
 													"and",
@@ -11312,6 +11380,16 @@
 													"key"
 												]
 											},
+											"media_end_ms": {
+												"description": "Audio/video transcript chunks only: end, in milliseconds from the start of the media (whole seconds), of the last transcript section the matched chunk covers. Describes the matched chunk before any context expansion, not the expanded `text`.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"media_start_ms": {
+												"description": "Audio/video transcript chunks only: start, in milliseconds from the start of the media (whole seconds), of the transcript section the matched chunk begins in. Describes the matched chunk before any context expansion, not the expanded `text`.",
+												"type": "integer",
+												"minimum": 0
+											},
 											"score": {
 												"type": "number",
 												"maximum": 1,
@@ -11348,6 +11426,14 @@
 														"minimum": 0
 													}
 												}
+											},
+											"source_media_type": {
+												"description": "Audio/video transcript chunks only: type of the source media file. Omitted for all other chunks.",
+												"type": "string",
+												"enum": [
+													"audio",
+													"video"
+												]
 											},
 											"text": {
 												"type": "string"
@@ -11465,7 +11551,7 @@
 				}
 			},
 			"404": {
-				"description": "Not Found",
+				"description": "Not Found.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -11505,7 +11591,7 @@
 				}
 			},
 			"429": {
-				"description": "Monthly query quota exceeded; Workers ai capacity temporarily exceeded",
+				"description": "Monthly query quota exceeded; Workers ai capacity temporarily exceeded.",
 				"headers": {
 					"Retry-After": {
 						"description": "Seconds to wait before retrying.",
@@ -11580,7 +11666,7 @@
 				}
 			},
 			"502": {
-				"description": "Ai gateway exception; Workers ai upstream error",
+				"description": "Ai gateway exception; Workers ai upstream error.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -11675,13 +11761,13 @@
 			"id": {
 				"description": "AI Search instance ID."
 			},
-			"name": {
+			"namespace": {
 				"default": "default",
 				"description": "Namespace to use for this operation."
 			}
 		}
 	},
-	"POST /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/purge_cache": {
+	"POST /accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/purge_cache": {
 		"operationId": "ai-search-namespace-purge-instance-cache",
 		"summary": "Purge search cache.",
 		"description": "Purges all cached search results for an AI Search instance. A new internal cache key is generated, immediately orphaning all prior cached entries.",
@@ -11711,12 +11797,14 @@
 				"x-fern-parameter-name": "instance-id"
 			},
 			{
-				"name": "name",
+				"name": "namespace",
 				"in": "path",
-				"description": "Namespace name",
+				"description": "Namespace name.",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"default": "default",
+					"x-stainless-terraform-configurability": "computed_optional"
 				},
 				"example": "my-namespace",
 				"x-fern-parameter-name": "namespace"
@@ -11812,13 +11900,13 @@
 			"id": {
 				"description": "AI Search instance ID."
 			},
-			"name": {
+			"namespace": {
 				"default": "default",
 				"description": "Namespace to use for this operation."
 			}
 		}
 	},
-	"POST /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/search": {
+	"POST /accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/search": {
 		"operationId": "ai-search-namespace-instance-search",
 		"summary": "Search",
 		"description": "Executes a semantic search query against an AI Search instance to find relevant indexed content.",
@@ -11849,12 +11937,14 @@
 				}
 			},
 			{
-				"name": "name",
+				"name": "namespace",
 				"in": "path",
-				"description": "Namespace name",
+				"description": "Namespace name.",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"default": "default",
+					"x-stainless-terraform-configurability": "computed_optional"
 				},
 				"example": "my-namespace",
 				"x-fern-parameter-name": "namespace"
@@ -11887,7 +11977,7 @@
 										}
 									},
 									"custom_metadata": {
-										"description": "Metadata added to AI Gateway logs for requests triggered by this operation. Accepts up to 2 string, number, or boolean entries. Keys 'ai-search', 'task', 'origin', and keys beginning with 'cf.' are reserved.",
+										"description": "Metadata added to AI Gateway logs for requests this operation triggers. Accepts up to 2 string, number, or boolean entries. Reserved keys: 'ai-search', 'task', 'origin', and any key beginning with 'cf.'.",
 										"type": "object",
 										"example": {
 											"test": true,
@@ -11997,7 +12087,7 @@
 												]
 											},
 											"keyword_match_mode": {
-												"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'.",
+												"description": "Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'.",
 												"type": "string",
 												"enum": [
 													"and",
@@ -12208,6 +12298,16 @@
 															"key"
 														]
 													},
+													"media_end_ms": {
+														"description": "Audio/video transcript chunks only: end, in milliseconds from the start of the media (whole seconds), of the last transcript section the matched chunk covers. Describes the matched chunk before any context expansion, not the expanded `text`.",
+														"type": "integer",
+														"minimum": 0
+													},
+													"media_start_ms": {
+														"description": "Audio/video transcript chunks only: start, in milliseconds from the start of the media (whole seconds), of the transcript section the matched chunk begins in. Describes the matched chunk before any context expansion, not the expanded `text`.",
+														"type": "integer",
+														"minimum": 0
+													},
 													"score": {
 														"type": "number",
 														"maximum": 1,
@@ -12244,6 +12344,14 @@
 																"minimum": 0
 															}
 														}
+													},
+													"source_media_type": {
+														"description": "Audio/video transcript chunks only: type of the source media file. Omitted for all other chunks.",
+														"type": "string",
+														"enum": [
+															"audio",
+															"video"
+														]
 													},
 													"text": {
 														"type": "string"
@@ -12331,7 +12439,7 @@
 				}
 			},
 			"404": {
-				"description": "Not Found",
+				"description": "Not Found.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -12371,7 +12479,7 @@
 				}
 			},
 			"429": {
-				"description": "Monthly query quota exceeded; Workers ai capacity temporarily exceeded",
+				"description": "Monthly query quota exceeded; Workers ai capacity temporarily exceeded.",
 				"headers": {
 					"Retry-After": {
 						"description": "Seconds to wait before retrying.",
@@ -12446,7 +12554,7 @@
 				}
 			},
 			"502": {
-				"description": "Ai gateway exception; Workers ai upstream error",
+				"description": "Ai gateway exception; Workers ai upstream error.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -12541,7 +12649,7 @@
 			"id": {
 				"description": "AI Search instance ID."
 			},
-			"name": {
+			"namespace": {
 				"default": "default",
 				"description": "Namespace to use for this operation."
 			},
@@ -12554,7 +12662,7 @@
 	"PUT /accounts/{account_id}/ai-search/instances/{id}": {
 		"operationId": "ai-search-update-instance",
 		"summary": "Update an AI Search instance.",
-		"description": "Update the configuration of an AI Search instance.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead.",
+		"description": "Updates the configuration of an AI Search instance.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{namespace}/instances (and descendant paths) instead.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -12735,7 +12843,7 @@
 								"x-auditable": true
 							},
 							"index_method": {
-								"description": "Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.",
+								"description": "Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances.",
 								"type": "object",
 								"default": {
 									"keyword": true,
@@ -12835,7 +12943,7 @@
 										"type": "object",
 										"properties": {
 											"disabled": {
-												"description": "Disable chat completions endpoint for this public endpoint",
+												"description": "Disable chat completions endpoint for this public endpoint.",
 												"type": "boolean",
 												"default": false
 											}
@@ -12845,7 +12953,7 @@
 										"description": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).",
 										"type": "array",
 										"items": {
-											"description": "Custom domain hostname (must be a Verified zone on this account).",
+											"description": "Custom domain hostname. Must belong to a Verified zone on this account.",
 											"example": "search.example.com",
 											"maxLength": 253,
 											"minLength": 1,
@@ -12873,7 +12981,7 @@
 												"default": "Finds exactly what you're looking for"
 											},
 											"disabled": {
-												"description": "Disable MCP endpoint for this public endpoint",
+												"description": "Disable MCP endpoint for this public endpoint.",
 												"type": "boolean",
 												"default": false
 											}
@@ -12904,7 +13012,7 @@
 										"type": "object",
 										"properties": {
 											"disabled": {
-												"description": "Disable search endpoint for this public endpoint",
+												"description": "Disable search endpoint for this public endpoint.",
 												"type": "boolean",
 												"default": false
 											}
@@ -12964,7 +13072,7 @@
 										"maxItems": 3
 									},
 									"keyword_match_mode": {
-										"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.",
+										"description": "Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted on an update, the existing stored value stays unchanged; when never set, search falls back to 'and'.",
 										"type": "string",
 										"enum": [
 											"and",
@@ -13002,7 +13110,7 @@
 								"nullable": true,
 								"properties": {
 									"exclude_items": {
-										"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.",
+										"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts have a limit of 10 rules; contact support to raise it.",
 										"type": "array",
 										"items": {
 											"maxLength": 500,
@@ -13017,7 +13125,7 @@
 										"maxItems": 10
 									},
 									"include_items": {
-										"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.",
+										"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts have a limit of 10 rules; contact support to raise it.",
 										"type": "array",
 										"items": {
 											"maxLength": 500,
@@ -13045,7 +13153,7 @@
 										},
 										"properties": {
 											"discover_options": {
-												"description": "Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.",
+												"description": "Options for parse_type 'discover', where Browser Run discovers URLs through link following and sitemaps. Ignored for 'sitemap'.",
 												"type": "object",
 												"properties": {
 													"depth": {
@@ -13057,7 +13165,7 @@
 														"minimum": 1
 													},
 													"include_external_links": {
-														"description": "Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.",
+														"description": "Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own.",
 														"type": "boolean",
 														"example": false,
 														"default": false
@@ -13101,7 +13209,7 @@
 												"type": "object",
 												"properties": {
 													"content_selector": {
-														"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.",
+														"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays.",
 														"type": "array",
 														"items": {
 															"properties": {
@@ -13113,7 +13221,7 @@
 																	"minLength": 1
 																},
 																"selector": {
-																	"description": "CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, \\). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.",
+																	"description": "CSS selector to extract content from pages matching the path pattern. Disallowed characters: ;, `, $, {, }, \\. Must target a single element; if multiple elements match, the crawler ignores the selector and uses the full page.",
 																	"type": "string",
 																	"example": "article div.post-body",
 																	"maxLength": 200,
@@ -13140,7 +13248,7 @@
 														"minItems": 1
 													},
 													"include_headers": {
-														"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).",
+														"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must use RFC-7230 token characters, excluding spaces, colons, and control characters. Values must use HTAB and printable ASCII only, excluding CR and LF.",
 														"type": "object",
 														"example": {
 															"cache-control": "no-cache, no-store"
@@ -13175,7 +13283,7 @@
 												}
 											},
 											"parse_type": {
-												"description": "How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.",
+												"description": "How the crawler finds URLs. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to belong to a Verified zone on this account.",
 												"type": "string",
 												"example": "sitemap",
 												"default": "sitemap",
@@ -13475,7 +13583,7 @@
 											"x-auditable": true
 										},
 										"index_method": {
-											"description": "Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.",
+											"description": "Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances.",
 											"type": "object",
 											"default": {
 												"keyword": true,
@@ -13602,7 +13710,7 @@
 													"type": "object",
 													"properties": {
 														"disabled": {
-															"description": "Disable chat completions endpoint for this public endpoint",
+															"description": "Disable chat completions endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -13612,7 +13720,7 @@
 													"description": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).",
 													"type": "array",
 													"items": {
-														"description": "Custom domain hostname (must be a Verified zone on this account).",
+														"description": "Custom domain hostname. Must belong to a Verified zone on this account.",
 														"example": "search.example.com",
 														"maxLength": 253,
 														"minLength": 1,
@@ -13640,7 +13748,7 @@
 															"default": "Finds exactly what you're looking for"
 														},
 														"disabled": {
-															"description": "Disable MCP endpoint for this public endpoint",
+															"description": "Disable MCP endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -13671,7 +13779,7 @@
 													"type": "object",
 													"properties": {
 														"disabled": {
-															"description": "Disable search endpoint for this public endpoint",
+															"description": "Disable search endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -13731,7 +13839,7 @@
 													"maxItems": 3
 												},
 												"keyword_match_mode": {
-													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.",
+													"description": "Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted on an update, the existing stored value stays unchanged; when never set, search falls back to 'and'.",
 													"type": "string",
 													"enum": [
 														"and",
@@ -13769,7 +13877,7 @@
 											"nullable": true,
 											"properties": {
 												"exclude_items": {
-													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.",
+													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts have a limit of 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
 														"maxLength": 500,
@@ -13784,7 +13892,7 @@
 													"maxItems": 10
 												},
 												"include_items": {
-													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.",
+													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts have a limit of 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
 														"maxLength": 500,
@@ -13812,7 +13920,7 @@
 													},
 													"properties": {
 														"discover_options": {
-															"description": "Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.",
+															"description": "Options for parse_type 'discover', where Browser Run discovers URLs through link following and sitemaps. Ignored for 'sitemap'.",
 															"type": "object",
 															"properties": {
 																"depth": {
@@ -13824,7 +13932,7 @@
 																	"minimum": 1
 																},
 																"include_external_links": {
-																	"description": "Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.",
+																	"description": "Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own.",
 																	"type": "boolean",
 																	"example": false,
 																	"default": false
@@ -13868,7 +13976,7 @@
 															"type": "object",
 															"properties": {
 																"content_selector": {
-																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.",
+																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays.",
 																	"type": "array",
 																	"items": {
 																		"properties": {
@@ -13880,7 +13988,7 @@
 																				"minLength": 1
 																			},
 																			"selector": {
-																				"description": "CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, \\). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.",
+																				"description": "CSS selector to extract content from pages matching the path pattern. Disallowed characters: ;, `, $, {, }, \\. Must target a single element; if multiple elements match, the crawler ignores the selector and uses the full page.",
 																				"type": "string",
 																				"example": "article div.post-body",
 																				"maxLength": 200,
@@ -13907,7 +14015,7 @@
 																	"minItems": 1
 																},
 																"include_headers": {
-																	"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).",
+																	"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must use RFC-7230 token characters, excluding spaces, colons, and control characters. Values must use HTAB and printable ASCII only, excluding CR and LF.",
 																	"type": "object",
 																	"example": {
 																		"cache-control": "no-cache, no-store"
@@ -13942,7 +14050,7 @@
 															}
 														},
 														"parse_type": {
-															"description": "How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.",
+															"description": "How the crawler finds URLs. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to belong to a Verified zone on this account.",
 															"type": "string",
 															"example": "sitemap",
 															"default": "sitemap",
@@ -14201,10 +14309,10 @@
 		"x-fern-sdk-group-name": "ai-search",
 		"x-fern-sdk-method-name": "update"
 	},
-	"PUT /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}": {
+	"PUT /accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}": {
 		"operationId": "ai-search-namespace-update-instance",
 		"summary": "Update an AI Search instance.",
-		"description": "Update the configuration of an AI Search instance.",
+		"description": "Updates the configuration of an AI Search instance.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -14226,12 +14334,14 @@
 				"x-fern-parameter-name": "instance-id"
 			},
 			{
-				"name": "name",
+				"name": "namespace",
 				"in": "path",
-				"description": "Namespace name",
+				"description": "Namespace name.",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"default": "default",
+					"x-stainless-terraform-configurability": "computed_optional"
 				},
 				"example": "my-namespace",
 				"x-fern-parameter-name": "namespace"
@@ -14397,7 +14507,7 @@
 								"x-auditable": true
 							},
 							"index_method": {
-								"description": "Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.",
+								"description": "Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances.",
 								"type": "object",
 								"default": {
 									"keyword": true,
@@ -14497,7 +14607,7 @@
 										"type": "object",
 										"properties": {
 											"disabled": {
-												"description": "Disable chat completions endpoint for this public endpoint",
+												"description": "Disable chat completions endpoint for this public endpoint.",
 												"type": "boolean",
 												"default": false
 											}
@@ -14507,7 +14617,7 @@
 										"description": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).",
 										"type": "array",
 										"items": {
-											"description": "Custom domain hostname (must be a Verified zone on this account).",
+											"description": "Custom domain hostname. Must belong to a Verified zone on this account.",
 											"example": "search.example.com",
 											"maxLength": 253,
 											"minLength": 1,
@@ -14535,7 +14645,7 @@
 												"default": "Finds exactly what you're looking for"
 											},
 											"disabled": {
-												"description": "Disable MCP endpoint for this public endpoint",
+												"description": "Disable MCP endpoint for this public endpoint.",
 												"type": "boolean",
 												"default": false
 											}
@@ -14566,7 +14676,7 @@
 										"type": "object",
 										"properties": {
 											"disabled": {
-												"description": "Disable search endpoint for this public endpoint",
+												"description": "Disable search endpoint for this public endpoint.",
 												"type": "boolean",
 												"default": false
 											}
@@ -14626,7 +14736,7 @@
 										"maxItems": 3
 									},
 									"keyword_match_mode": {
-										"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.",
+										"description": "Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted on an update, the existing stored value stays unchanged; when never set, search falls back to 'and'.",
 										"type": "string",
 										"enum": [
 											"and",
@@ -14664,7 +14774,7 @@
 								"nullable": true,
 								"properties": {
 									"exclude_items": {
-										"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.",
+										"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts have a limit of 10 rules; contact support to raise it.",
 										"type": "array",
 										"items": {
 											"maxLength": 500,
@@ -14679,7 +14789,7 @@
 										"maxItems": 10
 									},
 									"include_items": {
-										"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.",
+										"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts have a limit of 10 rules; contact support to raise it.",
 										"type": "array",
 										"items": {
 											"maxLength": 500,
@@ -14707,7 +14817,7 @@
 										},
 										"properties": {
 											"discover_options": {
-												"description": "Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.",
+												"description": "Options for parse_type 'discover', where Browser Run discovers URLs through link following and sitemaps. Ignored for 'sitemap'.",
 												"type": "object",
 												"properties": {
 													"depth": {
@@ -14719,7 +14829,7 @@
 														"minimum": 1
 													},
 													"include_external_links": {
-														"description": "Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.",
+														"description": "Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own.",
 														"type": "boolean",
 														"example": false,
 														"default": false
@@ -14763,7 +14873,7 @@
 												"type": "object",
 												"properties": {
 													"content_selector": {
-														"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.",
+														"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays.",
 														"type": "array",
 														"items": {
 															"properties": {
@@ -14775,7 +14885,7 @@
 																	"minLength": 1
 																},
 																"selector": {
-																	"description": "CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, \\). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.",
+																	"description": "CSS selector to extract content from pages matching the path pattern. Disallowed characters: ;, `, $, {, }, \\. Must target a single element; if multiple elements match, the crawler ignores the selector and uses the full page.",
 																	"type": "string",
 																	"example": "article div.post-body",
 																	"maxLength": 200,
@@ -14802,7 +14912,7 @@
 														"minItems": 1
 													},
 													"include_headers": {
-														"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).",
+														"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must use RFC-7230 token characters, excluding spaces, colons, and control characters. Values must use HTAB and printable ASCII only, excluding CR and LF.",
 														"type": "object",
 														"example": {
 															"cache-control": "no-cache, no-store"
@@ -14837,7 +14947,7 @@
 												}
 											},
 											"parse_type": {
-												"description": "How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.",
+												"description": "How the crawler finds URLs. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to belong to a Verified zone on this account.",
 												"type": "string",
 												"example": "sitemap",
 												"default": "sitemap",
@@ -15137,7 +15247,7 @@
 											"x-auditable": true
 										},
 										"index_method": {
-											"description": "Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.",
+											"description": "Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances.",
 											"type": "object",
 											"default": {
 												"keyword": true,
@@ -15264,7 +15374,7 @@
 													"type": "object",
 													"properties": {
 														"disabled": {
-															"description": "Disable chat completions endpoint for this public endpoint",
+															"description": "Disable chat completions endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -15274,7 +15384,7 @@
 													"description": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).",
 													"type": "array",
 													"items": {
-														"description": "Custom domain hostname (must be a Verified zone on this account).",
+														"description": "Custom domain hostname. Must belong to a Verified zone on this account.",
 														"example": "search.example.com",
 														"maxLength": 253,
 														"minLength": 1,
@@ -15302,7 +15412,7 @@
 															"default": "Finds exactly what you're looking for"
 														},
 														"disabled": {
-															"description": "Disable MCP endpoint for this public endpoint",
+															"description": "Disable MCP endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -15333,7 +15443,7 @@
 													"type": "object",
 													"properties": {
 														"disabled": {
-															"description": "Disable search endpoint for this public endpoint",
+															"description": "Disable search endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -15393,7 +15503,7 @@
 													"maxItems": 3
 												},
 												"keyword_match_mode": {
-													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.",
+													"description": "Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted on an update, the existing stored value stays unchanged; when never set, search falls back to 'and'.",
 													"type": "string",
 													"enum": [
 														"and",
@@ -15431,7 +15541,7 @@
 											"nullable": true,
 											"properties": {
 												"exclude_items": {
-													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.",
+													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts have a limit of 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
 														"maxLength": 500,
@@ -15446,7 +15556,7 @@
 													"maxItems": 10
 												},
 												"include_items": {
-													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.",
+													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts have a limit of 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
 														"maxLength": 500,
@@ -15474,7 +15584,7 @@
 													},
 													"properties": {
 														"discover_options": {
-															"description": "Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.",
+															"description": "Options for parse_type 'discover', where Browser Run discovers URLs through link following and sitemaps. Ignored for 'sitemap'.",
 															"type": "object",
 															"properties": {
 																"depth": {
@@ -15486,7 +15596,7 @@
 																	"minimum": 1
 																},
 																"include_external_links": {
-																	"description": "Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.",
+																	"description": "Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own.",
 																	"type": "boolean",
 																	"example": false,
 																	"default": false
@@ -15530,7 +15640,7 @@
 															"type": "object",
 															"properties": {
 																"content_selector": {
-																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.",
+																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays.",
 																	"type": "array",
 																	"items": {
 																		"properties": {
@@ -15542,7 +15652,7 @@
 																				"minLength": 1
 																			},
 																			"selector": {
-																				"description": "CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, \\). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.",
+																				"description": "CSS selector to extract content from pages matching the path pattern. Disallowed characters: ;, `, $, {, }, \\. Must target a single element; if multiple elements match, the crawler ignores the selector and uses the full page.",
 																				"type": "string",
 																				"example": "article div.post-body",
 																				"maxLength": 200,
@@ -15569,7 +15679,7 @@
 																	"minItems": 1
 																},
 																"include_headers": {
-																	"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).",
+																	"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must use RFC-7230 token characters, excluding spaces, colons, and control characters. Values must use HTAB and printable ASCII only, excluding CR and LF.",
 																	"type": "object",
 																	"example": {
 																		"cache-control": "no-cache, no-store"
@@ -15604,7 +15714,7 @@
 															}
 														},
 														"parse_type": {
-															"description": "How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.",
+															"description": "How the crawler finds URLs. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to belong to a Verified zone on this account.",
 															"type": "string",
 															"example": "sitemap",
 															"default": "sitemap",
@@ -15864,7 +15974,7 @@
 			"id": {
 				"description": "AI Search instance ID."
 			},
-			"name": {
+			"namespace": {
 				"default": "default",
 				"description": "Namespace to use for this operation."
 			},

@@ -2,7 +2,7 @@
 	"GET /accounts/{account_id}/ai-search/instances/{id}/jobs": {
 		"operationId": "ai-search-instance-list-jobs",
 		"summary": "List Jobs",
-		"description": "Lists indexing jobs for an AI Search instance.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead.",
+		"description": "Lists indexing jobs for an AI Search instance.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{namespace}/instances (and descendant paths) instead.",
 		"parameters": [
 			{
 				"name": "id",
@@ -132,7 +132,7 @@
 				}
 			},
 			"400": {
-				"description": "Input Validation Error",
+				"description": "Input Validation Error.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -291,7 +291,7 @@
 	"GET /accounts/{account_id}/ai-search/instances/{id}/jobs/{job_id}": {
 		"operationId": "ai-search-instance-get-job",
 		"summary": "Get a Job Details",
-		"description": "Retrieves details for a specific AI Search indexing job.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead.",
+		"description": "Retrieves details for a specific AI Search indexing job.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{namespace}/instances (and descendant paths) instead.",
 		"parameters": [
 			{
 				"name": "id",
@@ -495,7 +495,7 @@
 	"GET /accounts/{account_id}/ai-search/instances/{id}/jobs/{job_id}/logs": {
 		"operationId": "ai-search-instance-list-job-logs",
 		"summary": "List Job Logs",
-		"description": "Lists log entries for an AI Search indexing job.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead.",
+		"description": "Lists log entries for an AI Search indexing job.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{namespace}/instances (and descendant paths) instead.",
 		"parameters": [
 			{
 				"name": "id",
@@ -620,7 +620,7 @@
 				}
 			},
 			"400": {
-				"description": "Input Validation Error",
+				"description": "Input Validation Error.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -776,7 +776,7 @@
 		"x-fern-sdk-group-name": "ai-search.jobs",
 		"x-fern-sdk-method-name": "logs"
 	},
-	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs": {
+	"GET /accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/jobs": {
 		"operationId": "ai-search-namespace-instance-list-jobs",
 		"summary": "List Jobs",
 		"description": "Lists indexing jobs for an AI Search instance.",
@@ -807,6 +807,19 @@
 				}
 			},
 			{
+				"name": "namespace",
+				"in": "path",
+				"description": "Namespace name.",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"default": "default",
+					"x-stainless-terraform-configurability": "computed_optional"
+				},
+				"example": "my-namespace",
+				"x-fern-parameter-name": "namespace"
+			},
+			{
 				"name": "page",
 				"in": "query",
 				"schema": {
@@ -824,17 +837,6 @@
 					"maximum": 50,
 					"minimum": 0
 				}
-			},
-			{
-				"name": "name",
-				"in": "path",
-				"description": "Namespace name",
-				"required": true,
-				"schema": {
-					"type": "string"
-				},
-				"example": "my-namespace",
-				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"responses": {
@@ -921,7 +923,7 @@
 				}
 			},
 			"400": {
-				"description": "Input Validation Error",
+				"description": "Input Validation Error.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1078,13 +1080,13 @@
 			"id": {
 				"description": "AI Search instance ID."
 			},
-			"name": {
+			"namespace": {
 				"default": "default",
 				"description": "Namespace to use for this operation."
 			}
 		}
 	},
-	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs/{job_id}": {
+	"GET /accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/jobs/{job_id}": {
 		"operationId": "ai-search-namespace-instance-get-job",
 		"summary": "Get a Job Details",
 		"description": "Retrieves details for a specific AI Search indexing job.",
@@ -1123,12 +1125,14 @@
 				}
 			},
 			{
-				"name": "name",
+				"name": "namespace",
 				"in": "path",
-				"description": "Namespace name",
+				"description": "Namespace name.",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"default": "default",
+					"x-stainless-terraform-configurability": "computed_optional"
 				},
 				"example": "my-namespace",
 				"x-fern-parameter-name": "namespace"
@@ -1304,13 +1308,13 @@
 			"job_id": {
 				"description": "Indexing job ID."
 			},
-			"name": {
+			"namespace": {
 				"default": "default",
 				"description": "Namespace to use for this operation."
 			}
 		}
 	},
-	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs/{job_id}/logs": {
+	"GET /accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/jobs/{job_id}/logs": {
 		"operationId": "ai-search-namespace-instance-list-job-logs",
 		"summary": "List Job Logs",
 		"description": "Lists log entries for an AI Search indexing job.",
@@ -1349,6 +1353,19 @@
 				}
 			},
 			{
+				"name": "namespace",
+				"in": "path",
+				"description": "Namespace name.",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"default": "default",
+					"x-stainless-terraform-configurability": "computed_optional"
+				},
+				"example": "my-namespace",
+				"x-fern-parameter-name": "namespace"
+			},
+			{
 				"name": "page",
 				"in": "query",
 				"schema": {
@@ -1366,17 +1383,6 @@
 					"maximum": 500,
 					"minimum": 0
 				}
-			},
-			{
-				"name": "name",
-				"in": "path",
-				"description": "Namespace name",
-				"required": true,
-				"schema": {
-					"type": "string"
-				},
-				"example": "my-namespace",
-				"x-fern-parameter-name": "namespace"
 			}
 		],
 		"responses": {
@@ -1450,7 +1456,7 @@
 				}
 			},
 			"400": {
-				"description": "Input Validation Error",
+				"description": "Input Validation Error.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1610,7 +1616,7 @@
 			"job_id": {
 				"description": "Indexing job ID."
 			},
-			"name": {
+			"namespace": {
 				"default": "default",
 				"description": "Namespace to use for this operation."
 			}
@@ -1619,7 +1625,7 @@
 	"PATCH /accounts/{account_id}/ai-search/instances/{id}/jobs/{job_id}": {
 		"operationId": "ai-search-instance-change-job-status",
 		"summary": "Cancel an indexing job.",
-		"description": "Cancel an in-progress indexing job for an AI Search instance.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead.",
+		"description": "Cancels an in-progress indexing job for an AI Search instance.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{namespace}/instances (and descendant paths) instead.",
 		"parameters": [
 			{
 				"name": "id",
@@ -1881,10 +1887,10 @@
 		"x-fern-sdk-method-name": "cancel",
 		"x-forge-require-confirmation": "This operation cancels the running indexing job."
 	},
-	"PATCH /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs/{job_id}": {
+	"PATCH /accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/jobs/{job_id}": {
 		"operationId": "ai-search-namespace-instance-change-job-status",
 		"summary": "Cancel an indexing job.",
-		"description": "Cancel an in-progress indexing job for an AI Search instance.",
+		"description": "Cancels an in-progress indexing job for an AI Search instance.",
 		"parameters": [
 			{
 				"name": "id",
@@ -1920,12 +1926,14 @@
 				}
 			},
 			{
-				"name": "name",
+				"name": "namespace",
 				"in": "path",
-				"description": "Namespace name",
+				"description": "Namespace name.",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"default": "default",
+					"x-stainless-terraform-configurability": "computed_optional"
 				},
 				"example": "my-namespace",
 				"x-fern-parameter-name": "namespace"
@@ -2165,7 +2173,7 @@
 			"job_id": {
 				"description": "Indexing job ID."
 			},
-			"name": {
+			"namespace": {
 				"default": "default",
 				"description": "Namespace to use for this operation."
 			}
@@ -2175,7 +2183,7 @@
 	"POST /accounts/{account_id}/ai-search/instances/{id}/jobs": {
 		"operationId": "ai-search-instance-create-job",
 		"summary": "Create new job",
-		"description": "Creates a new indexing job for an AI Search instance.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead.",
+		"description": "Creates a new indexing job for an AI Search instance.\n\nDeprecated: use /accounts/{account_id}/ai-search/namespaces/{namespace}/instances (and descendant paths) instead.",
 		"parameters": [
 			{
 				"name": "id",
@@ -2274,7 +2282,7 @@
 				}
 			},
 			"400": {
-				"description": "Input Validation Error",
+				"description": "Input Validation Error.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2470,7 +2478,7 @@
 		"x-fern-sdk-group-name": "ai-search.jobs",
 		"x-fern-sdk-method-name": "create"
 	},
-	"POST /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs": {
+	"POST /accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/jobs": {
 		"operationId": "ai-search-namespace-instance-create-job",
 		"summary": "Create new job",
 		"description": "Creates a new indexing job for an AI Search instance.",
@@ -2501,12 +2509,14 @@
 				}
 			},
 			{
-				"name": "name",
+				"name": "namespace",
 				"in": "path",
-				"description": "Namespace name",
+				"description": "Namespace name.",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"default": "default",
+					"x-stainless-terraform-configurability": "computed_optional"
 				},
 				"example": "my-namespace",
 				"x-fern-parameter-name": "namespace"
@@ -2584,7 +2594,7 @@
 				}
 			},
 			"400": {
-				"description": "Input Validation Error",
+				"description": "Input Validation Error.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2784,7 +2794,7 @@
 			"id": {
 				"description": "AI Search instance ID."
 			},
-			"name": {
+			"namespace": {
 				"default": "default",
 				"description": "Namespace to use for this operation."
 			}

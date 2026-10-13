@@ -16,7 +16,7 @@
 			{
 				"name": "name",
 				"in": "path",
-				"description": "Namespace name",
+				"description": "Namespace name.",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -52,7 +52,7 @@
 										}
 									},
 									"custom_metadata": {
-										"description": "Metadata added to AI Gateway logs for requests triggered by this operation. Accepts up to 2 string, number, or boolean entries. Keys 'ai-search', 'task', 'origin', and keys beginning with 'cf.' are reserved.",
+										"description": "Metadata added to AI Gateway logs for requests this operation triggers. Accepts up to 2 string, number, or boolean entries. Reserved keys: 'ai-search', 'task', 'origin', and any key beginning with 'cf.'.",
 										"type": "object",
 										"example": {
 											"test": true,
@@ -175,7 +175,7 @@
 												]
 											},
 											"keyword_match_mode": {
-												"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'.",
+												"description": "Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'.",
 												"type": "string",
 												"enum": [
 													"and",
@@ -534,6 +534,16 @@
 													"key"
 												]
 											},
+											"media_end_ms": {
+												"description": "Audio/video transcript chunks only: end, in milliseconds from the start of the media (whole seconds), of the last transcript section the matched chunk covers. Describes the matched chunk before any context expansion, not the expanded `text`.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"media_start_ms": {
+												"description": "Audio/video transcript chunks only: start, in milliseconds from the start of the media (whole seconds), of the transcript section the matched chunk begins in. Describes the matched chunk before any context expansion, not the expanded `text`.",
+												"type": "integer",
+												"minimum": 0
+											},
 											"score": {
 												"type": "number",
 												"maximum": 1,
@@ -570,6 +580,14 @@
 														"minimum": 0
 													}
 												}
+											},
+											"source_media_type": {
+												"description": "Audio/video transcript chunks only: type of the source media file. Omitted for all other chunks.",
+												"type": "string",
+												"enum": [
+													"audio",
+													"video"
+												]
 											},
 											"text": {
 												"type": "string"
@@ -706,7 +724,7 @@
 				}
 			},
 			"404": {
-				"description": "Not Found",
+				"description": "Not Found.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -746,7 +764,7 @@
 				}
 			},
 			"429": {
-				"description": "Monthly query quota exceeded; Workers ai capacity temporarily exceeded",
+				"description": "Monthly query quota exceeded; Workers ai capacity temporarily exceeded.",
 				"headers": {
 					"Retry-After": {
 						"description": "Seconds to wait before retrying.",
@@ -821,7 +839,7 @@
 				}
 			},
 			"502": {
-				"description": "Ai gateway exception; Workers ai upstream error",
+				"description": "Ai gateway exception; Workers ai upstream error.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -936,7 +954,7 @@
 			{
 				"name": "name",
 				"in": "path",
-				"description": "Namespace name",
+				"description": "Namespace name.",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -972,7 +990,7 @@
 										}
 									},
 									"custom_metadata": {
-										"description": "Metadata added to AI Gateway logs for requests triggered by this operation. Accepts up to 2 string, number, or boolean entries. Keys 'ai-search', 'task', 'origin', and keys beginning with 'cf.' are reserved.",
+										"description": "Metadata added to AI Gateway logs for requests this operation triggers. Accepts up to 2 string, number, or boolean entries. Reserved keys: 'ai-search', 'task', 'origin', and any key beginning with 'cf.'.",
 										"type": "object",
 										"example": {
 											"test": true,
@@ -1095,7 +1113,7 @@
 												]
 											},
 											"keyword_match_mode": {
-												"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'.",
+												"description": "Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'.",
 												"type": "string",
 												"enum": [
 													"and",
@@ -1315,6 +1333,16 @@
 															"key"
 														]
 													},
+													"media_end_ms": {
+														"description": "Audio/video transcript chunks only: end, in milliseconds from the start of the media (whole seconds), of the last transcript section the matched chunk covers. Describes the matched chunk before any context expansion, not the expanded `text`.",
+														"type": "integer",
+														"minimum": 0
+													},
+													"media_start_ms": {
+														"description": "Audio/video transcript chunks only: start, in milliseconds from the start of the media (whole seconds), of the transcript section the matched chunk begins in. Describes the matched chunk before any context expansion, not the expanded `text`.",
+														"type": "integer",
+														"minimum": 0
+													},
 													"score": {
 														"type": "number",
 														"maximum": 1,
@@ -1351,6 +1379,14 @@
 																"minimum": 0
 															}
 														}
+													},
+													"source_media_type": {
+														"description": "Audio/video transcript chunks only: type of the source media file. Omitted for all other chunks.",
+														"type": "string",
+														"enum": [
+															"audio",
+															"video"
+														]
 													},
 													"text": {
 														"type": "string"
@@ -1457,7 +1493,7 @@
 				}
 			},
 			"404": {
-				"description": "Not Found",
+				"description": "Not Found.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1497,7 +1533,7 @@
 				}
 			},
 			"429": {
-				"description": "Monthly query quota exceeded; Workers ai capacity temporarily exceeded",
+				"description": "Monthly query quota exceeded; Workers ai capacity temporarily exceeded.",
 				"headers": {
 					"Retry-After": {
 						"description": "Seconds to wait before retrying.",
@@ -1572,7 +1608,7 @@
 				}
 			},
 			"502": {
-				"description": "Ai gateway exception; Workers ai upstream error",
+				"description": "Ai gateway exception; Workers ai upstream error.",
 				"content": {
 					"application/json": {
 						"schema": {

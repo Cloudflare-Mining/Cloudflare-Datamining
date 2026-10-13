@@ -2,7 +2,7 @@
 	"DELETE /accounts/{account_id}/ai-search/namespaces/{name}": {
 		"operationId": "ai-search-delete-namespace",
 		"summary": "Delete a namespace",
-		"description": "Permanently delete a namespace. The namespace must be empty (no instances), and the default namespace cannot be deleted.",
+		"description": "Deletes a namespace permanently. The namespace must not contain any instances (instances whose deletion is still in progress do not count), and the default namespace cannot be deleted.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -130,6 +130,46 @@
 						}
 					}
 				}
+			},
+			"409": {
+				"description": "Namespace modified concurrently please retry.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
 			}
 		},
 		"security": [
@@ -168,7 +208,7 @@
 	"GET /accounts/{account_id}/ai-search/namespaces": {
 		"operationId": "ai-search-list-namespaces",
 		"summary": "List namespaces",
-		"description": "List namespaces in the account, including their descriptions and creation times.",
+		"description": "Lists namespaces in the account, including their descriptions and creation times.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -265,7 +305,7 @@
 														"type": "object",
 														"properties": {
 															"disabled": {
-																"description": "Disable chat completions endpoint for this public endpoint",
+																"description": "Disable chat completions endpoint for this public endpoint.",
 																"type": "boolean",
 																"default": false
 															}
@@ -275,7 +315,7 @@
 														"description": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).",
 														"type": "array",
 														"items": {
-															"description": "Custom domain hostname (must be a Verified zone on this account).",
+															"description": "Custom domain hostname. Must belong to a Verified zone on this account.",
 															"example": "search.example.com",
 															"maxLength": 253,
 															"minLength": 1,
@@ -296,7 +336,7 @@
 														"default": false
 													},
 													"instances_allowed": {
-														"description": "Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.",
+														"description": "Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must reference an existing instance in this namespace, and the list must stay within the account's multi-instance search limit.",
 														"type": "array",
 														"items": {
 															"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
@@ -323,7 +363,7 @@
 																"default": "Finds exactly what you're looking for"
 															},
 															"disabled": {
-																"description": "Disable MCP endpoint for this public endpoint",
+																"description": "Disable MCP endpoint for this public endpoint.",
 																"type": "boolean",
 																"default": false
 															}
@@ -354,7 +394,7 @@
 														"type": "object",
 														"properties": {
 															"disabled": {
-																"description": "Disable search endpoint for this public endpoint",
+																"description": "Disable search endpoint for this public endpoint.",
 																"type": "boolean",
 																"default": false
 															}
@@ -411,7 +451,7 @@
 				}
 			},
 			"400": {
-				"description": "Input Validation Error",
+				"description": "Input Validation Error.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -558,7 +598,7 @@
 													"type": "object",
 													"properties": {
 														"disabled": {
-															"description": "Disable chat completions endpoint for this public endpoint",
+															"description": "Disable chat completions endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -568,7 +608,7 @@
 													"description": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).",
 													"type": "array",
 													"items": {
-														"description": "Custom domain hostname (must be a Verified zone on this account).",
+														"description": "Custom domain hostname. Must belong to a Verified zone on this account.",
 														"example": "search.example.com",
 														"maxLength": 253,
 														"minLength": 1,
@@ -589,7 +629,7 @@
 													"default": false
 												},
 												"instances_allowed": {
-													"description": "Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.",
+													"description": "Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must reference an existing instance in this namespace, and the list must stay within the account's multi-instance search limit.",
 													"type": "array",
 													"items": {
 														"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
@@ -616,7 +656,7 @@
 															"default": "Finds exactly what you're looking for"
 														},
 														"disabled": {
-															"description": "Disable MCP endpoint for this public endpoint",
+															"description": "Disable MCP endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -647,7 +687,7 @@
 													"type": "object",
 													"properties": {
 														"disabled": {
-															"description": "Disable search endpoint for this public endpoint",
+															"description": "Disable search endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -750,7 +790,7 @@
 			}
 		}
 	},
-	"PATCH /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}": {
+	"PATCH /accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}": {
 		"operationId": "ai-search-move-instance",
 		"summary": "Move an instance to a different namespace.",
 		"description": "Moves an instance from its current namespace to the specified target namespace. Use 'default' with --destination-namespace to move the instance back to the default namespace. Fails with 400 if the target namespace already has an instance with the same id (ids must be unique within a namespace — the same id can exist in different namespaces).",
@@ -765,7 +805,7 @@
 				}
 			},
 			{
-				"name": "name",
+				"name": "namespace",
 				"in": "path",
 				"description": "Current namespace of the instance.",
 				"required": true,
@@ -918,7 +958,17 @@
 				}
 			},
 			"409": {
-				"description": "Instance modified concurrently please retry move; Ai search instance deletion in progress",
+				"description": "Instance modified concurrently please retry move; Ai search instance deletion in progress.",
+				"headers": {
+					"Retry-After": {
+						"description": "Seconds to wait before retrying.",
+						"schema": {
+							"description": "Seconds to wait before retrying.",
+							"type": "string",
+							"example": "10"
+						}
+					}
+				},
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1013,7 +1063,7 @@
 			"id": {
 				"description": "AI Search instance ID."
 			},
-			"name": {
+			"namespace": {
 				"default": "default",
 				"description": "Namespace currently containing the instance."
 			},
@@ -1068,7 +1118,7 @@
 										"type": "object",
 										"properties": {
 											"disabled": {
-												"description": "Disable chat completions endpoint for this public endpoint",
+												"description": "Disable chat completions endpoint for this public endpoint.",
 												"type": "boolean",
 												"default": false
 											}
@@ -1078,7 +1128,7 @@
 										"description": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).",
 										"type": "array",
 										"items": {
-											"description": "Custom domain hostname (must be a Verified zone on this account).",
+											"description": "Custom domain hostname. Must belong to a Verified zone on this account.",
 											"example": "search.example.com",
 											"maxLength": 253,
 											"minLength": 1,
@@ -1099,7 +1149,7 @@
 										"default": false
 									},
 									"instances_allowed": {
-										"description": "Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.",
+										"description": "Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must reference an existing instance in this namespace, and the list must stay within the account's multi-instance search limit.",
 										"type": "array",
 										"items": {
 											"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
@@ -1126,7 +1176,7 @@
 												"default": "Finds exactly what you're looking for"
 											},
 											"disabled": {
-												"description": "Disable MCP endpoint for this public endpoint",
+												"description": "Disable MCP endpoint for this public endpoint.",
 												"type": "boolean",
 												"default": false
 											}
@@ -1157,7 +1207,7 @@
 										"type": "object",
 										"properties": {
 											"disabled": {
-												"description": "Disable search endpoint for this public endpoint",
+												"description": "Disable search endpoint for this public endpoint.",
 												"type": "boolean",
 												"default": false
 											}
@@ -1221,7 +1271,7 @@
 													"type": "object",
 													"properties": {
 														"disabled": {
-															"description": "Disable chat completions endpoint for this public endpoint",
+															"description": "Disable chat completions endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -1231,7 +1281,7 @@
 													"description": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).",
 													"type": "array",
 													"items": {
-														"description": "Custom domain hostname (must be a Verified zone on this account).",
+														"description": "Custom domain hostname. Must belong to a Verified zone on this account.",
 														"example": "search.example.com",
 														"maxLength": 253,
 														"minLength": 1,
@@ -1252,7 +1302,7 @@
 													"default": false
 												},
 												"instances_allowed": {
-													"description": "Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.",
+													"description": "Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must reference an existing instance in this namespace, and the list must stay within the account's multi-instance search limit.",
 													"type": "array",
 													"items": {
 														"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
@@ -1279,7 +1329,7 @@
 															"default": "Finds exactly what you're looking for"
 														},
 														"disabled": {
-															"description": "Disable MCP endpoint for this public endpoint",
+															"description": "Disable MCP endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -1310,7 +1360,7 @@
 													"type": "object",
 													"properties": {
 														"disabled": {
-															"description": "Disable search endpoint for this public endpoint",
+															"description": "Disable search endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -1497,7 +1547,7 @@
 	"PUT /accounts/{account_id}/ai-search/namespaces/{name}": {
 		"operationId": "ai-search-update-namespace",
 		"summary": "Update a namespace",
-		"description": "Update the description and/or the public endpoint configuration of an existing namespace. The default namespace's description cannot be modified, but its public endpoint can.",
+		"description": "Updates the description and/or the public endpoint configuration of an existing namespace. The default namespace's description cannot be modified, but its public endpoint can.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1546,7 +1596,7 @@
 										"type": "object",
 										"properties": {
 											"disabled": {
-												"description": "Disable chat completions endpoint for this public endpoint",
+												"description": "Disable chat completions endpoint for this public endpoint.",
 												"type": "boolean",
 												"default": false
 											}
@@ -1556,7 +1606,7 @@
 										"description": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).",
 										"type": "array",
 										"items": {
-											"description": "Custom domain hostname (must be a Verified zone on this account).",
+											"description": "Custom domain hostname. Must belong to a Verified zone on this account.",
 											"example": "search.example.com",
 											"maxLength": 253,
 											"minLength": 1,
@@ -1577,7 +1627,7 @@
 										"default": false
 									},
 									"instances_allowed": {
-										"description": "Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.",
+										"description": "Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must reference an existing instance in this namespace, and the list must stay within the account's multi-instance search limit.",
 										"type": "array",
 										"items": {
 											"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
@@ -1604,7 +1654,7 @@
 												"default": "Finds exactly what you're looking for"
 											},
 											"disabled": {
-												"description": "Disable MCP endpoint for this public endpoint",
+												"description": "Disable MCP endpoint for this public endpoint.",
 												"type": "boolean",
 												"default": false
 											}
@@ -1635,7 +1685,7 @@
 										"type": "object",
 										"properties": {
 											"disabled": {
-												"description": "Disable search endpoint for this public endpoint",
+												"description": "Disable search endpoint for this public endpoint.",
 												"type": "boolean",
 												"default": false
 											}
@@ -1696,7 +1746,7 @@
 													"type": "object",
 													"properties": {
 														"disabled": {
-															"description": "Disable chat completions endpoint for this public endpoint",
+															"description": "Disable chat completions endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -1706,7 +1756,7 @@
 													"description": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).",
 													"type": "array",
 													"items": {
-														"description": "Custom domain hostname (must be a Verified zone on this account).",
+														"description": "Custom domain hostname. Must belong to a Verified zone on this account.",
 														"example": "search.example.com",
 														"maxLength": 253,
 														"minLength": 1,
@@ -1727,7 +1777,7 @@
 													"default": false
 												},
 												"instances_allowed": {
-													"description": "Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.",
+													"description": "Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must reference an existing instance in this namespace, and the list must stay within the account's multi-instance search limit.",
 													"type": "array",
 													"items": {
 														"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
@@ -1754,7 +1804,7 @@
 															"default": "Finds exactly what you're looking for"
 														},
 														"disabled": {
-															"description": "Disable MCP endpoint for this public endpoint",
+															"description": "Disable MCP endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}
@@ -1785,7 +1835,7 @@
 													"type": "object",
 													"properties": {
 														"disabled": {
-															"description": "Disable search endpoint for this public endpoint",
+															"description": "Disable search endpoint for this public endpoint.",
 															"type": "boolean",
 															"default": false
 														}

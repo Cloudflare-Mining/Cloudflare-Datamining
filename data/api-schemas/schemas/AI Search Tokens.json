@@ -2,7 +2,7 @@
 	"DELETE /accounts/{account_id}/ai-search/tokens/{id}": {
 		"operationId": "ai-search-delete-tokens",
 		"summary": "Delete a token",
-		"description": "Permanently delete a stored AI Search credential. Credentials in use by an instance cannot be deleted.",
+		"description": "Deletes a stored AI Search credential permanently. Credentials in use by an instance cannot be deleted.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -53,7 +53,7 @@
 				}
 			},
 			"400": {
-				"description": "Input Validation Error",
+				"description": "Input Validation Error.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -216,7 +216,7 @@
 	"GET /accounts/{account_id}/ai-search/tokens": {
 		"operationId": "ai-search-list-tokens",
 		"summary": "List tokens",
-		"description": "List stored AI Search credentials in the account without exposing their secrets.",
+		"description": "Lists stored AI Search credentials in the account without exposing their secrets.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -371,7 +371,7 @@
 				}
 			},
 			"400": {
-				"description": "Input Validation Error",
+				"description": "Input Validation Error.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -550,7 +550,7 @@
 				}
 			},
 			"400": {
-				"description": "Input Validation Error",
+				"description": "Input Validation Error.",
 				"content": {
 					"application/json": {
 						"schema": {
