@@ -22,10 +22,12 @@
 	"default_branch": "main",
 	"branches": [
 		"automation/update-forge",
-		"changeset-release/main",
 		"codex/expand-secrets-file-dotenv",
 		"codex/fix-161-path-params",
 		"codex/fix-177-multipart-files",
+		"codex/fix-185-preview-output",
+		"codex/fix-204-shared-registry",
+		"codex/fix-223-vite-dev-args",
 		"codex/update-workers-sdk-packages",
 		"dario/cfify-messages-followup",
 		"edmundhung/autoconfig-prerelease",
@@ -36,10 +38,10 @@
 		"investigate/issue-69",
 		"investigate/issue-99",
 		"investigate/issue-100",
+		"james/bundle-codemods-minisearch",
 		"main",
+		"penalosa/regression-testing",
 		"remove-x-forge-globals",
-		"sk/forge-wasm",
-		"sk/rm-fern",
-		"sk/switch-to-new-forge"
+		"sk/update-forge"
 	]
 }
