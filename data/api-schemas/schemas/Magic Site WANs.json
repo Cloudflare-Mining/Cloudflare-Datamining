@@ -184,6 +184,20 @@
 													"description": "Priority of WAN for traffic loadbalancing.",
 													"type": "integer"
 												},
+												"provisioned_download_kbps": {
+													"description": "Provisioned download rate of the WAN circuit in kilobits per second.",
+													"type": "integer",
+													"example": 500,
+													"maximum": 1000000000,
+													"minimum": 1
+												},
+												"provisioned_upload_kbps": {
+													"description": "Provisioned upload rate of the WAN circuit in kilobits per second.",
+													"type": "integer",
+													"example": 100,
+													"maximum": 1000000000,
+													"minimum": 1
+												},
 												"site_id": {
 													"description": "Identifier",
 													"type": "string",
@@ -209,6 +223,11 @@
 															"description": "A valid CIDR notation representing an IP range.",
 															"type": "string",
 															"example": "192.0.2.0/24"
+														},
+														"secondary_gateway_address": {
+															"description": "Gateway address for the secondary connector of a high availability site.",
+															"type": "string",
+															"example": "192.0.2.1"
 														}
 													},
 													"required": [
@@ -351,8 +370,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.sites.wans",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/magic/sites/{site_id}/wans": {
 		"operationId": "magic-site-wans-list-wans",
@@ -529,6 +547,20 @@
 														"description": "Priority of WAN for traffic loadbalancing.",
 														"type": "integer"
 													},
+													"provisioned_download_kbps": {
+														"description": "Provisioned download rate of the WAN circuit in kilobits per second.",
+														"type": "integer",
+														"example": 500,
+														"maximum": 1000000000,
+														"minimum": 1
+													},
+													"provisioned_upload_kbps": {
+														"description": "Provisioned upload rate of the WAN circuit in kilobits per second.",
+														"type": "integer",
+														"example": 100,
+														"maximum": 1000000000,
+														"minimum": 1
+													},
 													"site_id": {
 														"description": "Identifier",
 														"type": "string",
@@ -554,6 +586,11 @@
 																"description": "A valid CIDR notation representing an IP range.",
 																"type": "string",
 																"example": "192.0.2.0/24"
+															},
+															"secondary_gateway_address": {
+																"description": "Gateway address for the secondary connector of a high availability site.",
+																"type": "string",
+																"example": "192.0.2.1"
 															}
 														},
 														"required": [
@@ -694,8 +731,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.sites.wans",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/magic/sites/{site_id}/wans/{wan_id}": {
 		"operationId": "magic-site-wans-wan-details",
@@ -882,6 +918,20 @@
 													"description": "Priority of WAN for traffic loadbalancing.",
 													"type": "integer"
 												},
+												"provisioned_download_kbps": {
+													"description": "Provisioned download rate of the WAN circuit in kilobits per second.",
+													"type": "integer",
+													"example": 500,
+													"maximum": 1000000000,
+													"minimum": 1
+												},
+												"provisioned_upload_kbps": {
+													"description": "Provisioned upload rate of the WAN circuit in kilobits per second.",
+													"type": "integer",
+													"example": 100,
+													"maximum": 1000000000,
+													"minimum": 1
+												},
 												"site_id": {
 													"description": "Identifier",
 													"type": "string",
@@ -907,6 +957,11 @@
 															"description": "A valid CIDR notation representing an IP range.",
 															"type": "string",
 															"example": "192.0.2.0/24"
+														},
+														"secondary_gateway_address": {
+															"description": "Gateway address for the secondary connector of a high availability site.",
+															"type": "string",
+															"example": "192.0.2.1"
 														}
 													},
 													"required": [
@@ -1051,8 +1106,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.sites.wans",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/magic/sites/{site_id}/wans/{wan_id}": {
 		"operationId": "magic-site-wans-patch-wan",
@@ -1127,8 +1181,24 @@
 							"priority": {
 								"type": "integer"
 							},
+							"provisioned_download_kbps": {
+								"description": "Provisioned download rate of the WAN circuit in kilobits per second. Set to null to remove it.",
+								"type": "integer",
+								"example": 500,
+								"maximum": 1000000000,
+								"minimum": 1,
+								"nullable": true
+							},
+							"provisioned_upload_kbps": {
+								"description": "Provisioned upload rate of the WAN circuit in kilobits per second. Set to null to remove it.",
+								"type": "integer",
+								"example": 100,
+								"maximum": 1000000000,
+								"minimum": 1,
+								"nullable": true
+							},
 							"static_addressing": {
-								"description": "(optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode.",
+								"description": "Static addressing configuration. PATCH updates only the fields provided, and PUT replaces the configuration.",
 								"type": "object",
 								"properties": {
 									"address": {
@@ -1145,12 +1215,14 @@
 										"description": "A valid CIDR notation representing an IP range.",
 										"type": "string",
 										"example": "192.0.2.0/24"
+									},
+									"secondary_gateway_address": {
+										"description": "Gateway address for the secondary connector of a high availability site. Set to null to remove it.",
+										"type": "string",
+										"example": "192.0.2.1",
+										"nullable": true
 									}
-								},
-								"required": [
-									"address",
-									"gateway_address"
-								]
+								}
 							},
 							"vlan_tag": {
 								"description": "VLAN ID. Use zero for untagged.",
@@ -1306,6 +1378,20 @@
 													"description": "Priority of WAN for traffic loadbalancing.",
 													"type": "integer"
 												},
+												"provisioned_download_kbps": {
+													"description": "Provisioned download rate of the WAN circuit in kilobits per second.",
+													"type": "integer",
+													"example": 500,
+													"maximum": 1000000000,
+													"minimum": 1
+												},
+												"provisioned_upload_kbps": {
+													"description": "Provisioned upload rate of the WAN circuit in kilobits per second.",
+													"type": "integer",
+													"example": 100,
+													"maximum": 1000000000,
+													"minimum": 1
+												},
 												"site_id": {
 													"description": "Identifier",
 													"type": "string",
@@ -1331,6 +1417,11 @@
 															"description": "A valid CIDR notation representing an IP range.",
 															"type": "string",
 															"example": "192.0.2.0/24"
+														},
+														"secondary_gateway_address": {
+															"description": "Gateway address for the secondary connector of a high availability site.",
+															"type": "string",
+															"example": "192.0.2.1"
 														}
 													},
 													"required": [
@@ -1473,8 +1564,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.sites.wans",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/magic/sites/{site_id}/wans": {
 		"operationId": "magic-site-wans-create-wan",
@@ -1538,8 +1628,22 @@
 							"priority": {
 								"type": "integer"
 							},
+							"provisioned_download_kbps": {
+								"description": "Provisioned download rate of the WAN circuit in kilobits per second.",
+								"type": "integer",
+								"example": 500,
+								"maximum": 1000000000,
+								"minimum": 1
+							},
+							"provisioned_upload_kbps": {
+								"description": "Provisioned upload rate of the WAN circuit in kilobits per second.",
+								"type": "integer",
+								"example": 100,
+								"maximum": 1000000000,
+								"minimum": 1
+							},
 							"static_addressing": {
-								"description": "(optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode.",
+								"description": "Static addressing configuration for a WAN. Omit to use DHCP. Submit secondary_address when the site is in high availability mode.",
 								"type": "object",
 								"properties": {
 									"address": {
@@ -1556,6 +1660,11 @@
 										"description": "A valid CIDR notation representing an IP range.",
 										"type": "string",
 										"example": "192.0.2.0/24"
+									},
+									"secondary_gateway_address": {
+										"description": "Gateway address for the secondary connector of a high availability site.",
+										"type": "string",
+										"example": "192.0.2.1"
 									}
 								},
 								"required": [
@@ -1722,6 +1831,20 @@
 														"description": "Priority of WAN for traffic loadbalancing.",
 														"type": "integer"
 													},
+													"provisioned_download_kbps": {
+														"description": "Provisioned download rate of the WAN circuit in kilobits per second.",
+														"type": "integer",
+														"example": 500,
+														"maximum": 1000000000,
+														"minimum": 1
+													},
+													"provisioned_upload_kbps": {
+														"description": "Provisioned upload rate of the WAN circuit in kilobits per second.",
+														"type": "integer",
+														"example": 100,
+														"maximum": 1000000000,
+														"minimum": 1
+													},
 													"site_id": {
 														"description": "Identifier",
 														"type": "string",
@@ -1747,6 +1870,11 @@
 																"description": "A valid CIDR notation representing an IP range.",
 																"type": "string",
 																"example": "192.0.2.0/24"
+															},
+															"secondary_gateway_address": {
+																"description": "Gateway address for the secondary connector of a high availability site.",
+																"type": "string",
+																"example": "192.0.2.1"
 															}
 														},
 														"required": [
@@ -1885,8 +2013,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.sites.wans",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/magic/sites/{site_id}/wans/{wan_id}": {
 		"operationId": "magic-site-wans-update-wan",
@@ -1961,8 +2088,24 @@
 							"priority": {
 								"type": "integer"
 							},
+							"provisioned_download_kbps": {
+								"description": "Provisioned download rate of the WAN circuit in kilobits per second. Set to null to remove it.",
+								"type": "integer",
+								"example": 500,
+								"maximum": 1000000000,
+								"minimum": 1,
+								"nullable": true
+							},
+							"provisioned_upload_kbps": {
+								"description": "Provisioned upload rate of the WAN circuit in kilobits per second. Set to null to remove it.",
+								"type": "integer",
+								"example": 100,
+								"maximum": 1000000000,
+								"minimum": 1,
+								"nullable": true
+							},
 							"static_addressing": {
-								"description": "(optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode.",
+								"description": "Static addressing configuration. PATCH updates only the fields provided, and PUT replaces the configuration.",
 								"type": "object",
 								"properties": {
 									"address": {
@@ -1979,12 +2122,14 @@
 										"description": "A valid CIDR notation representing an IP range.",
 										"type": "string",
 										"example": "192.0.2.0/24"
+									},
+									"secondary_gateway_address": {
+										"description": "Gateway address for the secondary connector of a high availability site. Set to null to remove it.",
+										"type": "string",
+										"example": "192.0.2.1",
+										"nullable": true
 									}
-								},
-								"required": [
-									"address",
-									"gateway_address"
-								]
+								}
 							},
 							"vlan_tag": {
 								"description": "VLAN ID. Use zero for untagged.",
@@ -2140,6 +2285,20 @@
 													"description": "Priority of WAN for traffic loadbalancing.",
 													"type": "integer"
 												},
+												"provisioned_download_kbps": {
+													"description": "Provisioned download rate of the WAN circuit in kilobits per second.",
+													"type": "integer",
+													"example": 500,
+													"maximum": 1000000000,
+													"minimum": 1
+												},
+												"provisioned_upload_kbps": {
+													"description": "Provisioned upload rate of the WAN circuit in kilobits per second.",
+													"type": "integer",
+													"example": 100,
+													"maximum": 1000000000,
+													"minimum": 1
+												},
 												"site_id": {
 													"description": "Identifier",
 													"type": "string",
@@ -2165,6 +2324,11 @@
 															"description": "A valid CIDR notation representing an IP range.",
 															"type": "string",
 															"example": "192.0.2.0/24"
+														},
+														"secondary_gateway_address": {
+															"description": "Gateway address for the secondary connector of a high availability site.",
+															"type": "string",
+															"example": "192.0.2.1"
 														}
 													},
 													"required": [
@@ -2307,7 +2471,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.sites.wans",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

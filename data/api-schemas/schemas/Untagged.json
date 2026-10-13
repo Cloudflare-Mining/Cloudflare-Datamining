@@ -3532,6 +3532,23 @@
 			}
 		}
 	],
+	"PARAMETERS /zones/{zone_id}/precursor": [
+		{
+			"name": "Cloudflare-Version",
+			"in": "header",
+			"description": "Selects the split Precursor API schema.",
+			"required": true,
+			"schema": {
+				"type": "string",
+				"default": "1.0",
+				"enum": [
+					"1.0"
+				],
+				"x-stainless-const": true,
+				"x-stainless-useDefault": true
+			}
+		}
+	],
 	"PARAMETERS /zones/{zone_id}/schema_validation/schemas": [
 		{
 			"in": "path",

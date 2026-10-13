@@ -614,8 +614,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "connectors",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/magic/connectors": {
 		"operationId": "mconn-connectors-list",
@@ -1165,8 +1164,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "connectors",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}": {
 		"operationId": "mconn-connectors-get",
@@ -1784,8 +1782,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "connectors",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}/interrupts": {
 		"operationId": "mconn-connector-interrupts-list",
@@ -2351,8 +2348,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "connector-interrupts",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}/telemetry/events": {
 		"operationId": "mconn-connector-telemetry-events-list",
@@ -2825,8 +2821,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "connector-telemetry-events",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}/telemetry/events/{event_t}.{event_n}": {
 		"operationId": "mconn-connector-telemetry-events-get",
@@ -3353,8 +3348,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "connector-telemetry-events",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}/telemetry/events/latest": {
 		"operationId": "mconn-connector-telemetry-events-latest-get",
@@ -3880,8 +3874,7 @@
 		},
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "connector-telemetry-events-latest",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}/telemetry/snapshots": {
 		"operationId": "mconn-connector-telemetry-snapshots-list",
@@ -4335,8 +4328,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "connector-telemetry-snapshots",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}/telemetry/snapshots/{snapshot_t}": {
 		"operationId": "mconn-connector-telemetry-snapshots-get",
@@ -5967,8 +5959,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "connector-telemetry-snapshots",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}/telemetry/snapshots/latest": {
 		"operationId": "mconn-connector-telemetry-snapshots-latest-get",
@@ -7606,8 +7597,7 @@
 		},
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "connector-telemetry-snapshots-latest",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/magic/connectors/{connector_id}": {
 		"operationId": "mconn-connectors-edit",
@@ -8306,8 +8296,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "connectors",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/magic/connectors": {
 		"operationId": "mconn-connectors-create",
@@ -9092,8 +9081,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "connectors",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/magic/connectors/{connector_id}/interrupts": {
 		"operationId": "mconn-connector-interrupts-create",
@@ -9775,8 +9763,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "connector-interrupts",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/magic/connectors/{connector_id}": {
 		"operationId": "mconn-connectors-update",
@@ -10475,7 +10462,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "connectors",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

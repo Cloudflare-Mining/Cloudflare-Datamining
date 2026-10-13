@@ -371,7 +371,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.labels.user",
 		"x-fern-sdk-method-name": "bulk-delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation deletes the selected user-defined labels and removes them from associated web and API operations."
 	},
 	"DELETE /zones/{zone_id}/api_gateway/labels/user/{name}": {
@@ -687,7 +686,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.labels.user",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation deletes the user-defined label and removes it from associated web and API operations."
 	},
 	"DELETE /zones/{zone_id}/api_gateway/operations/{operation_id}/labels": {
@@ -1135,7 +1133,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.operations.labels",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation removes the selected labels from the web or API operation."
 	},
 	"DELETE /zones/{zone_id}/api_gateway/operations/labels": {
@@ -1636,7 +1633,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.operations.labels",
 		"x-fern-sdk-method-name": "bulk-delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation removes the selected labels from the selected web and API operations."
 	},
 	"GET /zones/{zone_id}/api_gateway/labels": {
@@ -2097,8 +2093,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.labels",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/api_gateway/labels/managed/{name}": {
 		"operationId": "api-shield-labels-get-managed-label",
@@ -2455,8 +2450,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.labels.managed",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/api_gateway/labels/user/{name}": {
 		"operationId": "api-shield-labels-get-user-label",
@@ -2800,8 +2794,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.labels.user",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /zones/{zone_id}/api_gateway/labels/user/{name}": {
 		"operationId": "api-shield-patch-user-label",
@@ -3140,8 +3133,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.labels.user",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /zones/{zone_id}/api_gateway/labels/user": {
 		"operationId": "api-shield-labels-create-user-labels",
@@ -3535,8 +3527,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.labels.user",
-		"x-fern-sdk-method-name": "bulk-create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "bulk-create"
 	},
 	"POST /zones/{zone_id}/api_gateway/operations/{operation_id}/labels": {
 		"operationId": "api-shield-operations-post-labels-to-operation",
@@ -3984,8 +3975,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.operations.labels",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /zones/{zone_id}/api_gateway/operations/labels": {
 		"operationId": "api-shield-operations-bulk-post-labels-to-operations",
@@ -4486,8 +4476,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.operations.labels",
-		"x-fern-sdk-method-name": "bulk-create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "bulk-create"
 	},
 	"PUT /zones/{zone_id}/api_gateway/labels/managed/{name}/resources/operation": {
 		"operationId": "api-shield-labels-replace-operations-attached-to-managed-label",
@@ -4882,8 +4871,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.labels.managed.operations",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /zones/{zone_id}/api_gateway/labels/user/{name}": {
 		"operationId": "api-shield-put-user-label",
@@ -5222,8 +5210,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.labels.user",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /zones/{zone_id}/api_gateway/labels/user/{name}/resources/operation": {
 		"operationId": "api-shield-labels-replace-operations-attached-to-user-label",
@@ -5605,8 +5592,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.labels.user.operations",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /zones/{zone_id}/api_gateway/operations/{operation_id}/labels": {
 		"operationId": "api-shield-operations-put-labels-to-operation",
@@ -6052,8 +6038,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.operations.labels",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /zones/{zone_id}/api_gateway/operations/labels": {
 		"operationId": "api-shield-operations-bulk-put-labels-to-operations",
@@ -6562,7 +6547,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.operations.labels",
-		"x-fern-sdk-method-name": "bulk-update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "bulk-update"
 	}
 }

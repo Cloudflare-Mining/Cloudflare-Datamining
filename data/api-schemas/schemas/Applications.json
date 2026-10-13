@@ -3794,7 +3794,7 @@
 												"type": "boolean"
 											},
 											"id": {
-												"description": "Vendor identifier (e.g. microsoft_internal, google_workspace).\n\n* `ANTHROPIC` - ANTHROPIC\n* `AWS` - AWS\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_CLOUD_PLATFORM` - GOOGLE_CLOUD_PLATFORM\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `OPENAI` - OPENAI\n* `SALESFORCE` - SALESFORCE\n* `SERVICENOW` - SERVICENOW\n* `SLACK` - SLACK",
+												"description": "Vendor identifier (e.g. microsoft_internal, google_workspace).\n\n* `ANTHROPIC` - ANTHROPIC\n* `AWS` - AWS\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_CLOUD_PLATFORM` - GOOGLE_CLOUD_PLATFORM\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `OPENAI` - OPENAI\n* `SALESFORCE` - SALESFORCE\n* `SERVICENOW` - SERVICENOW\n* `SLACK` - SLACK\n* `ZOOM` - ZOOM",
 												"type": "string",
 												"enum": [
 													"ANTHROPIC",
@@ -3811,7 +3811,8 @@
 													"OPENAI",
 													"SALESFORCE",
 													"SERVICENOW",
-													"SLACK"
+													"SLACK",
+													"ZOOM"
 												]
 											},
 											"logo": {
@@ -4004,7 +4005,8 @@
 						"OPENAI",
 						"SALESFORCE",
 						"SERVICENOW",
-						"SLACK"
+						"SLACK",
+						"ZOOM"
 					]
 				}
 			}
@@ -4156,7 +4158,7 @@
 													"type": "boolean"
 												},
 												"id": {
-													"description": "Vendor identifier.\n\n* `ANTHROPIC` - ANTHROPIC\n* `AWS` - AWS\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_CLOUD_PLATFORM` - GOOGLE_CLOUD_PLATFORM\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `OPENAI` - OPENAI\n* `SALESFORCE` - SALESFORCE\n* `SERVICENOW` - SERVICENOW\n* `SLACK` - SLACK",
+													"description": "Vendor identifier.\n\n* `ANTHROPIC` - ANTHROPIC\n* `AWS` - AWS\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_CLOUD_PLATFORM` - GOOGLE_CLOUD_PLATFORM\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `OPENAI` - OPENAI\n* `SALESFORCE` - SALESFORCE\n* `SERVICENOW` - SERVICENOW\n* `SLACK` - SLACK\n* `ZOOM` - ZOOM",
 													"type": "string",
 													"enum": [
 														"ANTHROPIC",
@@ -4173,7 +4175,8 @@
 														"OPENAI",
 														"SALESFORCE",
 														"SERVICENOW",
-														"SLACK"
+														"SLACK",
+														"ZOOM"
 													]
 												},
 												"instructions": {
@@ -4395,7 +4398,8 @@
 						"OPENAI",
 						"SALESFORCE",
 						"SERVICENOW",
-						"SLACK"
+						"SLACK",
+						"ZOOM"
 					]
 				}
 			},
@@ -4658,7 +4662,8 @@
 						"OPENAI",
 						"SALESFORCE",
 						"SERVICENOW",
-						"SLACK"
+						"SLACK",
+						"ZOOM"
 					]
 				}
 			},
@@ -4905,6 +4910,11 @@
 																"description": "A form field within a form_input step.",
 																"type": "object",
 																"properties": {
+																	"default_value": {
+																		"description": "Backend-computed value to pre-fill the field with.",
+																		"type": "string",
+																		"nullable": true
+																	},
 																	"label": {
 																		"description": "Human-readable field label.",
 																		"type": "string"
@@ -4917,6 +4927,10 @@
 																		"description": "Placeholder text.",
 																		"type": "string",
 																		"nullable": true
+																	},
+																	"readonly": {
+																		"description": "Whether the field is backend-computed and must be rendered disabled.",
+																		"type": "boolean"
 																	},
 																	"required": {
 																		"description": "Whether field is required.",

@@ -276,7 +276,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.operations",
 		"x-fern-sdk-method-name": "bulk-delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation deletes the selected web or API operations."
 	},
 	"DELETE /zones/{zone_id}/api_gateway/operations/{operation_id}": {
@@ -504,7 +503,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.operations",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation deletes the web or API operation."
 	},
 	"GET /zones/{zone_id}/api_gateway/operations": {
@@ -1351,8 +1349,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.operations",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/api_gateway/operations/{operation_id}": {
 		"operationId": "api-shield-endpoint-management-retrieve-information-about-an-operation",
@@ -2132,8 +2129,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.operations",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/api_gateway/schemas": {
 		"operationId": "api-shield-endpoint-management-retrieve-operations-and-features-as-open-api-schemas",
@@ -2472,8 +2468,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.schemas",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"POST /zones/{zone_id}/api_gateway/operations": {
 		"operationId": "api-shield-endpoint-management-add-operations-to-a-zone",
@@ -3219,8 +3214,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.operations",
-		"x-fern-sdk-method-name": "bulk-create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "bulk-create"
 	},
 	"POST /zones/{zone_id}/api_gateway/operations/item": {
 		"operationId": "api-shield-endpoint-management-add-operation-to-a-zone",
@@ -4016,7 +4010,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.operations",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

@@ -180,7 +180,13 @@
 		"x-api-token-group": [
 			"Workers Tail Read",
 			"Workers Scripts Write",
-			"Workers Scripts Read"
+			"Workers Scripts Read",
+			"Workers Admin",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Individual Workers Admin",
+			"Individual Workers Editor",
+			"Individual Workers Content Read-Only"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
@@ -684,7 +690,15 @@
 		"x-api-token-group": [
 			"Workers Tail Read",
 			"Workers Scripts Write",
-			"Workers Scripts Read"
+			"Workers Scripts Read",
+			"Workers Admin",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Metadata Read-Only",
+			"Individual Workers Admin",
+			"Individual Workers Editor",
+			"Individual Workers Content Read-Only",
+			"Individual Workers Metadata Read-Only"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
@@ -1683,6 +1697,13 @@
 		],
 		"tags": [
 			"Worker Environment"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write",
+			"Workers Admin",
+			"Workers Editor",
+			"Individual Workers Admin",
+			"Individual Workers Editor"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
@@ -2935,7 +2956,11 @@
 			"Worker Environment"
 		],
 		"x-api-token-group": [
-			"Workers Scripts Write"
+			"Workers Scripts Write",
+			"Workers Admin",
+			"Workers Editor",
+			"Individual Workers Admin",
+			"Individual Workers Editor"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,

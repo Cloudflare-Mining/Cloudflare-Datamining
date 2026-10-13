@@ -2,7 +2,7 @@
 	"DELETE /organizations/{organization_id}/members/{member_id}": {
 		"operationId": "Members_delete",
 		"summary": "Delete organization member",
-		"description": "Delete a membership to a particular Organization.\n\nAuthentication: A Global API key for a user with\n`com.cloudflare.api.tenant.unit.member.delete` is required. User API Tokens are not\ncurrently supported.",
+		"description": "Delete a membership to a particular Organization.",
 		"parameters": [
 			{
 				"name": "organization_id",
@@ -114,7 +114,7 @@
 	"GET /organizations/{organization_id}/members": {
 		"operationId": "Members_list",
 		"summary": "List organization members",
-		"description": "List memberships for an Organization.\n\nAuthentication: A Global API key for a user with\n`com.cloudflare.api.tenant.unit.member.list` is required. User API Tokens are not currently\nsupported.",
+		"description": "List memberships for an Organization.",
 		"parameters": [
 			{
 				"name": "organization_id",
@@ -420,7 +420,7 @@
 	"GET /organizations/{organization_id}/members/{member_id}": {
 		"operationId": "Members_retrieve",
 		"summary": "Get organization member",
-		"description": "Retrieve a single membership from an Organization.\n\nAuthentication: A Global API key for a user with\n`com.cloudflare.api.tenant.unit.member.read` is required. User API Tokens are not currently\nsupported.",
+		"description": "Retrieve a single membership from an Organization.",
 		"parameters": [
 			{
 				"name": "organization_id",
@@ -648,7 +648,7 @@
 	"POST /organizations/{organization_id}/members": {
 		"operationId": "Members_create",
 		"summary": "Create organization member",
-		"description": "Create a membership that grants access to a specific Organization.\n\nAuthentication: A Global API key for a user with\n`com.cloudflare.api.tenant.unit.member.create` is required. User API Tokens are not\ncurrently supported.",
+		"description": "Create a membership that grants access to a specific Organization.",
 		"parameters": [
 			{
 				"name": "organization_id",
@@ -907,7 +907,7 @@
 	"POST /organizations/{organization_id}/members:batchCreate": {
 		"operationId": "Members_batchCreate",
 		"summary": "Batch create organization members",
-		"description": "Batch create multiple memberships that grant access to a specific Organization.\n\nAuthentication: A Global API key for a user with\n`com.cloudflare.api.tenant.unit.member.create` is required. User API Tokens are not\ncurrently supported.",
+		"description": "Batch create multiple memberships that grant access to a specific Organization.",
 		"parameters": [
 			{
 				"name": "organization_id",

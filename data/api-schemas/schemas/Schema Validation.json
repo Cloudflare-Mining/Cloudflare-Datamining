@@ -248,7 +248,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "api-security.schema-validation.schemas",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation permanently deletes the uploaded schema and removes its validation coverage."
 	},
 	"GET /zones/{zone_id}/schema_validation/schemas": {
@@ -660,8 +659,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "api-security.schema-validation.schemas",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/schema_validation/schemas/{schema_id}": {
 		"operationId": "schema-validation-get-schema",
@@ -1000,8 +998,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "api-security.schema-validation.schemas",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/schema_validation/schemas/{schema_id}/operations": {
 		"operationId": "schema-validation-extract-operations-from-schema",
@@ -1879,8 +1876,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "api-security.schema-validation.schemas.operations",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/schema_validation/schemas/hosts": {
 		"operationId": "schema-validation-list-schema-hosts",
@@ -2259,8 +2255,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "api-security.schema-validation.schemas.hosts",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"PATCH /zones/{zone_id}/schema_validation/schemas/{schema_id}": {
 		"operationId": "schema-validation-edit-schema",
@@ -2602,8 +2597,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "api-security.schema-validation.schemas",
-		"x-fern-sdk-method-name": "set-validation",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "set-validation"
 	},
 	"POST /zones/{zone_id}/schema_validation/schemas": {
 		"operationId": "schema-validation-create-schema",
@@ -3139,7 +3133,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "api-security.schema-validation.schemas",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

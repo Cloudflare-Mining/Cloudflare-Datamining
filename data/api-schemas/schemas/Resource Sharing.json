@@ -60,20 +60,6 @@
 											},
 											"example": []
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
@@ -86,6 +72,7 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"result": {
 											"properties": {
@@ -513,20 +500,6 @@
 											},
 											"example": []
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
@@ -539,6 +512,7 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"result": {
 											"properties": {
@@ -809,20 +783,6 @@
 											},
 											"example": []
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
@@ -835,6 +795,7 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"result": {
 											"description": "A recipient of a share. The `association_status` field tracks the\nlifecycle of the shared resources in the recipient account. All\nrecipients are returned by the list endpoint regardless of status;\nfilter client-side if only active recipients are needed.\n",
@@ -1156,20 +1117,6 @@
 											},
 											"example": []
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
@@ -1182,6 +1129,7 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"result": {
 											"properties": {
@@ -1543,7 +1491,7 @@
 				}
 			},
 			{
-				"description": "Number of objects to return per page. Defaults to `20` when `page`\nis supplied without `per_page`. May be omitted entirely along with\n`page` to receive a non-paginated response.",
+				"description": "Number of objects to return per page. Defaults to `20` when `page` is supplied without `per_page`. May be omitted entirely along with `page` to receive a non-paginated response.",
 				"in": "query",
 				"name": "per_page",
 				"schema": {
@@ -1624,20 +1572,6 @@
 													},
 													"example": []
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful.",
 													"type": "boolean",
@@ -1650,12 +1584,8 @@
 											]
 										},
 										{
+											"type": "object",
 											"properties": {
-												"result": {
-													"type": "array",
-													"items": {},
-													"nullable": true
-												},
 												"result_info": {
 													"type": "object",
 													"properties": {
@@ -1691,6 +1621,7 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"result": {
 											"type": "array",
@@ -2029,6 +1960,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -2036,7 +1970,15 @@
 		"tags": [
 			"Resource Sharing"
 		],
-		"x-api-token-group": null,
+		"x-api-token-group": [
+			"Resource Sharing Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#com.cloudflare.api.account.share.list",
+				"#com.cloudflare.api.account.share.read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -2126,20 +2068,6 @@
 											},
 											"example": []
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
@@ -2152,6 +2080,7 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"result": {
 											"properties": {
@@ -2487,6 +2416,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -2494,7 +2426,14 @@
 		"tags": [
 			"Resource Sharing"
 		],
-		"x-api-token-group": null,
+		"x-api-token-group": [
+			"Resource Sharing Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#com.cloudflare.api.account.share.read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -2547,7 +2486,7 @@
 				}
 			},
 			{
-				"description": "Number of objects to return per page. Defaults to `20` when `page`\nis supplied without `per_page`. May be omitted entirely along with\n`page` to receive a non-paginated response.",
+				"description": "Number of objects to return per page. Defaults to `20` when `page` is supplied without `per_page`. May be omitted entirely along with `page` to receive a non-paginated response.",
 				"in": "query",
 				"name": "per_page",
 				"schema": {
@@ -2594,20 +2533,6 @@
 													},
 													"example": []
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful.",
 													"type": "boolean",
@@ -2620,12 +2545,8 @@
 											]
 										},
 										{
+											"type": "object",
 											"properties": {
-												"result": {
-													"type": "array",
-													"items": {},
-													"nullable": true
-												},
 												"result_info": {
 													"type": "object",
 													"properties": {
@@ -2661,6 +2582,7 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"result": {
 											"type": "array",
@@ -2934,20 +2856,6 @@
 											},
 											"example": []
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
@@ -2960,6 +2868,7 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"result": {
 											"properties": {
@@ -3208,7 +3117,7 @@
 				}
 			},
 			{
-				"description": "Number of objects to return per page. Defaults to `20` when `page`\nis supplied without `per_page`. May be omitted entirely along with\n`page` to receive a non-paginated response.",
+				"description": "Number of objects to return per page. Defaults to `20` when `page` is supplied without `per_page`. May be omitted entirely along with `page` to receive a non-paginated response.",
 				"in": "query",
 				"name": "per_page",
 				"schema": {
@@ -3255,20 +3164,6 @@
 													},
 													"example": []
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful.",
 													"type": "boolean",
@@ -3281,12 +3176,8 @@
 											]
 										},
 										{
+											"type": "object",
 											"properties": {
-												"result": {
-													"type": "array",
-													"items": {},
-													"nullable": true
-												},
 												"result_info": {
 													"type": "object",
 													"properties": {
@@ -3322,6 +3213,7 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"result": {
 											"type": "array",
@@ -3654,20 +3546,6 @@
 											},
 											"example": []
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
@@ -3680,6 +3558,7 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"result": {
 											"description": "A recipient of a share. The `association_status` field tracks the\nlifecycle of the shared resources in the recipient account. All\nrecipients are returned by the list endpoint regardless of status;\nfilter client-side if only active recipients are needed.\n",
@@ -4003,7 +3882,7 @@
 				}
 			},
 			{
-				"description": "Number of objects to return per page. Defaults to `20` when `page`\nis supplied without `per_page`. May be omitted entirely along with\n`page` to receive a non-paginated response.",
+				"description": "Number of objects to return per page. Defaults to `20` when `page` is supplied without `per_page`. May be omitted entirely along with `page` to receive a non-paginated response.",
 				"in": "query",
 				"name": "per_page",
 				"schema": {
@@ -4050,20 +3929,6 @@
 													},
 													"example": []
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful.",
 													"type": "boolean",
@@ -4076,12 +3941,8 @@
 											]
 										},
 										{
+											"type": "object",
 											"properties": {
-												"result": {
-													"type": "array",
-													"items": {},
-													"nullable": true
-												},
 												"result_info": {
 													"type": "object",
 													"properties": {
@@ -4117,6 +3978,7 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"result": {
 											"type": "array",
@@ -4435,20 +4297,6 @@
 											},
 											"example": []
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
@@ -4461,6 +4309,7 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"result": {
 											"properties": {
@@ -4821,7 +4670,7 @@
 				}
 			},
 			{
-				"description": "Number of objects to return per page. Defaults to `20` when `page`\nis supplied without `per_page`. May be omitted entirely along with\n`page` to receive a non-paginated response.",
+				"description": "Number of objects to return per page. Defaults to `20` when `page` is supplied without `per_page`. May be omitted entirely along with `page` to receive a non-paginated response.",
 				"in": "query",
 				"name": "per_page",
 				"schema": {
@@ -4868,20 +4717,6 @@
 													},
 													"example": []
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful.",
 													"type": "boolean",
@@ -4894,12 +4729,8 @@
 											]
 										},
 										{
+											"type": "object",
 											"properties": {
-												"result": {
-													"type": "array",
-													"items": {},
-													"nullable": true
-												},
 												"result_info": {
 													"type": "object",
 													"properties": {
@@ -4935,6 +4766,7 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"result": {
 											"type": "array",
@@ -5453,20 +5285,6 @@
 											},
 											"example": []
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
@@ -5479,6 +5297,7 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"result": {
 											"properties": {
@@ -5920,20 +5739,6 @@
 											},
 											"example": []
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
@@ -5946,6 +5751,7 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"result": {
 											"properties": {
@@ -6253,20 +6059,6 @@
 											},
 											"example": []
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
@@ -6279,6 +6071,7 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"result": {
 											"description": "A recipient of a share. The `association_status` field tracks the\nlifecycle of the shared resources in the recipient account. All\nrecipients are returned by the list endpoint regardless of status;\nfilter client-side if only active recipients are needed.\n",
@@ -6637,20 +6430,6 @@
 											},
 											"example": []
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
@@ -6663,6 +6442,7 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"result": {
 											"properties": {
@@ -6988,20 +6768,6 @@
 											},
 											"example": []
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
@@ -7014,6 +6780,7 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"result": {
 											"properties": {
@@ -7428,7 +7195,7 @@
 		},
 		"responses": {
 			"204": {
-				"description": "Empty body"
+				"description": "Empty body."
 			},
 			"4XX": {
 				"description": "Update share excluded recipients failure.",
@@ -7664,7 +7431,7 @@
 		},
 		"responses": {
 			"204": {
-				"description": "Empty body"
+				"description": "Empty body."
 			},
 			"4XX": {
 				"description": "Update share recipients failure.",
@@ -7908,20 +7675,6 @@
 											},
 											"example": []
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
@@ -7934,6 +7687,7 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"result": {
 											"properties": {

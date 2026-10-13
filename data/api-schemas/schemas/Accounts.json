@@ -1053,7 +1053,7 @@
 	"GET /accounts/{account_id}/organizations": {
 		"operationId": "Accounts_listAccountOrganizations",
 		"summary": "List account organizations",
-		"description": "Retrieve a list of the organizations that \"contain\" this account or are\nmanaging it.\n\nThe returned list will be in order from \"root\" to \"leaf\", where the \"leaf\"\nwill be the organization that _immediately_ contains the specified\naccount.\n\nAuthentication: Use a Global API key, or a user-owned API Token scoped to the account with\nthe `Account Settings Read` permission, which grants `com.cloudflare.api.account.read`.",
+		"description": "Retrieve a list of the organizations that \"contain\" this account or are\nmanaging it.\n\nThe returned list will be in order from \"root\" to \"leaf\", where the \"leaf\"\nwill be the organization that _immediately_ contains the specified\naccount.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1337,34 +1337,6 @@
 			"Accounts"
 		],
 		"x-api-token-group": [
-			"Trust and Safety Write",
-			"Trust and Safety Read",
-			"DNS View Write",
-			"DNS View Read",
-			"SCIM Provisioning",
-			"Load Balancers Account Write",
-			"Load Balancers Account Read",
-			"Zero Trust: PII Read",
-			"DDoS Botnet Feed Write",
-			"DDoS Botnet Feed Read",
-			"Workers R2 Storage Write",
-			"Workers R2 Storage Read",
-			"DDoS Protection Write",
-			"DDoS Protection Read",
-			"Workers Tail Read",
-			"Workers KV Storage Write",
-			"Workers KV Storage Read",
-			"Workers Scripts Write",
-			"Workers Scripts Read",
-			"Load Balancing: Monitors and Pools Write",
-			"Load Balancing: Monitors and Pools Read",
-			"Account Firewall Access Rules Write",
-			"Account Firewall Access Rules Read",
-			"DNS Firewall Write",
-			"DNS Firewall Read",
-			"Billing Write",
-			"Billing Read",
-			"Account Settings Write",
 			"Account Settings Read"
 		],
 		"x-fern-availability": "generally-available",
@@ -1374,7 +1346,7 @@
 	"GET /accounts/{account_id}/profile": {
 		"operationId": "Accounts_getAccountProfile",
 		"summary": "Get account profile",
-		"description": "Retrieves the business profile (name, email, phone, address, and external metadata)\nassociated with this account's parent organization customer record. Profiles can be shared\nacross accounts and organizations. Only available to members of an organization that\ncontains the account.\n\nAuthentication: Use a Global API key, or a user-owned API Token scoped to the account with\nthe `Account Settings Read` permission, which grants `com.cloudflare.api.account.read`.",
+		"description": "Retrieves the business profile (name, email, phone, address, and external metadata)\nassociated with this account's parent organization customer record. Profiles can be shared\nacross accounts and organizations. Only available to members of an organization that\ncontains the account.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1539,34 +1511,6 @@
 			"Accounts"
 		],
 		"x-api-token-group": [
-			"Trust and Safety Write",
-			"Trust and Safety Read",
-			"DNS View Write",
-			"DNS View Read",
-			"SCIM Provisioning",
-			"Load Balancers Account Write",
-			"Load Balancers Account Read",
-			"Zero Trust: PII Read",
-			"DDoS Botnet Feed Write",
-			"DDoS Botnet Feed Read",
-			"Workers R2 Storage Write",
-			"Workers R2 Storage Read",
-			"DDoS Protection Write",
-			"DDoS Protection Read",
-			"Workers Tail Read",
-			"Workers KV Storage Write",
-			"Workers KV Storage Read",
-			"Workers Scripts Write",
-			"Workers Scripts Read",
-			"Load Balancing: Monitors and Pools Write",
-			"Load Balancing: Monitors and Pools Read",
-			"Account Firewall Access Rules Write",
-			"Account Firewall Access Rules Read",
-			"DNS Firewall Write",
-			"DNS Firewall Read",
-			"Billing Write",
-			"Billing Read",
-			"Account Settings Write",
 			"Account Settings Read"
 		],
 		"x-fern-availability": "generally-available",
@@ -1964,7 +1908,7 @@
 	"POST /accounts/{account_id}/move": {
 		"operationId": "Accounts_moveAccounts",
 		"summary": "Move account to organization",
-		"description": "Move an account into a destination organization, either assigning a standalone account\nto an organization or moving it between organizations in the same hierarchy. Availability\ndepends on the organization's capabilities.\n\nAuthentication: A Global API key is required. User API Tokens do not include the required\n`com.cloudflare.api.account.move` permission.",
+		"description": "Move an account into a destination organization, either assigning a standalone account\nto an organization or moving it between organizations in the same hierarchy. Availability\ndepends on the organization's capabilities.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2768,7 +2712,7 @@
 	"PUT /accounts/{account_id}/profile": {
 		"operationId": "Accounts_modifyAccountProfile",
 		"summary": "Update account profile",
-		"description": "Updates the business profile (name, email, phone, address, and external metadata) associated\nwith this account's parent organization customer record. Changes apply to every account and\norganization sharing that profile. Omitted or empty fields are left unchanged. Only\navailable to members of an organization that contains the account.\n\nAuthentication: Use a Global API key, or a user-owned API Token scoped to the account with\nthe `Account Settings Write` permission, which grants\n`com.cloudflare.api.account.update`.",
+		"description": "Updates the business profile (name, email, phone, address, and external metadata) associated\nwith this account's parent organization customer record. Changes apply to every account and\norganization sharing that profile. Omitted or empty fields are left unchanged. Only\navailable to members of an organization that contains the account.",
 		"parameters": [
 			{
 				"name": "account_id",

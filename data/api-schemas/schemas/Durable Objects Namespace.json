@@ -488,7 +488,15 @@
 		],
 		"x-api-token-group": [
 			"Workers Scripts Write",
-			"Workers Scripts Read"
+			"Workers Scripts Read",
+			"Workers Admin",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Metadata Read-Only",
+			"Individual Workers Admin",
+			"Individual Workers Editor",
+			"Individual Workers Content Read-Only",
+			"Individual Workers Metadata Read-Only"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "durable-objects.namespaces",
@@ -1014,7 +1022,15 @@
 		],
 		"x-api-token-group": [
 			"Workers Scripts Write",
-			"Workers Scripts Read"
+			"Workers Scripts Read",
+			"Workers Admin",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Metadata Read-Only",
+			"Individual Workers Admin",
+			"Individual Workers Editor",
+			"Individual Workers Content Read-Only",
+			"Individual Workers Metadata Read-Only"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "durable-objects.namespaces.objects",

@@ -5091,7 +5091,7 @@
 	"POST /accounts/{account_id}/abuse-reports/{report_param}": {
 		"operationId": "SubmitAbuseReport",
 		"summary": "Submit an abuse report",
-		"description": "Submit an abuse report of a particular type.\n\nRequires the abuse-reports entitlement on the account (Enterprise\naccounts have it by default; other accounts must request access) and an\nAPI token with the `Trust and Safety Write` permission. If the account\nis not entitled, the request is rejected with an HTTP `401` response\n(see below).",
+		"description": "Submit an abuse report of a particular type.\n\nRequires the abuse-reports entitlement on the account (Enterprise\naccounts have it by default; other accounts must request access) and an\nAPI token with the `Trust and Safety Write` permission. If the account\nis not entitled, the request is rejected with an HTTP `401` response\n(see below).\n\nDelegated reports: In limited circumstances, Cloudflare works with\nselect customers who have established abuse-handling programs. For\nthese customers, Cloudflare may forward abuse reports directly and in\nfull—including reporter contact information, comments, and supporting\nevidence—without redaction or preprocessing by Cloudflare. This allows\nthe customer to investigate and respond using their own policies and\nprocesses. For delegated reports, the report—including contact\ninformation and comments—will be forwarded to the customer in full\nregardless of the `host_notification` and `owner_notification` values.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -5146,7 +5146,7 @@
 												"type": "string"
 											},
 											"comments": {
-												"description": "Any additional comments about the infringement not exceeding 2000 characters",
+												"description": "Any additional comments about the infringement not exceeding 2000 characters. Comments are kept internal to Cloudflare and not shared with the host or customer as part of regular processing. For delegated reports, comments may be shared in full.",
 												"type": "string",
 												"maxLength": 2000,
 												"minLength": 1
@@ -5248,7 +5248,7 @@
 												"minLength": 1
 											},
 											"host_notification": {
-												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"description": "Notification type based on the abuse type. For delegated reports, the report—including contact information and comments—will be forwarded to the customer in full regardless of this value. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
 												"type": "string",
 												"enum": [
 													"send"
@@ -5261,7 +5261,7 @@
 												"minLength": 1
 											},
 											"owner_notification": {
-												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"description": "Notification type based on the abuse type. For delegated reports, the report—including contact information and comments—will be forwarded to the customer in full regardless of this value. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
 												"type": "string",
 												"enum": [
 													"send"
@@ -5306,7 +5306,7 @@
 												"type": "string"
 											},
 											"comments": {
-												"description": "Any additional comments about the infringement not exceeding 2000 characters",
+												"description": "Any additional comments about the infringement not exceeding 2000 characters. Comments are kept internal to Cloudflare and not shared with the host or customer as part of regular processing. For delegated reports, comments may be shared in full.",
 												"type": "string",
 												"maxLength": 2000,
 												"minLength": 1
@@ -5377,7 +5377,7 @@
 												]
 											},
 											"host_notification": {
-												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"description": "Notification type based on the abuse type. For delegated reports, the report—including contact information and comments—will be forwarded to the customer in full regardless of this value. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
 												"type": "string",
 												"enum": [
 													"send"
@@ -5390,7 +5390,7 @@
 												"minLength": 1
 											},
 											"owner_notification": {
-												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"description": "Notification type based on the abuse type. For delegated reports, the report—including contact information and comments—will be forwarded to the customer in full regardless of this value. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
 												"type": "string",
 												"enum": [
 													"send"
@@ -5439,7 +5439,7 @@
 												"type": "string"
 											},
 											"comments": {
-												"description": "Any additional comments about the infringement not exceeding 2000 characters",
+												"description": "Any additional comments about the infringement not exceeding 2000 characters. Comments are kept internal to Cloudflare and not shared with the host or customer as part of regular processing. For delegated reports, comments may be shared in full.",
 												"type": "string",
 												"maxLength": 2000,
 												"minLength": 1
@@ -5514,7 +5514,7 @@
 												"type": "string"
 											},
 											"host_notification": {
-												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"description": "Notification type based on the abuse type. For delegated reports, the report—including contact information and comments—will be forwarded to the customer in full regardless of this value. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
 												"type": "string",
 												"enum": [
 													"send",
@@ -5528,7 +5528,7 @@
 												"minLength": 1
 											},
 											"owner_notification": {
-												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"description": "Notification type based on the abuse type. For delegated reports, the report—including contact information and comments—will be forwarded to the customer in full regardless of this value. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
 												"type": "string",
 												"enum": [
 													"send",
@@ -5565,7 +5565,7 @@
 												"type": "string"
 											},
 											"comments": {
-												"description": "Any additional comments about the infringement not exceeding 2000 characters",
+												"description": "Any additional comments about the infringement not exceeding 2000 characters. Comments are kept internal to Cloudflare and not shared with the host or customer as part of regular processing. For delegated reports, comments may be shared in full.",
 												"type": "string",
 												"maxLength": 2000,
 												"minLength": 1
@@ -5636,7 +5636,7 @@
 												]
 											},
 											"host_notification": {
-												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"description": "Notification type based on the abuse type. For delegated reports, the report—including contact information and comments—will be forwarded to the customer in full regardless of this value. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
 												"type": "string",
 												"enum": [
 													"send",
@@ -5656,7 +5656,7 @@
 												"minLength": 1
 											},
 											"owner_notification": {
-												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"description": "Notification type based on the abuse type. For delegated reports, the report—including contact information and comments—will be forwarded to the customer in full regardless of this value. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
 												"type": "string",
 												"enum": [
 													"send",
@@ -5685,7 +5685,7 @@
 												"type": "string"
 											},
 											"comments": {
-												"description": "Any additional comments about the infringement not exceeding 2000 characters",
+												"description": "Any additional comments about the infringement not exceeding 2000 characters. Comments are kept internal to Cloudflare and not shared with the host or customer as part of regular processing. For delegated reports, comments may be shared in full.",
 												"type": "string",
 												"maxLength": 2000,
 												"minLength": 1
@@ -5762,7 +5762,7 @@
 												"minLength": 1
 											},
 											"host_notification": {
-												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"description": "Notification type based on the abuse type. For delegated reports, the report—including contact information and comments—will be forwarded to the customer in full regardless of this value. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
 												"type": "string",
 												"enum": [
 													"send",
@@ -5784,7 +5784,7 @@
 												]
 											},
 											"owner_notification": {
-												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"description": "Notification type based on the abuse type. For delegated reports, the report—including contact information and comments—will be forwarded to the customer in full regardless of this value. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
 												"type": "string",
 												"enum": [
 													"send",
@@ -5815,7 +5815,7 @@
 												"type": "string"
 											},
 											"comments": {
-												"description": "Any additional comments about the infringement not exceeding 2000 characters",
+												"description": "Any additional comments about the infringement not exceeding 2000 characters. Comments are kept internal to Cloudflare and not shared with the host or customer as part of regular processing. For delegated reports, comments may be shared in full.",
 												"type": "string",
 												"maxLength": 2000,
 												"minLength": 1
@@ -5886,7 +5886,7 @@
 												]
 											},
 											"host_notification": {
-												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"description": "Notification type based on the abuse type. For delegated reports, the report—including contact information and comments—will be forwarded to the customer in full regardless of this value. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
 												"type": "string",
 												"enum": [
 													"send",
@@ -5900,7 +5900,7 @@
 												"minLength": 1
 											},
 											"owner_notification": {
-												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"description": "Notification type based on the abuse type. For delegated reports, the report—including contact information and comments—will be forwarded to the customer in full regardless of this value. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
 												"type": "string",
 												"enum": [
 													"send",
@@ -5929,7 +5929,7 @@
 												"type": "string"
 											},
 											"comments": {
-												"description": "Any additional comments about the infringement not exceeding 2000 characters",
+												"description": "Any additional comments about the infringement not exceeding 2000 characters. Comments are kept internal to Cloudflare and not shared with the host or customer as part of regular processing. For delegated reports, comments may be shared in full.",
 												"type": "string",
 												"maxLength": 2000,
 												"minLength": 1
@@ -6000,7 +6000,7 @@
 												]
 											},
 											"owner_notification": {
-												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"description": "Notification type based on the abuse type. For delegated reports, the report—including contact information and comments—will be forwarded to the customer in full regardless of this value. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
 												"type": "string",
 												"enum": [
 													"send",
@@ -6104,7 +6104,7 @@
 												"type": "string"
 											},
 											"comments": {
-												"description": "Any additional comments about the infringement not exceeding 2000 characters",
+												"description": "Any additional comments about the infringement not exceeding 2000 characters. Comments are kept internal to Cloudflare and not shared with the host or customer as part of regular processing. For delegated reports, comments may be shared in full.",
 												"type": "string",
 												"maxLength": 2000,
 												"minLength": 1
@@ -6181,7 +6181,7 @@
 												"minLength": 1
 											},
 											"host_notification": {
-												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"description": "Notification type based on the abuse type. For delegated reports, the report—including contact information and comments—will be forwarded to the customer in full regardless of this value. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
 												"type": "string",
 												"enum": [
 													"send",
@@ -6193,7 +6193,7 @@
 												"type": "boolean"
 											},
 											"owner_notification": {
-												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"description": "Notification type based on the abuse type. For delegated reports, the report—including contact information and comments—will be forwarded to the customer in full regardless of this value. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
 												"type": "string",
 												"enum": [
 													"send",

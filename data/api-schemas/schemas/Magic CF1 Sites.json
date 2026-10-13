@@ -326,8 +326,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.cf1-sites",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/magic/cf1_sites": {
 		"operationId": "magic-cf1-sites-list-cf1-sites",
@@ -649,8 +648,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.cf1-sites",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/magic/cf1_sites/{cf1_site_id}": {
 		"operationId": "magic-cf1-sites-get-cf1-site",
@@ -981,8 +979,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.cf1-sites",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/magic/cf1_sites/{cf1_site_id}": {
 		"operationId": "magic-cf1-sites-update-cf1-site",
@@ -1356,8 +1353,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.cf1-sites",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"POST /accounts/{account_id}/magic/cf1_sites": {
 		"operationId": "magic-cf1-sites-create-cf1-sites",
@@ -1750,7 +1746,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.cf1-sites",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

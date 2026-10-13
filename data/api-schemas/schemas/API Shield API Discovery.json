@@ -455,8 +455,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.discovery",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/api_gateway/discovery/operations": {
 		"operationId": "api-shield-api-discovery-retrieve-discovered-operations-on-a-zone",
@@ -1028,8 +1027,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.discovery.operations",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/api_gateway/discovery/operations/{discovery_id}": {
 		"operationId": "api-shield-api-discovery-retrieve-discovered-operation-by-id",
@@ -1472,8 +1470,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.discovery.operations",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /zones/{zone_id}/api_gateway/discovery/operations": {
 		"operationId": "api-shield-api-patch-discovered-operations",
@@ -1770,8 +1767,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.discovery.operations",
-		"x-fern-sdk-method-name": "bulk-edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "bulk-edit"
 	},
 	"PATCH /zones/{zone_id}/api_gateway/discovery/operations/{discovery_id}": {
 		"operationId": "api-shield-api-patch-discovered-operation",
@@ -2049,7 +2045,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.discovery.operations",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	}
 }

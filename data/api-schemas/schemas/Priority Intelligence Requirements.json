@@ -556,6 +556,16 @@
 									}
 								]
 							},
+							"digest_interval_hours": {
+								"description": "Hours between digests: 6, 12, or 24. Used only when `notification_mode` is `digest`.",
+								"type": "integer",
+								"default": 24,
+								"enum": [
+									6,
+									12,
+									24
+								]
+							},
 							"intent": {
 								"type": "object",
 								"additionalProperties": false,
@@ -693,6 +703,7 @@
 								"minLength": 1
 							},
 							"notification_mode": {
+								"description": "`none` or `digest`. Notifications are opt-in. `immediate` is reserved and currently rejected.",
 								"type": "string",
 								"default": "none",
 								"enum": [
@@ -2216,6 +2227,15 @@
 									}
 								]
 							},
+							"digest_interval_hours": {
+								"description": "Hours between digests: 6, 12, or 24. Used only when `notification_mode` is `digest`.",
+								"type": "integer",
+								"enum": [
+									6,
+									12,
+									24
+								]
+							},
 							"intent": {
 								"type": "object",
 								"additionalProperties": false,
@@ -2354,6 +2374,7 @@
 								"nullable": true
 							},
 							"notification_mode": {
+								"description": "`none` or `digest`. Notifications are opt-in. `immediate` is reserved and currently rejected.",
 								"type": "string",
 								"enum": [
 									"none",

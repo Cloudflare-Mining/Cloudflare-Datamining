@@ -320,8 +320,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.sites.app-configuration",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/magic/sites/{site_id}/app_configs": {
 		"operationId": "magic-site-app-configs-list-app-configs",
@@ -406,7 +405,10 @@
 											"example": []
 										},
 										"result": {
-											"type": "object",
+											"type": "array",
+											"items": {
+												"type": "object"
+											},
 											"nullable": true
 										},
 										"success": {
@@ -637,8 +639,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.sites.app-configuration",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"PATCH /accounts/{account_id}/magic/sites/{site_id}/app_configs/{app_config_id}": {
 		"operationId": "magic-site-app-configs-patch-app-config",
@@ -1002,8 +1003,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "magic-transit.sites.app-configuration",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/magic/sites/{site_id}/app_configs": {
 		"operationId": "magic-site-app-configs-add-app-config",
@@ -1403,8 +1403,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.sites.app-configuration",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/magic/sites/{site_id}/app_configs/{app_config_id}": {
 		"operationId": "magic-site-app-configs-update-app-config",
@@ -1771,7 +1770,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.sites.app-configuration",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

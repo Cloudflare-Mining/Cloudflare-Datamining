@@ -438,479 +438,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"deleted": {
-															"type": "boolean",
-															"example": true
-														},
-														"deleted_ipsec_tunnel": {
-															"type": "object",
-															"properties": {
-																"allow_null_cipher": {
-																	"description": "When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).",
-																	"type": "boolean",
-																	"example": true
-																},
-																"automatic_return_routing": {
-																	"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.",
-																	"type": "boolean",
-																	"example": true,
-																	"default": false,
-																	"x-auditable": true
-																},
-																"bgp": {
-																	"type": "object",
-																	"properties": {
-																		"customer_asn": {
-																			"description": "ASN used on the customer end of the BGP session",
-																			"type": "integer",
-																			"format": "int32",
-																			"minimum": 0
-																		},
-																		"export_filter_id": {
-																			"description": "ID of the BGP filter profile applied to routes advertised to the customer.",
-																			"type": "string",
-																			"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
-																		},
-																		"extra_prefixes": {
-																			"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
-																			"type": "array",
-																			"items": {
-																				"format": "cidr",
-																				"type": "string"
-																			}
-																		},
-																		"import_filter_id": {
-																			"description": "ID of the BGP filter profile applied to routes received from the customer.",
-																			"type": "string",
-																			"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
-																		},
-																		"md5_key": {
-																			"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
-																			"type": "string"
-																		}
-																	},
-																	"required": [
-																		"customer_asn"
-																	]
-																},
-																"bgp_status": {
-																	"type": "object",
-																	"properties": {
-																		"bgp_state": {
-																			"type": "string"
-																		},
-																		"cf_speaker_ip": {
-																			"type": "string",
-																			"format": "ipv4"
-																		},
-																		"cf_speaker_port": {
-																			"type": "integer",
-																			"maximum": 65535,
-																			"minimum": 1
-																		},
-																		"customer_speaker_ip": {
-																			"type": "string",
-																			"format": "ipv4"
-																		},
-																		"customer_speaker_port": {
-																			"type": "integer",
-																			"maximum": 65535,
-																			"minimum": 1
-																		},
-																		"state": {
-																			"type": "string",
-																			"enum": [
-																				"BGP_DOWN",
-																				"BGP_UP",
-																				"BGP_ESTABLISHING"
-																			]
-																		},
-																		"tcp_established": {
-																			"type": "boolean"
-																		},
-																		"updated_at": {
-																			"type": "string",
-																			"format": "date-time"
-																		}
-																	},
-																	"required": [
-																		"state",
-																		"tcp_established",
-																		"updated_at"
-																	]
-																},
-																"cloudflare_endpoint": {
-																	"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel.",
-																	"type": "string",
-																	"example": "203.0.113.1"
-																},
-																"created_on": {
-																	"description": "The date and time the tunnel was created.",
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2017-06-14T00:00:00Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"custom_remote_identities": {
-																	"type": "object",
-																	"properties": {
-																		"fqdn_id": {
-																			"description": "A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The\ngenerated IKE IDs can still be used even if this custom value is specified.\n\nMust be of the form `<custom label>.<account ID>.custom.ipsec.cloudflare.com`.\n\nThis custom ID does not need to be unique. Two IPsec tunnels may have the same custom\nfqdn_id. However, if another IPsec tunnel has the same value then the two tunnels\ncannot have the same cloudflare_endpoint.",
-																			"type": "string"
-																		}
-																	}
-																},
-																"customer_endpoint": {
-																	"description": "The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.",
-																	"type": "string",
-																	"example": "203.0.113.1"
-																},
-																"description": {
-																	"description": "An optional description forthe IPsec tunnel.",
-																	"type": "string",
-																	"example": "Tunnel for ISP X"
-																},
-																"health_check": {
-																	"allOf": [
-																		{
-																			"type": "object",
-																			"properties": {
-																				"enabled": {
-																					"description": "Determines whether to run healthchecks for a tunnel.",
-																					"type": "boolean",
-																					"example": true,
-																					"default": true,
-																					"x-auditable": true
-																				},
-																				"rate": {
-																					"description": "How frequent the health check is run. The default value is `mid`.",
-																					"type": "string",
-																					"example": "low",
-																					"default": "mid",
-																					"enum": [
-																						"low",
-																						"mid",
-																						"high"
-																					],
-																					"x-auditable": true
-																				},
-																				"target": {
-																					"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.",
-																					"oneOf": [
-																						{
-																							"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
-																							"type": "object",
-																							"properties": {
-																								"effective": {
-																									"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
-																									"type": "string",
-																									"example": "203.0.113.1",
-																									"readOnly": true,
-																									"x-auditable": true
-																								},
-																								"saved": {
-																									"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
-																									"type": "string",
-																									"example": "203.0.113.1",
-																									"x-auditable": true
-																								}
-																							}
-																						},
-																						{
-																							"type": "string"
-																						}
-																					]
-																				},
-																				"type": {
-																					"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
-																					"type": "string",
-																					"example": "request",
-																					"default": "reply",
-																					"enum": [
-																						"reply",
-																						"request"
-																					],
-																					"x-auditable": true
-																				}
-																			}
-																		},
-																		{
-																			"properties": {
-																				"direction": {
-																					"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.",
-																					"type": "string",
-																					"example": "bidirectional",
-																					"default": "unidirectional",
-																					"enum": [
-																						"unidirectional",
-																						"bidirectional"
-																					]
-																				}
-																			},
-																			"type": "object"
-																		}
-																	]
-																},
-																"id": {
-																	"description": "Identifier",
-																	"type": "string",
-																	"example": "c4a7362d577a6c3019a474fd6f485821",
-																	"maxLength": 32,
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"interface_address": {
-																	"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
-																	"type": "string",
-																	"example": "192.0.2.0/31",
-																	"x-auditable": true
-																},
-																"interface_address6": {
-																	"description": "A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127",
-																	"type": "string",
-																	"example": "2606:54c1:7:0:a9fe:12d2:1:200/127",
-																	"x-auditable": true
-																},
-																"modified_on": {
-																	"description": "The date and time the tunnel was last modified.",
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2017-06-14T05:20:00Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"name": {
-																	"description": "The name of the IPsec tunnel. The name cannot share a name with other tunnels.",
-																	"type": "string",
-																	"example": "IPsec_1"
-																},
-																"psk_metadata": {
-																	"description": "The PSK metadata that includes when the PSK was generated.",
-																	"type": "object",
-																	"properties": {
-																		"last_generated_on": {
-																			"description": "The date and time the tunnel was last modified.",
-																			"type": "string",
-																			"format": "date-time",
-																			"example": "2017-06-14T05:20:00Z",
-																			"readOnly": true,
-																			"x-auditable": true
-																		}
-																	}
-																},
-																"replay_protection": {
-																	"description": "If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.",
-																	"type": "boolean",
-																	"example": false,
-																	"default": false
-																}
-															},
-															"required": [
-																"id",
-																"name",
-																"cloudflare_endpoint",
-																"interface_address"
-															]
-														}
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -939,8 +547,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.ipsec-tunnels",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/magic/ipsec_tunnels": {
 		"operationId": "magic-ipsec-tunnels-list-ipsec-tunnels",
@@ -1368,478 +975,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"ipsec_tunnels": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"allow_null_cipher": {
-																		"description": "When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).",
-																		"type": "boolean",
-																		"example": true
-																	},
-																	"automatic_return_routing": {
-																		"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.",
-																		"type": "boolean",
-																		"example": true,
-																		"default": false,
-																		"x-auditable": true
-																	},
-																	"bgp": {
-																		"type": "object",
-																		"properties": {
-																			"customer_asn": {
-																				"description": "ASN used on the customer end of the BGP session",
-																				"type": "integer",
-																				"format": "int32",
-																				"minimum": 0
-																			},
-																			"export_filter_id": {
-																				"description": "ID of the BGP filter profile applied to routes advertised to the customer.",
-																				"type": "string",
-																				"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
-																			},
-																			"extra_prefixes": {
-																				"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
-																				"type": "array",
-																				"items": {
-																					"format": "cidr",
-																					"type": "string"
-																				}
-																			},
-																			"import_filter_id": {
-																				"description": "ID of the BGP filter profile applied to routes received from the customer.",
-																				"type": "string",
-																				"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
-																			},
-																			"md5_key": {
-																				"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"customer_asn"
-																		]
-																	},
-																	"bgp_status": {
-																		"type": "object",
-																		"properties": {
-																			"bgp_state": {
-																				"type": "string"
-																			},
-																			"cf_speaker_ip": {
-																				"type": "string",
-																				"format": "ipv4"
-																			},
-																			"cf_speaker_port": {
-																				"type": "integer",
-																				"maximum": 65535,
-																				"minimum": 1
-																			},
-																			"customer_speaker_ip": {
-																				"type": "string",
-																				"format": "ipv4"
-																			},
-																			"customer_speaker_port": {
-																				"type": "integer",
-																				"maximum": 65535,
-																				"minimum": 1
-																			},
-																			"state": {
-																				"type": "string",
-																				"enum": [
-																					"BGP_DOWN",
-																					"BGP_UP",
-																					"BGP_ESTABLISHING"
-																				]
-																			},
-																			"tcp_established": {
-																				"type": "boolean"
-																			},
-																			"updated_at": {
-																				"type": "string",
-																				"format": "date-time"
-																			}
-																		},
-																		"required": [
-																			"state",
-																			"tcp_established",
-																			"updated_at"
-																		]
-																	},
-																	"cloudflare_endpoint": {
-																		"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel.",
-																		"type": "string",
-																		"example": "203.0.113.1"
-																	},
-																	"created_on": {
-																		"description": "The date and time the tunnel was created.",
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2017-06-14T00:00:00Z",
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"custom_remote_identities": {
-																		"type": "object",
-																		"properties": {
-																			"fqdn_id": {
-																				"description": "A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The\ngenerated IKE IDs can still be used even if this custom value is specified.\n\nMust be of the form `<custom label>.<account ID>.custom.ipsec.cloudflare.com`.\n\nThis custom ID does not need to be unique. Two IPsec tunnels may have the same custom\nfqdn_id. However, if another IPsec tunnel has the same value then the two tunnels\ncannot have the same cloudflare_endpoint.",
-																				"type": "string"
-																			}
-																		}
-																	},
-																	"customer_endpoint": {
-																		"description": "The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.",
-																		"type": "string",
-																		"example": "203.0.113.1"
-																	},
-																	"description": {
-																		"description": "An optional description forthe IPsec tunnel.",
-																		"type": "string",
-																		"example": "Tunnel for ISP X"
-																	},
-																	"health_check": {
-																		"allOf": [
-																			{
-																				"type": "object",
-																				"properties": {
-																					"enabled": {
-																						"description": "Determines whether to run healthchecks for a tunnel.",
-																						"type": "boolean",
-																						"example": true,
-																						"default": true,
-																						"x-auditable": true
-																					},
-																					"rate": {
-																						"description": "How frequent the health check is run. The default value is `mid`.",
-																						"type": "string",
-																						"example": "low",
-																						"default": "mid",
-																						"enum": [
-																							"low",
-																							"mid",
-																							"high"
-																						],
-																						"x-auditable": true
-																					},
-																					"target": {
-																						"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.",
-																						"oneOf": [
-																							{
-																								"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
-																								"type": "object",
-																								"properties": {
-																									"effective": {
-																										"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
-																										"type": "string",
-																										"example": "203.0.113.1",
-																										"readOnly": true,
-																										"x-auditable": true
-																									},
-																									"saved": {
-																										"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
-																										"type": "string",
-																										"example": "203.0.113.1",
-																										"x-auditable": true
-																									}
-																								}
-																							},
-																							{
-																								"type": "string"
-																							}
-																						]
-																					},
-																					"type": {
-																						"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
-																						"type": "string",
-																						"example": "request",
-																						"default": "reply",
-																						"enum": [
-																							"reply",
-																							"request"
-																						],
-																						"x-auditable": true
-																					}
-																				}
-																			},
-																			{
-																				"properties": {
-																					"direction": {
-																						"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.",
-																						"type": "string",
-																						"example": "bidirectional",
-																						"default": "unidirectional",
-																						"enum": [
-																							"unidirectional",
-																							"bidirectional"
-																						]
-																					}
-																				},
-																				"type": "object"
-																			}
-																		]
-																	},
-																	"id": {
-																		"description": "Identifier",
-																		"type": "string",
-																		"example": "c4a7362d577a6c3019a474fd6f485821",
-																		"maxLength": 32,
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"interface_address": {
-																		"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
-																		"type": "string",
-																		"example": "192.0.2.0/31",
-																		"x-auditable": true
-																	},
-																	"interface_address6": {
-																		"description": "A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127",
-																		"type": "string",
-																		"example": "2606:54c1:7:0:a9fe:12d2:1:200/127",
-																		"x-auditable": true
-																	},
-																	"modified_on": {
-																		"description": "The date and time the tunnel was last modified.",
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2017-06-14T05:20:00Z",
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"name": {
-																		"description": "The name of the IPsec tunnel. The name cannot share a name with other tunnels.",
-																		"type": "string",
-																		"example": "IPsec_1"
-																	},
-																	"psk_metadata": {
-																		"description": "The PSK metadata that includes when the PSK was generated.",
-																		"type": "object",
-																		"properties": {
-																			"last_generated_on": {
-																				"description": "The date and time the tunnel was last modified.",
-																				"type": "string",
-																				"format": "date-time",
-																				"example": "2017-06-14T05:20:00Z",
-																				"readOnly": true,
-																				"x-auditable": true
-																			}
-																		}
-																	},
-																	"replay_protection": {
-																		"description": "If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.",
-																		"type": "boolean",
-																		"example": false,
-																		"default": false
-																	}
-																},
-																"required": [
-																	"id",
-																	"name",
-																	"cloudflare_endpoint",
-																	"interface_address"
-																]
-															}
-														}
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1870,8 +1086,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.ipsec-tunnels",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/magic/ipsec_tunnels/{ipsec_tunnel_id}": {
 		"operationId": "magic-ipsec-tunnels-list-ipsec-tunnel-details",
@@ -2308,475 +1523,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"ipsec_tunnel": {
-															"type": "object",
-															"properties": {
-																"allow_null_cipher": {
-																	"description": "When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).",
-																	"type": "boolean",
-																	"example": true
-																},
-																"automatic_return_routing": {
-																	"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.",
-																	"type": "boolean",
-																	"example": true,
-																	"default": false,
-																	"x-auditable": true
-																},
-																"bgp": {
-																	"type": "object",
-																	"properties": {
-																		"customer_asn": {
-																			"description": "ASN used on the customer end of the BGP session",
-																			"type": "integer",
-																			"format": "int32",
-																			"minimum": 0
-																		},
-																		"export_filter_id": {
-																			"description": "ID of the BGP filter profile applied to routes advertised to the customer.",
-																			"type": "string",
-																			"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
-																		},
-																		"extra_prefixes": {
-																			"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
-																			"type": "array",
-																			"items": {
-																				"format": "cidr",
-																				"type": "string"
-																			}
-																		},
-																		"import_filter_id": {
-																			"description": "ID of the BGP filter profile applied to routes received from the customer.",
-																			"type": "string",
-																			"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
-																		},
-																		"md5_key": {
-																			"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
-																			"type": "string"
-																		}
-																	},
-																	"required": [
-																		"customer_asn"
-																	]
-																},
-																"bgp_status": {
-																	"type": "object",
-																	"properties": {
-																		"bgp_state": {
-																			"type": "string"
-																		},
-																		"cf_speaker_ip": {
-																			"type": "string",
-																			"format": "ipv4"
-																		},
-																		"cf_speaker_port": {
-																			"type": "integer",
-																			"maximum": 65535,
-																			"minimum": 1
-																		},
-																		"customer_speaker_ip": {
-																			"type": "string",
-																			"format": "ipv4"
-																		},
-																		"customer_speaker_port": {
-																			"type": "integer",
-																			"maximum": 65535,
-																			"minimum": 1
-																		},
-																		"state": {
-																			"type": "string",
-																			"enum": [
-																				"BGP_DOWN",
-																				"BGP_UP",
-																				"BGP_ESTABLISHING"
-																			]
-																		},
-																		"tcp_established": {
-																			"type": "boolean"
-																		},
-																		"updated_at": {
-																			"type": "string",
-																			"format": "date-time"
-																		}
-																	},
-																	"required": [
-																		"state",
-																		"tcp_established",
-																		"updated_at"
-																	]
-																},
-																"cloudflare_endpoint": {
-																	"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel.",
-																	"type": "string",
-																	"example": "203.0.113.1"
-																},
-																"created_on": {
-																	"description": "The date and time the tunnel was created.",
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2017-06-14T00:00:00Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"custom_remote_identities": {
-																	"type": "object",
-																	"properties": {
-																		"fqdn_id": {
-																			"description": "A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The\ngenerated IKE IDs can still be used even if this custom value is specified.\n\nMust be of the form `<custom label>.<account ID>.custom.ipsec.cloudflare.com`.\n\nThis custom ID does not need to be unique. Two IPsec tunnels may have the same custom\nfqdn_id. However, if another IPsec tunnel has the same value then the two tunnels\ncannot have the same cloudflare_endpoint.",
-																			"type": "string"
-																		}
-																	}
-																},
-																"customer_endpoint": {
-																	"description": "The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.",
-																	"type": "string",
-																	"example": "203.0.113.1"
-																},
-																"description": {
-																	"description": "An optional description forthe IPsec tunnel.",
-																	"type": "string",
-																	"example": "Tunnel for ISP X"
-																},
-																"health_check": {
-																	"allOf": [
-																		{
-																			"type": "object",
-																			"properties": {
-																				"enabled": {
-																					"description": "Determines whether to run healthchecks for a tunnel.",
-																					"type": "boolean",
-																					"example": true,
-																					"default": true,
-																					"x-auditable": true
-																				},
-																				"rate": {
-																					"description": "How frequent the health check is run. The default value is `mid`.",
-																					"type": "string",
-																					"example": "low",
-																					"default": "mid",
-																					"enum": [
-																						"low",
-																						"mid",
-																						"high"
-																					],
-																					"x-auditable": true
-																				},
-																				"target": {
-																					"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.",
-																					"oneOf": [
-																						{
-																							"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
-																							"type": "object",
-																							"properties": {
-																								"effective": {
-																									"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
-																									"type": "string",
-																									"example": "203.0.113.1",
-																									"readOnly": true,
-																									"x-auditable": true
-																								},
-																								"saved": {
-																									"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
-																									"type": "string",
-																									"example": "203.0.113.1",
-																									"x-auditable": true
-																								}
-																							}
-																						},
-																						{
-																							"type": "string"
-																						}
-																					]
-																				},
-																				"type": {
-																					"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
-																					"type": "string",
-																					"example": "request",
-																					"default": "reply",
-																					"enum": [
-																						"reply",
-																						"request"
-																					],
-																					"x-auditable": true
-																				}
-																			}
-																		},
-																		{
-																			"properties": {
-																				"direction": {
-																					"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.",
-																					"type": "string",
-																					"example": "bidirectional",
-																					"default": "unidirectional",
-																					"enum": [
-																						"unidirectional",
-																						"bidirectional"
-																					]
-																				}
-																			},
-																			"type": "object"
-																		}
-																	]
-																},
-																"id": {
-																	"description": "Identifier",
-																	"type": "string",
-																	"example": "c4a7362d577a6c3019a474fd6f485821",
-																	"maxLength": 32,
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"interface_address": {
-																	"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
-																	"type": "string",
-																	"example": "192.0.2.0/31",
-																	"x-auditable": true
-																},
-																"interface_address6": {
-																	"description": "A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127",
-																	"type": "string",
-																	"example": "2606:54c1:7:0:a9fe:12d2:1:200/127",
-																	"x-auditable": true
-																},
-																"modified_on": {
-																	"description": "The date and time the tunnel was last modified.",
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2017-06-14T05:20:00Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"name": {
-																	"description": "The name of the IPsec tunnel. The name cannot share a name with other tunnels.",
-																	"type": "string",
-																	"example": "IPsec_1"
-																},
-																"psk_metadata": {
-																	"description": "The PSK metadata that includes when the PSK was generated.",
-																	"type": "object",
-																	"properties": {
-																		"last_generated_on": {
-																			"description": "The date and time the tunnel was last modified.",
-																			"type": "string",
-																			"format": "date-time",
-																			"example": "2017-06-14T05:20:00Z",
-																			"readOnly": true,
-																			"x-auditable": true
-																		}
-																	}
-																},
-																"replay_protection": {
-																	"description": "If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.",
-																	"type": "boolean",
-																	"example": false,
-																	"default": false
-																}
-															},
-															"required": [
-																"id",
-																"name",
-																"cloudflare_endpoint",
-																"interface_address"
-															]
-														}
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -2807,8 +1634,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.ipsec-tunnels",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/magic/ipsec_tunnels": {
 		"operationId": "magic-ipsec-tunnels-create-ipsec-tunnels",
@@ -3426,470 +2252,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
+													"message": {
+														"type": "string"
+													}
 												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"allow_null_cipher": {
-															"description": "When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).",
-															"type": "boolean",
-															"example": true
-														},
-														"automatic_return_routing": {
-															"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.",
-															"type": "boolean",
-															"example": true,
-															"default": false,
-															"x-auditable": true
-														},
-														"bgp": {
-															"type": "object",
-															"properties": {
-																"customer_asn": {
-																	"description": "ASN used on the customer end of the BGP session",
-																	"type": "integer",
-																	"format": "int32",
-																	"minimum": 0
-																},
-																"export_filter_id": {
-																	"description": "ID of the BGP filter profile applied to routes advertised to the customer.",
-																	"type": "string",
-																	"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
-																},
-																"extra_prefixes": {
-																	"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
-																	"type": "array",
-																	"items": {
-																		"format": "cidr",
-																		"type": "string"
-																	}
-																},
-																"import_filter_id": {
-																	"description": "ID of the BGP filter profile applied to routes received from the customer.",
-																	"type": "string",
-																	"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
-																},
-																"md5_key": {
-																	"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"customer_asn"
-															]
-														},
-														"bgp_status": {
-															"type": "object",
-															"properties": {
-																"bgp_state": {
-																	"type": "string"
-																},
-																"cf_speaker_ip": {
-																	"type": "string",
-																	"format": "ipv4"
-																},
-																"cf_speaker_port": {
-																	"type": "integer",
-																	"maximum": 65535,
-																	"minimum": 1
-																},
-																"customer_speaker_ip": {
-																	"type": "string",
-																	"format": "ipv4"
-																},
-																"customer_speaker_port": {
-																	"type": "integer",
-																	"maximum": 65535,
-																	"minimum": 1
-																},
-																"state": {
-																	"type": "string",
-																	"enum": [
-																		"BGP_DOWN",
-																		"BGP_UP",
-																		"BGP_ESTABLISHING"
-																	]
-																},
-																"tcp_established": {
-																	"type": "boolean"
-																},
-																"updated_at": {
-																	"type": "string",
-																	"format": "date-time"
-																}
-															},
-															"required": [
-																"state",
-																"tcp_established",
-																"updated_at"
-															]
-														},
-														"cloudflare_endpoint": {
-															"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel.",
-															"type": "string",
-															"example": "203.0.113.1"
-														},
-														"created_on": {
-															"description": "The date and time the tunnel was created.",
-															"type": "string",
-															"format": "date-time",
-															"example": "2017-06-14T00:00:00Z",
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"custom_remote_identities": {
-															"type": "object",
-															"properties": {
-																"fqdn_id": {
-																	"description": "A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The\ngenerated IKE IDs can still be used even if this custom value is specified.\n\nMust be of the form `<custom label>.<account ID>.custom.ipsec.cloudflare.com`.\n\nThis custom ID does not need to be unique. Two IPsec tunnels may have the same custom\nfqdn_id. However, if another IPsec tunnel has the same value then the two tunnels\ncannot have the same cloudflare_endpoint.",
-																	"type": "string"
-																}
-															}
-														},
-														"customer_endpoint": {
-															"description": "The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.",
-															"type": "string",
-															"example": "203.0.113.1"
-														},
-														"description": {
-															"description": "An optional description forthe IPsec tunnel.",
-															"type": "string",
-															"example": "Tunnel for ISP X"
-														},
-														"health_check": {
-															"allOf": [
-																{
-																	"type": "object",
-																	"properties": {
-																		"enabled": {
-																			"description": "Determines whether to run healthchecks for a tunnel.",
-																			"type": "boolean",
-																			"example": true,
-																			"default": true,
-																			"x-auditable": true
-																		},
-																		"rate": {
-																			"description": "How frequent the health check is run. The default value is `mid`.",
-																			"type": "string",
-																			"example": "low",
-																			"default": "mid",
-																			"enum": [
-																				"low",
-																				"mid",
-																				"high"
-																			],
-																			"x-auditable": true
-																		},
-																		"target": {
-																			"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.",
-																			"oneOf": [
-																				{
-																					"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
-																					"type": "object",
-																					"properties": {
-																						"effective": {
-																							"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
-																							"type": "string",
-																							"example": "203.0.113.1",
-																							"readOnly": true,
-																							"x-auditable": true
-																						},
-																						"saved": {
-																							"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
-																							"type": "string",
-																							"example": "203.0.113.1",
-																							"x-auditable": true
-																						}
-																					}
-																				},
-																				{
-																					"type": "string"
-																				}
-																			]
-																		},
-																		"type": {
-																			"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
-																			"type": "string",
-																			"example": "request",
-																			"default": "reply",
-																			"enum": [
-																				"reply",
-																				"request"
-																			],
-																			"x-auditable": true
-																		}
-																	}
-																},
-																{
-																	"properties": {
-																		"direction": {
-																			"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.",
-																			"type": "string",
-																			"example": "bidirectional",
-																			"default": "unidirectional",
-																			"enum": [
-																				"unidirectional",
-																				"bidirectional"
-																			]
-																		}
-																	},
-																	"type": "object"
-																}
-															]
-														},
-														"id": {
-															"description": "Identifier",
-															"type": "string",
-															"example": "c4a7362d577a6c3019a474fd6f485821",
-															"maxLength": 32,
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"interface_address": {
-															"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
-															"type": "string",
-															"example": "192.0.2.0/31",
-															"x-auditable": true
-														},
-														"interface_address6": {
-															"description": "A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127",
-															"type": "string",
-															"example": "2606:54c1:7:0:a9fe:12d2:1:200/127",
-															"x-auditable": true
-														},
-														"modified_on": {
-															"description": "The date and time the tunnel was last modified.",
-															"type": "string",
-															"format": "date-time",
-															"example": "2017-06-14T05:20:00Z",
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"name": {
-															"description": "The name of the IPsec tunnel. The name cannot share a name with other tunnels.",
-															"type": "string",
-															"example": "IPsec_1"
-														},
-														"psk_metadata": {
-															"description": "The PSK metadata that includes when the PSK was generated.",
-															"type": "object",
-															"properties": {
-																"last_generated_on": {
-																	"description": "The date and time the tunnel was last modified.",
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2017-06-14T05:20:00Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																}
-															}
-														},
-														"replay_protection": {
-															"description": "If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.",
-															"type": "boolean",
-															"example": false,
-															"default": false
-														}
-													},
-													"required": [
-														"id",
-														"name",
-														"cloudflare_endpoint",
-														"interface_address"
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -3918,8 +2361,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.ipsec-tunnels",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/magic/ipsec_tunnels/{ipsec_tunnel_id}/psk_generate": {
 		"operationId": "magic-ipsec-tunnels-generate-pre-shared-key-(-psk)-for-ipsec-tunnels",
@@ -4104,231 +2546,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"ipsec_tunnel_id": {
-															"description": "Identifier",
-															"type": "string",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true
-														},
-														"psk": {
-															"description": "A randomly generated or provided string for use in the IPsec tunnel.",
-															"type": "string",
-															"example": "O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy",
-															"x-sensitive": true
-														},
-														"psk_metadata": {
-															"description": "The PSK metadata that includes when the PSK was generated.",
-															"type": "object",
-															"properties": {
-																"last_generated_on": {
-																	"description": "The date and time the tunnel was last modified.",
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2017-06-14T05:20:00Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																}
-															}
-														}
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -4357,8 +2655,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.ipsec-tunnels",
-		"x-fern-sdk-method-name": "psk-generate",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "psk-generate"
 	},
 	"POST /accounts/{account_id}/magic/ipsec_tunnels/psk": {
 		"operationId": "magic-ipsec-tunnels-set-pre-shared-keys-for-ipsec-tunnels",
@@ -4724,8 +3021,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.ipsec-tunnels",
-		"x-fern-sdk-method-name": "psk-set",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "psk-set"
 	},
 	"PUT /accounts/{account_id}/magic/ipsec_tunnels": {
 		"operationId": "magic-ipsec-tunnels-update-multiple-ipsec-tunnels",
@@ -5170,482 +3466,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"modified": {
-															"type": "boolean",
-															"example": true
-														},
-														"modified_ipsec_tunnels": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"allow_null_cipher": {
-																		"description": "When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).",
-																		"type": "boolean",
-																		"example": true
-																	},
-																	"automatic_return_routing": {
-																		"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.",
-																		"type": "boolean",
-																		"example": true,
-																		"default": false,
-																		"x-auditable": true
-																	},
-																	"bgp": {
-																		"type": "object",
-																		"properties": {
-																			"customer_asn": {
-																				"description": "ASN used on the customer end of the BGP session",
-																				"type": "integer",
-																				"format": "int32",
-																				"minimum": 0
-																			},
-																			"export_filter_id": {
-																				"description": "ID of the BGP filter profile applied to routes advertised to the customer.",
-																				"type": "string",
-																				"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
-																			},
-																			"extra_prefixes": {
-																				"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
-																				"type": "array",
-																				"items": {
-																					"format": "cidr",
-																					"type": "string"
-																				}
-																			},
-																			"import_filter_id": {
-																				"description": "ID of the BGP filter profile applied to routes received from the customer.",
-																				"type": "string",
-																				"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
-																			},
-																			"md5_key": {
-																				"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"customer_asn"
-																		]
-																	},
-																	"bgp_status": {
-																		"type": "object",
-																		"properties": {
-																			"bgp_state": {
-																				"type": "string"
-																			},
-																			"cf_speaker_ip": {
-																				"type": "string",
-																				"format": "ipv4"
-																			},
-																			"cf_speaker_port": {
-																				"type": "integer",
-																				"maximum": 65535,
-																				"minimum": 1
-																			},
-																			"customer_speaker_ip": {
-																				"type": "string",
-																				"format": "ipv4"
-																			},
-																			"customer_speaker_port": {
-																				"type": "integer",
-																				"maximum": 65535,
-																				"minimum": 1
-																			},
-																			"state": {
-																				"type": "string",
-																				"enum": [
-																					"BGP_DOWN",
-																					"BGP_UP",
-																					"BGP_ESTABLISHING"
-																				]
-																			},
-																			"tcp_established": {
-																				"type": "boolean"
-																			},
-																			"updated_at": {
-																				"type": "string",
-																				"format": "date-time"
-																			}
-																		},
-																		"required": [
-																			"state",
-																			"tcp_established",
-																			"updated_at"
-																		]
-																	},
-																	"cloudflare_endpoint": {
-																		"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel.",
-																		"type": "string",
-																		"example": "203.0.113.1"
-																	},
-																	"created_on": {
-																		"description": "The date and time the tunnel was created.",
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2017-06-14T00:00:00Z",
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"custom_remote_identities": {
-																		"type": "object",
-																		"properties": {
-																			"fqdn_id": {
-																				"description": "A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The\ngenerated IKE IDs can still be used even if this custom value is specified.\n\nMust be of the form `<custom label>.<account ID>.custom.ipsec.cloudflare.com`.\n\nThis custom ID does not need to be unique. Two IPsec tunnels may have the same custom\nfqdn_id. However, if another IPsec tunnel has the same value then the two tunnels\ncannot have the same cloudflare_endpoint.",
-																				"type": "string"
-																			}
-																		}
-																	},
-																	"customer_endpoint": {
-																		"description": "The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.",
-																		"type": "string",
-																		"example": "203.0.113.1"
-																	},
-																	"description": {
-																		"description": "An optional description forthe IPsec tunnel.",
-																		"type": "string",
-																		"example": "Tunnel for ISP X"
-																	},
-																	"health_check": {
-																		"allOf": [
-																			{
-																				"type": "object",
-																				"properties": {
-																					"enabled": {
-																						"description": "Determines whether to run healthchecks for a tunnel.",
-																						"type": "boolean",
-																						"example": true,
-																						"default": true,
-																						"x-auditable": true
-																					},
-																					"rate": {
-																						"description": "How frequent the health check is run. The default value is `mid`.",
-																						"type": "string",
-																						"example": "low",
-																						"default": "mid",
-																						"enum": [
-																							"low",
-																							"mid",
-																							"high"
-																						],
-																						"x-auditable": true
-																					},
-																					"target": {
-																						"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.",
-																						"oneOf": [
-																							{
-																								"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
-																								"type": "object",
-																								"properties": {
-																									"effective": {
-																										"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
-																										"type": "string",
-																										"example": "203.0.113.1",
-																										"readOnly": true,
-																										"x-auditable": true
-																									},
-																									"saved": {
-																										"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
-																										"type": "string",
-																										"example": "203.0.113.1",
-																										"x-auditable": true
-																									}
-																								}
-																							},
-																							{
-																								"type": "string"
-																							}
-																						]
-																					},
-																					"type": {
-																						"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
-																						"type": "string",
-																						"example": "request",
-																						"default": "reply",
-																						"enum": [
-																							"reply",
-																							"request"
-																						],
-																						"x-auditable": true
-																					}
-																				}
-																			},
-																			{
-																				"properties": {
-																					"direction": {
-																						"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.",
-																						"type": "string",
-																						"example": "bidirectional",
-																						"default": "unidirectional",
-																						"enum": [
-																							"unidirectional",
-																							"bidirectional"
-																						]
-																					}
-																				},
-																				"type": "object"
-																			}
-																		]
-																	},
-																	"id": {
-																		"description": "Identifier",
-																		"type": "string",
-																		"example": "c4a7362d577a6c3019a474fd6f485821",
-																		"maxLength": 32,
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"interface_address": {
-																		"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
-																		"type": "string",
-																		"example": "192.0.2.0/31",
-																		"x-auditable": true
-																	},
-																	"interface_address6": {
-																		"description": "A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127",
-																		"type": "string",
-																		"example": "2606:54c1:7:0:a9fe:12d2:1:200/127",
-																		"x-auditable": true
-																	},
-																	"modified_on": {
-																		"description": "The date and time the tunnel was last modified.",
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2017-06-14T05:20:00Z",
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"name": {
-																		"description": "The name of the IPsec tunnel. The name cannot share a name with other tunnels.",
-																		"type": "string",
-																		"example": "IPsec_1"
-																	},
-																	"psk_metadata": {
-																		"description": "The PSK metadata that includes when the PSK was generated.",
-																		"type": "object",
-																		"properties": {
-																			"last_generated_on": {
-																				"description": "The date and time the tunnel was last modified.",
-																				"type": "string",
-																				"format": "date-time",
-																				"example": "2017-06-14T05:20:00Z",
-																				"readOnly": true,
-																				"x-auditable": true
-																			}
-																		}
-																	},
-																	"replay_protection": {
-																		"description": "If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.",
-																		"type": "boolean",
-																		"example": false,
-																		"default": false
-																	}
-																},
-																"required": [
-																	"id",
-																	"name",
-																	"cloudflare_endpoint",
-																	"interface_address"
-																]
-															}
-														}
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -5674,8 +3575,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.ipsec-tunnels",
-		"x-fern-sdk-method-name": "bulk-update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "bulk-update"
 	},
 	"PUT /accounts/{account_id}/magic/ipsec_tunnels/{ipsec_tunnel_id}": {
 		"operationId": "magic-ipsec-tunnels-update-ipsec-tunnel",
@@ -6310,479 +4210,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"modified": {
-															"type": "boolean",
-															"example": true
-														},
-														"modified_ipsec_tunnel": {
-															"type": "object",
-															"properties": {
-																"allow_null_cipher": {
-																	"description": "When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).",
-																	"type": "boolean",
-																	"example": true
-																},
-																"automatic_return_routing": {
-																	"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.",
-																	"type": "boolean",
-																	"example": true,
-																	"default": false,
-																	"x-auditable": true
-																},
-																"bgp": {
-																	"type": "object",
-																	"properties": {
-																		"customer_asn": {
-																			"description": "ASN used on the customer end of the BGP session",
-																			"type": "integer",
-																			"format": "int32",
-																			"minimum": 0
-																		},
-																		"export_filter_id": {
-																			"description": "ID of the BGP filter profile applied to routes advertised to the customer.",
-																			"type": "string",
-																			"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
-																		},
-																		"extra_prefixes": {
-																			"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
-																			"type": "array",
-																			"items": {
-																				"format": "cidr",
-																				"type": "string"
-																			}
-																		},
-																		"import_filter_id": {
-																			"description": "ID of the BGP filter profile applied to routes received from the customer.",
-																			"type": "string",
-																			"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
-																		},
-																		"md5_key": {
-																			"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
-																			"type": "string"
-																		}
-																	},
-																	"required": [
-																		"customer_asn"
-																	]
-																},
-																"bgp_status": {
-																	"type": "object",
-																	"properties": {
-																		"bgp_state": {
-																			"type": "string"
-																		},
-																		"cf_speaker_ip": {
-																			"type": "string",
-																			"format": "ipv4"
-																		},
-																		"cf_speaker_port": {
-																			"type": "integer",
-																			"maximum": 65535,
-																			"minimum": 1
-																		},
-																		"customer_speaker_ip": {
-																			"type": "string",
-																			"format": "ipv4"
-																		},
-																		"customer_speaker_port": {
-																			"type": "integer",
-																			"maximum": 65535,
-																			"minimum": 1
-																		},
-																		"state": {
-																			"type": "string",
-																			"enum": [
-																				"BGP_DOWN",
-																				"BGP_UP",
-																				"BGP_ESTABLISHING"
-																			]
-																		},
-																		"tcp_established": {
-																			"type": "boolean"
-																		},
-																		"updated_at": {
-																			"type": "string",
-																			"format": "date-time"
-																		}
-																	},
-																	"required": [
-																		"state",
-																		"tcp_established",
-																		"updated_at"
-																	]
-																},
-																"cloudflare_endpoint": {
-																	"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel.",
-																	"type": "string",
-																	"example": "203.0.113.1"
-																},
-																"created_on": {
-																	"description": "The date and time the tunnel was created.",
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2017-06-14T00:00:00Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"custom_remote_identities": {
-																	"type": "object",
-																	"properties": {
-																		"fqdn_id": {
-																			"description": "A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The\ngenerated IKE IDs can still be used even if this custom value is specified.\n\nMust be of the form `<custom label>.<account ID>.custom.ipsec.cloudflare.com`.\n\nThis custom ID does not need to be unique. Two IPsec tunnels may have the same custom\nfqdn_id. However, if another IPsec tunnel has the same value then the two tunnels\ncannot have the same cloudflare_endpoint.",
-																			"type": "string"
-																		}
-																	}
-																},
-																"customer_endpoint": {
-																	"description": "The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.",
-																	"type": "string",
-																	"example": "203.0.113.1"
-																},
-																"description": {
-																	"description": "An optional description forthe IPsec tunnel.",
-																	"type": "string",
-																	"example": "Tunnel for ISP X"
-																},
-																"health_check": {
-																	"allOf": [
-																		{
-																			"type": "object",
-																			"properties": {
-																				"enabled": {
-																					"description": "Determines whether to run healthchecks for a tunnel.",
-																					"type": "boolean",
-																					"example": true,
-																					"default": true,
-																					"x-auditable": true
-																				},
-																				"rate": {
-																					"description": "How frequent the health check is run. The default value is `mid`.",
-																					"type": "string",
-																					"example": "low",
-																					"default": "mid",
-																					"enum": [
-																						"low",
-																						"mid",
-																						"high"
-																					],
-																					"x-auditable": true
-																				},
-																				"target": {
-																					"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.",
-																					"oneOf": [
-																						{
-																							"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
-																							"type": "object",
-																							"properties": {
-																								"effective": {
-																									"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
-																									"type": "string",
-																									"example": "203.0.113.1",
-																									"readOnly": true,
-																									"x-auditable": true
-																								},
-																								"saved": {
-																									"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
-																									"type": "string",
-																									"example": "203.0.113.1",
-																									"x-auditable": true
-																								}
-																							}
-																						},
-																						{
-																							"type": "string"
-																						}
-																					]
-																				},
-																				"type": {
-																					"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
-																					"type": "string",
-																					"example": "request",
-																					"default": "reply",
-																					"enum": [
-																						"reply",
-																						"request"
-																					],
-																					"x-auditable": true
-																				}
-																			}
-																		},
-																		{
-																			"properties": {
-																				"direction": {
-																					"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.",
-																					"type": "string",
-																					"example": "bidirectional",
-																					"default": "unidirectional",
-																					"enum": [
-																						"unidirectional",
-																						"bidirectional"
-																					]
-																				}
-																			},
-																			"type": "object"
-																		}
-																	]
-																},
-																"id": {
-																	"description": "Identifier",
-																	"type": "string",
-																	"example": "c4a7362d577a6c3019a474fd6f485821",
-																	"maxLength": 32,
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"interface_address": {
-																	"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
-																	"type": "string",
-																	"example": "192.0.2.0/31",
-																	"x-auditable": true
-																},
-																"interface_address6": {
-																	"description": "A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127",
-																	"type": "string",
-																	"example": "2606:54c1:7:0:a9fe:12d2:1:200/127",
-																	"x-auditable": true
-																},
-																"modified_on": {
-																	"description": "The date and time the tunnel was last modified.",
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2017-06-14T05:20:00Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"name": {
-																	"description": "The name of the IPsec tunnel. The name cannot share a name with other tunnels.",
-																	"type": "string",
-																	"example": "IPsec_1"
-																},
-																"psk_metadata": {
-																	"description": "The PSK metadata that includes when the PSK was generated.",
-																	"type": "object",
-																	"properties": {
-																		"last_generated_on": {
-																			"description": "The date and time the tunnel was last modified.",
-																			"type": "string",
-																			"format": "date-time",
-																			"example": "2017-06-14T05:20:00Z",
-																			"readOnly": true,
-																			"x-auditable": true
-																		}
-																	}
-																},
-																"replay_protection": {
-																	"description": "If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.",
-																	"type": "boolean",
-																	"example": false,
-																	"default": false
-																}
-															},
-															"required": [
-																"id",
-																"name",
-																"cloudflare_endpoint",
-																"interface_address"
-															]
-														}
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -6811,7 +4319,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.ipsec-tunnels",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

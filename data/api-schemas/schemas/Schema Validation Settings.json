@@ -260,7 +260,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "api-security.schema-validation.settings.operations",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation deletes the operation-specific schema validation setting and restores the zone default."
 	},
 	"GET /zones/{zone_id}/schema_validation/settings": {
@@ -538,8 +537,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "api-security.schema-validation.settings",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/schema_validation/settings/operations": {
 		"operationId": "schema-validation-list-per-operation-settings",
@@ -884,8 +882,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "api-security.schema-validation.settings.operations",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/schema_validation/settings/operations/{operation_id}": {
 		"operationId": "schema-validation-get-per-operation-setting",
@@ -1164,8 +1161,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "api-security.schema-validation.settings.operations",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /zones/{zone_id}/schema_validation/settings": {
 		"operationId": "schema-validation-edit-settings",
@@ -1473,8 +1469,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "api-security.schema-validation.settings",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"PATCH /zones/{zone_id}/schema_validation/settings/operations": {
 		"operationId": "schema-validation-bulk-edit-per-operation-settings",
@@ -1773,8 +1768,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "api-security.schema-validation.settings.operations",
-		"x-fern-sdk-method-name": "bulk-edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "bulk-edit"
 	},
 	"PUT /zones/{zone_id}/schema_validation/settings": {
 		"operationId": "schema-validation-update-settings",
@@ -2093,8 +2087,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "api-security.schema-validation.settings",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /zones/{zone_id}/schema_validation/settings/operations/{operation_id}": {
 		"operationId": "schema-validation-update-per-operation-setting",
@@ -2407,7 +2400,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "api-security.schema-validation.settings.operations",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

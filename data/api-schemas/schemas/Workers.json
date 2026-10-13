@@ -1006,7 +1006,9 @@
 			"Workers"
 		],
 		"x-api-token-group": [
-			"Workers Scripts Write"
+			"Workers Scripts Write",
+			"Workers Admin",
+			"Individual Workers Admin"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers",
@@ -5209,7 +5211,15 @@
 		"x-api-token-group": [
 			"Workers Tail Read",
 			"Workers Scripts Write",
-			"Workers Scripts Read"
+			"Workers Scripts Read",
+			"Workers Admin",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Metadata Read-Only",
+			"Individual Workers Admin",
+			"Individual Workers Editor",
+			"Individual Workers Content Read-Only",
+			"Individual Workers Metadata Read-Only"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers",
@@ -6704,7 +6714,15 @@
 		"x-api-token-group": [
 			"Workers Tail Read",
 			"Workers Scripts Write",
-			"Workers Scripts Read"
+			"Workers Scripts Read",
+			"Workers Admin",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Metadata Read-Only",
+			"Individual Workers Admin",
+			"Individual Workers Editor",
+			"Individual Workers Content Read-Only",
+			"Individual Workers Metadata Read-Only"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers",
@@ -12067,6 +12085,13 @@
 		],
 		"tags": [
 			"Workers"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write",
+			"Workers Admin",
+			"Workers Editor",
+			"Individual Workers Admin",
+			"Individual Workers Editor"
 		],
 		"x-fern-audiences": [
 			"sdk"
@@ -20390,7 +20415,11 @@
 			"Workers"
 		],
 		"x-api-token-group": [
-			"Workers Scripts Write"
+			"Workers Scripts Write",
+			"Workers Admin",
+			"Workers Editor",
+			"Individual Workers Admin",
+			"Individual Workers Editor"
 		],
 		"x-fern-audiences": [
 			"sdk"
