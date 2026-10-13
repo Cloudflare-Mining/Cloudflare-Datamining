@@ -3,53 +3,41 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Location: </strong>Austin</p>
-<h3>About the Role</h3>
-<p>Join the People Innovation Lab to rapidly build and deploy internal enterprise applications and tooling for the Cloudflare People &amp; Places organization, focused on making work smarter.</p>
+<h3><strong>Available Location: Singapore</strong></h3>
+<h3><strong>About the Team</strong></h3>
+<p>The Cloudflare Customer Support Team solves complicated problems and answers technical questions via phone, email, chat and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, we are always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</p>
+<h3><strong>What You'll Do</strong></h3>
+<p>Do you love solving complex technical issues and interacting with people? Are you passionate about providing premium-level support to customers and are a standout colleague? Cloudflare is seeking an experienced <strong>Technical </strong><strong>Support Engineer</strong><strong> for Application Services/Performance </strong>to join our team. You will work with our largest and most technically sophisticated customers on a variety of technical support issues to ensure they can deploy and operate Cloudflare's App Services solutions with confidence.&nbsp;</p>
 <ul>
-	<li>You will build production features in a sprint-based team.</li>
-	<li>Work is guided by the IT Customer Zero team and deployed on Cloudflare infrastructure.</li>
-	<li>Strong fundamentals and fast ramp-up ability are essential.</li>
+	<li>Serve as a trusted technical advisor for our Enterprise customers, responding to and resolving inquiries and incidents related to Application Services/Performance, while delivering timely, high-quality and personalized assistance.</li>
+	<li>Work directly with customers to diagnose, troubleshoot and resolve complex technical issues involving DNS, HTTP Errors, IAM, Load Balancing, Caching, CORS, SSL/TLS, Network, and other Application Services/Performance related configurations.</li>
+	<li>Work with Engineering and Operations teams to remediate issues, suggest steps to mitigate, and apply the appropriate mitigation, when applicable.</li>
+	<li>Create and maintain knowledge base articles, technical guides, and troubleshooting documentation for internal and customer use.</li>
+	<li>You have a solid grasp of problem-solving with command line tools (dig/traceroute/curl/tcpdump).</li>
+	<li>You have experience writing scripts in Bash, Python, JavaScript, or other scripting language.</li>
+	<li>You have experience installing and configuring web servers like Apache, Nginx, and IIS.</li>
+	<li>Work with Engineering and Product teams to improve products and tools.</li>
 </ul>
-<h3>What You'll Build &amp; Do</h3>
+<h3>What We're Looking For</h3>
 <ul>
-	<li>Build and ship full-stack features, clean production code, and integrations for internal tools.</li>
-	<li>Write and review code, work in sprints (managing tickets/blockers), and coordinate with the other intern.</li>
-	<li>Effectively use AI-assisted coding tools.</li>
-	<li>Demo working products to leadership.</li>
+	<li>You must have a minimum of 4 years’ experience working as a Technical Support Engineer supporting globally distributed reverse-proxy CDN platforms, with hands-on expertise in content caching, performance optimization, traffic routing, and edge delivery services similar to Cloudflare’s core network offerings.</li>
+	<li>Exceptional troubleshooting and problem-solving skills, with the ability to simplify complex concepts for customers.</li>
+	<li>Strong customer service orientation and communication skills, both written and verbal.</li>
+	<li>Ability to work independently and collaboratively in a fast-paced, dynamic environment.</li>
+	<li>Strong understanding of L4/L7 protocols and concepts including, TCP/UDP, DNS, HTTP/S, IAM, Load Balancing, Caching, CORS, SSL/TLS, Network with a particular focus on Anycast concepts.</li>
+	<li>Have experience using online diagnostic and monitoring platforms — including DNS lookup tools, global ping and traceroute testers, SSL/TLS configuration analyzers, and synthetic transaction or real-user monitoring services — to troubleshoot DNS resolution, network latency, certificate issues, and global service availability problems.</li>
+	<li>Have experience using investigative observability tools such as Kibana, Grafana, Zabbix, Sentry, and live log-tailing utilities to analyze logs, trace issues, and pinpoint root causes of performance or reliability problems.</li>
+	<li>Confident with command line and tools, including curl, dig, traceroute, openssl, git.</li>
+	<li>Experience in a web development and / or hosting environment such as installing and configuring web servers like Apache, Nginx, Caddy and IIS.</li>
+	<li>You are competent at writing scripts in Bash, Python, JavaScript or other scripting language.</li>
+	<li>You have worked with PostgreSQL, MySQL, MS SQL, and other database servers.</li>
+	<li>Bachelor’s degree in Computer Science, Cybersecurity, or a related field (or equivalent experience).</li>
 </ul>
-<h3>Requirements &amp; Qualifications</h3>
-<p><strong>Minimum Requirements</strong></p>
+<h3><strong>Bonus Points For</strong></h3>
 <ul>
-	<li>Pursuing CS, Software Engineering, or related degree (or equivalent experience).</li>
-	<li>Ability to build and demonstrate a working web application.</li>
-	<li>Proficient in JavaScript/TypeScript and comfortable with one back-end language/framework.</li>
-	<li>Solid understanding of end-to-end web app functionality (HTTP, APIs, data persistence, deployment).</li>
-	<li>Experience with shared codebases (Git, meaningful commits).</li>
+	<li>Experience in a shift-based or global support environment.</li>
+	<li>Familiarity with SLA/KPI metrics and real-time queue management.</li>
 </ul>
-<p><strong>Preferred Qualifications</strong></p>
-<ul>
-	<li>Familiarity with serverless/edge computing.</li>
-	<li>Experience with a modern front-end framework (React, Vue, Svelte, etc.) and/or MCPs/APIs, data modeling, or systems design (for back-end seat).</li>
-	<li>Experience using AI-assisted development tools (Cursor, Windsurf, OpenCode).</li>
-	<li>Prior sprint-based team experience.</li>
-	<li>For UI seat: experience with design systems, Figma, or strong interaction design sense.</li>
-</ul>
-<h3>What We Provide</h3>
-<ul>
-	<li>Opportunity to solve real problems with AI and code.</li>
-	<li>Mentorship, dedicated manager, regular 1:1s, and structured support.</li>
-	<li>Real sprint work with production deliverables.</li>
-	<li>Access to Cloudflare's full intern cohort (community, events, network).</li>
-	<li>A portfolio artifact: production-deployed code and a shipped product demo.</li>
-</ul>
-<h3>The Team's Vision</h3>
-<p>The team is building AI agents for the People organization that can reason, act, and coordinate without constant human input. You will contribute to this foundation and gain firsthand experience.</p>
-<p><strong><em>We value fundamentals, curiosity, and fast learning.</em></strong></p>
-<p>&nbsp;</p>
-<p><strong>Internship Duration:</strong> 12 weeks</p>
-<p><strong data-path-to-node="3,0" data-index-in-node="30">Schedule:</strong> Full-time (3 days per week in office)&nbsp;</p>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

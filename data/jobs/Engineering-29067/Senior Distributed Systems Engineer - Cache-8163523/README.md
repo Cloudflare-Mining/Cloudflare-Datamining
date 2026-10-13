@@ -3,7 +3,7 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: Atlanta, GA, Austin, TX, Champaign, IL, Denver, CO, New York, NY, San Francisco, CA, Seattle, WA, Washington, DC</strong></p>
+<p><strong>Available Locations: Atlanta, GA, Austin, TX, Champaign, IL, New York, NY, San Francisco, CA, Seattle, WA, Washington, DC</strong></p>
 <h2>About the Department</h2>
 <p>Cloudflare's Engineering Team builds and runs the software that helps power millions of Internet properties. Product development covers both new features and functionality as well as scaling our existing software to meet the challenges of a massively growing customer base.</p>
 <p>The Content Delivery group helps make the Internet faster, safer, and more reliable by building and optimizing one of the world's largest CDNs.</p>
@@ -49,7 +49,7 @@
 <p>Compensation may be adjusted depending on work location and level.</p>
 <p>San Francisco Estimated Base salary $194,000 - $266,000.</p>
 <p>Seattle, Washington D.C., New York Estimated Base salary $185,000 - $254,000.</p>
-<p>Denver, Austin, Illinois, Atlanta Estimated Base salary $168,000 - $231,000.</p>
+<p>Austin, Illinois, Atlanta Estimated Base salary $168,000 - $231,000.</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <div class="content-conclusion">
