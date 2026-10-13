@@ -1869,8 +1869,9 @@
 								"minLength": 1
 							},
 							"on_error_action": {
-								"description": "Action for runtime Rego errors. Omit to preserve the current value.",
+								"description": "Action for runtime Rego errors. Omit to reset to BLOCK.",
 								"type": "string",
+								"default": "BLOCK",
 								"enum": [
 									"BLOCK",
 									"SKIP"
@@ -1887,11 +1888,12 @@
 								"x-stainless-collection-type": "set"
 							},
 							"rego_raise_error": {
-								"description": "Whether OPA builtin failures are raised as runtime evaluation errors. Omit to preserve the current value.",
-								"type": "boolean"
+								"description": "Whether OPA builtin failures are raised as runtime evaluation errors. Omit to reset to true.",
+								"type": "boolean",
+								"default": true
 							},
 							"tags": {
-								"description": "Replacement tag set. Omit to preserve existing tags; use {} to clear. Keys are limited to 256 UTF-8 bytes and values to 1024 UTF-8 bytes.",
+								"description": "Replacement tag set. Omit or use {} to clear. Keys are limited to 256 UTF-8 bytes and values to 1024 UTF-8 bytes.",
 								"type": "object",
 								"additionalProperties": {
 									"type": "string"

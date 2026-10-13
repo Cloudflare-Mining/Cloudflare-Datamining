@@ -735971,8 +735971,9 @@
 										"minLength": 1
 									},
 									"on_error_action": {
-										"description": "Action for runtime Rego errors. Omit to preserve the current value.",
+										"description": "Action for runtime Rego errors. Omit to reset to BLOCK.",
 										"type": "string",
+										"default": "BLOCK",
 										"enum": [
 											"BLOCK",
 											"SKIP"
@@ -735989,11 +735990,12 @@
 										"x-stainless-collection-type": "set"
 									},
 									"rego_raise_error": {
-										"description": "Whether OPA builtin failures are raised as runtime evaluation errors. Omit to preserve the current value.",
-										"type": "boolean"
+										"description": "Whether OPA builtin failures are raised as runtime evaluation errors. Omit to reset to true.",
+										"type": "boolean",
+										"default": true
 									},
 									"tags": {
-										"description": "Replacement tag set. Omit to preserve existing tags; use {} to clear. Keys are limited to 256 UTF-8 bytes and values to 1024 UTF-8 bytes.",
+										"description": "Replacement tag set. Omit or use {} to clear. Keys are limited to 256 UTF-8 bytes and values to 1024 UTF-8 bytes.",
 										"type": "object",
 										"additionalProperties": {
 											"type": "string"
@@ -740438,7 +740440,7 @@
 			"put": {
 				"operationId": "cws-update-policy",
 				"summary": "Update a policy",
-				"description": "Replaces the policy's configuration. Omit filter to apply the policy to every request. Omit tags to preserve them; use {} to clear them.",
+				"description": "Replaces the policy's configuration. Omit filter to apply the policy to every request. Omit tags or use {} to clear them.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -740503,7 +740505,7 @@
 										"minLength": 1
 									},
 									"tags": {
-										"description": "Replacement tag set. Omit to preserve existing tags; use {} to clear. Keys are limited to 256 UTF-8 bytes and values to 1024 UTF-8 bytes.",
+										"description": "Replacement tag set. Omit or use {} to clear. Keys are limited to 256 UTF-8 bytes and values to 1024 UTF-8 bytes.",
 										"type": "object",
 										"additionalProperties": {
 											"type": "string"
@@ -742812,7 +742814,7 @@
 			"put": {
 				"operationId": "cws-update-policy-set",
 				"summary": "Update a policy set",
-				"description": "Replaces the policy set's configuration. Omit tags to preserve them; use {} to clear them.",
+				"description": "Replaces the policy set's configuration. Omit tags or use {} to clear them.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -742905,7 +742907,7 @@
 										"x-stainless-collection-type": "set"
 									},
 									"tags": {
-										"description": "Replacement tag set. Omit to preserve existing tags; use {} to clear. Keys are limited to 256 UTF-8 bytes and values to 1024 UTF-8 bytes.",
+										"description": "Replacement tag set. Omit or use {} to clear. Keys are limited to 256 UTF-8 bytes and values to 1024 UTF-8 bytes.",
 										"type": "object",
 										"additionalProperties": {
 											"type": "string"
@@ -754462,7 +754464,7 @@
 			"put": {
 				"operationId": "cws-update-workload",
 				"summary": "Update a workload",
-				"description": "Replaces the workload's configuration. Omit tags to preserve them; use {} to clear them.",
+				"description": "Replaces the workload's configuration. Omit tags or use {} to clear them.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -754514,7 +754516,7 @@
 										"minLength": 1
 									},
 									"tags": {
-										"description": "Replacement tag set. Omit to preserve existing tags; use {} to clear. Keys are limited to 256 UTF-8 bytes and values to 1024 UTF-8 bytes.",
+										"description": "Replacement tag set. Omit or use {} to clear. Keys are limited to 256 UTF-8 bytes and values to 1024 UTF-8 bytes.",
 										"type": "object",
 										"additionalProperties": {
 											"type": "string"
@@ -2256810,8 +2256812,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "argo.smart-routing",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			},
 			"patch": {
 				"operationId": "argo-smart-routing-patch-argo-smart-routing-setting",
@@ -2257087,8 +2257088,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "argo.smart-routing",
-				"x-fern-sdk-method-name": "edit",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "edit"
 			}
 		},
 		"/zones/{zone_id}/argo/tiered_caching": {
