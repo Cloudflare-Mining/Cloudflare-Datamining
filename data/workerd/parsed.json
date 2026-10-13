@@ -4260,6 +4260,13 @@
 						"compatEnableFlag": "webcrypto_modern_algorithms"
 					},
 					"type": "Bool"
+				},
+				{
+					"name": "wasmEsmIntegrationBuiltins",
+					"annotations": {
+						"compatEnableFlag": "wasm_esm_integration_builtins"
+					},
+					"type": "Bool"
 				}
 			]
 		},
