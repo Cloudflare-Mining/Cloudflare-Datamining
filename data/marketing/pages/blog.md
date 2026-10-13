@@ -10,15 +10,23 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
-October 9, 2026 [<h2>Deno is joining Cloudflare</h2>](https://blog.cloudflare.com/deno-joins-cloudflare/)
+October 13, 2026 [<h2>Under the hood, off the hot path: How D1 scales to millions of databases</h2>](https://blog.cloudflare.com/d1-control-plane/)
 
-The Deno team is joining Cloudflare to radically simplify self-hosting Workers and Durable Objects, so developers can use the same primitives in more places.
+A deep dive into how D1 architected its control plane to scale and manage millions of databases, while keeping data plane query operations at the edge. We share guiding principles on how to build on the Developer Platform effectively.
 
-![Kenton Varda](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DEXVTQSPFW8ZSKE70KPZ.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Ryan Dahl](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4ENFKW4YTVQWHFZ3QZQ493D.01M4ENFMVKQXFWHGEVAERPHSEE.png&w=64&h=64&f=webp&fit=cover&position=center)
+![David Laban](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M34XD0TS97ET65W53NTJ30DM.01M34XD1GRAZN4A2HXX71EEZ5N.webp&w=64&h=64&f=webp&fit=cover&position=center)![Lambros Petrou](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WA9G46YD5HZY63QTNT9A.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
-[Kenton Varda](https://blog.cloudflare.com/author/kenton-varda/) and  [Ryan Dahl](https://blog.cloudflare.com/author/ryan-dahl/)
+[David Laban](https://blog.cloudflare.com/author/david-laban/) and  [Lambros Petrou](https://blog.cloudflare.com/author/lambros-petrou/)
 
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4EN399YDFNQMGM5VG6EHTNS.01M4EN39V1RNGJ3FBS356QEAB5.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/deno-joins-cloudflare/)
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ADESEJPK73KY57K3T0NX.png&w=1999&h=1126&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/d1-control-plane/)
+
+October 13, 2026 [<h2>Rewinding the exponential: How we keep hardware usage down</h2>](https://blog.cloudflare.com/rewinding-the-exponential/)
+
+Our strategies to optimize our data pipeline throughput without compromising data quality.
+
+![Cathy Chi](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BW29GFVNFAGYMYGYE13W.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Sergey Nuzhdin](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4RZSTYSC3FYTCKQQ8VDWNVF.01M4RZSVDJE561F1HM16DXYGP7.webp&w=64&h=64&f=webp&fit=cover&position=center)![Christian Endres](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW446RYCN9GFDAVP4BR4X64Q.webp&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Cathy Chi](https://blog.cloudflare.com/author/cathy-chi/),  [Sergey Nuzhdin](https://blog.cloudflare.com/author/sergey-nuzhdin/), and  [Christian Endres](https://blog.cloudflare.com/author/christian-endres/)
 
 October 12, 2026 [<h2>Filter, reshape, and redact logs before export with Transformers</h2>](https://blog.cloudflare.com/transformers-on-logpush/)
 
@@ -43,6 +51,14 @@ On-demand CPU and memory profiling for Cloudflare Workers and Durable Objects is
 ![Dominik Picheta](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P5G8RRA9GKFZA6BYERZ1.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Dominik Picheta](https://blog.cloudflare.com/author/dominik/)
+
+October 9, 2026 [<h2>Deno is joining Cloudflare</h2>](https://blog.cloudflare.com/deno-joins-cloudflare/)
+
+The Deno team is joining Cloudflare to radically simplify self-hosting Workers and Durable Objects, so developers can use the same primitives in more places.
+
+![Kenton Varda](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DEXVTQSPFW8ZSKE70KPZ.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Ryan Dahl](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4ENFKW4YTVQWHFZ3QZQ493D.01M4ENFMVKQXFWHGEVAERPHSEE.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Kenton Varda](https://blog.cloudflare.com/author/kenton-varda/) and  [Ryan Dahl](https://blog.cloudflare.com/author/ryan-dahl/)
 
 October 8, 2026 [<h2>Bridging technical depth and usability: The story behind Radar's redesign</h2>](https://blog.cloudflare.com/radar-redesign/)
 
@@ -147,22 +163,6 @@ Quick Tunnels now support email authentication. Add --allowed-mail to one cloud
 ![Nikita Cano](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48AJSY9DYK5N26JP1Q24B7.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Hugo Vicente](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M34WT30BASQ4QW8EGP1N9A1D.01M34WT3KV9B1NB3Q1GQYK91VG.webp&w=64&h=64&f=webp&fit=cover&position=center)![Alessandro Frigerio](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3Y8PTMRS2VJQ56HJPMJB0B4.01M3Y8PV82AK8K16X1XSJ9J85M.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Nikita Cano](https://blog.cloudflare.com/author/nikita/),  [Hugo Vicente](https://blog.cloudflare.com/author/hugo-vicente/), and  [Alessandro Frigerio](https://blog.cloudflare.com/author/alessandro-frigeri/)
-
-October 2, 2026 [<h2>Building for good: How civil society organizations are automating on Cloudflare</h2>](https://blog.cloudflare.com/civil-society-automation/)
-
-Some of the world's leading organizations are building the future of non-profit work with Cloudflare.
-
-![Allie Funk](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMNE1C77VPBNRVEJWBYMX.webp&w=64&h=64&f=webp&fit=cover&position=center)![Jocelyn Woolbright](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DTBM9W30TE9JQBMJ2CAY.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Allie Funk](https://blog.cloudflare.com/author/allie-funk/) and  [Jocelyn Woolbright](https://blog.cloudflare.com/author/jocelyn/)
-
-October 2, 2026 [<h2>2026 Birthday week: network performance update</h2>](https://blog.cloudflare.com/network-performance-birthday-week-2026/)
-
-Cloudflare now ranks as the fastest provider across 74% of the top 1,000 global networks. By incorporating background telemetry from Cloudflare Challenge Pages, we have expanded our real-user measurement scale while maintaining user privacy.
-
-![Lai Yi Ohlsen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DGMNXAW2CZQQAX92W97V.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Lai Yi Ohlsen](https://blog.cloudflare.com/author/lai-yi-ohlsen/)
 
 Load more
 
