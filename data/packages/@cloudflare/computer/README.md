@@ -199,6 +199,41 @@ new Workspace({
 });
 ```
 
+`WorkerBundle` copies files that ship inside your Worker, such as skills
+or templates. The copy is read-only, and it is replaced automatically
+when a deploy changes the files.
+
+With Vite, add `computerBundle()` from `@cloudflare/computer/vite` to
+your plugins and import the directory. This works in `vite dev` too,
+with edits picked up as you go. Text files only:
+
+```ts
+// vite.config.ts: plugins: [cloudflare(), computerBundle()]
+import { WorkerBundle } from "@cloudflare/computer";
+import skills from "computer:bundle/src/skills";
+
+new Workspace({
+  storage: ctx.storage,
+  mounts: { "/workspace/.agents/skills": WorkerBundle(skills) },
+});
+```
+
+With wrangler, pass a path instead. It's read from the Worker upload
+under `/bundle`, so each file has to be uploaded under its own path:
+
+```jsonc
+// wrangler.jsonc, with "main": "src/index.ts"
+"find_additional_modules": true,
+"rules": [{ "type": "Data", "globs": ["skills/**/*"], "fallthrough": true }]
+```
+
+```ts
+mounts: { "/workspace/.agents/skills": WorkerBundle("skills") }
+```
+
+See [Mount Interface](../../docs/06_mount_interface.md#workerbundlesource-options)
+for the options, types, and how refresh works.
+
 ## Running commands and code
 
 `workspace.runtime.exec(source, options)` is the single execution entry
@@ -429,21 +464,26 @@ on a computerd instance.
 
 | Entrypoint | Purpose |
 | --- | --- |
-| `@cloudflare/computer` | The `Workspace` wrapper, `workspace.runtime`, stub types, the R2 mount, and proxy classes. |
+| `@cloudflare/computer` | The `Workspace` wrapper, `workspace.runtime`, stub types, the R2 and Worker bundle mounts, and proxy classes. |
 | `@cloudflare/computer/backends/container-legacy` | `LegacyContainerBackend` and `withLegacyWorkspaceContainer`. Pulls in the computerd / capnweb sync plumbing. |
 | `@cloudflare/computer/backends/worker-shell` | `WorkerShellBackend` and the bundled just-bash runtime. |
 | `@cloudflare/computer/backends/worker-javascript` | `WorkerJavaScriptBackend`, configured libraries, durable imports, `node:fs/promises`, and host modules. |
 | `@cloudflare/computer/modules/container` | `createContainerModule()` for `ws:container`: run container commands from isolate JavaScript. |
 | `@cloudflare/computer/modules/git` | `createGitModule()` for `ws:git`: confined Git from isolate JavaScript. |
-| `@cloudflare/computer/modules/artifacts` | `createArtifactsModule()` for `ws:artifacts`: Artifacts from isolate JavaScript. |
+| `@cloudflare/computer/modules/artifacts` | `createArtifactsModule()` for `ws:artifacts`: Artifacts and git tokens from isolate JavaScript. |
+| `@cloudflare/computer/modules/assets` | `createAssetsModule()` for `ws:assets`: publish a Workspace file from isolate JavaScript. |
+| `@cloudflare/computer/modules/tools` | `createToolBindings()` for `ws:tools`: an agent's own tools, callable from isolate JavaScript. |
 | `@cloudflare/computer/tools` | AI SDK tools for agents: `read`, `ls`, `find`, `grep`, `write`, `edit`, `delete`, and optional `exec` and `publish`. |
-| `@cloudflare/computer/tools/ai-sdk` | `createAITools()`: the AI SDK tool set for a Workspace. |
-| `@cloudflare/computer/tools/pi-ai` | `createPiTools()`: the same tool set for pi (`@earendil-works/pi-ai`). |
+| `@cloudflare/computer/tools/core` | `defineExec()`: the `exec` tool's description, schema, and executor, with no agent library. |
+| `@cloudflare/computer/tools/ai-sdk` | `createAITools()`: the AI SDK tool set for a Workspace, and `forAISDKTools()` to serve AI SDK tools as `ws:tools`. |
+| `@cloudflare/computer/tools/pi-ai` | `createPiTools()`: the same tool set for pi (`@earendil-works/pi-ai`), and `forPiTools()` to serve pi tools as `ws:tools`. |
 | `@cloudflare/computer/tools/tanstack-ai` | `createTanStackTools()`: the same tool set for TanStack AI (`@tanstack/ai`). |
 | `@cloudflare/computer/git` | Opt-in `isomorphic-git` glue for checkouts inside the workspace. |
 | `@cloudflare/computer/assets` | `createAssets` — share a workspace file to R2 as a presigned URL. |
 | `@cloudflare/computer/artifacts` | `createArtifact` and its CLI, an optionally session-scoped wrapper over the Cloudflare Artifacts binding. |
 | `@cloudflare/computer/observe/cloudflare` | Cloudflare-runtime adapter for the observability hook. |
+| `@cloudflare/computer/vite` | `computerBundle()`: a Vite plugin that serves `computer:bundle/<dir>` imports for `WorkerBundle`. |
+| `@cloudflare/computer/vite/client` | Types for `computer:bundle/<dir>` imports. |
 
 A consumer that only uses the container backend never imports the worker
 subpaths, so unused backend payloads tree-shake away. Wire types shared
