@@ -21,8 +21,8 @@
 	"is_template": false,
 	"default_branch": "main",
 	"branches": [
+		"WC-5991-preview-domain-hosting",
 		"automation/update-forge",
-		"changeset-release/main",
 		"codex/expand-secrets-file-dotenv",
 		"codex/fix-177-multipart-files",
 		"codex/fix-185-preview-output",
@@ -43,6 +43,8 @@
 		"penalosa/rust-generator",
 		"penalosa/temp-accounts",
 		"remove-x-forge-globals",
+		"renovate/vite-plugin-beta",
+		"sk/forge-renovate",
 		"sk/update-forge"
 	]
 }
