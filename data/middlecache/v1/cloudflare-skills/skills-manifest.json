@@ -49,6 +49,13 @@
 			]
 		},
 		{
+			"name": "cf-cli",
+			"description": "Cloudflare's official cf CLI (beta) for the public Cloudflare API and Workers projects. Use for finding and running Cloudflare commands from the terminal — sign-in and profiles, cf cli search, cf schema, cf deploy/dev/build, resource commands for DNS, zones, D1, KV, and R2 — and for choosing between cf and Wrangler in a project.",
+			"files": [
+				"SKILL.md"
+			]
+		},
+		{
 			"name": "cloudflare",
 			"description": "Discover and choose Cloudflare products for apps, APIs, AI agents, storage, networking, and security. Use for architecture and product selection, including when the user describes a need without naming a Cloudflare product; then find the relevant skill or documentation.",
 			"files": [
@@ -69,11 +76,6 @@
 				"references/analytics-engine/configuration.md",
 				"references/analytics-engine/gotchas.md",
 				"references/analytics-engine/patterns.md",
-				"references/api/README.md",
-				"references/api/api.md",
-				"references/api/configuration.md",
-				"references/api/gotchas.md",
-				"references/api/patterns.md",
 				"references/bindings/README.md",
 				"references/bindings/api.md",
 				"references/bindings/configuration.md",
@@ -104,11 +106,6 @@
 				"references/d1/configuration.md",
 				"references/d1/gotchas.md",
 				"references/d1/patterns.md",
-				"references/flagship/README.md",
-				"references/flagship/api.md",
-				"references/flagship/configuration.md",
-				"references/flagship/gotchas.md",
-				"references/flagship/patterns.md",
 				"references/graphql-api/README.md",
 				"references/graphql-api/api.md",
 				"references/graphql-api/configuration.md",
@@ -149,11 +146,6 @@
 				"references/pages/configuration.md",
 				"references/pages/gotchas.md",
 				"references/pages/patterns.md",
-				"references/pulumi/README.md",
-				"references/pulumi/api.md",
-				"references/pulumi/configuration.md",
-				"references/pulumi/gotchas.md",
-				"references/pulumi/patterns.md",
 				"references/queues/README.md",
 				"references/queues/api.md",
 				"references/queues/configuration.md",
@@ -190,11 +182,6 @@
 				"references/tail-workers/configuration.md",
 				"references/tail-workers/gotchas.md",
 				"references/tail-workers/patterns.md",
-				"references/terraform/README.md",
-				"references/terraform/api.md",
-				"references/terraform/configuration.md",
-				"references/terraform/gotchas.md",
-				"references/terraform/patterns.md",
 				"references/tunnel/README.md",
 				"references/tunnel/api.md",
 				"references/tunnel/configuration.md",
@@ -328,6 +315,7 @@
 				"scripts/persist-skill.sh",
 				"scripts/validate.sh",
 				"scripts/widget-create.sh",
+				"tests/test_persist_skill.py",
 				"tests/validation.md"
 			]
 		},
@@ -357,7 +345,7 @@
 		},
 		{
 			"name": "wrangler",
-			"description": "Run or troubleshoot Wrangler CLI commands and configure Worker projects for local development, Previews, deployment, and Cloudflare resource management.",
+			"description": "Run or troubleshoot Wrangler CLI commands in projects that have a wrangler.jsonc, wrangler.json, or wrangler.toml file, including local development, Previews, deployment, and resource management. For new projects and projects without a Wrangler configuration file, use the cf CLI instead.",
 			"files": [
 				"SKILL.md"
 			]
