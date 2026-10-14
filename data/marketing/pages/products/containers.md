@@ -58,7 +58,7 @@ Spin up complete development environments on-demand for testing, CI/CD, or colla
 
 ## Related Products
 
-- [Browser Run](/products/browser-rendering.md): Automated browsers
+- [Browser Run](/products/browser-run.md): Automated browsers
 - [Cloudflare Pages](/products/pages.md): Build & deploy frontend sites
 - [Durable Objects](/products/durable-objects.md): Stateful compute
 - [Email Service](/products/email-service.md): Send and receive email

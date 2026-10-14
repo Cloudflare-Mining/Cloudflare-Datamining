@@ -8,8 +8,6 @@ Compute
 
 [**Browser Run**Automated browsers](/products/browser-run/)
 
-[**Browser Run**Automated browsers](/products/browser-rendering/)
-
 [**Cloudflare Pages**Build & deploy frontend sites](/products/pages/)
 
 [**Containers**Any language, anywhere](/products/containers/)

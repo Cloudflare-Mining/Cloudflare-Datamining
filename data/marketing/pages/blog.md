@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+October 14, 2026 [<h2>Yandex outage: Data shows that instead of going dark, malicious bots went on the move</h2>](https://blog.cloudflare.com/yandex-outage/)
+
+When strikes hit Yandex data centers, many assumed Russian bot operations went dark. Cloudflare data reveals that while search crawling stopped, malicious bots simply migrated to other networks.
+
+![Marina Elmore](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477HVM8X1SKDG8ADKQJ9T3.png&w=64&h=64&f=webp&fit=cover&position=center)![Lai Yi Ohlsen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DGMNXAW2CZQQAX92W97V.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Marina Elmore](https://blog.cloudflare.com/author/marina-elmore/) and  [Lai Yi Ohlsen](https://blog.cloudflare.com/author/lai-yi-ohlsen/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4Y142SWPQXA8GMMX3DTNYBY.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/yandex-outage/)
+
 October 14, 2026 [<h2>Inside Hyperdrive: How we solved a rare Hyperdrive MySQL caching bug</h2>](https://blog.cloudflare.com/hyperdrive-mysql/)
 
 While adding MySQL support to Hyperdrive, we found a subtle protocol bug when caching query results. Here is how we tracked down a 0.001% rate error and made Hyperdrive MySQL generally available.
@@ -17,8 +27,6 @@ While adding MySQL support to Hyperdrive, we found a subtle protocol bug when ca
 ![Pranoy Dutta](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4VK61ABP982X8ARDP51MPZ3.01M4VK624NKY2ZRQFDJP3JPHW2.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Pranoy Dutta](https://blog.cloudflare.com/author/pranoy-dutta/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4VK1DV41VQ8EZCK68R7E0CS.png&w=1800&h=1013&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/hyperdrive-mysql/)
 
 October 13, 2026 [<h2>Under the hood, off the hot path: How D1 scales to millions of databases</h2>](https://blog.cloudflare.com/d1-control-plane/)
 
@@ -155,14 +163,6 @@ We're announcing the closed beta of a self-serve Cloudflare OHTTP Gateway. We're
 ![Lara Schull](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M34Y34B7NA1EXDT3NB44Q1E9.01M34Y34V1QSE5BJE43H5NGG6K.webp&w=64&h=64&f=webp&fit=cover&position=center)![Akshat Mahajan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VR0DYS4EZ818QTQC7Z5F.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Lara Schull](https://blog.cloudflare.com/author/lara-schull/) and  [Akshat Mahajan](https://blog.cloudflare.com/author/akshat-mahajan/)
-
-October 2, 2026 [<h2>Follow the thread: a new dashboard to investigate account abuse</h2>](https://blog.cloudflare.com/account-abuse-protection-dashboard/)
-
-Fraudsters are increasingly using AI to bypass stateless security checks. Cloudflare's new Account Abuse Protection dashboard uses stateful analysis and edge-generated Hashed User IDs to help teams investigate and block account abuse.
-
-![Nicole Justus](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3WPE05QZCEYBD5624DD07B6.01M3WPE0S25WCYVW4RR6PMRCP1.webp&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Nicole Justus](https://blog.cloudflare.com/author/nicole-justus/)
 
 Load more
 

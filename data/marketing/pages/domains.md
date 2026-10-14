@@ -4,8 +4,6 @@ description: Find a domain for what you want to build. Start something new or br
 image: https://www.cloudflare.com/preview.png
 ---
 
-`Cloudflare Registrar`
-
 # Start your next idea with a domain name
 
 Enter a name, domain, or website URL. Results update as you type.
@@ -18,7 +16,7 @@ At cost
 
 Cloudflare Registrar eliminates surprise fees and unnecessary add-ons. Registration, transfer, and renewal prices are always at or below what registries and ICANN charge us. 
 
-See supported domain extensions 
+Browse supported domain extensions 
 
 **Transparent pricing** 
 
@@ -86,7 +84,7 @@ FAQ
 
  What types of top-level domains (TLDs) does Cloudflare Registrar support? 
 
- Cloudflare Registrar supports over 430 top-level domains, from popular ones like .com, .net, and .org to niche TLDs like .ai, .app and .dev. [See supported domain extensions](#supported-domain-extensions) 
+ Cloudflare Registrar supports over 430 top-level domains, from popular ones like .com, .net, and .org to niche TLDs like .ai, .app and .dev. [Browse supported domain extensions](#supported-domain-extensions) 
 
  How do I submit a WHOIS Data Disclosure Request? 
 

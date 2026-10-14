@@ -22,7 +22,7 @@ Workers for Platforms is part of Cloudflare's compute offerings on the Workers p
 
 ## Related Products
 
-- [Browser Run](/products/browser-rendering.md): Automated browsers
+- [Browser Run](/products/browser-run.md): Automated browsers
 - [Cloudflare Pages](/products/pages.md): Build & deploy frontend sites
 - [Containers](/products/containers.md): Any language, anywhere
 - [Durable Objects](/products/durable-objects.md): Stateful compute

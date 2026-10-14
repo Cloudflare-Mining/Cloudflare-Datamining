@@ -1,7 +1,7 @@
 ---
-title: "Cloudflare Browser Rendering - Headless Browsers for AI Agents"
+title: "Cloudflare Browser Run - Headless Browsers for AI Agents"
 description: "Headless, programmable web browsers built for AI Agents. Spin up browsers on-demand for screenshots, automation, and web scraping at scale."
-url: "https://www.cloudflare.com/products/browser-rendering"
+url: "https://www.cloudflare.com/products/browser-run"
 ---
 
 # Browser Run
@@ -61,4 +61,4 @@ Convert web content to PDF format for documents and reports
 
 ---
 
-*This is a markdown version of [https://www.cloudflare.com/products/browser-rendering](https://www.cloudflare.com/products/browser-rendering) for AI/LLM consumption.*
+*This is a markdown version of [https://www.cloudflare.com/products/browser-run](https://www.cloudflare.com/products/browser-run) for AI/LLM consumption.*

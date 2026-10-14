@@ -44,7 +44,7 @@ Run user-submitted Python or JavaScript with automatic output parsing for charts
 
 ## Related Products
 
-- [Browser Run](/products/browser-rendering.md): Automated browsers
+- [Browser Run](/products/browser-run.md): Automated browsers
 - [Cloudflare Pages](/products/pages.md): Build & deploy frontend sites
 - [Containers](/products/containers.md): Any language, anywhere
 - [Durable Objects](/products/durable-objects.md): Stateful compute
