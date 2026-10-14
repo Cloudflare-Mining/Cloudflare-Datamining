@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+October 14, 2026 [<h2>Inside Hyperdrive: How we solved a rare Hyperdrive MySQL caching bug</h2>](https://blog.cloudflare.com/hyperdrive-mysql/)
+
+While adding MySQL support to Hyperdrive, we found a subtle protocol bug when caching query results. Here is how we tracked down a 0.001% rate error and made Hyperdrive MySQL generally available.
+
+![Pranoy Dutta](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4VK61ABP982X8ARDP51MPZ3.01M4VK624NKY2ZRQFDJP3JPHW2.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Pranoy Dutta](https://blog.cloudflare.com/author/pranoy-dutta/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4VK1DV41VQ8EZCK68R7E0CS.png&w=1800&h=1013&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/hyperdrive-mysql/)
+
 October 13, 2026 [<h2>Under the hood, off the hot path: How D1 scales to millions of databases</h2>](https://blog.cloudflare.com/d1-control-plane/)
 
 A deep dive into how D1 architected its control plane to scale and manage millions of databases, while keeping data plane query operations at the edge. We share guiding principles on how to build on the Developer Platform effectively.
@@ -17,8 +27,6 @@ A deep dive into how D1 architected its control plane to scale and manage millio
 ![David Laban](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M34XD0TS97ET65W53NTJ30DM.01M34XD1GRAZN4A2HXX71EEZ5N.webp&w=64&h=64&f=webp&fit=cover&position=center)![Lambros Petrou](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WA9G46YD5HZY63QTNT9A.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [David Laban](https://blog.cloudflare.com/author/david-laban/) and  [Lambros Petrou](https://blog.cloudflare.com/author/lambros-petrou/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ADESEJPK73KY57K3T0NX.png&w=1999&h=1126&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/d1-control-plane/)
 
 October 13, 2026 [<h2>Rewinding the exponential: How we keep hardware usage down</h2>](https://blog.cloudflare.com/rewinding-the-exponential/)
 
@@ -155,14 +163,6 @@ Fraudsters are increasingly using AI to bypass stateless security checks. Cloudf
 ![Nicole Justus](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3WPE05QZCEYBD5624DD07B6.01M3WPE0S25WCYVW4RR6PMRCP1.webp&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Nicole Justus](https://blog.cloudflare.com/author/nicole-justus/)
-
-October 2, 2026 [<h2>Protected Quick Tunnels: simple accountless authentication for your next dev project</h2>](https://blog.cloudflare.com/protected-quick-tunnels/)
-
-Quick Tunnels now support email authentication. Add --allowed-mail to one cloudflared command, and only the addresses or domains you list can reach your local app. No Cloudflare account required on either side.
-
-![Nikita Cano](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48AJSY9DYK5N26JP1Q24B7.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Hugo Vicente](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M34WT30BASQ4QW8EGP1N9A1D.01M34WT3KV9B1NB3Q1GQYK91VG.webp&w=64&h=64&f=webp&fit=cover&position=center)![Alessandro Frigerio](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3Y8PTMRS2VJQ56HJPMJB0B4.01M3Y8PV82AK8K16X1XSJ9J85M.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Nikita Cano](https://blog.cloudflare.com/author/nikita/),  [Hugo Vicente](https://blog.cloudflare.com/author/hugo-vicente/), and  [Alessandro Frigerio](https://blog.cloudflare.com/author/alessandro-frigeri/)
 
 Load more
 
