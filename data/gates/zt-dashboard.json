@@ -29,6 +29,9 @@
 	"access-workers-as-destination-q2-2026": {
 		"enabled": true
 	},
+	"aj-test-this-gate-pls": {
+		"enabled": false
+	},
 	"akm-test-gate1": {
 		"enabled": false
 	},
@@ -56,12 +59,6 @@
 	"billing-granular-rbac-q1-2026": {
 		"enabled": true
 	},
-	"billing-zt-apple-pay-gate": {
-		"enabled": false
-	},
-	"billing-zt-google-pay-gate": {
-		"enabled": false
-	},
 	"biso-screen-watermarking-q2-2026": {
 		"enabled": true
 	},
@@ -70,9 +67,6 @@
 	},
 	"casb-assets-view-q32025": {
 		"enabled": true
-	},
-	"casb-custom-webhook-q1-2026": {
-		"enabled": false
 	},
 	"casb-findings-cloudy-explainer-q1-2026": {
 		"enabled": true
@@ -562,9 +556,6 @@
 	"zt-art-ai-dashboard-to-support-mcp-and-ai-q3-2026": {
 		"enabled": true
 	},
-	"zt-art-network-session-analytics-q1-2026": {
-		"enabled": false
-	},
 	"zt-banner-ia-research-q22025": {
 		"enabled": false
 	},
@@ -658,6 +649,9 @@
 	"zt-dlp-pw-protected-files": {
 		"enabled": true
 	},
+	"zt-dlp-risk-event-timeline-q4-2026": {
+		"enabled": false
+	},
 	"zt-gartner-banner-2024-q1": {
 		"enabled": false
 	},
@@ -745,6 +739,9 @@
 	"zt-new-account-selector-q2-2026": {
 		"enabled": true
 	},
+	"zt-new-domain-rotating-ips-risk-score": {
+		"enabled": false
+	},
 	"zt-new-egress-rule-builder-q2-2026": {
 		"enabled": true
 	},
@@ -800,7 +797,7 @@
 		"enabled": true
 	},
 	"zt-warp-generic-s2s-integrations": {
-		"enabled": true
+		"enabled": false
 	},
 	"zt-warp-global-acceleration-autoswitch-q4-2026": {
 		"enabled": true
