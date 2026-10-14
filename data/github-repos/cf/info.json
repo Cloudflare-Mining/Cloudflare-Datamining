@@ -22,8 +22,8 @@
 	"default_branch": "main",
 	"branches": [
 		"automation/update-forge",
+		"changeset-release/main",
 		"codex/expand-secrets-file-dotenv",
-		"codex/fix-161-path-params",
 		"codex/fix-177-multipart-files",
 		"codex/fix-185-preview-output",
 		"codex/fix-204-shared-registry",
@@ -40,6 +40,8 @@
 		"investigate/issue-100",
 		"main",
 		"penalosa/regression-testing",
+		"penalosa/rust-generator",
+		"penalosa/temp-accounts",
 		"remove-x-forge-globals",
 		"sk/update-forge"
 	]
