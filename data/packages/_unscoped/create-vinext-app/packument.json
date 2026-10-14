@@ -2,7 +2,7 @@
 	"name": "create-vinext-app",
 	"dist-tags": {
 		"beta": "1.0.0-beta.0",
-		"latest": "1.0.0"
+		"latest": "1.1.0"
 	},
 	"versions": {
 		"0.0.1": {
@@ -233,8 +233,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQDr7Hj6pzEtB6MiH7eczuv3MVsjA3JxFhc21njhaqk3OgIgKlzLSmxlu1NWHbJ+D7zMdi4hape874mzoiYwsDw+hHU="
+						"sig": "MEUCIQDr7Hj6pzEtB6MiH7eczuv3MVsjA3JxFhc21njhaqk3OgIgKlzLSmxlu1NWHbJ+D7zMdi4hape874mzoiYwsDw+hHU=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -244,6 +244,46 @@
 					}
 				},
 				"unpackedSize": 268008
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"1.1.0": {
+			"name": "create-vinext-app",
+			"version": "1.1.0",
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@1.1.0",
+				"vite-plus": "1.1.0",
+				"@types/node": "^25.9.2",
+				"am-i-vibing": "^0.5.0",
+				"magic-string": "^0.30.21"
+			},
+			"bin": {
+				"create-vinext-app": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "aaaf9c344f0cd5a967ec3f5a7fd7f915ec1f4147",
+				"tarball": "https://registry.npmjs.org/create-vinext-app/-/create-vinext-app-1.1.0.tgz",
+				"fileCount": 31,
+				"integrity": "sha512-PPdMmmBSxmTgbmdEzSpWg3+epT8osxC5XIH3t0VsU+S64QpW0cC1vx/c3TB9WiqMa1tJg58nxmTUTTRTFemFCw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDS3rGiPhGnxRQar9b5rVWsahLS+RZRoF2iJB2z4VHNNQIgZwHa87Qp35pcL6suv4R1l+KaVSMdVvzf7eBiNkxhY0Q=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIBcTuGTwawSXlX2h9rV3cAkLmKYmerzgFnd26dir/XjxAiEAiJOQ109+8umZ0KHsp6ikuv1/lSLmGC0JfvuH1bAKnxk="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/create-vinext-app@1.1.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 362553
 			},
 			"engines": {
 				"node": ">=22"

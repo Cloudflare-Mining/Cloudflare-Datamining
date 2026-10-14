@@ -147,6 +147,9 @@ Other options: `--port <port>` (default: 3001), `--skip-check`, `--force`.
 Cloudflare init uses `cf` and `cloudflare.config.ts` by default. Both `vinext init`
 and `create-vinext-app` accept `--legacy-wrangler-cloudflare-init` to retain the
 legacy Wrangler setup. Existing Wrangler configs are not automatically migrated.
+`vinext init --name <name>` sets the Worker name in the generated config instead of
+deriving it from `package.json`. An existing config keeps its own Worker name, and init
+prints a warning.
 
 If your `next.config.*` sets `output: "standalone"`, `vite build` emits a self-hosting bundle at `dist/standalone/`. Start it with:
 
@@ -282,7 +285,7 @@ You can, with caution. vinext has known compatibility gaps and has not yet been 
 Yes. Next.js supports [self-hosting](https://nextjs.org/docs/app/building-your-application/deploying#self-hosting) on Node.js servers, Docker containers, and static exports. If you're happy with the Next.js toolchain and just want to run it somewhere other than Vercel, self-hosting is the simplest path.
 
 **How are you verifying this works?**
-The test suite has over 1,700 Vitest tests and 380 Playwright E2E tests. This includes tests ported directly from the [Next.js test suite](https://github.com/vercel/next.js/tree/canary/test) and [OpenNext's Cloudflare conformance suite](https://github.com/opennextjs/opennextjs-cloudflare), covering routing, SSR, RSC, server actions, caching, metadata, middleware, streaming, and more. Vercel's [App Router Playground](https://github.com/vercel/next-app-router-playground) also runs on vinext as an integration test. See the [Tests](#tests) section and `tests/nextjs-compat/TRACKING.md` for details.
+The test suite has over 1,700 Vitest tests and 380 Playwright E2E tests. This includes tests ported directly from the [Next.js test suite](https://github.com/vercel/next.js/tree/canary/test) and [OpenNext's Cloudflare conformance suite](https://github.com/opennextjs/opennextjs-cloudflare), covering routing, SSR, RSC, server actions, caching, metadata, middleware, streaming, and more. Vercel's [App Router Playground](https://github.com/vercel/next-app-router-playground) also runs on vinext as an integration test. See the [Tests](#tests) section for details.
 
 **Who is reviewing this code?**
 A mix of humans and AI agents. Humans review PRs before they merge, focused on behavior, structure, and long-term direction. We lean heavily on agent-driven code review to catch issues at PR time and across the codebase. The test suite is the primary quality gate. Outside contributions and deeper human code review are very welcome.
@@ -437,10 +440,14 @@ export default defineConfig({
 
 #### Module Federation (client-side)
 
-For client-side Module Federation, configure React and React DOM as singleton shared modules in both the host and remotes:
+Use [`@module-federation/vinext`](https://github.com/module-federation/vinext), a thin wrapper around `@module-federation/vite` with vinext defaults. Register `federation()` before `vinext()`:
+
+```bash
+npm install @module-federation/vinext
+```
 
 ```ts
-import { federation } from "@module-federation/vite";
+import { federation } from "@module-federation/vinext";
 import { defineConfig } from "vite";
 import vinext from "vinext";
 
@@ -448,17 +455,22 @@ export default defineConfig({
   plugins: [
     federation({
       name: "host",
-      shared: {
-        react: { singleton: true },
-        "react/": { singleton: true },
-        "react-dom": { singleton: true },
-        "react-dom/": { singleton: true },
+      remotes: {
+        catalog: {
+          type: "module",
+          name: "catalog",
+          entry: "https://catalog.example.com/remoteEntry.js",
+          entryGlobalName: "catalog",
+          shareScope: "default",
+        },
       },
     }),
     vinext(),
   ],
 });
 ```
+
+The wrapper shares `react` and `react-dom` as singletons, defaults `filename` to `remoteEntry.js`, and injects the host's federation startup into the entry, because vinext has no conventional HTML entry. Explicit options override these defaults, and every `@module-federation/vite` option remains available. Passing your own `shared` replaces the default map, so keep `react`, `react/`, `react-dom`, and `react-dom/` as singletons in it, in both the host and remotes.
 
 In a remote client component, use `getVinextReact()` before reading React hooks. vinext registers the host's browser React instance before application modules execute, and the first registration remains stable across remote evaluation and HMR:
 
@@ -478,7 +490,7 @@ export function RemoteCounter() {
 
 This bridge is browser-only. It does not provide App Router Module Federation SSR or transparently replace React imports inside third-party packages; compatible React versions remain the responsibility of the Module Federation `shared` configuration.
 
-See the [examples](#live-examples) for complete working configurations.
+See the [Module Federation guide](https://vinext.dev/docs/guides/module-federation) for loading remote components in the host.
 
 ### Other platforms (via Nitro)
 
