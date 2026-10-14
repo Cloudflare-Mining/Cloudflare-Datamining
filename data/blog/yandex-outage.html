@@ -1,0 +1,288 @@
+<p>Following reported strikes on Yandex data centers, claims circulated on the Internet that Russian bot farms and influence operations had been knocked offline. HTTP traffic charts showed steep drops, fueling speculation that the infrastructure damage had stopped these malicious actors. However, aggregate traffic metrics can easily mislead. There are two autonomous system numbers (<a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system"><u>ASNs</u></a>) associated with Yandex: AS13238 is used by Yandex’s search engine, while AS200350 runs its cloud services.</p>
+<p>Using Cloudflare Radar and Bot Management data, we analyzed how these two ASNs were affected — and while both saw drops in traffic, they saw differing impact.</p>
+<ul>
+	<li>Yandex Search (AS13238)<strong>:</strong>&nbsp;The drop in traffic consisted almost entirely of verified search crawlers indexing web pages, images, and site resources.</li>
+	<li>Yandex.Cloud (AS200350): There was a decline in malicious activities like vulnerability scanning and probing, but high-volume automation did not vanish — it simply migrated to other hosting providers.</li>
+</ul>
+<p>While malicious traffic may originate from a particular provider, it does not necessarily tell us who&nbsp;is responsible for the traffic. Understanding why the strikes had little lasting effect on malicious traffic requires analyzing request behavior, rather than just overall traffic patterns.</p>
+<h2>What happened: the effect of the strikes and pre-event baseline</h2>
+<p>Between October 7 and 11, reported Ukrainian drone strikes&nbsp;hit three Yandex facilities in Russia, progressively knocking data centers and network capacity offline. As seen on <a href="https://radar.cloudflare.com"><u>Cloudflare Radar</u></a>, this culminated in a near-total collapse of the Yandex network on October 11 when traffic plummeted to 99% below baseline for Yandex Search (AS13238) and 90% for Yandex.Cloud (AS200350). Despite a brief partial recovery, both networks remained disrupted through October 13, settling at 86-90% below normal baselines. (As of October 14 at 18:00 UTC, traffic is at 85% of normal.)</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA/vr4+fX07u3s6Onp6+3u8fPz8fLx7Ovq/////fv78PHz5+vv6O7z7fL37/L06+3t////////8/b75+725u/56/P77vT47fDx////////9vr/6fH75/H97fb/8ff98PP1////////+Pv/7PP77fb/9Pz/9/z/9fj5////////+fr88fX59fr//f//////+/z8////////+vn49fX2/P7+///////////9////////+/j39vb0/v/+///////////+" alt="" width="715" height="405" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4Y1445Y2D8SEE4V03F4DW7Z.png&amp;w=715&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4Y1445Y2D8SEE4V03F4DW7Z.png&amp;w=640&amp;h=363&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4Y1445Y2D8SEE4V03F4DW7Z.png&amp;w=715&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4Y1445Y2D8SEE4V03F4DW7Z.png&amp;w=750&amp;h=425&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4Y1445Y2D8SEE4V03F4DW7Z.png&amp;w=828&amp;h=469&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4Y1445Y2D8SEE4V03F4DW7Z.png&amp;w=1080&amp;h=612&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4Y1445Y2D8SEE4V03F4DW7Z.png&amp;w=1280&amp;h=725&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4Y1445Y2D8SEE4V03F4DW7Z.png&amp;w=1430&amp;h=810&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4Y1445Y2D8SEE4V03F4DW7Z.png&amp;w=1800&amp;h=1020&amp;q=100&amp;f=webp" data-lightbox-width="1800" data-lightbox-height="1020" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="405" class="pt-portable-image-media"></div>
+</figure>
+<p>A drop in overall HTTP traffic only confirms that the network went down. It does not reveal whether malicious or evasive bots were disrupted. Looking at the pre-event automation baseline, we can see that before the strikes, automated requests accounted for 36.1% <a href="https://radar.cloudflare.com/traffic"><u>of all HTTP traffic observed globally</u></a>&nbsp;across Cloudflare's network, and 35.8% <a href="https://radar.cloudflare.com/traffic/ru#bot-vs-human"><u>of traffic from Russian IP addresses</u></a>.</p>
+<p>The outage had different effects on automated activity on the two affected ASNs because they served different roles.</p>
+<p><strong>Yandex Search ASN (AS13238)</strong>&nbsp;is used for search index crawling. Cloudflare classified 99.5% of its requests as automated, and 93.6% of its bot requests as <a href="https://developers.cloudflare.com/bots/concepts/bot/verified-bots"><u>Verified</u></a>. Our analysis showed that traffic from this ASN indexed pages, rendered pages, and rendered images, which is consistent behavior for a search crawler. The Yandex Search ASN supplied about 7% of Russia-origin bot requests, and just 0.05% of the global total.</p>
+<p><strong>Yandex.Cloud ASN (AS200350)</strong>&nbsp;is a cloud-hosting network and carries a very different mix of automation. Approximately 95.0% of its scored requests were bots, but none of its observed bot requests were verified by Cloudflare. Yandex.Cloud’s bots looked more like software apps: nearly two-thirds of their requests sent data to websites, some identified themselves as JavaScript, Python, or Go programs, and a larger share went to software companies than Yandex’s search bots. The Yandex.Cloud ASN supplied about 2% of Russia-origin bot requests, and just 0.01% of the global total.</p>
+<h2>Impact of the event on overall bot traffic</h2>
+<p>"Bot traffic" refers to automated requests to websites on Cloudflare's network, such as crawlers and scripts, not necessarily activity on social media platforms. As Yandex’s networks lost capacity, their bot requests fell too. That was expected: nearly all traffic from Yandex Search and Yandex.Cloud was automated. While we saw the obvious drop in total traffic, we did not see any evidence linking a global disruption in malicious traffic to the drop in traffic from Yandex.</p>
+<p>Russia-origin bot requests fell roughly in proportion to the Yandex traffic that went offline, since most requests from those networks were automated.</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 288px;">
+		<tbody>
+			<tr>
+				<td>
+					<p>Date UTC+3</p>
+				</td>
+				<td>
+					<p>Global bot requests <br>(% of all HTTP requests)*</p>
+				</td>
+				<td>
+					<p>Russia-origin bot requests <br>(% of Russia-origin HTTP requests)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>October 1–6: pre-event baseline</p>
+				</td>
+				<td>
+					<p><a href="https://radar.cloudflare.com/traffic?dateStart=2026-10-01&amp;dateEnd=2026-10-06#traffic-volume">39.4%</a></p>
+				</td>
+				<td>
+					<p><a href="https://radar.cloudflare.com/traffic/ru?dateStart=2026-10-01&amp;dateEnd=2026-10-06">50.4%</a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>October 7–8: drone strike on Sasovo</p>
+				</td>
+				<td>
+					<p><a href="https://radar.cloudflare.com/traffic?dateStart=2026-10-07&amp;dateEnd=2026-10-08#traffic-volume">39.2%</a>&nbsp;(−0.2%)</p>
+				</td>
+				<td>
+					<p><a href="https://radar.cloudflare.com/traffic/ru?dateStart=2026-10-07&amp;dateEnd=2026-10-08">48%</a>&nbsp;(-2.4%)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>October 9: drone strike on Kaluga</p>
+				</td>
+				<td>
+					<p><a href="https://radar.cloudflare.com/traffic?dateStart=2026-10-09&amp;dateEnd=2026-10-09#traffic-volume">39.4%</a>&nbsp;(+0%)</p>
+				</td>
+				<td>
+					<p><a href="https://radar.cloudflare.com/traffic/ru?dateStart=2026-10-09&amp;dateEnd=2026-10-09">42.5%</a>&nbsp;(-7.9%)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>October 11: drone strike on Vladimir</p>
+				</td>
+				<td>
+					<p><a href="https://radar.cloudflare.com/traffic?dateStart=2026-10-11&amp;dateEnd=2026-10-11#traffic-volume">39.5%</a>&nbsp;(+0.1%)</p>
+				</td>
+				<td>
+					<p><a href="https://radar.cloudflare.com/traffic/ru?dateStart=2026-10-11&amp;dateEnd=2026-10-11">42.2%</a>&nbsp;(−8.2%)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>October 12</p>
+				</td>
+				<td>
+					<p><a href="https://radar.cloudflare.com/traffic?dateStart=2026-10-12&amp;dateEnd=2026-10-12#traffic-volume">39.6%</a>&nbsp;(+0.2%)</p>
+				</td>
+				<td>
+					<p><a href="https://radar.cloudflare.com/traffic/ru?dateStart=2026-10-12&amp;dateEnd=2026-10-12">43.6%</a>&nbsp;(−6.8%)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>October 13</p>
+				</td>
+				<td>
+					<p><a href="https://radar.cloudflare.com/traffic?dateStart=2026-10-13&amp;dateEnd=2026-10-13#traffic-volume">39.5%</a>&nbsp;(+0.1%)</p>
+				</td>
+				<td>
+					<p><a href="https://radar.cloudflare.com/traffic/ru?dateStart=2026-10-13&amp;dateEnd=2026-10-13">42.1%</a>&nbsp;(−8.3%)</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p><em>* Radar reports global traffic by both total HTTP requests, and by HTML requests (an approximation of a page view). The above table reflects total request volume.</em></p>
+<h2>Impact on Yandex Search ASN (AS13238): less search crawling</h2>
+<p>The decline on Yandex Search ASN was almost entirely search crawling. Sampled requests showed that 78.1% belonged to verified YandexBot, 11.5% to YandexRenderResourcesBot, and 1.9% to YandexImages.</p>
+<p>Among websites and services, the industry segment that saw the steepest drop was Publishing and Newspapers, where traffic from Yandex networks fell 44%. Approximately 90% of pre-event traffic to news sites from this ASN was YandexBot indexing articles, with 40.5% of Cloudflare customers returning HTTP 403 Forbidden responses because the site owner blocked the crawler. When the Yandex Search ASN went offline, customers simply saw less indexing from Yandex.</p>
+<h2>Impact on Yandex.Cloud ASN (AS200350): legitimate use and migrating malicious traffic</h2>
+<p>Yandex.Cloud displayed a completely different profile. Following the reported strikes, bot traffic from Yandex.Cloud fell about 40%. Several attack-like categories showed especially sharp declines. For example, WordPress plugin probing fell 90% and scanner-identified requests fell 93%. Interestingly (and tellingly), Cloudflare customer blocks on Yandex.Cloud traffic also fell 70% during the event period, suggesting that proportionately less malicious traffic was even hitting the Cloudflare WAF from this ASN.</p>
+<h3>Impact on business verticals</h3>
+<p>Yandex.Cloud’s bot traffic is also interesting when segmented by top request destination industries:</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 480px;">
+		<tbody>
+			<tr>
+				<td>
+					<p>Destination industry</p>
+				</td>
+				<td>
+					<p>Bot traffic pre-event</p>
+				</td>
+				<td>
+					<p>Bot traffic during event (Oct 7-13)</p>
+				</td>
+				<td>
+					<p>Change</p>
+				</td>
+				<td>
+					<p>4xx (client error) HTTP response status share: pre → event</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Computer software</p>
+				</td>
+				<td>
+					<p>24.24M</p>
+				</td>
+				<td>
+					<p>15.18M</p>
+				</td>
+				<td>
+					<p>−37.4%</p>
+				</td>
+				<td>
+					<p>18.5% → 15.9%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Gambling</p>
+				</td>
+				<td>
+					<p>23.01M</p>
+				</td>
+				<td>
+					<p>18.80M</p>
+				</td>
+				<td>
+					<p>−18.3%</p>
+				</td>
+				<td>
+					<p>99.1% → 99.3%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Media incl. adult</p>
+				</td>
+				<td>
+					<p>1.33M</p>
+				</td>
+				<td>
+					<p>223.1K</p>
+				</td>
+				<td>
+					<p>−83.3%</p>
+				</td>
+				<td>
+					<p>82.0% → 61.8%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Internet and telecom</p>
+				</td>
+				<td>
+					<p>524.2K</p>
+				</td>
+				<td>
+					<p>206.5K</p>
+				</td>
+				<td>
+					<p>−60.6%</p>
+				</td>
+				<td>
+					<p>71.4% → 51.1%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Travel / tourism</p>
+				</td>
+				<td>
+					<p>363.9K</p>
+				</td>
+				<td>
+					<p>158.1K</p>
+				</td>
+				<td>
+					<p>−56.6%</p>
+				</td>
+				<td>
+					<p>27.0% → 12.3%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Retail / wholesale</p>
+				</td>
+				<td>
+					<p>316.0K</p>
+				</td>
+				<td>
+					<p>167.7K</p>
+				</td>
+				<td>
+					<p>−46.9%</p>
+				</td>
+				<td>
+					<p>71.0% → 55.9%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Gaming / computer games</p>
+				</td>
+				<td>
+					<p>226.3K</p>
+				</td>
+				<td>
+					<p>63.2K</p>
+				</td>
+				<td>
+					<p>−72.1%</p>
+				</td>
+				<td>
+					<p>51.4% → 9.2%</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Publishing / newspapers</p>
+				</td>
+				<td>
+					<p>90.8K</p>
+				</td>
+				<td>
+					<p>8.8K</p>
+				</td>
+				<td>
+					<p>−90.3%</p>
+				</td>
+				<td>
+					<p>90.2% → 61.4%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>The majority of traffic from the Yandex.Cloud ASN fell into two industry buckets: computer software and gambling. The computer software bucket was predictable for an ASN meant to host third-party applications and software integrations. In fact, we even saw that <a href="http://api.cloudflare.com"><u>api.cloudflare.com</u></a>&nbsp;is a top hostname for Yandex.Cloud request traffic. An overall majority of that traffic succeeded (requests returned 200s) both before and during the event, pointing to legitimate usage.</p>
+<p>The gambling sector offers the clearest evidence that malicious automation relocated rather than disappeared. Nearly all of Yandex.Cloud’s bot requests were targeted at one gambling customer account, with traffic shifting among its hostnames. Immediately following the October 8 disruption, bot requests from Yandex.Cloud to this account dropped to zero. Simultaneously, identical requests began appearing from other Russian hosting ASNs, including Radist and Selectel. The incoming traffic maintained an identical fingerprint across providers:</p>
+<ul>
+	<li>The same JA4 TLS client fingerprint</li>
+	<li>The same uncommon request paths and HTTP headers</li>
+	<li>The same custom User-Agent strings</li>
+</ul>
+<p>Overall, Russian bot traffic targeting gambling accounts remained essentially flat over the week, moving from 167.7 million to 170.1 million requests (+1.4%). The automation never stopped running; the operators simply migrated their workloads to alternate cloud providers once Yandex.Cloud became unavailable.</p>
+<p>Across most industries, the share of bot requests from Yandex.Cloud returning any HTTP 4xx response fell. This is largely due to a drop off in the attack-like traffic mentioned above. This, in combination with the gambling customer analysis, shows that malicious traffic that was sending requests through Yandex.Cloud simply shifted its “services” to other providers after the service disruption.</p>
+<p>Finally, when we analyzed social media traffic, we found no unexpected changes in traffic either from Russian-origin IPs (0.6% decrease in total traffic over the event period) or globally (1.2% increase in total traffic over the event period). We repeated the analysis on bot traffic hitting the “post”, “reply”, and “like” endpoints for a specific social media platform and similarly did not find an unexpected shift before or during the event period from either Russian-origin IPs (5.7% decrease in total traffic over the event period) or globally (1.1% increase in total traffic over the event period). Based on our assessment, the data does not appear to support the&nbsp;claims that the strikes crippled social media manipulation, though without further analysis with data outside of Cloudflare, we cannot conclusively say there is no connection.</p>
+<h2>What the data told us — and what it didn’t</h2>
+<p>When traffic from Yandex networks collapsed, speculation spread across the Internet that Russian influence operations and malicious botnets had suffered a crippling blow. Cloudflare data tells a different story: across Cloudflare's network, there was no evidence that the strikes knocked social media manipulation offline or otherwise disrupted malicious activity on the Internet. Instead, the data demonstrated:</p>
+<ul>
+	<li><strong>Search indexing dropped.</strong>&nbsp;The overwhelming majority of the traffic that dropped from Yandex Search ASN consisted of verified YandexBot crawlers fetching news articles and web assets. The main impact was reduced content discovery in Yandex Search.</li>
+	<li><strong>Malicious automation migrated instead of stopping.</strong>&nbsp;While vulnerability scanning and plugin probing temporarily dropped on Yandex.Cloud, high-volume operations quickly moved to alternative hosting networks.</li>
+</ul>
+<p>A network disruption means that specific servers stopped sending requests, but it does not mean an automated threat disappeared. Cloud workloads are portable, so when a data center goes dark or an IP prefix gets blocked, operators can migrate their scripts to another provider in hours.</p>
+<p>Our analysis here is a reminder that client ASN traffic volume is an unreliable proxy for interpreting automated bot behavior.&nbsp;Defending against automated threats requires inspecting request behavior, such as identifying shared JA4 fingerprints, monitoring anomalous request rates, and applying WAF rules to sensitive endpoints, regardless of which network the request originates from. Physical infrastructure is static, but malicious automation is built to move.</p>
+<p></p>
