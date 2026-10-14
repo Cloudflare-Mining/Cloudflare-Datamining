@@ -3462,7 +3462,7 @@
 	{
 		"id": "8acbe5bb0d54464ab867149d7f7cf8ac",
 		"name": "User Details Read",
-		"description": "Grants read access to user details",
+		"description": "Grants read access to user details and user audit logs",
 		"scopes": [
 			"com.cloudflare.api.user"
 		],
@@ -3472,7 +3472,7 @@
 	{
 		"id": "55a5e17cc99e4a3fa1f3432d262f2e55",
 		"name": "User Details Write",
-		"description": "Grants write access to user details",
+		"description": "Grants write access to user details and read access to user audit logs",
 		"scopes": [
 			"com.cloudflare.api.user"
 		],
