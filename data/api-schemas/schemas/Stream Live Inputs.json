@@ -133,7 +133,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.live-inputs.outputs",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "Delete this output? Any active broadcast to this target will be terminated."
 	},
 	"GET /accounts/{account_id}/stream/live_inputs": {
@@ -1281,8 +1280,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.live-inputs.outputs",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"POST /accounts/{account_id}/stream/live_inputs": {
 		"operationId": "stream-live-inputs-create-a-live-input",
@@ -3285,8 +3283,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.live-inputs.outputs",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/stream/live_inputs/{live_input_identifier}/rotate_keys": {
 		"operationId": "stream-live-inputs-rotate-keys-for-a-live-input",
@@ -4768,7 +4765,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.live-inputs.outputs",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

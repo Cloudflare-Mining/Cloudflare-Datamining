@@ -2,15 +2,15 @@
 	"GET /accounts/{account_id}/workers/observability/agents/sessions": {
 		"operationId": "agents.sessions.list",
 		"summary": "List Agent sessions",
-		"description": "List the Sessions of one Agent in one Worker service observed in the window, most recently active first. A Session groups the Traces containing an invocation of the Agent with the same gen_ai.conversation.id. Results describe observed activity in the window, not complete history.",
+		"description": "Lists sessions in which the specified agent participated, ordered by most recent activity. A session is identified by gen_ai.conversation.id and includes authorized activity from every agent in that conversation during the requested time range. Agent invocation and chat spans without a conversation ID are attributed only when their trace is associated with exactly one observed conversation.",
 		"parameters": [
 			{
 				"name": "service",
 				"in": "query",
-				"description": "Worker service that emitted the Agent invocations.",
+				"description": "Worker service name associated with the participating agent.",
 				"required": true,
 				"schema": {
-					"description": "Worker service that emitted the Agent invocations.",
+					"description": "Worker service name associated with the participating agent.",
 					"type": "string",
 					"maxLength": 512,
 					"minLength": 1
@@ -19,10 +19,10 @@
 			{
 				"name": "agent",
 				"in": "query",
-				"description": "Agent name reported by the invocations (gen_ai.agent.name).",
+				"description": "Agent name reported in gen_ai.agent.name. The request is limited to conversations in which this service and agent participated.",
 				"required": true,
 				"schema": {
-					"description": "Agent name reported by the invocations (gen_ai.agent.name).",
+					"description": "Agent name reported in gen_ai.agent.name. The request is limited to conversations in which this service and agent participated.",
 					"type": "string",
 					"maxLength": 512,
 					"minLength": 1
@@ -31,10 +31,10 @@
 			{
 				"name": "from",
 				"in": "query",
-				"description": "Start of the window, as Unix epoch milliseconds. Clamped to the 7-day retention period.",
+				"description": "Start of the requested time range, as Unix epoch milliseconds. Values earlier than the 7-day retention boundary are clamped.",
 				"required": true,
 				"schema": {
-					"description": "Start of the window, as Unix epoch milliseconds. Clamped to the 7-day retention period.",
+					"description": "Start of the requested time range, as Unix epoch milliseconds. Values earlier than the 7-day retention boundary are clamped.",
 					"type": "integer",
 					"minimum": 0
 				}
@@ -42,10 +42,10 @@
 			{
 				"name": "to",
 				"in": "query",
-				"description": "End of the window, as Unix epoch milliseconds. Must be later than from.",
+				"description": "End of the requested time range, as Unix epoch milliseconds. Must be later than from.",
 				"required": true,
 				"schema": {
-					"description": "End of the window, as Unix epoch milliseconds. Must be later than from.",
+					"description": "End of the requested time range, as Unix epoch milliseconds. Must be later than from.",
 					"type": "integer",
 					"minimum": 0
 				}
@@ -53,9 +53,9 @@
 			{
 				"name": "cursor",
 				"in": "query",
-				"description": "Opaque cursor returned in result_info.cursors.after.",
+				"description": "Opaque cursor from result_info.cursors.after in the previous response.",
 				"schema": {
-					"description": "Opaque cursor returned in result_info.cursors.after.",
+					"description": "Opaque cursor from result_info.cursors.after in the previous response.",
 					"type": "string",
 					"maxLength": 2048,
 					"minLength": 1
@@ -64,7 +64,9 @@
 			{
 				"name": "per_page",
 				"in": "query",
+				"description": "Maximum number of items to return. Defaults to 20 and cannot exceed 100.",
 				"schema": {
+					"description": "Maximum number of items to return. Defaults to 20 and cannot exceed 100.",
 					"type": "integer",
 					"maximum": 100,
 					"minimum": 1
@@ -115,62 +117,49 @@
 									"items": {
 										"type": "object",
 										"properties": {
-											"agentId": {
-												"description": "Agent instance identifier from the earliest invocation that reports one.",
-												"type": "string"
-											},
-											"agentName": {
-												"description": "Agent name (gen_ai.agent.name) reported by the Session's invocations.",
-												"type": "string"
-											},
 											"conversationId": {
-												"description": "GenAI conversation identifier (gen_ai.conversation.id) for the Session.",
+												"description": "OpenTelemetry gen_ai.conversation.id value that identifies the session within the account.",
 												"type": "string"
 											},
 											"inputTokens": {
-												"description": "Input tokens reported by the Session's chat spans; spans without usage are skipped, and the field is omitted when none report it.",
+												"description": "Sum of input tokens reported by chat spans attributed to the session. Omitted when no span reports input-token usage.",
 												"type": "number"
 											},
 											"lastActiveMs": {
-												"description": "End of this Agent's last observed invocation in the Session, as Unix epoch milliseconds. Sessions are ordered by this value. Agent activity, not Trace end: work that continues in a Trace after the Agent returns is not included; per-run Trace times are on the Session runs endpoint.",
-												"type": "number"
+												"description": "End of the latest observed agent invocation in the session, as Unix epoch milliseconds. Sessions are ordered by this value.",
+												"type": "integer",
+												"minimum": 0
 											},
 											"models": {
-												"description": "Distinct models reported by chat spans.",
+												"description": "Distinct models reported by chat spans attributed to the session.",
 												"type": "array",
 												"items": {
 													"type": "string"
 												}
 											},
 											"outputTokens": {
-												"description": "Output tokens reported by the Session's chat spans; spans without usage are skipped, and the field is omitted when none report it.",
+												"description": "Sum of output tokens reported by chat spans attributed to the session. Omitted when no span reports output-token usage.",
 												"type": "number"
 											},
 											"providers": {
-												"description": "Distinct GenAI providers reported by chat spans.",
+												"description": "Distinct generative AI providers reported by chat spans attributed to the session.",
 												"type": "array",
 												"items": {
 													"type": "string"
 												}
 											},
-											"serviceName": {
-												"description": "Worker service that emitted the Session's Agent invocations.",
-												"type": "string"
-											},
 											"sessionDurationMs": {
-												"description": "Elapsed time from sessionStartMs to lastActiveMs.",
-												"type": "number"
+												"description": "Elapsed time from sessionStartMs to lastActiveMs, in milliseconds.",
+												"type": "integer",
+												"minimum": 0
 											},
 											"sessionStartMs": {
-												"description": "Start of this Agent's first observed invocation in the Session, as Unix epoch milliseconds. Agent activity, not Trace start.",
-												"type": "number"
-											},
-											"spanCount": {
-												"description": "Total spans across the Session's observed Traces.",
-												"type": "number"
+												"description": "Start of the earliest observed agent invocation in the session, as Unix epoch milliseconds.",
+												"type": "integer",
+												"minimum": 0
 											},
 											"status": {
-												"description": "Whether an error was observed; not a completeness or successful-completion guarantee.",
+												"description": "Observed status of agent invocation and chat spans attributed to the session. error means at least one span reported an error; observed_no_error means no error was observed. This does not guarantee that the session completed successfully.",
 												"type": "string",
 												"enum": [
 													"observed_no_error",
@@ -178,19 +167,17 @@
 												]
 											},
 											"traceCount": {
-												"description": "Distinct observed Traces in the window; not conversational Turns.",
-												"type": "number"
+												"description": "Number of distinct traces associated with the session during the requested time range.",
+												"type": "integer",
+												"minimum": 0
 											}
 										},
 										"required": [
 											"conversationId",
-											"serviceName",
-											"agentName",
 											"sessionStartMs",
 											"lastActiveMs",
 											"sessionDurationMs",
 											"traceCount",
-											"spanCount",
 											"status",
 											"models",
 											"providers"
@@ -201,6 +188,7 @@
 									"type": "object",
 									"properties": {
 										"count": {
+											"description": "Number of items returned on this page.",
 											"type": "integer",
 											"minimum": 0
 										},
@@ -208,6 +196,7 @@
 											"type": "object",
 											"properties": {
 												"after": {
+													"description": "Opaque cursor for the next page, or null when there are no more results.",
 													"type": "string",
 													"nullable": true
 												}
@@ -217,6 +206,7 @@
 											]
 										},
 										"per_page": {
+											"description": "Maximum number of items requested for this page.",
 											"type": "integer",
 											"minimum": 1
 										}
@@ -603,20 +593,21 @@
 				"x-fern-sdk-group-name": "o11y.agents.sessions",
 				"x-fern-sdk-method-name": "list"
 			}
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/workers/observability/agents/sessions/{conversationId}/runs": {
 		"operationId": "agents.sessions.runs.list",
 		"summary": "List Agent session runs",
-		"description": "List the Trace-level runs of one Session, newest invocation first. A run is a Trace containing an invocation of the Agent in the Conversation; the Agent need not own the Trace.",
+		"description": "Lists the traces associated with a session, ordered by most recent activity. The service and agent parameters must identify an agent that participated in the conversation. Results include every authorized trace containing an agent invocation in that conversation during the requested time range.",
 		"parameters": [
 			{
 				"name": "conversationId",
 				"in": "path",
-				"description": "GenAI conversation identifier (gen_ai.conversation.id) of the Session.",
+				"description": "OpenTelemetry gen_ai.conversation.id value that identifies the session.",
 				"required": true,
 				"schema": {
-					"description": "GenAI conversation identifier (gen_ai.conversation.id) of the Session.",
+					"description": "OpenTelemetry gen_ai.conversation.id value that identifies the session.",
 					"type": "string",
 					"maxLength": 512,
 					"minLength": 1
@@ -625,10 +616,10 @@
 			{
 				"name": "service",
 				"in": "query",
-				"description": "Worker service that emitted the Agent invocations.",
+				"description": "Worker service name associated with the participating agent.",
 				"required": true,
 				"schema": {
-					"description": "Worker service that emitted the Agent invocations.",
+					"description": "Worker service name associated with the participating agent.",
 					"type": "string",
 					"maxLength": 512,
 					"minLength": 1
@@ -637,10 +628,10 @@
 			{
 				"name": "agent",
 				"in": "query",
-				"description": "Agent name reported by the invocations (gen_ai.agent.name).",
+				"description": "Agent name reported in gen_ai.agent.name. The request is limited to conversations in which this service and agent participated.",
 				"required": true,
 				"schema": {
-					"description": "Agent name reported by the invocations (gen_ai.agent.name).",
+					"description": "Agent name reported in gen_ai.agent.name. The request is limited to conversations in which this service and agent participated.",
 					"type": "string",
 					"maxLength": 512,
 					"minLength": 1
@@ -649,10 +640,10 @@
 			{
 				"name": "from",
 				"in": "query",
-				"description": "Start of the window, as Unix epoch milliseconds. Clamped to the 7-day retention period.",
+				"description": "Start of the requested time range, as Unix epoch milliseconds. Values earlier than the 7-day retention boundary are clamped.",
 				"required": true,
 				"schema": {
-					"description": "Start of the window, as Unix epoch milliseconds. Clamped to the 7-day retention period.",
+					"description": "Start of the requested time range, as Unix epoch milliseconds. Values earlier than the 7-day retention boundary are clamped.",
 					"type": "integer",
 					"minimum": 0
 				}
@@ -660,10 +651,10 @@
 			{
 				"name": "to",
 				"in": "query",
-				"description": "End of the window, as Unix epoch milliseconds. Must be later than from.",
+				"description": "End of the requested time range, as Unix epoch milliseconds. Must be later than from.",
 				"required": true,
 				"schema": {
-					"description": "End of the window, as Unix epoch milliseconds. Must be later than from.",
+					"description": "End of the requested time range, as Unix epoch milliseconds. Must be later than from.",
 					"type": "integer",
 					"minimum": 0
 				}
@@ -671,9 +662,9 @@
 			{
 				"name": "cursor",
 				"in": "query",
-				"description": "Opaque cursor returned in result_info.cursors.after.",
+				"description": "Opaque cursor from result_info.cursors.after in the previous response.",
 				"schema": {
-					"description": "Opaque cursor returned in result_info.cursors.after.",
+					"description": "Opaque cursor from result_info.cursors.after in the previous response.",
 					"type": "string",
 					"maxLength": 2048,
 					"minLength": 1
@@ -682,7 +673,9 @@
 			{
 				"name": "per_page",
 				"in": "query",
+				"description": "Maximum number of items to return. Defaults to 20 and cannot exceed 100.",
 				"schema": {
+					"description": "Maximum number of items to return. Defaults to 20 and cannot exceed 100.",
 					"type": "integer",
 					"maximum": 100,
 					"minimum": 1
@@ -733,60 +726,53 @@
 									"items": {
 										"type": "object",
 										"properties": {
-											"agentId": {
-												"description": "ID from the earliest agent invocation that provides one.",
-												"type": "string"
-											},
-											"agentName": {
-												"description": "Name from the earliest agent invocation that provides one.",
-												"type": "string"
-											},
 											"conversationId": {
-												"description": "Conversation ID from the earliest invocation that provides one.",
+												"description": "OpenTelemetry gen_ai.conversation.id value that identifies the session containing the run.",
 												"type": "string"
 											},
 											"errors": {
-												"description": "Distinct errors reported by spans in the run.",
+												"description": "Distinct errors reported by the observed spans in the trace.",
 												"type": "array",
 												"items": {
 													"type": "string"
 												}
 											},
 											"inputTokens": {
-												"description": "Input tokens summed across chat spans in the run's trace; informational, not billing data.",
+												"description": "Sum of input tokens reported by chat spans attributed to the session within this trace. Omitted when none report input-token usage.",
 												"type": "number"
 											},
 											"models": {
-												"description": "Distinct models reported by chat spans across the run's trace.",
+												"description": "Distinct models reported by chat spans attributed to the session within this trace.",
 												"type": "array",
 												"items": {
 													"type": "string"
 												}
 											},
 											"outputTokens": {
-												"description": "Output tokens summed across chat spans in the run's trace; informational, not billing data.",
+												"description": "Sum of output tokens reported by chat spans attributed to the session within this trace. Omitted when none report output-token usage.",
 												"type": "number"
 											},
 											"providers": {
-												"description": "Distinct GenAI providers reported by chat spans in the run.",
+												"description": "Distinct generative AI providers reported by chat spans attributed to the session within this trace.",
 												"type": "array",
 												"items": {
 													"type": "string"
 												}
 											},
 											"services": {
-												"description": "Worker services represented in the run's trace.",
+												"description": "Distinct Worker services represented by the observed spans in the trace.",
 												"type": "array",
 												"items": {
 													"type": "string"
 												}
 											},
 											"spans": {
-												"description": "Number of spans in the run's trace.",
-												"type": "number"
+												"description": "Number of observed spans in the trace during the requested time range.",
+												"type": "integer",
+												"minimum": 0
 											},
 											"status": {
-												"description": "Observed run status.",
+												"description": "Observed trace status. error means at least one observed span reported an error; completed means no error was observed. This does not guarantee that the complete trace was observed.",
 												"type": "string",
 												"enum": [
 													"completed",
@@ -794,20 +780,23 @@
 												]
 											},
 											"traceDurationMs": {
-												"description": "Total trace duration in milliseconds.",
-												"type": "number"
+												"description": "Elapsed time from traceStartMs to traceEndMs, in milliseconds.",
+												"type": "integer",
+												"minimum": 0
 											},
 											"traceEndMs": {
-												"description": "End of the run's trace as a Unix epoch in milliseconds.",
-												"type": "number"
+												"description": "End of the latest observed span in the trace, as Unix epoch milliseconds.",
+												"type": "integer",
+												"minimum": 0
 											},
 											"traceId": {
-												"description": "Trace identifier for this agent run.",
+												"description": "Trace identifier for the run.",
 												"type": "string"
 											},
 											"traceStartMs": {
-												"description": "Start of the run's trace as a Unix epoch in milliseconds.",
-												"type": "number"
+												"description": "Start of the earliest observed span in the trace, as Unix epoch milliseconds.",
+												"type": "integer",
+												"minimum": 0
 											}
 										},
 										"required": [
@@ -820,7 +809,8 @@
 											"errors",
 											"status",
 											"models",
-											"providers"
+											"providers",
+											"conversationId"
 										]
 									}
 								},
@@ -828,6 +818,7 @@
 									"type": "object",
 									"properties": {
 										"count": {
+											"description": "Number of items returned on this page.",
 											"type": "integer",
 											"minimum": 0
 										},
@@ -835,6 +826,7 @@
 											"type": "object",
 											"properties": {
 												"after": {
+													"description": "Opaque cursor for the next page, or null when there are no more results.",
 													"type": "string",
 													"nullable": true
 												}
@@ -844,6 +836,7 @@
 											]
 										},
 										"per_page": {
+											"description": "Maximum number of items requested for this page.",
 											"type": "integer",
 											"minimum": 1
 										}
@@ -1236,6 +1229,7 @@
 				"positional": true,
 				"required": true
 			}
-		}
+		},
+		"x-stability": "beta"
 	}
 }

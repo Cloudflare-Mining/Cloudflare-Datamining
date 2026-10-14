@@ -489,7 +489,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.subnets.warp",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation permanently deletes a WARP IP subnet."
 	},
 	"GET /accounts/{account_id}/zerotrust/subnets": {
@@ -1177,8 +1176,495 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.subnets",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
+	},
+	"GET /accounts/{account_id}/zerotrust/subnets/cloudflare_source/{address_family}": {
+		"operationId": "zero-trust-networks-subnet-get-cloudflare-source",
+		"summary": "Get Cloudflare Source Subnet",
+		"description": "Returns the account's default Cloudflare Source subnet for the given address family.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID",
+					"type": "string",
+					"example": "699d98642c564d2e855e9661899b7252",
+					"maxLength": 32,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "address_family",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "IP address family, either `v4` (IPv4) or `v6` (IPv6)",
+					"type": "string",
+					"example": "v4",
+					"enum": [
+						"v4",
+						"v6"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Get Cloudflare Source Subnet response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"capacity": {
+													"description": "IP capacity information for the subnet.",
+													"type": "object",
+													"properties": {
+														"total": {
+															"description": "Total number of assignable IPs in the subnet.",
+															"type": "integer",
+															"example": 254
+														},
+														"used": {
+															"description": "Number of assigned IPs in the subnet.",
+															"type": "integer",
+															"example": 42
+														}
+													}
+												},
+												"comment": {
+													"description": "An optional description of the subnet.",
+													"type": "string",
+													"example": "example comment",
+													"default": "",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"created_at": {
+													"description": "Timestamp of when the resource was created.",
+													"type": "string",
+													"format": "date-time",
+													"example": "2021-01-25T18:22:34.317854Z",
+													"readOnly": true
+												},
+												"deleted_at": {
+													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
+													"type": "string",
+													"format": "date-time",
+													"example": "2009-11-10T23:00:00Z",
+													"readOnly": true
+												},
+												"id": {
+													"description": "The UUID of the subnet.",
+													"type": "string",
+													"format": "uuid",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"x-auditable": true
+												},
+												"is_default_network": {
+													"description": "If `true`, this is the default subnet for the account. There can only be one default subnet per account.",
+													"type": "boolean",
+													"default": false,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"name": {
+													"description": "A user-friendly name for the subnet.",
+													"type": "string",
+													"example": "IPv4 Cloudflare Source IPs",
+													"x-auditable": true
+												},
+												"network": {
+													"description": "The private IPv4 or IPv6 range defining the subnet, in CIDR notation.",
+													"type": "string",
+													"example": "100.64.0.0/12",
+													"x-auditable": true
+												},
+												"subnet_type": {
+													"description": "The type of subnet.",
+													"type": "string",
+													"example": "cloudflare_source",
+													"enum": [
+														"cloudflare_source",
+														"initial_resolved_ip",
+														"warp"
+													],
+													"x-auditable": true
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Get Cloudflare Source Subnet response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {
+																"type": "object"
+															},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object",
+													"properties": {
+														"capacity": {
+															"description": "IP capacity information for the subnet.",
+															"type": "object",
+															"properties": {
+																"total": {
+																	"description": "Total number of assignable IPs in the subnet.",
+																	"type": "integer",
+																	"example": 254
+																},
+																"used": {
+																	"description": "Number of assigned IPs in the subnet.",
+																	"type": "integer",
+																	"example": 42
+																}
+															}
+														},
+														"comment": {
+															"description": "An optional description of the subnet.",
+															"type": "string",
+															"example": "example comment",
+															"default": "",
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"created_at": {
+															"description": "Timestamp of when the resource was created.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2021-01-25T18:22:34.317854Z",
+															"readOnly": true
+														},
+														"deleted_at": {
+															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2009-11-10T23:00:00Z",
+															"readOnly": true
+														},
+														"id": {
+															"description": "The UUID of the subnet.",
+															"type": "string",
+															"format": "uuid",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+															"x-auditable": true
+														},
+														"is_default_network": {
+															"description": "If `true`, this is the default subnet for the account. There can only be one default subnet per account.",
+															"type": "boolean",
+															"default": false,
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"name": {
+															"description": "A user-friendly name for the subnet.",
+															"type": "string",
+															"example": "IPv4 Cloudflare Source IPs",
+															"x-auditable": true
+														},
+														"network": {
+															"description": "The private IPv4 or IPv6 range defining the subnet, in CIDR notation.",
+															"type": "string",
+															"example": "100.64.0.0/12",
+															"x-auditable": true
+														},
+														"subnet_type": {
+															"description": "The type of subnet.",
+															"type": "string",
+															"example": "cloudflare_source",
+															"enum": [
+																"cloudflare_source",
+																"initial_resolved_ip",
+																"warp"
+															],
+															"x-auditable": true
+														}
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
+			}
+		],
+		"tags": [
+			"Zero Trust Subnets"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "network.subnets.cloudflare-source",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/zerotrust/subnets/initial_resolved_ip/{address_family}": {
 		"operationId": "zero-trust-networks-subnet-get-initial-resolved-ip",
@@ -1670,8 +2156,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.subnets.initial-resolved-ip",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/zerotrust/subnets/warp/{subnet_id}": {
 		"operationId": "zero-trust-networks-subnet-get-warp",
@@ -2161,8 +2646,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.subnets.warp",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/zerotrust/subnets/cloudflare_source/{address_family}": {
 		"operationId": "zero-trust-networks-subnet-update-cloudflare-source",
@@ -2685,8 +3169,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.subnets.cloudflare-source",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"PATCH /accounts/{account_id}/zerotrust/subnets/warp/{subnet_id}": {
 		"operationId": "zero-trust-networks-subnet-update-warp",
@@ -3214,8 +3697,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.subnets.warp",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/zerotrust/subnets/warp": {
 		"operationId": "zero-trust-networks-subnet-create-warp",
@@ -3735,8 +4217,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.subnets.warp",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/zerotrust/subnets/initial_resolved_ip/{address_family}": {
 		"operationId": "zero-trust-networks-subnet-update-initial-resolved-ip",
@@ -4256,7 +4737,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.subnets.initial-resolved-ip",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	}
 }

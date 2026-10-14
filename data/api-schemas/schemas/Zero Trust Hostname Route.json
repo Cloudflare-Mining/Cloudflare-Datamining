@@ -482,7 +482,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.routes.hostname",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation permanently deletes a hostname route."
 	},
 	"GET /accounts/{account_id}/zerotrust/routes/hostname": {
@@ -1131,8 +1130,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.routes.hostname",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/zerotrust/routes/hostname/{hostname_route_id}": {
 		"operationId": "zero-trust-networks-route-hostname-get",
@@ -1618,8 +1616,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.routes.hostname",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/zerotrust/routes/hostname/{hostname_route_id}": {
 		"operationId": "zero-trust-networks-route-hostname-update",
@@ -2135,8 +2132,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.routes.hostname",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/zerotrust/routes/hostname": {
 		"operationId": "zero-trust-networks-route-hostname-create",
@@ -2640,7 +2636,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.routes.hostname",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

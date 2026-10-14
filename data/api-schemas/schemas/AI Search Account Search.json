@@ -183,14 +183,14 @@
 												]
 											},
 											"match_threshold": {
+												"description": "Minimum score a chunk must reach to be returned. When omitted, each instance's chunks are filtered by that instance's score_threshold, capped at the lower of the first instance's score_threshold and 0.4.",
 												"type": "number",
-												"default": 0.4,
 												"maximum": 1,
 												"minimum": 0
 											},
 											"max_num_results": {
+												"description": "Maximum number of merged results to return. When omitted, defaults to the first instance's max_num_results, then 10.",
 												"type": "integer",
-												"default": 10,
 												"maximum": 50,
 												"minimum": 1
 											},
@@ -1121,14 +1121,14 @@
 												]
 											},
 											"match_threshold": {
+												"description": "Minimum score a chunk must reach to be returned. When omitted, each instance's chunks are filtered by that instance's score_threshold, capped at 0.4.",
 												"type": "number",
-												"default": 0.4,
 												"maximum": 1,
 												"minimum": 0
 											},
 											"max_num_results": {
+												"description": "Maximum number of merged results to return. When omitted, defaults to the sum of the searched instances' max_num_results (each falling back to 10), up to 50.",
 												"type": "integer",
-												"default": 10,
 												"maximum": 50,
 												"minimum": 1
 											},

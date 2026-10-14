@@ -273,7 +273,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.videos.audio-tracks",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "Permanently delete this audio track?"
 	},
 	"GET /accounts/{account_id}/stream/{identifier}/audio": {
@@ -578,8 +577,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.videos.audio-tracks",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"PATCH /accounts/{account_id}/stream/{identifier}/audio/{audio_identifier}": {
 		"operationId": "edit-audio-tracks",
@@ -909,8 +907,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.videos.audio-tracks",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/stream/{identifier}/audio/copy": {
 		"operationId": "add-audio-track",
@@ -1229,7 +1226,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.videos.audio-tracks",
-		"x-fern-sdk-method-name": "copy",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "copy"
 	}
 }

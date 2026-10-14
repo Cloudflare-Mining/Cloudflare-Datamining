@@ -339,7 +339,7 @@
 								"type": "string"
 							},
 							{
-								"pattern": "^action:(on|off|allow|block|scan|noscan|safesearch|ytrestricted|isolate|noisolate|override|l4_override|audit_ssh|egress|resolve|quarantine|redirect|custom)$",
+								"pattern": "^action:(on|off|allow|block|scan|noscan|safesearch|ytrestricted|isolate|noisolate|override|l4_override|egress|resolve|quarantine|redirect|custom)$",
 								"type": "string"
 							},
 							{
@@ -703,20 +703,6 @@
 																"example": false,
 																"nullable": true,
 																"x-auditable": true,
-																"x-stainless-terraform-configurability": "optional"
-															},
-															"audit_ssh": {
-																"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
-																"type": "object",
-																"nullable": true,
-																"properties": {
-																	"command_logging": {
-																		"description": "Enable SSH command logging.",
-																		"type": "boolean",
-																		"example": false,
-																		"x-auditable": true
-																	}
-																},
 																"x-stainless-terraform-configurability": "optional"
 															},
 															"biso_admin_controls": {
@@ -1694,20 +1680,6 @@
 																		"example": false,
 																		"nullable": true,
 																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "optional"
-																	},
-																	"audit_ssh": {
-																		"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
-																		"type": "object",
-																		"nullable": true,
-																		"properties": {
-																			"command_logging": {
-																				"description": "Enable SSH command logging.",
-																				"type": "boolean",
-																				"example": false,
-																				"x-auditable": true
-																			}
-																		},
 																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"biso_admin_controls": {
@@ -2783,20 +2755,6 @@
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "optional"
 														},
-														"audit_ssh": {
-															"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
-															"type": "object",
-															"nullable": true,
-															"properties": {
-																"command_logging": {
-																	"description": "Enable SSH command logging.",
-																	"type": "boolean",
-																	"example": false,
-																	"x-auditable": true
-																}
-															},
-															"x-stainless-terraform-configurability": "optional"
-														},
 														"biso_admin_controls": {
 															"description": "Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.",
 															"type": "object",
@@ -3738,20 +3696,6 @@
 																	"example": false,
 																	"nullable": true,
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "optional"
-																},
-																"audit_ssh": {
-																	"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
-																	"type": "object",
-																	"nullable": true,
-																	"properties": {
-																		"command_logging": {
-																			"description": "Enable SSH command logging.",
-																			"type": "boolean",
-																			"example": false,
-																			"x-auditable": true
-																		}
-																	},
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"biso_admin_controls": {
@@ -4845,20 +4789,6 @@
 																"x-auditable": true,
 																"x-stainless-terraform-configurability": "optional"
 															},
-															"audit_ssh": {
-																"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
-																"type": "object",
-																"nullable": true,
-																"properties": {
-																	"command_logging": {
-																		"description": "Enable SSH command logging.",
-																		"type": "boolean",
-																		"example": false,
-																		"x-auditable": true
-																	}
-																},
-																"x-stainless-terraform-configurability": "optional"
-															},
 															"biso_admin_controls": {
 																"description": "Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.",
 																"type": "object",
@@ -5834,20 +5764,6 @@
 																		"example": false,
 																		"nullable": true,
 																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "optional"
-																	},
-																	"audit_ssh": {
-																		"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
-																		"type": "object",
-																		"nullable": true,
-																		"properties": {
-																			"command_logging": {
-																				"description": "Enable SSH command logging.",
-																				"type": "boolean",
-																				"example": false,
-																				"x-auditable": true
-																			}
-																		},
 																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"biso_admin_controls": {
@@ -6993,20 +6909,6 @@
 																"x-auditable": true,
 																"x-stainless-terraform-configurability": "optional"
 															},
-															"audit_ssh": {
-																"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
-																"type": "object",
-																"nullable": true,
-																"properties": {
-																	"command_logging": {
-																		"description": "Enable SSH command logging.",
-																		"type": "boolean",
-																		"example": false,
-																		"x-auditable": true
-																	}
-																},
-																"x-stainless-terraform-configurability": "optional"
-															},
 															"biso_admin_controls": {
 																"description": "Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.",
 																"type": "object",
@@ -7979,20 +7881,6 @@
 																		"example": false,
 																		"nullable": true,
 																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "optional"
-																	},
-																	"audit_ssh": {
-																		"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
-																		"type": "object",
-																		"nullable": true,
-																		"properties": {
-																			"command_logging": {
-																				"description": "Enable SSH command logging.",
-																				"type": "boolean",
-																				"example": false,
-																				"x-auditable": true
-																			}
-																		},
 																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"biso_admin_controls": {
@@ -9106,20 +8994,6 @@
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "optional"
 														},
-														"audit_ssh": {
-															"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
-															"type": "object",
-															"nullable": true,
-															"properties": {
-																"command_logging": {
-																	"description": "Enable SSH command logging.",
-																	"type": "boolean",
-																	"example": false,
-																	"x-auditable": true
-																}
-															},
-															"x-stainless-terraform-configurability": "optional"
-														},
 														"biso_admin_controls": {
 															"description": "Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.",
 															"type": "object",
@@ -10059,20 +9933,6 @@
 																	"example": false,
 																	"nullable": true,
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "optional"
-																},
-																"audit_ssh": {
-																	"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
-																	"type": "object",
-																	"nullable": true,
-																	"properties": {
-																		"command_logging": {
-																			"description": "Enable SSH command logging.",
-																			"type": "boolean",
-																			"example": false,
-																			"x-auditable": true
-																		}
-																	},
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"biso_admin_controls": {
@@ -11035,20 +10895,6 @@
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "optional"
 									},
-									"audit_ssh": {
-										"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
-										"type": "object",
-										"nullable": true,
-										"properties": {
-											"command_logging": {
-												"description": "Enable SSH command logging.",
-												"type": "boolean",
-												"example": false,
-												"x-auditable": true
-											}
-										},
-										"x-stainless-terraform-configurability": "optional"
-									},
 									"biso_admin_controls": {
 										"description": "Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.",
 										"type": "object",
@@ -11942,20 +11788,6 @@
 															"example": false,
 															"nullable": true,
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "optional"
-														},
-														"audit_ssh": {
-															"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
-															"type": "object",
-															"nullable": true,
-															"properties": {
-																"command_logging": {
-																	"description": "Enable SSH command logging.",
-																	"type": "boolean",
-																	"example": false,
-																	"x-auditable": true
-																}
-															},
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"biso_admin_controls": {
@@ -12900,20 +12732,6 @@
 																	"example": false,
 																	"nullable": true,
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "optional"
-																},
-																"audit_ssh": {
-																	"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
-																	"type": "object",
-																	"nullable": true,
-																	"properties": {
-																		"command_logging": {
-																			"description": "Enable SSH command logging.",
-																			"type": "boolean",
-																			"example": false,
-																			"x-auditable": true
-																		}
-																	},
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"biso_admin_controls": {
@@ -13988,20 +13806,6 @@
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "optional"
 														},
-														"audit_ssh": {
-															"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
-															"type": "object",
-															"nullable": true,
-															"properties": {
-																"command_logging": {
-																	"description": "Enable SSH command logging.",
-																	"type": "boolean",
-																	"example": false,
-																	"x-auditable": true
-																}
-															},
-															"x-stainless-terraform-configurability": "optional"
-														},
 														"biso_admin_controls": {
 															"description": "Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.",
 															"type": "object",
@@ -14941,20 +14745,6 @@
 																	"example": false,
 																	"nullable": true,
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "optional"
-																},
-																"audit_ssh": {
-																	"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
-																	"type": "object",
-																	"nullable": true,
-																	"properties": {
-																		"command_logging": {
-																			"description": "Enable SSH command logging.",
-																			"type": "boolean",
-																			"example": false,
-																			"x-auditable": true
-																		}
-																	},
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"biso_admin_controls": {
@@ -15929,20 +15719,6 @@
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "optional"
 									},
-									"audit_ssh": {
-										"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
-										"type": "object",
-										"nullable": true,
-										"properties": {
-											"command_logging": {
-												"description": "Enable SSH command logging.",
-												"type": "boolean",
-												"example": false,
-												"x-auditable": true
-											}
-										},
-										"x-stainless-terraform-configurability": "optional"
-									},
 									"biso_admin_controls": {
 										"description": "Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.",
 										"type": "object",
@@ -16836,20 +16612,6 @@
 															"example": false,
 															"nullable": true,
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "optional"
-														},
-														"audit_ssh": {
-															"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
-															"type": "object",
-															"nullable": true,
-															"properties": {
-																"command_logging": {
-																	"description": "Enable SSH command logging.",
-																	"type": "boolean",
-																	"example": false,
-																	"x-auditable": true
-																}
-															},
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"biso_admin_controls": {
@@ -17793,20 +17555,6 @@
 																	"example": false,
 																	"nullable": true,
 																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "optional"
-																},
-																"audit_ssh": {
-																	"description": "Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.",
-																	"type": "object",
-																	"nullable": true,
-																	"properties": {
-																		"command_logging": {
-																			"description": "Enable SSH command logging.",
-																			"type": "boolean",
-																			"example": false,
-																			"x-auditable": true
-																		}
-																	},
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"biso_admin_controls": {

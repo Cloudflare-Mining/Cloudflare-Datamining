@@ -124,7 +124,7 @@
 	"DELETE /subscriptions/{subscription_id}": {
 		"operationId": "deleteK2SubscriptionsBySubscription_id",
 		"summary": "Delete subscription",
-		"description": "Delete a subscription and its position in the stream. Requires an API token with K2 consume permission.",
+		"description": "Send to the stream's `endpoint`, `https://<stream_id>.k2.cloudflarestorage.com`. Delete a subscription and its position in the stream. Requires an API token with K2 consume permission.",
 		"parameters": [
 			{
 				"name": "subscription_id",
@@ -351,7 +351,7 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "k2.streams.subscriptions",
+		"x-fern-sdk-group-name": "k2.data.consume.subscriptions",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/k2/streams": {
@@ -881,7 +881,7 @@
 	},
 	"GET /accounts/{account_id}/k2/streams/{stream_id}/subscriptions": {
 		"operationId": "getV4AccountsByAccount_idK2StreamsByStream_idSubscriptions",
-		"summary": "List K2 stream subscriptions",
+		"summary": "List subscriptions with consumer lag",
 		"description": "Lists every subscription on one stream, oldest first. Lag uses committed positions, not reserved read positions. A failed tail observation preserves subscription metadata and returns unavailable lag.",
 		"parameters": [
 			{
@@ -1068,10 +1068,274 @@
 		"x-fern-sdk-group-name": "k2.streams.subscriptions",
 		"x-fern-sdk-method-name": "list"
 	},
+	"GET /subscriptions": {
+		"operationId": "getK2Subscriptions",
+		"summary": "List subscriptions",
+		"description": "Send to the stream's `endpoint`, `https://<stream_id>.k2.cloudflarestorage.com`. List the subscriptions on the stream, oldest first. Requires an API token with K2 consume permission. To also see each subscription's consumer lag, use List subscriptions with consumer lag.",
+		"parameters": [
+			{
+				"name": "name",
+				"in": "query",
+				"description": "Filters by the exact subscription name, so the list has at most one subscription.",
+				"schema": {
+					"type": "string",
+					"pattern": "^[A-Za-z0-9_-]{1,128}$"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Indicates the stream's subscriptions, oldest first.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"created_at": {
+												"type": "string",
+												"format": "date-time"
+											},
+											"id": {
+												"description": "Specifies the ID of the subscription.",
+												"type": "string",
+												"example": "7c1e9b2a4d6f4e8a9b0c1d2e3f4a5b6c",
+												"pattern": "^[a-f0-9]{32}$"
+											},
+											"modified_at": {
+												"type": "string",
+												"format": "date-time"
+											},
+											"name": {
+												"type": "string"
+											},
+											"start_at": {
+												"type": "object",
+												"properties": {
+													"type": {
+														"type": "string",
+														"enum": [
+															"earliest",
+															"latest"
+														]
+													}
+												},
+												"required": [
+													"type"
+												]
+											}
+										},
+										"required": [
+											"id",
+											"name",
+											"start_at",
+											"created_at",
+											"modified_at"
+										]
+									}
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Indicates an invalid name filter, a missing stream, or failed authorization.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Indicates a server error. Retry with backoff when the error is retryable.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"workers_k2_other"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "k2.data.consume.subscriptions",
+		"x-fern-sdk-method-name": "list"
+	},
 	"GET /subscriptions/{subscription_id}": {
 		"operationId": "getK2SubscriptionsBySubscription_id",
 		"summary": "Get subscription",
-		"description": "Get a subscription. Requires an API token with K2 consume permission.",
+		"description": "Send to the stream's `endpoint`, `https://<stream_id>.k2.cloudflarestorage.com`. Get a subscription. Requires an API token with K2 consume permission.",
 		"parameters": [
 			{
 				"name": "subscription_id",
@@ -1328,7 +1592,7 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "k2.streams.subscriptions",
+		"x-fern-sdk-group-name": "k2.data.consume.subscriptions",
 		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/k2/streams/{stream_id}": {
@@ -2081,7 +2345,7 @@
 	"POST /produce": {
 		"operationId": "postK2Produce",
 		"summary": "Produce records",
-		"description": "Appends a batch of records to the stream. The batch is written atomically, so either every record is stored or none are. Requests are limited to 5 MB, compressed and decompressed, and each record to 1 MB. Gzip bodies are accepted when `Content-Encoding` is `gzip`. Requires an API token with K2 produce permission unless the stream's HTTP input sets `authentication` to false. Errors use a `success` and `error` body instead of the `errors` array.",
+		"description": "Send to the stream's `endpoint`, `https://<stream_id>.k2.cloudflarestorage.com`. Appends a batch of records to the stream. The batch is written atomically, so either every record is stored or none are. Requests are limited to 5 MB, compressed and decompressed, and each record to 1 MB. Gzip bodies are accepted when `Content-Encoding` is `gzip`. Requires an API token with K2 produce permission unless the stream's HTTP input sets `authentication` to false. Errors use a `success` and `error` body instead of the `errors` array.",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -2241,8 +2505,7 @@
 		"security": [
 			{
 				"api_token": []
-			},
-			{}
+			}
 		],
 		"tags": [
 			"workers_k2_other"
@@ -2255,13 +2518,13 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "k2.streams",
-		"x-fern-sdk-method-name": "produce"
+		"x-fern-sdk-group-name": "k2.data.produce",
+		"x-fern-sdk-method-name": "records"
 	},
 	"POST /subscriptions": {
 		"operationId": "postK2Subscriptions",
 		"summary": "Create subscription",
-		"description": "Create a subscription, which reads the stream from its own position. Creating a subscription with an existing name returns the existing subscription. A stream can have up to 100 subscriptions. Requires an API token with K2 consume permission.",
+		"description": "Send to the stream's `endpoint`, `https://<stream_id>.k2.cloudflarestorage.com`. Create a subscription, which reads the stream from its own position. Creating a subscription with an existing name returns the existing subscription. A stream can have up to 100 subscriptions. Requires an API token with K2 consume permission.",
 		"requestBody": {
 			"required": true,
 			"content": {
@@ -2515,13 +2778,13 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "k2.streams.subscriptions",
+		"x-fern-sdk-group-name": "k2.data.consume.subscriptions",
 		"x-fern-sdk-method-name": "create"
 	},
 	"POST /subscriptions/{subscription_id}/batches/{batch_id}/ack": {
 		"operationId": "postK2SubscriptionsBySubscription_idBatchesByBatch_idAck",
 		"summary": "Acknowledge batch",
-		"description": "Confirm that the worker processed a batch, so K2 does not deliver it again. Acknowledging an unknown, already acknowledged, or reassigned batch also succeeds. Requires an API token with K2 consume permission.",
+		"description": "Send to the stream's `endpoint`, `https://<stream_id>.k2.cloudflarestorage.com`. Confirm that the worker processed a batch, so K2 does not deliver it again. Acknowledging an unknown, already acknowledged, or reassigned batch also succeeds. Requires an API token with K2 consume permission.",
 		"parameters": [
 			{
 				"name": "subscription_id",
@@ -2771,13 +3034,13 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "k2.streams.subscriptions.batches",
+		"x-fern-sdk-group-name": "k2.data.consume.batches",
 		"x-fern-sdk-method-name": "ack"
 	},
 	"POST /subscriptions/{subscription_id}/batches/{batch_id}/extend": {
 		"operationId": "postK2SubscriptionsBySubscription_idBatchesByBatch_idExtend",
 		"summary": "Extend batch lease",
-		"description": "Extend the lease on a batch the worker still holds to 5 minutes from now. Returns 409 with code 10218 when the worker no longer holds the lease; stop processing the batch and call Consume again. Requires an API token with K2 consume permission.",
+		"description": "Send to the stream's `endpoint`, `https://<stream_id>.k2.cloudflarestorage.com`. Extend the lease on a batch the worker still holds to 5 minutes from now. Returns 409 with code 10218 when the worker no longer holds the lease; stop processing the batch and call Consume again. Requires an API token with K2 consume permission.",
 		"parameters": [
 			{
 				"name": "subscription_id",
@@ -3037,13 +3300,13 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "k2.streams.subscriptions.batches",
+		"x-fern-sdk-group-name": "k2.data.consume.batches",
 		"x-fern-sdk-method-name": "extend"
 	},
 	"POST /subscriptions/{subscription_id}/batches/{batch_id}/nack": {
 		"operationId": "postK2SubscriptionsBySubscription_idBatchesByBatch_idNack",
 		"summary": "Release batch",
-		"description": "Returns a batch to the subscription for redelivery. The next Consume request from any worker receives them under a new `batch_id`. Releasing an unknown or already settled batch also succeeds. Requires an API token with K2 consume permission.",
+		"description": "Send to the stream's `endpoint`, `https://<stream_id>.k2.cloudflarestorage.com`. Returns a batch to the subscription for redelivery. The next Consume request from any worker receives them under a new `batch_id`. Releasing an unknown or already settled batch also succeeds. Requires an API token with K2 consume permission.",
 		"parameters": [
 			{
 				"name": "subscription_id",
@@ -3293,13 +3556,13 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "k2.streams.subscriptions.batches",
+		"x-fern-sdk-group-name": "k2.data.consume.batches",
 		"x-fern-sdk-method-name": "nack"
 	},
 	"POST /subscriptions/{subscription_id}/consume": {
 		"operationId": "postK2SubscriptionsBySubscription_idConsume",
 		"summary": "Consume records",
-		"description": "Returns the next batch of records and leases it to the worker for 5 minutes. ACK the batch after processing it, NACK it to have it redelivered, or extend the lease if processing takes longer. When no records are available, the response has no records and a null `batch_id`. Returns 429 with code 10216 when every parallel read slot for the subscription is leased, and 409 with code 10217 while this worker has a read in progress; retry both. Requires an API token with K2 consume permission.",
+		"description": "Send to the stream's `endpoint`, `https://<stream_id>.k2.cloudflarestorage.com`. Returns the next batch of records and leases it to the worker for 5 minutes. ACK the batch after processing it, NACK it to have it redelivered, or extend the lease if processing takes longer. When no records are available, the response has no records and a null `batch_id`. Returns 429 with code 10216 when every parallel read slot for the subscription is leased, and 409 with code 10217 while this worker has a read in progress; retry both. Requires an API token with K2 consume permission.",
 		"parameters": [
 			{
 				"name": "subscription_id",
@@ -3595,7 +3858,7 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "k2.streams.subscriptions",
-		"x-fern-sdk-method-name": "consume"
+		"x-fern-sdk-group-name": "k2.data.consume",
+		"x-fern-sdk-method-name": "records"
 	}
 }

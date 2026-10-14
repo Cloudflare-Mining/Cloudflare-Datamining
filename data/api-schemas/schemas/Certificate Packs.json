@@ -400,8 +400,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ssl.certificate-packs",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /zones/{zone_id}/ssl/certificate_packs": {
 		"operationId": "certificate-packs-list-certificate-packs",
@@ -1635,8 +1634,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ssl.certificate-packs",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/ssl/certificate_packs/{certificate_pack_id}": {
 		"operationId": "certificate-packs-get-certificate-pack",
@@ -2761,8 +2759,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ssl.certificate-packs",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/ssl/certificate_packs/quota": {
 		"operationId": "certificate-packs-get-certificate-pack-quotas",
@@ -3169,8 +3166,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ssl.certificate-packs.quota",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /zones/{zone_id}/ssl/certificate_packs/{certificate_pack_id}": {
 		"operationId": "certificate-packs-restart-validation-for-advanced-certificate-manager-certificate-pack",
@@ -4313,8 +4309,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ssl.certificate-packs",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /zones/{zone_id}/ssl/certificate_packs/order": {
 		"operationId": "certificate-packs-order-advanced-certificate-manager-certificate-pack",
@@ -5509,7 +5504,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ssl.certificate-packs",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

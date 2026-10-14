@@ -421,8 +421,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-certificates",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /zones/{zone_id}/certificate_authorities/hostname_associations": {
 		"operationId": "client-certificate-for-a-zone-list-hostname-associations",
@@ -712,8 +711,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "certificate-authorities.hostname-associations",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/client_certificates": {
 		"operationId": "client-certificate-for-a-zone-list-client-certificates",
@@ -1221,8 +1219,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-certificates",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/client_certificates/{client_certificate_id}": {
 		"operationId": "client-certificate-for-a-zone-client-certificate-details",
@@ -1647,8 +1644,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-certificates",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /zones/{zone_id}/client_certificates/{client_certificate_id}": {
 		"operationId": "client-certificate-for-a-zone-edit-client-certificate",
@@ -2088,8 +2084,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-certificates",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /zones/{zone_id}/client_certificates": {
 		"operationId": "client-certificate-for-a-zone-create-client-certificate",
@@ -2771,8 +2766,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-certificates",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /zones/{zone_id}/certificate_authorities/hostname_associations": {
 		"operationId": "client-certificate-for-a-zone-put-hostname-associations",
@@ -3073,7 +3067,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "certificate-authorities.hostname-associations",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

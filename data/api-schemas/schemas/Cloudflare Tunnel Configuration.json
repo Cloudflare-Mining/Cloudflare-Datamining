@@ -565,8 +565,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels.config",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/warp_connector/{tunnel_id}/configurations": {
 		"operationId": "cloudflare-tunnel-configuration-get-warp-connector-configuration",
@@ -955,8 +954,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mesh.nodes.configurations",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PUT /accounts/{account_id}/cfd_tunnel/{tunnel_id}/configurations": {
 		"operationId": "cloudflare-tunnel-configuration-put-configuration",
@@ -997,255 +995,260 @@
 						"type": "object",
 						"properties": {
 							"config": {
-								"description": "The tunnel configuration and ingress rules.",
-								"type": "object",
-								"properties": {
-									"ingress": {
-										"description": "List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.",
-										"type": "array",
-										"items": {
-											"description": "Public hostname",
-											"type": "object",
-											"properties": {
-												"hostname": {
-													"description": "Public hostname for this service.",
-													"type": "string",
-													"example": "tunnel.example.com"
-												},
-												"originRequest": {
-													"description": "Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.",
+								"allOf": [
+									{
+										"description": "The tunnel configuration and ingress rules.",
+										"type": "object",
+										"properties": {
+											"ingress": {
+												"description": "List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.",
+												"type": "array",
+												"items": {
+													"description": "Public hostname",
 													"type": "object",
 													"properties": {
-														"access": {
-															"description": "For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.",
+														"hostname": {
+															"description": "Public hostname for this service.",
+															"type": "string",
+															"example": "tunnel.example.com"
+														},
+														"originRequest": {
+															"description": "Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.",
 															"type": "object",
 															"properties": {
-																"audTag": {
-																	"description": "Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.",
-																	"type": "array",
-																	"items": {
-																		"type": "string"
+																"access": {
+																	"description": "For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.",
+																	"type": "object",
+																	"properties": {
+																		"audTag": {
+																			"description": "Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.",
+																			"type": "array",
+																			"items": {
+																				"type": "string"
+																			}
+																		},
+																		"required": {
+																			"description": "Deny traffic that has not fulfilled Access authorization.",
+																			"type": "boolean",
+																			"example": false
+																		},
+																		"teamName": {
+																			"type": "string",
+																			"example": "zero-trust-organization-name"
+																		}
+																	},
+																	"required": [
+																		"audTag",
+																		"teamName"
+																	]
+																},
+																"caPool": {
+																	"description": "Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.",
+																	"type": "string"
+																},
+																"connectTimeout": {
+																	"description": "Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.",
+																	"type": "integer",
+																	"example": 10
+																},
+																"disableChunkedEncoding": {
+																	"description": "Disables chunked transfer encoding. Useful if you are running a WSGI server.",
+																	"type": "boolean"
+																},
+																"http2Origin": {
+																	"description": "Attempt to connect to origin using HTTP2. Origin must be configured as https.",
+																	"type": "boolean"
+																},
+																"httpHostHeader": {
+																	"description": "Sets the HTTP Host header on requests sent to the local service.",
+																	"type": "string"
+																},
+																"keepAliveConnections": {
+																	"description": "Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.",
+																	"type": "integer",
+																	"example": 100
+																},
+																"keepAliveTimeout": {
+																	"description": "Timeout after which an idle keepalive connection can be discarded.",
+																	"type": "integer",
+																	"example": 90
+																},
+																"matchSNItoHost": {
+																	"description": "Auto configure the Hostname on the origin server certificate.",
+																	"type": "boolean",
+																	"example": false,
+																	"x-stainless-naming": {
+																		"python": {
+																			"name": "match_sni_to_host"
+																		}
 																	}
 																},
-																"required": {
-																	"description": "Deny traffic that has not fulfilled Access authorization.",
+																"noHappyEyeballs": {
+																	"description": "Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.",
 																	"type": "boolean",
 																	"example": false
 																},
-																"teamName": {
-																	"type": "string",
-																	"example": "zero-trust-organization-name"
-																}
-															},
-															"required": [
-																"audTag",
-																"teamName"
-															]
-														},
-														"caPool": {
-															"description": "Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.",
-															"type": "string"
-														},
-														"connectTimeout": {
-															"description": "Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.",
-															"type": "integer",
-															"example": 10
-														},
-														"disableChunkedEncoding": {
-															"description": "Disables chunked transfer encoding. Useful if you are running a WSGI server.",
-															"type": "boolean"
-														},
-														"http2Origin": {
-															"description": "Attempt to connect to origin using HTTP2. Origin must be configured as https.",
-															"type": "boolean"
-														},
-														"httpHostHeader": {
-															"description": "Sets the HTTP Host header on requests sent to the local service.",
-															"type": "string"
-														},
-														"keepAliveConnections": {
-															"description": "Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.",
-															"type": "integer",
-															"example": 100
-														},
-														"keepAliveTimeout": {
-															"description": "Timeout after which an idle keepalive connection can be discarded.",
-															"type": "integer",
-															"example": 90
-														},
-														"matchSNItoHost": {
-															"description": "Auto configure the Hostname on the origin server certificate.",
-															"type": "boolean",
-															"example": false,
-															"x-stainless-naming": {
-																"python": {
-																	"name": "match_sni_to_host"
+																"noTLSVerify": {
+																	"description": "Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.",
+																	"type": "boolean",
+																	"example": false
+																},
+																"originServerName": {
+																	"description": "Hostname that cloudflared should expect from your origin server certificate.",
+																	"type": "string"
+																},
+																"proxyType": {
+																	"description": "cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: \"\" for the regular proxy and \"socks\" for a SOCKS5 proxy.\n",
+																	"type": "string"
+																},
+																"tcpKeepAlive": {
+																	"description": "The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.",
+																	"type": "integer",
+																	"example": 30
+																},
+																"tlsTimeout": {
+																	"description": "Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.",
+																	"type": "integer",
+																	"example": 10
 																}
 															}
 														},
-														"noHappyEyeballs": {
-															"description": "Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.",
-															"type": "boolean",
-															"example": false
+														"path": {
+															"description": "Requests with this path route to this public hostname.",
+															"type": "string",
+															"example": "subpath"
 														},
-														"noTLSVerify": {
-															"description": "Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.",
-															"type": "boolean",
-															"example": false
-														},
-														"originServerName": {
-															"description": "Hostname that cloudflared should expect from your origin server certificate.",
-															"type": "string"
-														},
-														"proxyType": {
-															"description": "cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: \"\" for the regular proxy and \"socks\" for a SOCKS5 proxy.\n",
-															"type": "string"
-														},
-														"tcpKeepAlive": {
-															"description": "The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.",
-															"type": "integer",
-															"example": 30
-														},
-														"tlsTimeout": {
-															"description": "Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.",
-															"type": "integer",
-															"example": 10
-														}
-													}
-												},
-												"path": {
-													"description": "Requests with this path route to this public hostname.",
-													"type": "string",
-													"example": "subpath"
-												},
-												"service": {
-													"description": "Protocol and address of destination server. Supported protocols: http://, https://, unix://, tcp://, ssh://, rdp://, unix+tls://, smb://. Alternatively can return a HTTP status code http_status:[code] e.g. 'http_status:404'.\n",
-													"type": "string",
-													"example": "https://localhost:8001"
-												}
-											},
-											"required": [
-												"hostname",
-												"service"
-											]
-										},
-										"minItems": 1
-									},
-									"originRequest": {
-										"description": "Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.",
-										"type": "object",
-										"properties": {
-											"access": {
-												"description": "For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.",
-												"type": "object",
-												"properties": {
-													"audTag": {
-														"description": "Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.",
-														"type": "array",
-														"items": {
-															"type": "string"
+														"service": {
+															"description": "Protocol and address of destination server. Supported protocols: http://, https://, unix://, tcp://, ssh://, rdp://, unix+tls://, smb://. Alternatively can return a HTTP status code http_status:[code] e.g. 'http_status:404'.\n",
+															"type": "string",
+															"example": "https://localhost:8001"
 														}
 													},
-													"required": {
-														"description": "Deny traffic that has not fulfilled Access authorization.",
+													"required": [
+														"hostname",
+														"service"
+													]
+												},
+												"minItems": 1
+											},
+											"originRequest": {
+												"description": "Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.",
+												"type": "object",
+												"properties": {
+													"access": {
+														"description": "For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.",
+														"type": "object",
+														"properties": {
+															"audTag": {
+																"description": "Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.",
+																"type": "array",
+																"items": {
+																	"type": "string"
+																}
+															},
+															"required": {
+																"description": "Deny traffic that has not fulfilled Access authorization.",
+																"type": "boolean",
+																"example": false
+															},
+															"teamName": {
+																"type": "string",
+																"example": "zero-trust-organization-name"
+															}
+														},
+														"required": [
+															"audTag",
+															"teamName"
+														]
+													},
+													"caPool": {
+														"description": "Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.",
+														"type": "string"
+													},
+													"connectTimeout": {
+														"description": "Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.",
+														"type": "integer",
+														"example": 10
+													},
+													"disableChunkedEncoding": {
+														"description": "Disables chunked transfer encoding. Useful if you are running a WSGI server.",
+														"type": "boolean"
+													},
+													"http2Origin": {
+														"description": "Attempt to connect to origin using HTTP2. Origin must be configured as https.",
+														"type": "boolean"
+													},
+													"httpHostHeader": {
+														"description": "Sets the HTTP Host header on requests sent to the local service.",
+														"type": "string"
+													},
+													"keepAliveConnections": {
+														"description": "Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.",
+														"type": "integer",
+														"example": 100
+													},
+													"keepAliveTimeout": {
+														"description": "Timeout after which an idle keepalive connection can be discarded.",
+														"type": "integer",
+														"example": 90
+													},
+													"matchSNItoHost": {
+														"description": "Auto configure the Hostname on the origin server certificate.",
+														"type": "boolean",
+														"example": false,
+														"x-stainless-naming": {
+															"python": {
+																"name": "match_sni_to_host"
+															}
+														}
+													},
+													"noHappyEyeballs": {
+														"description": "Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.",
 														"type": "boolean",
 														"example": false
 													},
-													"teamName": {
-														"type": "string",
-														"example": "zero-trust-organization-name"
-													}
-												},
-												"required": [
-													"audTag",
-													"teamName"
-												]
-											},
-											"caPool": {
-												"description": "Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.",
-												"type": "string"
-											},
-											"connectTimeout": {
-												"description": "Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.",
-												"type": "integer",
-												"example": 10
-											},
-											"disableChunkedEncoding": {
-												"description": "Disables chunked transfer encoding. Useful if you are running a WSGI server.",
-												"type": "boolean"
-											},
-											"http2Origin": {
-												"description": "Attempt to connect to origin using HTTP2. Origin must be configured as https.",
-												"type": "boolean"
-											},
-											"httpHostHeader": {
-												"description": "Sets the HTTP Host header on requests sent to the local service.",
-												"type": "string"
-											},
-											"keepAliveConnections": {
-												"description": "Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.",
-												"type": "integer",
-												"example": 100
-											},
-											"keepAliveTimeout": {
-												"description": "Timeout after which an idle keepalive connection can be discarded.",
-												"type": "integer",
-												"example": 90
-											},
-											"matchSNItoHost": {
-												"description": "Auto configure the Hostname on the origin server certificate.",
-												"type": "boolean",
-												"example": false,
-												"x-stainless-naming": {
-													"python": {
-														"name": "match_sni_to_host"
+													"noTLSVerify": {
+														"description": "Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.",
+														"type": "boolean",
+														"example": false
+													},
+													"originServerName": {
+														"description": "Hostname that cloudflared should expect from your origin server certificate.",
+														"type": "string"
+													},
+													"proxyType": {
+														"description": "cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: \"\" for the regular proxy and \"socks\" for a SOCKS5 proxy.\n",
+														"type": "string"
+													},
+													"tcpKeepAlive": {
+														"description": "The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.",
+														"type": "integer",
+														"example": 30
+													},
+													"tlsTimeout": {
+														"description": "Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.",
+														"type": "integer",
+														"example": 10
 													}
 												}
 											},
-											"noHappyEyeballs": {
-												"description": "Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.",
-												"type": "boolean",
-												"example": false
-											},
-											"noTLSVerify": {
-												"description": "Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.",
-												"type": "boolean",
-												"example": false
-											},
-											"originServerName": {
-												"description": "Hostname that cloudflared should expect from your origin server certificate.",
-												"type": "string"
-											},
-											"proxyType": {
-												"description": "cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: \"\" for the regular proxy and \"socks\" for a SOCKS5 proxy.\n",
-												"type": "string"
-											},
-											"tcpKeepAlive": {
-												"description": "The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.",
-												"type": "integer",
-												"example": 30
-											},
-											"tlsTimeout": {
-												"description": "Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.",
-												"type": "integer",
-												"example": 10
+											"warp-routing": {
+												"description": "Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.",
+												"type": "object",
+												"deprecated": true,
+												"properties": {
+													"enabled": {
+														"type": "boolean"
+													}
+												},
+												"readOnly": true,
+												"x-stainless-deprecation-message": "This field is ignored by cloudflared since version 2023.10.0.",
+												"x-stainless-skip": true
 											}
 										}
-									},
-									"warp-routing": {
-										"description": "Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.",
-										"type": "object",
-										"deprecated": true,
-										"properties": {
-											"enabled": {
-												"type": "boolean"
-											}
-										},
-										"readOnly": true,
-										"x-stainless-deprecation-message": "This field is ignored by cloudflared since version 2023.10.0.",
-										"x-stainless-skip": true
 									}
-								}
+								],
+								"x-fern-property-name": "tunnel-config"
 							}
 						}
 					}
@@ -1784,8 +1787,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels.config",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/warp_connector/{tunnel_id}/configurations": {
 		"operationId": "cloudflare-tunnel-configuration-update-warp-connector-configuration",
@@ -1893,7 +1895,8 @@
 										"description": "Empty object for none/disabled modes.",
 										"type": "object"
 									}
-								]
+								],
+								"x-fern-property-name": "mesh-config"
 							},
 							"ha_mode": {
 								"description": "High-availability mode for the Mesh node. `none` means HA is enabled but no provider is configured yet (newly created nodes default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.",
@@ -2269,7 +2272,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mesh.nodes.configurations",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

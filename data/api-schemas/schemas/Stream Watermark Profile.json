@@ -268,7 +268,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.watermarks",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "Remove this watermark profile? New upload requests referencing this profile will fail."
 	},
 	"GET /accounts/{account_id}/stream/watermarks": {
@@ -603,8 +602,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.watermarks",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/stream/watermarks/{identifier}": {
 		"operationId": "stream-watermark-profile-watermark-profile-details",
@@ -952,8 +950,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.watermarks",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/stream/watermarks": {
 		"operationId": "stream-watermark-profile-create-watermark-profiles-via-basic-upload",
@@ -1403,7 +1400,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.watermarks",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

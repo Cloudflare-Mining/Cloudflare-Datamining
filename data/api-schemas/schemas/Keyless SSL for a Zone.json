@@ -402,8 +402,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "keyless-certificates",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /zones/{zone_id}/keyless_certificates": {
 		"operationId": "keyless-ssl-for-a-zone-list-keyless-ssl-configurations",
@@ -1090,8 +1089,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "keyless-certificates",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/keyless_certificates/{keyless_certificate_id}": {
 		"operationId": "keyless-ssl-for-a-zone-get-keyless-ssl-configuration",
@@ -1752,8 +1750,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "keyless-certificates",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /zones/{zone_id}/keyless_certificates/{keyless_certificate_id}": {
 		"operationId": "keyless-ssl-for-a-zone-edit-keyless-ssl-configuration",
@@ -2440,8 +2437,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "keyless-certificates",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /zones/{zone_id}/keyless_certificates": {
 		"operationId": "keyless-ssl-for-a-zone-create-keyless-ssl-configuration",
@@ -3130,7 +3126,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "keyless-certificates",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

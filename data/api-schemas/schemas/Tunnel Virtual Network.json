@@ -438,7 +438,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.virtual-networks",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation permanently deletes a virtual network."
 	},
 	"GET /accounts/{account_id}/teamnet/virtual_networks": {
@@ -1008,8 +1007,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.virtual-networks",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/teamnet/virtual_networks/{virtual_network_id}": {
 		"operationId": "tunnel-virtual-network-get",
@@ -1479,8 +1477,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.virtual-networks",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/teamnet/virtual_networks/{virtual_network_id}": {
 		"operationId": "tunnel-virtual-network-update",
@@ -1955,8 +1952,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.virtual-networks",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/teamnet/virtual_networks": {
 		"operationId": "tunnel-virtual-network-create-a-virtual-network",
@@ -2431,7 +2427,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.virtual-networks",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

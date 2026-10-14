@@ -515,8 +515,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "origin-tls-client-auth.hostname-certificates",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /zones/{zone_id}/origin_tls_client_auth/hostnames": {
 		"operationId": "per-hostname-authenticated-origin-pull-list-hostname-associations",
@@ -1169,8 +1168,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "origin-tls-client-auth.hostname-associations",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/origin_tls_client_auth/hostnames/{hostname}": {
 		"operationId": "per-hostname-authenticated-origin-pull-get-the-hostname-status-for-client-authentication",
@@ -1796,8 +1794,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "origin-tls-client-auth.hostnames",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/origin_tls_client_auth/hostnames/certificates": {
 		"operationId": "per-hostname-authenticated-origin-pull-list-certificates",
@@ -2379,8 +2376,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "origin-tls-client-auth.hostname-certificates",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/origin_tls_client_auth/hostnames/certificates/{certificate_id}": {
 		"operationId": "per-hostname-authenticated-origin-pull-get-the-hostname-client-certificate",
@@ -2899,8 +2895,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "origin-tls-client-auth.hostname-certificates",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /zones/{zone_id}/origin_tls_client_auth/hostnames/certificates": {
 		"operationId": "per-hostname-authenticated-origin-pull-upload-a-hostname-client-certificate",
@@ -3435,8 +3430,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "origin-tls-client-auth.hostname-certificates",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /zones/{zone_id}/origin_tls_client_auth/hostnames": {
 		"operationId": "per-hostname-authenticated-origin-pull-enable-or-disable-a-hostname-for-client-authentication",
@@ -3464,33 +3458,38 @@
 						"type": "object",
 						"properties": {
 							"config": {
-								"type": "array",
-								"items": {
-									"type": "object",
-									"properties": {
-										"cert_id": {
-											"description": "Certificate identifier tag.",
-											"type": "string",
-											"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
-											"maxLength": 36,
-											"x-auditable": true
-										},
-										"enabled": {
-											"description": "Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.",
-											"type": "boolean",
-											"example": true,
-											"nullable": true,
-											"x-auditable": true
-										},
-										"hostname": {
-											"description": "The hostname on the origin for which the client certificate uploaded will be used.",
-											"type": "string",
-											"example": "app.example.com",
-											"maxLength": 255,
-											"x-auditable": true
+								"allOf": [
+									{
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"cert_id": {
+													"description": "Certificate identifier tag.",
+													"type": "string",
+													"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+													"maxLength": 36,
+													"x-auditable": true
+												},
+												"enabled": {
+													"description": "Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.",
+													"type": "boolean",
+													"example": true,
+													"nullable": true,
+													"x-auditable": true
+												},
+												"hostname": {
+													"description": "The hostname on the origin for which the client certificate uploaded will be used.",
+													"type": "string",
+													"example": "app.example.com",
+													"maxLength": 255,
+													"x-auditable": true
+												}
+											}
 										}
 									}
-								}
+								],
+								"x-fern-property-name": "hostname-config"
 							}
 						},
 						"required": [
@@ -4271,12 +4270,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "origin-tls-client-auth.hostnames",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true,
-		"x-forge-params": {
-			"config": {
-				"flagName": "hostname-config"
-			}
-		}
+		"x-fern-sdk-method-name": "update"
 	}
 }

@@ -302,8 +302,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "acm.custom-trust-store",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /zones/{zone_id}/acm/custom_trust_store": {
 		"operationId": "custom-origin-trust-store-list-details",
@@ -947,8 +946,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "acm.custom-trust-store",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/acm/custom_trust_store/{custom_origin_trust_store_id}": {
 		"operationId": "custom-origin-trust-store-details",
@@ -1490,8 +1488,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "acm.custom-trust-store",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /zones/{zone_id}/acm/custom_trust_store": {
 		"operationId": "custom-origin-trust-store-create",
@@ -2040,7 +2037,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "acm.custom-trust-store",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

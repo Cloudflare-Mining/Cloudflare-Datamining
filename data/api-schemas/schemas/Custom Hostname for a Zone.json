@@ -213,8 +213,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-hostnames",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /zones/{zone_id}/custom_hostnames/{custom_hostname_id}/certificate_pack/{certificate_pack_id}/certificates/{certificate_id}": {
 		"operationId": "custom-hostname-for-a-zone-delete_single_certificate_and_key_in_a_custom_hostname",
@@ -453,8 +452,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-hostnames.certificate-pack.certificates",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /zones/{zone_id}/custom_hostnames": {
 		"operationId": "custom-hostname-for-a-zone-list-custom-hostnames",
@@ -2814,8 +2812,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-hostnames",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/custom_hostnames/{custom_hostname_id}": {
 		"operationId": "custom-hostname-for-a-zone-custom-hostname-details",
@@ -4930,8 +4927,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-hostnames",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/custom_hostnames/quota": {
 		"operationId": "custom-hostname-for-a-zone-get-custom-hostname-quota",
@@ -5181,8 +5177,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-hostnames.quota",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /zones/{zone_id}/custom_hostnames/{custom_hostname_id}": {
 		"operationId": "custom-hostname-for-a-zone-edit-custom-hostname",
@@ -7500,8 +7495,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-hostnames",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /zones/{zone_id}/custom_hostnames": {
 		"operationId": "custom-hostname-for-a-zone-create-custom-hostname",
@@ -9815,8 +9809,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-hostnames",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /zones/{zone_id}/custom_hostnames/{custom_hostname_id}/certificate_pack/{certificate_pack_id}/certificates/{certificate_id}": {
 		"operationId": "custom-hostname-for-a-zone-edit-custom-certificate-custom-hostname",
@@ -11980,7 +11973,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-hostnames.certificate-pack.certificates",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

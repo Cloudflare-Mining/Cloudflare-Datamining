@@ -465,8 +465,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-hostnames.fallback-origin",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /zones/{zone_id}/custom_hostnames/fallback_origin": {
 		"operationId": "custom-hostname-fallback-origin-for-a-zone-get-fallback-origin-for-custom-hostnames",
@@ -935,8 +934,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-hostnames.fallback-origin",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PUT /zones/{zone_id}/custom_hostnames/fallback_origin": {
 		"operationId": "custom-hostname-fallback-origin-for-a-zone-update-fallback-origin-for-custom-hostnames",
@@ -1426,7 +1424,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-hostnames.fallback-origin",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

@@ -687,7 +687,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation permanently deletes a Cloudflare Tunnel."
 	},
 	"DELETE /accounts/{account_id}/cfd_tunnel/{tunnel_id}/connections": {
@@ -1049,7 +1048,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels.connections",
 		"x-fern-sdk-method-name": "cleanup",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation removes Cloudflare Tunnel connections."
 	},
 	"DELETE /accounts/{account_id}/warp_connector/{tunnel_id}": {
@@ -1702,7 +1700,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mesh.nodes",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation permanently deletes a Mesh node."
 	},
 	"GET /accounts/{account_id}/cfd_tunnel": {
@@ -2584,8 +2581,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnel",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}": {
 		"operationId": "cloudflare-tunnel-get-a-cloudflare-tunnel",
@@ -3277,8 +3273,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}/connections": {
 		"operationId": "cloudflare-tunnel-list-cloudflare-tunnel-connections",
@@ -3934,8 +3929,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels.connections",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}/connectors/{connector_id}": {
 		"operationId": "cloudflare-tunnel-get-cloudflare-tunnel-connector",
@@ -4515,8 +4509,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels.connectors",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}/token": {
 		"operationId": "cloudflare-tunnel-get-a-cloudflare-tunnel-token",
@@ -4863,8 +4856,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels.token",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/tunnels": {
 		"operationId": "cloudflare-tunnel-list-all-tunnels",
@@ -6092,8 +6084,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/warp_connector": {
 		"operationId": "cloudflare-tunnel-list-warp-connector-tunnels",
@@ -6931,8 +6922,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mesh.nodes",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/warp_connector/{tunnel_id}": {
 		"operationId": "cloudflare-tunnel-get-a-warp-connector-tunnel",
@@ -7585,8 +7575,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mesh.nodes",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/warp_connector/{tunnel_id}/connections": {
 		"operationId": "cloudflare-tunnel-list-warp-connector-tunnel-connections",
@@ -8211,8 +8200,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mesh.nodes.connections",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/warp_connector/{tunnel_id}/connectors/{connector_id}": {
 		"operationId": "cloudflare-tunnel-get-warp-connector-tunnel-connector",
@@ -8761,8 +8749,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mesh.nodes.connectors",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/warp_connector/{tunnel_id}/token": {
 		"operationId": "cloudflare-tunnel-get-a-warp-connector-tunnel-token",
@@ -9110,8 +9097,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mesh.nodes.token",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/cfd_tunnel/{tunnel_id}": {
 		"operationId": "cloudflare-tunnel-update-a-cloudflare-tunnel",
@@ -9823,8 +9809,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"PATCH /accounts/{account_id}/warp_connector/{tunnel_id}": {
 		"operationId": "cloudflare-tunnel-update-a-warp-connector-tunnel",
@@ -10498,8 +10483,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mesh.nodes",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/cfd_tunnel": {
 		"operationId": "cloudflare-tunnel-create-a-cloudflare-tunnel",
@@ -11215,8 +11199,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cfd_tunnel/{tunnel_id}/management": {
 		"operationId": "cloudflare-tunnel-get-a-cloudflare-tunnel-management-token",
@@ -11589,8 +11572,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels.management-token",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/warp_connector": {
 		"operationId": "cloudflare-tunnel-create-a-warp-connector-tunnel",
@@ -12251,8 +12233,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mesh.nodes",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/warp_connector/{tunnel_id}/failover": {
 		"operationId": "cloudflare-tunnel-manual-failover-warp-connector-tunnel",
@@ -12628,7 +12609,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mesh.nodes",
 		"x-fern-sdk-method-name": "failover",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation triggers a manual failover, changing the active connector for a Mesh node."
 	}
 }

@@ -440,7 +440,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.routes.cidr",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation permanently deletes a private network route."
 	},
 	"DELETE /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}": {
@@ -1643,8 +1642,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.routes.cidr",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/teamnet/routes/{route_id}": {
 		"operationId": "tunnel-route-get-tunnel-route",
@@ -2082,8 +2080,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.routes.cidr",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/teamnet/routes/ip/{ip}": {
 		"operationId": "tunnel-route-get-tunnel-route-by-ip",
@@ -2600,8 +2597,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.routes",
-		"x-fern-sdk-method-name": "resolve",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "resolve"
 	},
 	"PATCH /accounts/{account_id}/teamnet/routes/{route_id}": {
 		"operationId": "tunnel-route-update-a-tunnel-route",
@@ -3086,8 +3082,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.routes.cidr",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"PATCH /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}": {
 		"operationId": "tunnel-route-update-a-tunnel-route-with-cidr",
@@ -4006,8 +4001,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.routes.cidr",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}": {
 		"operationId": "tunnel-route-create-a-tunnel-route-with-cidr",

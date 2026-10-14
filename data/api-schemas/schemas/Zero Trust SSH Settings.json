@@ -2,7 +2,7 @@
 	"GET /accounts/{account_id}/gateway/audit_ssh_settings": {
 		"operationId": "zero-trust-get-audit-ssh-settings",
 		"summary": "Get Zero Trust SSH settings",
-		"description": "Retrieve all Zero Trust Audit SSH and SSH with Access for Infrastructure settings for an account.",
+		"description": "Retrieve SSH with Access for Infrastructure settings for an account.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -698,7 +698,7 @@
 	"PUT /accounts/{account_id}/gateway/audit_ssh_settings": {
 		"operationId": "zero-trust-update-audit-ssh-settings",
 		"summary": "Update Zero Trust SSH settings",
-		"description": "Update Zero Trust Audit SSH and SSH with Access for Infrastructure settings for an account.",
+		"description": "Update SSH with Access for Infrastructure settings for an account.",
 		"parameters": [
 			{
 				"name": "account_id",

@@ -151,6 +151,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -173,9 +176,8 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "custom-pages.assets.delete",
-		"x-fern-sdk-method-name": "v2",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "custom-pages.zone-assets",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /zones/{zone_id}/custom_pages/assets": {
 		"operationId": "custom-assets-for-a-zone-list-custom-assets",
@@ -387,7 +389,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -510,6 +513,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -533,9 +539,8 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "custom-pages.assets.list",
-		"x-fern-sdk-method-name": "v2",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "custom-pages.zone-assets",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/custom_pages/assets/{asset_name}": {
 		"operationId": "custom-assets-for-a-zone-get-a-custom-asset",
@@ -701,7 +706,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -824,6 +830,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -847,9 +856,8 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "custom-pages.assets.get",
-		"x-fern-sdk-method-name": "v2",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "custom-pages.zone-assets",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /zones/{zone_id}/custom_pages/assets": {
 		"operationId": "custom-assets-for-a-zone-create-a-custom-asset",
@@ -875,6 +883,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"description": {
 								"description": "A short description of the custom asset.",
@@ -1037,7 +1046,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1160,6 +1170,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -1182,9 +1195,8 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "custom-pages.assets.create",
-		"x-fern-sdk-method-name": "v2",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "custom-pages.zone-assets",
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /zones/{zone_id}/custom_pages/assets/{asset_name}": {
 		"operationId": "custom-assets-for-a-zone-update-a-custom-asset",
@@ -1223,6 +1235,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"description": {
 								"description": "A short description of the custom asset.",
@@ -1376,7 +1389,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1499,6 +1513,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -1521,8 +1538,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "custom-pages.assets.update",
-		"x-fern-sdk-method-name": "v2",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "custom-pages.zone-assets",
+		"x-fern-sdk-method-name": "update"
 	}
 }

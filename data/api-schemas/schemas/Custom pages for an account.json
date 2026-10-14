@@ -212,7 +212,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -335,6 +336,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -361,9 +365,8 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "custom-pages",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "custom-pages.account-custom-pages",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/custom_pages/{identifier}": {
 		"operationId": "custom-pages-for-an-account-get-a-custom-page",
@@ -563,7 +566,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -686,6 +690,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -707,9 +714,8 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "custom-pages",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "custom-pages.account-custom-pages",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/custom_pages/preview_tokens": {
 		"operationId": "custom-pages-for-an-account-create-preview-token",
@@ -872,7 +878,8 @@
 												"cep_jwt"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -995,6 +1002,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -1022,8 +1032,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-pages.account-custom-pages.preview-tokens",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/custom_pages/{identifier}": {
 		"operationId": "custom-pages-for-an-account-update-a-custom-page",
@@ -1072,6 +1081,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"state": {
 								"description": "The custom page state.",
@@ -1256,7 +1266,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1379,6 +1390,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -1398,7 +1412,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-pages.account-custom-pages",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

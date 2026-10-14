@@ -403,8 +403,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-certificates",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /zones/{zone_id}/custom_certificates": {
 		"operationId": "custom-ssl-for-a-zone-list-ssl-configurations",
@@ -1412,8 +1411,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-certificates",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/custom_certificates/{custom_certificate_id}": {
 		"operationId": "custom-ssl-for-a-zone-ssl-configuration-details",
@@ -2307,8 +2305,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-certificates",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /zones/{zone_id}/custom_certificates/{custom_certificate_id}": {
 		"operationId": "custom-ssl-for-a-zone-edit-ssl-configuration",
@@ -3274,8 +3271,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-certificates",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /zones/{zone_id}/custom_certificates": {
 		"operationId": "custom-ssl-for-a-zone-create-ssl-configuration",
@@ -4242,8 +4238,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-certificates",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /zones/{zone_id}/custom_certificates/prioritize": {
 		"operationId": "custom-ssl-for-a-zone-re-prioritize-ssl-certificates",
@@ -5247,7 +5242,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-certificates.prioritize",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

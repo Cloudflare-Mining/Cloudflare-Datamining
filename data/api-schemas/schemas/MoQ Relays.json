@@ -913,6 +913,7 @@
 											"type": "object",
 											"properties": {
 												"config": {
+													"description": "Relay configuration. All sub-objects use whole-object replacement when\npresent; omitted sub-objects preserve the existing value.\n",
 													"type": "object",
 													"properties": {
 														"upstreams": {
@@ -1633,6 +1634,7 @@
 											"type": "object",
 											"properties": {
 												"config": {
+													"description": "Relay configuration. All sub-objects use whole-object replacement when\npresent; omitted sub-objects preserve the existing value.\n",
 													"type": "object",
 													"properties": {
 														"upstreams": {
@@ -2538,38 +2540,44 @@
 						"type": "object",
 						"properties": {
 							"config": {
-								"type": "object",
-								"properties": {
-									"upstreams": {
-										"description": "Upstreams are external MOQT server publishers that a relay falls back\nto when it has no local publisher for a requested namespace/track.\n",
+								"allOf": [
+									{
+										"description": "Relay configuration. All sub-objects use whole-object replacement when\npresent; omitted sub-objects preserve the existing value.\n",
 										"type": "object",
 										"properties": {
-											"enabled": {
-												"type": "boolean",
-												"default": false
-											},
 											"upstreams": {
-												"description": "Ordered list of upstream MOQT server publishers. Each entry is an\nobject (not a bare string) so per-upstream configuration can be\nadded in the future without another breaking change.\n",
-												"type": "array",
-												"items": {
-													"description": "A single upstream MOQT server publisher.",
-													"type": "object",
-													"properties": {
-														"url": {
-															"description": "Upstream MOQT server publisher URL. Must be an absolute URL with a\nhost and a scheme the relay can dial: moqt:// (raw QUIC) or https://\n(WebTransport). Validated on update (PUT); rejected with 21013.\n",
-															"type": "string",
-															"format": "uri"
-														}
+												"description": "Upstreams are external MOQT server publishers that a relay falls back\nto when it has no local publisher for a requested namespace/track.\n",
+												"type": "object",
+												"properties": {
+													"enabled": {
+														"type": "boolean",
+														"default": false
 													},
-													"required": [
-														"url"
-													]
-												},
-												"default": []
+													"upstreams": {
+														"description": "Ordered list of upstream MOQT server publishers. Each entry is an\nobject (not a bare string) so per-upstream configuration can be\nadded in the future without another breaking change.\n",
+														"type": "array",
+														"items": {
+															"description": "A single upstream MOQT server publisher.",
+															"type": "object",
+															"properties": {
+																"url": {
+																	"description": "Upstream MOQT server publisher URL. Must be an absolute URL with a\nhost and a scheme the relay can dial: moqt:// (raw QUIC) or https://\n(WebTransport). Validated on update (PUT); rejected with 21013.\n",
+																	"type": "string",
+																	"format": "uri"
+																}
+															},
+															"required": [
+																"url"
+															]
+														},
+														"default": []
+													}
+												}
 											}
 										}
 									}
-								}
+								],
+								"x-fern-property-name": "relay-config"
 							},
 							"name": {
 								"type": "string"
@@ -2635,6 +2643,7 @@
 											"type": "object",
 											"properties": {
 												"config": {
+													"description": "Relay configuration. All sub-objects use whole-object replacement when\npresent; omitted sub-objects preserve the existing value.\n",
 													"type": "object",
 													"properties": {
 														"upstreams": {
@@ -2709,7 +2718,7 @@
 				}
 			},
 			"400": {
-				"description": "Bad request. Possible errors: 21003 (relay ID should be 32 hex characters), 21004 (failed to decode body, invalid JSON), 21011 (name must not be empty), 21013 (invalid upstream URL — must be an absolute moqt:// or https:// URL with a host).",
+				"description": "Bad request. Possible errors:\n- 21003: Relay ID should be 32 hex characters\n- 21004: Failed to decode body — invalid JSON\n- 21011: Name must not be empty\n- 21013: Invalid upstream URL — must be an absolute moqt:// or https:// URL with a host\n",
 				"content": {
 					"application/json": {
 						"schema": {

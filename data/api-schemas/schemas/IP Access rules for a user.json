@@ -652,17 +652,22 @@
 														"x-auditable": true
 													},
 													"mode": {
-														"description": "The action to apply to a matched request.",
-														"type": "string",
-														"example": "challenge",
-														"enum": [
-															"block",
-															"challenge",
-															"whitelist",
-															"js_challenge",
-															"managed_challenge"
+														"allOf": [
+															{
+																"description": "The action to apply to a matched request.",
+																"type": "string",
+																"example": "challenge",
+																"enum": [
+																	"block",
+																	"challenge",
+																	"whitelist",
+																	"js_challenge",
+																	"managed_challenge"
+																],
+																"x-auditable": true
+															}
 														],
-														"x-auditable": true
+														"x-fern-property-name": "access-rule-mode"
 													},
 													"modified_on": {
 														"description": "The timestamp of when the rule was last modified.",
@@ -1081,17 +1086,22 @@
 													"x-auditable": true
 												},
 												"mode": {
-													"description": "The action to apply to a matched request.",
-													"type": "string",
-													"example": "challenge",
-													"enum": [
-														"block",
-														"challenge",
-														"whitelist",
-														"js_challenge",
-														"managed_challenge"
+													"allOf": [
+														{
+															"description": "The action to apply to a matched request.",
+															"type": "string",
+															"example": "challenge",
+															"enum": [
+																"block",
+																"challenge",
+																"whitelist",
+																"js_challenge",
+																"managed_challenge"
+															],
+															"x-auditable": true
+														}
 													],
-													"x-auditable": true
+													"x-fern-property-name": "access-rule-mode"
 												},
 												"modified_on": {
 													"description": "The timestamp of when the rule was last modified.",
@@ -1545,17 +1555,22 @@
 													"x-auditable": true
 												},
 												"mode": {
-													"description": "The action to apply to a matched request.",
-													"type": "string",
-													"example": "challenge",
-													"enum": [
-														"block",
-														"challenge",
-														"whitelist",
-														"js_challenge",
-														"managed_challenge"
+													"allOf": [
+														{
+															"description": "The action to apply to a matched request.",
+															"type": "string",
+															"example": "challenge",
+															"enum": [
+																"block",
+																"challenge",
+																"whitelist",
+																"js_challenge",
+																"managed_challenge"
+															],
+															"x-auditable": true
+														}
 													],
-													"x-auditable": true
+													"x-fern-property-name": "access-rule-mode"
 												},
 												"modified_on": {
 													"description": "The timestamp of when the rule was last modified.",
@@ -2106,17 +2121,22 @@
 													"x-auditable": true
 												},
 												"mode": {
-													"description": "The action to apply to a matched request.",
-													"type": "string",
-													"example": "challenge",
-													"enum": [
-														"block",
-														"challenge",
-														"whitelist",
-														"js_challenge",
-														"managed_challenge"
+													"allOf": [
+														{
+															"description": "The action to apply to a matched request.",
+															"type": "string",
+															"example": "challenge",
+															"enum": [
+																"block",
+																"challenge",
+																"whitelist",
+																"js_challenge",
+																"managed_challenge"
+															],
+															"x-auditable": true
+														}
 													],
-													"x-auditable": true
+													"x-fern-property-name": "access-rule-mode"
 												},
 												"modified_on": {
 													"description": "The timestamp of when the rule was last modified.",

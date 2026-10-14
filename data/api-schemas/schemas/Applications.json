@@ -4726,6 +4726,13 @@
 												],
 												"url_placeholders": []
 											},
+											"credential_update_fields": [
+												{
+													"description": "Re-authorize this integration from the Cloudflare dashboard to refresh its access token.",
+													"title": "How to repair this integration",
+													"type": "instruction"
+												}
+											],
 											"default": true,
 											"description": "Connect to Microsoft using OAuth 2.0 Admin Consent.",
 											"id": "microsoft_internal_oauth2",
@@ -4833,6 +4840,73 @@
 													}
 												]
 											},
+											"credential_update_fields": {
+												"description": "Credential fields that can be changed later via PATCH on an existing integration (e.g. to fix a broken integration or re-key for a new use case). An 'instruction' entry (type='instruction') is returned instead when nothing is directly submittable (e.g. re-authorize via OAuth, or delete-and-recreate).",
+												"type": "array",
+												"items": {
+													"description": "An entry in `credential_update_fields`: either a submittable FormField, or an\ninstruction-only entry (`type=\"instruction\"`) for flows with nothing to PATCH\ndirectly (e.g. re-authorize via OAuth, or delete-and-recreate).",
+													"type": "object",
+													"properties": {
+														"default_value": {
+															"description": "Backend-computed value to pre-fill the field with.",
+															"type": "string",
+															"nullable": true
+														},
+														"description": {
+															"description": "Risk/behavior callout for a field, or the message for an instruction entry.",
+															"type": "string",
+															"nullable": true
+														},
+														"label": {
+															"description": "Human-readable field label.",
+															"type": "string"
+														},
+														"name": {
+															"description": "Field identifier (maps to credentials key). Omitted for instruction entries.",
+															"type": "string"
+														},
+														"placeholder": {
+															"description": "Placeholder text.",
+															"type": "string",
+															"nullable": true
+														},
+														"readonly": {
+															"description": "Whether the field is backend-computed and must be rendered disabled.",
+															"type": "boolean"
+														},
+														"required": {
+															"description": "Whether field is required.",
+															"type": "boolean"
+														},
+														"supported_file_types": {
+															"description": "Allowed file extensions for file_upload type.",
+															"type": "array",
+															"items": {
+																"type": "string"
+															},
+															"nullable": true
+														},
+														"title": {
+															"description": "Instruction title. Only present for instruction entries.",
+															"type": "string"
+														},
+														"type": {
+															"description": "Field input type, or 'instruction' for a non-submittable message.\n\n* `text` - text\n* `password` - password\n* `email` - email\n* `file_upload` - file_upload\n* `instruction` - instruction",
+															"type": "string",
+															"enum": [
+																"text",
+																"password",
+																"email",
+																"file_upload",
+																"instruction"
+															]
+														}
+													},
+													"required": [
+														"type"
+													]
+												}
+											},
 											"default": {
 												"description": "Whether this is the default auth method.",
 												"type": "boolean"
@@ -4912,6 +4986,11 @@
 																"properties": {
 																	"default_value": {
 																		"description": "Backend-computed value to pre-fill the field with.",
+																		"type": "string",
+																		"nullable": true
+																	},
+																	"description": {
+																		"description": "Risk or behavior callout for the field (e.g. consequences of an invalid value).",
 																		"type": "string",
 																		"nullable": true
 																	},

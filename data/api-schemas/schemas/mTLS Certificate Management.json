@@ -542,8 +542,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mtls-certificates",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/mtls_certificates": {
 		"operationId": "m-tls-certificate-management-list-m-tls-certificates",
@@ -1225,8 +1224,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mtls-certificates",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/mtls_certificates/{mtls_certificate_id}": {
 		"operationId": "m-tls-certificate-management-get-m-tls-certificate",
@@ -1772,8 +1770,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mtls-certificates",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/mtls_certificates/{mtls_certificate_id}/associations": {
 		"operationId": "m-tls-certificate-management-list-m-tls-certificate-associations",
@@ -2263,8 +2260,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mtls-certificates.associations",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/mtls_certificates": {
 		"operationId": "m-tls-certificate-management-upload-m-tls-certificate",
@@ -2849,7 +2845,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mtls-certificates",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }
