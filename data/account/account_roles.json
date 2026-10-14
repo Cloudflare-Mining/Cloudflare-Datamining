@@ -1,5 +1,66 @@
 [
 	{
+		"id": "534440fd818fbbb98cc0af6309281582",
+		"name": "RUM Admin",
+		"description": "Can manage RUM analytics, sites, and rules.",
+		"permissions": {
+			"analytics": {
+				"read": true,
+				"edit": false
+			},
+			"zone_settings": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "1dbb24106fac70b074f8cdb5293f7225",
+		"name": "SSO Connector Admin",
+		"description": "Can manage Cloudflare SSO Connectors.",
+		"permissions": {
+			"dash_sso": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "9a112e84cccca68e5fb7141288a48bed",
+		"name": "SSO Connector Read",
+		"description": "Can view Cloudflare SSO Connectors.",
+		"permissions": {
+			"dash_sso": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "8e37c87ee0900bb8386f54fd27382a93",
 		"name": "Resource Library Read",
 		"description": "Can view Resource Library applications.",
@@ -1966,63 +2027,6 @@
 				"edit": true
 			},
 			"ces_settings": {
-				"read": true,
-				"edit": true
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "2d805933d825eb7ee214b294ae7d2e43",
-		"name": "Vectorize Readonly",
-		"description": "Can read Vectorize database configurations.",
-		"permissions": {
-			"vectorize": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "89c48528394f516ff4ce47c39036cf12",
-		"name": "Vectorize Admin",
-		"description": "Can edit Vectorize database configurations.",
-		"permissions": {
-			"vectorize": {
-				"read": true,
-				"edit": true
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "17f13fba9173af84903c2be2b56240e5",
-		"name": "Bot Management (Account-Wide)",
-		"description": "Can edit Bot Management Configuration for all domains on an account",
-		"permissions": {
-			"waf": {
 				"read": true,
 				"edit": true
 			},
