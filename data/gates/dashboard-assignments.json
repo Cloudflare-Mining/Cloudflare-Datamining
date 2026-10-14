@@ -105,8 +105,8 @@
 		"true": 100
 	},
 	"aig-billing-list-cards": {
-		"true": 25,
-		"false": 75
+		"true": 50,
+		"false": 50
 	},
 	"aig-wobs-dataset": {
 		"false": 100
@@ -169,8 +169,7 @@
 		"true": 100
 	},
 	"billing-invoices-status-filter": {
-		"false": 50,
-		"true": 50
+		"true": 100
 	},
 	"billing-no-profile-payment-method-only": {
 		"true": 100
@@ -661,7 +660,8 @@
 		"true": 100
 	},
 	"kumo-client-side-rules-form": {
-		"false": 100
+		"false": 73,
+		"true": 27
 	},
 	"kumo-ify": {
 		"false": 100
@@ -825,6 +825,9 @@
 	},
 	"much-better-durable-object-overview": {
 		"false": 100
+	},
+	"multitable-standard-table": {
+		"true": 100
 	},
 	"name-length-limit-banner": {
 		"true": 100
