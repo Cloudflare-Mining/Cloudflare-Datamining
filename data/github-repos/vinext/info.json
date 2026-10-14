@@ -22,6 +22,7 @@
 	"default_branch": "main",
 	"branches": [
 		"alt/prerender-rsc-sidechannel",
+		"changeset-release/main",
 		"chonky-list",
 		"chore/bundle-zero-dep-leaves",
 		"ci/commit-version-bump",
@@ -221,6 +222,7 @@
 		"codex/workerd-stacked-content-encoding-repro",
 		"codex/wrangler-auth-ux",
 		"dario/vite-plugin-v2",
+		"deps/react-19.3.1",
 		"docs/skills-field-learnings",
 		"docs/update-contributing",
 		"feat/auto-pr-review",
@@ -231,7 +233,6 @@
 		"feat/route-cache-request-context",
 		"feat/route-client-reference-groups",
 		"feat/static-prerender-build",
-		"fix/action-bound-args-binding",
 		"fix/ancestor-loading-shared-layout",
 		"fix/app-pages-fallback-sees-middleware-overrides-v2",
 		"fix/app-router-dynamic-root-not-found",
@@ -250,7 +251,6 @@
 		"fix/dev-basepath-outside-requests",
 		"fix/dev-cold-start-threshold",
 		"fix/dev-overlay-build-error-recovery-flake",
-		"fix/domain-locale-url-leading-slash",
 		"fix/dynamic-pages-loadable",
 		"fix/fetch-action-argument-references",
 		"fix/fflate-override",
@@ -381,6 +381,7 @@
 		"repro/app-router-shared-layout-identity",
 		"security/react-flight-shared-buffer-rce",
 		"seo/consolidate-brand-signals",
+		"t3/rolldown-ast-remove-parseast-passes",
 		"web/benchmarks-swr-revalidate"
 	]
 }
