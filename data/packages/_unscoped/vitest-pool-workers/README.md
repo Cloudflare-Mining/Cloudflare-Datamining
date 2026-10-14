@@ -1,3 +1,0 @@
-# `vitest-pool-workers`
-
-Reserved
