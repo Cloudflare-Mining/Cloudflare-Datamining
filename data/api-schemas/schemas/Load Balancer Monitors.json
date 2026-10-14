@@ -130,193 +130,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"id": {
-															"type": "string",
-															"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
-															"x-auditable": true
-														}
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -338,8 +232,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.load-balancers.monitors",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /user/load_balancers/monitors": {
 		"operationId": "load-balancer-monitors-list-monitors",
@@ -632,365 +525,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result_info": {
-															"type": "object",
-															"properties": {
-																"count": {
-																	"description": "Total number of results on the current page.",
-																	"type": "number",
-																	"example": 20
-																},
-																"page": {
-																	"description": "Current page within paginated list of results.",
-																	"type": "number",
-																	"example": 1
-																},
-																"per_page": {
-																	"description": "Number of results per page.",
-																	"type": "number",
-																	"example": 20
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters.",
-																	"type": "number",
-																	"example": 2000
-																},
-																"total_pages": {
-																	"description": "Total number of pages available.",
-																	"type": "number",
-																	"example": 100
-																}
-															}
-														}
-													},
-													"type": "object"
-												}
-											],
-											"required": [
-												"result_info"
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "array",
-													"items": {
-														"allOf": [
-															{
-																"type": "object",
-																"properties": {
-																	"allow_insecure": {
-																		"description": "Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.",
-																		"type": "boolean",
-																		"example": true,
-																		"default": false,
-																		"x-auditable": true
-																	},
-																	"consecutive_down": {
-																		"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.",
-																		"type": "integer",
-																		"x-auditable": true
-																	},
-																	"consecutive_up": {
-																		"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times.",
-																		"type": "integer",
-																		"x-auditable": true
-																	},
-																	"description": {
-																		"description": "Object description.",
-																		"type": "string",
-																		"example": "Login page monitor",
-																		"default": "",
-																		"x-auditable": true
-																	},
-																	"expected_body": {
-																		"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.",
-																		"type": "string",
-																		"example": "alive",
-																		"default": "",
-																		"x-auditable": true
-																	},
-																	"expected_codes": {
-																		"description": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.",
-																		"type": "string",
-																		"example": "2xx",
-																		"default": "",
-																		"x-auditable": true
-																	},
-																	"follow_redirects": {
-																		"description": "Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors.",
-																		"type": "boolean",
-																		"example": true,
-																		"default": false,
-																		"x-auditable": true
-																	},
-																	"header": {
-																		"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.",
-																		"type": "object",
-																		"example": {
-																			"Host": [
-																				"example.com"
-																			],
-																			"X-App-ID": [
-																				"abc123"
-																			]
-																		},
-																		"additionalProperties": {
-																			"items": {
-																				"type": "string",
-																				"x-auditable": true
-																			},
-																			"type": "array"
-																		}
-																	},
-																	"interval": {
-																		"description": "The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations.",
-																		"type": "integer",
-																		"default": 60,
-																		"x-auditable": true
-																	},
-																	"method": {
-																		"description": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.",
-																		"type": "string",
-																		"example": "GET",
-																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
-																	},
-																	"path": {
-																		"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
-																		"type": "string",
-																		"example": "/health",
-																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
-																	},
-																	"port": {
-																		"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
-																		"type": "integer",
-																		"nullable": true,
-																		"x-auditable": true,
-																		"x-stainless-terraform-configurability": "optional"
-																	},
-																	"probe_zone": {
-																		"description": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.",
-																		"type": "string",
-																		"example": "example.com",
-																		"default": "",
-																		"x-auditable": true
-																	},
-																	"retries": {
-																		"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
-																		"type": "integer",
-																		"default": 2,
-																		"x-auditable": true
-																	},
-																	"timeout": {
-																		"description": "The timeout (in seconds) before marking the health check as failed.",
-																		"type": "integer",
-																		"default": 5,
-																		"x-auditable": true
-																	},
-																	"type": {
-																		"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.",
-																		"type": "string",
-																		"example": "https",
-																		"default": "http",
-																		"enum": [
-																			"http",
-																			"https",
-																			"tcp",
-																			"udp_icmp",
-																			"icmp_ping",
-																			"smtp"
-																		],
-																		"x-auditable": true
-																	}
-																}
-															},
-															{
-																"properties": {
-																	"created_on": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"id": {
-																		"type": "string",
-																		"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
-																		"x-auditable": true
-																	},
-																	"modified_on": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"readOnly": true,
-																		"x-auditable": true
-																	}
-																},
-																"type": "object"
-															}
-														]
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1013,13 +628,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.load-balancers.monitors",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /user/load_balancers/monitors/{monitor_id}": {
 		"operationId": "load-balancer-monitors-monitor-details",
 		"summary": "Monitor Details",
-		"description": "List a single configured monitor for a user.",
+		"description": "Fetch a single configured monitor for a user.",
 		"parameters": [
 			{
 				"name": "monitor_id",
@@ -1295,341 +909,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
+													"message": {
+														"type": "string"
+													}
 												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"allOf": [
-														{
-															"type": "object",
-															"properties": {
-																"allow_insecure": {
-																	"description": "Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.",
-																	"type": "boolean",
-																	"example": true,
-																	"default": false,
-																	"x-auditable": true
-																},
-																"consecutive_down": {
-																	"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.",
-																	"type": "integer",
-																	"x-auditable": true
-																},
-																"consecutive_up": {
-																	"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times.",
-																	"type": "integer",
-																	"x-auditable": true
-																},
-																"description": {
-																	"description": "Object description.",
-																	"type": "string",
-																	"example": "Login page monitor",
-																	"default": "",
-																	"x-auditable": true
-																},
-																"expected_body": {
-																	"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.",
-																	"type": "string",
-																	"example": "alive",
-																	"default": "",
-																	"x-auditable": true
-																},
-																"expected_codes": {
-																	"description": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.",
-																	"type": "string",
-																	"example": "2xx",
-																	"default": "",
-																	"x-auditable": true
-																},
-																"follow_redirects": {
-																	"description": "Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors.",
-																	"type": "boolean",
-																	"example": true,
-																	"default": false,
-																	"x-auditable": true
-																},
-																"header": {
-																	"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.",
-																	"type": "object",
-																	"example": {
-																		"Host": [
-																			"example.com"
-																		],
-																		"X-App-ID": [
-																			"abc123"
-																		]
-																	},
-																	"additionalProperties": {
-																		"items": {
-																			"type": "string",
-																			"x-auditable": true
-																		},
-																		"type": "array"
-																	}
-																},
-																"interval": {
-																	"description": "The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations.",
-																	"type": "integer",
-																	"default": 60,
-																	"x-auditable": true
-																},
-																"method": {
-																	"description": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.",
-																	"type": "string",
-																	"example": "GET",
-																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
-																},
-																"path": {
-																	"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
-																	"type": "string",
-																	"example": "/health",
-																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
-																},
-																"port": {
-																	"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
-																	"type": "integer",
-																	"nullable": true,
-																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "optional"
-																},
-																"probe_zone": {
-																	"description": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.",
-																	"type": "string",
-																	"example": "example.com",
-																	"default": "",
-																	"x-auditable": true
-																},
-																"retries": {
-																	"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
-																	"type": "integer",
-																	"default": 2,
-																	"x-auditable": true
-																},
-																"timeout": {
-																	"description": "The timeout (in seconds) before marking the health check as failed.",
-																	"type": "integer",
-																	"default": 5,
-																	"x-auditable": true
-																},
-																"type": {
-																	"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.",
-																	"type": "string",
-																	"example": "https",
-																	"default": "http",
-																	"enum": [
-																		"http",
-																		"https",
-																		"tcp",
-																		"udp_icmp",
-																		"icmp_ping",
-																		"smtp"
-																	],
-																	"x-auditable": true
-																}
-															}
-														},
-														{
-															"properties": {
-																"created_on": {
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"id": {
-																	"type": "string",
-																	"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
-																	"x-auditable": true
-																},
-																"modified_on": {
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														}
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1652,8 +1012,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.load-balancers.monitors",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /user/load_balancers/monitors/{monitor_id}/references": {
 		"operationId": "load-balancer-monitors-list-monitor-references",
@@ -1792,199 +1151,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"properties": {
-												"errors": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"example": []
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"type": "boolean",
-													"example": true,
-													"enum": [
-														true
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											]
-										},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"description": "List of resources that reference a given monitor.",
-													"type": "array",
-													"items": {
-														"properties": {
-															"reference_type": {
-																"type": "string",
-																"enum": [
-																	"*",
-																	"referral",
-																	"referrer"
-																],
-																"x-auditable": true
-															},
-															"resource_id": {
-																"type": "string",
-																"x-auditable": true
-															},
-															"resource_name": {
-																"type": "string",
-																"x-auditable": true
-															},
-															"resource_type": {
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"type": "object"
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"example": [
-														{
-															"reference_type": "referrer",
-															"resource_id": "17b5962d775c646f3f9725cbc7a53df4",
-															"resource_name": "primary-dc-1",
-															"resource_type": "pool"
-														}
-													]
-												}
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -2007,8 +1254,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.load-balancers.monitors.references",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /user/load_balancers/preview/{preview_id}": {
 		"operationId": "load-balancer-monitors-preview-result",
@@ -2193,247 +1439,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"description": "Resulting health data from a preview operation.",
-													"type": "object",
-													"example": {
-														"abwlnp5jbqn45ecgxd03erbgtxtqai0d": {
-															"healthy": true,
-															"origins": [
-																{
-																	"originone.example.com.": {
-																		"failure_reason": "No failures",
-																		"healthy": true,
-																		"response_code": 200,
-																		"rtt": "66ms"
-																	}
-																}
-															]
-														}
-													},
-													"additionalProperties": {
-														"properties": {
-															"healthy": {
-																"type": "boolean",
-																"x-auditable": true
-															},
-															"origins": {
-																"type": "array",
-																"items": {
-																	"additionalProperties": {
-																		"description": "The origin ipv4/ipv6 address or domain name mapped to its health data.",
-																		"type": "object",
-																		"properties": {
-																			"failure_reason": {
-																				"type": "string",
-																				"x-auditable": true
-																			},
-																			"healthy": {
-																				"type": "boolean",
-																				"x-auditable": true
-																			},
-																			"response_code": {
-																				"type": "number",
-																				"x-auditable": true
-																			},
-																			"rtt": {
-																				"type": "string",
-																				"x-auditable": true
-																			}
-																		},
-																		"example": {
-																			"failure_reason": "No failures",
-																			"healthy": true,
-																			"response_code": 200,
-																			"rtt": "66ms"
-																		}
-																	},
-																	"maxProperties": 1,
-																	"minProperties": 1,
-																	"type": "object"
-																}
-															}
-														},
-														"type": "object"
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -2456,8 +1542,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.load-balancers.preview",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /user/load_balancers/monitors/{monitor_id}": {
 		"operationId": "load-balancer-monitors-patch-monitor",
@@ -2879,341 +1964,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
+													"message": {
+														"type": "string"
+													}
 												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"allOf": [
-														{
-															"type": "object",
-															"properties": {
-																"allow_insecure": {
-																	"description": "Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.",
-																	"type": "boolean",
-																	"example": true,
-																	"default": false,
-																	"x-auditable": true
-																},
-																"consecutive_down": {
-																	"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.",
-																	"type": "integer",
-																	"x-auditable": true
-																},
-																"consecutive_up": {
-																	"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times.",
-																	"type": "integer",
-																	"x-auditable": true
-																},
-																"description": {
-																	"description": "Object description.",
-																	"type": "string",
-																	"example": "Login page monitor",
-																	"default": "",
-																	"x-auditable": true
-																},
-																"expected_body": {
-																	"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.",
-																	"type": "string",
-																	"example": "alive",
-																	"default": "",
-																	"x-auditable": true
-																},
-																"expected_codes": {
-																	"description": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.",
-																	"type": "string",
-																	"example": "2xx",
-																	"default": "",
-																	"x-auditable": true
-																},
-																"follow_redirects": {
-																	"description": "Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors.",
-																	"type": "boolean",
-																	"example": true,
-																	"default": false,
-																	"x-auditable": true
-																},
-																"header": {
-																	"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.",
-																	"type": "object",
-																	"example": {
-																		"Host": [
-																			"example.com"
-																		],
-																		"X-App-ID": [
-																			"abc123"
-																		]
-																	},
-																	"additionalProperties": {
-																		"items": {
-																			"type": "string",
-																			"x-auditable": true
-																		},
-																		"type": "array"
-																	}
-																},
-																"interval": {
-																	"description": "The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations.",
-																	"type": "integer",
-																	"default": 60,
-																	"x-auditable": true
-																},
-																"method": {
-																	"description": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.",
-																	"type": "string",
-																	"example": "GET",
-																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
-																},
-																"path": {
-																	"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
-																	"type": "string",
-																	"example": "/health",
-																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
-																},
-																"port": {
-																	"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
-																	"type": "integer",
-																	"nullable": true,
-																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "optional"
-																},
-																"probe_zone": {
-																	"description": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.",
-																	"type": "string",
-																	"example": "example.com",
-																	"default": "",
-																	"x-auditable": true
-																},
-																"retries": {
-																	"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
-																	"type": "integer",
-																	"default": 2,
-																	"x-auditable": true
-																},
-																"timeout": {
-																	"description": "The timeout (in seconds) before marking the health check as failed.",
-																	"type": "integer",
-																	"default": 5,
-																	"x-auditable": true
-																},
-																"type": {
-																	"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.",
-																	"type": "string",
-																	"example": "https",
-																	"default": "http",
-																	"enum": [
-																		"http",
-																		"https",
-																		"tcp",
-																		"udp_icmp",
-																		"icmp_ping",
-																		"smtp"
-																	],
-																	"x-auditable": true
-																}
-															}
-														},
-														{
-															"properties": {
-																"created_on": {
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"id": {
-																	"type": "string",
-																	"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
-																	"x-auditable": true
-																},
-																"modified_on": {
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														}
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -3235,8 +2066,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.load-balancers.monitors",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /user/load_balancers/monitors": {
 		"operationId": "load-balancer-monitors-create-monitor",
@@ -3646,341 +2476,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
+													"message": {
+														"type": "string"
+													}
 												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"allOf": [
-														{
-															"type": "object",
-															"properties": {
-																"allow_insecure": {
-																	"description": "Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.",
-																	"type": "boolean",
-																	"example": true,
-																	"default": false,
-																	"x-auditable": true
-																},
-																"consecutive_down": {
-																	"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.",
-																	"type": "integer",
-																	"x-auditable": true
-																},
-																"consecutive_up": {
-																	"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times.",
-																	"type": "integer",
-																	"x-auditable": true
-																},
-																"description": {
-																	"description": "Object description.",
-																	"type": "string",
-																	"example": "Login page monitor",
-																	"default": "",
-																	"x-auditable": true
-																},
-																"expected_body": {
-																	"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.",
-																	"type": "string",
-																	"example": "alive",
-																	"default": "",
-																	"x-auditable": true
-																},
-																"expected_codes": {
-																	"description": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.",
-																	"type": "string",
-																	"example": "2xx",
-																	"default": "",
-																	"x-auditable": true
-																},
-																"follow_redirects": {
-																	"description": "Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors.",
-																	"type": "boolean",
-																	"example": true,
-																	"default": false,
-																	"x-auditable": true
-																},
-																"header": {
-																	"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.",
-																	"type": "object",
-																	"example": {
-																		"Host": [
-																			"example.com"
-																		],
-																		"X-App-ID": [
-																			"abc123"
-																		]
-																	},
-																	"additionalProperties": {
-																		"items": {
-																			"type": "string",
-																			"x-auditable": true
-																		},
-																		"type": "array"
-																	}
-																},
-																"interval": {
-																	"description": "The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations.",
-																	"type": "integer",
-																	"default": 60,
-																	"x-auditable": true
-																},
-																"method": {
-																	"description": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.",
-																	"type": "string",
-																	"example": "GET",
-																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
-																},
-																"path": {
-																	"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
-																	"type": "string",
-																	"example": "/health",
-																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
-																},
-																"port": {
-																	"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
-																	"type": "integer",
-																	"nullable": true,
-																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "optional"
-																},
-																"probe_zone": {
-																	"description": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.",
-																	"type": "string",
-																	"example": "example.com",
-																	"default": "",
-																	"x-auditable": true
-																},
-																"retries": {
-																	"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
-																	"type": "integer",
-																	"default": 2,
-																	"x-auditable": true
-																},
-																"timeout": {
-																	"description": "The timeout (in seconds) before marking the health check as failed.",
-																	"type": "integer",
-																	"default": 5,
-																	"x-auditable": true
-																},
-																"type": {
-																	"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.",
-																	"type": "string",
-																	"example": "https",
-																	"default": "http",
-																	"enum": [
-																		"http",
-																		"https",
-																		"tcp",
-																		"udp_icmp",
-																		"icmp_ping",
-																		"smtp"
-																	],
-																	"x-auditable": true
-																}
-															}
-														},
-														{
-															"properties": {
-																"created_on": {
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"id": {
-																	"type": "string",
-																	"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
-																	"x-auditable": true
-																},
-																"modified_on": {
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														}
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -4002,8 +2578,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.load-balancers.monitors",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /user/load_balancers/monitors/{monitor_id}/preview": {
 		"operationId": "load-balancer-monitors-preview-monitor",
@@ -4290,206 +2865,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"pools": {
-															"description": "Monitored pool IDs mapped to their respective names.",
-															"type": "object",
-															"example": {
-																"abwlnp5jbqn45ecgxd03erbgtxtqai0d": "WNAM Datacenter",
-																"ve8h9lrcip5n5bbga9yqmdws28ay5d0l": "EEU Datacenter"
-															},
-															"additionalProperties": {
-																"description": "The pool name associated with the pool ID.",
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"preview_id": {
-															"type": "string",
-															"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
-															"x-auditable": true
-														}
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -4508,8 +2964,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.load-balancers.monitors.preview",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /user/load_balancers/monitors/{monitor_id}": {
 		"operationId": "load-balancer-monitors-update-monitor",
@@ -4931,341 +3386,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
+													"message": {
+														"type": "string"
+													}
 												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"allOf": [
-														{
-															"type": "object",
-															"properties": {
-																"allow_insecure": {
-																	"description": "Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.",
-																	"type": "boolean",
-																	"example": true,
-																	"default": false,
-																	"x-auditable": true
-																},
-																"consecutive_down": {
-																	"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.",
-																	"type": "integer",
-																	"x-auditable": true
-																},
-																"consecutive_up": {
-																	"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times.",
-																	"type": "integer",
-																	"x-auditable": true
-																},
-																"description": {
-																	"description": "Object description.",
-																	"type": "string",
-																	"example": "Login page monitor",
-																	"default": "",
-																	"x-auditable": true
-																},
-																"expected_body": {
-																	"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.",
-																	"type": "string",
-																	"example": "alive",
-																	"default": "",
-																	"x-auditable": true
-																},
-																"expected_codes": {
-																	"description": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.",
-																	"type": "string",
-																	"example": "2xx",
-																	"default": "",
-																	"x-auditable": true
-																},
-																"follow_redirects": {
-																	"description": "Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors.",
-																	"type": "boolean",
-																	"example": true,
-																	"default": false,
-																	"x-auditable": true
-																},
-																"header": {
-																	"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.",
-																	"type": "object",
-																	"example": {
-																		"Host": [
-																			"example.com"
-																		],
-																		"X-App-ID": [
-																			"abc123"
-																		]
-																	},
-																	"additionalProperties": {
-																		"items": {
-																			"type": "string",
-																			"x-auditable": true
-																		},
-																		"type": "array"
-																	}
-																},
-																"interval": {
-																	"description": "The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations.",
-																	"type": "integer",
-																	"default": 60,
-																	"x-auditable": true
-																},
-																"method": {
-																	"description": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.",
-																	"type": "string",
-																	"example": "GET",
-																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
-																},
-																"path": {
-																	"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
-																	"type": "string",
-																	"example": "/health",
-																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
-																},
-																"port": {
-																	"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
-																	"type": "integer",
-																	"nullable": true,
-																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "optional"
-																},
-																"probe_zone": {
-																	"description": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.",
-																	"type": "string",
-																	"example": "example.com",
-																	"default": "",
-																	"x-auditable": true
-																},
-																"retries": {
-																	"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
-																	"type": "integer",
-																	"default": 2,
-																	"x-auditable": true
-																},
-																"timeout": {
-																	"description": "The timeout (in seconds) before marking the health check as failed.",
-																	"type": "integer",
-																	"default": 5,
-																	"x-auditable": true
-																},
-																"type": {
-																	"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.",
-																	"type": "string",
-																	"example": "https",
-																	"default": "http",
-																	"enum": [
-																		"http",
-																		"https",
-																		"tcp",
-																		"udp_icmp",
-																		"icmp_ping",
-																		"smtp"
-																	],
-																	"x-auditable": true
-																}
-															}
-														},
-														{
-															"properties": {
-																"created_on": {
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"id": {
-																	"type": "string",
-																	"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
-																	"x-auditable": true
-																},
-																"modified_on": {
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														}
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -5287,7 +3488,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.load-balancers.monitors",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

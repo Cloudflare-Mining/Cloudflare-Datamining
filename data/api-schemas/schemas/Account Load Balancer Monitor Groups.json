@@ -187,7 +187,8 @@
 												"members"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -199,249 +200,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"properties": {
-												"errors": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"example": []
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"type": "boolean",
-													"example": true,
-													"enum": [
-														true
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											]
-										},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"created_on": {
-															"description": "The timestamp of when the monitor group was created",
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true
-														},
-														"description": {
-															"description": "A short description of the monitor group",
-															"type": "string",
-															"example": "Primary datacenter monitors"
-														},
-														"id": {
-															"allOf": [
-																{
-																	"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-																	"type": "string",
-																	"x-auditable": true
-																}
-															],
-															"readOnly": true
-														},
-														"members": {
-															"description": "List of monitors in this group",
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"created_at": {
-																		"description": "The timestamp of when the monitor was added to the group",
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"readOnly": true
-																	},
-																	"enabled": {
-																		"description": "Whether this monitor is enabled in the group",
-																		"type": "boolean",
-																		"example": true
-																	},
-																	"monitor_id": {
-																		"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"monitoring_only": {
-																		"description": "Whether this monitor is used for monitoring only (does not affect pool health)",
-																		"type": "boolean",
-																		"example": false
-																	},
-																	"must_be_healthy": {
-																		"description": "Whether this monitor must be healthy for the pool to be considered healthy",
-																		"type": "boolean",
-																		"example": true
-																	},
-																	"updated_at": {
-																		"description": "The timestamp of when the monitor group member was last updated",
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"readOnly": true
-																	}
-																},
-																"required": [
-																	"monitor_id",
-																	"enabled",
-																	"monitoring_only",
-																	"must_be_healthy"
-																]
-															},
-															"x-stainless-collection-type": "set"
-														},
-														"modified_on": {
-															"description": "The timestamp of when the monitor group was last updated",
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"id",
-														"description",
-														"members"
-													]
-												}
-											}
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -452,249 +291,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"properties": {
-												"errors": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"example": []
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"type": "boolean",
-													"example": true,
-													"enum": [
-														true
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											]
-										},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"created_on": {
-															"description": "The timestamp of when the monitor group was created",
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true
-														},
-														"description": {
-															"description": "A short description of the monitor group",
-															"type": "string",
-															"example": "Primary datacenter monitors"
-														},
-														"id": {
-															"allOf": [
-																{
-																	"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-																	"type": "string",
-																	"x-auditable": true
-																}
-															],
-															"readOnly": true
-														},
-														"members": {
-															"description": "List of monitors in this group",
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"created_at": {
-																		"description": "The timestamp of when the monitor was added to the group",
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"readOnly": true
-																	},
-																	"enabled": {
-																		"description": "Whether this monitor is enabled in the group",
-																		"type": "boolean",
-																		"example": true
-																	},
-																	"monitor_id": {
-																		"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"monitoring_only": {
-																		"description": "Whether this monitor is used for monitoring only (does not affect pool health)",
-																		"type": "boolean",
-																		"example": false
-																	},
-																	"must_be_healthy": {
-																		"description": "Whether this monitor must be healthy for the pool to be considered healthy",
-																		"type": "boolean",
-																		"example": true
-																	},
-																	"updated_at": {
-																		"description": "The timestamp of when the monitor group member was last updated",
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"readOnly": true
-																	}
-																},
-																"required": [
-																	"monitor_id",
-																	"enabled",
-																	"monitoring_only",
-																	"must_be_healthy"
-																]
-															},
-															"x-stainless-collection-type": "set"
-														},
-														"modified_on": {
-															"description": "The timestamp of when the monitor group was last updated",
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"id",
-														"description",
-														"members"
-													]
-												}
-											}
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -713,8 +390,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "load-balancers.monitor-groups",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/load_balancers/monitor_groups": {
 		"operationId": "account-load-balancer-monitor-groups-list-monitor-groups",
@@ -927,7 +603,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -939,282 +616,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"properties": {
-												"errors": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"example": []
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"type": "boolean",
-													"example": true,
-													"enum": [
-														true
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											]
-										},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"type": "array",
-													"items": {
-														"type": "object",
-														"properties": {
-															"created_on": {
-																"description": "The timestamp of when the monitor group was created",
-																"type": "string",
-																"format": "date-time",
-																"example": "2014-01-01T05:20:00.12345Z",
-																"readOnly": true
-															},
-															"description": {
-																"description": "A short description of the monitor group",
-																"type": "string",
-																"example": "Primary datacenter monitors"
-															},
-															"id": {
-																"allOf": [
-																	{
-																		"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-																		"type": "string",
-																		"x-auditable": true
-																	}
-																],
-																"readOnly": true
-															},
-															"members": {
-																"description": "List of monitors in this group",
-																"type": "array",
-																"items": {
-																	"type": "object",
-																	"properties": {
-																		"created_at": {
-																			"description": "The timestamp of when the monitor was added to the group",
-																			"type": "string",
-																			"format": "date-time",
-																			"example": "2014-01-01T05:20:00.12345Z",
-																			"readOnly": true
-																		},
-																		"enabled": {
-																			"description": "Whether this monitor is enabled in the group",
-																			"type": "boolean",
-																			"example": true
-																		},
-																		"monitor_id": {
-																			"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
-																			"type": "string",
-																			"x-auditable": true
-																		},
-																		"monitoring_only": {
-																			"description": "Whether this monitor is used for monitoring only (does not affect pool health)",
-																			"type": "boolean",
-																			"example": false
-																		},
-																		"must_be_healthy": {
-																			"description": "Whether this monitor must be healthy for the pool to be considered healthy",
-																			"type": "boolean",
-																			"example": true
-																		},
-																		"updated_at": {
-																			"description": "The timestamp of when the monitor group member was last updated",
-																			"type": "string",
-																			"format": "date-time",
-																			"example": "2014-01-01T05:20:00.12345Z",
-																			"readOnly": true
-																		}
-																	},
-																	"required": [
-																		"monitor_id",
-																		"enabled",
-																		"monitoring_only",
-																		"must_be_healthy"
-																	]
-																},
-																"x-stainless-collection-type": "set"
-															},
-															"modified_on": {
-																"description": "The timestamp of when the monitor group was last updated",
-																"type": "string",
-																"format": "date-time",
-																"example": "2014-01-01T05:20:00.12345Z",
-																"readOnly": true
-															}
-														},
-														"required": [
-															"id",
-															"description",
-															"members"
-														]
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
 													}
 												},
-												"result_info": {
-													"type": "object",
-													"properties": {
-														"count": {
-															"description": "Total number of results on the current page.",
-															"type": "number",
-															"example": 20
-														},
-														"page": {
-															"description": "Current page within paginated list of results.",
-															"type": "number",
-															"example": 1
-														},
-														"per_page": {
-															"description": "Number of results per page.",
-															"type": "number",
-															"example": 20
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters.",
-															"type": "number",
-															"example": 2000
-														},
-														"total_pages": {
-															"description": "Total number of pages available.",
-															"type": "number",
-															"example": 100
-														}
-													}
-												}
-											}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1233,8 +715,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "load-balancers.monitor-groups",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}": {
 		"operationId": "account-load-balancer-monitor-groups-monitor-group-details",
@@ -1424,7 +905,8 @@
 												"members"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1436,249 +918,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"properties": {
-												"errors": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"example": []
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"type": "boolean",
-													"example": true,
-													"enum": [
-														true
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											]
-										},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"created_on": {
-															"description": "The timestamp of when the monitor group was created",
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true
-														},
-														"description": {
-															"description": "A short description of the monitor group",
-															"type": "string",
-															"example": "Primary datacenter monitors"
-														},
-														"id": {
-															"allOf": [
-																{
-																	"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-																	"type": "string",
-																	"x-auditable": true
-																}
-															],
-															"readOnly": true
-														},
-														"members": {
-															"description": "List of monitors in this group",
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"created_at": {
-																		"description": "The timestamp of when the monitor was added to the group",
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"readOnly": true
-																	},
-																	"enabled": {
-																		"description": "Whether this monitor is enabled in the group",
-																		"type": "boolean",
-																		"example": true
-																	},
-																	"monitor_id": {
-																		"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"monitoring_only": {
-																		"description": "Whether this monitor is used for monitoring only (does not affect pool health)",
-																		"type": "boolean",
-																		"example": false
-																	},
-																	"must_be_healthy": {
-																		"description": "Whether this monitor must be healthy for the pool to be considered healthy",
-																		"type": "boolean",
-																		"example": true
-																	},
-																	"updated_at": {
-																		"description": "The timestamp of when the monitor group member was last updated",
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"readOnly": true
-																	}
-																},
-																"required": [
-																	"monitor_id",
-																	"enabled",
-																	"monitoring_only",
-																	"must_be_healthy"
-																]
-															},
-															"x-stainless-collection-type": "set"
-														},
-														"modified_on": {
-															"description": "The timestamp of when the monitor group was last updated",
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"id",
-														"description",
-														"members"
-													]
-												}
-											}
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1697,8 +1017,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "load-balancers.monitor-groups",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}/references": {
 		"operationId": "account-load-balancer-monitor-groups-list-monitor-group-references",
@@ -1850,199 +1169,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"properties": {
-												"errors": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"example": []
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"type": "boolean",
-													"example": true,
-													"enum": [
-														true
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											]
-										},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"description": "List of resources that reference a given monitor group.",
-													"type": "array",
-													"items": {
-														"properties": {
-															"reference_type": {
-																"type": "string",
-																"enum": [
-																	"*",
-																	"referral",
-																	"referrer"
-																],
-																"x-auditable": true
-															},
-															"resource_id": {
-																"type": "string",
-																"x-auditable": true
-															},
-															"resource_name": {
-																"type": "string",
-																"x-auditable": true
-															},
-															"resource_type": {
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"type": "object"
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"example": [
-														{
-															"reference_type": "referrer",
-															"resource_id": "17b5962d775c646f3f9725cbc7a53df4",
-															"resource_name": "primary-dc-1",
-															"resource_type": "pool"
-														}
-													]
-												}
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -2061,8 +1268,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "load-balancers.monitor-groups.references",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"PATCH /accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}": {
 		"operationId": "account-load-balancer-monitor-groups-patch-monitor-group",
@@ -2348,7 +1554,8 @@
 												"members"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2360,249 +1567,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"properties": {
-												"errors": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"example": []
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"type": "boolean",
-													"example": true,
-													"enum": [
-														true
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											]
-										},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"created_on": {
-															"description": "The timestamp of when the monitor group was created",
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true
-														},
-														"description": {
-															"description": "A short description of the monitor group",
-															"type": "string",
-															"example": "Primary datacenter monitors"
-														},
-														"id": {
-															"allOf": [
-																{
-																	"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-																	"type": "string",
-																	"x-auditable": true
-																}
-															],
-															"readOnly": true
-														},
-														"members": {
-															"description": "List of monitors in this group",
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"created_at": {
-																		"description": "The timestamp of when the monitor was added to the group",
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"readOnly": true
-																	},
-																	"enabled": {
-																		"description": "Whether this monitor is enabled in the group",
-																		"type": "boolean",
-																		"example": true
-																	},
-																	"monitor_id": {
-																		"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"monitoring_only": {
-																		"description": "Whether this monitor is used for monitoring only (does not affect pool health)",
-																		"type": "boolean",
-																		"example": false
-																	},
-																	"must_be_healthy": {
-																		"description": "Whether this monitor must be healthy for the pool to be considered healthy",
-																		"type": "boolean",
-																		"example": true
-																	},
-																	"updated_at": {
-																		"description": "The timestamp of when the monitor group member was last updated",
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"readOnly": true
-																	}
-																},
-																"required": [
-																	"monitor_id",
-																	"enabled",
-																	"monitoring_only",
-																	"must_be_healthy"
-																]
-															},
-															"x-stainless-collection-type": "set"
-														},
-														"modified_on": {
-															"description": "The timestamp of when the monitor group was last updated",
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"id",
-														"description",
-														"members"
-													]
-												}
-											}
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -2613,249 +1658,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"properties": {
-												"errors": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"example": []
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"type": "boolean",
-													"example": true,
-													"enum": [
-														true
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											]
-										},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"created_on": {
-															"description": "The timestamp of when the monitor group was created",
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true
-														},
-														"description": {
-															"description": "A short description of the monitor group",
-															"type": "string",
-															"example": "Primary datacenter monitors"
-														},
-														"id": {
-															"allOf": [
-																{
-																	"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-																	"type": "string",
-																	"x-auditable": true
-																}
-															],
-															"readOnly": true
-														},
-														"members": {
-															"description": "List of monitors in this group",
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"created_at": {
-																		"description": "The timestamp of when the monitor was added to the group",
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"readOnly": true
-																	},
-																	"enabled": {
-																		"description": "Whether this monitor is enabled in the group",
-																		"type": "boolean",
-																		"example": true
-																	},
-																	"monitor_id": {
-																		"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"monitoring_only": {
-																		"description": "Whether this monitor is used for monitoring only (does not affect pool health)",
-																		"type": "boolean",
-																		"example": false
-																	},
-																	"must_be_healthy": {
-																		"description": "Whether this monitor must be healthy for the pool to be considered healthy",
-																		"type": "boolean",
-																		"example": true
-																	},
-																	"updated_at": {
-																		"description": "The timestamp of when the monitor group member was last updated",
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"readOnly": true
-																	}
-																},
-																"required": [
-																	"monitor_id",
-																	"enabled",
-																	"monitoring_only",
-																	"must_be_healthy"
-																]
-															},
-															"x-stainless-collection-type": "set"
-														},
-														"modified_on": {
-															"description": "The timestamp of when the monitor group was last updated",
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"id",
-														"description",
-														"members"
-													]
-												}
-											}
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -2874,8 +1757,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "load-balancers.monitor-groups",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/load_balancers/monitor_groups": {
 		"operationId": "account-load-balancer-monitor-groups-create-monitor-group",
@@ -3151,7 +2033,8 @@
 												"members"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -3163,249 +2046,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"properties": {
-												"errors": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"example": []
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"type": "boolean",
-													"example": true,
-													"enum": [
-														true
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											]
-										},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"created_on": {
-															"description": "The timestamp of when the monitor group was created",
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true
-														},
-														"description": {
-															"description": "A short description of the monitor group",
-															"type": "string",
-															"example": "Primary datacenter monitors"
-														},
-														"id": {
-															"allOf": [
-																{
-																	"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-																	"type": "string",
-																	"x-auditable": true
-																}
-															],
-															"readOnly": true
-														},
-														"members": {
-															"description": "List of monitors in this group",
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"created_at": {
-																		"description": "The timestamp of when the monitor was added to the group",
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"readOnly": true
-																	},
-																	"enabled": {
-																		"description": "Whether this monitor is enabled in the group",
-																		"type": "boolean",
-																		"example": true
-																	},
-																	"monitor_id": {
-																		"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"monitoring_only": {
-																		"description": "Whether this monitor is used for monitoring only (does not affect pool health)",
-																		"type": "boolean",
-																		"example": false
-																	},
-																	"must_be_healthy": {
-																		"description": "Whether this monitor must be healthy for the pool to be considered healthy",
-																		"type": "boolean",
-																		"example": true
-																	},
-																	"updated_at": {
-																		"description": "The timestamp of when the monitor group member was last updated",
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"readOnly": true
-																	}
-																},
-																"required": [
-																	"monitor_id",
-																	"enabled",
-																	"monitoring_only",
-																	"must_be_healthy"
-																]
-															},
-															"x-stainless-collection-type": "set"
-														},
-														"modified_on": {
-															"description": "The timestamp of when the monitor group was last updated",
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"id",
-														"description",
-														"members"
-													]
-												}
-											}
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -3416,249 +2137,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"properties": {
-												"errors": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"example": []
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"type": "boolean",
-													"example": true,
-													"enum": [
-														true
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											]
-										},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"created_on": {
-															"description": "The timestamp of when the monitor group was created",
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true
-														},
-														"description": {
-															"description": "A short description of the monitor group",
-															"type": "string",
-															"example": "Primary datacenter monitors"
-														},
-														"id": {
-															"allOf": [
-																{
-																	"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-																	"type": "string",
-																	"x-auditable": true
-																}
-															],
-															"readOnly": true
-														},
-														"members": {
-															"description": "List of monitors in this group",
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"created_at": {
-																		"description": "The timestamp of when the monitor was added to the group",
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"readOnly": true
-																	},
-																	"enabled": {
-																		"description": "Whether this monitor is enabled in the group",
-																		"type": "boolean",
-																		"example": true
-																	},
-																	"monitor_id": {
-																		"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"monitoring_only": {
-																		"description": "Whether this monitor is used for monitoring only (does not affect pool health)",
-																		"type": "boolean",
-																		"example": false
-																	},
-																	"must_be_healthy": {
-																		"description": "Whether this monitor must be healthy for the pool to be considered healthy",
-																		"type": "boolean",
-																		"example": true
-																	},
-																	"updated_at": {
-																		"description": "The timestamp of when the monitor group member was last updated",
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"readOnly": true
-																	}
-																},
-																"required": [
-																	"monitor_id",
-																	"enabled",
-																	"monitoring_only",
-																	"must_be_healthy"
-																]
-															},
-															"x-stainless-collection-type": "set"
-														},
-														"modified_on": {
-															"description": "The timestamp of when the monitor group was last updated",
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"id",
-														"description",
-														"members"
-													]
-												}
-											}
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -3677,8 +2236,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "load-balancers.monitor-groups",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}": {
 		"operationId": "account-load-balancer-monitor-groups-update-monitor-group",
@@ -3964,7 +2522,8 @@
 												"members"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -3976,249 +2535,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"properties": {
-												"errors": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"example": []
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"type": "boolean",
-													"example": true,
-													"enum": [
-														true
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											]
-										},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"created_on": {
-															"description": "The timestamp of when the monitor group was created",
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true
-														},
-														"description": {
-															"description": "A short description of the monitor group",
-															"type": "string",
-															"example": "Primary datacenter monitors"
-														},
-														"id": {
-															"allOf": [
-																{
-																	"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-																	"type": "string",
-																	"x-auditable": true
-																}
-															],
-															"readOnly": true
-														},
-														"members": {
-															"description": "List of monitors in this group",
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"created_at": {
-																		"description": "The timestamp of when the monitor was added to the group",
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"readOnly": true
-																	},
-																	"enabled": {
-																		"description": "Whether this monitor is enabled in the group",
-																		"type": "boolean",
-																		"example": true
-																	},
-																	"monitor_id": {
-																		"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"monitoring_only": {
-																		"description": "Whether this monitor is used for monitoring only (does not affect pool health)",
-																		"type": "boolean",
-																		"example": false
-																	},
-																	"must_be_healthy": {
-																		"description": "Whether this monitor must be healthy for the pool to be considered healthy",
-																		"type": "boolean",
-																		"example": true
-																	},
-																	"updated_at": {
-																		"description": "The timestamp of when the monitor group member was last updated",
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"readOnly": true
-																	}
-																},
-																"required": [
-																	"monitor_id",
-																	"enabled",
-																	"monitoring_only",
-																	"must_be_healthy"
-																]
-															},
-															"x-stainless-collection-type": "set"
-														},
-														"modified_on": {
-															"description": "The timestamp of when the monitor group was last updated",
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"id",
-														"description",
-														"members"
-													]
-												}
-											}
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -4229,249 +2626,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"properties": {
-												"errors": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"example": []
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"type": "boolean",
-													"example": true,
-													"enum": [
-														true
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											]
-										},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"created_on": {
-															"description": "The timestamp of when the monitor group was created",
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true
-														},
-														"description": {
-															"description": "A short description of the monitor group",
-															"type": "string",
-															"example": "Primary datacenter monitors"
-														},
-														"id": {
-															"allOf": [
-																{
-																	"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-																	"type": "string",
-																	"x-auditable": true
-																}
-															],
-															"readOnly": true
-														},
-														"members": {
-															"description": "List of monitors in this group",
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"created_at": {
-																		"description": "The timestamp of when the monitor was added to the group",
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"readOnly": true
-																	},
-																	"enabled": {
-																		"description": "Whether this monitor is enabled in the group",
-																		"type": "boolean",
-																		"example": true
-																	},
-																	"monitor_id": {
-																		"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"monitoring_only": {
-																		"description": "Whether this monitor is used for monitoring only (does not affect pool health)",
-																		"type": "boolean",
-																		"example": false
-																	},
-																	"must_be_healthy": {
-																		"description": "Whether this monitor must be healthy for the pool to be considered healthy",
-																		"type": "boolean",
-																		"example": true
-																	},
-																	"updated_at": {
-																		"description": "The timestamp of when the monitor group member was last updated",
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"readOnly": true
-																	}
-																},
-																"required": [
-																	"monitor_id",
-																	"enabled",
-																	"monitoring_only",
-																	"must_be_healthy"
-																]
-															},
-															"x-stainless-collection-type": "set"
-														},
-														"modified_on": {
-															"description": "The timestamp of when the monitor group was last updated",
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"id",
-														"description",
-														"members"
-													]
-												}
-											}
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -4490,7 +2725,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "load-balancers.monitor-groups",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

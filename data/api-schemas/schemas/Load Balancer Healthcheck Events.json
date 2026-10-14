@@ -290,293 +290,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result_info": {
-															"type": "object",
-															"properties": {
-																"count": {
-																	"description": "Total number of results on the current page.",
-																	"type": "number",
-																	"example": 20
-																},
-																"page": {
-																	"description": "Current page within paginated list of results.",
-																	"type": "number",
-																	"example": 1
-																},
-																"per_page": {
-																	"description": "Number of results per page.",
-																	"type": "number",
-																	"example": 20
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters.",
-																	"type": "number",
-																	"example": 2000
-																},
-																"total_pages": {
-																	"description": "Total number of pages available.",
-																	"type": "number",
-																	"example": 100
-																}
-															}
-														}
-													},
-													"type": "object"
-												}
-											],
-											"required": [
-												"result_info"
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "array",
-													"items": {
-														"type": "object",
-														"properties": {
-															"id": {
-																"type": "integer",
-																"default": 1
-															},
-															"origins": {
-																"type": "array",
-																"items": {
-																	"type": "object",
-																	"properties": {
-																		"address": {
-																			"description": "The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set.",
-																			"type": "string",
-																			"example": "0.0.0.0",
-																			"x-auditable": true
-																		},
-																		"changed": {
-																			"description": "Whether the origin has changed health status.",
-																			"type": "boolean",
-																			"example": true,
-																			"x-auditable": true
-																		},
-																		"enabled": {
-																			"description": "Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.",
-																			"type": "boolean",
-																			"example": true,
-																			"default": true,
-																			"x-auditable": true
-																		},
-																		"failure_reason": {
-																			"description": "Failure reason for un-healthy origin health check.",
-																			"type": "string",
-																			"example": "No failures",
-																			"x-auditable": true
-																		},
-																		"healthy": {
-																			"description": "Whether the origin is reported as healthy.",
-																			"type": "boolean",
-																			"example": true,
-																			"x-auditable": true
-																		},
-																		"ip": {
-																			"description": "The IP address (IPv4 or IPv6) of the origin.",
-																			"type": "string",
-																			"example": "198.51.100.4",
-																			"x-auditable": true
-																		},
-																		"name": {
-																			"description": "A human-identifiable name for the origin.",
-																			"type": "string",
-																			"example": "app-server-1",
-																			"x-auditable": true
-																		}
-																	}
-																},
-																"example": [
-																	{
-																		"address": "198.51.100.4",
-																		"changed": true,
-																		"enabled": true,
-																		"failure_reason": "No failures",
-																		"healthy": true,
-																		"ip": "198.51.100.4",
-																		"name": "some-origin"
-																	}
-																]
-															},
-															"pool": {
-																"type": "object",
-																"example": {
-																	"changed": true,
-																	"healthy": true,
-																	"id": "74bc6a8b9b0dda3d651707a2928bad0c",
-																	"minimum_origins": 1,
-																	"name": "some-pool"
-																}
-															},
-															"timestamp": {
-																"type": "string",
-																"format": "date-time",
-																"example": "2014-01-01T05:20:00.12345Z"
-															}
-														}
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -599,7 +393,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.load-balancing-analytics.events",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	}
 }

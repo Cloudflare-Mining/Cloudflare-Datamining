@@ -130,193 +130,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"id": {
-															"type": "string",
-															"example": "17b5962d775c646f3f9725cbc7a53df4",
-															"x-auditable": true
-														}
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -338,8 +232,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.load-balancers.pools",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /user/load_balancers/pools": {
 		"operationId": "load-balancer-pools-list-pools",
@@ -642,14 +535,14 @@
 														"description": "List of networks where Load Balancer or Pool is enabled.",
 														"type": "array",
 														"items": {
-															"example": [
-																"cloudflare",
-																"jdcloud"
-															],
 															"type": "string",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
-														}
+														},
+														"example": [
+															"cloudflare",
+															"jdcloud"
+														]
 													},
 													"notification_email": {
 														"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
@@ -828,551 +721,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result_info": {
-															"type": "object",
-															"properties": {
-																"count": {
-																	"description": "Total number of results on the current page.",
-																	"type": "number",
-																	"example": 20
-																},
-																"page": {
-																	"description": "Current page within paginated list of results.",
-																	"type": "number",
-																	"example": 1
-																},
-																"per_page": {
-																	"description": "Number of results per page.",
-																	"type": "number",
-																	"example": 20
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters.",
-																	"type": "number",
-																	"example": 2000
-																},
-																"total_pages": {
-																	"description": "Total number of pages available.",
-																	"type": "number",
-																	"example": 100
-																}
-															}
-														}
-													},
-													"type": "object"
-												}
-											],
-											"required": [
-												"result_info"
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "array",
-													"items": {
-														"type": "object",
-														"properties": {
-															"check_regions": {
-																"description": "A list of regions from which to run health checks. Null means every Cloudflare data center.",
-																"type": "array",
-																"items": {
-																	"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, SAS: Southern Asia, SEAS: South East Asia, NEAS: North East Asia, CHINA: China (ENTERPRISE customers only), ALL_REGIONS: all regions (ENTERPRISE customers only).",
-																	"enum": [
-																		"WNAM",
-																		"ENAM",
-																		"WEU",
-																		"EEU",
-																		"NSAM",
-																		"SSAM",
-																		"OC",
-																		"ME",
-																		"NAF",
-																		"SAF",
-																		"SAS",
-																		"SEAS",
-																		"NEAS",
-																		"CHINA",
-																		"ALL_REGIONS"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"example": [
-																	"WEU",
-																	"ENAM"
-																],
-																"nullable": true
-															},
-															"created_on": {
-																"type": "string",
-																"format": "date-time",
-																"example": "2014-01-01T05:20:00.12345Z",
-																"readOnly": true,
-																"x-auditable": true
-															},
-															"description": {
-																"description": "A human-readable description of the pool.",
-																"type": "string",
-																"example": "Primary data center - Provider XYZ",
-																"default": "",
-																"x-auditable": true
-															},
-															"disabled_at": {
-																"description": "This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.",
-																"type": "string",
-																"format": "date-time",
-																"readOnly": true,
-																"x-auditable": true
-															},
-															"enabled": {
-																"description": "Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).",
-																"type": "boolean",
-																"example": false,
-																"default": true,
-																"x-auditable": true
-															},
-															"health_sources": {
-																"description": "A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [\"regional\", \"global\"]; any other combination is rejected. Null (the default) behaves like [\"local\", \"global\"]. [\"regional\", \"global\"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.",
-																"type": "array",
-																"items": {
-																	"description": "The scope a health decision is aggregated over. local: the result from the single data center running the health check; only available when health checks run from every data center (check_regions is ALL_DATACENTERS). regional: a separate decision per region, each aggregated from the data centers within that region, so regions steer independently; requires at least one region configured in check_regions. global: one worldwide decision aggregated across all configured regions, used as the fallback.",
-																	"enum": [
-																		"local",
-																		"regional",
-																		"global"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"example": [
-																	"regional",
-																	"global"
-																],
-																"nullable": true
-															},
-															"id": {
-																"type": "string",
-																"example": "17b5962d775c646f3f9725cbc7a53df4",
-																"x-auditable": true
-															},
-															"latitude": {
-																"description": "The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.",
-																"type": "number",
-																"x-auditable": true
-															},
-															"load_shedding": {
-																"description": "Configures load shedding policies and percentages for the pool.",
-																"type": "object",
-																"properties": {
-																	"default_percent": {
-																		"description": "The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity.",
-																		"type": "number",
-																		"default": 0,
-																		"maximum": 100,
-																		"minimum": 0,
-																		"x-auditable": true
-																	},
-																	"default_policy": {
-																		"description": "The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs.",
-																		"type": "string",
-																		"default": "random",
-																		"enum": [
-																			"random",
-																			"hash"
-																		],
-																		"x-auditable": true
-																	},
-																	"session_percent": {
-																		"description": "The percent of existing sessions to shed from the pool, according to the session policy.",
-																		"type": "number",
-																		"default": 0,
-																		"maximum": 100,
-																		"minimum": 0,
-																		"x-auditable": true
-																	},
-																	"session_policy": {
-																		"description": "Only the hash policy is supported for existing sessions (to avoid exponential decay).",
-																		"type": "string",
-																		"default": "hash",
-																		"enum": [
-																			"hash"
-																		],
-																		"x-auditable": true
-																	}
-																},
-																"nullable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
-															},
-															"longitude": {
-																"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
-																"type": "number",
-																"x-auditable": true
-															},
-															"minimum_origins": {
-																"description": "The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.",
-																"type": "integer",
-																"default": 1,
-																"x-auditable": true
-															},
-															"modified_on": {
-																"type": "string",
-																"format": "date-time",
-																"example": "2014-01-01T05:20:00.12345Z",
-																"readOnly": true,
-																"x-auditable": true
-															},
-															"monitor": {
-																"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
-																"type": "string",
-																"x-auditable": true
-															},
-															"monitor_group": {
-																"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-																"type": "string",
-																"x-auditable": true
-															},
-															"name": {
-																"description": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
-																"type": "string",
-																"example": "primary-dc-1",
-																"x-auditable": true
-															},
-															"networks": {
-																"description": "List of networks where Load Balancer or Pool is enabled.",
-																"type": "array",
-																"items": {
-																	"example": [
-																		"cloudflare",
-																		"jdcloud"
-																	],
-																	"type": "string",
-																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
-																}
-															},
-															"notification_email": {
-																"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
-																"type": "string",
-																"example": "someone@example.com,sometwo@example.com",
-																"default": "",
-																"x-auditable": true
-															},
-															"notification_filter": {
-																"description": "Filter pool and origin health notifications by resource type or health status. Use null to reset.",
-																"type": "object",
-																"properties": {
-																	"origin": {
-																		"description": "Filter options for a particular resource type (pool or origin). Use null to reset.",
-																		"type": "object",
-																		"properties": {
-																			"disable": {
-																				"description": "If set true, disable notifications for this type of resource (pool or origin).",
-																				"type": "boolean",
-																				"default": false,
-																				"nullable": true,
-																				"x-auditable": true,
-																				"x-stainless-terraform-configurability": "optional"
-																			},
-																			"healthy": {
-																				"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
-																				"type": "boolean",
-																				"nullable": true,
-																				"x-auditable": true
-																			}
-																		},
-																		"nullable": true
-																	},
-																	"pool": {
-																		"description": "Filter options for a particular resource type (pool or origin). Use null to reset.",
-																		"type": "object",
-																		"properties": {
-																			"disable": {
-																				"description": "If set true, disable notifications for this type of resource (pool or origin).",
-																				"type": "boolean",
-																				"default": false,
-																				"nullable": true,
-																				"x-auditable": true,
-																				"x-stainless-terraform-configurability": "optional"
-																			},
-																			"healthy": {
-																				"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
-																				"type": "boolean",
-																				"nullable": true,
-																				"x-auditable": true
-																			}
-																		},
-																		"nullable": true
-																	}
-																},
-																"example": {
-																	"origin": {
-																		"disable": true
-																	},
-																	"pool": {
-																		"healthy": false
-																	}
-																},
-																"nullable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
-															},
-															"origin_steering": {
-																"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
-																"type": "object",
-																"properties": {
-																	"policy": {
-																		"description": "The type of origin steering policy to use.\n- `\"random\"`: Select an origin randomly.\n- `\"hash\"`: Select an origin by computing a hash over the CF-Connecting-IP address.\n- `\"least_outstanding_requests\"`: Select an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others.\n- `\"least_connections\"`: Select an origin by taking into consideration origin weights, as well as each origin's number of open connections. Origins with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections.",
-																		"type": "string",
-																		"default": "random",
-																		"enum": [
-																			"random",
-																			"hash",
-																			"least_outstanding_requests",
-																			"least_connections"
-																		],
-																		"x-auditable": true
-																	}
-																},
-																"nullable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
-															},
-															"origins": {
-																"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
-																"type": "array",
-																"items": {
-																	"type": "object",
-																	"properties": {
-																		"address": {
-																			"description": "The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set.",
-																			"type": "string",
-																			"example": "0.0.0.0",
-																			"x-auditable": true
-																		},
-																		"disabled_at": {
-																			"description": "This field shows up only if the origin is disabled. This field is set with the time the origin was disabled.",
-																			"type": "string",
-																			"format": "date-time",
-																			"readOnly": true,
-																			"x-auditable": true
-																		},
-																		"enabled": {
-																			"description": "Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.",
-																			"type": "boolean",
-																			"example": true,
-																			"default": true,
-																			"x-auditable": true
-																		},
-																		"flatten_cname": {
-																			"description": "Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting.",
-																			"type": "boolean",
-																			"default": true
-																		},
-																		"header": {
-																			"description": "The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'.",
-																			"type": "object",
-																			"properties": {
-																				"Host": {
-																					"description": "The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin.",
-																					"type": "array",
-																					"items": {
-																						"example": "example.com",
-																						"type": "string",
-																						"x-auditable": true
-																					}
-																				}
-																			}
-																		},
-																		"name": {
-																			"description": "A human-identifiable name for the origin.",
-																			"type": "string",
-																			"example": "app-server-1",
-																			"x-auditable": true
-																		},
-																		"port": {
-																			"description": "The port for upstream connections. A value of 0 means the default port for the protocol will be used.",
-																			"type": "integer",
-																			"default": 0
-																		},
-																		"virtual_network_id": {
-																			"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
-																			"type": "string",
-																			"example": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4"
-																		},
-																		"weight": {
-																			"description": "The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool.\n- `origin_steering.policy=\"least_outstanding_requests\"`: Use weight to scale the origin's outstanding requests.\n- `origin_steering.policy=\"least_connections\"`: Use weight to scale the origin's open connections.",
-																			"type": "number",
-																			"example": 0.6,
-																			"default": 1,
-																			"maximum": 1,
-																			"minimum": 0,
-																			"multipleOf": 0.01,
-																			"x-auditable": true
-																		}
-																	}
-																},
-																"x-stainless-collection-type": "set"
-															}
-														}
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1395,8 +824,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.load-balancers.pools",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /user/load_balancers/pools/{pool_id}": {
 		"operationId": "load-balancer-pools-pool-details",
@@ -1678,14 +1106,14 @@
 													"description": "List of networks where Load Balancer or Pool is enabled.",
 													"type": "array",
 													"items": {
-														"example": [
-															"cloudflare",
-															"jdcloud"
-														],
 														"type": "string",
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
-													}
+													},
+													"example": [
+														"cloudflare",
+														"jdcloud"
+													]
 												},
 												"notification_email": {
 													"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
@@ -1863,527 +1291,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"check_regions": {
-															"description": "A list of regions from which to run health checks. Null means every Cloudflare data center.",
-															"type": "array",
-															"items": {
-																"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, SAS: Southern Asia, SEAS: South East Asia, NEAS: North East Asia, CHINA: China (ENTERPRISE customers only), ALL_REGIONS: all regions (ENTERPRISE customers only).",
-																"enum": [
-																	"WNAM",
-																	"ENAM",
-																	"WEU",
-																	"EEU",
-																	"NSAM",
-																	"SSAM",
-																	"OC",
-																	"ME",
-																	"NAF",
-																	"SAF",
-																	"SAS",
-																	"SEAS",
-																	"NEAS",
-																	"CHINA",
-																	"ALL_REGIONS"
-																],
-																"type": "string",
-																"x-auditable": true
-															},
-															"example": [
-																"WEU",
-																"ENAM"
-															],
-															"nullable": true
-														},
-														"created_on": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"description": {
-															"description": "A human-readable description of the pool.",
-															"type": "string",
-															"example": "Primary data center - Provider XYZ",
-															"default": "",
-															"x-auditable": true
-														},
-														"disabled_at": {
-															"description": "This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.",
-															"type": "string",
-															"format": "date-time",
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"enabled": {
-															"description": "Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).",
-															"type": "boolean",
-															"example": false,
-															"default": true,
-															"x-auditable": true
-														},
-														"health_sources": {
-															"description": "A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [\"regional\", \"global\"]; any other combination is rejected. Null (the default) behaves like [\"local\", \"global\"]. [\"regional\", \"global\"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.",
-															"type": "array",
-															"items": {
-																"description": "The scope a health decision is aggregated over. local: the result from the single data center running the health check; only available when health checks run from every data center (check_regions is ALL_DATACENTERS). regional: a separate decision per region, each aggregated from the data centers within that region, so regions steer independently; requires at least one region configured in check_regions. global: one worldwide decision aggregated across all configured regions, used as the fallback.",
-																"enum": [
-																	"local",
-																	"regional",
-																	"global"
-																],
-																"type": "string",
-																"x-auditable": true
-															},
-															"example": [
-																"regional",
-																"global"
-															],
-															"nullable": true
-														},
-														"id": {
-															"type": "string",
-															"example": "17b5962d775c646f3f9725cbc7a53df4",
-															"x-auditable": true
-														},
-														"latitude": {
-															"description": "The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.",
-															"type": "number",
-															"x-auditable": true
-														},
-														"load_shedding": {
-															"description": "Configures load shedding policies and percentages for the pool.",
-															"type": "object",
-															"properties": {
-																"default_percent": {
-																	"description": "The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity.",
-																	"type": "number",
-																	"default": 0,
-																	"maximum": 100,
-																	"minimum": 0,
-																	"x-auditable": true
-																},
-																"default_policy": {
-																	"description": "The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs.",
-																	"type": "string",
-																	"default": "random",
-																	"enum": [
-																		"random",
-																		"hash"
-																	],
-																	"x-auditable": true
-																},
-																"session_percent": {
-																	"description": "The percent of existing sessions to shed from the pool, according to the session policy.",
-																	"type": "number",
-																	"default": 0,
-																	"maximum": 100,
-																	"minimum": 0,
-																	"x-auditable": true
-																},
-																"session_policy": {
-																	"description": "Only the hash policy is supported for existing sessions (to avoid exponential decay).",
-																	"type": "string",
-																	"default": "hash",
-																	"enum": [
-																		"hash"
-																	],
-																	"x-auditable": true
-																}
-															},
-															"nullable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
-														},
-														"longitude": {
-															"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
-															"type": "number",
-															"x-auditable": true
-														},
-														"minimum_origins": {
-															"description": "The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.",
-															"type": "integer",
-															"default": 1,
-															"x-auditable": true
-														},
-														"modified_on": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"monitor": {
-															"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
-															"type": "string",
-															"x-auditable": true
-														},
-														"monitor_group": {
-															"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-															"type": "string",
-															"x-auditable": true
-														},
-														"name": {
-															"description": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
-															"type": "string",
-															"example": "primary-dc-1",
-															"x-auditable": true
-														},
-														"networks": {
-															"description": "List of networks where Load Balancer or Pool is enabled.",
-															"type": "array",
-															"items": {
-																"example": [
-																	"cloudflare",
-																	"jdcloud"
-																],
-																"type": "string",
-																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
-															}
-														},
-														"notification_email": {
-															"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
-															"type": "string",
-															"example": "someone@example.com,sometwo@example.com",
-															"default": "",
-															"x-auditable": true
-														},
-														"notification_filter": {
-															"description": "Filter pool and origin health notifications by resource type or health status. Use null to reset.",
-															"type": "object",
-															"properties": {
-																"origin": {
-																	"description": "Filter options for a particular resource type (pool or origin). Use null to reset.",
-																	"type": "object",
-																	"properties": {
-																		"disable": {
-																			"description": "If set true, disable notifications for this type of resource (pool or origin).",
-																			"type": "boolean",
-																			"default": false,
-																			"nullable": true,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "optional"
-																		},
-																		"healthy": {
-																			"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
-																			"type": "boolean",
-																			"nullable": true,
-																			"x-auditable": true
-																		}
-																	},
-																	"nullable": true
-																},
-																"pool": {
-																	"description": "Filter options for a particular resource type (pool or origin). Use null to reset.",
-																	"type": "object",
-																	"properties": {
-																		"disable": {
-																			"description": "If set true, disable notifications for this type of resource (pool or origin).",
-																			"type": "boolean",
-																			"default": false,
-																			"nullable": true,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "optional"
-																		},
-																		"healthy": {
-																			"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
-																			"type": "boolean",
-																			"nullable": true,
-																			"x-auditable": true
-																		}
-																	},
-																	"nullable": true
-																}
-															},
-															"example": {
-																"origin": {
-																	"disable": true
-																},
-																"pool": {
-																	"healthy": false
-																}
-															},
-															"nullable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
-														},
-														"origin_steering": {
-															"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
-															"type": "object",
-															"properties": {
-																"policy": {
-																	"description": "The type of origin steering policy to use.\n- `\"random\"`: Select an origin randomly.\n- `\"hash\"`: Select an origin by computing a hash over the CF-Connecting-IP address.\n- `\"least_outstanding_requests\"`: Select an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others.\n- `\"least_connections\"`: Select an origin by taking into consideration origin weights, as well as each origin's number of open connections. Origins with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections.",
-																	"type": "string",
-																	"default": "random",
-																	"enum": [
-																		"random",
-																		"hash",
-																		"least_outstanding_requests",
-																		"least_connections"
-																	],
-																	"x-auditable": true
-																}
-															},
-															"nullable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
-														},
-														"origins": {
-															"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"address": {
-																		"description": "The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set.",
-																		"type": "string",
-																		"example": "0.0.0.0",
-																		"x-auditable": true
-																	},
-																	"disabled_at": {
-																		"description": "This field shows up only if the origin is disabled. This field is set with the time the origin was disabled.",
-																		"type": "string",
-																		"format": "date-time",
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"enabled": {
-																		"description": "Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.",
-																		"type": "boolean",
-																		"example": true,
-																		"default": true,
-																		"x-auditable": true
-																	},
-																	"flatten_cname": {
-																		"description": "Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting.",
-																		"type": "boolean",
-																		"default": true
-																	},
-																	"header": {
-																		"description": "The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'.",
-																		"type": "object",
-																		"properties": {
-																			"Host": {
-																				"description": "The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin.",
-																				"type": "array",
-																				"items": {
-																					"example": "example.com",
-																					"type": "string",
-																					"x-auditable": true
-																				}
-																			}
-																		}
-																	},
-																	"name": {
-																		"description": "A human-identifiable name for the origin.",
-																		"type": "string",
-																		"example": "app-server-1",
-																		"x-auditable": true
-																	},
-																	"port": {
-																		"description": "The port for upstream connections. A value of 0 means the default port for the protocol will be used.",
-																		"type": "integer",
-																		"default": 0
-																	},
-																	"virtual_network_id": {
-																		"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
-																		"type": "string",
-																		"example": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4"
-																	},
-																	"weight": {
-																		"description": "The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool.\n- `origin_steering.policy=\"least_outstanding_requests\"`: Use weight to scale the origin's outstanding requests.\n- `origin_steering.policy=\"least_connections\"`: Use weight to scale the origin's open connections.",
-																		"type": "number",
-																		"example": 0.6,
-																		"default": 1,
-																		"maximum": 1,
-																		"minimum": 0,
-																		"multipleOf": 0.01,
-																		"x-auditable": true
-																	}
-																}
-															},
-															"x-stainless-collection-type": "set"
-														}
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -2406,8 +1394,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.load-balancers.pools",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /user/load_balancers/pools/{pool_id}/health": {
 		"operationId": "load-balancer-pools-pool-health-details",
@@ -2609,262 +1596,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"description": "A list of regions from which to run health checks. Null means every Cloudflare data center.",
-													"type": "object",
-													"example": {
-														"pool_id": "17b5962d775c646f3f9725cbc7a53df4",
-														"pop_health": {
-															"Amsterdam, NL": {
-																"healthy": true,
-																"origins": [
-																	{
-																		"2001:DB8::5": {
-																			"failure_reason": "No failures",
-																			"healthy": true,
-																			"response_code": 401,
-																			"rtt": "12.1ms"
-																		}
-																	}
-																]
-															}
-														}
-													},
-													"properties": {
-														"pool_id": {
-															"description": "Pool ID.",
-															"type": "string",
-															"example": "17b5962d775c646f3f9725cbc7a53df4",
-															"x-auditable": true
-														},
-														"pop_health": {
-															"description": "List of regions and associated health status.",
-															"type": "object",
-															"properties": {
-																"healthy": {
-																	"description": "Whether health check in region is healthy.",
-																	"type": "boolean",
-																	"example": true,
-																	"x-auditable": true
-																},
-																"origins": {
-																	"type": "array",
-																	"items": {
-																		"type": "object",
-																		"properties": {
-																			"ip": {
-																				"type": "object",
-																				"properties": {
-																					"failure_reason": {
-																						"description": "Failure reason.",
-																						"type": "string",
-																						"example": "No failure reasons",
-																						"x-auditable": true
-																					},
-																					"healthy": {
-																						"description": "Origin health status.",
-																						"type": "boolean",
-																						"example": true,
-																						"x-auditable": true
-																					},
-																					"response_code": {
-																						"description": "Response code from origin health check.",
-																						"type": "number",
-																						"example": 200,
-																						"x-auditable": true
-																					},
-																					"rtt": {
-																						"description": "Origin RTT (Round Trip Time) response.",
-																						"type": "string",
-																						"example": "201.5ms",
-																						"x-auditable": true
-																					}
-																				}
-																			}
-																		}
-																	}
-																}
-															}
-														}
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -2887,8 +1699,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.load-balancers.pools.health",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /user/load_balancers/pools/{pool_id}/references": {
 		"operationId": "load-balancer-pools-list-pool-references",
@@ -3033,205 +1844,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"properties": {
-												"errors": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"example": []
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"type": "boolean",
-													"example": true,
-													"enum": [
-														true
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											]
-										},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"description": "List of resources that reference a given pool.",
-													"type": "array",
-													"items": {
-														"properties": {
-															"reference_type": {
-																"type": "string",
-																"enum": [
-																	"*",
-																	"referral",
-																	"referrer"
-																],
-																"x-auditable": true
-															},
-															"resource_id": {
-																"type": "string",
-																"x-auditable": true
-															},
-															"resource_name": {
-																"type": "string",
-																"x-auditable": true
-															},
-															"resource_type": {
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"type": "object"
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"example": [
-														{
-															"reference_type": "referrer",
-															"resource_id": "699d98642c564d2e855e9661899b7252",
-															"resource_name": "www.example.com",
-															"resource_type": "load_balancer"
-														},
-														{
-															"reference_type": "referral",
-															"resource_id": "f1aba936b94213e5b8dca0c0dbf1f9cc",
-															"resource_name": "Login page monitor",
-															"resource_type": "monitor"
-														}
-													]
-												}
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -3254,8 +1947,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.load-balancers.pools.references",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"PATCH /user/load_balancers/pools": {
 		"operationId": "load-balancer-pools-patch-pools",
@@ -3266,7 +1958,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"type": "string",
+						"type": "object",
 						"properties": {
 							"notification_email": {
 								"description": "The email address to send health status notifications to. This field is now deprecated in favor of Cloudflare Notifications for Load Balancing, so only resetting this field with an empty string `\"\"` is accepted.",
@@ -3568,14 +2260,14 @@
 														"description": "List of networks where Load Balancer or Pool is enabled.",
 														"type": "array",
 														"items": {
-															"example": [
-																"cloudflare",
-																"jdcloud"
-															],
 															"type": "string",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
-														}
+														},
+														"example": [
+															"cloudflare",
+															"jdcloud"
+														]
 													},
 													"notification_email": {
 														"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
@@ -3754,551 +2446,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result_info": {
-															"type": "object",
-															"properties": {
-																"count": {
-																	"description": "Total number of results on the current page.",
-																	"type": "number",
-																	"example": 20
-																},
-																"page": {
-																	"description": "Current page within paginated list of results.",
-																	"type": "number",
-																	"example": 1
-																},
-																"per_page": {
-																	"description": "Number of results per page.",
-																	"type": "number",
-																	"example": 20
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters.",
-																	"type": "number",
-																	"example": 2000
-																},
-																"total_pages": {
-																	"description": "Total number of pages available.",
-																	"type": "number",
-																	"example": 100
-																}
-															}
-														}
-													},
-													"type": "object"
-												}
-											],
-											"required": [
-												"result_info"
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "array",
-													"items": {
-														"type": "object",
-														"properties": {
-															"check_regions": {
-																"description": "A list of regions from which to run health checks. Null means every Cloudflare data center.",
-																"type": "array",
-																"items": {
-																	"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, SAS: Southern Asia, SEAS: South East Asia, NEAS: North East Asia, CHINA: China (ENTERPRISE customers only), ALL_REGIONS: all regions (ENTERPRISE customers only).",
-																	"enum": [
-																		"WNAM",
-																		"ENAM",
-																		"WEU",
-																		"EEU",
-																		"NSAM",
-																		"SSAM",
-																		"OC",
-																		"ME",
-																		"NAF",
-																		"SAF",
-																		"SAS",
-																		"SEAS",
-																		"NEAS",
-																		"CHINA",
-																		"ALL_REGIONS"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"example": [
-																	"WEU",
-																	"ENAM"
-																],
-																"nullable": true
-															},
-															"created_on": {
-																"type": "string",
-																"format": "date-time",
-																"example": "2014-01-01T05:20:00.12345Z",
-																"readOnly": true,
-																"x-auditable": true
-															},
-															"description": {
-																"description": "A human-readable description of the pool.",
-																"type": "string",
-																"example": "Primary data center - Provider XYZ",
-																"default": "",
-																"x-auditable": true
-															},
-															"disabled_at": {
-																"description": "This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.",
-																"type": "string",
-																"format": "date-time",
-																"readOnly": true,
-																"x-auditable": true
-															},
-															"enabled": {
-																"description": "Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).",
-																"type": "boolean",
-																"example": false,
-																"default": true,
-																"x-auditable": true
-															},
-															"health_sources": {
-																"description": "A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [\"regional\", \"global\"]; any other combination is rejected. Null (the default) behaves like [\"local\", \"global\"]. [\"regional\", \"global\"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.",
-																"type": "array",
-																"items": {
-																	"description": "The scope a health decision is aggregated over. local: the result from the single data center running the health check; only available when health checks run from every data center (check_regions is ALL_DATACENTERS). regional: a separate decision per region, each aggregated from the data centers within that region, so regions steer independently; requires at least one region configured in check_regions. global: one worldwide decision aggregated across all configured regions, used as the fallback.",
-																	"enum": [
-																		"local",
-																		"regional",
-																		"global"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"example": [
-																	"regional",
-																	"global"
-																],
-																"nullable": true
-															},
-															"id": {
-																"type": "string",
-																"example": "17b5962d775c646f3f9725cbc7a53df4",
-																"x-auditable": true
-															},
-															"latitude": {
-																"description": "The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.",
-																"type": "number",
-																"x-auditable": true
-															},
-															"load_shedding": {
-																"description": "Configures load shedding policies and percentages for the pool.",
-																"type": "object",
-																"properties": {
-																	"default_percent": {
-																		"description": "The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity.",
-																		"type": "number",
-																		"default": 0,
-																		"maximum": 100,
-																		"minimum": 0,
-																		"x-auditable": true
-																	},
-																	"default_policy": {
-																		"description": "The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs.",
-																		"type": "string",
-																		"default": "random",
-																		"enum": [
-																			"random",
-																			"hash"
-																		],
-																		"x-auditable": true
-																	},
-																	"session_percent": {
-																		"description": "The percent of existing sessions to shed from the pool, according to the session policy.",
-																		"type": "number",
-																		"default": 0,
-																		"maximum": 100,
-																		"minimum": 0,
-																		"x-auditable": true
-																	},
-																	"session_policy": {
-																		"description": "Only the hash policy is supported for existing sessions (to avoid exponential decay).",
-																		"type": "string",
-																		"default": "hash",
-																		"enum": [
-																			"hash"
-																		],
-																		"x-auditable": true
-																	}
-																},
-																"nullable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
-															},
-															"longitude": {
-																"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
-																"type": "number",
-																"x-auditable": true
-															},
-															"minimum_origins": {
-																"description": "The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.",
-																"type": "integer",
-																"default": 1,
-																"x-auditable": true
-															},
-															"modified_on": {
-																"type": "string",
-																"format": "date-time",
-																"example": "2014-01-01T05:20:00.12345Z",
-																"readOnly": true,
-																"x-auditable": true
-															},
-															"monitor": {
-																"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
-																"type": "string",
-																"x-auditable": true
-															},
-															"monitor_group": {
-																"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-																"type": "string",
-																"x-auditable": true
-															},
-															"name": {
-																"description": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
-																"type": "string",
-																"example": "primary-dc-1",
-																"x-auditable": true
-															},
-															"networks": {
-																"description": "List of networks where Load Balancer or Pool is enabled.",
-																"type": "array",
-																"items": {
-																	"example": [
-																		"cloudflare",
-																		"jdcloud"
-																	],
-																	"type": "string",
-																	"x-auditable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
-																}
-															},
-															"notification_email": {
-																"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
-																"type": "string",
-																"example": "someone@example.com,sometwo@example.com",
-																"default": "",
-																"x-auditable": true
-															},
-															"notification_filter": {
-																"description": "Filter pool and origin health notifications by resource type or health status. Use null to reset.",
-																"type": "object",
-																"properties": {
-																	"origin": {
-																		"description": "Filter options for a particular resource type (pool or origin). Use null to reset.",
-																		"type": "object",
-																		"properties": {
-																			"disable": {
-																				"description": "If set true, disable notifications for this type of resource (pool or origin).",
-																				"type": "boolean",
-																				"default": false,
-																				"nullable": true,
-																				"x-auditable": true,
-																				"x-stainless-terraform-configurability": "optional"
-																			},
-																			"healthy": {
-																				"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
-																				"type": "boolean",
-																				"nullable": true,
-																				"x-auditable": true
-																			}
-																		},
-																		"nullable": true
-																	},
-																	"pool": {
-																		"description": "Filter options for a particular resource type (pool or origin). Use null to reset.",
-																		"type": "object",
-																		"properties": {
-																			"disable": {
-																				"description": "If set true, disable notifications for this type of resource (pool or origin).",
-																				"type": "boolean",
-																				"default": false,
-																				"nullable": true,
-																				"x-auditable": true,
-																				"x-stainless-terraform-configurability": "optional"
-																			},
-																			"healthy": {
-																				"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
-																				"type": "boolean",
-																				"nullable": true,
-																				"x-auditable": true
-																			}
-																		},
-																		"nullable": true
-																	}
-																},
-																"example": {
-																	"origin": {
-																		"disable": true
-																	},
-																	"pool": {
-																		"healthy": false
-																	}
-																},
-																"nullable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
-															},
-															"origin_steering": {
-																"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
-																"type": "object",
-																"properties": {
-																	"policy": {
-																		"description": "The type of origin steering policy to use.\n- `\"random\"`: Select an origin randomly.\n- `\"hash\"`: Select an origin by computing a hash over the CF-Connecting-IP address.\n- `\"least_outstanding_requests\"`: Select an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others.\n- `\"least_connections\"`: Select an origin by taking into consideration origin weights, as well as each origin's number of open connections. Origins with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections.",
-																		"type": "string",
-																		"default": "random",
-																		"enum": [
-																			"random",
-																			"hash",
-																			"least_outstanding_requests",
-																			"least_connections"
-																		],
-																		"x-auditable": true
-																	}
-																},
-																"nullable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
-															},
-															"origins": {
-																"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
-																"type": "array",
-																"items": {
-																	"type": "object",
-																	"properties": {
-																		"address": {
-																			"description": "The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set.",
-																			"type": "string",
-																			"example": "0.0.0.0",
-																			"x-auditable": true
-																		},
-																		"disabled_at": {
-																			"description": "This field shows up only if the origin is disabled. This field is set with the time the origin was disabled.",
-																			"type": "string",
-																			"format": "date-time",
-																			"readOnly": true,
-																			"x-auditable": true
-																		},
-																		"enabled": {
-																			"description": "Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.",
-																			"type": "boolean",
-																			"example": true,
-																			"default": true,
-																			"x-auditable": true
-																		},
-																		"flatten_cname": {
-																			"description": "Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting.",
-																			"type": "boolean",
-																			"default": true
-																		},
-																		"header": {
-																			"description": "The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'.",
-																			"type": "object",
-																			"properties": {
-																				"Host": {
-																					"description": "The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin.",
-																					"type": "array",
-																					"items": {
-																						"example": "example.com",
-																						"type": "string",
-																						"x-auditable": true
-																					}
-																				}
-																			}
-																		},
-																		"name": {
-																			"description": "A human-identifiable name for the origin.",
-																			"type": "string",
-																			"example": "app-server-1",
-																			"x-auditable": true
-																		},
-																		"port": {
-																			"description": "The port for upstream connections. A value of 0 means the default port for the protocol will be used.",
-																			"type": "integer",
-																			"default": 0
-																		},
-																		"virtual_network_id": {
-																			"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
-																			"type": "string",
-																			"example": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4"
-																		},
-																		"weight": {
-																			"description": "The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool.\n- `origin_steering.policy=\"least_outstanding_requests\"`: Use weight to scale the origin's outstanding requests.\n- `origin_steering.policy=\"least_connections\"`: Use weight to scale the origin's open connections.",
-																			"type": "number",
-																			"example": 0.6,
-																			"default": 1,
-																			"maximum": 1,
-																			"minimum": 0,
-																			"multipleOf": 0.01,
-																			"x-auditable": true
-																		}
-																	}
-																},
-																"x-stainless-collection-type": "set"
-															}
-														}
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -4320,8 +2548,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.load-balancers.pools.edit.pools",
-		"x-fern-sdk-method-name": "pools",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "pools"
 	},
 	"PATCH /user/load_balancers/pools/{pool_id}": {
 		"operationId": "load-balancer-pools-patch-pool",
@@ -4922,14 +3149,14 @@
 													"description": "List of networks where Load Balancer or Pool is enabled.",
 													"type": "array",
 													"items": {
-														"example": [
-															"cloudflare",
-															"jdcloud"
-														],
 														"type": "string",
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
-													}
+													},
+													"example": [
+														"cloudflare",
+														"jdcloud"
+													]
 												},
 												"notification_email": {
 													"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
@@ -5107,527 +3334,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"check_regions": {
-															"description": "A list of regions from which to run health checks. Null means every Cloudflare data center.",
-															"type": "array",
-															"items": {
-																"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, SAS: Southern Asia, SEAS: South East Asia, NEAS: North East Asia, CHINA: China (ENTERPRISE customers only), ALL_REGIONS: all regions (ENTERPRISE customers only).",
-																"enum": [
-																	"WNAM",
-																	"ENAM",
-																	"WEU",
-																	"EEU",
-																	"NSAM",
-																	"SSAM",
-																	"OC",
-																	"ME",
-																	"NAF",
-																	"SAF",
-																	"SAS",
-																	"SEAS",
-																	"NEAS",
-																	"CHINA",
-																	"ALL_REGIONS"
-																],
-																"type": "string",
-																"x-auditable": true
-															},
-															"example": [
-																"WEU",
-																"ENAM"
-															],
-															"nullable": true
-														},
-														"created_on": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"description": {
-															"description": "A human-readable description of the pool.",
-															"type": "string",
-															"example": "Primary data center - Provider XYZ",
-															"default": "",
-															"x-auditable": true
-														},
-														"disabled_at": {
-															"description": "This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.",
-															"type": "string",
-															"format": "date-time",
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"enabled": {
-															"description": "Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).",
-															"type": "boolean",
-															"example": false,
-															"default": true,
-															"x-auditable": true
-														},
-														"health_sources": {
-															"description": "A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [\"regional\", \"global\"]; any other combination is rejected. Null (the default) behaves like [\"local\", \"global\"]. [\"regional\", \"global\"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.",
-															"type": "array",
-															"items": {
-																"description": "The scope a health decision is aggregated over. local: the result from the single data center running the health check; only available when health checks run from every data center (check_regions is ALL_DATACENTERS). regional: a separate decision per region, each aggregated from the data centers within that region, so regions steer independently; requires at least one region configured in check_regions. global: one worldwide decision aggregated across all configured regions, used as the fallback.",
-																"enum": [
-																	"local",
-																	"regional",
-																	"global"
-																],
-																"type": "string",
-																"x-auditable": true
-															},
-															"example": [
-																"regional",
-																"global"
-															],
-															"nullable": true
-														},
-														"id": {
-															"type": "string",
-															"example": "17b5962d775c646f3f9725cbc7a53df4",
-															"x-auditable": true
-														},
-														"latitude": {
-															"description": "The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.",
-															"type": "number",
-															"x-auditable": true
-														},
-														"load_shedding": {
-															"description": "Configures load shedding policies and percentages for the pool.",
-															"type": "object",
-															"properties": {
-																"default_percent": {
-																	"description": "The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity.",
-																	"type": "number",
-																	"default": 0,
-																	"maximum": 100,
-																	"minimum": 0,
-																	"x-auditable": true
-																},
-																"default_policy": {
-																	"description": "The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs.",
-																	"type": "string",
-																	"default": "random",
-																	"enum": [
-																		"random",
-																		"hash"
-																	],
-																	"x-auditable": true
-																},
-																"session_percent": {
-																	"description": "The percent of existing sessions to shed from the pool, according to the session policy.",
-																	"type": "number",
-																	"default": 0,
-																	"maximum": 100,
-																	"minimum": 0,
-																	"x-auditable": true
-																},
-																"session_policy": {
-																	"description": "Only the hash policy is supported for existing sessions (to avoid exponential decay).",
-																	"type": "string",
-																	"default": "hash",
-																	"enum": [
-																		"hash"
-																	],
-																	"x-auditable": true
-																}
-															},
-															"nullable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
-														},
-														"longitude": {
-															"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
-															"type": "number",
-															"x-auditable": true
-														},
-														"minimum_origins": {
-															"description": "The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.",
-															"type": "integer",
-															"default": 1,
-															"x-auditable": true
-														},
-														"modified_on": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"monitor": {
-															"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
-															"type": "string",
-															"x-auditable": true
-														},
-														"monitor_group": {
-															"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-															"type": "string",
-															"x-auditable": true
-														},
-														"name": {
-															"description": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
-															"type": "string",
-															"example": "primary-dc-1",
-															"x-auditable": true
-														},
-														"networks": {
-															"description": "List of networks where Load Balancer or Pool is enabled.",
-															"type": "array",
-															"items": {
-																"example": [
-																	"cloudflare",
-																	"jdcloud"
-																],
-																"type": "string",
-																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
-															}
-														},
-														"notification_email": {
-															"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
-															"type": "string",
-															"example": "someone@example.com,sometwo@example.com",
-															"default": "",
-															"x-auditable": true
-														},
-														"notification_filter": {
-															"description": "Filter pool and origin health notifications by resource type or health status. Use null to reset.",
-															"type": "object",
-															"properties": {
-																"origin": {
-																	"description": "Filter options for a particular resource type (pool or origin). Use null to reset.",
-																	"type": "object",
-																	"properties": {
-																		"disable": {
-																			"description": "If set true, disable notifications for this type of resource (pool or origin).",
-																			"type": "boolean",
-																			"default": false,
-																			"nullable": true,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "optional"
-																		},
-																		"healthy": {
-																			"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
-																			"type": "boolean",
-																			"nullable": true,
-																			"x-auditable": true
-																		}
-																	},
-																	"nullable": true
-																},
-																"pool": {
-																	"description": "Filter options for a particular resource type (pool or origin). Use null to reset.",
-																	"type": "object",
-																	"properties": {
-																		"disable": {
-																			"description": "If set true, disable notifications for this type of resource (pool or origin).",
-																			"type": "boolean",
-																			"default": false,
-																			"nullable": true,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "optional"
-																		},
-																		"healthy": {
-																			"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
-																			"type": "boolean",
-																			"nullable": true,
-																			"x-auditable": true
-																		}
-																	},
-																	"nullable": true
-																}
-															},
-															"example": {
-																"origin": {
-																	"disable": true
-																},
-																"pool": {
-																	"healthy": false
-																}
-															},
-															"nullable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
-														},
-														"origin_steering": {
-															"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
-															"type": "object",
-															"properties": {
-																"policy": {
-																	"description": "The type of origin steering policy to use.\n- `\"random\"`: Select an origin randomly.\n- `\"hash\"`: Select an origin by computing a hash over the CF-Connecting-IP address.\n- `\"least_outstanding_requests\"`: Select an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others.\n- `\"least_connections\"`: Select an origin by taking into consideration origin weights, as well as each origin's number of open connections. Origins with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections.",
-																	"type": "string",
-																	"default": "random",
-																	"enum": [
-																		"random",
-																		"hash",
-																		"least_outstanding_requests",
-																		"least_connections"
-																	],
-																	"x-auditable": true
-																}
-															},
-															"nullable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
-														},
-														"origins": {
-															"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"address": {
-																		"description": "The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set.",
-																		"type": "string",
-																		"example": "0.0.0.0",
-																		"x-auditable": true
-																	},
-																	"disabled_at": {
-																		"description": "This field shows up only if the origin is disabled. This field is set with the time the origin was disabled.",
-																		"type": "string",
-																		"format": "date-time",
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"enabled": {
-																		"description": "Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.",
-																		"type": "boolean",
-																		"example": true,
-																		"default": true,
-																		"x-auditable": true
-																	},
-																	"flatten_cname": {
-																		"description": "Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting.",
-																		"type": "boolean",
-																		"default": true
-																	},
-																	"header": {
-																		"description": "The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'.",
-																		"type": "object",
-																		"properties": {
-																			"Host": {
-																				"description": "The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin.",
-																				"type": "array",
-																				"items": {
-																					"example": "example.com",
-																					"type": "string",
-																					"x-auditable": true
-																				}
-																			}
-																		}
-																	},
-																	"name": {
-																		"description": "A human-identifiable name for the origin.",
-																		"type": "string",
-																		"example": "app-server-1",
-																		"x-auditable": true
-																	},
-																	"port": {
-																		"description": "The port for upstream connections. A value of 0 means the default port for the protocol will be used.",
-																		"type": "integer",
-																		"default": 0
-																	},
-																	"virtual_network_id": {
-																		"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
-																		"type": "string",
-																		"example": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4"
-																	},
-																	"weight": {
-																		"description": "The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool.\n- `origin_steering.policy=\"least_outstanding_requests\"`: Use weight to scale the origin's outstanding requests.\n- `origin_steering.policy=\"least_connections\"`: Use weight to scale the origin's open connections.",
-																		"type": "number",
-																		"example": 0.6,
-																		"default": 1,
-																		"maximum": 1,
-																		"minimum": 0,
-																		"multipleOf": 0.01,
-																		"x-auditable": true
-																	}
-																}
-															},
-															"x-stainless-collection-type": "set"
-														}
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -5649,8 +3436,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.load-balancers.pools.edit.pools",
-		"x-fern-sdk-method-name": "pool",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "pool"
 	},
 	"POST /user/load_balancers/pools": {
 		"operationId": "load-balancer-pools-create-pool",
@@ -5806,14 +3592,14 @@
 								"description": "List of networks where Load Balancer or Pool is enabled.",
 								"type": "array",
 								"items": {
-									"example": [
-										"cloudflare",
-										"jdcloud"
-									],
 									"type": "string",
 									"x-auditable": true,
 									"x-stainless-terraform-configurability": "computed_optional"
-								}
+								},
+								"example": [
+									"cloudflare",
+									"jdcloud"
+								]
 							},
 							"notification_email": {
 								"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
@@ -6249,14 +4035,14 @@
 													"description": "List of networks where Load Balancer or Pool is enabled.",
 													"type": "array",
 													"items": {
-														"example": [
-															"cloudflare",
-															"jdcloud"
-														],
 														"type": "string",
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
-													}
+													},
+													"example": [
+														"cloudflare",
+														"jdcloud"
+													]
 												},
 												"notification_email": {
 													"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
@@ -6434,527 +4220,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"check_regions": {
-															"description": "A list of regions from which to run health checks. Null means every Cloudflare data center.",
-															"type": "array",
-															"items": {
-																"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, SAS: Southern Asia, SEAS: South East Asia, NEAS: North East Asia, CHINA: China (ENTERPRISE customers only), ALL_REGIONS: all regions (ENTERPRISE customers only).",
-																"enum": [
-																	"WNAM",
-																	"ENAM",
-																	"WEU",
-																	"EEU",
-																	"NSAM",
-																	"SSAM",
-																	"OC",
-																	"ME",
-																	"NAF",
-																	"SAF",
-																	"SAS",
-																	"SEAS",
-																	"NEAS",
-																	"CHINA",
-																	"ALL_REGIONS"
-																],
-																"type": "string",
-																"x-auditable": true
-															},
-															"example": [
-																"WEU",
-																"ENAM"
-															],
-															"nullable": true
-														},
-														"created_on": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"description": {
-															"description": "A human-readable description of the pool.",
-															"type": "string",
-															"example": "Primary data center - Provider XYZ",
-															"default": "",
-															"x-auditable": true
-														},
-														"disabled_at": {
-															"description": "This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.",
-															"type": "string",
-															"format": "date-time",
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"enabled": {
-															"description": "Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).",
-															"type": "boolean",
-															"example": false,
-															"default": true,
-															"x-auditable": true
-														},
-														"health_sources": {
-															"description": "A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [\"regional\", \"global\"]; any other combination is rejected. Null (the default) behaves like [\"local\", \"global\"]. [\"regional\", \"global\"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.",
-															"type": "array",
-															"items": {
-																"description": "The scope a health decision is aggregated over. local: the result from the single data center running the health check; only available when health checks run from every data center (check_regions is ALL_DATACENTERS). regional: a separate decision per region, each aggregated from the data centers within that region, so regions steer independently; requires at least one region configured in check_regions. global: one worldwide decision aggregated across all configured regions, used as the fallback.",
-																"enum": [
-																	"local",
-																	"regional",
-																	"global"
-																],
-																"type": "string",
-																"x-auditable": true
-															},
-															"example": [
-																"regional",
-																"global"
-															],
-															"nullable": true
-														},
-														"id": {
-															"type": "string",
-															"example": "17b5962d775c646f3f9725cbc7a53df4",
-															"x-auditable": true
-														},
-														"latitude": {
-															"description": "The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.",
-															"type": "number",
-															"x-auditable": true
-														},
-														"load_shedding": {
-															"description": "Configures load shedding policies and percentages for the pool.",
-															"type": "object",
-															"properties": {
-																"default_percent": {
-																	"description": "The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity.",
-																	"type": "number",
-																	"default": 0,
-																	"maximum": 100,
-																	"minimum": 0,
-																	"x-auditable": true
-																},
-																"default_policy": {
-																	"description": "The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs.",
-																	"type": "string",
-																	"default": "random",
-																	"enum": [
-																		"random",
-																		"hash"
-																	],
-																	"x-auditable": true
-																},
-																"session_percent": {
-																	"description": "The percent of existing sessions to shed from the pool, according to the session policy.",
-																	"type": "number",
-																	"default": 0,
-																	"maximum": 100,
-																	"minimum": 0,
-																	"x-auditable": true
-																},
-																"session_policy": {
-																	"description": "Only the hash policy is supported for existing sessions (to avoid exponential decay).",
-																	"type": "string",
-																	"default": "hash",
-																	"enum": [
-																		"hash"
-																	],
-																	"x-auditable": true
-																}
-															},
-															"nullable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
-														},
-														"longitude": {
-															"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
-															"type": "number",
-															"x-auditable": true
-														},
-														"minimum_origins": {
-															"description": "The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.",
-															"type": "integer",
-															"default": 1,
-															"x-auditable": true
-														},
-														"modified_on": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"monitor": {
-															"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
-															"type": "string",
-															"x-auditable": true
-														},
-														"monitor_group": {
-															"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-															"type": "string",
-															"x-auditable": true
-														},
-														"name": {
-															"description": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
-															"type": "string",
-															"example": "primary-dc-1",
-															"x-auditable": true
-														},
-														"networks": {
-															"description": "List of networks where Load Balancer or Pool is enabled.",
-															"type": "array",
-															"items": {
-																"example": [
-																	"cloudflare",
-																	"jdcloud"
-																],
-																"type": "string",
-																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
-															}
-														},
-														"notification_email": {
-															"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
-															"type": "string",
-															"example": "someone@example.com,sometwo@example.com",
-															"default": "",
-															"x-auditable": true
-														},
-														"notification_filter": {
-															"description": "Filter pool and origin health notifications by resource type or health status. Use null to reset.",
-															"type": "object",
-															"properties": {
-																"origin": {
-																	"description": "Filter options for a particular resource type (pool or origin). Use null to reset.",
-																	"type": "object",
-																	"properties": {
-																		"disable": {
-																			"description": "If set true, disable notifications for this type of resource (pool or origin).",
-																			"type": "boolean",
-																			"default": false,
-																			"nullable": true,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "optional"
-																		},
-																		"healthy": {
-																			"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
-																			"type": "boolean",
-																			"nullable": true,
-																			"x-auditable": true
-																		}
-																	},
-																	"nullable": true
-																},
-																"pool": {
-																	"description": "Filter options for a particular resource type (pool or origin). Use null to reset.",
-																	"type": "object",
-																	"properties": {
-																		"disable": {
-																			"description": "If set true, disable notifications for this type of resource (pool or origin).",
-																			"type": "boolean",
-																			"default": false,
-																			"nullable": true,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "optional"
-																		},
-																		"healthy": {
-																			"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
-																			"type": "boolean",
-																			"nullable": true,
-																			"x-auditable": true
-																		}
-																	},
-																	"nullable": true
-																}
-															},
-															"example": {
-																"origin": {
-																	"disable": true
-																},
-																"pool": {
-																	"healthy": false
-																}
-															},
-															"nullable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
-														},
-														"origin_steering": {
-															"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
-															"type": "object",
-															"properties": {
-																"policy": {
-																	"description": "The type of origin steering policy to use.\n- `\"random\"`: Select an origin randomly.\n- `\"hash\"`: Select an origin by computing a hash over the CF-Connecting-IP address.\n- `\"least_outstanding_requests\"`: Select an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others.\n- `\"least_connections\"`: Select an origin by taking into consideration origin weights, as well as each origin's number of open connections. Origins with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections.",
-																	"type": "string",
-																	"default": "random",
-																	"enum": [
-																		"random",
-																		"hash",
-																		"least_outstanding_requests",
-																		"least_connections"
-																	],
-																	"x-auditable": true
-																}
-															},
-															"nullable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
-														},
-														"origins": {
-															"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"address": {
-																		"description": "The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set.",
-																		"type": "string",
-																		"example": "0.0.0.0",
-																		"x-auditable": true
-																	},
-																	"disabled_at": {
-																		"description": "This field shows up only if the origin is disabled. This field is set with the time the origin was disabled.",
-																		"type": "string",
-																		"format": "date-time",
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"enabled": {
-																		"description": "Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.",
-																		"type": "boolean",
-																		"example": true,
-																		"default": true,
-																		"x-auditable": true
-																	},
-																	"flatten_cname": {
-																		"description": "Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting.",
-																		"type": "boolean",
-																		"default": true
-																	},
-																	"header": {
-																		"description": "The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'.",
-																		"type": "object",
-																		"properties": {
-																			"Host": {
-																				"description": "The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin.",
-																				"type": "array",
-																				"items": {
-																					"example": "example.com",
-																					"type": "string",
-																					"x-auditable": true
-																				}
-																			}
-																		}
-																	},
-																	"name": {
-																		"description": "A human-identifiable name for the origin.",
-																		"type": "string",
-																		"example": "app-server-1",
-																		"x-auditable": true
-																	},
-																	"port": {
-																		"description": "The port for upstream connections. A value of 0 means the default port for the protocol will be used.",
-																		"type": "integer",
-																		"default": 0
-																	},
-																	"virtual_network_id": {
-																		"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
-																		"type": "string",
-																		"example": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4"
-																	},
-																	"weight": {
-																		"description": "The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool.\n- `origin_steering.policy=\"least_outstanding_requests\"`: Use weight to scale the origin's outstanding requests.\n- `origin_steering.policy=\"least_connections\"`: Use weight to scale the origin's open connections.",
-																		"type": "number",
-																		"example": 0.6,
-																		"default": 1,
-																		"maximum": 1,
-																		"minimum": 0,
-																		"multipleOf": 0.01,
-																		"x-auditable": true
-																	}
-																}
-															},
-															"x-stainless-collection-type": "set"
-														}
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -6976,8 +4322,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.load-balancers.pools",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /user/load_balancers/pools/{pool_id}/preview": {
 		"operationId": "load-balancer-pools-preview-pool",
@@ -7264,206 +4609,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"pools": {
-															"description": "Monitored pool IDs mapped to their respective names.",
-															"type": "object",
-															"example": {
-																"abwlnp5jbqn45ecgxd03erbgtxtqai0d": "WNAM Datacenter",
-																"ve8h9lrcip5n5bbga9yqmdws28ay5d0l": "EEU Datacenter"
-															},
-															"additionalProperties": {
-																"description": "The pool name associated with the pool ID.",
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"preview_id": {
-															"type": "string",
-															"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
-															"x-auditable": true
-														}
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -7482,8 +4708,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.load-balancers.pools.preview",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /user/load_balancers/pools/{pool_id}": {
 		"operationId": "load-balancer-pools-update-pool",
@@ -7658,14 +4883,14 @@
 								"description": "List of networks where Load Balancer or Pool is enabled.",
 								"type": "array",
 								"items": {
-									"example": [
-										"cloudflare",
-										"jdcloud"
-									],
 									"type": "string",
 									"x-auditable": true,
 									"x-stainless-terraform-configurability": "computed_optional"
-								}
+								},
+								"example": [
+									"cloudflare",
+									"jdcloud"
+								]
 							},
 							"notification_email": {
 								"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
@@ -8101,14 +5326,14 @@
 													"description": "List of networks where Load Balancer or Pool is enabled.",
 													"type": "array",
 													"items": {
-														"example": [
-															"cloudflare",
-															"jdcloud"
-														],
 														"type": "string",
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
-													}
+													},
+													"example": [
+														"cloudflare",
+														"jdcloud"
+													]
 												},
 												"notification_email": {
 													"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
@@ -8286,527 +5511,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"check_regions": {
-															"description": "A list of regions from which to run health checks. Null means every Cloudflare data center.",
-															"type": "array",
-															"items": {
-																"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, SAS: Southern Asia, SEAS: South East Asia, NEAS: North East Asia, CHINA: China (ENTERPRISE customers only), ALL_REGIONS: all regions (ENTERPRISE customers only).",
-																"enum": [
-																	"WNAM",
-																	"ENAM",
-																	"WEU",
-																	"EEU",
-																	"NSAM",
-																	"SSAM",
-																	"OC",
-																	"ME",
-																	"NAF",
-																	"SAF",
-																	"SAS",
-																	"SEAS",
-																	"NEAS",
-																	"CHINA",
-																	"ALL_REGIONS"
-																],
-																"type": "string",
-																"x-auditable": true
-															},
-															"example": [
-																"WEU",
-																"ENAM"
-															],
-															"nullable": true
-														},
-														"created_on": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"description": {
-															"description": "A human-readable description of the pool.",
-															"type": "string",
-															"example": "Primary data center - Provider XYZ",
-															"default": "",
-															"x-auditable": true
-														},
-														"disabled_at": {
-															"description": "This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.",
-															"type": "string",
-															"format": "date-time",
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"enabled": {
-															"description": "Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).",
-															"type": "boolean",
-															"example": false,
-															"default": true,
-															"x-auditable": true
-														},
-														"health_sources": {
-															"description": "A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [\"regional\", \"global\"]; any other combination is rejected. Null (the default) behaves like [\"local\", \"global\"]. [\"regional\", \"global\"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.",
-															"type": "array",
-															"items": {
-																"description": "The scope a health decision is aggregated over. local: the result from the single data center running the health check; only available when health checks run from every data center (check_regions is ALL_DATACENTERS). regional: a separate decision per region, each aggregated from the data centers within that region, so regions steer independently; requires at least one region configured in check_regions. global: one worldwide decision aggregated across all configured regions, used as the fallback.",
-																"enum": [
-																	"local",
-																	"regional",
-																	"global"
-																],
-																"type": "string",
-																"x-auditable": true
-															},
-															"example": [
-																"regional",
-																"global"
-															],
-															"nullable": true
-														},
-														"id": {
-															"type": "string",
-															"example": "17b5962d775c646f3f9725cbc7a53df4",
-															"x-auditable": true
-														},
-														"latitude": {
-															"description": "The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.",
-															"type": "number",
-															"x-auditable": true
-														},
-														"load_shedding": {
-															"description": "Configures load shedding policies and percentages for the pool.",
-															"type": "object",
-															"properties": {
-																"default_percent": {
-																	"description": "The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity.",
-																	"type": "number",
-																	"default": 0,
-																	"maximum": 100,
-																	"minimum": 0,
-																	"x-auditable": true
-																},
-																"default_policy": {
-																	"description": "The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs.",
-																	"type": "string",
-																	"default": "random",
-																	"enum": [
-																		"random",
-																		"hash"
-																	],
-																	"x-auditable": true
-																},
-																"session_percent": {
-																	"description": "The percent of existing sessions to shed from the pool, according to the session policy.",
-																	"type": "number",
-																	"default": 0,
-																	"maximum": 100,
-																	"minimum": 0,
-																	"x-auditable": true
-																},
-																"session_policy": {
-																	"description": "Only the hash policy is supported for existing sessions (to avoid exponential decay).",
-																	"type": "string",
-																	"default": "hash",
-																	"enum": [
-																		"hash"
-																	],
-																	"x-auditable": true
-																}
-															},
-															"nullable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
-														},
-														"longitude": {
-															"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
-															"type": "number",
-															"x-auditable": true
-														},
-														"minimum_origins": {
-															"description": "The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.",
-															"type": "integer",
-															"default": 1,
-															"x-auditable": true
-														},
-														"modified_on": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"monitor": {
-															"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
-															"type": "string",
-															"x-auditable": true
-														},
-														"monitor_group": {
-															"description": "The ID of the Monitor Group to use for checking the health of origins within this pool.",
-															"type": "string",
-															"x-auditable": true
-														},
-														"name": {
-															"description": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
-															"type": "string",
-															"example": "primary-dc-1",
-															"x-auditable": true
-														},
-														"networks": {
-															"description": "List of networks where Load Balancer or Pool is enabled.",
-															"type": "array",
-															"items": {
-																"example": [
-																	"cloudflare",
-																	"jdcloud"
-																],
-																"type": "string",
-																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
-															}
-														},
-														"notification_email": {
-															"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
-															"type": "string",
-															"example": "someone@example.com,sometwo@example.com",
-															"default": "",
-															"x-auditable": true
-														},
-														"notification_filter": {
-															"description": "Filter pool and origin health notifications by resource type or health status. Use null to reset.",
-															"type": "object",
-															"properties": {
-																"origin": {
-																	"description": "Filter options for a particular resource type (pool or origin). Use null to reset.",
-																	"type": "object",
-																	"properties": {
-																		"disable": {
-																			"description": "If set true, disable notifications for this type of resource (pool or origin).",
-																			"type": "boolean",
-																			"default": false,
-																			"nullable": true,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "optional"
-																		},
-																		"healthy": {
-																			"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
-																			"type": "boolean",
-																			"nullable": true,
-																			"x-auditable": true
-																		}
-																	},
-																	"nullable": true
-																},
-																"pool": {
-																	"description": "Filter options for a particular resource type (pool or origin). Use null to reset.",
-																	"type": "object",
-																	"properties": {
-																		"disable": {
-																			"description": "If set true, disable notifications for this type of resource (pool or origin).",
-																			"type": "boolean",
-																			"default": false,
-																			"nullable": true,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "optional"
-																		},
-																		"healthy": {
-																			"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
-																			"type": "boolean",
-																			"nullable": true,
-																			"x-auditable": true
-																		}
-																	},
-																	"nullable": true
-																}
-															},
-															"example": {
-																"origin": {
-																	"disable": true
-																},
-																"pool": {
-																	"healthy": false
-																}
-															},
-															"nullable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
-														},
-														"origin_steering": {
-															"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
-															"type": "object",
-															"properties": {
-																"policy": {
-																	"description": "The type of origin steering policy to use.\n- `\"random\"`: Select an origin randomly.\n- `\"hash\"`: Select an origin by computing a hash over the CF-Connecting-IP address.\n- `\"least_outstanding_requests\"`: Select an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others.\n- `\"least_connections\"`: Select an origin by taking into consideration origin weights, as well as each origin's number of open connections. Origins with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections.",
-																	"type": "string",
-																	"default": "random",
-																	"enum": [
-																		"random",
-																		"hash",
-																		"least_outstanding_requests",
-																		"least_connections"
-																	],
-																	"x-auditable": true
-																}
-															},
-															"nullable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
-														},
-														"origins": {
-															"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"address": {
-																		"description": "The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set.",
-																		"type": "string",
-																		"example": "0.0.0.0",
-																		"x-auditable": true
-																	},
-																	"disabled_at": {
-																		"description": "This field shows up only if the origin is disabled. This field is set with the time the origin was disabled.",
-																		"type": "string",
-																		"format": "date-time",
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"enabled": {
-																		"description": "Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.",
-																		"type": "boolean",
-																		"example": true,
-																		"default": true,
-																		"x-auditable": true
-																	},
-																	"flatten_cname": {
-																		"description": "Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting.",
-																		"type": "boolean",
-																		"default": true
-																	},
-																	"header": {
-																		"description": "The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'.",
-																		"type": "object",
-																		"properties": {
-																			"Host": {
-																				"description": "The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin.",
-																				"type": "array",
-																				"items": {
-																					"example": "example.com",
-																					"type": "string",
-																					"x-auditable": true
-																				}
-																			}
-																		}
-																	},
-																	"name": {
-																		"description": "A human-identifiable name for the origin.",
-																		"type": "string",
-																		"example": "app-server-1",
-																		"x-auditable": true
-																	},
-																	"port": {
-																		"description": "The port for upstream connections. A value of 0 means the default port for the protocol will be used.",
-																		"type": "integer",
-																		"default": 0
-																	},
-																	"virtual_network_id": {
-																		"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
-																		"type": "string",
-																		"example": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4"
-																	},
-																	"weight": {
-																		"description": "The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool.\n- `origin_steering.policy=\"least_outstanding_requests\"`: Use weight to scale the origin's outstanding requests.\n- `origin_steering.policy=\"least_connections\"`: Use weight to scale the origin's open connections.",
-																		"type": "number",
-																		"example": 0.6,
-																		"default": 1,
-																		"maximum": 1,
-																		"minimum": 0,
-																		"multipleOf": 0.01,
-																		"x-auditable": true
-																	}
-																}
-															},
-															"x-stainless-collection-type": "set"
-														}
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -8828,7 +5613,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.load-balancers.pools",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }
