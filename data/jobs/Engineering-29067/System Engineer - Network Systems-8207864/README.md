@@ -47,6 +47,16 @@
 		<p>Experience managing internal and/or external customer requirements and expectations</p>
 	</li>
 </ul>
+<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li><span data-sheets-root="1">For Portugal based hires: Estimated annual salary of €45,000-62,000.&nbsp;</span></li>
+</ul>
+<div class="cell word-wrap">&nbsp;</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div class="cell word-wrap">&nbsp;</div>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

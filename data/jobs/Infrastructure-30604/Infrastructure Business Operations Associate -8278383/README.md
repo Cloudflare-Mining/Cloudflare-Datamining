@@ -3,37 +3,44 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h3><strong>Available Locations: Austin, TX | Seattle, WA | London, UK</strong></h3>
-<h3>About the Role</h3>
-<p>Cloudflare's Developer Platform powers stateful, data-intensive applications across our network. We're looking for a Senior Software Engineer to work across the database stack, from query planning and execution to transaction processing and durable storage.</p>
-<p>You'll make decisions that shape the consistency, durability, and latency guarantees that customer applications rely on.</p>
-<p>Correctness under concurrency and failure is central to the role. You'll define and implement how queries read and modify data, how concurrent transactions become visible, and how durable state is recovered. You'll validate these systems using deterministic simulation, workload testing, and evidence from production.</p>
-<h3>Responsibilities</h3>
+<p><strong>Available Locations: Austin, Texas&nbsp;</strong></p>
+<p><strong>About Us</strong></p>
+<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers approximately 25 million Internet properties, for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.&nbsp;</p>
+<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</p>
+<h4><strong>About the team</strong></h4>
+<p>&nbsp;</p>
+<p>You will be part of the Strategy&nbsp; Data and Analytics team within Cloudflare’s Infrastructure Strategy department. The Strategy team focuses on building both external and internal relationships that allow for Cloudflare to scale and reach user populations around the world. Our group takes a long term and technical approach to forging mutually beneficial and sustainable relationships with all of our network partners. This team in particular is focused on Cloudflare’s infrastructure budget, strategy, investment plan,&nbsp; and costs.&nbsp;</p>
+<h4><strong>About the role</strong></h4>
+<p>We are looking for an early-career Infrastructure Business Operations Associate to work directly with Cloudflare's Infrastructure Strategy organization. You will help turn complex infrastructure questions into clear analyses, recommendations, and repeatable operating processes. Your work will span capacity and supply planning, infrastructure budgets, procurement, deployment, product and deal economics, and cost management, connecting demand assumptions and investment decisions to execution.</p>
+<p>You will be successful in this role if you bring a structured approach while remaining practical and hands-on. You should be comfortable working through ambiguity, reconciling imperfect data, asking thoughtful questions, and communicating a concise answer. You do not need to arrive as an infrastructure expert; curiosity, sound judgment, attention to detail, and a willingness to learn quickly matter more.</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Improve query planning and execution, including index selection, row reads and writes, and performance as data volumes and access patterns change.</li>
-	<li>Build transaction and storage paths that make writes durable and reads consistent. Define when changes become visible, how commits survive failure, and how recovery restores a correct view of the data.</li>
-	<li>Design deterministic simulations that make rare event orderings and failures reproducible.</li>
-	<li>Plan stateful upgrades that cannot be reversed by rolling back software. Carry them through staged rollout, failover, and recovery without putting existing data at risk.</li>
-	<li>Participate in the service's on-call rotation and incident response.</li>
-	<li>Own major changes from design through production. Coordinate implementation across teams when a change spans multiple parts of the service, and help trace failures across those parts.</li>
-	<li>Mentor other engineers through design reviews, debugging, and incident analysis involving concurrency, durability, and recovery.</li>
+	<li>Build and maintain analyses for infrastructure budgets, forecasts, actuals, commitments, and variances.</li>
+	<li>Support capacity, supply, and investment decisions with scenario models, unit economics, sensitivity analysis, and clear trade-offs.</li>
+	<li>Analyze product and deal economics, including cost-to-serve, pricing scenarios, contribution margin, and the operational drivers behind profitability.</li>
+	<li>Partner with Product, Finance, and commercial teams to evaluate strategic opportunities and explain how demand, architecture, hardware, capacity, and contract assumptions affect deal margins.</li>
+	<li>Track major investments from demand and approval through procurement, manufacturing, deployment, and invoicing; identify gaps, risks, and required follow-ups.</li>
+	<li>Turn ambiguous stakeholder questions into structured workplans, gather evidence across systems and teams, and develop decision-ready recommendations.</li>
+	<li>Prepare concise executive materials, operating reviews, and written updates that explain what changed, why it matters, and what decision is needed.</li>
+	<li>Partner with Finance, Supply Planning, Engineering, Procurement, and operations teams to reconcile data, clarify ownership, and keep work moving.</li>
+	<li>Improve recurring workflows using spreadsheets, SQL, AI tools, lightweight automation, and clear documentation; help maintain trusted data and controls.</li>
 </ul>
-<h3>Desirable Skills, Knowledge &amp; Experience</h3>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>You have owned a database, storage engine, transaction system, or similarly correctness-sensitive stateful system from architecture through production. You can make architecture and implementation decisions when requirements or system boundaries are incomplete.</li>
-	<li>You understand how query execution, indexing, transaction processing, and durable state shape what developers and operators observe.</li>
-	<li>You understand how concurrency control, isolation, replication, and snapshots shape consistency, durability, and recovery. You can apply those concepts when operations arrive out of order, components fail independently, or the network partitions.</li>
-	<li>You write and debug concurrent production software in Rust, Go, C++, or another systems language. You can trace failures across process, network, and durable-state boundaries.</li>
-	<li>You have operated stateful systems through rollouts, scaling events, incidents, and recovery. You know the difference between transient unavailability and incomplete or incorrect recovery, and when a system is safe to return to service.</li>
-	<li>You have led investigations where failures crossed systems owned by several teams.</li>
+	<li>Approximately 2-4 years of experience in management consulting, business operations, strategic finance, analytics, supply chain, or another quantitatively rigorous role.</li>
+	<li>Strong structured problem-solving skills: you can break an unclear question into testable components, identify the important drivers, and synthesize a practical answer.</li>
+	<li>Experience with, or strong interest in, product economics, deal modeling, cost allocation, pricing, or margin analysis.</li>
+	<li>Comfort working with quantitative data in spreadsheets; experience with SQL, data visualization, or financial and operational modeling is helpful, or you are motivated to learn.</li>
+	<li>Clear written and verbal communication, including the ability to turn detailed analysis into concise materials for executive audiences.</li>
+	<li>Strong project-management habits, attention to detail, and the persistence to follow issues across multiple teams and systems to resolution.</li>
+	<li>Curiosity about internet infrastructure, hardware, AI Infrastructure, capacity planning, and economics; prior infrastructure experience is welcome but not required.</li>
+	<li>A practical approach to AI and automation: you use tools to move faster while validating outputs and maintaining sound judgment.</li>
 </ul>
-<h3>Bonus Points</h3>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>You've worked on the internals of PostgreSQL, MySQL, Amazon Aurora, or another relational database and can trace a SQL operation from planning through commit.</li>
-	<li>Your work on transaction processing or concurrency control has included defining snapshot visibility and recovery behavior.</li>
-	<li>You've profiled database workloads and traced performance bottlenecks from query execution through durable storage.</li>
-	<li>You've used deterministic simulation or another systematic method to uncover distributed-systems bugs that conventional tests missed.</li>
+	<li>Familiarity with Google Cloud Platform or other analytics databases</li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

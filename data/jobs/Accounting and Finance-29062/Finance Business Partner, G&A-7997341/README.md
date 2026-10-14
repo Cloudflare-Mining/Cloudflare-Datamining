@@ -40,6 +40,7 @@
 	<li>Hands-on proficiency navigating and building within enterprise platforms such as Anaplan, Oracle, and Workday.</li>
 	<li>An MBA, CPA, or CFA designation is a distinct plus.</li>
 </ul>
+<div><strong>Application Deadline:</strong>&nbsp;January 12, 2027&nbsp;</div>
 <h2>Compensation</h2>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>

@@ -3,67 +3,51 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: Austin</strong></p>
-<p><strong>About the role</strong></p>
-<p>We are seeking a highly skilled and experienced <strong>Insider Threat Tech Lead</strong> to join our dynamic and growing Security Threat Detection, Response and Emulation team. This is a critical role that will be at the forefront of protecting our company from malicious and negligent insider activities. You will be responsible for leading the technical aspects of our Insider Threat program, including investigations, threat hunting, and the development of cutting-edge detections and responses.</p>
-<p>This role requires a unique blend of technical expertise, regulatory and legal knowledge, investigative skills, and strong interpersonal communication. You will be a key point of contact and collaborator with our Privacy, Legal, GRC and HR teams, ensuring that all activities are conducted with the utmost care, in accordance with company policy, and in compliance with legal and ethical standards.</p>
-<h4><strong>What you'll do</strong></h4>
+<p>You will work closely with Cloudflare's Infrastructure team as well as with external vendors and partners to support the rapid growth and maintenance of our data center infrastructure. You will be responsible for coordinating the distribution and delivery of data center hardware to and from our data centers within the region. You will participate in the development and implementation of consistent processes and performance measurements, utilizing business intelligence and AI tools.</p>
+<p>You will support the team globally on infrastructure projects such as data center expansions, hardware renewals, reverse logistics and spare parts fulfillment.&nbsp;</p>
+<p>This is a role that requires understanding of warehousing, transportation, and requires experience with data analysis and AI tools. You will support our partners within a complex and fast moving global supply chain.</p>
+<p>This is a highly collaborative position that will require coordinating with:</p>
 <ul>
-	<li><strong>Lead Insider Threat Digital Investigations:</strong>
-		<ul>
-			<li>
-				<ul>
-					<li>Conduct comprehensive technical investigations individually and partnering with our incident response teams into potential insider threat incidents, including data exfiltration, intellectual property theft, unauthorized access, and other malicious activities.</li>
-					<li>Knowledge and execution experience in collecting, preserving , and analyzing digital evidence from a variety of sources (e.g., endpoints, network logs, cloud services, email, etc.).</li>
-					<li>Document all investigative steps and findings in a clear, concise, and defensible manner.</li>
-					<li>Present findings to senior leadership and cross-functional partners (Legal, HR, Privacy) in a professional and objective manner.</li>
-					<li>Ensuring regulatory, legal and privacy requirements are met through all</li>
-				</ul>
-			</li>
-			<li><strong>Insider Threat Hunting:</strong>
-				<ul>
-					<li>Proactively hunt for insider threats using a variety of security tools and data sources (e.g., SIEM, DLP, EDR, UEBA).</li>
-					<li>Develop and execute threat hunting hypotheses based on emerging threats, attack techniques, and an understanding of our company's unique environment.</li>
-					<li>Correlate disparate data points to identify anomalous or suspicious user behaviors.</li>
-				</ul>
-			</li>
-			<li><strong>Detection &amp; Response Improvement:</strong>
-				<ul>
-					<li>Collaborate closely with the Security Incident Response Team (SIRT) and Threat Detection teams to continuously enhance our insider threat detection capabilities.</li>
-					<li>Design, develop, and implement new rules, alerts, and use cases in our security tools to identify insider threat indicators.</li>
-					<li>Evaluate and recommend new technologies and processes to mature our Insider Threat program.</li>
-					<li>Develop and refine response playbooks for various insider threat scenarios.</li>
-				</ul>
-			</li>
-			<li><strong>Cross-Functional Collaboration:</strong>
-				<ul>
-					<li>Serve as the primary technical liaison for the Insider Threat program, building strong, trusted relationships with Legal, HR, and Privacy teams.</li>
-					<li>Work in lockstep with these teams to ensure that investigations are conducted with sensitivity, respect for employee privacy, and within legal and ethical guidelines.</li>
-					<li>Provide technical expertise and guidance during policy development and incident response planning.</li>
-				</ul>
-			</li>
-		</ul>
+	<li>
+		<p>Warehousing providers, freight forwarders, importer of record partners, customs brokers and data center partners to plan and execute on the delivery of data center hardware.</p>
+	</li>
+	<li>
+		<p>External vendors including hardware manufacturers, rack integrators and contract vendors, across time zones, in support of our 200+ and growing data center locations.</p>
+	</li>
+	<li>
+		<p>Internal teams such as Data Center Engineering, Capacity Planning, Trade Compliance, Hardware Sourcing, and Procurement.</p>
 	</li>
 </ul>
-<p><strong>Required Qualifications:</strong></p>
+<p>Examples of desirable skills, knowledge and experience:</p>
 <ul>
-	<li>5+ years of experience in a technical security role, with at least 2+ years focused on insider threat, digital forensics, or security investigations.</li>
-	<li>Proven experience in conducting and leading complex technical investigations, including the use of forensic tools (e.g., EnCase, FTK, X-Ways, or open-source alternatives).</li>
-	<li>Deep understanding of security technologies such as SIEM (e.g., Splunk, Elastic), EDR (e.g., CrowdStrike, SentinelOne), and UEBA like data sources.</li>
-	<li>Strong scripting and programming skills (e.g., Python, PowerShell) to automate tasks and analyze large datasets.</li>
-	<li>Excellent communication skills, both written and verbal, with the ability to explain complex technical concepts to non-technical audiences.</li>
-	<li>Experience working with legal and HR teams on sensitive employee-related matters.</li>
+	<li>
+		<p>Post-secondary degree in a technical or business management field.</p>
+	</li>
+	<li>
+		<p>A minimum of 3 years of experience working with global supply chains and logistics is necessary.</p>
+	</li>
+	<li>
+		<p>Ability to be proactive with ability to learn fast and execute on multiple tasks simultaneously.</p>
+	</li>
+	<li>
+		<p>Ability to recognize areas for improvements in operational processes in a rapidly changing environment.</p>
+	</li>
+	<li>
+		<p>Python, LLM usage and AI tooling experience.</p>
+	</li>
+	<li>
+		<p>Possess strong verbal and written communication skills, problem-solving skills, attention to detail, and interpersonal skills.</p>
+	</li>
 </ul>
-<p><strong>Preferred Qualifications:</strong></p>
+<p>Desirable, but not required:</p>
 <ul>
-	<li>Certifications such as GCIH, GCFA, GCTI, or similar.</li>
-	<li>Experience with cloud-based security and investigations (e.g., AWS, GCP, Azure).</li>
-	<li>Prior experience in a tech product or fast-paced startup environment.</li>
-	<li>Knowledge of legal and regulatory frameworks related to data privacy and digital evidence (e.g., GDPR, CCPA).</li>
-	<li>Legal/Court evidence handling, presentation and implementation of procedures&nbsp;</li>
+	<li>
+		<p>Experience supporting data centers or other Networking/IT hardware and infrastructure.</p>
+	</li>
+	<li>
+		<p>Multi-lingual, preferably in Spanish.</p>
+	</li>
 </ul>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
