@@ -541,7 +541,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "mtls-certificates",
+		"x-fern-sdk-group-name": "ssl.mtls-certificates",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/mtls_certificates": {
@@ -1223,7 +1223,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "mtls-certificates",
+		"x-fern-sdk-group-name": "ssl.mtls-certificates",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/mtls_certificates/{mtls_certificate_id}": {
@@ -1769,7 +1769,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "mtls-certificates",
+		"x-fern-sdk-group-name": "ssl.mtls-certificates",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/mtls_certificates/{mtls_certificate_id}/associations": {
@@ -2259,7 +2259,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "mtls-certificates.associations",
+		"x-fern-sdk-group-name": "ssl.mtls-certificates.associations",
 		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/mtls_certificates": {
@@ -2844,7 +2844,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "mtls-certificates",
+		"x-fern-sdk-group-name": "ssl.mtls-certificates",
 		"x-fern-sdk-method-name": "create"
 	}
 }

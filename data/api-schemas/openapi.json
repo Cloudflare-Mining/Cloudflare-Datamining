@@ -498375,7 +498375,8 @@
 													"type": "string"
 												},
 												"request_head": {
-													"type": "string"
+													"type": "string",
+													"nullable": true
 												},
 												"request_head_complete": {
 													"type": "boolean"
@@ -498390,7 +498391,8 @@
 													"type": "string"
 												},
 												"response_head": {
-													"type": "string"
+													"type": "string",
+													"nullable": true
 												},
 												"response_head_complete": {
 													"type": "boolean"
@@ -1315033,7 +1315035,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "mtls-certificates",
+				"x-fern-sdk-group-name": "ssl.mtls-certificates",
 				"x-fern-sdk-method-name": "list"
 			},
 			"post": {
@@ -1315618,7 +1315620,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "mtls-certificates",
+				"x-fern-sdk-group-name": "ssl.mtls-certificates",
 				"x-fern-sdk-method-name": "create"
 			}
 		},
@@ -1316165,7 +1316167,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "mtls-certificates",
+				"x-fern-sdk-group-name": "ssl.mtls-certificates",
 				"x-fern-sdk-method-name": "delete"
 			},
 			"get": {
@@ -1316711,7 +1316713,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "mtls-certificates",
+				"x-fern-sdk-group-name": "ssl.mtls-certificates",
 				"x-fern-sdk-method-name": "get"
 			}
 		},
@@ -1317203,7 +1317205,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "mtls-certificates.associations",
+				"x-fern-sdk-group-name": "ssl.mtls-certificates.associations",
 				"x-fern-sdk-method-name": "get"
 			}
 		},
@@ -1935204,7 +1935206,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "origin-ca-certificates",
+				"x-fern-sdk-group-name": "ssl.origin-ca-certificates",
 				"x-fern-sdk-method-name": "list"
 			},
 			"post": {
@@ -1935770,7 +1935772,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "origin-ca-certificates",
+				"x-fern-sdk-group-name": "ssl.origin-ca-certificates",
 				"x-fern-sdk-method-name": "create"
 			}
 		},
@@ -1935995,7 +1935997,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "origin-ca-certificates",
+				"x-fern-sdk-group-name": "ssl.origin-ca-certificates",
 				"x-fern-sdk-method-name": "delete"
 			},
 			"get": {
@@ -1936510,7 +1936512,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "origin-ca-certificates",
+				"x-fern-sdk-group-name": "ssl.origin-ca-certificates",
 				"x-fern-sdk-method-name": "get"
 			}
 		},
@@ -2247260,7 +2247262,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "certificate-authorities.hostname-associations",
+				"x-fern-sdk-group-name": "ssl.certificate-authorities.hostname-associations",
 				"x-fern-sdk-method-name": "get"
 			},
 			"put": {
@@ -2247561,7 +2247563,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "certificate-authorities.hostname-associations",
+				"x-fern-sdk-group-name": "ssl.certificate-authorities.hostname-associations",
 				"x-fern-sdk-method-name": "update"
 			}
 		},
@@ -2248071,7 +2248073,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "client-certificates",
+				"x-fern-sdk-group-name": "ssl.client-certificates",
 				"x-fern-sdk-method-name": "list"
 			},
 			"post": {
@@ -2248753,7 +2248755,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "client-certificates",
+				"x-fern-sdk-group-name": "ssl.client-certificates",
 				"x-fern-sdk-method-name": "create"
 			}
 		},
@@ -2249179,7 +2249181,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "client-certificates",
+				"x-fern-sdk-group-name": "ssl.client-certificates",
 				"x-fern-sdk-method-name": "delete"
 			},
 			"get": {
@@ -2249604,7 +2249606,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "client-certificates",
+				"x-fern-sdk-group-name": "ssl.client-certificates",
 				"x-fern-sdk-method-name": "get"
 			},
 			"patch": {
@@ -2250044,7 +2250046,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "client-certificates",
+				"x-fern-sdk-group-name": "ssl.client-certificates",
 				"x-fern-sdk-method-name": "edit"
 			}
 		},
@@ -2254115,7 +2254117,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "ct-alerting",
+				"x-fern-sdk-group-name": "ssl.ct-alerting",
 				"x-fern-sdk-method-name": "get"
 			},
 			"patch": {
@@ -2254578,7 +2254580,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "ct-alerting",
+				"x-fern-sdk-group-name": "ssl.ct-alerting",
 				"x-fern-sdk-method-name": "update"
 			}
 		},
@@ -2254996,7 +2254998,6 @@
 																"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
 																"type": "number",
 																"example": 1,
-																"default": 0,
 																"x-auditable": true
 															},
 															"signature": {
@@ -2255395,7 +2255396,6 @@
 																		"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
 																		"type": "number",
 																		"example": 1,
-																		"default": 0,
 																		"x-auditable": true
 																	},
 																	"signature": {
@@ -2255588,7 +2255588,7 @@
 					"pro": false
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "custom-certificates",
+				"x-fern-sdk-group-name": "ssl.custom-certificates",
 				"x-fern-sdk-method-name": "list"
 			},
 			"post": {
@@ -2256004,7 +2256004,6 @@
 															"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
 															"type": "number",
 															"example": 1,
-															"default": 0,
 															"x-auditable": true
 														},
 														"signature": {
@@ -2256365,7 +2256364,6 @@
 																	"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
 																	"type": "number",
 																	"example": 1,
-																	"default": 0,
 																	"x-auditable": true
 																},
 																"signature": {
@@ -2256555,7 +2256553,7 @@
 					"pro": false
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "custom-certificates",
+				"x-fern-sdk-group-name": "ssl.custom-certificates",
 				"x-fern-sdk-method-name": "create"
 			}
 		},
@@ -2256963,7 +2256961,7 @@
 					"pro": false
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "custom-certificates",
+				"x-fern-sdk-group-name": "ssl.custom-certificates",
 				"x-fern-sdk-method-name": "delete"
 			},
 			"get": {
@@ -2257304,7 +2257302,6 @@
 															"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
 															"type": "number",
 															"example": 1,
-															"default": 0,
 															"x-auditable": true
 														},
 														"signature": {
@@ -2257665,7 +2257662,6 @@
 																	"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
 																	"type": "number",
 																	"example": 1,
-																	"default": 0,
 																	"x-auditable": true
 																},
 																"signature": {
@@ -2257857,7 +2257853,7 @@
 					"pro": false
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "custom-certificates",
+				"x-fern-sdk-group-name": "ssl.custom-certificates",
 				"x-fern-sdk-method-name": "get"
 			},
 			"patch": {
@@ -2258272,7 +2258268,6 @@
 															"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
 															"type": "number",
 															"example": 1,
-															"default": 0,
 															"x-auditable": true
 														},
 														"signature": {
@@ -2258633,7 +2258628,6 @@
 																	"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
 																	"type": "number",
 																	"example": 1,
-																	"default": 0,
 																	"x-auditable": true
 																},
 																"signature": {
@@ -2258823,7 +2258817,7 @@
 					"pro": false
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "custom-certificates",
+				"x-fern-sdk-group-name": "ssl.custom-certificates",
 				"x-fern-sdk-method-name": "edit"
 			}
 		},
@@ -2258870,7 +2258864,6 @@
 													"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
 													"type": "number",
 													"example": 1,
-													"default": 0,
 													"x-auditable": true
 												}
 											},
@@ -2259239,7 +2259232,6 @@
 																"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
 																"type": "number",
 																"example": 1,
-																"default": 0,
 																"x-auditable": true
 															},
 															"signature": {
@@ -2259638,7 +2259630,6 @@
 																		"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
 																		"type": "number",
 																		"example": 1,
-																		"default": 0,
 																		"x-auditable": true
 																	},
 																	"signature": {
@@ -2259829,7 +2259820,7 @@
 					"pro": false
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "custom-certificates.prioritize",
+				"x-fern-sdk-group-name": "ssl.custom-certificates.prioritize",
 				"x-fern-sdk-method-name": "update"
 			}
 		},
@@ -2279760,7 +2279751,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "dcv-delegation",
+				"x-fern-sdk-group-name": "ssl.dcv-delegation",
 				"x-fern-sdk-method-name": "get"
 			}
 		},
@@ -2405140,7 +2405131,7 @@
 					"pro": false
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "keyless-certificates",
+				"x-fern-sdk-group-name": "ssl.keyless-certificates",
 				"x-fern-sdk-method-name": "list"
 			},
 			"post": {
@@ -2405829,7 +2405820,7 @@
 					"pro": false
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "keyless-certificates",
+				"x-fern-sdk-group-name": "ssl.keyless-certificates",
 				"x-fern-sdk-method-name": "create"
 			}
 		},
@@ -2406236,7 +2406227,7 @@
 					"pro": false
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "keyless-certificates",
+				"x-fern-sdk-group-name": "ssl.keyless-certificates",
 				"x-fern-sdk-method-name": "delete"
 			},
 			"get": {
@@ -2406897,7 +2406888,7 @@
 					"pro": false
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "keyless-certificates",
+				"x-fern-sdk-group-name": "ssl.keyless-certificates",
 				"x-fern-sdk-method-name": "get"
 			},
 			"patch": {
@@ -2407584,7 +2407575,7 @@
 					"pro": false
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "keyless-certificates",
+				"x-fern-sdk-group-name": "ssl.keyless-certificates",
 				"x-fern-sdk-method-name": "edit"
 			}
 		},
@@ -2438284,7 +2438275,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "origin-tls-client-auth.zone-certificates",
+				"x-fern-sdk-group-name": "ssl.origin-tls-client-auth.zone-certificates",
 				"x-fern-sdk-method-name": "list"
 			},
 			"post": {
@@ -2438880,7 +2438871,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "origin-tls-client-auth.zone-certificates",
+				"x-fern-sdk-group-name": "ssl.origin-tls-client-auth.zone-certificates",
 				"x-fern-sdk-method-name": "create"
 			}
 		},
@@ -2439456,7 +2439447,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "origin-tls-client-auth.zone-certificates",
+				"x-fern-sdk-group-name": "ssl.origin-tls-client-auth.zone-certificates",
 				"x-fern-sdk-method-name": "delete"
 			},
 			"get": {
@@ -2440031,7 +2440022,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "origin-tls-client-auth.zone-certificates",
+				"x-fern-sdk-group-name": "ssl.origin-tls-client-auth.zone-certificates",
 				"x-fern-sdk-method-name": "get"
 			}
 		},
@@ -2440686,7 +2440677,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "origin-tls-client-auth.hostname-associations",
+				"x-fern-sdk-group-name": "ssl.origin-tls-client-auth.hostname-associations",
 				"x-fern-sdk-method-name": "list"
 			},
 			"put": {
@@ -2441526,7 +2441517,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "origin-tls-client-auth.hostnames",
+				"x-fern-sdk-group-name": "ssl.origin-tls-client-auth.hostnames",
 				"x-fern-sdk-method-name": "update"
 			}
 		},
@@ -2442154,7 +2442145,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "origin-tls-client-auth.hostnames",
+				"x-fern-sdk-group-name": "ssl.origin-tls-client-auth.hostnames",
 				"x-fern-sdk-method-name": "get"
 			}
 		},
@@ -2442738,7 +2442729,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "origin-tls-client-auth.hostname-certificates",
+				"x-fern-sdk-group-name": "ssl.origin-tls-client-auth.hostname-certificates",
 				"x-fern-sdk-method-name": "list"
 			},
 			"post": {
@@ -2443273,7 +2443264,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "origin-tls-client-auth.hostname-certificates",
+				"x-fern-sdk-group-name": "ssl.origin-tls-client-auth.hostname-certificates",
 				"x-fern-sdk-method-name": "create"
 			}
 		},
@@ -2443793,7 +2443784,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "origin-tls-client-auth.hostname-certificates",
+				"x-fern-sdk-group-name": "ssl.origin-tls-client-auth.hostname-certificates",
 				"x-fern-sdk-method-name": "delete"
 			},
 			"get": {
@@ -2444312,7 +2444303,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "origin-tls-client-auth.hostname-certificates",
+				"x-fern-sdk-group-name": "ssl.origin-tls-client-auth.hostname-certificates",
 				"x-fern-sdk-method-name": "get"
 			}
 		},
@@ -2444698,7 +2444689,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "origin-tls-client-auth.settings",
+				"x-fern-sdk-group-name": "ssl.origin-tls-client-auth.settings",
 				"x-fern-sdk-method-name": "get"
 			},
 			"put": {
@@ -2445102,7 +2445093,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "origin-tls-client-auth.settings",
+				"x-fern-sdk-group-name": "ssl.origin-tls-client-auth.settings",
 				"x-fern-sdk-method-name": "update"
 			}
 		},

@@ -420,7 +420,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "client-certificates",
+		"x-fern-sdk-group-name": "ssl.client-certificates",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /zones/{zone_id}/certificate_authorities/hostname_associations": {
@@ -710,7 +710,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "certificate-authorities.hostname-associations",
+		"x-fern-sdk-group-name": "ssl.certificate-authorities.hostname-associations",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/client_certificates": {
@@ -1218,7 +1218,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "client-certificates",
+		"x-fern-sdk-group-name": "ssl.client-certificates",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/client_certificates/{client_certificate_id}": {
@@ -1643,7 +1643,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "client-certificates",
+		"x-fern-sdk-group-name": "ssl.client-certificates",
 		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /zones/{zone_id}/client_certificates/{client_certificate_id}": {
@@ -2083,7 +2083,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "client-certificates",
+		"x-fern-sdk-group-name": "ssl.client-certificates",
 		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /zones/{zone_id}/client_certificates": {
@@ -2765,7 +2765,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "client-certificates",
+		"x-fern-sdk-group-name": "ssl.client-certificates",
 		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /zones/{zone_id}/certificate_authorities/hostname_associations": {
@@ -3066,7 +3066,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "certificate-authorities.hostname-associations",
+		"x-fern-sdk-group-name": "ssl.certificate-authorities.hostname-associations",
 		"x-fern-sdk-method-name": "update"
 	}
 }

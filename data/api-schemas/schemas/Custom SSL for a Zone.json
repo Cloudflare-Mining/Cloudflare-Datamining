@@ -402,7 +402,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "custom-certificates",
+		"x-fern-sdk-group-name": "ssl.custom-certificates",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /zones/{zone_id}/custom_certificates": {
@@ -818,7 +818,6 @@
 														"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
 														"type": "number",
 														"example": 1,
-														"default": 0,
 														"x-auditable": true
 													},
 													"signature": {
@@ -1217,7 +1216,6 @@
 																"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
 																"type": "number",
 																"example": 1,
-																"default": 0,
 																"x-auditable": true
 															},
 															"signature": {
@@ -1410,7 +1408,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "custom-certificates",
+		"x-fern-sdk-group-name": "ssl.custom-certificates",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/custom_certificates/{custom_certificate_id}": {
@@ -1751,7 +1749,6 @@
 													"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
 													"type": "number",
 													"example": 1,
-													"default": 0,
 													"x-auditable": true
 												},
 												"signature": {
@@ -2112,7 +2109,6 @@
 															"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
 															"type": "number",
 															"example": 1,
-															"default": 0,
 															"x-auditable": true
 														},
 														"signature": {
@@ -2304,7 +2300,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "custom-certificates",
+		"x-fern-sdk-group-name": "ssl.custom-certificates",
 		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /zones/{zone_id}/custom_certificates/{custom_certificate_id}": {
@@ -2719,7 +2715,6 @@
 													"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
 													"type": "number",
 													"example": 1,
-													"default": 0,
 													"x-auditable": true
 												},
 												"signature": {
@@ -3080,7 +3075,6 @@
 															"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
 															"type": "number",
 															"example": 1,
-															"default": 0,
 															"x-auditable": true
 														},
 														"signature": {
@@ -3270,7 +3264,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "custom-certificates",
+		"x-fern-sdk-group-name": "ssl.custom-certificates",
 		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /zones/{zone_id}/custom_certificates": {
@@ -3686,7 +3680,6 @@
 													"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
 													"type": "number",
 													"example": 1,
-													"default": 0,
 													"x-auditable": true
 												},
 												"signature": {
@@ -4047,7 +4040,6 @@
 															"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
 															"type": "number",
 															"example": 1,
-															"default": 0,
 															"x-auditable": true
 														},
 														"signature": {
@@ -4237,7 +4229,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "custom-certificates",
+		"x-fern-sdk-group-name": "ssl.custom-certificates",
 		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /zones/{zone_id}/custom_certificates/prioritize": {
@@ -4282,7 +4274,6 @@
 											"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
 											"type": "number",
 											"example": 1,
-											"default": 0,
 											"x-auditable": true
 										}
 									},
@@ -4651,7 +4642,6 @@
 														"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
 														"type": "number",
 														"example": 1,
-														"default": 0,
 														"x-auditable": true
 													},
 													"signature": {
@@ -5050,7 +5040,6 @@
 																"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
 																"type": "number",
 																"example": 1,
-																"default": 0,
 																"x-auditable": true
 															},
 															"signature": {
@@ -5241,7 +5230,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "custom-certificates.prioritize",
+		"x-fern-sdk-group-name": "ssl.custom-certificates.prioritize",
 		"x-fern-sdk-method-name": "update"
 	}
 }

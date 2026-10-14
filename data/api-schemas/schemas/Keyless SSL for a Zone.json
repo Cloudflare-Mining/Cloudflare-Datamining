@@ -401,7 +401,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "keyless-certificates",
+		"x-fern-sdk-group-name": "ssl.keyless-certificates",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /zones/{zone_id}/keyless_certificates": {
@@ -1088,7 +1088,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "keyless-certificates",
+		"x-fern-sdk-group-name": "ssl.keyless-certificates",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/keyless_certificates/{keyless_certificate_id}": {
@@ -1749,7 +1749,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "keyless-certificates",
+		"x-fern-sdk-group-name": "ssl.keyless-certificates",
 		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /zones/{zone_id}/keyless_certificates/{keyless_certificate_id}": {
@@ -2436,7 +2436,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "keyless-certificates",
+		"x-fern-sdk-group-name": "ssl.keyless-certificates",
 		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /zones/{zone_id}/keyless_certificates": {
@@ -3125,7 +3125,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "keyless-certificates",
+		"x-fern-sdk-group-name": "ssl.keyless-certificates",
 		"x-fern-sdk-method-name": "create"
 	}
 }
