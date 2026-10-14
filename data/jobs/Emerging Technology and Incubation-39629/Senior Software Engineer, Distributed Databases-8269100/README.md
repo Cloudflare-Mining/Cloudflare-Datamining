@@ -3,29 +3,37 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Location:</strong> London</p>
-<p><strong>About the Role:</strong></p>
-<p>We are looking for a Senior Talent Acquisition Business Partner – GTM to join our London-based EMEA team. Acting as a strategic talent advisor and go-to-market specialist, you will drive the expansion of our sales and technical GTM teams across the broader EMEA region. You will leverage your deep market expertise, extensive network, and AI-driven strategies to identify and secure top-tier talent for Cloudflare across EMEA, while maintaining the agility to pivot your support as business needs evolve.</p>
-<p><strong>Core Responsibilities</strong></p>
+<h3><strong>Available Locations: Austin, TX | Seattle, WA | London, UK</strong></h3>
+<h3>About the Role</h3>
+<p>Cloudflare's Developer Platform powers stateful, data-intensive applications across our network. We're looking for a Senior Software Engineer to work across the database stack, from query planning and execution to transaction processing and durable storage.</p>
+<p>You'll make decisions that shape the consistency, durability, and latency guarantees that customer applications rely on.</p>
+<p>Correctness under concurrency and failure is central to the role. You'll define and implement how queries read and modify data, how concurrent transactions become visible, and how durable state is recovered. You'll validate these systems using deterministic simulation, workload testing, and evidence from production.</p>
+<h3>Responsibilities</h3>
 <ul>
-	<li><strong>End-to-End Recruitment &amp; Talent Strategy:</strong> Build and execute comprehensive talent strategies to help hiring leaders build high-performing teams, functioning similarly to how a salesperson puts together a go-to-market plan.</li>
-	<li><strong>Proactive Pipeline &amp; Passive Candidate Outreach:</strong> Draw upon an extensive network of industry contacts to build proactive pipeline strategies for a variety of GTM and technical GTM roles across EMEA.</li>
-	<li><strong>Stakeholder Management &amp; Advising:</strong> Build and maintain solid relationships with the GEO VP and cross-functional stakeholders, including Finance, HRBPs, and compensation teams.</li>
-	<li><strong>AI-Agent Integration &amp; Process Optimisation:</strong> Partner with internal automated AI agents and generative tools to eliminate legacy manual tasks, optimise administrative outreach workflows at scale, and synthesise complex market data to inform regional talent strategies.</li>
-	<li><strong>Data Utilization &amp; Analytics:</strong> Leverage foundational data layers and recruitment analytics to inform talent strategies, actively analysing metrics such as time-to-hire and source efficiency to drive optimal operational decisions.</li>
-	<li><strong>Employer Branding &amp; Market Awareness:</strong> Lead and execute strategic employer branding initiatives tailored to the EMEA market to elevate Cloudflare's profile as a top destination for GTM talent.</li>
+	<li>Improve query planning and execution, including index selection, row reads and writes, and performance as data volumes and access patterns change.</li>
+	<li>Build transaction and storage paths that make writes durable and reads consistent. Define when changes become visible, how commits survive failure, and how recovery restores a correct view of the data.</li>
+	<li>Design deterministic simulations that make rare event orderings and failures reproducible.</li>
+	<li>Plan stateful upgrades that cannot be reversed by rolling back software. Carry them through staged rollout, failover, and recovery without putting existing data at risk.</li>
+	<li>Participate in the service's on-call rotation and incident response.</li>
+	<li>Own major changes from design through production. Coordinate implementation across teams when a change spans multiple parts of the service, and help trace failures across those parts.</li>
+	<li>Mentor other engineers through design reviews, debugging, and incident analysis involving concurrency, durability, and recovery.</li>
 </ul>
-<p><strong>Desirable Skills</strong></p>
+<h3>Desirable Skills, Knowledge &amp; Experience</h3>
 <ul>
-	<li><strong>GTM Recruiting Expertise:</strong> A proven track record of success as a Senior Recruiter with deep experience hiring for technical GTM roles, including Customer Engineering, Forward Deployed Engineers, Customer Experience and Solutions Architects, as well as core sales GTM organisations.</li>
-	<li><strong>Strategic Problem Solving:</strong> Ability to operate two "plays" ahead, anticipating potential bottlenecks before they materialize, and resolving complex organisational issues.</li>
-	<li><strong>Negotiation &amp; Closing Skills:</strong> Effective negotiation capabilities to secure top-tier candidates, driven by a deep understanding of Cloudflare’s unique value proposition.</li>
-	<li><strong>AI &amp; Ecosystem Proficiency:</strong> Demonstrated capability to leverage automated workflows, AI-powered sourcing environments, and LLMs for complex boolean logic, market mapping, and productivity multiplication.</li>
-	<li><strong>Candidate Experience Focus:</strong> Strong organizational skills to eliminate operational friction, ensuring clear communication and proactive engagement throughout the interview lifecycle.</li>
-	<li><strong>Communication &amp; Influencing:</strong> Exceptional written and verbal English skills, with the ability to communicate transparently, foster alignment across teams and stakeholders and leverage data and market insights to influence.</li>
-	<li><strong>Adaptability &amp; Self-Direction:</strong> Comfort thriving in ever-changing environments, taking complete responsibility for outcomes while seamlessly navigating an evolving technological and organisational landscape.</li>
+	<li>You have owned a database, storage engine, transaction system, or similarly correctness-sensitive stateful system from architecture through production. You can make architecture and implementation decisions when requirements or system boundaries are incomplete.</li>
+	<li>You understand how query execution, indexing, transaction processing, and durable state shape what developers and operators observe.</li>
+	<li>You understand how concurrency control, isolation, replication, and snapshots shape consistency, durability, and recovery. You can apply those concepts when operations arrive out of order, components fail independently, or the network partitions.</li>
+	<li>You write and debug concurrent production software in Rust, Go, C++, or another systems language. You can trace failures across process, network, and durable-state boundaries.</li>
+	<li>You have operated stateful systems through rollouts, scaling events, incidents, and recovery. You know the difference between transient unavailability and incomplete or incorrect recovery, and when a system is safe to return to service.</li>
+	<li>You have led investigations where failures crossed systems owned by several teams.</li>
 </ul>
-<p><br><br></p>
+<h3>Bonus Points</h3>
+<ul>
+	<li>You've worked on the internals of PostgreSQL, MySQL, Amazon Aurora, or another relational database and can trace a SQL operation from planning through commit.</li>
+	<li>Your work on transaction processing or concurrency control has included defining snapshot visibility and recovery behavior.</li>
+	<li>You've profiled database workloads and traced performance bottlenecks from query execution through durable storage.</li>
+	<li>You've used deterministic simulation or another systematic method to uncover distributed-systems bugs that conventional tests missed.</li>
+</ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

@@ -3,68 +3,46 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h3><strong>About the Role</strong></h3>
-<p>We are looking for a Systems Engineer to help build and manage tools that help engineers deploy and operate the services that make Cloudflare work. Our mission is to provide a reliable and flexible platform to help product teams release new software efficiently and safely. The role includes both software engineering and operational responsibilities. </p>
-<h3><strong>Responsibilities</strong></h3>
+<p><strong>Available Locations:&nbsp; Austin or London</strong></p>
+<p><strong>About the Role</strong></p>
+<p>Cloudflare Workers, launched in 2017, has evolved from a simple functions-as-a-service offering into a powerful full-stack development platform. Workers empowers developers to build sophisticated applications, leveraging numerous frameworks, tools, and integrations. Wrangler, the CLI for Cloudflare’s developer platform, plays a critical role in this, as do the surrounding tools that developers use including AI coding agents, IDEs and framework integrations.</p>
+<p>Your mission in this role is to ensure that the “hands-on-keyboard” experience of building Workers is seamless, intuitive, and delightful — getting down to the fine-grained details that matter to developers.</p>
+<p><strong>What You’ll Do</strong></p>
+<ul>
+	<li>Talk directly with developers and customers big and small, every day.</li>
+	<li>Drive the strategy, roadmap, and execution for <a href="https://www.npmjs.com/package/wrangler">Wrangler CLI</a>, and the broader developer tooling ecosystem around Cloudflare Workers.</li>
+	<li>Lead initiatives from ideation through launch, ensuring ongoing enhancements based on developer feedback.</li>
+	<li>Engage closely with developer communities to understand their workflows, challenges, and tooling needs.</li>
+	<li>Collaborate closely with internal engineering teams, external framework authors, and open-source maintainers to maximize compatibility and ease-of-use with Workers.</li>
+	<li>Partner cross-functionally with Product Marketing, Developer Relations, Sales, and Customer Support teams.</li>
+	<li>Represent Cloudflare externally at conferences, community events, customer meetings, and developer-focused initiatives.</li>
+</ul>
+<p><strong>Examples of Desirable Skills, Knowledge, and Experience</strong></p>
 <ul>
 	<li>
-		<p>Design and build scalable and resilient systems that can keep up with company growth.</p>
-	</li>
-	<li>
-		<p>Design and build developer productivity tooling.</p>
-	</li>
-	<li>
-		<p>Harden the platform against security threats and resource contention issues.</p>
-	</li>
-	<li>
-		<p>Improve our development systems and practices.</p>
-	</li>
-	<li>
-		<p>Improve the efficiency of managing resources such as CPU, bandwidth and storage.</p>
-	</li>
-	<li>
-		<p>Work with application teams to understand their potential challenges and help them choose the best way to architect their systems.</p>
-	</li>
-	<li>
-		<p>Drive initiatives that make our engineers happier and more productive.</p>
-	</li>
-	<li>
-		<p>Help respond and prevent incidents impacting core platforms.</p>
+		<ul>
+			<li>Proven experience as an EM, PM or founder. You’ve led teams to ship before and can point to impact.</li>
+			<li>Deep empathy for developers and understanding of their workflows, pain points, and how they adopt new tools and platforms. You understand what it’s like to write code that relies on services, tools and systems built by others.</li>
+			<li>Hands-on ability to write code and use AI and the Internet to learn new things fast.</li>
+			<li>Exceptional communication and collaboration skills, adept at working across diverse teams to align on goals and drive execution. You can translate between engineering domains.</li>
+			<li>Passion for design details and polish. You raise the bar for sweating the details.</li>
+			<li>External presentation skills. You can walk into a room of developers and build trust and credibility.</li>
+		</ul>
 	</li>
 </ul>
-<h3><strong>Desirable Skills, Knowledge, and Experience</strong></h3>
-<ul>
-	<li>
-		<p>Demonstrable professional experience building and managing large-scale distributed systems or Linux production environments.</p>
-	</li>
-	<li>
-		<p>Proficiency in at least one systems programming or scripting language (e.g., Go, Rust, C/C++, Python) with a track record of writing clean, maintainable code.</p>
-	</li>
-	<li>
-		<p>Experience managing containerized workloads at scale using Kubernetes, Docker, or similar orchestration platforms.</p>
-	</li>
-	<li>
-		<p>Experience with CI/CD pipelines and automated testing strategies for infrastructure.</p>
-	</li>
-	<li>
-		<p>Source control experience including branching, merging and rebasing.</p>
-	</li>
-	<li>
-		<p>Strong analytical and troubleshooting skills, with a methodical approach to diagnosing complex system-level failures.</p>
-	</li>
-</ul>
-<h3><strong>Bonus Points</strong></h3>
-<ul>
-	<li>
-		<p>Experience with configuration management and infrastructure-as-code tools (e.g., Ansible, Terraform, SaltStack).</p>
-	</li>
-	<li>
-		<p>Deep understanding of Linux/Unix operating system internals (e.g., storage subsystems, memory management) and core networking protocols (TCP/IP, DNS).</p>
-	</li>
-	<li>
-		<p>Contributions to open-source systems software projects or active participation in the broader systems engineering community.</p>
-	</li>
-</ul>
+<p><strong>Compensation may be adjusted depending on work location.</strong></p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and&nbsp;</p>
+<p>benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<p>Medical/Rx InsuranceDental InsuranceVision InsuranceFlexible Spending AccountsCommuter Spending AccountsFertility &amp; Family Forming BenefitsOn-demand mental health support and Employee Assistance ProgramGlobal Travel Medical Insurance</p>
+<p><strong>Financial Benefits</strong></p>
+<p>Short and Long Term Disability InsuranceLife &amp; Accident Insurance401(k) Retirement Savings PlanEmployee Stock Participation Plan</p>
+<p><strong>Time Off</strong></p>
+<p>Flexible paid time off covering vacation and sick leaveLeave programs, including parental, pregnancy health, medical, and bereavement leave</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

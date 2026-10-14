@@ -3,129 +3,53 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h3>Available Locations</h3>
+<p><strong>Available Locations:</strong> Austin, TX</p>
+<h2>What You'll Do</h2>
+<p>Cloudflare is seeking a Security Engineer to design and build agentic security tooling for Cloudflare Security, and to release that work as open-source reference implementations, interactive labs, and technical workshops for customers and partners.</p>
+<p>This role sits in the Applied Research &amp; Labs function within the Office of the CSO. You will work embedded with Cloudflare's security teams, build on Cloudflare's Developer Platform, and represent the team's security &amp; engineering work externally.</p>
+<h3>Security Tooling &amp; Reference Implementations</h3>
 <ul>
-	<li>Austin, US</li>
+	<li>Design and build agentic security workflows and tooling for Cloudflare Security, including multi-agent orchestration, tool integration, and evaluation harnesses</li>
+	<li>Release internal harnesses, skill definitions, and orchestration workflows as documented open-source reference implementations</li>
+	<li>Implement on Cloudflare Workers, Durable Objects, Workflows, Workers AI, AI Gateway, and the Agents SDK</li>
 </ul>
-<p><strong>About the team and the role</strong></p>
-<p>The Developer Tooling team builds internal tools and platforms that improve the velocity and developer experience of Cloudflare's engineering teams. We own developer productivity (code commit to production), developer insights and ADLC metrics, developer infrastructure (CI/CD, build systems), AI-assisted development, and Cloudflare-on-Cloudflare dogfooding.</p>
-<p>This team is responsible for AI-assisted development across all of Cloudflare engineering. Adoption has grown 4–6x in the last year. It's a small team, so you'll have a big surface area and real ownership from day one.</p>
-<p>As a Principal Engineer, you'll build and operate the AI tools thousands of engineers use every day. It's a hands-on role with both engineering and operational responsibility.&nbsp; You'll be embedded with the DevTools Engineering Manager and help shoulder technical mentorship and end-to-end ownership of projects, while caring deeply about the experience of the engineers you build for.</p>
-<p><strong>What you'll do</strong></p>
+<h3>Labs &amp; Workshops</h3>
 <ul>
-	<li>
-		<p>Ship features for our AI coding tools</p>
-	</li>
-	<li>
-		<p>Build and improve AI and other developer-observability tools.</p>
-	</li>
-	<li>
-		<p>Own our internal MCP servers (GitLab, Confluence, Jira, Backstage etc.).</p>
-	</li>
-	<li>
-		<p>Build AI agents.</p>
-	</li>
-	<li>
-		<p>Maintain our context engineering: shared configs, prompt libraries, and agent instructions.</p>
-	</li>
-	<li>
-		<p>Wire AI tooling into CI/CD pipelines.</p>
-	</li>
-	<li>
-		<p>Handle security and access controls for AI tools.</p>
-	</li>
-	<li>
-		<p>Track adoption and usage across the org.</p>
-	</li>
-	<li>
-		<p>Triage and respond to support in our tool channels.</p>
-	</li>
-	<li>
-		<p>Own projects end to end - from roadmap and prioritization through delivery and operation.</p>
-	</li>
-	<li>
-		<p>Mentor teammates and raise the bar through code review and design feedback.</p>
-	</li>
-	<li>
-		<p>Help respond to and prevent incidents on the tools engineers depend on.</p>
-	</li>
+	<li>Define the technical scope and sequencing of each lab, including the failure modes participants will hit and the scaffolding they need</li>
+	<li>Build and operate the lab infrastructure: per-participant isolation, automated provisioning, state reset, and teardown</li>
+	<li>Run hands-on workshops where customers and partners build and deploy the tooling themselves</li>
+	<li>Document and package workshop formats so other Cloudflare engineers can deliver them</li>
 </ul>
-<p><strong>Desirable skills, knowledge and experience</strong></p>
+<h3>External Engagement</h3>
 <ul>
-	<li>
-		<p>Strong coding ability in TypeScript, Go, Rust and Bash.</p>
-	</li>
-	<li>
-		<p>Excellent debugging skills.</p>
-	</li>
-	<li>
-		<p>Source control experience including branching, merging, and rebasing.</p>
-	</li>
-	<li>
-		<p>Experience deploying and operating on Kubernetes or a similar platform.</p>
-	</li>
-	<li>
-		<p>Comfort breaking down complex problems, weighing trade-offs, and driving them to done.</p>
-	</li>
-	<li>
-		<p>A habit of mentoring and raising the bar for the people around you.</p>
-	</li>
-	<li>
-		<p>Experience with, or strong interest in, building tools that improve DevEx</p>
-	</li>
+	<li>Present Cloudflare's agentic security architecture through customer briefings and conference talks</li>
+	<li>Author technical deep dives and architecture write-ups that establish Cloudflare Security as a recognized voice in the security community</li>
+	<li>Partner with Product and Engineering to align external technical content with the roadmap</li>
 </ul>
-<p><strong>Bonus points</strong></p>
+<h2>Required Qualifications</h2>
 <ul>
-	<li>
-		<p>Experience building LLM-based tools in production (agents, evals, cost and latency tuning).</p>
-	</li>
-	<li>
-		<p>Experience with CI/CD systems and build tooling.</p>
-	</li>
-	<li>
-		<p>Experience building on Cloudflare's platform (Workers, AI Gateway) - or eagerness to.</p>
-	</li>
-	<li>
-		<p>Operating Kubernetes on-premise at scale (SRE, systems design, or architecture).</p>
-	</li>
-	<li>
-		<p>Building platforms across multiple zones and regions.</p>
-	</li>
-	<li>
-		<p>Prior work on a platform engineering or developer-productivity team.</p>
-	</li>
-	<li>
-		<p>Open-source contributions to developer tooling or AI projects.</p>
-	</li>
+	<li>4+ years in software engineering, shipping and operating production systems</li>
+	<li>Demonstrated experience building interactive labs, hands-on learning platforms, or developer training environments, including the infrastructure behind them</li>
+	<li>Strong design judgment for technical learning experiences, including scope, sequencing, and knowing what to leave out</li>
+	<li>Proficiency in TypeScript, Python, or a comparable language, with production experience in distributed or event-driven systems</li>
+	<li>Hands-on experience building LLM-based systems, including agent orchestration, tool use, context engineering, and evaluation</li>
+	<li>Experience with Cloudflare Workers, Durable Objects, Workflows, Workers AI, AI Gateway, and Vectorize, or an equivalent serverless stack</li>
+	<li>Working knowledge of application and infrastructure security, including common vulnerability classes and secure development practices</li>
+	<li>Published technical writing, conference talks, or open-source contributions</li>
 </ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h2>Bonus Points</h2>
 <ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
+	<li>Hands-on security background in any domain</li>
+	<li>Experience with the Cloudflare Agents SDK&nbsp;</li>
+	<li>Experience with developer education, technical certification programs, or developer relations</li>
+	<li>Maintainer or significant contributor to an open-source security or developer tooling project</li>
+	<li>Experience speaking at security or developer conferences</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<h2>Location &amp; Travel</h2>
 <ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>Based in Austin, TX</li>
+	<li>15-25% travel for customer workshops, conferences, and other Cloudflare offices</li>
+	<li>Occasional work outside standard hours to support sessions across EMEA and APAC time zones</li>
 </ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>

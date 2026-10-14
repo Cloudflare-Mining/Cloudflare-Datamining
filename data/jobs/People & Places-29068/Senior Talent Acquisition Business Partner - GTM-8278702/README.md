@@ -3,84 +3,31 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations:&nbsp;</strong>London (UK), Lisbon (Portugal), Austin, TX (US)</p>
-<p><strong>About the Role</strong></p>
-<p>We are looking for a Software Engineer to architect, scale, and operate the distributed infrastructure that powers our global server fleets. You will drive automation and build tooling to enable Cloudflare to continue growing our infrastructure footprint. This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
-<p><strong>Responsibilities</strong></p>
+<p><strong>Available Location:&nbsp;</strong>London, UK</p>
+<p>This is a 9 month FTC role</p>
+<p><strong>About the Role:</strong></p>
+<p>We are looking for a Senior Talent Acquisition Business Partner to join our London-based EMEA team in a fixed-term capacity. Acting as a strategic talent advisor, you will help drive the expansion of our GTM and G&amp;A teams across the EMEA region with full autonomy. You will leverage your deep market expertise, extensive network, and AI-driven strategies to identify and secure top-tier talent for Cloudflare across various functions and regional markets as business needs evolve.</p>
+<p><strong>Core Responsibilities</strong></p>
 <ul>
-	<li>
-		<p>Design &amp; Scale Infrastructure: Architect, deploy, and maintain robust distributed systems, focusing on high availability, low latency, and horizontal scalability.</p>
-	</li>
-	<li>
-		<p>Optimize Performance: Analyze system bottlenecks, optimize kernel and network stacks, and fine-tune resource utilization across global server fleets.</p>
-	</li>
-	<li>
-		<p>Drive Automation: Build and maintain internal tools and automation frameworks to streamline infrastructure deployment, configuration management, and monitoring.</p>
-	</li>
-	<li>
-		<p>Ensure Reliability: Participate in architecture reviews, capacity planning, and proactive system health monitoring to guarantee maximum uptime and resilience.</p>
-	</li>
-	<li>
-		<p>Collaborate Cross-Functionally: Partner closely with Security, Network Engineering, and Product teams to integrate infrastructure solutions smoothly across the entire stack.</p>
-	</li>
+	<li><strong>End-to-End Recruitment &amp; Talent Strategy:</strong> Build and execute comprehensive talent strategies to help hiring leaders build high-performing teams, functioning similarly to how a salesperson puts together a go-to-market plan.</li>
+	<li><strong>Proactive Pipeline &amp; Passive Candidate Outreach:</strong> Draw upon an extensive network of industry contacts to build proactive pipeline strategies across GTM and G&amp;A roles across the EMEA region.</li>
+	<li><strong>Stakeholder Management &amp; Advising:</strong> Build and maintain solid relationships with the GEO VP and cross-functional stakeholders, including Finance, HRBPs, and compensation teams.</li>
+	<li><strong>AI-Agent Integration &amp; Process Optimisation:</strong> Partner with internal automated AI agents and generative tools to eliminate legacy manual tasks, optimise administrative outreach workflows at scale, and synthesise complex market data to inform regional talent strategies.</li>
+	<li><strong>Data Utilization &amp; Analytics:</strong> Leverage foundational data layers and recruitment analytics to inform talent strategies, actively analysing metrics such as time-to-hire and source efficiency to drive optimal operational decisions.</li>
+	<li><strong>Employer Branding &amp; Market Awareness:</strong> Lead and execute strategic employer branding initiatives tailored to the EMEA market to elevate Cloudflare's profile as a top destination for GTM talent.</li>
 </ul>
-<p><strong>Desirable Skills, Knowledge, and Experience</strong></p>
+<p><strong>Examples of desirable skills</strong></p>
 <ul>
-	<li>
-		<p>Demonstrable professional experience building and managing large-scale distributed systems or Linux production environments.</p>
-	</li>
-	<li>
-		<p>Proficiency in at least one systems programming or scripting language with a track record of writing clean, maintainable code.</p>
-	</li>
-	<li>
-		<p>Experience using AI to optimize your daily work.</p>
-	</li>
-	<li>
-		<p>Strong analytical and troubleshooting skills, with a methodical approach to diagnosing complex system-level failures.</p>
-	</li>
+	<li><strong>Extensive GTM Recruiting Experience:</strong> A proven track record of success as a Senior Recruiter, well-versed in scaling sales GTM organisations.</li>
+	<li><strong>High-Volume EMEA Recruiting Track Record:</strong> Proven experience executing high-volume recruitment across diverse EMEA regions while maintaining high quality and low time-to-hire.</li>
+	<li><strong>Strategic Problem Solving:</strong> Ability to operate two "plays" ahead, anticipating potential bottlenecks before they materialise&nbsp; and resolving complex organisational issues with high autonomy.</li>
+	<li><strong>Negotiation &amp; Closing Skills:</strong> Effective negotiation capabilities to secure top-tier candidates, driven by a deep understanding of Cloudflare’s unique value proposition.</li>
+	<li><strong>AI &amp; Ecosystem Proficiency:</strong> Demonstrated capability to leverage automated workflows, AI-powered sourcing environments, and LLMs for complex boolean logic, market mapping, and productivity multiplication.</li>
+	<li><strong>Candidate Experience Focus:</strong> Strong organizational skills to eliminate operational friction, ensuring clear communication and proactive engagement throughout the interview lifecycle.</li>
+	<li><strong>Communication &amp; Influencing:</strong> Exceptional written and verbal English skills, with the ability to communicate transparently, foster alignment across teams and stakeholders and leverage data and market insights to influence.</li>
+	<li><strong>Adaptability &amp; Self-Direction:</strong> Comfort thriving in ever-changing environments, taking complete responsibility for outcomes while seamlessly navigating an evolving technological and organisational landscape.</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>
-		<p>Experience managing containerized workloads at scale using Kubernetes, Docker, or similar orchestration platforms.</p>
-	</li>
-	<li>
-		<p>Experience with configuration management and infrastructure-as-code tools (e.g., Ansible, Terraform, SaltStack).</p>
-	</li>
-	<li>
-		<p>Familiarity with CI/CD pipelines and automated testing strategies for infrastructure.</p>
-	</li>
-</ul>
-<h4>Compensation</h4>
-<p data-path-to-node="1">For Portugal based hires: Estimated annual salary is between €54,000 - €75,000.</p>
-<p data-path-to-node="2,0,0">The final offer will be inclusive of time exemption, in alignment with the applicable law and collective bargaining agreements.</p>
-<h4><strong data-path-to-node="3" data-index-in-node="0">Equity</strong></h4>
-<p data-path-to-node="4">This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p data-path-to-node="4"><strong>Benefits</strong></p>
-<p data-path-to-node="4">Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p data-path-to-node="4"><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p data-path-to-node="4"><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p data-path-to-node="4"><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

@@ -88,6 +88,16 @@
 		<p>Experience with Oracle ERP Cloud (e.g., SCM, Procurement, Inventory Management) or comparable ERP platforms such as SAP or NetSuite, particularly for BOM management, purchase orders, and materials tracking.</p>
 	</li>
 </ul>
+<h3><strong>Compensation</strong></h3>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>
+		<p>For Bay Area based hires: Estimated annual salary of $170,000 - $234,000</p>
+	</li>
+	<li>
+		<p>For New York based hires: Estimated annual salary of $163,000 - $224,000</p>
+	</li>
+</ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
