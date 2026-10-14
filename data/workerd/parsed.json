@@ -4267,6 +4267,15 @@
 						"compatEnableFlag": "wasm_esm_integration_builtins"
 					},
 					"type": "Bool"
+				},
+				{
+					"name": "pipeToBackwardPropagation",
+					"annotations": {
+						"compatEnableFlag": "pipe_to_backward_propagation",
+						"compatDisableFlag": "no_pipe_to_backward_propagation",
+						"compatEnableDate": "2026-11-17"
+					},
+					"type": "Bool"
 				}
 			]
 		},
