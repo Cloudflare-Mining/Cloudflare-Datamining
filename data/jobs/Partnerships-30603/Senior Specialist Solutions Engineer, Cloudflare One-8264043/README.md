@@ -34,7 +34,7 @@
 </ul>
 <p><strong>Desirable Skills, Knowledge, and Experience:</strong></p>
 <ul>
-	<li>Fluent in English (written &amp; spoken), Russian and/or Hebrew advantageous</li>
+	<li>Fluent in English (written &amp; spoken), Russian and/or Hebrew</li>
 	<li>Proficiency with networking fundamentals, including routing, subnetting, VPNs, and SD-WAN concepts.</li>
 	<li>Understanding of AI agentic architecture and the security requirements and challenges in implementation at scale.</li>
 	<li>Familiarity with client operating system fundamentals and software distribution methods.</li>
