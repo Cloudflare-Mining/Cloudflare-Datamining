@@ -2234,6 +2234,29 @@
 		]
 	},
 	{
+		"id": "2b2b6dfb-2cd0-433f-802c-533d40508d9b",
+		"source": 1,
+		"name": "@cf/daily-co/phonellm-mini-alpha-2",
+		"description": "PhoneLLM is an open model tuned for voice agents. The model is based on Nemotron Nano 30B base capabilities and excels at typical voice agent tasks with thinking disabled.",
+		"task": {
+			"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
+			"name": "Text Generation",
+			"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
+		},
+		"created_at": "2026-10-13 09:36:59.162",
+		"tags": [],
+		"properties": [
+			{
+				"property_id": "context_window",
+				"value": "262140"
+			},
+			{
+				"property_id": "function_calling",
+				"value": "true"
+			}
+		]
+	},
+	{
 		"id": "22338608-b54d-4f04-884e-ab06f3dbbf3e",
 		"source": 1,
 		"name": "@cf/qwen/qwen3.8-27b",
