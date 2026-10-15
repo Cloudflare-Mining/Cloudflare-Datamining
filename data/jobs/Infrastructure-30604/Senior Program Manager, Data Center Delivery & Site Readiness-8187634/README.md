@@ -3,68 +3,55 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Location- New York, NY&nbsp;</strong></p>
-<p><strong><br>About the Department</strong></p>
-<p>Cloudflare’s Engineering Team is home to some of the industry’s top engineers, dedicated to building and scaling innovative software that handles a huge proportion of the Internet. Our Detection department sits at the heart of that mission: we identify automated, fraudulent, and malicious activity across the Internet and through our gateway. We develop advanced detection systems and machine learning models that operate at scale, collaborating with Product and Engineering teams across the company to protect our customers and stay ahead of the constantly evolving threat landscape.</p>
-<p><strong>What You’ll Do</strong></p>
+<p><strong>Job Title:</strong> Senior Program Manager, Data Center Delivery &amp; Site Readiness</p>
+<p><strong>Location:</strong></p>
 <ul>
-	<li>Study our adversaries deeply – reverse-engineer bot tools, automation frameworks, and fraud kits to understand how they work and how they evolve.</li>
-	<li>Play the cat-and-mouse game: probe our own detections like an attacker would, close the gaps, and stay a step ahead as adversaries adapt.</li>
-	<li>Track the bot and fraud ecosystem through tooling, marketplaces, and emerging techniques. Turn that intelligence into actionable detection signals.</li>
-	<li>Develop heuristics, signatures, and detection ideas grounded in real adversary behavior, partnering with Data Scientists and Engineers to bring them to life.</li>
-	<li>Design mitigations that neutralize attackers without tipping our hand; preserving our detection signals rather than teaching adversaries how to evade them.</li>
-	<li>Automate the work analysts do by hand by turning manual investigation and rule-writing into scalable, automated detection.</li>
+	<li>Austin, TX</li>
+	<li>San Francisco, CA</li>
+	<li>New York, NY</li>
 </ul>
-<p><strong>Must Haves</strong></p>
-<p><strong>You know our adversaries. You understand bots, automation, and the tooling used to attack web applications at scale.</strong></p>
+<p><span style="font-size: 18pt;"><strong>About the role</strong></span></p>
+<p>We're looking for a Senior Program Manager to own data center delivery and the sourcing work that gets each site ready to operate. You'll take projects from vendor selection and contract negotiation through construction, infrastructure deployment, commissioning, and handover to operations.</p>
+<p>This role combines technical program management with hands-on commercial execution. You'll work with engineering, construction, procurement, and operations teams to ensure facilities, equipment, and site services are ready when they're needed, with clear accountability for schedule, cost, and quality.</p>
+<h1>What you'll do</h1>
+<h2>Deliver data centers</h2>
 <ul>
-	<li><strong>Deep web expertise.</strong> You know HTTP, TLS, browser internals, fingerprinting, CAPTCHAs, and the techniques used to evade them.</li>
-	<li><strong>You love the hunt.</strong> You enjoy ethical hacking and reverse engineering, with an adversarial mindset that assumes every defense can be broken — and the creativity to prove it.</li>
+	<li>Represent the owner across new builds and expansions, managing data center providers, general contractors, design consultants, commissioning agents, and compute integration partners.</li>
+	<li>Coordinate mechanical, electrical, and plumbing (MEP) installation, white space fit-out, rack-level power, structured cabling, equipment staging and validation, and commissioning through operational acceptance.</li>
+	<li>Maintain a delivery schedule that connects construction milestones, equipment arrivals, service activation, and deployment dependencies. Resolve field issues and drive recovery plans when commitments slip.</li>
+	<li>Assess vendor and partner readiness before deployment, and coordinate handover with operations so acceptance criteria, documentation, and support responsibilities are clear.</li>
 </ul>
-<p><strong>Who You Are</strong></p>
+<h2>Source site services and manage contracts</h2>
 <ul>
-	<li><strong>From research to detection.</strong> You translate what you learn about attackers into concrete signals defenders can use.</li>
-	<li><strong>Mitigation without burning signals.</strong> You understand (or are curious to learn) how to act on attackers without burning the signals that make them detectable.</li>
-	<li><strong>Disciplined in code.</strong> You script comfortably (e.g., Python, JavaScript) to build proofs-of-concept and tooling – and you write it cleanly, whether it's throwaway or meant to last.</li>
-	<li><strong>Clear communicator.</strong> You explain complex attacker behavior to technical and non-technical audiences alike.</li>
+	<li>Own sourcing for the services each site needs to open and operate, including temporary power and water, security, waste management, and facilities support.</li>
+	<li>Translate construction and operational requirements into scopes of work, supplier selections, and service start dates. Identify gaps early enough to prevent delays to site work.</li>
+	<li>Negotiate regional and multi-site agreements, rate cards, service-level commitments, and change orders that new sites can use without restarting procurement.</li>
+	<li>Hold suppliers accountable for delivery, service quality, and commercial commitments, coordinating utility and service-provider dependencies with construction and operations.</li>
 </ul>
-<h3><strong>Compensation</strong></h3>
+<h2>Manage the portfolio</h2>
 <ul>
-	<li>Compensation may be adjusted depending on work location.</li>
-	<li>For New York based hires: Estimated annual salary of $150,000 - $185,000.</li>
+	<li>Track budgets, forecasts, scope changes, and risks across concurrent projects. Give leadership concise updates on progress, tradeoffs, and decisions needed.</li>
+	<li>Build repeatable site-readiness and delivery playbooks, including sourcing checklists, vendor qualification, milestone tracking, and handover requirements. Apply lessons from each build to the next.</li>
+	<li>Ensure deployment activities meet applicable codes, safety standards, and security requirements in partnership with the responsible technical teams.</li>
 </ul>
-<h3><strong>Equity</strong></h3>
+<h1>What you'll bring</h1>
 <ul>
-	<li>This role is eligible to participate in Cloudflare's equity plan.</li>
+	<li>7+ years in technical program management, construction management, or infrastructure delivery, including at least 5 years working on data center or high-density infrastructure projects.</li>
+	<li>Direct experience managing data center providers or general contractors on behalf of an owner, including contract administration, schedule oversight, and scope changes.</li>
+	<li>Hands-on sourcing experience for site services or indirect categories in multi-site industrial environments, including standing up services for a new site.</li>
+	<li>Experience negotiating supplier agreements and rate cards across locations, with a practical understanding of how procurement lead times affect construction and operations.</li>
+	<li>Working knowledge of data center MEP systems, white space delivery, structured cabling, rack-level power distribution, and compute staging and integration.</li>
+	<li>Experience managing substantial infrastructure budgets and competing dependencies across multiple projects.</li>
+	<li>Clear written and verbal communication, including the ability to explain technical delivery issues and commercial tradeoffs to senior leadership.</li>
+	<li>A bachelor's degree in engineering, construction management, architecture, business, or a related field, or equivalent practical experience.</li>
 </ul>
-<h3><strong>Benefits</strong></h3>
+<h1>Preferred experience</h1>
 <ul>
-	<li>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</li>
-	<li>Health &amp; Welfare Benefits</li>
-	<ul>
-		<li>Medical/Rx Insurance</li>
-		<li>Dental Insurance</li>
-		<li>Vision Insurance</li>
-		<li>Flexible Spending Accounts</li>
-		<li>Commuter Spending Accounts</li>
-		<li>Fertility &amp; Family Forming Benefits</li>
-		<li>On-demand mental health support and Employee Assistance Program</li>
-		<li>Global Travel Medical Insurance</li>
-	</ul>
-	<li>Financial Benefits</li>
-	<ul>
-		<li>Short and Long Term Disability Insurance</li>
-		<li>Life &amp; Accident Insurance</li>
-		<li>401(k) Retirement Savings Plan</li>
-		<li>Employee Stock Participation Plan</li>
-	</ul>
-	<li>Time Off</li>
-	<ul>
-		<li>Flexible paid time off covering vacation and sick leave</li>
-		<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-	</ul>
+	<li>High-density GPU deployments and liquid cooling systems.</li>
+	<li>Fast-track or modular data center construction.</li>
+	<li>Utility coordination, security services contracting, and facilities management agreements.</li>
+	<li>PMP or an equivalent project management credential.</li>
 </ul>
-<p><br><br></p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
