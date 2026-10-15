@@ -64,8 +64,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.domain-queries",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/v2/brand-protection/letter/templates/{template_id}": {
 		"operationId": "delete_LetterTemplateDelete",
@@ -132,8 +131,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.letter-templates",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries/{query_id}": {
 		"operationId": "delete_DeleteLogoQuery",
@@ -199,8 +197,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "brand-protection.logos",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices/{notice_id}": {
 		"operationId": "delete_TakedownNoticeDelete",
@@ -268,8 +265,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.takedown-notices",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices/{notice_id}/letters/{letter_id}": {
 		"operationId": "delete_TakedownLetterDelete",
@@ -347,8 +343,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.takedown-letters",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/matches": {
 		"operationId": "get_DomainMatchList",
@@ -564,8 +559,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "brand-protection.matches",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/queries": {
 		"operationId": "get_GetDomainQueries",
@@ -854,8 +848,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "brand-protection.queries",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/letter/templates": {
 		"operationId": "get_LetterTemplateList",
@@ -952,8 +945,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.letter-templates",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/letter/templates/{template_id}": {
 		"operationId": "get_LetterTemplateGet",
@@ -1052,8 +1044,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.letter-templates",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/letter/templates/examples": {
 		"operationId": "get_LetterTemplateExamples",
@@ -1154,8 +1145,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.letter-templates",
-		"x-fern-sdk-method-name": "examples",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "examples"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/matches": {
 		"operationId": "get_LogoMatchList",
@@ -1317,8 +1307,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "brand-protection.logo-matches",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries": {
 		"operationId": "get_GetLogoQueries",
@@ -1418,8 +1407,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "brand-protection.logos",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices": {
 		"operationId": "get_TakedownNoticeList",
@@ -1528,8 +1516,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.takedown-notices",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices/{notice_id}": {
 		"operationId": "get_TakedownNoticeGet",
@@ -1637,8 +1624,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.takedown-notices",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices/{notice_id}/letters": {
 		"operationId": "get_TakedownLetterList",
@@ -1731,8 +1717,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.takedown-letters",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices/{notice_id}/letters/{letter_id}": {
 		"operationId": "get_TakedownLetterGet",
@@ -1828,8 +1813,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.takedown-letters",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices/{notice_id}/letters/{letter_id}/pdf": {
 		"operationId": "get_TakedownLetterPdfGet",
@@ -1897,8 +1881,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.takedown-letters",
-		"x-fern-sdk-method-name": "get-pdf",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get-pdf"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/total-queries": {
 		"operationId": "get_TotalQueries",
@@ -1956,8 +1939,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "brand-protection",
-		"x-fern-sdk-method-name": "url-info",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "url-info"
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/queries/{query_id}": {
 		"operationId": "patch_UpdateDomainQuery",
@@ -2081,8 +2063,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.domain-queries",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/matches/bulk-dismiss": {
 		"operationId": "post_BulkDismissMatches",
@@ -2269,8 +2250,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "brand-protection.matches",
-		"x-fern-sdk-method-name": "bulk-dismiss",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "bulk-dismiss"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/queries": {
 		"operationId": "post_InsertDomainQuery",
@@ -2385,8 +2365,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.domain-queries",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/trial": {
 		"operationId": "post_DomainTrial",
@@ -2509,8 +2488,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "brand-protection.trial",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/letter/generate": {
 		"operationId": "post_LetterGenerate",
@@ -2753,8 +2731,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.takedown-letters",
-		"x-fern-sdk-method-name": "generate",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "generate"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/letter/templates": {
 		"operationId": "post_LetterTemplateCreate",
@@ -2877,8 +2854,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.letter-templates",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries": {
 		"operationId": "post_InsertLogoQuery",
@@ -2975,8 +2951,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "brand-protection.logos",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/search": {
 		"operationId": "post_SearchLogoSimilarity",
@@ -3127,8 +3102,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "brand-protection",
-		"x-fern-sdk-method-name": "submit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "submit"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/queries/{query_id}/matches/{domain_id}/dismiss": {
 		"operationId": "post_DismissMatch",
@@ -3221,8 +3195,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "brand-protection.queries",
-		"x-fern-sdk-method-name": "dismiss",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "dismiss"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/queries/{query_id}/matches/{domain_id}/undismiss": {
 		"operationId": "post_UndismissMatch",
@@ -3315,8 +3288,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "brand-protection.queries",
-		"x-fern-sdk-method-name": "undismiss",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "undismiss"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices": {
 		"operationId": "post_TakedownNoticeCreate",
@@ -3459,8 +3431,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.takedown-notices",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices/{notice_id}/letters": {
 		"operationId": "post_TakedownLetterCreate",
@@ -3629,8 +3600,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.takedown-letters",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices/lookup": {
 		"operationId": "post_TakedownNoticeLookup",
@@ -3794,8 +3764,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.takedown-notices",
-		"x-fern-sdk-method-name": "lookup",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "lookup"
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/v2/brand-protection/letter/templates/{template_id}": {
 		"operationId": "put_LetterTemplateUpdate",
@@ -3923,8 +3892,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.letter-templates",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices/{notice_id}": {
 		"operationId": "put_TakedownNoticeUpdate",
@@ -4076,7 +4044,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.takedown-notices",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

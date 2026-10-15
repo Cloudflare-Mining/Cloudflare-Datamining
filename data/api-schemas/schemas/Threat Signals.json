@@ -166,8 +166,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles.tags",
-		"x-fern-sdk-method-name": "remove",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "remove"
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds/{feed_id}": {
 		"operationId": "rssFeedDelete",
@@ -378,8 +377,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.feeds",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/v2/threat-signals/skills/{skill_id}": {
 		"operationId": "rssSkillDelete",
@@ -565,8 +563,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.skills",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles": {
 		"operationId": "rssArticleList",
@@ -962,8 +959,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}": {
 		"operationId": "rssArticleGet",
@@ -1195,8 +1191,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/content": {
 		"operationId": "rssArticleContentGet",
@@ -1266,8 +1261,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles",
-		"x-fern-sdk-method-name": "get-content",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get-content"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/skills": {
 		"operationId": "rssArticleCustomSkillsList",
@@ -1462,8 +1456,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles.skills",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/skills/{skill_id}/output": {
 		"operationId": "rssArticleSkillOutputGet",
@@ -1591,12 +1584,32 @@
 													"type": "string"
 												},
 												{
-													"items": {},
-													"type": "array"
-												},
-												{
 													"additionalProperties": true,
 													"type": "object"
+												},
+												{
+													"items": {
+														"anyOf": [
+															{
+																"type": "string"
+															},
+															{
+																"type": "number"
+															},
+															{
+																"type": "boolean"
+															},
+															{
+																"nullable": true,
+																"type": "string"
+															},
+															{
+																"additionalProperties": true,
+																"type": "object"
+															}
+														]
+													},
+													"type": "array"
 												}
 											]
 										},
@@ -1678,8 +1691,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles.skills",
-		"x-fern-sdk-method-name": "get-output",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get-output"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/categories": {
 		"operationId": "rssFeedCategoryList",
@@ -1785,195 +1797,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.categories",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
-	},
-	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/curated-feeds": {
-		"operationId": "rssCuratedFeedList",
-		"summary": "List curated Threat Signals feeds",
-		"description": "Lists the curated feeds the account can subscribe to.",
-		"parameters": [
-			{
-				"name": "account_id",
-				"in": "path",
-				"required": true,
-				"schema": {
-					"type": "string"
-				}
-			},
-			{
-				"name": "category",
-				"in": "query",
-				"schema": {
-					"type": "string",
-					"maxLength": 100
-				}
-			},
-			{
-				"name": "include_inactive",
-				"in": "query",
-				"schema": {
-					"type": "boolean",
-					"default": false
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"description": "Threat Signals response.",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "number"
-											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"expected": {
-												"type": "string"
-											},
-											"message": {
-												"type": "string"
-											},
-											"path": {
-												"type": "array",
-												"items": {
-													"type": "string"
-												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"result": {
-									"type": "object",
-									"properties": {
-										"feeds": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"category_id": {
-														"type": "string"
-													},
-													"display_order": {
-														"type": "integer",
-														"nullable": true
-													},
-													"id": {
-														"type": "string",
-														"format": "uuid"
-													},
-													"is_active": {
-														"type": "boolean"
-													},
-													"name": {
-														"type": "string"
-													},
-													"url": {
-														"type": "string"
-													},
-													"why_valuable": {
-														"type": "string",
-														"nullable": true
-													}
-												},
-												"required": [
-													"id",
-													"url",
-													"name",
-													"category_id",
-													"why_valuable",
-													"display_order",
-													"is_active"
-												],
-												"type": "object"
-											}
-										}
-									},
-									"required": [
-										"feeds"
-									]
-								},
-								"success": {
-									"type": "boolean",
-									"enum": [
-										true
-									]
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors",
-								"messages"
-							]
-						}
-					}
-				}
-			},
-			"4XX": {
-				"description": "Client error response."
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			}
-		],
-		"tags": [
-			"Threat Signals"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
-		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.curated-feeds",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds": {
 		"operationId": "rssFeedList",
@@ -2409,8 +2233,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.feeds",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds/{feed_id}/raw": {
 		"operationId": "rssFeedRawGet",
@@ -2479,8 +2302,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.feeds",
-		"x-fern-sdk-method-name": "get-raw",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get-raw"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds/{feed_id}/skills": {
 		"operationId": "rssFeedSkillsGet",
@@ -2684,65 +2506,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.feeds.skills",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
-	},
-	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/health": {
-		"operationId": "rssHealth",
-		"summary": "Check Threat Signals service health",
-		"description": "Checks that the Threat Signals API is reachable.",
-		"parameters": [
-			{
-				"name": "account_id",
-				"in": "path",
-				"required": true,
-				"schema": {
-					"type": "string"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"description": "Threat Signals response.",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"status": {
-									"type": "string",
-									"enum": [
-										"ok"
-									]
-								}
-							},
-							"required": [
-								"status"
-							]
-						}
-					}
-				}
-			},
-			"4XX": {
-				"description": "Client error response."
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			}
-		],
-		"tags": [
-			"Threat Signals"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
-		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-signals",
-		"x-fern-sdk-method-name": "health",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/indicators": {
 		"operationId": "rssArticleIndicatorList",
@@ -2974,8 +2738,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.indicators",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/search": {
 		"operationId": "searchThreatSignals",
@@ -3136,8 +2899,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals",
-		"x-fern-sdk-method-name": "search",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "search"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/skills": {
 		"operationId": "rssSkillList",
@@ -3368,8 +3130,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.skills",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/skills/{skill_id}": {
 		"operationId": "rssSkillGet",
@@ -3556,8 +3317,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.skills",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/skills/{skill_id}/tag-categories": {
 		"operationId": "rssSkillTagCategoriesGet",
@@ -3662,8 +3422,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.skills.tag-categories",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles": {
 		"operationId": "rssArticleBulkMarkRead",
@@ -3821,8 +3580,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles",
-		"x-fern-sdk-method-name": "bulk-mark-read",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "bulk-mark-read"
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}": {
 		"operationId": "rssArticleMarkRead",
@@ -4070,157 +3828,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles",
-		"x-fern-sdk-method-name": "mark-read",
-		"x-forge-hidden": true
-	},
-	"PATCH /accounts/{account_id}/cloudforce-one/v2/threat-signals/curated-feeds/opt-out": {
-		"operationId": "rssCuratedFeedOptOut",
-		"summary": "Opt out of curated Threat Signals feeds",
-		"description": "Opts the account out of, or back into, the curated feed catalog.",
-		"parameters": [
-			{
-				"name": "account_id",
-				"in": "path",
-				"required": true,
-				"schema": {
-					"type": "string"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"type": "object",
-						"properties": {
-							"opted_out": {
-								"type": "boolean"
-							}
-						},
-						"required": [
-							"opted_out"
-						]
-					}
-				}
-			}
-		},
-		"responses": {
-			"200": {
-				"description": "Threat Signals response.",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"properties": {
-											"code": {
-												"type": "number"
-											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"expected": {
-												"type": "string"
-											},
-											"message": {
-												"type": "string"
-											},
-											"path": {
-												"type": "array",
-												"items": {
-													"type": "string"
-												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									}
-								},
-								"result": {
-									"type": "object",
-									"properties": {
-										"opted_out": {
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"opted_out"
-									]
-								},
-								"success": {
-									"type": "boolean",
-									"enum": [
-										true
-									]
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors",
-								"messages"
-							]
-						}
-					}
-				}
-			},
-			"4XX": {
-				"description": "Client error response."
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			}
-		],
-		"tags": [
-			"Threat Signals"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write"
-		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.curated-feeds",
-		"x-fern-sdk-method-name": "opt-out",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "mark-read"
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds/{feed_id}": {
 		"operationId": "rssFeedUpdate",
@@ -4475,8 +4083,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.feeds",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/v2/threat-signals/skills/{skill_id}": {
 		"operationId": "rssSkillUpdate",
@@ -4695,8 +4302,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.skills",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/skills/{skill_id}/run": {
 		"operationId": "rssArticleSkillRun",
@@ -5246,12 +4852,32 @@
 															"type": "string"
 														},
 														{
-															"items": {},
-															"type": "array"
-														},
-														{
 															"additionalProperties": true,
 															"type": "object"
+														},
+														{
+															"items": {
+																"anyOf": [
+																	{
+																		"type": "string"
+																	},
+																	{
+																		"type": "number"
+																	},
+																	{
+																		"type": "boolean"
+																	},
+																	{
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	{
+																		"additionalProperties": true,
+																		"type": "object"
+																	}
+																]
+															},
+															"type": "array"
 														}
 													]
 												},
@@ -5338,8 +4964,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles.skills",
-		"x-fern-sdk-method-name": "run",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "run"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/tag": {
 		"operationId": "rssArticleTagGenerate",
@@ -5515,8 +5140,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles.tags",
-		"x-fern-sdk-method-name": "generate",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "generate"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/tags": {
 		"operationId": "rssArticleTagAdd",
@@ -5694,8 +5318,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles.tags",
-		"x-fern-sdk-method-name": "add",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "add"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds": {
 		"operationId": "rssFeedCreate",
@@ -6318,8 +5941,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.feeds",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds/poll": {
 		"operationId": "rssFeedPoll",
@@ -6454,8 +6076,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.feeds",
-		"x-fern-sdk-method-name": "poll",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "poll"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/skills": {
 		"operationId": "rssSkillCreate",
@@ -6674,8 +6295,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.skills",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds/{feed_id}/skills": {
 		"operationId": "rssFeedSkillsSet",
@@ -6859,8 +6479,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.feeds.skills",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/v2/threat-signals/skills/{skill_id}/tag-categories": {
 		"operationId": "rssSkillTagCategoriesReplace",
@@ -6987,7 +6606,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.skills.tag-categories",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

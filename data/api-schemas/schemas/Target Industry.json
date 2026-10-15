@@ -112,8 +112,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.target.industries",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/targetIndustries": {
 		"operationId": "get_TargetIndustryList",
@@ -229,8 +228,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-events.target-industries",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/targetIndustries/catalog": {
 		"operationId": "get_TargetIndustryListComplete",
@@ -334,7 +332,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.target.industries.catalog",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	}
 }

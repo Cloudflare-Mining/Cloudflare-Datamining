@@ -140,8 +140,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.dataset",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset": {
 		"operationId": "get_DatasetList",
@@ -273,8 +272,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-events.datasets",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}": {
 		"operationId": "get_DatasetRead",
@@ -429,8 +427,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-events.datasets",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}": {
 		"operationId": "patch_DatasetUpdate",
@@ -570,8 +567,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-events.datasets",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}": {
 		"operationId": "post_DatasetUpdate",
@@ -712,8 +708,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.dataset",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/create": {
 		"operationId": "post_DatasetCreate",
@@ -843,7 +838,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-events.datasets",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

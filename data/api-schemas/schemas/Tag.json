@@ -135,8 +135,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.tags",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}/relationships/{rel_uuid}": {
 		"operationId": "delete_TagRelationshipDelete",
@@ -261,8 +260,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.tags.relationships",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/tags/{tag_uuid}/indicators": {
 		"operationId": "get_DatasetTagIndicatorsList",
@@ -669,8 +667,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.dataset-tags",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/tags": {
 		"operationId": "get_TagList",
@@ -1347,8 +1344,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.tags",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}": {
 		"operationId": "get_TagDetail",
@@ -1890,8 +1886,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.tags",
-		"x-fern-sdk-method-name": "get-by-id",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get-by-id"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}/indicators": {
 		"operationId": "get_TagIndicatorsList",
@@ -2297,8 +2292,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.tags.indicators",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}/relationships": {
 		"operationId": "get_TagRelationshipsList",
@@ -2601,8 +2595,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.tags.relationships",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/tags/categories/actors": {
 		"operationId": "get_TaggedActorList",
@@ -3260,8 +3253,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.tags.categories.actors",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}": {
 		"operationId": "patch_TagUpdate",
@@ -4294,8 +4286,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.tags",
-		"x-fern-sdk-method-name": "patch",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "patch"
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}/relationships/{rel_uuid}": {
 		"operationId": "patch_TagRelationshipUpdate",
@@ -4487,8 +4478,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.tags.relationships",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}/relationships": {
 		"operationId": "post_TagRelationshipCreate",
@@ -4646,8 +4636,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.tags.relationships",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/tags/create": {
 		"operationId": "post_TagCreate",
@@ -5675,7 +5664,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-events.tags",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

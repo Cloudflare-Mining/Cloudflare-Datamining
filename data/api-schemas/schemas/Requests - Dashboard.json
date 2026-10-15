@@ -223,8 +223,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.requests.constants",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/requests/{project_type}/metadata": {
 		"operationId": "get_DashboardMetadataFieldList",
@@ -512,8 +511,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.requests.metadata",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/requests/{project_type}/quota": {
 		"operationId": "get_RequestQuota",
@@ -581,8 +579,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.requests.quota",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/requests/{project_type}/types": {
 		"operationId": "get_DashboardRequestTypesList",
@@ -711,8 +708,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.requests.types",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/requests/legal-response/access-check": {
 		"operationId": "get_LegalResponseAccessCheck",
@@ -834,7 +830,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.requests.legal-response",
-		"x-fern-sdk-method-name": "access-check",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "access-check"
 	}
 }

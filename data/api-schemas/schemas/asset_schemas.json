@@ -1,0 +1,1248 @@
+{
+	"GET /accounts/{account_id}/data-security/posture/asset_schemas": {
+		"operationId": "ListAssetSchemas",
+		"summary": "List asset schemas",
+		"description": "Returns the catalog of asset classes available when authoring custom\nfindings, grouped by vendor. Optionally filter to a single vendor with\nthe `vendor` query parameter.",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID for the user making the request.",
+				"example": "46148281d8a93d002ef242d8b0d5f9f6",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "vendor",
+				"in": "query",
+				"description": "Restrict the result to a single vendor. Unknown values return 400.",
+				"schema": {
+					"type": "string",
+					"enum": [
+						"ANTHROPIC",
+						"AWS",
+						"BITBUCKET",
+						"BOX",
+						"CONFLUENCE",
+						"DROPBOX",
+						"GITHUB",
+						"GOOGLE_CLOUD_PLATFORM",
+						"GOOGLE_WORKSPACE",
+						"JIRA",
+						"MICROSOFT",
+						"OPENAI",
+						"SALESFORCE",
+						"SERVICENOW",
+						"SLACK",
+						"WORKDAY",
+						"ZOOM"
+					]
+				},
+				"example": "GOOGLE_WORKSPACE"
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK: Successful HTTP request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"example": {
+								"errors": [],
+								"messages": [],
+								"result": [
+									{
+										"asset_classes": [
+											{
+												"asset_class": "AnthropicApiKey"
+											},
+											{
+												"asset_class": "AnthropicUser"
+											},
+											{
+												"asset_class": "AnthropicWorkspace"
+											}
+										],
+										"vendor": "ANTHROPIC"
+									},
+									{
+										"asset_classes": [
+											{
+												"asset_class": "GitHubOrganization"
+											},
+											{
+												"asset_class": "GitHubRepository"
+											},
+											{
+												"asset_class": "GitHubUser"
+											}
+										],
+										"vendor": "GITHUB"
+									}
+								],
+								"success": true
+							},
+							"allOf": [
+								{
+									"description": "Common response structure for all API endpoints.",
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error or message code.",
+														"type": "integer",
+														"example": 1000,
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"description": "Link to relevant documentation.",
+														"type": "string",
+														"format": "uri",
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
+													},
+													"message": {
+														"description": "Human-readable message.",
+														"type": "string",
+														"example": "Request processed successfully"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON pointer to the source of the error.",
+																"type": "string",
+																"example": "/data/attributes/name"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"example": [],
+											"uniqueItems": true
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error or message code.",
+														"type": "integer",
+														"example": 1000,
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"description": "Link to relevant documentation.",
+														"type": "string",
+														"format": "uri",
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
+													},
+													"message": {
+														"description": "Human-readable message.",
+														"type": "string",
+														"example": "Request processed successfully"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON pointer to the source of the error.",
+																"type": "string",
+																"example": "/data/attributes/name"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"example": [],
+											"uniqueItems": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Asset classes grouped by vendor, sorted by vendor enum.",
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"asset_classes": {
+														"description": "Asset classes belonging to this vendor, sorted by asset_class.",
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"asset_class": {
+																	"description": "Asset class identifier (PascalCase), e.g. AnthropicUser.",
+																	"type": "string",
+																	"example": "AnthropicUser"
+																}
+															},
+															"required": [
+																"asset_class"
+															]
+														}
+													},
+													"vendor": {
+														"description": "Canonical vendor enum value, e.g. GOOGLE_WORKSPACE.",
+														"type": "string",
+														"example": "ANTHROPIC"
+													}
+												},
+												"required": [
+													"vendor",
+													"asset_classes"
+												]
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request: Invalid vendor parameter",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized: Authentication required",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden: Insufficient permissions",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"asset_schemas"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.casb.asset-schemas",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/data-security/posture/asset_schemas/{asset_class}": {
+		"operationId": "GetAssetSchema",
+		"summary": "Get asset schema by asset class",
+		"description": "Returns the fields and related attributes a custom finding type may reference\nfor the given asset class (JSON Schema). Used by the custom finding types builder.",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID for the user making the request.",
+				"example": "46148281d8a93d002ef242d8b0d5f9f6",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "asset_class",
+				"in": "path",
+				"description": "Asset class identifier (PascalCase), e.g. AnthropicApiKey.",
+				"required": true,
+				"schema": {
+					"type": "string"
+				},
+				"example": "AnthropicApiKey"
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK: Successful HTTP request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"example": {
+								"errors": [],
+								"messages": [],
+								"result": {
+									"asset_class": "AnthropicApiKey",
+									"schema": {
+										"type": "object",
+										"properties": {
+											"asset": {
+												"type": "object",
+												"properties": {
+													"createdAt": {
+														"type": "string",
+														"format": "date-time"
+													},
+													"externalId": {
+														"type": "string"
+													},
+													"link": {
+														"type": "string"
+													},
+													"name": {
+														"type": "string"
+													},
+													"partialKeyHint": {
+														"anyOf": [
+															{
+																"type": "string"
+															},
+															{
+																"type": "null"
+															}
+														]
+													},
+													"status": {
+														"type": "string",
+														"enum": [
+															"active",
+															"inactive",
+															"archived"
+														]
+													}
+												},
+												"required": [
+													"name",
+													"externalId",
+													"link",
+													"status",
+													"createdAt"
+												]
+											},
+											"associated": {
+												"type": "object",
+												"properties": {
+													"createdBy": {
+														"description": "The user that created this API key.",
+														"anyOf": [
+															{
+																"properties": {
+																	"addedAt": {
+																		"type": "string",
+																		"format": "date-time"
+																	},
+																	"email": {
+																		"type": "string"
+																	},
+																	"externalId": {
+																		"type": "string"
+																	},
+																	"link": {
+																		"type": "string"
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"role": {
+																		"anyOf": [
+																			{
+																				"enum": [
+																					"user",
+																					"admin",
+																					"developer",
+																					"billing"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"type": "null"
+																			}
+																		]
+																	}
+																},
+																"required": [
+																	"name",
+																	"externalId",
+																	"link",
+																	"email",
+																	"addedAt"
+																],
+																"type": "object"
+															},
+															{
+																"type": "null"
+															}
+														]
+													},
+													"workspace": {
+														"description": "The workspace this API key belongs to.",
+														"anyOf": [
+															{
+																"properties": {
+																	"archivedAt": {
+																		"anyOf": [
+																			{
+																				"format": "date-time",
+																				"type": "string"
+																			},
+																			{
+																				"type": "null"
+																			}
+																		]
+																	},
+																	"createdAt": {
+																		"type": "string",
+																		"format": "date-time"
+																	},
+																	"displayColor": {
+																		"anyOf": [
+																			{
+																				"type": "string"
+																			},
+																			{
+																				"type": "null"
+																			}
+																		]
+																	},
+																	"externalId": {
+																		"type": "string"
+																	},
+																	"link": {
+																		"type": "string"
+																	},
+																	"name": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name",
+																	"externalId",
+																	"link",
+																	"createdAt"
+																],
+																"type": "object"
+															},
+															{
+																"type": "null"
+															}
+														]
+													}
+												}
+											}
+										},
+										"$schema": "https://json-schema.org/draft/2020-12/schema",
+										"required": [
+											"asset"
+										],
+										"title": "anthropic_api_key"
+									}
+								},
+								"success": true
+							},
+							"allOf": [
+								{
+									"description": "Common response structure for all API endpoints.",
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error or message code.",
+														"type": "integer",
+														"example": 1000,
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"description": "Link to relevant documentation.",
+														"type": "string",
+														"format": "uri",
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
+													},
+													"message": {
+														"description": "Human-readable message.",
+														"type": "string",
+														"example": "Request processed successfully"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON pointer to the source of the error.",
+																"type": "string",
+																"example": "/data/attributes/name"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"example": [],
+											"uniqueItems": true
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error or message code.",
+														"type": "integer",
+														"example": 1000,
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"description": "Link to relevant documentation.",
+														"type": "string",
+														"format": "uri",
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
+													},
+													"message": {
+														"description": "Human-readable message.",
+														"type": "string",
+														"example": "Request processed successfully"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"description": "JSON pointer to the source of the error.",
+																"type": "string",
+																"example": "/data/attributes/name"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"example": [],
+											"uniqueItems": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"asset_class": {
+													"description": "Asset class identifier (PascalCase), e.g. AnthropicApiKey.",
+													"type": "string",
+													"example": "AnthropicApiKey"
+												},
+												"schema": {
+													"description": "Fields and related attributes a custom finding type may reference for this asset\nclass, as a JSON Schema. Top-level properties are `asset` and, when related\nresources exist, `associated`.",
+													"type": "object",
+													"additionalProperties": true
+												}
+											},
+											"required": [
+												"asset_class",
+												"schema"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized: Authentication required",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden: Insufficient permissions",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not Found: Asset class not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"asset_schemas"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.casb.asset-schemas",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
+	}
+}

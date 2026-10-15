@@ -95,8 +95,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.groups",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/dataset/-/groups/{group_id}/members/{member_id}": {
 		"operationId": "delete_GroupMemberDelete",
@@ -203,8 +202,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.groups.members",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/-/groups": {
 		"operationId": "get_GroupList",
@@ -320,8 +318,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.groups.get",
-		"x-fern-sdk-method-name": "group",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "group"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/-/groups/{group_id}": {
 		"operationId": "get_GroupRead",
@@ -478,8 +475,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.groups.get",
-		"x-fern-sdk-method-name": "v2",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "v2"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/-/groups/{group_id}/members": {
 		"operationId": "get_GroupMemberList",
@@ -601,8 +597,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.groups.members",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/-/groups": {
 		"operationId": "post_GroupCreate",
@@ -738,8 +733,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.groups",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/-/groups/{group_id}/members": {
 		"operationId": "post_GroupMemberCreate",
@@ -878,8 +872,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.groups.members",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/events/dataset/-/groups/{group_id}": {
 		"operationId": "put_GroupUpdate",
@@ -1023,7 +1016,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.groups",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

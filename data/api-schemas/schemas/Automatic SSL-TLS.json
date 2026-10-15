@@ -335,8 +335,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ssl.automatic-upgrader",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /zones/{zone_id}/settings/ssl_automatic_mode": {
 		"operationId": "ssl-detector-automatic-mode-patch-enrollment",
@@ -685,7 +684,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ssl.automatic-upgrader",
-		"x-fern-sdk-method-name": "patch",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "patch"
 	}
 }

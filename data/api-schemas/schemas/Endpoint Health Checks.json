@@ -123,113 +123,101 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
 										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
 									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"example": []
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -256,8 +244,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "diagnostics.endpoint-healthchecks",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/diagnostics/endpoint-healthchecks": {
 		"operationId": "diagnostics-endpoint-healthcheck-list",
@@ -369,54 +356,58 @@
 								{
 									"properties": {
 										"result": {
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"check_type": {
-															"description": "type of check to perform",
-															"type": "string",
-															"example": "icmp",
-															"default": "icmp",
-															"enum": [
-																"icmp"
-															]
+											"type": "array",
+											"items": {
+												"allOf": [
+													{
+														"type": "object",
+														"properties": {
+															"check_type": {
+																"description": "type of check to perform",
+																"type": "string",
+																"example": "icmp",
+																"default": "icmp",
+																"enum": [
+																	"icmp"
+																]
+															},
+															"endpoint": {
+																"description": "the IP address of the host to perform checks against",
+																"type": "string",
+																"example": "203.0.113.1"
+															},
+															"name": {
+																"description": "Optional name associated with this check",
+																"type": "string",
+																"example": "My Endpoint"
+															}
 														},
-														"endpoint": {
-															"description": "the IP address of the host to perform checks against",
-															"type": "string",
-															"example": "203.0.113.1"
-														},
-														"name": {
-															"description": "Optional name associated with this check",
-															"type": "string",
-															"example": "My Endpoint"
-														}
+														"required": [
+															"check_type",
+															"endpoint"
+														]
 													},
-													"required": [
-														"check_type",
-														"endpoint"
-													]
-												},
-												{
-													"properties": {
-														"id": {
-															"description": "UUID.",
-															"type": "string",
-															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-															"maxLength": 36
-														}
+													{
+														"properties": {
+															"id": {
+																"description": "UUID.",
+																"type": "string",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"maxLength": 36
+															}
+														},
+														"type": "object"
 													}
-												}
-											],
-											"required": [
-												"id",
-												"check_type",
-												"endpoint"
-											]
+												],
+												"required": [
+													"id",
+													"check_type",
+													"endpoint"
+												]
+											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -428,113 +419,101 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
 										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
 									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"example": []
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -564,8 +543,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "diagnostics.endpoint-healthchecks",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/diagnostics/endpoint-healthchecks/{id}": {
 		"operationId": "diagnostics-endpoint-healthcheck-get",
@@ -688,7 +666,6 @@
 								{
 									"properties": {
 										"result": {
-											"type": "object",
 											"allOf": [
 												{
 													"type": "object",
@@ -726,7 +703,8 @@
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"required": [
@@ -735,7 +713,8 @@
 												"endpoint"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -747,347 +726,101 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"properties": {
-												"errors": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"example": []
-												},
-												"messages": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+													"documentation_url": {
+														"type": "string"
 													},
-													"example": []
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"type": "boolean",
-													"example": true,
-													"enum": [
-														true
-													]
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "array",
-													"items": {
+													"message": {
+														"type": "string"
+													},
+													"source": {
 														"type": "object",
 														"properties": {
-															"colos": {
-																"type": "array",
-																"items": {
-																	"type": "object",
-																	"properties": {
-																		"colo": {
-																			"type": "object",
-																			"properties": {
-																				"city": {
-																					"description": "Source colo city.",
-																					"type": "string",
-																					"example": "Denver, CO, US"
-																				},
-																				"name": {
-																					"description": "Source colo name.",
-																					"type": "string",
-																					"example": "den01"
-																				}
-																			}
-																		},
-																		"error": {
-																			"description": "Errors resulting from collecting traceroute from colo to target.",
-																			"type": "string",
-																			"example": "",
-																			"enum": [
-																				"",
-																				"Could not gather traceroute data: Code 1",
-																				"Could not gather traceroute data: Code 2",
-																				"Could not gather traceroute data: Code 3",
-																				"Could not gather traceroute data: Code 4"
-																			]
-																		},
-																		"hops": {
-																			"type": "array",
-																			"items": {
-																				"type": "object",
-																				"properties": {
-																					"nodes": {
-																						"description": "An array of node objects.",
-																						"type": "array",
-																						"items": {
-																							"type": "object",
-																							"properties": {
-																								"asn": {
-																									"description": "AS number associated with the node object.",
-																									"type": "string"
-																								},
-																								"ip": {
-																									"description": "IP address of the node.",
-																									"type": "string"
-																								},
-																								"labels": {
-																									"description": "Field appears if there is an additional annotation printed when the probe returns. Field also appears when running a GRE+ICMP traceroute to denote which traceroute a node comes from.",
-																									"type": "array",
-																									"items": {
-																										"type": "string"
-																									}
-																								},
-																								"max_rtt_ms": {
-																									"description": "Maximum RTT in ms.",
-																									"type": "number"
-																								},
-																								"mean_rtt_ms": {
-																									"description": "Mean RTT in ms.",
-																									"type": "number"
-																								},
-																								"min_rtt_ms": {
-																									"description": "Minimum RTT in ms.",
-																									"type": "number"
-																								},
-																								"name": {
-																									"description": "Host name of the address, this may be the same as the IP address.",
-																									"type": "string"
-																								},
-																								"packet_count": {
-																									"description": "Number of packets with a response from this node.",
-																									"type": "integer"
-																								},
-																								"std_dev_rtt_ms": {
-																									"description": "Standard deviation of the RTTs in ms.",
-																									"type": "number"
-																								}
-																							},
-																							"example": {
-																								"asn": "AS13335",
-																								"ip": "1.1.1.1",
-																								"max_latency_ms": 0.034,
-																								"mean_latency_ms": 0.021,
-																								"min_latency_ms": 0.014,
-																								"name": "one.one.one.one",
-																								"packet_count": 3,
-																								"std_dev_latency_ms": 0.011269427669584647
-																							}
-																						}
-																					},
-																					"packets_lost": {
-																						"description": "Number of packets where no response was received.",
-																						"type": "integer"
-																					},
-																					"packets_sent": {
-																						"description": "Number of packets sent with specified TTL.",
-																						"type": "integer"
-																					},
-																					"packets_ttl": {
-																						"description": "The time to live (TTL).",
-																						"type": "integer"
-																					}
-																				}
-																			}
-																		},
-																		"target_summary": {
-																			"description": "Aggregated statistics from all hops about the target.",
-																			"type": "object",
-																			"example": {
-																				"asn": "",
-																				"ip": "1.1.1.1",
-																				"max_latency_ms": 0.034,
-																				"mean_latency_ms": 0.021,
-																				"min_latency_ms": 0.014,
-																				"name": "1.1.1.1",
-																				"packet_count": 3,
-																				"std_dev_latency_ms": 0.011269427669584647
-																			}
-																		},
-																		"traceroute_time_ms": {
-																			"description": "Total time of traceroute in ms.",
-																			"type": "integer"
-																		}
-																	}
-																}
-															},
-															"target": {
-																"description": "The target hostname, IPv6, or IPv6 address.",
-																"type": "string",
-																"example": "1.1.1.1"
+															"pointer": {
+																"type": "string"
 															}
 														}
 													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
 												}
 											}
-										}
-									]
-								},
-								{
-									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
 										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
 									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"example": []
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1117,8 +850,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "diagnostics.endpoint-healthchecks",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/diagnostics/endpoint-healthchecks": {
 		"operationId": "diagnostics-endpoint-healthcheck-create",
@@ -1265,7 +997,6 @@
 								{
 									"properties": {
 										"result": {
-											"type": "object",
 											"allOf": [
 												{
 													"type": "object",
@@ -1303,7 +1034,8 @@
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"required": [
@@ -1312,7 +1044,8 @@
 												"endpoint"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1324,113 +1057,101 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
 										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
 									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"example": []
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1460,13 +1181,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "diagnostics.endpoint-healthchecks",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/diagnostics/endpoint-healthchecks/{id}": {
 		"operationId": "diagnostics-endpoint-healthcheck-update",
 		"summary": "Update Endpoint Health Check",
-		"description": "Update a Endpoint Health Check.",
+		"description": "Update an Endpoint Health Check.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1619,7 +1339,6 @@
 								{
 									"properties": {
 										"result": {
-											"type": "object",
 											"allOf": [
 												{
 													"type": "object",
@@ -1657,7 +1376,8 @@
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"required": [
@@ -1666,7 +1386,8 @@
 												"endpoint"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1678,113 +1399,101 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
 										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
 									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"example": []
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1811,7 +1520,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "diagnostics.endpoint-healthchecks",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

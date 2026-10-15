@@ -1,0 +1,5064 @@
+{
+	"DELETE /accounts/{account_id}/dlp/validators/proximity_words/{validator_id}": {
+		"operationId": "dlp-validators-delete-proximity-words-validator",
+		"summary": "Delete a proximity word validator",
+		"description": "Deletes a `proximity_words` validator. Fails with `409` while any detection entry is still\nattached to it; detach it from those entries first.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "validator_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Delete proximity word validator response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"nullable": true
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Delete proximity word validator failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"DLP Validators"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.validators.proximity-words",
+		"x-fern-sdk-method-name": "delete"
+	},
+	"DELETE /accounts/{account_id}/dlp/validators/worker/{validator_id}": {
+		"operationId": "dlp-validators-delete-worker-validator",
+		"summary": "Delete a worker validator",
+		"description": "Deletes a `worker` validator. Fails with `409` while any detection entry is still attached to\nit; detach it from those entries first.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "validator_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Delete worker validator response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"nullable": true
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Delete worker validator failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"DLP Validators"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.validators.worker",
+		"x-fern-sdk-method-name": "delete"
+	},
+	"GET /accounts/{account_id}/dlp/validators": {
+		"operationId": "dlp-validators-list-validators",
+		"summary": "List validators",
+		"description": "Lists the validators configured for the account, of every kind.",
+		"parameters": [
+			{
+				"name": "kind",
+				"in": "query",
+				"description": "Only return validators of this kind. Omit to return every kind.",
+				"schema": {
+					"allOf": [
+						{
+							"description": "The type of a validator, and the accepted values of the `kind` filter when listing.",
+							"type": "string",
+							"enum": [
+								"proximity_words",
+								"worker"
+							]
+						}
+					],
+					"nullable": true
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List validators response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"description": "Reusable logic that a detection entry can attach to in order to refine its matches. The `kind`\nfield determines the rest of the body.",
+												"oneOf": [
+													{
+														"allOf": [
+															{
+																"description": "A reusable list of weighted words. Attaching it to a detection entry raises the confidence of\nthat entry's matches when one of the words appears nearby, and lowers it when none do.",
+																"type": "object",
+																"properties": {
+																	"created_at": {
+																		"type": "string",
+																		"format": "date-time",
+																		"x-stainless-terraform-configurability": "computed"
+																	},
+																	"id": {
+																		"type": "string",
+																		"format": "uuid",
+																		"x-stainless-terraform-configurability": "computed"
+																	},
+																	"name": {
+																		"description": "A name for this validator, at most 50 characters.",
+																		"type": "string",
+																		"example": "HIPAA context words"
+																	},
+																	"referenced_by": {
+																		"allOf": [
+																			{
+																				"description": "What currently uses a validator. Deleting a validator that is still in use returns `409`, so\ncheck this first.\n\nRead-only. A validator is attached or detached by updating the detection entry that uses it, not\nby writing this back.",
+																				"type": "object",
+																				"properties": {
+																					"entries": {
+																						"description": "The detection entries using this validator, ordered by name.",
+																						"type": "array",
+																						"items": {
+																							"description": "A detection entry that uses a validator.",
+																							"type": "object",
+																							"properties": {
+																								"id": {
+																									"type": "string",
+																									"format": "uuid"
+																								},
+																								"name": {
+																									"type": "string",
+																									"example": "US Social Security Number"
+																								},
+																								"type": {
+																									"description": "The type of a detection entry.",
+																									"type": "string",
+																									"enum": [
+																										"custom",
+																										"custom_prompt_topic",
+																										"predefined",
+																										"integration",
+																										"exact_data",
+																										"document_fingerprint",
+																										"word_list"
+																									]
+																								}
+																							},
+																							"required": [
+																								"id",
+																								"name",
+																								"type"
+																							]
+																						}
+																					},
+																					"entry_count": {
+																						"description": "Number of detection entries this validator is attached to.",
+																						"type": "integer",
+																						"format": "int32",
+																						"example": 3,
+																						"minimum": 0
+																					}
+																				},
+																				"required": [
+																					"entry_count",
+																					"entries"
+																				]
+																			}
+																		],
+																		"x-stainless-terraform-configurability": "computed"
+																	},
+																	"updated_at": {
+																		"type": "string",
+																		"format": "date-time",
+																		"x-stainless-terraform-configurability": "computed"
+																	},
+																	"words": {
+																		"description": "The words that raise confidence when found near a match.",
+																		"type": "array",
+																		"items": {
+																			"description": "A word that raises a match's confidence when it appears near the match.",
+																			"type": "object",
+																			"properties": {
+																				"weight": {
+																					"description": "How much a word contributes to a match's confidence when it is found nearby.\n\nSeparate from a profile's high/medium/low confidence threshold: this describes how telling the\nword is, not how confident the resulting match is.",
+																					"type": "string",
+																					"enum": [
+																						"strong",
+																						"moderate",
+																						"weak"
+																					]
+																				},
+																				"word": {
+																					"description": "The word or phrase to look for. Must contain 1–128 characters and is matched\ncase-insensitively.",
+																					"type": "string",
+																					"example": "social security number"
+																				}
+																			},
+																			"required": [
+																				"word",
+																				"weight"
+																			]
+																		},
+																		"x-stainless-collection-type": "set"
+																	}
+																},
+																"required": [
+																	"id",
+																	"name",
+																	"words",
+																	"referenced_by",
+																	"created_at",
+																	"updated_at"
+																]
+															},
+															{
+																"properties": {
+																	"kind": {
+																		"type": "string",
+																		"enum": [
+																			"proximity_words"
+																		],
+																		"x-stainless-terraform-configurability": "computed"
+																	}
+																},
+																"required": [
+																	"kind"
+																],
+																"type": "object"
+															}
+														],
+														"title": "Proximity Word Validator"
+													},
+													{
+														"allOf": [
+															{
+																"description": "A customer Worker registered as a validator.",
+																"type": "object",
+																"properties": {
+																	"created_at": {
+																		"type": "string",
+																		"format": "date-time",
+																		"x-stainless-terraform-configurability": "computed"
+																	},
+																	"default": {
+																		"allOf": [
+																			{
+																				"oneOf": [
+																					{
+																						"type": "number"
+																					},
+																					{
+																						"enum": [
+																							"veto"
+																						],
+																						"type": "string"
+																					}
+																				]
+																			}
+																		]
+																	},
+																	"id": {
+																		"type": "string",
+																		"format": "uuid",
+																		"x-stainless-terraform-configurability": "computed"
+																	},
+																	"name": {
+																		"description": "A name for this validator, at most 50 characters.",
+																		"type": "string",
+																		"example": "Invoice Validator"
+																	},
+																	"referenced_by": {
+																		"allOf": [
+																			{
+																				"description": "What currently uses a validator. Deleting a validator that is still in use returns `409`, so\ncheck this first.\n\nRead-only. A validator is attached or detached by updating the detection entry that uses it, not\nby writing this back.",
+																				"type": "object",
+																				"properties": {
+																					"entries": {
+																						"description": "The detection entries using this validator, ordered by name.",
+																						"type": "array",
+																						"items": {
+																							"description": "A detection entry that uses a validator.",
+																							"type": "object",
+																							"properties": {
+																								"id": {
+																									"type": "string",
+																									"format": "uuid"
+																								},
+																								"name": {
+																									"type": "string",
+																									"example": "US Social Security Number"
+																								},
+																								"type": {
+																									"description": "The type of a detection entry.",
+																									"type": "string",
+																									"enum": [
+																										"custom",
+																										"custom_prompt_topic",
+																										"predefined",
+																										"integration",
+																										"exact_data",
+																										"document_fingerprint",
+																										"word_list"
+																									]
+																								}
+																							},
+																							"required": [
+																								"id",
+																								"name",
+																								"type"
+																							]
+																						}
+																					},
+																					"entry_count": {
+																						"description": "Number of detection entries this validator is attached to.",
+																						"type": "integer",
+																						"format": "int32",
+																						"example": 3,
+																						"minimum": 0
+																					}
+																				},
+																				"required": [
+																					"entry_count",
+																					"entries"
+																				]
+																			}
+																		],
+																		"x-stainless-terraform-configurability": "computed"
+																	},
+																	"script_tag": {
+																		"description": "The public script tag of the customer's Worker that scores matches.",
+																		"type": "string",
+																		"example": "0123456789abcdef0123456789abcdef"
+																	},
+																	"updated_at": {
+																		"type": "string",
+																		"format": "date-time",
+																		"x-stainless-terraform-configurability": "computed"
+																	}
+																},
+																"required": [
+																	"id",
+																	"name",
+																	"script_tag",
+																	"referenced_by",
+																	"created_at",
+																	"updated_at"
+																]
+															},
+															{
+																"properties": {
+																	"kind": {
+																		"type": "string",
+																		"enum": [
+																			"worker"
+																		],
+																		"x-stainless-terraform-configurability": "computed"
+																	}
+																},
+																"required": [
+																	"kind"
+																],
+																"type": "object"
+															}
+														],
+														"title": "Worker Validator"
+													}
+												]
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "List validators failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"DLP Validators"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.validators",
+		"x-fern-sdk-method-name": "list"
+	},
+	"GET /accounts/{account_id}/dlp/validators/{validator_id}": {
+		"operationId": "dlp-validators-get-validator",
+		"summary": "Get a validator",
+		"description": "Fetches a validator of any kind by ID.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "validator_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Get validator response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Reusable logic that a detection entry can attach to in order to refine its matches. The `kind`\nfield determines the rest of the body.",
+											"oneOf": [
+												{
+													"allOf": [
+														{
+															"description": "A reusable list of weighted words. Attaching it to a detection entry raises the confidence of\nthat entry's matches when one of the words appears nearby, and lowers it when none do.",
+															"type": "object",
+															"properties": {
+																"created_at": {
+																	"type": "string",
+																	"format": "date-time",
+																	"x-stainless-terraform-configurability": "computed"
+																},
+																"id": {
+																	"type": "string",
+																	"format": "uuid",
+																	"x-stainless-terraform-configurability": "computed"
+																},
+																"name": {
+																	"description": "A name for this validator, at most 50 characters.",
+																	"type": "string",
+																	"example": "HIPAA context words"
+																},
+																"referenced_by": {
+																	"allOf": [
+																		{
+																			"description": "What currently uses a validator. Deleting a validator that is still in use returns `409`, so\ncheck this first.\n\nRead-only. A validator is attached or detached by updating the detection entry that uses it, not\nby writing this back.",
+																			"type": "object",
+																			"properties": {
+																				"entries": {
+																					"description": "The detection entries using this validator, ordered by name.",
+																					"type": "array",
+																					"items": {
+																						"description": "A detection entry that uses a validator.",
+																						"type": "object",
+																						"properties": {
+																							"id": {
+																								"type": "string",
+																								"format": "uuid"
+																							},
+																							"name": {
+																								"type": "string",
+																								"example": "US Social Security Number"
+																							},
+																							"type": {
+																								"description": "The type of a detection entry.",
+																								"type": "string",
+																								"enum": [
+																									"custom",
+																									"custom_prompt_topic",
+																									"predefined",
+																									"integration",
+																									"exact_data",
+																									"document_fingerprint",
+																									"word_list"
+																								]
+																							}
+																						},
+																						"required": [
+																							"id",
+																							"name",
+																							"type"
+																						]
+																					}
+																				},
+																				"entry_count": {
+																					"description": "Number of detection entries this validator is attached to.",
+																					"type": "integer",
+																					"format": "int32",
+																					"example": 3,
+																					"minimum": 0
+																				}
+																			},
+																			"required": [
+																				"entry_count",
+																				"entries"
+																			]
+																		}
+																	],
+																	"x-stainless-terraform-configurability": "computed"
+																},
+																"updated_at": {
+																	"type": "string",
+																	"format": "date-time",
+																	"x-stainless-terraform-configurability": "computed"
+																},
+																"words": {
+																	"description": "The words that raise confidence when found near a match.",
+																	"type": "array",
+																	"items": {
+																		"description": "A word that raises a match's confidence when it appears near the match.",
+																		"type": "object",
+																		"properties": {
+																			"weight": {
+																				"description": "How much a word contributes to a match's confidence when it is found nearby.\n\nSeparate from a profile's high/medium/low confidence threshold: this describes how telling the\nword is, not how confident the resulting match is.",
+																				"type": "string",
+																				"enum": [
+																					"strong",
+																					"moderate",
+																					"weak"
+																				]
+																			},
+																			"word": {
+																				"description": "The word or phrase to look for. Must contain 1–128 characters and is matched\ncase-insensitively.",
+																				"type": "string",
+																				"example": "social security number"
+																			}
+																		},
+																		"required": [
+																			"word",
+																			"weight"
+																		]
+																	},
+																	"x-stainless-collection-type": "set"
+																}
+															},
+															"required": [
+																"id",
+																"name",
+																"words",
+																"referenced_by",
+																"created_at",
+																"updated_at"
+															]
+														},
+														{
+															"properties": {
+																"kind": {
+																	"type": "string",
+																	"enum": [
+																		"proximity_words"
+																	],
+																	"x-stainless-terraform-configurability": "computed"
+																}
+															},
+															"required": [
+																"kind"
+															],
+															"type": "object"
+														}
+													],
+													"title": "Proximity Word Validator"
+												},
+												{
+													"allOf": [
+														{
+															"description": "A customer Worker registered as a validator.",
+															"type": "object",
+															"properties": {
+																"created_at": {
+																	"type": "string",
+																	"format": "date-time",
+																	"x-stainless-terraform-configurability": "computed"
+																},
+																"default": {
+																	"allOf": [
+																		{
+																			"oneOf": [
+																				{
+																					"type": "number"
+																				},
+																				{
+																					"enum": [
+																						"veto"
+																					],
+																					"type": "string"
+																				}
+																			]
+																		}
+																	]
+																},
+																"id": {
+																	"type": "string",
+																	"format": "uuid",
+																	"x-stainless-terraform-configurability": "computed"
+																},
+																"name": {
+																	"description": "A name for this validator, at most 50 characters.",
+																	"type": "string",
+																	"example": "Invoice Validator"
+																},
+																"referenced_by": {
+																	"allOf": [
+																		{
+																			"description": "What currently uses a validator. Deleting a validator that is still in use returns `409`, so\ncheck this first.\n\nRead-only. A validator is attached or detached by updating the detection entry that uses it, not\nby writing this back.",
+																			"type": "object",
+																			"properties": {
+																				"entries": {
+																					"description": "The detection entries using this validator, ordered by name.",
+																					"type": "array",
+																					"items": {
+																						"description": "A detection entry that uses a validator.",
+																						"type": "object",
+																						"properties": {
+																							"id": {
+																								"type": "string",
+																								"format": "uuid"
+																							},
+																							"name": {
+																								"type": "string",
+																								"example": "US Social Security Number"
+																							},
+																							"type": {
+																								"description": "The type of a detection entry.",
+																								"type": "string",
+																								"enum": [
+																									"custom",
+																									"custom_prompt_topic",
+																									"predefined",
+																									"integration",
+																									"exact_data",
+																									"document_fingerprint",
+																									"word_list"
+																								]
+																							}
+																						},
+																						"required": [
+																							"id",
+																							"name",
+																							"type"
+																						]
+																					}
+																				},
+																				"entry_count": {
+																					"description": "Number of detection entries this validator is attached to.",
+																					"type": "integer",
+																					"format": "int32",
+																					"example": 3,
+																					"minimum": 0
+																				}
+																			},
+																			"required": [
+																				"entry_count",
+																				"entries"
+																			]
+																		}
+																	],
+																	"x-stainless-terraform-configurability": "computed"
+																},
+																"script_tag": {
+																	"description": "The public script tag of the customer's Worker that scores matches.",
+																	"type": "string",
+																	"example": "0123456789abcdef0123456789abcdef"
+																},
+																"updated_at": {
+																	"type": "string",
+																	"format": "date-time",
+																	"x-stainless-terraform-configurability": "computed"
+																}
+															},
+															"required": [
+																"id",
+																"name",
+																"script_tag",
+																"referenced_by",
+																"created_at",
+																"updated_at"
+															]
+														},
+														{
+															"properties": {
+																"kind": {
+																	"type": "string",
+																	"enum": [
+																		"worker"
+																	],
+																	"x-stainless-terraform-configurability": "computed"
+																}
+															},
+															"required": [
+																"kind"
+															],
+															"type": "object"
+														}
+													],
+													"title": "Worker Validator"
+												}
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Get validator failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"DLP Validators"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.validators",
+		"x-fern-sdk-method-name": "get"
+	},
+	"GET /accounts/{account_id}/dlp/validators/proximity_words": {
+		"operationId": "dlp-validators-list-proximity-words-validators",
+		"summary": "List proximity word validators",
+		"description": "Lists the `proximity_words` validators configured for the account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List proximity word validators response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"description": "A reusable list of weighted words. Attaching it to a detection entry raises the confidence of\nthat entry's matches when one of the words appears nearby, and lowers it when none do.",
+												"type": "object",
+												"properties": {
+													"created_at": {
+														"type": "string",
+														"format": "date-time",
+														"x-stainless-terraform-configurability": "computed"
+													},
+													"id": {
+														"type": "string",
+														"format": "uuid",
+														"x-stainless-terraform-configurability": "computed"
+													},
+													"name": {
+														"description": "A name for this validator, at most 50 characters.",
+														"type": "string",
+														"example": "HIPAA context words"
+													},
+													"referenced_by": {
+														"allOf": [
+															{
+																"description": "What currently uses a validator. Deleting a validator that is still in use returns `409`, so\ncheck this first.\n\nRead-only. A validator is attached or detached by updating the detection entry that uses it, not\nby writing this back.",
+																"type": "object",
+																"properties": {
+																	"entries": {
+																		"description": "The detection entries using this validator, ordered by name.",
+																		"type": "array",
+																		"items": {
+																			"description": "A detection entry that uses a validator.",
+																			"type": "object",
+																			"properties": {
+																				"id": {
+																					"type": "string",
+																					"format": "uuid"
+																				},
+																				"name": {
+																					"type": "string",
+																					"example": "US Social Security Number"
+																				},
+																				"type": {
+																					"description": "The type of a detection entry.",
+																					"type": "string",
+																					"enum": [
+																						"custom",
+																						"custom_prompt_topic",
+																						"predefined",
+																						"integration",
+																						"exact_data",
+																						"document_fingerprint",
+																						"word_list"
+																					]
+																				}
+																			},
+																			"required": [
+																				"id",
+																				"name",
+																				"type"
+																			]
+																		}
+																	},
+																	"entry_count": {
+																		"description": "Number of detection entries this validator is attached to.",
+																		"type": "integer",
+																		"format": "int32",
+																		"example": 3,
+																		"minimum": 0
+																	}
+																},
+																"required": [
+																	"entry_count",
+																	"entries"
+																]
+															}
+														],
+														"x-stainless-terraform-configurability": "computed"
+													},
+													"updated_at": {
+														"type": "string",
+														"format": "date-time",
+														"x-stainless-terraform-configurability": "computed"
+													},
+													"words": {
+														"description": "The words that raise confidence when found near a match.",
+														"type": "array",
+														"items": {
+															"description": "A word that raises a match's confidence when it appears near the match.",
+															"type": "object",
+															"properties": {
+																"weight": {
+																	"description": "How much a word contributes to a match's confidence when it is found nearby.\n\nSeparate from a profile's high/medium/low confidence threshold: this describes how telling the\nword is, not how confident the resulting match is.",
+																	"type": "string",
+																	"enum": [
+																		"strong",
+																		"moderate",
+																		"weak"
+																	]
+																},
+																"word": {
+																	"description": "The word or phrase to look for. Must contain 1–128 characters and is matched\ncase-insensitively.",
+																	"type": "string",
+																	"example": "social security number"
+																}
+															},
+															"required": [
+																"word",
+																"weight"
+															]
+														},
+														"x-stainless-collection-type": "set"
+													}
+												},
+												"required": [
+													"id",
+													"name",
+													"words",
+													"referenced_by",
+													"created_at",
+													"updated_at"
+												]
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "List proximity word validators failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"DLP Validators"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.validators.proximity-words",
+		"x-fern-sdk-method-name": "list"
+	},
+	"GET /accounts/{account_id}/dlp/validators/proximity_words/{validator_id}": {
+		"operationId": "dlp-validators-get-proximity-words-validator",
+		"summary": "Get a proximity word validator",
+		"description": "Fetches a `proximity_words` validator by ID.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "validator_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Get proximity word validator response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A reusable list of weighted words. Attaching it to a detection entry raises the confidence of\nthat entry's matches when one of the words appears nearby, and lowers it when none do.",
+											"type": "object",
+											"properties": {
+												"created_at": {
+													"type": "string",
+													"format": "date-time",
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"id": {
+													"type": "string",
+													"format": "uuid",
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"name": {
+													"description": "A name for this validator, at most 50 characters.",
+													"type": "string",
+													"example": "HIPAA context words"
+												},
+												"referenced_by": {
+													"allOf": [
+														{
+															"description": "What currently uses a validator. Deleting a validator that is still in use returns `409`, so\ncheck this first.\n\nRead-only. A validator is attached or detached by updating the detection entry that uses it, not\nby writing this back.",
+															"type": "object",
+															"properties": {
+																"entries": {
+																	"description": "The detection entries using this validator, ordered by name.",
+																	"type": "array",
+																	"items": {
+																		"description": "A detection entry that uses a validator.",
+																		"type": "object",
+																		"properties": {
+																			"id": {
+																				"type": "string",
+																				"format": "uuid"
+																			},
+																			"name": {
+																				"type": "string",
+																				"example": "US Social Security Number"
+																			},
+																			"type": {
+																				"description": "The type of a detection entry.",
+																				"type": "string",
+																				"enum": [
+																					"custom",
+																					"custom_prompt_topic",
+																					"predefined",
+																					"integration",
+																					"exact_data",
+																					"document_fingerprint",
+																					"word_list"
+																				]
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"name",
+																			"type"
+																		]
+																	}
+																},
+																"entry_count": {
+																	"description": "Number of detection entries this validator is attached to.",
+																	"type": "integer",
+																	"format": "int32",
+																	"example": 3,
+																	"minimum": 0
+																}
+															},
+															"required": [
+																"entry_count",
+																"entries"
+															]
+														}
+													],
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"updated_at": {
+													"type": "string",
+													"format": "date-time",
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"words": {
+													"description": "The words that raise confidence when found near a match.",
+													"type": "array",
+													"items": {
+														"description": "A word that raises a match's confidence when it appears near the match.",
+														"type": "object",
+														"properties": {
+															"weight": {
+																"description": "How much a word contributes to a match's confidence when it is found nearby.\n\nSeparate from a profile's high/medium/low confidence threshold: this describes how telling the\nword is, not how confident the resulting match is.",
+																"type": "string",
+																"enum": [
+																	"strong",
+																	"moderate",
+																	"weak"
+																]
+															},
+															"word": {
+																"description": "The word or phrase to look for. Must contain 1–128 characters and is matched\ncase-insensitively.",
+																"type": "string",
+																"example": "social security number"
+															}
+														},
+														"required": [
+															"word",
+															"weight"
+														]
+													},
+													"x-stainless-collection-type": "set"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"words",
+												"referenced_by",
+												"created_at",
+												"updated_at"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Get proximity word validator failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"DLP Validators"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.validators.proximity-words",
+		"x-fern-sdk-method-name": "get"
+	},
+	"GET /accounts/{account_id}/dlp/validators/worker": {
+		"operationId": "dlp-validators-list-worker-validators",
+		"summary": "List worker validators",
+		"description": "Lists the `worker` validators configured for the account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List worker validators response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"description": "A customer Worker registered as a validator.",
+												"type": "object",
+												"properties": {
+													"created_at": {
+														"type": "string",
+														"format": "date-time",
+														"x-stainless-terraform-configurability": "computed"
+													},
+													"default": {
+														"allOf": [
+															{
+																"oneOf": [
+																	{
+																		"type": "number"
+																	},
+																	{
+																		"enum": [
+																			"veto"
+																		],
+																		"type": "string"
+																	}
+																]
+															}
+														]
+													},
+													"id": {
+														"type": "string",
+														"format": "uuid",
+														"x-stainless-terraform-configurability": "computed"
+													},
+													"name": {
+														"description": "A name for this validator, at most 50 characters.",
+														"type": "string",
+														"example": "Invoice Validator"
+													},
+													"referenced_by": {
+														"allOf": [
+															{
+																"description": "What currently uses a validator. Deleting a validator that is still in use returns `409`, so\ncheck this first.\n\nRead-only. A validator is attached or detached by updating the detection entry that uses it, not\nby writing this back.",
+																"type": "object",
+																"properties": {
+																	"entries": {
+																		"description": "The detection entries using this validator, ordered by name.",
+																		"type": "array",
+																		"items": {
+																			"description": "A detection entry that uses a validator.",
+																			"type": "object",
+																			"properties": {
+																				"id": {
+																					"type": "string",
+																					"format": "uuid"
+																				},
+																				"name": {
+																					"type": "string",
+																					"example": "US Social Security Number"
+																				},
+																				"type": {
+																					"description": "The type of a detection entry.",
+																					"type": "string",
+																					"enum": [
+																						"custom",
+																						"custom_prompt_topic",
+																						"predefined",
+																						"integration",
+																						"exact_data",
+																						"document_fingerprint",
+																						"word_list"
+																					]
+																				}
+																			},
+																			"required": [
+																				"id",
+																				"name",
+																				"type"
+																			]
+																		}
+																	},
+																	"entry_count": {
+																		"description": "Number of detection entries this validator is attached to.",
+																		"type": "integer",
+																		"format": "int32",
+																		"example": 3,
+																		"minimum": 0
+																	}
+																},
+																"required": [
+																	"entry_count",
+																	"entries"
+																]
+															}
+														],
+														"x-stainless-terraform-configurability": "computed"
+													},
+													"script_tag": {
+														"description": "The public script tag of the customer's Worker that scores matches.",
+														"type": "string",
+														"example": "0123456789abcdef0123456789abcdef"
+													},
+													"updated_at": {
+														"type": "string",
+														"format": "date-time",
+														"x-stainless-terraform-configurability": "computed"
+													}
+												},
+												"required": [
+													"id",
+													"name",
+													"script_tag",
+													"referenced_by",
+													"created_at",
+													"updated_at"
+												]
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "List worker validators failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"DLP Validators"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.validators.worker",
+		"x-fern-sdk-method-name": "list"
+	},
+	"GET /accounts/{account_id}/dlp/validators/worker/{validator_id}": {
+		"operationId": "dlp-validators-get-worker-validator",
+		"summary": "Get a worker validator",
+		"description": "Fetches a `worker` validator by ID.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "validator_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Get worker validator response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A customer Worker registered as a validator.",
+											"type": "object",
+											"properties": {
+												"created_at": {
+													"type": "string",
+													"format": "date-time",
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"default": {
+													"allOf": [
+														{
+															"oneOf": [
+																{
+																	"type": "number"
+																},
+																{
+																	"enum": [
+																		"veto"
+																	],
+																	"type": "string"
+																}
+															]
+														}
+													]
+												},
+												"id": {
+													"type": "string",
+													"format": "uuid",
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"name": {
+													"description": "A name for this validator, at most 50 characters.",
+													"type": "string",
+													"example": "Invoice Validator"
+												},
+												"referenced_by": {
+													"allOf": [
+														{
+															"description": "What currently uses a validator. Deleting a validator that is still in use returns `409`, so\ncheck this first.\n\nRead-only. A validator is attached or detached by updating the detection entry that uses it, not\nby writing this back.",
+															"type": "object",
+															"properties": {
+																"entries": {
+																	"description": "The detection entries using this validator, ordered by name.",
+																	"type": "array",
+																	"items": {
+																		"description": "A detection entry that uses a validator.",
+																		"type": "object",
+																		"properties": {
+																			"id": {
+																				"type": "string",
+																				"format": "uuid"
+																			},
+																			"name": {
+																				"type": "string",
+																				"example": "US Social Security Number"
+																			},
+																			"type": {
+																				"description": "The type of a detection entry.",
+																				"type": "string",
+																				"enum": [
+																					"custom",
+																					"custom_prompt_topic",
+																					"predefined",
+																					"integration",
+																					"exact_data",
+																					"document_fingerprint",
+																					"word_list"
+																				]
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"name",
+																			"type"
+																		]
+																	}
+																},
+																"entry_count": {
+																	"description": "Number of detection entries this validator is attached to.",
+																	"type": "integer",
+																	"format": "int32",
+																	"example": 3,
+																	"minimum": 0
+																}
+															},
+															"required": [
+																"entry_count",
+																"entries"
+															]
+														}
+													],
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"script_tag": {
+													"description": "The public script tag of the customer's Worker that scores matches.",
+													"type": "string",
+													"example": "0123456789abcdef0123456789abcdef"
+												},
+												"updated_at": {
+													"type": "string",
+													"format": "date-time",
+													"x-stainless-terraform-configurability": "computed"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"script_tag",
+												"referenced_by",
+												"created_at",
+												"updated_at"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Get worker validator failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"DLP Validators"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.validators.worker",
+		"x-fern-sdk-method-name": "get"
+	},
+	"GET /accounts/{account_id}/dlp/validators/worker/{validator_id}/status": {
+		"operationId": "dlp-validators-get-worker-validator-status",
+		"summary": "Get a worker validator status",
+		"description": "Reports whether the validator's Worker can be used. Returns `worker_not_found` if the Worker\ncannot be found, and `worker_error` if the Worker does not have a valid validation entrypoint\nor is returning incorrect responses.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "validator_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Worker validator status response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"status": {
+													"type": "string",
+													"enum": [
+														"worker_not_found",
+														"worker_error",
+														"configured",
+														"active"
+													]
+												}
+											},
+											"required": [
+												"status"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Worker validator status failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"DLP Validators"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.validators.worker.status",
+		"x-fern-sdk-method-name": "get"
+	},
+	"POST /accounts/{account_id}/dlp/validators/proximity_words": {
+		"operationId": "dlp-validators-create-proximity-words-validator",
+		"summary": "Create a proximity word validator",
+		"description": "Creates a reusable list of weighted words that detection entries can attach to in order to\nrefine their matches. An account may own at most 100 validators across all kinds.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"description": "Attributes of the new validator.",
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "The attributes of a proximity word validator.\n\nA write replaces both fields in full, so `PUT` must send the complete word list, not just the\nwords that changed. The computed fields a `GET` returns (`id`, `kind`, `referenced_by`,\n`created_at`, `updated_at`) are ignored if sent, so a response can be edited and submitted back\nas-is.",
+						"type": "object",
+						"properties": {
+							"name": {
+								"description": "A name for this validator, at most 50 characters.",
+								"type": "string",
+								"example": "HIPAA context words"
+							},
+							"words": {
+								"description": "The words that raise confidence when found near a match, at most 100 per validator. Matching\nignores case, so the list may not contain the same word twice with different capitalisation.\nWords are stored as sent.\n\nFor example, a validator for medical record numbers might use\n`[{\"word\": \"patient\", \"weight\": \"strong\"}, {\"word\": \"diagnosis\", \"weight\": \"moderate\"},\n{\"word\": \"mrn\", \"weight\": \"weak\"}]`.",
+								"type": "array",
+								"items": {
+									"description": "A word that raises a match's confidence when it appears near the match.",
+									"type": "object",
+									"properties": {
+										"weight": {
+											"description": "How much a word contributes to a match's confidence when it is found nearby.\n\nSeparate from a profile's high/medium/low confidence threshold: this describes how telling the\nword is, not how confident the resulting match is.",
+											"type": "string",
+											"enum": [
+												"strong",
+												"moderate",
+												"weak"
+											]
+										},
+										"word": {
+											"description": "The word or phrase to look for. Must contain 1–128 characters and is matched\ncase-insensitively.",
+											"type": "string",
+											"example": "social security number"
+										}
+									},
+									"required": [
+										"word",
+										"weight"
+									]
+								},
+								"x-stainless-collection-type": "set"
+							}
+						},
+						"required": [
+							"name",
+							"words"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Create proximity word validator response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A reusable list of weighted words. Attaching it to a detection entry raises the confidence of\nthat entry's matches when one of the words appears nearby, and lowers it when none do.",
+											"type": "object",
+											"properties": {
+												"created_at": {
+													"type": "string",
+													"format": "date-time",
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"id": {
+													"type": "string",
+													"format": "uuid",
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"name": {
+													"description": "A name for this validator, at most 50 characters.",
+													"type": "string",
+													"example": "HIPAA context words"
+												},
+												"referenced_by": {
+													"allOf": [
+														{
+															"description": "What currently uses a validator. Deleting a validator that is still in use returns `409`, so\ncheck this first.\n\nRead-only. A validator is attached or detached by updating the detection entry that uses it, not\nby writing this back.",
+															"type": "object",
+															"properties": {
+																"entries": {
+																	"description": "The detection entries using this validator, ordered by name.",
+																	"type": "array",
+																	"items": {
+																		"description": "A detection entry that uses a validator.",
+																		"type": "object",
+																		"properties": {
+																			"id": {
+																				"type": "string",
+																				"format": "uuid"
+																			},
+																			"name": {
+																				"type": "string",
+																				"example": "US Social Security Number"
+																			},
+																			"type": {
+																				"description": "The type of a detection entry.",
+																				"type": "string",
+																				"enum": [
+																					"custom",
+																					"custom_prompt_topic",
+																					"predefined",
+																					"integration",
+																					"exact_data",
+																					"document_fingerprint",
+																					"word_list"
+																				]
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"name",
+																			"type"
+																		]
+																	}
+																},
+																"entry_count": {
+																	"description": "Number of detection entries this validator is attached to.",
+																	"type": "integer",
+																	"format": "int32",
+																	"example": 3,
+																	"minimum": 0
+																}
+															},
+															"required": [
+																"entry_count",
+																"entries"
+															]
+														}
+													],
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"updated_at": {
+													"type": "string",
+													"format": "date-time",
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"words": {
+													"description": "The words that raise confidence when found near a match.",
+													"type": "array",
+													"items": {
+														"description": "A word that raises a match's confidence when it appears near the match.",
+														"type": "object",
+														"properties": {
+															"weight": {
+																"description": "How much a word contributes to a match's confidence when it is found nearby.\n\nSeparate from a profile's high/medium/low confidence threshold: this describes how telling the\nword is, not how confident the resulting match is.",
+																"type": "string",
+																"enum": [
+																	"strong",
+																	"moderate",
+																	"weak"
+																]
+															},
+															"word": {
+																"description": "The word or phrase to look for. Must contain 1–128 characters and is matched\ncase-insensitively.",
+																"type": "string",
+																"example": "social security number"
+															}
+														},
+														"required": [
+															"word",
+															"weight"
+														]
+													},
+													"x-stainless-collection-type": "set"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"words",
+												"referenced_by",
+												"created_at",
+												"updated_at"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Create proximity word validator failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"DLP Validators"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.validators.proximity-words",
+		"x-fern-sdk-method-name": "create"
+	},
+	"POST /accounts/{account_id}/dlp/validators/worker": {
+		"operationId": "dlp-validators-create-worker-validator",
+		"summary": "Create a worker validator",
+		"description": "Registers a customer Worker as a validator. An account may own at most 100 validators across\nall kinds.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"description": "Attributes of the new validator.",
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "The attributes of a worker validator.",
+						"type": "object",
+						"properties": {
+							"default": {
+								"allOf": [
+									{
+										"oneOf": [
+											{
+												"type": "number"
+											},
+											{
+												"enum": [
+													"veto"
+												],
+												"type": "string"
+											}
+										]
+									}
+								]
+							},
+							"name": {
+								"description": "A name for this validator, at most 50 characters.",
+								"type": "string",
+								"example": "Invoice scorer"
+							},
+							"script_tag": {
+								"description": "The public script tag of the customer's Worker that scores matches.",
+								"type": "string",
+								"example": "0123456789abcdef0123456789abcdef"
+							}
+						},
+						"required": [
+							"name",
+							"script_tag"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Create worker validator response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A customer Worker registered as a validator.",
+											"type": "object",
+											"properties": {
+												"created_at": {
+													"type": "string",
+													"format": "date-time",
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"default": {
+													"allOf": [
+														{
+															"oneOf": [
+																{
+																	"type": "number"
+																},
+																{
+																	"enum": [
+																		"veto"
+																	],
+																	"type": "string"
+																}
+															]
+														}
+													]
+												},
+												"id": {
+													"type": "string",
+													"format": "uuid",
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"name": {
+													"description": "A name for this validator, at most 50 characters.",
+													"type": "string",
+													"example": "Invoice Validator"
+												},
+												"referenced_by": {
+													"allOf": [
+														{
+															"description": "What currently uses a validator. Deleting a validator that is still in use returns `409`, so\ncheck this first.\n\nRead-only. A validator is attached or detached by updating the detection entry that uses it, not\nby writing this back.",
+															"type": "object",
+															"properties": {
+																"entries": {
+																	"description": "The detection entries using this validator, ordered by name.",
+																	"type": "array",
+																	"items": {
+																		"description": "A detection entry that uses a validator.",
+																		"type": "object",
+																		"properties": {
+																			"id": {
+																				"type": "string",
+																				"format": "uuid"
+																			},
+																			"name": {
+																				"type": "string",
+																				"example": "US Social Security Number"
+																			},
+																			"type": {
+																				"description": "The type of a detection entry.",
+																				"type": "string",
+																				"enum": [
+																					"custom",
+																					"custom_prompt_topic",
+																					"predefined",
+																					"integration",
+																					"exact_data",
+																					"document_fingerprint",
+																					"word_list"
+																				]
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"name",
+																			"type"
+																		]
+																	}
+																},
+																"entry_count": {
+																	"description": "Number of detection entries this validator is attached to.",
+																	"type": "integer",
+																	"format": "int32",
+																	"example": 3,
+																	"minimum": 0
+																}
+															},
+															"required": [
+																"entry_count",
+																"entries"
+															]
+														}
+													],
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"script_tag": {
+													"description": "The public script tag of the customer's Worker that scores matches.",
+													"type": "string",
+													"example": "0123456789abcdef0123456789abcdef"
+												},
+												"updated_at": {
+													"type": "string",
+													"format": "date-time",
+													"x-stainless-terraform-configurability": "computed"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"script_tag",
+												"referenced_by",
+												"created_at",
+												"updated_at"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Create worker validator failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"DLP Validators"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.validators.worker",
+		"x-fern-sdk-method-name": "create"
+	},
+	"PUT /accounts/{account_id}/dlp/validators/proximity_words/{validator_id}": {
+		"operationId": "dlp-validators-update-proximity-words-validator",
+		"summary": "Update a proximity word validator",
+		"description": "Replaces the name and word list of a `proximity_words` validator. Attachments to detection\nentries are owned from the entry side and are not affected.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "validator_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"requestBody": {
+			"description": "Attributes of the validator to update.",
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "The attributes of a proximity word validator.\n\nA write replaces both fields in full, so `PUT` must send the complete word list, not just the\nwords that changed. The computed fields a `GET` returns (`id`, `kind`, `referenced_by`,\n`created_at`, `updated_at`) are ignored if sent, so a response can be edited and submitted back\nas-is.",
+						"type": "object",
+						"properties": {
+							"name": {
+								"description": "A name for this validator, at most 50 characters.",
+								"type": "string",
+								"example": "HIPAA context words"
+							},
+							"words": {
+								"description": "The words that raise confidence when found near a match, at most 100 per validator. Matching\nignores case, so the list may not contain the same word twice with different capitalisation.\nWords are stored as sent.\n\nFor example, a validator for medical record numbers might use\n`[{\"word\": \"patient\", \"weight\": \"strong\"}, {\"word\": \"diagnosis\", \"weight\": \"moderate\"},\n{\"word\": \"mrn\", \"weight\": \"weak\"}]`.",
+								"type": "array",
+								"items": {
+									"description": "A word that raises a match's confidence when it appears near the match.",
+									"type": "object",
+									"properties": {
+										"weight": {
+											"description": "How much a word contributes to a match's confidence when it is found nearby.\n\nSeparate from a profile's high/medium/low confidence threshold: this describes how telling the\nword is, not how confident the resulting match is.",
+											"type": "string",
+											"enum": [
+												"strong",
+												"moderate",
+												"weak"
+											]
+										},
+										"word": {
+											"description": "The word or phrase to look for. Must contain 1–128 characters and is matched\ncase-insensitively.",
+											"type": "string",
+											"example": "social security number"
+										}
+									},
+									"required": [
+										"word",
+										"weight"
+									]
+								},
+								"x-stainless-collection-type": "set"
+							}
+						},
+						"required": [
+							"name",
+							"words"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Update proximity word validator response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A reusable list of weighted words. Attaching it to a detection entry raises the confidence of\nthat entry's matches when one of the words appears nearby, and lowers it when none do.",
+											"type": "object",
+											"properties": {
+												"created_at": {
+													"type": "string",
+													"format": "date-time",
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"id": {
+													"type": "string",
+													"format": "uuid",
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"name": {
+													"description": "A name for this validator, at most 50 characters.",
+													"type": "string",
+													"example": "HIPAA context words"
+												},
+												"referenced_by": {
+													"allOf": [
+														{
+															"description": "What currently uses a validator. Deleting a validator that is still in use returns `409`, so\ncheck this first.\n\nRead-only. A validator is attached or detached by updating the detection entry that uses it, not\nby writing this back.",
+															"type": "object",
+															"properties": {
+																"entries": {
+																	"description": "The detection entries using this validator, ordered by name.",
+																	"type": "array",
+																	"items": {
+																		"description": "A detection entry that uses a validator.",
+																		"type": "object",
+																		"properties": {
+																			"id": {
+																				"type": "string",
+																				"format": "uuid"
+																			},
+																			"name": {
+																				"type": "string",
+																				"example": "US Social Security Number"
+																			},
+																			"type": {
+																				"description": "The type of a detection entry.",
+																				"type": "string",
+																				"enum": [
+																					"custom",
+																					"custom_prompt_topic",
+																					"predefined",
+																					"integration",
+																					"exact_data",
+																					"document_fingerprint",
+																					"word_list"
+																				]
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"name",
+																			"type"
+																		]
+																	}
+																},
+																"entry_count": {
+																	"description": "Number of detection entries this validator is attached to.",
+																	"type": "integer",
+																	"format": "int32",
+																	"example": 3,
+																	"minimum": 0
+																}
+															},
+															"required": [
+																"entry_count",
+																"entries"
+															]
+														}
+													],
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"updated_at": {
+													"type": "string",
+													"format": "date-time",
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"words": {
+													"description": "The words that raise confidence when found near a match.",
+													"type": "array",
+													"items": {
+														"description": "A word that raises a match's confidence when it appears near the match.",
+														"type": "object",
+														"properties": {
+															"weight": {
+																"description": "How much a word contributes to a match's confidence when it is found nearby.\n\nSeparate from a profile's high/medium/low confidence threshold: this describes how telling the\nword is, not how confident the resulting match is.",
+																"type": "string",
+																"enum": [
+																	"strong",
+																	"moderate",
+																	"weak"
+																]
+															},
+															"word": {
+																"description": "The word or phrase to look for. Must contain 1–128 characters and is matched\ncase-insensitively.",
+																"type": "string",
+																"example": "social security number"
+															}
+														},
+														"required": [
+															"word",
+															"weight"
+														]
+													},
+													"x-stainless-collection-type": "set"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"words",
+												"referenced_by",
+												"created_at",
+												"updated_at"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Update proximity word validator failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"DLP Validators"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.validators.proximity-words",
+		"x-fern-sdk-method-name": "update"
+	},
+	"PUT /accounts/{account_id}/dlp/validators/worker/{validator_id}": {
+		"operationId": "dlp-validators-update-worker-validator",
+		"summary": "Update a worker validator",
+		"description": "Replaces the name, script tag and fallback verdict of a `worker` validator. Attachments to\ndetection entries are owned from the entry side and are not affected.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "validator_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"requestBody": {
+			"description": "Attributes of the validator to update.",
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "The attributes of a worker validator.",
+						"type": "object",
+						"properties": {
+							"default": {
+								"allOf": [
+									{
+										"oneOf": [
+											{
+												"type": "number"
+											},
+											{
+												"enum": [
+													"veto"
+												],
+												"type": "string"
+											}
+										]
+									}
+								]
+							},
+							"name": {
+								"description": "A name for this validator, at most 50 characters.",
+								"type": "string",
+								"example": "Invoice scorer"
+							},
+							"script_tag": {
+								"description": "The public script tag of the customer's Worker that scores matches.",
+								"type": "string",
+								"example": "0123456789abcdef0123456789abcdef"
+							}
+						},
+						"required": [
+							"name",
+							"script_tag"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Update worker validator response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A customer Worker registered as a validator.",
+											"type": "object",
+											"properties": {
+												"created_at": {
+													"type": "string",
+													"format": "date-time",
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"default": {
+													"allOf": [
+														{
+															"oneOf": [
+																{
+																	"type": "number"
+																},
+																{
+																	"enum": [
+																		"veto"
+																	],
+																	"type": "string"
+																}
+															]
+														}
+													]
+												},
+												"id": {
+													"type": "string",
+													"format": "uuid",
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"name": {
+													"description": "A name for this validator, at most 50 characters.",
+													"type": "string",
+													"example": "Invoice Validator"
+												},
+												"referenced_by": {
+													"allOf": [
+														{
+															"description": "What currently uses a validator. Deleting a validator that is still in use returns `409`, so\ncheck this first.\n\nRead-only. A validator is attached or detached by updating the detection entry that uses it, not\nby writing this back.",
+															"type": "object",
+															"properties": {
+																"entries": {
+																	"description": "The detection entries using this validator, ordered by name.",
+																	"type": "array",
+																	"items": {
+																		"description": "A detection entry that uses a validator.",
+																		"type": "object",
+																		"properties": {
+																			"id": {
+																				"type": "string",
+																				"format": "uuid"
+																			},
+																			"name": {
+																				"type": "string",
+																				"example": "US Social Security Number"
+																			},
+																			"type": {
+																				"description": "The type of a detection entry.",
+																				"type": "string",
+																				"enum": [
+																					"custom",
+																					"custom_prompt_topic",
+																					"predefined",
+																					"integration",
+																					"exact_data",
+																					"document_fingerprint",
+																					"word_list"
+																				]
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"name",
+																			"type"
+																		]
+																	}
+																},
+																"entry_count": {
+																	"description": "Number of detection entries this validator is attached to.",
+																	"type": "integer",
+																	"format": "int32",
+																	"example": 3,
+																	"minimum": 0
+																}
+															},
+															"required": [
+																"entry_count",
+																"entries"
+															]
+														}
+													],
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"script_tag": {
+													"description": "The public script tag of the customer's Worker that scores matches.",
+													"type": "string",
+													"example": "0123456789abcdef0123456789abcdef"
+												},
+												"updated_at": {
+													"type": "string",
+													"format": "date-time",
+													"x-stainless-terraform-configurability": "computed"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"script_tag",
+												"referenced_by",
+												"created_at",
+												"updated_at"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Update worker validator failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"DLP Validators"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dlp.validators.worker",
+		"x-fern-sdk-method-name": "update"
+	}
+}

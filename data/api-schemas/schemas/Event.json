@@ -106,7 +106,6 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "cloudforce-one.events.legacy",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-sunset": {
 			"date": "2026-11-28T00:00:00Z"
 		},
@@ -217,8 +216,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.delete",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/event_tag/{event_id}": {
 		"operationId": "delete_EventTagDelete",
@@ -352,8 +350,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-events.event-tags",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/queries/{query_id}": {
 		"operationId": "delete_EventQueryDelete",
@@ -437,8 +434,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.queries",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/relate/{event_id}": {
 		"operationId": "delete_EventReferenceDelete",
@@ -572,8 +568,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-events.relate",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events": {
 		"operationId": "get_EventListGet",
@@ -1572,8 +1567,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-events",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/{event_id}": {
 		"operationId": "get_EventReadDeprecated",
@@ -1826,8 +1820,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-events",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/{event_id}/raw/{raw_id}": {
 		"operationId": "get_EventRawRead",
@@ -1962,8 +1955,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-events.raw",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/{event_id}/relationships": {
 		"operationId": "get_LegacyEventRelationships",
@@ -2309,7 +2301,6 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "cloudforce-one.events.relationships.legacy",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true,
 		"x-forge-sunset": {
 			"date": "2026-11-28T00:00:00Z"
 		},
@@ -2512,8 +2503,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.aggregate",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/by-id/{event_id}/relationships": {
 		"operationId": "get_EventRelationships",
@@ -2857,8 +2847,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.relationships",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/events/{event_id}": {
 		"operationId": "get_EventRead",
@@ -3120,8 +3109,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.events",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/datasets/{dataset_id}/events/{event_id}/raw": {
 		"operationId": "get_EventRawReadDS",
@@ -3295,8 +3283,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-events.datasets",
-		"x-fern-sdk-method-name": "raw",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "raw"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/queries": {
 		"operationId": "get_EventQueryList",
@@ -3457,8 +3444,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.queries.get",
-		"x-fern-sdk-method-name": "event",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "event"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/queries/{query_id}": {
 		"operationId": "get_EventQueryRead",
@@ -3623,8 +3609,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.queries.get",
-		"x-fern-sdk-method-name": "v2",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "v2"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/raw/{dataset_id}/{event_id}": {
 		"operationId": "get_LegacyEventRawReadDS",
@@ -3800,7 +3785,6 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "cloudforce-one.events.raw.legacy",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true,
 		"x-forge-sunset": {
 			"date": "2026-11-28T00:00:00Z"
 		},
@@ -4143,8 +4127,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-events",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/{event_id}/raw/{raw_id}": {
 		"operationId": "patch_EventRawUpdate",
@@ -4280,8 +4263,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-events.raw",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/queries/{query_id}": {
 		"operationId": "patch_EventQueryUpdate",
@@ -4522,8 +4504,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.queries",
-		"x-fern-sdk-method-name": "patch",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "patch"
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/update/bulk": {
 		"operationId": "patch_EventUpdateBulk",
@@ -4745,8 +4726,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.update.bulk",
-		"x-fern-sdk-method-name": "patch",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "patch"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events": {
 		"operationId": "post_EventList",
@@ -5731,8 +5711,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-events",
-		"x-fern-sdk-method-name": "search",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "search"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/{event_id}": {
 		"operationId": "post_EventUpdate",
@@ -6072,8 +6051,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/{event_id}/raw/{raw_id}": {
 		"operationId": "post_EventRawUpdate",
@@ -6210,8 +6188,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.raw",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/create": {
 		"operationId": "post_EventCreate",
@@ -6610,8 +6587,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-events",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/create/bulk": {
 		"operationId": "post_EventCreateBulk",
@@ -6914,8 +6890,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-events",
-		"x-fern-sdk-method-name": "bulk-create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "bulk-create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/create/bulk/relationships": {
 		"operationId": "post_DOSEventCreateBulkWithRelationships",
@@ -7184,7 +7159,6 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "cloudforce-one.events.create-bulk.relationships",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true,
 		"x-forge-sunset": {
 			"date": "2030-01-01T00:00:00Z"
 		}
@@ -7358,8 +7332,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.copy",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/move": {
 		"operationId": "post_EventMoveToNewDS",
@@ -7551,8 +7524,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.move",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/event_tag/{event_id}/create": {
 		"operationId": "post_EventTagCreate",
@@ -7687,8 +7659,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-events.event-tags",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/graphql": {
 		"operationId": "post_EventGraphQL",
@@ -7783,8 +7754,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.graphql.create.graph",
-		"x-fern-sdk-method-name": "ql",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "ql"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/queries/{query_id}": {
 		"operationId": "post_EventQueryUpdate",
@@ -8026,8 +7996,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.queries",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/queries/create": {
 		"operationId": "post_EventQueryCreate",
@@ -8228,8 +8197,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.queries",
-		"x-fern-sdk-method-name": "create-create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create-create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/relate/{event_id}/create": {
 		"operationId": "post_EventReferenceCreate",
@@ -8364,8 +8332,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.relate.create",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/relationships/create": {
 		"operationId": "post_CreateEventRelationship",
@@ -8587,8 +8554,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.relationships.create",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/events/graphql": {
 		"operationId": "post_EventGraphQLV2",
@@ -8682,7 +8648,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.graphql.create.graph",
-		"x-fern-sdk-method-name": "qlv2",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "qlv2"
 	}
 }

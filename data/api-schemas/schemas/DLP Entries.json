@@ -432,6 +432,16 @@
 																			"updated_at": {
 																				"type": "string",
 																				"format": "date-time"
+																			},
+																			"validator_ids": {
+																				"description": "Validators this entry references, by id, at most 10. An empty list means the entry\nreferences none.\n\nReturned by the entry endpoints. Not returned on entries embedded in other responses, such\nas profiles.",
+																				"type": "array",
+																				"items": {
+																					"format": "uuid",
+																					"type": "string"
+																				},
+																				"x-stainless-collection-type": "set",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
 																		"required": [
@@ -1218,6 +1228,16 @@
 																				"updated_at": {
 																					"type": "string",
 																					"format": "date-time"
+																				},
+																				"validator_ids": {
+																					"description": "Validators this entry references, by id, at most 10. An empty list means the entry\nreferences none.\n\nReturned by the entry endpoints. Not returned on entries embedded in other responses, such\nas profiles.",
+																					"type": "array",
+																					"items": {
+																						"format": "uuid",
+																						"type": "string"
+																					},
+																					"x-stainless-collection-type": "set",
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			},
 																			"required": [
@@ -1911,6 +1931,16 @@
 							"profile_id": {
 								"type": "string",
 								"format": "uuid"
+							},
+							"validator_ids": {
+								"description": "Validators the new entry should reference, by id, at most 10.",
+								"type": "array",
+								"items": {
+									"format": "uuid",
+									"type": "string"
+								},
+								"x-stainless-collection-type": "set",
+								"x-stainless-terraform-configurability": "computed_optional"
 							}
 						},
 						"required": [
@@ -2071,6 +2101,16 @@
 												"updated_at": {
 													"type": "string",
 													"format": "date-time"
+												},
+												"validator_ids": {
+													"description": "Validators this entry references, by id, at most 10. An empty list means the entry\nreferences none.\n\nReturned by the entry endpoints. Not returned on entries embedded in other responses, such\nas profiles.",
+													"type": "array",
+													"items": {
+														"format": "uuid",
+														"type": "string"
+													},
+													"x-stainless-collection-type": "set",
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
 											"required": [
@@ -2286,6 +2326,16 @@
 														"required": [
 															"regex"
 														]
+													},
+													"validator_ids": {
+														"description": "Validators this entry should reference, by id, at most 10. Replaces the current set.\n\nOptional, unlike the rest of this body: omitting it leaves the current attachments alone, so a\nclient that predates validators cannot detach them by accident. Send `[]` to detach.",
+														"type": "array",
+														"items": {
+															"format": "uuid",
+															"type": "string"
+														},
+														"x-stainless-collection-type": "set",
+														"x-stainless-terraform-configurability": "computed_optional"
 													}
 												},
 												"required": [
@@ -2508,6 +2558,16 @@
 																"updated_at": {
 																	"type": "string",
 																	"format": "date-time"
+																},
+																"validator_ids": {
+																	"description": "Validators this entry references, by id, at most 10. An empty list means the entry\nreferences none.\n\nReturned by the entry endpoints. Not returned on entries embedded in other responses, such\nas profiles.",
+																	"type": "array",
+																	"items": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"x-stainless-collection-type": "set",
+																	"x-stainless-terraform-configurability": "computed_optional"
 																}
 															},
 															"required": [
@@ -3150,6 +3210,16 @@
 										"required": [
 											"regex"
 										]
+									},
+									"validator_ids": {
+										"description": "Validators this entry should reference, by id, at most 10. Replaces the current set.\n\nOptional, unlike the rest of this body: omitting it leaves the current attachments alone, so a\nclient that predates validators cannot detach them by accident. Send `[]` to detach.",
+										"type": "array",
+										"items": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"x-stainless-collection-type": "set",
+										"x-stainless-terraform-configurability": "computed_optional"
 									}
 								},
 								"required": [
@@ -3322,6 +3392,16 @@
 												"updated_at": {
 													"type": "string",
 													"format": "date-time"
+												},
+												"validator_ids": {
+													"description": "Validators this entry references, by id, at most 10. An empty list means the entry\nreferences none.\n\nReturned by the entry endpoints. Not returned on entries embedded in other responses, such\nas profiles.",
+													"type": "array",
+													"items": {
+														"format": "uuid",
+														"type": "string"
+													},
+													"x-stainless-collection-type": "set",
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
 											"required": [

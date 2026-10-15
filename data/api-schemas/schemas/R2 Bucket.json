@@ -2063,10 +2063,22 @@
 															"description": "Maximum number of results on this page.",
 															"type": "number",
 															"example": 20
+														},
+														"total_count": {
+															"description": "Total number of active buckets in the requested jurisdiction. This count is not affected by filtering or pagination and is eventually consistent for accounts with elevated bucket limits.",
+															"type": "integer",
+															"example": 42,
+															"minimum": 0
 														}
-													}
+													},
+													"required": [
+														"total_count"
+													]
 												}
 											},
+											"required": [
+												"result_info"
+											],
 											"type": "object"
 										}
 									]
@@ -2136,7 +2148,10 @@
 														}
 													}
 												}
-											}
+											},
+											"required": [
+												"buckets"
+											]
 										}
 									},
 									"type": "object"

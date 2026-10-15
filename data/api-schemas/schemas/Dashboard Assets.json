@@ -93,8 +93,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.requests.assets",
-		"x-fern-sdk-method-name": "download",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "download"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/requests/{project_type}/{request_id}/assets/list": {
 		"operationId": "get_DashboardAssetList",
@@ -468,8 +467,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.requests.assets",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/requests/{project_type}/{request_id}/assets/upload": {
 		"operationId": "post_DashboardAssetUpload",
@@ -793,7 +791,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.requests.assets",
-		"x-fern-sdk-method-name": "upload",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "upload"
 	}
 }

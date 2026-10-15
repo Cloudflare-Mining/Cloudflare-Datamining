@@ -100,7 +100,6 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "cloudforce-one.events.categories.legacy",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-sunset": {
 			"date": "2026-11-28T00:00:00Z"
 		},
@@ -205,8 +204,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-events.categories",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/categories": {
 		"operationId": "get_CategoryList",
@@ -339,8 +337,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-events.categories",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
 		"operationId": "get_LegacyCategoryRead",
@@ -471,7 +468,6 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "cloudforce-one.events.categories.legacy",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true,
 		"x-forge-sunset": {
 			"date": "2026-11-28T00:00:00Z"
 		},
@@ -596,8 +592,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.categories.catalog",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/event-categories/by-id/{category_id}": {
 		"operationId": "get_CategoryRead",
@@ -726,13 +721,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-events.categories",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/resource-library/categories": {
 		"operationId": "getResourceLibraryCategories",
 		"summary": "List application categories",
-		"description": "List the categories available for classifying applications. Results are paginated.",
+		"description": "List the categories available for classifying applications, ordered by name.\nResults are paginated by `offset` or `cursor`.\n",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -756,10 +750,18 @@
 			{
 				"name": "offset",
 				"in": "query",
-				"description": "Number of results to skip. Defaults to 0; negative values are clamped to 0.",
+				"description": "Number of results to skip. Defaults to 0; negative values are clamped to 0. Ignored when `cursor` is provided.",
 				"schema": {
 					"type": "integer",
 					"default": 0
+				}
+			},
+			{
+				"name": "cursor",
+				"in": "query",
+				"description": "Opaque value from `result_info.cursor` of the previous response. Returns the\ncategories that follow it. `limit` may change between requests. An empty value\nis the same as no cursor. A modified cursor, or one returned by a different list,\nreturns `400`.\n",
+				"schema": {
+					"type": "string"
 				}
 			}
 		],
@@ -772,84 +774,128 @@
 							"allOf": [
 								{
 									"type": "object",
-									"properties": {
-										"errors": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
 														"properties": {
-															"pointer": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
 																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
 															}
-														}
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"messages": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
+														},
+														"required": [
+															"code",
+															"message"
+														],
 														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
-													}
+														"uniqueItems": true
+													},
+													"example": []
 												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Indicates whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
 											},
-											"example": []
-										},
-										"success": {
-											"description": "Indicates whether the API call was successful.",
-											"type": "boolean",
-											"example": true,
-											"enum": [
-												true
+											"required": [
+												"success",
+												"errors",
+												"messages"
 											]
+										},
+										{
+											"properties": {
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"count": {
+															"description": "Returns the number of results in this response.",
+															"type": "number",
+															"example": 10
+														},
+														"cursor": {
+															"description": "Returns an opaque cursor for the next page when more results follow. Send it as the `cursor` query parameter. Omitted on the last page.",
+															"type": "string"
+														},
+														"page": {
+															"description": "Returns the zero-based result offset, not a page number. Returns 0 when the request used a cursor.",
+															"type": "number",
+															"example": 0
+														},
+														"per_page": {
+															"description": "Returns the effective `limit` for this response.",
+															"type": "number",
+															"example": 25
+														},
+														"total_count": {
+															"description": "Returns the number of results matching the request before pagination.",
+															"type": "number",
+															"example": 2000
+														},
+														"total_pages": {
+															"description": "Returns the number of pages at the effective `limit`, including 0 when there are no matches.",
+															"type": "number",
+															"example": 80
+														}
+													}
+												}
+											},
+											"type": "object"
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
 									]
 								},
 								{
@@ -895,6 +941,119 @@
 									},
 									"type": "object"
 								}
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "A cursor was sent while cursor pagination is not available.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1487,7 +1646,6 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "cloudforce-one.events.categories.legacy",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true,
 		"x-forge-sunset": {
 			"date": "2026-11-28T00:00:00Z"
 		},
@@ -1655,8 +1813,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-events.categories",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
 		"operationId": "post_LegacyCategoryUpdate",
@@ -1823,7 +1980,6 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "cloudforce-one.events.categories.legacy",
 		"x-fern-sdk-method-name": "replace",
-		"x-forge-hidden": true,
 		"x-forge-sunset": {
 			"date": "2026-11-28T00:00:00Z"
 		},
@@ -1985,8 +2141,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-events.categories",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/event-categories/by-id/{category_id}": {
 		"operationId": "post_CategoryUpdate",
@@ -2151,7 +2306,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.categories",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

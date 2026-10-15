@@ -106,8 +106,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/{indicator_id}/relationships/{rel_uuid}": {
 		"operationId": "delete_IndicatorRelationshipDelete",
@@ -233,8 +232,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators.relationships",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators": {
 		"operationId": "get_IndicatorListLegacy",
@@ -504,7 +502,6 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators.get",
 		"x-fern-sdk-method-name": "indicator-legacy",
-		"x-forge-hidden": true,
 		"x-forge-sunset": {
 			"date": "2030-01-01T00:00:00Z"
 		}
@@ -704,8 +701,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators.get",
-		"x-fern-sdk-method-name": "indicator",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "indicator"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/{indicator_id}/relationships": {
 		"operationId": "get_IndicatorRelationshipsList",
@@ -1002,8 +998,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators.relationships",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/tags": {
 		"operationId": "get_IndicatorTagsList",
@@ -1175,8 +1170,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators.tags",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/indicators": {
 		"operationId": "get_IndicatorList",
@@ -2008,8 +2002,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.indicators",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/indicators/aggregate": {
 		"operationId": "get_IndicatorAggregate",
@@ -2250,8 +2243,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.indicators",
-		"x-fern-sdk-method-name": "aggregate",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "aggregate"
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/{indicator_id}": {
 		"operationId": "patch_IndicatorUpdate",
@@ -2591,8 +2583,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators",
-		"x-fern-sdk-method-name": "patch",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "patch"
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/{indicator_id}/relationships/{rel_uuid}": {
 		"operationId": "patch_IndicatorRelationshipUpdate",
@@ -2785,8 +2776,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators.relationships",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/{indicator_id}/relationships": {
 		"operationId": "post_IndicatorRelationshipCreate",
@@ -2983,8 +2973,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators.relationships",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/bulk": {
 		"operationId": "post_IndicatorCreateBulk",
@@ -3169,8 +3158,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators.bulk",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/create": {
 		"operationId": "post_IndicatorCreate",
@@ -3434,7 +3422,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators.create",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }
