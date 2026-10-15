@@ -1,0 +1,169 @@
+<p>VoidZero's tools such as Vite, Vitest, Oxc, and Rolldown — bundled in one toolchain as <a href="https://viteplus.dev"><u>Vite+</u></a>&nbsp;— have made frontend development faster, but building full-stack applications requires more than just a tooling stack. These applications need server routes, databases, local development environments, and a fast and easy way to deploy ideas to production.</p>
+<p>We’re excited to open-source three new products that bring server routing, typed data access, and Cloudflare deployment into a unified Vite workflow.</p>
+<ul>
+	<li><strong>Void Platform:</strong>&nbsp;A shared deployment platform for teams to host Void apps on Cloudflare.</li>
+	<li><strong>Void SDK:</strong>&nbsp;A composable JavaScript SDK for building full-stack apps with Vite.</li>
+	<li><strong>Void CLI:</strong>&nbsp;A CLI for provisioning resources and deploying Vite apps to Cloudflare.</li>
+</ul>
+<p>The CLI deploys apps built with the SDK to the Platform. All three products are open-sourced as a single JavaScript package and Vite plugin that you can install via <code>npm install void</code>. With <a href="http://void.cloud"><u>Void</u></a>, you can build your server and client together, carry types from your database to the UI, and let Void automatically provision the Cloudflare resources that your app uses.</p>
+<p>We originally set out to build a single, private platform for all users to deploy apps to. After <a href="https://blog.cloudflare.com/voidzero-joins-cloudflare"><u>VoidZero joined Cloudflare</u></a>, we adjusted our direction to open-source the platform and allow anyone to install because we saw a growing need: <strong>companies want to encourage vibe-coded internal apps, but are concerned about security and do not want to give cloud access to every employee</strong>. Void addresses this problem.</p>
+<h2>Void Platform: a cloud platform for your company</h2>
+<p>The Void Platform is fully open source and you can fork it and adapt it to your needs by integrating your company's systems, customize deployment workflows, build features for your customers, or make it work on other deployment platforms. Use the platform as it is, contribute improvements upstream, or fork it and build only the features you need. The open source code can be used out of the box or as a starting point.</p>
+<p>As an admin of a Void Platform, you control access, set resource limits, inspect deployments and usage through the Void CLI or admin dashboard, and provide guardrails so everyone else can ship serious and vibe coded apps to the same shared platform.</p>
+<p>By installing a Void Platform, your team or customers have a shared deployment environment in your Cloudflare account on top of <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms"><u>Workers for Platforms</u></a>. Void Platform enables:</p>
+<ol>
+	<li><strong>Faster prototyping</strong>. Your team can quickly build prototypes, deploy them, and share working apps for feedback, without setting up a separate Cloudflare account or provisioning resources for every project. This reduces the time to ship internal apps from days/weeks to minutes.</li>
+	<li><strong>Non-technical teams building</strong>. This workflow also lets teammates who do not normally write code work with coding agents to build and share their own apps. A designer can create an interactive prototype, or an operations teammate can build an internal dashboard, then deploy it to the same platform. All with the right security measures in place.</li>
+</ol>
+<p>To self-host a Void platform, you need:</p>
+<ul>
+	<li>A Cloudflare account with Workers for Platforms and R2 enabled</li>
+	<li>A PostgreSQL database</li>
+	<li>An account with your chosen login provider</li>
+	<li>A domain for your apps</li>
+</ul>
+<p>Then install Void as a cloud platform by running a single command:</p>
+<div id="html-block-52wg9hmzb" class="html-block">
+	<div style="padding-top:61.047027506654835%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/affebd0d7251da155e5307f19069c944/iframe?muted=true&amp;preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Faffebd0d7251da155e5307f19069c944%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>
+<p></p>
+<p>Once your platform is set up, approved users can connect to it via the Void CLI for deployment.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>void connect https://api.orange-company.dev</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p>A user builds their app using the Void SDK, which is what powers Void Platform benefits like authentication, framework detection, resource provisioning, and more. In other words, Void Platform only works because of the accompanying SDK and CLI.</p>
+<h2>Void SDK: zero-config infrastructure</h2>
+<p><a href="https://void.cloud"><u>Void</u></a>&nbsp;turns a Vite app into a full-stack Cloudflare Workers app. You or your agents can write code and Void will automatically infer resource bindings and provision resources such as databases, queues, or AI bindings during deployment.</p>
+<p>To get started, add Void as a Vite plugin:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { defineConfig } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "vite"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { voidPlugin } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "void"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { voidReact } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@void/react/plugin"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-6f42c1-ffc799"> defineConfig</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  plugins: [</span><span class="sk-6f42c1-ffc799">voidPlugin</span><span class="sk-24292e-fff">(), </span><span class="sk-6f42c1-ffc799">voidReact</span><span class="sk-24292e-fff">()],</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>The Void SDK ships with adapters for popular JavaScript UI frameworks such as React and Vue, provides file-based API routing, pre-rendering, caching, islands, and end-to-end type safety from the database to your UI.</p>
+<p>All of Void’s features are optional and composable. Void integrates with existing application frameworks such as Vinext, React Router, SvelteKit, Nuxt, TanStack Start, and Astro. You can use those frameworks for routing and rendering, while Void handles resource APIs using Hono, migrations, deployment, and authentication with Better Auth.</p>
+<p>Let's take a look at building a server-rendered page, with types inferred from the database query through to the client:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// pages/blog.server.ts</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { defineHandler, </span><span class="sk-d73a49-a0a0a0">type</span><span class="sk-24292e-fff"> InferProps } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'void'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { db } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'void/db'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { posts } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> '@schema'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-005cc5-fff"> loader</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> defineHandler</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> ({</span></span>
+<span class="line"><span class="sk-24292e-fff">  posts: </span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> db.</span><span class="sk-6f42c1-ffc799">select</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">from</span><span class="sk-24292e-fff">(posts),</span></span>
+<span class="line"><span class="sk-24292e-fff">}));</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> type</span><span class="sk-6f42c1-ffc799"> Props</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> InferProps</span><span class="sk-24292e-fff">&lt;</span><span class="sk-d73a49-a0a0a0">typeof</span><span class="sk-24292e-fff"> loader&gt;;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// pages/blog.tsx</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> Blog</span><span class="sk-24292e-fff">({ </span><span class="sk-e36209-fff">posts</span><span class="sk-24292e-fff"> }</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Props</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> (</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">    &lt;</span><span class="sk-22863a-ffc799">ul</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">      {</span><span class="sk-24292e-fff">posts.</span><span class="sk-6f42c1-ffc799">map</span><span class="sk-24292e-fff">((</span><span class="sk-e36209-fff">post</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-a0a0a0"> &lt;</span><span class="sk-22863a-ffc799">li</span><span class="sk-6f42c1-a0a0a0"> key</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-a0a0a0">{</span><span class="sk-24292e-fff">post.id</span><span class="sk-24292e-a0a0a0">}&gt;{</span><span class="sk-24292e-fff">post.title</span><span class="sk-24292e-a0a0a0">}&lt;/</span><span class="sk-22863a-ffc799">li</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">)</span><span class="sk-24292e-a0a0a0">}</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">    &lt;/</span><span class="sk-22863a-ffc799">ul</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-fff">  );</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>By importing <code>void/db</code>, Void provides a local database to your app during development and makes <code>void deploy</code>&nbsp;provision D1 automatically for you in production. This also works for using AI through Cloudflare’s AI Gateway: just by importing <code>void/ai</code>, everything is set up automatically for you.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// routes/api/decide.ts</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { defineHandler } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'void'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { ai } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'void/ai'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-005cc5-fff"> POST</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> defineHandler</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">c</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">question</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> c.req.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> ai.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'@cf/cloudflare/clef'</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">    model: </span><span class="sk-032f62-99ffe4">'clef'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    state: {},</span></span>
+<span class="line"><span class="sk-24292e-fff">    questions: {</span></span>
+<span class="line"><span class="sk-24292e-fff">      decision: { type: </span><span class="sk-032f62-99ffe4">'noul'</span><span class="sk-24292e-fff">, instructions: question },</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> probability</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> result.answers.decision.noul;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> c.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">    answer: probability </span><span class="sk-d73a49-a0a0a0">&gt;=</span><span class="sk-005cc5-ffc799"> 0.5</span><span class="sk-d73a49-a0a0a0"> ?</span><span class="sk-032f62-99ffe4"> 'yes'</span><span class="sk-d73a49-a0a0a0"> :</span><span class="sk-032f62-99ffe4"> 'no'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    probability,</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>Void's React router is built for <a href="https://react.dev/reference/react/useTransition#building-a-suspense-enabled-router"><u>Async React</u></a>, using transitions and Suspense to enable responsive navigation across screens. When you pair this router with a modern data framework such as <a href="https://fate.technology"><u>fate</u></a>&nbsp;and UI libraries such as <a href="https://astryx.atmeta.com"><u>Astryx</u></a>, you can coordinate navigation, data fetching and mutations through React's transitions, as well as actions and optimistic updates across your entire application. Together, these pieces let you build apps that feel synchronous on fast networks, gracefully fall back on slower ones, and keep interactions responsive during expensive rendering updates.</p>
+<p>If a user does not need Void Platform’s team management features, they can use their own Cloudflare account. Void SDK also <a href="http://void.cloud/guide/deployment#deploy-to-cloudflare"><u>deploys to Cloudflare directly</u></a>.</p>
+<h2>Void CLI: one deployment command</h2>
+<p>The Void CLI is the main interface for Void. The CLI manages the platform and deploys the app. It's built on top of the new <a href="https://github.com/cloudflare/cf"><u>cf CLI</u></a>&nbsp;and works well with agents.</p>
+<p>With the Void CLI, you can ask your agent to debug failing requests, read deployment logs, analyze how your app is performing, or have them take care of the full lifecycle by deploying a finished app for you. &nbsp;</p>
+<p>Once your app is ready to deploy to Cloudflare, you can run:</p>
+<div id="html-block-ezjdcv518" class="html-block">
+	<div style="padding-top:60.21602160216022%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/b39fd93e9a74d9ae0f954ea765d02da1/iframe?muted=true&amp;preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fb39fd93e9a74d9ae0f954ea765d02da1%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>
+<p></p>
+<p>The first time you run <code>void deploy</code>, the CLI will prompt you to log into your Cloudflare account. Void builds your app using Vite, applies migrations, automatically provisions resources, and deploys to Cloudflare or a Void Platform. It can be used to handle the full lifecycle of your project such as building, deploying, and managing your resources and projects, for example:</p>
+<div id="html-block-puf1mct8w" class="html-block">
+	<div style="padding-top:59.892569382273955%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/4b9b443ea28f94967ddc3a904ab61b65/iframe?muted=true&amp;preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F4b9b443ea28f94967ddc3a904ab61b65%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>
+<p></p>
+<p>Similar to how the CLI, and an agent by extension, can manage the entire lifecycle of a Void app, you can also use the CLI to manage a Void Platform:</p>
+<ul>
+	<li>Manage users, project access, and resources</li>
+	<li>Inspect deployments, logs, and rollbacks</li>
+	<li>Monitor platform health and usage</li>
+</ul>
+<h2>Connect with us</h2>
+<p>VoidZero’s mission is to make JavaScript developers more productive than ever before. We brought Vite, Rolldown, Oxlint, Oxfmt, and Vitest together in <a href="https://viteplus.dev"><u>Vite+</u></a>&nbsp;for development, bundling, code quality, and testing. Void extends that stack to full-stack application development, letting you and your agents build, test, and deploy entire applications.</p>
+<p>We’ve been using the Void SDK, CLI, and Platform in production at VoidZero for the past several months and we are excited to see what you'll build with Void. Please share your feedback with us:</p>
+<ul>
+	<li><strong>Discord</strong>: <a href="https://discord.gg/cAnsqHh5PX"><u>Step into the Void community Discord server</u></a>&nbsp;for real-time discussions</li>
+	<li><strong>GitHub</strong>: <a href="https://github.com/voidzero-dev/void"><u>Star the repo, start discussions, and report issues</u></a></li>
+	<li><strong>Deploy an app with Void: </strong><a href="http://void.cloud/guide/quickstart"><u>Quick Start Guide</u></a></li>
+	<li><strong>X / Bluesky: </strong><a href="https://x.com/voidzerodev"><u>Follow VoidZero for updates on X</u></a>&nbsp;or on <a href="https://bsky.app/profile/voidzero.dev"><u>Bluesky</u></a></li>
+</ul>
+<p></p>
