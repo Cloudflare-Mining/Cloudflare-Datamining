@@ -362,7 +362,7 @@
 				s = new WeakMap;
 			let c = !1;
 			const d = () => {
-					c || (q(f), c = !0)
+					c || (c = !0, q(f))
 				},
 				f = () => {
 					const t = new Set(n.v.map(t => a.get(t.entries[0]))),
@@ -633,21 +633,22 @@
 					};
 					if (t.entries.length) {
 						const s = t.entries.at(-1),
-							l = s.url && (K.findLast(t => t.name === s.url) || performance.getEntriesByType("resource").findLast(t => t.name === s.url));
-						let d;
-						a.target = i.get(s), a.lcpEntry = s, s.url && (a.url = s.url), l && (a.lcpResourceEntry = l);
-						let u = 0,
-							f = 0;
-						if ("soft-navigation" !== t.navigationType ? (d = c(), u = null !== (e = null == d ? void 0 : d.activationStart) && void 0 !== e ? e : 0, f = null !== (o = null == d ? void 0 : d.responseStart) && void 0 !== o ? o : 0) : (u = t.navigationStartTime || 0, d = null === (r = n.u) || void 0 === r ? void 0 : r.get(t.navigationId)), d) {
-							const e = Math.max(0, f - u),
-								n = Math.max(e, l ? (l.requestStart || l.startTime) - u : 0),
-								i = Math.min(t.value, Math.max(n, l ? l.responseEnd - u : 0));
+							l = t => t.name === s.url && (t.requestStart || t.startTime) <= s.startTime,
+							d = s.url && (K.findLast(l) || performance.getEntriesByType("resource").findLast(l));
+						let u;
+						a.target = i.get(s), a.lcpEntry = s, s.url && (a.url = s.url), d && (a.lcpResourceEntry = d);
+						let f = 0,
+							v = 0;
+						if ("soft-navigation" !== t.navigationType ? (u = c(), f = null !== (e = null == u ? void 0 : u.activationStart) && void 0 !== e ? e : 0, v = null !== (o = null == u ? void 0 : u.responseStart) && void 0 !== o ? o : 0) : (f = t.navigationStartTime || 0, u = null === (r = n.u) || void 0 === r ? void 0 : r.get(t.navigationId)), u) {
+							const e = Math.max(0, v - f),
+								n = Math.max(e, d ? (d.requestStart || d.startTime) - f : 0),
+								i = Math.min(t.value, Math.max(n, d ? d.responseEnd - f : 0));
 							a = Object.assign(Object.assign({}, a), {
 								timeToFirstByte: e,
 								resourceLoadDelay: n - e,
 								resourceLoadDuration: i - n,
 								elementRenderDelay: t.value - i,
-								navigationEntry: d
+								navigationEntry: u
 							})
 						}
 					}
@@ -804,7 +805,7 @@
 				i && (t.bv = i[1]);
 				const o = J.exec(e);
 				o && (t.ov = nt("macOS", o[1]))
-			} else if (-1 !== e.indexOf("Safari/") && -1 !== e.indexOf("AppleWebKit/")) {
+			} else if (-1 !== e.indexOf("AppleWebKit/")) {
 				t.be = "WebKit";
 				const n = W.exec(e);
 				n && (t.bev = n[1]);
@@ -817,7 +818,11 @@
 					n && (t.bv = n[1]);
 					const i = z.exec(e);
 					i && (t.ov = nt("iOS", i[1]))
-				} else i && (t.ov = i[1])
+				} else if (i) t.ov = i[1];
+				else {
+					const n = z.exec(e);
+					n && (t.ov = nt("iOS", n[1]))
+				}
 			}
 			return t
 		}();
@@ -1045,7 +1050,7 @@
 							firstContentfulPaint: 0,
 							versions: {
 								fl: window.__cfBeacon ? window.__cfBeacon.version : "",
-								js: "2026.10.0",
+								js: "2026.10.1",
 								timings: 1
 							}
 						});
@@ -1181,7 +1186,7 @@
 					referrer: ot(St(T)),
 					serverTimings: i ? void 0 : xt(),
 					versions: {
-						js: "2026.10.0"
+						js: "2026.10.1"
 					},
 					bi: (a = st, a.bv || a.ov || a.be || a.bev ? st : void 0)
 				};
@@ -1222,9 +1227,9 @@
 			if (!("navigation" in window) || !window.navigation) return null;
 			let t = function(t) {
 				var e, n;
-				t.canIntercept && (gt(O), !t.destination || "boolean" != typeof t.destination.sameDocument || t.destination.sameDocument ? (ht(), O = null !== (n = null === (e = null == t ? void 0 : t.destination) || void 0 === e ? void 0 : e.url) && void 0 !== n ? n : O, E(O, {
+				if (t.canIntercept) return t.destination && "boolean" == typeof t.destination.sameDocument && !t.destination.sameDocument ? (gt(O), void(lt = !0)) : void(t.destination && "string" == typeof t.destination.url && t.destination.url === window.location.href || (gt(O), ht(), O = null !== (n = null === (e = null == t ? void 0 : t.destination) || void 0 === e ? void 0 : e.url) && void 0 !== n ? n : O, E(O, {
 					navigationType: r.RoutingApis
-				}), vt(O)) : lt = !0)
+				}), vt(O)))
 			};
 			return window.navigation.addEventListener("navigate", t), t
 		}(), N || (yt = window.history, (wt = yt.pushState) && (yt.pushState = function(t, e, n) {
