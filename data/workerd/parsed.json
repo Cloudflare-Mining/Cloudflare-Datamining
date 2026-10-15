@@ -4276,6 +4276,15 @@
 						"compatEnableDate": "2026-11-17"
 					},
 					"type": "Bool"
+				},
+				{
+					"name": "cacheOptionPreservesCacheControl",
+					"annotations": {
+						"compatEnableFlag": "cache_option_preserves_cache_control",
+						"compatDisableFlag": "cache_option_overrides_cache_control",
+						"compatEnableDate": "2026-11-17"
+					},
+					"type": "Bool"
 				}
 			]
 		},
