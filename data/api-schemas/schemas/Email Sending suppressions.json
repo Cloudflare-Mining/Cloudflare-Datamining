@@ -81,8 +81,7 @@
 		],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email.suppressions",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/email/sending/suppressions/{suppression_id}": {
 		"operationId": "delete_publicDeleteSendingSuppression",
@@ -532,8 +531,7 @@
 		],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email.suppressions",
-		"x-fern-sdk-method-name": "deleteByZone",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete-by-zone"
 	},
 	"GET /accounts/{account_id}/email/sending/suppression": {
 		"operationId": "get_publicListSuppressionSending",
@@ -711,8 +709,7 @@
 		],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email.suppressions",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/email/sending/suppression/{suppression_id}": {
 		"operationId": "get_publicGetSuppressionSending",
@@ -834,8 +831,7 @@
 		],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email.suppressions",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/email/sending/suppressions": {
 		"operationId": "get_publicListSendingSuppressions",
@@ -1594,8 +1590,7 @@
 		],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email.suppressions",
-		"x-fern-sdk-method-name": "listByZone",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list-by-zone"
 	},
 	"GET /zones/{zone_id}/email/sending/suppression/{suppression_id}": {
 		"operationId": "get_publicGetSuppressionZoneSending",
@@ -1717,8 +1712,7 @@
 		],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email.suppressions",
-		"x-fern-sdk-method-name": "getByZone",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get-by-zone"
 	},
 	"PATCH /accounts/{account_id}/email/sending/suppressions/{suppression_id}": {
 		"operationId": "patch_publicUpdateSendingSuppression",
@@ -1768,10 +1762,10 @@
 							},
 							"scope": {
 								"description": "Not editable. Scope is fixed when the suppression is created; any value returns 400 with code `scope_immutable`. Delete and recreate the suppression to change it.",
+								"type": "object",
 								"example": {
 									"type": "account"
-								},
-								"nullable": true
+								}
 							}
 						}
 					}
@@ -2209,8 +2203,7 @@
 		],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email.suppressions",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/email/sending/suppressions": {
 		"operationId": "post_publicCreateSendingSuppression",
@@ -3125,7 +3118,6 @@
 		],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email.suppressions",
-		"x-fern-sdk-method-name": "createByZone",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create-by-zone"
 	}
 }

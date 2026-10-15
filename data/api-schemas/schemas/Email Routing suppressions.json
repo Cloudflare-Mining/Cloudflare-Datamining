@@ -81,8 +81,7 @@
 		],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email.suppressions",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /zones/{zone_id}/email/routing/suppression/{suppression_id}": {
 		"operationId": "delete_publicDeleteSuppressionZoneRouting",
@@ -166,8 +165,7 @@
 		],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email.suppressions",
-		"x-fern-sdk-method-name": "deleteByZone",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete-by-zone"
 	},
 	"GET /accounts/{account_id}/email/routing/suppression": {
 		"operationId": "get_publicListSuppressionRouting",
@@ -345,8 +343,7 @@
 		],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email.suppressions",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/email/routing/suppression/{suppression_id}": {
 		"operationId": "get_publicGetSuppressionRouting",
@@ -468,8 +465,7 @@
 		],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email.suppressions",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/email/routing/suppression": {
 		"operationId": "get_publicListSuppressionZoneRouting",
@@ -651,8 +647,7 @@
 		],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email.suppressions",
-		"x-fern-sdk-method-name": "listByZone",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list-by-zone"
 	},
 	"GET /zones/{zone_id}/email/routing/suppression/{suppression_id}": {
 		"operationId": "get_publicGetSuppressionZoneRouting",
@@ -778,8 +773,7 @@
 		],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email.suppressions",
-		"x-fern-sdk-method-name": "getByZone",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get-by-zone"
 	},
 	"POST /accounts/{account_id}/email/routing/suppression": {
 		"operationId": "post_publicNewSuppressionRouting",
@@ -890,8 +884,7 @@
 		],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email.suppressions",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /zones/{zone_id}/email/routing/suppression": {
 		"operationId": "post_publicNewSuppressionZoneRouting",
@@ -1002,7 +995,6 @@
 		],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email.suppressions",
-		"x-fern-sdk-method-name": "createByZone",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create-by-zone"
 	}
 }
