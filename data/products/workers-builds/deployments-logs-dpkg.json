@@ -5,7 +5,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"apparmor": {
-		"version": "4.0.1really4.0.1-0ubuntu0.24.04.9",
+		"version": "4.0.1really4.0.1-0ubuntu0.24.04.8",
 		"short_description": "user-space parser utility for AppArmor",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -90,7 +90,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"containerd.io": {
-		"version": "2.4.2-2~ubuntu.24.04~noble",
+		"version": "2.3.6-1~ubuntu.24.04~noble",
 		"short_description": "An open and reliable container runtime",
 		"author": "Containerd team <help@containerd.io>"
 	},
@@ -200,22 +200,22 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"docker-buildx-plugin": {
-		"version": "0.38.0-1~ubuntu.24.04~noble",
+		"version": "0.37.1-1~ubuntu.24.04~noble",
 		"short_description": "Docker Buildx plugin extends build capabilities with BuildKit.",
 		"author": "Docker <support@docker.com>"
 	},
 	"docker-ce": {
-		"version": "5:29.9.0-1~ubuntu.24.04~noble",
+		"version": "5:29.8.2-1~ubuntu.24.04~noble",
 		"short_description": "Docker: the open-source application container engine",
 		"author": "Docker <support@docker.com>"
 	},
 	"docker-ce-cli": {
-		"version": "5:29.9.0-1~ubuntu.24.04~noble",
+		"version": "5:29.8.2-1~ubuntu.24.04~noble",
 		"short_description": "Docker CLI: the open-source application container engine",
 		"author": "Docker <support@docker.com>"
 	},
 	"docker-ce-rootless-extras": {
-		"version": "5:29.9.0-1~ubuntu.24.04~noble",
+		"version": "5:29.8.2-1~ubuntu.24.04~noble",
 		"short_description": "Rootless support for Docker.",
 		"author": "Docker <support@docker.com>"
 	},
@@ -379,6 +379,11 @@
 		"short_description": "GDK Pixbuf library - GObject-Introspection",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
+	"gir1.2-girepository-2.0-dev:amd64": {
+		"version": "1.80.1-1",
+		"short_description": "GIR XML for GIRepository library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
 	"gir1.2-girepository-2.0:amd64": {
 		"version": "1.80.1-1",
 		"short_description": "Introspection data for GIRepository library",
@@ -405,12 +410,12 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"gir1.2-poppler-0.18:amd64": {
-		"version": "24.02.0-1ubuntu9.10",
+		"version": "24.02.0-1ubuntu9.9",
 		"short_description": "GObject introspection data for poppler-glib",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"gir1.2-rsvg-2.0:amd64": {
-		"version": "2.58.0+dfsg-1ubuntu0.1",
+		"version": "2.58.0+dfsg-1build1",
 		"short_description": "gir files for renderer library for SVG files",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -595,7 +600,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libapparmor1:amd64": {
-		"version": "4.0.1really4.0.1-0ubuntu0.24.04.9",
+		"version": "4.0.1really4.0.1-0ubuntu0.24.04.8",
 		"short_description": "changehat AppArmor library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -605,12 +610,12 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libarchive-dev:amd64": {
-		"version": "3.7.2-2ubuntu0.9",
+		"version": "3.7.2-2ubuntu0.8",
 		"short_description": "Multi-format archive and compression library (development files)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libarchive13t64:amd64": {
-		"version": "3.7.2-2ubuntu0.9",
+		"version": "3.7.2-2ubuntu0.8",
 		"short_description": "Multi-format archive and compression library (shared library)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -915,12 +920,12 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libde265-0:amd64": {
-		"version": "1.0.15-1ubuntu0.2",
+		"version": "1.0.15-1ubuntu0.1",
 		"short_description": "Open H.265 video codec implementation",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libde265-dev:amd64": {
-		"version": "1.0.15-1ubuntu0.2",
+		"version": "1.0.15-1ubuntu0.1",
 		"short_description": "Open H.265 video codec implementation - development files",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -1805,7 +1810,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libnss-systemd:amd64": {
-		"version": "255.4-1ubuntu8.18",
+		"version": "255.4-1ubuntu8.17",
 		"short_description": "nss module providing dynamic user and group name resolution",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -1880,7 +1885,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libpam-systemd:amd64": {
-		"version": "255.4-1ubuntu8.18",
+		"version": "255.4-1ubuntu8.17",
 		"short_description": "system and service manager - PAM module",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -1975,32 +1980,32 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libpng-dev:amd64": {
-		"version": "1.6.43-5ubuntu0.7",
+		"version": "1.6.43-5ubuntu0.6",
 		"short_description": "PNG library - development (version 1.6)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libpng-tools": {
-		"version": "1.6.43-5ubuntu0.7",
+		"version": "1.6.43-5ubuntu0.6",
 		"short_description": "PNG library - tools (version 1.6)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libpng16-16t64:amd64": {
-		"version": "1.6.43-5ubuntu0.7",
+		"version": "1.6.43-5ubuntu0.6",
 		"short_description": "PNG library - runtime (version 1.6)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libpoppler-dev:amd64": {
-		"version": "24.02.0-1ubuntu9.10",
+		"version": "24.02.0-1ubuntu9.9",
 		"short_description": "PDF rendering library -- development files",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libpoppler-glib8t64:amd64": {
-		"version": "24.02.0-1ubuntu9.10",
+		"version": "24.02.0-1ubuntu9.9",
 		"short_description": "PDF rendering library (GLib-based shared library)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libpoppler134:amd64": {
-		"version": "24.02.0-1ubuntu9.10",
+		"version": "24.02.0-1ubuntu9.9",
 		"short_description": "PDF rendering library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2055,12 +2060,12 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"librsvg2-2:amd64": {
-		"version": "2.58.0+dfsg-1ubuntu0.1",
+		"version": "2.58.0+dfsg-1build1",
 		"short_description": "SAX-based renderer library for SVG files (runtime)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"librsvg2-common:amd64": {
-		"version": "2.58.0+dfsg-1ubuntu0.1",
+		"version": "2.58.0+dfsg-1build1",
 		"short_description": "SAX-based renderer library for SVG files (extra runtime)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2179,11 +2184,6 @@
 		"short_description": "SQLite 3 shared library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
-	"libsqlite3-dev:amd64": {
-		"version": "3.45.1-1ubuntu2.8",
-		"short_description": "SQLite 3 development files",
-		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
-	},
 	"libss2:amd64": {
 		"version": "1.47.0-2.4~exp1ubuntu4.1",
 		"short_description": "command-line interface parsing library",
@@ -2220,12 +2220,12 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libsystemd-shared:amd64": {
-		"version": "255.4-1ubuntu8.18",
+		"version": "255.4-1ubuntu8.17",
 		"short_description": "systemd shared private library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libsystemd0:amd64": {
-		"version": "255.4-1ubuntu8.18",
+		"version": "255.4-1ubuntu8.17",
 		"short_description": "systemd utility library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2290,7 +2290,7 @@
 		"author": "Ubuntu Core developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libudev1:amd64": {
-		"version": "255.4-1ubuntu8.18",
+		"version": "255.4-1ubuntu8.17",
 		"short_description": "libudev shared library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2360,22 +2360,22 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libx11-6:amd64": {
-		"version": "2:1.8.7-1ubuntu0.1",
+		"version": "2:1.8.7-1build1",
 		"short_description": "X11 client-side library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libx11-data": {
-		"version": "2:1.8.7-1ubuntu0.1",
+		"version": "2:1.8.7-1build1",
 		"short_description": "X11 client-side library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libx11-dev:amd64": {
-		"version": "2:1.8.7-1ubuntu0.1",
+		"version": "2:1.8.7-1build1",
 		"short_description": "X11 client-side library (development headers)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libx11-xcb1:amd64": {
-		"version": "2:1.8.7-1ubuntu0.1",
+		"version": "2:1.8.7-1build1",
 		"short_description": "Xlib/XCB interface library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2485,12 +2485,12 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libxml2-dev:amd64": {
-		"version": "2.9.14+dfsg-1.3ubuntu3.10",
+		"version": "2.9.14+dfsg-1.3ubuntu3.9",
 		"short_description": "GNOME XML library - development files",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libxml2:amd64": {
-		"version": "2.9.14+dfsg-1.3ubuntu3.10",
+		"version": "2.9.14+dfsg-1.3ubuntu3.9",
 		"short_description": "GNOME XML library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2560,7 +2560,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"linux-libc-dev:amd64": {
-		"version": "6.8.0-147.147",
+		"version": "6.8.0-146.146",
 		"short_description": "Linux Kernel Headers for development",
 		"author": "Ubuntu Kernel Team <kernel-team@lists.ubuntu.com>"
 	},
@@ -2650,7 +2650,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"openssh-client": {
-		"version": "1:9.6p1-3ubuntu13.20",
+		"version": "1:9.6p1-3ubuntu13.19",
 		"short_description": "secure shell (SSH) client, for secure access to remote machines",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2770,27 +2770,27 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"systemd": {
-		"version": "255.4-1ubuntu8.18",
+		"version": "255.4-1ubuntu8.17",
 		"short_description": "system and service manager",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"systemd-dev": {
-		"version": "255.4-1ubuntu8.18",
+		"version": "255.4-1ubuntu8.17",
 		"short_description": "systemd development files",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"systemd-resolved": {
-		"version": "255.4-1ubuntu8.18",
+		"version": "255.4-1ubuntu8.17",
 		"short_description": "systemd DNS resolver",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"systemd-sysv": {
-		"version": "255.4-1ubuntu8.18",
+		"version": "255.4-1ubuntu8.17",
 		"short_description": "system and service manager - SysV compatibility symlinks",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"systemd-timesyncd": {
-		"version": "255.4-1ubuntu8.18",
+		"version": "255.4-1ubuntu8.17",
 		"short_description": "minimalistic service to synchronize local time with NTP servers",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2810,7 +2810,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"tzdata": {
-		"version": "2026e-0ubuntu0.24.04.1",
+		"version": "2026c-0ubuntu0.24.04.1",
 		"short_description": "time zone and daylight-saving time data",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
