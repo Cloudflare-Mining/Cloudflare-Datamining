@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/tlog-tiles-wasm",
 	"dist-tags": {
-		"latest": "0.2.0"
+		"latest": "0.3.0"
 	},
 	"versions": {
 		"0.0.0": {
@@ -42,6 +42,33 @@
 					}
 				},
 				"unpackedSize": 93170
+			}
+		},
+		"0.3.0": {
+			"name": "@cloudflare/tlog-tiles-wasm",
+			"version": "0.3.0",
+			"dist": {
+				"shasum": "27637c82aebfa33a1c5efce361b5a104b77cef95",
+				"tarball": "https://registry.npmjs.org/@cloudflare/tlog-tiles-wasm/-/tlog-tiles-wasm-0.3.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-Y6Eeg2wLZw8VpJ2RXQbRljEhURpuyVrGprHKIwLFv+j2Z8Ww6TgVYYbumu/Eyt+cEFfpHUbG3DbABYZHcMyWIw==",
+				"signatures": [
+					{
+						"sig": "MEUCIECQa856k9XKLfbRd9rv+aUFbmAWfefHtk3eKPARb3iLAiEAgEjGe1jvSFDo8K48p0JWdkvXr4Rbn/GeTXrlnGln4B0=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQCQmL9FxUfGz8LVflMOaP7jHNpipdWMCSZhEp26vYmeXgIhAK4PGFQvS02JZaDBhPDme3VvAQGQW1aIbUQAX18Iehpm"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2ftlog-tiles-wasm@0.3.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 93912
 			}
 		}
 	}

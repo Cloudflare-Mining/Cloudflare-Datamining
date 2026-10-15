@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/puppeteer",
 	"dist-tags": {
-		"next": "0.0.14-rc",
+		"next": "1.5.0-rc.0",
 		"latest": "1.4.0"
 	},
 	"versions": {
@@ -1640,6 +1640,49 @@
 			},
 			"engines": {
 				"node": ">=18"
+			}
+		},
+		"1.5.0-rc.0": {
+			"name": "@cloudflare/puppeteer",
+			"version": "1.5.0-rc.0",
+			"dependencies": {
+				"mitt": "3.0.1",
+				"rxjs": "7.8.2",
+				"debug": "^4.4.3",
+				"parsel-js": "1.2.2",
+				"@types/node": "^18.17.15",
+				"@types/debug": "^4.1.12",
+				"devtools-protocol": "0.0.1581282",
+				"urlpattern-polyfill": "10.1.0",
+				"typed-query-selector": "^2.12.1"
+			},
+			"devDependencies": {
+				"vite": "^6.4.3",
+				"wrangler": "4.137.0",
+				"@cloudflare/workers-types": "^5.20260921.1"
+			},
+			"dist": {
+				"shasum": "dd13181e94337699b1fdb6d4409cfb8167780ce2",
+				"tarball": "https://registry.npmjs.org/@cloudflare/puppeteer/-/puppeteer-1.5.0-rc.0.tgz",
+				"fileCount": 273,
+				"integrity": "sha512-VuLJTyiOfZuGgYdOZXb8YcP+wjs1JVCPRAoeq+W7TzqTRI1vq0Zb2asvlIqf4PGmj1f/9E6kc+jO+fyaNBZgGA==",
+				"signatures": [
+					{
+						"sig": "MEQCIHLcGVCBL5NGnsqUC91QgVC398qf/6hiygY9ji0i1+rlAiAtBT+xtSLMAVyYLY76RYS8lXSMHTECh7p7Eb8S5Plaag==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQD6sF255/Q/6BsVhLtcS4glYfpicpzLRFSNJQHug9E5CgIhAL6cdrg7cMorlSdKYcj1Ns5MFASdvLvJJoaiQtczG9BQ"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fpuppeteer@1.5.0-rc.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 1333436
 			}
 		}
 	}

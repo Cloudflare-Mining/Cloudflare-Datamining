@@ -1,7 +1,8 @@
 {
 	"name": "@cloudflare/playwright-mcp",
 	"dist-tags": {
-		"latest": "0.0.5"
+		"latest": "0.0.5",
+		"next": "0.0.6-next"
 	},
 	"versions": {
 		"0.0.1": {
@@ -165,6 +166,49 @@
 					}
 				],
 				"unpackedSize": 192278
+			},
+			"engines": {
+				"node": ">=18"
+			}
+		},
+		"0.0.6-next": {
+			"name": "@cloudflare/playwright-mcp",
+			"version": "0.0.6-next",
+			"dependencies": {
+				"yaml": "^2.8.0",
+				"agents": "^0.0.109",
+				"zod-to-json-schema": "^3.24.6",
+				"@cloudflare/playwright": "^0.0.11",
+				"@modelcontextprotocol/sdk": "^1.17.0"
+			},
+			"devDependencies": {
+				"vite": "^7.3.6",
+				"wrangler": "4.137.0",
+				"typescript": "^5.8.2",
+				"@cloudflare/workers-types": "^5.20260921.1"
+			},
+			"dist": {
+				"shasum": "6e13d28d304c8f285bf7329f9bdad1107372fc65",
+				"tarball": "https://registry.npmjs.org/@cloudflare/playwright-mcp/-/playwright-mcp-0.0.6-next.tgz",
+				"fileCount": 77,
+				"integrity": "sha512-NURq1PnzQVnBwEGa1736tSnfaRucgtKEhLoyabKHsQipBpn0YY+5EDuLuWBO7tNx+42x74MPn/JY95ukyiO6hg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCnl+9oX5Hqcuca8I9XbEH0pmXnz1JQsU8XrziRE3n3fAIhAPL0L+Vr4/QOfHDG3EIUtEnR1jOSczAa6uy4G5KYnDaV",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIQCdyoWTP4yp562dDtT97onwaUZCczVDCQpIW2QeknukmAIgfffjIu9qS+k1OSeaJ/3+XbKywQbBYZNqE69mLiPO5jo="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fplaywright-mcp@0.0.6-next",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 194564
 			},
 			"engines": {
 				"node": ">=18"

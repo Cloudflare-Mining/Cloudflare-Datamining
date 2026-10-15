@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/signed-note-wasm",
 	"dist-tags": {
-		"latest": "0.2.0"
+		"latest": "0.3.0"
 	},
 	"versions": {
 		"0.0.0": {
@@ -42,6 +42,33 @@
 					}
 				},
 				"unpackedSize": 175537
+			}
+		},
+		"0.3.0": {
+			"name": "@cloudflare/signed-note-wasm",
+			"version": "0.3.0",
+			"dist": {
+				"shasum": "d9cd7639dc8f731a769886f29331c96542003971",
+				"tarball": "https://registry.npmjs.org/@cloudflare/signed-note-wasm/-/signed-note-wasm-0.3.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-p98zqqGCiLvgXqHDXIXdi7i0jkWh1X74rUHrGN50j/nUKwutHVTlgsO/vKKobG9IJD2gVtx5LQoVxo9tPFVgug==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCI13YiE8zBRWhyapz6Mf1GVwrGGq1GAn/98bAgOWQOEQIgUDCx1aHgiAofPvxJXgOducK6kYWCnPM/O0B+PdeD2F8=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIExu26yXogLZx1Xrz0msdVxerof6c0tY6inZESYxT2ycAiEAjmwy6ioRmKOMtCkfrEGGK5QmPorW3xpd53cb/Khp7ZU="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fsigned-note-wasm@0.3.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 225498
 			}
 		}
 	}
