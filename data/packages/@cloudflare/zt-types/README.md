@@ -47,7 +47,7 @@ import type {
 - `GatewayMiddlewareContext` includes information associated with the request, including source
   and destination metadata, protocols, host, the Gateway-normalized `uri`, account, and selecting
   policy. Some of this information is analogous to selectors available in Gateway firewall policies.
-  Its metadata fields are read-only. `domainCategories` contains category names, not numeric IDs,
+  Its metadata fields are read-only. `domainCategories` contains numeric category IDs, not names,
   and `policyId` is the UUID of the policy that selected the middleware.
 - `GatewayIdentity` and `GatewayIdentityGroup` describe identity and group information.
   Their fields are optional.
@@ -55,9 +55,12 @@ import type {
   posture checks that passed. The list may be empty.
 
 Call `context.identity()` and `context.devicePosture()` to retrieve identity and posture data.
-Both methods return a promise that may resolve to `undefined`.
 
-Check identity before continuing to the original upstream:
+- `identity()` resolves the identity when the user is identified and resolves `null` when there
+  is no identified user. It rejects if the identity lookup failed.
+- `devicePosture()` resolves the passed checks and rejects if device posture is unavailable.
+
+Require an identified user before continuing to the original upstream:
 
 ```ts
 import type { GatewayMiddlewareContext, GatewayMiddlewareNext } from "@cloudflare/zt-types";
@@ -67,8 +70,16 @@ async function requireIdentity(
   context: GatewayMiddlewareContext,
   next: GatewayMiddlewareNext,
 ): Promise<Response> {
-  const identity = await context.identity();
+  let identity;
+  try {
+    identity = await context.identity();
+  } catch {
+    // The identity lookup failed.
+    return new Response("Service Unavailable", { status: 503 });
+  }
+
   if (!identity) {
+    // No identified user.
     return new Response("Forbidden", { status: 403 });
   }
 
