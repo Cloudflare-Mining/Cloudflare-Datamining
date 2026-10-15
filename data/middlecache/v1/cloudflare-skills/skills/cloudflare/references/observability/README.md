@@ -24,4 +24,4 @@ Workers Logs supports retained historical data; live tailing is a separate debug
 - [patterns.md](patterns.md): billing, performance, errors, tenant tracking, and export decisions.
 - [gotchas.md](gotchas.md): missing data, sampling, timing, privacy, and cost checks.
 
-For broader product tasks, see [Analytics Engine](../analytics-engine/README.md), [GraphQL API](../graphql-api/README.md), and [Tail Workers](../tail-workers/README.md).
+For broader product tasks, see [Analytics Engine docs](https://developers.cloudflare.com/analytics/analytics-engine/index.md), [GraphQL Analytics API docs](https://developers.cloudflare.com/analytics/graphql-api/index.md), and [Tail Workers](../tail-workers/README.md).
