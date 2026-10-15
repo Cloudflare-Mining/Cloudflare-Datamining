@@ -70,7 +70,7 @@ Objects aggregate and push real-time data updates to connected clients for monit
 
 ## Related Products
 
-- [Browser Run](/products/browser-rendering.md): Automated browsers
+- [Browser Run](/products/browser-run.md): Automated browsers
 - [Cloudflare Pages](/products/pages.md): Build & deploy frontend sites
 - [Containers](/products/containers.md): Any language, anywhere
 - [Email Service](/products/email-service.md): Send and receive email

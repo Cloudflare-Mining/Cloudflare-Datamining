@@ -8,13 +8,13 @@ Play Tetris
 
 Tetris ready.
 
-Cloudflare Challenge/Submissions closed
+Cloudflare Challenge/Submit by October 14
 
 # Build the next GitHub.
 
 Build a new way for hundreds of thousands of agents to work on changes concurrently.
 
-[Explore Artifacts](https://developers.cloudflare.com/artifacts/)
+[Submit your project](/git-competition/submit)[Explore Artifacts](https://developers.cloudflare.com/artifacts/)
 
 ## How it works
 
@@ -45,6 +45,8 @@ Selected teams are announced October 16\. We will fly up to two members from eac
 ## What finalists get to do.
 
 Every finalist team comes to Cloudflare Connect to present in San Francisco.
+
+[Submit your project](/git-competition/submit)
 
 ### The first-place team also wins
 

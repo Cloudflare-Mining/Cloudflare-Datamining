@@ -10,6 +10,24 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+October 15, 2026 [<h2>A fully programmable secure web gateway</h2>](https://blog.cloudflare.com/programmable-gateway-dlp/)
+
+Cloudflare Gateway and Data Loss Prevention have inherited the flexibility and power of Cloudflare Workers through our full-stack integration with the Cloudflare Developer platform.
+
+![AJ Gerstenhaber](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M508VRM0SPP4S4MS7CZXEHJA.01M508VT8EKZQHWR6HJHQVTQPV.png&w=64&h=64&f=webp&fit=cover&position=center)![Abe Carryl](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JJ6YPQY3M4A69P72QXE8.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[AJ Gerstenhaber](https://blog.cloudflare.com/author/aj/) and  [Abe Carryl](https://blog.cloudflare.com/author/abe/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M50725GWYBHA14CTTDWFESC7.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/programmable-gateway-dlp/)
+
+October 15, 2026 [<h2>Deploy with Void</h2>](https://blog.cloudflare.com/deploy-with-void/)
+
+Introducing Void: an open-source SDK, CLI, and self-hosted platform for building full-stack Vite apps and deploying them to Cloudflare.
+
+![Christoph Nakazawa](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4EX98BAG8QN2EG73TZW7RKE.01M4EX98Y0AM8PEJP2VR66W6PN.webp&w=64&h=64&f=webp&fit=cover&position=center)![Michael Dong](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4EX7VKAAKSR7MZBFE5VQ9JZ.01M4EX7W0EXTB3MQ1C9BZZ5C38.webp&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Christoph Nakazawa](https://blog.cloudflare.com/author/christoph-nakazawa/) and  [Michael Dong](https://blog.cloudflare.com/author/michael-dong/)
+
 October 15, 2026 [<h2>Cloudflare and OpenAI: making AI discovery better for everyone</h2>](https://blog.cloudflare.com/cloudflare-openai-discovery-agentic-web/)
 
 How Cloudflare and OpenAI are working together to help AI find useful content, keep up with changes, and make fewer wasted requests — making the experience better for users and website owners alike.
@@ -17,8 +35,6 @@ How Cloudflare and OpenAI are working together to help AI find useful content, k
 ![Matthew Conroy](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW1QZW47KMHA09RY62FC.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Jack Galilee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA3MX64PMX25X6GHJWTCKYT.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Henry Aspegren (OpenAI)](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4ZF9JPY469VR3ZSXJ5TCC72.01M4ZF9K94YMAVD6CKV497K7W2.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![James Balfour (OpenAI)](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3Y82NHNS7DZN6RAJ3P8ZZ6Q.01M3Y82P64N5C1T5CGXRENCEAR.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Matthew Conroy](https://blog.cloudflare.com/author/matthew-conroy/),  [Jack Galilee](https://blog.cloudflare.com/author/jack-galilee/),  [Henry Aspegren (OpenAI)](https://blog.cloudflare.com/author/henry-aspegren/), and  [James Balfour (OpenAI)](https://blog.cloudflare.com/author/james-balfour/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4YQC03MMFYZ10P30YWNWGG4.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/cloudflare-openai-discovery-agentic-web/)
 
 October 14, 2026 [<h2>Yandex outage: Data shows that instead of going dark, malicious bots went on the move</h2>](https://blog.cloudflare.com/yandex-outage/)
 
@@ -147,22 +163,6 @@ Cloudflare AI Gateway now supports native web search API integration in partners
 ![Michelle Chen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R95PPSQQ82Z92P51M550.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Sam Else](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3Q96AH0YC46X2T69EDA94K0.01M3Q96B1VTN1AMSCYJ2FQHQS2.webp&w=64&h=64&f=webp&fit=cover&position=center)![Gabriel Massadas](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZJT71CZ6R57ZBVBWK0TT.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Michelle Chen](https://blog.cloudflare.com/author/michelle/),  [Sam Else](https://blog.cloudflare.com/author/sam-else/), and  [Gabriel Massadas](https://blog.cloudflare.com/author/gabriel-massadas/)
-
-October 2, 2026 [<h2>Introducing Cloudflare Traces: follow requests through our entire platform</h2>](https://blog.cloudflare.com/cloudflare-tracing/)
-
-Cloudflare Traces shows how a request moves through security rules, transformations, cache, routing, Workers, and your origin, then follows it across services running anywhere in your stack.
-
-![Mar Witek](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ235CPB4AH0E1QF256SHBFJ.webp&w=64&h=64&f=webp&fit=cover&position=center)![Dan Lapid](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49J56Y8QNB56HN77FKK7EM.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Nevi Shah](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3YB9DTTT6JXZABS5PH7NZQV.01M3YB9FY7HP0VT0NC74Y1H4PV.png&w=64&h=64&f=webp&fit=cover&position=center)![Daniel Walsh](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46RREBMMM99YW4JZD2V30F.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Mar Witek](https://blog.cloudflare.com/author/mar-witek/),  [Dan Lapid](https://blog.cloudflare.com/author/dan-lapid/),  [Nevi Shah](https://blog.cloudflare.com/author/nevi/), and  [Daniel Walsh](https://blog.cloudflare.com/author/walshy/)
-
-October 2, 2026 [<h2>Updates on our pledge to make Cloudflare features accessible to everyone</h2>](https://blog.cloudflare.com/enterprise-for-all-update/)
-
-A year after pledging to eliminate two-tier product access, Cloudflare has expanded Logpush, multi-account governance, and higher platform limits to all accounts. Here is an update on our progress, how we dogfood these tools internally, and what is coming next.
-
-![Oliver Roup](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XDJ63HX4EFMMNNXQ75TEB4.01M3XDJ6SHYM6JSMMSAKGGN9JD.webp&w=64&h=64&f=webp&fit=cover&position=center)![Justin Hutchings](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48M5T3Y2AKTJA5QN73V2M8.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Chase Catelli](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4920AJ222N7ZYMTG9J5S4R.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Oliver Roup](https://blog.cloudflare.com/author/oliver-roup/),  [Justin Hutchings](https://blog.cloudflare.com/author/justin-hutchings/), and  [Chase Catelli](https://blog.cloudflare.com/author/chase-catelli/)
 
 Load more
 
