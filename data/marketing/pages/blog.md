@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+October 15, 2026 [<h2>Cloudflare and OpenAI: making AI discovery better for everyone</h2>](https://blog.cloudflare.com/cloudflare-openai-discovery-agentic-web/)
+
+How Cloudflare and OpenAI are working together to help AI find useful content, keep up with changes, and make fewer wasted requests — making the experience better for users and website owners alike.
+
+![Matthew Conroy](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW1QZW47KMHA09RY62FC.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Jack Galilee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA3MX64PMX25X6GHJWTCKYT.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Henry Aspegren (OpenAI)](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4ZF9JPY469VR3ZSXJ5TCC72.01M4ZF9K94YMAVD6CKV497K7W2.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![James Balfour (OpenAI)](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3Y82NHNS7DZN6RAJ3P8ZZ6Q.01M3Y82P64N5C1T5CGXRENCEAR.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Matthew Conroy](https://blog.cloudflare.com/author/matthew-conroy/),  [Jack Galilee](https://blog.cloudflare.com/author/jack-galilee/),  [Henry Aspegren (OpenAI)](https://blog.cloudflare.com/author/henry-aspegren/), and  [James Balfour (OpenAI)](https://blog.cloudflare.com/author/james-balfour/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4YQC03MMFYZ10P30YWNWGG4.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/cloudflare-openai-discovery-agentic-web/)
+
 October 14, 2026 [<h2>Yandex outage: Data shows that instead of going dark, malicious bots went on the move</h2>](https://blog.cloudflare.com/yandex-outage/)
 
 When strikes hit Yandex data centers, many assumed Russian bot operations went dark. Cloudflare data reveals that while search crawling stopped, malicious bots simply migrated to other networks.
@@ -17,8 +27,6 @@ When strikes hit Yandex data centers, many assumed Russian bot operations went d
 ![Marina Elmore](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477HVM8X1SKDG8ADKQJ9T3.png&w=64&h=64&f=webp&fit=cover&position=center)![Lai Yi Ohlsen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DGMNXAW2CZQQAX92W97V.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Marina Elmore](https://blog.cloudflare.com/author/marina-elmore/) and  [Lai Yi Ohlsen](https://blog.cloudflare.com/author/lai-yi-ohlsen/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4Y142SWPQXA8GMMX3DTNYBY.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/yandex-outage/)
 
 October 14, 2026 [<h2>Inside Hyperdrive: How we solved a rare Hyperdrive MySQL caching bug</h2>](https://blog.cloudflare.com/hyperdrive-mysql/)
 
@@ -155,14 +163,6 @@ A year after pledging to eliminate two-tier product access, Cloudflare has expan
 ![Oliver Roup](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3XDJ63HX4EFMMNNXQ75TEB4.01M3XDJ6SHYM6JSMMSAKGGN9JD.webp&w=64&h=64&f=webp&fit=cover&position=center)![Justin Hutchings](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48M5T3Y2AKTJA5QN73V2M8.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Chase Catelli](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4920AJ222N7ZYMTG9J5S4R.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Oliver Roup](https://blog.cloudflare.com/author/oliver-roup/),  [Justin Hutchings](https://blog.cloudflare.com/author/justin-hutchings/), and  [Chase Catelli](https://blog.cloudflare.com/author/chase-catelli/)
-
-October 2, 2026 [<h2>Announcing Cloudflare OHTTP Gateway – expanding access to Cloudflare's privacy-preserving infrastructure</h2>](https://blog.cloudflare.com/announcing-cloudflare-ohttp-gateway/)
-
-We're announcing the closed beta of a self-serve Cloudflare OHTTP Gateway. We're also renaming our Privacy Gateway to Cloudflare OHTTP Relay to better distinguish the two products.
-
-![Lara Schull](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M34Y34B7NA1EXDT3NB44Q1E9.01M34Y34V1QSE5BJE43H5NGG6K.webp&w=64&h=64&f=webp&fit=cover&position=center)![Akshat Mahajan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VR0DYS4EZ818QTQC7Z5F.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Lara Schull](https://blog.cloudflare.com/author/lara-schull/) and  [Akshat Mahajan](https://blog.cloudflare.com/author/akshat-mahajan/)
 
 Load more
 
