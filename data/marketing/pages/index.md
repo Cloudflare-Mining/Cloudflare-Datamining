@@ -26,7 +26,7 @@ Cloudflare Workers is a serverless platform that runs your code on Cloudflare's 
 - [Workers](/products/workers.md): Global serverless functions
 - [Containers](/products/containers.md): Any language, anywhere
 - [Durable Objects](/products/durable-objects.md): Stateful compute
-- [Browser Rendering](/products/browser-rendering.md): Automated browsers
+- [Browser Run](/products/browser-run.md): Automated browsers
 - [Workflows](/products/workflows.md): Process orchestration
 
 ### Storage
