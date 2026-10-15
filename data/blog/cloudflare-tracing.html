@@ -60,13 +60,9 @@
 			let v = (e, n) => {
 				if (!s || !e || (g(n), m && clearTimeout(m), m = void 0, s.classList.remove(`is-exit`, `is-enter-start`), s.textContent === e)) return;
 				let r = s.ownerDocument.defaultView;
-				if (typeof r?.matchMedia == `function` && r.matchMedia(`(prefers-reduced-motion: reduce)`).matches) {
-					s.textContent = e;
-					return
-				}
-				s.classList.add(`is-exit`), m = setTimeout(() => {
+				typeof r?.matchMedia == `function` && r.matchMedia(`(prefers-reduced-motion: reduce)`).matches ? s.textContent = e : (s.classList.add(`is-exit`), m = setTimeout(() => {
 					s.textContent = e, s.classList.remove(`is-exit`), s.classList.add(`is-enter-start`), s.offsetWidth, s.classList.remove(`is-enter-start`), m = void 0
-				}, t)
+				}, t))
 			};
 			a.addEventListener(`click`, async () => {
 				try {
