@@ -3,44 +3,65 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: </strong>Hybrid - Austin, TX</p>
-<p><strong>Schedule: </strong>This is a full-time, Tuesday-Saturday role requiring a firm start time of 11:00 AM Central Time to align with our global operations. This role requires you to be able to come into our Austin office twice a week.</p>
-<h4>About the Department</h4>
-<p>The Customer Support Team is dedicated to resolving complex issues and providing technical assistance across various channels, including phone, email, chat, and social media. Our team passionately advocates for all customers, from individual Wordpress bloggers to Fortune 500 customers handling millions of clients daily. By actively listening to real-world pain points and use cases, we serve as the vital link between our customers and the rest of Cloudflare and play a key role in building a better Internet every day!</p>
-<h4>What You’ll do</h4>
-<p>As a Technical Support Engineer at Cloudflare, you’ll work directly with customers and cross-functional teams to tackle a variety of technical challenges. You’ll gain hands-on experience with our products, learn the inner workings of Cloudflare’s offerings, and deepen your understanding of internet technologies. This role also provides opportunities to develop valuable technical and professional skills, as well as job shadowing experiences to explore different roles within the company. Join us to enhance your skill set while making a real impact!</p>
-<h4>Responsibilities&nbsp;</h4>
+<p><strong>Available Locations:&nbsp;</strong>London, UK</p>
+<p><strong>Role summary</strong></p>
+<p>As an IT Operations Specialist I, you will provide essential onsite IT support and help maintain daily workplace technology at our corporate office. Working in a heavy macOS and Google Workspace environment with additional support for Windows and Linux endpoints, you will deliver hands-on technical assistance, maintain office AV systems, and manage end-to-end hire-to-retire lifecycle processes. In this role, you will also leverage our internal AI technology tools to optimize support workflows and documentation. You will collaborate closely with broader IT teams, the IT Service Desk, HR, Places &amp; Office, and Security teams to ensure a seamless technical experience for all employees.</p>
+<p><strong>Role responsibilities</strong></p>
 <ul>
-	<li>Fulfill support requests by communicating with Cloudflare customers via chat, email, and phone</li>
-	<li>Collaborate with senior engineers to analyze and troubleshoot customer issues</li>
-	<li>Track support requests using our ticketing system</li>
-	<li>Participate in team meetings to discuss and share feedback</li>
-	<li>Help define and update AI skills and conversational journeys to ensure up-to-date knowledge is available in automated workflows, as well as updating other internal- and public-facing documentation as needed.</li>
-	<li>Provide feedback on our product and potential improvements based on customer interactions</li>
-	<li>Support the team in testing new releases and reporting bugs</li>
-	<li>Perform other duties/projects as assigned&nbsp;</li>
+	<li>Act as the primary onsite technical support resource, managing employee walk-ups, support tickets, and hardware troubleshooting across macOS, Windows, and Linux endpoints.</li>
+	<li>Work closely with broader IT engineering and operations teams to execute infrastructure updates, enforce system policies, and resolve escalated technical issues.</li>
+	<li>Manage complete hire-to-retire IT operations, including hardware provisioning, account setup, leading IT orientation for new hires, offboarding asset recovery, and access revoking.</li>
+	<li>Administer day-to-day user accounts, permissions, and group access within Google Workspace and connected corporate SaaS tools.</li>
+	<li>Manage physical IT asset lifecycle operations, including inventory tracking, hardware check-in/check-out, stock audits, and secure device disposal.</li>
+	<li>Utilize internal AI technology tools to summarize support incidents, speed up ticket resolution, and draft self-service Knowledge Base (KB) documentation for end users.</li>
+	<li>Support office conference room technology (Google Meet Hardware and Zoom Rooms) and provide live technical setup for corporate town halls and department events.</li>
+	<li>Participate in a scheduled on-call rotation (evenings and weekends) to address critical after-hours P1/P2 incidents, system outages, and urgent executive support needs.</li>
 </ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<p>This is an in-office/onsite position. This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>3-5 years of experience working in a technical Customer Support role, preferably as part of a team working with large enterprise customers</li>
-	<li>Self-driven and comfortable learning new technologies and systems on an ongoing basis</li>
-	<li>Excellent written and verbal communication skills</li>
-	<li>Strong understanding of how the Internet works at OSI Model layers 3, 4, and 7</li>
-	<li>Strong understanding of DNS, SSL/TLS, and HTTP(S) protocols</li>
-	<li>General understanding of HTTP reverse proxying, caching, and load balancing</li>
-	<li>Experience using Linux and associated command line tools, including curl, dig, traceroute, openssl, git, etc.</li>
-	<li>Experience writing scripts in Bash, Python, JavaScript, or other scripting languages</li>
-	<li>Experience installing and configuring web servers like Apache, Nginx, and/or IIS</li>
+	<li>1–2 years of hands-on IT support or help-desk experience in a corporate environment.</li>
+	<li>Strong expertise troubleshooting macOS hardware, software, and enterprise OS configurations.</li>
+	<li>Working knowledge of Windows OS and basic Linux desktop administration or CLI troubleshooting.</li>
+	<li>Practical administrative experience with Google Workspace (User management, Shared Drives, Groups, Admin Console).</li>
+	<li>Willingness and availability to work fully onsite 5 days a week and participate in a scheduled on-call rotation for after-hours support.</li>
+	<li>Readiness to utilize internal AI tools and assistants to streamline ticketing, troubleshooting, and technical documentation.</li>
+	<li>Strong written and verbal communication skills with a customer-first approach to technical support and leading new-hire orientations.</li>
+	<li>Application requires a current resume/CV detailing relevant IT workplace support experience.</li>
 </ul>
-<h4>Bonus Points</h4>
+<p><strong>Bonus points</strong></p>
 <ul>
-	<li>Prior experience with the Cloudflare platform, especially for personal projects/websites</li>
-	<li>Experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels</li>
-	<li>Experience configuring network or application firewalls</li>
-	<li>Degrees or certifications in Computer Science, Information Technology, and related fields</li>
-	<li>Fluency in Mandarin, Spanish, and/or Portuguese</li>
+	<li>Experience with macOS endpoint management using Mobile Device Management (MDM) platforms like Jamf Pro or Kandji.</li>
+	<li>Experience using corporate ticketing platforms such as Jira Service Management or Zendesk.</li>
+	<li>Relevant technical certifications such as Apple Certified Support Professional (ACSP), Google Workspace Administrator, CompTIA A+, or ITIL 4 Foundation.</li>
 </ul>
-<p>&nbsp;</p>
+<h4><strong data-path-to-node="3" data-index-in-node="0">Equity</strong></h4>
+<p data-path-to-node="4">This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p data-path-to-node="4"><strong>Benefits</strong></p>
+<p data-path-to-node="4">Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p data-path-to-node="4"><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p data-path-to-node="4"><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p data-path-to-node="4"><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

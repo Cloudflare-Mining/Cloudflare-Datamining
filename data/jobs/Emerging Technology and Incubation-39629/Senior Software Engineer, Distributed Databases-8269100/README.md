@@ -3,59 +3,36 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h3>Available Locations | Austin, TX; Seattle, WA or London, UK</h3>
+<h3><strong>Available Locations: Austin, TX | Seattle, WA | London, UK</strong></h3>
 <h3>About the Role</h3>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h3>Is this role a fit for you?</h3>
-<p>We are looking for engineers who build infrastructure software from scratch, not those who operate it.&nbsp;If your core expertise is configuring, managing, scaling, or writing applications on top of existing data platforms like Kafka, Flink, Spark, Databricks, or Snowflake, this role is not the right fit. We are seeking the engineers who can write the code that replaces these tools.</p>
+<p>Cloudflare's Developer Platform powers stateful, data-intensive applications across our network. We're looking for a Senior Software Engineer to work across the database stack, from query planning and execution to transaction processing and durable storage.</p>
+<p>You'll make decisions that shape the consistency, durability, and latency guarantees that customer applications rely on.</p>
+<p>Correctness under concurrency and failure is central to the role. You'll define and implement how queries read and modify data, how concurrent transactions become visible, and how durable state is recovered. You'll validate these systems using deterministic simulation, workload testing, and evidence from production.</p>
 <h3>Responsibilities</h3>
 <ul>
-	<li>As a Senior Systems Engineer focused on Cloudflare's core storage and streaming products, you will design and implement the foundational layers of our next-generation data services. We work backward from developer needs, reimagining solutions by leveraging our unique global network.</li>
-	<li>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might be architecting a new globally distributed data consistency model, optimizing storage engine performance, or designing a novel API for a new data-centric product. You can expect to interact with a variety of languages and technologies including, but not limited to JavaScript, Typescript, Rust, and C++.</li>
+	<li>Improve query planning and execution, including index selection, row reads and writes, and performance as data volumes and access patterns change.</li>
+	<li>Build transaction and storage paths that make writes durable and reads consistent. Define when changes become visible, how commits survive failure, and how recovery restores a correct view of the data.</li>
+	<li>Design deterministic simulations that make rare event orderings and failures reproducible.</li>
+	<li>Plan stateful upgrades that cannot be reversed by rolling back software. Carry them through staged rollout, failover, and recovery without putting existing data at risk.</li>
+	<li>Participate in the service's on-call rotation and incident response.</li>
+	<li>Own major changes from design through production. Coordinate implementation across teams when a change spans multiple parts of the service, and help trace failures across those parts.</li>
+	<li>Mentor other engineers through design reviews, debugging, and incident analysis involving concurrency, durability, and recovery.</li>
 </ul>
-<h3>Desirable Skills, Knowledge, and Experience</h3>
+<h3>Desirable Skills, Knowledge &amp; Experience</h3>
 <ul>
-	<li>Minimum 6+ years of experience designing, building, and deploying the internals of large-scale distributed systems or storage engines from scratch.</li>
-	<li>Direct experience writing core components of a storage or streaming system.</li>
-	<li>Proven track record of debugging, profiling, and fixing complex race conditions, split-brain scenarios, and network partition failures at the infrastructure layer.</li>
-	<li>Deep, expert-level proficiency in Rust or C++ applied to systems programming.</li>
+	<li>You have owned a database, storage engine, transaction system, or similarly correctness-sensitive stateful system from architecture through production. You can make architecture and implementation decisions when requirements or system boundaries are incomplete.</li>
+	<li>You understand how query execution, indexing, transaction processing, and durable state shape what developers and operators observe.</li>
+	<li>You understand how concurrency control, isolation, replication, and snapshots shape consistency, durability, and recovery. You can apply those concepts when operations arrive out of order, components fail independently, or the network partitions.</li>
+	<li>You write and debug concurrent production software in Rust, Go, C++, or another systems language. You can trace failures across process, network, and durable-state boundaries.</li>
+	<li>You have operated stateful systems through rollouts, scaling events, incidents, and recovery. You know the difference between transient unavailability and incomplete or incorrect recovery, and when a system is safe to return to service.</li>
+	<li>You have led investigations where failures crossed systems owned by several teams.</li>
 </ul>
 <h3>Bonus Points</h3>
 <ul>
-	<li>Experience building time-series databases, log-structured merge-trees, or real-time stream processing engines from the ground up.</li>
-	<li>Academic or professional contributions to distributed systems research (e.g., consensus, conflict-free replicated data types (CRDTs), or database theory).</li>
-</ul>
-<h3>Compensation</h3>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated annual salary of $185,000 - $254,000</li>
-</ul>
-<h3>Equity</h3>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<h3>Benefits</h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<h3>Health &amp; Welfare Benefits</h3>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<h3>Financial Benefits</h3>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<h3>Time Off</h3>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>You've worked on the internals of PostgreSQL, MySQL, Amazon Aurora, or another relational database and can trace a SQL operation from planning through commit.</li>
+	<li>Your work on transaction processing or concurrency control has included defining snapshot visibility and recovery behavior.</li>
+	<li>You've profiled database workloads and traced performance bottlenecks from query execution through durable storage.</li>
+	<li>You've used deterministic simulation or another systematic method to uncover distributed-systems bugs that conventional tests missed.</li>
 </ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>

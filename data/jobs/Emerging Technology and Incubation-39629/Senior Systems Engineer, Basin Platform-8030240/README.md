@@ -3,46 +3,48 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h2>Available Locations</h2>
+<h3><strong>Available Locations:&nbsp;</strong><strong>Austin, TX; Seattle, WA or London, UK</strong></h3>
+<h3><strong>About the Department</strong></h3>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.&nbsp;</p>
+<h3><strong>About the project</strong></h3>
+<p><a href="https://blog.cloudflare.com/cloudflare-basin/">Cloudflare Basin</a> became generally available during Birthday Week 2026. We are looking to extend engineering teams working on Basin Catalog and Basin SQL:</p>
 <ul>
-	<li>London, UK</li>
-	<li>Washington DC, US</li>
+	<li>
+		<p>Basin Catalog manages Iceberg table metadata. It also runs ongoing table maintenance, such as compaction, to keep queries fast.</p>
+	</li>
+	<li>
+		<p>Basin SQL is our in-house distributed SQL engine. It's built to run petabyte-scale queries over data stored in R2.</p>
+	</li>
 </ul>
-<h2>About the Role</h2>
-<p>As the world’s first connectivity cloud, Cloudflare helps connect and protect millions of customers globally. Everyone from individuals to the world’s largest enterprises use our unified platform of networking, security, and developer services to succeed everywhere in the world. This can sometimes make Cloudflare a target for litigation and regulation. We’re looking for a Litigation Counsel to join our team responsible for managing litigation matters around the world.</p>
-<p>The ideal candidate is comfortable confronting novel legal issues in a fast paced environment, while never losing sight of Cloudflare’s core principles. As Litigation Counsel, you’ll work with our internal legal team, external counsel, and stakeholders across the company to handle ongoing lawsuits, respond to litigation threats, and assist in broader legal strategy. You’ll help Cloudflare navigate a diverse set of legal issues around the globe including intellectual property, contracts and other business disputes, regulatory issues, and labor and employment matters. Cloudflare faces complex legal issues as a result of its role as an Internet infrastructure provider, including litigation and regulation relating to customer content on our network (i.e., “intermediary liability”). These cases require a strong interest in navigating challenging technical and legal issues in order to advance Cloudflare’s mission to help build a better Internet. The ideal candidate has the passion to keep pace with a fast moving docket, the curiosity to dive deep into evolving technology and Internet law, and the initiative to help scale our litigation function alongside a fast growing company.</p>
-<h2>Responsibilities</h2>
+<p>&nbsp;</p>
+<h3><strong>What you'll do</strong></h3>
+<p>As a Senior Engineer focused on Cloudflare's storage and database products, you will shape the future of industry-leading services that redefine what is possible for developers. We don't just copy what other cloud providers do; we work backward from developer needs, reimagining solutions by leveraging our unique global network. This network brings data closer to users for unparalleled performance, allows for granular control to meet data residency requirements, and provides a platform for truly innovative data products.</p>
+<p>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might be architecting a new globally distributed data consistency model, optimizing storage engine performance, or designing a novel API for a new data-centric product. You can expect to interact with a variety of languages and technologies including, but not limited to JavaScript, Typescript, Rust, and C++.</p>
+<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
 <ul>
-	<li>Work with our existing litigation team to help formulate and implement litigation strategies;</li>
-	<li>Evaluate and respond to litigation threats and legal matters in various jurisdictions around the world;</li>
-	<li>Help select, onboard, and manage outside counsel on all aspects of litigation (including factual development, briefing, hearings, trials, appeals, etc.)</li>
-	<li>Work cross-functionally to further develop Cloudflare’s approach to intermediary liability, AI, and other emerging legal and technology issues globally;</li>
-	<li>Assist in responding to and working with government regulators and private organizations on issues relating to Cloudflare’s products and services;</li>
-	<li>Communicate with business leaders across the company about ongoing litigation and litigation threats, and provide training and resources to address future legal risks.</li>
+	<li>Minimum 5 years of experience working with distributed systems.</li>
+	<li>Experience building and managing high volume software applications.</li>
+	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
+	<li>Knowledge of at least one modern strongly-typed programming language: we primarily use Rust, TypeScript, and Go.</li>
+	<li>Experience debugging, optimizing and identifying failure modes in a large-scale distributed system.</li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<h3><strong>Bonus Points</strong></h3>
 <ul>
-	<li>Been admitted to practice law in the US or the UK;</li>
-	<li>4+ years PQE either in a law firm or in-house (preferably with technology companies);</li>
-	<li>Experience litigating cases in one or more jurisdictions;</li>
-	<li>Strong communication skills and cooperative team player;</li>
-	<li>Ability to lead with empathy and understanding while embracing diverse points of view;</li>
-	<li>Flexibility to adapt and thrive in a fast paced environment;</li>
-	<li>Ability to work cross-functionally, with lawyers and non-lawyers, to establish principled, thoughtful, and effective solutions efficiently and in an amenable manner;</li>
-	<li>Ability to organize, prioritize, and manage many tasks on complex projects;</li>
-	<li>An ambitious mindset that enables you to successfully work independently and autonomously with limited guidance, but also to use good judgment and call out issues when needed.</li>
+	<li>Experience building and managing a large scale data storage platform.</li>
+	<li>Experience working in low-latency real time environments such as game streaming, game engine architecture, high frequency trading, payment systems</li>
+	<li>Experience working in a non-garbage collected language such as Rust or C++.</li>
+	<li>Experience writing Javascript and Typescript.Deep Linux / UNIX systems knowledge.</li>
 </ul>
-<h2>Compensation</h2>
-<p><strong>Compensation</strong></p>
+<h3>Compensation</h3>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For Washington, D.C. based hires: Estimated annual salary of $150,000 - $207,000.</li>
+	<li>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated annual salary of $185,000 - $254,000</li>
 </ul>
-<p><strong>Equity</strong></p>
+<h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h3>Benefits</h3>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<h3>Health &amp; Welfare Benefits</h3>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -53,14 +55,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<h3>Financial Benefits</h3>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<h3>Time Off</h3>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
