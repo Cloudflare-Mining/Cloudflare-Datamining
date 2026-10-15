@@ -1376,6 +1376,9 @@
 	"edgeworkerdb-maintenance-banner": {
 		"enabled": true
 	},
+	"email-ga": {
+		"enabled": false
+	},
 	"email-routing-account-destination-addresses": {
 		"enabled": true
 	},
@@ -1405,6 +1408,9 @@
 	},
 	"email-suggestions-card": {
 		"enabled": true
+	},
+	"email-unified-onboarding": {
+		"enabled": false
 	},
 	"email-verify-login-interstitial": {
 		"enabled": true
@@ -2117,6 +2123,13 @@
 	},
 	"prg-domain-reg-success-kumo": {
 		"enabled": false
+	},
+	"prg-domain-reg-transfer": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
 	},
 	"prg-domain-success-page-experiment": {
 		"enabled": true,
@@ -3004,7 +3017,7 @@
 		"enabled": true
 	},
 	"uc-product-recommendations-enabled": {
-		"enabled": false
+		"enabled": true
 	},
 	"uc-product-recommendations-sept-2026": {
 		"enabled": false,

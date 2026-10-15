@@ -564,13 +564,15 @@
 		"true": 100
 	},
 	"email-routing-account-destination-addresses": {
-		"false": 100
+		"false": 75,
+		"true": 25
 	},
 	"email-routing-subdomains": {
 		"false": 100
 	},
 	"email-routing-workers-migration": {
-		"false": 100
+		"true": 25,
+		"false": 76
 	},
 	"email-sending-account-nav": {
 		"false": 100
@@ -1247,6 +1249,9 @@
 	},
 	"uc-decouple-io": {
 		"true": 100
+	},
+	"uc-product-recommendations-enabled": {
+		"false": 100
 	},
 	"ui-last-account-redirect-with-orgs": {
 		"false": 100
