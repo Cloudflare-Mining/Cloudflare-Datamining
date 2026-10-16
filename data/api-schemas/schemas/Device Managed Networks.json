@@ -977,32 +977,37 @@
 						"type": "object",
 						"properties": {
 							"config": {
-								"description": "The configuration object containing information for the WARP client to detect the managed network.",
-								"type": "object",
-								"example": {
-									"sha256": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-									"tls_sockaddr": "foo.bar:1234"
-								},
-								"oneOf": [
+								"allOf": [
 									{
+										"description": "The configuration object containing information for the WARP client to detect the managed network.",
 										"type": "object",
-										"properties": {
-											"sha256": {
-												"description": "The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.",
-												"type": "string",
-												"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"
-											},
-											"tls_sockaddr": {
-												"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
-												"type": "string",
-												"example": "foobar:1234"
-											}
+										"example": {
+											"sha256": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
+											"tls_sockaddr": "foo.bar:1234"
 										},
-										"required": [
-											"tls_sockaddr"
+										"oneOf": [
+											{
+												"type": "object",
+												"properties": {
+													"sha256": {
+														"description": "The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.",
+														"type": "string",
+														"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"
+													},
+													"tls_sockaddr": {
+														"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
+														"type": "string",
+														"example": "foobar:1234"
+													}
+												},
+												"required": [
+													"tls_sockaddr"
+												]
+											}
 										]
 									}
-								]
+								],
+								"x-fern-property-name": "network-config"
 							},
 							"name": {
 								"description": "The name of the device managed network. This name must be unique.",
@@ -1346,32 +1351,37 @@
 						"type": "object",
 						"properties": {
 							"config": {
-								"description": "The configuration object containing information for the WARP client to detect the managed network.",
-								"type": "object",
-								"example": {
-									"sha256": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-									"tls_sockaddr": "foo.bar:1234"
-								},
-								"oneOf": [
+								"allOf": [
 									{
+										"description": "The configuration object containing information for the WARP client to detect the managed network.",
 										"type": "object",
-										"properties": {
-											"sha256": {
-												"description": "The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.",
-												"type": "string",
-												"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"
-											},
-											"tls_sockaddr": {
-												"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
-												"type": "string",
-												"example": "foobar:1234"
-											}
+										"example": {
+											"sha256": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
+											"tls_sockaddr": "foo.bar:1234"
 										},
-										"required": [
-											"tls_sockaddr"
+										"oneOf": [
+											{
+												"type": "object",
+												"properties": {
+													"sha256": {
+														"description": "The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.",
+														"type": "string",
+														"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"
+													},
+													"tls_sockaddr": {
+														"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
+														"type": "string",
+														"example": "foobar:1234"
+													}
+												},
+												"required": [
+													"tls_sockaddr"
+												]
+											}
 										]
 									}
-								]
+								],
+								"x-fern-property-name": "network-config"
 							},
 							"name": {
 								"description": "The name of the device managed network. This name must be unique.",

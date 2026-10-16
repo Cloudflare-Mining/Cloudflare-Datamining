@@ -3544,7 +3544,7 @@
 	"POST /accounts/{account_id}/ai-gateway/billing/topup/config": {
 		"operationId": "aig-billing-set-topup-config",
 		"summary": "Set auto top-up configuration",
-		"description": "Configure auto top-up with a balance threshold and top-up amount. Dashboard sessions only: API token, OAuth, and service credentials are rejected with 403.",
+		"description": "Configure auto top-up with a balance threshold and top-up amount. Requests with a payment method first return a SetupIntent and save the configuration only after the confirmed SetupIntent is submitted. Dashboard sessions only: API token, OAuth, and service credentials are rejected with 403.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3561,25 +3561,77 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"type": "object",
-						"properties": {
-							"amount": {
-								"description": "Auto top-up amount in cents (min 1000).",
-								"type": "integer",
-								"example": 5000,
-								"minimum": 1000
+						"anyOf": [
+							{
+								"additionalProperties": false,
+								"properties": {
+									"amount": {
+										"description": "Auto top-up amount in cents (min 1000).",
+										"type": "integer",
+										"example": 5000,
+										"minimum": 1000
+									},
+									"threshold": {
+										"description": "Balance threshold in cents that triggers auto top-up (min 500).",
+										"type": "integer",
+										"example": 500,
+										"minimum": 500
+									}
+								},
+								"required": [
+									"threshold",
+									"amount"
+								],
+								"type": "object"
 							},
-							"threshold": {
-								"description": "Balance threshold in cents that triggers auto top-up (min 500).",
-								"type": "integer",
-								"example": 500,
-								"minimum": 500
+							{
+								"additionalProperties": false,
+								"properties": {
+									"amount": {
+										"description": "Auto top-up amount in cents (min 1000).",
+										"type": "integer",
+										"example": 5000,
+										"minimum": 1000
+									},
+									"consent_version": {
+										"description": "Version of the off-session auto-top-up consent accepted by the user.",
+										"type": "string",
+										"example": "auto-topup-v1",
+										"maxLength": 100,
+										"minLength": 1
+									},
+									"payment_method_id": {
+										"description": "Card to authenticate for future automatic top-ups.",
+										"type": "string",
+										"example": "pm_123"
+									},
+									"setup_idempotency_key": {
+										"description": "Client-generated UUID that makes SetupIntent creation safe to retry.",
+										"type": "string",
+										"format": "uuid",
+										"example": "f6af84c0-12d6-4c46-840d-2e4934df85e1"
+									},
+									"setup_intent_id": {
+										"description": "Successfully confirmed SetupIntent returned by the initial request.",
+										"type": "string",
+										"example": "seti_123"
+									},
+									"threshold": {
+										"description": "Balance threshold in cents that triggers auto top-up (min 500).",
+										"type": "integer",
+										"example": 500,
+										"minimum": 500
+									}
+								},
+								"required": [
+									"threshold",
+									"amount",
+									"payment_method_id",
+									"setup_idempotency_key",
+									"consent_version"
+								],
+								"type": "object"
 							}
-						},
-						"additionalProperties": false,
-						"required": [
-							"threshold",
-							"amount"
 						]
 					}
 				}
@@ -3587,7 +3639,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Auto top-up configuration saved.",
+				"description": "Auto top-up configuration saved, or card authentication required.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3630,18 +3682,77 @@
 									}
 								},
 								"result": {
-									"type": "object",
-									"properties": {
-										"amount": {
-											"type": "number"
+									"anyOf": [
+										{
+											"additionalProperties": false,
+											"properties": {
+												"amount": {
+													"type": "number"
+												},
+												"threshold": {
+													"type": "number"
+												}
+											},
+											"required": [
+												"threshold",
+												"amount"
+											],
+											"type": "object"
 										},
-										"threshold": {
-											"type": "number"
+										{
+											"additionalProperties": false,
+											"properties": {
+												"amount": {
+													"type": "number"
+												},
+												"status": {
+													"type": "string",
+													"enum": [
+														"configured"
+													]
+												},
+												"threshold": {
+													"type": "number"
+												}
+											},
+											"required": [
+												"threshold",
+												"amount",
+												"status"
+											],
+											"type": "object"
+										},
+										{
+											"additionalProperties": false,
+											"properties": {
+												"amount": {
+													"type": "number"
+												},
+												"client_secret": {
+													"type": "string"
+												},
+												"setup_intent_id": {
+													"type": "string"
+												},
+												"status": {
+													"type": "string",
+													"enum": [
+														"requires_action"
+													]
+												},
+												"threshold": {
+													"type": "number"
+												}
+											},
+											"required": [
+												"threshold",
+												"amount",
+												"status",
+												"setup_intent_id",
+												"client_secret"
+											],
+											"type": "object"
 										}
-									},
-									"required": [
-										"threshold",
-										"amount"
 									]
 								},
 								"result_info": {
@@ -3686,6 +3797,51 @@
 			},
 			"400": {
 				"description": "Bad request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"402": {
+				"description": "Payment required — the payment method was declined during activation.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3776,6 +3932,51 @@
 			},
 			"404": {
 				"description": "Not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Card setup is incomplete or already used, the default payment method changed, or synchronous activation disabled auto top-up.",
 				"content": {
 					"application/json": {
 						"schema": {

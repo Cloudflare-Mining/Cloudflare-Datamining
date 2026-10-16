@@ -2596,6 +2596,7 @@
 															"allowed": {
 																"description": "Object specifying allowed origins, methods and headers for this CORS rule.",
 																"type": "object",
+																"additionalProperties": false,
 																"properties": {
 																	"headers": {
 																		"description": "Specifies the value for the Access-Control-Allow-Headers header R2 sets when requesting objects in this bucket from a browser. Cross-origin requests that include custom headers (e.g. x-user-id) should specify these headers as AllowedHeaders.",
@@ -2658,6 +2659,7 @@
 																"x-auditable": true
 															}
 														},
+														"additionalProperties": false,
 														"required": [
 															"allowed"
 														]
@@ -7915,6 +7917,7 @@
 										"allowed": {
 											"description": "Object specifying allowed origins, methods and headers for this CORS rule.",
 											"type": "object",
+											"additionalProperties": false,
 											"properties": {
 												"headers": {
 													"description": "Specifies the value for the Access-Control-Allow-Headers header R2 sets when requesting objects in this bucket from a browser. Cross-origin requests that include custom headers (e.g. x-user-id) should specify these headers as AllowedHeaders.",
@@ -7977,6 +7980,7 @@
 											"x-auditable": true
 										}
 									},
+									"additionalProperties": false,
 									"required": [
 										"allowed"
 									]

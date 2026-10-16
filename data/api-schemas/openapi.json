@@ -487385,7 +487385,7 @@
 			"post": {
 				"operationId": "aig-billing-set-topup-config",
 				"summary": "Set auto top-up configuration",
-				"description": "Configure auto top-up with a balance threshold and top-up amount. Dashboard sessions only: API token, OAuth, and service credentials are rejected with 403.",
+				"description": "Configure auto top-up with a balance threshold and top-up amount. Requests with a payment method first return a SetupIntent and save the configuration only after the confirmed SetupIntent is submitted. Dashboard sessions only: API token, OAuth, and service credentials are rejected with 403.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -487402,25 +487402,77 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"type": "object",
-								"properties": {
-									"amount": {
-										"description": "Auto top-up amount in cents (min 1000).",
-										"type": "integer",
-										"example": 5000,
-										"minimum": 1000
+								"anyOf": [
+									{
+										"additionalProperties": false,
+										"properties": {
+											"amount": {
+												"description": "Auto top-up amount in cents (min 1000).",
+												"type": "integer",
+												"example": 5000,
+												"minimum": 1000
+											},
+											"threshold": {
+												"description": "Balance threshold in cents that triggers auto top-up (min 500).",
+												"type": "integer",
+												"example": 500,
+												"minimum": 500
+											}
+										},
+										"required": [
+											"threshold",
+											"amount"
+										],
+										"type": "object"
 									},
-									"threshold": {
-										"description": "Balance threshold in cents that triggers auto top-up (min 500).",
-										"type": "integer",
-										"example": 500,
-										"minimum": 500
+									{
+										"additionalProperties": false,
+										"properties": {
+											"amount": {
+												"description": "Auto top-up amount in cents (min 1000).",
+												"type": "integer",
+												"example": 5000,
+												"minimum": 1000
+											},
+											"consent_version": {
+												"description": "Version of the off-session auto-top-up consent accepted by the user.",
+												"type": "string",
+												"example": "auto-topup-v1",
+												"maxLength": 100,
+												"minLength": 1
+											},
+											"payment_method_id": {
+												"description": "Card to authenticate for future automatic top-ups.",
+												"type": "string",
+												"example": "pm_123"
+											},
+											"setup_idempotency_key": {
+												"description": "Client-generated UUID that makes SetupIntent creation safe to retry.",
+												"type": "string",
+												"format": "uuid",
+												"example": "f6af84c0-12d6-4c46-840d-2e4934df85e1"
+											},
+											"setup_intent_id": {
+												"description": "Successfully confirmed SetupIntent returned by the initial request.",
+												"type": "string",
+												"example": "seti_123"
+											},
+											"threshold": {
+												"description": "Balance threshold in cents that triggers auto top-up (min 500).",
+												"type": "integer",
+												"example": 500,
+												"minimum": 500
+											}
+										},
+										"required": [
+											"threshold",
+											"amount",
+											"payment_method_id",
+											"setup_idempotency_key",
+											"consent_version"
+										],
+										"type": "object"
 									}
-								},
-								"additionalProperties": false,
-								"required": [
-									"threshold",
-									"amount"
 								]
 							}
 						}
@@ -487428,7 +487480,7 @@
 				},
 				"responses": {
 					"200": {
-						"description": "Auto top-up configuration saved.",
+						"description": "Auto top-up configuration saved, or card authentication required.",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -487471,18 +487523,77 @@
 											}
 										},
 										"result": {
-											"type": "object",
-											"properties": {
-												"amount": {
-													"type": "number"
+											"anyOf": [
+												{
+													"additionalProperties": false,
+													"properties": {
+														"amount": {
+															"type": "number"
+														},
+														"threshold": {
+															"type": "number"
+														}
+													},
+													"required": [
+														"threshold",
+														"amount"
+													],
+													"type": "object"
 												},
-												"threshold": {
-													"type": "number"
+												{
+													"additionalProperties": false,
+													"properties": {
+														"amount": {
+															"type": "number"
+														},
+														"status": {
+															"type": "string",
+															"enum": [
+																"configured"
+															]
+														},
+														"threshold": {
+															"type": "number"
+														}
+													},
+													"required": [
+														"threshold",
+														"amount",
+														"status"
+													],
+													"type": "object"
+												},
+												{
+													"additionalProperties": false,
+													"properties": {
+														"amount": {
+															"type": "number"
+														},
+														"client_secret": {
+															"type": "string"
+														},
+														"setup_intent_id": {
+															"type": "string"
+														},
+														"status": {
+															"type": "string",
+															"enum": [
+																"requires_action"
+															]
+														},
+														"threshold": {
+															"type": "number"
+														}
+													},
+													"required": [
+														"threshold",
+														"amount",
+														"status",
+														"setup_intent_id",
+														"client_secret"
+													],
+													"type": "object"
 												}
-											},
-											"required": [
-												"threshold",
-												"amount"
 											]
 										},
 										"result_info": {
@@ -487527,6 +487638,51 @@
 					},
 					"400": {
 						"description": "Bad request.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										},
+										"result": {
+											"type": "object",
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors"
+									]
+								}
+							}
+						}
+					},
+					"402": {
+						"description": "Payment required — the payment method was declined during activation.",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -487617,6 +487773,51 @@
 					},
 					"404": {
 						"description": "Not found.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										},
+										"result": {
+											"type": "object",
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors"
+									]
+								}
+							}
+						}
+					},
+					"409": {
+						"description": "Card setup is incomplete or already used, the default payment method changed, or synchronous activation disabled auto top-up.",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -792960,32 +793161,37 @@
 								"type": "object",
 								"properties": {
 									"config": {
-										"description": "The configuration object containing information for the WARP client to detect the managed network.",
-										"type": "object",
-										"example": {
-											"sha256": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-											"tls_sockaddr": "foo.bar:1234"
-										},
-										"oneOf": [
+										"allOf": [
 											{
+												"description": "The configuration object containing information for the WARP client to detect the managed network.",
 												"type": "object",
-												"properties": {
-													"sha256": {
-														"description": "The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.",
-														"type": "string",
-														"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"
-													},
-													"tls_sockaddr": {
-														"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
-														"type": "string",
-														"example": "foobar:1234"
-													}
+												"example": {
+													"sha256": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
+													"tls_sockaddr": "foo.bar:1234"
 												},
-												"required": [
-													"tls_sockaddr"
+												"oneOf": [
+													{
+														"type": "object",
+														"properties": {
+															"sha256": {
+																"description": "The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.",
+																"type": "string",
+																"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"
+															},
+															"tls_sockaddr": {
+																"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
+																"type": "string",
+																"example": "foobar:1234"
+															}
+														},
+														"required": [
+															"tls_sockaddr"
+														]
+													}
 												]
 											}
-										]
+										],
+										"x-fern-property-name": "network-config"
 									},
 									"name": {
 										"description": "The name of the device managed network. This name must be unique.",
@@ -793969,32 +794175,37 @@
 								"type": "object",
 								"properties": {
 									"config": {
-										"description": "The configuration object containing information for the WARP client to detect the managed network.",
-										"type": "object",
-										"example": {
-											"sha256": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-											"tls_sockaddr": "foo.bar:1234"
-										},
-										"oneOf": [
+										"allOf": [
 											{
+												"description": "The configuration object containing information for the WARP client to detect the managed network.",
 												"type": "object",
-												"properties": {
-													"sha256": {
-														"description": "The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.",
-														"type": "string",
-														"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"
-													},
-													"tls_sockaddr": {
-														"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
-														"type": "string",
-														"example": "foobar:1234"
-													}
+												"example": {
+													"sha256": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
+													"tls_sockaddr": "foo.bar:1234"
 												},
-												"required": [
-													"tls_sockaddr"
+												"oneOf": [
+													{
+														"type": "object",
+														"properties": {
+															"sha256": {
+																"description": "The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.",
+																"type": "string",
+																"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"
+															},
+															"tls_sockaddr": {
+																"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
+																"type": "string",
+																"example": "foobar:1234"
+															}
+														},
+														"required": [
+															"tls_sockaddr"
+														]
+													}
 												]
 											}
-										]
+										],
+										"x-fern-property-name": "network-config"
 									},
 									"name": {
 										"description": "The name of the device managed network. This name must be unique.",
@@ -815905,249 +816116,254 @@
 								"type": "object",
 								"properties": {
 									"config": {
-										"description": "The configuration object containing third-party integration information.",
-										"type": "object",
-										"example": {
-											"api_url": "https://as123.awmdm.com/API",
-											"auth_url": "https://na.uemauth.workspaceone.com/connect/token",
-											"client_id": "example client id",
-											"client_secret": "example client secret"
-										},
-										"oneOf": [
+										"allOf": [
 											{
+												"description": "The configuration object containing third-party integration information.",
 												"type": "object",
-												"properties": {
-													"api_url": {
-														"description": "The Workspace One API URL provided in the Workspace One Admin Dashboard.",
-														"type": "string",
-														"example": "https://as123.awmdm.com/API"
-													},
-													"auth_url": {
-														"description": "The Workspace One Authorization URL depending on your region.",
-														"type": "string",
-														"example": "https://na.uemauth.workspaceone.com/connect/token"
-													},
-													"client_id": {
-														"description": "The Workspace One client ID provided in the Workspace One Admin Dashboard.",
-														"type": "string",
-														"example": "example client id"
-													},
-													"client_secret": {
-														"description": "The Workspace One client secret provided in the Workspace One Admin Dashboard.",
-														"type": "string",
-														"example": "example client secret",
-														"x-sensitive": true
-													}
+												"example": {
+													"api_url": "https://as123.awmdm.com/API",
+													"auth_url": "https://na.uemauth.workspaceone.com/connect/token",
+													"client_id": "example client id",
+													"client_secret": "example client secret"
 												},
-												"required": [
-													"api_url",
-													"auth_url",
-													"client_id",
-													"client_secret"
-												],
-												"title": "Workspace One Config"
-											},
-											{
-												"type": "object",
-												"properties": {
-													"api_url": {
-														"description": "The Crowdstrike API URL.",
-														"type": "string",
-														"example": "https://api.us-2.crowdstrike.com",
-														"x-auditable": true
+												"oneOf": [
+													{
+														"type": "object",
+														"properties": {
+															"api_url": {
+																"description": "The Workspace One API URL provided in the Workspace One Admin Dashboard.",
+																"type": "string",
+																"example": "https://as123.awmdm.com/API"
+															},
+															"auth_url": {
+																"description": "The Workspace One Authorization URL depending on your region.",
+																"type": "string",
+																"example": "https://na.uemauth.workspaceone.com/connect/token"
+															},
+															"client_id": {
+																"description": "The Workspace One client ID provided in the Workspace One Admin Dashboard.",
+																"type": "string",
+																"example": "example client id"
+															},
+															"client_secret": {
+																"description": "The Workspace One client secret provided in the Workspace One Admin Dashboard.",
+																"type": "string",
+																"example": "example client secret",
+																"x-sensitive": true
+															}
+														},
+														"required": [
+															"api_url",
+															"auth_url",
+															"client_id",
+															"client_secret"
+														],
+														"title": "Workspace One Config"
 													},
-													"client_id": {
-														"description": "The Crowdstrike client ID.",
-														"type": "string",
-														"example": "example client id"
+													{
+														"type": "object",
+														"properties": {
+															"api_url": {
+																"description": "The Crowdstrike API URL.",
+																"type": "string",
+																"example": "https://api.us-2.crowdstrike.com",
+																"x-auditable": true
+															},
+															"client_id": {
+																"description": "The Crowdstrike client ID.",
+																"type": "string",
+																"example": "example client id"
+															},
+															"client_secret": {
+																"description": "The Crowdstrike client secret.",
+																"type": "string",
+																"example": "example client secret",
+																"x-sensitive": true
+															},
+															"customer_id": {
+																"description": "The Crowdstrike customer ID.",
+																"type": "string",
+																"example": "example customer id",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"api_url",
+															"customer_id",
+															"client_id",
+															"client_secret"
+														],
+														"title": "Crowdstrike Config"
 													},
-													"client_secret": {
-														"description": "The Crowdstrike client secret.",
-														"type": "string",
-														"example": "example client secret",
-														"x-sensitive": true
+													{
+														"type": "object",
+														"properties": {
+															"api_url": {
+																"description": "The Uptycs API URL.",
+																"type": "string",
+																"example": "rnd.uptycs.io",
+																"x-auditable": true
+															},
+															"client_key": {
+																"description": "The Uptycs client secret.",
+																"type": "string",
+																"example": "example client key",
+																"x-sensitive": true
+															},
+															"client_secret": {
+																"description": "The Uptycs client secret.",
+																"type": "string",
+																"example": "example client secret",
+																"x-sensitive": true
+															},
+															"customer_id": {
+																"description": "The Uptycs customer ID.",
+																"type": "string",
+																"example": "example customer id"
+															}
+														},
+														"required": [
+															"api_url",
+															"client_key",
+															"customer_id",
+															"client_secret"
+														],
+														"title": "Uptycs Config"
 													},
-													"customer_id": {
-														"description": "The Crowdstrike customer ID.",
-														"type": "string",
-														"example": "example customer id",
-														"x-auditable": true
+													{
+														"type": "object",
+														"properties": {
+															"client_id": {
+																"description": "The Intune client ID.",
+																"type": "string",
+																"example": "example client id"
+															},
+															"client_secret": {
+																"description": "The Intune client secret.",
+																"type": "string",
+																"example": "example client secret",
+																"x-sensitive": true
+															},
+															"customer_id": {
+																"description": "The Intune customer ID.",
+																"type": "string",
+																"example": "example customer id"
+															}
+														},
+														"required": [
+															"customer_id",
+															"client_id",
+															"client_secret"
+														],
+														"title": "Intune Config"
+													},
+													{
+														"type": "object",
+														"properties": {
+															"client_id": {
+																"description": "The Kolide client ID.",
+																"type": "string",
+																"example": "example client id"
+															},
+															"client_secret": {
+																"description": "The Kolide client secret.",
+																"type": "string",
+																"example": "example client secret",
+																"x-sensitive": true
+															}
+														},
+														"required": [
+															"client_id",
+															"client_secret"
+														],
+														"title": "Kolide Config"
+													},
+													{
+														"type": "object",
+														"properties": {
+															"access_client_id": {
+																"description": "If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`.",
+																"type": "string",
+																"example": "88bf3b6d86161464f6509f7219099e57.access"
+															},
+															"access_client_secret": {
+																"description": "If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`.",
+																"type": "string",
+																"example": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5",
+																"x-sensitive": true
+															},
+															"api_url": {
+																"description": "The Tanium API URL.",
+																"type": "string",
+																"example": "https://dummy-tanium-api.cloudflare.com/plugin/products/gateway/graphql",
+																"x-auditable": true
+															},
+															"client_secret": {
+																"description": "The Tanium client secret.",
+																"type": "string",
+																"example": "example client secret",
+																"x-sensitive": true
+															}
+														},
+														"required": [
+															"api_url",
+															"client_secret"
+														],
+														"title": "Tanium Config"
+													},
+													{
+														"type": "object",
+														"properties": {
+															"api_url": {
+																"description": "The SentinelOne S2S API URL.",
+																"type": "string",
+																"example": "https://example.sentinelone.net"
+															},
+															"client_secret": {
+																"description": "The SentinelOne S2S client secret.",
+																"type": "string",
+																"example": "example client secret",
+																"x-sensitive": true
+															}
+														},
+														"required": [
+															"api_url",
+															"client_secret"
+														],
+														"title": "SentinelOne S2S Config"
+													},
+													{
+														"type": "object",
+														"properties": {
+															"access_client_id": {
+																"description": "This id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`.",
+																"type": "string",
+																"example": "88bf3b6d86161464f6509f7219099e57.access"
+															},
+															"access_client_secret": {
+																"description": "This secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`.",
+																"type": "string",
+																"example": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5",
+																"x-sensitive": true
+															},
+															"api_url": {
+																"description": "The Custom Device Posture Integration  API URL.",
+																"type": "string",
+																"example": "https://example.custom-s2s.com",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"api_url",
+															"access_client_id",
+															"access_client_secret"
+														],
+														"title": "Custom Device Posture Integration Config"
 													}
-												},
-												"required": [
-													"api_url",
-													"customer_id",
-													"client_id",
-													"client_secret"
-												],
-												"title": "Crowdstrike Config"
-											},
-											{
-												"type": "object",
-												"properties": {
-													"api_url": {
-														"description": "The Uptycs API URL.",
-														"type": "string",
-														"example": "rnd.uptycs.io",
-														"x-auditable": true
-													},
-													"client_key": {
-														"description": "The Uptycs client secret.",
-														"type": "string",
-														"example": "example client key",
-														"x-sensitive": true
-													},
-													"client_secret": {
-														"description": "The Uptycs client secret.",
-														"type": "string",
-														"example": "example client secret",
-														"x-sensitive": true
-													},
-													"customer_id": {
-														"description": "The Uptycs customer ID.",
-														"type": "string",
-														"example": "example customer id"
-													}
-												},
-												"required": [
-													"api_url",
-													"client_key",
-													"customer_id",
-													"client_secret"
-												],
-												"title": "Uptycs Config"
-											},
-											{
-												"type": "object",
-												"properties": {
-													"client_id": {
-														"description": "The Intune client ID.",
-														"type": "string",
-														"example": "example client id"
-													},
-													"client_secret": {
-														"description": "The Intune client secret.",
-														"type": "string",
-														"example": "example client secret",
-														"x-sensitive": true
-													},
-													"customer_id": {
-														"description": "The Intune customer ID.",
-														"type": "string",
-														"example": "example customer id"
-													}
-												},
-												"required": [
-													"customer_id",
-													"client_id",
-													"client_secret"
-												],
-												"title": "Intune Config"
-											},
-											{
-												"type": "object",
-												"properties": {
-													"client_id": {
-														"description": "The Kolide client ID.",
-														"type": "string",
-														"example": "example client id"
-													},
-													"client_secret": {
-														"description": "The Kolide client secret.",
-														"type": "string",
-														"example": "example client secret",
-														"x-sensitive": true
-													}
-												},
-												"required": [
-													"client_id",
-													"client_secret"
-												],
-												"title": "Kolide Config"
-											},
-											{
-												"type": "object",
-												"properties": {
-													"access_client_id": {
-														"description": "If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`.",
-														"type": "string",
-														"example": "88bf3b6d86161464f6509f7219099e57.access"
-													},
-													"access_client_secret": {
-														"description": "If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`.",
-														"type": "string",
-														"example": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5",
-														"x-sensitive": true
-													},
-													"api_url": {
-														"description": "The Tanium API URL.",
-														"type": "string",
-														"example": "https://dummy-tanium-api.cloudflare.com/plugin/products/gateway/graphql",
-														"x-auditable": true
-													},
-													"client_secret": {
-														"description": "The Tanium client secret.",
-														"type": "string",
-														"example": "example client secret",
-														"x-sensitive": true
-													}
-												},
-												"required": [
-													"api_url",
-													"client_secret"
-												],
-												"title": "Tanium Config"
-											},
-											{
-												"type": "object",
-												"properties": {
-													"api_url": {
-														"description": "The SentinelOne S2S API URL.",
-														"type": "string",
-														"example": "https://example.sentinelone.net"
-													},
-													"client_secret": {
-														"description": "The SentinelOne S2S client secret.",
-														"type": "string",
-														"example": "example client secret",
-														"x-sensitive": true
-													}
-												},
-												"required": [
-													"api_url",
-													"client_secret"
-												],
-												"title": "SentinelOne S2S Config"
-											},
-											{
-												"type": "object",
-												"properties": {
-													"access_client_id": {
-														"description": "This id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`.",
-														"type": "string",
-														"example": "88bf3b6d86161464f6509f7219099e57.access"
-													},
-													"access_client_secret": {
-														"description": "This secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`.",
-														"type": "string",
-														"example": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5",
-														"x-sensitive": true
-													},
-													"api_url": {
-														"description": "The Custom Device Posture Integration  API URL.",
-														"type": "string",
-														"example": "https://example.custom-s2s.com",
-														"x-auditable": true
-													}
-												},
-												"required": [
-													"api_url",
-													"access_client_id",
-													"access_client_secret"
-												],
-												"title": "Custom Device Posture Integration Config"
+												]
 											}
-										]
+										],
+										"x-fern-property-name": "integration-config"
 									},
 									"interval": {
 										"description": "The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).",
@@ -817109,249 +817325,254 @@
 								"type": "object",
 								"properties": {
 									"config": {
-										"description": "The configuration object containing third-party integration information.",
-										"type": "object",
-										"example": {
-											"api_url": "https://as123.awmdm.com/API",
-											"auth_url": "https://na.uemauth.workspaceone.com/connect/token",
-											"client_id": "example client id",
-											"client_secret": "example client secret"
-										},
-										"oneOf": [
+										"allOf": [
 											{
+												"description": "The configuration object containing third-party integration information.",
 												"type": "object",
-												"properties": {
-													"api_url": {
-														"description": "The Workspace One API URL provided in the Workspace One Admin Dashboard.",
-														"type": "string",
-														"example": "https://as123.awmdm.com/API"
-													},
-													"auth_url": {
-														"description": "The Workspace One Authorization URL depending on your region.",
-														"type": "string",
-														"example": "https://na.uemauth.workspaceone.com/connect/token"
-													},
-													"client_id": {
-														"description": "The Workspace One client ID provided in the Workspace One Admin Dashboard.",
-														"type": "string",
-														"example": "example client id"
-													},
-													"client_secret": {
-														"description": "The Workspace One client secret provided in the Workspace One Admin Dashboard.",
-														"type": "string",
-														"example": "example client secret",
-														"x-sensitive": true
-													}
+												"example": {
+													"api_url": "https://as123.awmdm.com/API",
+													"auth_url": "https://na.uemauth.workspaceone.com/connect/token",
+													"client_id": "example client id",
+													"client_secret": "example client secret"
 												},
-												"required": [
-													"api_url",
-													"auth_url",
-													"client_id",
-													"client_secret"
-												],
-												"title": "Workspace One Config"
-											},
-											{
-												"type": "object",
-												"properties": {
-													"api_url": {
-														"description": "The Crowdstrike API URL.",
-														"type": "string",
-														"example": "https://api.us-2.crowdstrike.com",
-														"x-auditable": true
+												"oneOf": [
+													{
+														"type": "object",
+														"properties": {
+															"api_url": {
+																"description": "The Workspace One API URL provided in the Workspace One Admin Dashboard.",
+																"type": "string",
+																"example": "https://as123.awmdm.com/API"
+															},
+															"auth_url": {
+																"description": "The Workspace One Authorization URL depending on your region.",
+																"type": "string",
+																"example": "https://na.uemauth.workspaceone.com/connect/token"
+															},
+															"client_id": {
+																"description": "The Workspace One client ID provided in the Workspace One Admin Dashboard.",
+																"type": "string",
+																"example": "example client id"
+															},
+															"client_secret": {
+																"description": "The Workspace One client secret provided in the Workspace One Admin Dashboard.",
+																"type": "string",
+																"example": "example client secret",
+																"x-sensitive": true
+															}
+														},
+														"required": [
+															"api_url",
+															"auth_url",
+															"client_id",
+															"client_secret"
+														],
+														"title": "Workspace One Config"
 													},
-													"client_id": {
-														"description": "The Crowdstrike client ID.",
-														"type": "string",
-														"example": "example client id"
+													{
+														"type": "object",
+														"properties": {
+															"api_url": {
+																"description": "The Crowdstrike API URL.",
+																"type": "string",
+																"example": "https://api.us-2.crowdstrike.com",
+																"x-auditable": true
+															},
+															"client_id": {
+																"description": "The Crowdstrike client ID.",
+																"type": "string",
+																"example": "example client id"
+															},
+															"client_secret": {
+																"description": "The Crowdstrike client secret.",
+																"type": "string",
+																"example": "example client secret",
+																"x-sensitive": true
+															},
+															"customer_id": {
+																"description": "The Crowdstrike customer ID.",
+																"type": "string",
+																"example": "example customer id",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"api_url",
+															"customer_id",
+															"client_id",
+															"client_secret"
+														],
+														"title": "Crowdstrike Config"
 													},
-													"client_secret": {
-														"description": "The Crowdstrike client secret.",
-														"type": "string",
-														"example": "example client secret",
-														"x-sensitive": true
+													{
+														"type": "object",
+														"properties": {
+															"api_url": {
+																"description": "The Uptycs API URL.",
+																"type": "string",
+																"example": "rnd.uptycs.io",
+																"x-auditable": true
+															},
+															"client_key": {
+																"description": "The Uptycs client secret.",
+																"type": "string",
+																"example": "example client key",
+																"x-sensitive": true
+															},
+															"client_secret": {
+																"description": "The Uptycs client secret.",
+																"type": "string",
+																"example": "example client secret",
+																"x-sensitive": true
+															},
+															"customer_id": {
+																"description": "The Uptycs customer ID.",
+																"type": "string",
+																"example": "example customer id"
+															}
+														},
+														"required": [
+															"api_url",
+															"client_key",
+															"customer_id",
+															"client_secret"
+														],
+														"title": "Uptycs Config"
 													},
-													"customer_id": {
-														"description": "The Crowdstrike customer ID.",
-														"type": "string",
-														"example": "example customer id",
-														"x-auditable": true
+													{
+														"type": "object",
+														"properties": {
+															"client_id": {
+																"description": "The Intune client ID.",
+																"type": "string",
+																"example": "example client id"
+															},
+															"client_secret": {
+																"description": "The Intune client secret.",
+																"type": "string",
+																"example": "example client secret",
+																"x-sensitive": true
+															},
+															"customer_id": {
+																"description": "The Intune customer ID.",
+																"type": "string",
+																"example": "example customer id"
+															}
+														},
+														"required": [
+															"customer_id",
+															"client_id",
+															"client_secret"
+														],
+														"title": "Intune Config"
+													},
+													{
+														"type": "object",
+														"properties": {
+															"client_id": {
+																"description": "The Kolide client ID.",
+																"type": "string",
+																"example": "example client id"
+															},
+															"client_secret": {
+																"description": "The Kolide client secret.",
+																"type": "string",
+																"example": "example client secret",
+																"x-sensitive": true
+															}
+														},
+														"required": [
+															"client_id",
+															"client_secret"
+														],
+														"title": "Kolide Config"
+													},
+													{
+														"type": "object",
+														"properties": {
+															"access_client_id": {
+																"description": "If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`.",
+																"type": "string",
+																"example": "88bf3b6d86161464f6509f7219099e57.access"
+															},
+															"access_client_secret": {
+																"description": "If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`.",
+																"type": "string",
+																"example": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5",
+																"x-sensitive": true
+															},
+															"api_url": {
+																"description": "The Tanium API URL.",
+																"type": "string",
+																"example": "https://dummy-tanium-api.cloudflare.com/plugin/products/gateway/graphql",
+																"x-auditable": true
+															},
+															"client_secret": {
+																"description": "The Tanium client secret.",
+																"type": "string",
+																"example": "example client secret",
+																"x-sensitive": true
+															}
+														},
+														"required": [
+															"api_url",
+															"client_secret"
+														],
+														"title": "Tanium Config"
+													},
+													{
+														"type": "object",
+														"properties": {
+															"api_url": {
+																"description": "The SentinelOne S2S API URL.",
+																"type": "string",
+																"example": "https://example.sentinelone.net"
+															},
+															"client_secret": {
+																"description": "The SentinelOne S2S client secret.",
+																"type": "string",
+																"example": "example client secret",
+																"x-sensitive": true
+															}
+														},
+														"required": [
+															"api_url",
+															"client_secret"
+														],
+														"title": "SentinelOne S2S Config"
+													},
+													{
+														"type": "object",
+														"properties": {
+															"access_client_id": {
+																"description": "This id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`.",
+																"type": "string",
+																"example": "88bf3b6d86161464f6509f7219099e57.access"
+															},
+															"access_client_secret": {
+																"description": "This secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`.",
+																"type": "string",
+																"example": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5",
+																"x-sensitive": true
+															},
+															"api_url": {
+																"description": "The Custom Device Posture Integration  API URL.",
+																"type": "string",
+																"example": "https://example.custom-s2s.com",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"api_url",
+															"access_client_id",
+															"access_client_secret"
+														],
+														"title": "Custom Device Posture Integration Config"
 													}
-												},
-												"required": [
-													"api_url",
-													"customer_id",
-													"client_id",
-													"client_secret"
-												],
-												"title": "Crowdstrike Config"
-											},
-											{
-												"type": "object",
-												"properties": {
-													"api_url": {
-														"description": "The Uptycs API URL.",
-														"type": "string",
-														"example": "rnd.uptycs.io",
-														"x-auditable": true
-													},
-													"client_key": {
-														"description": "The Uptycs client secret.",
-														"type": "string",
-														"example": "example client key",
-														"x-sensitive": true
-													},
-													"client_secret": {
-														"description": "The Uptycs client secret.",
-														"type": "string",
-														"example": "example client secret",
-														"x-sensitive": true
-													},
-													"customer_id": {
-														"description": "The Uptycs customer ID.",
-														"type": "string",
-														"example": "example customer id"
-													}
-												},
-												"required": [
-													"api_url",
-													"client_key",
-													"customer_id",
-													"client_secret"
-												],
-												"title": "Uptycs Config"
-											},
-											{
-												"type": "object",
-												"properties": {
-													"client_id": {
-														"description": "The Intune client ID.",
-														"type": "string",
-														"example": "example client id"
-													},
-													"client_secret": {
-														"description": "The Intune client secret.",
-														"type": "string",
-														"example": "example client secret",
-														"x-sensitive": true
-													},
-													"customer_id": {
-														"description": "The Intune customer ID.",
-														"type": "string",
-														"example": "example customer id"
-													}
-												},
-												"required": [
-													"customer_id",
-													"client_id",
-													"client_secret"
-												],
-												"title": "Intune Config"
-											},
-											{
-												"type": "object",
-												"properties": {
-													"client_id": {
-														"description": "The Kolide client ID.",
-														"type": "string",
-														"example": "example client id"
-													},
-													"client_secret": {
-														"description": "The Kolide client secret.",
-														"type": "string",
-														"example": "example client secret",
-														"x-sensitive": true
-													}
-												},
-												"required": [
-													"client_id",
-													"client_secret"
-												],
-												"title": "Kolide Config"
-											},
-											{
-												"type": "object",
-												"properties": {
-													"access_client_id": {
-														"description": "If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`.",
-														"type": "string",
-														"example": "88bf3b6d86161464f6509f7219099e57.access"
-													},
-													"access_client_secret": {
-														"description": "If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`.",
-														"type": "string",
-														"example": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5",
-														"x-sensitive": true
-													},
-													"api_url": {
-														"description": "The Tanium API URL.",
-														"type": "string",
-														"example": "https://dummy-tanium-api.cloudflare.com/plugin/products/gateway/graphql",
-														"x-auditable": true
-													},
-													"client_secret": {
-														"description": "The Tanium client secret.",
-														"type": "string",
-														"example": "example client secret",
-														"x-sensitive": true
-													}
-												},
-												"required": [
-													"api_url",
-													"client_secret"
-												],
-												"title": "Tanium Config"
-											},
-											{
-												"type": "object",
-												"properties": {
-													"api_url": {
-														"description": "The SentinelOne S2S API URL.",
-														"type": "string",
-														"example": "https://example.sentinelone.net"
-													},
-													"client_secret": {
-														"description": "The SentinelOne S2S client secret.",
-														"type": "string",
-														"example": "example client secret",
-														"x-sensitive": true
-													}
-												},
-												"required": [
-													"api_url",
-													"client_secret"
-												],
-												"title": "SentinelOne S2S Config"
-											},
-											{
-												"type": "object",
-												"properties": {
-													"access_client_id": {
-														"description": "This id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`.",
-														"type": "string",
-														"example": "88bf3b6d86161464f6509f7219099e57.access"
-													},
-													"access_client_secret": {
-														"description": "This secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`.",
-														"type": "string",
-														"example": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5",
-														"x-sensitive": true
-													},
-													"api_url": {
-														"description": "The Custom Device Posture Integration  API URL.",
-														"type": "string",
-														"example": "https://example.custom-s2s.com",
-														"x-auditable": true
-													}
-												},
-												"required": [
-													"api_url",
-													"access_client_id",
-													"access_client_secret"
-												],
-												"title": "Custom Device Posture Integration Config"
+												]
 											}
-										]
+										],
+										"x-fern-property-name": "integration-config"
 									},
 									"interval": {
 										"description": "The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).",
@@ -1402033,6 +1402254,7 @@
 																	"allowed": {
 																		"description": "Object specifying allowed origins, methods and headers for this CORS rule.",
 																		"type": "object",
+																		"additionalProperties": false,
 																		"properties": {
 																			"headers": {
 																				"description": "Specifies the value for the Access-Control-Allow-Headers header R2 sets when requesting objects in this bucket from a browser. Cross-origin requests that include custom headers (e.g. x-user-id) should specify these headers as AllowedHeaders.",
@@ -1402095,6 +1402317,7 @@
 																		"x-auditable": true
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"allowed"
 																]
@@ -1402244,6 +1402467,7 @@
 												"allowed": {
 													"description": "Object specifying allowed origins, methods and headers for this CORS rule.",
 													"type": "object",
+													"additionalProperties": false,
 													"properties": {
 														"headers": {
 															"description": "Specifies the value for the Access-Control-Allow-Headers header R2 sets when requesting objects in this bucket from a browser. Cross-origin requests that include custom headers (e.g. x-user-id) should specify these headers as AllowedHeaders.",
@@ -1402306,6 +1402530,7 @@
 													"x-auditable": true
 												}
 											},
+											"additionalProperties": false,
 											"required": [
 												"allowed"
 											]
@@ -2395772,7 +2395997,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "hostnames.settings.tls",
+				"x-fern-sdk-group-name": "zones.hostnames.settings.tls",
 				"x-fern-sdk-method-name": "get"
 			}
 		},
@@ -2396316,7 +2396541,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "hostnames.settings.tls",
+				"x-fern-sdk-group-name": "zones.hostnames.settings.tls",
 				"x-fern-sdk-method-name": "delete"
 			},
 			"get": {
@@ -2396850,7 +2397075,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "hostnames.settings.tls-single",
+				"x-fern-sdk-group-name": "zones.hostnames.settings.tls-single",
 				"x-fern-sdk-method-name": "get"
 			},
 			"put": {
@@ -2397446,7 +2397671,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "hostnames.settings.tls",
+				"x-fern-sdk-group-name": "zones.hostnames.settings.tls",
 				"x-fern-sdk-method-name": "update"
 			}
 		},

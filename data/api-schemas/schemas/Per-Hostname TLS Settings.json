@@ -538,7 +538,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "hostnames.settings.tls",
+		"x-fern-sdk-group-name": "zones.hostnames.settings.tls",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /zones/{zone_id}/hostnames/settings/{setting_id}": {
@@ -1198,7 +1198,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "hostnames.settings.tls",
+		"x-fern-sdk-group-name": "zones.hostnames.settings.tls",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/hostnames/settings/{setting_id}/{hostname}": {
@@ -1732,7 +1732,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "hostnames.settings.tls-single",
+		"x-fern-sdk-group-name": "zones.hostnames.settings.tls-single",
 		"x-fern-sdk-method-name": "get"
 	},
 	"PUT /zones/{zone_id}/hostnames/settings/{setting_id}/{hostname}": {
@@ -2328,7 +2328,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "hostnames.settings.tls",
+		"x-fern-sdk-group-name": "zones.hostnames.settings.tls",
 		"x-fern-sdk-method-name": "update"
 	}
 }
