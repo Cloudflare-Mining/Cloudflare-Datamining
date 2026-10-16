@@ -5264,21 +5264,6 @@
 			]
 		},
 		{
-			"name": "workerd/server/workerd.capnp:Worker.Binding.DurableObjectNamespaceDesignator.RetryPolicy",
-			"fields": [
-				{
-					"name": "maxAttempts",
-					"annotations": {},
-					"type": "UInt32"
-				},
-				{
-					"name": "timeoutMs",
-					"annotations": {},
-					"type": "UInt32"
-				}
-			]
-		},
-		{
 			"name": "workerd/server/workerd.capnp:Worker.Binding.CryptoKey",
 			"fields": [
 				{
@@ -5587,9 +5572,9 @@
 					"type": "Text"
 				},
 				{
-					"name": "retryPolicy",
+					"name": "obsolete2",
 					"annotations": {},
-					"type": "workerd/server/workerd.capnp:Worker.Binding.DurableObjectNamespaceDesignator.RetryPolicy"
+					"type": "AnyPointer"
 				}
 			]
 		},
