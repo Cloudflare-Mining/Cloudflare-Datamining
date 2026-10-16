@@ -1268,6 +1268,286 @@
 			"fields": []
 		},
 		{
+			"name": "workerd/src/workerd/io/bench.capnp:CaseOptions",
+			"fields": [
+				{
+					"name": "minTimeNs",
+					"annotations": {},
+					"type": "UInt64"
+				},
+				{
+					"name": "warmupNs",
+					"annotations": {},
+					"type": "UInt64"
+				},
+				{
+					"name": "samples",
+					"annotations": {},
+					"type": "UInt32"
+				},
+				{
+					"name": "batch",
+					"annotations": {},
+					"type": "UInt64"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/io/bench.capnp:BenchParams",
+			"fields": [
+				{
+					"name": "caseFilter",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "quick",
+					"annotations": {},
+					"type": "Bool"
+				},
+				{
+					"name": "defaults",
+					"annotations": {},
+					"type": "workerd/src/workerd/io/bench.capnp:CaseOptions"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/io/bench.capnp:BenchReport.Environment",
+			"fields": [
+				{
+					"name": "workerdVersion",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "buildMode",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "v8Version",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "cpuModel",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "governor",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "compatDate",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "allAutogates",
+					"annotations": {},
+					"type": "Bool"
+				},
+				{
+					"name": "warnings",
+					"annotations": {},
+					"type": "List(Text)"
+				},
+				{
+					"name": "defaultCompatDate",
+					"annotations": {},
+					"type": "Text"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/io/bench.capnp:BenchReport.Group",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "error",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "cases",
+					"annotations": {},
+					"type": "List(workerd/src/workerd/io/bench.capnp:BenchReport.Case)"
+				},
+				{
+					"name": "overhead",
+					"annotations": {},
+					"type": "workerd/src/workerd/io/bench.capnp:BenchReport.Overhead"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/io/bench.capnp:BenchReport",
+			"fields": [
+				{
+					"name": "environment",
+					"annotations": {},
+					"type": "workerd/src/workerd/io/bench.capnp:BenchReport.Environment"
+				},
+				{
+					"name": "groups",
+					"annotations": {},
+					"type": "List(workerd/src/workerd/io/bench.capnp:BenchReport.Group)"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/io/bench.capnp:BenchReport.Case",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "status",
+					"annotations": {},
+					"type": "workerd/src/workerd/io/bench.capnp:BenchReport.Case.Status"
+				},
+				{
+					"name": "error",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "iterationsPerSample",
+					"annotations": {},
+					"type": "UInt64"
+				},
+				{
+					"name": "wallNs",
+					"annotations": {},
+					"type": "workerd/src/workerd/io/bench.capnp:BenchReport.Metric"
+				},
+				{
+					"name": "cpuNs",
+					"annotations": {},
+					"type": "workerd/src/workerd/io/bench.capnp:BenchReport.Metric"
+				},
+				{
+					"name": "flags",
+					"annotations": {},
+					"type": "List(workerd/src/workerd/io/bench.capnp:BenchReport.Case.Flag)"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/io/bench.capnp:BenchReport.Overhead",
+			"fields": [
+				{
+					"name": "syncNs",
+					"annotations": {},
+					"type": "Float64"
+				},
+				{
+					"name": "syncCpuNs",
+					"annotations": {},
+					"type": "Float64"
+				},
+				{
+					"name": "asyncNs",
+					"annotations": {},
+					"type": "Float64"
+				},
+				{
+					"name": "asyncCpuNs",
+					"annotations": {},
+					"type": "Float64"
+				},
+				{
+					"name": "blackBoxNs",
+					"annotations": {},
+					"type": "Float64"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/io/bench.capnp:BenchReport.Metric",
+			"fields": [
+				{
+					"name": "samples",
+					"annotations": {},
+					"type": "List(Float64)"
+				},
+				{
+					"name": "mean",
+					"annotations": {},
+					"type": "Float64"
+				},
+				{
+					"name": "meanLow",
+					"annotations": {},
+					"type": "Float64"
+				},
+				{
+					"name": "meanHigh",
+					"annotations": {},
+					"type": "Float64"
+				},
+				{
+					"name": "median",
+					"annotations": {},
+					"type": "Float64"
+				},
+				{
+					"name": "medianLow",
+					"annotations": {},
+					"type": "Float64"
+				},
+				{
+					"name": "medianHigh",
+					"annotations": {},
+					"type": "Float64"
+				},
+				{
+					"name": "p75",
+					"annotations": {},
+					"type": "Float64"
+				},
+				{
+					"name": "p99",
+					"annotations": {},
+					"type": "Float64"
+				},
+				{
+					"name": "min",
+					"annotations": {},
+					"type": "Float64"
+				},
+				{
+					"name": "max",
+					"annotations": {},
+					"type": "Float64"
+				},
+				{
+					"name": "stddev",
+					"annotations": {},
+					"type": "Float64"
+				},
+				{
+					"name": "skewness",
+					"annotations": {},
+					"type": "Float64"
+				},
+				{
+					"name": "kurtosis",
+					"annotations": {},
+					"type": "Float64"
+				}
+			]
+		},
+		{
 			"name": "workerd/src/workerd/io/cdp.capnp:Runtime",
 			"fields": []
 		},
@@ -8248,6 +8528,36 @@
 			]
 		},
 		{
+			"name": "workerd/src/workerd/io/bench.capnp:BenchReport.Case.Status",
+			"enumerants": [
+				{
+					"name": "ok",
+					"annotations": {}
+				},
+				{
+					"name": "skipped",
+					"annotations": {}
+				},
+				{
+					"name": "failed",
+					"annotations": {}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/io/bench.capnp:BenchReport.Case.Flag",
+			"enumerants": [
+				{
+					"name": "highVariance",
+					"annotations": {}
+				},
+				{
+					"name": "atFloor",
+					"annotations": {}
+				}
+			]
+		},
+		{
 			"name": "workerd/src/workerd/io/cdp.capnp:LogType",
 			"enumerants": [
 				{
@@ -8974,6 +9284,7 @@
 		"capnp/stream.capnp",
 		"workerd/src/workerd/io/actor-storage.capnp:ActorStorage.maxKeys",
 		"workerd/src/workerd/io/actor-storage.capnp:ActorStorage.renameLimit",
+		"workerd/src/workerd/io/bench.capnp",
 		"workerd/src/workerd/io/cdp.capnp",
 		"capnp/c++.capnp:name",
 		"workerd/src/workerd/io/compatibility-date.capnp",
