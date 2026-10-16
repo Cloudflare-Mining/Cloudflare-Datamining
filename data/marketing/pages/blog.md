@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+October 16, 2026 [<h2>Continuous accountability for Verified bots</h2>](https://blog.cloudflare.com/verified-bots-accountability/)
+
+Identity alone doesn't guarantee a bot will behave responsibly. We are introducing a system to continuously evaluate whether Verified bots honor site preferences, like robots.txt and HTTP 429s, ensuring they remain accountable over time.
+
+![Chris Tsoukaladelis](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M510X23G1YWXBVVEV3X5ZCPK.01M510X2WF46AM3BFDZ8R47H1H.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Chris Tsoukaladelis](https://blog.cloudflare.com/author/chris-tsoukaladelis/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M51ZPERWNWYTD7Z36YMY80A8.01M51ZPFH7VV8EHQTMPJG9FHZ4.png&w=2048&h=1152&f=webp&fit=cover&position=center)![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M51ZQ6NCJ2G1DZVHMZRH6SVF.01M51ZQ7A3WZQKT06FDN7XQ84K.png&w=2048&h=1152&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/verified-bots-accountability/)
+
 October 15, 2026 [<h2>A fully programmable secure web gateway</h2>](https://blog.cloudflare.com/programmable-gateway-dlp/)
 
 Cloudflare Gateway and Data Loss Prevention have inherited the flexibility and power of Cloudflare Workers through our full-stack integration with the Cloudflare Developer platform.
@@ -17,8 +27,6 @@ Cloudflare Gateway and Data Loss Prevention have inherited the flexibility and p
 ![AJ Gerstenhaber](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M508VRM0SPP4S4MS7CZXEHJA.01M508VT8EKZQHWR6HJHQVTQPV.png&w=64&h=64&f=webp&fit=cover&position=center)![Abe Carryl](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JJ6YPQY3M4A69P72QXE8.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [AJ Gerstenhaber](https://blog.cloudflare.com/author/aj/) and  [Abe Carryl](https://blog.cloudflare.com/author/abe/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M50725GWYBHA14CTTDWFESC7.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/programmable-gateway-dlp/)
 
 October 15, 2026 [<h2>Deploy with Void</h2>](https://blog.cloudflare.com/deploy-with-void/)
 
@@ -155,14 +163,6 @@ Streamline demonstrates how to build long-running, continuous video processing p
 ![Willi Geiger](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454X9RVT5T3T3CSSAM5SHZ.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Taylor Smith](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4813QG3QG91NYS6ABQTM9R.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Willi Geiger](https://blog.cloudflare.com/author/willi/) and  [Taylor Smith](https://blog.cloudflare.com/author/tsmith/)
-
-October 2, 2026 [<h2>Introducing Web Search API via AI Gateway</h2>](https://blog.cloudflare.com/introducing-web-search-api/)
-
-Cloudflare AI Gateway now supports native web search API integration in partnership with Ceramic.ai, Exa, and Linkup. Developers can now inject real-time web context into model inference calls via AI Gateway, REST APIs, or Workers bindings.
-
-![Michelle Chen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R95PPSQQ82Z92P51M550.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Sam Else](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3Q96AH0YC46X2T69EDA94K0.01M3Q96B1VTN1AMSCYJ2FQHQS2.webp&w=64&h=64&f=webp&fit=cover&position=center)![Gabriel Massadas](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZJT71CZ6R57ZBVBWK0TT.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Michelle Chen](https://blog.cloudflare.com/author/michelle/),  [Sam Else](https://blog.cloudflare.com/author/sam-else/), and  [Gabriel Massadas](https://blog.cloudflare.com/author/gabriel-massadas/)
 
 Load more
 
