@@ -3,84 +3,48 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>About the Role</strong></p>
-<p>The Product Platform Tools team builds and operates Cloudflare's internal support and admin platform - the foundation that customer-facing and operational teams across the company rely on to do their jobs. As a Systems Engineer on this team, you'll design and build the backend services, infrastructure, APIs, and integrations that power this platform at enterprise scale, working closely with both engineering teams and non-engineering stakeholders like Support, Legal, and Security (who depend on it daily). You'll need a deep curiosity for how Cloudflare works under the hood, a strong security and governance mindset, the ability to scale systems to meet the demands of a global organization, and the communication skills to bridge technical complexity with the real operational needs of diverse teams across the company.</p>
-<p><strong>Responsibilities</strong></p>
+<p><strong>Available Locations: London</strong></p>
+<p><strong>About the Team</strong></p>
+<p>The Cloudflare Data Intelligence &amp; Analytics (DIA) team has built a unified data &amp; ML platform to provide our internal Business Partners with actionable analytics, insights, and recommendations.</p>
+<p>Our goals are to:</p>
 <ul>
-	<li>
-		<p>Design, implement, and operate backend services, infrastructure, APIs, and integrations that form the core of Cloudflare's internal support and admin platform, built to scale with the demands of a large, globally distributed organization.</p>
-	</li>
-	<li>
-		<p>Partner with engineering teams across the company to onboard their support and admin applications onto the platform - understanding their requirements and ensuring smooth, well-governed, and scalable integration.</p>
-	</li>
-	<li>
-		<p>Work directly with non-engineering stakeholders - including Support, Legal, and Security teams - to understand their operational needs and translate them into reliable, maintainable, and appropriately scaled platform capabilities.</p>
-	</li>
-	<li>
-		<p>Own and continuously improve the platform's security and authorization posture, partnering with the Security and Legal team to ensure access control policies, governance requirements, and compliance standards are correctly implemented and enforced at scale.</p>
-	</li>
-	<li>
-		<p>Ramp quickly into unfamiliar and legacy codebases, build context across a wide range of Cloudflare systems, and make thoughtful improvements that reduce operational toil and improve platform reliability.</p>
-	</li>
-	<li>
-		<p>Participate in on-call rotations, respond to production incidents, and drive post-incident reviews to raise reliability and scalability standards across the platform.</p>
-	</li>
-	<li>
-		<p>Contribute to platform observability, developer experience, and engineering standards with broad impact across the teams that depend on this platform.</p>
-	</li>
+	<li>Democratize data &amp; intelligence for humans and agents</li>
+	<li>Build a context layer and an AI systems layer upon our unified data &amp; content platform</li>
+	<li>Support Cloudflare’s critical business needs</li>
 </ul>
-<p><strong>Desirable Skills, Knowledge, and Experience</strong></p>
-<p><strong>Must-Have Skills</strong></p>
+<p>DIA is a ~ 75-member strong geographically distributed but organizationally centralized team. This role is within the growth &amp; adoption analytics pod based in London that works across several business functions, offering broad exposure to Cloudflare's entire business.</p>
+<p><strong>Role Summary</strong></p>
+<p>We are looking for an experienced Senior Data Analyst in London to scale our growth &amp; adoption analytics initiatives. You will be a trusted data advisor to our business partners, a technical coach to your peers, and the lead in terms of shaping AI-first data models, workflows, and agent-ready-datasets.</p>
+<p>Success in this role will rely on marrying a strong analytics background with product and business acumen to deliver highly strategic and compelling insights that accelerate growth and influence adoption. This role also requires a deep understanding of data infrastructure, job orchestration, and lineage, all with the use of AI-tooling as default.</p>
+<p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li>
-		<p>5+ years of professional experience building and operating production backend services at enterprise or large-scale organizations, with strong proficiency in Go and/or TypeScript.</p>
-	</li>
-	<li>
-		<p>Demonstrated experience in platform engineering, internal tooling, or support/admin systems — with direct experience supporting non-technical end users or customer-facing teams.</p>
-	</li>
-	<li>
-		<p>Strong understanding of authorization and authentication systems such as OAuth 2.0, OIDC, JWT, OPA/Rego, role-base access control, policy based-access or similar and a security-first approach to system design.</p>
-	</li>
-	<li>
-		<p>Proven scalability mindset — experience designing and operating systems that serve a large, diverse set of internal consumers with varying reliability and performance requirements.</p>
-	</li>
-	<li>
-		<p>Proven ability to work across organizational boundaries: comfortable engaging with engineering teams, Security, Legal, and non-technical operational stakeholders alike.</p>
-	</li>
-	<li>
-		<p>Confident working in unfamiliar and legacy codebases; able to ramp quickly, orient independently, and contribute incrementally without full context.</p>
-	</li>
-	<li>
-		<p>Strong written and verbal communication — able to translate between technical implementation details and the business or operational needs of diverse stakeholders.</p>
-	</li>
-	<li>
-		<p>Advanced, hands-on experience with Kubernetes and Docker in production environments — including cluster operations, resource management, networking, and debugging containerized workloads.</p>
-	</li>
-	<li>
-		<p>Strong database experience — including schema design, query optimization, and operating databases in high-availability production environments.</p>
-	</li>
+	<li>Own the development and maintenance of agent-ready curated datasets end-to-end</li>
+	<li>Provide analytics support and a strategic perspective to our business partners</li>
+	<li>Partner with data engineers, product managers, and stakeholders to enable data-driven answers to key business problems</li>
+	<li>Review Merge Requests created by your team of humans and agents</li>
+	<li>Take initiative to gather requirements, define, build, and maintain pipelines and metrics</li>
+	<li>Tell easily digestible and highly actionable stories with data to help stakeholders understand analytical insights</li>
 </ul>
-<p><strong>Nice-to-Have Skills</strong></p>
+<p><strong>Role Requirements</strong></p>
 <ul>
-	<li>
-		<p>Experience building or operating internal support tooling, admin consoles, case management systems, or operational dashboards used by non-engineering teams at enterprise scale.</p>
-	</li>
-	<li>
-		<p>Prior exposure to security governance workflows, compliance tooling, or partnering closely with a dedicated Security or Legal team on access control requirements.</p>
-	</li>
-	<li>
-		<p>Familiarity with Cloudflare's product ecosystem (Workers, Access, Zero Trust, Gateway) as either a user or implementer.</p>
-	</li>
-	<li>
-		<p>Experience with observability tooling and practices — including distributed tracing, structured logging, and metrics dashboards using tools such as Grafana, Kibana, Jaeger, or similar.</p>
-	</li>
-	<li>
-		<p>Experience with Terraform for infrastructure-as-code and GitLab CI/CD for automated build, test, and deployment pipelines.</p>
-	</li>
-	<li>
-		<p>Exposure to Temporal workflows or distributed workflow orchestration.</p>
-	</li>
+	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields</li>
+	<li>Demonstrable proficiency with analytics-relevant AI-tooling</li>
+	<li>4+ years experience in a centralized data analytics teams in close partnership with business stakeholders</li>
+	<li>Expert-level proficiency in writing and optimizing complex SQL queries is mandatory, with a proven ability to performance-tune complex queries and manage analysis workflows against large, petabyte-scale datasets (Candidates will be assessed on advanced SQL skills including window functions and common table expressions (CTEs))</li>
+	<li>3+ years experience working in version control environments using platforms such as Gitlab or Github</li>
+	<li>2+ years experience working with job orchestration tools like Apache Airflow, both as a pipeline developer and reviewer</li>
+	<li>2+ years experience with data ingestion and transformation frameworks (e.g., dbt, Fivetran, or custom/in-house developed platforms)</li>
+	<li>Initiative, curiosity, strong stakeholder engagement, and empathy</li>
+	<li>Experience translating business questions into analysis frameworks, converting results into business recommendations, and presenting those to stakeholders</li>
 </ul>
+<p><strong>Nice-to-Have Experience</strong></p>
+<ul>
+	<li>Experience and/or a keen interest in internet security, protocols, and edge-development</li>
+	<li>Analytics experience in a fast-growing technology, SaaS, or subscription-based business</li>
+	<li>Experience with statistical analysis programming languages (Python, R etc.)</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
