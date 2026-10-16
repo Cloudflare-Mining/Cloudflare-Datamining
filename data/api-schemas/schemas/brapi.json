@@ -500,6 +500,24 @@
 															"status"
 														]
 													},
+													"outcome": {
+														"description": "Result of processing the URL. Absent for older records.",
+														"type": "string",
+														"enum": [
+															"success",
+															"robots_disallowed",
+															"crawl_purpose_disallowed",
+															"content_use_disallowed",
+															"connection_error",
+															"timeout",
+															"browser_unavailable",
+															"format_generation_error",
+															"unsupported_content_type",
+															"unclassified_error",
+															"page_error",
+															"too_large"
+														]
+													},
 													"status": {
 														"description": "Current status of the crawled URL.",
 														"type": "string",
@@ -524,6 +542,38 @@
 												"type": "object"
 											}
 										},
+										"robots": {
+											"description": "Robots.txt state for the first 50 origins encountered by the crawl.",
+											"type": "array",
+											"items": {
+												"additionalProperties": false,
+												"properties": {
+													"origin": {
+														"description": "Origin whose robots.txt was checked.",
+														"type": "string"
+													},
+													"state": {
+														"description": "Whether usable robots.txt rules were available.",
+														"type": "string",
+														"enum": [
+															"available",
+															"absent",
+															"fetch_failed"
+														]
+													},
+													"status": {
+														"description": "HTTP status that established the current robots.txt state. Absent when no HTTP response was received.",
+														"type": "number"
+													}
+												},
+												"required": [
+													"origin",
+													"state"
+												],
+												"type": "object"
+											},
+											"maxItems": 50
+										},
 										"skipped": {
 											"description": "Total number of URLs that were skipped due to include/exclude/subdomain filters. Skipped URLs are included in records but are not counted toward total/finished.",
 											"type": "number"
@@ -544,6 +594,7 @@
 										"total",
 										"finished",
 										"skipped",
+										"robots",
 										"records"
 									]
 								},

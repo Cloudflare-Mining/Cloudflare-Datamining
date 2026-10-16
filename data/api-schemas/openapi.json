@@ -511599,6 +511599,57 @@
 								}
 							}
 						}
+					},
+					"503": {
+						"description": "Ai search temporarily unavailable.",
+						"headers": {
+							"Retry-After": {
+								"description": "Seconds to wait before retrying.",
+								"required": true,
+								"schema": {
+									"description": "Seconds to wait before retrying.",
+									"type": "string",
+									"example": "1"
+								}
+							}
+						},
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors"
+									]
+								}
+							}
+						}
 					}
 				},
 				"deprecated": true,
@@ -515082,6 +515133,57 @@
 								}
 							}
 						}
+					},
+					"503": {
+						"description": "Ai search temporarily unavailable.",
+						"headers": {
+							"Retry-After": {
+								"description": "Seconds to wait before retrying.",
+								"required": true,
+								"schema": {
+									"description": "Seconds to wait before retrying.",
+									"type": "string",
+									"example": "1"
+								}
+							}
+						},
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors"
+									]
+								}
+							}
+						}
 					}
 				},
 				"deprecated": true,
@@ -516533,7 +516635,17 @@
 						}
 					},
 					"503": {
-						"description": "Unable to connect to ai search.",
+						"description": "Unable to connect to ai search; Ai search temporarily unavailable.",
+						"headers": {
+							"Retry-After": {
+								"description": "Seconds to wait before retrying.",
+								"schema": {
+									"description": "Seconds to wait before retrying.",
+									"type": "string",
+									"example": "10"
+								}
+							}
+						},
 						"content": {
 							"application/json": {
 								"schema": {
@@ -516542,19 +516654,44 @@
 										"errors": {
 											"type": "array",
 											"items": {
-												"properties": {
-													"code": {
-														"type": "number"
+												"anyOf": [
+													{
+														"properties": {
+															"code": {
+																"type": "number",
+																"enum": [
+																	7017
+																]
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
 													},
-													"message": {
-														"type": "string"
+													{
+														"properties": {
+															"code": {
+																"type": "number",
+																"enum": [
+																	7125
+																]
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
 													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object"
+												]
 											}
 										},
 										"success": {
@@ -524355,6 +524492,57 @@
 								}
 							}
 						}
+					},
+					"503": {
+						"description": "Ai search temporarily unavailable.",
+						"headers": {
+							"Retry-After": {
+								"description": "Seconds to wait before retrying.",
+								"required": true,
+								"schema": {
+									"description": "Seconds to wait before retrying.",
+									"type": "string",
+									"example": "1"
+								}
+							}
+						},
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors"
+									]
+								}
+							}
+						}
 					}
 				},
 				"security": [
@@ -528153,6 +528341,57 @@
 					},
 					"409": {
 						"description": "Instance status modified concurrently please retry.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors"
+									]
+								}
+							}
+						}
+					},
+					"503": {
+						"description": "Ai search temporarily unavailable.",
+						"headers": {
+							"Retry-After": {
+								"description": "Seconds to wait before retrying.",
+								"required": true,
+								"schema": {
+									"description": "Seconds to wait before retrying.",
+									"type": "string",
+									"example": "1"
+								}
+							}
+						},
 						"content": {
 							"application/json": {
 								"schema": {
@@ -533470,7 +533709,17 @@
 						}
 					},
 					"503": {
-						"description": "Unable to connect to ai search.",
+						"description": "Unable to connect to ai search; Ai search temporarily unavailable.",
+						"headers": {
+							"Retry-After": {
+								"description": "Seconds to wait before retrying.",
+								"schema": {
+									"description": "Seconds to wait before retrying.",
+									"type": "string",
+									"example": "10"
+								}
+							}
+						},
 						"content": {
 							"application/json": {
 								"schema": {
@@ -533479,19 +533728,44 @@
 										"errors": {
 											"type": "array",
 											"items": {
-												"properties": {
-													"code": {
-														"type": "number"
+												"anyOf": [
+													{
+														"properties": {
+															"code": {
+																"type": "number",
+																"enum": [
+																	7017
+																]
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
 													},
-													"message": {
-														"type": "string"
+													{
+														"properties": {
+															"code": {
+																"type": "number",
+																"enum": [
+																	7125
+																]
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object"
 													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object"
+												]
 											}
 										},
 										"success": {
@@ -534444,6 +534718,57 @@
 					},
 					"404": {
 						"description": "Ai search not found.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors"
+									]
+								}
+							}
+						}
+					},
+					"503": {
+						"description": "Ai search temporarily unavailable.",
+						"headers": {
+							"Retry-After": {
+								"description": "Seconds to wait before retrying.",
+								"required": true,
+								"schema": {
+									"description": "Seconds to wait before retrying.",
+									"type": "string",
+									"example": "1"
+								}
+							}
+						},
 						"content": {
 							"application/json": {
 								"schema": {
@@ -597403,6 +597728,24 @@
 																	"status"
 																]
 															},
+															"outcome": {
+																"description": "Result of processing the URL. Absent for older records.",
+																"type": "string",
+																"enum": [
+																	"success",
+																	"robots_disallowed",
+																	"crawl_purpose_disallowed",
+																	"content_use_disallowed",
+																	"connection_error",
+																	"timeout",
+																	"browser_unavailable",
+																	"format_generation_error",
+																	"unsupported_content_type",
+																	"unclassified_error",
+																	"page_error",
+																	"too_large"
+																]
+															},
 															"status": {
 																"description": "Current status of the crawled URL.",
 																"type": "string",
@@ -597427,6 +597770,38 @@
 														"type": "object"
 													}
 												},
+												"robots": {
+													"description": "Robots.txt state for the first 50 origins encountered by the crawl.",
+													"type": "array",
+													"items": {
+														"additionalProperties": false,
+														"properties": {
+															"origin": {
+																"description": "Origin whose robots.txt was checked.",
+																"type": "string"
+															},
+															"state": {
+																"description": "Whether usable robots.txt rules were available.",
+																"type": "string",
+																"enum": [
+																	"available",
+																	"absent",
+																	"fetch_failed"
+																]
+															},
+															"status": {
+																"description": "HTTP status that established the current robots.txt state. Absent when no HTTP response was received.",
+																"type": "number"
+															}
+														},
+														"required": [
+															"origin",
+															"state"
+														],
+														"type": "object"
+													},
+													"maxItems": 50
+												},
 												"skipped": {
 													"description": "Total number of URLs that were skipped due to include/exclude/subdomain filters. Skipped URLs are included in records but are not counted toward total/finished.",
 													"type": "number"
@@ -597447,6 +597822,7 @@
 												"total",
 												"finished",
 												"skipped",
+												"robots",
 												"records"
 											]
 										},
@@ -920871,8 +921247,7 @@
 																"x-stainless-deprecation-message": "Use `scanned_at` instead."
 															},
 															"validation": {
-																"type": "object",
-																"allOf": [
+																"oneOf": [
 																	{
 																		"type": "object",
 																		"properties": {
@@ -920932,9 +921307,15 @@
 																				"nullable": true
 																			}
 																		}
+																	},
+																	{
+																		"enum": [
+																			null
+																		],
+																		"nullable": true,
+																		"type": "object"
 																	}
-																],
-																"nullable": true
+																]
 															},
 															"x_originating_ip": {
 																"type": "string",
@@ -921809,8 +922190,7 @@
 															"x-stainless-deprecation-message": "Use `scanned_at` instead."
 														},
 														"validation": {
-															"type": "object",
-															"allOf": [
+															"oneOf": [
 																{
 																	"type": "object",
 																	"properties": {
@@ -921870,9 +922250,15 @@
 																			"nullable": true
 																		}
 																	}
+																},
+																{
+																	"enum": [
+																		null
+																	],
+																	"nullable": true,
+																	"type": "object"
 																}
-															],
-															"nullable": true
+															]
 														},
 														"x_originating_ip": {
 															"type": "string",
@@ -928095,8 +928481,7 @@
 																		"x-stainless-deprecation-message": "Use `scanned_at` instead."
 																	},
 																	"validation": {
-																		"type": "object",
-																		"allOf": [
+																		"oneOf": [
 																			{
 																				"type": "object",
 																				"properties": {
@@ -928156,9 +928541,15 @@
 																						"nullable": true
 																					}
 																				}
+																			},
+																			{
+																				"enum": [
+																					null
+																				],
+																				"nullable": true,
+																				"type": "object"
 																			}
-																		],
-																		"nullable": true
+																		]
 																	},
 																	"x_originating_ip": {
 																		"type": "string",
@@ -930068,6 +930459,14 @@
 						"schema": {
 							"type": "string"
 						}
+					},
+					{
+						"name": "expired",
+						"in": "query",
+						"description": "Filter to return only expired policies (`true`) or only policies that still apply (`false`). Omit to return both.",
+						"schema": {
+							"type": "boolean"
+						}
 					}
 				],
 				"responses": {
@@ -930218,6 +930617,14 @@
 																	}
 																],
 																"readOnly": true
+															},
+															"expires_at": {
+																"description": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.",
+																"type": "string",
+																"format": "date-time",
+																"example": "2027-01-01T00:00:00Z",
+																"nullable": true,
+																"x-auditable": true
 															},
 															"id": {
 																"allOf": [
@@ -930527,6 +930934,14 @@
 												],
 												"readOnly": true
 											},
+											"expires_at": {
+												"description": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.",
+												"type": "string",
+												"format": "date-time",
+												"example": "2027-01-01T00:00:00Z",
+												"nullable": true,
+												"x-auditable": true
+											},
 											"id": {
 												"allOf": [
 													{
@@ -930774,6 +931189,14 @@
 																}
 															],
 															"readOnly": true
+														},
+														"expires_at": {
+															"description": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2027-01-01T00:00:00Z",
+															"nullable": true,
+															"x-auditable": true
 														},
 														"id": {
 															"allOf": [
@@ -931415,6 +931838,14 @@
 															],
 															"readOnly": true
 														},
+														"expires_at": {
+															"description": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2027-01-01T00:00:00Z",
+															"nullable": true,
+															"x-auditable": true
+														},
 														"id": {
 															"allOf": [
 																{
@@ -931734,6 +932165,14 @@
 												],
 												"readOnly": true
 											},
+											"expires_at": {
+												"description": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.",
+												"type": "string",
+												"format": "date-time",
+												"example": "2027-01-01T00:00:00Z",
+												"nullable": true,
+												"x-auditable": true
+											},
 											"id": {
 												"allOf": [
 													{
@@ -931973,6 +932412,14 @@
 																}
 															],
 															"readOnly": true
+														},
+														"expires_at": {
+															"description": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2027-01-01T00:00:00Z",
+															"nullable": true,
+															"x-auditable": true
 														},
 														"id": {
 															"allOf": [
@@ -932265,6 +932712,14 @@
 												],
 												"readOnly": true
 											},
+											"expires_at": {
+												"description": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.",
+												"type": "string",
+												"format": "date-time",
+												"example": "2027-01-01T00:00:00Z",
+												"nullable": true,
+												"x-auditable": true
+											},
 											"id": {
 												"allOf": [
 													{
@@ -932512,6 +932967,14 @@
 																}
 															],
 															"readOnly": true
+														},
+														"expires_at": {
+															"description": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2027-01-01T00:00:00Z",
+															"nullable": true,
+															"x-auditable": true
 														},
 														"id": {
 															"allOf": [
@@ -932846,6 +933309,14 @@
 																	],
 																	"readOnly": true
 																},
+																"expires_at": {
+																	"description": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.",
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2027-01-01T00:00:00Z",
+																	"nullable": true,
+																	"x-auditable": true
+																},
 																"id": {
 																	"allOf": [
 																		{
@@ -933016,6 +933487,14 @@
 															],
 															"readOnly": true
 														},
+														"expires_at": {
+															"description": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2027-01-01T00:00:00Z",
+															"nullable": true,
+															"x-auditable": true
+														},
 														"id": {
 															"allOf": [
 																{
@@ -933174,6 +933653,14 @@
 																		}
 																	],
 																	"readOnly": true
+																},
+																"expires_at": {
+																	"description": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.",
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2027-01-01T00:00:00Z",
+																	"nullable": true,
+																	"x-auditable": true
 																},
 																"id": {
 																	"allOf": [
@@ -933477,6 +933964,14 @@
 																		],
 																		"readOnly": true
 																	},
+																	"expires_at": {
+																		"description": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.",
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2027-01-01T00:00:00Z",
+																		"nullable": true,
+																		"x-auditable": true
+																	},
 																	"id": {
 																		"allOf": [
 																			{
@@ -933618,6 +934113,14 @@
 																		],
 																		"readOnly": true
 																	},
+																	"expires_at": {
+																		"description": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.",
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2027-01-01T00:00:00Z",
+																		"nullable": true,
+																		"x-auditable": true
+																	},
 																	"id": {
 																		"allOf": [
 																			{
@@ -933758,6 +934261,14 @@
 																			}
 																		],
 																		"readOnly": true
+																	},
+																	"expires_at": {
+																		"description": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.",
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2027-01-01T00:00:00Z",
+																		"nullable": true,
+																		"x-auditable": true
 																	},
 																	"id": {
 																		"allOf": [
@@ -934112,6 +934623,14 @@
 						"schema": {
 							"type": "string"
 						}
+					},
+					{
+						"name": "expired",
+						"in": "query",
+						"description": "Filter to return only expired patterns (`true`) or only patterns that still apply (`false`). Omit to return both.",
+						"schema": {
+							"type": "boolean"
+						}
 					}
 				],
 				"responses": {
@@ -934262,6 +934781,14 @@
 																	}
 																],
 																"readOnly": true
+															},
+															"expires_at": {
+																"description": "Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.",
+																"type": "string",
+																"format": "date-time",
+																"example": "2027-01-01T00:00:00Z",
+																"nullable": true,
+																"x-auditable": true
 															},
 															"id": {
 																"allOf": [
@@ -934519,6 +935046,14 @@
 												],
 												"readOnly": true
 											},
+											"expires_at": {
+												"description": "Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.",
+												"type": "string",
+												"format": "date-time",
+												"example": "2027-01-01T00:00:00Z",
+												"nullable": true,
+												"x-auditable": true
+											},
 											"id": {
 												"allOf": [
 													{
@@ -934710,6 +935245,14 @@
 																}
 															],
 															"readOnly": true
+														},
+														"expires_at": {
+															"description": "Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2027-01-01T00:00:00Z",
+															"nullable": true,
+															"x-auditable": true
 														},
 														"id": {
 															"allOf": [
@@ -935299,6 +935842,14 @@
 															],
 															"readOnly": true
 														},
+														"expires_at": {
+															"description": "Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2027-01-01T00:00:00Z",
+															"nullable": true,
+															"x-auditable": true
+														},
 														"id": {
 															"allOf": [
 																{
@@ -935566,6 +936117,14 @@
 												],
 												"readOnly": true
 											},
+											"expires_at": {
+												"description": "Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.",
+												"type": "string",
+												"format": "date-time",
+												"example": "2027-01-01T00:00:00Z",
+												"nullable": true,
+												"x-auditable": true
+											},
 											"id": {
 												"allOf": [
 													{
@@ -935753,6 +936312,14 @@
 																}
 															],
 															"readOnly": true
+														},
+														"expires_at": {
+															"description": "Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2027-01-01T00:00:00Z",
+															"nullable": true,
+															"x-auditable": true
 														},
 														"id": {
 															"allOf": [
@@ -935993,6 +936560,14 @@
 												],
 												"readOnly": true
 											},
+											"expires_at": {
+												"description": "Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.",
+												"type": "string",
+												"format": "date-time",
+												"example": "2027-01-01T00:00:00Z",
+												"nullable": true,
+												"x-auditable": true
+											},
 											"id": {
 												"allOf": [
 													{
@@ -936184,6 +936759,14 @@
 																}
 															],
 															"readOnly": true
+														},
+														"expires_at": {
+															"description": "Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2027-01-01T00:00:00Z",
+															"nullable": true,
+															"x-auditable": true
 														},
 														"id": {
 															"allOf": [
@@ -936466,6 +937049,14 @@
 																	],
 																	"readOnly": true
 																},
+																"expires_at": {
+																	"description": "Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.",
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2027-01-01T00:00:00Z",
+																	"nullable": true,
+																	"x-auditable": true
+																},
 																"id": {
 																	"allOf": [
 																		{
@@ -936584,6 +937175,14 @@
 															],
 															"readOnly": true
 														},
+														"expires_at": {
+															"description": "Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2027-01-01T00:00:00Z",
+															"nullable": true,
+															"x-auditable": true
+														},
 														"id": {
 															"allOf": [
 																{
@@ -936686,6 +937285,14 @@
 																		}
 																	],
 																	"readOnly": true
+																},
+																"expires_at": {
+																	"description": "Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.",
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2027-01-01T00:00:00Z",
+																	"nullable": true,
+																	"x-auditable": true
 																},
 																"id": {
 																	"allOf": [
@@ -936933,6 +937540,14 @@
 																		],
 																		"readOnly": true
 																	},
+																	"expires_at": {
+																		"description": "Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.",
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2027-01-01T00:00:00Z",
+																		"nullable": true,
+																		"x-auditable": true
+																	},
 																	"id": {
 																		"allOf": [
 																			{
@@ -937022,6 +937637,14 @@
 																		],
 																		"readOnly": true
 																	},
+																	"expires_at": {
+																		"description": "Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.",
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2027-01-01T00:00:00Z",
+																		"nullable": true,
+																		"x-auditable": true
+																	},
 																	"id": {
 																		"allOf": [
 																			{
@@ -937110,6 +937733,14 @@
 																			}
 																		],
 																		"readOnly": true
+																	},
+																	"expires_at": {
+																		"description": "Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.",
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2027-01-01T00:00:00Z",
+																		"nullable": true,
+																		"x-auditable": true
 																	},
 																	"id": {
 																		"allOf": [
@@ -937399,6 +938030,14 @@
 						"schema": {
 							"type": "string"
 						}
+					},
+					{
+						"name": "expired",
+						"in": "query",
+						"description": "Filter to return only expired policies (`true`) or only policies that still apply (`false`). Omit to return both.",
+						"schema": {
+							"type": "boolean"
+						}
 					}
 				],
 				"responses": {
@@ -937548,6 +938187,14 @@
 																"description": "Whether the policy is active.",
 																"type": "boolean",
 																"example": true,
+																"x-auditable": true
+															},
+															"expires_at": {
+																"description": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.",
+																"type": "string",
+																"format": "date-time",
+																"example": "2027-01-01T00:00:00Z",
+																"nullable": true,
 																"x-auditable": true
 															},
 															"id": {
@@ -937807,6 +938454,14 @@
 												"example": true,
 												"x-auditable": true
 											},
+											"expires_at": {
+												"description": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.",
+												"type": "string",
+												"format": "date-time",
+												"example": "2027-01-01T00:00:00Z",
+												"nullable": true,
+												"x-auditable": true
+											},
 											"id": {
 												"allOf": [
 													{
@@ -937999,6 +938654,14 @@
 															"description": "Whether the policy is active.",
 															"type": "boolean",
 															"example": true,
+															"x-auditable": true
+														},
+														"expires_at": {
+															"description": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2027-01-01T00:00:00Z",
+															"nullable": true,
 															"x-auditable": true
 														},
 														"id": {
@@ -938590,6 +939253,14 @@
 															"example": true,
 															"x-auditable": true
 														},
+														"expires_at": {
+															"description": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2027-01-01T00:00:00Z",
+															"nullable": true,
+															"x-auditable": true
+														},
 														"id": {
 															"allOf": [
 																{
@@ -938858,6 +939529,14 @@
 												"example": true,
 												"x-auditable": true
 											},
+											"expires_at": {
+												"description": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.",
+												"type": "string",
+												"format": "date-time",
+												"example": "2027-01-01T00:00:00Z",
+												"nullable": true,
+												"x-auditable": true
+											},
 											"id": {
 												"allOf": [
 													{
@@ -939045,6 +939724,14 @@
 															"description": "Whether the policy is active.",
 															"type": "boolean",
 															"example": true,
+															"x-auditable": true
+														},
+														"expires_at": {
+															"description": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2027-01-01T00:00:00Z",
+															"nullable": true,
 															"x-auditable": true
 														},
 														"id": {
@@ -939332,6 +940019,14 @@
 																	"example": true,
 																	"x-auditable": true
 																},
+																"expires_at": {
+																	"description": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.",
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2027-01-01T00:00:00Z",
+																	"nullable": true,
+																	"x-auditable": true
+																},
 																"id": {
 																	"allOf": [
 																		{
@@ -939451,6 +940146,14 @@
 															"example": true,
 															"x-auditable": true
 														},
+														"expires_at": {
+															"description": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2027-01-01T00:00:00Z",
+															"nullable": true,
+															"x-auditable": true
+														},
 														"id": {
 															"allOf": [
 																{
@@ -939554,6 +940257,14 @@
 																	"description": "Whether the policy is active.",
 																	"type": "boolean",
 																	"example": true,
+																	"x-auditable": true
+																},
+																"expires_at": {
+																	"description": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.",
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2027-01-01T00:00:00Z",
+																	"nullable": true,
 																	"x-auditable": true
 																},
 																"id": {
@@ -939804,6 +940515,14 @@
 																		"example": true,
 																		"x-auditable": true
 																	},
+																	"expires_at": {
+																		"description": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.",
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2027-01-01T00:00:00Z",
+																		"nullable": true,
+																		"x-auditable": true
+																	},
 																	"id": {
 																		"allOf": [
 																			{
@@ -939894,6 +940613,14 @@
 																		"example": true,
 																		"x-auditable": true
 																	},
+																	"expires_at": {
+																		"description": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.",
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2027-01-01T00:00:00Z",
+																		"nullable": true,
+																		"x-auditable": true
+																	},
 																	"id": {
 																		"allOf": [
 																			{
@@ -939982,6 +940709,14 @@
 																		"description": "Whether the policy is active.",
 																		"type": "boolean",
 																		"example": true,
+																		"x-auditable": true
+																	},
+																	"expires_at": {
+																		"description": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.",
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2027-01-01T00:00:00Z",
+																		"nullable": true,
 																		"x-auditable": true
 																	},
 																	"id": {
@@ -1906637,7 +1907372,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "Identifies the version by UUID or UUID prefix with a minimum length of eight characters. Use \"latest\" to select the most recently created version.",
+							"description": "Identifies the version by UUID or UUID prefix with a minimum length of eight characters. Use \"latest\" to select the most recently created version, which may not be deployed. Use \"latest-deployed\" to profile a version in the active deployment. Versions are tried in order of traffic share until one has a loaded isolate.",
 							"type": "string"
 						}
 					}
@@ -1907118,7 +1907853,7 @@
 						}
 					},
 					"404": {
-						"description": "The Worker, a recent execution location, or a loaded isolate was not found.",
+						"description": "The Worker, an active deployment, a recent execution location, or a loaded isolate was not found.",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -2351647,8 +2352382,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "email-auth.dmarc-reports",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			},
 			"patch": {
 				"operationId": "configure_dmarc_reports",
@@ -2352418,8 +2353152,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "email-auth.dmarc-reports",
-				"x-fern-sdk-method-name": "edit",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "edit"
 			}
 		},
 		"/zones/{zone_id}/email/auth/spf/inspect": {
@@ -2352809,8 +2353542,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "email-auth.spf",
-				"x-fern-sdk-method-name": "inspect",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "inspect"
 			}
 		},
 		"/zones/{zone_id}/email/routing": {

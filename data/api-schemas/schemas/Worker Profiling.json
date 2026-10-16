@@ -30,7 +30,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "Identifies the version by UUID or UUID prefix with a minimum length of eight characters. Use \"latest\" to select the most recently created version.",
+					"description": "Identifies the version by UUID or UUID prefix with a minimum length of eight characters. Use \"latest\" to select the most recently created version, which may not be deployed. Use \"latest-deployed\" to profile a version in the active deployment. Versions are tried in order of traffic share until one has a loaded isolate.",
 					"type": "string"
 				}
 			}
@@ -511,7 +511,7 @@
 				}
 			},
 			"404": {
-				"description": "The Worker, a recent execution location, or a loaded isolate was not found.",
+				"description": "The Worker, an active deployment, a recent execution location, or a loaded isolate was not found.",
 				"content": {
 					"application/json": {
 						"schema": {

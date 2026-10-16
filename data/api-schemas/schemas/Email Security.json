@@ -932,8 +932,7 @@
 														"x-stainless-deprecation-message": "Use `scanned_at` instead."
 													},
 													"validation": {
-														"type": "object",
-														"allOf": [
+														"oneOf": [
 															{
 																"type": "object",
 																"properties": {
@@ -993,9 +992,15 @@
 																		"nullable": true
 																	}
 																}
+															},
+															{
+																"enum": [
+																	null
+																],
+																"nullable": true,
+																"type": "object"
 															}
-														],
-														"nullable": true
+														]
 													},
 													"x_originating_ip": {
 														"type": "string",
@@ -1853,8 +1858,7 @@
 													"x-stainless-deprecation-message": "Use `scanned_at` instead."
 												},
 												"validation": {
-													"type": "object",
-													"allOf": [
+													"oneOf": [
 														{
 															"type": "object",
 															"properties": {
@@ -1914,9 +1918,15 @@
 																	"nullable": true
 																}
 															}
+														},
+														{
+															"enum": [
+																null
+															],
+															"nullable": true,
+															"type": "object"
 														}
-													],
-													"nullable": true
+													]
 												},
 												"x_originating_ip": {
 													"type": "string",
@@ -5663,8 +5673,7 @@
 																"x-stainless-deprecation-message": "Use `scanned_at` instead."
 															},
 															"validation": {
-																"type": "object",
-																"allOf": [
+																"oneOf": [
 																	{
 																		"type": "object",
 																		"properties": {
@@ -5724,9 +5733,15 @@
 																				"nullable": true
 																			}
 																		}
+																	},
+																	{
+																		"enum": [
+																			null
+																		],
+																		"nullable": true,
+																		"type": "object"
 																	}
-																],
-																"nullable": true
+																]
 															},
 															"x_originating_ip": {
 																"type": "string",

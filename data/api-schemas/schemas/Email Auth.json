@@ -742,8 +742,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-auth.dmarc-reports",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/email/auth/spf/inspect": {
 		"operationId": "inspect_spf",
@@ -1131,8 +1130,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-auth.spf",
-		"x-fern-sdk-method-name": "inspect",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "inspect"
 	},
 	"PATCH /zones/{zone_id}/email/auth/dmarc-reports": {
 		"operationId": "configure_dmarc_reports",
@@ -1902,7 +1900,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-auth.dmarc-reports",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	}
 }
