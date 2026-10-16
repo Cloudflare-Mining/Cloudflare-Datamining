@@ -5,30 +5,54 @@
 </div>
 <p><strong>Available Locations:&nbsp; Austin or London (Hybrid)&nbsp;</strong></p>
 <h2>About the Role</h2>
-<p>We're hiring the first embedded Lead Product Designer for Cloudflare's Web Integrity &amp; Trust product suite. More than 50% of Internet traffic is automated. Knowing who's human, who's an agent, and who's a malicious actor is core to Cloudflare's strategy, and one of the primary values we sell to our customers.</p>
-<p>Cloudflare sits in front of more than 20% of the web. That vantage point lets us detect automated threats, fraud, and traffic manipulation at a scale and depth no one else can match. Turning that raw signal into something a human can understand, trust, and act on is one of the most interesting design problems in security today — and it's the problem you'll own.</p>
+<p>We're hiring the first Dashboard &amp; Configuration Product Manager Cloudflare's Web Integrity &amp; Trust product suite. More than 50% of Internet traffic is automated. Knowing who's human, who's an agent, and who's a malicious actor is core to Cloudflare's strategy, and one of the primary values we sell to our customers.Cloudflare sits in front of more than 20% of the web. That vantage point lets us detect automated threats, fraud, and traffic manipulation at a scale and depth no one else can match. Turning that raw signal into something a human can understand, trust, and act on is one of the most interesting design problems in security today — and it's the problem you'll own.</p>
 <p>Our products make probabilistic decisions in an adversarial environment. “Is this traffic truthfully representing who they are?” and "Can we trust this traffic?" doesn't have a clean yes-or-no answer. Our objective is to minimize risk without ever having ground truth. Your job is to make that kind of reasoning legible and controllable to the people who rely on it, from the security analyst running an investigation to the marketing team trying to understand the performance of their most recent campaign.</p>
 <p>This role spans the full arc of how customers work with our product suite, from navigation, configuration, exploring and investigating their traffic, to proving the value of what Cloudflare's network sees. Today those experiences live in disconnected places; a core part of this role is envisioning the coherent product they should become. This role will work directly with the Director of Product and across the PMs who lead each product line</p>
 <p>This is a rare "0-to-1" seat: you'll help define the interaction model for a suite of product categories we are largely inventing, with room to shape not just how it looks but what it fundamentally is.</p>
 <h3>Who you are</h3>
-<p>Note: A portfolio is required for this role. Please include a link to work that shows how you think. The interview process will dive in deeper.</p>
+<p>Note: A portfolio is not required for this role, but is a bonus. Please include a link to work that shows how you think. The interview process will dive in deeper.</p>
 <ul>
-	<li>A product inventor who works in the medium of design. You've taken genuinely ambiguous, ill-defined problem spaces and defined what the product should be. You can point to work where the concept was yours.</li>
+	<li>A product inventor who works in the medium of design, presenting complex problems to Enterprise customers. You've taken genuinely ambiguous, ill-defined problem spaces and defined what the product should be. You can point to work where the concept was yours.</li>
 	<li>You've had to make a complex, high-dimensional system legible to the people who live in it, whether in security, fraud, observability, developer tools, analytics, network operations, finance, or somewhere equally demanding. You don't need a security background, but you need the mind and craft to go deep in one fast.</li>
 	<li>You use AI fluently in your own craft, and you have the judgment to know where it accelerates the work and where it falls short.</li>
 	<li>You bring independent design conviction. You've originated solutions in spaces with little prior art, and you can clearly articulate why a design is right, or why you're pushing back.</li>
-	<li>Exceptional at the full craft — interaction design, information architecture, and especially data visualization — with enough visual polish to make it real and compelling.</li>
+	<li>Exceptional at the full craft — defining the problem, defining the experience requirements, information architecture, and especially data visualization — with enough polish to make it real and compelling.</li>
 	<li>Someone who wants to obsess over a domain. You want to go deep, and are excited about pushing boundaries in a complex space.</li>
 	<li>Comfortable with a blank page. As the first design lead, you'll set your own process and build alongside your peers and engineers.</li>
 </ul>
 <h3>Nice to have</h3>
 <ul>
-	<li>Experience as the first or founding designer on a team or product.</li>
+	<li>Experience as the first or founding product manager or designer on a team or product.</li>
 	<li>Exposure to security, trust &amp; safety, fraud / ad fraud (IVT), or ML-driven products.</li>
 	<li>Comfort prototyping in code, or working fluently with engineers who do.</li>
 	<li>Familiarity with how analysts or operations teams actually work day to day.</li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Compensation<br></strong>Compensation may be adjusted depending on work location.</p>
+<p><strong>Equity</strong><br>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong><br>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

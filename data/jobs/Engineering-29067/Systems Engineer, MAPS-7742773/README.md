@@ -5,7 +5,8 @@
 </div>
 <h2>Available Locations</h2>
 <ul>
-	<li>Austin, US</li>
+	<li>New York, NY</li>
+	<li>Washington DC</li>
 </ul>
 <h2>About the Role</h2>
 <p>Cloudflare’s engineering teams build and maintain the systems and products that power our global platform. A global platform which is within approximately 50 milliseconds of about 95% of the Internet connected population, serving on average, over 46 million HTTP requests per second.</p>
