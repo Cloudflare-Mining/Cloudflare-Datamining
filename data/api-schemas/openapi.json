@@ -739059,11 +739059,10 @@
 														"pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
 													},
 													"filter": {
-														"description": "Optional filter expression that determines whether this policy applies. Null means the policy applies to every request. Maximum 4096 UTF-8 bytes.",
+														"description": "Filter expression that determines whether this policy applies. Maximum 4096 UTF-8 bytes.",
 														"type": "string",
 														"maxLength": 4096,
-														"minLength": 1,
-														"nullable": true
+														"minLength": 1
 													},
 													"id": {
 														"description": "Server-assigned UUID",
@@ -739376,7 +739375,7 @@
 			"post": {
 				"operationId": "cws-create-policy",
 				"summary": "Create a new policy",
-				"description": "Creates a policy from inline Rego source and an entrypoint. Omit filter to apply the policy to every request.",
+				"description": "Creates a policy from inline Rego source, an entrypoint, and a filter expression.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -739411,11 +739410,10 @@
 										"pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
 									},
 									"filter": {
-										"description": "Optional filter expression that determines whether this policy applies. Omit or set null to apply the policy to every request. Maximum 4096 UTF-8 bytes.",
+										"description": "Filter expression that determines whether this policy applies. Maximum 4096 UTF-8 bytes.",
 										"type": "string",
 										"maxLength": 4096,
-										"minLength": 1,
-										"nullable": true
+										"minLength": 1
 									},
 									"name": {
 										"description": "Name of the policy",
@@ -739441,6 +739439,7 @@
 								"additionalProperties": false,
 								"required": [
 									"name",
+									"filter",
 									"entrypoint",
 									"rego_source"
 								]
@@ -739542,11 +739541,10 @@
 													"pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
 												},
 												"filter": {
-													"description": "Optional filter expression that determines whether this policy applies. Null means the policy applies to every request. Maximum 4096 UTF-8 bytes.",
+													"description": "Filter expression that determines whether this policy applies. Maximum 4096 UTF-8 bytes.",
 													"type": "string",
 													"maxLength": 4096,
-													"minLength": 1,
-													"nullable": true
+													"minLength": 1
 												},
 												"id": {
 													"description": "Server-assigned UUID",
@@ -740406,11 +740404,10 @@
 													"pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
 												},
 												"filter": {
-													"description": "Optional filter expression that determines whether this policy applies. Null means the policy applies to every request. Maximum 4096 UTF-8 bytes.",
+													"description": "Filter expression that determines whether this policy applies. Maximum 4096 UTF-8 bytes.",
 													"type": "string",
 													"maxLength": 4096,
-													"minLength": 1,
-													"nullable": true
+													"minLength": 1
 												},
 												"id": {
 													"description": "Server-assigned UUID",
@@ -740694,7 +740691,7 @@
 			"put": {
 				"operationId": "cws-update-policy",
 				"summary": "Update a policy",
-				"description": "Replaces the policy's configuration. Omit filter to apply the policy to every request. Omit tags or use {} to clear them.",
+				"description": "Replaces the policy's configuration. Omit tags or use {} to clear them.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -740740,11 +740737,10 @@
 										"pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
 									},
 									"filter": {
-										"description": "Optional filter expression that determines whether this policy applies. Omit or set null to apply the policy to every request. Maximum 4096 UTF-8 bytes.",
+										"description": "Filter expression that determines whether this policy applies. Maximum 4096 UTF-8 bytes.",
 										"type": "string",
 										"maxLength": 4096,
-										"minLength": 1,
-										"nullable": true
+										"minLength": 1
 									},
 									"name": {
 										"description": "Name of the policy",
@@ -740770,6 +740766,7 @@
 								"additionalProperties": false,
 								"required": [
 									"name",
+									"filter",
 									"entrypoint",
 									"rego_source"
 								]
@@ -740871,11 +740868,10 @@
 													"pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
 												},
 												"filter": {
-													"description": "Optional filter expression that determines whether this policy applies. Null means the policy applies to every request. Maximum 4096 UTF-8 bytes.",
+													"description": "Filter expression that determines whether this policy applies. Maximum 4096 UTF-8 bytes.",
 													"type": "string",
 													"maxLength": 4096,
-													"minLength": 1,
-													"nullable": true
+													"minLength": 1
 												},
 												"id": {
 													"description": "Server-assigned UUID",
@@ -1044273,7 +1044269,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"allOf": [
 												{
@@ -1044497,7 +1044493,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1044856,7 +1044852,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"allOf": [
 												{
@@ -1045092,7 +1045088,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1045333,7 +1045329,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"allOf": [
 												{
@@ -1045484,7 +1045480,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1045809,7 +1045805,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"allOf": [
 												{
@@ -1046045,7 +1046041,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1046396,7 +1046392,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"allOf": [
 												{
@@ -1046632,7 +1046628,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1046762,7 +1046758,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"example": "<image blob data>",
 											"anyOf": [
@@ -1046809,7 +1046805,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1047067,7 +1047063,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"allOf": [
 												{
@@ -1047230,7 +1047226,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1047463,7 +1047459,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"allOf": [
 												{
@@ -1047617,7 +1047613,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1047861,7 +1047857,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"allOf": [
 												{
@@ -1048015,7 +1048011,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1048254,7 +1048250,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"allOf": [
 												{
@@ -1048408,7 +1048404,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1048653,7 +1048649,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"allOf": [
 												{
@@ -1048824,7 +1048820,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1049112,7 +1049108,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"allOf": [
 												{
@@ -1049322,7 +1049318,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1049703,7 +1049699,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"allOf": [
 												{
@@ -1049928,7 +1049924,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1050168,7 +1050164,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"allOf": [
 												{
@@ -1050319,7 +1050315,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1050632,7 +1050628,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"allOf": [
 												{
@@ -1050857,7 +1050853,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1051242,7 +1051238,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"allOf": [
 												{
@@ -1051467,7 +1051463,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1051776,7 +1051772,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"allOf": [
 												{
@@ -1051996,7 +1051992,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1052444,7 +1052440,7 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"messages": {
 											"example": [],
@@ -1052540,7 +1052536,7 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"messages": {
 											"example": [],
@@ -1052824,7 +1052820,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"allOf": [
 												{
@@ -1052990,7 +1052986,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1053248,7 +1053244,7 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"messages": {
 											"example": [],
@@ -1053573,7 +1053569,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"allOf": [
 												{
@@ -1053800,7 +1053796,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1054173,7 +1054169,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"allOf": [
 												{
@@ -1054412,7 +1054408,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1054651,7 +1054647,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"allOf": [
 												{
@@ -1054802,7 +1054798,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1055128,7 +1055124,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"allOf": [
 												{
@@ -1055367,7 +1055363,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1055673,7 +1055669,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"allOf": [
 												{
@@ -1055890,7 +1055886,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1056252,7 +1056248,7 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"messages": {
 											"example": [],
@@ -1056611,7 +1056607,7 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"messages": {
 											"example": [],
@@ -1056886,7 +1056882,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"allOf": [
 												{
@@ -1057054,7 +1057050,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1057345,7 +1057341,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"allOf": [
 												{
@@ -1057529,7 +1057525,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1057851,7 +1057847,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"allOf": [
 												{
@@ -1058047,7 +1058043,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1058286,7 +1058282,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"allOf": [
 												{
@@ -1058437,7 +1058433,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1058720,7 +1058716,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"allOf": [
 												{
@@ -1058916,7 +1058912,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1059221,7 +1059217,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"allOf": [
 												{
@@ -1059417,7 +1059413,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1059675,7 +1059671,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"allOf": [
 												{
@@ -1059845,7 +1059841,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1060139,7 +1060135,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
+									"anyOf": [
 										{
 											"allOf": [
 												{
@@ -1060309,7 +1060305,7 @@
 															"example": []
 														}
 													],
-													"minLength": 1
+													"minItems": 1
 												},
 												"messages": {
 													"example": [],
@@ -1468014,6 +1468010,7 @@
 																			"http_request_transform",
 																			"http_response_cache_settings",
 																			"http_response_compression",
+																			"http_response_firewall_custom",
 																			"http_response_firewall_managed",
 																			"http_response_headers_transform",
 																			"magic_transit",
@@ -1468423,6 +1468420,7 @@
 													"http_request_transform",
 													"http_response_cache_settings",
 													"http_response_compression",
+													"http_response_firewall_custom",
 													"http_response_firewall_managed",
 													"http_response_headers_transform",
 													"magic_transit",
@@ -1476297,6 +1476295,7 @@
 																									"http_request_transform",
 																									"http_response_cache_settings",
 																									"http_response_compression",
+																									"http_response_firewall_custom",
 																									"http_response_firewall_managed",
 																									"http_response_headers_transform",
 																									"magic_transit",
@@ -1476978,6 +1476977,7 @@
 																				"http_request_transform",
 																				"http_response_cache_settings",
 																				"http_response_compression",
+																				"http_response_firewall_custom",
 																				"http_response_firewall_managed",
 																				"http_response_headers_transform",
 																				"magic_transit",
@@ -1484854,6 +1484854,7 @@
 																																		"http_request_transform",
 																																		"http_response_cache_settings",
 																																		"http_response_compression",
+																																		"http_response_firewall_custom",
 																																		"http_response_firewall_managed",
 																																		"http_response_headers_transform",
 																																		"magic_transit",
@@ -1486060,6 +1486061,7 @@
 																		"http_request_transform",
 																		"http_response_cache_settings",
 																		"http_response_compression",
+																		"http_response_firewall_custom",
 																		"http_response_firewall_managed",
 																		"http_response_headers_transform",
 																		"magic_transit",
@@ -1493936,6 +1493938,7 @@
 																																"http_request_transform",
 																																"http_response_cache_settings",
 																																"http_response_compression",
+																																"http_response_firewall_custom",
 																																"http_response_firewall_managed",
 																																"http_response_headers_transform",
 																																"magic_transit",
@@ -1494714,6 +1494717,7 @@
 													"http_request_transform",
 													"http_response_cache_settings",
 													"http_response_compression",
+													"http_response_firewall_custom",
 													"http_response_firewall_managed",
 													"http_response_headers_transform",
 													"magic_transit",
@@ -1502588,6 +1502592,7 @@
 																									"http_request_transform",
 																									"http_response_cache_settings",
 																									"http_response_compression",
+																									"http_response_firewall_custom",
 																									"http_response_firewall_managed",
 																									"http_response_headers_transform",
 																									"magic_transit",
@@ -1503264,6 +1503269,7 @@
 																				"http_request_transform",
 																				"http_response_cache_settings",
 																				"http_response_compression",
+																				"http_response_firewall_custom",
 																				"http_response_firewall_managed",
 																				"http_response_headers_transform",
 																				"magic_transit",
@@ -1511140,6 +1511146,7 @@
 																																		"http_request_transform",
 																																		"http_response_cache_settings",
 																																		"http_response_compression",
+																																		"http_response_firewall_custom",
 																																		"http_response_firewall_managed",
 																																		"http_response_headers_transform",
 																																		"magic_transit",
@@ -1519683,6 +1519690,7 @@
 																						"http_request_transform",
 																						"http_response_cache_settings",
 																						"http_response_compression",
+																						"http_response_firewall_custom",
 																						"http_response_firewall_managed",
 																						"http_response_headers_transform",
 																						"magic_transit",
@@ -1520428,6 +1520436,7 @@
 																				"http_request_transform",
 																				"http_response_cache_settings",
 																				"http_response_compression",
+																				"http_response_firewall_custom",
 																				"http_response_firewall_managed",
 																				"http_response_headers_transform",
 																				"magic_transit",
@@ -1528304,6 +1528313,7 @@
 																																		"http_request_transform",
 																																		"http_response_cache_settings",
 																																		"http_response_compression",
+																																		"http_response_firewall_custom",
 																																		"http_response_firewall_managed",
 																																		"http_response_headers_transform",
 																																		"magic_transit",
@@ -1529288,6 +1529298,7 @@
 																				"http_request_transform",
 																				"http_response_cache_settings",
 																				"http_response_compression",
+																				"http_response_firewall_custom",
 																				"http_response_firewall_managed",
 																				"http_response_headers_transform",
 																				"magic_transit",
@@ -1537164,6 +1537175,7 @@
 																																		"http_request_transform",
 																																		"http_response_cache_settings",
 																																		"http_response_compression",
+																																		"http_response_firewall_custom",
 																																		"http_response_firewall_managed",
 																																		"http_response_headers_transform",
 																																		"magic_transit",
@@ -1545717,6 +1545729,7 @@
 																						"http_request_transform",
 																						"http_response_cache_settings",
 																						"http_response_compression",
+																						"http_response_firewall_custom",
 																						"http_response_firewall_managed",
 																						"http_response_headers_transform",
 																						"magic_transit",
@@ -1546462,6 +1546475,7 @@
 																				"http_request_transform",
 																				"http_response_cache_settings",
 																				"http_response_compression",
+																				"http_response_firewall_custom",
 																				"http_response_firewall_managed",
 																				"http_response_headers_transform",
 																				"magic_transit",
@@ -1554338,6 +1554352,7 @@
 																																		"http_request_transform",
 																																		"http_response_cache_settings",
 																																		"http_response_compression",
+																																		"http_response_firewall_custom",
 																																		"http_response_firewall_managed",
 																																		"http_response_headers_transform",
 																																		"magic_transit",
@@ -1555302,6 +1555317,7 @@
 																			"http_request_transform",
 																			"http_response_cache_settings",
 																			"http_response_compression",
+																			"http_response_firewall_custom",
 																			"http_response_firewall_managed",
 																			"http_response_headers_transform",
 																			"magic_transit",
@@ -1556173,6 +1556189,7 @@
 																		"http_request_transform",
 																		"http_response_cache_settings",
 																		"http_response_compression",
+																		"http_response_firewall_custom",
 																		"http_response_firewall_managed",
 																		"http_response_headers_transform",
 																		"magic_transit",
@@ -1564049,6 +1564066,7 @@
 																																"http_request_transform",
 																																"http_response_cache_settings",
 																																"http_response_compression",
+																																"http_response_firewall_custom",
 																																"http_response_firewall_managed",
 																																"http_response_headers_transform",
 																																"magic_transit",
@@ -1565033,6 +1565051,7 @@
 																		"http_request_transform",
 																		"http_response_cache_settings",
 																		"http_response_compression",
+																		"http_response_firewall_custom",
 																		"http_response_firewall_managed",
 																		"http_response_headers_transform",
 																		"magic_transit",
@@ -1572909,6 +1572928,7 @@
 																																"http_request_transform",
 																																"http_response_cache_settings",
 																																"http_response_compression",
+																																"http_response_firewall_custom",
 																																"http_response_firewall_managed",
 																																"http_response_headers_transform",
 																																"magic_transit",
@@ -1573575,6 +1573595,7 @@
 								"http_request_transform",
 								"http_response_cache_settings",
 								"http_response_compression",
+								"http_response_firewall_custom",
 								"http_response_firewall_managed",
 								"http_response_headers_transform",
 								"magic_transit",
@@ -1573893,6 +1573914,7 @@
 																		"http_request_transform",
 																		"http_response_cache_settings",
 																		"http_response_compression",
+																		"http_response_firewall_custom",
 																		"http_response_firewall_managed",
 																		"http_response_headers_transform",
 																		"magic_transit",
@@ -1581769,6 +1581791,7 @@
 																																"http_request_transform",
 																																"http_response_cache_settings",
 																																"http_response_compression",
+																																"http_response_firewall_custom",
 																																"http_response_firewall_managed",
 																																"http_response_headers_transform",
 																																"magic_transit",
@@ -1582433,6 +1582456,7 @@
 								"http_request_transform",
 								"http_response_cache_settings",
 								"http_response_compression",
+								"http_response_firewall_custom",
 								"http_response_firewall_managed",
 								"http_response_headers_transform",
 								"magic_transit",
@@ -1590403,6 +1590427,7 @@
 																									"http_request_transform",
 																									"http_response_cache_settings",
 																									"http_response_compression",
+																									"http_response_firewall_custom",
 																									"http_response_firewall_managed",
 																									"http_response_headers_transform",
 																									"magic_transit",
@@ -1591079,6 +1591104,7 @@
 																				"http_request_transform",
 																				"http_response_cache_settings",
 																				"http_response_compression",
+																				"http_response_firewall_custom",
 																				"http_response_firewall_managed",
 																				"http_response_headers_transform",
 																				"magic_transit",
@@ -1598955,6 +1598981,7 @@
 																																		"http_request_transform",
 																																		"http_response_cache_settings",
 																																		"http_response_compression",
+																																		"http_response_firewall_custom",
 																																		"http_response_firewall_managed",
 																																		"http_response_headers_transform",
 																																		"magic_transit",
@@ -1599623,6 +1599650,7 @@
 								"http_request_transform",
 								"http_response_cache_settings",
 								"http_response_compression",
+								"http_response_firewall_custom",
 								"http_response_firewall_managed",
 								"http_response_headers_transform",
 								"magic_transit",
@@ -1599944,6 +1599972,7 @@
 																			"http_request_transform",
 																			"http_response_cache_settings",
 																			"http_response_compression",
+																			"http_response_firewall_custom",
 																			"http_response_firewall_managed",
 																			"http_response_headers_transform",
 																			"magic_transit",
@@ -1600265,6 +1600294,7 @@
 								"http_request_transform",
 								"http_response_cache_settings",
 								"http_response_compression",
+								"http_response_firewall_custom",
 								"http_response_firewall_managed",
 								"http_response_headers_transform",
 								"magic_transit",
@@ -1600583,6 +1600613,7 @@
 																		"http_request_transform",
 																		"http_response_cache_settings",
 																		"http_response_compression",
+																		"http_response_firewall_custom",
 																		"http_response_firewall_managed",
 																		"http_response_headers_transform",
 																		"magic_transit",
@@ -1608459,6 +1608490,7 @@
 																																"http_request_transform",
 																																"http_response_cache_settings",
 																																"http_response_compression",
+																																"http_response_firewall_custom",
 																																"http_response_firewall_managed",
 																																"http_response_headers_transform",
 																																"magic_transit",
@@ -2481119,6 +2481151,7 @@
 																			"http_request_transform",
 																			"http_response_cache_settings",
 																			"http_response_compression",
+																			"http_response_firewall_custom",
 																			"http_response_firewall_managed",
 																			"http_response_headers_transform",
 																			"magic_transit",
@@ -2481554,6 +2481587,7 @@
 													"http_request_transform",
 													"http_response_cache_settings",
 													"http_response_compression",
+													"http_response_firewall_custom",
 													"http_response_firewall_managed",
 													"http_response_headers_transform",
 													"magic_transit",
@@ -2489428,6 +2489462,7 @@
 																									"http_request_transform",
 																									"http_response_cache_settings",
 																									"http_response_compression",
+																									"http_response_firewall_custom",
 																									"http_response_firewall_managed",
 																									"http_response_headers_transform",
 																									"magic_transit",
@@ -2490109,6 +2490144,7 @@
 																				"http_request_transform",
 																				"http_response_cache_settings",
 																				"http_response_compression",
+																				"http_response_firewall_custom",
 																				"http_response_firewall_managed",
 																				"http_response_headers_transform",
 																				"magic_transit",
@@ -2497985,6 +2498021,7 @@
 																																		"http_request_transform",
 																																		"http_response_cache_settings",
 																																		"http_response_compression",
+																																		"http_response_firewall_custom",
 																																		"http_response_firewall_managed",
 																																		"http_response_headers_transform",
 																																		"magic_transit",
@@ -2499217,6 +2499254,7 @@
 																		"http_request_transform",
 																		"http_response_cache_settings",
 																		"http_response_compression",
+																		"http_response_firewall_custom",
 																		"http_response_firewall_managed",
 																		"http_response_headers_transform",
 																		"magic_transit",
@@ -2507093,6 +2507131,7 @@
 																																"http_request_transform",
 																																"http_response_cache_settings",
 																																"http_response_compression",
+																																"http_response_firewall_custom",
 																																"http_response_firewall_managed",
 																																"http_response_headers_transform",
 																																"magic_transit",
@@ -2507897,6 +2507936,7 @@
 													"http_request_transform",
 													"http_response_cache_settings",
 													"http_response_compression",
+													"http_response_firewall_custom",
 													"http_response_firewall_managed",
 													"http_response_headers_transform",
 													"magic_transit",
@@ -2515771,6 +2515811,7 @@
 																									"http_request_transform",
 																									"http_response_cache_settings",
 																									"http_response_compression",
+																									"http_response_firewall_custom",
 																									"http_response_firewall_managed",
 																									"http_response_headers_transform",
 																									"magic_transit",
@@ -2516447,6 +2516488,7 @@
 																				"http_request_transform",
 																				"http_response_cache_settings",
 																				"http_response_compression",
+																				"http_response_firewall_custom",
 																				"http_response_firewall_managed",
 																				"http_response_headers_transform",
 																				"magic_transit",
@@ -2524323,6 +2524365,7 @@
 																																		"http_request_transform",
 																																		"http_response_cache_settings",
 																																		"http_response_compression",
+																																		"http_response_firewall_custom",
 																																		"http_response_firewall_managed",
 																																		"http_response_headers_transform",
 																																		"magic_transit",
@@ -2532879,6 +2532922,7 @@
 																						"http_request_transform",
 																						"http_response_cache_settings",
 																						"http_response_compression",
+																						"http_response_firewall_custom",
 																						"http_response_firewall_managed",
 																						"http_response_headers_transform",
 																						"magic_transit",
@@ -2533624,6 +2533668,7 @@
 																				"http_request_transform",
 																				"http_response_cache_settings",
 																				"http_response_compression",
+																				"http_response_firewall_custom",
 																				"http_response_firewall_managed",
 																				"http_response_headers_transform",
 																				"magic_transit",
@@ -2541500,6 +2541545,7 @@
 																																		"http_request_transform",
 																																		"http_response_cache_settings",
 																																		"http_response_compression",
+																																		"http_response_firewall_custom",
 																																		"http_response_firewall_managed",
 																																		"http_response_headers_transform",
 																																		"magic_transit",
@@ -2542497,6 +2542543,7 @@
 																				"http_request_transform",
 																				"http_response_cache_settings",
 																				"http_response_compression",
+																				"http_response_firewall_custom",
 																				"http_response_firewall_managed",
 																				"http_response_headers_transform",
 																				"magic_transit",
@@ -2550373,6 +2550420,7 @@
 																																		"http_request_transform",
 																																		"http_response_cache_settings",
 																																		"http_response_compression",
+																																		"http_response_firewall_custom",
 																																		"http_response_firewall_managed",
 																																		"http_response_headers_transform",
 																																		"magic_transit",
@@ -2558939,6 +2558987,7 @@
 																						"http_request_transform",
 																						"http_response_cache_settings",
 																						"http_response_compression",
+																						"http_response_firewall_custom",
 																						"http_response_firewall_managed",
 																						"http_response_headers_transform",
 																						"magic_transit",
@@ -2559684,6 +2559733,7 @@
 																				"http_request_transform",
 																				"http_response_cache_settings",
 																				"http_response_compression",
+																				"http_response_firewall_custom",
 																				"http_response_firewall_managed",
 																				"http_response_headers_transform",
 																				"magic_transit",
@@ -2567560,6 +2567610,7 @@
 																																		"http_request_transform",
 																																		"http_response_cache_settings",
 																																		"http_response_compression",
+																																		"http_response_firewall_custom",
 																																		"http_response_firewall_managed",
 																																		"http_response_headers_transform",
 																																		"magic_transit",
@@ -2568537,6 +2568588,7 @@
 																			"http_request_transform",
 																			"http_response_cache_settings",
 																			"http_response_compression",
+																			"http_response_firewall_custom",
 																			"http_response_firewall_managed",
 																			"http_response_headers_transform",
 																			"magic_transit",
@@ -2569447,6 +2569499,7 @@
 																		"http_request_transform",
 																		"http_response_cache_settings",
 																		"http_response_compression",
+																		"http_response_firewall_custom",
 																		"http_response_firewall_managed",
 																		"http_response_headers_transform",
 																		"magic_transit",
@@ -2577323,6 +2577376,7 @@
 																																"http_request_transform",
 																																"http_response_cache_settings",
 																																"http_response_compression",
+																																"http_response_firewall_custom",
 																																"http_response_firewall_managed",
 																																"http_response_headers_transform",
 																																"magic_transit",
@@ -2578333,6 +2578387,7 @@
 																		"http_request_transform",
 																		"http_response_cache_settings",
 																		"http_response_compression",
+																		"http_response_firewall_custom",
 																		"http_response_firewall_managed",
 																		"http_response_headers_transform",
 																		"magic_transit",
@@ -2586209,6 +2586264,7 @@
 																																"http_request_transform",
 																																"http_response_cache_settings",
 																																"http_response_compression",
+																																"http_response_firewall_custom",
 																																"http_response_firewall_managed",
 																																"http_response_headers_transform",
 																																"magic_transit",
@@ -2586901,6 +2586957,7 @@
 								"http_request_transform",
 								"http_response_cache_settings",
 								"http_response_compression",
+								"http_response_firewall_custom",
 								"http_response_firewall_managed",
 								"http_response_headers_transform",
 								"magic_transit",
@@ -2587219,6 +2587276,7 @@
 																		"http_request_transform",
 																		"http_response_cache_settings",
 																		"http_response_compression",
+																		"http_response_firewall_custom",
 																		"http_response_firewall_managed",
 																		"http_response_headers_transform",
 																		"magic_transit",
@@ -2595095,6 +2595153,7 @@
 																																"http_request_transform",
 																																"http_response_cache_settings",
 																																"http_response_compression",
+																																"http_response_firewall_custom",
 																																"http_response_firewall_managed",
 																																"http_response_headers_transform",
 																																"magic_transit",
@@ -2595785,6 +2595844,7 @@
 								"http_request_transform",
 								"http_response_cache_settings",
 								"http_response_compression",
+								"http_response_firewall_custom",
 								"http_response_firewall_managed",
 								"http_response_headers_transform",
 								"magic_transit",
@@ -2603755,6 +2603815,7 @@
 																									"http_request_transform",
 																									"http_response_cache_settings",
 																									"http_response_compression",
+																									"http_response_firewall_custom",
 																									"http_response_firewall_managed",
 																									"http_response_headers_transform",
 																									"magic_transit",
@@ -2604431,6 +2604492,7 @@
 																				"http_request_transform",
 																				"http_response_cache_settings",
 																				"http_response_compression",
+																				"http_response_firewall_custom",
 																				"http_response_firewall_managed",
 																				"http_response_headers_transform",
 																				"magic_transit",
@@ -2612307,6 +2612369,7 @@
 																																		"http_request_transform",
 																																		"http_response_cache_settings",
 																																		"http_response_compression",
+																																		"http_response_firewall_custom",
 																																		"http_response_firewall_managed",
 																																		"http_response_headers_transform",
 																																		"magic_transit",
@@ -2612988,6 +2613051,7 @@
 								"http_request_transform",
 								"http_response_cache_settings",
 								"http_response_compression",
+								"http_response_firewall_custom",
 								"http_response_firewall_managed",
 								"http_response_headers_transform",
 								"magic_transit",
@@ -2613309,6 +2613373,7 @@
 																			"http_request_transform",
 																			"http_response_cache_settings",
 																			"http_response_compression",
+																			"http_response_firewall_custom",
 																			"http_response_firewall_managed",
 																			"http_response_headers_transform",
 																			"magic_transit",
@@ -2613656,6 +2613721,7 @@
 								"http_request_transform",
 								"http_response_cache_settings",
 								"http_response_compression",
+								"http_response_firewall_custom",
 								"http_response_firewall_managed",
 								"http_response_headers_transform",
 								"magic_transit",
@@ -2613974,6 +2614040,7 @@
 																		"http_request_transform",
 																		"http_response_cache_settings",
 																		"http_response_compression",
+																		"http_response_firewall_custom",
 																		"http_response_firewall_managed",
 																		"http_response_headers_transform",
 																		"magic_transit",
@@ -2621850,6 +2621917,7 @@
 																																"http_request_transform",
 																																"http_response_cache_settings",
 																																"http_response_compression",
+																																"http_response_firewall_custom",
 																																"http_response_firewall_managed",
 																																"http_response_headers_transform",
 																																"magic_transit",

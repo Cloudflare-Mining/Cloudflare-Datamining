@@ -161,7 +161,7 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
+							"anyOf": [
 								{
 									"allOf": [
 										{
@@ -315,7 +315,7 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"messages": {
 											"example": [],
@@ -542,7 +542,7 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
+							"anyOf": [
 								{
 									"allOf": [
 										{
@@ -696,7 +696,7 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"messages": {
 											"example": [],
@@ -938,7 +938,7 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
+							"anyOf": [
 								{
 									"allOf": [
 										{
@@ -1092,7 +1092,7 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"messages": {
 											"example": [],
