@@ -2,7 +2,7 @@
 	"GET /accounts/{account_id}/security-center/partners/{partner}/settings": {
 		"operationId": "get-security-center-partner-settings",
 		"summary": "Retrieves Partner Integration Settings",
-		"description": "Returns whether the account has enabled the selected partner integration. An integration that has never been configured is returned as disabled.",
+		"description": "Returns whether the account has enabled the selected partner integration and, if enabled, whether the account has been matched with the partner. An integration that has not been configured is returned as disabled.",
 		"parameters": [
 			{
 				"in": "path",
@@ -122,15 +122,27 @@
 									"properties": {
 										"result": {
 											"type": "object",
+											"additionalProperties": false,
 											"properties": {
 												"enabled": {
 													"description": "Whether the partner integration is enabled for the account.",
 													"type": "boolean",
 													"example": true,
 													"x-auditable": true
+												},
+												"resolution_status": {
+													"description": "Whether the account has been matched with the partner. `resolved` means a match was found, `not_found` means the partner has no record of the account, `no_zones` means the account has no zones to match with the partner, and `pending` means resolution has not completed yet. Omitted when the integration is disabled.",
+													"type": "string",
+													"example": "resolved",
+													"enum": [
+														"resolved",
+														"not_found",
+														"no_zones",
+														"pending"
+													],
+													"x-auditable": true
 												}
 											},
-											"additionalProperties": false,
 											"required": [
 												"enabled"
 											]
@@ -269,10 +281,9 @@
 		"tags": [
 			"Security Center Partners"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "security-insights.partners.settings",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/security-center/partners/{partner}/shadow-zones": {
 		"operationId": "get-security-center-partner-shadow-zones",
@@ -650,10 +661,9 @@
 		"tags": [
 			"Security Center Partners"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "security-insights.partners.shadow-zones",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/security-center/partners/{partner}/shadow-zones/{domain}/hosts": {
 		"operationId": "get-security-center-partner-shadow-zone-hosts",
@@ -1066,10 +1076,9 @@
 		"tags": [
 			"Security Center Partners"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "security-insights.partners.shadow-zone-hosts",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/security-center/partners/{partner}/shadow-hosts": {
 		"operationId": "get-zone-security-center-partner-shadow-hosts",
@@ -1476,10 +1485,9 @@
 			"Zone Settings Write",
 			"Zone Settings Read"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "security-insights.partners.shadow-hosts",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"POST /accounts/{account_id}/security-center/partners/{partner}/settings": {
 		"operationId": "update-security-center-partner-settings",
@@ -1773,9 +1781,8 @@
 		"tags": [
 			"Security Center Partners"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "security-insights.partners.settings",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

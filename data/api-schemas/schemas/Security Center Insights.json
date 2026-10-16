@@ -254,8 +254,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "intel.attack-surface-report.issue-types",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/intel/attack-surface-report/issues": {
 		"operationId": "get-security-center-issues",
@@ -343,11 +342,13 @@
 				"schema": {
 					"type": "array",
 					"items": {
+						"description": "Who generated the insight. `cloudflare` for Cloudflare-generated insights, otherwise the partner.",
+						"type": "string",
+						"example": "cloudflare",
 						"enum": [
 							"cloudflare",
 							"riskrecon"
 						],
-						"type": "string",
 						"x-auditable": true
 					},
 					"example": [
@@ -676,6 +677,16 @@
 															"since": {
 																"type": "string",
 																"format": "date-time",
+																"x-auditable": true
+															},
+															"source": {
+																"description": "Who generated the insight. `cloudflare` for Cloudflare-generated insights, otherwise the partner.",
+																"type": "string",
+																"example": "cloudflare",
+																"enum": [
+																	"cloudflare",
+																	"riskrecon"
+																],
 																"x-auditable": true
 															},
 															"status": {
@@ -867,10 +878,9 @@
 			"Intel Write",
 			"Intel Read"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "intel.attack-surface-report.issues",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/intel/attack-surface-report/issues/class": {
 		"operationId": "get-security-center-issue-counts-by-class",
@@ -958,11 +968,13 @@
 				"schema": {
 					"type": "array",
 					"items": {
+						"description": "Who generated the insight. `cloudflare` for Cloudflare-generated insights, otherwise the partner.",
+						"type": "string",
+						"example": "cloudflare",
 						"enum": [
 							"cloudflare",
 							"riskrecon"
 						],
-						"type": "string",
 						"x-auditable": true
 					},
 					"example": [
@@ -1336,10 +1348,9 @@
 			"Intel Write",
 			"Intel Read"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "intel.attack-surface-report.issues",
-		"x-fern-sdk-method-name": "class",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "class"
 	},
 	"GET /accounts/{account_id}/intel/attack-surface-report/issues/severity": {
 		"operationId": "get-security-center-issue-counts-by-severity",
@@ -1427,11 +1438,13 @@
 				"schema": {
 					"type": "array",
 					"items": {
+						"description": "Who generated the insight. `cloudflare` for Cloudflare-generated insights, otherwise the partner.",
+						"type": "string",
+						"example": "cloudflare",
 						"enum": [
 							"cloudflare",
 							"riskrecon"
 						],
-						"type": "string",
 						"x-auditable": true
 					},
 					"example": [
@@ -1805,10 +1818,9 @@
 			"Intel Write",
 			"Intel Read"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "intel.attack-surface-report.issues",
-		"x-fern-sdk-method-name": "severity",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "severity"
 	},
 	"GET /accounts/{account_id}/intel/attack-surface-report/issues/type": {
 		"operationId": "get-security-center-issue-counts-by-type",
@@ -1896,11 +1908,13 @@
 				"schema": {
 					"type": "array",
 					"items": {
+						"description": "Who generated the insight. `cloudflare` for Cloudflare-generated insights, otherwise the partner.",
+						"type": "string",
+						"example": "cloudflare",
 						"enum": [
 							"cloudflare",
 							"riskrecon"
 						],
-						"type": "string",
 						"x-auditable": true
 					},
 					"example": [
@@ -2274,10 +2288,9 @@
 			"Intel Write",
 			"Intel Read"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "intel.attack-surface-report.issues",
-		"x-fern-sdk-method-name": "type",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "type"
 	},
 	"GET /accounts/{account_id}/security-center/insights": {
 		"operationId": "get-security-center-insights",
@@ -2365,11 +2378,13 @@
 				"schema": {
 					"type": "array",
 					"items": {
+						"description": "Who generated the insight. `cloudflare` for Cloudflare-generated insights, otherwise the partner.",
+						"type": "string",
+						"example": "cloudflare",
 						"enum": [
 							"cloudflare",
 							"riskrecon"
 						],
-						"type": "string",
 						"x-auditable": true
 					},
 					"example": [
@@ -2698,6 +2713,16 @@
 															"since": {
 																"type": "string",
 																"format": "date-time",
+																"x-auditable": true
+															},
+															"source": {
+																"description": "Who generated the insight. `cloudflare` for Cloudflare-generated insights, otherwise the partner.",
+																"type": "string",
+																"example": "cloudflare",
+																"enum": [
+																	"cloudflare",
+																	"riskrecon"
+																],
 																"x-auditable": true
 															},
 															"status": {
@@ -3233,11 +3258,13 @@
 				"schema": {
 					"type": "array",
 					"items": {
+						"description": "Who generated the insight. `cloudflare` for Cloudflare-generated insights, otherwise the partner.",
+						"type": "string",
+						"example": "cloudflare",
 						"enum": [
 							"cloudflare",
 							"riskrecon"
 						],
-						"type": "string",
 						"x-auditable": true
 					},
 					"example": [
@@ -3878,10 +3905,9 @@
 		"tags": [
 			"Security Center Insights"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "security-insights.count",
-		"x-fern-sdk-method-name": "by-partner",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "by-partner"
 	},
 	"GET /accounts/{account_id}/security-center/insights/severity": {
 		"operationId": "get-security-center-insight-counts-by-severity",
@@ -3969,11 +3995,13 @@
 				"schema": {
 					"type": "array",
 					"items": {
+						"description": "Who generated the insight. `cloudflare` for Cloudflare-generated insights, otherwise the partner.",
+						"type": "string",
+						"example": "cloudflare",
 						"enum": [
 							"cloudflare",
 							"riskrecon"
 						],
-						"type": "string",
 						"x-auditable": true
 					},
 					"example": [
@@ -4432,11 +4460,13 @@
 				"schema": {
 					"type": "array",
 					"items": {
+						"description": "Who generated the insight. `cloudflare` for Cloudflare-generated insights, otherwise the partner.",
+						"type": "string",
+						"example": "cloudflare",
 						"enum": [
 							"cloudflare",
 							"riskrecon"
 						],
-						"type": "string",
 						"x-auditable": true
 					},
 					"example": [
@@ -5161,11 +5191,13 @@
 				"schema": {
 					"type": "array",
 					"items": {
+						"description": "Who generated the insight. `cloudflare` for Cloudflare-generated insights, otherwise the partner.",
+						"type": "string",
+						"example": "cloudflare",
 						"enum": [
 							"cloudflare",
 							"riskrecon"
 						],
-						"type": "string",
 						"x-auditable": true
 					},
 					"example": [
@@ -5496,6 +5528,16 @@
 																"format": "date-time",
 																"x-auditable": true
 															},
+															"source": {
+																"description": "Who generated the insight. `cloudflare` for Cloudflare-generated insights, otherwise the partner.",
+																"type": "string",
+																"example": "cloudflare",
+																"enum": [
+																	"cloudflare",
+																	"riskrecon"
+																],
+																"x-auditable": true
+															},
 															"status": {
 																"description": "The current status of the insight.",
 																"type": "string",
@@ -5774,11 +5816,13 @@
 				"schema": {
 					"type": "array",
 					"items": {
+						"description": "Who generated the insight. `cloudflare` for Cloudflare-generated insights, otherwise the partner.",
+						"type": "string",
+						"example": "cloudflare",
 						"enum": [
 							"cloudflare",
 							"riskrecon"
 						],
-						"type": "string",
 						"x-auditable": true
 					},
 					"example": [
@@ -6427,10 +6471,9 @@
 			"Zone Settings Write",
 			"Zone Settings Read"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "security-insights.zone.count",
-		"x-fern-sdk-method-name": "by-partner",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "by-partner"
 	},
 	"GET /zones/{zone_id}/security-center/insights/severity": {
 		"operationId": "get-zone-security-center-insight-counts-by-severity",
@@ -6518,11 +6561,13 @@
 				"schema": {
 					"type": "array",
 					"items": {
+						"description": "Who generated the insight. `cloudflare` for Cloudflare-generated insights, otherwise the partner.",
+						"type": "string",
+						"example": "cloudflare",
 						"enum": [
 							"cloudflare",
 							"riskrecon"
 						],
-						"type": "string",
 						"x-auditable": true
 					},
 					"example": [
@@ -6985,11 +7030,13 @@
 				"schema": {
 					"type": "array",
 					"items": {
+						"description": "Who generated the insight. `cloudflare` for Cloudflare-generated insights, otherwise the partner.",
+						"type": "string",
+						"example": "cloudflare",
 						"enum": [
 							"cloudflare",
 							"riskrecon"
 						],
-						"type": "string",
 						"x-auditable": true
 					},
 					"example": [
@@ -8205,10 +8252,9 @@
 		"tags": [
 			"Security Center Insights"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "intel.attack-surface-report.issues",
 		"x-fern-sdk-method-name": "dismiss",
-		"x-forge-hidden": true,
 		"x-forge-params": {
 			"dismiss": {
 				"default": null
