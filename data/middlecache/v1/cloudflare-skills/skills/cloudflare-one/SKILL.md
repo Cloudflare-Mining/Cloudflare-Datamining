@@ -52,6 +52,8 @@ Use these to avoid jumping straight to configuration. Ask only the prompts relev
 - TLS inspection: root CA deployment path, certificate-pinned applications, compliance exceptions, and FIPS requirements. Retrieve [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/index.md) docs before enabling.
 - DLP: sensitive data types, channels to inspect, TLS inspection readiness, DLP profiles, payload logging requirements, and false-positive tolerance. Retrieve [DLP](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/index.md) docs before creating enforcement.
 
+For writing or reviewing Workers invoked by the HTTP Forward action, use the [gateway-workers skill](../gateway-workers/SKILL.md).
+
 ### CASB, Device Posture, and Risk
 
 - CASB: SaaS vendors, admin access level, scan policy, org size, remediation owner, and whether inline protection is also required. Retrieve [CASB findings](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/index.md) docs before recommending remediation.

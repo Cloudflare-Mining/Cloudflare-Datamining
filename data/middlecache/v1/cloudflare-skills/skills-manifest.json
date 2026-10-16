@@ -237,6 +237,13 @@
 			]
 		},
 		{
+			"name": "gateway-workers",
+			"description": "Build, debug, or review Cloudflare Workers invoked by the Forward action in Gateway HTTP policies, including the GatewayMiddleware entrypoint, Gateway types, context, and continuation.",
+			"files": [
+				"SKILL.md"
+			]
+		},
+		{
 			"name": "k2",
 			"description": "Build and troubleshoot Cloudflare K2 or K2 Streams durable logs. Use for stream setup, producing from Workers or HTTP, configuring retention and inputs, and consuming through subscriptions.",
 			"files": [

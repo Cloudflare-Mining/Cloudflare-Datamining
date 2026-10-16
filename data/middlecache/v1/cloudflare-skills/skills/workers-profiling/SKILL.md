@@ -19,7 +19,7 @@ Workers and Durable Objects profiling works.
 3. For a Durable Object, also confirm its owning Worker, namespace, and instance.
 4. Choose CPU or heap profiling from the current guide's supported types and meanings.
 
-Where possible, use the [`cf` CLI](/cf/) to capture profiles. If the user requests `cf`, inspect the installed version's command help and schema where available.
+Where possible, use the [`cf` CLI](https://developers.cloudflare.com/cf/index.md) to capture profiles. If the user requests `cf`, inspect the installed version's command help and schema where available.
 
 If `cf` isn't available, consider prompting the user whether they would like to install it.
 
