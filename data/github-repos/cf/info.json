@@ -21,14 +21,11 @@
 	"is_template": false,
 	"default_branch": "main",
 	"branches": [
-		"WC-5991-preview-domain-hosting",
-		"automation/update-forge",
 		"changeset-release/main",
 		"codex/expand-secrets-file-dotenv",
 		"codex/fix-177-multipart-files",
 		"codex/fix-204-shared-registry",
 		"codex/fix-223-vite-dev-args",
-		"codex/fix-composed-scalar-flags",
 		"codex/fix-workers-check-ci-timeout",
 		"codex/update-workers-sdk-packages",
 		"dario/cfify-messages-followup",
@@ -45,7 +42,6 @@
 		"penalosa/rust-generator",
 		"penalosa/temp-accounts",
 		"remove-x-forge-globals",
-		"renovate/workers-sdk-test-fixtures",
 		"sk/update-forge"
 	]
 }
