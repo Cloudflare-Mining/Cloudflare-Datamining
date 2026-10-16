@@ -28,7 +28,7 @@ Introducing Void: an open-source SDK, CLI, and self-hosted platform for building
 
 [Christoph Nakazawa](https://blog.cloudflare.com/author/christoph-nakazawa/) and  [Michael Dong](https://blog.cloudflare.com/author/michael-dong/)
 
-October 15, 2026 [<h2>Cloudflare and OpenAI: making AI discovery better for everyone</h2>](https://blog.cloudflare.com/cloudflare-openai-discovery-agentic-web/)
+October 15, 2026 [<h2>Cloudflare and OpenAI: Making AI discovery better for everyone</h2>](https://blog.cloudflare.com/cloudflare-openai-discovery-agentic-web/)
 
 How Cloudflare and OpenAI are working together to help AI find useful content, keep up with changes, and make fewer wasted requests — making the experience better for users and website owners alike.
 
