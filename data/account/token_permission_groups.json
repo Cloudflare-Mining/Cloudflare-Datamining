@@ -670,6 +670,26 @@
 		"is_selectable": true
 	},
 	{
+		"id": "188050337e3b4ede82ccf6fb9c2e5849",
+		"name": "Account Security Insights Partner Integrations Read",
+		"description": "Grants read access to Security Insights partner integration assets and settings",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "app_security",
+		"is_selectable": true
+	},
+	{
+		"id": "872b99515f8c4dcfbeeab17659cb6711",
+		"name": "Account Security Insights Partner Integrations Write",
+		"description": "Grants write access to Security Insights partner integration assets and settings",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "app_security",
+		"is_selectable": true
+	},
+	{
 		"id": "c1fde68c7bcc44588cbb6ddbc16d6480",
 		"name": "Account Settings Read",
 		"description": "Grants read access to Account resources, account membership, and account level features",
@@ -4063,6 +4083,16 @@
 		"id": "86cdbc42964b47fcbe848cd250ef2464",
 		"name": "Zone Security Center Insights Write",
 		"description": "Grants write access to Zone Security Center Insights",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		],
+		"category": "app_security",
+		"is_selectable": true
+	},
+	{
+		"id": "9fb7a64f8fdc41fdabaa6ed81c466798",
+		"name": "Zone Security Insights Partner Assets Read",
+		"description": "Grants read access to Security Insights partner-discovered assets for a zone",
 		"scopes": [
 			"com.cloudflare.api.account.zone"
 		],
