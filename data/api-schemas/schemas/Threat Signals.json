@@ -17,6 +17,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Threat Signals article UUID",
 					"type": "string",
 					"format": "uuid"
 				}
@@ -26,6 +27,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "UUID of a tag from the account's catalog",
 					"type": "string",
 					"format": "uuid"
 				}
@@ -186,6 +188,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "UUID of the Threat Signals feed",
 					"type": "string",
 					"format": "uuid"
 				}
@@ -377,12 +380,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.feeds",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-require-confirmation": "This unsubscribes the account from the feed and permanently deletes its stored articles, including their extracted indicators, tags, and skill outputs."
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/v2/threat-signals/skills/{skill_id}": {
 		"operationId": "rssSkillDelete",
 		"summary": "Delete Threat Signals skill",
-		"description": "Deletes a custom skill. Default skills cannot be deleted.",
+		"description": "Deletes a Custom Skill. The skill's stored outputs on articles are deleted with it. Managed Default Skills cannot be deleted. Free Threat Signals accounts cannot delete Custom Skills.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -397,6 +401,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Custom Skill UUID or a Managed Default Skill ID",
 					"type": "string"
 				}
 			}
@@ -563,7 +568,8 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.skills",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-require-confirmation": "This permanently deletes the custom skill, removes it from every feed it is assigned to, and deletes the outputs it stored on articles."
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles": {
 		"operationId": "rssArticleList",
@@ -592,6 +598,7 @@
 				"name": "per_page",
 				"in": "query",
 				"schema": {
+					"description": "Number of articles per cursor page, from 1 to 100. Defaults to 20.",
 					"type": "integer",
 					"default": 20,
 					"maximum": 100,
@@ -602,6 +609,7 @@
 				"name": "feed_id",
 				"in": "query",
 				"schema": {
+					"description": "Feed UUID filter. Omit to include articles from every account feed.",
 					"type": "string",
 					"format": "uuid"
 				}
@@ -628,6 +636,7 @@
 				"name": "read",
 				"in": "query",
 				"schema": {
+					"description": "Filter by read state. Accepts true, false, 1, or 0; omit to include read and unread articles.",
 					"type": "boolean"
 				}
 			},
@@ -685,6 +694,7 @@
 				"name": "include_total",
 				"in": "query",
 				"schema": {
+					"description": "When true on the first page, count matching articles and return an exact total. Defaults to false; cursor pages do not recalculate totals.",
 					"type": "boolean",
 					"default": false
 				}
@@ -693,6 +703,7 @@
 				"name": "search",
 				"in": "query",
 				"schema": {
+					"description": "NFC-normalized, trimmed literal substring filter on article titles; ASCII case-insensitive, from 1 to 500 characters.",
 					"type": "string",
 					"maxLength": 500,
 					"minLength": 1
@@ -702,6 +713,7 @@
 				"name": "published_after",
 				"in": "query",
 				"schema": {
+					"description": "Include articles published at or after this ISO 8601 date-time with Z or a numeric UTC offset; normalized to UTC.",
 					"type": "string",
 					"format": "date-time"
 				}
@@ -710,6 +722,7 @@
 				"name": "published_before",
 				"in": "query",
 				"schema": {
+					"description": "Include articles published at or before this ISO 8601 date-time with Z or a numeric UTC offset; normalized to UTC.",
 					"type": "string",
 					"format": "date-time"
 				}
@@ -718,6 +731,7 @@
 				"name": "fetched_after",
 				"in": "query",
 				"schema": {
+					"description": "Include articles fetched at or after this ISO 8601 date-time with Z or a numeric UTC offset; normalized to UTC.",
 					"type": "string",
 					"format": "date-time"
 				}
@@ -726,6 +740,7 @@
 				"name": "fetched_before",
 				"in": "query",
 				"schema": {
+					"description": "Include articles fetched at or before this ISO 8601 date-time with Z or a numeric UTC offset; normalized to UTC.",
 					"type": "string",
 					"format": "date-time"
 				}
@@ -734,6 +749,7 @@
 				"name": "feed_category",
 				"in": "query",
 				"schema": {
+					"description": "Exact feed-category filter after trimming. Omit to include every category.",
 					"type": "string"
 				}
 			},
@@ -741,6 +757,7 @@
 				"name": "source_type",
 				"in": "query",
 				"schema": {
+					"description": "Filter by curated or custom feed source. Omit to include both source types.",
 					"type": "string",
 					"enum": [
 						"curated",
@@ -765,6 +782,7 @@
 				"name": "sort",
 				"in": "query",
 				"schema": {
+					"description": "Sort by fetched_at, published_at, or title. Prefix the field with - for descending order; defaults to -fetched_at.",
 					"type": "string",
 					"default": "-fetched_at",
 					"pattern": "^-?(fetched_at|published_at|title)$"
@@ -979,6 +997,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Threat Signals article UUID",
 					"type": "string",
 					"format": "uuid"
 				}
@@ -1196,7 +1215,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/content": {
 		"operationId": "rssArticleContentGet",
 		"summary": "Get Threat Signals article content",
-		"description": "Retrieves the stored body of a Threat Signals article as plain text or HTML.",
+		"description": "Retrieves the stored content of a Threat Signals article, unchanged. Depending on how the article was captured from its source, the content is HTML, Markdown, or plain text. The format parameter sets only the response Content-Type; it does not convert the content.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1211,6 +1230,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Threat Signals article UUID",
 					"type": "string",
 					"format": "uuid"
 				}
@@ -1219,6 +1239,7 @@
 				"name": "format",
 				"in": "query",
 				"schema": {
+					"description": "Response Content-Type: text (the default) for text/plain or html for text/html. Neither value converts the content. html is deprecated; use text.",
 					"type": "string",
 					"enum": [
 						"text",
@@ -1266,7 +1287,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/skills": {
 		"operationId": "rssArticleCustomSkillsList",
 		"summary": "List Threat Signals article custom skills",
-		"description": "Lists active custom skills currently assigned to the article's feed and whether each has a stored output. Output content and skill configuration are retrieved separately.",
+		"description": "Lists active custom skills currently assigned to the article's feed and whether each has a stored output. Output content and skill configuration are retrieved separately. Free Threat Signals accounts cannot read Custom Skills.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1281,6 +1302,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Threat Signals article UUID",
 					"type": "string",
 					"format": "uuid"
 				}
@@ -1461,7 +1483,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/skills/{skill_id}/output": {
 		"operationId": "rssArticleSkillOutputGet",
 		"summary": "Get Threat Signals article skill output",
-		"description": "Retrieves the stored output of a skill for a Threat Signals article.",
+		"description": "Retrieves the stored output of a skill for a Threat Signals article. The custom_output field is parsed JSON when the stored output is valid JSON, otherwise the raw string.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1476,6 +1498,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Threat Signals article UUID",
 					"type": "string",
 					"format": "uuid"
 				}
@@ -1485,6 +1508,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Custom Skill UUID or a Managed Default Skill ID (IOC-context: default-ioc-context-skill)",
 					"type": "string"
 				}
 			}
@@ -1816,6 +1840,7 @@
 				"name": "page",
 				"in": "query",
 				"schema": {
+					"description": "1-based page number. Minimum 1; defaults to 1.",
 					"type": "integer",
 					"default": 1,
 					"minimum": 1
@@ -1825,6 +1850,7 @@
 				"name": "per_page",
 				"in": "query",
 				"schema": {
+					"description": "Number of feeds per page, from 1 to 100. Defaults to 20.",
 					"type": "integer",
 					"default": 20,
 					"maximum": 100,
@@ -1835,6 +1861,7 @@
 				"name": "limit",
 				"in": "query",
 				"schema": {
+					"description": "Optional 1–100 alias for per_page. When provided, limit takes precedence.",
 					"type": "integer",
 					"maximum": 100,
 					"minimum": 1
@@ -1844,6 +1871,7 @@
 				"name": "sort",
 				"in": "query",
 				"schema": {
+					"description": "Sort by created_at, title, category, or url. Prefix the field with - for descending order; defaults to -created_at.",
 					"type": "string",
 					"default": "-created_at",
 					"pattern": "^-?(created_at|title|category|url)$"
@@ -1853,6 +1881,7 @@
 				"name": "category",
 				"in": "query",
 				"schema": {
+					"description": "Exact feed-category filter, up to 100 characters. Omit to include all categories.",
 					"type": "string",
 					"maxLength": 100
 				}
@@ -1861,6 +1890,7 @@
 				"name": "source_type",
 				"in": "query",
 				"schema": {
+					"description": "Filter by curated or custom feed source. Omit to include both source types.",
 					"type": "string",
 					"enum": [
 						"curated",
@@ -1872,6 +1902,7 @@
 				"name": "enabled",
 				"in": "query",
 				"schema": {
+					"description": "Filter by enabled state. Accepts true, false, 1, or 0; omit to include enabled and disabled feeds.",
 					"type": "boolean"
 				}
 			},
@@ -1879,6 +1910,7 @@
 				"name": "status",
 				"in": "query",
 				"schema": {
+					"description": "Exact stored polling-status filter, such as active or error. Omit to include every status.",
 					"type": "string"
 				}
 			}
@@ -2238,7 +2270,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds/{feed_id}/raw": {
 		"operationId": "rssFeedRawGet",
 		"summary": "Get Threat Signals feed XML",
-		"description": "Retrieves the feed document fetched by the most recent poll.",
+		"description": "Retrieves the feed document fetched by the most recent poll as text/plain by default or application/xml when format is xml.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2253,6 +2285,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "UUID of the Threat Signals feed",
 					"type": "string",
 					"format": "uuid"
 				}
@@ -2261,6 +2294,7 @@
 				"name": "format",
 				"in": "query",
 				"schema": {
+					"description": "Response format. Use xml for application/xml; omit it for the default text/plain response.",
 					"type": "string",
 					"enum": [
 						"xml"
@@ -2307,7 +2341,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds/{feed_id}/skills": {
 		"operationId": "rssFeedSkillsGet",
 		"summary": "Get Threat Signals feed skills",
-		"description": "Retrieves the effective skill pipeline for a Threat Signals feed.",
+		"description": "Retrieves active non-IOC-context Managed Default Skills followed by active Custom Skills assigned to the feed, with each entry's source. Free Threat Signals accounts receive only those Managed Default Skills.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2322,6 +2356,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "UUID of the Threat Signals feed",
 					"type": "string",
 					"format": "uuid"
 				}
@@ -2525,6 +2560,7 @@
 				"name": "feed_id",
 				"in": "query",
 				"schema": {
+					"description": "Feed UUID filter. Omit to include indicators from every account feed.",
 					"type": "string",
 					"format": "uuid"
 				}
@@ -2533,6 +2569,7 @@
 				"name": "article_id",
 				"in": "query",
 				"schema": {
+					"description": "Article UUID filter. Omit to include indicators from every article.",
 					"type": "string",
 					"format": "uuid"
 				}
@@ -2549,6 +2586,7 @@
 				"name": "per_page",
 				"in": "query",
 				"schema": {
+					"description": "Number of indicators per cursor page, from 1 to 100. Defaults to 20.",
 					"type": "integer",
 					"default": 20,
 					"maximum": 100,
@@ -2559,6 +2597,7 @@
 				"name": "sort",
 				"in": "query",
 				"schema": {
+					"description": "Sort by id. Use id for ascending or -id for descending order; defaults to id.",
 					"type": "string",
 					"default": "id",
 					"pattern": "^-?(id)$"
@@ -2568,6 +2607,7 @@
 				"name": "include_total",
 				"in": "query",
 				"schema": {
+					"description": "When true on the first page, count matching indicators and return an exact total. Defaults to false; cursor pages do not recalculate totals.",
 					"type": "boolean",
 					"default": false
 				}
@@ -2575,7 +2615,9 @@
 			{
 				"name": "cursor",
 				"in": "query",
+				"description": "Opaque cursor from the previous response's `pagination.cursor`. When provided, page size, ordering, and filters come from the cursor. Sending `per_page`, `sort`, `include_total`, `feed_id`, `article_id`, or `search` alongside it returns a 400 `CursorFilterConflictError`.",
 				"schema": {
+					"description": "Opaque cursor from the previous response's `pagination.cursor`. When provided, page size, ordering, and filters come from the cursor. Sending `per_page`, `sort`, `include_total`, `feed_id`, `article_id`, or `search` alongside it returns a 400 `CursorFilterConflictError`.",
 					"type": "string",
 					"minLength": 1
 				}
@@ -2758,6 +2800,7 @@
 				"in": "query",
 				"required": true,
 				"schema": {
+					"description": "Keyword and semantic article-search text, from 1 to 1000 characters.",
 					"type": "string",
 					"maxLength": 1000,
 					"minLength": 1
@@ -2767,6 +2810,7 @@
 				"name": "max_results",
 				"in": "query",
 				"schema": {
+					"description": "Maximum search matches to request, an integer from 1 to 50. Defaults to 20 when omitted or empty; multiple matches from one article can produce fewer returned articles.",
 					"anyOf": [
 						{
 							"enum": [
@@ -2784,6 +2828,7 @@
 				"name": "feed_id",
 				"in": "query",
 				"schema": {
+					"description": "Optional feed UUID that restricts results to articles from that feed.",
 					"type": "string",
 					"format": "uuid"
 				}
@@ -2904,7 +2949,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/skills": {
 		"operationId": "rssSkillList",
 		"summary": "List Threat Signals skills",
-		"description": "Lists the default and custom skills available to the account.",
+		"description": "Lists active Managed Default Skills and Custom Skills. Free Threat Signals accounts see active managed defaults only, with custom_skills_available: false.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2918,6 +2963,7 @@
 				"name": "page",
 				"in": "query",
 				"schema": {
+					"description": "Page number (≥ 1, default 1).",
 					"type": "integer",
 					"default": 1,
 					"minimum": 1
@@ -2927,6 +2973,7 @@
 				"name": "per_page",
 				"in": "query",
 				"schema": {
+					"description": "Results per page (1–100, default 20).",
 					"type": "integer",
 					"default": 20,
 					"maximum": 100,
@@ -3012,7 +3059,7 @@
 											"type": "integer"
 										},
 										"custom_skills_available": {
-											"description": "Whether the authenticated account may access custom-skill capabilities under Stakeout's Threat Signals access-mode policy. This is a policy availability indicator, not a row-existence indicator. False for threat_signals_only mode; true for entitled, allowlisted, cfone_internal, and service modes.",
+											"description": "Whether Custom Skills are available to the account. False for Free Threat Signals accounts, which receive managed default skills only.",
 											"type": "boolean"
 										},
 										"page": {
@@ -3135,7 +3182,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/skills/{skill_id}": {
 		"operationId": "rssSkillGet",
 		"summary": "Get Threat Signals skill",
-		"description": "Retrieves a default or custom skill by ID.",
+		"description": "Retrieves a Managed Default Skill or Custom Skill. Managed catalog definitions are readable. Free Threat Signals accounts cannot read Custom Skills.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3150,6 +3197,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Custom Skill UUID or a Managed Default Skill ID",
 					"type": "string"
 				}
 			}
@@ -3322,7 +3370,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/skills/{skill_id}/tag-categories": {
 		"operationId": "rssSkillTagCategoriesGet",
 		"summary": "Get Threat Signals skill tag categories",
-		"description": "Retrieves the tag categories the default tagging skill may choose tags from.",
+		"description": "Retrieves the Tag Categories the managed default tagging skill may select tags from. This configures the managed default tagging skill, not Custom Skills.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3337,6 +3385,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Must be default-tagging-skill; configures the managed default tagging skill",
 					"type": "string",
 					"enum": [
 						"default-tagging-skill"
@@ -3445,6 +3494,7 @@
 						"type": "object",
 						"properties": {
 							"article_ids": {
+								"description": "Array of article UUIDs to mark (1-50).",
 								"type": "array",
 								"items": {
 									"format": "uuid",
@@ -3454,6 +3504,7 @@
 								"minItems": 1
 							},
 							"read": {
+								"description": "True to mark read, false to mark unread.",
 								"type": "boolean"
 							}
 						},
@@ -3600,6 +3651,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Threat Signals article UUID",
 					"type": "string",
 					"format": "uuid"
 				}
@@ -3612,6 +3664,7 @@
 						"type": "object",
 						"properties": {
 							"read": {
+								"description": "True to mark the article read, false to mark unread.",
 								"type": "boolean"
 							}
 						},
@@ -3848,6 +3901,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "UUID of the Threat Signals feed",
 					"type": "string",
 					"format": "uuid"
 				}
@@ -3875,19 +3929,23 @@
 								"nullable": true
 							},
 							"display_name": {
+								"description": "Override the feed's display name. Null clears it; omit to keep existing or derived value.",
 								"type": "string",
 								"maxLength": 255,
 								"nullable": true
 							},
 							"enabled": {
+								"description": "Whether to actively poll the feed. Omit to keep current value.",
 								"type": "boolean"
 							},
 							"poll_interval_s": {
+								"description": "New polling interval in seconds (60-86400). Omit to keep current value.",
 								"type": "integer",
 								"maximum": 86400,
 								"minimum": 60
 							},
 							"title": {
+								"description": "Override the feed's title. Null clears it; omit to keep existing or derived value.",
 								"type": "string",
 								"maxLength": 255,
 								"nullable": true
@@ -4088,7 +4146,7 @@
 	"PATCH /accounts/{account_id}/cloudforce-one/v2/threat-signals/skills/{skill_id}": {
 		"operationId": "rssSkillUpdate",
 		"summary": "Update Threat Signals skill",
-		"description": "Updates a custom skill. Default skills are read-only.",
+		"description": "Updates a Custom Skill. Managed Default Skills cannot be updated. Free Threat Signals accounts cannot update Custom Skills.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -4103,6 +4161,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Custom Skill UUID or a Managed Default Skill ID",
 					"type": "string"
 				}
 			}
@@ -4114,23 +4173,28 @@
 						"type": "object",
 						"properties": {
 							"config": {
+								"description": "Optional skill configuration (stored but not currently interpreted).",
 								"type": "string",
 								"x-fern-property-name": "skill-config"
 							},
 							"is_active": {
+								"description": "Whether the skill is active and eligible for feed assignment.",
 								"type": "boolean"
 							},
 							"name": {
+								"description": "Custom Skill name (1–100 characters).",
 								"type": "string",
 								"maxLength": 100,
 								"minLength": 1
 							},
 							"output_schema": {
+								"description": "JSON Schema serialized as a string (max 4096 characters).",
 								"type": "string",
 								"maxLength": 4096,
 								"minLength": 1
 							},
 							"prompt": {
+								"description": "AI prompt (1–4000 characters) defining the skill's instructions.",
 								"type": "string",
 								"maxLength": 4000,
 								"minLength": 1
@@ -4306,8 +4370,8 @@
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/skills/{skill_id}/run": {
 		"operationId": "rssArticleSkillRun",
-		"summary": "Run and persist a Threat Signals article skill",
-		"description": "Paid customer operation that always persists a managed default skill or an assigned active custom skill result without exposing diagnostic model data.",
+		"summary": "Run and persist skill output for a Threat Signals article",
+		"description": "Run an active Custom Skill assigned to the article's feed, or run a managed default skill. Requires a paid Threat Signals subscription and the Cloudforce One Write permission. Always persists output; rerunning overwrites the previous result. Does not expose diagnostic model data or accept server-preview inputs.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -4322,6 +4386,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Threat Signals article UUID",
 					"type": "string",
 					"format": "uuid"
 				}
@@ -4331,6 +4396,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "UUID of an active Custom Skill that is assigned to the article's feed, or a managed default skill ID. Requires a paid Threat Signals subscription and the Cloudforce One Write permission. Always persists output; rerunning overwrites the previous result. No diagnostic or server-preview inputs.",
 					"anyOf": [
 						{
 							"enum": [
@@ -4984,6 +5050,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Threat Signals article UUID",
 					"type": "string",
 					"format": "uuid"
 				}
@@ -5160,6 +5227,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Threat Signals article UUID",
 					"type": "string",
 					"format": "uuid"
 				}
@@ -5172,6 +5240,7 @@
 						"type": "object",
 						"properties": {
 							"tag_id": {
+								"description": "UUID of a tag from the account's catalog to apply to the article.",
 								"type": "string",
 								"format": "uuid"
 							}
@@ -5323,7 +5392,7 @@
 	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds": {
 		"operationId": "rssFeedCreate",
 		"summary": "Create Threat Signals feed",
-		"description": "Subscribes the account to a custom or curated Threat Signals feed.",
+		"description": "Subscribes the account to a custom or curated Threat Signals feed. Adding a custom feed when the account is at its custom-feed limit returns 403 with `errors[0].reason` `threat_signals_feed_limit`, and `errors[0].custom_feed_limit` and `errors[0].custom_feed_count` give the limit and current count. Curated feeds are not subject to this limit.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -5356,30 +5425,36 @@
 								"nullable": true
 							},
 							"curated_feed_id": {
+								"description": "UUID of a curated feed to subscribe to. Provide exactly one of url or curated_feed_id. The account must have feed creation entitlement and not exceed feed allowance.",
 								"type": "string",
 								"format": "uuid"
 							},
 							"display_name": {
+								"description": "Override the feed's display name. Null clears it; omit to keep existing or derived value.",
 								"type": "string",
 								"maxLength": 255,
 								"nullable": true
 							},
 							"enabled": {
+								"description": "Whether to actively poll the feed. Default true.",
 								"type": "boolean",
 								"default": true
 							},
 							"poll_interval_s": {
+								"description": "Polling interval in seconds (60-86400). Default 300s (5 minutes).",
 								"type": "integer",
 								"default": 300,
 								"maximum": 86400,
 								"minimum": 60
 							},
 							"title": {
+								"description": "Override the feed's title. Null clears it; omit to keep existing or derived value.",
 								"type": "string",
 								"maxLength": 255,
 								"nullable": true
 							},
 							"url": {
+								"description": "HTTPS RSS feed URL. Provide exactly one of url or curated_feed_id. The account must have feed creation entitlement and not exceed feed allowance.",
 								"type": "string",
 								"format": "uri",
 								"maxLength": 2048
@@ -5960,6 +6035,7 @@
 				"name": "feed_id",
 				"in": "query",
 				"schema": {
+					"description": "UUID of a specific feed to poll, or \"all\" to poll all feeds. Omit or pass \"all\" for all feeds.",
 					"anyOf": [
 						{
 							"format": "uuid",
@@ -6081,7 +6157,7 @@
 	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/skills": {
 		"operationId": "rssSkillCreate",
 		"summary": "Create Threat Signals skill",
-		"description": "Creates a custom AI skill for the account.",
+		"description": "Creates a Custom Skill for the account. Free Threat Signals accounts cannot create Custom Skills.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -6099,16 +6175,19 @@
 						"type": "object",
 						"properties": {
 							"name": {
+								"description": "Custom Skill name (1–100 characters).",
 								"type": "string",
 								"maxLength": 100,
 								"minLength": 1
 							},
 							"output_schema": {
+								"description": "JSON Schema serialized as a string (max 4096 characters).",
 								"type": "string",
 								"maxLength": 4096,
 								"minLength": 1
 							},
 							"prompt": {
+								"description": "AI prompt (1–4000 characters) defining the skill's instructions.",
 								"type": "string",
 								"maxLength": 4000,
 								"minLength": 1
@@ -6300,7 +6379,7 @@
 	"PUT /accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds/{feed_id}/skills": {
 		"operationId": "rssFeedSkillsSet",
 		"summary": "Set Threat Signals feed skills",
-		"description": "Replaces the ordered custom skills assigned to a Threat Signals feed.",
+		"description": "Replaces the ordered custom skills assigned to a Threat Signals feed. Requires a paid Threat Signals subscription.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -6315,6 +6394,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "UUID of the Threat Signals feed",
 					"type": "string",
 					"format": "uuid"
 				}
@@ -6327,6 +6407,7 @@
 						"type": "object",
 						"properties": {
 							"skill_ids": {
+								"description": "Ordered array of Custom Skill UUIDs (max 20). Replaces the feed's custom skill assignments. Free accounts cannot assign custom skills. Managed default skills are unaffected.",
 								"type": "array",
 								"items": {
 									"format": "uuid",
@@ -6484,7 +6565,7 @@
 	"PUT /accounts/{account_id}/cloudforce-one/v2/threat-signals/skills/{skill_id}/tag-categories": {
 		"operationId": "rssSkillTagCategoriesReplace",
 		"summary": "Replace Threat Signals skill tag categories",
-		"description": "Replaces the tag categories the default tagging skill may choose tags from.",
+		"description": "Replaces the Tag Categories the managed default tagging skill may select tags from. This configures the managed default tagging skill, not Custom Skills.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -6499,6 +6580,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Must be default-tagging-skill; configures the managed default tagging skill",
 					"type": "string",
 					"enum": [
 						"default-tagging-skill"
@@ -6513,6 +6595,7 @@
 						"type": "object",
 						"properties": {
 							"category_uuids": {
+								"description": "Up to 100 unique tag category UUIDs that the managed default tagging skill may select tags from.",
 								"type": "array",
 								"items": {
 									"format": "uuid",
