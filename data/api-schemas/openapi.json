@@ -486479,7 +486479,7 @@
 										"minimum": 1000
 									},
 									"payment_method_id": {
-										"description": "Stripe PaymentMethod to charge instead of the customer's default payment method.",
+										"description": "Payment method to charge instead of the customer's default payment method.",
 										"type": "string",
 										"example": "pm_123"
 									}
@@ -486544,7 +486544,7 @@
 													"type": "string"
 												},
 												"client_secret": {
-													"description": "Stripe PaymentIntent client secret.",
+													"description": "Client secret used to complete payment authentication.",
 													"type": "string",
 													"nullable": true
 												},
@@ -486557,7 +486557,7 @@
 													"type": "boolean"
 												},
 												"payment_intent_id": {
-													"description": "Stripe invoice ID.",
+													"description": "Top-up payment identifier.",
 													"type": "string"
 												}
 											},
@@ -487385,7 +487385,7 @@
 			"post": {
 				"operationId": "aig-billing-set-topup-config",
 				"summary": "Set auto top-up configuration",
-				"description": "Configure auto top-up with a balance threshold and top-up amount. Requests with a payment method first return a SetupIntent and save the configuration only after the confirmed SetupIntent is submitted. Dashboard sessions only: API token, OAuth, and service credentials are rejected with 403.",
+				"description": "Configure auto top-up with a balance threshold and top-up amount. Requests that add a payment method first return authentication details. The configuration is saved only after the authenticated setup is submitted. Dashboard sessions only: API token, OAuth, and service credentials are rejected with 403.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -487447,13 +487447,13 @@
 												"example": "pm_123"
 											},
 											"setup_idempotency_key": {
-												"description": "Client-generated UUID that makes SetupIntent creation safe to retry.",
+												"description": "Client-generated UUID that makes payment-method setup safe to retry.",
 												"type": "string",
 												"format": "uuid",
 												"example": "f6af84c0-12d6-4c46-840d-2e4934df85e1"
 											},
 											"setup_intent_id": {
-												"description": "Successfully confirmed SetupIntent returned by the initial request.",
+												"description": "Successfully confirmed payment-method setup identifier.",
 												"type": "string",
 												"example": "seti_123"
 											},
@@ -487989,7 +487989,7 @@
 											"type": "object",
 											"properties": {
 												"account_payment_method_state": {
-													"description": "Account-level PM posture derived from the passed-in list.",
+													"description": "Account-level payment-method state derived from the provided list.",
 													"type": "string",
 													"example": "SUPPORTED_PRESENT",
 													"enum": [
@@ -488000,7 +488000,7 @@
 													]
 												},
 												"aig_customer_state": {
-													"description": "AIG Stripe customer resolution outcome.",
+													"description": "AI Gateway billing profile resolution outcome.",
 													"type": "string",
 													"example": "RESOLVED",
 													"enum": [
@@ -488009,7 +488009,7 @@
 													]
 												},
 												"aig_default_payment_method_state": {
-													"description": "Whether the AIG Stripe customer has a default PM attached.",
+													"description": "Whether AI Gateway billing has a default payment method.",
 													"type": "string",
 													"example": "MISSING",
 													"enum": [
@@ -488041,7 +488041,7 @@
 													"example": false
 												},
 												"reason": {
-													"description": "Canonical (in)eligibility cause. Drives Stratus copy + support triage.",
+													"description": "Canonical eligibility outcome for display and support triage.",
 													"type": "string",
 													"example": "ACCOUNT_PAYMENT_METHOD_NOT_LINKED_TO_AIG",
 													"enum": [
@@ -488591,7 +488591,7 @@
 			"post": {
 				"operationId": "aig-billing-check-topup-status",
 				"summary": "Check top-up status",
-				"description": "Get the payment processing status of a top-up by its invoice ID.",
+				"description": "Get the payment processing status of a top-up by its top-up identifier.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -488611,7 +488611,7 @@
 								"type": "object",
 								"properties": {
 									"payment_intent_id": {
-										"description": "Stripe invoice ID to check status for.",
+										"description": "Top-up identifier to check status for.",
 										"type": "string",
 										"example": "in_1abc"
 									}
