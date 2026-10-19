@@ -4726,13 +4726,6 @@
 												],
 												"url_placeholders": []
 											},
-											"credential_update_fields": [
-												{
-													"description": "Re-authorize this integration from the Cloudflare dashboard to refresh its access token.",
-													"title": "How to repair this integration",
-													"type": "instruction"
-												}
-											],
 											"default": true,
 											"description": "Connect to Microsoft using OAuth 2.0 Admin Consent.",
 											"id": "microsoft_internal_oauth2",
@@ -4740,14 +4733,26 @@
 											"steps": [
 												{
 													"component_id": "common/name_integration",
+													"is_used_in_create": true,
+													"is_used_in_update": true,
 													"parameters": null,
 													"type": "component"
 												},
 												{
 													"description": "Click the button to be redirected to the vendor and grant access.",
 													"dynamic_content": null,
+													"is_used_in_create": true,
+													"is_used_in_update": false,
 													"title": "Authorize Application",
 													"type": "oauth_redirect"
+												},
+												{
+													"description": "Re-authorize this integration from the Cloudflare dashboard to refresh its access token.",
+													"dynamic_content": null,
+													"is_used_in_create": false,
+													"is_used_in_update": true,
+													"title": "How to repair this integration",
+													"type": "instruction"
 												}
 											],
 											"supported_environments": [
@@ -4840,73 +4845,6 @@
 													}
 												]
 											},
-											"credential_update_fields": {
-												"description": "Credential fields that can be changed later via PATCH on an existing integration (e.g. to fix a broken integration or re-key for a new use case). An 'instruction' entry (type='instruction') is returned instead when nothing is directly submittable (e.g. re-authorize via OAuth, or delete-and-recreate).",
-												"type": "array",
-												"items": {
-													"description": "An entry in `credential_update_fields`: either a submittable FormField, or an\ninstruction-only entry (`type=\"instruction\"`) for flows with nothing to PATCH\ndirectly (e.g. re-authorize via OAuth, or delete-and-recreate).",
-													"type": "object",
-													"properties": {
-														"default_value": {
-															"description": "Backend-computed value to pre-fill the field with.",
-															"type": "string",
-															"nullable": true
-														},
-														"description": {
-															"description": "Risk/behavior callout for a field, or the message for an instruction entry.",
-															"type": "string",
-															"nullable": true
-														},
-														"label": {
-															"description": "Human-readable field label.",
-															"type": "string"
-														},
-														"name": {
-															"description": "Field identifier (maps to credentials key). Omitted for instruction entries.",
-															"type": "string"
-														},
-														"placeholder": {
-															"description": "Placeholder text.",
-															"type": "string",
-															"nullable": true
-														},
-														"readonly": {
-															"description": "Whether the field is backend-computed and must be rendered disabled.",
-															"type": "boolean"
-														},
-														"required": {
-															"description": "Whether field is required.",
-															"type": "boolean"
-														},
-														"supported_file_types": {
-															"description": "Allowed file extensions for file_upload type.",
-															"type": "array",
-															"items": {
-																"type": "string"
-															},
-															"nullable": true
-														},
-														"title": {
-															"description": "Instruction title. Only present for instruction entries.",
-															"type": "string"
-														},
-														"type": {
-															"description": "Field input type, or 'instruction' for a non-submittable message.\n\n* `text` - text\n* `password` - password\n* `email` - email\n* `file_upload` - file_upload\n* `instruction` - instruction",
-															"type": "string",
-															"enum": [
-																"text",
-																"password",
-																"email",
-																"file_upload",
-																"instruction"
-															]
-														}
-													},
-													"required": [
-														"type"
-													]
-												}
-											},
 											"default": {
 												"description": "Whether this is the default auth method.",
 												"type": "boolean"
@@ -4924,7 +4862,7 @@
 												"type": "string"
 											},
 											"steps": {
-												"description": "Ordered list of setup steps.",
+												"description": "Ordered list of setup steps. Each step/field is flagged `is_used_in_create`/`is_used_in_update` for whether it belongs to the one-time create flow, the credential-update (PATCH) flow for an existing integration, or both.",
 												"type": "array",
 												"items": {
 													"description": "A single step in the setup flow. Polymorphic based on type.",
@@ -4994,6 +4932,14 @@
 																		"type": "string",
 																		"nullable": true
 																	},
+																	"is_used_in_create": {
+																		"description": "Whether this field is part of the one-time create flow.",
+																		"type": "boolean"
+																	},
+																	"is_used_in_update": {
+																		"description": "Whether this field is safe to PATCH on an existing integration.",
+																		"type": "boolean"
+																	},
 																	"label": {
 																		"description": "Human-readable field label.",
 																		"type": "string"
@@ -5035,6 +4981,8 @@
 																	}
 																},
 																"required": [
+																	"is_used_in_create",
+																	"is_used_in_update",
 																	"label",
 																	"name",
 																	"placeholder",
@@ -5046,6 +4994,14 @@
 														},
 														"is_required": {
 															"description": "Whether step is required (for form_input).",
+															"type": "boolean"
+														},
+														"is_used_in_create": {
+															"description": "Whether this step is part of the one-time create flow.",
+															"type": "boolean"
+														},
+														"is_used_in_update": {
+															"description": "Whether this step is shown when fixing an existing integration's credentials (e.g. a re-authorize/delete-and-recreate instruction, or a step holding a patchable field).",
 															"type": "boolean"
 														},
 														"parameters": {
@@ -5072,6 +5028,8 @@
 														}
 													},
 													"required": [
+														"is_used_in_create",
+														"is_used_in_update",
 														"type"
 													]
 												}
