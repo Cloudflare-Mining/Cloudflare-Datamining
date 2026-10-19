@@ -1,5 +1,20 @@
 # Change Log
 
+## 11.0.5
+
+### Patch Changes
+
+- b7edb79bb4: Remove the `@cloudflare/component-label` dependency. `component-page`'s "Beta"
+  badge and `component-responsive-table`'s `LabelCell` now use an inline
+  replica of the same pill styling instead of importing the (now deleted)
+  `component-label` package. Visual output is unchanged — covered by existing
+  snapshot tests.
+
+  `@cloudflare/component-label` itself has been deleted; it is no longer
+  published. All of its consumers (in this repo and in `stratus`) have been
+  migrated to Kumo's `Badge` component or, for these two internal cases, an
+  inline replacement.
+
 ## 11.0.4
 
 ### Patch Changes

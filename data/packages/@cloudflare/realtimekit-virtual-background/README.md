@@ -14,9 +14,9 @@
     <br />
     <a href="https://demo.realtime.cloudflare.com/">View Demo</a>
     ·
-    <a href="https://dyte.io/contact">Report Bug</a>
+    <a href="https://community.cloudflare.com/c/developers/cloudflare-realtime/101">Report Bug</a>
     ·
-    <a href="https://dyte.io/contact">Request Feature</a>
+    <a href="https://community.cloudflare.com/c/developers/cloudflare-realtime/101">Request Feature</a>
   </p>
 </p>
 
@@ -56,6 +56,13 @@ If you are using the `rtk-meeting` component directly and prefer abstraction ove
 ```sh
 npm install @cloudflare/realtimekit-virtual-background
 ```
+
+### Run the example
+
+1. Run `npm install` in this repository.
+2. Replace `YOUR_AUTH_TOKEN` in `index.html` with a valid RealtimeKit participant token.
+3. Run `npm run dev` and open `http://localhost:3002`.
+4. Enable the camera from the setup screen to try the virtual background.
 
 <!-- USAGE EXAMPLES -->
 ## Usage
