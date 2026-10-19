@@ -1,0 +1,665 @@
+<p>Today, we're announcing a&nbsp;preview&nbsp;of a new class of System One-style models: extraction models. Our first one, Clairic, is available hosted on Workers AI as <code>@cf/cloudflare/clairic.</code>We intend to release the model open-weights soon. Clairic is an extraction model that is able to extract, compute, estimate, and forecast values from unstructured inputs — all at a significantly higher accuracy, faster latency, and cheaper cost&nbsp;than traditional LLMs.</p>
+<h2>Context</h2>
+<p>When System One models were announced by TypeSafe a month ago, it took the industry by storm. As referenced by <a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev"><u>TypeSafe in their blog</u></a>&nbsp;and defined by Daniel Kahneman’s book <em>Thinking, Fast and Slow</em>, a System One model should be fast and precise, which contrasts a System Two model that is capable of deliberate reasoning (like LLMs). With this, TypeSafe introduced Jev — a model that is purpose-fit for a specific use case, and priced accessibly given its niche domain. It excelled where LLMs failed, helping users make decisions based on probabilities and well-typed outputs. The introduction of Jev prompted people to start thinking about a new class of models that were not LLMs and how to integrate them into their workflows.</p>
+<p>We were inspired by the concept of System One models and started thinking about other tasks where LLMs are inefficient. There are many structured-output calls going to frontier LLMs today with the same shapes again and again: <em>What's the invoice total? When was this delivered? How many days late is it? What will this repair cost? What will traffic look like over the next 24 hours?</em>&nbsp;None of these have answers you can list out in advance, which is needed for a decision model to give probabilities against. That led us to the class of models we're introducing today: System One extraction models.</p>
+<h2>Introducing System One extraction models</h2>
+<p>Until now, every System One model has been a decision model: Jev and <a href="https://blog.cloudflare.com/clef-decision-models"><u>Clef</u></a>&nbsp;take an input state and a list of questions and give probabilities against the inputs and your listed questions. <a href="http://developers.cloudflare.com/workers-ai/models/clairic"><u>Clairic</u></a>&nbsp;is the first model in a new class: System One extraction models. It is still fast, typed, and cheap, but it answers with <strong>values</strong>&nbsp;directly extracted from the input, computed from it, or predicted beyond it.</p>
+<p>Most model tasks ask for one of three kinds of output: a number, a choice from a fixed set, or open-ended text. Clairic handles the first, returning numbers with an 80% range, and also pulls typed values like names, dates and lists out of the input. Clef handles the second: it picks among options and returns a probability for each. LLMs handle the third. We call Clairic and Clef System One models because they answer in a single pass, without reasoning or generating tokens. They charge only for input and typically respond in under a second, while an LLM that reasons through the same step takes several seconds.</p>
+<p>An extraction model can return:</p>
+<ul>
+	<li><strong>Extracted values: </strong>Text copied from the input, such as a name, an order ID or a description. Each one comes back as a span with its character offsets and a confidence score.</li>
+	<li>Including,<strong>&nbsp;computed values: </strong>Numbers, dates, times, datetimes, durations and lists, read from the input or worked out from it. They follow the rules of their type (for example, two decimals for cents) and come with a confidence score.</li>
+	<li><strong>Estimated values: </strong>Values the input doesn't state but gives evidence for. Each one comes back as a distribution inside the bounds you declare, on the grid you specify, with a median and an 80% interval.</li>
+	<li><strong>Forecasted values: </strong>Future values of a series, one estimate per step ahead, each with its own 80% interval.</li>
+</ul>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA9/fz8/Pv6+rm5+bj6unn7u3r7Orp5OPg+fn19fby7u7q6+rn7u3r8fDu7u3r5+bj+/z39/j08fHu7u3r8e/u8/Hw8e/t6ujn+/z49/j18fHv7u3s8e/u8/Hw8e/u7Oro+Pn29fbz7u7s6+ro7evq8O7t7+3s6unn9PXy8PHu6Ojm5OPh5+Xk6+no6+np5+bl8PLv7O3q4+Pg3tzb4d/e5uTk5+bm5OPi7/Du6uvo4eDe3NrY39zc5eLi5uTk4+Lh" alt="" width="715" height="308" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCDMY87RYM44AD8D57A3J.png&amp;w=715&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCDMY87RYM44AD8D57A3J.png&amp;w=640&amp;h=276&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCDMY87RYM44AD8D57A3J.png&amp;w=715&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCDMY87RYM44AD8D57A3J.png&amp;w=750&amp;h=323&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCDMY87RYM44AD8D57A3J.png&amp;w=828&amp;h=357&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCDMY87RYM44AD8D57A3J.png&amp;w=1080&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCDMY87RYM44AD8D57A3J.png&amp;w=1280&amp;h=551&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCDMY87RYM44AD8D57A3J.png&amp;w=1430&amp;h=616&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCDMY87RYM44AD8D57A3J.png&amp;w=1999&amp;h=862&amp;q=100&amp;f=webp" data-lightbox-width="1999" data-lightbox-height="862" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="308" class="pt-portable-image-media"></div>
+</figure>
+<p>And because it generates no tokens, it can't produce a mistyped answer&nbsp;or “hallucinate” in the same way as an LLM (though it can, of course, make mistakes). Outputs are a value of the type you asked for, or null when the&nbsp;model fails to find an answer in the input. It also comes with confidence scores against the outputs to help you evaluate if it is appropriate to trust the model or to take a second look.</p>
+<p>Here’s how extraction models fit into the landscape of System One and System Two models:</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 384px;">
+		<tbody>
+			<tr>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p>System One: Extract</p>
+				</td>
+				<td>
+					<p>System One: Decide</p>
+				</td>
+				<td>
+					<p>System Two</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Example models</p>
+				</td>
+				<td>
+					<p>Clairic</p>
+				</td>
+				<td>
+					<p>Jev, Clef</p>
+				</td>
+				<td>
+					<p>GPT, Claude, Gemini, DeepSeek</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Sampling</p>
+				</td>
+				<td>
+					<p>One parallel pass</p>
+				</td>
+				<td>
+					<p>One parallel pass</p>
+				</td>
+				<td>
+					<p>One token at a time</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Purpose</p>
+				</td>
+				<td>
+					<p>Predict values</p>
+				</td>
+				<td>
+					<p>Make decisions</p>
+				</td>
+				<td>
+					<p>Write and reason</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>ML framing</p>
+				</td>
+				<td>
+					<p>Regression and extraction</p>
+				</td>
+				<td>
+					<p>Classification</p>
+				</td>
+				<td>
+					<p>Generation</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Thinking mode</p>
+				</td>
+				<td>
+					<p>System 1: fast, one pass</p>
+				</td>
+				<td>
+					<p>System 1: fast, one pass</p>
+				</td>
+				<td>
+					<p>System 2: slow, deliberate</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Output</p>
+				</td>
+				<td>
+					<p>Typed values: spans, numbers, dates, times, lists, distributions, with calibrated probabilities</p>
+				</td>
+				<td>
+					<p>Typed decisions: options with calibrated probabilities</p>
+				</td>
+				<td>
+					<p>Free-form strings</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Output space</p>
+				</td>
+				<td>
+					<p>Continuous, but typed and bounded by your schema</p>
+				</td>
+				<td>
+					<p>A finite set of options you list</p>
+				</td>
+				<td>
+					<p>Anything</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>What it answers</p>
+				</td>
+				<td>
+					<p>What's the amount? When does it happen? How much will it be?</p>
+				</td>
+				<td>
+					<p>Which category is it?&nbsp;Is it legitimate? Which action should we take?</p>
+				</td>
+				<td>
+					<p>Why did it happen? How should we approach it? Can you fix it?</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Output always a valid&nbsp;response?</p>
+				</td>
+				<td>
+					<p>Yes: every answer is a value of its declared type&nbsp;(or null), inside your bounds</p>
+				</td>
+				<td>
+					<p>Yes: answers are always one of your options</p>
+				</td>
+				<td>
+					<p>No: strings must be parsed and checked</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Together, these models can work together in unison to help you get closer to parsing through real-world data, making decisions on inputs, and then taking actions. Extraction models turn raw input into typed values, decision models turn values into decisions, and LLMs turn decisions into words.</p>
+<h2>How a request works</h2>
+<p>Clairic is designed differently than an LLM. Similar to a decision model, it only processes input tokens with a single forward pass, and thus has no charge for output tokens. It is much faster, cheaper, and more accurate&nbsp;than an LLM for certain use cases.</p>
+<p>A request is a <code>state</code>&nbsp;(the text to read, plus up to four optional images) and a map of typed <code>fields</code>. You name each field, give it a type and optional plain-language <code>instructions</code>, and get back one typed answer per field, all from one parallel pass. There is no reasoning and no output tokens – everything computes in a single forward pass, which means it is both fast and cheap.</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 192px;">
+		<tbody>
+			<tr>
+				<td>
+					<p>Type</p>
+				</td>
+				<td>
+					<p>Returns</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>text</code></p>
+				</td>
+				<td>
+					<p>A specific span of the input, with its offsets</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>number</code></p>
+				</td>
+				<td>
+					<p>A number read or&nbsp;computed, honoring <code>integer</code>&nbsp;and <code>decimals</code></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>date</code>, <code>time</code>, <code>datetime</code></p>
+				</td>
+				<td>
+					<p>Calendar dates and valid times, in ISO form</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>duration</code></p>
+				</td>
+				<td>
+					<p>A length of time in the unit you choose</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>list</code></p>
+				</td>
+				<td>
+					<p>Matching text, number or date, in input order</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>estimate</code></p>
+				</td>
+				<td>
+					<p>A distribution inside your <code>[min, max]</code>, on your <code>step</code>&nbsp;grid, linear or log scale.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>forecast</code></p>
+				</td>
+				<td>
+					<p>One estimate per future step of a series</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Every scalar answer comes with <code>p_null</code>&nbsp;(the probability that the value isn’t in the inputs) and <code>confidence</code>. Every <code>estimate</code>&nbsp;answer comes with a median and an 80% interval (<code>p10</code>&nbsp;to <code>p90</code>), plus all 99 percentiles on request.&nbsp;There's no limit on the number of fields: if they don't fit beside the input in one pass, the server splits them into parallel passes that each see the whole input, then merges the answers.</p>
+<p>Here are some examples to illustrate the model’s features. Of course, using these features in a workflow would require appropriate inputs.</p>
+<h2>An example: Extracting values</h2>
+<p>Extraction is probably the most common job handed to LLMs today: "return the invoice number, vendor and due date as JSON." It works most of the time, but the failure modes are hard to catch. The output may not be valid JSON, a digit can be misread&nbsp;as it's generated, and once a text excerpt comes back, there's no way to trace it to where it appeared in the source. Most people build extraction pipelines to combat this, with multiple layers of parsing, schema validation, retries and spot checks. On top of that, you pay for reasoning and output tokens&nbsp;on every field of every document.</p>
+<p>Clairic operates differently; it doesn’t generate text answers. Instead, you get:</p>
+<ul>
+	<li><strong>Values</strong>&nbsp;extracted from your input, so an answer is&nbsp;grounded.</li>
+	<li><strong>Computed values</strong>, so it can parse through unstructured data without pre-sanitizing it.</li>
+	<li><strong>Character offset spans</strong>, so you can reference where in the input the data was.</li>
+	<li><strong>Confidence labels</strong>, so you can determine which values need a second look.</li>
+	<li><strong>A strongly typed output</strong>, so numbers and dates are formed under the rules of their type (e.g., a cents field has two decimals).</li>
+	<li><strong>Handling for null values</strong>, where a missing field returns with <code>null</code>&nbsp;as an answer (along with an estimated probability of null and a guess).</li>
+	<li><strong>Cheaper and faster answers</strong>, because every field is answered in the same parallel pass. So asking for thirty fields costs about the same as asking for three.</li>
+</ul>
+<p>Let’s walk through an example to illustrate the ways Clairic can extract values from unstructured data and make estimates. Take a customer support email:</p>
+<p><em>Hi, order A-88412 arrived on Sept 28, 2026&nbsp;with a cracked screen and a dented corner. I paid $649.00 plus $52.10 tax. It's now Oct 9, 2026 and I'd like this fixed or refunded. Thanks, Dana</em></p>
+<p>From a Worker, you would make a request to Clairic to process this data:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">answers</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"@cf/cloudflare/clairic"</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">  state: email,</span></span>
+<span class="line"><span class="sk-24292e-fff">  fields: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    order_id:            { type: </span><span class="sk-032f62-99ffe4">"text"</span><span class="sk-24292e-fff">, instructions: </span><span class="sk-032f62-99ffe4">"Order number"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">    delivered_on:        { type: </span><span class="sk-032f62-99ffe4">"date"</span><span class="sk-24292e-fff">, instructions: </span><span class="sk-032f62-99ffe4">"Delivery date"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">    amount_paid:         { type: </span><span class="sk-032f62-99ffe4">"number"</span><span class="sk-24292e-fff">, decimals: </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">, unit: </span><span class="sk-032f62-99ffe4">"USD"</span><span class="sk-24292e-fff">, instructions: </span><span class="sk-032f62-99ffe4">"Total paid including tax"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">    days_since_delivery: { type: </span><span class="sk-032f62-99ffe4">"duration"</span><span class="sk-24292e-fff">, unit: </span><span class="sk-032f62-99ffe4">"days"</span><span class="sk-24292e-fff">, integer: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">                           instructions: </span><span class="sk-032f62-99ffe4">"Days from delivery to the date the customer wrote"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">    damage:              { type: </span><span class="sk-032f62-99ffe4">"list"</span><span class="sk-24292e-fff">, items: </span><span class="sk-032f62-99ffe4">"text"</span><span class="sk-24292e-fff">, instructions: </span><span class="sk-032f62-99ffe4">"Each kind of damage described"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">    tracking_number:     { type: </span><span class="sk-032f62-99ffe4">"text"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p>Clairic returns&nbsp;the extracted values, spans in the input, probability that it is null (p_null) and confidence score:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "order_id"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"text"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "p_null"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">3.4e-6</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "span"</span><span class="sk-24292e-fff">: [</span><span class="sk-005cc5-ffc799">10</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">17</span><span class="sk-24292e-fff">],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "guess"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"A-88412"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "confidence"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0.999957</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "value"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"A-88412"</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "delivered_on"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"date"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "p_null"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">6.5e-8</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "guess"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2026-09-28"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "confidence"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0.999999</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "value"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2026-09-28"</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "amount_paid"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"number"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "p_null"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1.6e-5</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "guess"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">701.1</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "confidence"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0.999944</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "value"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">701.1</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "days_since_delivery"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"duration"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "p_null"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">6.1e-9</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "unit"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"days"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "guess"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">11</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "confidence"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0.999999</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "value"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">11</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "damage"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"list"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "value"</span><span class="sk-24292e-fff">: [</span><span class="sk-032f62-99ffe4">"cracked screen"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"dented corner"</span><span class="sk-24292e-fff">],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "spans"</span><span class="sk-24292e-fff">: [[</span><span class="sk-005cc5-ffc799">50</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">64</span><span class="sk-24292e-fff">], [</span><span class="sk-005cc5-ffc799">71</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">84</span><span class="sk-24292e-fff">]]</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "tracking_number"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"text"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "p_null"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "span"</span><span class="sk-24292e-fff">: [</span><span class="sk-005cc5-ffc799">106</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">112</span><span class="sk-24292e-fff">],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "guess"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"$52.10"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "confidence"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0.416016</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "value"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">null</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>A few things to notice:</p>
+<ul>
+	<li><code>amount_paid</code>&nbsp;isn't written anywhere in the email. In this example, Clairic added&nbsp;the price and the tax in the same pass and returns the sum.</li>
+	<li><code>days_since_delivery</code>&nbsp;is also worked out from two dates in the text, not directly in the input.</li>
+	<li><code>damage</code>&nbsp;lists both kinds of damage as exact spans, so you can highlight them in the source.</li>
+	<li><code>tracking_number</code>&nbsp;isn't in the email, so it comes back <code>null</code>&nbsp;instead of a plausible-looking guess. <code>guess</code>&nbsp;shows what the model would otherwise have picked.</li>
+</ul>
+<h3>Clairic also works with images</h3>
+<p>Here’s a real-life photo of a receipt — the text is not perfect and the angle of the image doesn’t help its legibility. We passed this image to Clairic to see what it could extract:</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAAcIifboKXbXiKcnqJfoybjp+vnaq4pqy3d46neYyigYubkJain6m0qbbCqrbCp624f5WvhZaslJ2sqq+4u8TMwczWuMLNp624iJuzjp2xoKe0t7zFytLaztjiv8nUpay3jp+ykqCwoaizuLzFytLbztnkvsnVoqq2kaGtk5+qnKGrrrK8v8fUxNDetsPRnae0k6GnkpyjlJmhoaSxsbrKt8XWrbzMmKSylKGlkpugkZWdmp6sqrPFscDTqbnKlqOx" alt="" width="715" height="953" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCESJ3FJ73690V4KK3A8H.jpg&amp;w=715&amp;h=953&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCESJ3FJ73690V4KK3A8H.jpg&amp;w=640&amp;h=853&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCESJ3FJ73690V4KK3A8H.jpg&amp;w=715&amp;h=953&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCESJ3FJ73690V4KK3A8H.jpg&amp;w=750&amp;h=1000&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCESJ3FJ73690V4KK3A8H.jpg&amp;w=828&amp;h=1104&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCESJ3FJ73690V4KK3A8H.jpg&amp;w=1080&amp;h=1439&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCESJ3FJ73690V4KK3A8H.jpg&amp;w=1280&amp;h=1706&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCESJ3FJ73690V4KK3A8H.jpg&amp;w=1430&amp;h=1906&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_emdash/api/media/file/01M5AKCESJ3FJ73690V4KK3A8H.jpg" data-lightbox-width="1200" data-lightbox-height="1600" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="953" class="pt-portable-image-media"></div>
+</figure>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "model"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"clairic"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "answers"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">   "order_number"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"number"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "p_null"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0.0040206750854849815</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "guess"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">77245</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "confidence"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0.776249383996532</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "value"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">77245</span></span>
+<span class="line"><span class="sk-24292e-fff">   },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">   "purchased_at"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"datetime"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "p_null"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">4.136094133855295e-08</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "guess"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2026-07-01T13:34:00"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "confidence"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0.831464227002992</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "value"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2026-07-01T13:34:00"</span></span>
+<span class="line"><span class="sk-24292e-fff">   },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">   "quantity"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"number"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "p_null"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">5.2313655629632194e-08</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "guess"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "confidence"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0.9997007500403496</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "value"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">2</span></span>
+<span class="line"><span class="sk-24292e-fff">   },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">   "unit_price"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"number"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "p_null"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0.001599092734977603</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "guess"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">7.99</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "confidence"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0.9991279019989127</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "value"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">7.99</span></span>
+<span class="line"><span class="sk-24292e-fff">   },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">   "subtotal"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"number"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "p_null"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">9.69956488461321e-08</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "guess"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">15.98</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "confidence"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0.9999881983893096</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "value"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">15.98</span></span>
+<span class="line"><span class="sk-24292e-fff">   },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">   "sales_tax"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"number"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "p_null"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">2.5511653802823275e-06</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "guess"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "confidence"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0.9999800924450729</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "value"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span></span>
+<span class="line"><span class="sk-24292e-fff">   },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">   "tip"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"number"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "p_null"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">5.953857908025384e-05</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "guess"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">2.39</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "confidence"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0.9335768781214697</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "value"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">2.39</span></span>
+<span class="line"><span class="sk-24292e-fff">   },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">   "discount"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"number"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "p_null"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0.9994148015975952</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "guess"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "confidence"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0.91852733929319</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "value"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">null</span></span>
+<span class="line"><span class="sk-24292e-fff">   }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>As you can see, it was able to extract all the values from the images, alongside a confidence score. It also correctly stated that there was no discount shown in the receipt, giving the value as null.</p>
+<h2>An example: Estimating values</h2>
+<p>Some values aren't in the input at all, but the input carries evidence for them. For example, values might not be in plain text but can be discerned from values around it. If you ask an LLM for an estimation, you usually get a single number with no sense of how sure the model is. It will make safe guesses or hallucinate, or reason its way around the answer. If you land on an estimate, any downstream processing can't tell a confident $180 from an unconfident $180, so it can't help you decide what is appropriate to automate in the circumstances.&nbsp;It is also a lot slower and more expensive to do reasoning through LLMs.</p>
+<p>A decision model can approximate an estimate by choosing among buckets ("under $100", "$100–500", …), but buckets are coarse, every bucket adds input tokens, and each new category adds more sources of confusion for the model during its decision making process.</p>
+<p>Clairic returns a <strong>distribution</strong>&nbsp;over the range you declare: a point value, a median, an 80% interval, and every percentile on request. The estimate is designed to fall inside your bounds, so there's nothing to clamp or round afterward. The width of the interval reflects data confidence: a narrow range signals high certainty, while a wide range indicates low certainty, information you can use to route another check.</p>
+<p>Here’s another example, where Clairic looks at historical home prices and comparable sales, to determine an estimate :</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">answers</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"@cf/cloudflare/clairic"</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">  state: </span><span class="sk-032f62-99ffe4">`Comparable sales:</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">sqft,beds,year_built,neighborhood,sale_price</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">1450,3,1998,Elm Park,412000</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">2100,4,2006,Elm Park,585000</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">980,2,1975,Riverside,265000</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">1600,3,2003,Elm Park,449000</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">1300,3,1990,Riverside,318000</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">Subject property:</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">sqft,beds,year_built,neighborhood</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">1620,3,2001,Elm Park`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  fields: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    sale_price:     { type: </span><span class="sk-032f62-99ffe4">"estimate"</span><span class="sk-24292e-fff">, unit: </span><span class="sk-032f62-99ffe4">"USD"</span><span class="sk-24292e-fff">, min: </span><span class="sk-005cc5-ffc799">50000</span><span class="sk-24292e-fff">, max: </span><span class="sk-005cc5-ffc799">5000000</span><span class="sk-24292e-fff">, scale: </span><span class="sk-032f62-99ffe4">"log"</span><span class="sk-24292e-fff">, step: </span><span class="sk-005cc5-ffc799">1000</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>Clairic will return an estimated value:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "sale_price"</span><span class="sk-24292e-fff">:     { </span><span class="sk-005cc5-ffc799">"type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"estimate"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">"value"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">418000</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">"median"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">415000</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">"p10"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">370000</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">"p90"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">470000</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">"p_below"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0.0</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">"p_above"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0.0</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>Values always fall inside your bounds, and the width of the interval shows how much the input informs the prediction: price is narrow ($370,000-$470,000), days on market is wide (24-148). Because fields are unlimited and answered in parallel, you can score many items in one call (one estimate per candidate, lead, or listing) and sort them in code.</p>
+<h2>An example: Forecasting values</h2>
+<p>Forecasting values in a time series is quite hard for generalized models — it usually means you have to either build a specific pipeline per metric (parse the data, fit a model, tune it, deploy it), or you paste 36 months of numbers into an LLM and ask for the next three. The first is accurate but really expensive and time-consuming to set up for every new series. The second is easy, but you get point forecasts with no intervals, forecasts that shift depending on how the prompt is worded, and answers with limited confidence.</p>
+<p>Clairic sits between the two — it is not claiming to replace a dedicated time-series model, but it is a little faster and cheaper than your regular LLM.&nbsp;A <code>forecast</code>&nbsp;field takes the history as plain text in <code>state</code>&nbsp;and returns, for every step ahead, a value and an 80% interval, inside the bounds you declare. It reads the history the way you already have it, whether that's a CSV export, a pasted dashboard, or rows mixed with notes, and may often work with no need to clean up your data beforehand.</p>
+<p>To see how that holds up on real data, we used a public series: the number of people the Transportation Security Administration (TSA) screens at U.S. airport checkpoints each day. Each morning we asked Clairic for the next day's count, given the real counts so far, for 21 days in a row:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">answers</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"@cf/cloudflare/clairic"</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">  state: </span><span class="sk-032f62-99ffe4">`Daily number of people screened at TSA checkpoints at US airports.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">date,weekday,travelers</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">2026-07-16,Thu,2850229</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">...</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">2026-10-13,Tue,2353356</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">Forecast date: 2026-10-14 (Wed)`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  fields: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    travelers: { type: </span><span class="sk-032f62-99ffe4">"forecast"</span><span class="sk-24292e-fff">, horizon: </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">, interval: </span><span class="sk-032f62-99ffe4">"day"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">                 min: </span><span class="sk-005cc5-ffc799">500000</span><span class="sk-24292e-fff">, max: </span><span class="sk-005cc5-ffc799">4000000</span><span class="sk-24292e-fff">, scale: </span><span class="sk-032f62-99ffe4">"log"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">                 instructions: </span><span class="sk-032f62-99ffe4">"Number of people screened tomorrow"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>Which returns:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "travelers"</span><span class="sk-24292e-fff">: { </span><span class="sk-005cc5-ffc799">"type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"forecast"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">"value"</span><span class="sk-24292e-fff">: [</span><span class="sk-005cc5-ffc799">2416117</span><span class="sk-24292e-fff">], </span><span class="sk-005cc5-ffc799">"median"</span><span class="sk-24292e-fff">: [</span><span class="sk-005cc5-ffc799">2419283</span><span class="sk-24292e-fff">], </span><span class="sk-005cc5-ffc799">"p10"</span><span class="sk-24292e-fff">: [</span><span class="sk-005cc5-ffc799">2270774</span><span class="sk-24292e-fff">], </span><span class="sk-005cc5-ffc799">"p90"</span><span class="sk-24292e-fff">: [</span><span class="sk-005cc5-ffc799">2556769</span><span class="sk-24292e-fff">] }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>In actuality, TSA screened 2,419,474 people that day, which is right around the median 2,419,283 that Clairic predicted.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA////+vr78PDy6+vu8PDy9fX28vLy6enp/////Pz98vL07e3w7+/y8vP18PDy6Ojp////////9vb48PDz8PD08vL37+/z6Ojr////////+/v99fX49PT59fX78vL37Ozw////////////+/v++/v//fz/+fn98/P2////////////////////////////+/v9////////////////////////////////////////////////////////////////" alt="" width="715" height="403" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCHZBWT809ZVDJJAED1XT.png&amp;w=715&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCHZBWT809ZVDJJAED1XT.png&amp;w=640&amp;h=361&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCHZBWT809ZVDJJAED1XT.png&amp;w=715&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCHZBWT809ZVDJJAED1XT.png&amp;w=750&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCHZBWT809ZVDJJAED1XT.png&amp;w=828&amp;h=467&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCHZBWT809ZVDJJAED1XT.png&amp;w=1080&amp;h=609&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCHZBWT809ZVDJJAED1XT.png&amp;w=1280&amp;h=721&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCHZBWT809ZVDJJAED1XT.png&amp;w=1430&amp;h=806&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCHZBWT809ZVDJJAED1XT.png&amp;w=1999&amp;h=1126&amp;q=100&amp;f=webp" data-lightbox-width="1999" data-lightbox-height="1126" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="403" class="pt-portable-image-media"></div>
+</figure>
+<p><em>Data: <a href="http://tsa.gov/travel/passenger-volumes"><u>TSA checkpoint travel numbers</u></a>, accessed Oct. 15, 2026.</em></p>
+<p>Across the 21 days, Clairic's forecasts were off by 3.3% on average, and 17 of the 21 actual counts landed inside its 80% interval, which follows what an 80% interval should do. It picked up the weekly rhythm from the numbers alone: quieter Tuesdays and Saturdays, busier Thursdays, Fridays, and Sundays.</p>
+<p>The misses are also interesting: three of the four days outside the interval fall on the Columbus Day weekend, when more people flew than the previous weeks suggested. Clairic forecasts from the patterns in the series but doesn't account for events the series doesn't show, like holidays.</p>
+<h2>Thinking fast and slow</h2>
+<p>These models are designed to fit alongside your existing agentic workflows. An extraction model predicts values, a decision model decides what to do with these values, and an LLM takes action with them. It is a perfect marriage between System One and System Two models. It bridges the existing gap, where you either have to manually extract data for LLMs, or have an LLM parse through messy data (which is costly, time-consuming, and can lead to hallucinations). With System One extraction models, you can work with real-world data with more speed, efficiency, and precision.</p>
+<p>Here's an example of the damaged-product claim from earlier, illustrating how all the models can work together. &nbsp;We built this into a <a href="https://clairic-pipeline-demo.workers-ai-mle.workers.dev"><u>live demo you can try here</u></a>.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// 1. Clairic turns the email into values</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> facts</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"@cf/cloudflare/clairic"</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">  state: email,</span></span>
+<span class="line"><span class="sk-24292e-fff">  fields: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    customer_name:       { type: </span><span class="sk-032f62-99ffe4">"text"</span><span class="sk-24292e-fff">, instructions: </span><span class="sk-032f62-99ffe4">"Customer's first name"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">    order_id:            { type: </span><span class="sk-032f62-99ffe4">"text"</span><span class="sk-24292e-fff">, instructions: </span><span class="sk-032f62-99ffe4">"Order number"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">    amount_paid:         { type: </span><span class="sk-032f62-99ffe4">"number"</span><span class="sk-24292e-fff">, decimals: </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">, unit: </span><span class="sk-032f62-99ffe4">"USD"</span><span class="sk-24292e-fff">, instructions: </span><span class="sk-032f62-99ffe4">"Total paid including tax"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">    days_since_delivery: { type: </span><span class="sk-032f62-99ffe4">"duration"</span><span class="sk-24292e-fff">, unit: </span><span class="sk-032f62-99ffe4">"days"</span><span class="sk-24292e-fff">, integer: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">                           instructions: </span><span class="sk-032f62-99ffe4">"Days from delivery to the date the customer wrote"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">    damage:              { type: </span><span class="sk-032f62-99ffe4">"list"</span><span class="sk-24292e-fff">, items: </span><span class="sk-032f62-99ffe4">"text"</span><span class="sk-24292e-fff">, instructions: </span><span class="sk-032f62-99ffe4">"Each kind of damage described"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">    repair_cost:         { type: </span><span class="sk-032f62-99ffe4">"estimate"</span><span class="sk-24292e-fff">, unit: </span><span class="sk-032f62-99ffe4">"USD"</span><span class="sk-24292e-fff">, min: </span><span class="sk-005cc5-ffc799">10</span><span class="sk-24292e-fff">, max: </span><span class="sk-005cc5-ffc799">5000</span><span class="sk-24292e-fff">, scale: </span><span class="sk-032f62-99ffe4">"log"</span><span class="sk-24292e-fff">, step: </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">                           instructions: </span><span class="sk-032f62-99ffe4">"Cost to repair the damage described"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">})).answers;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">customer_name</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">order_id</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">amount_paid</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">days_since_delivery</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">damage</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">repair_cost</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> facts;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// 2. Clef decides from Clairic's values and the policy, not from the raw email</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> options</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  refund:  </span><span class="sk-032f62-99ffe4">"Full refund of the amount paid"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  repair:  </span><span class="sk-032f62-99ffe4">"Free repair, with a prepaid shipping label"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">choice</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"@cf/cloudflare/clef"</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">  state: </span><span class="sk-032f62-99ffe4">`Damage claim for order ${</span><span class="sk-24292e-fff">order_id</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">value</span><span class="sk-032f62-99ffe4">}.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">Paid: $${</span><span class="sk-24292e-fff">amount_paid</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">value</span><span class="sk-032f62-99ffe4">.</span><span class="sk-6f42c1-ffc799">toFixed</span><span class="sk-032f62-99ffe4">(</span><span class="sk-005cc5-ffc799">2</span><span class="sk-032f62-99ffe4">)</span><span class="sk-032f62-99ffe4">}. Delivered ${</span><span class="sk-24292e-fff">days_since_delivery</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">value</span><span class="sk-032f62-99ffe4">} days ago.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">Damage reported: ${</span><span class="sk-24292e-fff">damage</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">value</span><span class="sk-032f62-99ffe4">.</span><span class="sk-6f42c1-ffc799">join</span><span class="sk-032f62-99ffe4">(</span><span class="sk-032f62-99ffe4">", "</span><span class="sk-032f62-99ffe4">)</span><span class="sk-032f62-99ffe4">}.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">Estimated repair cost: $${</span><span class="sk-24292e-fff">repair_cost</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">median</span><span class="sk-032f62-99ffe4">} (80% range $${</span><span class="sk-24292e-fff">repair_cost</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">p10</span><span class="sk-032f62-99ffe4">}-$${</span><span class="sk-24292e-fff">repair_cost</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">p90</span><span class="sk-032f62-99ffe4">}).</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">Policy: refunds within 30 days of delivery. Prefer repair when it costs less than 60% of the price and the damage doesn't stop the product from working.`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  questions: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    resolution: { type: </span><span class="sk-032f62-99ffe4">"choice"</span><span class="sk-24292e-fff">, instructions: </span><span class="sk-032f62-99ffe4">"What should we offer?"</span><span class="sk-24292e-fff">, criteria: options },</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">})).answers.resolution;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// 3. An LLM writes the reply, from the decision and the facts it needs</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">response</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"@cf/zai-org/glm-5.3"</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">  messages: [{</span></span>
+<span class="line"><span class="sk-24292e-fff">    role: </span><span class="sk-032f62-99ffe4">"user"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    content: </span><span class="sk-032f62-99ffe4">`Write a short, warm reply to ${</span><span class="sk-24292e-fff">customer_name</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">value</span><span class="sk-032f62-99ffe4">}. Use only these facts: order ${</span><span class="sk-24292e-fff">order_id</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">value</span><span class="sk-032f62-99ffe4">}; `</span><span class="sk-d73a49-a0a0a0"> +</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">             `damage: ${</span><span class="sk-24292e-fff">damage</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">value</span><span class="sk-032f62-99ffe4">.</span><span class="sk-6f42c1-ffc799">join</span><span class="sk-032f62-99ffe4">(</span><span class="sk-032f62-99ffe4">", "</span><span class="sk-032f62-99ffe4">)</span><span class="sk-032f62-99ffe4">}; what happens next: ${</span><span class="sk-24292e-fff">options</span><span class="sk-032f62-99ffe4">[</span><span class="sk-24292e-fff">choice</span><span class="sk-032f62-99ffe4">]</span><span class="sk-032f62-99ffe4">}. Under 60 words.`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  }],</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>Each step gets cleaner&nbsp;input than the one before. Clef decides from a five-line summary of typed values instead of a free-form email, which can also be susceptible to prompt injection. The LLM never sees the email, only the decision and the predictions it needs, so there are fewer numbers for it to misuse. Every step is typed and auditable, and only one step generates text. In the all-LLM version of this pipeline, all three steps are generative calls, and every value in the reply has to be checked by hand.</p>
+<p>We ran this pipeline against an all-LLM version with GLM-5.3 writing the reply in both. In the all-LLM version, GLM-5.3 also does the extraction and the decision, from the same email, policy and prompts:</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 288px;">
+		<tbody>
+			<tr>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p>Clairic → Clef → GLM-5.3</p>
+				</td>
+				<td>
+					<p>GLM-5.3 for every step</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Latency, end to end</p>
+				</td>
+				<td>
+					<p>19.3 s</p>
+				</td>
+				<td>
+					<p>61.7 s</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>1. Extract</p>
+				</td>
+				<td>
+					<p>Clairic: 0.46 s</p>
+				</td>
+				<td>
+					<p>GLM-5.3: 16.1 s</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2. Decide</p>
+				</td>
+				<td>
+					<p>Clef: 0.22 s</p>
+				</td>
+				<td>
+					<p>GLM-5.3: 21.9 s</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>3. Reply</p>
+				</td>
+				<td>
+					<p>GLM-5.3: 18.6 s</p>
+				</td>
+				<td>
+					<p>GLM-5.3: 16.4 s</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Input tokens</p>
+				</td>
+				<td>
+					<p>701 ($184 per million claims)</p>
+				</td>
+				<td>
+					<p>390 ($546 per million claims)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Output tokens</p>
+				</td>
+				<td>
+					<p>1,329 ($5,848 per million claims)</p>
+				</td>
+				<td>
+					<p>2,544 ($11,194 per million claims)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Cost per million claims</p>
+				</td>
+				<td>
+					<p>$6,032</p>
+				</td>
+				<td>
+					<p>$11,740</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>The cascade finished in 19.3 seconds against 61.7 seconds: <strong>69% less time, or about 3.2 times faster</strong>. Clairic and Clef handled extraction and the decision in under a second combined, where GLM-5.3 took 38 seconds for the same two steps. It also <strong>costs 49% less</strong>&nbsp;to use the cascaded pipeline vs the all-LLM pipeline. With GLM, both pipelines got the facts and the decision right in every run, but Clairic's repair estimate was identical each time, while GLM-5.3's changed on every run ($250, $250 and $220, with different ranges each time).</p>
+<p>Notably, under the all-LLM pipeline both Gemma 4 and Qwen failed&nbsp;at this task, as they were unable to deduce values like repair_cost from the inputs, showing how LLMs are not great at data extraction tasks.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA8vL17e3w5OTm39/i4+Pm5+fq5OTm2trc9vb68fH15ubr4eHn5eXr6env5ubr3Nzh/f3/9/f96+vz5eXv6enz7u736+vz4eHp////////9PT97e348fH89/f/9PT96urz////////////+fn//f3/////////9vb8////////////////////////////////////////////////////////////////////////////////////////////////" alt="" width="715" height="204" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCCJZ29GARHD2P59F5YF2.png&amp;w=715&amp;h=204&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCCJZ29GARHD2P59F5YF2.png&amp;w=640&amp;h=183&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCCJZ29GARHD2P59F5YF2.png&amp;w=715&amp;h=204&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCCJZ29GARHD2P59F5YF2.png&amp;w=750&amp;h=214&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCCJZ29GARHD2P59F5YF2.png&amp;w=828&amp;h=236&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCCJZ29GARHD2P59F5YF2.png&amp;w=1080&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCCJZ29GARHD2P59F5YF2.png&amp;w=1280&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCCJZ29GARHD2P59F5YF2.png&amp;w=1430&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AKCCJZ29GARHD2P59F5YF2.png&amp;w=1208&amp;h=344&amp;q=100&amp;f=webp" data-lightbox-width="1208" data-lightbox-height="344" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="204" class="pt-portable-image-media"></div>
+</figure>
+<h2>Preview release</h2>
+<p>Today, we're releasing a hosted endpoint for Clairic on Workers AI. We intend to release the model with open weights soon. We wanted to take the time first to introduce the concept of a System One extraction model, so you can start thinking about how this class of model would fit into appropriate workflows.</p>
+<p>The current endpoint is an early checkpoint and we expect it to get better. Here are our early impressions:</p>
+<ul>
+	<li><strong>Reading is strong, but multi-step arithmetic isn't yet.</strong>&nbsp;One- and two-step calculations (totals, differences, conversions, date arithmetic) seem reliable. Longer chains of dependent steps are hard for any one-pass model without a scratchpad. The same goes for aggregating across many rows of a table. At least for now, have Clairic predict the value and let code do the math.</li>
+	<li><strong>Estimates need evidence.</strong>&nbsp;Clairic estimates best from comparables, history, or descriptive text in the input. Asking it for a value it has no evidence for may be limited in specificity.</li>
+	<li><strong>Calibration is measured, not guaranteed.</strong>&nbsp;Intervals are trained to be calibrated and are on most held-out sets, but they can run narrow on unfamiliar data.</li>
+	<li><strong>Forecasting is basic</strong>. The model is not designed to accurately replace or predict time-series models that are trained on specific data. You should use it where appropriate, such as non-critical, general pattern matching, not detailed long-horizon forecasting.</li>
+	<li><strong>Use confidence.</strong>&nbsp;The architecture makes every answer well formed, not necessarily correct. Use <code>confidence</code>, <code>p_null</code>&nbsp;and the intervals to decide what to automate (in an appropriate workflow context) and what to send off for additional review.</li>
+</ul>
+<p>We'll keep working on the arithmetic, estimation and forecasting sides of the model with each checkpoint. After some more work, we plan to release&nbsp;the model open-weights for everyone to play around with as well.</p>
+<h2>Try it out</h2>
+<p>Clairic is available as a preview on Workers AI as <code>@cf/cloudflare/clairic</code>. Call it from a Worker with <code>env.AI.run()</code>, or from anywhere with the REST API. We have full model docs <a href="https://developers.cloudflare.com/workers-ai/models/clairic"><u>here</u></a>, as well as <a href="https://developers.cloudflare.com/workers-ai/concepts/extraction-models"><u>a new docs explainer</u></a>&nbsp;on how the extraction model API looks.</p>
+<p>P.S. Since you liked the <a href="https://blog.cloudflare.com/clef-decision-models#what-is-a-decision-model"><u>etymology of the name <em>Clef</em></u></a>, here’s how we landed on the name <em>Clairic.</em>&nbsp;We started with a desire to keep the name of the model thematically and sonically similar to Clef. Clair came to mind, sharing the same “cl” sound, as well as roots in music (“Clair de Lune”). More importantly, we wanted the name to be descriptive to the nature of the model. The Clairic model should be able to help you with <em>clerical</em>&nbsp;tasks like extracting data <em>clearly</em>&nbsp;from a corpus of inputs and upholding accuracy in tasks like bookkeeping. The prediction aspect of the model leans into the “<em>Clair</em>” root — allowing you to estimate and predict future values, similar to <em>clairvoyance</em>. Lastly, we like the idea of having this be [Cl]oudflare’s [AI R]egression model. Thus, Clairic was born into the world. We hope you enjoy it.</p>
