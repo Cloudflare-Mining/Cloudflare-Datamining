@@ -375,6 +375,15 @@
 	"billing-legacy-plan-pricing": {
 		"enabled": true
 	},
+	"billing-modular-checkout-orchestrator-invoices": {
+		"enabled": false
+	},
+	"billing-modular-checkout-orchestrator-registrar": {
+		"enabled": false
+	},
+	"billing-modular-checkout-orchestrator-subscription": {
+		"enabled": false
+	},
 	"billing-no-profile-payment-method-only": {
 		"enabled": true
 	},
@@ -2665,7 +2674,7 @@
 		"enabled": true
 	},
 	"security-precursor-monitor-mode": {
-		"enabled": false
+		"enabled": true
 	},
 	"security-precursor-rules": {
 		"enabled": true
