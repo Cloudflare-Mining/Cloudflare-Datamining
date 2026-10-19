@@ -2,7 +2,7 @@
 	"AccountAccessLoginRequestsAdaptiveGroups": {
 		"__description": "Access login requests",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of access login API events processed",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -50,7 +50,7 @@
 	"AccountAdvancedDnsProtectionNetworkAnalyticsAdaptiveGroups": {
 		"__description": "Network analytics data for Advanced DNS Protection",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -200,7 +200,7 @@
 	"AccountAdvancedTcpProtectionNetworkAnalyticsAdaptiveGroups": {
 		"__description": "Network analytics data for Advanced TCP Protection",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -378,7 +378,7 @@
 	},
 	"AccountAgentMemoryOperationsAdaptiveGroups": {
 		"__description": "Agent Memory operations with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of Agent Memory operations processed",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -409,7 +409,7 @@
 	},
 	"AccountAgentModelInvocationsAdaptiveGroups": {
 		"__description": "Agent model invocation usage with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "",
 		"uniq": ""
@@ -454,7 +454,7 @@
 	},
 	"AccountAiGatewayCacheAdaptiveGroups": {
 		"__description": "AI Gateway Cache",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of requests for an account with caching enabled: including hits and misses",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -522,7 +522,7 @@
 	"AccountAiGatewayConversationAnalysesAdaptiveGroups": {
 		"__description": "Analyzed AI Gateway conversations, aggregated with adaptive sampling. One underlying row per analysis of a conversation; a conversation active across several analysis periods contributes one row per period, each with that period's usage.",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of analysis rows; a conversation active across several periods, or re-analyzed, counts once per row - uniq.conversationId is the distinct-conversation count",
 		"dimensions": "List of dimensions to group by",
 		"max": "Latest activity values across grouped analysis rows",
@@ -635,7 +635,7 @@
 	"AccountAiGatewayConversationAnalysesStagingAdaptiveGroups": {
 		"__description": "Analyzed AI Gateway conversations with adaptive sampling (staging)",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of analysis rows; a conversation active across several periods, or re-analyzed, counts once per row - uniq.conversationId is the distinct-conversation count",
 		"dimensions": "List of dimensions to group by",
 		"max": "Latest activity values across grouped analysis rows",
@@ -712,7 +712,7 @@
 	},
 	"AccountAiGatewayErrorsAdaptiveGroups": {
 		"__description": "AI Gateway Errors",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of errors",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -741,7 +741,7 @@
 	},
 	"AccountAiGatewayRequestsAdaptiveGroups": {
 		"__description": "AI Gateway Requests",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of processed requests",
 		"dimensions": "List of dimensions to group by",
 		"max": "Maximum values for AI Gateway request metadata per result group",
@@ -791,7 +791,9 @@
 		"promptsVersions": "Prompts versions used on ai-gateway request",
 		"provider": "Which provider was the request sent to",
 		"rateLimited": "Was the request rate limited?: 1 = rate limit applied, 0 = rate limit not applied",
+		"requestId": "AI Gateway request identifier, including requests belonging to a session. Grouping by this field returns individual requests rather than session groups",
 		"sampleInterval": "ABR sample interval",
+		"standaloneRequestId": "Standalone AI Gateway request identifier; empty for requests belonging to a session. Group with metadataSessionId under a single gateway and user filter to list sessions and standalone requests together; adaptive sampling can omit entries",
 		"statusCode": "HTTP Status Code of provider response",
 		"tokensIn": "Number of tokens in the request",
 		"tokensOut": "Number of tokens in the response",
@@ -890,157 +892,6 @@
 		"sessions": "Approximate count of unique sessions",
 		"users": "Approximate count of unique authenticated users"
 	},
-	"AccountAiGatewayRequestsStagingAdaptiveGroups": {
-		"__description": "AI Gateway Requests (staging)",
-		"confidence": "ALPHA - DO NOT USE",
-		"count": "Number of processed requests",
-		"dimensions": "List of dimensions to group by",
-		"max": "Maximum values for AI Gateway request metadata per result group",
-		"min": "Minimum values and first-request metrics for AI Gateway request groups",
-		"quantiles": "Weighted quantiles of AI Gateway request metrics per dimension",
-		"ratio": "Percentage ratios for AI Gateway request metadata coverage and cache efficiency",
-		"sum": "The sum of values for a metric per dimension",
-		"uniq": ""
-	},
-	"AccountAiGatewayRequestsStagingAdaptiveGroupsConfidence": {
-		"__description": "",
-		"count": "Number of processed requests, with confidence intervals",
-		"level": "Confidence level that was requested",
-		"sum": "The sum of values for a metric per dimension, with confidence intervals"
-	},
-	"AccountAiGatewayRequestsStagingAdaptiveGroupsDimensions": {
-		"__description": "",
-		"cacheReadTokens": "Input tokens read from provider prompt cache",
-		"cacheWriteTokens": "Input tokens written to provider prompt cache",
-		"cached": "Was the response served from cache?: 1 = cache hit, 0 = cache misss",
-		"contextTokens": "Cache read, cache write, and fresh input tokens for this request",
-		"cost": "Cost per request",
-		"date": "The date when trigger was triggered",
-		"datetime": "The date and time the event occurred",
-		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
-		"datetimeFiveMinutes": "The date and time truncated to five minutes",
-		"datetimeHour": "The date and time truncated to the hour",
-		"datetimeMinute": "The date and time truncated to the minute",
-		"durationMs": "Request duration in milliseconds",
-		"error": "Was the response an error: 1 , 0 for no error",
-		"freshInputTokens": "Fresh uncached input tokens, falling back to tokens_in when usage metadata is unavailable",
-		"gateway": "Gateway name",
-		"logClassificationEnabled": "Whether log classification was enabled for this request",
-		"mcpServerCount": "MCP server count from request metadata",
-		"mcpToolCount": "MCP tool count from request metadata",
-		"metadataCommonName": "Access service principal name extracted from request metadata",
-		"metadataKey": "Individual metadata key saved on an AI Gateway request. Selecting this dimension explodes one request into one row per metadata key, enabling common-key discovery; counts are per key occurrence.",
-		"metadataKeys": "Metadata keys saved on ai-gateway request",
-		"metadataRaw": "Metadata saved in on ai-gateway request",
-		"metadataSessionId": "Framework session ID extracted from request metadata (opt-in per gateway)",
-		"metadataUserId": "Access user ID (JWT sub claim) extracted from request metadata",
-		"metadataValue": "Value for a caller-selected metadata key. Use aliases to request or group by specific customer-provided metadata keys. AI Gateway-injected identity keys use the cf.* prefix.",
-		"metadataValues": "Metadata values saved on ai-gateway request",
-		"model": "Which models was the request sent to",
-		"prompts": "Prompts used on ai-gateway request",
-		"promptsIds": "Prompts Ids used on ai-gateway request",
-		"promptsVersions": "Prompts versions used on ai-gateway request",
-		"provider": "Which provider was the request sent to",
-		"rateLimited": "Was the request rate limited?: 1 = rate limit applied, 0 = rate limit not applied",
-		"sampleInterval": "ABR sample interval",
-		"statusCode": "HTTP Status Code of provider response",
-		"tokensIn": "Number of tokens in the request",
-		"tokensOut": "Number of tokens in the response",
-		"usageMetadataRaw": "Raw provider usage metadata saved on the AI Gateway request",
-		"userAgent": "User-Agent header value sent by the calling SDK or client",
-		"wholesale": "Was the request use wholesale: 1 = applied, 0 = not applied"
-	},
-	"AccountAiGatewayRequestsStagingAdaptiveGroupsFilter_InputObject": {
-		"__description": ""
-	},
-	"AccountAiGatewayRequestsStagingAdaptiveGroupsMax": {
-		"__description": "",
-		"mcpServerCount": "Maximum MCP server count",
-		"mcpToolCount": "Maximum MCP tool count"
-	},
-	"AccountAiGatewayRequestsStagingAdaptiveGroupsMin": {
-		"__description": "",
-		"firstContextTokens": "Context tokens from the first request in the result group",
-		"firstMcpToolCount": "MCP tool count from the first request in the result group",
-		"sessionStart": "Earliest request timestamp in the result group"
-	},
-	"AccountAiGatewayRequestsStagingAdaptiveGroupsOrderBy": {
-		"__description": ""
-	},
-	"AccountAiGatewayRequestsStagingAdaptiveGroupsQuantiles": {
-		"__description": "",
-		"costP25": "25th percentile request cost",
-		"costP50": "50th percentile request cost",
-		"costP75": "75th percentile request cost",
-		"costP90": "90th percentile request cost",
-		"costP95": "95th percentile request cost",
-		"costP99": "99th percentile request cost",
-		"costP999": "99.9th percentile request cost",
-		"durationMsP25": "25th percentile request duration in milliseconds",
-		"durationMsP50": "50th percentile request duration in milliseconds",
-		"durationMsP75": "75th percentile request duration in milliseconds",
-		"durationMsP90": "90th percentile request duration in milliseconds",
-		"durationMsP95": "95th percentile request duration in milliseconds",
-		"durationMsP99": "99th percentile request duration in milliseconds",
-		"durationMsP999": "99.9th percentile request duration in milliseconds"
-	},
-	"AccountAiGatewayRequestsStagingAdaptiveGroupsRatio": {
-		"__description": "",
-		"cacheHitPct": "Percentage of context tokens read from provider prompt cache",
-		"mcpMetadataCoveragePct": "Percentage of requests with MCP tool or server count metadata present",
-		"rowsWithCacheReadPct": "Percentage of requests with cache read tokens present",
-		"rowsWithCacheWritePct": "Percentage of requests with cache write tokens present",
-		"rowsWithSessionIdPct": "Percentage of requests with a session ID in metadata"
-	},
-	"AccountAiGatewayRequestsStagingAdaptiveGroupsSum": {
-		"__description": "",
-		"cacheReadTokens": "Sum of input tokens read from provider prompt cache",
-		"cacheWriteTokens": "Sum of input tokens written to provider prompt cache",
-		"cachedRequests": "Sum of cached requests",
-		"cachedTokensIn": "Sum of cached tokens in",
-		"cachedTokensOut": "Sum of cached tokens out",
-		"contextTokens": "Sum of cache read, cache write, and fresh input tokens",
-		"cost": "Total cost\"",
-		"erroredRequests": "Sum of errored requests",
-		"freshInputTokens": "Sum of fresh uncached input tokens, falling back to tokens_in when usage metadata is unavailable",
-		"freshPlusWriteTokens": "Sum of fresh input tokens plus cache write tokens",
-		"requestsWithCacheRead": "Sum of requests with cache read tokens present",
-		"requestsWithCacheWrite": "Sum of requests with cache write tokens present",
-		"requestsWithMcpCount": "Sum of requests with MCP tool or server count metadata present",
-		"requestsWithSessionId": "Sum of requests with a session ID in metadata",
-		"tokensIn": "Sum of input tokens",
-		"tokensOut": "Sum of output tokens",
-		"totalTokens": "Sum of input and output tokens",
-		"uncachedTokensIn": "Sum of uncached tokens in",
-		"uncachedTokensOut": "Sum of uncached tokens out"
-	},
-	"AccountAiGatewayRequestsStagingAdaptiveGroupsSumConfidence": {
-		"__description": "",
-		"cacheReadTokens": "Confidence interval for the corresponding point estimate",
-		"cacheWriteTokens": "Confidence interval for the corresponding point estimate",
-		"cachedRequests": "Confidence interval for the corresponding point estimate",
-		"cachedTokensIn": "Confidence interval for the corresponding point estimate",
-		"cachedTokensOut": "Confidence interval for the corresponding point estimate",
-		"contextTokens": "Confidence interval for the corresponding point estimate",
-		"cost": "Confidence interval for the corresponding point estimate",
-		"erroredRequests": "Confidence interval for the corresponding point estimate",
-		"freshInputTokens": "Confidence interval for the corresponding point estimate",
-		"freshPlusWriteTokens": "Confidence interval for the corresponding point estimate",
-		"requestsWithCacheRead": "Confidence interval for the corresponding point estimate",
-		"requestsWithCacheWrite": "Confidence interval for the corresponding point estimate",
-		"requestsWithMcpCount": "Confidence interval for the corresponding point estimate",
-		"requestsWithSessionId": "Confidence interval for the corresponding point estimate",
-		"tokensIn": "Confidence interval for the corresponding point estimate",
-		"tokensOut": "Confidence interval for the corresponding point estimate",
-		"totalTokens": "Confidence interval for the corresponding point estimate",
-		"uncachedTokensIn": "Confidence interval for the corresponding point estimate",
-		"uncachedTokensOut": "Confidence interval for the corresponding point estimate"
-	},
-	"AccountAiGatewayRequestsStagingAdaptiveGroupsUniq": {
-		"__description": "",
-		"sessions": "Approximate count of unique sessions",
-		"users": "Approximate count of unique authenticated users"
-	},
 	"AccountAiGatewaySizeAdaptiveGroups": {
 		"__description": "AI Gateway Stored Rows",
 		"dimensions": "List of dimensions to group by",
@@ -1070,7 +921,7 @@
 	},
 	"AccountAiGatewaySpendSessionsAdaptiveGroups": {
 		"__description": "AI Gateway Spend session-level facts with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of AI Gateway Spend sessions",
 		"dimensions": "List of dimensions to group by",
 		"max": "Maximum AI Gateway Spend session metrics per dimension",
@@ -1219,7 +1070,7 @@
 	},
 	"AccountAiGatewaySpendUserDailyAdaptiveGroups": {
 		"__description": "AI Gateway Spend user daily facts with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of AI Gateway Spend user daily rows",
 		"dimensions": "List of dimensions to group by",
 		"max": "Maximum AI Gateway Spend user daily metrics per dimension",
@@ -1357,7 +1208,7 @@
 	},
 	"AccountAiInferenceAdaptiveGroups": {
 		"__description": "Aggregated AI Inference logs with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of inferences for an account",
 		"dimensions": "List of dimensions to group by",
 		"sum": ""
@@ -1436,7 +1287,7 @@
 	},
 	"AccountAiSearchAPIAdaptiveGroups": {
 		"__description": "AI Search API Search Analytics",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of search events",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
@@ -1506,7 +1357,7 @@
 	"AccountAiSearchFulltextQueriesAdaptiveGroups": {
 		"__description": "Sample-weighted estimate of AI Search full-text queries. Logical operations are not deduplicated, so retries may be counted more than once.",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Sample-weighted estimate of full-text queries; retries are not deduplicated",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -1540,7 +1391,7 @@
 	"AccountAiSearchImageProcessingTokensAdaptiveGroups": {
 		"__description": "Sample-weighted estimate of AI Search image processing tokens. Logical operations are not deduplicated, so retries may be counted more than once.",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Sample-weighted estimate of image processing events; retries are not deduplicated",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
@@ -1586,7 +1437,7 @@
 	"AccountAiSearchIngestedItemsAdaptiveGroups": {
 		"__description": "AI Search Ingested Items Analytics",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of ingestion item events",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
@@ -1652,7 +1503,7 @@
 	"AccountAiSearchIngestionTokensAdaptiveGroups": {
 		"__description": "Sample-weighted estimate of AI Search ingestion tokens. Logical operations are not deduplicated, so retries may be counted more than once.",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Sample-weighted estimate of ingestion events; retries are not deduplicated",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
@@ -1697,7 +1548,7 @@
 	"AccountAiSearchPublicEventsAdaptiveGroups": {
 		"__description": "AI Search public endpoint analytics: searches, result clicks and view-more interactions reported by the public search snippet",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of snippet events, of any kind",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension",
@@ -1759,7 +1610,7 @@
 	"AccountAiSearchSemanticQueriesAdaptiveGroups": {
 		"__description": "Sample-weighted estimate of AI Search semantic queries. Logical operations are not deduplicated, so retries may be counted more than once.",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Sample-weighted estimate of semantic queries; retries are not deduplicated",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -1794,7 +1645,7 @@
 	"AccountAiSearchStorageAdaptiveGroups": {
 		"__description": "Sample-weighted estimate of AI Search storage byte-hours from hourly per-instance byte observations. Observations are not deduplicated, so duplicate rows may be counted more than once.",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Sample-weighted estimate of hourly storage observations; duplicate observations are not deduplicated",
 		"dimensions": "List of dimensions to group by",
 		"max": "The maximum value for a metric per dimension",
@@ -1847,7 +1698,7 @@
 	"AccountArtifactsEventsAdaptiveGroups": {
 		"__description": "Artifacts events with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of artifact events",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension",
@@ -1972,7 +1823,7 @@
 	},
 	"AccountAutoRAGConfigAPIAdaptiveGroups": {
 		"__description": "AutoRAG Config API Search Analytics",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -2076,7 +1927,7 @@
 	},
 	"AccountBrowserIsolationSessionsAdaptiveGroups": {
 		"__description": "Aggregated count of Browser Isolation sessions",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of browser sessions",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -2102,7 +1953,7 @@
 	},
 	"AccountBrowserIsolationUserActionsAdaptiveGroups": {
 		"__description": "Aggregated count of Browser Isolation User Actions matches",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of user actions",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -2148,7 +1999,7 @@
 	},
 	"AccountBrowserRenderingApiAdaptiveGroups": {
 		"__description": "Aggregated Browser Run API events with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of Browser Run REST API requests for an account",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -2188,7 +2039,7 @@
 	"AccountBrowserRenderingBindingSessionsAdaptiveGroups": {
 		"__description": "Aggregated Browser Run worker binding sessions with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of sessions for an account",
 		"dimensions": "List of dimensions to group by",
 		"max": "The maximum value for a metric per dimension",
@@ -2231,7 +2082,7 @@
 	"AccountBrowserRenderingBrowserTimeUsageAdaptiveGroups": {
 		"__description": "Aggregated Browser Run and Browser Run REST API browser sessions with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of Browser Run and Browser Run REST API browser sessions for an account",
 		"dimensions": "List of dimensions to group by",
 		"max": "The maximum value for a metric per dimension",
@@ -2305,7 +2156,7 @@
 	"AccountBrowserRenderingEventsAdaptiveGroups": {
 		"__description": "Aggregated Browser Run events with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of events for an account",
 		"dimensions": "List of dimensions to group by",
 		"max": "The maximum value for a metric per dimension",
@@ -2377,7 +2228,7 @@
 	"AccountCallsTurnUsageAdaptiveGroups": {
 		"__description": "Aggregated Calls TURN bandwidth usage with adaptive sampling\"",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -2435,7 +2286,7 @@
 	},
 	"AccountCallsUsageAdaptiveGroups": {
 		"__description": "Beta. Aggregated Calls SFU bandwidth usage with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -2476,7 +2327,7 @@
 	"AccountCdnNetworkAnalyticsAdaptiveGroups": {
 		"__description": "Network analytics data for Cloudflare CDN traffic",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -3028,7 +2879,9 @@
 		"avBlockedFiles": "Files blocked by Gateway AV",
 		"bodyBytesRcvd": "Total body bytes received",
 		"bodyBytesSent": "Total body bytes sent",
+		"dlpMatchedRequestsTotal": "Total requests with at least one DLP profile match",
 		"dlpProfileMatchesTotal": "Total DLP profile matches",
+		"dlpScannedRequestsTotal": "Total requests that were scanned by DLP",
 		"filesScanned": "Total files scanned by Gateway AV",
 		"httpHostBytesRcvd": "Total bytes received per host",
 		"httpHostBytesSent": "Total bytes sent per host",
@@ -3089,7 +2942,9 @@
 		"avBlockedFiles": "Files blocked by Gateway AV",
 		"bodyBytesRcvd": "Total body bytes received",
 		"bodyBytesSent": "Total body bytes sent",
+		"dlpMatchedRequestsTotal": "Total requests with at least one DLP profile match",
 		"dlpProfileMatchesTotal": "Total DLP profile matches",
+		"dlpScannedRequestsTotal": "Total requests that were scanned by DLP",
 		"filesScanned": "Total files scanned by Gateway AV",
 		"httpHostBytesRcvd": "Total bytes received per host",
 		"httpHostBytesSent": "Total bytes sent per host",
@@ -3470,7 +3325,7 @@
 	"AccountCloudchamberMetricsAdaptiveGroups": {
 		"__description": "Metrics for Cloudchamber applications and deployments",
 		"avg": "The average value of a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of metrics received",
 		"dimensions": "List of dimensions to group by",
 		"max": "Maximum value of a metric per dimension",
@@ -3641,7 +3496,7 @@
 	"AccountCloudflareTunnelsAnalyticsAdaptiveGroups": {
 		"__description": "Cloudflare tunnel Device Analytics",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -3727,7 +3582,7 @@
 	"AccountCloudforceOneDetectionsAdaptiveGroups": {
 		"__description": "Cloudforce One detection events for Workers for Platforms scripts with adaptive sampling. Each row represents a single detection rule hit.",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of detection rule hits",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -3762,7 +3617,7 @@
 	"AccountCloudforceOneDetectionsStagingAdaptiveGroups": {
 		"__description": "Cloudforce One detection events for Workers for Platforms scripts with adaptive sampling (staging). Each row represents a single detection rule hit.",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of detection rule hits",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -3797,7 +3652,7 @@
 	"AccountContainersMetricsAdaptiveGroups": {
 		"__description": "Metrics for Cloudchamber applications and deployments",
 		"avg": "The average value of a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of metrics received",
 		"dimensions": "List of dimensions to group by",
 		"max": "Maximum value of a metric per dimension",
@@ -3967,7 +3822,7 @@
 	},
 	"AccountContainersUsageAdaptiveGroups": {
 		"__description": "Used to compute usage queries for billing estimates in Dash",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -4015,7 +3870,7 @@
 	"AccountD1AnalyticsAdaptiveGroups": {
 		"__description": "Aggregated D1 analytics with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of requests to D1 processed",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension",
@@ -4089,7 +3944,7 @@
 	"AccountD1QueriesAdaptiveGroups": {
 		"__description": "D1 query metrics with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of D1 queries processed",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension",
@@ -4207,7 +4062,7 @@
 	"AccountDnsAnalyticsAdaptiveGroups": {
 		"__description": "Analytics data for DNS queries",
 		"avg": "Average of a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of queries per dimension",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension"
@@ -4293,7 +4148,7 @@
 	"AccountDnsFirewallAnalyticsAdaptiveGroups": {
 		"__description": "Analytics data for DNS Firewall queries",
 		"avg": "Average of a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of queries per dimension",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension"
@@ -4391,7 +4246,7 @@
 	"AccountDosdNetworkAnalyticsAdaptiveGroups": {
 		"__description": "Network analytics data for dosd",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -4546,7 +4401,7 @@
 	"AccountDurableObjectsInvocationsAdaptiveGroups": {
 		"__description": "Durable Objects invocations with adaptive sampling",
 		"avg": "The average value for a metric",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"max": "The max value for a metric",
 		"min": "The min value for a metric",
@@ -4641,7 +4496,7 @@
 	"AccountDurableObjectsPeriodicGroups": {
 		"__description": "Durable Objects periodic metrics",
 		"avg": "The average value for a metric",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Count of periodic metric events",
 		"dimensions": "List of dimensions to group by",
 		"max": "The max value for a metric",
@@ -4780,7 +4635,7 @@
 	},
 	"AccountDurableObjectsSubrequestsAdaptiveGroups": {
 		"__description": "Durable Objects subrequests with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -4820,7 +4675,7 @@
 	},
 	"AccountEmailComplaintsAdaptiveGroups": {
 		"__description": "Aggregated email complaints for all zones in an account, with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of complaints",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -4886,7 +4741,7 @@
 	},
 	"AccountEmailSendingAdaptiveGroups": {
 		"__description": "Aggregated email sending logs for all zones in an account, with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of emails processed",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -5063,7 +4918,7 @@
 	"AccountFirewallEventsAdaptiveGroups": {
 		"__description": "Aggregated Firewall events with adaptive sampling",
 		"avg": "The average value used for sample interval",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The sum of sample interval values",
 		"dimensions": "List of dimensions to group by",
 		"sum": ""
@@ -5212,7 +5067,7 @@
 	"AccountFlagshipFlagEvaluationsAdaptiveGroups": {
 		"__description": "Aggregated Flagship feature flag evaluations with adaptive sampling. Use this to build dashboards over evaluation volume, latency, and error rates.",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of flag evaluations",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension",
@@ -5284,7 +5139,7 @@
 	"AccountFlowtrackdNetworkAnalyticsAdaptiveGroups": {
 		"__description": "Network analytics data for flowtrackd",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -5432,7 +5287,7 @@
 	},
 	"AccountGatewayL4DownstreamSessionsAdaptiveGroups": {
 		"__description": "Aggregated metrics about downstream (client to edge) L4 Gateway Sessions. Metrics are reported on TCP or UDP session close",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of downstream sessions",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "",
@@ -5506,7 +5361,7 @@
 	},
 	"AccountGatewayL4SessionsAdaptiveGroups": {
 		"__description": "BETA - Aggregate counts of Gateway L4 sessions with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of Gateway L4 sessions",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -5563,7 +5418,7 @@
 	},
 	"AccountGatewayL4UpstreamSessionsAdaptiveGroups": {
 		"__description": "Aggregated metrics about upstream (edge to client) L4 Gateway Sessions. Metrics are reported on TCP, QUIC or UDP session close",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of upstream sessions",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "",
@@ -5649,7 +5504,7 @@
 	},
 	"AccountGatewayL7RequestsAdaptiveGroups": {
 		"__description": "BETA - Aggregate counts of Gateway L7 requests with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of Gateway L7 requests",
 		"dimensions": "List of dimensions to group by",
 		"uniq": ""
@@ -5717,7 +5572,7 @@
 	},
 	"AccountGatewayResolverByCategoryAdaptiveGroups": {
 		"__description": "BETA - Aggregate counts of Gateway Resolver queries by category with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of Gateway Resolver queries",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -5748,8 +5603,8 @@
 		"internalDnsViewId": "The DNS internal view identifier that was sent to the internal DNS service",
 		"internalDnsZoneId": "The DNS zone identifier returned by the internal DNS service",
 		"locationId": "The uuid identifying the customer Location used when resolving",
-		"matchedApplicationId": "ID of the application the domain belongs to",
-		"matchedApplicationName": "Name of the application the domain belongs to",
+		"matchedApplicationIds": "IDs of the applications that matched the DNS query",
+		"matchedApplicationNames": "Names of the applications that matched the DNS query",
 		"policyId": "ID of the policy/rule that was applied, if any",
 		"policyName": "Name of the policy that was applied, if any",
 		"resolvedIpContinents": "Continent code of each resolved IP, if any",
@@ -5775,7 +5630,7 @@
 	"AccountGatewayResolverByCustomResolverGroups": {
 		"__description": "Stats on dns custom resolvers",
 		"avg": "The average value for a metric",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of Gateway Resolver queries",
 		"dimensions": "List of dimensions to group by",
 		"max": "Maximum response time"
@@ -5819,7 +5674,7 @@
 	"AccountGatewayResolverByRuleExecutionPerformanceAdaptiveGroups": {
 		"__description": "Total time spent on executing firewall rules at the edge",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of Gateway Resolver queries",
 		"dimensions": "List of dimensions to group by",
 		"max": "Maximum execution time",
@@ -5867,7 +5722,7 @@
 	},
 	"AccountGatewayResolverQueriesAdaptiveGroups": {
 		"__description": "BETA - Aggregate counts of Gateway Resolver queries with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of Gateway Resolver queries",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -5900,8 +5755,8 @@
 		"internalDnsZoneId": "The DNS zone identifier returned by the internal DNS service",
 		"locationId": "The uuid identifying the customer Location used when resolving",
 		"locationName": "The name identifying the customer Location used when resolving",
-		"matchedApplicationId": "ID of the application the domain belongs to",
-		"matchedApplicationName": "Name of the application the domain belongs to",
+		"matchedApplicationIds": "IDs of the applications that matched the DNS query",
+		"matchedApplicationNames": "Names of the applications that matched the DNS query",
 		"matchedIndicatorFeedIds": "Json array of indicator feed IDs for this query that matched rule",
 		"matchedIndicatorFeedNames": "List of indicator feed names for this query",
 		"policyId": "ID of the policy/rule that was applied, if any",
@@ -6326,7 +6181,7 @@
 	"AccountHttpRequestsAdaptiveGroups": {
 		"__description": "Aggregated HTTP requests data with adaptive sampling",
 		"avg": "The average value used for sample interval",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension",
@@ -6604,7 +6459,7 @@
 	"AccountHttpRequestsOverviewAdaptiveGroups": {
 		"__description": "A high-level summary of HTTP requests made by end users.",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"ratio": "The ratio of a metric in comparison to the rest of the traffic, between 0 and 1",
 		"sum": "The sum of values for a metric per dimension"
@@ -6677,7 +6532,7 @@
 	"AccountHyperdrivePoolSizesAdaptiveGroups": {
 		"__description": "Hyperdrive connection pool size snapshots with adaptive sampling.",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of Hyperdrive pool size snapshots",
 		"dimensions": "List of dimensions to group by",
 		"max": "The maximum value for a metric per dimension"
@@ -6720,7 +6575,7 @@
 	"AccountHyperdriveQueriesAdaptiveGroups": {
 		"__description": "Hyperdrive query events with adaptive sampling.",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of Hyperdrive queries",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
@@ -6782,7 +6637,7 @@
 	"AccountImagesHostedRequestsAdaptiveGroups": {
 		"__description": "Hosted Images delivery requests for an account, grouped by variant, format, response, cache status and location",
 		"avg": "The average value for a metric per dimensions",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Estimated number of Hosted Images delivery requests using adaptive sampling weights",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -6829,7 +6684,7 @@
 	"AccountImagesHostedRequestsStagingAdaptiveGroups": {
 		"__description": "Hosted Images delivery requests for an account in staging, grouped by variant, format, response, cache status and location",
 		"avg": "The average value for a metric per dimensions",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Estimated number of Hosted Images delivery requests using adaptive sampling weights",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -6876,7 +6731,7 @@
 	"AccountImagesRequestsAdaptiveGroups": {
 		"__description": "A high-level summary of Cloudflare Images served to end users.",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -6915,7 +6770,7 @@
 	"AccountImagesTransformationsAdaptiveGroups": {
 		"__description": "Image transformations performed for an account, grouped by zone, Worker script, transformation and origin host. Counts only transformations the resizer actually performed, so this is estimated processing volume rather than end-user request count or invoice total",
 		"avg": "The average value for a metric per dimensions",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Estimated number of requests per specific dimensions using adaptive sampling weights",
 		"dimensions": "List of dimensions to group by",
 		"sum": "Calculates a sum of each field per specific dimensions"
@@ -6967,7 +6822,8 @@
 		"uniq": "Calculates the number of unique values over the queried period"
 	},
 	"AccountImagesUniqueGroupsDimensions": {
-		"__description": ""
+		"__description": "",
+		"date": "The date on which the image was processed"
 	},
 	"AccountImagesUniqueGroupsFilter_InputObject": {
 		"__description": ""
@@ -7001,10 +6857,244 @@
 	"AccountImagesUniqueTransformationsOrderBy": {
 		"__description": ""
 	},
+	"AccountK2ConsumeAdaptiveGroups": {
+		"__description": "Beta. Bytes delivered to K2 subscriptions",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountK2ConsumeAdaptiveGroupsConfidence": {
+		"__description": "",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountK2ConsumeAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Timestamp, truncated to start of a day",
+		"datetime": "Timestamp",
+		"datetimeFifteenMinutes": "Timestamp, truncated to start of fifteen minutes",
+		"datetimeFiveMinutes": "Timestamp, truncated to start of five minutes",
+		"datetimeHour": "Timestamp, truncated to start of an hour",
+		"datetimeMinute": "Timestamp, truncated to start of a minute",
+		"streamId": "The stream ID",
+		"subscriptionId": "The subscription ID"
+	},
+	"AccountK2ConsumeAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountK2ConsumeAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountK2ConsumeAdaptiveGroupsSum": {
+		"__description": "",
+		"bytes": "Bytes delivered: record content plus header names and values, counting every redelivery"
+	},
+	"AccountK2ConsumeAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"bytes": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountK2ConsumeStagingAdaptiveGroups": {
+		"__description": "Beta. Bytes delivered to K2 subscriptions (staging)",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountK2ConsumeStagingAdaptiveGroupsConfidence": {
+		"__description": "",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountK2ConsumeStagingAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Timestamp, truncated to start of a day",
+		"datetime": "Timestamp",
+		"datetimeFifteenMinutes": "Timestamp, truncated to start of fifteen minutes",
+		"datetimeFiveMinutes": "Timestamp, truncated to start of five minutes",
+		"datetimeHour": "Timestamp, truncated to start of an hour",
+		"datetimeMinute": "Timestamp, truncated to start of a minute",
+		"streamId": "The stream ID",
+		"subscriptionId": "The subscription ID"
+	},
+	"AccountK2ConsumeStagingAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountK2ConsumeStagingAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountK2ConsumeStagingAdaptiveGroupsSum": {
+		"__description": "",
+		"bytes": "Bytes delivered: record content plus header names and values, counting every redelivery"
+	},
+	"AccountK2ConsumeStagingAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"bytes": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountK2ProduceAdaptiveGroups": {
+		"__description": "Beta. Bytes produced to K2 streams",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountK2ProduceAdaptiveGroupsConfidence": {
+		"__description": "",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountK2ProduceAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Timestamp, truncated to start of a day",
+		"datetime": "Timestamp",
+		"datetimeFifteenMinutes": "Timestamp, truncated to start of fifteen minutes",
+		"datetimeFiveMinutes": "Timestamp, truncated to start of five minutes",
+		"datetimeHour": "Timestamp, truncated to start of an hour",
+		"datetimeMinute": "Timestamp, truncated to start of a minute",
+		"input": "How the records were produced: http or binding",
+		"streamId": "The stream ID"
+	},
+	"AccountK2ProduceAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountK2ProduceAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountK2ProduceAdaptiveGroupsSum": {
+		"__description": "",
+		"bytes": "Bytes produced: record content plus header names and values"
+	},
+	"AccountK2ProduceAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"bytes": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountK2ProduceStagingAdaptiveGroups": {
+		"__description": "Beta. Bytes produced to K2 streams (staging)",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountK2ProduceStagingAdaptiveGroupsConfidence": {
+		"__description": "",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountK2ProduceStagingAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Timestamp, truncated to start of a day",
+		"datetime": "Timestamp",
+		"datetimeFifteenMinutes": "Timestamp, truncated to start of fifteen minutes",
+		"datetimeFiveMinutes": "Timestamp, truncated to start of five minutes",
+		"datetimeHour": "Timestamp, truncated to start of an hour",
+		"datetimeMinute": "Timestamp, truncated to start of a minute",
+		"input": "How the records were produced: http or binding",
+		"streamId": "The stream ID"
+	},
+	"AccountK2ProduceStagingAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountK2ProduceStagingAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountK2ProduceStagingAdaptiveGroupsSum": {
+		"__description": "",
+		"bytes": "Bytes produced: record content plus header names and values"
+	},
+	"AccountK2ProduceStagingAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"bytes": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountK2StorageAdaptiveGroups": {
+		"__description": "Beta. Bytes stored in K2 streams, measured about every ten minutes",
+		"dimensions": "List of dimensions to group by",
+		"max": "The maximum of values for a metric per dimension"
+	},
+	"AccountK2StorageAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Timestamp, truncated to start of a day",
+		"datetime": "Timestamp",
+		"datetimeFifteenMinutes": "Timestamp, truncated to start of fifteen minutes",
+		"datetimeFiveMinutes": "Timestamp, truncated to start of five minutes",
+		"datetimeHour": "Timestamp, truncated to start of an hour",
+		"datetimeMinute": "Timestamp, truncated to start of a minute",
+		"streamId": "The stream ID"
+	},
+	"AccountK2StorageAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountK2StorageAdaptiveGroupsMax": {
+		"__description": "",
+		"bytes": "Bytes stored: record content plus header names and values written within the stream's retention"
+	},
+	"AccountK2StorageAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountK2StorageStagingAdaptiveGroups": {
+		"__description": "Beta. Bytes stored in K2 streams, measured about every ten minutes (staging)",
+		"dimensions": "List of dimensions to group by",
+		"max": "The maximum of values for a metric per dimension"
+	},
+	"AccountK2StorageStagingAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Timestamp, truncated to start of a day",
+		"datetime": "Timestamp",
+		"datetimeFifteenMinutes": "Timestamp, truncated to start of fifteen minutes",
+		"datetimeFiveMinutes": "Timestamp, truncated to start of five minutes",
+		"datetimeHour": "Timestamp, truncated to start of an hour",
+		"datetimeMinute": "Timestamp, truncated to start of a minute",
+		"streamId": "The stream ID"
+	},
+	"AccountK2StorageStagingAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountK2StorageStagingAdaptiveGroupsMax": {
+		"__description": "",
+		"bytes": "Bytes stored: record content plus header names and values written within the stream's retention"
+	},
+	"AccountK2StorageStagingAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountK2SubscriptionLagAdaptiveGroups": {
+		"__description": "Beta. Current lag of K2 subscriptions. Only records written within the queried range count, so query the stream's retention period up to now. Filter by streamId: a query whose rows span more than one stream fails",
+		"dimensions": "List of dimensions to group by",
+		"max": "Lag of the subscription in the argument"
+	},
+	"AccountK2SubscriptionLagAdaptiveGroupsDimensions": {
+		"__description": "",
+		"streamId": "The stream ID"
+	},
+	"AccountK2SubscriptionLagAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountK2SubscriptionLagAdaptiveGroupsMax": {
+		"__description": "",
+		"records": "Records the subscription has not committed, summed over partitions",
+		"timeMs": "Age in milliseconds of the oldest record the subscription has not committed, across partitions, accurate to the minute"
+	},
+	"AccountK2SubscriptionLagAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountK2SubscriptionLagStagingAdaptiveGroups": {
+		"__description": "Beta. Current lag of K2 subscriptions (staging). Only records written within the queried range count, so query the stream's retention period up to now. Filter by streamId: a query whose rows span more than one stream fails",
+		"dimensions": "List of dimensions to group by",
+		"max": "Lag of the subscription in the argument"
+	},
+	"AccountK2SubscriptionLagStagingAdaptiveGroupsDimensions": {
+		"__description": "",
+		"streamId": "The stream ID"
+	},
+	"AccountK2SubscriptionLagStagingAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountK2SubscriptionLagStagingAdaptiveGroupsMax": {
+		"__description": "",
+		"records": "Records the subscription has not committed, summed over partitions",
+		"timeMs": "Age in milliseconds of the oldest record the subscription has not committed, across partitions, accurate to the minute"
+	},
+	"AccountK2SubscriptionLagStagingAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountKvOperationsAdaptiveGroups": {
 		"__description": "KV operations data with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of requests",
 		"dimensions": "List of dimensions to group by",
 		"max": "The max of values for a metric per dimension",
@@ -7167,7 +7257,7 @@
 	"AccountLiveInputEventsAdaptiveGroups": {
 		"__description": "Aggregated live input events with adaptive sampling",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of segments stored",
 		"dimensions": "List of dimensions to group by",
 		"max": "The maximum value for a metric per dimension",
@@ -7235,7 +7325,7 @@
 	},
 	"AccountLogExplorerIngestionAdaptiveGroups": {
 		"__description": "Ingestion metrics for Log Explorer",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": ""
 	},
@@ -7273,7 +7363,7 @@
 	"AccountLogpushHealthAdaptiveGroups": {
 		"__description": "Beta. Logpush job health metrics",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"max": "Maximum value of a metric per dimension",
@@ -7332,7 +7422,7 @@
 	"AccountLogpushTransformersAdaptiveGroups": {
 		"__description": "Beta. Logpush transformer health metrics",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of transformer executions",
 		"dimensions": "List of dimensions to group by",
 		"max": "Maximum value of a metric per dimension",
@@ -7385,9 +7475,39 @@
 		"bytesOut": "Confidence interval for the corresponding point estimate",
 		"records": "Confidence interval for the corresponding point estimate"
 	},
+	"AccountLogpushTransformersSuccessfulUsageAdaptiveGroups": {
+		"__description": "Account-wide billable usage for successful invocations of Logpush transformers across all job scopes",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The billable usage processed by Logpush transformers"
+	},
+	"AccountLogpushTransformersSuccessfulUsageAdaptiveGroupsConfidence": {
+		"__description": "",
+		"level": "Confidence level that was requested",
+		"sum": "The billable usage processed by Logpush transformers, with confidence intervals"
+	},
+	"AccountLogpushTransformersSuccessfulUsageAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Date of the transformer execution",
+		"datetime": "Datetime of the transformer execution"
+	},
+	"AccountLogpushTransformersSuccessfulUsageAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountLogpushTransformersSuccessfulUsageAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountLogpushTransformersSuccessfulUsageAdaptiveGroupsSum": {
+		"__description": "",
+		"billableBytes": "Uncompressed input bytes successfully processed by Logpush transformers"
+	},
+	"AccountLogpushTransformersSuccessfulUsageAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"billableBytes": "Confidence interval for the corresponding point estimate"
+	},
 	"AccountLogpushUsageAdaptiveGroups": {
 		"__description": "Account-wide billable usage for successfully delivered customer-owned Logpush jobs",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of billable Logpush bytes"
 	},
@@ -7418,7 +7538,7 @@
 	"AccountMagicEndpointHealthCheckAdaptiveGroups": {
 		"__description": "Magic Endpoint Healthcheck events with adaptive sampling.",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of health checks",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of value for a metric per dimension"
@@ -7461,7 +7581,7 @@
 	"AccountMagicFirewallNetworkAnalyticsAdaptiveGroups": {
 		"__description": "Network analytics data for Magic Firewall",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -7611,7 +7731,7 @@
 	"AccountMagicFirewallRateLimitNetworkAnalyticsAdaptiveGroups": {
 		"__description": "Network analytics data for Magic Firewall Ratelimiting",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -7760,7 +7880,7 @@
 	},
 	"AccountMagicFirewallSamplesAdaptiveGroups": {
 		"__description": "Data to visualize traffic allowed and blocked by Magic Firewall rules",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -7799,7 +7919,7 @@
 	"AccountMagicIDPSNetworkAnalyticsAdaptiveGroups": {
 		"__description": "Network analytics data for Magic IDS",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -7943,7 +8063,7 @@
 	},
 	"AccountMagicTransitFragNeededErrorsAdaptiveGroups": {
 		"__description": "Network analytics data for Magic Transit ICMP frag needed traffic",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -7974,7 +8094,7 @@
 	"AccountMagicTransitNetworkAnalyticsAdaptiveGroups": {
 		"__description": "Network analytics data for Magic Transit traffic",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -8127,7 +8247,7 @@
 	"AccountMagicTransitTunnelHealthCheckSLOsAdaptiveGroups": {
 		"__description": "Magic Transit Tunnel Health Check SLO events with adaptive sampling.",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of SLO calculations",
 		"dimensions": "List of dimensions to group by",
 		"max": "The maximum value for a metric per dimension"
@@ -8172,7 +8292,7 @@
 	"AccountMagicTransitTunnelHealthChecksAdaptiveGroups": {
 		"__description": "Beta. Magic Transit Health check results for customer GRE Tunnels with adaptive sampling (ABR).",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of healthcheck results",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -8216,7 +8336,7 @@
 	"AccountMagicTransitTunnelTrafficAdaptiveGroups": {
 		"__description": "Bandwidth usage metric of a Magic Transit tunnel.",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -8346,7 +8466,7 @@
 	},
 	"AccountMconnTelemetryEventsAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector events with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Recorded Event count",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -8376,7 +8496,7 @@
 	},
 	"AccountMconnTelemetryEventsStagingAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector events with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Recorded Event count",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -8406,7 +8526,7 @@
 	},
 	"AccountMconnTelemetrySnapshotDhcpLeasesAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector snapshots of DHCP leases with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Snapshot DHCP lease count",
 		"dimensions": "List of dimensions to group by",
 		"max": ""
@@ -8444,7 +8564,7 @@
 	},
 	"AccountMconnTelemetrySnapshotDhcpLeasesStagingAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector snapshots of DHCP leases with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Snapshot DHCP lease count",
 		"dimensions": "List of dimensions to group by",
 		"max": ""
@@ -8482,7 +8602,7 @@
 	},
 	"AccountMconnTelemetrySnapshotDisksAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector disk snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Snapshot Disk count",
 		"dimensions": "List of dimensions to group by",
 		"max": "",
@@ -8532,7 +8652,7 @@
 	},
 	"AccountMconnTelemetrySnapshotDisksStagingAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector disk snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Snapshot Disk count",
 		"dimensions": "List of dimensions to group by",
 		"max": "",
@@ -8582,7 +8702,7 @@
 	},
 	"AccountMconnTelemetrySnapshotInterfaceAddressesAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector interface address snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Snapshot Interface Address count",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -8612,7 +8732,7 @@
 	},
 	"AccountMconnTelemetrySnapshotInterfaceAddressesStagingAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector interface address snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Snapshot Interface Address count",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -8642,7 +8762,7 @@
 	},
 	"AccountMconnTelemetrySnapshotInterfacesAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector interface snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Snapshot Interface count",
 		"dimensions": "List of dimensions to group by",
 		"max": ""
@@ -8677,7 +8797,7 @@
 	},
 	"AccountMconnTelemetrySnapshotInterfacesStagingAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector interface snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Snapshot Interface count",
 		"dimensions": "List of dimensions to group by",
 		"max": ""
@@ -8712,7 +8832,7 @@
 	},
 	"AccountMconnTelemetrySnapshotMountsAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector mount snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Snapshot Mount count",
 		"dimensions": "List of dimensions to group by",
 		"max": ""
@@ -8752,7 +8872,7 @@
 	},
 	"AccountMconnTelemetrySnapshotMountsStagingAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector mount snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Snapshot Mount count",
 		"dimensions": "List of dimensions to group by",
 		"max": ""
@@ -8792,7 +8912,7 @@
 	},
 	"AccountMconnTelemetrySnapshotNetdevsAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector netdev snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Snapshot Netdev count",
 		"dimensions": "List of dimensions to group by",
 		"sum": ""
@@ -8841,7 +8961,7 @@
 	},
 	"AccountMconnTelemetrySnapshotNetdevsStagingAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector netdev snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Snapshot Netdev count",
 		"dimensions": "List of dimensions to group by",
 		"sum": ""
@@ -8890,7 +9010,7 @@
 	},
 	"AccountMconnTelemetrySnapshotThermalsAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector thermal snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Snapshot Thermal count",
 		"dimensions": "List of dimensions to group by",
 		"max": ""
@@ -8926,7 +9046,7 @@
 	},
 	"AccountMconnTelemetrySnapshotThermalsStagingAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector thermal snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Snapshot Thermal count",
 		"dimensions": "List of dimensions to group by",
 		"max": ""
@@ -8962,7 +9082,7 @@
 	},
 	"AccountMconnTelemetrySnapshotTunnelsAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector tunnel snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Snapshot Tunnels count",
 		"dimensions": "List of dimensions to group by",
 		"max": ""
@@ -9000,7 +9120,7 @@
 	},
 	"AccountMconnTelemetrySnapshotTunnelsStagingAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector tunnel snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Snapshot Tunnels count",
 		"dimensions": "List of dimensions to group by",
 		"max": ""
@@ -9038,7 +9158,7 @@
 	},
 	"AccountMconnTelemetrySnapshotsAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector system snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Snapshot count",
 		"dimensions": "List of dimensions to group by",
 		"max": ""
@@ -9085,7 +9205,7 @@
 	},
 	"AccountMconnTelemetrySnapshotsStagingAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector system snapshots with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Snapshot count",
 		"dimensions": "List of dimensions to group by",
 		"max": ""
@@ -9155,7 +9275,7 @@
 	"AccountMnmAWSVPCFlowDataAdaptiveGroups": {
 		"__description": "AWS VPC Flow data collected through Magic Network Monitoring",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -9304,7 +9424,7 @@
 	"AccountMnmFlowDataAdaptiveGroups": {
 		"__description": "Flow data collected through Magic Network Monitoring",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -9429,7 +9549,7 @@
 	"AccountMonetizationGatewayAdaptiveGroups": {
 		"__description": "Monetization Gateway payment outcomes with adaptive sampling",
 		"avg": "Averages calculated from payment outcome rows.",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The sampling-weighted number of payment outcomes.",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Origin latency percentiles",
@@ -9512,7 +9632,7 @@
 	"AccountNelReportsAdaptiveGroups": {
 		"__description": "Data to visualize network error logs",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of NEL Reports",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -9550,6 +9670,49 @@
 	"AccountNelReportsAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
+	"AccountNetworkQualityUsageAdaptiveGroups": {
+		"__description": "Beta. Network Quality API usage from authorized client requests (i.e. requests carrying an authorization token issued on behalf of the account), with adaptive sampling",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
+		"count": "Estimated number of authorized requests",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountNetworkQualityUsageAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Estimated number of authorized requests, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountNetworkQualityUsageAdaptiveGroupsDimensions": {
+		"__description": "",
+		"coloCode": "The airport code of the Cloudflare datacenter that served this request",
+		"date": "The date of the request",
+		"datetime": "The date and time of the request",
+		"datetimeFifteenMinutes": "The date and time of the request, truncated to a multiple of 15 minutes",
+		"datetimeFiveMinutes": "The date and time of the request, truncated to a multiple of 5 minutes",
+		"datetimeHour": "The date and time of the request, truncated to the hour",
+		"datetimeMinute": "The date and time of the request, truncated to the minute",
+		"requestedBytes": "Number of payload bytes requested using the 'bytes' query parameter (0 when omitted)",
+		"tokenId": "The JWT ID of the authorization token included with the request",
+		"transferDirection": "The direction of the payload byte transfer from Cloudflare's point of view (e.g. 'ingress', 'egress', or 'unknown')",
+		"transferredBytes": "Number of payload bytes transferred"
+	},
+	"AccountNetworkQualityUsageAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountNetworkQualityUsageAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountNetworkQualityUsageAdaptiveGroupsSum": {
+		"__description": "",
+		"requestedBytes": "Estimated total number of payload bytes requested using the 'bytes' query parameter (0 when omitted)",
+		"transferredBytes": "Estimated total number of payload bytes transferred"
+	},
+	"AccountNetworkQualityUsageAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"requestedBytes": "Confidence interval for the corresponding point estimate",
+		"transferredBytes": "Confidence interval for the corresponding point estimate"
+	},
 	"AccountOhttpMetricsAdaptive": {
 		"__description": "oHTTP request metrics with adaptive sampling",
 		"bytesToClient": "Bytes returned to client",
@@ -9564,7 +9727,7 @@
 	},
 	"AccountOhttpMetricsAdaptiveGroups": {
 		"__description": "Aggregated oHTTP request metrics with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of HTTP requests",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
@@ -9596,7 +9759,7 @@
 	},
 	"AccountOhttpMetricsAdaptiveGroupsSum": {
 		"__description": "",
-		"bytesToClient": "The total bytes sent from gateway to client, observed over the queried time period",
+		"bytesToClient": "The total bytes received from origin, observed over the queried time period",
 		"bytesToGateway": "The total bytes from client to gateway, observed over the queried time period",
 		"clientRequestErrors": "The total number of client request errors, observed over the queried time period",
 		"gatewayResponseErrors": "The total number of gateway response errors, observed over the queried time period"
@@ -9613,7 +9776,7 @@
 	},
 	"AccountOhttpRelayEgressConnMetricsAdaptiveGroups": {
 		"__description": "Aggregated OHTTP relay egress (relay-to-gateway) connection metrics with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of egress connections",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "",
@@ -9675,7 +9838,7 @@
 	},
 	"AccountOhttpRelayIngressConnMetricsAdaptiveGroups": {
 		"__description": "Aggregated OHTTP relay ingress (client-to-relay) connection metrics with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of ingress connections",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "",
@@ -9737,7 +9900,7 @@
 	},
 	"AccountOhttpRelayRequestMetricsAdaptiveGroups": {
 		"__description": "Aggregated OHTTP relay request metrics with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of OHTTP relay requests",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": ""
@@ -9773,12 +9936,19 @@
 		"processingDurationMsP90": "Time spent processing the request before sending it upstream in milliseconds (90th percentile)",
 		"processingDurationMsP95": "Time spent processing the request before sending it upstream in milliseconds (95th percentile)",
 		"processingDurationMsP99": "Time spent processing the request before sending it upstream in milliseconds (99th percentile)",
-		"processingDurationMsP999": "Time spent processing the request before sending it upstream in milliseconds (99.9th percentile)"
+		"processingDurationMsP999": "Time spent processing the request before sending it upstream in milliseconds (99.9th percentile)",
+		"timeToFirstByteMsP25": "Relay-side time from the start of request handling until upstream response headers are available in milliseconds (25th percentile)",
+		"timeToFirstByteMsP50": "Relay-side time from the start of request handling until upstream response headers are available in milliseconds (50th percentile)",
+		"timeToFirstByteMsP75": "Relay-side time from the start of request handling until upstream response headers are available in milliseconds (75th percentile)",
+		"timeToFirstByteMsP90": "Relay-side time from the start of request handling until upstream response headers are available in milliseconds (90th percentile)",
+		"timeToFirstByteMsP95": "Relay-side time from the start of request handling until upstream response headers are available in milliseconds (95th percentile)",
+		"timeToFirstByteMsP99": "Relay-side time from the start of request handling until upstream response headers are available in milliseconds (99th percentile)",
+		"timeToFirstByteMsP999": "Relay-side time from the start of request handling until upstream response headers are available in milliseconds (99.9th percentile)"
 	},
 	"AccountPageShieldReportsAdaptiveGroups": {
 		"__description": "Page Shield CSP reports",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of Page Shield CSP reports",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -9819,7 +9989,7 @@
 	"AccountPagesFunctionsInvocationsAdaptiveGroups": {
 		"__description": "Pages Functions invocations with adaptive sampling",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension",
 		"sum": "The sum of values for a metric per dimension"
@@ -9891,7 +10061,7 @@
 	},
 	"AccountPipelinesDeliveryAdaptiveGroups": {
 		"__description": "Beta. Data delivered via Workers Pipelines",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of delivery events",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
@@ -9928,7 +10098,7 @@
 	},
 	"AccountPipelinesIngestionAdaptiveGroups": {
 		"__description": "Beta. Data ingested via Workers Pipelines",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of ingestion events",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
@@ -9967,7 +10137,7 @@
 	},
 	"AccountPipelinesOperatorAdaptiveGroups": {
 		"__description": "Aggregated Pipelines source metrics with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -10007,7 +10177,7 @@
 	},
 	"AccountPipelinesOperatorStagingAdaptiveGroups": {
 		"__description": "Aggregated Pipelines source metrics with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -10047,7 +10217,7 @@
 	},
 	"AccountPipelinesSinkAdaptiveGroups": {
 		"__description": "Aggregated Pipelines sink metrics with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -10091,7 +10261,7 @@
 	},
 	"AccountPipelinesSinkStagingAdaptiveGroups": {
 		"__description": "Aggregated Pipelines sink metrics with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -10147,7 +10317,7 @@
 	},
 	"AccountPipelinesUserErrorsAdaptiveGroups": {
 		"__description": "User errors from Workers Pipelines",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of user errors",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -10191,7 +10361,7 @@
 	},
 	"AccountPipelinesUserErrorsStagingAdaptiveGroups": {
 		"__description": "User errors from Workers Pipelines (staging)",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of user errors",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -10224,7 +10394,7 @@
 	"AccountPrecursorEventsAdaptiveGroups": {
 		"__description": "Beta. Cloudflare Precursor aggregated validation events with adaptive sampling",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of Cloudflare Precursor validation events processed",
 		"dimensions": "List of dimensions to group by",
 		"sum": ""
@@ -10317,7 +10487,7 @@
 	},
 	"AccountPrivacyProxyAuthMetricsAdaptiveGroups": {
 		"__description": "Aggregated Privacy Proxy authentication metrics with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of authentication attempts",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -10346,7 +10516,7 @@
 	},
 	"AccountPrivacyProxyEgressConnMetricsAdaptiveGroups": {
 		"__description": "Aggregated Privacy Proxy egress (proxy-to-origin) connection metrics with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of egress connections",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "",
@@ -10408,7 +10578,7 @@
 	},
 	"AccountPrivacyProxyIngressConnMetricsAdaptiveGroups": {
 		"__description": "Aggregated Privacy Proxy ingress (client-to-proxy) connection metrics with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of ingress connections",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "",
@@ -10470,7 +10640,7 @@
 	},
 	"AccountPrivacyProxyRequestMetricsAdaptiveGroups": {
 		"__description": "Aggregated Privacy Proxy request metrics with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of proxy requests",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -10500,7 +10670,7 @@
 	"AccountProgrammableFlowProtectionNetworkAnalyticsAdaptiveGroups": {
 		"__description": "Network analytics data for Programmable Flow Protection",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -10734,7 +10904,7 @@
 	"AccountQueueMessageOperationsAdaptiveGroups": {
 		"__description": "Beta. Queue message operation data with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of Message Operations",
 		"dimensions": "List of dimensions to group by",
 		"max": "The max of values for a metric per dimension",
@@ -10789,7 +10959,7 @@
 	},
 	"AccountR2BandwidthUsageAdaptiveGroups": {
 		"__description": "Estimated R2 transfer usage with adaptive sampling. Transfers smaller than 100 KiB are excluded.",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -10831,7 +11001,7 @@
 	"AccountR2CatalogDataOperationsAdaptiveGroups": {
 		"__description": "R2 Data Catalog data plane operations (Iceberg REST API requests) with adaptive sampling",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of catalog data plane requests",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension",
@@ -10891,7 +11061,7 @@
 	"AccountR2CatalogTableMaintenanceAdaptiveGroups": {
 		"__description": "R2 Data Catalog table maintenance job metrics (compaction, snapshot expiration) with adaptive sampling",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of table maintenance jobs",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension",
@@ -10956,7 +11126,7 @@
 	},
 	"AccountR2OperationsAdaptiveGroups": {
 		"__description": "Beta. R2 operations with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -11032,7 +11202,7 @@
 	"AccountR2sqlOperationsAdaptiveGroups": {
 		"__description": "R2 SQL requests with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of R2 SQL requests",
 		"dimensions": "List of dimensions to group by",
 		"max": "The max of values for a metric per dimension",
@@ -11110,7 +11280,7 @@
 	"AccountRealtimeKitUsageAdaptiveGroups": {
 		"__description": "RealtimeKit usage metrics",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of RealtimeKit usage events",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
@@ -11161,7 +11331,7 @@
 	"AccountRumPageloadEventsAdaptiveGroups": {
 		"__description": "Beta. Aggregated RUM pageload event metrics with adaptive sampling",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of pages viewed by end-users",
 		"dimensions": "List of dimensions to group by",
 		"sum": ""
@@ -11221,7 +11391,7 @@
 	"AccountRumPerformanceEventsAdaptiveGroups": {
 		"__description": "Beta. Aggregated RUM performance event metrics with adaptive sampling",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of pages viewed by end-users",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "",
@@ -11439,7 +11609,7 @@
 	"AccountRumWebVitalsEventsAdaptiveGroups": {
 		"__description": "Beta. Aggregated RUM Web Vitals event metrics with adaptive sampling",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of pages viewed by end-users",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "",
@@ -11490,7 +11660,7 @@
 		"firstInputDelayPath": "<small>DEPRECATED (FirstInputDelay is replaced by InteractionToNextPaint. Please use INP instead.):</small> Observed path of the First Input Delay (Core Web Vitals)",
 		"interactionToNextPaintElement": "DOM selector name of the interaction",
 		"interactionToNextPaintName": "Action name of the interaction",
-		"interactionToNextPaintPath": "Observed path of the Cumulative Layout Shift (Core Web Vitals)",
+		"interactionToNextPaintPath": "Observed path of the Interaction to Next Paint (Core Web Vitals)",
 		"largestContentfulPaintElement": "DOM selector name of the largest object",
 		"largestContentfulPaintObjectHost": "Host of the largest object",
 		"largestContentfulPaintObjectPath": "Path of the largest object",
@@ -11627,7 +11797,7 @@
 		"lcpTotal": "Largest Contentful Paint (Core Web Vitals), total count",
 		"ttfbGood": "Time to First Byte, count of Good occurrences (under 800 ms)",
 		"ttfbNeedsImprovement": "Time to First Byte, count of Needs Improvement occurrences (between 800 ms and 1800ms)",
-		"ttfbPoor": "Time to First Byte, count of Poor occurrences (over 500 ms)",
+		"ttfbPoor": "Time to First Byte, count of Poor occurrences (over 1800 ms)",
 		"ttfbTotal": "Time to First Byte, total count",
 		"visits": "The number of pages viewed by end-users that were initiated from a different website (i.e. where the Document.referrer does not match the hostname)"
 	},
@@ -11674,7 +11844,6 @@
 		"aiGatewayConversationAnalysesStagingAdaptiveGroups": "",
 		"aiGatewayErrorsAdaptiveGroups": "",
 		"aiGatewayRequestsAdaptiveGroups": "",
-		"aiGatewayRequestsStagingAdaptiveGroups": "",
 		"aiGatewaySizeAdaptiveGroups": "",
 		"aiGatewaySpendSessionsAdaptiveGroups": "",
 		"aiGatewaySpendUserDailyAdaptiveGroups": "",
@@ -11776,6 +11945,14 @@
 		"imagesUniqueGroups": "",
 		"imagesUniqueTransformations": "",
 		"imagesUniqueTransformationsAccumulatedSinceStartOfMonth": "",
+		"k2ConsumeAdaptiveGroups": "",
+		"k2ConsumeStagingAdaptiveGroups": "",
+		"k2ProduceAdaptiveGroups": "",
+		"k2ProduceStagingAdaptiveGroups": "",
+		"k2StorageAdaptiveGroups": "",
+		"k2StorageStagingAdaptiveGroups": "",
+		"k2SubscriptionLagAdaptiveGroups": "",
+		"k2SubscriptionLagStagingAdaptiveGroups": "",
 		"kvOperationsAdaptiveGroups": "",
 		"kvStorageAdaptiveGroups": "",
 		"lbHealthEntitiesGroups": "",
@@ -11785,6 +11962,7 @@
 		"logExplorerIngestionAdaptiveGroups": "",
 		"logpushHealthAdaptiveGroups": "",
 		"logpushTransformersAdaptiveGroups": "",
+		"logpushTransformersSuccessfulUsageAdaptiveGroups": "",
 		"logpushUsageAdaptiveGroups": "",
 		"magicEndpointHealthCheckAdaptiveGroups": "",
 		"magicFirewallNetworkAnalyticsAdaptiveGroups": "",
@@ -11822,6 +12000,7 @@
 		"mnmFlowDataAdaptiveGroups": "",
 		"monetizationGatewayAdaptiveGroups": "",
 		"nelReportsAdaptiveGroups": "",
+		"networkQualityUsageAdaptiveGroups": "",
 		"ohttpMetricsAdaptive": "",
 		"ohttpMetricsAdaptiveGroups": "",
 		"ohttpRelayEgressConnMetricsAdaptiveGroups": "",
@@ -11964,7 +12143,7 @@
 	},
 	"AccountSinkholeRequestLogsAdaptiveGroups": {
 		"__description": "Sinkhole Request Logs",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of requests logged",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -12005,7 +12184,7 @@
 	},
 	"AccountSippyOperationsAdaptiveGroups": {
 		"__description": "Sippy operations with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of Sippy operations",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
@@ -12049,7 +12228,7 @@
 	"AccountSpectrumNetworkAnalyticsAdaptiveGroups": {
 		"__description": "Network analytics data for Spectrum traffic",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -12210,7 +12389,7 @@
 	"AccountStreamCMCDAdaptiveGroups": {
 		"__description": "Stream CMCD data",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"max": "The maximum value for a metric per dimension",
@@ -12303,7 +12482,7 @@
 	},
 	"AccountStreamMinutesViewedAdaptiveGroups": {
 		"__description": "A high-level summary of Cloudflare Stream minutes viewed.",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
@@ -12360,7 +12539,7 @@
 	"AccountStreamWHIPBroadcastMetricsAdaptiveGroups": {
 		"__description": "Aggregated WHIP broadcast metrics for Cloudflare Stream",
 		"avg": "Average value of each metric for the selected dimensions",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Estimated number of observations",
 		"dimensions": "List of dimensions to group by",
 		"sum": "Total value of each metric for the selected dimensions"
@@ -12446,7 +12625,7 @@
 	"AccountToMarkdownConversionAdaptiveGroups": {
 		"__description": "Markdown Conversion Metrics",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of conversions for an account",
 		"dimensions": "List of dimensions to group by",
 		"max": "The max of values for a metric per dimension",
@@ -12509,7 +12688,7 @@
 	"AccountTurnstileAdaptiveGroups": {
 		"__description": "Beta. Cloudflare Turnstile aggregated events with adaptive sampling",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of Cloudflare Turnstile events processed",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -12604,7 +12783,7 @@
 	},
 	"AccountVectorizeV2OperationsAdaptiveGroups": {
 		"__description": "Vectorize operations with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of Vectorize operations",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -12634,7 +12813,7 @@
 	"AccountVectorizeV2QueriesAdaptiveGroups": {
 		"__description": "Vectorize queries with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of Vectorize queries",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension",
@@ -12714,7 +12893,7 @@
 	"AccountVectorizeV2WritesAdaptiveGroups": {
 		"__description": "Vectorize writes with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of Vectorize writes",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension",
@@ -12771,7 +12950,7 @@
 	"AccountVideoBufferEventsAdaptiveGroups": {
 		"__description": "Beta. Aggregated video streaming buffer event metrics with adaptive sampling",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of buffer events",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -12808,7 +12987,7 @@
 	"AccountVideoPlaybackEventsAdaptiveGroups": {
 		"__description": "Beta. Aggregated video streaming playback event metrics with adaptive sampling",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of playback starts",
 		"dimensions": "List of dimensions to group by",
 		"sum": ""
@@ -12855,7 +13034,7 @@
 	"AccountVideoQualityEventsAdaptiveGroups": {
 		"__description": "Beta. Aggregated video streaming quality change event metrics with adaptive sampling",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of quality change events",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -12892,7 +13071,7 @@
 	},
 	"AccountWarpDeviceAdaptiveGroups": {
 		"__description": "Beta. Warp device health events with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of device health events, which usually occur at 2m intervals per device",
 		"dimensions": "List of dimensions to group by",
 		"uniq": ""
@@ -12932,7 +13111,7 @@
 	"AccountWebSearchRequestsAdaptiveGroups": {
 		"__description": "Web Search Requests Analytics",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of web search request events",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension",
@@ -13006,7 +13185,7 @@
 	},
 	"AccountWorkerPlacementAdaptiveGroups": {
 		"__description": "Worker placement metrics",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension",
 		"sum": "The sum of values for a metric per dimension"
@@ -13064,7 +13243,7 @@
 	},
 	"AccountWorkersAnalyticsEngineAdaptiveGroups": {
 		"__description": "Beta. Custom Events with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -13091,7 +13270,7 @@
 	},
 	"AccountWorkersAssetsRequestsAdaptiveGroups": {
 		"__description": "Workers Assets requests with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -13130,7 +13309,7 @@
 	},
 	"AccountWorkersBuildsBuildMinutesAdaptiveGroups": {
 		"__description": "Workers Builds build minute overview data with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -13165,7 +13344,7 @@
 	"AccountWorkersCacheRequestsAdaptiveGroups": {
 		"__description": "Beta. Cache-enabled Workers request events with adaptive sampling",
 		"avg": "The average value used for sample interval",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -13217,7 +13396,7 @@
 	"AccountWorkersInvocationsAdaptive": {
 		"__description": "Beta. Workers invocations with adaptive sampling",
 		"avg": "The average value used for sample interval",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"max": "The max value for a metric",
 		"min": "The min value for a metric",
@@ -13357,7 +13536,7 @@
 	},
 	"AccountWorkersInvocationsByOwnerAndScriptGroups": {
 		"__description": "Workers dynamic worker invocations. Used for exact distinct dynamic worker counts.",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension",
 		"uniq": "Unique count metrics"
@@ -13414,7 +13593,7 @@
 	},
 	"AccountWorkersOverviewDataAdaptiveGroups": {
 		"__description": "Beta. Workers account overview invocation data with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -13451,7 +13630,7 @@
 	},
 	"AccountWorkersOverviewRequestsAdaptiveGroups": {
 		"__description": "Beta. Workers account overview invocation count with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
@@ -13490,7 +13669,7 @@
 	},
 	"AccountWorkersSubrequestsAdaptiveGroups": {
 		"__description": "Beta. Workers subrequests with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension",
 		"sum": "The sum of values for a metric per dimension"
@@ -13565,7 +13744,7 @@
 	"AccountWorkersVpcConnectionAdaptiveGroups": {
 		"__description": "Workers VPC connections with adaptive sampling.",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Total number of Workers VPC Connections",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
@@ -13634,7 +13813,7 @@
 	"AccountWorkflowsAdaptiveGroups": {
 		"__description": "Workflows analytics",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of events(workflow invocations) per dimension",
 		"dimensions": "List of dimensions to group by",
 		"sum": ""
@@ -13693,7 +13872,7 @@
 	},
 	"AccountWorkflowsBlockedReasonAdaptiveGroups": {
 		"__description": "Workflow gatekeeper block reason metrics with adaptive sampling. Each sample represents instances that were blocked by the gatekeeper, grouped by the reason for blocking.",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of blocked reason samples",
 		"dimensions": "List of dimensions to group by",
 		"sum": ""
@@ -13732,7 +13911,7 @@
 	"AccountWorkflowsQueueDepthAdaptiveGroups": {
 		"__description": "Workflow queue depth gauge metrics with adaptive sampling. Each sample represents a snapshot of the number of instances waiting in the gatekeeper queue for a workflow.",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of queue depth samples",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": ""
@@ -13775,7 +13954,7 @@
 	"AccountWorkflowsQueueWaitAdaptiveGroups": {
 		"__description": "Workflow queue wait time metrics with adaptive sampling. Each sample represents the time a workflow instance spent waiting in the gatekeeper queue before being admitted.",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of queue wait samples",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "",
@@ -13827,7 +14006,7 @@
 	},
 	"AccountZarazTrackAdaptiveGroups": {
 		"__description": "Zaraz Track Analytics - counts zaraz.track calls",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of processed Zaraz Track requests",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -13854,7 +14033,7 @@
 	},
 	"AccountZarazTriggersAdaptiveGroups": {
 		"__description": "Zaraz Triggers Analytics (a trigger is a set of rules that can trigger a zaraz action)",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of processed Zaraz Triggers",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -13935,7 +14114,7 @@
 	"OrganizationFirewallEventsAdaptiveGroups": {
 		"__description": "Aggregated Firewall events with adaptive sampling",
 		"avg": "The average value used for sample interval",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The sum of sample interval values",
 		"dimensions": "List of dimensions to group by",
 		"sum": ""
@@ -14054,7 +14233,7 @@
 	"OrganizationHttpRequestsAdaptiveGroups": {
 		"__description": "Aggregated HTTP requests data with adaptive sampling",
 		"avg": "The average value used for sample interval",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension",
@@ -14314,6 +14493,7 @@
 	},
 	"ZoneAccountAbuseProtectionAdaptiveGroupsSum": {
 		"__description": "",
+		"aiAssistantEventCount": "Number of events attributed to at least one active, publicly visible AI Assistant.",
 		"eventCount": "Number of events.",
 		"failedLoginCount": "Number of failed login events.",
 		"lccCleanCount": "Number of events with an explicit clean Leaked Credential Check result.",
@@ -14321,10 +14501,17 @@
 		"lccPasswordLeakedCount": "Number of events whose Leaked Credential Check result indicates a leaked password.",
 		"lccUsernameAndPasswordLeakedCount": "Number of events whose Leaked Credential Check result indicates a leaked username and password.",
 		"lccUsernameLeakedCount": "Number of events whose Leaked Credential Check result indicates a leaked username or similar password.",
+		"originResponse1xxCount": "Number of events with a 1xx origin response status.",
+		"originResponse2xxCount": "Number of events with a 2xx origin response status.",
+		"originResponse3xxCount": "Number of events with a 3xx origin response status.",
+		"originResponse4xxCount": "Number of events with a 4xx origin response status.",
+		"originResponse5xxCount": "Number of events with a 5xx origin response status.",
 		"successfulLoginCount": "Number of successful login events.",
 		"topASNCounts": "Approximate event counts for topASNs.",
 		"topASNDescriptions": "Client ASN network operator names, positionally aligned with topASNs and topASNCounts. Entries are UNKNOWN when the operator cannot be identified.",
 		"topASNs": "Top 10 client ASNs, positionally aligned with topASNCounts.",
+		"topAiAssistantDetectionIdCounts": "Approximate event counts for topAiAssistantDetectionIds.",
+		"topAiAssistantDetectionIds": "Up to 10 approximately most frequent active, publicly visible AI Assistant detection IDs, positionally aligned with topAiAssistantDetectionIdCounts.",
 		"topCountries": "Top 10 country codes, positionally aligned with topCountryCounts.",
 		"topCountryCounts": "Approximate event counts for topCountries.",
 		"topDeviceCounts": "Approximate event counts for topDevices.",
@@ -14334,7 +14521,9 @@
 	},
 	"ZoneAccountAbuseProtectionAdaptiveGroupsUniq": {
 		"__description": "",
+		"aiAssistantUsers": "Approximate number of non-empty user IDs associated with an AI Assistant.",
 		"signupUsers": "Approximate number of unique users with signup activity.",
+		"uniqAiAssistants": "Approximate number of distinct active, publicly visible AI Assistants.",
 		"uniqueDevices": "Approximate number of unique non-empty Turnstile ephemeral IDs.",
 		"uniqueIPs": "Approximate number of unique non-empty client IPs.",
 		"uniqueUsers": "Approximate number of unique non-empty user IDs."
@@ -14342,7 +14531,7 @@
 	"ZoneApiGatewayGraphqlQueryAnalyticsGroups": {
 		"__description": "GraphQL query attributes and trends",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of events with GraphQL query attributes computed",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -14366,7 +14555,8 @@
 		"datetimeFiveMinutes": "",
 		"datetimeHalfOfHour": "",
 		"datetimeHour": "",
-		"datetimeMinute": ""
+		"datetimeMinute": "",
+		"tag": "Beta. Currently only available on selected accounts. Value of a specific resource tag on the zone. Returns an empty string when the tag is absent or its value is empty. Requires the name argument."
 	},
 	"ZoneApiGatewayGraphqlQueryAnalyticsGroupsFilter_InputObject": {
 		"__description": ""
@@ -14377,7 +14567,7 @@
 	"ZoneApiGatewayMatchedSessionIDsAdaptiveGroups": {
 		"__description": "Beta. Aggregated count of Session Identifier matches",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of events with Session Identifiers",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -14412,7 +14602,7 @@
 	"ZoneApiGatewayMatchedSessionIDsPerEndpointAdaptiveGroups": {
 		"__description": "Beta. Aggregated count of Session Identifier matches per endpoint",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of events per dimension",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -14448,7 +14638,7 @@
 	"ZoneApiGatewayMatchedSessionIDsPerEndpointFlattenedAdaptiveGroups": {
 		"__description": "Beta. Aggregated count of Session Identifier matches",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of events with Session Identifiers",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -14534,7 +14724,7 @@
 	"ZoneCacheReserveOperationsAdaptiveGroups": {
 		"__description": "Beta. Cache Reserve operations with adaptive sampling",
 		"avg": "The average value used for sample interval",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -14577,7 +14767,7 @@
 	"ZoneCacheReserveRequestsAdaptiveGroups": {
 		"__description": "Cache Reserve HTTP requests data with adaptive sampling",
 		"avg": "The average value used for sample interval",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "",
 		"dimensions": "List of dimensions to group by",
 		"sum": "Sum of bytes returned to client"
@@ -14696,7 +14886,7 @@
 	"ZoneDmarcReportsSourcesAdaptiveGroups": {
 		"__description": "Aggregated dmarc reports by sources logs with adaptive sampling",
 		"avg": "Beta. The avg of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "",
 		"uniq": ""
@@ -14790,7 +14980,7 @@
 	"ZoneDnsAnalyticsAdaptiveGroups": {
 		"__description": "Analytics data for DNS queries",
 		"avg": "Average of a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of queries per dimension",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension",
@@ -14877,7 +15067,7 @@
 	},
 	"ZoneEmailComplaintsAdaptiveGroups": {
 		"__description": "Aggregated email complaints with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of complaints",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -14940,7 +15130,7 @@
 	},
 	"ZoneEmailRoutingAdaptiveGroups": {
 		"__description": "Beta. Aggregated email routing logs with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of emails processed",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -15013,7 +15203,7 @@
 	},
 	"ZoneEmailSendingAdaptiveGroups": {
 		"__description": "Aggregated email sending logs with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of emails processed",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -15146,7 +15336,7 @@
 	"ZoneFirewallEventsAdaptiveByTimeGroups": {
 		"__description": "Aggregated Firewall events with adaptive sampling grouped by time",
 		"avg": "The average value used for sample interval",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The sum of sample interval values",
 		"dimensions": "List of dimensions to group by",
 		"sum": ""
@@ -15236,7 +15426,7 @@
 	"ZoneFirewallEventsAdaptiveGroups": {
 		"__description": "Aggregated Firewall events with adaptive sampling",
 		"avg": "The average value used for sample interval",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The sum of sample interval values",
 		"dimensions": "List of dimensions to group by",
 		"sum": ""
@@ -15391,7 +15581,7 @@
 	"ZoneHealthCheckEventsAdaptiveGroups": {
 		"__description": "Aggregated Health Check events with adaptive sampling",
 		"avg": "The average value for a metric",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
@@ -15935,7 +16125,7 @@
 	"ZoneHttpRequestsAdaptiveGroups": {
 		"__description": "Aggregated HTTP requests data with adaptive sampling",
 		"avg": "The average value used for sample interval",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension",
@@ -16212,7 +16402,7 @@
 	"ZoneHttpRequestsOverviewAdaptiveGroups": {
 		"__description": "A high-level summary of HTTP requests made by end users.",
 		"avg": "The average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"ratio": "The ratio of a metric in comparison to the rest of the traffic, between 0 and 1",
 		"sum": "The sum of values for a metric per dimension"
@@ -16342,7 +16532,7 @@
 	"ZoneLoadBalancingRequestsAdaptiveGroups": {
 		"__description": "Aggregated Load Balancing origin requests with adaptive sampling",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"ratio": "",
@@ -16440,7 +16630,7 @@
 	"ZoneLogpushHealthAdaptiveGroups": {
 		"__description": "Beta. Logpush job health metrics",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"max": "Maximum value of a metric per dimension",
@@ -16499,7 +16689,7 @@
 	"ZoneLogpushTransformersAdaptiveGroups": {
 		"__description": "Beta. Logpush transformer health metrics",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of transformer executions",
 		"dimensions": "List of dimensions to group by",
 		"max": "Maximum value of a metric per dimension",
@@ -16555,7 +16745,7 @@
 	"ZoneNelReportsAdaptiveGroups": {
 		"__description": "Data to visualize network error logs",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "The number of NEL Reports",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -16593,10 +16783,88 @@
 	"ZoneNelReportsAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
+	"ZoneOhttpGatewayMetricsAdaptiveGroups": {
+		"__description": "Aggregated oHTTP request metrics with adaptive sampling for Privacy Gateway customers",
+		"avg": "The average value for a metric",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
+		"dimensions": "List of dimensions to group by",
+		"max": "The max value for a metric",
+		"min": "The min value for a metric",
+		"quantiles": "Quantiles of a metric per dimension",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"ZoneOhttpGatewayMetricsAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": "Average sample interval"
+	},
+	"ZoneOhttpGatewayMetricsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"ZoneOhttpGatewayMetricsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "OHTTP requests metrics date",
+		"datetime": "OHTTP requests metrics timestamp, truncated to the minute",
+		"datetimeFifteenMinutes": "OHTTP requests metrics timestamp, truncated to fifteen minutes",
+		"datetimeFiveMinutes": "OHTTP requests metrics timestamp, truncated to five minutes",
+		"datetimeHour": "OHTTP requests metrics timestamp, truncated to the hour",
+		"datetimeMinute": "OHTTP requests metrics timestamp, truncated to the minute",
+		"gatewayStatusCode": "Status code returned by the gateway",
+		"originStatusCode": "Status code returned by the origin",
+		"targetDomain": "Target hostname of the inner request"
+	},
+	"ZoneOhttpGatewayMetricsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneOhttpGatewayMetricsAdaptiveGroupsMax": {
+		"__description": "",
+		"datetime": "Maximum request datetime",
+		"requestBytes": "Maximum bytes received from the client for an allowed request",
+		"responseBytes": "Maximum bytes sent received from the origin for an allowed request"
+	},
+	"ZoneOhttpGatewayMetricsAdaptiveGroupsMin": {
+		"__description": "",
+		"datetime": "Minimum request datetime",
+		"requestBytes": "Minimum bytes received from the client for an allowed request",
+		"responseBytes": "Minimum bytes received from the origin for an allowed request"
+	},
+	"ZoneOhttpGatewayMetricsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"ZoneOhttpGatewayMetricsAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"endToEndProcessingTimeMsP25": "Processing time, 25th percentile - milliseconds - for allowed requests",
+		"endToEndProcessingTimeMsP50": "Processing time, 50th percentile - milliseconds - for allowed requests",
+		"endToEndProcessingTimeMsP75": "Processing time, 75th percentile - milliseconds - for allowed requests",
+		"endToEndProcessingTimeMsP90": "Processing time, 90th percentile - milliseconds - for allowed requests",
+		"endToEndProcessingTimeMsP95": "Processing time, 95th percentile - milliseconds - for allowed requests",
+		"endToEndProcessingTimeMsP99": "Processing time, 99th percentile - milliseconds - for allowed requests",
+		"endToEndProcessingTimeMsP999": "Processing time, 99.9th percentile - milliseconds - for allowed requests",
+		"timeToFirstByteMsP25": "Time to first byte from origin, 25th percentile - milliseconds - for allowed requests",
+		"timeToFirstByteMsP50": "Time to first byte from origin, 50th percentile - milliseconds - for allowed requests",
+		"timeToFirstByteMsP75": "Time to first byte from origin, 75th percentile - milliseconds - for allowed requests",
+		"timeToFirstByteMsP90": "Time to first byte from origin, 90th percentile - milliseconds - for allowed requests",
+		"timeToFirstByteMsP95": "Time to first byte from origin, 95th percentile - milliseconds - for allowed requests",
+		"timeToFirstByteMsP99": "Time to first byte from origin, 99th percentile - milliseconds - for allowed requests",
+		"timeToFirstByteMsP999": "Time to first byte from origin, 99.9th percentile - milliseconds - for allowed requests"
+	},
+	"ZoneOhttpGatewayMetricsAdaptiveGroupsSum": {
+		"__description": "",
+		"allowedRequests": "Total number of OHTTP requests with inner requests going to your zone's subdomains",
+		"requestBytes": "The total bytes from client to gateway, observed over the queried time period, for allowed requests",
+		"responseBytes": "The total bytes received from the origin, observed over the queried time period, for allowed requests"
+	},
+	"ZoneOhttpGatewayMetricsAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"allowedRequests": "Confidence interval for the corresponding point estimate",
+		"requestBytes": "Confidence interval for the corresponding point estimate",
+		"responseBytes": "Confidence interval for the corresponding point estimate"
+	},
 	"ZonePageShieldReportsAdaptiveGroups": {
 		"__description": "Page Shield CSP reports",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of Page Shield CSP reports",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -16636,7 +16904,7 @@
 	"ZonePreRenderBotRequestsAdaptiveGroups": {
 		"__description": "Aggregated pre-render bot requests with adaptive sampling",
 		"avg": "The weighted average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Estimated number of bot requests",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Weighted quantiles for a metric per dimension",
@@ -16692,7 +16960,7 @@
 	"ZonePreRenderRenderAttemptsAdaptiveGroups": {
 		"__description": "Aggregated pre-render render attempts with adaptive sampling",
 		"avg": "The weighted average value for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Estimated number of render attempts",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Weighted quantiles for a metric per dimension",
@@ -16785,6 +17053,7 @@
 		"logpushHealthAdaptiveGroups": "",
 		"logpushTransformersAdaptiveGroups": "",
 		"nelReportsAdaptiveGroups": "",
+		"ohttpGatewayMetricsAdaptiveGroups": "",
 		"pageShieldReportsAdaptiveGroups": "",
 		"preRenderBotRequestsAdaptiveGroups": "",
 		"preRenderRenderAttemptsAdaptiveGroups": "",
@@ -16834,6 +17103,7 @@
 	},
 	"ZoneUserProfilesAdaptiveGroupsSum": {
 		"__description": "",
+		"aiAssistantEventCount": "Number of events attributed to at least one active, publicly visible AI Assistant.",
 		"eventCount": "Total number of events for a user id.",
 		"failedLoginCount": "Number of failed login attempts for a user id.",
 		"lccCleanCount": "Number of events with an explicit clean Leaked Credential Check result.",
@@ -16842,10 +17112,17 @@
 		"lccUsernameAndPasswordLeakedCount": "Number of events whose Leaked Credential Check result indicates a leaked username and password.",
 		"lccUsernameLeakedCount": "Number of events whose Leaked Credential Check result indicates a leaked username or similar password.",
 		"leakedCredentialHitCount": "Number of events with any leaked credential check hit (username leaked, password leaked, or username/password similar) for a user id. Broader than passwordLeakedCount, which counts password-leaked results only.",
+		"originResponse1xxCount": "Number of events with a 1xx origin response status.",
+		"originResponse2xxCount": "Number of events with a 2xx origin response status.",
+		"originResponse3xxCount": "Number of events with a 3xx origin response status.",
+		"originResponse4xxCount": "Number of events with a 4xx origin response status.",
+		"originResponse5xxCount": "Number of events with a 5xx origin response status.",
 		"passwordLeakedCount": "Number of leaked credential check results where the password was leaked (username_and_password_leaked or password_leaked) for a user id.",
 		"successfulLoginCount": "Number of successful login attempts for a user id.",
 		"topASNDescriptions": "Array of top 5 client ASN network operator names for a user id, positionally aligned with topASNs. Entries are UNKNOWN when the operator cannot be identified.",
 		"topASNs": "Array of top 5 ASNs for a user id.",
+		"topAiAssistantDetectionIdCounts": "Approximate event counts for topAiAssistantDetectionIds.",
+		"topAiAssistantDetectionIds": "Up to 5 approximately most frequent active, publicly visible AI Assistant detection IDs for a user id, positionally aligned with topAiAssistantDetectionIdCounts.",
 		"topCities": "Array of top 5 city names for a user id.",
 		"topCountries": "Array of top 5 country codes (alpha2) for a user id.",
 		"topDevices": "Array of up to 5 approximately most frequent non-empty Turnstile ephemeral IDs for a user id.",
@@ -16857,11 +17134,12 @@
 		"browserCount": "Number of unique browser families for a user id.",
 		"ephemeralIdCount": "Approximate number of unique non-empty Turnstile ephemeral IDs for a user id.",
 		"ipCount": "Number of unique IPs for a user id.",
-		"osCount": "Number of unique operating system families for a user id."
+		"osCount": "Number of unique operating system families for a user id.",
+		"uniqAiAssistants": "Approximate number of distinct active, publicly visible AI Assistants associated with a user id."
 	},
 	"ZoneUserProfilesPiiGroups": {
 		"__description": "Per-user PII attribute lookup for login and signup events. PII fields such as email require the com.cloudflare.api.account.zone.fraud-detection.pii.read permission; callers without it receive the literal REDACTED.",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of events for the user.",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -16875,6 +17153,7 @@
 		"date": "Date of the event.",
 		"email": "The email address associated with the user. Requires the com.cloudflare.api.account.zone.fraud-detection.pii.read permission; otherwise returned as REDACTED.",
 		"emailDomain": "The email domain associated with the user. Requires the com.cloudflare.api.account.zone.fraud-detection.pii.read permission; otherwise returned as REDACTED.",
+		"rawUserId": "The exact user identifier used to derive userId. Requires the com.cloudflare.api.account.zone.fraud-detection.pii.read permission; otherwise returned as REDACTED.",
 		"userId": "Unique identifier for a user. 128-bit hash."
 	},
 	"ZoneUserProfilesPiiGroupsFilter_InputObject": {
@@ -16885,6 +17164,7 @@
 	},
 	"ZoneUserProfilesRawEventsGroups": {
 		"__description": "Historical login and signup events per user.",
+		"aiAssistantDetectionId": "The active, publicly visible AI Assistant detection ID that matched this event. Returns 0 when absent.",
 		"authenticationIdentityProvider": "The identity provider used for SSO authentication.",
 		"authenticationMethod": "The authentication method used in the event.",
 		"authenticationStatus": "The authentication status of the event.",
@@ -16908,7 +17188,8 @@
 		"fraudEmailRisk": "Risk level of the email address in the event.",
 		"ja4": "JA4 TLS fingerprint associated with the event.",
 		"leakedCredentialCheckResult": "The distinct result of checking for leaked credentials. Possible values are clean, username_leaked, username_password_similar, username_and_password_leaked, password_leaked, none.",
-		"rayId": "The RayId of the event.",
+		"originResponseStatus": "HTTP status returned by the origin. Zero when no origin response is available.",
+		"rayId": "The Ray ID of the event as a lowercase hexadecimal string.",
 		"securityAction": "The first-class action the Cloudflare Firewall took on this event.",
 		"userAgent": "The user agent string associated with the event.",
 		"userId": "Unique identifier for a user."
@@ -17068,7 +17349,7 @@
 	"ZoneWorkersZoneInvocationsAdaptiveGroups": {
 		"__description": "Workers invocations with adaptive sampling",
 		"avg": "The average of values for a metric per dimension",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -17114,7 +17395,7 @@
 	},
 	"ZoneWorkersZoneSubrequestsAdaptiveGroups": {
 		"__description": "Workers subrequests with adaptive sampling",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -17158,7 +17439,7 @@
 	},
 	"ZoneZarazActionsAdaptiveGroups": {
 		"__description": "Zaraz Actions Analytics",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of processed Zaraz Actions",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -17186,7 +17467,7 @@
 	},
 	"ZoneZarazAnalyticsIdentitiesAdaptiveGroups": {
 		"__description": "Zaraz Analytics Identities - zaraz.identify calls",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of processed Zaraz identify requests",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -17255,7 +17536,7 @@
 	},
 	"ZoneZarazAnalyticsOrderedTrackAdaptiveGroups": {
 		"__description": "Zaraz Analytics Tracks ordered per session",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of processed Zaraz Track requests",
 		"dimensions": "List of dimensions to group by",
 		"uniq": ""
@@ -17318,7 +17599,7 @@
 	},
 	"ZoneZarazAnalyticsTrackAdaptiveGroups": {
 		"__description": "Zaraz Analytics Track - counts zaraz.track calls",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of processed Zaraz Track requests",
 		"dimensions": "List of dimensions to group by",
 		"uniq": ""
@@ -17375,7 +17656,7 @@
 	"ZoneZarazAnalyticsTrackTrafficSourcesAdaptiveGroups": {
 		"__description": "Zaraz Analytics Track Traffic Sources",
 		"avg": "",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of unique sessions",
 		"dimensions": "List of dimensions to group by",
 		"uniq": ""
@@ -17425,7 +17706,7 @@
 	},
 	"ZoneZarazAnalyticsTriggersAdaptiveGroups": {
 		"__description": "Zaraz Analytics Triggers (a trigger is a set of rules that can trigger a zaraz action)",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of processed Zaraz Triggers",
 		"dimensions": "List of dimensions to group by",
 		"uniq": ""
@@ -17480,7 +17761,7 @@
 	},
 	"ZoneZarazAnalyticsTriggersTrafficSourcesAdaptiveGroups": {
 		"__description": "Zaraz Analytics Triggers Traffic Sources",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of unique sessions",
 		"dimensions": "List of dimensions to group by",
 		"uniq": ""
@@ -17523,7 +17804,7 @@
 	},
 	"ZoneZarazFetchAdaptiveGroups": {
 		"__description": "Aggregated Zaraz External Fetch Logs",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of processed external fetch requests",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -17551,7 +17832,7 @@
 	},
 	"ZoneZarazTrackAdaptiveGroups": {
 		"__description": "Zaraz Track Analytics - counts zaraz.track calls",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of processed Zaraz Track requests",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -17578,7 +17859,7 @@
 	},
 	"ZoneZarazTriggersAdaptiveGroups": {
 		"__description": "Zaraz Triggers Analytics (a trigger is a set of rules that can trigger a zaraz action)",
-		"confidence": "ALPHA - DO NOT USE",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of processed Zaraz Triggers",
 		"dimensions": "List of dimensions to group by"
 	},
@@ -17619,7 +17900,6 @@
 		"aiGatewayConversationAnalysesStagingAdaptiveGroups": "Analyzed AI Gateway conversations with adaptive sampling (staging)",
 		"aiGatewayErrorsAdaptiveGroups": "AI Gateway Errors",
 		"aiGatewayRequestsAdaptiveGroups": "AI Gateway Requests",
-		"aiGatewayRequestsStagingAdaptiveGroups": "AI Gateway Requests (staging)",
 		"aiGatewaySizeAdaptiveGroups": "AI Gateway Stored Rows",
 		"aiGatewaySpendSessionsAdaptiveGroups": "AI Gateway Spend session-level facts with adaptive sampling",
 		"aiGatewaySpendUserDailyAdaptiveGroups": "AI Gateway Spend user daily facts with adaptive sampling",
@@ -17721,6 +18001,14 @@
 		"imagesUniqueGroups": "Number of unique origin images over the requested period",
 		"imagesUniqueTransformations": "Image unique transfromations per day",
 		"imagesUniqueTransformationsAccumulatedSinceStartOfMonth": "Image unique transformations accumulated since start of month",
+		"k2ConsumeAdaptiveGroups": "Beta. Bytes delivered to K2 subscriptions",
+		"k2ConsumeStagingAdaptiveGroups": "Beta. Bytes delivered to K2 subscriptions (staging)",
+		"k2ProduceAdaptiveGroups": "Beta. Bytes produced to K2 streams",
+		"k2ProduceStagingAdaptiveGroups": "Beta. Bytes produced to K2 streams (staging)",
+		"k2StorageAdaptiveGroups": "Beta. Bytes stored in K2 streams, measured about every ten minutes",
+		"k2StorageStagingAdaptiveGroups": "Beta. Bytes stored in K2 streams, measured about every ten minutes (staging)",
+		"k2SubscriptionLagAdaptiveGroups": "Beta. Current lag of K2 subscriptions. Only records written within the queried range count, so query the stream's retention period up to now. Filter by streamId: a query whose rows span more than one stream fails",
+		"k2SubscriptionLagStagingAdaptiveGroups": "Beta. Current lag of K2 subscriptions (staging). Only records written within the queried range count, so query the stream's retention period up to now. Filter by streamId: a query whose rows span more than one stream fails",
 		"kvOperationsAdaptiveGroups": "KV operations data with adaptive sampling",
 		"kvStorageAdaptiveGroups": "KV stored data with adaptive sampling",
 		"lbHealthEntitiesGroups": "Distinct pools and origins seen in LB health events, account-scoped",
@@ -17730,6 +18018,7 @@
 		"logExplorerIngestionAdaptiveGroups": "Ingestion metrics for Log Explorer",
 		"logpushHealthAdaptiveGroups": "Beta. Logpush job health metrics",
 		"logpushTransformersAdaptiveGroups": "Beta. Logpush transformer health metrics",
+		"logpushTransformersSuccessfulUsageAdaptiveGroups": "Account-wide billable usage for successful invocations of Logpush transformers across all job scopes",
 		"logpushUsageAdaptiveGroups": "Account-wide billable usage for successfully delivered customer-owned Logpush jobs",
 		"magicEndpointHealthCheckAdaptiveGroups": "Magic Endpoint Healthcheck events with adaptive sampling.",
 		"magicFirewallNetworkAnalyticsAdaptiveGroups": "Network analytics data for Magic Firewall",
@@ -17767,6 +18056,7 @@
 		"mnmFlowDataAdaptiveGroups": "Flow data collected through Magic Network Monitoring",
 		"monetizationGatewayAdaptiveGroups": "Monetization Gateway payment outcomes with adaptive sampling",
 		"nelReportsAdaptiveGroups": "Data to visualize network error logs",
+		"networkQualityUsageAdaptiveGroups": "Beta. Network Quality API usage from authorized client requests (i.e. requests carrying an authorization token issued on behalf of the account), with adaptive sampling",
 		"ohttpMetricsAdaptive": "oHTTP request metrics with adaptive sampling",
 		"ohttpMetricsAdaptiveGroups": "Aggregated oHTTP request metrics with adaptive sampling",
 		"ohttpRelayEgressConnMetricsAdaptiveGroups": "Aggregated OHTTP relay egress (relay-to-gateway) connection metrics with adaptive sampling",
@@ -17945,6 +18235,7 @@
 		"logpushHealthAdaptiveGroups": "Beta. Logpush job health metrics",
 		"logpushTransformersAdaptiveGroups": "Beta. Logpush transformer health metrics",
 		"nelReportsAdaptiveGroups": "Data to visualize network error logs",
+		"ohttpGatewayMetricsAdaptiveGroups": "Aggregated oHTTP request metrics with adaptive sampling for Privacy Gateway customers",
 		"pageShieldReportsAdaptiveGroups": "Page Shield CSP reports",
 		"preRenderBotRequestsAdaptiveGroups": "Aggregated pre-render bot requests with adaptive sampling",
 		"preRenderRenderAttemptsAdaptiveGroups": "Aggregated pre-render render attempts with adaptive sampling",
