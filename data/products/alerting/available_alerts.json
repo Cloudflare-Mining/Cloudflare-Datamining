@@ -202,15 +202,9 @@
 			"filter_options": []
 		},
 		{
-			"display_name": "Cloudforce One Stakeout Credential Leak Alert",
-			"type": "stakeout_credential_leak_alert",
-			"description": "Get notifications when leaked credentials matching your domain are detected",
-			"filter_options": []
-		},
-		{
-			"display_name": "Cloudforce One Threat Events Saved Query Daily Digest Alert",
+			"display_name": "Cloudforce One Priority Intelligence Requirement Digest",
 			"type": "stakeout_saved_query_daily_digest_alert",
-			"description": "Get daily notifications with new threat events that were detected for your saved queries",
+			"description": "Get a digest of new threat events that match your priority intelligence requirements",
 			"filter_options": [
 				{
 					"Key": "query_id",
@@ -219,6 +213,12 @@
 					"AvailableValues": null
 				}
 			]
+		},
+		{
+			"display_name": "Cloudforce One Stakeout Credential Leak Alert",
+			"type": "stakeout_credential_leak_alert",
+			"description": "Get notifications when leaked credentials matching your domain are detected",
+			"filter_options": []
 		},
 		{
 			"display_name": "Cloudforce One Threat Events Saved Query Immediate Alert",
@@ -436,6 +436,12 @@
 		}
 	],
 	"Log Explorer": [
+		{
+			"display_name": "Ingest Rate Limit",
+			"type": "log_explorer_ingest_rate_limit",
+			"description": "Receive alerts when your log volume exceeds Log Explorer's ingestion rate limit",
+			"filter_options": []
+		},
 		{
 			"display_name": "Scheduled Query Results",
 			"type": "log_explorer_scheduled_query_results_alert",
