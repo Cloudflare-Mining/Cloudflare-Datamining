@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+October 19, 2026 [<h2>Beyond the patch: Protecting your NetScaler gateway against future vulnerabilities</h2>](https://blog.cloudflare.com/protect-your-netscaler-gateway/)
+
+CVE-2026-88771 lets attackers run commands on NetScaler Gateway before anyone signs in. Patching takes time most teams don't have, so the sign-in decision has to move in front of the vulnerable code.
+
+![Grant Bourzikas](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SJJRBDYVMHZKVGKTMJ08.png&w=64&h=64&f=webp&fit=cover&position=center)![Kenny Johnson](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471W94YNK8KYMJEK8P7RHD.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Grant Bourzikas](https://blog.cloudflare.com/author/grant/) and  [Kenny Johnson](https://blog.cloudflare.com/author/kenny/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M537RBT01XNYZ0RR0CP9PS55.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/protect-your-netscaler-gateway/)
+
 October 16, 2026 [<h2>Continuous accountability for Verified bots</h2>](https://blog.cloudflare.com/verified-bots-accountability/)
 
 Identity alone doesn't guarantee a bot will behave responsibly. We are introducing a system to continuously evaluate whether Verified bots honor site preferences, like robots.txt and HTTP 429s, ensuring they remain accountable over time.
@@ -17,8 +27,6 @@ Identity alone doesn't guarantee a bot will behave responsibly. We are introduci
 ![Chris Tsoukaladelis](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M510X23G1YWXBVVEV3X5ZCPK.01M510X2WF46AM3BFDZ8R47H1H.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Chris Tsoukaladelis](https://blog.cloudflare.com/author/chris-tsoukaladelis/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M51ZPERWNWYTD7Z36YMY80A8.01M51ZPFH7VV8EHQTMPJG9FHZ4.png&w=2048&h=1152&f=webp&fit=cover&position=center)![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M51ZQ6NCJ2G1DZVHMZRH6SVF.01M51ZQ7A3WZQKT06FDN7XQ84K.png&w=2048&h=1152&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/verified-bots-accountability/)
 
 October 15, 2026 [<h2>A fully programmable secure web gateway</h2>](https://blog.cloudflare.com/programmable-gateway-dlp/)
 
@@ -155,14 +163,6 @@ Cloudflare is launching eight major updates that bring logs, traces, analytics, 
 ![Nevi Shah](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3YB9DTTT6JXZABS5PH7NZQV.01M3YB9FY7HP0VT0NC74Y1H4PV.png&w=64&h=64&f=webp&fit=cover&position=center)![Arti Kumar](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M34XXNJVWHHM15G3EXN2RY8Z.01M34XXP3AMSX2VXGSTBADXMYW.webp&w=64&h=64&f=webp&fit=cover&position=center)![Tom Benn](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3Y5GWFPMGBSF0DAHH1QGW35.01M3Y5GX41Q98SWFMQ8VS3TMDP.png&w=64&h=64&f=webp&fit=cover&position=center)![Sahidya Devadoss](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R5PW6B560N8E2HCG7X07.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Nevi Shah](https://blog.cloudflare.com/author/nevi/),  [Arti Kumar](https://blog.cloudflare.com/author/arti-kumar/),  [Tom Benn](https://blog.cloudflare.com/author/tom-benn/), and  [Sahidya Devadoss](https://blog.cloudflare.com/author/sahidya-devadoss/)
-
-October 2, 2026 [<h2>Streamline: custom video pipelines with Cloudflare Stream and Workers</h2>](https://blog.cloudflare.com/streamline/)
-
-Streamline demonstrates how to build long-running, continuous video processing pipelines by pairing Cloudflare Workers and Durable Objects with a containerized media engine.
-
-![Willi Geiger](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454X9RVT5T3T3CSSAM5SHZ.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Taylor Smith](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4813QG3QG91NYS6ABQTM9R.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Willi Geiger](https://blog.cloudflare.com/author/willi/) and  [Taylor Smith](https://blog.cloudflare.com/author/tsmith/)
 
 Load more
 
