@@ -10,6 +10,24 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+October 19, 2026 [<h2>Cutting our inference bill by 68% by being obsessive about optimization</h2>](https://blog.cloudflare.com/obsessive-inference-optimization/)
+
+When our AI code reviewer's cost per run doubled, we dug into the token usage to find out why. Learn how we used prompt caching and intelligent model routing to slash our inference bill by 68% while speeding up reviews.
+
+![Ryan Skidmore](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4736HQYPXSX6SERG1KRMXW.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Ryan Skidmore](https://blog.cloudflare.com/author/ryan-skidmore/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M58N5J1Y9HY8N3R115KEY6NE.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/obsessive-inference-optimization/)
+
+October 19, 2026 [<h2>Introducing Clairic, a new System One class of extraction models</h2>](https://blog.cloudflare.com/clairic-extraction-model/)
+
+Clairic is a new model from Cloudflare that is a System One extraction modeI, capable of extracting, computing, estimating, and forecasting data from unstructured inputs.
+
+![Alex Reneau](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WKWJ94JZDRJM354AYKYXG.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Michelle Chen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R95PPSQQ82Z92P51M550.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Kevin Flansburg](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452TM72EKFE8RQCD3JMXND.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Alex Reneau](https://blog.cloudflare.com/author/alex-reneau/),  [Michelle Chen](https://blog.cloudflare.com/author/michelle/), and  [Kevin Flansburg](https://blog.cloudflare.com/author/kevin-flansburg/)
+
 October 19, 2026 [<h2>Beyond the patch: Protecting your NetScaler gateway against future vulnerabilities</h2>](https://blog.cloudflare.com/protect-your-netscaler-gateway/)
 
 CVE-2026-88771 lets attackers run commands on NetScaler Gateway before anyone signs in. Patching takes time most teams don't have, so the sign-in decision has to move in front of the vulnerable code.
@@ -17,8 +35,6 @@ CVE-2026-88771 lets attackers run commands on NetScaler Gateway before anyone si
 ![Grant Bourzikas](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SJJRBDYVMHZKVGKTMJ08.png&w=64&h=64&f=webp&fit=cover&position=center)![Kenny Johnson](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471W94YNK8KYMJEK8P7RHD.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Grant Bourzikas](https://blog.cloudflare.com/author/grant/) and  [Kenny Johnson](https://blog.cloudflare.com/author/kenny/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M537RBT01XNYZ0RR0CP9PS55.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/protect-your-netscaler-gateway/)
 
 October 16, 2026 [<h2>Continuous accountability for Verified bots</h2>](https://blog.cloudflare.com/verified-bots-accountability/)
 
@@ -147,22 +163,6 @@ We celebrated our 16th birthday with 46 announcements across open source, post-q
 ![Carlos Armada](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GNGVRDMTAZC97MJZE2EC.webp&w=64&h=64&f=webp&fit=cover&position=center)![Meagan Gamache](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M45MAC0G939A1CZ2RDDM9NN1.01M45MACNHN2Z5AH4FH2RK2MN8.webp&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Carlos Armada](https://blog.cloudflare.com/author/carlos-armada/) and  [Meagan Gamache](https://blog.cloudflare.com/author/meagan-gamache/)
-
-October 5, 2026 [<h2>One year later: the power of 1.1.1.1 interns</h2>](https://blog.cloudflare.com/one-year-later-1111-interns/)
-
-A year after announcing our goal to hire 1,111 interns, more than 750 early-career builders have shipped real products across 48 teams at Cloudflare. From Birthday Week launches to post-quantum security, our interns prove that AI amplifies human potential instead of replacing it.
-
-![Kelly Russell](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494JQK35CVQWMJ4V23VS3X.png&w=64&h=64&f=webp&fit=cover&position=center)![Allan Leinwand](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M34XRD7C14XHZZJXWJACXPR3.01M34XRDQ339N8GQ50DZVN5HY3.webp&w=64&h=64&f=webp&fit=cover&position=center)![Judy Cheong](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45A5M2R0E27EDJQSRPDGEH.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Kelly Russell](https://blog.cloudflare.com/author/kelly-russell/),  [Allan Leinwand](https://blog.cloudflare.com/author/allan-leinwand/), and  [Judy Cheong](https://blog.cloudflare.com/author/judy-cheong/)
-
-October 2, 2026 [<h2>8 major updates to Cloudflare Observability</h2>](https://blog.cloudflare.com/one-observability-platform/)
-
-Cloudflare is launching eight major updates that bring logs, traces, analytics, alerts, dashboards, querying, and telemetry export into one observability platform, with simpler and more predictable pricing.
-
-![Nevi Shah](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3YB9DTTT6JXZABS5PH7NZQV.01M3YB9FY7HP0VT0NC74Y1H4PV.png&w=64&h=64&f=webp&fit=cover&position=center)![Arti Kumar](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M34XXNJVWHHM15G3EXN2RY8Z.01M34XXP3AMSX2VXGSTBADXMYW.webp&w=64&h=64&f=webp&fit=cover&position=center)![Tom Benn](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3Y5GWFPMGBSF0DAHH1QGW35.01M3Y5GX41Q98SWFMQ8VS3TMDP.png&w=64&h=64&f=webp&fit=cover&position=center)![Sahidya Devadoss](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R5PW6B560N8E2HCG7X07.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Nevi Shah](https://blog.cloudflare.com/author/nevi/),  [Arti Kumar](https://blog.cloudflare.com/author/arti-kumar/),  [Tom Benn](https://blog.cloudflare.com/author/tom-benn/), and  [Sahidya Devadoss](https://blog.cloudflare.com/author/sahidya-devadoss/)
 
 Load more
 
