@@ -10,7 +10,7 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
-October 20, 2026 [<h2>Introducing tsrs: a Port of TypeScript to Rust</h2>](https://blog.cloudflare.com/typescript-rust-port/)
+October 20, 2026 [<h2>Introducing tsrs: A port of TypeScript to Rust</h2>](https://blog.cloudflare.com/typescript-rust-port/)
 
 Cloudflare is collaborating on tsrs, a Rust port of TypeScript that is up to 8x faster and uses 70% less memory.
 
