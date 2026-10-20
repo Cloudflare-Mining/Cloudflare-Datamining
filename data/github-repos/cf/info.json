@@ -21,14 +21,13 @@
 	"is_template": false,
 	"default_branch": "main",
 	"branches": [
+		"automation/update-forge",
 		"changeset-release/main",
 		"codex/expand-secrets-file-dotenv",
 		"codex/fix-177-multipart-files",
 		"codex/fix-204-shared-registry",
 		"codex/fix-223-vite-dev-args",
-		"codex/fix-incomplete-body-flags",
 		"codex/fix-nested-union-validation",
-		"codex/fix-workers-check-ci-timeout",
 		"codex/update-workers-sdk-packages",
 		"dario/cfify-messages-followup",
 		"edmundhung/autoconfig-prerelease",
@@ -46,8 +45,6 @@
 		"penalosa/rust-generator",
 		"penalosa/temp-accounts",
 		"remove-x-forge-globals",
-		"renovate/blake3-wasm-3.x",
-		"renovate/undici-8.x",
 		"sk/update-forge"
 	]
 }
