@@ -492416,6 +492416,7 @@
 														"x-auditable": true
 													},
 													"store_id": {
+														"description": "Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.",
 														"type": "string",
 														"nullable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
@@ -493184,6 +493185,7 @@
 										"x-auditable": true
 									},
 									"store_id": {
+										"description": "Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.",
 										"type": "string",
 										"nullable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
@@ -493871,6 +493873,7 @@
 													"x-auditable": true
 												},
 												"store_id": {
+													"description": "Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.",
 													"type": "string",
 													"nullable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
@@ -506420,6 +506423,7 @@
 													"x-auditable": true
 												},
 												"store_id": {
+													"description": "Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.",
 													"type": "string",
 													"nullable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
@@ -507219,6 +507223,7 @@
 													"x-auditable": true
 												},
 												"store_id": {
+													"description": "Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.",
 													"type": "string",
 													"nullable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
@@ -507992,6 +507997,7 @@
 										"x-auditable": true
 									},
 									"store_id": {
+										"description": "Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.",
 										"type": "string",
 										"nullable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
@@ -508678,6 +508684,7 @@
 													"x-auditable": true
 												},
 												"store_id": {
+													"description": "Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.",
 													"type": "string",
 													"nullable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
@@ -712463,6 +712470,24 @@
 																		},
 																		"additionalProperties": false
 																	},
+																	"constraints": {
+																		"description": "The jurisdiction of a Durable Object-managed application's primary control-plane object.\nSet this when creating the application; it cannot be changed afterwards.\nOther placement constraints are not supported by this scheduling policy.\n",
+																		"type": "object",
+																		"properties": {
+																			"jurisdiction": {
+																				"type": "string",
+																				"enum": [
+																					"eu",
+																					"fedramp",
+																					"us"
+																				]
+																			}
+																		},
+																		"additionalProperties": false,
+																		"required": [
+																			"jurisdiction"
+																		]
+																	},
 																	"created_at": {
 																		"description": "UTC timestamp string in ISO 8601 format.",
 																		"type": "string",
@@ -713211,7 +713236,7 @@
 										]
 									},
 									{
-										"description": "Create a Durable Object-managed Containers application. Each Durable Object\ncreates and manages the lifecycle of its container instance. Supply `name`,\n`scheduling_policy`, and `durable_objects`, with optional `configuration` and\ntop-level `observability` settings. Deployment configuration, instance counts,\nscaling, constraints, versions, and rollouts do not apply.\n",
+										"description": "Create a Durable Object-managed Containers application. Each Durable Object\ncreates and manages the lifecycle of its container instance. Supply `name`,\n`scheduling_policy`, and `durable_objects`, with optional `configuration` and\ntop-level `observability` settings. `constraints.jurisdiction` selects the\njurisdiction of the application's primary control-plane object at creation time.\nDeployment configuration, instance counts, scaling, other placement constraints,\nversions, and rollouts do not apply.\n",
 										"type": "object",
 										"properties": {
 											"configuration": {
@@ -713260,6 +713285,24 @@
 														},
 														"additionalProperties": false
 													}
+												]
+											},
+											"constraints": {
+												"description": "The jurisdiction of a Durable Object-managed application's primary control-plane object.\nSet this when creating the application; it cannot be changed afterwards.\nOther placement constraints are not supported by this scheduling policy.\n",
+												"type": "object",
+												"properties": {
+													"jurisdiction": {
+														"type": "string",
+														"enum": [
+															"eu",
+															"fedramp",
+															"us"
+														]
+													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"jurisdiction"
 												]
 											},
 											"durable_objects": {
@@ -713864,6 +713907,24 @@
 																		}
 																	},
 																	"additionalProperties": false
+																},
+																"constraints": {
+																	"description": "The jurisdiction of a Durable Object-managed application's primary control-plane object.\nSet this when creating the application; it cannot be changed afterwards.\nOther placement constraints are not supported by this scheduling policy.\n",
+																	"type": "object",
+																	"properties": {
+																		"jurisdiction": {
+																			"type": "string",
+																			"enum": [
+																				"eu",
+																				"fedramp",
+																				"us"
+																			]
+																		}
+																	},
+																	"additionalProperties": false,
+																	"required": [
+																		"jurisdiction"
+																	]
 																},
 																"created_at": {
 																	"description": "UTC timestamp string in ISO 8601 format.",
@@ -715445,6 +715506,24 @@
 																	},
 																	"additionalProperties": false
 																},
+																"constraints": {
+																	"description": "The jurisdiction of a Durable Object-managed application's primary control-plane object.\nSet this when creating the application; it cannot be changed afterwards.\nOther placement constraints are not supported by this scheduling policy.\n",
+																	"type": "object",
+																	"properties": {
+																		"jurisdiction": {
+																			"type": "string",
+																			"enum": [
+																				"eu",
+																				"fedramp",
+																				"us"
+																			]
+																		}
+																	},
+																	"additionalProperties": false,
+																	"required": [
+																		"jurisdiction"
+																	]
+																},
 																"created_at": {
 																	"description": "UTC timestamp string in ISO 8601 format.",
 																	"type": "string",
@@ -716560,6 +716639,24 @@
 																		}
 																	},
 																	"additionalProperties": false
+																},
+																"constraints": {
+																	"description": "The jurisdiction of a Durable Object-managed application's primary control-plane object.\nSet this when creating the application; it cannot be changed afterwards.\nOther placement constraints are not supported by this scheduling policy.\n",
+																	"type": "object",
+																	"properties": {
+																		"jurisdiction": {
+																			"type": "string",
+																			"enum": [
+																				"eu",
+																				"fedramp",
+																				"us"
+																			]
+																		}
+																	},
+																	"additionalProperties": false,
+																	"required": [
+																		"jurisdiction"
+																	]
 																},
 																"created_at": {
 																	"description": "UTC timestamp string in ISO 8601 format.",
@@ -1677563,6 +1677660,7 @@
 										"account": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
 										"account_ruleset": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
 										"ai_gateway": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
+										"ai_search_instance": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
 										"alerting_policy": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
 										"alerting_webhook": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
 										"cloudflared_tunnel": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
@@ -1677646,6 +1677744,7 @@
 													"account",
 													"account_ruleset",
 													"ai_gateway",
+													"ai_search_instance",
 													"alerting_policy",
 													"alerting_webhook",
 													"cloudflared_tunnel",
@@ -1678100,6 +1678199,7 @@
 								"account",
 								"account_ruleset",
 								"ai_gateway",
+								"ai_search_instance",
 								"alerting_policy",
 								"alerting_webhook",
 								"cloudflared_tunnel",
@@ -1678244,6 +1678344,7 @@
 															"account": "#/components/schemas/resource-tagging_tagged_resource_object_account",
 															"account_ruleset": "#/components/schemas/resource-tagging_tagged_resource_object_account_ruleset",
 															"ai_gateway": "#/components/schemas/resource-tagging_tagged_resource_object_ai_gateway",
+															"ai_search_instance": "#/components/schemas/resource-tagging_tagged_resource_object_ai_search_instance",
 															"alerting_policy": "#/components/schemas/resource-tagging_tagged_resource_object_alerting_policy",
 															"alerting_webhook": "#/components/schemas/resource-tagging_tagged_resource_object_alerting_webhook",
 															"api_gateway_operation": "#/components/schemas/resource-tagging_tagged_resource_object_api_gateway_operation",
@@ -1678724,6 +1678825,74 @@
 																			"type": "string",
 																			"enum": [
 																				"ai_gateway"
+																			]
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																{
+																	"description": "Base schema for account-level resources (without type discriminator)",
+																	"type": "object",
+																	"properties": {
+																		"etag": {
+																			"description": "ETag identifier for optimistic concurrency control. Formatted as \"v1:<hash>\" where\nthe hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map\ncanonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat\nETags as opaque strings and pass them back via the If-Match header on write operations.\n",
+																			"type": "string",
+																			"example": "v1:RBNvo1WzZ4oRRq0W9-hkng",
+																			"readOnly": true
+																		},
+																		"id": {
+																			"description": "Identifies the unique resource.",
+																			"type": "string",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"x-auditable": true
+																		},
+																		"name": {
+																			"description": "Human-readable name of the resource.",
+																			"type": "string",
+																			"example": "my-worker-script"
+																		},
+																		"tags": {
+																			"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+																			"type": "object",
+																			"example": {
+																				"environment": "production",
+																				"team": "engineering"
+																			},
+																			"additionalProperties": {
+																				"maxLength": 1024,
+																				"type": "string"
+																			},
+																			"x-auditable": true
+																		},
+																		"tags_updated_at": {
+																			"description": "Monotonic version of the resource's tags: the timestamp assigned when the\ntags were last written. Returned by read endpoints, by 2PC prepare (the\nversion that will be assigned on commit, unless a concurrent write lands\nfirst, in which case a newer version is assigned), and by 2PC commit (the\nauthoritative committed version). Omitted for untagged resources and\ndelete commits: a deleted resource has no current version, and deletions\nare ordered by event order rather than by version.\n",
+																			"type": "string",
+																			"format": "date-time",
+																			"example": "2024-01-15T10:30:00Z",
+																			"readOnly": true
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"tags",
+																		"name",
+																		"etag"
+																	]
+																}
+															]
+														},
+														{
+															"description": "Response for ai_search_instance resources",
+															"allOf": [
+																{
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"enum": [
+																				"ai_search_instance"
 																			]
 																		}
 																	},
@@ -1681782,6 +1681951,7 @@
 										"account": "#/components/schemas/resource-tagging_set_tags_request_account_level_base",
 										"account_ruleset": "#/components/schemas/resource-tagging_set_tags_request_account_level_base",
 										"ai_gateway": "#/components/schemas/resource-tagging_set_tags_request_account_level_base",
+										"ai_search_instance": "#/components/schemas/resource-tagging_set_tags_request_account_level_base",
 										"alerting_policy": "#/components/schemas/resource-tagging_set_tags_request_account_level_base",
 										"alerting_webhook": "#/components/schemas/resource-tagging_set_tags_request_account_level_base",
 										"cloudflared_tunnel": "#/components/schemas/resource-tagging_set_tags_request_account_level_base",
@@ -1681891,6 +1682061,7 @@
 															"account",
 															"account_ruleset",
 															"ai_gateway",
+															"ai_search_instance",
 															"alerting_policy",
 															"alerting_webhook",
 															"cloudflared_tunnel",
@@ -1682053,6 +1682224,7 @@
 															"account": "#/components/schemas/resource-tagging_tagged_resource_object_account",
 															"account_ruleset": "#/components/schemas/resource-tagging_tagged_resource_object_account_ruleset",
 															"ai_gateway": "#/components/schemas/resource-tagging_tagged_resource_object_ai_gateway",
+															"ai_search_instance": "#/components/schemas/resource-tagging_tagged_resource_object_ai_search_instance",
 															"alerting_policy": "#/components/schemas/resource-tagging_tagged_resource_object_alerting_policy",
 															"alerting_webhook": "#/components/schemas/resource-tagging_tagged_resource_object_alerting_webhook",
 															"api_gateway_operation": "#/components/schemas/resource-tagging_tagged_resource_object_api_gateway_operation",
@@ -1682533,6 +1682705,74 @@
 																			"type": "string",
 																			"enum": [
 																				"ai_gateway"
+																			]
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																{
+																	"description": "Base schema for account-level resources (without type discriminator)",
+																	"type": "object",
+																	"properties": {
+																		"etag": {
+																			"description": "ETag identifier for optimistic concurrency control. Formatted as \"v1:<hash>\" where\nthe hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map\ncanonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat\nETags as opaque strings and pass them back via the If-Match header on write operations.\n",
+																			"type": "string",
+																			"example": "v1:RBNvo1WzZ4oRRq0W9-hkng",
+																			"readOnly": true
+																		},
+																		"id": {
+																			"description": "Identifies the unique resource.",
+																			"type": "string",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"x-auditable": true
+																		},
+																		"name": {
+																			"description": "Human-readable name of the resource.",
+																			"type": "string",
+																			"example": "my-worker-script"
+																		},
+																		"tags": {
+																			"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+																			"type": "object",
+																			"example": {
+																				"environment": "production",
+																				"team": "engineering"
+																			},
+																			"additionalProperties": {
+																				"maxLength": 1024,
+																				"type": "string"
+																			},
+																			"x-auditable": true
+																		},
+																		"tags_updated_at": {
+																			"description": "Monotonic version of the resource's tags: the timestamp assigned when the\ntags were last written. Returned by read endpoints, by 2PC prepare (the\nversion that will be assigned on commit, unless a concurrent write lands\nfirst, in which case a newer version is assigned), and by 2PC commit (the\nauthoritative committed version). Omitted for untagged resources and\ndelete commits: a deleted resource has no current version, and deletions\nare ordered by event order rather than by version.\n",
+																			"type": "string",
+																			"format": "date-time",
+																			"example": "2024-01-15T10:30:00Z",
+																			"readOnly": true
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"tags",
+																		"name",
+																		"etag"
+																	]
+																}
+															]
+														},
+														{
+															"description": "Response for ai_search_instance resources",
+															"allOf": [
+																{
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"enum": [
+																				"ai_search_instance"
 																			]
 																		}
 																	},
@@ -1686117,6 +1686357,7 @@
 									"account",
 									"account_ruleset",
 									"ai_gateway",
+									"ai_search_instance",
 									"alerting_policy",
 									"alerting_webhook",
 									"api_gateway_operation",
@@ -1686329,6 +1686570,7 @@
 																"account": "#/components/schemas/resource-tagging_tagged_resource_object_account",
 																"account_ruleset": "#/components/schemas/resource-tagging_tagged_resource_object_account_ruleset",
 																"ai_gateway": "#/components/schemas/resource-tagging_tagged_resource_object_ai_gateway",
+																"ai_search_instance": "#/components/schemas/resource-tagging_tagged_resource_object_ai_search_instance",
 																"alerting_policy": "#/components/schemas/resource-tagging_tagged_resource_object_alerting_policy",
 																"alerting_webhook": "#/components/schemas/resource-tagging_tagged_resource_object_alerting_webhook",
 																"api_gateway_operation": "#/components/schemas/resource-tagging_tagged_resource_object_api_gateway_operation",
@@ -1686809,6 +1687051,74 @@
 																				"type": "string",
 																				"enum": [
 																					"ai_gateway"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"description": "Base schema for account-level resources (without type discriminator)",
+																		"type": "object",
+																		"properties": {
+																			"etag": {
+																				"description": "ETag identifier for optimistic concurrency control. Formatted as \"v1:<hash>\" where\nthe hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map\ncanonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat\nETags as opaque strings and pass them back via the If-Match header on write operations.\n",
+																				"type": "string",
+																				"example": "v1:RBNvo1WzZ4oRRq0W9-hkng",
+																				"readOnly": true
+																			},
+																			"id": {
+																				"description": "Identifies the unique resource.",
+																				"type": "string",
+																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																				"x-auditable": true
+																			},
+																			"name": {
+																				"description": "Human-readable name of the resource.",
+																				"type": "string",
+																				"example": "my-worker-script"
+																			},
+																			"tags": {
+																				"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+																				"type": "object",
+																				"example": {
+																					"environment": "production",
+																					"team": "engineering"
+																				},
+																				"additionalProperties": {
+																					"maxLength": 1024,
+																					"type": "string"
+																				},
+																				"x-auditable": true
+																			},
+																			"tags_updated_at": {
+																				"description": "Monotonic version of the resource's tags: the timestamp assigned when the\ntags were last written. Returned by read endpoints, by 2PC prepare (the\nversion that will be assigned on commit, unless a concurrent write lands\nfirst, in which case a newer version is assigned), and by 2PC commit (the\nauthoritative committed version). Omitted for untagged resources and\ndelete commits: a deleted resource has no current version, and deletions\nare ordered by event order rather than by version.\n",
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2024-01-15T10:30:00Z",
+																				"readOnly": true
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"tags",
+																			"name",
+																			"etag"
+																		]
+																	}
+																]
+															},
+															{
+																"description": "Response for ai_search_instance resources",
+																"allOf": [
+																	{
+																		"properties": {
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"ai_search_instance"
 																				]
 																			}
 																		},
@@ -1690329,6 +1690639,7 @@
 								"account",
 								"account_ruleset",
 								"ai_gateway",
+								"ai_search_instance",
 								"alerting_policy",
 								"alerting_webhook",
 								"api_gateway_operation",
@@ -2711135,6 +2711446,7 @@
 															"account": "#/components/schemas/resource-tagging_tagged_resource_object_account",
 															"account_ruleset": "#/components/schemas/resource-tagging_tagged_resource_object_account_ruleset",
 															"ai_gateway": "#/components/schemas/resource-tagging_tagged_resource_object_ai_gateway",
+															"ai_search_instance": "#/components/schemas/resource-tagging_tagged_resource_object_ai_search_instance",
 															"alerting_policy": "#/components/schemas/resource-tagging_tagged_resource_object_alerting_policy",
 															"alerting_webhook": "#/components/schemas/resource-tagging_tagged_resource_object_alerting_webhook",
 															"api_gateway_operation": "#/components/schemas/resource-tagging_tagged_resource_object_api_gateway_operation",
@@ -2711615,6 +2711927,74 @@
 																			"type": "string",
 																			"enum": [
 																				"ai_gateway"
+																			]
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																{
+																	"description": "Base schema for account-level resources (without type discriminator)",
+																	"type": "object",
+																	"properties": {
+																		"etag": {
+																			"description": "ETag identifier for optimistic concurrency control. Formatted as \"v1:<hash>\" where\nthe hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map\ncanonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat\nETags as opaque strings and pass them back via the If-Match header on write operations.\n",
+																			"type": "string",
+																			"example": "v1:RBNvo1WzZ4oRRq0W9-hkng",
+																			"readOnly": true
+																		},
+																		"id": {
+																			"description": "Identifies the unique resource.",
+																			"type": "string",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"x-auditable": true
+																		},
+																		"name": {
+																			"description": "Human-readable name of the resource.",
+																			"type": "string",
+																			"example": "my-worker-script"
+																		},
+																		"tags": {
+																			"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+																			"type": "object",
+																			"example": {
+																				"environment": "production",
+																				"team": "engineering"
+																			},
+																			"additionalProperties": {
+																				"maxLength": 1024,
+																				"type": "string"
+																			},
+																			"x-auditable": true
+																		},
+																		"tags_updated_at": {
+																			"description": "Monotonic version of the resource's tags: the timestamp assigned when the\ntags were last written. Returned by read endpoints, by 2PC prepare (the\nversion that will be assigned on commit, unless a concurrent write lands\nfirst, in which case a newer version is assigned), and by 2PC commit (the\nauthoritative committed version). Omitted for untagged resources and\ndelete commits: a deleted resource has no current version, and deletions\nare ordered by event order rather than by version.\n",
+																			"type": "string",
+																			"format": "date-time",
+																			"example": "2024-01-15T10:30:00Z",
+																			"readOnly": true
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"tags",
+																		"name",
+																		"etag"
+																	]
+																}
+															]
+														},
+														{
+															"description": "Response for ai_search_instance resources",
+															"allOf": [
+																{
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"enum": [
+																				"ai_search_instance"
 																			]
 																		}
 																	},
@@ -2714903,6 +2715283,7 @@
 															"account": "#/components/schemas/resource-tagging_tagged_resource_object_account",
 															"account_ruleset": "#/components/schemas/resource-tagging_tagged_resource_object_account_ruleset",
 															"ai_gateway": "#/components/schemas/resource-tagging_tagged_resource_object_ai_gateway",
+															"ai_search_instance": "#/components/schemas/resource-tagging_tagged_resource_object_ai_search_instance",
 															"alerting_policy": "#/components/schemas/resource-tagging_tagged_resource_object_alerting_policy",
 															"alerting_webhook": "#/components/schemas/resource-tagging_tagged_resource_object_alerting_webhook",
 															"api_gateway_operation": "#/components/schemas/resource-tagging_tagged_resource_object_api_gateway_operation",
@@ -2715383,6 +2715764,74 @@
 																			"type": "string",
 																			"enum": [
 																				"ai_gateway"
+																			]
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																{
+																	"description": "Base schema for account-level resources (without type discriminator)",
+																	"type": "object",
+																	"properties": {
+																		"etag": {
+																			"description": "ETag identifier for optimistic concurrency control. Formatted as \"v1:<hash>\" where\nthe hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map\ncanonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat\nETags as opaque strings and pass them back via the If-Match header on write operations.\n",
+																			"type": "string",
+																			"example": "v1:RBNvo1WzZ4oRRq0W9-hkng",
+																			"readOnly": true
+																		},
+																		"id": {
+																			"description": "Identifies the unique resource.",
+																			"type": "string",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"x-auditable": true
+																		},
+																		"name": {
+																			"description": "Human-readable name of the resource.",
+																			"type": "string",
+																			"example": "my-worker-script"
+																		},
+																		"tags": {
+																			"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+																			"type": "object",
+																			"example": {
+																				"environment": "production",
+																				"team": "engineering"
+																			},
+																			"additionalProperties": {
+																				"maxLength": 1024,
+																				"type": "string"
+																			},
+																			"x-auditable": true
+																		},
+																		"tags_updated_at": {
+																			"description": "Monotonic version of the resource's tags: the timestamp assigned when the\ntags were last written. Returned by read endpoints, by 2PC prepare (the\nversion that will be assigned on commit, unless a concurrent write lands\nfirst, in which case a newer version is assigned), and by 2PC commit (the\nauthoritative committed version). Omitted for untagged resources and\ndelete commits: a deleted resource has no current version, and deletions\nare ordered by event order rather than by version.\n",
+																			"type": "string",
+																			"format": "date-time",
+																			"example": "2024-01-15T10:30:00Z",
+																			"readOnly": true
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"tags",
+																		"name",
+																		"etag"
+																	]
+																}
+															]
+														},
+														{
+															"description": "Response for ai_search_instance resources",
+															"allOf": [
+																{
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"enum": [
+																				"ai_search_instance"
 																			]
 																		}
 																	},

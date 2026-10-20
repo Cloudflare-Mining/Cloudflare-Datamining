@@ -1544,6 +1544,24 @@
 																},
 																"additionalProperties": false
 															},
+															"constraints": {
+																"description": "The jurisdiction of a Durable Object-managed application's primary control-plane object.\nSet this when creating the application; it cannot be changed afterwards.\nOther placement constraints are not supported by this scheduling policy.\n",
+																"type": "object",
+																"properties": {
+																	"jurisdiction": {
+																		"type": "string",
+																		"enum": [
+																			"eu",
+																			"fedramp",
+																			"us"
+																		]
+																	}
+																},
+																"additionalProperties": false,
+																"required": [
+																	"jurisdiction"
+																]
+															},
 															"created_at": {
 																"description": "UTC timestamp string in ISO 8601 format.",
 																"type": "string",
@@ -2563,6 +2581,24 @@
 																}
 															},
 															"additionalProperties": false
+														},
+														"constraints": {
+															"description": "The jurisdiction of a Durable Object-managed application's primary control-plane object.\nSet this when creating the application; it cannot be changed afterwards.\nOther placement constraints are not supported by this scheduling policy.\n",
+															"type": "object",
+															"properties": {
+																"jurisdiction": {
+																	"type": "string",
+																	"enum": [
+																		"eu",
+																		"fedramp",
+																		"us"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"jurisdiction"
+															]
 														},
 														"created_at": {
 															"description": "UTC timestamp string in ISO 8601 format.",
@@ -7066,6 +7102,24 @@
 															},
 															"additionalProperties": false
 														},
+														"constraints": {
+															"description": "The jurisdiction of a Durable Object-managed application's primary control-plane object.\nSet this when creating the application; it cannot be changed afterwards.\nOther placement constraints are not supported by this scheduling policy.\n",
+															"type": "object",
+															"properties": {
+																"jurisdiction": {
+																	"type": "string",
+																	"enum": [
+																		"eu",
+																		"fedramp",
+																		"us"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"jurisdiction"
+															]
+														},
 														"created_at": {
 															"description": "UTC timestamp string in ISO 8601 format.",
 															"type": "string",
@@ -8489,7 +8543,7 @@
 								]
 							},
 							{
-								"description": "Create a Durable Object-managed Containers application. Each Durable Object\ncreates and manages the lifecycle of its container instance. Supply `name`,\n`scheduling_policy`, and `durable_objects`, with optional `configuration` and\ntop-level `observability` settings. Deployment configuration, instance counts,\nscaling, constraints, versions, and rollouts do not apply.\n",
+								"description": "Create a Durable Object-managed Containers application. Each Durable Object\ncreates and manages the lifecycle of its container instance. Supply `name`,\n`scheduling_policy`, and `durable_objects`, with optional `configuration` and\ntop-level `observability` settings. `constraints.jurisdiction` selects the\njurisdiction of the application's primary control-plane object at creation time.\nDeployment configuration, instance counts, scaling, other placement constraints,\nversions, and rollouts do not apply.\n",
 								"type": "object",
 								"properties": {
 									"configuration": {
@@ -8538,6 +8592,24 @@
 												},
 												"additionalProperties": false
 											}
+										]
+									},
+									"constraints": {
+										"description": "The jurisdiction of a Durable Object-managed application's primary control-plane object.\nSet this when creating the application; it cannot be changed afterwards.\nOther placement constraints are not supported by this scheduling policy.\n",
+										"type": "object",
+										"properties": {
+											"jurisdiction": {
+												"type": "string",
+												"enum": [
+													"eu",
+													"fedramp",
+													"us"
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"jurisdiction"
 										]
 									},
 									"durable_objects": {
@@ -9142,6 +9214,24 @@
 																}
 															},
 															"additionalProperties": false
+														},
+														"constraints": {
+															"description": "The jurisdiction of a Durable Object-managed application's primary control-plane object.\nSet this when creating the application; it cannot be changed afterwards.\nOther placement constraints are not supported by this scheduling policy.\n",
+															"type": "object",
+															"properties": {
+																"jurisdiction": {
+																	"type": "string",
+																	"enum": [
+																		"eu",
+																		"fedramp",
+																		"us"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"jurisdiction"
+															]
 														},
 														"created_at": {
 															"description": "UTC timestamp string in ISO 8601 format.",
