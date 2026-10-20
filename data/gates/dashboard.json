@@ -376,13 +376,13 @@
 		"enabled": true
 	},
 	"billing-modular-checkout-orchestrator-invoices": {
-		"enabled": false
+		"enabled": true
 	},
 	"billing-modular-checkout-orchestrator-registrar": {
-		"enabled": false
+		"enabled": true
 	},
 	"billing-modular-checkout-orchestrator-subscription": {
-		"enabled": false
+		"enabled": true
 	},
 	"billing-no-profile-payment-method-only": {
 		"enabled": true
@@ -611,6 +611,9 @@
 	},
 	"cfone-threat-intelligence-overview": {
 		"enabled": true
+	},
+	"cfone-threat-intelligence-overview-v2": {
+		"enabled": false
 	},
 	"cfone-top-level-nav-group": {
 		"enabled": true
@@ -2042,6 +2045,9 @@
 	"paygo-account-create-ui": {
 		"enabled": true
 	},
+	"payload-logging-v2": {
+		"enabled": false
+	},
 	"pending-zone-failure-reasons-full-zones": {
 		"enabled": false
 	},
@@ -2146,7 +2152,9 @@
 		"enabled": false,
 		"branches": [
 			"baseline",
-			"experiment"
+			"experiment",
+			"variant-a",
+			"variant-b"
 		]
 	},
 	"prg-domain-success-page-experiment": {
@@ -3166,6 +3174,9 @@
 		"enabled": false
 	},
 	"wobs-ai-sidebar": {
+		"enabled": true
+	},
+	"wobs-fed-dashboard": {
 		"enabled": true
 	},
 	"wobs-in-dashboards": {
