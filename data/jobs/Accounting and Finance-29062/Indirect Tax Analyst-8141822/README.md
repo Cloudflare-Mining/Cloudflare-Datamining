@@ -4,9 +4,7 @@
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
 <p><strong>Location: </strong>Austin&nbsp;</p>
-<p>&nbsp;</p>
 <p><strong>Role Summary</strong><strong><br></strong>Cloudflare is seeking an Indirect Tax Analyst to join our collaborative team. This position will have a broad range of responsibilities with a primary focus on Indirect Tax (US &amp; International - VAT, GST, Sales Tax, Use Tax and Property Tax). This Indirect Tax Analyst will report to the Director of Tax and work with other members of the tax and finance teams, collaborating with cross-functional business partners from time-to-time. The right candidate will be detail-oriented, collaborative, and motivated by finding better, smarter ways to work through automation, standardization, and AI-enabled improvements.</p>
-<p>&nbsp;</p>
 <p><strong>Role Responsibilities</strong><strong><br></strong></p>
 <ul>
 	<li>Prepare Indirect Tax compliance including the financial support information (VAT, GST, Sales Tax, Use Tax and Property Tax fillings)</li>
@@ -20,9 +18,6 @@
 	<li>Participate in the calculation of indirect tax reserves and budgets.</li>
 	<li>Drive the digital transformation of our tax function, identifying and executing process improvements through technology, automation, and AI</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Role Requirements</strong></p>
-<p>&nbsp;</p>
 <p><strong>Must-Have Skills</strong></p>
 <ul>
 	<li>Bachelors degree in Accounting, Finance or related field</li>
@@ -32,14 +27,12 @@
 	<li>Proactive and inquisitive</li>
 	<li>Strong written and verbal communication skills with the ability to interact effectively internally as well as with external service providers</li>
 </ul>
-<p>&nbsp;</p>
 <p><strong>Nice-to-Have Skills</strong></p>
 <ul>
 	<li>International VAT knowledge is a plus</li>
 	<li>Both public accounting and technology industry experience</li>
 	<li>Experience with Oracle and AI</li>
 </ul>
-<p>&nbsp;</p>
 <p><strong>Benefits</strong></p>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
 <p><strong>Health &amp; Welfare Benefits</strong></p>

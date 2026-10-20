@@ -3,33 +3,66 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations:&nbsp; Austin or Lisbon (Hybrid)</strong></p>
-<p><strong>About the Role</strong></p>
-<p>Cloudflare has embarked on a transformation of our entire quote to cash process. We’re looking for a seasoned product leader who will take charge of these processes, providing leadership, communication and accountability for successful delivery. You will:&nbsp;</p>
+<p><strong>Available Locations:&nbsp;</strong></p>
 <ul>
-	<li>Take leadership. You will manage a small team of product managers ensuring coverage and accountability for the myriad projects across the organization.&nbsp;</li>
-	<li>Work horizontally. Disparate groups like Engineering, Program Management, Finance, Revenue Operations, Business Intelligence and external vendors like Stripe and Salesforce all need to keep plans aligned and work together to deliver commitments.</li>
-	<li>Span timescales. Short term deliverables like supporting product launches, medium term ones like migrating billing progresses and longer term ones like a full ERP implementation all need to be serviced. The urgent cannot starve the important.&nbsp;</li>
-	<li>Span domains. You need to simultaneously let other teams rely on the roadmaps you publish while being responsive to the interrupt-driven nature of the business. When shifts do occur, you need to proactively communicate with other teams to maintain trust.&nbsp;</li>
-	<li>Commit to quality. Our #1 priority is to have an accurate picture of revenue and service of our customers but we also have numerous other concerns like speed of innovation and advancing the roadmap.</li>
-	<li>Communicate and collaborate. Essential to the success of this program is the ability to listen, learn, synthesize and communicate outwards as well as influence through persuasion.</li>
-	<li>Represent Cloudflare. Many of our largest customers want to speak to us about their concerns and our plans in the billing domain. You will spend time learning from them.&nbsp;</li>
-	<li>Provide and demand accountability. You are responsible for the delivery of your commitments and you will hold your peers and subordinates accountable for theirs.&nbsp;</li>
+	<li><strong>San Francisco, CA</strong></li>
 </ul>
-<p><strong>Some of the domains you will touch include</strong>: Billing, Invoicing, Sales &amp; Opportunity management, Credit &amp; Collections, Pricing &amp; Quoting, Contract &amp; Entitlement Management, Partners &amp; Resellers, Taxation, Bad debt, BI Reporting, ERP Implementation.&nbsp;</p>
-<p><strong>Success Factors</strong></p>
-<p>100% essential to taking on this role will be a history of success delivering projects within the financial domain. A history of product management in billing, fintech, financial reporting, compliance or other similar domain in companies with scope similar to or larger than Cloudflare is required. We will also only consider candidates who have successfully managed teams of other product managers in one of these domains.&nbsp;</p>
-<p><strong>Bonus Points</strong></p>
+<p><strong>About the team</strong></p>
+<p>The Finance team is a critical pillar of Cloudflare’s success, translating strategy into financial outcomes, and serving as a trusted voice to the public markets, the Board, and our shareholders. The Investor Relations team is a small, high-impact group that tells Cloudflare’s financial story to the public markets — translating one of the most differentiated technology platforms in the world into a clear, credible, and compelling investment narrative.</p>
+<p><strong>About the role</strong></p>
+<p>Cloudflare is looking for an Associate, Investor Relations &amp; Strategic Finance to join our lean IR team and help power how we engage with Wall Street. You will be a core contributor to the quarterly earnings cycle, our consensus and financial modeling work, investor events including our annual Investor Day, and strategic finance projects for senior leadership.</p>
+<p>This is a hands-on, high-visibility role. The work you produce will go directly to the CFO, CEO, Board, and public markets, so we hold ourselves to an exceptionally high bar on accuracy. You will work closely with Finance, Accounting, Legal, Communications, FP&amp;A, and the executive team, and you will get broad exposure to the business and to the public markets. We are AI-native in how we work, and we expect you to treat modern tooling as a force multiplier on insight, productivity, and rigor.</p>
+<p><strong>What you’ll do</strong></p>
+<p><strong>Quarterly earnings and consensus</strong></p>
 <ul>
-	<li>Internet native companies tend to think a little differently than the Fortune 500. We’d love to meet folks with a history of delivering with the cadence and timescales of those born on the Internet.&nbsp;</li>
-	<li>Engineering fluency - while it’s not required, we tend to find success with candidates who have a technical background, formal or otherwise. You don’t need a CS degree but building credibility with our engineering teams is critical and so some history of technical acumen would be super helpful</li>
-	<li>Finance fluency - You’re dealing with data that represents money and that implies a certain level of care. You’ll also be working with a lot of finance types. Fluency in this world might be helpful</li>
-	<li>At Cloudflare it’s pretty helpful to understand how the Internet really works at layers 2 through 7. If you don’t have this, be prepared to speak with mastery about another realm of similar complexity.&nbsp;</li>
+	<li>Support the end-to-end quarterly earnings process, helping draft and assemble the press release, supplemental financial information, prepared remarks, Q&amp;A prep, and investor deck.</li>
+	<li>Build and maintain our consensus model: collect and analyze sell-side estimates and models, and benchmark them against internal forecasts.</li>
+	<li>Support the guidance process, including share count forecasting, sensitivity analyses, and supporting materials for leadership.</li>
+	<li>Drive tie-out and validation work so that every figure, claim, and disclosure across the press release, supplemental, scripts, Q&amp;A, deck, 10-Q, and 10-K is accurate and consistent.</li>
+	<li>Help prepare for earnings Q&amp;A: anticipated questions, peer transcript research, key stats and proof points, and live-call backup material.</li>
+	<li>Coordinate the post-earnings analyst callback program, including scheduling, notes, and feedback summaries.</li>
 </ul>
+<p><strong>Investor engagement</strong></p>
+<ul>
+	<li>Support day-to-day engagement with sell-side analysts and institutional investors, including responding to inbound requests and maintaining our investor database.</li>
+	<li>Help plan and run investor events, including sell-side conferences, one-on-ones, on-site investor visits, and non-deal roadshows.</li>
+	<li>Prepare briefing materials for the CEO, CFO, and other executives ahead of investor meetings, including investor profiles, talking points, and Q&amp;A prep.</li>
+	<li>Maintain core IR collateral, including the investor presentation, fact sheets, and IR website content.</li>
+	<li>Analyze shareholder ownership and support investor targeting.</li>
+</ul>
+<p><strong>Investor Day and strategic finance projects</strong></p>
+<ul>
+	<li>Support the planning and execution of our annual Investor Day, including the invite tracker and registration, content drafting, validation, and day-of logistics.</li>
+	<li>Contribute to strategic finance projects such as peer benchmarking, competitive analyses, long-range financial modeling, and ad-hoc analyses for senior leadership.</li>
+</ul>
+<p><strong>Analytics and tooling</strong></p>
+<ul>
+	<li>Monitor and synthesize analyst coverage, peer results, investor sentiment, and industry trends into clear, actionable summaries for leadership.</li>
+	<li>Build and maintain the models, dashboards, trackers, and validation tools that let a small team operate at scale.</li>
+	<li>Use AI-native tooling and automation to improve speed, accuracy, and insight across the IR function.</li>
+</ul>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<ul>
+	<li>
+		<ul>
+			<li><strong>3–5 years of experience</strong> in investment banking, equity research, investor relations, FP&amp;A, corporate finance, or equity investing; exposure to public technology companies is a plus.</li>
+			<li><strong>Strong financial modeling skills</strong>, including building and maintaining operating models, consensus models, and share count and dilution forecasts.</li>
+			<li><strong>Solid understanding of financial statements</strong>, public-company reporting, and valuation; familiarity with SaaS or consumption-based revenue models is a plus.</li>
+			<li><strong>Strong written communication skills</strong>, with the ability to draft clear, concise materials for senior executives and to turn complex financial or technical concepts into simple narratives.</li>
+			<li><strong>Exceptional attention to detail</strong>, and pride in getting every number right.</li>
+			<li><strong>An ownership mindset</strong>: you are organized, take initiative, and can manage multiple deadlines in a fast-paced environment, especially during earnings season.</li>
+			<li><strong>High-trust collaboration</strong>, with the ability to work effectively with teams across Finance, Accounting, Legal, and Communications.</li>
+			<li><strong>AI-native curiosity and skill</strong>: fluency with modern AI tooling and a track record of using it to amplify your impact.</li>
+			<li><strong>Sound judgment with confidential information</strong>, including awareness of materiality, fair disclosure, and Reg FD (or a strong willingness to learn).</li>
+			<li><strong>Genuine interest</strong> in cybersecurity, cloud infrastructure, developer platforms, or AI, and in the public markets.</li>
+		</ul>
+	</li>
+</ul>
+<p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For Lisbon based hires: Estimated annual salary of: €128,000 - 160,000</span></li>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $117,000 - $161,000</span></li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
