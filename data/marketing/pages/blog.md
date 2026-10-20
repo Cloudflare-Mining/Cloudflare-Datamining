@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+October 20, 2026 [<h2>Introducing tsrs: a Port of TypeScript to Rust</h2>](https://blog.cloudflare.com/typescript-rust-port/)
+
+Cloudflare is collaborating on tsrs, a Rust port of TypeScript that is up to 8x faster and uses 70% less memory.
+
+![Boshen Chen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5C7JZ4TPA6B0GAEA4J5ZRKH.01M5C7JZV2GMV8Y2BJ76CF88BP.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Dimitri Mitropoulos](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498DEF6RX03R0G7TNW7CR3.webp&w=64&h=64&f=webp&fit=cover&position=center)![Christoph Nakazawa](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4EX98BAG8QN2EG73TZW7RKE.01M4EX98Y0AM8PEJP2VR66W6PN.webp&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Boshen Chen](https://blog.cloudflare.com/author/boshen-chen/),  [Dimitri Mitropoulos](https://blog.cloudflare.com/author/dimitri-mitropoulos/), and  [Christoph Nakazawa](https://blog.cloudflare.com/author/christoph-nakazawa/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5C82VPWPDDZ7P6P0G4H7KB3.png&w=1999&h=1127&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/typescript-rust-port/)
+
 October 19, 2026 [<h2>Cutting our inference bill by 68% by being obsessive about optimization</h2>](https://blog.cloudflare.com/obsessive-inference-optimization/)
 
 When our AI code reviewer's cost per run doubled, we dug into the token usage to find out why. Learn how we used prompt caching and intelligent model routing to slash our inference bill by 68% while speeding up reviews.
@@ -17,8 +27,6 @@ When our AI code reviewer's cost per run doubled, we dug into the token usage to
 ![Ryan Skidmore](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4736HQYPXSX6SERG1KRMXW.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Ryan Skidmore](https://blog.cloudflare.com/author/ryan-skidmore/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M58N5J1Y9HY8N3R115KEY6NE.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/obsessive-inference-optimization/)
 
 October 19, 2026 [<h2>Introducing Clairic, a new System One class of extraction models</h2>](https://blog.cloudflare.com/clairic-extraction-model/)
 
@@ -155,14 +163,6 @@ On October 11, 2026, the DNS root switches to a new key-signing key (KSK-2024).
 ![Sebastiaan Neuteboom](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GH720TA5A2634QYMAXZR.png&w=64&h=64&f=webp&fit=cover&position=center)![James Godlewski](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M48ZN7537R9D7AB9PWK3P0Q9.01M48ZN84M75FBR63MKDCQTCED.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Sebastiaan Neuteboom](https://blog.cloudflare.com/author/sebastiaan-neuteboom/) and  [James Godlewski](https://blog.cloudflare.com/author/james-godlewski/)
-
-October 5, 2026 [<h2>Everything we launched during Birthday Week 2026</h2>](https://blog.cloudflare.com/birthday-week-2026-wrap-up/)
-
-We celebrated our 16th birthday with 46 announcements across open source, post-quantum security, AI agents, and developer platform upgrades. Here's a day-by-day roundup of everything we shipped.
-
-![Carlos Armada](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GNGVRDMTAZC97MJZE2EC.webp&w=64&h=64&f=webp&fit=cover&position=center)![Meagan Gamache](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M45MAC0G939A1CZ2RDDM9NN1.01M45MACNHN2Z5AH4FH2RK2MN8.webp&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Carlos Armada](https://blog.cloudflare.com/author/carlos-armada/) and  [Meagan Gamache](https://blog.cloudflare.com/author/meagan-gamache/)
 
 Load more
 
