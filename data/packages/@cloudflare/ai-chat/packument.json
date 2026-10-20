@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/ai-chat",
 	"dist-tags": {
-		"latest": "0.12.1"
+		"latest": "0.12.2"
 	},
 	"versions": {
 		"0.0.1": {
@@ -2374,8 +2374,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQDt4lOMPFP1LWTX/s2OUIUoAFiQGJFyqaPgZ7cxARs4xAIhAKHxKtidG+UvTCJbgJDrPdDPEtdTN1Go67Ol2pJAwpyW"
+						"sig": "MEYCIQDt4lOMPFP1LWTX/s2OUIUoAFiQGJFyqaPgZ7cxARs4xAIhAKHxKtidG+UvTCJbgJDrPdDPEtdTN1Go67Ol2pJAwpyW",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -2385,6 +2385,50 @@
 					}
 				},
 				"unpackedSize": 705392
+			}
+		},
+		"0.12.2": {
+			"name": "@cloudflare/ai-chat",
+			"version": "0.12.2",
+			"dependencies": {
+				"nanoid": "^5.1.16"
+			},
+			"devDependencies": {
+				"ai": "^7.0.0",
+				"zod": "^4.5.4",
+				"react": "^19.2.7",
+				"agents": "^0.29.0",
+				"@types/react": "^19.2.17",
+				"@playwright/test": "^1.61.1"
+			},
+			"peerDependencies": {
+				"ai": "^6.0.0 || ^7.0.0",
+				"react": "^19.0.0",
+				"agents": ">=0.25.0 <1.0.0",
+				"@ai-sdk/react": "^3.0.0 || ^4.0.0"
+			},
+			"dist": {
+				"shasum": "778d8f61f9129e57ab19710ee47e494a0a8e16df",
+				"tarball": "https://registry.npmjs.org/@cloudflare/ai-chat/-/ai-chat-0.12.2.tgz",
+				"fileCount": 13,
+				"integrity": "sha512-LqS/jX+uOewhIdnOt9Yrd1t92xUvSuxBYcmbP11lvg2wYmpKm0p0mOFP0ieiRQj1bRFVkcPiHgDn+UXwga841Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD7FtqHzedM8RDog80XGMorTlPnXbNCnWTGIVAV1qhKoAIgIA7WFoZ6aTIahi4/DfunWqR7H5Clm/ukAuUh/1Gx5vE=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIQDqVV8BKLzsPgP55W5pi/HOC7HyMnGgXida3JyYLNsC2AIgCdZ710iaAc/641DhdtUDCNzKOXYcLvIQwyDCood3Ps8="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fai-chat@0.12.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 698658
 			}
 		}
 	}
