@@ -506,7 +506,7 @@
 		"enabled": true
 	},
 	"warp-password-protected-uninstall": {
-		"enabled": false
+		"enabled": true
 	},
 	"warp-revamp-client-proxy-mode-q3-2025": {
 		"enabled": true
@@ -740,7 +740,7 @@
 		"enabled": true
 	},
 	"zt-new-domain-rotating-ips-risk-score": {
-		"enabled": false
+		"enabled": true
 	},
 	"zt-new-egress-rule-builder-q2-2026": {
 		"enabled": true
@@ -766,11 +766,14 @@
 	"zt-tunnel-hostname-routing-mesh-off-ramp-q2-2026": {
 		"enabled": true
 	},
-	"zt-ueba-cloud-storage-upload": {
+	"zt-ueba-beaconing": {
 		"enabled": false
 	},
+	"zt-ueba-cloud-storage-upload": {
+		"enabled": true
+	},
 	"zt-ueba-novel-mcp": {
-		"enabled": false
+		"enabled": true
 	},
 	"zt-ueba-rba-migration": {
 		"enabled": true
