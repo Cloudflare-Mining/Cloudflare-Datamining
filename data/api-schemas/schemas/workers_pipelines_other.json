@@ -1436,6 +1436,31 @@
 				}
 			},
 			{
+				"name": "order_by",
+				"in": "query",
+				"description": "Sorts sinks by this field. Defaults to `created_at`.",
+				"schema": {
+					"type": "string",
+					"enum": [
+						"name",
+						"created_at"
+					]
+				}
+			},
+			{
+				"name": "direction",
+				"in": "query",
+				"description": "Sort direction.",
+				"schema": {
+					"type": "string",
+					"default": "asc",
+					"enum": [
+						"asc",
+						"desc"
+					]
+				}
+			},
+			{
 				"name": "page",
 				"in": "query",
 				"schema": {
@@ -2808,6 +2833,31 @@
 					"type": "string",
 					"maxLength": 128,
 					"minLength": 1
+				}
+			},
+			{
+				"name": "order_by",
+				"in": "query",
+				"description": "Sorts streams by this field. Defaults to `created_at`.",
+				"schema": {
+					"type": "string",
+					"enum": [
+						"name",
+						"created_at"
+					]
+				}
+			},
+			{
+				"name": "direction",
+				"in": "query",
+				"description": "Sort direction.",
+				"schema": {
+					"type": "string",
+					"default": "asc",
+					"enum": [
+						"asc",
+						"desc"
+					]
 				}
 			},
 			{

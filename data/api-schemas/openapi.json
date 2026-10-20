@@ -1379471,6 +1379471,31 @@
 						}
 					},
 					{
+						"name": "order_by",
+						"in": "query",
+						"description": "Sorts sinks by this field. Defaults to `created_at`.",
+						"schema": {
+							"type": "string",
+							"enum": [
+								"name",
+								"created_at"
+							]
+						}
+					},
+					{
+						"name": "direction",
+						"in": "query",
+						"description": "Sort direction.",
+						"schema": {
+							"type": "string",
+							"default": "asc",
+							"enum": [
+								"asc",
+								"desc"
+							]
+						}
+					},
+					{
 						"name": "page",
 						"in": "query",
 						"schema": {
@@ -1382203,6 +1382228,31 @@
 							"type": "string",
 							"maxLength": 128,
 							"minLength": 1
+						}
+					},
+					{
+						"name": "order_by",
+						"in": "query",
+						"description": "Sorts streams by this field. Defaults to `created_at`.",
+						"schema": {
+							"type": "string",
+							"enum": [
+								"name",
+								"created_at"
+							]
+						}
+					},
+					{
+						"name": "direction",
+						"in": "query",
+						"description": "Sort direction.",
+						"schema": {
+							"type": "string",
+							"default": "asc",
+							"enum": [
+								"asc",
+								"desc"
+							]
 						}
 					},
 					{
@@ -1773722,12 +1773772,10 @@
 													"configuration": {
 														"type": "object",
 														"properties": {
-															"destination_conf": {
-																"type": "string"
-															},
 															"headers": {
 																"type": "object",
 																"additionalProperties": {
+																	"nullable": true,
 																	"type": "string"
 																}
 															},
@@ -1773785,7 +1773833,6 @@
 														"required": [
 															"type",
 															"logpushDataset",
-															"destination_conf",
 															"url",
 															"headers",
 															"jobStatus"
@@ -1774158,8 +1774205,31 @@
 												"configuration": {
 													"type": "object",
 													"properties": {
-														"destination_conf": {
-															"type": "string"
+														"headers": {
+															"type": "object",
+															"additionalProperties": {
+																"nullable": true,
+																"type": "string"
+															}
+														},
+														"jobStatus": {
+															"type": "object",
+															"properties": {
+																"error_message": {
+																	"type": "string"
+																},
+																"last_complete": {
+																	"type": "string"
+																},
+																"last_error": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"last_complete",
+																"last_error",
+																"error_message"
+															]
 														},
 														"logpushDataset": {
 															"anyOf": [
@@ -1774183,9 +1774253,6 @@
 																}
 															]
 														},
-														"logpushJob": {
-															"type": "number"
-														},
 														"type": {
 															"type": "string",
 															"enum": [
@@ -1774199,9 +1774266,9 @@
 													"required": [
 														"type",
 														"logpushDataset",
-														"logpushJob",
-														"destination_conf",
-														"url"
+														"url",
+														"headers",
+														"jobStatus"
 													]
 												},
 												"enabled": {
@@ -1774552,8 +1774619,31 @@
 												"configuration": {
 													"type": "object",
 													"properties": {
-														"destination_conf": {
-															"type": "string"
+														"headers": {
+															"type": "object",
+															"additionalProperties": {
+																"nullable": true,
+																"type": "string"
+															}
+														},
+														"jobStatus": {
+															"type": "object",
+															"properties": {
+																"error_message": {
+																	"type": "string"
+																},
+																"last_complete": {
+																	"type": "string"
+																},
+																"last_error": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"last_complete",
+																"last_error",
+																"error_message"
+															]
 														},
 														"logpushDataset": {
 															"anyOf": [
@@ -1774577,9 +1774667,6 @@
 																}
 															]
 														},
-														"logpushJob": {
-															"type": "number"
-														},
 														"type": {
 															"type": "string",
 															"enum": [
@@ -1774593,9 +1774680,9 @@
 													"required": [
 														"type",
 														"logpushDataset",
-														"logpushJob",
-														"destination_conf",
-														"url"
+														"url",
+														"headers",
+														"jobStatus"
 													]
 												},
 												"enabled": {
@@ -1774922,8 +1775009,12 @@
 											"headers": {
 												"type": "object",
 												"additionalProperties": {
+													"nullable": true,
 													"type": "string"
 												}
+											},
+											"replaceHeaders": {
+												"type": "boolean"
 											},
 											"type": {
 												"type": "string",
@@ -1774946,8 +1775037,7 @@
 									}
 								},
 								"required": [
-									"enabled",
-									"configuration"
+									"enabled"
 								]
 							}
 						}
@@ -1774998,8 +1775088,31 @@
 												"configuration": {
 													"type": "object",
 													"properties": {
-														"destination_conf": {
-															"type": "string"
+														"headers": {
+															"type": "object",
+															"additionalProperties": {
+																"nullable": true,
+																"type": "string"
+															}
+														},
+														"jobStatus": {
+															"type": "object",
+															"properties": {
+																"error_message": {
+																	"type": "string"
+																},
+																"last_complete": {
+																	"type": "string"
+																},
+																"last_error": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"last_complete",
+																"last_error",
+																"error_message"
+															]
 														},
 														"logpushDataset": {
 															"anyOf": [
@@ -1775023,9 +1775136,6 @@
 																}
 															]
 														},
-														"logpushJob": {
-															"type": "number"
-														},
 														"type": {
 															"type": "string",
 															"enum": [
@@ -1775039,9 +1775149,9 @@
 													"required": [
 														"type",
 														"logpushDataset",
-														"logpushJob",
-														"destination_conf",
-														"url"
+														"url",
+														"headers",
+														"jobStatus"
 													]
 												},
 												"enabled": {
@@ -1775218,6 +1775328,63 @@
 														"type": "string",
 														"enum": [
 															"Not found"
+														]
+													}
+												},
+												"required": [
+													"message"
+												],
+												"type": "object"
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"errors",
+										"success",
+										"messages"
+									]
+								}
+							}
+						}
+					},
+					"409": {
+						"description": "Conflict",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"detail": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string",
+														"enum": [
+															"Conflict"
 														]
 													}
 												},
@@ -2663240,8 +2663407,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "zaraz.config",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			},
 			"put": {
 				"operationId": "put-zones-zone_identifier-zaraz-config",
@@ -2666492,8 +2666658,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "zaraz.config",
-				"x-fern-sdk-method-name": "update",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "update"
 			}
 		},
 		"/zones/{zone_id}/settings/zaraz/default": {
@@ -2668243,8 +2668408,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "zaraz.default",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			}
 		},
 		"/zones/{zone_id}/settings/zaraz/export": {
@@ -2669912,8 +2670076,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "zaraz.export",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			}
 		},
 		"/zones/{zone_id}/settings/zaraz/history": {
@@ -2670274,8 +2670437,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "zaraz.history",
-				"x-fern-sdk-method-name": "list",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "list"
 			},
 			"put": {
 				"operationId": "put-zones-zone_identifier-zaraz-history",
@@ -2672035,8 +2672197,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "zaraz.history",
-				"x-fern-sdk-method-name": "update",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "update"
 			}
 		},
 		"/zones/{zone_id}/settings/zaraz/history/configs": {
@@ -2673934,8 +2674095,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "zaraz.history.configs",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			}
 		},
 		"/zones/{zone_id}/settings/zaraz/publish": {
@@ -2674206,8 +2674366,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "zaraz.publish",
-				"x-fern-sdk-method-name": "create",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "create"
 			}
 		},
 		"/zones/{zone_id}/settings/zaraz/workflow": {
@@ -2674469,8 +2674628,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "zaraz.workflow",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			},
 			"put": {
 				"operationId": "put-zones-zone_identifier-zaraz-workflow",
@@ -2674745,8 +2674903,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "zaraz.workflow",
-				"x-fern-sdk-method-name": "update",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "update"
 			}
 		},
 		"/zones/{zone_id}/smart_shield": {
