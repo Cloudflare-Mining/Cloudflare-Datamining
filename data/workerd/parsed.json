@@ -4565,6 +4565,14 @@
 						"compatEnableDate": "2026-11-17"
 					},
 					"type": "Bool"
+				},
+				{
+					"name": "durableObjectSnapshots",
+					"annotations": {
+						"compatEnableFlag": "durable_object_snapshots",
+						"experimental": true
+					},
+					"type": "Bool"
 				}
 			]
 		},
