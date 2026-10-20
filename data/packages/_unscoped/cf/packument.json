@@ -1,7 +1,7 @@
 {
 	"name": "cf",
 	"dist-tags": {
-		"latest": "1.0.0-beta.18"
+		"latest": "1.0.0-beta.19"
 	},
 	"versions": {
 		"0.0.1": {
@@ -2414,8 +2414,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCICAbepkaEqsKSl3ZDCtjYZkDL7dV8hpixVfX3PoTFW/ZAiEAw4GYVila9q5gQfB6tuhPdcJFLw3SPDj7aC79drL70g8="
+						"sig": "MEUCICAbepkaEqsKSl3ZDCtjYZkDL7dV8hpixVfX3PoTFW/ZAiEAw4GYVila9q5gQfB6tuhPdcJFLw3SPDj7aC79drL70g8=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -2425,6 +2425,79 @@
 					}
 				},
 				"unpackedSize": 21764310
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"1.0.0-beta.19": {
+			"name": "cf",
+			"version": "1.0.0-beta.19",
+			"dependencies": {
+				"miniflare": "5.20261019.0-beta",
+				"blake3-wasm": "2.1.5",
+				"@cloudflare/config": "0.27.0",
+				"@cloudflare/runtime-types": "0.1.13",
+				"@cloudflare/build-output-utils": "0.9.3"
+			},
+			"devDependencies": {
+				"msw": "3.0.3",
+				"tsx": "4.21.0",
+				"chalk": "6.0.1",
+				"yargs": "18.2.0",
+				"semver": "7.8.5",
+				"undici": "7.30.1",
+				"ci-info": "^4.4.0",
+				"esbuild": "0.28.2",
+				"figures": "6.1.0",
+				"tinyexec": "^1.3.1",
+				"minimatch": "10.2.6",
+				"vite-plus": "1.3.0",
+				"minisearch": "7.2.0",
+				"@clack/core": "1.5.1",
+				"@types/node": "25.9.9",
+				"shell-quote": "^1.12.0",
+				"@bomb.sh/tab": "0.0.22",
+				"@types/yargs": "17.0.35",
+				"@types/semver": "7.8.0",
+				"@clack/prompts": "^1.8.1",
+				"@cloudflare/forge": "https://pkg.pr.new/cloudflare/forge/@cloudflare/forge@ca70d7f5d88da223e243bca25810199876242ea6",
+				"@types/shell-quote": "^1.7.5",
+				"@cloudflare/codemods": "0.5.1",
+				"@bytecodealliance/jco": "1.39.0",
+				"@cloudflare/autoconfig": "0.7.10",
+				"@cloudflare/workers-auth": "0.14.0",
+				"@cloudflare/workers-utils": "0.47.2",
+				"@cloudflare/deploy-helpers": "0.22.0",
+				"@cloudflare/containers-shared": "0.23.0",
+				"@cloudflare/cli-shared-helpers": "0.2.6"
+			},
+			"bin": {
+				"cf": "./bin/cf",
+				"cloudflare": "./bin/cf"
+			},
+			"dist": {
+				"shasum": "15472dbe3931eadd29c551b5f08d845a2b78d8d6",
+				"tarball": "https://registry.npmjs.org/cf/-/cf-1.0.0-beta.19.tgz",
+				"fileCount": 268,
+				"integrity": "sha512-hFnYP15f7dRhmAXjy9+3DekbcR3Dr7vjRWA2W18nYpokEGmIUZdEHRjertzeFHphZgQkCi+ZImlFgP4JpNifYA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDynassMd8We7/MbZy6U/1CPrvGkuJBP8ZbMqayzKqCIgIhAMDmZmpCQjZz1+VKNChA47Ohrv0GBsV3RKPzZ/ewyajS",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIF0rtDQEk2NYmDgYn4wvUfMpHNl57/mQkeiAVh6YiyV9AiEA2qnN6yEEvRp7aCXd2ubAR5eDC9GiBsQ37kzr/wLfN4I="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/cf@1.0.0-beta.19",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 21975478
 			},
 			"engines": {
 				"node": ">=22"
