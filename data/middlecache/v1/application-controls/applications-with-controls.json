@@ -424,6 +424,42 @@
 								"contains_payload": false,
 								"operation_group": "Chat",
 								"operation_group_id": 1656
+							},
+							{
+								"operation_name": "TranscribeVoice",
+								"operation_id": 8025,
+								"application_control": "Voice",
+								"application_control_id": 1659,
+								"contains_payload": false,
+								"operation_group": "Chat",
+								"operation_group_id": 1656
+							},
+							{
+								"operation_name": "TranscribeVoice",
+								"operation_id": 8025,
+								"application_control": "Voice",
+								"application_control_id": 1659,
+								"contains_payload": false,
+								"operation_group": "Chat",
+								"operation_group_id": 1656
+							},
+							{
+								"operation_name": "SendPrompt",
+								"operation_id": 8021,
+								"application_control": "Prompt",
+								"application_control_id": 1657,
+								"contains_payload": true,
+								"operation_group": "Chat",
+								"operation_group_id": 1656
+							},
+							{
+								"operation_name": "SendPrompt",
+								"operation_id": 8021,
+								"application_control": "Prompt",
+								"application_control_id": 1657,
+								"contains_payload": true,
+								"operation_group": "Chat",
+								"operation_group_id": 1656
 							}
 						]
 					}
@@ -8456,60 +8492,6 @@
 								"operation_group_id": 3
 							},
 							{
-								"operation_name": "DownloadFile",
-								"operation_id": 8037,
-								"application_control": "Download",
-								"application_control_id": 19,
-								"contains_payload": true,
-								"operation_group": "Download",
-								"operation_group_id": 14
-							},
-							{
-								"operation_name": "UploadFile",
-								"operation_id": 8060,
-								"application_control": "Upload",
-								"application_control_id": 18,
-								"contains_payload": true,
-								"operation_group": "Upload",
-								"operation_group_id": 2
-							},
-							{
-								"operation_name": "DownloadFile",
-								"operation_id": 8037,
-								"application_control": "Download",
-								"application_control_id": 19,
-								"contains_payload": true,
-								"operation_group": "Download",
-								"operation_group_id": 14
-							},
-							{
-								"operation_name": "UploadFile",
-								"operation_id": 8060,
-								"application_control": "Upload",
-								"application_control_id": 18,
-								"contains_payload": true,
-								"operation_group": "Upload",
-								"operation_group_id": 2
-							},
-							{
-								"operation_name": "DownloadFile",
-								"operation_id": 8037,
-								"application_control": "Download",
-								"application_control_id": 19,
-								"contains_payload": true,
-								"operation_group": "Download",
-								"operation_group_id": 14
-							},
-							{
-								"operation_name": "UploadFile",
-								"operation_id": 8060,
-								"application_control": "Upload",
-								"application_control_id": 18,
-								"contains_payload": true,
-								"operation_group": "Upload",
-								"operation_group_id": 2
-							},
-							{
 								"operation_name": "GetDownloadLink",
 								"operation_id": 27,
 								"application_control": "Download",
@@ -8517,6 +8499,60 @@
 								"contains_payload": true,
 								"operation_group": "Download",
 								"operation_group_id": 14
+							},
+							{
+								"operation_name": "DownloadFile",
+								"operation_id": 8037,
+								"application_control": "Download",
+								"application_control_id": 19,
+								"contains_payload": true,
+								"operation_group": "Download",
+								"operation_group_id": 14
+							},
+							{
+								"operation_name": "UploadFile",
+								"operation_id": 8060,
+								"application_control": "Upload",
+								"application_control_id": 18,
+								"contains_payload": true,
+								"operation_group": "Upload",
+								"operation_group_id": 2
+							},
+							{
+								"operation_name": "DownloadFile",
+								"operation_id": 8037,
+								"application_control": "Download",
+								"application_control_id": 19,
+								"contains_payload": true,
+								"operation_group": "Download",
+								"operation_group_id": 14
+							},
+							{
+								"operation_name": "UploadFile",
+								"operation_id": 8060,
+								"application_control": "Upload",
+								"application_control_id": 18,
+								"contains_payload": true,
+								"operation_group": "Upload",
+								"operation_group_id": 2
+							},
+							{
+								"operation_name": "DownloadFile",
+								"operation_id": 8037,
+								"application_control": "Download",
+								"application_control_id": 19,
+								"contains_payload": true,
+								"operation_group": "Download",
+								"operation_group_id": 14
+							},
+							{
+								"operation_name": "UploadFile",
+								"operation_id": 8060,
+								"application_control": "Upload",
+								"application_control_id": 18,
+								"contains_payload": true,
+								"operation_group": "Upload",
+								"operation_group_id": 2
 							}
 						]
 					}
