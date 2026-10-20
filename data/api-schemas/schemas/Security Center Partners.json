@@ -907,6 +907,14 @@
 																"type": "string",
 																"example": "203.0.113.5",
 																"x-auditable": true
+															},
+															"issue_count": {
+																"description": "Number of active Security Center insights associated with the host. Present only in zone-level shadow-host responses.",
+																"type": "integer",
+																"format": "int64",
+																"example": 4,
+																"minimum": 0,
+																"x-auditable": true
 															}
 														},
 														"additionalProperties": false,
@@ -1311,6 +1319,14 @@
 																"description": "The IP address observed for the host.",
 																"type": "string",
 																"example": "203.0.113.5",
+																"x-auditable": true
+															},
+															"issue_count": {
+																"description": "Number of active Security Center insights associated with the host. Present only in zone-level shadow-host responses.",
+																"type": "integer",
+																"format": "int64",
+																"example": 4,
+																"minimum": 0,
 																"x-auditable": true
 															}
 														},

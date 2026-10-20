@@ -1959,6 +1959,27 @@
 			}
 		}
 	],
+	"PARAMETERS /accounts/{account_id}/managed-defense/vulnerability-discovery/repos/{repo_id}/token": [
+		{
+			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string",
+				"pattern": "^[a-f0-9]{32}$"
+			}
+		},
+		{
+			"in": "path",
+			"name": "repo_id",
+			"required": true,
+			"schema": {
+				"type": "string",
+				"format": "uuid"
+			}
+		}
+	],
 	"PARAMETERS /accounts/{account_id}/managed-defense/vulnerability-discovery/scans": [
 		{
 			"example": "023e105f4ecef8ad9ca31a8372d0c353",

@@ -1137112,7 +1137112,7 @@
 																				"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
 																			},
 																			"extra_prefixes": {
-																				"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																				"description": "IPv4 prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic\nrouting table. Each entry must be a network address in CIDR notation with no host bits set (for example\n`192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry.\n",
 																				"type": "array",
 																				"items": {
 																					"format": "cidr",
@@ -1137643,7 +1137643,7 @@
 																				"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
 																			},
 																			"extra_prefixes": {
-																				"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																				"description": "IPv4 prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic\nrouting table. Each entry must be a network address in CIDR notation with no host bits set (for example\n`192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry.\n",
 																				"type": "array",
 																				"items": {
 																					"format": "cidr",
@@ -1138167,7 +1138167,7 @@
 																			"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
 																		},
 																		"extra_prefixes": {
-																			"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																			"description": "IPv4 prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic\nrouting table. Each entry must be a network address in CIDR notation with no host bits set (for example\n`192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry.\n",
 																			"type": "array",
 																			"items": {
 																				"format": "cidr",
@@ -1138583,7 +1138583,7 @@
 												"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
 											},
 											"extra_prefixes": {
-												"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+												"description": "IPv4 prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic\nrouting table. Each entry must be a network address in CIDR notation with no host bits set (for example\n`192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry.\n",
 												"type": "array",
 												"items": {
 													"format": "cidr",
@@ -1138896,7 +1138896,7 @@
 																			"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
 																		},
 																		"extra_prefixes": {
-																			"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																			"description": "IPv4 prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic\nrouting table. Each entry must be a network address in CIDR notation with no host bits set (for example\n`192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry.\n",
 																			"type": "array",
 																			"items": {
 																				"format": "cidr",
@@ -1276121,7 +1276121,7 @@
 																				"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
 																			},
 																			"extra_prefixes": {
-																				"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																				"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.\nEach entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not\n`192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an\n`interface_address6`.\n",
 																				"type": "array",
 																				"items": {
 																					"format": "cidr",
@@ -1276534,7 +1276534,7 @@
 												"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
 											},
 											"extra_prefixes": {
-												"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+												"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.\nEach entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not\n`192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an\n`interface_address6`.\n",
 												"type": "array",
 												"items": {
 													"format": "cidr",
@@ -1276828,7 +1276828,7 @@
 																	"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
 																},
 																"extra_prefixes": {
-																	"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																	"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.\nEach entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not\n`192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an\n`interface_address6`.\n",
 																	"type": "array",
 																	"items": {
 																		"format": "cidr",
@@ -1277362,7 +1277362,7 @@
 																				"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
 																			},
 																			"extra_prefixes": {
-																				"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																				"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.\nEach entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not\n`192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an\n`interface_address6`.\n",
 																				"type": "array",
 																				"items": {
 																					"format": "cidr",
@@ -1277898,7 +1277898,7 @@
 																			"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
 																		},
 																		"extra_prefixes": {
-																			"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																			"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.\nEach entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not\n`192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an\n`interface_address6`.\n",
 																			"type": "array",
 																			"items": {
 																				"format": "cidr",
@@ -1278427,7 +1278427,7 @@
 																			"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
 																		},
 																		"extra_prefixes": {
-																			"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																			"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.\nEach entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not\n`192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an\n`interface_address6`.\n",
 																			"type": "array",
 																			"items": {
 																				"format": "cidr",
@@ -1279120,7 +1279120,7 @@
 																			"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
 																		},
 																		"extra_prefixes": {
-																			"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																			"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.\nEach entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not\n`192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an\n`interface_address6`.\n",
 																			"type": "array",
 																			"items": {
 																				"format": "cidr",
@@ -1279646,7 +1279646,7 @@
 																				"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
 																			},
 																			"extra_prefixes": {
-																				"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																				"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.\nEach entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not\n`192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an\n`interface_address6`.\n",
 																				"type": "array",
 																				"items": {
 																					"format": "cidr",
@@ -1280073,7 +1280073,7 @@
 														"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
 													},
 													"extra_prefixes": {
-														"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+														"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.\nEach entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not\n`192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an\n`interface_address6`.\n",
 														"type": "array",
 														"items": {
 															"format": "cidr",
@@ -1280378,7 +1280378,7 @@
 																	"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
 																},
 																"extra_prefixes": {
-																	"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																	"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.\nEach entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not\n`192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an\n`interface_address6`.\n",
 																	"type": "array",
 																	"items": {
 																		"format": "cidr",
@@ -1280929,7 +1280929,7 @@
 																				"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
 																			},
 																			"extra_prefixes": {
-																				"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																				"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.\nEach entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not\n`192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an\n`interface_address6`.\n",
 																				"type": "array",
 																				"items": {
 																					"format": "cidr",
@@ -1281482,7 +1281482,7 @@
 																			"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
 																		},
 																		"extra_prefixes": {
-																			"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																			"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.\nEach entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not\n`192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an\n`interface_address6`.\n",
 																			"type": "array",
 																			"items": {
 																				"format": "cidr",
@@ -1282028,7 +1282028,7 @@
 																			"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
 																		},
 																		"extra_prefixes": {
-																			"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																			"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.\nEach entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not\n`192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an\n`interface_address6`.\n",
 																			"type": "array",
 																			"items": {
 																				"format": "cidr",
@@ -1282464,7 +1282464,7 @@
 												"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
 											},
 											"extra_prefixes": {
-												"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+												"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.\nEach entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not\n`192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an\n`interface_address6`.\n",
 												"type": "array",
 												"items": {
 													"format": "cidr",
@@ -1282774,7 +1282774,7 @@
 																			"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
 																		},
 																		"extra_prefixes": {
-																			"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																			"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.\nEach entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not\n`192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an\n`interface_address6`.\n",
 																			"type": "array",
 																			"items": {
 																				"format": "cidr",
@@ -1302931,6 +1302931,7 @@
 																"pattern": "^[A-Za-z0-9_.-]+$"
 															},
 															"readiness": {
+																"description": "Source state. `awaiting_source`: the upload repository's default branch has no commits yet. `processing`: an import is in progress. `ready`: source is available. `failed`: the Worker import failed or could not be verified.",
 																"type": "string",
 																"enum": [
 																	"awaiting_source",
@@ -1303149,7 +1303150,7 @@
 			"post": {
 				"operationId": "createAccountVulnerabilityDiscoveryRepository",
 				"summary": "Create repository",
-				"description": "Creates an upload repository or reserves an asynchronous deployed Worker import by name. Worker imports require Idempotency-Key.",
+				"description": "Creates an upload repository or reserves an asynchronous deployed Worker import by name. Worker imports require Idempotency-Key. Push upload source to `main` or specify the `branch` to scan in the scan request.",
 				"parameters": [
 					{
 						"description": "Optional. Supply this header to safely retry a request. Required when `worker_script_name` is supplied.",
@@ -1303299,6 +1303300,7 @@
 																			"pattern": "^[A-Za-z0-9_.-]+$"
 																		},
 																		"readiness": {
+																			"description": "Source state. `awaiting_source`: the upload repository's default branch has no commits yet. `processing`: an import is in progress. `ready`: source is available. `failed`: the Worker import failed or could not be verified.",
 																			"type": "string",
 																			"enum": [
 																				"awaiting_source",
@@ -1303396,6 +1303398,7 @@
 																			"pattern": "^[A-Za-z0-9_.-]+$"
 																		},
 																		"readiness": {
+																			"description": "Source state. `awaiting_source`: the upload repository's default branch has no commits yet. `processing`: an import is in progress. `ready`: source is available. `failed`: the Worker import failed or could not be verified.",
 																			"type": "string",
 																			"enum": [
 																				"awaiting_source",
@@ -1303547,6 +1303550,7 @@
 																			"pattern": "^[A-Za-z0-9_.-]+$"
 																		},
 																		"readiness": {
+																			"description": "Source state. `awaiting_source`: the upload repository's default branch has no commits yet. `processing`: an import is in progress. `ready`: source is available. `failed`: the Worker import failed or could not be verified.",
 																			"type": "string",
 																			"enum": [
 																				"awaiting_source",
@@ -1303644,6 +1303648,7 @@
 																			"pattern": "^[A-Za-z0-9_.-]+$"
 																		},
 																		"readiness": {
+																			"description": "Source state. `awaiting_source`: the upload repository's default branch has no commits yet. `processing`: an import is in progress. `ready`: source is available. `failed`: the Worker import failed or could not be verified.",
 																			"type": "string",
 																			"enum": [
 																				"awaiting_source",
@@ -1303993,6 +1303998,7 @@
 																	"pattern": "^[A-Za-z0-9_.-]+$"
 																},
 																"readiness": {
+																	"description": "Source state. `awaiting_source`: the upload repository's default branch has no commits yet. `processing`: an import is in progress. `ready`: source is available. `failed`: the Worker import failed or could not be verified.",
 																	"type": "string",
 																	"enum": [
 																		"awaiting_source",
@@ -1304580,6 +1304586,15 @@
 																				"maxLength": 4000,
 																				"minLength": 1
 																			},
+																			"impact_ids": {
+																				"description": "Accepted settled impact-charter premises cited by the finding. Optional on legacy report revisions.",
+																				"type": "array",
+																				"items": {
+																					"pattern": "^impact-[0-9a-f]{12}$",
+																					"type": "string"
+																				},
+																				"maxItems": 32
+																			},
 																			"location": {
 																				"type": "object",
 																				"additionalProperties": false,
@@ -1304724,6 +1304739,15 @@
 																					"state",
 																					"references"
 																				]
+																			},
+																			"threat_ids": {
+																				"description": "Accepted settled threat-model premises cited by the finding. Optional on legacy report revisions.",
+																				"type": "array",
+																				"items": {
+																					"pattern": "^threat-[0-9a-f]{12}$",
+																					"type": "string"
+																				},
+																				"maxItems": 32
 																			},
 																			"title": {
 																				"type": "string",
@@ -1305374,6 +1305398,165 @@
 					"404": {
 						"description": "Requested resource was not found."
 					},
+					"409": {
+						"description": "The scan is still in progress (`report_not_ready`, code 10014).",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 10005,
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string",
+														"example": "The request is invalid."
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												]
+											},
+											"minItems": 1
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 10005,
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string",
+														"example": "The request is invalid."
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												]
+											}
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							}
+						}
+					},
+					"410": {
+						"description": "The scan request was rejected and no report will be produced (`report_not_produced`, code 10020).",
+						"content": {
+							"application/json": {
+								"example": {
+									"errors": [
+										{
+											"code": 10020,
+											"message": "No report will be produced for this scan."
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								},
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 10005,
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string",
+														"example": "The request is invalid."
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												]
+											},
+											"minItems": 1
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 10005,
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string",
+														"example": "The request is invalid."
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												]
+											}
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							}
+						}
+					},
 					"4XX": {
 						"description": "Request failed.",
 						"content": {
@@ -1305568,6 +1305751,304 @@
 					}
 				}
 			]
+		},
+		"/accounts/{account_id}/managed-defense/vulnerability-discovery/repos/{repo_id}/token": {
+			"parameters": [
+				{
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"in": "path",
+					"name": "account_id",
+					"required": true,
+					"schema": {
+						"type": "string",
+						"pattern": "^[a-f0-9]{32}$"
+					}
+				},
+				{
+					"in": "path",
+					"name": "repo_id",
+					"required": true,
+					"schema": {
+						"type": "string",
+						"format": "uuid"
+					}
+				}
+			],
+			"post": {
+				"operationId": "createAccountVulnerabilityDiscoveryRepositoryToken",
+				"summary": "Create upload token",
+				"description": "Creates a one-hour write token for an existing upload repository. Worker-imported repositories are system-managed and cannot receive upload tokens.",
+				"responses": {
+					"200": {
+						"description": "Upload token created.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"code": {
+																"type": "integer",
+																"example": 10005,
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string",
+																"example": "The request is invalid."
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														]
+													}
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"code": {
+																"type": "integer",
+																"example": 10005,
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string",
+																"example": "The request is invalid."
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														]
+													}
+												},
+												"success": {
+													"type": "boolean",
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object",
+													"properties": {
+														"expires_in": {
+															"type": "integer",
+															"enum": [
+																3600
+															]
+														},
+														"remote": {
+															"type": "string",
+															"format": "uri",
+															"maxLength": 2048
+														},
+														"token": {
+															"type": "string",
+															"maxLength": 8192,
+															"minLength": 1
+														}
+													},
+													"required": [
+														"remote",
+														"token",
+														"expires_in"
+													]
+												}
+											},
+											"required": [
+												"result"
+											],
+											"type": "object"
+										}
+									]
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Requested resource was not found."
+					},
+					"4XX": {
+						"description": "Request failed.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 10005,
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string",
+														"example": "The request is invalid."
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												]
+											},
+											"minItems": 1
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 10005,
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string",
+														"example": "The request is invalid."
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												]
+											}
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							}
+						}
+					},
+					"5XX": {
+						"description": "Request failed.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 10005,
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string",
+														"example": "The request is invalid."
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												]
+											},
+											"minItems": 1
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 10005,
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string",
+														"example": "The request is invalid."
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												]
+											}
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
+					}
+				],
+				"tags": [
+					"Vulnerability Discovery"
+				],
+				"x-fern-sdk-group-name": "managed-defense.vulnerability-discovery.repositories",
+				"x-fern-sdk-method-name": "createToken"
+			}
 		},
 		"/accounts/{account_id}/managed-defense/vulnerability-discovery/scans": {
 			"get": {
@@ -1306078,7 +1306559,7 @@
 			"post": {
 				"operationId": "createAccountVulnerabilityDiscoveryScan",
 				"summary": "Create scan",
-				"description": "Submits repository intent for operator review. This endpoint does not immediately start execution. Worker-imported repositories must be ready; explicit `repo_hosts` must be authorized before the request is persisted.",
+				"description": "Submits repository intent for operator review. This endpoint does not immediately start execution. Worker-imported repositories must be ready; explicit repository host scopes must be authorized and explicit branch selections must exist before the request is persisted.",
 				"parameters": [
 					{
 						"description": "Optional. Supply this header to safely retry a request. Required when `worker_script_name` is supplied.",
@@ -1306099,27 +1306580,43 @@
 							"schema": {
 								"type": "object",
 								"properties": {
-									"repo_hosts": {
-										"description": "Explicit hostname scopes. Every hostname must be authorized for its repository before review admission; rejected scopes return 422 and do not persist a scan request.",
-										"type": "object",
-										"additionalProperties": {
-											"items": {
-												"maxLength": 253,
-												"minLength": 1,
-												"pattern": "^[A-Za-z0-9][A-Za-z0-9.-]*[A-Za-z0-9]$",
-												"type": "string"
-											},
-											"maxItems": 20,
-											"minItems": 1,
-											"type": "array",
-											"uniqueItems": true
-										}
-									},
 									"repos": {
+										"description": "Repository names must be unique within a request.",
 										"type": "array",
 										"items": {
-											"format": "uuid",
-											"type": "string"
+											"additionalProperties": false,
+											"properties": {
+												"branch": {
+													"description": "Branch to scan. Defaults to the repository's default branch.",
+													"type": "string",
+													"maxLength": 255,
+													"minLength": 1,
+													"pattern": "^[A-Za-z0-9][A-Za-z0-9._/-]*$"
+												},
+												"hosts": {
+													"description": "Explicit hostname scopes. Every hostname must be authorized for this repository before review admission; rejected scopes return 422 and do not persist a scan request.",
+													"type": "array",
+													"items": {
+														"maxLength": 253,
+														"minLength": 1,
+														"pattern": "^[A-Za-z0-9][A-Za-z0-9.-]*[A-Za-z0-9]$",
+														"type": "string"
+													},
+													"maxItems": 20,
+													"minItems": 1,
+													"uniqueItems": true
+												},
+												"name": {
+													"type": "string",
+													"maxLength": 255,
+													"minLength": 1,
+													"pattern": "^[a-zA-Z0-9_.-]+$"
+												}
+											},
+											"required": [
+												"name"
+											],
+											"type": "object"
 										},
 										"maxItems": 100,
 										"minItems": 1,
@@ -1306444,7 +1306941,7 @@
 						}
 					},
 					"422": {
-						"description": "An explicit repository hostname scope is invalid or unauthorized (`invalid_request`); no scan request is persisted.",
+						"description": "An explicit repository hostname scope or branch is invalid, unauthorized, or missing (`invalid_request`); no scan request is persisted.",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -1307309,6 +1307806,15 @@
 																									"maxLength": 4000,
 																									"minLength": 1
 																								},
+																								"impact_ids": {
+																									"description": "Accepted settled impact-charter premises cited by the finding. Optional on legacy report revisions.",
+																									"type": "array",
+																									"items": {
+																										"pattern": "^impact-[0-9a-f]{12}$",
+																										"type": "string"
+																									},
+																									"maxItems": 32
+																								},
 																								"location": {
 																									"type": "object",
 																									"additionalProperties": false,
@@ -1307453,6 +1307959,15 @@
 																										"state",
 																										"references"
 																									]
+																								},
+																								"threat_ids": {
+																									"description": "Accepted settled threat-model premises cited by the finding. Optional on legacy report revisions.",
+																									"type": "array",
+																									"items": {
+																										"pattern": "^threat-[0-9a-f]{12}$",
+																										"type": "string"
+																									},
+																									"maxItems": 32
 																								},
 																								"title": {
 																									"type": "string",
@@ -1308167,6 +1308682,165 @@
 					},
 					"404": {
 						"description": "Requested resource was not found."
+					},
+					"409": {
+						"description": "The scan is still in progress (`report_not_ready`, code 10014).",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 10005,
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string",
+														"example": "The request is invalid."
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												]
+											},
+											"minItems": 1
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 10005,
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string",
+														"example": "The request is invalid."
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												]
+											}
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							}
+						}
+					},
+					"410": {
+						"description": "The scan request was rejected and no report will be produced (`report_not_produced`, code 10020).",
+						"content": {
+							"application/json": {
+								"example": {
+									"errors": [
+										{
+											"code": 10020,
+											"message": "No report will be produced for this scan."
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								},
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 10005,
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string",
+														"example": "The request is invalid."
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												]
+											},
+											"minItems": 1
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 10005,
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string",
+														"example": "The request is invalid."
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												]
+											}
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							}
+						}
 					},
 					"4XX": {
 						"description": "Request failed.",
@@ -1313222,12 +1313896,6 @@
 						}
 					}
 				],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {}
-					}
-				},
 				"responses": {
 					"200": {
 						"description": "Delete account configuration response",
@@ -1318349,12 +1319017,6 @@
 						}
 					}
 				],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {}
-					}
-				},
 				"responses": {
 					"200": {
 						"description": "Delete rule response",
@@ -1320260,12 +1320922,6 @@
 						}
 					}
 				],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {}
-					}
-				},
 				"responses": {
 					"200": {
 						"description": "Update advertisement for rule response",
@@ -1321374,7 +1322030,11 @@
 				],
 				"x-api-token-group": [
 					"Magic Network Monitoring Admin"
-				]
+				],
+				"x-fern-availability": "generally-available",
+				"x-fern-sdk-group-name": "magic-network-monitoring.rules.bulk",
+				"x-fern-sdk-method-name": "create",
+				"x-forge-hidden": true
 			},
 			"put": {
 				"operationId": "magic-network-monitoring-rules-update-rules-bulk",
@@ -1322121,8 +1322781,8 @@
 					"Magic Network Monitoring Config Write"
 				],
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "magic-network-monitoring.rules",
-				"x-fern-sdk-method-name": "edit",
+				"x-fern-sdk-group-name": "magic-network-monitoring.rules.bulk",
+				"x-fern-sdk-method-name": "update",
 				"x-forge-hidden": true
 			}
 		},
@@ -1635948,6 +1636608,14 @@
 																		"type": "string",
 																		"example": "203.0.113.5",
 																		"x-auditable": true
+																	},
+																	"issue_count": {
+																		"description": "Number of active Security Center insights associated with the host. Present only in zone-level shadow-host responses.",
+																		"type": "integer",
+																		"format": "int64",
+																		"example": 4,
+																		"minimum": 0,
+																		"x-auditable": true
 																	}
 																},
 																"additionalProperties": false,
@@ -1636802,6 +1637470,7 @@
 															},
 															"value": {
 																"description": "Current value of the feature setting.",
+																"type": "string",
 																"example": "on",
 																"x-auditable": true
 															}
@@ -1921676,6 +1922345,61 @@
 					},
 					"400": {
 						"description": "Bad Request.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"messages",
+										"errors",
+										"result"
+									]
+								}
+							}
+						}
+					},
+					"409": {
+						"description": "Workflow jurisdiction cannot be changed.",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -2624740,6 +2625464,14 @@
 																		"description": "The IP address observed for the host.",
 																		"type": "string",
 																		"example": "203.0.113.5",
+																		"x-auditable": true
+																	},
+																	"issue_count": {
+																		"description": "Number of active Security Center insights associated with the host. Present only in zone-level shadow-host responses.",
+																		"type": "integer",
+																		"format": "int64",
+																		"example": 4,
+																		"minimum": 0,
 																		"x-auditable": true
 																	}
 																},
