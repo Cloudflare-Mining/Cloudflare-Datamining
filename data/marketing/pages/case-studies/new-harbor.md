@@ -68,7 +68,7 @@ New Harbor is now expanding its platform, growing its team, and reaching more or
 
 For New Harbor, Cloudflare isn't just a tool. It's a critical part of making their vision a reality. 
 
-![New Harbor logo](https://cf-assets.www.cloudflare.com/dzlvafdwdttg/7b7b2xVKVpmRVPncXFXqjd/21de77536399f341de0e5b493964b3dc/logo-new-harbor.png) 
+![New Harbor logo](https://cf-assets.www.cloudflare.com/slt3lc6tev37/70u4pEr8vG96oIKC7HhgGX/d15373c00f421bc7acc6067c7f2d3500/new-harbor-logo-case-study.png) 
 
 New Harbor is on a mission to make cybersecurity simple. Cloudflare is how they're building it.
 

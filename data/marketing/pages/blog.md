@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+October 21, 2026 [<h2>How Commerce.com and Cloudflare are getting storefronts ready for AI agents</h2>](https://blog.cloudflare.com/webmcp-commerce/)
+
+Almost 100,000 Commerce.com domains now give AI agents real shopping tools through WebMCP on Cloudflare. Here's how we turned it on across every store at once, while keeping each merchant in control.
+
+![Jenny Lea](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AYXNDF4KMCR86PP29ANNS2.01M5AYXP6FTHD6G8SRE703MNH7.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Max Brosnahan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AZ7KZVQ4CXW8ABKK47FTR8.01M5AZ7MWFZHG2Y8WMY47NR4JA.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Matthew Conroy](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW1QZW47KMHA09RY62FC.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Jenny Lea](https://blog.cloudflare.com/author/jenny-lea/),  [Max Brosnahan](https://blog.cloudflare.com/author/max-brosnahan/), and  [Matthew Conroy](https://blog.cloudflare.com/author/matthew-conroy/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AYSA5Z4MMJ6XYBSMECP05T.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/webmcp-commerce/)
+
 October 20, 2026 [<h2>8 eMudhra certificates are compromised. Here's what you need to know</h2>](https://blog.cloudflare.com/emudhra-certificate-compromise/)
 
 Following the discovery that eight eMudhra intermediate certificates use weak keys, Cloudflare is deploying mitigations and releasing client updates. We explain the impact, our response, and what customers and developers should do next.
@@ -17,8 +27,6 @@ Following the discovery that eight eMudhra intermediate certificates use weak ke
 ![Christopher Patton](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471WT491ZC11M0S5HA34X3.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Bas Westerbaan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46N3BWJ6WS6790KRRJ4RWD.png&w=64&h=64&f=webp&fit=cover&position=center)![Trishna](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW473JDQZAHNE7Y35PPZ0HNB.webp&w=64&h=64&f=webp&fit=cover&position=center)![Jeremy Hartman](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44YJSKH239C2RVYTF2NVMJ.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Christopher Patton](https://blog.cloudflare.com/author/christopher-patton/),  [Bas Westerbaan](https://blog.cloudflare.com/author/bas/),  [Trishna](https://blog.cloudflare.com/author/trishna/), and  [Jeremy Hartman](https://blog.cloudflare.com/author/jeremy-hartman/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5DK5FY53PEFH46MT990YMSR.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/emudhra-certificate-compromise/)
 
 October 20, 2026 [<h2>Introducing tsrs: A port of TypeScript to Rust</h2>](https://blog.cloudflare.com/typescript-rust-port/)
 
@@ -155,14 +163,6 @@ We redesigned Cloudflare Radar to make real-time global traffic and outage data 
 ![Sophia Alfred](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M34XNPH605RFZSSKT2WGV62K.01M34XNQ1CGJKMAJX9V0QX0V78.webp&w=64&h=64&f=webp&fit=cover&position=center)![Lai Yi Ohlsen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DGMNXAW2CZQQAX92W97V.png&w=64&h=64&f=webp&fit=cover&position=center)![Nuno Pereira](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463BH7YG5WV285FY6MG1BA.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Sophia Alfred](https://blog.cloudflare.com/author/sophia-alfred/),  [Lai Yi Ohlsen](https://blog.cloudflare.com/author/lai-yi-ohlsen/), and  [Nuno Pereira](https://blog.cloudflare.com/author/nuno-pereira/)
-
-October 7, 2026 [<h2>Building an evidence-grounded agentic security operations harness on Cloudflare</h2>](https://blog.cloudflare.com/agentic-security-operations/)
-
-Cloudflare Managed Defense uses a team of specialized AI agents built on Workers and global network telemetry to analyze security alerts. By separating deterministic evidence collection from model inference, the system delivers grounded recommendations to Managed Defense Analysts.
-
-![Deanna Tran](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M32RWM8D9ND7N90HFR9H9QQT.01M32RWMV6K9V55M6CMKAXE9PC.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Javier Castro](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4674A41YFNM3KJ161Z4WRB.png&w=64&h=64&f=webp&fit=cover&position=center)![Jacob Crisp](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468SZ92CTQZG9K5AR69G1E.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Blake Darché](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46VFGSFTVH9S7TKX7T5BAC.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Deanna Tran](https://blog.cloudflare.com/author/deanna-tran/),  [Javier Castro](https://blog.cloudflare.com/author/javier/),  [Jacob Crisp](https://blog.cloudflare.com/author/jacob-crisp/), and  [Blake Darché](https://blog.cloudflare.com/author/blake/)
 
 Load more
 
