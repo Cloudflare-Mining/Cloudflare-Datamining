@@ -2,7 +2,7 @@
 	"description": "Created by the Cloudflare security team, this ruleset is designed to provide protection for free zones",
 	"id": "77454fe2d30c4220b5701f6fdfb893ba",
 	"kind": "managed",
-	"last_updated": "2026-10-20T23:20:20.447103Z",
+	"last_updated": "2026-10-21T08:43:23.931787Z",
 	"name": "Cloudflare Managed Free Ruleset",
 	"phase": "http_request_firewall_managed",
 	"rules": [
@@ -51,11 +51,71 @@
 			"categories": [
 				"anomaly"
 			],
+			"description": "Generic Rules - Anomalous Execution - 2",
+			"enabled": true,
+			"id": "00c10e6cc4da4bd08722adeebcd95984",
+			"last_updated": "2026-10-21T02:33:15.296104Z",
+			"ref": "8113810430568ae39089ca179689535f",
+			"version": "1"
+		},
+		{
+			"action": "block",
+			"categories": [
+				"anomaly"
+			],
 			"description": "Generic Rules - Anomalous Execution - 3",
 			"enabled": true,
 			"id": "48ddf592361e4fdb97a8a85982dab691",
 			"last_updated": "2026-10-20T23:20:20.447103Z",
 			"ref": "6593f0d2d4a4cff3acb34a9e753db707",
+			"version": "1"
+		},
+		{
+			"action": "block",
+			"categories": [
+				"anomaly"
+			],
+			"description": "Generic Rules - Anomalous Execution - 4",
+			"enabled": true,
+			"id": "3556683d512a47f2937899c524b1a4c6",
+			"last_updated": "2026-10-21T02:33:15.296104Z",
+			"ref": "d0e78f5c7b9a7960bf069fcf5724eed5",
+			"version": "1"
+		},
+		{
+			"action": "block",
+			"categories": [
+				"anomaly"
+			],
+			"description": "Generic Rules - Anomalous Execution - 5",
+			"enabled": true,
+			"id": "da07c85852e34625bb478496302ede46",
+			"last_updated": "2026-10-21T08:43:23.931787Z",
+			"ref": "ec377b3d598bff3fcd2dbedd2b831625",
+			"version": "1"
+		},
+		{
+			"action": "block",
+			"categories": [
+				"anomaly"
+			],
+			"description": "Generic Rules - Anomalous Execution - 6",
+			"enabled": true,
+			"id": "19373a83abb840e18ab3ce5a7975ce1b",
+			"last_updated": "2026-10-21T08:43:23.931787Z",
+			"ref": "28e2e90a2c1ef7fb82d32e697207bb9e",
+			"version": "1"
+		},
+		{
+			"action": "block",
+			"categories": [
+				"anomaly"
+			],
+			"description": "Generic Rules - Anomalous Execution - 7",
+			"enabled": true,
+			"id": "07f0b6ddaabf40b1b2042dade8d613fa",
+			"last_updated": "2026-10-21T08:43:23.931787Z",
+			"ref": "10859ab3710047fd535018c9dc44b2bb",
 			"version": "1"
 		},
 		{
@@ -482,5 +542,5 @@
 		}
 	],
 	"source": "firewall_managed",
-	"version": "75"
+	"version": "77"
 }
