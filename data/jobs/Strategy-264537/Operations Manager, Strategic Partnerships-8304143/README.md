@@ -3,52 +3,58 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Location:&nbsp;</strong>Austin, TX</p>
-<p><strong>Job Title&nbsp;</strong></p>
-<p>Oracle Procurement Lead</p>
-<p>&nbsp;</p>
-<p><strong>Role Summary</strong></p>
-<p>The Oracle Procurement Lead is a key Architect responsible for driving the strategy, solution architecture and execution of our global procurement technology ecosystem. Our architecture leverages Oracle Fusion Cloud as our procurement and financial system of record with Zip as the orchestration layer.</p>
-<p>The ideal candidate is a Procurement technologist and architect who understands the nuances of the entire ERP Source-to-Pay (S2P) lifecycle. You will bridge the gap between user-centric intake and rigorous financial controls, ensuring that complex business requirements from Legal, Finance, and Global Sourcing are translated into seamless, automated workflows that maintain data integrity across both Zip and Oracle</p>
-<p>&nbsp;</p>
-<p><strong>Role Responsibilities:</strong></p>
+<p><strong>Available Locations:&nbsp;</strong>Austin, TX; San Francisco, CA; New York City</p>
+<p><strong>About the role</strong></p>
+<p>Cloudflare’s Strategic Partnerships team operates at the intersection of technology, media, and emergent AI business models. We sit at the tip of the spear—bridging what Cloudflare builds with executive market needs, navigating complex ecosystem shifts, and driving "zero-to-one" commercial and strategic initiatives.</p>
+<p>We are seeking a&nbsp;<strong>Strategic Partnerships Operations Manager</strong> to bring structural rigor, operational efficiency, and scalable execution to our team. In this role, you will be the connective tissue between Strategic Partnerships and core internal functions like Product Management, Engineering, Sales, and Product Marketing.</p>
+<h4><strong>What you'll do</strong></h4>
+<p>You will design and run the team's operational backbone, build mechanisms to synthesize and scale external feedback back into our product roadmaps, and craft high-impact collateral for new solutions we bring to market. The ideal candidate possesses deep technical fluency, operates with high autonomy, and leverages modern AI tools to scale their impact.</p>
+<p><strong>Responsibilities</strong></p>
+<p><strong>1. Operational Infrastructure &amp; Rhythm</strong></p>
 <ul>
-	<li><strong>Solution Architecture:</strong> Define and maintain the long-term technical architecture for the procurement ecosystem, ensuring system scalability, security, and seamless interoperability between Zip and Oracle Fusion.</li>
-	<li><strong>End-to-End Process Architecture:</strong> Design and optimize the global S2P process, ensuring a frictionless hand-off between upstream sourcing/intake and downstream purchasing/payables (Oracle Fusion).</li>
-	<li><strong>Platform Configuration:</strong> Act as the functional lead for Oracle Fusion Procurement. Build complex intake workflows and configure Requisitioning, Purchasing, and Supplier Portals in Oracle to match.</li>
-	<li><strong>Integration Ecosystem Management:</strong> Own the functional health of the Oracle procurement systems integration. Monitor data flow for Requisitions, Purchase Orders, and Supplier Master Data, Compliance screening, ensuring that "In-Flight" changes in one system are accurately reflected in the other.</li>
-	<li><strong>Strategic Business Partnership:</strong> Lead discovery sessions with Global Procurement, Legal, and Accounting. Translate high-level business policies&nbsp; into precise logic within the tech stack.</li>
-	<li><strong>Data Governance &amp; Compliance:</strong> Ensure that the "System of Record" (Oracle) remains audit-ready. Manage the mapping of Category Codes, Cost Centers, and Tax attributes between the Zip and the Oracle GL.</li>
-	<li><strong>Release Management:</strong> Manage the quarterly update cycles for Oracle. Conduct impact assessments on new features to ensure no disruption to the integrated workflow.</li>
-	<li><strong>AI Procurement Agent Strategy &amp; Governance:</strong> Lead the adoption and functional governance of Oracle's embedded and custom AI agents (e.g., Procurement Policy Advisor), ensuring all AI-driven automation and outputs within the S2P process are compliant, auditable, and drive process efficiency.</li>
-	<li><strong>Oracle Fusion Lifecycle Management:</strong> Oversee the full lifecycle management within Oracle Fusion, including requisitioning, purchase orders, receipts, and invoice matching to ensure accurate financial reporting and spend visibility.</li>
-	<li><strong>Oracle Fusion Supplier &amp; Trade Configuration:</strong> Configure and maintain Oracle Fusion supplier master data, trade management workflows, and complex approval hierarchies to support global procurement needs.</li>
+	<li><strong>Design &amp; Scale Team Cadences:</strong> Establish project management frameworks, tracking systems, and operational rhythms for the Strategic Partnerships organization to ensure visibility across high-stakes initiatives.</li>
+	<li><strong>Workflow Automation:</strong> Utilize modern AI tools and automated workflows to centralize partner data, streamline pipeline management, and reduce manual reporting overhead.</li>
+	<li><strong>Resource &amp; Initiative Management:</strong> Serve as the central point of operational contact, tracking partner milestones, pilot launches, and cross-functional commitments.</li>
 </ul>
-<p><strong>Role Requirements&nbsp;</strong></p>
-<p><strong>Must-Have Skills</strong></p>
+<p><strong>2. Cross-Functional Feedback Loops</strong></p>
 <ul>
-	<li>10+ years<strong> </strong>of hands-on experience in Oracle Procurement (Self-Service Procurement, Sourcing, Purchasing, Supplier Model, Contracts).&nbsp;</li>
-	<li>5+ years of experience in Oracle Fusion Procurement.</li>
-	<li>Deep understanding of the Source-to-Pay (S2P) lifecycle, including PR/PO lifecycle, Accounting, and Contract Lifecycle Management (CLM).</li>
-	<li>Proven experience managing API-based integrations between Intake-to-Procure tools and Tier-1 ERPs. You should understand how a requisition "Approval" translates into an Oracle "Approved Requisition."</li>
-	<li>Ability to map complex, cross-functional business processes and identify opportunities for automation or bottleneck removal.</li>
-	<li>Experience establishing technical standards and governing system changes in a live production environment.</li>
-	<li>Certifications in relevant Oracle Fusion Cloud Procurement module.</li>
+	<li><strong>Synthesize Market Signals:</strong> Capture, structure, and synthesize qualitative and quantitative insights gathered from key executive partners, publishers, and AI platforms.</li>
+	<li><strong>Bridge Strategy, Product, &amp; Sales:</strong> Build repeatable feedback loops with Product Management and Engineering to inform product roadmaps based on partner requirements and emerging ecosystem trends.</li>
+	<li><strong>Field &amp; Enablement Alignment:</strong> Partner with Sales and Go-To-Market teams to ensure partner learnings, tactical objection handling, and market narratives are operationalized across customer-facing teams.</li>
 </ul>
-<p><strong>Nice-To-Have Skills</strong></p>
+<p><strong>3. Product Collateral &amp; Go-To-Market Execution</strong></p>
 <ul>
-	<li>Experience in an organization transitioning to Oracle Cloud Ecosystem.</li>
-	<li>Hands-on experience with Oracle Fusion Global Trade Management system..</li>
-	<li>Third-party supporting software experience like Ironclad, Navan, etc..</li>
-	<li>Exposure to the Data Center Infrastructure industry.</li>
-	<li>Working knowledge of AI Agent Studio for Oracle Fusion Cloud Applications.</li>
+	<li><strong>Collateral Architecture:</strong> Create executive-ready product collateral—such as message houses, solution one-sheets, presentation decks, and enablement briefs—to commercialize strategic initiatives.</li>
+	<li><strong>Technical Storytelling:</strong> Translate complex technical infrastructure, AI Gateway mechanisms, crawler policies, and edge-computing capabilities into clear, compelling narratives for external partners and internal leaders.</li>
+	<li><strong>Launch &amp; Pilot Enablement:</strong> Coordinate pilot rollouts and partnership launches, ensuring marketing, product documentation, and collateral are aligned for external execution.</li>
 </ul>
-<p><br><br><br></p>
-<h3>Equity</h3>
-<p>This role is eligible to participate in Cloudflare's equity plan.</p>
-<h3>Benefits</h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p>Health &amp; Welfare Benefits</p>
+<p><strong>Who You Are</strong></p>
+<ul>
+	<li><strong>Execution-Driven &amp; Structured:</strong> You bring order to ambiguous environment. You enjoy building processes from scratch and making team operations run like clockwork.</li>
+	<li><strong>Technically Fluent:</strong> You understand modern internet infrastructure, APIs, web crawling, and the AI/LLM ecosystem. You can comfortably engage with product managers and engineers on technical nuances.</li>
+	<li><strong>AI-Native Mindset:</strong> You actively use AI tools (e.g., ChatGPT, Claude, Gemini, workflow automation agents) in your daily work to multiply your output, synthesize data, and automate routine tasks.</li>
+	<li><strong>Master Communicator:</strong> You possess exceptional written and visual storytelling skills. You can distill dense technical details into crisp, polished executive collateral.</li>
+	<li><strong>Collaborative &amp; Proactive:</strong> You thrive in cross-functional matrixed environments. You don't wait for a playbook—you build it while collaborating seamlessly across teams.</li>
+</ul>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<ul>
+	<li><strong>Experience:</strong> 5+ years of experience in Business Operations, Strategic Partnerships, Product Marketing, Management Consulting, or Program Management within a high-growth tech environment.</li>
+	<li><strong>Technical Aptitude:</strong> Demonstrated ability to comprehend complex technical products, platform infrastructure, or developer tools.</li>
+	<li><strong>Track Record:</strong> Proven success in establishing cross-functional operating models and authoring external customer/partner collateral.</li>
+	<li><strong>AI Tooling Proficiency:</strong> Experience leveraging AI platforms and automation tools to scale personal and team workflows.</li>
+	<li><strong>Location:</strong> Based in or willing to work hybrid from Cloudflare’s <strong>San Francisco, CA,</strong>&nbsp;<strong>New York, NY&nbsp;</strong>or&nbsp;<strong>Austin, TX</strong> offices.</li>
+</ul>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li><span data-sheets-root="1">For San Francisco based hires: Estimated annual salary of $189,000 - $260,000</span></li>
+	<li><span data-sheets-root="1">For New York City based hires: Estimated annual salary of $181,000 - $249,000</span></li>
+</ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -59,14 +65,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p>Financial Benefits</p>
+<p><strong>Financial Benefits</strong></p>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p>Time Off</p>
+<p><strong>Time Off</strong></p>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>

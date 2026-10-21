@@ -3,6 +3,7 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
+<h3>Hiring Locations: <strong>Atlanta, GA, Austin, US, New York, NY, San Francisco, CA, Seattle, WA, Washington DC, US</strong></h3>
 <h3>About the Department</h3>
 <p>Infrastructure Operations builds and manages the data center infrastructure behind Cloudflare's global network. The organization brings together engineering, operations, hardware and logistics teams that plan, deploy, operate and maintain our footprint in hundreds of cities worldwide. In this role, you'll help extend that footprint with a new generation of data center sites across the United States.</p>
 <h3>About the Role</h3>
@@ -175,6 +176,17 @@
 	<li>
 		<p>Background in hardware diagnostics, burn-in or automated build validation.</p>
 	</li>
+</ul>
+<h3><strong>Compensation</strong></h3>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>
+		<p>For Bay Area based hires: Estimated annual salary of $174,000 - $239,000</p>
+	</li>
+	<li>
+		<p>For New York, Washington DC, Seattle based hires: Estimated annual salary of $165,000 - $227,000</p>
+	</li>
+	<li>For Austin Texas, Denver, Atlanta based hires: Estimated annual salary of $132,000 - $182,000</li>
 </ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>

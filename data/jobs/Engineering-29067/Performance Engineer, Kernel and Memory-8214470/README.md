@@ -8,6 +8,7 @@
 	<li>Austin, US</li>
 	<li>New York, NY</li>
 	<li>Washington DC</li>
+	<li>European Cloudflare Hubs</li>
 </ul>
 <h3><strong>About the Role</strong></h3>
 <p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers approximately 25 million Internet properties, for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.&nbsp;</p>

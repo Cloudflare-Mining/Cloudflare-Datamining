@@ -3,6 +3,7 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
+<p><strong>Hiring Locations: </strong>Austin, US, San Francisco, CA, Seattle, WA, Washington DC, US</p>
 <p><strong>About the Department</strong></p>
 <p>The Infrastructure Engineering team builds and scales Cloudflare’s global network, ensuring high availability, security, and performance across hundreds of cities worldwide. Within Infrastructure Operations, the Hardware Integration group acts as the bridge between engineering designs and physical deployment, overseeing key third-party manufacturing partnerships, hardware quality, and supply chain logistics to keep our expanding footprint running seamlessly.</p>
 <p><strong>Role Summary</strong></p>
@@ -92,12 +93,14 @@
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
 	<li>
-		<p>For Bay Area based hires: Estimated annual salary of $170,000 - $234,000</p>
+		<p>For Bay Area based hires: Estimated annual salary of $110,000 - $151,000</p>
 	</li>
 	<li>
-		<p>For New York based hires: Estimated annual salary of $163,000 - $224,000</p>
+		<p>For New York, Washington DC, Seattle based hires: Estimated annual salary of $104,000 - $143,000</p>
 	</li>
+	<li>For Austin Texas based hires: Estimated annual salary of $116,000 - $128,000</li>
 </ul>
+<h3>&nbsp;</h3>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

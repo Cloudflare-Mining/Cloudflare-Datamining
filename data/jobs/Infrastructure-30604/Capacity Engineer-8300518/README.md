@@ -3,61 +3,30 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Location: </strong>Austin&nbsp;</p>
-<p><strong>Role Summary</strong><strong><br></strong>Cloudflare is seeking an Indirect Tax Analyst to join our collaborative team. This position will have a broad range of responsibilities with a primary focus on Indirect Tax (US &amp; International - VAT, GST, Sales Tax, Use Tax and Property Tax). This Indirect Tax Analyst will report to the Director of Tax and work with other members of the tax and finance teams, collaborating with cross-functional business partners from time-to-time. The right candidate will be detail-oriented, collaborative, and motivated by finding better, smarter ways to work through automation, standardization, and AI-enabled improvements.</p>
-<p><strong>Role Responsibilities</strong><strong><br></strong></p>
-<ul>
-	<li>Prepare Indirect Tax compliance including the financial support information (VAT, GST, Sales Tax, Use Tax and Property Tax fillings)</li>
-	<li>Prepare monthly tax reconciliations and associated journal entries.</li>
-	<li>Maintain and add exemption/resale certificates and Tax ID information</li>
-	<li>Ensure timely and accurate filings to minimize assessments and penalties by maintaining the tax calendar</li>
-	<li>Assist on audit requests and special project needs</li>
-	<li>Prepare and ensure the payments requests and submissions.</li>
-	<li>Reconcile data between systems to ensure integrity and accuracy</li>
-	<li>Research various indirect tax matters/law updates and document conclusions</li>
-	<li>Participate in the calculation of indirect tax reserves and budgets.</li>
-	<li>Drive the digital transformation of our tax function, identifying and executing process improvements through technology, automation, and AI</li>
-</ul>
-<p><strong>Must-Have Skills</strong></p>
-<ul>
-	<li>Bachelors degree in Accounting, Finance or related field</li>
-	<li>2+ years of significant experience at a public accounting firm and/or corporate tax department of a multinational company</li>
-	<li>Proficient in Excel and AI technology</li>
-	<li>Strong attention to detail with analytical and problem-solving skills</li>
-	<li>Proactive and inquisitive</li>
-	<li>Strong written and verbal communication skills with the ability to interact effectively internally as well as with external service providers</li>
-</ul>
-<p><strong>Nice-to-Have Skills</strong></p>
-<ul>
-	<li>International VAT knowledge is a plus</li>
-	<li>Both public accounting and technology industry experience</li>
-	<li>Experience with Oracle and AI</li>
-</ul>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<p><strong>Available Locations: </strong>Austin, Texas&nbsp;</p>
+<p><strong>About the role</strong></p>
+<p>The Demand Planning team sits at the intersection of traffic forecasting, infrastructure strategy, and operational execution. We predict when, where, and how many servers to deploy across Cloudflare's global edge so that customers' traffic stays in-region and they never have to think about infrastructure. This is not a reporting role — it is a planning and engineering role that requires you to build the models, own the data, and translate forecasts into real deployment decisions.</p>
+<p>As a Capacity Engineer, you will own one or more planning regions end-to-end with light supervision. That means maintaining the models, catching problems before they become incidents, working directly with hardware sourcing and infrastructure teams, and contributing to the data pipelines that feed your planning work. You will be the point of contact for your region — not someone who supports a more senior planner, but someone who runs the work.</p>
+<p>This is a role for someone with 3-5 years of experience who is ready to operate with real ownership and is actively growing toward full autonomy. You will work alongside senior peers who set team-wide standards, and you will be expected to contribute to cross-regional consistency — not just execute within your own lane. You will also work fluently with AI tooling, including OpenCode AI and MAS agent workflows, as a normal part of how planning gets done on this team.</p>
+<p>&nbsp;</p>
+<p><strong>Why Cloudflare/ Why This Team</strong></p>
+<p>Cloudflare's network spans hundreds of cities and carries a meaningful fraction of global internet traffic — the planning decisions this team makes have direct consequences at that scale. The Demand Planning team is in an active transition from manual planning toward intelligent, automated, AI-augmented capacity systems, and this role puts you at the center of that shift. You will work on problems that are genuinely hard, with teammates who take the craft seriously, in a team small enough that your work is visible and your contributions matter from day one.</p>
+<h4><strong>What you'll do</strong></h4>
+<p>- Own one or more edge planning regions end-to-end, producing deployment recommendations with minimal supervision</p>
+<p>- Maintain and continuously improve regional planning models, incorporating new traffic patterns, hardware generations, and infrastructure changes</p>
+<p>- Build and maintain data pipelines that feed regional planning — using BigQuery, Python, and Jupyter notebooks to query, explore, and validate planning data</p>
+<p>- Work directly with hardware sourcing, DCS, and infrastructure teams to translate forecasts into actionable deployment plans</p>
+<p>- Proactively identify capacity risks in your region and surface them before they require escalation</p>
+<p>- Use OpenCode AI and MAS agent tooling as a standard part of your daily planning workflow</p>
+<p>- Contribute to cross-regional consistency efforts alongside peers — shared methodology, shared standards</p>
+<p>- Participate in planning reviews and communicate forecast outputs clearly to non-technical stakeholders</p>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<p>- 3-5 years in an analytical, planning, or technical infrastructure role</p>
+<p>- Working SQL proficiency — comfortable querying and joining datasets in BigQuery to answer planning questions</p>
+<p>- Python proficiency — data analysis, scripting, and automation of planning workflows; comfortable working in Jupyter notebooks as a day-to-day analysis environment</p>
+<p>- Comfort working with large infrastructure datasets and translating them into decisions</p>
+<p>- Clear written and verbal communication — you can explain a capacity recommendation to a finance partner or a network engineer without losing either of them</p>
+<p>- Demonstrated ability to own a workstream end-to-end with light supervision</p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
