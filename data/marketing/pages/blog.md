@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+October 20, 2026 [<h2>8 eMudhra certificates are compromised. Here's what you need to know</h2>](https://blog.cloudflare.com/emudhra-certificate-compromise/)
+
+Following the discovery that eight eMudhra intermediate certificates use weak keys, Cloudflare is deploying mitigations and releasing client updates. We explain the impact, our response, and what customers and developers should do next.
+
+![Christopher Patton](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471WT491ZC11M0S5HA34X3.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Bas Westerbaan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46N3BWJ6WS6790KRRJ4RWD.png&w=64&h=64&f=webp&fit=cover&position=center)![Trishna](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW473JDQZAHNE7Y35PPZ0HNB.webp&w=64&h=64&f=webp&fit=cover&position=center)![Jeremy Hartman](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44YJSKH239C2RVYTF2NVMJ.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Christopher Patton](https://blog.cloudflare.com/author/christopher-patton/),  [Bas Westerbaan](https://blog.cloudflare.com/author/bas/),  [Trishna](https://blog.cloudflare.com/author/trishna/), and  [Jeremy Hartman](https://blog.cloudflare.com/author/jeremy-hartman/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5DK5FY53PEFH46MT990YMSR.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/emudhra-certificate-compromise/)
+
 October 20, 2026 [<h2>Introducing tsrs: A port of TypeScript to Rust</h2>](https://blog.cloudflare.com/typescript-rust-port/)
 
 Cloudflare is collaborating on tsrs, a Rust port of TypeScript that is up to 8x faster and uses 70% less memory.
@@ -17,8 +27,6 @@ Cloudflare is collaborating on tsrs, a Rust port of TypeScript that is up to 8x 
 ![Boshen Chen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5C7JZ4TPA6B0GAEA4J5ZRKH.01M5C7JZV2GMV8Y2BJ76CF88BP.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Dimitri Mitropoulos](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498DEF6RX03R0G7TNW7CR3.webp&w=64&h=64&f=webp&fit=cover&position=center)![Christoph Nakazawa](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4EX98BAG8QN2EG73TZW7RKE.01M4EX98Y0AM8PEJP2VR66W6PN.webp&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Boshen Chen](https://blog.cloudflare.com/author/boshen-chen/),  [Dimitri Mitropoulos](https://blog.cloudflare.com/author/dimitri-mitropoulos/), and  [Christoph Nakazawa](https://blog.cloudflare.com/author/christoph-nakazawa/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5C82VPWPDDZ7P6P0G4H7KB3.png&w=1999&h=1127&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/typescript-rust-port/)
 
 October 19, 2026 [<h2>Cutting our inference bill by 68% by being obsessive about optimization</h2>](https://blog.cloudflare.com/obsessive-inference-optimization/)
 
@@ -155,14 +163,6 @@ Cloudflare Managed Defense uses a team of specialized AI agents built on Workers
 ![Deanna Tran](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M32RWM8D9ND7N90HFR9H9QQT.01M32RWMV6K9V55M6CMKAXE9PC.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Javier Castro](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4674A41YFNM3KJ161Z4WRB.png&w=64&h=64&f=webp&fit=cover&position=center)![Jacob Crisp](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468SZ92CTQZG9K5AR69G1E.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Blake Darché](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46VFGSFTVH9S7TKX7T5BAC.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Deanna Tran](https://blog.cloudflare.com/author/deanna-tran/),  [Javier Castro](https://blog.cloudflare.com/author/javier/),  [Jacob Crisp](https://blog.cloudflare.com/author/jacob-crisp/), and  [Blake Darché](https://blog.cloudflare.com/author/blake/)
-
-October 6, 2026 [<h2>The keys to the Internet change on October 11. Are you ready?</h2>](https://blog.cloudflare.com/root-ksk-2024-rollover/)
-
-On October 11, 2026, the DNS root switches to a new key-signing key (KSK-2024). Learn what this means for you, and how RFC 8509 trust anchor sentinels allow you to test whether your DNS resolver is ready for the rollover.
-
-![Sebastiaan Neuteboom](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GH720TA5A2634QYMAXZR.png&w=64&h=64&f=webp&fit=cover&position=center)![James Godlewski](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M48ZN7537R9D7AB9PWK3P0Q9.01M48ZN84M75FBR63MKDCQTCED.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Sebastiaan Neuteboom](https://blog.cloudflare.com/author/sebastiaan-neuteboom/) and  [James Godlewski](https://blog.cloudflare.com/author/james-godlewski/)
 
 Load more
 
