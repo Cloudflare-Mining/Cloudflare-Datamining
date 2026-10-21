@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/polystella-emdash",
 	"dist-tags": {
-		"latest": "0.0.0"
+		"latest": "0.1.0"
 	},
 	"versions": {
 		"0.0.0-stage": {
@@ -35,11 +35,66 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIBAiG3iZNb943HPFMYKY5WN8+sjWGEUaIfmYRjVFwBstAiBVWOLomltMa5wAb38+zEn7+syBiRAiPfWPwej82BNIOw=="
+						"sig": "MEQCIBAiG3iZNb943HPFMYKY5WN8+sjWGEUaIfmYRjVFwBstAiBVWOLomltMa5wAb38+zEn7+syBiRAiPfWPwej82BNIOw==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"unpackedSize": 117
+			}
+		},
+		"0.1.0": {
+			"name": "@cloudflare/polystella-emdash",
+			"version": "0.1.0",
+			"dependencies": {
+				"@phosphor-icons/react": "^2.1.10",
+				"@cloudflare/polystella-core": "^0.5.0"
+			},
+			"devDependencies": {
+				"astro": "^7.2.9",
+				"react": "^19.2.6",
+				"emdash": "0.36.0",
+				"vitest": "^4.1.9",
+				"react-dom": "^19.2.8",
+				"typescript": "^6.0.3",
+				"@types/node": "^26.0.0",
+				"@types/react": "^19.2.14",
+				"@cloudflare/kumo": "2.6.0",
+				"@types/react-dom": "^19.2.3",
+				"@emdash-cms/admin": "0.36.0"
+			},
+			"peerDependencies": {
+				"astro": "^7.0.10",
+				"react": "^18.0.0 || ^19.0.0",
+				"emdash": "^0.36.0",
+				"react-dom": "^18.0.0 || ^19.0.0",
+				"@cloudflare/kumo": "^2.6.0",
+				"@emdash-cms/admin": "^0.36.0"
+			},
+			"bin": {
+				"polystella": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "4b8a8881acdb9405456e2d1ed3bad158c26f0077",
+				"tarball": "https://registry.npmjs.org/@cloudflare/polystella-emdash/-/polystella-emdash-0.1.0.tgz",
+				"fileCount": 166,
+				"integrity": "sha512-2h/1fgfS7/O8QrDFGu144hhYLiDgzA10zWwn2PFLZ6r0Vu2rIw9lKH71j4sy2idJMpeG8FQPhi8EuYEDsJj2kA==",
+				"signatures": [
+					{
+						"sig": "MEUCICtRpBFYkZ6wmKEfbZ8qaaQpzjebMyzemYIoN6RP3fxcAiEAl95Ki7VRdGz+p6218sgKKG4oxjgV4K6KUZBd9L+edw8=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQDvbYqNpsFLGrKfgvdUJUFOtGCrKCMMc59eQQ9xlmuotAIhAPy0MnzzCacy0JjrmMoS10f0BsFqxwVnphwRzejATDKG"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fpolystella-emdash@0.1.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 519160
 			}
 		}
 	}
