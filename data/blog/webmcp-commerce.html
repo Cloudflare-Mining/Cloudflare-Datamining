@@ -1,0 +1,84 @@
+<p>AI can write code and pass the bar exam, but it still struggles to buy a pair of shoes online.</p>
+<p>That’s because websites were built for humans, not agents. Most agents that shop for someone today work from a site’s HTML — they look at the page, guess which button does what, click, and try again when they get it wrong. This process is slow, uses a lot of tokens, and something as seemingly innocuous as a theme change can break it.</p>
+<p>Enter WebMCP: a browser standard from Google that gives AI agents structured tools on a page, like <code>search_products</code>. Instead of hunting for buttons, the agent calls the exact tool it needs directly, making shopping faster, cheaper, and far more reliable. Because WebMCP is still an experimental proposed browser standard in early preview, it’s currently available behind experimental Chrome flags (<code>chrome://flags/#enable-webmcp-testing</code>), in Chrome Origin Trials, in some agentic browsers, and across developer environments like <a href="https://blog.cloudflare.com/kitesurf"><u>Cloudflare Kitesurf</u></a>.</p>
+<p>In August, we launched <a href="https://blog.cloudflare.com/webmcp"><u>edge implementation of WebMCP</u></a>&nbsp;in beta. Turn it on, and Cloudflare injects a tiny script at the edge to make those tools available automatically, without site owners writing a single line of code.</p>
+<p><a href="http://commerce.com"><u>Commerce.com</u></a>, a flexible commerce platform built for the age of AI, already uses Cloudflare to run their almost 100,000 domains. So when the preview came out, they asked: <em>Can we turn this on for all of our stores at once?</em></p>
+<p>Here’s why Commerce.com wanted WebMCP, how we built edge-level opt-outs to give every merchant control, and what we learned along the way.</p>
+<h2>Why Commerce.com wanted WebMCP</h2>
+<p>Kristina Pototska, Product Management Director at Commerce.com, explains why this matters for storefronts:</p>
+<blockquote>
+	<p>“Merchants keep asking us how they can keep up with agentic shopping. When a shopper asks an agent to find something, merchants want their store to be in the answer. They want to keep the customer, keep control of the checkout, and do it without rebuilding their site. WebMCP helps with all three. The agent gets real tools to search products, check details, build a cart, and get a checkout link, so it doesn’t have to guess its way around the page. The human shopper stays on the merchant’s site, and the merchant keeps the relationship.</p>
+	<p></p>
+	<p>We wanted to turn this on in a secure way, and without asking merchants to edit their theme or do anything by hand. That’s where the Cloudflare partnership worked perfectly.</p>
+	<p></p>
+	<p>WebMCP also works side by side with our server-side <a href="https://docs.bigcommerce.com/developer/api-reference/mcp/overview" target="_blank" rel="noopener noreferrer"><u>MCP</u></a>, and together they cover the different ways people shop with agents. Server-side MCP supports agents that connect to a store directly, like an assistant helping someone shop across several sites. WebMCP supports agents that work in the shopper’s browser. It’s the same set of shopping tools in both cases, so merchants don’t have to choose between the two or manage them separately.”</p>
+</blockquote>
+<p>Under the hood, this integration relies on two key principles. First, the WebMCP tools execute directly inside the shopper's active browser session on the storefront's domain, ensuring the agent sees the same prices and cart. No credentials go to a third party, and the visit still happens on the merchant's site. Second, Cloudflare serves as the edge delivery layer for Commerce.com’s backend MCP server, proxying tool definitions and actions unchanged so merchants maintain full control over their tool logic.</p>
+<h2>What a shopper's agent sees</h2>
+<p>When visiting an enabled Commerce.com storefront, an AI assistant no longer has to guess how to navigate the site. Instead, it can instantly discover tools via WebMCP.</p>
+<p>Suppose you tell your agent: <em>"Find me a waterproof trail running shoe under $140 in size 10 and add it to my cart."</em></p>
+<p><strong>Without WebMCP:</strong>&nbsp;The agent attempts to simulate human clicks, only to get blocked by cookie banners, misinterpret variant drop-downs, or get tripped up by bot challenges that try to distinguish automated traffic from real customers.</p>
+<p><strong>With WebMCP: </strong>The agent detects the store's tools on <code>document.modelContext</code>&nbsp;and makes two clean calls:</p>
+<ol>
+	<li><code>search_products({ query: "trail running shoe", max_price: 140, size: 10 })</code></li>
+	<li><code>add_to_cart({ product_id: "shoe_123" })</code></li>
+</ol>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAAk5OSiImJZ2xuN0RKPUNLfX2At7i43uDgmZiYjY2NaGxuMz5EP0JJgoGEu7u84eLioZ6fk5KSam1uMztARUVKiIaIwcDA5eXmpqOkl5aXb3FyO0BDTk1Pj4yNxcTF6OnpqKanmpmbdXd4SU5PWFhYk5GSycjI6+ztp6aom5ude35/V11dYWNjl5aWysrL7e7vpaWom5yff4OFYGdnaGtqmJiYy8vM7vDxpKWom5yfgIWHZGtqam5tmZmZy8vM7vDx" alt="" width="715" height="388" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AYSDB6T6T7ZE8E6PKBSPWV.png&amp;w=715&amp;h=388&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AYSDB6T6T7ZE8E6PKBSPWV.png&amp;w=640&amp;h=347&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AYSDB6T6T7ZE8E6PKBSPWV.png&amp;w=715&amp;h=388&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AYSDB6T6T7ZE8E6PKBSPWV.png&amp;w=750&amp;h=407&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AYSDB6T6T7ZE8E6PKBSPWV.png&amp;w=828&amp;h=449&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AYSDB6T6T7ZE8E6PKBSPWV.png&amp;w=1080&amp;h=586&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AYSDB6T6T7ZE8E6PKBSPWV.png&amp;w=1280&amp;h=695&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AYSDB6T6T7ZE8E6PKBSPWV.png&amp;w=1430&amp;h=776&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AYSDB6T6T7ZE8E6PKBSPWV.png&amp;w=1999&amp;h=1086&amp;q=100&amp;f=webp" data-lightbox-width="1999" data-lightbox-height="1086" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="388" class="pt-portable-image-media"></div>
+</figure>
+<p>Because the agent runs inside your active browser session on the store's domain, your cart updates in real time. Commerce.com’s backend MCP server determines the commerce flow:&nbsp;when you’re ready to complete the purchase, you click checkout yourself&nbsp;— keeping your payment details secure and leaving you in complete control of the final buy.</p>
+<h2>What we built together</h2>
+<p>When Commerce.com asked to turn on WebMCP across almost 100000 storefronts, we ran into a practical challenge: WebMCP was originally designed as a single on-or-off switch for an entire domain zone.</p>
+<p>Commerce wanted to enable our mcp-server-client toolpack, which acts as an edge bridge — proxying tool definitions and requests directly from Commerce.com’s backend MCP server to the visitor's browser. Because Commerce.com uses Cloudflare for SaaS to host thousands of merchant vanity domains on shared zones, we needed a way to deliver this platform-wide while giving individual store owners an easy way to opt out.</p>
+<h3>1. On for all stores on Commerce.com, with an opt-out for each merchant</h3>
+<p>Instead of building a complex custom allowlist, we hooked WebMCP into the existing Cloudflare concepts of <a href="https://developers.cloudflare.com/rules/configuration-rules"><u>Configuration Rules</u></a>&nbsp;and <a href="https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/custom-metadata"><u>custom hostname metadata</u></a>.</p>
+<p>Commerce.com turns WebMCP on for their main zone, then adds a rule at the edge that checks merchant metadata. If a merchant flips the "opt-out" switch in their Commerce.com dashboard, Cloudflare bypasses WebMCP for that specific storefront automatically:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "action"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"set_config"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "expression"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"cf.hostname.metadata.webmcp_opt_out eq </span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">true</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "action_parameters"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "webmcp_enabled"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">false</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p>Because Cloudflare evaluates these rules at the edge before serving the page, an opted-out store gets zero extra latency, no remote lookups, and no injected scripts.</p>
+<h3>2. Tailored endpoints and safe fallbacks</h3>
+<p>As with any preview release, working with a partner in the real world revealed a few practical details we hadn't accounted for: </p>
+<p><strong>Custom MCP paths:</strong>&nbsp;When the mcp-server-client toolpack was enabled, our bridge originally expected to find every site's MCP server at /mcp. Commerce.com’s server lives at /api/mcp. To handle this, we added a configurable MCP URL setting at the zone level. When this is set, we pass the custom path into the injected script tag:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">script</span><span class="sk-6f42c1-ffc799"> type</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"module"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    src</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"/.webmcp/bridge.js"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    data-packs</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"c2pa,mcp-server-client"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    data-mcp-url</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"/api/mcp"</span><span class="sk-24292e-a0a0a0">&gt;&lt;/</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p><strong>Seamless fallbacks:</strong>&nbsp;If a store's MCP server is offline or a customer's browser doesn't support WebMCP, the script exits. The storefront loads normally and human shoppers aren't affected.</p>
+<h2>What's next</h2>
+<p>We'll keep investing in WebMCP as the standard evolves, starting with helping agents find a site's tools more easily. Cloudflare and <a href="http://commerce.com"><u>Commerce.com</u></a>&nbsp;will continue to work together to make shopping with agents fast, reliable and safe for both merchants and shoppers.</p>
+<p>If you're at <a href="https://www.cloudflare.com/connect"><u>Cloudflare Connect</u></a>&nbsp;in San Francisco on October 21, 2026, come see us at <a href="https://www.cloudflare.com/connect/sessions/4414847"><u>Getting your storefront agent ready for peak season</u></a>,&nbsp;a panel discussion featuring Kristina Pototska (Product Management Director, Commerce), Justis Blasco (CTO and Co-Founder, Popmenu), Ross Harvey (Head of Infrastructure, Fruugo), and Josh Mills (VP of Engineering, Gopuff).</p>

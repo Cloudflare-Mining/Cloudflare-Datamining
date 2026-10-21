@@ -1,0 +1,216 @@
+<p>Today, Calif.io, Wiz, OpenAI and Quarkslab disclosed two<strong>&nbsp;</strong>vulnerabilities&nbsp;in PHP, tracked as CVE-2026-109618 and CVE-2026-109619 and known as <a href="https://www.php.net/archive/2026.php#2026-10-21-5"><u>php2shell</u></a>.&nbsp;The vulnerabilities affect all web servers running PHP 5.4 or later and they may allow an attacker to cause denial of service, remote code execution, and data exposure when an application processes specially crafted HTTP traffic.</p>
+<p>Cloudflare has been part of a coordinated effort to deploy mitigations to protect the Internet, working with <a href="https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security"><u>PHP foundation</u></a>, <a href="http://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities"><u>OpenAI</u></a>&nbsp;and <a href="https://www.wiz.io/blog/php2shell-php-rce"><u>Wiz</u></a>&nbsp;among others. Cloudflare has developed and deployed web application firewall (WAF) protections since early October 2026, which were deployed about 9 hours ahead of public disclosure. <strong>Starting on October 21 3:02 am UTC, Cloudflare customers&nbsp;using our free or paid WAF were protected by default against php2shell.</strong></p>
+<p>Cloudflare&nbsp;successfully deployed multiple mitigations for all its customers&nbsp;while the vulnerability was leaked before the official release date and we observed attack traffic targeting our customers.&nbsp;We observed how attackers were mutating the attack payload to try to bypass our protections by tracking the volume of matches and cross-referencing with the rule logic.</p>
+<p>Protecting against php2shell required more than standard request-based rules. Request data alone does not always provide enough evidence to distinguish an exploit from legitimate traffic. The origin’s response adds context, helping identify whether an exploit succeeded while reducing the risk of false positives.</p>
+<p>To deliver this protection, we developed full transaction detection, a new Cloudflare WAF capability that combines signals from the request and response within the same HTTP transaction. Response rules can then block a matching origin response before it reaches the requester. The php2shell protections are the first managed detections we have released using this capability.</p>
+<p>Customers should patch their PHP repos even with WAF protections providing an additional layer of defense-in-depth mitigation.&nbsp;Our security analysts continue monitoring attack activity and update the rules when and if new techniques and variations emerge in the hours and days ahead. You can track new rules in the <a href="https://developers.cloudflare.com/waf/change-log/changelog"><u>changelog</u></a>.</p>
+<p>The protections are available and deployed automatically on all plans with WAF deployed, including Free users.</p>
+<h2>What we know about the vulnerabilities</h2>
+<p>PHP is used by almost <a href="https://w3techs.com/technologies/details/pl-php"><u>70% of websites</u></a>. The php2shell vulnerabilities affect the PHP runtime itself and can allow attackers to execute malicious code on vulnerable servers, expose customer data, or disrupt services. Because PHP underpins widely used platforms such as WordPress and Magento, these flaws could potentially affect a large number of applications across the Internet.</p>
+<p>The two vulnerabilities involve how PHP handles memory when something goes wrong while processing a HTTP request. Normally, PHP allocates memory to store the data it needs to process a request, then releases it when that work finishes. If processing stops unexpectedly, for example because it runs out of memory, PHP fails to clean up the memory safely. These vulnerabilities arise when PHP handles an error and then tries to use data that was not fully set up or memory that has already been released.</p>
+<p>An attacker can send specially crafted HTTP requests to trigger these conditions. Large requests are one way to put memory under pressure, but the problem goes beyond consuming server resources. By manipulating the data PHP encounters in this invalid memory, an attacker may be able to crash a PHP process, expose sensitive information, or execute code provided by the attacker.</p>
+<p>The two vulnerabilities differ in when the unsafe memory access happens:</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 192px;">
+		<tbody>
+			<tr>
+				<td>
+					<p>Vulnerability</p>
+				</td>
+				<td>
+					<p>What goes wrong</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CVE-2026-109618</p>
+				</td>
+				<td>
+					<p>PHP runs out of memory and interrupts its work before some internal data has been properly initialized. During cleanup of that request, PHP may use this unfinished data as though it were valid.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CVE-2026-109619</p>
+				</td>
+				<td>
+					<p>A fatal error interrupts a request, leaving PHP holding references to memory that is released when the request ends. When the same PHP process handles a later request, it may follow those outdated references and access memory that is no longer valid and expose sensitive data.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>These flaws are in the PHP runtime, so updating website code or a plugin(s) alone does not fix these vulnerabilities. Administrators need to update the PHP software running their applications. If a hosting provider manages PHP, ask the provider to apply the security update.</p>
+<p>Administrators can follow the PHP advisory for affected versions and remediation instructions. Keep Cloudflare WAF protections enabled while patching. Restricting unnecessary uploads and limiting upload sizes can also reduce exposure, but these measures do not replace the PHP fix.</p>
+<h2>New rules</h2>
+<p>For Free customers, new rules have been released under the Cloudflare Managed Free Ruleset (Ruleset ID 77454fe2d30c4220b5701f6fdfb893ba). Free customers don’t have to take any actions to enable the protection. To override the ruleset behavior you can refer to our <a href="https://developers.cloudflare.com/waf/managed-rules"><u>documentation</u></a>.</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 192px;">
+		<tbody>
+			<tr>
+				<td>
+					<p>Rule Description</p>
+				</td>
+				<td>
+					<p>Rule ID</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Generic Rules - Anomalous Execution - 1</p>
+				</td>
+				<td>
+					<p>4e315666e8e344cdb64119a3b5ccf32f</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Generic Rules - Anomalous Execution - 2</p>
+				</td>
+				<td>
+					<p>00c10e6cc4da4bd08722adeebcd95984</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Generic Rules - Anomalous Execution - 3</p>
+				</td>
+				<td>
+					<p>48ddf592361e4fdb97a8a85982dab691</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Generic Rules - Anomalous Execution - 4</p>
+				</td>
+				<td>
+					<p>3556683d512a47f2937899c524b1a4c6</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Generic Rules - Anomalous Execution - 5</p>
+				</td>
+				<td>
+					<p>da07c85852e34625bb478496302ede46</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Generic Rules - Anomalous Execution - 6</p>
+				</td>
+				<td>
+					<p>19373a83abb840e18ab3ce5a7975ce1b</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Generic Rules - Anomalous Execution - 7</p>
+				</td>
+				<td>
+					<p>07f0b6ddaabf40b1b2042dade8d613fa</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Protection for paid plans has been released as part of the Cloudflare Managed Ruleset (Ruleset ID efb7b8c949ac4650a09736fc376e9aee).&nbsp;If you are on a Professional, Business, or Enterprise plan, review your Managed Ruleset deployment to confirm it’s <a href="https://developers.cloudflare.com/waf/managed-rules/deploy-zone-dashboard"><u>deployed</u></a>&nbsp;block mode.</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 192px;">
+		<tbody>
+			<tr>
+				<td>
+					<p>Rule Description</p>
+				</td>
+				<td>
+					<p>Rule ID</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Generic Rules - Anomalous Execution - 1</p>
+				</td>
+				<td>
+					<p>c1d409ad838f47f59446f21cc438d5dd</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Generic Rules - Anomalous Execution - 2</p>
+				</td>
+				<td>
+					<p>f9a45927414245e3a64bb12d0a0c2f64</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Generic Rules - Anomalous Execution - 3</p>
+				</td>
+				<td>
+					<p>771c654ae1154d4daa72f4e1545d163c</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Generic Rules - Anomalous Execution - 4</p>
+				</td>
+				<td>
+					<p>217005865f0145f392300bac212afcc9</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Generic Rules - Anomalous Execution - 5</p>
+				</td>
+				<td>
+					<p>38efdb17ea594501bb55a1d71867b12e</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Generic Rules - Anomalous Execution - 6</p>
+				</td>
+				<td>
+					<p>4148ae686fdb4d01be673fab9d9c073d</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Generic Rules - Anomalous Execution - 7</p>
+				</td>
+				<td>
+					<p>1389aa259617437392ce149c48143645</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>To better identify exploit attempts, Cloudflare developed full transaction detection, a new WAF capability that analyzes both sides of the same HTTP transaction. While some malicious payloads can be identified using the request alone, the response contains useful signals that can be used to create rules with higher confidence, reducing false positives. A matching full transaction rule can block the origin response before it reaches the requester. We’ll publish a blog on full transaction detection in the next few hours.</p>
+<p>The following rules have been deployed to the new Cloudflare Managed Response Firewall Default for customers on all plans, including Free:</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 192px;">
+		<tbody>
+			<tr>
+				<td>
+					<p>Rule Description</p>
+				</td>
+				<td>
+					<p>Rule ID</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Default block for High confidence Signatures</p>
+				</td>
+				<td>
+					<p>afffe22785674c80a31875c848d2242a</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Note: rule descriptions will be updated soon.</p>
+<h2>Review events and customize protection</h2>
+<p>To analyze blocked requests, visit <strong>Security &gt; Security Analytics &gt; Events</strong>. Filter by the rule IDs in the table above and inspect the matched request, action, and path. Events identify whether the action came from a managed or custom rule. Customers who need to tailor the protection can <a href="https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/#deploy-in-the-dashboard"><u>update the scope</u></a>&nbsp;of the Managed Ruleset to the parts of an application where it is relevant.</p>
+<h2>Update PHP and keep the protection enabled</h2>
+<p>Cloudflare customers using our Managed Ruleset are protected by default. We recommend following the <a href="https://www.php.net/archive/2026.php#2026-10-21-5"><u>advisory</u></a>&nbsp;recommendation and applying the vendor update to your PHP repos&nbsp;as soon as possible while keeping the WAF protection enabled as an additional protection. Our WAF analysts will continue to update protections as new techniques emerge.</p>
