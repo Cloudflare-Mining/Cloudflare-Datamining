@@ -21,7 +21,8 @@
 	"is_template": false,
 	"default_branch": "main",
 	"branches": [
-		"automation/update-forge",
+		"changeset-release/main",
+		"codex/api-error-messages",
 		"codex/expand-secrets-file-dotenv",
 		"codex/fix-177-multipart-files",
 		"codex/fix-204-shared-registry",
@@ -39,13 +40,10 @@
 		"investigate/issue-69",
 		"investigate/issue-99",
 		"investigate/issue-100",
-		"james/fix-api-config-loading",
 		"main",
 		"penalosa/regression-testing",
 		"penalosa/rust-generator",
 		"remove-x-forge-globals",
-		"renovate/workers-sdk-test-fixtures",
-		"sk/update-forge",
-		"tsrs"
+		"sk/update-forge"
 	]
 }
