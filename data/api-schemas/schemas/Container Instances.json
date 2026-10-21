@@ -10,7 +10,8 @@
 				"required": true,
 				"schema": {
 					"description": "An Application ID represents an identifier of an application.",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -155,7 +156,8 @@
 																"properties": {
 																	"application_id": {
 																		"description": "An Application ID represents an identifier of an application.",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"configuration": {
 																		"description": "The resources allocated to the container instance.",
@@ -276,7 +278,8 @@
 																"properties": {
 																	"application_id": {
 																		"description": "An Application ID represents an identifier of an application.",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"image": {
 																		"description": "The image for the current container placement, or the image currently configured for the application when the instance lacks a placement.\n",
@@ -802,7 +805,8 @@
 				"required": true,
 				"schema": {
 					"description": "An Application ID represents an identifier of an application.",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -944,7 +948,8 @@
 														"properties": {
 															"application_id": {
 																"description": "An Application ID represents an identifier of an application.",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"configuration": {
 																"description": "The resources allocated to the container instance.",
@@ -1065,7 +1070,8 @@
 														"properties": {
 															"application_id": {
 																"description": "An Application ID represents an identifier of an application.",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"image": {
 																"description": "The image for the current container placement, or the image currently configured for the application when the instance lacks a placement.\n",
@@ -1589,7 +1595,8 @@
 				"required": true,
 				"schema": {
 					"description": "An Application ID represents an identifier of an application.",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1702,7 +1709,8 @@
 													"properties": {
 														"application_id": {
 															"description": "An Application ID represents an identifier of an application.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"configuration": {
 															"description": "The resources allocated to the container instance.",
@@ -1823,7 +1831,8 @@
 													"properties": {
 														"application_id": {
 															"description": "An Application ID represents an identifier of an application.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"image": {
 															"description": "The image for the current container placement, or the image currently configured for the application when the instance lacks a placement.\n",

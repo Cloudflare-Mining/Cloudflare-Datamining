@@ -10,7 +10,8 @@
 				"required": true,
 				"schema": {
 					"description": "An Application ID represents an identifier of an application.",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1009,7 +1010,8 @@
 				"description": "Filter applications by name.",
 				"schema": {
 					"description": "The application name.",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -1129,7 +1131,8 @@
 																	},
 																	"active_rollout_id": {
 																		"description": "An identifier for a specific rollout within an application.",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"configuration": {
 																		"description": "User-specified container configuration.",
@@ -1152,7 +1155,8 @@
 																					},
 																					"required": [
 																						"public_key"
-																					]
+																					],
+																					"x-auditable": false
 																				}
 																			},
 																			"command": {
@@ -1189,7 +1193,8 @@
 																						},
 																						"value": {
 																							"description": "An environment variable value.",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": false
 																						}
 																					},
 																					"required": [
@@ -1231,7 +1236,8 @@
 																						"properties": {
 																							"enabled": {
 																								"type": "boolean",
-																								"default": false
+																								"default": false,
+																								"x-auditable": true
 																							}
 																						}
 																					}
@@ -1360,7 +1366,8 @@
 																						},
 																						"instance_id": {
 																							"description": "An instance ID represents an identifier of an instance configuration that maintains an underlying placement.",
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"required": [
@@ -1405,7 +1412,8 @@
 																	},
 																	"id": {
 																		"description": "An Application ID represents an identifier of an application.",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"instances": {
 																		"description": "Number of deployments to create.",
@@ -1417,7 +1425,8 @@
 																	},
 																	"name": {
 																		"description": "The application name.",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"observability": {
 																		"description": "Top-level observability settings for the application.\nThis field is mutually exclusive with configuration.observability.\n",
@@ -1432,7 +1441,8 @@
 																						"properties": {
 																							"enabled": {
 																								"type": "boolean",
-																								"default": false
+																								"default": false,
+																								"x-auditable": true
 																							}
 																						}
 																					}
@@ -1522,7 +1532,8 @@
 																			},
 																			"required": [
 																				"public_key"
-																			]
+																			],
+																			"x-auditable": false
 																		}
 																	},
 																	"wrangler_ssh": {
@@ -1531,13 +1542,15 @@
 																		"properties": {
 																			"enabled": {
 																				"type": "boolean",
-																				"default": true
+																				"default": true,
+																				"x-auditable": true
 																			},
 																			"port": {
 																				"type": "integer",
 																				"default": 22,
 																				"maximum": 65535,
-																				"minimum": 1
+																				"minimum": 1,
+																				"x-auditable": true
 																			}
 																		}
 																	}
@@ -1619,11 +1632,13 @@
 															},
 															"id": {
 																"description": "An Application ID represents an identifier of an application.",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "The application name.",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"observability": {
 																"description": "Application-wide logging settings for a Durable Object-managed application.\nThe application publishes these settings to its runtime metadata. Updating\nthem does not create a deployment or rollout.\n",
@@ -2059,7 +2074,8 @@
 				"required": true,
 				"schema": {
 					"description": "An Application ID represents an identifier of an application.",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -2167,7 +2183,8 @@
 																},
 																"active_rollout_id": {
 																	"description": "An identifier for a specific rollout within an application.",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"configuration": {
 																	"description": "User-specified container configuration.",
@@ -2190,7 +2207,8 @@
 																				},
 																				"required": [
 																					"public_key"
-																				]
+																				],
+																				"x-auditable": false
 																			}
 																		},
 																		"command": {
@@ -2227,7 +2245,8 @@
 																					},
 																					"value": {
 																						"description": "An environment variable value.",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": false
 																					}
 																				},
 																				"required": [
@@ -2269,7 +2288,8 @@
 																					"properties": {
 																						"enabled": {
 																							"type": "boolean",
-																							"default": false
+																							"default": false,
+																							"x-auditable": true
 																						}
 																					}
 																				}
@@ -2398,7 +2418,8 @@
 																					},
 																					"instance_id": {
 																						"description": "An instance ID represents an identifier of an instance configuration that maintains an underlying placement.",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2443,7 +2464,8 @@
 																},
 																"id": {
 																	"description": "An Application ID represents an identifier of an application.",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"instances": {
 																	"description": "Number of deployments to create.",
@@ -2455,7 +2477,8 @@
 																},
 																"name": {
 																	"description": "The application name.",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"observability": {
 																	"description": "Top-level observability settings for the application.\nThis field is mutually exclusive with configuration.observability.\n",
@@ -2470,7 +2493,8 @@
 																					"properties": {
 																						"enabled": {
 																							"type": "boolean",
-																							"default": false
+																							"default": false,
+																							"x-auditable": true
 																						}
 																					}
 																				}
@@ -2560,7 +2584,8 @@
 																		},
 																		"required": [
 																			"public_key"
-																		]
+																		],
+																		"x-auditable": false
 																	}
 																},
 																"wrangler_ssh": {
@@ -2569,13 +2594,15 @@
 																	"properties": {
 																		"enabled": {
 																			"type": "boolean",
-																			"default": true
+																			"default": true,
+																			"x-auditable": true
 																		},
 																		"port": {
 																			"type": "integer",
 																			"default": 22,
 																			"maximum": 65535,
-																			"minimum": 1
+																			"minimum": 1,
+																			"x-auditable": true
 																		}
 																	}
 																}
@@ -2657,11 +2684,13 @@
 														},
 														"id": {
 															"description": "An Application ID represents an identifier of an application.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The application name.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"observability": {
 															"description": "Application-wide logging settings for a Durable Object-managed application.\nThe application publishes these settings to its runtime metadata. Updating\nthem does not create a deployment or rollout.\n",
@@ -3076,7 +3105,8 @@
 				"required": true,
 				"schema": {
 					"description": "An Application ID represents an identifier of an application.",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -3195,7 +3225,8 @@
 																	},
 																	"required": [
 																		"public_key"
-																	]
+																	],
+																	"x-auditable": false
 																}
 															},
 															"command": {
@@ -3232,7 +3263,8 @@
 																		},
 																		"value": {
 																			"description": "An environment variable value.",
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": false
 																		}
 																	},
 																	"required": [
@@ -3274,7 +3306,8 @@
 																		"properties": {
 																			"enabled": {
 																				"type": "boolean",
-																				"default": false
+																				"default": false,
+																				"x-auditable": true
 																			}
 																		}
 																	}
@@ -6474,7 +6507,8 @@
 				"required": true,
 				"schema": {
 					"description": "An Application ID represents an identifier of an application.",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -6507,7 +6541,8 @@
 											},
 											"required": [
 												"public_key"
-											]
+											],
+											"x-auditable": false
 										}
 									},
 									"wrangler_ssh": {
@@ -6516,13 +6551,15 @@
 										"properties": {
 											"enabled": {
 												"type": "boolean",
-												"default": true
+												"default": true,
+												"x-auditable": true
 											},
 											"port": {
 												"type": "integer",
 												"default": 22,
 												"maximum": 65535,
-												"minimum": 1
+												"minimum": 1,
+												"x-auditable": true
 											}
 										}
 									}
@@ -6548,7 +6585,8 @@
 							"max_instances": {
 								"description": "Maximum number of instances that an autoscaling application can run.",
 								"type": "integer",
-								"minimum": 0
+								"minimum": 0,
+								"x-auditable": true
 							},
 							"observability": {
 								"description": "Top-level application observability settings. Scheduler-backed applications\nhot-reload these settings across existing instances. An existing Durable\nObject-managed application accepts only `logs.enabled` and publishes these settings\nto runtime metadata without creating deployments or rollouts.\n",
@@ -6563,7 +6601,8 @@
 												"properties": {
 													"enabled": {
 														"type": "boolean",
-														"default": false
+														"default": false,
+														"x-auditable": true
 													}
 												}
 											}
@@ -6687,7 +6726,8 @@
 																},
 																"active_rollout_id": {
 																	"description": "An identifier for a specific rollout within an application.",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"configuration": {
 																	"description": "User-specified container configuration.",
@@ -6710,7 +6750,8 @@
 																				},
 																				"required": [
 																					"public_key"
-																				]
+																				],
+																				"x-auditable": false
 																			}
 																		},
 																		"command": {
@@ -6747,7 +6788,8 @@
 																					},
 																					"value": {
 																						"description": "An environment variable value.",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": false
 																					}
 																				},
 																				"required": [
@@ -6789,7 +6831,8 @@
 																					"properties": {
 																						"enabled": {
 																							"type": "boolean",
-																							"default": false
+																							"default": false,
+																							"x-auditable": true
 																						}
 																					}
 																				}
@@ -6918,7 +6961,8 @@
 																					},
 																					"instance_id": {
 																						"description": "An instance ID represents an identifier of an instance configuration that maintains an underlying placement.",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -6963,7 +7007,8 @@
 																},
 																"id": {
 																	"description": "An Application ID represents an identifier of an application.",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"instances": {
 																	"description": "Number of deployments to create.",
@@ -6975,7 +7020,8 @@
 																},
 																"name": {
 																	"description": "The application name.",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"observability": {
 																	"description": "Top-level observability settings for the application.\nThis field is mutually exclusive with configuration.observability.\n",
@@ -6990,7 +7036,8 @@
 																					"properties": {
 																						"enabled": {
 																							"type": "boolean",
-																							"default": false
+																							"default": false,
+																							"x-auditable": true
 																						}
 																					}
 																				}
@@ -7080,7 +7127,8 @@
 																		},
 																		"required": [
 																			"public_key"
-																		]
+																		],
+																		"x-auditable": false
 																	}
 																},
 																"wrangler_ssh": {
@@ -7089,13 +7137,15 @@
 																	"properties": {
 																		"enabled": {
 																			"type": "boolean",
-																			"default": true
+																			"default": true,
+																			"x-auditable": true
 																		},
 																		"port": {
 																			"type": "integer",
 																			"default": 22,
 																			"maximum": 65535,
-																			"minimum": 1
+																			"minimum": 1,
+																			"x-auditable": true
 																		}
 																	}
 																}
@@ -7177,11 +7227,13 @@
 														},
 														"id": {
 															"description": "An Application ID represents an identifier of an application.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The application name.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"observability": {
 															"description": "Application-wide logging settings for a Durable Object-managed application.\nThe application publishes these settings to its runtime metadata. Updating\nthem does not create a deployment or rollout.\n",
@@ -8332,7 +8384,8 @@
 															},
 															"required": [
 																"public_key"
-															]
+															],
+															"x-auditable": false
 														}
 													},
 													"command": {
@@ -8369,7 +8422,8 @@
 																},
 																"value": {
 																	"description": "An environment variable value.",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": false
 																}
 															},
 															"required": [
@@ -8411,7 +8465,8 @@
 																"properties": {
 																	"enabled": {
 																		"type": "boolean",
-																		"default": false
+																		"default": false,
+																		"x-auditable": true
 																	}
 																}
 															}
@@ -8486,16 +8541,19 @@
 									"instances": {
 										"description": "The initial number of deployments to create.",
 										"type": "integer",
-										"minimum": 0
+										"minimum": 0,
+										"x-auditable": true
 									},
 									"max_instances": {
 										"description": "Sets the maximum number of instances that the application can run.",
 										"type": "integer",
-										"minimum": 0
+										"minimum": 0,
+										"x-auditable": true
 									},
 									"name": {
 										"description": "The name for this application.",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"observability": {
 										"description": "Top-level observability settings for the application.\nThis field is mutually exclusive with configuration.observability.\n",
@@ -8510,7 +8568,8 @@
 														"properties": {
 															"enabled": {
 																"type": "boolean",
-																"default": false
+																"default": false,
+																"x-auditable": true
 															}
 														}
 													}
@@ -8526,11 +8585,16 @@
 										"minimum": 0
 									},
 									"scheduling_policy": {
-										"description": "Selects a scheduler-backed application. Use `default` when the Containers\nscheduler should maintain the requested number of instances and manage deployment\nconfiguration, placement, scaling, versions, and rollouts.\n",
-										"type": "string",
-										"enum": [
-											"default"
-										]
+										"allOf": [
+											{
+												"description": "Selects a scheduler-backed application. Use `default` when the Containers\nscheduler should maintain the requested number of instances and manage deployment\nconfiguration, placement, scaling, versions, and rollouts.\n",
+												"type": "string",
+												"enum": [
+													"default"
+												]
+											}
+										],
+										"x-auditable": true
 									}
 								},
 								"additionalProperties": false,
@@ -8570,7 +8634,8 @@
 															},
 															"required": [
 																"public_key"
-															]
+															],
+															"x-auditable": false
 														}
 													},
 													"wrangler_ssh": {
@@ -8579,13 +8644,15 @@
 														"properties": {
 															"enabled": {
 																"type": "boolean",
-																"default": true
+																"default": true,
+																"x-auditable": true
 															},
 															"port": {
 																"type": "integer",
 																"default": 22,
 																"maximum": 65535,
-																"minimum": 1
+																"minimum": 1,
+																"x-auditable": true
 															}
 														}
 													}
@@ -8656,7 +8723,8 @@
 									},
 									"name": {
 										"description": "The name for this application.",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"observability": {
 										"description": "Application-wide logging settings for a Durable Object-managed application.\nThe application publishes these settings to its runtime metadata. Updating\nthem does not create a deployment or rollout.\n",
@@ -8677,11 +8745,16 @@
 										"additionalProperties": false
 									},
 									"scheduling_policy": {
-										"description": "Selects a Durable Object-managed application. Each Durable Object creates and\nmanages the lifecycle of its container instance. Configure application-wide\nobservability settings here. Deployment configuration, scaling, placement\nconstraints, versions, and rollouts do not apply.\n",
-										"type": "string",
-										"enum": [
-											"durable_object"
-										]
+										"allOf": [
+											{
+												"description": "Selects a Durable Object-managed application. Each Durable Object creates and\nmanages the lifecycle of its container instance. Configure application-wide\nobservability settings here. Deployment configuration, scaling, placement\nconstraints, versions, and rollouts do not apply.\n",
+												"type": "string",
+												"enum": [
+													"durable_object"
+												]
+											}
+										],
+										"x-auditable": true
 									}
 								},
 								"additionalProperties": false,
@@ -8800,7 +8873,8 @@
 																},
 																"active_rollout_id": {
 																	"description": "An identifier for a specific rollout within an application.",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"configuration": {
 																	"description": "User-specified container configuration.",
@@ -8823,7 +8897,8 @@
 																				},
 																				"required": [
 																					"public_key"
-																				]
+																				],
+																				"x-auditable": false
 																			}
 																		},
 																		"command": {
@@ -8860,7 +8935,8 @@
 																					},
 																					"value": {
 																						"description": "An environment variable value.",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": false
 																					}
 																				},
 																				"required": [
@@ -8902,7 +8978,8 @@
 																					"properties": {
 																						"enabled": {
 																							"type": "boolean",
-																							"default": false
+																							"default": false,
+																							"x-auditable": true
 																						}
 																					}
 																				}
@@ -9031,7 +9108,8 @@
 																					},
 																					"instance_id": {
 																						"description": "An instance ID represents an identifier of an instance configuration that maintains an underlying placement.",
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -9076,7 +9154,8 @@
 																},
 																"id": {
 																	"description": "An Application ID represents an identifier of an application.",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"instances": {
 																	"description": "Number of deployments to create.",
@@ -9088,7 +9167,8 @@
 																},
 																"name": {
 																	"description": "The application name.",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"observability": {
 																	"description": "Top-level observability settings for the application.\nThis field is mutually exclusive with configuration.observability.\n",
@@ -9103,7 +9183,8 @@
 																					"properties": {
 																						"enabled": {
 																							"type": "boolean",
-																							"default": false
+																							"default": false,
+																							"x-auditable": true
 																						}
 																					}
 																				}
@@ -9193,7 +9274,8 @@
 																		},
 																		"required": [
 																			"public_key"
-																		]
+																		],
+																		"x-auditable": false
 																	}
 																},
 																"wrangler_ssh": {
@@ -9202,13 +9284,15 @@
 																	"properties": {
 																		"enabled": {
 																			"type": "boolean",
-																			"default": true
+																			"default": true,
+																			"x-auditable": true
 																		},
 																		"port": {
 																			"type": "integer",
 																			"default": 22,
 																			"maximum": 65535,
-																			"minimum": 1
+																			"minimum": 1,
+																			"x-auditable": true
 																		}
 																	}
 																}
@@ -9290,11 +9374,13 @@
 														},
 														"id": {
 															"description": "An Application ID represents an identifier of an application.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The application name.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"observability": {
 															"description": "Application-wide logging settings for a Durable Object-managed application.\nThe application publishes these settings to its runtime metadata. Updating\nthem does not create a deployment or rollout.\n",

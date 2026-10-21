@@ -10,7 +10,8 @@
 				"required": true,
 				"schema": {
 					"description": "An Application ID represents an identifier of an application.",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -33,13 +34,15 @@
 								"enum": [
 									"full_auto",
 									"full_manual"
-								]
+								],
+								"x-auditable": true
 							},
 							"percentage": {
 								"description": "Initial target version percentage (0-100). Version sync actively replaces instances to match.\nRequired when strategy is \"new_instances\" and kind is \"full_manual\". When strategy is \"new_instances\" and kind is \"full_auto\", omitted percentage starts at 10% or the smallest percentage that targets at least one instance. Unused for \"rolling\".\n",
 								"type": "integer",
 								"maximum": 100,
-								"minimum": 0
+								"minimum": 0,
+								"x-auditable": true
 							},
 							"step_percentage": {
 								"description": "Percentage of rollout to increase in each step when \"steps\" is absent. Applicable values: 5, 10, 20, 25, 50, 100.\nThese create rollouts with 20, 10, 5, 4, 2, 1 steps respectively.\nOnly valid for \"rolling\" strategy.\n",
@@ -51,7 +54,8 @@
 									25,
 									50,
 									100
-								]
+								],
+								"x-auditable": true
 							},
 							"steps": {
 								"description": "Steps defining the rollout process, used when \"step_percentage\" is absent.\nSpecify only one of \"step_percentage\" or \"steps\" when creating a rollout.\n\"steps\" allow granular control over each step.\nOnly valid for \"rolling\" strategy.\n",
@@ -89,7 +93,8 @@
 								"enum": [
 									"rolling",
 									"new_instances"
-								]
+								],
+								"x-auditable": true
 							},
 							"target_configuration": {
 								"description": "User-specified container configuration changes.",
@@ -112,7 +117,8 @@
 											},
 											"required": [
 												"public_key"
-											]
+											],
+											"x-auditable": false
 										}
 									},
 									"command": {
@@ -149,7 +155,8 @@
 												},
 												"value": {
 													"description": "An environment variable value.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": false
 												}
 											},
 											"required": [
@@ -191,7 +198,8 @@
 												"properties": {
 													"enabled": {
 														"type": "boolean",
-														"default": false
+														"default": false,
+														"x-auditable": true
 													}
 												}
 											}
@@ -327,7 +335,8 @@
 																},
 																"required": [
 																	"public_key"
-																]
+																],
+																"x-auditable": false
 															}
 														},
 														"command": {
@@ -364,7 +373,8 @@
 																	},
 																	"value": {
 																		"description": "An environment variable value.",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": false
 																	}
 																},
 																"required": [
@@ -406,7 +416,8 @@
 																	"properties": {
 																		"enabled": {
 																			"type": "boolean",
-																			"default": false
+																			"default": false,
+																			"x-auditable": true
 																		}
 																	}
 																}
@@ -498,7 +509,8 @@
 																	},
 																	"instance_id": {
 																		"description": "An instance ID represents an identifier of an instance configuration that maintains an underlying placement.",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -543,7 +555,8 @@
 												},
 												"id": {
 													"description": "An identifier for a specific rollout within an application.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"kind": {
 													"description": "Kind of the rollout process.\n - \"full_auto\": For rolling rollouts, starts progressing steps upon rollout creation. For new_instances rollouts, advances percentage targets automatically after target-version health is observed.\n - \"full_manual\": Requires manually progressing each step in the rollout using the UpdateRollout's action paramater.\n - \"durable_objects_auto\": Default when the application is a DO application.\n",
@@ -723,7 +736,8 @@
 																},
 																"required": [
 																	"public_key"
-																]
+																],
+																"x-auditable": false
 															}
 														},
 														"command": {
@@ -760,7 +774,8 @@
 																	},
 																	"value": {
 																		"description": "An environment variable value.",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": false
 																	}
 																},
 																"required": [
@@ -802,7 +817,8 @@
 																	"properties": {
 																		"enabled": {
 																			"type": "boolean",
-																			"default": false
+																			"default": false,
+																			"x-auditable": true
 																		}
 																	}
 																}

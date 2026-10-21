@@ -107,9 +107,14 @@
 											"type": "object",
 											"properties": {
 												"domain": {
-													"description": "A string representation of a domain name. See RFC-1034 (https://www.ietf.org/rfc/rfc1034.txt). Consider that the limit of a domain name is min 3 and max 253 ASCII characters.",
-													"type": "string",
-													"example": "docker.io"
+													"allOf": [
+														{
+															"description": "A string representation of a domain name. See RFC-1034 (https://www.ietf.org/rfc/rfc1034.txt). Consider that the limit of a domain name is min 3 and max 253 ASCII characters.",
+															"type": "string",
+															"example": "docker.io"
+														}
+													],
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -1030,19 +1035,22 @@
 								"required": [
 									"public_credential",
 									"private_credential"
-								]
+								],
+								"x-auditable": false
 							},
 							"domain": {
 								"description": "Hostname of the private registry, without a scheme or image path. Supported\nhostnames are `docker.io`, AWS ECR hostnames, and Google Artifact Registry\n`*-docker.pkg.dev` hostnames.\n",
 								"type": "string",
-								"example": "docker.io"
+								"example": "docker.io",
+								"x-auditable": true
 							},
 							"is_public": {
 								"description": "Omit this field or set it to `false`. Public Docker Hub images do not require\nregistry configuration and cannot be added with this endpoint.\n",
 								"type": "boolean",
 								"enum": [
 									false
-								]
+								],
+								"x-auditable": true
 							},
 							"kind": {
 								"description": "Registry provider. This must match `domain`: `DockerHub` for `docker.io`,\n`ECR` for AWS ECR, or `GAR` for Google Artifact Registry.\n",
@@ -1830,7 +1838,8 @@
 												"registry_host",
 												"username",
 												"password"
-											]
+											],
+											"x-auditable": false
 										}
 									},
 									"required": [
