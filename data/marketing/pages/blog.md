@@ -10,6 +10,24 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+October 21, 2026 [<h2>Introducing full transaction detection for Cloudflare WAF</h2>](https://blog.cloudflare.com/full-transaction-waf/)
+
+Cloudflare's web application firewall can now correlate an HTTP request with its response. Full transaction detection helps every customer find successful exploits, data exposure, and risky misconfigurations that request-only inspection can miss.
+
+![Daniele Molteni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464793D50Z8QJQK451PK2A.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Elie Roudninski](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5E1MFPXN6AEQCKTKF2PT9EC.01M5E1MG84X4YD6FVXXZBHBYHV.webp&w=64&h=64&f=webp&fit=cover&position=center)![Nick Downie](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SSXNV3BG1DQNXK5K9FBQ.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Daniele Molteni](https://blog.cloudflare.com/author/daniele/),  [Elie Roudninski](https://blog.cloudflare.com/author/elie-roudninski/), and  [Nick Downie](https://blog.cloudflare.com/author/nick-downie/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5E1HKVR7WJX7KGB4B8MSK75.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/full-transaction-waf/)
+
+October 21, 2026 [<h2>Cloudflare deploys protections against php2shell vulnerability</h2>](https://blog.cloudflare.com/php-vulnerabilities-waf-protection/)
+
+Cloudflare has deployed default web application firewall (WAF) protections for newly disclosed PHP vulnerabilities before public disclosure. The rules use request and response signals to stop exploit attempts and prevent exposed data from reaching attackers.
+
+![Daniele Molteni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464793D50Z8QJQK451PK2A.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Dan Jones](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NPTFNWGMZXQMX2WDPGJS.webp&w=64&h=64&f=webp&fit=cover&position=center)![Kuber Nandwani](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXRZS93GCE4CXP81WJ1TX25Y.webp&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Daniele Molteni](https://blog.cloudflare.com/author/daniele/),  [Dan Jones](https://blog.cloudflare.com/author/dan-jones/), and  [Kuber Nandwani](https://blog.cloudflare.com/author/kuber-nandwani/)
+
 October 21, 2026 [<h2>How Commerce.com and Cloudflare are getting storefronts ready for AI agents</h2>](https://blog.cloudflare.com/webmcp-commerce/)
 
 Almost 100,000 Commerce.com domains now give AI agents real shopping tools through WebMCP on Cloudflare. Here's how we turned it on across every store at once, while keeping each merchant in control.
@@ -17,8 +35,6 @@ Almost 100,000 Commerce.com domains now give AI agents real shopping tools throu
 ![Jenny Lea](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AYXNDF4KMCR86PP29ANNS2.01M5AYXP6FTHD6G8SRE703MNH7.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Max Brosnahan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AZ7KZVQ4CXW8ABKK47FTR8.01M5AZ7MWFZHG2Y8WMY47NR4JA.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Matthew Conroy](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW1QZW47KMHA09RY62FC.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Jenny Lea](https://blog.cloudflare.com/author/jenny-lea/),  [Max Brosnahan](https://blog.cloudflare.com/author/max-brosnahan/), and  [Matthew Conroy](https://blog.cloudflare.com/author/matthew-conroy/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AYSA5Z4MMJ6XYBSMECP05T.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/webmcp-commerce/)
 
 October 20, 2026 [<h2>8 eMudhra certificates are compromised. Here's what you need to know</h2>](https://blog.cloudflare.com/emudhra-certificate-compromise/)
 
@@ -147,22 +163,6 @@ On-demand CPU and memory profiling for Cloudflare Workers and Durable Objects is
 ![Dominik Picheta](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P5G8RRA9GKFZA6BYERZ1.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Dominik Picheta](https://blog.cloudflare.com/author/dominik/)
-
-October 9, 2026 [<h2>Deno is joining Cloudflare</h2>](https://blog.cloudflare.com/deno-joins-cloudflare/)
-
-The Deno team is joining Cloudflare to radically simplify self-hosting Workers and Durable Objects, so developers can use the same primitives in more places.
-
-![Kenton Varda](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DEXVTQSPFW8ZSKE70KPZ.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Ryan Dahl](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4ENFKW4YTVQWHFZ3QZQ493D.01M4ENFMVKQXFWHGEVAERPHSEE.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Kenton Varda](https://blog.cloudflare.com/author/kenton-varda/) and  [Ryan Dahl](https://blog.cloudflare.com/author/ryan-dahl/)
-
-October 8, 2026 [<h2>Bridging technical depth and usability: The story behind Radar's redesign</h2>](https://blog.cloudflare.com/radar-redesign/)
-
-We redesigned Cloudflare Radar to make real-time global traffic and outage data accessible to a wider audience — including journalists, less technical researchers, and everyday users. By introducing an interactive map and standardized components, we simplified navigation while preserving technical depth.
-
-![Sophia Alfred](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M34XNPH605RFZSSKT2WGV62K.01M34XNQ1CGJKMAJX9V0QX0V78.webp&w=64&h=64&f=webp&fit=cover&position=center)![Lai Yi Ohlsen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DGMNXAW2CZQQAX92W97V.png&w=64&h=64&f=webp&fit=cover&position=center)![Nuno Pereira](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463BH7YG5WV285FY6MG1BA.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Sophia Alfred](https://blog.cloudflare.com/author/sophia-alfred/),  [Lai Yi Ohlsen](https://blog.cloudflare.com/author/lai-yi-ohlsen/), and  [Nuno Pereira](https://blog.cloudflare.com/author/nuno-pereira/)
 
 Load more
 

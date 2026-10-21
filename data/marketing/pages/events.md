@@ -36,14 +36,6 @@ AmericasEMEAAPJC
 
 [San Francisco, CACloudflare Global Connect 2026Oct 19–21Learn more](https://www.cloudflare.com/connect/)
 
-Orlando, FL
-
-Gartner IT Symposium
-
-Oct 19–20
-
-Coming soon
-
 Las Vegas, NV
 
 AWS re:Invent
