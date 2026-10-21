@@ -1,0 +1,334 @@
+{
+	"GET /v2/{domain}/settings": {
+		"operationId": "getDomainSettings",
+		"summary": "Provide settings if domain is served by Cloudflare",
+		"description": "Checks whether a domain is in Quicksilver and returns its settings.",
+		"parameters": [
+			{
+				"name": "domain",
+				"in": "path",
+				"description": "Domain name.",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Ok.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"additionalProperties": true
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not Found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Error message"
+								}
+							}
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal Server Error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Error message"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"APIToken": []
+			}
+		],
+		"tags": [
+			"api"
+		],
+		"x-api-token-group": [],
+		"x-fern-sdk-group-name": "dns.domainconnect",
+		"x-fern-sdk-method-name": "getDomainSettings"
+	},
+	"GET /v2/domainTemplates/providers/{provider}/services/{service}": {
+		"operationId": "getProviderTemplate",
+		"summary": "Serve a provider template",
+		"description": "Providers are the external parties that are configured to interact with Cloudflare.",
+		"parameters": [
+			{
+				"name": "provider",
+				"in": "path",
+				"description": "Provider name.",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "service",
+				"in": "path",
+				"description": "Service name.",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "dump",
+				"in": "query",
+				"description": "Dump raw template.",
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Ok.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"additionalProperties": true
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not Found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Error message"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"APIToken": []
+			}
+		],
+		"tags": [
+			"api"
+		],
+		"x-api-token-group": [],
+		"x-fern-sdk-group-name": "dns.domainconnect",
+		"x-fern-sdk-method-name": "getProviderTemplate"
+	},
+	"GET /v2/provconf/{provider}/{service}/{account}": {
+		"operationId": "getProviderConfiguration",
+		"summary": "Serve a provider configuration",
+		"description": "Provides Stratus with extra information about domain connect provider(s).",
+		"parameters": [
+			{
+				"name": "provider",
+				"in": "path",
+				"description": "Provider ID.",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "service",
+				"in": "path",
+				"description": "Service ID.",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "account",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Ok.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"logo": {
+									"type": "string"
+								},
+								"template": {
+									"type": "object"
+								},
+								"template_spec": {
+									"type": "object",
+									"properties": {
+										"accountTags": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"proxied": {
+											"type": "boolean"
+										},
+										"status": {
+											"type": "integer"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Error message"
+								}
+							}
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Error message"
+								}
+							}
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not Found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Error message"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"APIToken": []
+			}
+		],
+		"tags": [
+			"api"
+		],
+		"x-api-token-group": [],
+		"x-fern-sdk-group-name": "dns.domainconnect",
+		"x-fern-sdk-method-name": "getProviderConfiguration"
+	},
+	"POST /v1/verify": {
+		"operationId": "postVerify",
+		"summary": "Request domain connect validation",
+		"description": "Validates a Domain Connect signed request using DNS TXT public keys.",
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"domain": {
+								"type": "string"
+							},
+							"hash": {
+								"type": "string"
+							},
+							"sig": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Ok."
+			},
+			"400": {
+				"description": "Bad Request."
+			},
+			"403": {
+				"description": "Forbidden."
+			},
+			"404": {
+				"description": "Not Found."
+			},
+			"417": {
+				"description": "Expectation Failed."
+			},
+			"502": {
+				"description": "Bad Gateway."
+			}
+		},
+		"security": [
+			{
+				"APIToken": []
+			}
+		],
+		"tags": [
+			"api"
+		],
+		"x-api-token-group": [],
+		"x-fern-sdk-group-name": "dns.domainconnect",
+		"x-fern-sdk-method-name": "postVerify"
+	}
+}

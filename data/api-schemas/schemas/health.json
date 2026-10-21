@@ -1,0 +1,32 @@
+{
+	"GET /_heartbeat": {
+		"operationId": "getHeartbeat",
+		"summary": "Heartbeat response",
+		"description": "Used by Kubernetes readiness and liveness probes, and CI builder by executing test/staging.sh.",
+		"responses": {
+			"200": {
+				"description": "Ok.",
+				"content": {
+					"text/plain": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Service Unavailable."
+			}
+		},
+		"security": [
+			{
+				"APIToken": []
+			}
+		],
+		"tags": [
+			"health"
+		],
+		"x-fern-sdk-group-name": "dns.domainconnect",
+		"x-fern-sdk-method-name": "getHeartbeat"
+	}
+}
