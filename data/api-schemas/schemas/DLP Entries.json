@@ -2294,70 +2294,59 @@
 							{
 								"oneOf": [
 									{
-										"allOf": [
-											{
+										"properties": {
+											"description": {
+												"type": "string",
+												"nullable": true
+											},
+											"name": {
+												"type": "string"
+											},
+											"pattern": {
 												"type": "object",
 												"properties": {
-													"description": {
-														"type": "string",
-														"nullable": true
-													},
-													"name": {
+													"regex": {
 														"type": "string"
 													},
-													"pattern": {
-														"type": "object",
-														"properties": {
-															"regex": {
-																"type": "string"
-															},
-															"validation": {
-																"allOf": [
-																	{
-																		"type": "string",
-																		"deprecated": true,
-																		"enum": [
-																			"luhn"
-																		]
-																	}
+													"validation": {
+														"allOf": [
+															{
+																"type": "string",
+																"deprecated": true,
+																"enum": [
+																	"luhn"
 																]
 															}
-														},
-														"required": [
-															"regex"
 														]
-													},
-													"validator_ids": {
-														"description": "Validators this entry should reference, by id, at most 10. Replaces the current set.\n\nOptional, unlike the rest of this body: omitting it leaves the current attachments alone, so a\nclient that predates validators cannot detach them by accident. Send `[]` to detach.",
-														"type": "array",
-														"items": {
-															"format": "uuid",
-															"type": "string"
-														},
-														"x-stainless-collection-type": "set",
-														"x-stainless-terraform-configurability": "computed_optional"
 													}
 												},
 												"required": [
-													"name",
-													"pattern"
+													"regex"
 												]
 											},
-											{
-												"properties": {
-													"type": {
-														"type": "string",
-														"enum": [
-															"custom"
-														]
-													}
+											"type": {
+												"type": "string",
+												"enum": [
+													"custom"
+												]
+											},
+											"validator_ids": {
+												"description": "Validators this entry should reference, by id, at most 10. Replaces the current set.\n\nOptional, unlike the rest of this body: omitting it leaves the current attachments alone, so a\nclient that predates validators cannot detach them by accident. Send `[]` to detach.",
+												"type": "array",
+												"items": {
+													"format": "uuid",
+													"type": "string"
 												},
-												"required": [
-													"type"
-												],
-												"type": "object"
+												"x-stainless-collection-type": "set",
+												"x-stainless-terraform-configurability": "computed_optional"
 											}
-										]
+										},
+										"required": [
+											"name",
+											"pattern",
+											"type"
+										],
+										"type": "object"
 									},
 									{
 										"properties": {
