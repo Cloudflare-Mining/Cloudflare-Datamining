@@ -1,0 +1,100 @@
+<p>On&nbsp;October 19, 2026, at approximately&nbsp;17:00 UTC, Cloudflare became aware that private keys associated with eight eMudhra intermediate certificates were compromised. These certificates were widely trusted by browsers, operating systems, and also within Cloudflare. Because the keys themselves are weak, an attacker can create a forged certificate for any domain and use it to impersonate servers to intercept or modify traffic. This is a serious security incident with implications across the Internet. For reference, <a href="https://www.cloudflare.com/learning/ssl/what-is-an-ssl-certificate"><u>here is a link</u></a>&nbsp;to more information about how SSL certificates work and why they are so critical to the operation of the Internet.</p>
+<p>We immediately prioritized patching critical services across Cloudflare to protect our customers ahead of the public disclosure of the vulnerability. Our security review has not identified active exploitation of this issue on Cloudflare services.</p>
+<p>We have released updates for the Cloudflare One Clients, also known as WARP or the 1.1.1.1 app, and Cloudflare Tunnel, also known as cloudflared. We have also deployed mitigations across our CDN, Developer, and Zero Trust products. If you are using Cloudflare Zero Trust with Gateway and an up-to-date client (see below), you are automatically protected.</p>
+<h2>Our response</h2>
+<p>We prioritized updating services that use public certificates to authenticate remote endpoints, including proxies connecting to origins and applications calling external APIs. In parallel, we updated shared trust stores, base images, and other shared foundations, providing a common mitigation path for services that inherit their certificate trust from those sources. We paired these updates with reloads, restarts, and image deployments needed to activate them. Applications with bundled or custom trust stores received separate assessment and updates. This work addresses certificate-based authentication, not a weakness in TLS’s encryption algorithms.</p>
+<p>Teams across Cloudflare are presently working on further remediation. We are making progress, but there's much work still to be done. <strong>Some customers will need to take action on software or trust configurations that they operate, especially on their origin servers.</strong>&nbsp;The recommended actions are summarized below.</p>
+<h2>What customers should do</h2>
+<div id="html-block-b7" class="html-block">
+	<table>
+		<tbody>
+			<tr>
+				<td><strong>Users of these software or services</strong></td>
+				<td><strong>Action the customer should take</strong></td>
+			</tr>
+			<tr>
+				<td>Cloudflare One/WARP</td>
+				<td>
+					<p>Cloudflare One Client: Upgrade to: v2.5.6 (Android), v1.12.16 (iOS), <a href="https://downloads.cloudflareclient.com/v1/download/windows/version/2026.8.2115.0">Windows Desktop (2026.8.2115.0)</a>, <a href="https://downloads.cloudflareclient.com/v1/download/macos/version/2026.8.2115.0">macOS (2026.8.2115.0)</a>, <a href="https://downloads.cloudflareclient.com/v1/download/almalinux10-arm/version/2026.8.2115.0">Linux (2026.8.2115.0)</a></p>
+					<p></p>
+					<p>1.1.1.1 app: Upgrade to: v6.38.10 (Android), v6.31.7 (iOS), <a href="https://1111-releases.cloudflareclient.com/win/latest">Windows Desktop (2026.8.2115.0)</a>, <a href="https://1111-releases.cloudflareclient.com/mac/latest">macOS (2026.8.2115.0)</a>, <a href="https://pkg.cloudflareclient.com">Linux (2026.8.2115.0)</a></p>
+				</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Tunnel (cloudflared)</td>
+				<td><a href="https://github.com/cloudflare/cloudflared/releases">Upgrade to 2026.10.2</a>. For container deployments, update and redeploy the fixed image</td>
+			</tr>
+			<tr>
+				<td>Customer-configured TLS client authentication</td>
+				<td>Review and update your mutual TLS trust store/uploaded CAs used to verify client certificates</td>
+			</tr>
+			<tr>
+				<td>Customer Origin TLS Servers configuration</td>
+				<td>Review your custom origin certificates and server configurations if using <a href="https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict">Full (strict)</a>&nbsp;encryption mode or <a href="https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/ssl-only-origin-pull">Strict</a>&nbsp;mode.<br><br>We are updating <a href="https://blog.cloudflare.com/introducing-automatic-ssl-tls-securing-and-simplifying-origin-connectivity">Automatic SSL/TLS</a>&nbsp;to automatically notify you if you still use these distrusted certificates, which would cause breakages.</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Containers</td>
+				<td>
+					<p>Customers using Cloudflare Containers, including Sandboxes, should review their container images and application dependencies for affected certificate trust stores and apply updates based on your deployed image.</p>
+					<p>Customers can also enable <a href="https://developers.cloudflare.com/containers/configuration/outbound-traffic/#https-traffic">HTTPS egress interception</a>&nbsp;to route outbound HTTPS requests through Cloudflare, moving remote-server certificate validation from the application to Cloudflare-managed infrastructure. This allows Cloudflare’s trust-store mitigations to protect intercepted connections. Containers that have this enabled are already protected.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h2>Developer guidance</h2>
+<p>For developers, look beneath the SDK.</p>
+<p>An API client may delegate certificate verification to an HTTP library, a language runtime, the operating system, or a custom trust configuration. Updating the SDK alone may not change the underlying policy.</p>
+<p>Once you patch, you may notice certificate errors in your dashboards. <strong>It's important to not resolve these errors by disabling verification.</strong> That would remove the authentication protection these updates are intended to restore.</p>
+<p>This incident affects many software stacks that rely on the WebPKI for authentication. Mozilla’s Dennis Jackson has crowdsourced <a href="https://emudhra.we-have-a-problem.com"><u>a list of commonly used packages</u></a>&nbsp;that have been patched.&nbsp;We advise readers to upgrade as soon as possible. (Note that some of these may be indirect dependencies of your software stack, so look at the dependency tree.) Apply the relevant dependency updates, rebuild affected images, and confirm whether applications require a reload, restart, or redeployment.</p>
+<p>Dennis Jackson’s <a href="https://emudhra.we-have-a-problem.com"><u>test site</u></a>&nbsp;provides&nbsp;browser checks, non-browser testing instructions, and package update information. Results apply to the verification path being tested, not every application on the device. Validate through the application’s actual TLS path. A successful browser test does not prove that a background service is protected. Neither does a curl test if the application uses a different verifier.</p>
+<h2>Timeline</h2>
+<p>The timeline of events so far is below.</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 192px;">
+		<tbody>
+			<tr>
+				<td>
+					<p>Date and Time</p>
+				</td>
+				<td>
+					<p>Event</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>October 19, approximately 17:00 UTC</p>
+				</td>
+				<td>
+					<p>Cloudflare becomes aware of the compromise and begins assessment.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>October 20, 02:00 UTC</p>
+				</td>
+				<td>
+					<p>Cloudflare One Client and WARP app security updates published across platforms (except Cloudflare One Agent on iOS, for which app review is still pending).</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>October 20 09:15 UTC</p>
+				</td>
+				<td>
+					<p>Cloudflare Tunnel (cloudflared) security update published.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>October 20 19:20 UTC</p>
+				</td>
+				<td>
+					<p>CDN and server-side Zero Trust mitigations fully deployed.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h2>Looking forward</h2>
+<p>The impact of this incident is not felt equally. Browser maintainers were able to remediate the issue with a flip of a switch. They of course have just <em>one</em>&nbsp;application to update, instead of hundreds, but they do have a neat trick up their sleeves: most browsers use quick-revocation mechanisms (like Chrome CRLSets). At Cloudflare we also use such a mechanism for some of our products. To bring it to more systems at Cloudflare and industry, we’re excited about projects like <a href="https://discourse.ubuntu.com/t/an-update-on-upki/77063"><u>upki</u></a>&nbsp;that understand a trust store can’t be a static list of root certificate authorities, but needs the ability to be quickly updated with information like revocation and certificate transparency keys.</p>
