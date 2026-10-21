@@ -104,7 +104,9 @@
 													"type": "object"
 												},
 												{
-													"items": {},
+													"items": {
+														"type": "object"
+													},
 													"type": "array"
 												},
 												{
@@ -315,11 +317,20 @@
 									]
 								}
 							},
+							"example": {
+								"errors": [
+									{
+										"code": 7003,
+										"message": "No route for the URI"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
 							"required": [
 								"success",
-								"errors",
-								"messages",
-								"result"
+								"errors"
 							]
 						}
 					}
@@ -357,8 +368,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "smart-shield.cache-reserve-clear",
-		"x-fern-sdk-method-name": "status",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "status"
 	},
 	"POST /zones/{zone_id}/smart_shield/cache_reserve_clear": {
 		"operationId": "smart-shield-settings-start-cache-reserve-clear",
@@ -452,7 +462,9 @@
 													"type": "object"
 												},
 												{
-													"items": {},
+													"items": {
+														"type": "object"
+													},
 													"type": "array"
 												},
 												{
@@ -663,11 +675,20 @@
 									]
 								}
 							},
+							"example": {
+								"errors": [
+									{
+										"code": 7003,
+										"message": "No route for the URI"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
 							"required": [
 								"success",
-								"errors",
-								"messages",
-								"result"
+								"errors"
 							]
 						}
 					}
@@ -704,7 +725,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "smart-shield.cache-reserve-clear",
 		"x-fern-sdk-method-name": "clear",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation permanently clears Cache Reserve for this zone and cannot be undone."
 	}
 }

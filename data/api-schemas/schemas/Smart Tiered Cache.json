@@ -302,8 +302,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cache.settings.smart-tiered-cache",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": false
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /zones/{zone_id}/cache/tiered_cache_smart_topology_enable": {
 		"operationId": "smart-tiered-cache-get-smart-tiered-cache-setting",
@@ -639,8 +638,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cache.settings.smart-tiered-cache",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": false
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /zones/{zone_id}/cache/tiered_cache_smart_topology_enable": {
 		"operationId": "smart-tiered-cache-patch-smart-tiered-cache-setting",
@@ -1001,8 +999,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cache.settings.smart-tiered-cache",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": false
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /zones/{zone_id}/cache/tiered_cache_smart_topology_enable": {
 		"operationId": "smart-tiered-cache-create-smart-tiered-cache-setting",
@@ -1363,7 +1360,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cache.settings.smart-tiered-cache",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": false
+		"x-fern-sdk-method-name": "create"
 	}
 }

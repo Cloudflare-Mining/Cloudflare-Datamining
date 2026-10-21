@@ -23,6 +23,39 @@
 				"description": "Smart Shield Settings response.",
 				"content": {
 					"application/json": {
+						"examples": {
+							"Success": {
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"cache_reserve": {
+											"editable": true,
+											"id": "cache_reserve",
+											"value": "off"
+										},
+										"healthchecks_count": 0,
+										"regional_tiered_cache": {
+											"editable": true,
+											"id": "regional_tiered_cache",
+											"value": "off"
+										},
+										"smart_routing": {
+											"editable": true,
+											"id": "smart_routing",
+											"value": "off"
+										},
+										"smart_tiered_cache": {
+											"editable": true,
+											"id": "smart_tiered_cache",
+											"modified_on": "2025-09-10T22:53:22.946098Z",
+											"value": "on"
+										}
+									},
+									"success": true
+								}
+							}
+						},
 						"schema": {
 							"allOf": [
 								{
@@ -76,7 +109,9 @@
 													"type": "object"
 												},
 												{
-													"items": {},
+													"items": {
+														"type": "object"
+													},
 													"type": "array"
 												},
 												{
@@ -104,97 +139,79 @@
 									"allOf": [
 										{
 											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
 															},
-															"example": []
+															"message": {
+																"type": "string"
+															}
 														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {
+																"type": "object"
+															},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
 													]
 												},
-												{
-													"properties": {
-														"result": {
-															"oneOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
 												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
 											]
 										},
 										{
@@ -208,6 +225,7 @@
 															"type": "object",
 															"properties": {
 																"cache_reserve": {
+																	"type": "object",
 																	"properties": {
 																		"editable": {
 																			"description": "Whether the setting is editable.",
@@ -434,11 +452,20 @@
 									]
 								}
 							},
+							"example": {
+								"errors": [
+									{
+										"code": 7003,
+										"message": "No route for the URI"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
 							"required": [
 								"success",
-								"errors",
-								"messages",
-								"result"
+								"errors"
 							]
 						}
 					}
@@ -556,11 +583,20 @@
 									]
 								}
 							},
+							"example": {
+								"errors": [
+									{
+										"code": 7003,
+										"message": "No route for the URI"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
 							"required": [
 								"success",
-								"errors",
-								"messages",
-								"result"
+								"errors"
 							]
 						}
 					}
@@ -678,11 +714,20 @@
 									]
 								}
 							},
+							"example": {
+								"errors": [
+									{
+										"code": 7003,
+										"message": "No route for the URI"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
 							"required": [
 								"success",
-								"errors",
-								"messages",
-								"result"
+								"errors"
 							]
 						}
 					}
@@ -720,8 +765,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "smart-shield",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /zones/{zone_id}/smart_shield": {
 		"operationId": "smart-shield-patch-settings",
@@ -821,6 +865,38 @@
 				"description": "Smart Shield Settings response.",
 				"content": {
 					"application/json": {
+						"examples": {
+							"Success": {
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"cache_reserve": {
+											"editable": true,
+											"id": "cache_reserve",
+											"value": "off"
+										},
+										"regional_tiered_cache": {
+											"editable": true,
+											"id": "regional_tiered_cache",
+											"value": "off"
+										},
+										"smart_routing": {
+											"editable": true,
+											"id": "smart_routing",
+											"value": "off"
+										},
+										"smart_tiered_cache": {
+											"editable": true,
+											"id": "smart_tiered_cache",
+											"modified_on": "2025-09-10T22:53:22.946098Z",
+											"value": "on"
+										}
+									},
+									"success": true
+								}
+							}
+						},
 						"schema": {
 							"allOf": [
 								{
@@ -874,7 +950,9 @@
 													"type": "object"
 												},
 												{
-													"items": {},
+													"items": {
+														"type": "object"
+													},
 													"type": "array"
 												},
 												{
@@ -902,97 +980,79 @@
 									"allOf": [
 										{
 											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
 															},
-															"example": []
+															"message": {
+																"type": "string"
+															}
 														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {
+																"type": "object"
+															},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
 													]
 												},
-												{
-													"properties": {
-														"result": {
-															"oneOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
 												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
 											]
 										},
 										{
@@ -1001,6 +1061,78 @@
 													"description": "A consolidated object containing settings from multiple APIs for partial updates.",
 													"type": "object",
 													"properties": {
+														"cache_reserve": {
+															"type": "object",
+															"properties": {
+																"editable": {
+																	"description": "Whether the setting is editable.",
+																	"type": "boolean",
+																	"example": true
+																},
+																"id": {
+																	"description": "The id of the Cache Reserve setting.",
+																	"type": "string",
+																	"example": "cache_reserve"
+																},
+																"value": {
+																	"description": "Specifies the enablement value of Cache Reserve.",
+																	"type": "string",
+																	"example": "off",
+																	"enum": [
+																		"on",
+																		"off"
+																	]
+																}
+															}
+														},
+														"regional_tiered_cache": {
+															"type": "object",
+															"properties": {
+																"editable": {
+																	"description": "Whether the setting is editable.",
+																	"type": "boolean",
+																	"example": true
+																},
+																"id": {
+																	"description": "The id of the Regional Tiered Cache setting.",
+																	"type": "string",
+																	"example": "regional_tiered_cache"
+																},
+																"value": {
+																	"description": "Specifies the enablement value of Regional Tiered Cache.",
+																	"type": "string",
+																	"example": "off",
+																	"enum": [
+																		"on",
+																		"off"
+																	]
+																}
+															}
+														},
+														"smart_routing": {
+															"type": "object",
+															"properties": {
+																"editable": {
+																	"description": "Whether the setting is editable.",
+																	"type": "boolean",
+																	"example": true
+																},
+																"id": {
+																	"description": "The id of the Smart Routing setting.",
+																	"type": "string",
+																	"example": "smart_routing"
+																},
+																"value": {
+																	"description": "Specifies the enablement value of Argo Smart Routing.",
+																	"type": "string",
+																	"example": "off",
+																	"enum": [
+																		"on",
+																		"off"
+																	]
+																}
+															}
+														},
 														"smart_tiered_cache": {
 															"type": "object",
 															"properties": {
@@ -1144,11 +1276,20 @@
 									]
 								}
 							},
+							"example": {
+								"errors": [
+									{
+										"code": 7003,
+										"message": "No route for the URI"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
 							"required": [
 								"success",
-								"errors",
-								"messages",
-								"result"
+								"errors"
 							]
 						}
 					}
@@ -1250,11 +1391,20 @@
 									]
 								}
 							},
+							"example": {
+								"errors": [
+									{
+										"code": 7003,
+										"message": "No route for the URI"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
 							"required": [
 								"success",
-								"errors",
-								"messages",
-								"result"
+								"errors"
 							]
 						}
 					}
@@ -1269,24 +1419,8 @@
 								"value": {
 									"errors": [
 										{
-											"code": 1034,
-											"message": "Upgrade Smart Shield to unlock smart_tiered_cache."
-										},
-										{
-											"code": 1034,
-											"message": "Upgrade Smart Shield to unlock argo_smart_routing."
-										},
-										{
-											"code": 1034,
-											"message": "Upgrade Smart Shield to unlock regional_tiered_cache."
-										},
-										{
-											"code": 1034,
-											"message": "Upgrade Smart Shield to unlock cache_reserve."
-										},
-										{
-											"code": 1034,
-											"message": "Upgrade Smart Shield to unlock healthchecks_count."
+											"code": 1035,
+											"message": "Invalid value for smart_tiered_cache. Value must be 'on' or 'off'."
 										}
 									],
 									"messages": [],
@@ -1372,11 +1506,20 @@
 									]
 								}
 							},
+							"example": {
+								"errors": [
+									{
+										"code": 7003,
+										"message": "No route for the URI"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
 							"required": [
 								"success",
-								"errors",
-								"messages",
-								"result"
+								"errors"
 							]
 						}
 					}
@@ -1413,7 +1556,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "smart-shield",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

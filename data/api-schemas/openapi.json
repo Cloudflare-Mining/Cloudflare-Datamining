@@ -2243671,8 +2243671,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "argo.tiered-caching",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			},
 			"patch": {
 				"operationId": "tiered-caching-patch-tiered-caching-setting",
@@ -2244023,8 +2244022,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "argo.tiered-caching",
-				"x-fern-sdk-method-name": "edit",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "edit"
 			}
 		},
 		"/zones/{zone_id}/available_plans": {
@@ -2251000,8 +2250998,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "cache.settings.reserve",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": false
+				"x-fern-sdk-method-name": "get"
 			},
 			"patch": {
 				"operationId": "zone-cache-settings-change-cache-reserve-setting",
@@ -2251390,8 +2251387,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "cache.settings.reserve",
-				"x-fern-sdk-method-name": "edit",
-				"x-forge-hidden": false
+				"x-fern-sdk-method-name": "edit"
 			}
 		},
 		"/zones/{zone_id}/cache/cache_reserve_clear": {
@@ -2251746,8 +2251742,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "cache.settings.reserve",
-				"x-fern-sdk-method-name": "status",
-				"x-forge-hidden": false
+				"x-fern-sdk-method-name": "status"
 			},
 			"post": {
 				"operationId": "zone-cache-settings-start-cache-reserve-clear",
@@ -2252086,7 +2252081,6 @@
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "cache.settings.reserve",
 				"x-fern-sdk-method-name": "clear",
-				"x-forge-hidden": false,
 				"x-forge-require-confirmation": "This operation permanently clears Cache Reserve for this zone and cannot be undone."
 			}
 		},
@@ -2252429,8 +2252423,7 @@
 				},
 				"x-fern-availability": "deprecated",
 				"x-fern-sdk-group-name": "cache.origin-cloud-regions",
-				"x-fern-sdk-method-name": "list-v1",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "list-v1"
 			},
 			"patch": {
 				"operationId": "origin-cloud-regions-upsert",
@@ -2252836,8 +2252829,7 @@
 				},
 				"x-fern-availability": "deprecated",
 				"x-fern-sdk-group-name": "cache.origin-cloud-regions",
-				"x-fern-sdk-method-name": "edit-v1",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "edit-v1"
 			},
 			"post": {
 				"operationId": "origin-cloud-regions-create",
@@ -2253244,8 +2253236,7 @@
 				},
 				"x-fern-availability": "deprecated",
 				"x-fern-sdk-group-name": "cache.origin-cloud-regions",
-				"x-fern-sdk-method-name": "create-v1",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "create-v1"
 			}
 		},
 		"/zones/{zone_id}/cache/origin_cloud_regions/{origin_ip}": {
@@ -2253586,9 +2253577,9 @@
 					"pro": true
 				},
 				"x-fern-availability": "deprecated",
+				"x-fern-ignore": true,
 				"x-fern-sdk-group-name": "cache.origin-cloud-regions",
-				"x-fern-sdk-method-name": "delete-v1",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "delete-v1"
 			},
 			"get": {
 				"operationId": "origin-cloud-regions-get",
@@ -2253927,9 +2253918,9 @@
 					"pro": true
 				},
 				"x-fern-availability": "deprecated",
+				"x-fern-ignore": true,
 				"x-fern-sdk-group-name": "cache.origin-cloud-regions",
-				"x-fern-sdk-method-name": "get-v1",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get-v1"
 			}
 		},
 		"/zones/{zone_id}/cache/origin_cloud_regions/batch": {
@@ -2254425,9 +2254416,9 @@
 					"pro": true
 				},
 				"x-fern-availability": "deprecated",
+				"x-fern-ignore": true,
 				"x-fern-sdk-group-name": "cache.origin-cloud-regions",
-				"x-fern-sdk-method-name": "bulk-delete-v1",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "bulk-delete-v1"
 			},
 			"patch": {
 				"operationId": "origin-cloud-regions-batch-upsert",
@@ -2254987,9 +2254978,9 @@
 					"pro": true
 				},
 				"x-fern-availability": "deprecated",
+				"x-fern-ignore": true,
 				"x-fern-sdk-group-name": "cache.origin-cloud-regions",
-				"x-fern-sdk-method-name": "bulk-edit-v1",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "bulk-edit-v1"
 			}
 		},
 		"/zones/{zone_id}/cache/origin_cloud_regions/supported_regions": {
@@ -2255299,9 +2255290,9 @@
 					"pro": true
 				},
 				"x-fern-availability": "deprecated",
+				"x-fern-ignore": true,
 				"x-fern-sdk-group-name": "cache.origin-cloud-regions",
-				"x-fern-sdk-method-name": "supported-regions-v1",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "supported-regions-v1"
 			}
 		},
 		"/zones/{zone_id}/cache/origin_post_quantum_encryption": {
@@ -2255648,8 +2255639,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "origin-post-quantum-encryption",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			},
 			"put": {
 				"operationId": "zone-cache-settings-change-origin-post-quantum-encryption-setting",
@@ -2256018,8 +2256008,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "origin-post-quantum-encryption",
-				"x-fern-sdk-method-name": "update",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "update"
 			}
 		},
 		"/zones/{zone_id}/cache/regional_tiered_cache": {
@@ -2256358,8 +2256347,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "cache.settings.regional-tiered-cache",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": false
+				"x-fern-sdk-method-name": "get"
 			},
 			"patch": {
 				"operationId": "zone-cache-settings-change-regional-tiered-cache-setting",
@@ -2256719,8 +2256707,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "cache.settings.regional-tiered-cache",
-				"x-fern-sdk-method-name": "edit",
-				"x-forge-hidden": false
+				"x-fern-sdk-method-name": "edit"
 			}
 		},
 		"/zones/{zone_id}/cache/tiered_cache_smart_topology_enable": {
@@ -2257027,8 +2257014,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "cache.settings.smart-tiered-cache",
-				"x-fern-sdk-method-name": "delete",
-				"x-forge-hidden": false
+				"x-fern-sdk-method-name": "delete"
 			},
 			"get": {
 				"operationId": "smart-tiered-cache-get-smart-tiered-cache-setting",
@@ -2257364,8 +2257350,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "cache.settings.smart-tiered-cache",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": false
+				"x-fern-sdk-method-name": "get"
 			},
 			"patch": {
 				"operationId": "smart-tiered-cache-patch-smart-tiered-cache-setting",
@@ -2257726,8 +2257711,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "cache.settings.smart-tiered-cache",
-				"x-fern-sdk-method-name": "edit",
-				"x-forge-hidden": false
+				"x-fern-sdk-method-name": "edit"
 			},
 			"post": {
 				"operationId": "smart-tiered-cache-create-smart-tiered-cache-setting",
@@ -2258088,8 +2258072,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "cache.settings.smart-tiered-cache",
-				"x-fern-sdk-method-name": "create",
-				"x-forge-hidden": false
+				"x-fern-sdk-method-name": "create"
 			}
 		},
 		"/zones/{zone_id}/cache/variants": {
@@ -2258397,8 +2258380,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "cache.settings.variants",
-				"x-fern-sdk-method-name": "delete",
-				"x-forge-hidden": false
+				"x-fern-sdk-method-name": "delete"
 			},
 			"get": {
 				"operationId": "zone-cache-settings-get-variants-setting",
@@ -2258874,8 +2258856,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "cache.settings.variants",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": false
+				"x-fern-sdk-method-name": "get"
 			},
 			"patch": {
 				"operationId": "zone-cache-settings-change-variants-setting",
@@ -2259513,8 +2259494,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "cache.settings.variants",
-				"x-fern-sdk-method-name": "edit",
-				"x-forge-hidden": false
+				"x-fern-sdk-method-name": "edit"
 			}
 		},
 		"/zones/{zone_id}/certificate_authorities/hostname_associations": {
@@ -2442986,8 +2442966,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "cache.origin-cloud-regions",
-				"x-fern-sdk-method-name": "list",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "list"
 			}
 		},
 		"/zones/{zone_id}/origin/cloud_regions/{origin_ip}": {
@@ -2443260,7 +2443239,6 @@
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "cache.origin-cloud-regions",
 				"x-fern-sdk-method-name": "delete",
-				"x-forge-hidden": true,
 				"x-forge-require-confirmation": "Are you sure you want to delete this Origin Cloud Region configuration?"
 			},
 			"get": {
@@ -2443560,8 +2443538,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "cache.origin-cloud-regions",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			},
 			"put": {
 				"operationId": "origin-cloud-regions-v2-upsert",
@@ -2443937,8 +2443914,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "cache.origin-cloud-regions",
-				"x-fern-sdk-method-name": "update",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "update"
 			}
 		},
 		"/zones/{zone_id}/origin/cloud_regions/batch": {
@@ -2444279,9 +2444255,8 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "cache.origin-cloud-regions",
-				"x-fern-sdk-method-name": "bulk-delete",
-				"x-forge-hidden": true,
+				"x-fern-sdk-group-name": "cache.origin-cloud-regions.bulk",
+				"x-fern-sdk-method-name": "delete",
 				"x-forge-require-confirmation": "Are you sure you want to delete these Origin Cloud Region configurations?"
 			},
 			"put": {
@@ -2444674,9 +2444649,8 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "cache.origin-cloud-regions",
-				"x-fern-sdk-method-name": "bulk-update",
-				"x-forge-hidden": true
+				"x-fern-sdk-group-name": "cache.origin-cloud-regions.bulk",
+				"x-fern-sdk-method-name": "update"
 			}
 		},
 		"/zones/{zone_id}/origin/cloud_regions/supported_regions": {
@@ -2444979,9 +2444953,8 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "cache.origin-cloud-regions",
-				"x-fern-sdk-method-name": "supported-regions",
-				"x-forge-hidden": true
+				"x-fern-sdk-group-name": "cache.origin-cloud-regions.regions",
+				"x-fern-sdk-method-name": "list-supported"
 			}
 		},
 		"/zones/{zone_id}/page_shield": {
@@ -2649810,8 +2649783,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "zones.aegis",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			},
 			"patch": {
 				"operationId": "zone-cache-settings-change-aegis-setting",
@@ -2650172,8 +2650144,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "zones.aegis",
-				"x-fern-sdk-method-name": "edit",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "edit"
 			}
 		},
 		"/zones/{zone_id}/settings/auto_origin_tls_kex": {
@@ -2657143,8 +2657114,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "zones.origin-h2-max-streams",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			},
 			"patch": {
 				"operationId": "zone-cache-settings-change-origin-h2-max-streams-setting",
@@ -2657474,8 +2657444,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "zones.origin-h2-max-streams",
-				"x-fern-sdk-method-name": "edit",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "edit"
 			}
 		},
 		"/zones/{zone_id}/settings/origin_max_http_version": {
@@ -2657829,8 +2657798,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "zones.origin-max-http-version",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			},
 			"patch": {
 				"operationId": "zone-cache-settings-change-origin-max-http-version-setting",
@@ -2658204,8 +2658172,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "zones.origin-max-http-version",
-				"x-fern-sdk-method-name": "edit",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "edit"
 			}
 		},
 		"/zones/{zone_id}/settings/origin_tls_compliance_modes": {
@@ -2658504,8 +2658471,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "zones.origin-tls-compliance-modes",
-				"x-fern-sdk-method-name": "delete",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "delete"
 			},
 			"get": {
 				"operationId": "zone-cache-settings-get-origin-tls-compliance-modes-setting",
@@ -2658837,8 +2658803,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "zones.origin-tls-compliance-modes",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			},
 			"patch": {
 				"operationId": "zone-cache-settings-change-origin-tls-compliance-modes-setting",
@@ -2659201,8 +2659166,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "zones.origin-tls-compliance-modes",
-				"x-fern-sdk-method-name": "edit",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "edit"
 			},
 			"put": {
 				"operationId": "zone-cache-settings-replace-origin-tls-compliance-modes-setting",
@@ -2659565,8 +2659529,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "zones.origin-tls-compliance-modes",
-				"x-fern-sdk-method-name": "update",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "update"
 			}
 		},
 		"/zones/{zone_id}/settings/rum": {
@@ -2676442,6 +2676405,39 @@
 						"description": "Smart Shield Settings response.",
 						"content": {
 							"application/json": {
+								"examples": {
+									"Success": {
+										"value": {
+											"errors": [],
+											"messages": [],
+											"result": {
+												"cache_reserve": {
+													"editable": true,
+													"id": "cache_reserve",
+													"value": "off"
+												},
+												"healthchecks_count": 0,
+												"regional_tiered_cache": {
+													"editable": true,
+													"id": "regional_tiered_cache",
+													"value": "off"
+												},
+												"smart_routing": {
+													"editable": true,
+													"id": "smart_routing",
+													"value": "off"
+												},
+												"smart_tiered_cache": {
+													"editable": true,
+													"id": "smart_tiered_cache",
+													"modified_on": "2025-09-10T22:53:22.946098Z",
+													"value": "on"
+												}
+											},
+											"success": true
+										}
+									}
+								},
 								"schema": {
 									"allOf": [
 										{
@@ -2676495,7 +2676491,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2676523,97 +2676521,79 @@
 											"allOf": [
 												{
 													"type": "object",
-													"allOf": [
-														{
-															"type": "object",
-															"properties": {
-																"errors": {
-																	"type": "array",
-																	"items": {
-																		"properties": {
-																			"code": {
-																				"type": "integer",
-																				"minimum": 1000
-																			},
-																			"message": {
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"code",
-																			"message"
-																		],
-																		"type": "object",
-																		"uniqueItems": true
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
 																	},
-																	"example": []
+																	"message": {
+																		"type": "string"
+																	}
 																},
-																"messages": {
-																	"type": "array",
-																	"items": {
-																		"properties": {
-																			"code": {
-																				"type": "integer",
-																				"minimum": 1000
-																			},
-																			"message": {
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"code",
-																			"message"
-																		],
-																		"type": "object",
-																		"uniqueItems": true
-																	},
-																	"example": []
-																},
-																"result": {
-																	"anyOf": [
-																		{
-																			"type": "object"
-																		},
-																		{
-																			"items": {},
-																			"type": "array"
-																		},
-																		{
-																			"type": "string"
-																		}
-																	]
-																},
-																"success": {
-																	"description": "Whether the API call was successful.",
-																	"type": "boolean",
-																	"example": true,
-																	"enum": [
-																		true
-																	]
-																}
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
 															},
-															"required": [
-																"success",
-																"errors",
-																"messages",
-																"result"
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
 															]
 														},
-														{
-															"properties": {
-																"result": {
-																	"oneOf": [
-																		{
-																			"type": "object"
-																		},
-																		{
-																			"type": "string"
-																		}
-																	]
-																}
-															},
-															"type": "object"
+														"success": {
+															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
+															"enum": [
+																true
+															]
 														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
 													]
 												},
 												{
@@ -2676627,6 +2676607,7 @@
 																	"type": "object",
 																	"properties": {
 																		"cache_reserve": {
+																			"type": "object",
 																			"properties": {
 																				"editable": {
 																					"description": "Whether the setting is editable.",
@@ -2676853,11 +2676834,20 @@
 											]
 										}
 									},
+									"example": {
+										"errors": [
+											{
+												"code": 7003,
+												"message": "No route for the URI"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
+									},
 									"required": [
 										"success",
-										"errors",
-										"messages",
-										"result"
+										"errors"
 									]
 								}
 							}
@@ -2676975,11 +2676965,20 @@
 											]
 										}
 									},
+									"example": {
+										"errors": [
+											{
+												"code": 7003,
+												"message": "No route for the URI"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
+									},
 									"required": [
 										"success",
-										"errors",
-										"messages",
-										"result"
+										"errors"
 									]
 								}
 							}
@@ -2677097,11 +2677096,20 @@
 											]
 										}
 									},
+									"example": {
+										"errors": [
+											{
+												"code": 7003,
+												"message": "No route for the URI"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
+									},
 									"required": [
 										"success",
-										"errors",
-										"messages",
-										"result"
+										"errors"
 									]
 								}
 							}
@@ -2677139,8 +2677147,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "smart-shield",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			},
 			"patch": {
 				"operationId": "smart-shield-patch-settings",
@@ -2677240,6 +2677247,38 @@
 						"description": "Smart Shield Settings response.",
 						"content": {
 							"application/json": {
+								"examples": {
+									"Success": {
+										"value": {
+											"errors": [],
+											"messages": [],
+											"result": {
+												"cache_reserve": {
+													"editable": true,
+													"id": "cache_reserve",
+													"value": "off"
+												},
+												"regional_tiered_cache": {
+													"editable": true,
+													"id": "regional_tiered_cache",
+													"value": "off"
+												},
+												"smart_routing": {
+													"editable": true,
+													"id": "smart_routing",
+													"value": "off"
+												},
+												"smart_tiered_cache": {
+													"editable": true,
+													"id": "smart_tiered_cache",
+													"modified_on": "2025-09-10T22:53:22.946098Z",
+													"value": "on"
+												}
+											},
+											"success": true
+										}
+									}
+								},
 								"schema": {
 									"allOf": [
 										{
@@ -2677293,7 +2677332,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2677321,97 +2677362,79 @@
 											"allOf": [
 												{
 													"type": "object",
-													"allOf": [
-														{
-															"type": "object",
-															"properties": {
-																"errors": {
-																	"type": "array",
-																	"items": {
-																		"properties": {
-																			"code": {
-																				"type": "integer",
-																				"minimum": 1000
-																			},
-																			"message": {
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"code",
-																			"message"
-																		],
-																		"type": "object",
-																		"uniqueItems": true
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
 																	},
-																	"example": []
+																	"message": {
+																		"type": "string"
+																	}
 																},
-																"messages": {
-																	"type": "array",
-																	"items": {
-																		"properties": {
-																			"code": {
-																				"type": "integer",
-																				"minimum": 1000
-																			},
-																			"message": {
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"code",
-																			"message"
-																		],
-																		"type": "object",
-																		"uniqueItems": true
-																	},
-																	"example": []
-																},
-																"result": {
-																	"anyOf": [
-																		{
-																			"type": "object"
-																		},
-																		{
-																			"items": {},
-																			"type": "array"
-																		},
-																		{
-																			"type": "string"
-																		}
-																	]
-																},
-																"success": {
-																	"description": "Whether the API call was successful.",
-																	"type": "boolean",
-																	"example": true,
-																	"enum": [
-																		true
-																	]
-																}
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
 															},
-															"required": [
-																"success",
-																"errors",
-																"messages",
-																"result"
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
 															]
 														},
-														{
-															"properties": {
-																"result": {
-																	"oneOf": [
-																		{
-																			"type": "object"
-																		},
-																		{
-																			"type": "string"
-																		}
-																	]
-																}
-															},
-															"type": "object"
+														"success": {
+															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
+															"enum": [
+																true
+															]
 														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
 													]
 												},
 												{
@@ -2677420,6 +2677443,78 @@
 															"description": "A consolidated object containing settings from multiple APIs for partial updates.",
 															"type": "object",
 															"properties": {
+																"cache_reserve": {
+																	"type": "object",
+																	"properties": {
+																		"editable": {
+																			"description": "Whether the setting is editable.",
+																			"type": "boolean",
+																			"example": true
+																		},
+																		"id": {
+																			"description": "The id of the Cache Reserve setting.",
+																			"type": "string",
+																			"example": "cache_reserve"
+																		},
+																		"value": {
+																			"description": "Specifies the enablement value of Cache Reserve.",
+																			"type": "string",
+																			"example": "off",
+																			"enum": [
+																				"on",
+																				"off"
+																			]
+																		}
+																	}
+																},
+																"regional_tiered_cache": {
+																	"type": "object",
+																	"properties": {
+																		"editable": {
+																			"description": "Whether the setting is editable.",
+																			"type": "boolean",
+																			"example": true
+																		},
+																		"id": {
+																			"description": "The id of the Regional Tiered Cache setting.",
+																			"type": "string",
+																			"example": "regional_tiered_cache"
+																		},
+																		"value": {
+																			"description": "Specifies the enablement value of Regional Tiered Cache.",
+																			"type": "string",
+																			"example": "off",
+																			"enum": [
+																				"on",
+																				"off"
+																			]
+																		}
+																	}
+																},
+																"smart_routing": {
+																	"type": "object",
+																	"properties": {
+																		"editable": {
+																			"description": "Whether the setting is editable.",
+																			"type": "boolean",
+																			"example": true
+																		},
+																		"id": {
+																			"description": "The id of the Smart Routing setting.",
+																			"type": "string",
+																			"example": "smart_routing"
+																		},
+																		"value": {
+																			"description": "Specifies the enablement value of Argo Smart Routing.",
+																			"type": "string",
+																			"example": "off",
+																			"enum": [
+																				"on",
+																				"off"
+																			]
+																		}
+																	}
+																},
 																"smart_tiered_cache": {
 																	"type": "object",
 																	"properties": {
@@ -2677563,11 +2677658,20 @@
 											]
 										}
 									},
+									"example": {
+										"errors": [
+											{
+												"code": 7003,
+												"message": "No route for the URI"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
+									},
 									"required": [
 										"success",
-										"errors",
-										"messages",
-										"result"
+										"errors"
 									]
 								}
 							}
@@ -2677669,11 +2677773,20 @@
 											]
 										}
 									},
+									"example": {
+										"errors": [
+											{
+												"code": 7003,
+												"message": "No route for the URI"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
+									},
 									"required": [
 										"success",
-										"errors",
-										"messages",
-										"result"
+										"errors"
 									]
 								}
 							}
@@ -2677688,24 +2677801,8 @@
 										"value": {
 											"errors": [
 												{
-													"code": 1034,
-													"message": "Upgrade Smart Shield to unlock smart_tiered_cache."
-												},
-												{
-													"code": 1034,
-													"message": "Upgrade Smart Shield to unlock argo_smart_routing."
-												},
-												{
-													"code": 1034,
-													"message": "Upgrade Smart Shield to unlock regional_tiered_cache."
-												},
-												{
-													"code": 1034,
-													"message": "Upgrade Smart Shield to unlock cache_reserve."
-												},
-												{
-													"code": 1034,
-													"message": "Upgrade Smart Shield to unlock healthchecks_count."
+													"code": 1035,
+													"message": "Invalid value for smart_tiered_cache. Value must be 'on' or 'off'."
 												}
 											],
 											"messages": [],
@@ -2677791,11 +2677888,20 @@
 											]
 										}
 									},
+									"example": {
+										"errors": [
+											{
+												"code": 7003,
+												"message": "No route for the URI"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
+									},
 									"required": [
 										"success",
-										"errors",
-										"messages",
-										"result"
+										"errors"
 									]
 								}
 							}
@@ -2677832,8 +2677938,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "smart-shield",
-				"x-fern-sdk-method-name": "update",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "update"
 			}
 		},
 		"/zones/{zone_id}/smart_shield/cache_reserve_clear": {
@@ -2677942,7 +2678047,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2678153,11 +2678260,20 @@
 											]
 										}
 									},
+									"example": {
+										"errors": [
+											{
+												"code": 7003,
+												"message": "No route for the URI"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
+									},
 									"required": [
 										"success",
-										"errors",
-										"messages",
-										"result"
+										"errors"
 									]
 								}
 							}
@@ -2678195,8 +2678311,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "smart-shield.cache-reserve-clear",
-				"x-fern-sdk-method-name": "status",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "status"
 			},
 			"post": {
 				"operationId": "smart-shield-settings-start-cache-reserve-clear",
@@ -2678290,7 +2678405,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2678501,11 +2678618,20 @@
 											]
 										}
 									},
+									"example": {
+										"errors": [
+											{
+												"code": 7003,
+												"message": "No route for the URI"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
+									},
 									"required": [
 										"success",
-										"errors",
-										"messages",
-										"result"
+										"errors"
 									]
 								}
 							}
@@ -2678542,7 +2678668,6 @@
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "smart-shield.cache-reserve-clear",
 				"x-fern-sdk-method-name": "clear",
-				"x-forge-hidden": true,
 				"x-forge-require-confirmation": "This operation permanently clears Cache Reserve for this zone and cannot be undone."
 			}
 		},
@@ -2678592,6 +2678717,16 @@
 						"description": "List Health Checks response",
 						"content": {
 							"application/json": {
+								"examples": {
+									"Success": {
+										"value": {
+											"errors": [],
+											"messages": [],
+											"result": [],
+											"success": true
+										}
+									}
+								},
 								"schema": {
 									"allOf": [
 										{
@@ -2678648,7 +2678783,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -2678676,7 +2678813,9 @@
 													"properties": {
 														"result": {
 															"type": "array",
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"nullable": true
 														},
 														"result_info": {
@@ -2678704,7 +2678843,8 @@
 																}
 															}
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -2678957,7 +2679097,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								}
@@ -2678968,461 +2679109,112 @@
 						"description": "List Health Checks response failure.",
 						"content": {
 							"application/json": {
+								"examples": {
+									"Error": {
+										"value": {
+											"errors": [
+												{
+													"code": 1000,
+													"message": "An error occurred."
+												}
+											],
+											"messages": [],
+											"result": null,
+											"success": false
+										}
+									}
+								},
 								"schema": {
-									"allOf": [
-										{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
 											"allOf": [
 												{
-													"type": "object",
-													"allOf": [
-														{
-															"type": "object",
-															"properties": {
-																"errors": {
-																	"type": "array",
-																	"items": {
-																		"properties": {
-																			"code": {
-																				"type": "integer",
-																				"minimum": 1000
-																			},
-																			"message": {
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"code",
-																			"message"
-																		],
-																		"type": "object",
-																		"uniqueItems": true
-																	},
-																	"example": []
-																},
-																"messages": {
-																	"type": "array",
-																	"items": {
-																		"properties": {
-																			"code": {
-																				"type": "integer",
-																				"minimum": 1000
-																			},
-																			"message": {
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"code",
-																			"message"
-																		],
-																		"type": "object",
-																		"uniqueItems": true
-																	},
-																	"example": []
-																},
-																"result": {
-																	"anyOf": [
-																		{
-																			"type": "object"
-																		},
-																		{
-																			"items": {},
-																			"type": "array"
-																		},
-																		{
-																			"type": "string"
-																		}
-																	]
-																},
-																"success": {
-																	"description": "Whether the API call was successful.",
-																	"type": "boolean",
-																	"example": true,
-																	"enum": [
-																		true
-																	]
-																}
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
 															},
-															"required": [
-																"success",
-																"errors",
-																"messages",
-																"result"
-															]
+															"message": {
+																"type": "string"
+															}
 														},
-														{
-															"properties": {
-																"result": {
-																	"type": "array",
-																	"items": {},
-																	"nullable": true
-																},
-																"result_info": {
-																	"type": "object",
-																	"properties": {
-																		"count": {
-																			"description": "Total number of results for the requested service",
-																			"type": "number",
-																			"example": 1
-																		},
-																		"page": {
-																			"description": "Current page within paginated list of results",
-																			"type": "number",
-																			"example": 1
-																		},
-																		"per_page": {
-																			"description": "Number of results per page of results",
-																			"type": "number",
-																			"example": 20
-																		},
-																		"total_count": {
-																			"description": "Total results available without any search parameters",
-																			"type": "number",
-																			"example": 2000
-																		}
-																	}
-																}
-															}
-														}
-													]
-												},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
 												{
-													"properties": {
-														"result": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"address": {
-																		"description": "The hostname or IP address of the origin server to run health checks on.",
-																		"type": "string",
-																		"example": "www.example.com",
-																		"x-auditable": true
-																	},
-																	"check_regions": {
-																		"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
-																		"type": "array",
-																		"items": {
-																			"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, IN: India, SEAS: South East Asia, NEAS: North East Asia, ALL_REGIONS: all regions (BUSINESS and ENTERPRISE customers only).",
-																			"enum": [
-																				"WNAM",
-																				"ENAM",
-																				"WEU",
-																				"EEU",
-																				"NSAM",
-																				"SSAM",
-																				"OC",
-																				"ME",
-																				"NAF",
-																				"SAF",
-																				"IN",
-																				"SEAS",
-																				"NEAS",
-																				"ALL_REGIONS"
-																			],
-																			"type": "string"
-																		},
-																		"example": [
-																			"WEU",
-																			"ENAM"
-																		],
-																		"nullable": true,
-																		"x-auditable": true
-																	},
-																	"consecutive_fails": {
-																		"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
-																		"type": "integer",
-																		"default": 1,
-																		"x-auditable": true
-																	},
-																	"consecutive_successes": {
-																		"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
-																		"type": "integer",
-																		"default": 1,
-																		"x-auditable": true
-																	},
-																	"created_on": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"description": {
-																		"description": "A human-readable description of the health check.",
-																		"type": "string",
-																		"example": "Health check for www.example.com",
-																		"x-auditable": true
-																	},
-																	"failure_reason": {
-																		"description": "The current failure reason if status is unhealthy.",
-																		"type": "string",
-																		"example": "",
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"http_config": {
-																		"description": "Parameters specific to an HTTP or HTTPS health check.",
-																		"type": "object",
-																		"properties": {
-																			"allow_insecure": {
-																				"description": "Do not validate the certificate when the health check uses HTTPS.",
-																				"type": "boolean",
-																				"default": false,
-																				"x-auditable": true
-																			},
-																			"expected_body": {
-																				"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.",
-																				"type": "string",
-																				"example": "success",
-																				"x-auditable": true
-																			},
-																			"expected_codes": {
-																				"description": "The expected HTTP response codes (e.g. \"200\") or code ranges (e.g. \"2xx\" for all codes starting with 2) of the health check.",
-																				"type": "array",
-																				"items": {
-																					"type": "string"
-																				},
-																				"example": [
-																					"2xx",
-																					"302"
-																				],
-																				"default": [
-																					"200"
-																				],
-																				"nullable": true,
-																				"x-auditable": true
-																			},
-																			"follow_redirects": {
-																				"description": "Follow redirects if the origin returns a 3xx status code.",
-																				"type": "boolean",
-																				"default": false,
-																				"x-auditable": true
-																			},
-																			"header": {
-																				"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.",
-																				"type": "object",
-																				"example": {
-																					"Host": [
-																						"example.com"
-																					],
-																					"X-App-ID": [
-																						"abc123"
-																					]
-																				},
-																				"additionalProperties": {
-																					"items": {
-																						"type": "string",
-																						"x-auditable": true
-																					},
-																					"type": "array"
-																				},
-																				"nullable": true
-																			},
-																			"method": {
-																				"description": "The HTTP method to use for the health check.",
-																				"type": "string",
-																				"default": "GET",
-																				"enum": [
-																					"GET",
-																					"HEAD"
-																				],
-																				"x-auditable": true
-																			},
-																			"path": {
-																				"description": "The endpoint path to health check against.",
-																				"type": "string",
-																				"example": "/health",
-																				"default": "/",
-																				"x-auditable": true
-																			},
-																			"port": {
-																				"description": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.",
-																				"type": "integer",
-																				"default": 80,
-																				"x-auditable": true
-																			}
-																		},
-																		"nullable": true
-																	},
-																	"id": {
-																		"description": "Identifier.",
-																		"type": "string",
-																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																		"maxLength": 32,
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"interval": {
-																		"description": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.",
-																		"type": "integer",
-																		"default": 60,
-																		"x-auditable": true
-																	},
-																	"modified_on": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"name": {
-																		"description": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
-																		"type": "string",
-																		"example": "server-1",
-																		"x-auditable": true
-																	},
-																	"retries": {
-																		"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
-																		"type": "integer",
-																		"default": 2,
-																		"x-auditable": true
-																	},
-																	"status": {
-																		"description": "The current status of the origin server according to the health check.",
-																		"type": "string",
-																		"example": "healthy",
-																		"enum": [
-																			"unknown",
-																			"healthy",
-																			"unhealthy",
-																			"suspended"
-																		],
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"suspended": {
-																		"description": "If suspended, no health checks are sent to the origin.",
-																		"type": "boolean",
-																		"default": false,
-																		"x-auditable": true
-																	},
-																	"tcp_config": {
-																		"description": "Parameters specific to TCP health check.",
-																		"type": "object",
-																		"properties": {
-																			"method": {
-																				"description": "The TCP connection method to use for the health check.",
-																				"type": "string",
-																				"default": "connection_established",
-																				"enum": [
-																					"connection_established"
-																				],
-																				"x-auditable": true
-																			},
-																			"port": {
-																				"description": "Port number to connect to for the health check. Defaults to 80.",
-																				"type": "integer",
-																				"default": 80,
-																				"x-auditable": true
-																			}
-																		},
-																		"nullable": true
-																	},
-																	"timeout": {
-																		"description": "The timeout (in seconds) before marking the health check as failed.",
-																		"type": "integer",
-																		"default": 5,
-																		"x-auditable": true
-																	},
-																	"type": {
-																		"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.",
-																		"type": "string",
-																		"example": "HTTPS",
-																		"default": "HTTP",
-																		"x-auditable": true
-																	}
-																}
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
 															}
-														}
-													}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
 												}
 											]
 										},
-										{
+										"result": {
 											"type": "object",
-											"properties": {
-												"errors": {
-													"example": [
-														{
-															"code": 7003,
-															"message": "No route for the URI"
-														}
-													],
-													"allOf": [
-														{
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														}
-													],
-													"minLength": 1
-												},
-												"messages": {
-													"example": [],
-													"allOf": [
-														{
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														}
-													]
-												},
-												"result": {
-													"type": "object",
-													"enum": [
-														null
-													],
-													"nullable": true
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"type": "boolean",
-													"example": false,
-													"enum": [
-														false
-													]
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
 											]
 										}
+									},
+									"example": {
+										"errors": [
+											{
+												"code": 7003,
+												"message": "No route for the URI"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
+									},
+									"required": [
+										"success",
+										"errors"
 									]
 								}
 							}
@@ -2679453,8 +2679245,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "smart-shield.health-checks",
-				"x-fern-sdk-method-name": "list",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "list"
 			},
 			"post": {
 				"operationId": "smart-shield-create-health-check",
@@ -2679693,101 +2679484,97 @@
 						"description": "Create Health Check response.",
 						"content": {
 							"application/json": {
+								"examples": {
+									"Success": {
+										"value": {
+											"errors": [],
+											"messages": [],
+											"result": {
+												"address": "www.example.com",
+												"id": "023e105f4ecef8ad9ca31a8372d0c353",
+												"name": "server-1"
+											},
+											"success": true
+										}
+									}
+								},
 								"schema": {
 									"allOf": [
 										{
 											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
 															},
-															"example": []
+															"message": {
+																"type": "string"
+															}
 														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {
+																"type": "object"
+															},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
 													]
 												},
-												{
-													"properties": {
-														"result": {
-															"oneOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
 												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
 											]
 										},
 										{
@@ -2680048,440 +2679835,112 @@
 						"description": "Create Health Check response failure.",
 						"content": {
 							"application/json": {
+								"examples": {
+									"Error": {
+										"value": {
+											"errors": [
+												{
+													"code": 1000,
+													"message": "An error occurred."
+												}
+											],
+											"messages": [],
+											"result": null,
+											"success": false
+										}
+									}
+								},
 								"schema": {
-									"allOf": [
-										{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
 											"allOf": [
 												{
-													"type": "object",
-													"allOf": [
-														{
-															"type": "object",
-															"properties": {
-																"errors": {
-																	"type": "array",
-																	"items": {
-																		"properties": {
-																			"code": {
-																				"type": "integer",
-																				"minimum": 1000
-																			},
-																			"message": {
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"code",
-																			"message"
-																		],
-																		"type": "object",
-																		"uniqueItems": true
-																	},
-																	"example": []
-																},
-																"messages": {
-																	"type": "array",
-																	"items": {
-																		"properties": {
-																			"code": {
-																				"type": "integer",
-																				"minimum": 1000
-																			},
-																			"message": {
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"code",
-																			"message"
-																		],
-																		"type": "object",
-																		"uniqueItems": true
-																	},
-																	"example": []
-																},
-																"result": {
-																	"anyOf": [
-																		{
-																			"type": "object"
-																		},
-																		{
-																			"items": {},
-																			"type": "array"
-																		},
-																		{
-																			"type": "string"
-																		}
-																	]
-																},
-																"success": {
-																	"description": "Whether the API call was successful.",
-																	"type": "boolean",
-																	"example": true,
-																	"enum": [
-																		true
-																	]
-																}
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
 															},
-															"required": [
-																"success",
-																"errors",
-																"messages",
-																"result"
-															]
-														},
-														{
-															"properties": {
-																"result": {
-																	"oneOf": [
-																		{
-																			"type": "object"
-																		},
-																		{
-																			"type": "string"
-																		}
-																	]
-																}
-															},
-															"type": "object"
-														}
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"type": "object",
-															"properties": {
-																"address": {
-																	"description": "The hostname or IP address of the origin server to run health checks on.",
-																	"type": "string",
-																	"example": "www.example.com",
-																	"x-auditable": true
-																},
-																"check_regions": {
-																	"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
-																	"type": "array",
-																	"items": {
-																		"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, IN: India, SEAS: South East Asia, NEAS: North East Asia, ALL_REGIONS: all regions (BUSINESS and ENTERPRISE customers only).",
-																		"enum": [
-																			"WNAM",
-																			"ENAM",
-																			"WEU",
-																			"EEU",
-																			"NSAM",
-																			"SSAM",
-																			"OC",
-																			"ME",
-																			"NAF",
-																			"SAF",
-																			"IN",
-																			"SEAS",
-																			"NEAS",
-																			"ALL_REGIONS"
-																		],
-																		"type": "string"
-																	},
-																	"example": [
-																		"WEU",
-																		"ENAM"
-																	],
-																	"nullable": true,
-																	"x-auditable": true
-																},
-																"consecutive_fails": {
-																	"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
-																	"type": "integer",
-																	"default": 1,
-																	"x-auditable": true
-																},
-																"consecutive_successes": {
-																	"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
-																	"type": "integer",
-																	"default": 1,
-																	"x-auditable": true
-																},
-																"created_on": {
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"description": {
-																	"description": "A human-readable description of the health check.",
-																	"type": "string",
-																	"example": "Health check for www.example.com",
-																	"x-auditable": true
-																},
-																"failure_reason": {
-																	"description": "The current failure reason if status is unhealthy.",
-																	"type": "string",
-																	"example": "",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"http_config": {
-																	"description": "Parameters specific to an HTTP or HTTPS health check.",
-																	"type": "object",
-																	"properties": {
-																		"allow_insecure": {
-																			"description": "Do not validate the certificate when the health check uses HTTPS.",
-																			"type": "boolean",
-																			"default": false,
-																			"x-auditable": true
-																		},
-																		"expected_body": {
-																			"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.",
-																			"type": "string",
-																			"example": "success",
-																			"x-auditable": true
-																		},
-																		"expected_codes": {
-																			"description": "The expected HTTP response codes (e.g. \"200\") or code ranges (e.g. \"2xx\" for all codes starting with 2) of the health check.",
-																			"type": "array",
-																			"items": {
-																				"type": "string"
-																			},
-																			"example": [
-																				"2xx",
-																				"302"
-																			],
-																			"default": [
-																				"200"
-																			],
-																			"nullable": true,
-																			"x-auditable": true
-																		},
-																		"follow_redirects": {
-																			"description": "Follow redirects if the origin returns a 3xx status code.",
-																			"type": "boolean",
-																			"default": false,
-																			"x-auditable": true
-																		},
-																		"header": {
-																			"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.",
-																			"type": "object",
-																			"example": {
-																				"Host": [
-																					"example.com"
-																				],
-																				"X-App-ID": [
-																					"abc123"
-																				]
-																			},
-																			"additionalProperties": {
-																				"items": {
-																					"type": "string",
-																					"x-auditable": true
-																				},
-																				"type": "array"
-																			},
-																			"nullable": true
-																		},
-																		"method": {
-																			"description": "The HTTP method to use for the health check.",
-																			"type": "string",
-																			"default": "GET",
-																			"enum": [
-																				"GET",
-																				"HEAD"
-																			],
-																			"x-auditable": true
-																		},
-																		"path": {
-																			"description": "The endpoint path to health check against.",
-																			"type": "string",
-																			"example": "/health",
-																			"default": "/",
-																			"x-auditable": true
-																		},
-																		"port": {
-																			"description": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.",
-																			"type": "integer",
-																			"default": 80,
-																			"x-auditable": true
-																		}
-																	},
-																	"nullable": true
-																},
-																"id": {
-																	"description": "Identifier.",
-																	"type": "string",
-																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																	"maxLength": 32,
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"interval": {
-																	"description": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.",
-																	"type": "integer",
-																	"default": 60,
-																	"x-auditable": true
-																},
-																"modified_on": {
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"name": {
-																	"description": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
-																	"type": "string",
-																	"example": "server-1",
-																	"x-auditable": true
-																},
-																"retries": {
-																	"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
-																	"type": "integer",
-																	"default": 2,
-																	"x-auditable": true
-																},
-																"status": {
-																	"description": "The current status of the origin server according to the health check.",
-																	"type": "string",
-																	"example": "healthy",
-																	"enum": [
-																		"unknown",
-																		"healthy",
-																		"unhealthy",
-																		"suspended"
-																	],
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"suspended": {
-																	"description": "If suspended, no health checks are sent to the origin.",
-																	"type": "boolean",
-																	"default": false,
-																	"x-auditable": true
-																},
-																"tcp_config": {
-																	"description": "Parameters specific to TCP health check.",
-																	"type": "object",
-																	"properties": {
-																		"method": {
-																			"description": "The TCP connection method to use for the health check.",
-																			"type": "string",
-																			"default": "connection_established",
-																			"enum": [
-																				"connection_established"
-																			],
-																			"x-auditable": true
-																		},
-																		"port": {
-																			"description": "Port number to connect to for the health check. Defaults to 80.",
-																			"type": "integer",
-																			"default": 80,
-																			"x-auditable": true
-																		}
-																	},
-																	"nullable": true
-																},
-																"timeout": {
-																	"description": "The timeout (in seconds) before marking the health check as failed.",
-																	"type": "integer",
-																	"default": 5,
-																	"x-auditable": true
-																},
-																"type": {
-																	"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.",
-																	"type": "string",
-																	"example": "HTTPS",
-																	"default": "HTTP",
-																	"x-auditable": true
-																}
+															"message": {
+																"type": "string"
 															}
-														}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"type": "object"
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
 												}
 											]
 										},
-										{
+										"result": {
 											"type": "object",
-											"properties": {
-												"errors": {
-													"example": [
-														{
-															"code": 7003,
-															"message": "No route for the URI"
-														}
-													],
-													"allOf": [
-														{
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														}
-													],
-													"minLength": 1
-												},
-												"messages": {
-													"example": [],
-													"allOf": [
-														{
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														}
-													]
-												},
-												"result": {
-													"type": "object",
-													"enum": [
-														null
-													],
-													"nullable": true
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"type": "boolean",
-													"example": false,
-													"enum": [
-														false
-													]
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
 											]
 										}
+									},
+									"example": {
+										"errors": [
+											{
+												"code": 7003,
+												"message": "No route for the URI"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
+									},
+									"required": [
+										"success",
+										"errors"
 									]
 								}
 							}
@@ -2680511,8 +2679970,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "smart-shield.health-checks",
-				"x-fern-sdk-method-name": "create",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "create"
 			}
 		},
 		"/zones/{zone_id}/smart_shield/healthchecks/{healthcheck_id}": {
@@ -2680553,101 +2680011,95 @@
 						"description": "Delete Health Check response.",
 						"content": {
 							"application/json": {
+								"examples": {
+									"Success": {
+										"value": {
+											"errors": [],
+											"messages": [],
+											"result": {
+												"id": "023e105f4ecef8ad9ca31a8372d0c353"
+											},
+											"success": true
+										}
+									}
+								},
 								"schema": {
 									"allOf": [
 										{
 											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
 															},
-															"example": []
+															"message": {
+																"type": "string"
+															}
 														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {
+																"type": "object"
+															},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
 													]
 												},
-												{
-													"properties": {
-														"result": {
-															"oneOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
 												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
 											]
 										},
 										{
@@ -2680677,209 +2680129,112 @@
 						"description": "Delete Health Check response failure.",
 						"content": {
 							"application/json": {
+								"examples": {
+									"Error": {
+										"value": {
+											"errors": [
+												{
+													"code": 1000,
+													"message": "An error occurred."
+												}
+											],
+											"messages": [],
+											"result": null,
+											"success": false
+										}
+									}
+								},
 								"schema": {
-									"allOf": [
-										{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
 											"allOf": [
 												{
-													"type": "object",
-													"allOf": [
-														{
-															"type": "object",
-															"properties": {
-																"errors": {
-																	"type": "array",
-																	"items": {
-																		"properties": {
-																			"code": {
-																				"type": "integer",
-																				"minimum": 1000
-																			},
-																			"message": {
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"code",
-																			"message"
-																		],
-																		"type": "object",
-																		"uniqueItems": true
-																	},
-																	"example": []
-																},
-																"messages": {
-																	"type": "array",
-																	"items": {
-																		"properties": {
-																			"code": {
-																				"type": "integer",
-																				"minimum": 1000
-																			},
-																			"message": {
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"code",
-																			"message"
-																		],
-																		"type": "object",
-																		"uniqueItems": true
-																	},
-																	"example": []
-																},
-																"result": {
-																	"anyOf": [
-																		{
-																			"type": "object"
-																		},
-																		{
-																			"items": {},
-																			"type": "array"
-																		},
-																		{
-																			"type": "string"
-																		}
-																	]
-																},
-																"success": {
-																	"description": "Whether the API call was successful.",
-																	"type": "boolean",
-																	"example": true,
-																	"enum": [
-																		true
-																	]
-																}
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
 															},
-															"required": [
-																"success",
-																"errors",
-																"messages",
-																"result"
-															]
-														},
-														{
-															"properties": {
-																"result": {
-																	"oneOf": [
-																		{
-																			"type": "object"
-																		},
-																		{
-																			"type": "string"
-																		}
-																	]
-																}
-															},
-															"type": "object"
-														}
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"type": "object",
-															"properties": {
-																"id": {
-																	"description": "Identifier.",
-																	"type": "string",
-																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																	"maxLength": 32,
-																	"readOnly": true,
-																	"x-auditable": true
-																}
+															"message": {
+																"type": "string"
 															}
-														}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"type": "object"
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
 												}
 											]
 										},
-										{
+										"result": {
 											"type": "object",
-											"properties": {
-												"errors": {
-													"example": [
-														{
-															"code": 7003,
-															"message": "No route for the URI"
-														}
-													],
-													"allOf": [
-														{
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														}
-													],
-													"minLength": 1
-												},
-												"messages": {
-													"example": [],
-													"allOf": [
-														{
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														}
-													]
-												},
-												"result": {
-													"type": "object",
-													"enum": [
-														null
-													],
-													"nullable": true
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"type": "boolean",
-													"example": false,
-													"enum": [
-														false
-													]
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
 											]
 										}
+									},
+									"example": {
+										"errors": [
+											{
+												"code": 7003,
+												"message": "No route for the URI"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
+									},
+									"required": [
+										"success",
+										"errors"
 									]
 								}
 							}
@@ -2680909,8 +2680264,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "smart-shield.health-checks",
-				"x-fern-sdk-method-name": "delete",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "delete"
 			},
 			"get": {
 				"operationId": "smart-shield-health-check-details",
@@ -2680949,101 +2680303,97 @@
 						"description": "Health Check Details response.",
 						"content": {
 							"application/json": {
+								"examples": {
+									"Success": {
+										"value": {
+											"errors": [],
+											"messages": [],
+											"result": {
+												"address": "www.example.com",
+												"id": "023e105f4ecef8ad9ca31a8372d0c353",
+												"name": "server-1"
+											},
+											"success": true
+										}
+									}
+								},
 								"schema": {
 									"allOf": [
 										{
 											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
 															},
-															"example": []
+															"message": {
+																"type": "string"
+															}
 														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {
+																"type": "object"
+															},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
 													]
 												},
-												{
-													"properties": {
-														"result": {
-															"oneOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
 												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
 											]
 										},
 										{
@@ -2681304,440 +2680654,112 @@
 						"description": "Health Check Details response failure.",
 						"content": {
 							"application/json": {
+								"examples": {
+									"Error": {
+										"value": {
+											"errors": [
+												{
+													"code": 1000,
+													"message": "An error occurred."
+												}
+											],
+											"messages": [],
+											"result": null,
+											"success": false
+										}
+									}
+								},
 								"schema": {
-									"allOf": [
-										{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
 											"allOf": [
 												{
-													"type": "object",
-													"allOf": [
-														{
-															"type": "object",
-															"properties": {
-																"errors": {
-																	"type": "array",
-																	"items": {
-																		"properties": {
-																			"code": {
-																				"type": "integer",
-																				"minimum": 1000
-																			},
-																			"message": {
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"code",
-																			"message"
-																		],
-																		"type": "object",
-																		"uniqueItems": true
-																	},
-																	"example": []
-																},
-																"messages": {
-																	"type": "array",
-																	"items": {
-																		"properties": {
-																			"code": {
-																				"type": "integer",
-																				"minimum": 1000
-																			},
-																			"message": {
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"code",
-																			"message"
-																		],
-																		"type": "object",
-																		"uniqueItems": true
-																	},
-																	"example": []
-																},
-																"result": {
-																	"anyOf": [
-																		{
-																			"type": "object"
-																		},
-																		{
-																			"items": {},
-																			"type": "array"
-																		},
-																		{
-																			"type": "string"
-																		}
-																	]
-																},
-																"success": {
-																	"description": "Whether the API call was successful.",
-																	"type": "boolean",
-																	"example": true,
-																	"enum": [
-																		true
-																	]
-																}
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
 															},
-															"required": [
-																"success",
-																"errors",
-																"messages",
-																"result"
-															]
-														},
-														{
-															"properties": {
-																"result": {
-																	"oneOf": [
-																		{
-																			"type": "object"
-																		},
-																		{
-																			"type": "string"
-																		}
-																	]
-																}
-															},
-															"type": "object"
-														}
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"type": "object",
-															"properties": {
-																"address": {
-																	"description": "The hostname or IP address of the origin server to run health checks on.",
-																	"type": "string",
-																	"example": "www.example.com",
-																	"x-auditable": true
-																},
-																"check_regions": {
-																	"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
-																	"type": "array",
-																	"items": {
-																		"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, IN: India, SEAS: South East Asia, NEAS: North East Asia, ALL_REGIONS: all regions (BUSINESS and ENTERPRISE customers only).",
-																		"enum": [
-																			"WNAM",
-																			"ENAM",
-																			"WEU",
-																			"EEU",
-																			"NSAM",
-																			"SSAM",
-																			"OC",
-																			"ME",
-																			"NAF",
-																			"SAF",
-																			"IN",
-																			"SEAS",
-																			"NEAS",
-																			"ALL_REGIONS"
-																		],
-																		"type": "string"
-																	},
-																	"example": [
-																		"WEU",
-																		"ENAM"
-																	],
-																	"nullable": true,
-																	"x-auditable": true
-																},
-																"consecutive_fails": {
-																	"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
-																	"type": "integer",
-																	"default": 1,
-																	"x-auditable": true
-																},
-																"consecutive_successes": {
-																	"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
-																	"type": "integer",
-																	"default": 1,
-																	"x-auditable": true
-																},
-																"created_on": {
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"description": {
-																	"description": "A human-readable description of the health check.",
-																	"type": "string",
-																	"example": "Health check for www.example.com",
-																	"x-auditable": true
-																},
-																"failure_reason": {
-																	"description": "The current failure reason if status is unhealthy.",
-																	"type": "string",
-																	"example": "",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"http_config": {
-																	"description": "Parameters specific to an HTTP or HTTPS health check.",
-																	"type": "object",
-																	"properties": {
-																		"allow_insecure": {
-																			"description": "Do not validate the certificate when the health check uses HTTPS.",
-																			"type": "boolean",
-																			"default": false,
-																			"x-auditable": true
-																		},
-																		"expected_body": {
-																			"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.",
-																			"type": "string",
-																			"example": "success",
-																			"x-auditable": true
-																		},
-																		"expected_codes": {
-																			"description": "The expected HTTP response codes (e.g. \"200\") or code ranges (e.g. \"2xx\" for all codes starting with 2) of the health check.",
-																			"type": "array",
-																			"items": {
-																				"type": "string"
-																			},
-																			"example": [
-																				"2xx",
-																				"302"
-																			],
-																			"default": [
-																				"200"
-																			],
-																			"nullable": true,
-																			"x-auditable": true
-																		},
-																		"follow_redirects": {
-																			"description": "Follow redirects if the origin returns a 3xx status code.",
-																			"type": "boolean",
-																			"default": false,
-																			"x-auditable": true
-																		},
-																		"header": {
-																			"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.",
-																			"type": "object",
-																			"example": {
-																				"Host": [
-																					"example.com"
-																				],
-																				"X-App-ID": [
-																					"abc123"
-																				]
-																			},
-																			"additionalProperties": {
-																				"items": {
-																					"type": "string",
-																					"x-auditable": true
-																				},
-																				"type": "array"
-																			},
-																			"nullable": true
-																		},
-																		"method": {
-																			"description": "The HTTP method to use for the health check.",
-																			"type": "string",
-																			"default": "GET",
-																			"enum": [
-																				"GET",
-																				"HEAD"
-																			],
-																			"x-auditable": true
-																		},
-																		"path": {
-																			"description": "The endpoint path to health check against.",
-																			"type": "string",
-																			"example": "/health",
-																			"default": "/",
-																			"x-auditable": true
-																		},
-																		"port": {
-																			"description": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.",
-																			"type": "integer",
-																			"default": 80,
-																			"x-auditable": true
-																		}
-																	},
-																	"nullable": true
-																},
-																"id": {
-																	"description": "Identifier.",
-																	"type": "string",
-																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																	"maxLength": 32,
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"interval": {
-																	"description": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.",
-																	"type": "integer",
-																	"default": 60,
-																	"x-auditable": true
-																},
-																"modified_on": {
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"name": {
-																	"description": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
-																	"type": "string",
-																	"example": "server-1",
-																	"x-auditable": true
-																},
-																"retries": {
-																	"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
-																	"type": "integer",
-																	"default": 2,
-																	"x-auditable": true
-																},
-																"status": {
-																	"description": "The current status of the origin server according to the health check.",
-																	"type": "string",
-																	"example": "healthy",
-																	"enum": [
-																		"unknown",
-																		"healthy",
-																		"unhealthy",
-																		"suspended"
-																	],
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"suspended": {
-																	"description": "If suspended, no health checks are sent to the origin.",
-																	"type": "boolean",
-																	"default": false,
-																	"x-auditable": true
-																},
-																"tcp_config": {
-																	"description": "Parameters specific to TCP health check.",
-																	"type": "object",
-																	"properties": {
-																		"method": {
-																			"description": "The TCP connection method to use for the health check.",
-																			"type": "string",
-																			"default": "connection_established",
-																			"enum": [
-																				"connection_established"
-																			],
-																			"x-auditable": true
-																		},
-																		"port": {
-																			"description": "Port number to connect to for the health check. Defaults to 80.",
-																			"type": "integer",
-																			"default": 80,
-																			"x-auditable": true
-																		}
-																	},
-																	"nullable": true
-																},
-																"timeout": {
-																	"description": "The timeout (in seconds) before marking the health check as failed.",
-																	"type": "integer",
-																	"default": 5,
-																	"x-auditable": true
-																},
-																"type": {
-																	"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.",
-																	"type": "string",
-																	"example": "HTTPS",
-																	"default": "HTTP",
-																	"x-auditable": true
-																}
+															"message": {
+																"type": "string"
 															}
-														}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"type": "object"
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
 												}
 											]
 										},
-										{
+										"result": {
 											"type": "object",
-											"properties": {
-												"errors": {
-													"example": [
-														{
-															"code": 7003,
-															"message": "No route for the URI"
-														}
-													],
-													"allOf": [
-														{
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														}
-													],
-													"minLength": 1
-												},
-												"messages": {
-													"example": [],
-													"allOf": [
-														{
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														}
-													]
-												},
-												"result": {
-													"type": "object",
-													"enum": [
-														null
-													],
-													"nullable": true
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"type": "boolean",
-													"example": false,
-													"enum": [
-														false
-													]
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
 											]
 										}
+									},
+									"example": {
+										"errors": [
+											{
+												"code": 7003,
+												"message": "No route for the URI"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
+									},
+									"required": [
+										"success",
+										"errors"
 									]
 								}
 							}
@@ -2681768,8 +2680790,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "smart-shield.health-checks",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			},
 			"patch": {
 				"operationId": "smart-shield-patch-health-check",
@@ -2682021,101 +2681042,97 @@
 						"description": "Patch Health Check response.",
 						"content": {
 							"application/json": {
+								"examples": {
+									"Success": {
+										"value": {
+											"errors": [],
+											"messages": [],
+											"result": {
+												"address": "www.example.com",
+												"id": "023e105f4ecef8ad9ca31a8372d0c353",
+												"name": "server-1"
+											},
+											"success": true
+										}
+									}
+								},
 								"schema": {
 									"allOf": [
 										{
 											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
 															},
-															"example": []
+															"message": {
+																"type": "string"
+															}
 														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {
+																"type": "object"
+															},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
 													]
 												},
-												{
-													"properties": {
-														"result": {
-															"oneOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
 												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
 											]
 										},
 										{
@@ -2682376,440 +2681393,112 @@
 						"description": "Patch Health Check response failure.",
 						"content": {
 							"application/json": {
+								"examples": {
+									"Error": {
+										"value": {
+											"errors": [
+												{
+													"code": 1000,
+													"message": "An error occurred."
+												}
+											],
+											"messages": [],
+											"result": null,
+											"success": false
+										}
+									}
+								},
 								"schema": {
-									"allOf": [
-										{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
 											"allOf": [
 												{
-													"type": "object",
-													"allOf": [
-														{
-															"type": "object",
-															"properties": {
-																"errors": {
-																	"type": "array",
-																	"items": {
-																		"properties": {
-																			"code": {
-																				"type": "integer",
-																				"minimum": 1000
-																			},
-																			"message": {
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"code",
-																			"message"
-																		],
-																		"type": "object",
-																		"uniqueItems": true
-																	},
-																	"example": []
-																},
-																"messages": {
-																	"type": "array",
-																	"items": {
-																		"properties": {
-																			"code": {
-																				"type": "integer",
-																				"minimum": 1000
-																			},
-																			"message": {
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"code",
-																			"message"
-																		],
-																		"type": "object",
-																		"uniqueItems": true
-																	},
-																	"example": []
-																},
-																"result": {
-																	"anyOf": [
-																		{
-																			"type": "object"
-																		},
-																		{
-																			"items": {},
-																			"type": "array"
-																		},
-																		{
-																			"type": "string"
-																		}
-																	]
-																},
-																"success": {
-																	"description": "Whether the API call was successful.",
-																	"type": "boolean",
-																	"example": true,
-																	"enum": [
-																		true
-																	]
-																}
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
 															},
-															"required": [
-																"success",
-																"errors",
-																"messages",
-																"result"
-															]
-														},
-														{
-															"properties": {
-																"result": {
-																	"oneOf": [
-																		{
-																			"type": "object"
-																		},
-																		{
-																			"type": "string"
-																		}
-																	]
-																}
-															},
-															"type": "object"
-														}
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"type": "object",
-															"properties": {
-																"address": {
-																	"description": "The hostname or IP address of the origin server to run health checks on.",
-																	"type": "string",
-																	"example": "www.example.com",
-																	"x-auditable": true
-																},
-																"check_regions": {
-																	"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
-																	"type": "array",
-																	"items": {
-																		"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, IN: India, SEAS: South East Asia, NEAS: North East Asia, ALL_REGIONS: all regions (BUSINESS and ENTERPRISE customers only).",
-																		"enum": [
-																			"WNAM",
-																			"ENAM",
-																			"WEU",
-																			"EEU",
-																			"NSAM",
-																			"SSAM",
-																			"OC",
-																			"ME",
-																			"NAF",
-																			"SAF",
-																			"IN",
-																			"SEAS",
-																			"NEAS",
-																			"ALL_REGIONS"
-																		],
-																		"type": "string"
-																	},
-																	"example": [
-																		"WEU",
-																		"ENAM"
-																	],
-																	"nullable": true,
-																	"x-auditable": true
-																},
-																"consecutive_fails": {
-																	"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
-																	"type": "integer",
-																	"default": 1,
-																	"x-auditable": true
-																},
-																"consecutive_successes": {
-																	"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
-																	"type": "integer",
-																	"default": 1,
-																	"x-auditable": true
-																},
-																"created_on": {
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"description": {
-																	"description": "A human-readable description of the health check.",
-																	"type": "string",
-																	"example": "Health check for www.example.com",
-																	"x-auditable": true
-																},
-																"failure_reason": {
-																	"description": "The current failure reason if status is unhealthy.",
-																	"type": "string",
-																	"example": "",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"http_config": {
-																	"description": "Parameters specific to an HTTP or HTTPS health check.",
-																	"type": "object",
-																	"properties": {
-																		"allow_insecure": {
-																			"description": "Do not validate the certificate when the health check uses HTTPS.",
-																			"type": "boolean",
-																			"default": false,
-																			"x-auditable": true
-																		},
-																		"expected_body": {
-																			"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.",
-																			"type": "string",
-																			"example": "success",
-																			"x-auditable": true
-																		},
-																		"expected_codes": {
-																			"description": "The expected HTTP response codes (e.g. \"200\") or code ranges (e.g. \"2xx\" for all codes starting with 2) of the health check.",
-																			"type": "array",
-																			"items": {
-																				"type": "string"
-																			},
-																			"example": [
-																				"2xx",
-																				"302"
-																			],
-																			"default": [
-																				"200"
-																			],
-																			"nullable": true,
-																			"x-auditable": true
-																		},
-																		"follow_redirects": {
-																			"description": "Follow redirects if the origin returns a 3xx status code.",
-																			"type": "boolean",
-																			"default": false,
-																			"x-auditable": true
-																		},
-																		"header": {
-																			"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.",
-																			"type": "object",
-																			"example": {
-																				"Host": [
-																					"example.com"
-																				],
-																				"X-App-ID": [
-																					"abc123"
-																				]
-																			},
-																			"additionalProperties": {
-																				"items": {
-																					"type": "string",
-																					"x-auditable": true
-																				},
-																				"type": "array"
-																			},
-																			"nullable": true
-																		},
-																		"method": {
-																			"description": "The HTTP method to use for the health check.",
-																			"type": "string",
-																			"default": "GET",
-																			"enum": [
-																				"GET",
-																				"HEAD"
-																			],
-																			"x-auditable": true
-																		},
-																		"path": {
-																			"description": "The endpoint path to health check against.",
-																			"type": "string",
-																			"example": "/health",
-																			"default": "/",
-																			"x-auditable": true
-																		},
-																		"port": {
-																			"description": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.",
-																			"type": "integer",
-																			"default": 80,
-																			"x-auditable": true
-																		}
-																	},
-																	"nullable": true
-																},
-																"id": {
-																	"description": "Identifier.",
-																	"type": "string",
-																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																	"maxLength": 32,
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"interval": {
-																	"description": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.",
-																	"type": "integer",
-																	"default": 60,
-																	"x-auditable": true
-																},
-																"modified_on": {
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"name": {
-																	"description": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
-																	"type": "string",
-																	"example": "server-1",
-																	"x-auditable": true
-																},
-																"retries": {
-																	"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
-																	"type": "integer",
-																	"default": 2,
-																	"x-auditable": true
-																},
-																"status": {
-																	"description": "The current status of the origin server according to the health check.",
-																	"type": "string",
-																	"example": "healthy",
-																	"enum": [
-																		"unknown",
-																		"healthy",
-																		"unhealthy",
-																		"suspended"
-																	],
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"suspended": {
-																	"description": "If suspended, no health checks are sent to the origin.",
-																	"type": "boolean",
-																	"default": false,
-																	"x-auditable": true
-																},
-																"tcp_config": {
-																	"description": "Parameters specific to TCP health check.",
-																	"type": "object",
-																	"properties": {
-																		"method": {
-																			"description": "The TCP connection method to use for the health check.",
-																			"type": "string",
-																			"default": "connection_established",
-																			"enum": [
-																				"connection_established"
-																			],
-																			"x-auditable": true
-																		},
-																		"port": {
-																			"description": "Port number to connect to for the health check. Defaults to 80.",
-																			"type": "integer",
-																			"default": 80,
-																			"x-auditable": true
-																		}
-																	},
-																	"nullable": true
-																},
-																"timeout": {
-																	"description": "The timeout (in seconds) before marking the health check as failed.",
-																	"type": "integer",
-																	"default": 5,
-																	"x-auditable": true
-																},
-																"type": {
-																	"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.",
-																	"type": "string",
-																	"example": "HTTPS",
-																	"default": "HTTP",
-																	"x-auditable": true
-																}
+															"message": {
+																"type": "string"
 															}
-														}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"type": "object"
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
 												}
 											]
 										},
-										{
+										"result": {
 											"type": "object",
-											"properties": {
-												"errors": {
-													"example": [
-														{
-															"code": 7003,
-															"message": "No route for the URI"
-														}
-													],
-													"allOf": [
-														{
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														}
-													],
-													"minLength": 1
-												},
-												"messages": {
-													"example": [],
-													"allOf": [
-														{
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														}
-													]
-												},
-												"result": {
-													"type": "object",
-													"enum": [
-														null
-													],
-													"nullable": true
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"type": "boolean",
-													"example": false,
-													"enum": [
-														false
-													]
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
 											]
 										}
+									},
+									"example": {
+										"errors": [
+											{
+												"code": 7003,
+												"message": "No route for the URI"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
+									},
+									"required": [
+										"success",
+										"errors"
 									]
 								}
 							}
@@ -2682839,8 +2681528,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "smart-shield.health-checks",
-				"x-fern-sdk-method-name": "edit",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "edit"
 			},
 			"put": {
 				"operationId": "smart-shield-update-health-check",
@@ -2682882,97 +2681570,79 @@
 								"allOf": [
 									{
 										"type": "object",
-										"allOf": [
-											{
-												"type": "object",
-												"properties": {
-													"errors": {
-														"type": "array",
-														"items": {
-															"properties": {
-																"code": {
-																	"type": "integer",
-																	"minimum": 1000
-																},
-																"message": {
-																	"type": "string"
-																}
-															},
-															"required": [
-																"code",
-																"message"
-															],
-															"type": "object",
-															"uniqueItems": true
+										"properties": {
+											"errors": {
+												"type": "array",
+												"items": {
+													"properties": {
+														"code": {
+															"type": "integer",
+															"minimum": 1000
 														},
-														"example": []
+														"message": {
+															"type": "string"
+														}
 													},
-													"messages": {
-														"type": "array",
-														"items": {
-															"properties": {
-																"code": {
-																	"type": "integer",
-																	"minimum": 1000
-																},
-																"message": {
-																	"type": "string"
-																}
-															},
-															"required": [
-																"code",
-																"message"
-															],
-															"type": "object",
-															"uniqueItems": true
-														},
-														"example": []
-													},
-													"result": {
-														"anyOf": [
-															{
-																"type": "object"
-															},
-															{
-																"items": {},
-																"type": "array"
-															},
-															{
-																"type": "string"
-															}
-														]
-													},
-													"success": {
-														"description": "Whether the API call was successful.",
-														"type": "boolean",
-														"example": true,
-														"enum": [
-															true
-														]
-													}
+													"required": [
+														"code",
+														"message"
+													],
+													"type": "object",
+													"uniqueItems": true
 												},
-												"required": [
-													"success",
-													"errors",
-													"messages",
-													"result"
+												"example": []
+											},
+											"messages": {
+												"type": "array",
+												"items": {
+													"properties": {
+														"code": {
+															"type": "integer",
+															"minimum": 1000
+														},
+														"message": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"code",
+														"message"
+													],
+													"type": "object",
+													"uniqueItems": true
+												},
+												"example": []
+											},
+											"result": {
+												"anyOf": [
+													{
+														"type": "object"
+													},
+													{
+														"items": {
+															"type": "object"
+														},
+														"type": "array"
+													},
+													{
+														"type": "string"
+													}
 												]
 											},
-											{
-												"properties": {
-													"result": {
-														"oneOf": [
-															{
-																"type": "object"
-															},
-															{
-																"type": "string"
-															}
-														]
-													}
-												},
-												"type": "object"
+											"success": {
+												"description": "Whether the API call was successful.",
+												"type": "boolean",
+												"example": true,
+												"enum": [
+													true
+												]
 											}
+										},
+										"required": [
+											"success",
+											"errors",
+											"messages",
+											"result"
 										]
 									},
 									{
@@ -2683234,101 +2681904,97 @@
 						"description": "Update Health Check response.",
 						"content": {
 							"application/json": {
+								"examples": {
+									"Success": {
+										"value": {
+											"errors": [],
+											"messages": [],
+											"result": {
+												"address": "www.example.com",
+												"id": "023e105f4ecef8ad9ca31a8372d0c353",
+												"name": "server-1"
+											},
+											"success": true
+										}
+									}
+								},
 								"schema": {
 									"allOf": [
 										{
 											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
 															},
-															"example": []
+															"message": {
+																"type": "string"
+															}
 														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {
+																"type": "object"
+															},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
 													]
 												},
-												{
-													"properties": {
-														"result": {
-															"oneOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
 												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
 											]
 										},
 										{
@@ -2683589,440 +2682255,112 @@
 						"description": "Update Health Check response failure.",
 						"content": {
 							"application/json": {
+								"examples": {
+									"Error": {
+										"value": {
+											"errors": [
+												{
+													"code": 1000,
+													"message": "An error occurred."
+												}
+											],
+											"messages": [],
+											"result": null,
+											"success": false
+										}
+									}
+								},
 								"schema": {
-									"allOf": [
-										{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
 											"allOf": [
 												{
-													"type": "object",
-													"allOf": [
-														{
-															"type": "object",
-															"properties": {
-																"errors": {
-																	"type": "array",
-																	"items": {
-																		"properties": {
-																			"code": {
-																				"type": "integer",
-																				"minimum": 1000
-																			},
-																			"message": {
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"code",
-																			"message"
-																		],
-																		"type": "object",
-																		"uniqueItems": true
-																	},
-																	"example": []
-																},
-																"messages": {
-																	"type": "array",
-																	"items": {
-																		"properties": {
-																			"code": {
-																				"type": "integer",
-																				"minimum": 1000
-																			},
-																			"message": {
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"code",
-																			"message"
-																		],
-																		"type": "object",
-																		"uniqueItems": true
-																	},
-																	"example": []
-																},
-																"result": {
-																	"anyOf": [
-																		{
-																			"type": "object"
-																		},
-																		{
-																			"items": {},
-																			"type": "array"
-																		},
-																		{
-																			"type": "string"
-																		}
-																	]
-																},
-																"success": {
-																	"description": "Whether the API call was successful.",
-																	"type": "boolean",
-																	"example": true,
-																	"enum": [
-																		true
-																	]
-																}
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
 															},
-															"required": [
-																"success",
-																"errors",
-																"messages",
-																"result"
-															]
-														},
-														{
-															"properties": {
-																"result": {
-																	"oneOf": [
-																		{
-																			"type": "object"
-																		},
-																		{
-																			"type": "string"
-																		}
-																	]
-																}
-															},
-															"type": "object"
-														}
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"type": "object",
-															"properties": {
-																"address": {
-																	"description": "The hostname or IP address of the origin server to run health checks on.",
-																	"type": "string",
-																	"example": "www.example.com",
-																	"x-auditable": true
-																},
-																"check_regions": {
-																	"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
-																	"type": "array",
-																	"items": {
-																		"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, IN: India, SEAS: South East Asia, NEAS: North East Asia, ALL_REGIONS: all regions (BUSINESS and ENTERPRISE customers only).",
-																		"enum": [
-																			"WNAM",
-																			"ENAM",
-																			"WEU",
-																			"EEU",
-																			"NSAM",
-																			"SSAM",
-																			"OC",
-																			"ME",
-																			"NAF",
-																			"SAF",
-																			"IN",
-																			"SEAS",
-																			"NEAS",
-																			"ALL_REGIONS"
-																		],
-																		"type": "string"
-																	},
-																	"example": [
-																		"WEU",
-																		"ENAM"
-																	],
-																	"nullable": true,
-																	"x-auditable": true
-																},
-																"consecutive_fails": {
-																	"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
-																	"type": "integer",
-																	"default": 1,
-																	"x-auditable": true
-																},
-																"consecutive_successes": {
-																	"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
-																	"type": "integer",
-																	"default": 1,
-																	"x-auditable": true
-																},
-																"created_on": {
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"description": {
-																	"description": "A human-readable description of the health check.",
-																	"type": "string",
-																	"example": "Health check for www.example.com",
-																	"x-auditable": true
-																},
-																"failure_reason": {
-																	"description": "The current failure reason if status is unhealthy.",
-																	"type": "string",
-																	"example": "",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"http_config": {
-																	"description": "Parameters specific to an HTTP or HTTPS health check.",
-																	"type": "object",
-																	"properties": {
-																		"allow_insecure": {
-																			"description": "Do not validate the certificate when the health check uses HTTPS.",
-																			"type": "boolean",
-																			"default": false,
-																			"x-auditable": true
-																		},
-																		"expected_body": {
-																			"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.",
-																			"type": "string",
-																			"example": "success",
-																			"x-auditable": true
-																		},
-																		"expected_codes": {
-																			"description": "The expected HTTP response codes (e.g. \"200\") or code ranges (e.g. \"2xx\" for all codes starting with 2) of the health check.",
-																			"type": "array",
-																			"items": {
-																				"type": "string"
-																			},
-																			"example": [
-																				"2xx",
-																				"302"
-																			],
-																			"default": [
-																				"200"
-																			],
-																			"nullable": true,
-																			"x-auditable": true
-																		},
-																		"follow_redirects": {
-																			"description": "Follow redirects if the origin returns a 3xx status code.",
-																			"type": "boolean",
-																			"default": false,
-																			"x-auditable": true
-																		},
-																		"header": {
-																			"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.",
-																			"type": "object",
-																			"example": {
-																				"Host": [
-																					"example.com"
-																				],
-																				"X-App-ID": [
-																					"abc123"
-																				]
-																			},
-																			"additionalProperties": {
-																				"items": {
-																					"type": "string",
-																					"x-auditable": true
-																				},
-																				"type": "array"
-																			},
-																			"nullable": true
-																		},
-																		"method": {
-																			"description": "The HTTP method to use for the health check.",
-																			"type": "string",
-																			"default": "GET",
-																			"enum": [
-																				"GET",
-																				"HEAD"
-																			],
-																			"x-auditable": true
-																		},
-																		"path": {
-																			"description": "The endpoint path to health check against.",
-																			"type": "string",
-																			"example": "/health",
-																			"default": "/",
-																			"x-auditable": true
-																		},
-																		"port": {
-																			"description": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.",
-																			"type": "integer",
-																			"default": 80,
-																			"x-auditable": true
-																		}
-																	},
-																	"nullable": true
-																},
-																"id": {
-																	"description": "Identifier.",
-																	"type": "string",
-																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																	"maxLength": 32,
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"interval": {
-																	"description": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.",
-																	"type": "integer",
-																	"default": 60,
-																	"x-auditable": true
-																},
-																"modified_on": {
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"name": {
-																	"description": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
-																	"type": "string",
-																	"example": "server-1",
-																	"x-auditable": true
-																},
-																"retries": {
-																	"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
-																	"type": "integer",
-																	"default": 2,
-																	"x-auditable": true
-																},
-																"status": {
-																	"description": "The current status of the origin server according to the health check.",
-																	"type": "string",
-																	"example": "healthy",
-																	"enum": [
-																		"unknown",
-																		"healthy",
-																		"unhealthy",
-																		"suspended"
-																	],
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"suspended": {
-																	"description": "If suspended, no health checks are sent to the origin.",
-																	"type": "boolean",
-																	"default": false,
-																	"x-auditable": true
-																},
-																"tcp_config": {
-																	"description": "Parameters specific to TCP health check.",
-																	"type": "object",
-																	"properties": {
-																		"method": {
-																			"description": "The TCP connection method to use for the health check.",
-																			"type": "string",
-																			"default": "connection_established",
-																			"enum": [
-																				"connection_established"
-																			],
-																			"x-auditable": true
-																		},
-																		"port": {
-																			"description": "Port number to connect to for the health check. Defaults to 80.",
-																			"type": "integer",
-																			"default": 80,
-																			"x-auditable": true
-																		}
-																	},
-																	"nullable": true
-																},
-																"timeout": {
-																	"description": "The timeout (in seconds) before marking the health check as failed.",
-																	"type": "integer",
-																	"default": 5,
-																	"x-auditable": true
-																},
-																"type": {
-																	"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.",
-																	"type": "string",
-																	"example": "HTTPS",
-																	"default": "HTTP",
-																	"x-auditable": true
-																}
+															"message": {
+																"type": "string"
 															}
-														}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"type": "object"
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
 												}
 											]
 										},
-										{
+										"result": {
 											"type": "object",
-											"properties": {
-												"errors": {
-													"example": [
-														{
-															"code": 7003,
-															"message": "No route for the URI"
-														}
-													],
-													"allOf": [
-														{
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														}
-													],
-													"minLength": 1
-												},
-												"messages": {
-													"example": [],
-													"allOf": [
-														{
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														}
-													]
-												},
-												"result": {
-													"type": "object",
-													"enum": [
-														null
-													],
-													"nullable": true
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"type": "boolean",
-													"example": false,
-													"enum": [
-														false
-													]
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
 											]
 										}
+									},
+									"example": {
+										"errors": [
+											{
+												"code": 7003,
+												"message": "No route for the URI"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
+									},
+									"required": [
+										"success",
+										"errors"
 									]
 								}
 							}
@@ -2684052,8 +2682390,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "smart-shield.health-checks",
-				"x-fern-sdk-method-name": "update",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "update"
 			}
 		},
 		"/zones/{zone_id}/snippets": {

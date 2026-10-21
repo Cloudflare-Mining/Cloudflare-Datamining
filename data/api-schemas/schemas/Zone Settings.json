@@ -9004,8 +9004,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zones.aegis",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/settings/automatic_platform_optimization": {
 		"operationId": "zone-settings-get-automatic-platform-optimization-setting",
@@ -10809,8 +10808,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zones.origin-h2-max-streams",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/settings/origin_max_http_version": {
 		"operationId": "zone-cache-settings-get-origin-max-http-version-setting",
@@ -11162,8 +11160,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zones.origin-max-http-version",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/settings/speed_brain": {
 		"operationId": "zone-settings-get-speed-brain-setting",
@@ -26094,8 +26091,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zones.aegis",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"PATCH /zones/{zone_id}/settings/automatic_platform_optimization": {
 		"operationId": "zone-settings-change-automatic-platform-optimization-setting",
@@ -28095,8 +28091,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zones.origin-h2-max-streams",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"PATCH /zones/{zone_id}/settings/origin_max_http_version": {
 		"operationId": "zone-cache-settings-change-origin-max-http-version-setting",
@@ -28470,8 +28465,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zones.origin-max-http-version",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"PATCH /zones/{zone_id}/settings/speed_brain": {
 		"operationId": "zone-settings-change-speed-brain-setting",
