@@ -22,7 +22,6 @@
 	"default_branch": "main",
 	"branches": [
 		"alt/prerender-rsc-sidechannel",
-		"changeset-release/main",
 		"chonky-list",
 		"chore/bundle-zero-dep-leaves",
 		"ci/commit-version-bump",
@@ -31,7 +30,9 @@
 		"claude/distracted-taussig-5766a2",
 		"claude/eager-joliot-775716",
 		"claude/eloquent-heisenberg-0b8509",
+		"claude/fix-nitro-unused-trace-deps",
 		"claude/fix-refresh-during-navigation",
+		"claude/fix-search-transition-suspense-fallback",
 		"codex/action-ownership-native-typeof-fold",
 		"codex/app-prefetch-false-28478866791",
 		"codex/cacheability-fill-publication",
@@ -219,7 +220,6 @@
 		"codex/workerd-stacked-content-encoding-repro",
 		"codex/wrangler-auth-ux",
 		"dario/vite-plugin-v2",
-		"docs/blog-vinext-1-3",
 		"docs/skills-field-learnings",
 		"docs/update-contributing",
 		"feat/auto-pr-review",
@@ -230,6 +230,7 @@
 		"feat/rsc-dev-reexport-following",
 		"feat/static-prerender-build",
 		"fix/ancestor-loading-shared-layout",
+		"fix/ancestor-not-found-boundary-4092",
 		"fix/app-pages-fallback-sees-middleware-overrides-v2",
 		"fix/app-router-dynamic-root-not-found",
 		"fix/app-static-suspense-fallback",
@@ -315,6 +316,7 @@
 		"fix/rsc-optimizedeps-react-server",
 		"fix/server-action-client-sourcemaps",
 		"fix/server-only-use-cache-client",
+		"fix/stream-tla-client-references",
 		"fix/strip-set-cookie-from-app-route-isr-cache-clean",
 		"fix/suspense-flash-navigation-639",
 		"fix/use-cache-nested-function-props",
@@ -381,6 +383,7 @@
 		"repro/app-router-shared-layout-identity",
 		"security/react-flight-shared-buffer-rce",
 		"seo/consolidate-brand-signals",
+		"t3/fix-issue-4083",
 		"web/benchmarks-swr-revalidate"
 	]
 }
