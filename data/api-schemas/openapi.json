@@ -479558,7 +479558,8 @@
 														"type": "object"
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								}
@@ -479685,11 +479686,11 @@
 				},
 				"security": [
 					{
-						"api_email": [],
-						"api_key": []
+						"api_token": []
 					},
 					{
-						"api_token": []
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -479700,9 +479701,8 @@
 					"DNS Write"
 				],
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "addressing.regional_hostnames.regions",
-				"x-fern-sdk-method-name": "list",
-				"x-forge-hidden": true
+				"x-fern-sdk-group-name": "addressing.regional-hostnames.regions",
+				"x-fern-sdk-method-name": "list"
 			}
 		},
 		"/accounts/{account_id}/addressing/services": {
@@ -904428,6 +904428,7 @@
 			"get": {
 				"operationId": "publicListPrefixBindings",
 				"summary": "List DLS prefix bindings for an account",
+				"description": "List the BYOIP prefix bindings configured for an account.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -904479,6 +904480,11 @@
 														"type": "integer",
 														"minimum": 1000
 													},
+													"error_chain": {
+														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+														"type": "array",
+														"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings.get.responses.200.content.application/json.schema.properties.errors.items]"
+													},
 													"message": {
 														"type": "string"
 													}
@@ -904497,6 +904503,11 @@
 													"code": {
 														"type": "integer",
 														"minimum": 1000
+													},
+													"error_chain": {
+														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+														"type": "array",
+														"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings.get.responses.200.content.application/json.schema.properties.messages.items]"
 													},
 													"message": {
 														"type": "string"
@@ -904596,6 +904607,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings.get.responses.400.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -904626,6 +904642,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings.get.responses.400.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -904644,7 +904665,8 @@
 											},
 											"required": [
 												"errors"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -904669,6 +904691,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings.get.responses.401.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -904699,6 +904726,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings.get.responses.401.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -904717,7 +904749,8 @@
 											},
 											"required": [
 												"errors"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -904742,6 +904775,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings.get.responses.403.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -904772,6 +904810,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings.get.responses.403.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -904790,7 +904833,8 @@
 											},
 											"required": [
 												"errors"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -904815,6 +904859,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings.get.responses.500.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -904845,6 +904894,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings.get.responses.500.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -904863,7 +904917,8 @@
 											},
 											"required": [
 												"errors"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -904883,14 +904938,18 @@
 				"tags": [
 					"Prefix Bindings"
 				],
+				"x-api-token-group": [
+					"DLS: Read",
+					"DLS: Write"
+				],
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "dls.regional_services.prefix_bindings",
-				"x-fern-sdk-method-name": "list",
-				"x-forge-hidden": true
+				"x-fern-sdk-group-name": "dls.regional-services.prefix-bindings",
+				"x-fern-sdk-method-name": "list"
 			},
 			"post": {
 				"operationId": "publicCreatePrefixBinding",
 				"summary": "Create a DLS prefix binding",
+				"description": "Bind a CIDR from a BYOIP prefix to a region.\n\nThis requires the **IP Prefixes Write** permission in addition to **DLS Write**, because the binding is created against a BYOIP prefix in Addressing.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -904964,6 +905023,11 @@
 																		"type": "integer",
 																		"minimum": 1000
 																	},
+																	"error_chain": {
+																		"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																		"type": "array",
+																		"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings.post.responses.201.content.application/json.schema.allOf.0.allOf.0.properties.messages.items]"
+																	},
 																	"message": {
 																		"type": "string"
 																	}
@@ -904994,6 +905058,11 @@
 																		"type": "integer",
 																		"minimum": 1000
 																	},
+																	"error_chain": {
+																		"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																		"type": "array",
+																		"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings.post.responses.201.content.application/json.schema.allOf.0.allOf.1.properties.errors.items]"
+																	},
 																	"message": {
 																		"type": "string"
 																	}
@@ -905005,7 +905074,8 @@
 															},
 															"maxLength": 0
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -905044,7 +905114,8 @@
 											},
 											"required": [
 												"result"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -905069,6 +905140,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings.post.responses.400.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -905099,6 +905175,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings.post.responses.400.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -905117,7 +905198,8 @@
 											},
 											"required": [
 												"errors"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -905142,6 +905224,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings.post.responses.401.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -905172,6 +905259,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings.post.responses.401.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -905190,7 +905282,8 @@
 											},
 											"required": [
 												"errors"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -905215,6 +905308,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings.post.responses.403.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -905245,6 +905343,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings.post.responses.403.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -905263,7 +905366,8 @@
 											},
 											"required": [
 												"errors"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -905288,6 +905392,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings.post.responses.409.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -905318,6 +905427,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings.post.responses.409.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -905336,7 +905450,8 @@
 											},
 											"required": [
 												"errors"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -905361,6 +905476,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings.post.responses.500.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -905391,6 +905511,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings.post.responses.500.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -905409,7 +905534,8 @@
 											},
 											"required": [
 												"errors"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -905429,16 +905555,20 @@
 				"tags": [
 					"Prefix Bindings"
 				],
+				"x-api-token-group": [
+					"DLS: Write",
+					"IP Prefixes: Write"
+				],
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "dls.regional_services.prefix_bindings",
-				"x-fern-sdk-method-name": "create",
-				"x-forge-hidden": true
+				"x-fern-sdk-group-name": "dls.regional-services.prefix-bindings",
+				"x-fern-sdk-method-name": "create"
 			}
 		},
 		"/accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}": {
 			"delete": {
 				"operationId": "publicDeletePrefixBinding",
 				"summary": "Delete a DLS prefix binding",
+				"description": "Delete a BYOIP prefix binding.\n\nLike creating a binding, this requires **IP Prefixes Write** in addition to **DLS Write**.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -905484,6 +905614,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.delete.responses.200.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -905514,6 +905649,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.delete.responses.200.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -905525,7 +905665,8 @@
 													},
 													"maxLength": 0
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								}
@@ -905550,6 +905691,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.delete.responses.401.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -905580,6 +905726,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.delete.responses.401.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -905598,7 +905749,8 @@
 											},
 											"required": [
 												"errors"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -905623,6 +905775,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.delete.responses.403.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -905653,6 +905810,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.delete.responses.403.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -905671,7 +905833,8 @@
 											},
 											"required": [
 												"errors"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -905696,6 +905859,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.delete.responses.404.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -905726,6 +905894,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.delete.responses.404.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -905744,7 +905917,8 @@
 											},
 											"required": [
 												"errors"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -905769,6 +905943,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.delete.responses.500.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -905799,6 +905978,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.delete.responses.500.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -905817,7 +906001,8 @@
 											},
 											"required": [
 												"errors"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -905837,14 +906022,18 @@
 				"tags": [
 					"Prefix Bindings"
 				],
+				"x-api-token-group": [
+					"DLS: Write",
+					"IP Prefixes: Write"
+				],
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "dls.regional_services.prefix_bindings",
-				"x-fern-sdk-method-name": "delete",
-				"x-forge-hidden": true
+				"x-fern-sdk-group-name": "dls.regional-services.prefix-bindings",
+				"x-fern-sdk-method-name": "delete"
 			},
 			"get": {
 				"operationId": "publicGetPrefixBinding",
 				"summary": "Get a DLS prefix binding",
+				"description": "Retrieve a single BYOIP prefix binding by ID.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -905892,6 +906081,11 @@
 																		"type": "integer",
 																		"minimum": 1000
 																	},
+																	"error_chain": {
+																		"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																		"type": "array",
+																		"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.get.responses.200.content.application/json.schema.allOf.0.allOf.0.properties.messages.items]"
+																	},
 																	"message": {
 																		"type": "string"
 																	}
@@ -905922,6 +906116,11 @@
 																		"type": "integer",
 																		"minimum": 1000
 																	},
+																	"error_chain": {
+																		"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																		"type": "array",
+																		"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.get.responses.200.content.application/json.schema.allOf.0.allOf.1.properties.errors.items]"
+																	},
 																	"message": {
 																		"type": "string"
 																	}
@@ -905933,7 +906132,8 @@
 															},
 															"maxLength": 0
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -905972,7 +906172,8 @@
 											},
 											"required": [
 												"result"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -905997,6 +906198,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.get.responses.401.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -906027,6 +906233,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.get.responses.401.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -906045,7 +906256,8 @@
 											},
 											"required": [
 												"errors"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -906070,6 +906282,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.get.responses.403.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -906100,6 +906317,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.get.responses.403.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -906118,7 +906340,8 @@
 											},
 											"required": [
 												"errors"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -906143,6 +906366,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.get.responses.404.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -906173,6 +906401,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.get.responses.404.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -906191,7 +906424,8 @@
 											},
 											"required": [
 												"errors"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -906216,6 +906450,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.get.responses.500.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -906246,6 +906485,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.get.responses.500.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -906264,7 +906508,8 @@
 											},
 											"required": [
 												"errors"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -906284,14 +906529,18 @@
 				"tags": [
 					"Prefix Bindings"
 				],
+				"x-api-token-group": [
+					"DLS: Read",
+					"DLS: Write"
+				],
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "dls.regional_services.prefix_bindings",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-group-name": "dls.regional-services.prefix-bindings",
+				"x-fern-sdk-method-name": "get"
 			},
 			"patch": {
 				"operationId": "publicPatchPrefixBinding",
 				"summary": "Update a DLS prefix binding",
+				"description": "Update the region of an existing BYOIP prefix binding.\n\nLike creating a binding, this requires **IP Prefixes Write** in addition to **DLS Write**.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -906362,6 +906611,11 @@
 																		"type": "integer",
 																		"minimum": 1000
 																	},
+																	"error_chain": {
+																		"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																		"type": "array",
+																		"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.patch.responses.200.content.application/json.schema.allOf.0.allOf.0.properties.messages.items]"
+																	},
 																	"message": {
 																		"type": "string"
 																	}
@@ -906392,6 +906646,11 @@
 																		"type": "integer",
 																		"minimum": 1000
 																	},
+																	"error_chain": {
+																		"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																		"type": "array",
+																		"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.patch.responses.200.content.application/json.schema.allOf.0.allOf.1.properties.errors.items]"
+																	},
 																	"message": {
 																		"type": "string"
 																	}
@@ -906403,7 +906662,8 @@
 															},
 															"maxLength": 0
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -906442,7 +906702,8 @@
 											},
 											"required": [
 												"result"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -906467,6 +906728,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.patch.responses.400.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -906497,6 +906763,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.patch.responses.400.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -906515,7 +906786,8 @@
 											},
 											"required": [
 												"errors"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -906540,6 +906812,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.patch.responses.401.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -906570,6 +906847,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.patch.responses.401.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -906588,7 +906870,8 @@
 											},
 											"required": [
 												"errors"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -906613,6 +906896,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.patch.responses.403.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -906643,6 +906931,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.patch.responses.403.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -906661,7 +906954,8 @@
 											},
 											"required": [
 												"errors"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -906686,6 +906980,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.patch.responses.404.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -906716,6 +907015,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.patch.responses.404.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -906734,7 +907038,8 @@
 											},
 											"required": [
 												"errors"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -906759,6 +907064,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.patch.responses.500.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -906789,6 +907099,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.patch.responses.500.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -906807,7 +907122,8 @@
 											},
 											"required": [
 												"errors"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -906827,16 +907143,20 @@
 				"tags": [
 					"Prefix Bindings"
 				],
+				"x-api-token-group": [
+					"DLS: Write",
+					"IP Prefixes: Write"
+				],
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "dls.regional_services.prefix_bindings",
-				"x-fern-sdk-method-name": "edit",
-				"x-forge-hidden": true
+				"x-fern-sdk-group-name": "dls.regional-services.prefix-bindings",
+				"x-fern-sdk-method-name": "edit"
 			}
 		},
 		"/accounts/{account_id}/dls/regions": {
 			"get": {
 				"operationId": "publicListRegions",
 				"summary": "List DLS regions for an account",
+				"description": "List the DLS regions (managed and custom) available to an account.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -906900,6 +907220,11 @@
 														"type": "integer",
 														"minimum": 1000
 													},
+													"error_chain": {
+														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+														"type": "array",
+														"items": "[Circular ~.paths./accounts/{account_id}/dls/regions.get.responses.200.content.application/json.schema.properties.errors.items]"
+													},
 													"message": {
 														"type": "string"
 													}
@@ -906918,6 +907243,11 @@
 													"code": {
 														"type": "integer",
 														"minimum": 1000
+													},
+													"error_chain": {
+														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+														"type": "array",
+														"items": "[Circular ~.paths./accounts/{account_id}/dls/regions.get.responses.200.content.application/json.schema.properties.messages.items]"
 													},
 													"message": {
 														"type": "string"
@@ -907028,6 +907358,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regions.get.responses.400.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -907058,6 +907393,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regions.get.responses.400.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -907076,7 +907416,8 @@
 											},
 											"required": [
 												"errors"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -907101,6 +907442,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regions.get.responses.401.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -907131,6 +907477,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regions.get.responses.401.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -907149,7 +907500,8 @@
 											},
 											"required": [
 												"errors"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -907174,6 +907526,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regions.get.responses.403.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -907204,6 +907561,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regions.get.responses.403.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -907222,7 +907584,8 @@
 											},
 											"required": [
 												"errors"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -907247,6 +907610,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regions.get.responses.500.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -907277,6 +907645,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regions.get.responses.500.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -907295,7 +907668,8 @@
 											},
 											"required": [
 												"errors"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -907315,16 +907689,20 @@
 				"tags": [
 					"Regions"
 				],
+				"x-api-token-group": [
+					"DLS: Read",
+					"DLS: Write"
+				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "dls.regions",
-				"x-fern-sdk-method-name": "list",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "list"
 			}
 		},
 		"/accounts/{account_id}/dls/regions/{region_id}": {
 			"get": {
 				"operationId": "publicGetRegion",
 				"summary": "Get a DLS region",
+				"description": "Retrieve a single DLS region (managed or custom) by ID or region key.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -907373,6 +907751,11 @@
 																		"type": "integer",
 																		"minimum": 1000
 																	},
+																	"error_chain": {
+																		"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																		"type": "array",
+																		"items": "[Circular ~.paths./accounts/{account_id}/dls/regions/{region_id}.get.responses.200.content.application/json.schema.allOf.0.allOf.0.properties.messages.items]"
+																	},
 																	"message": {
 																		"type": "string"
 																	}
@@ -907403,6 +907786,11 @@
 																		"type": "integer",
 																		"minimum": 1000
 																	},
+																	"error_chain": {
+																		"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																		"type": "array",
+																		"items": "[Circular ~.paths./accounts/{account_id}/dls/regions/{region_id}.get.responses.200.content.application/json.schema.allOf.0.allOf.1.properties.errors.items]"
+																	},
 																	"message": {
 																		"type": "string"
 																	}
@@ -907414,7 +907802,8 @@
 															},
 															"maxLength": 0
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -907464,7 +907853,8 @@
 											},
 											"required": [
 												"result"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -907489,6 +907879,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regions/{region_id}.get.responses.401.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -907519,6 +907914,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regions/{region_id}.get.responses.401.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -907537,7 +907937,8 @@
 											},
 											"required": [
 												"errors"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -907562,6 +907963,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regions/{region_id}.get.responses.403.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -907592,6 +907998,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regions/{region_id}.get.responses.403.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -907610,7 +908021,8 @@
 											},
 											"required": [
 												"errors"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -907635,6 +908047,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regions/{region_id}.get.responses.404.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -907665,6 +908082,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regions/{region_id}.get.responses.404.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -907683,7 +908105,8 @@
 											},
 											"required": [
 												"errors"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -907708,6 +908131,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regions/{region_id}.get.responses.500.content.application/json.schema.allOf.0.properties.messages.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -907738,6 +908166,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"error_chain": {
+																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
+																"type": "array",
+																"items": "[Circular ~.paths./accounts/{account_id}/dls/regions/{region_id}.get.responses.500.content.application/json.schema.allOf.1.properties.errors.items]"
+															},
 															"message": {
 																"type": "string"
 															}
@@ -907756,7 +908189,8 @@
 											},
 											"required": [
 												"errors"
-											]
+											],
+											"type": "object"
 										}
 									]
 								}
@@ -907776,10 +908210,13 @@
 				"tags": [
 					"Regions"
 				],
+				"x-api-token-group": [
+					"DLS: Read",
+					"DLS: Write"
+				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "dls.regions",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			}
 		},
 		"/accounts/{account_id}/dns_firewall": {
@@ -1466101,7 +1466538,7 @@
 																					},
 																					"preserve_path_suffix": {
 																						"type": "boolean",
-																						"default": false,
+																						"default": true,
 																						"x-auditable": true
 																					},
 																					"preserve_query_string": {
@@ -1466545,7 +1466982,7 @@
 																							},
 																							"preserve_path_suffix": {
 																								"type": "boolean",
-																								"default": false,
+																								"default": true,
 																								"x-auditable": true
 																							},
 																							"preserve_query_string": {
@@ -1467019,7 +1467456,7 @@
 																},
 																"preserve_path_suffix": {
 																	"type": "boolean",
-																	"default": false,
+																	"default": true,
 																	"x-auditable": true
 																},
 																"preserve_query_string": {
@@ -1467596,7 +1468033,7 @@
 																},
 																"preserve_path_suffix": {
 																	"type": "boolean",
-																	"default": false,
+																	"default": true,
 																	"x-auditable": true
 																},
 																"preserve_query_string": {
@@ -1468301,7 +1468738,7 @@
 																				},
 																				"preserve_path_suffix": {
 																					"type": "boolean",
-																					"default": false,
+																					"default": true,
 																					"x-auditable": true
 																				},
 																				"preserve_query_string": {
@@ -1468705,7 +1469142,7 @@
 																						},
 																						"preserve_path_suffix": {
 																							"type": "boolean",
-																							"default": false,
+																							"default": true,
 																							"x-auditable": true
 																						},
 																						"preserve_query_string": {
@@ -1677901,6 +1678338,7 @@
 										"account_ruleset": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
 										"ai_gateway": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
 										"ai_search_instance": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
+										"ai_search_namespace": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
 										"alerting_policy": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
 										"alerting_webhook": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
 										"cloudflared_tunnel": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
@@ -1677985,6 +1678423,7 @@
 													"account_ruleset",
 													"ai_gateway",
 													"ai_search_instance",
+													"ai_search_namespace",
 													"alerting_policy",
 													"alerting_webhook",
 													"cloudflared_tunnel",
@@ -1678440,6 +1678879,7 @@
 								"account_ruleset",
 								"ai_gateway",
 								"ai_search_instance",
+								"ai_search_namespace",
 								"alerting_policy",
 								"alerting_webhook",
 								"cloudflared_tunnel",
@@ -1678585,6 +1679025,7 @@
 															"account_ruleset": "#/components/schemas/resource-tagging_tagged_resource_object_account_ruleset",
 															"ai_gateway": "#/components/schemas/resource-tagging_tagged_resource_object_ai_gateway",
 															"ai_search_instance": "#/components/schemas/resource-tagging_tagged_resource_object_ai_search_instance",
+															"ai_search_namespace": "#/components/schemas/resource-tagging_tagged_resource_object_ai_search_namespace",
 															"alerting_policy": "#/components/schemas/resource-tagging_tagged_resource_object_alerting_policy",
 															"alerting_webhook": "#/components/schemas/resource-tagging_tagged_resource_object_alerting_webhook",
 															"api_gateway_operation": "#/components/schemas/resource-tagging_tagged_resource_object_api_gateway_operation",
@@ -1679133,6 +1679574,74 @@
 																			"type": "string",
 																			"enum": [
 																				"ai_search_instance"
+																			]
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																{
+																	"description": "Base schema for account-level resources (without type discriminator)",
+																	"type": "object",
+																	"properties": {
+																		"etag": {
+																			"description": "ETag identifier for optimistic concurrency control. Formatted as \"v1:<hash>\" where\nthe hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map\ncanonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat\nETags as opaque strings and pass them back via the If-Match header on write operations.\n",
+																			"type": "string",
+																			"example": "v1:RBNvo1WzZ4oRRq0W9-hkng",
+																			"readOnly": true
+																		},
+																		"id": {
+																			"description": "Identifies the unique resource.",
+																			"type": "string",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"x-auditable": true
+																		},
+																		"name": {
+																			"description": "Human-readable name of the resource.",
+																			"type": "string",
+																			"example": "my-worker-script"
+																		},
+																		"tags": {
+																			"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+																			"type": "object",
+																			"example": {
+																				"environment": "production",
+																				"team": "engineering"
+																			},
+																			"additionalProperties": {
+																				"maxLength": 1024,
+																				"type": "string"
+																			},
+																			"x-auditable": true
+																		},
+																		"tags_updated_at": {
+																			"description": "Monotonic version of the resource's tags: the timestamp assigned when the\ntags were last written. Returned by read endpoints, by 2PC prepare (the\nversion that will be assigned on commit, unless a concurrent write lands\nfirst, in which case a newer version is assigned), and by 2PC commit (the\nauthoritative committed version). Omitted for untagged resources and\ndelete commits: a deleted resource has no current version, and deletions\nare ordered by event order rather than by version.\n",
+																			"type": "string",
+																			"format": "date-time",
+																			"example": "2024-01-15T10:30:00Z",
+																			"readOnly": true
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"tags",
+																		"name",
+																		"etag"
+																	]
+																}
+															]
+														},
+														{
+															"description": "Response for ai_search_namespace resources",
+															"allOf": [
+																{
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"enum": [
+																				"ai_search_namespace"
 																			]
 																		}
 																	},
@@ -1682192,6 +1682701,7 @@
 										"account_ruleset": "#/components/schemas/resource-tagging_set_tags_request_account_level_base",
 										"ai_gateway": "#/components/schemas/resource-tagging_set_tags_request_account_level_base",
 										"ai_search_instance": "#/components/schemas/resource-tagging_set_tags_request_account_level_base",
+										"ai_search_namespace": "#/components/schemas/resource-tagging_set_tags_request_account_level_base",
 										"alerting_policy": "#/components/schemas/resource-tagging_set_tags_request_account_level_base",
 										"alerting_webhook": "#/components/schemas/resource-tagging_set_tags_request_account_level_base",
 										"cloudflared_tunnel": "#/components/schemas/resource-tagging_set_tags_request_account_level_base",
@@ -1682302,6 +1682812,7 @@
 															"account_ruleset",
 															"ai_gateway",
 															"ai_search_instance",
+															"ai_search_namespace",
 															"alerting_policy",
 															"alerting_webhook",
 															"cloudflared_tunnel",
@@ -1682465,6 +1682976,7 @@
 															"account_ruleset": "#/components/schemas/resource-tagging_tagged_resource_object_account_ruleset",
 															"ai_gateway": "#/components/schemas/resource-tagging_tagged_resource_object_ai_gateway",
 															"ai_search_instance": "#/components/schemas/resource-tagging_tagged_resource_object_ai_search_instance",
+															"ai_search_namespace": "#/components/schemas/resource-tagging_tagged_resource_object_ai_search_namespace",
 															"alerting_policy": "#/components/schemas/resource-tagging_tagged_resource_object_alerting_policy",
 															"alerting_webhook": "#/components/schemas/resource-tagging_tagged_resource_object_alerting_webhook",
 															"api_gateway_operation": "#/components/schemas/resource-tagging_tagged_resource_object_api_gateway_operation",
@@ -1683013,6 +1683525,74 @@
 																			"type": "string",
 																			"enum": [
 																				"ai_search_instance"
+																			]
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																{
+																	"description": "Base schema for account-level resources (without type discriminator)",
+																	"type": "object",
+																	"properties": {
+																		"etag": {
+																			"description": "ETag identifier for optimistic concurrency control. Formatted as \"v1:<hash>\" where\nthe hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map\ncanonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat\nETags as opaque strings and pass them back via the If-Match header on write operations.\n",
+																			"type": "string",
+																			"example": "v1:RBNvo1WzZ4oRRq0W9-hkng",
+																			"readOnly": true
+																		},
+																		"id": {
+																			"description": "Identifies the unique resource.",
+																			"type": "string",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"x-auditable": true
+																		},
+																		"name": {
+																			"description": "Human-readable name of the resource.",
+																			"type": "string",
+																			"example": "my-worker-script"
+																		},
+																		"tags": {
+																			"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+																			"type": "object",
+																			"example": {
+																				"environment": "production",
+																				"team": "engineering"
+																			},
+																			"additionalProperties": {
+																				"maxLength": 1024,
+																				"type": "string"
+																			},
+																			"x-auditable": true
+																		},
+																		"tags_updated_at": {
+																			"description": "Monotonic version of the resource's tags: the timestamp assigned when the\ntags were last written. Returned by read endpoints, by 2PC prepare (the\nversion that will be assigned on commit, unless a concurrent write lands\nfirst, in which case a newer version is assigned), and by 2PC commit (the\nauthoritative committed version). Omitted for untagged resources and\ndelete commits: a deleted resource has no current version, and deletions\nare ordered by event order rather than by version.\n",
+																			"type": "string",
+																			"format": "date-time",
+																			"example": "2024-01-15T10:30:00Z",
+																			"readOnly": true
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"tags",
+																		"name",
+																		"etag"
+																	]
+																}
+															]
+														},
+														{
+															"description": "Response for ai_search_namespace resources",
+															"allOf": [
+																{
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"enum": [
+																				"ai_search_namespace"
 																			]
 																		}
 																	},
@@ -1686598,6 +1687178,7 @@
 									"account_ruleset",
 									"ai_gateway",
 									"ai_search_instance",
+									"ai_search_namespace",
 									"alerting_policy",
 									"alerting_webhook",
 									"api_gateway_operation",
@@ -1686811,6 +1687392,7 @@
 																"account_ruleset": "#/components/schemas/resource-tagging_tagged_resource_object_account_ruleset",
 																"ai_gateway": "#/components/schemas/resource-tagging_tagged_resource_object_ai_gateway",
 																"ai_search_instance": "#/components/schemas/resource-tagging_tagged_resource_object_ai_search_instance",
+																"ai_search_namespace": "#/components/schemas/resource-tagging_tagged_resource_object_ai_search_namespace",
 																"alerting_policy": "#/components/schemas/resource-tagging_tagged_resource_object_alerting_policy",
 																"alerting_webhook": "#/components/schemas/resource-tagging_tagged_resource_object_alerting_webhook",
 																"api_gateway_operation": "#/components/schemas/resource-tagging_tagged_resource_object_api_gateway_operation",
@@ -1687359,6 +1687941,74 @@
 																				"type": "string",
 																				"enum": [
 																					"ai_search_instance"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"description": "Base schema for account-level resources (without type discriminator)",
+																		"type": "object",
+																		"properties": {
+																			"etag": {
+																				"description": "ETag identifier for optimistic concurrency control. Formatted as \"v1:<hash>\" where\nthe hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map\ncanonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat\nETags as opaque strings and pass them back via the If-Match header on write operations.\n",
+																				"type": "string",
+																				"example": "v1:RBNvo1WzZ4oRRq0W9-hkng",
+																				"readOnly": true
+																			},
+																			"id": {
+																				"description": "Identifies the unique resource.",
+																				"type": "string",
+																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																				"x-auditable": true
+																			},
+																			"name": {
+																				"description": "Human-readable name of the resource.",
+																				"type": "string",
+																				"example": "my-worker-script"
+																			},
+																			"tags": {
+																				"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+																				"type": "object",
+																				"example": {
+																					"environment": "production",
+																					"team": "engineering"
+																				},
+																				"additionalProperties": {
+																					"maxLength": 1024,
+																					"type": "string"
+																				},
+																				"x-auditable": true
+																			},
+																			"tags_updated_at": {
+																				"description": "Monotonic version of the resource's tags: the timestamp assigned when the\ntags were last written. Returned by read endpoints, by 2PC prepare (the\nversion that will be assigned on commit, unless a concurrent write lands\nfirst, in which case a newer version is assigned), and by 2PC commit (the\nauthoritative committed version). Omitted for untagged resources and\ndelete commits: a deleted resource has no current version, and deletions\nare ordered by event order rather than by version.\n",
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2024-01-15T10:30:00Z",
+																				"readOnly": true
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"tags",
+																			"name",
+																			"etag"
+																		]
+																	}
+																]
+															},
+															{
+																"description": "Response for ai_search_namespace resources",
+																"allOf": [
+																	{
+																		"properties": {
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"ai_search_namespace"
 																				]
 																			}
 																		},
@@ -1690880,6 +1691530,7 @@
 								"account_ruleset",
 								"ai_gateway",
 								"ai_search_instance",
+								"ai_search_namespace",
 								"alerting_policy",
 								"alerting_webhook",
 								"api_gateway_operation",
@@ -2219095,10 +2219746,12 @@
 																		"x-auditable": true
 																	},
 																	{
-																		"description": "When the regional hostname was created"
+																		"description": "When the regional hostname was created",
+																		"type": "string"
 																	},
 																	{
-																		"example": "2014-01-01T05:20:00.12345Z"
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"type": "string"
 																	}
 																]
 															},
@@ -2219130,7 +2219783,8 @@
 														]
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								}
@@ -2219257,11 +2219911,11 @@
 				},
 				"security": [
 					{
-						"api_email": [],
-						"api_key": []
+						"api_token": []
 					},
 					{
-						"api_token": []
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -2219272,9 +2219926,8 @@
 					"DNS Write"
 				],
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "addressing.regional_hostnames",
-				"x-fern-sdk-method-name": "list",
-				"x-forge-hidden": true
+				"x-fern-sdk-group-name": "addressing.regional-hostnames",
+				"x-fern-sdk-method-name": "list"
 			},
 			"post": {
 				"operationId": "dls-zone-regional-hostnames-create",
@@ -2219431,10 +2220084,12 @@
 																	"x-auditable": true
 																},
 																{
-																	"description": "When the regional hostname was created"
+																	"description": "When the regional hostname was created",
+																	"type": "string"
 																},
 																{
-																	"example": "2014-01-01T05:20:00.12345Z"
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"type": "string"
 																}
 															]
 														},
@@ -2219593,11 +2220248,11 @@
 				},
 				"security": [
 					{
-						"api_email": [],
-						"api_key": []
+						"api_token": []
 					},
 					{
-						"api_token": []
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -2219607,9 +2220262,8 @@
 					"DNS Write"
 				],
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "addressing.regional_hostnames",
-				"x-fern-sdk-method-name": "create",
-				"x-forge-hidden": true
+				"x-fern-sdk-group-name": "addressing.regional-hostnames",
+				"x-fern-sdk-method-name": "create"
 			}
 		},
 		"/zones/{zone_id}/addressing/regional_hostnames/{hostname}": {
@@ -2219856,11 +2220510,11 @@
 				},
 				"security": [
 					{
-						"api_email": [],
-						"api_key": []
+						"api_token": []
 					},
 					{
-						"api_token": []
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -2219870,9 +2220524,8 @@
 					"DNS Write"
 				],
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "addressing.regional_hostnames",
-				"x-fern-sdk-method-name": "delete",
-				"x-forge-hidden": true
+				"x-fern-sdk-group-name": "addressing.regional-hostnames",
+				"x-fern-sdk-method-name": "delete"
 			},
 			"get": {
 				"operationId": "dls-zone-regional-hostnames-fetch",
@@ -2220006,10 +2220659,12 @@
 																	"x-auditable": true
 																},
 																{
-																	"description": "When the regional hostname was created"
+																	"description": "When the regional hostname was created",
+																	"type": "string"
 																},
 																{
-																	"example": "2014-01-01T05:20:00.12345Z"
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"type": "string"
 																}
 															]
 														},
@@ -2220168,11 +2220823,11 @@
 				},
 				"security": [
 					{
-						"api_email": [],
-						"api_key": []
+						"api_token": []
 					},
 					{
-						"api_token": []
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -2220183,9 +2220838,8 @@
 					"DNS Write"
 				],
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "addressing.regional_hostnames",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-group-name": "addressing.regional-hostnames",
+				"x-fern-sdk-method-name": "get"
 			},
 			"patch": {
 				"operationId": "dls-zone-regional-hostnames-patch",
@@ -2220339,10 +2220993,12 @@
 																	"x-auditable": true
 																},
 																{
-																	"description": "When the regional hostname was created"
+																	"description": "When the regional hostname was created",
+																	"type": "string"
 																},
 																{
-																	"example": "2014-01-01T05:20:00.12345Z"
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"type": "string"
 																}
 															]
 														},
@@ -2220501,11 +2221157,11 @@
 				},
 				"security": [
 					{
-						"api_email": [],
-						"api_key": []
+						"api_token": []
 					},
 					{
-						"api_token": []
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -2220515,9 +2221171,8 @@
 					"DNS Write"
 				],
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "addressing.regional_hostnames",
-				"x-fern-sdk-method-name": "edit",
-				"x-forge-hidden": true
+				"x-fern-sdk-group-name": "addressing.regional-hostnames",
+				"x-fern-sdk-method-name": "edit"
 			}
 		},
 		"/zones/{zone_id}/ai-audit/robots": {
@@ -2710350,6 +2711005,7 @@
 															"account_ruleset": "#/components/schemas/resource-tagging_tagged_resource_object_account_ruleset",
 															"ai_gateway": "#/components/schemas/resource-tagging_tagged_resource_object_ai_gateway",
 															"ai_search_instance": "#/components/schemas/resource-tagging_tagged_resource_object_ai_search_instance",
+															"ai_search_namespace": "#/components/schemas/resource-tagging_tagged_resource_object_ai_search_namespace",
 															"alerting_policy": "#/components/schemas/resource-tagging_tagged_resource_object_alerting_policy",
 															"alerting_webhook": "#/components/schemas/resource-tagging_tagged_resource_object_alerting_webhook",
 															"api_gateway_operation": "#/components/schemas/resource-tagging_tagged_resource_object_api_gateway_operation",
@@ -2710898,6 +2711554,74 @@
 																			"type": "string",
 																			"enum": [
 																				"ai_search_instance"
+																			]
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																{
+																	"description": "Base schema for account-level resources (without type discriminator)",
+																	"type": "object",
+																	"properties": {
+																		"etag": {
+																			"description": "ETag identifier for optimistic concurrency control. Formatted as \"v1:<hash>\" where\nthe hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map\ncanonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat\nETags as opaque strings and pass them back via the If-Match header on write operations.\n",
+																			"type": "string",
+																			"example": "v1:RBNvo1WzZ4oRRq0W9-hkng",
+																			"readOnly": true
+																		},
+																		"id": {
+																			"description": "Identifies the unique resource.",
+																			"type": "string",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"x-auditable": true
+																		},
+																		"name": {
+																			"description": "Human-readable name of the resource.",
+																			"type": "string",
+																			"example": "my-worker-script"
+																		},
+																		"tags": {
+																			"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+																			"type": "object",
+																			"example": {
+																				"environment": "production",
+																				"team": "engineering"
+																			},
+																			"additionalProperties": {
+																				"maxLength": 1024,
+																				"type": "string"
+																			},
+																			"x-auditable": true
+																		},
+																		"tags_updated_at": {
+																			"description": "Monotonic version of the resource's tags: the timestamp assigned when the\ntags were last written. Returned by read endpoints, by 2PC prepare (the\nversion that will be assigned on commit, unless a concurrent write lands\nfirst, in which case a newer version is assigned), and by 2PC commit (the\nauthoritative committed version). Omitted for untagged resources and\ndelete commits: a deleted resource has no current version, and deletions\nare ordered by event order rather than by version.\n",
+																			"type": "string",
+																			"format": "date-time",
+																			"example": "2024-01-15T10:30:00Z",
+																			"readOnly": true
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"tags",
+																		"name",
+																		"etag"
+																	]
+																}
+															]
+														},
+														{
+															"description": "Response for ai_search_namespace resources",
+															"allOf": [
+																{
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"enum": [
+																				"ai_search_namespace"
 																			]
 																		}
 																	},
@@ -2714187,6 +2714911,7 @@
 															"account_ruleset": "#/components/schemas/resource-tagging_tagged_resource_object_account_ruleset",
 															"ai_gateway": "#/components/schemas/resource-tagging_tagged_resource_object_ai_gateway",
 															"ai_search_instance": "#/components/schemas/resource-tagging_tagged_resource_object_ai_search_instance",
+															"ai_search_namespace": "#/components/schemas/resource-tagging_tagged_resource_object_ai_search_namespace",
 															"alerting_policy": "#/components/schemas/resource-tagging_tagged_resource_object_alerting_policy",
 															"alerting_webhook": "#/components/schemas/resource-tagging_tagged_resource_object_alerting_webhook",
 															"api_gateway_operation": "#/components/schemas/resource-tagging_tagged_resource_object_api_gateway_operation",
@@ -2714735,6 +2715460,74 @@
 																			"type": "string",
 																			"enum": [
 																				"ai_search_instance"
+																			]
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																{
+																	"description": "Base schema for account-level resources (without type discriminator)",
+																	"type": "object",
+																	"properties": {
+																		"etag": {
+																			"description": "ETag identifier for optimistic concurrency control. Formatted as \"v1:<hash>\" where\nthe hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map\ncanonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat\nETags as opaque strings and pass them back via the If-Match header on write operations.\n",
+																			"type": "string",
+																			"example": "v1:RBNvo1WzZ4oRRq0W9-hkng",
+																			"readOnly": true
+																		},
+																		"id": {
+																			"description": "Identifies the unique resource.",
+																			"type": "string",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"x-auditable": true
+																		},
+																		"name": {
+																			"description": "Human-readable name of the resource.",
+																			"type": "string",
+																			"example": "my-worker-script"
+																		},
+																		"tags": {
+																			"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+																			"type": "object",
+																			"example": {
+																				"environment": "production",
+																				"team": "engineering"
+																			},
+																			"additionalProperties": {
+																				"maxLength": 1024,
+																				"type": "string"
+																			},
+																			"x-auditable": true
+																		},
+																		"tags_updated_at": {
+																			"description": "Monotonic version of the resource's tags: the timestamp assigned when the\ntags were last written. Returned by read endpoints, by 2PC prepare (the\nversion that will be assigned on commit, unless a concurrent write lands\nfirst, in which case a newer version is assigned), and by 2PC commit (the\nauthoritative committed version). Omitted for untagged resources and\ndelete commits: a deleted resource has no current version, and deletions\nare ordered by event order rather than by version.\n",
+																			"type": "string",
+																			"format": "date-time",
+																			"example": "2024-01-15T10:30:00Z",
+																			"readOnly": true
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"tags",
+																		"name",
+																		"etag"
+																	]
+																}
+															]
+														},
+														{
+															"description": "Response for ai_search_namespace resources",
+															"allOf": [
+																{
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"enum": [
+																				"ai_search_namespace"
 																			]
 																		}
 																	},

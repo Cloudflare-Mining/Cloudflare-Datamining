@@ -242,11 +242,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -256,9 +256,8 @@
 			"DNS Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "addressing.regional_hostnames",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "addressing.regional-hostnames",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/addressing/regional_hostnames/regions": {
 		"operationId": "dls-account-regional-hostnames-list-regions",
@@ -428,7 +427,8 @@
 												"type": "object"
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -555,11 +555,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -570,9 +570,8 @@
 			"DNS Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "addressing.regional_hostnames.regions",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "addressing.regional-hostnames.regions",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/addressing/regional_hostnames": {
 		"operationId": "dls-zone-regional-hostnames-list",
@@ -737,10 +736,12 @@
 																"x-auditable": true
 															},
 															{
-																"description": "When the regional hostname was created"
+																"description": "When the regional hostname was created",
+																"type": "string"
 															},
 															{
-																"example": "2014-01-01T05:20:00.12345Z"
+																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string"
 															}
 														]
 													},
@@ -772,7 +773,8 @@
 												]
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -899,11 +901,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -914,9 +916,8 @@
 			"DNS Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "addressing.regional_hostnames",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "addressing.regional-hostnames",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/addressing/regional_hostnames/{hostname}": {
 		"operationId": "dls-zone-regional-hostnames-fetch",
@@ -1050,10 +1051,12 @@
 															"x-auditable": true
 														},
 														{
-															"description": "When the regional hostname was created"
+															"description": "When the regional hostname was created",
+															"type": "string"
 														},
 														{
-															"example": "2014-01-01T05:20:00.12345Z"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string"
 														}
 													]
 												},
@@ -1212,11 +1215,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -1227,9 +1230,8 @@
 			"DNS Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "addressing.regional_hostnames",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "addressing.regional-hostnames",
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /zones/{zone_id}/addressing/regional_hostnames/{hostname}": {
 		"operationId": "dls-zone-regional-hostnames-patch",
@@ -1383,10 +1385,12 @@
 															"x-auditable": true
 														},
 														{
-															"description": "When the regional hostname was created"
+															"description": "When the regional hostname was created",
+															"type": "string"
 														},
 														{
-															"example": "2014-01-01T05:20:00.12345Z"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string"
 														}
 													]
 												},
@@ -1545,11 +1549,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -1559,9 +1563,8 @@
 			"DNS Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "addressing.regional_hostnames",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "addressing.regional-hostnames",
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /zones/{zone_id}/addressing/regional_hostnames": {
 		"operationId": "dls-zone-regional-hostnames-create",
@@ -1718,10 +1721,12 @@
 															"x-auditable": true
 														},
 														{
-															"description": "When the regional hostname was created"
+															"description": "When the regional hostname was created",
+															"type": "string"
 														},
 														{
-															"example": "2014-01-01T05:20:00.12345Z"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string"
 														}
 													]
 												},
@@ -1880,11 +1885,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -1894,8 +1899,7 @@
 			"DNS Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "addressing.regional_hostnames",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "addressing.regional-hostnames",
+		"x-fern-sdk-method-name": "create"
 	}
 }
