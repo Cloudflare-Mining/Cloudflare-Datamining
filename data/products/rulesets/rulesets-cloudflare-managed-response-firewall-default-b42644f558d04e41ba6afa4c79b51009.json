@@ -1,0 +1,20 @@
+{
+	"description": "Created by the Cloudflare security team, this ruleset applies default mitigations during HTTP response processing to protect your applications from security threats. It is regularly updated to address new threats and reduce false positives.",
+	"id": "b42644f558d04e41ba6afa4c79b51009",
+	"kind": "managed",
+	"last_updated": "2026-10-21T07:52:48.743926Z",
+	"name": "Cloudflare Managed Response Firewall Default",
+	"phase": "http_response_firewall_custom",
+	"rules": [
+		{
+			"action": "block",
+			"description": "Default block for High confidence Signatures",
+			"enabled": true,
+			"id": "afffe22785674c80a31875c848d2242a",
+			"last_updated": "2026-10-21T07:52:48.743926Z",
+			"ref": "84824dedad925c1cc9d8f0580e2faf01",
+			"version": "1"
+		}
+	],
+	"version": "2"
+}
