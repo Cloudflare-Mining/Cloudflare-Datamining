@@ -3,43 +3,68 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Location: Adelaide<br></strong></p>
-<hr>
-<h3>About the Role</h3>
-<p>The Cloudflare APAC sales organisation operates as one integrated revenue system. Account Executives, Customer Engineers, Partner Account Managers, Business Development Representatives, Customer Experience Managers, Professional Services and Revenue Operations work as a continuous engine — winning, deploying, adopting, expanding, and scaling platform commitments across the full customer lifecycle.</p>
-<p>The system is supported by an AI-embedded operating model. The work itself, however, remains human. The role of every seller at Cloudflare is to bring critical thinking, judgment, and trust to customer relationships and outcomes.</p>
-<p>Our Enterprise team specifically helps marquee Australian corporations solve complex technical challenges while protecting their critical digital infrastructure, customer data, and online experiences.</p>
-<p>As a Senior Enterprise Account Executive, you will lead Cloudflare’s strategic engagement for a portfolio of premier Adelaide-headquartered enterprise accounts and SA Government. In this role, you will drive adoption of the Cloudflare platform across Security, Performance, Zero Trust, and AI infrastructure, positioning Cloudflare as a foundational pillar for digital transformation and enterprise resilience.</p>
-<p><strong>Responsibilities</strong></p>
+<p><strong>Available Locations: Remote, US</strong></p>
+<h2><strong>About the Role</strong></h2>
+<p>Cloudflare’s Americas Marketing Team is searching for Demand &amp; Field Marketing Leader to partner directly with our US Major Accounts segment. Aligning with sales leadership, sales operations, partner marketing and GTM counterparts you will design and drive high-impact pipeline generation programs, events and account focused marketing leading to pipeline creation and closed-won bookings across Global 2000 accounts.</p>
+<p>In this role, you will lead Majors Demand Marketing utilizing historical performance, data analytics, and intent intelligence to inform quarterly strategies and drive growth. You will hold end-to-end responsibility for developing and coordinating a comprehensive, omnichannel marketing approach for US Major Accounts. Your scope will encompass hosted field events, Account-Based Marketing (ABM), VIP and executive C-level events while providing strategic inputs for full-funnel digital programs (paid search/social, webinars, web strategy).</p>
+<h2><strong>Key Responsibilities</strong></h2>
 <ul>
-	<li>Strategic Relationship Management: Build and nurture deep, executive-level relationships across target named accounts, navigating complex organizational structures to establish trusted advisor status with C-suite and technology leaders.</li>
-	<li>Territory Leadership: Formulate and lead the engagement strategy across your assigned Melbourne enterprise portfolio, driving adoption of Cloudflare’s core solutions across Cloud SaaS, Zero Trust, Network Security, and AI enablement.</li>
-	<li>Partner Ecosystem Engagement: Collaborate with strategic channel partners, Global Systems Integrators (GSIs), and cloud ecosystem partners to extend Cloudflare’s reach, influence, and co-selling impact within target accounts.</li>
-	<li>Business Development &amp; Execution: Proactively identify and qualify high-impact enterprise opportunities, leveraging AI-assisted research and cross-functional teams to drive multi-million-dollar transformational outcomes.</li>
-	<li>Account Strategy &amp; Operational Rigor: Execute comprehensive multi-year account plans while maintaining high standards in forecasting accuracy, pipeline hygiene, and deal qualification.</li>
-	<li>Full Lifecycle Collaboration: Partner with Customer Engineers, Customer Success, and Professional Services to ensure successful deployment, value realization, and platform expansion through to renewal.</li>
-	<li>Knowledge Leadership: Share industry insights, competitive intelligence, and enterprise deal strategies across the ANZ team, actively mentoring peers to elevate collective performance.</li>
+	<li><strong>Strategic Planning &amp; Execution:</strong> Develop and execute multi-channel marketing plans that align directly with US Major Accounts sales and pipeline targets, holding ownership of budget management, execution, and reporting.</li>
+	<li><strong>Sales &amp; BDR Partnership:</strong> Partner closely with enterprise sales leaders, account executives, and Business Development Rep (BDR) leadership to establish shared SLAs, conduct joint pipeline reviews, and enable sellers with high-converting account engagement programs.</li>
+	<li><strong>Full-Funnel Digital Demand Generation:</strong> Direct enterprise-focused digital marketing strategy working with our Digital Marketing team—ie. LinkedIn advertising, programmatic display, executive webinar series—to capture, engage, and nurture high-intent enterprise accounts.</li>
+	<li><strong>ABM:</strong> 1:1 ABM strategies opportunistically for our strategic accounts segment within Majors.</li>
+	<li><strong>VIP Field Events &amp; Executive Experiences:</strong> lead the strategy, budget, vendor management, and execution for high-touch field programs, including C-suite dinners, regional roundtables.</li>
+	<li><strong>Partner &amp; Ecosystem Marketing:</strong> Coordinate with the Partner Marketing team to align efforts as required for co-marketing initiatives, and alignment for strategic partner marketing plans.</li>
 </ul>
-<p><strong>Desirable Skills, Knowledge, and Experience</strong></p>
+<p><strong>&nbsp;</strong></p>
+<h2><strong>Qualifications &amp; Requirements</strong></h2>
 <ul>
-	<li>Proven track record of meeting and exceeding complex B2B enterprise software or SaaS sales quotas in high-growth technology environments.</li>
-	<li>Deep understanding of the Melbourne enterprise market, with experience navigating complex commercial procurement, legal, and risk governance processes.</li>
-	<li>Demonstrated ability to build executive relationships (CIO, CISO, CTO, Head of Infrastructure) and close multi-year enterprise agreements.</li>
-	<li>Strong technical aptitude with the ability to translate complex cloud, network, Zero Trust, SASE, and AI infrastructure concepts into strategic business outcomes for senior leadership.</li>
-	<li>High proficiency in leveraging modern sales tools and AI-assisted workflows to accelerate pipeline generation, deal strategy, and account research.</li>
-	<li>Alignment with Cloudflare’s core values: Principled, Curious, and Transparent.</li>
-	<li>Existing network and familiarity within target accounts across including Santos, Elders and South Australian Government and the local channel partner ecosystem</li>
-	<li>Demonstrated success co-selling with major GSIs, regional consultancies, and cloud ecosystem vendors in ANZ.</li>
-	<li>Bachelor's degree in business, technology, or a related field, or equivalent practical experience.</li>
+	<li>Minimum 10 years in enterprise B2B field marketing, demand generation, or account-based marketing in a $1B+ technology organization (cybersecurity, cloud, or networking preferred); minimum 5 years field marketing experience.</li>
+	<li>Location Requirement: Remote - NYC, Atlanta, Austin, SF/Bay Area recommended</li>
+	<li>Proven track record supporting sales teams focused on Global 2000 / Fortune 1000 enterprise accounts and driving quantifiable pipeline and conversion.</li>
+	<li>Omnichannel Digital &amp; Campaign Expertise: Experience across full-funnel digital strategy, paid &amp; earned media.&nbsp;</li>
+	<li>Tech Stack &amp; ABM Proficiency: Advanced skills with enterprise CRM (Salesforce), analytics platforms, and ABM/intent intelligence platforms (6sense, Demandbase).</li>
+	<li>Thorough knowledge and understanding of enterprise lead-management processes, revenue attribution models, and marketing SLAs.</li>
+	<li>Demonstrated ability to manage budget with strong financial accountability and ROI optimization.</li>
+	<li>Strong cross-functional collaboration skills with the ability to build relationships and operate effectively across organizational boundaries.</li>
+	<li>BA/BS degree in Marketing, Business, Communications, Engineering, or a related field.</li>
 </ul>
-<div id="te-floating-button-container"></div>
-<div id="te-floating-button-container"></div>
-<div id="te-floating-button-container"></div>
-<div id="te-floating-button-container"></div>
-<div id="te-floating-button-container"></div>
-<div id="te-floating-button-container"></div>
-<div id="te-floating-button-container"></div>
-<div id="te-floating-button-container"></div>
+<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $120,000 - $165,000.</li>
+	<li>For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $132,000 - $182,000.</li>
+	<li>For Bay Area based hires: Estimated annual salary of $138,000 - $190,000</li>
+	<li>Application Deadline: ~January 2027</li>
+</ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

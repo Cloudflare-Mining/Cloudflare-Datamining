@@ -3,39 +3,65 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: </strong>Austin, TX (US),<strong> </strong>Lisbon (Portugal)</p>
-<p><strong>About the Role</strong></p>
-<p>We are seeking a Technical Sourcing Manager for Network Hardware to lead commercial engagement and oversee the supply chain for Cloudflare's 200+ data centers. You will drive ambitious goals around technology, cost, quality, and supply while partnering with key internal stakeholders. Complementing this strategic focus, you will also bridge the gap between procurement and physical deployment. By guiding infrastructure processes, you will ensure the cutting-edge hardware you source seamlessly integrates into our rapidly expanding global network.</p>
-<p><strong>Key Responsibilities</strong></p>
+<p><strong>Available Locations:&nbsp;</strong></p>
 <ul>
-	<li>Strategic Sourcing: Own procurement efforts across network hardware, including routers, switches and interconnect commodities.</li>
-	<li>Vendor Negotiation: Develop long-term Total Cost of Ownership (TCO) targets and lead complex, multi-party negotiations to hit vital supply goals.</li>
-	<li>Supplier Quality: Oversee adherence to delivery terms of network maintenance and support contracts - manage yearly contracts with most up to date asset inventory lists</li>
-	<li>Cross-Functional Leadership: Introduce robust evaluation processes (e.g., RFX, QBR) for vendors and partner closely with hardware engineering on new technologies.</li>
-	<li>Deployment Oversight: Coordinate global infrastructure installations by managing inflow of supply from hardware manufacturers against latest worldwide deployment schedules.</li>
-	<li>Process Optimization: Aggressively seek automation opportunities and assist with the definition of consistent physical deployment processes across all datacenter regions.</li>
+	<li><strong>Austin, TX</strong></li>
+	<li><strong>San Francisco, CA</strong></li>
+	<li><strong>Denver, CO</strong></li>
+	<li><strong>Seattle, WA</strong></li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Role Summary</strong></p>
+<p>We are looking for a Financial Analyst to join our R&amp;D Finance team and help explain what it costs to build, deliver and scale Cloudflare’s products. You will partner with Product, Engineering, Infrastructure Finance and Pricing to turn technical resource usage and infrastructure investment into clear product unit economics and actionable financial insights.</p>
+<p>This is a hands-on individual contributor role for someone who enjoys moving between financial models, operational data and cross-functional problem solving. You will help improve the data and processes behind our analysis, using automation and AI thoughtfully to make recurring work more reliable and scalable. As the work evolves, there is an opportunity to deepen your ownership of Developer and self-serve product economics.</p>
+<p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li><strong>Industry Experience:</strong> 5 years of experience working with networking equipment OEMs.&nbsp;</li>
-	<li><strong>Operational Execution:</strong> Direct experience executing complex datacenter infrastructure projects in a rapidly changing environment.</li>
-	<li><strong>Technical &amp; Commercial Acumen:</strong> Deep understanding of the commercial benefits of hardware technologies, paired with practical knowledge of physical datacenter networking.</li>
-	<li><strong>Communication:</strong> Excellent verbal and written communication skills with the ability to translate complex details to both technical and non-technical, internal and external stakeholders.</li>
-	<li><strong>Innovative Mindset:</strong> Demonstrated "AI-native curiosity" with an instinct to spot normalized problems and create solutions using the latest tools.</li>
-	<li><strong>AI Tool Proficiency:</strong> Basic experience leveraging AI tools (e.g., generative AI, LLMs, or AI-driven data analytics) to optimize daily workflows, summarize vendor contracts, or accelerate data analysis.</li>
-	<li><strong>Analytical Background: </strong>An engineering or heavy analytical background to support deep-dive TCO modeling.</li>
+	<li><strong>Build and maintain product cost models</strong> that translate compute, storage, bandwidth and AI / inference resource consumption into unit cost-to-serve, with transparent assumptions and documented methodologies.</li>
+	<li><strong>Partner with Product and Engineering</strong> to evaluate new product introductions, architecture changes and shifts in resource usage; quantify cost and margin implications across connected workloads.</li>
+	<li><strong>Develop and validate shared-cost allocation analyses</strong> with Infrastructure Finance and finance data partners, using relevant consumption and capacity drivers. Distinguish direct costs, shared costs and unused capacity, and reconcile product views to underlying financial totals.</li>
+	<li><strong>Support Pricing with reliable cost inputs and scenario analysis</strong> for commercial decisions and quoting workflows. Translate changes in hardware generations, bandwidth rates and product architecture into updated assumptions.</li>
+	<li><strong>Connect capital investment to product economics</strong> by analyzing server costs, deployment timing, useful-life and depreciation assumptions, utilization and capacity across edge, core and accelerated-computing infrastructure, in partnership with Infrastructure Finance and Accounting.</li>
+	<li><strong>Contribute to capital and capacity planning</strong> through demand-versus-capacity scenarios, investment trade-offs and forecast updates. Explain how deployment timing and workload mix affect near-term costs and longer-term unit economics.</li>
+	<li><strong>Produce decision-ready reporting</strong> on product costs, unit economics and relevant margin drivers. Explain actual-versus-plan changes and separate volume, mix, rate, utilization and allocation effects.</li>
+	<li><strong>Improve finance data and repeatable workflows</strong> with finance programs, data and engineering partners. Help validate operational inputs, establish reconciliation checks, and automate recurring analyses to support more frequent forecasting and a faster, more reliable close.</li>
+	<li><strong>Translate analysis into recommendations</strong> that technical and non-technical partners can act on, balancing detail, financial judgment and the needs of a growing product portfolio.</li>
 </ul>
-<p><strong>Bonus points</strong></p>
+<p><strong>Role Requirements</strong></p>
+<p><strong>Must-Have Skills</strong></p>
 <ul>
-	<li><strong>Advanced Education:</strong> Master's Degree in Business, Supply Chain, or an engineering field.</li>
-	<li><strong>AI Hardware Knowledge: </strong>Familiarity with sourcing hardware specifically optimized for AI/ML workloads, such as GPUs and high-throughput interconnects.</li>
-	<li><strong>Program Management:</strong> Prior experience managing programs across multiple, large cross-functional teams with tight deadlines.</li>
-	<li><strong>Software Familiarity: </strong>Experience utilizing Data Center Infrastructure Management (DCIM) tools and basic program management software (e.g., JIRA).</li>
+	<li>5+ Years experience in FP&amp;A, strategic finance, cost analysis, business analytics or a related analytical field, with evidence of building financial models and translating data into business recommendations.</li>
+	<li>Advanced Excel or Google Sheets skills, including the ability to build flexible, driver-based models and test assumptions through sensitivity and scenario analysis.</li>
+	<li>Ability to work with large or imperfect datasets, investigate discrepancies, reconcile financial and operational views, and document assumptions and controls.</li>
+	<li>Understanding of financial statements, cost drivers, gross margin and unit economics, with familiarity with capital expenditures and depreciation.</li>
+	<li>Ability to learn technical business models and connect resource usage, infrastructure capacity and product architecture to financial outcomes.</li>
+	<li>Strong cross-functional collaboration and clear written and verbal communication; comfortable asking questions, challenging assumptions constructively and explaining analysis to different audiences.</li>
+	<li>Evidence of ongoing AI skill development, including prompt and context engineering; ability to evaluate emerging tools and apply them to practical finance problems.</li>
+	<li>Bachelor’s degree in Finance, Accounting, Economics, a related quantitative field, or equivalent practical experience.</li>
 </ul>
+<p><strong>Nice-to-Have Skills</strong></p>
+<ul>
+	<li>Experience with cloud infrastructure, developer platforms, usage-based businesses, product costing or shared-cost allocations.</li>
+	<li>Hands-on SQL skills and experience with business intelligence tools; Python or another analytical scripting language for repeatable analysis.</li>
+	<li>Familiarity with infrastructure and/or data-center operations and the financial drivers of capacity expansion, such as hardware, power, cooling and deployment lead times; exposure to construction or build-out economics is a plus.</li>
+	<li>Exposure to server or network capital planning, hardware lifecycle economics, utilization analysis or fixed-asset reporting.</li>
+	<li>Demonstrated ability to integrate AI tools into finance or analytical workflows—such as data preparation, reconciliation, cost-model updates or variance analysis—with measurable improvements in cycle time, accuracy or review quality.</li>
+	<li>Experience applying responsible AI practices to financial analysis, including assessing data-privacy and decision risks, checking for bias or misleading assumptions, validating outputs against source data, and maintaining human review and an auditable record.</li>
+	<li>Experience improving financial systems, allocation processes, data pipelines or forecasting workflows in a matrixed organization.</li>
+	<li>Familiarity with planning and enterprise systems such as Anaplan, Oracle or Workday.</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Application Deadline: January 19, 2027</strong></p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For Portugal based hires: Estimated annual salary of €41,000 - €56<span class="cell-value">,000</span></span></li>
+	<li>
+		<p data-path-to-node="2,1,0">For San Francisco Bay Area based hires: Estimated annual salary of $126,000 - $174,000.</p>
+	</li>
+	<li>
+		<p data-path-to-node="2,2,0">For Seattle, WA based hires: Estimated annual salary of $121,000 - $166,000.</p>
+	</li>
+	<li>
+		<p data-path-to-node="2,3,0">For Colorado based hires: Estimated annual salary of $110,000 - $151,000.</p>
+	</li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
