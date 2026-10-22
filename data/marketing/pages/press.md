@@ -24,7 +24,7 @@ Featured in
 
 ### Press releases
 
-[ Press release  Cloudflare Partners with OpenAI Daybreak Models to Redefine Vulnerability Management with AI-Powered Edge Defense September 3, 2026 View release → ](/press/press-releases/2026/cloudflare-partners-with-openai-daybreak-models-to-redefine-vulnerability-management-with-ai-powered-edge-defense/)[ Press release  Cloudflare Expands Support for AI Coding Agents with Cursor Cloud Agents on Cloudflare Sandboxes September 2, 2026 View release → ](/press/press-releases/2026/cloudflare-expands-support-for-ai-coding-agents-with-cursor-cloud-agents-on-cloudflare-sandboxes/)[ Press release  Cloudflare Introduces Adaptive Intelligence; Reverses the Economics of Automated Cyber Attacks August 31, 2026 View release → ](/press/press-releases/2026/cloudflare-introduces-adaptive-intelligence-reverses-the-economics-of-automated-cyber-attacks/) 
+[ Press release  More than 10 Million Developers Are Building on Cloudflare October 20, 2026 View release → ](/press/press-releases/2026/more-than-10-million-developers-are-building-on-cloudflare/)[ Press release  Cloudflare's AI Workspace Platform Partners with Leading Applications and Deployment Teams to Make AI Productive in the Enterprise October 19, 2026 View release → ](/press/press-releases/2026/cloudflares-ai-workspace-platform-partners-with-leading-applications-and-deployment-teams-to-make-ai-productive-in-the-enterprise/)[ Press release  Cloudflare Launches Basin: A More Open and Accessible Data Platform for Developers October 1, 2026 View release → ](/press/press-releases/2026/cloudflare-launches-basin-a-more-open-and-accessible-data-platform-for-developers/) 
 
 [View press releases](/press/press-releases/) 
 
