@@ -149,8 +149,7 @@ COMPANY
 - [Network map](https://www.cloudflare.com/network/)
 - [Our team](https://www.cloudflare.com/people/)
 - [Logos & press kit](https://www.cloudflare.com/press/press-kit/)
-- [Diversity, equity, & inclusion](https://www.cloudflare.com/diversity-equity-and-inclusion/)
-- [Impact/ESG](https://www.cloudflare.com/impact/)
+- [Impact](https://www.cloudflare.com/impact/)
 
 [Facebook](https://www.facebook.com/cloudflare) [X](https://x.com/cloudflare) [LinkedIn](https://www.linkedin.com/company/cloudflare) [Youtube](https://www.youtube.com/cloudflare) [Instagram](https://instagram.com/cloudflare)
 
