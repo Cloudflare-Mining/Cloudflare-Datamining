@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/autoconfig",
 	"dist-tags": {
-		"latest": "0.7.11"
+		"latest": "0.8.0"
 	},
 	"versions": {
 		"0.0.0": {
@@ -2129,8 +2129,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQDin8QaC1whH6noGYltSEO6fmab/oVjw4Fq0U2WUXis7AIgNxFP8ssoOV/+b059lYh8aYQ+9rpeybMGy1pYNVLWuLA="
+						"sig": "MEUCIQDin8QaC1whH6noGYltSEO6fmab/oVjw4Fq0U2WUXis7AIgNxFP8ssoOV/+b059lYh8aYQ+9rpeybMGy1pYNVLWuLA=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -2140,6 +2140,55 @@
 					}
 				},
 				"unpackedSize": 2388042
+			}
+		},
+		"0.8.0": {
+			"name": "@cloudflare/autoconfig",
+			"version": "0.8.0",
+			"dependencies": {
+				"@cloudflare/config": "0.28.0",
+				"@cloudflare/workers-utils": "0.48.0",
+				"@cloudflare/cli-shared-helpers": "0.2.8"
+			},
+			"devDependencies": {
+				"tsup": "8.3.0",
+				"chalk": "5.3.0",
+				"recast": "0.23.11",
+				"vitest": "5.0.4",
+				"esbuild": "0.28.2",
+				"esprima": "4.0.1",
+				"semiver": "^1.1.0",
+				"empathic": "^2.0.0",
+				"ts-dedent": "^2.2.0",
+				"typescript": "5.8.3",
+				"@types/node": "22.15.17",
+				"@types/esprima": "^4.0.3",
+				"@netlify/build-info": "10.5.1",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/shared-ast-primitives": "1.1.0"
+			},
+			"dist": {
+				"shasum": "324182f0d8f58ef23a71399d88fde7c0cdcd0ca0",
+				"tarball": "https://registry.npmjs.org/@cloudflare/autoconfig/-/autoconfig-0.8.0.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-2JzUf5vhZhf0SPHvLyN17Ei5fFg7jI/h6zngpqmJQRb8lZqom/a/EiBwUjut7vNF+vPKhi1W7W2/UI4KnVzIqg==",
+				"signatures": [
+					{
+						"sig": "MEQCIED4YxrLsKhUcGJr6kAettzhqZ/lQZVRlUG5PTdflujCAiBE7JPtv7f2jLawUOL9uh7q6DAPbfDFFmK7cjDOhfhKAw==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQCapGAgj/ZtcnvlW3QHeL7z2HMrVsSnBISm244BNi8ExAIhAPK+VnrZrfJACcIJlA6B7x/72uGRRugR2YiMToBmSxTP"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fautoconfig@0.8.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 2390501
 			}
 		}
 	}

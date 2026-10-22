@@ -3,7 +3,7 @@
 	"dist-tags": {
 		"next": "0.0.4-1",
 		"beta": "0.0.0-be89144",
-		"latest": "1.2.3"
+		"latest": "1.2.4"
 	},
 	"versions": {
 		"0.0.1": {
@@ -2235,8 +2235,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIHkPQEWQNKIujXAjJcFuNCNpKrhfmaGdqM3XZ+CN10frAiEAkLlgDclK9rvjqNr1u1DmrI14n51rTX4S9NR+eK/B+Mo="
+						"sig": "MEUCIHkPQEWQNKIujXAjJcFuNCNpKrhfmaGdqM3XZ+CN10frAiEAkLlgDclK9rvjqNr1u1DmrI14n51rTX4S9NR+eK/B+Mo=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -2246,6 +2246,45 @@
 					}
 				},
 				"unpackedSize": 485468
+			}
+		},
+		"1.2.4": {
+			"name": "@cloudflare/workers-oauth-provider",
+			"version": "1.2.4",
+			"devDependencies": {
+				"tsdown": "^0.18.1",
+				"vitest": "^4.1.8",
+				"prettier": "^3.7.4",
+				"wrangler": "^4.115.0",
+				"pkg-pr-new": "^0.0.62",
+				"typescript": "^5.9.3",
+				"@changesets/cli": "^2.29.8",
+				"@cloudflare/workers-types": "^5.20260730.1",
+				"@changesets/changelog-github": "^0.5.2",
+				"@modelcontextprotocol/conformance": "0.2.0-alpha.12"
+			},
+			"dist": {
+				"shasum": "79e1459797e9ff54b58cdabfd6998e442f080656",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-oauth-provider/-/workers-oauth-provider-1.2.4.tgz",
+				"fileCount": 13,
+				"integrity": "sha512-ayo6Z8DBHdAxwDpplFU8BrEoxoSn6wNo+E7ypTENRHUOc8R89A8/+nZ+a8pMZjjXzF0JXfpYXhw/7qqG+DC18Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD5vxZJDMyakhhzs+dU77WFeRuVnGYE1wNCOCMWL9cyagIgQrFkNmoj9vsnRpUZZbLdkv7/CG7Tsht/cStsB5w3PVY=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQDzxf8hnFH8hS2+Zm6595TY/sSDo8hr1rwC+INj7/Bi8QIhAIatgEDEpCq1OM+450MlCjarW7oysC6zcfALXQw1afAU"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkers-oauth-provider@1.2.4",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 486287
 			}
 		}
 	}

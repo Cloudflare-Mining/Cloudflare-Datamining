@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/config",
 	"dist-tags": {
-		"latest": "0.27.0"
+		"latest": "0.28.0"
 	},
 	"versions": {
 		"0.0.0": {
@@ -1064,8 +1064,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCVozliJmQ/ijeUiuvt5SybNF9zbF5488oxB4mC2DSQ8gIhALAdo9M2o48jNU67K9AGdXWkQ27GOFoClA4gcZrqHe7H"
+						"sig": "MEYCIQCVozliJmQ/ijeUiuvt5SybNF9zbF5488oxB4mC2DSQ8gIhALAdo9M2o48jNU67K9AGdXWkQ27GOFoClA4gcZrqHe7H",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -1075,6 +1075,45 @@
 					}
 				},
 				"unpackedSize": 220580
+			}
+		},
+		"0.28.0": {
+			"name": "@cloudflare/config",
+			"version": "0.28.0",
+			"dependencies": {
+				"zod": "4.6.5"
+			},
+			"devDependencies": {
+				"tsdown": "0.16.3",
+				"vitest": "5.0.4",
+				"ts-dedent": "^2.2.0",
+				"typescript": "5.8.3",
+				"@cloudflare/workers-types": "^5.20261019.1",
+				"@cloudflare/workers-utils": "0.48.0",
+				"@cloudflare/workers-tsconfig": "0.0.0"
+			},
+			"dist": {
+				"shasum": "056fa68011081b24ee26f51fd24ad7bae96a6aba",
+				"tarball": "https://registry.npmjs.org/@cloudflare/config/-/config-0.28.0.tgz",
+				"fileCount": 8,
+				"integrity": "sha512-2SaZn5rzNSxAR5VQYIlMm8+zHj2EGfLbaN+abYiPXDI42IFRCHSENpDxjAQpLj2NZnUVszHY4h6T1XljwHk5eQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCTX658p2lWUVsQcDxHKbhhMweAb4N3NYDxk9xLpXgEFAIgVGKHYDFe0IGq3AyixONAiX+jNkLTEz13ARJfiw1Muww=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIHZ9O/EuQjqBjkVF/WD4sbyMGFiGkvJCgMNFndw6sTS7AiEA9EXS+Xi8+R9Dzzy80GdfEhudMeC400woLbZpm/qAIUI="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fconfig@0.28.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 221750
 			}
 		}
 	}
