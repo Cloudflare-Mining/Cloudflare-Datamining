@@ -9920,7 +9920,8 @@
 		"datetimeMinute": "Request timestamp truncated to the minute",
 		"endpoint": "The endpoint that generated traffic",
 		"proxyStatus": "Proxy-level error classification, empty when no proxy-level error occurred",
-		"relayStatusCode": "HTTP status code returned by the relay"
+		"relayStatusCode": "HTTP status code returned by the relay",
+		"requestDurationBucketMs": "Lower bound in milliseconds of the request duration bucket (0, 10, 25, 50, 100, 250, 500, 1000, 2500, 5000, 10000), where request duration is the relay-side time from the start of request handling until the response is fully sent to the client; -1 when no duration was recorded"
 	},
 	"AccountOhttpRelayRequestMetricsAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -9937,6 +9938,13 @@
 		"processingDurationMsP95": "Time spent processing the request before sending it upstream in milliseconds (95th percentile)",
 		"processingDurationMsP99": "Time spent processing the request before sending it upstream in milliseconds (99th percentile)",
 		"processingDurationMsP999": "Time spent processing the request before sending it upstream in milliseconds (99.9th percentile)",
+		"requestDurationMsP25": "Relay-side time from the start of request handling until the response is fully sent to the client in milliseconds (25th percentile)",
+		"requestDurationMsP50": "Relay-side time from the start of request handling until the response is fully sent to the client in milliseconds (50th percentile)",
+		"requestDurationMsP75": "Relay-side time from the start of request handling until the response is fully sent to the client in milliseconds (75th percentile)",
+		"requestDurationMsP90": "Relay-side time from the start of request handling until the response is fully sent to the client in milliseconds (90th percentile)",
+		"requestDurationMsP95": "Relay-side time from the start of request handling until the response is fully sent to the client in milliseconds (95th percentile)",
+		"requestDurationMsP99": "Relay-side time from the start of request handling until the response is fully sent to the client in milliseconds (99th percentile)",
+		"requestDurationMsP999": "Relay-side time from the start of request handling until the response is fully sent to the client in milliseconds (99.9th percentile)",
 		"timeToFirstByteMsP25": "Relay-side time from the start of request handling until upstream response headers are available in milliseconds (25th percentile)",
 		"timeToFirstByteMsP50": "Relay-side time from the start of request handling until upstream response headers are available in milliseconds (50th percentile)",
 		"timeToFirstByteMsP75": "Relay-side time from the start of request handling until upstream response headers are available in milliseconds (75th percentile)",

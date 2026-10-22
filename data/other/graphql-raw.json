@@ -537150,6 +537150,22 @@
 									"ofType": null
 								}
 							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Lower bound in milliseconds of the request duration bucket (0, 10, 25, 50, 100, 250, 500, 1000, 2500, 5000, 10000), where request duration is the relay-side time from the start of request handling until the response is fully sent to the client; -1 when no duration was recorded",
+							"isDeprecated": false,
+							"name": "requestDurationBucketMs",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
 						}
 					],
 					"inputFields": [],
@@ -538152,6 +538168,102 @@
 									}
 								}
 							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "requestDurationBucketMs",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "requestDurationBucketMs_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "requestDurationBucketMs_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "requestDurationBucketMs_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "int64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "requestDurationBucketMs_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "requestDurationBucketMs_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "requestDurationBucketMs_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "requestDurationBucketMs_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "int64",
+										"ofType": null
+									}
+								}
+							}
 						}
 					],
 					"interfaces": [],
@@ -538356,6 +538468,90 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "quantiles(requestDurationMsP25) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_requestDurationMsP25_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(requestDurationMsP25) descending",
+							"isDeprecated": false,
+							"name": "quantiles_requestDurationMsP25_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(requestDurationMsP50) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_requestDurationMsP50_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(requestDurationMsP50) descending",
+							"isDeprecated": false,
+							"name": "quantiles_requestDurationMsP50_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(requestDurationMsP75) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_requestDurationMsP75_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(requestDurationMsP75) descending",
+							"isDeprecated": false,
+							"name": "quantiles_requestDurationMsP75_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(requestDurationMsP90) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_requestDurationMsP90_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(requestDurationMsP90) descending",
+							"isDeprecated": false,
+							"name": "quantiles_requestDurationMsP90_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(requestDurationMsP95) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_requestDurationMsP95_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(requestDurationMsP95) descending",
+							"isDeprecated": false,
+							"name": "quantiles_requestDurationMsP95_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(requestDurationMsP999) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_requestDurationMsP999_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(requestDurationMsP999) descending",
+							"isDeprecated": false,
+							"name": "quantiles_requestDurationMsP999_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(requestDurationMsP99) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_requestDurationMsP99_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(requestDurationMsP99) descending",
+							"isDeprecated": false,
+							"name": "quantiles_requestDurationMsP99_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "quantiles(timeToFirstByteMsP25) ascending",
 							"isDeprecated": false,
 							"name": "quantiles_timeToFirstByteMsP25_ASC"
@@ -538449,6 +538645,18 @@
 							"description": "relayStatusCode descending",
 							"isDeprecated": false,
 							"name": "relayStatusCode_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "requestDurationBucketMs ascending",
+							"isDeprecated": false,
+							"name": "requestDurationBucketMs_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "requestDurationBucketMs descending",
+							"isDeprecated": false,
+							"name": "requestDurationBucketMs_DESC"
 						}
 					],
 					"fields": [],
@@ -538564,6 +538772,118 @@
 							"description": "Time spent processing the request before sending it upstream in milliseconds (99.9th percentile)",
 							"isDeprecated": false,
 							"name": "processingDurationMsP999",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Relay-side time from the start of request handling until the response is fully sent to the client in milliseconds (25th percentile)",
+							"isDeprecated": false,
+							"name": "requestDurationMsP25",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Relay-side time from the start of request handling until the response is fully sent to the client in milliseconds (50th percentile)",
+							"isDeprecated": false,
+							"name": "requestDurationMsP50",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Relay-side time from the start of request handling until the response is fully sent to the client in milliseconds (75th percentile)",
+							"isDeprecated": false,
+							"name": "requestDurationMsP75",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Relay-side time from the start of request handling until the response is fully sent to the client in milliseconds (90th percentile)",
+							"isDeprecated": false,
+							"name": "requestDurationMsP90",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Relay-side time from the start of request handling until the response is fully sent to the client in milliseconds (95th percentile)",
+							"isDeprecated": false,
+							"name": "requestDurationMsP95",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Relay-side time from the start of request handling until the response is fully sent to the client in milliseconds (99th percentile)",
+							"isDeprecated": false,
+							"name": "requestDurationMsP99",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Relay-side time from the start of request handling until the response is fully sent to the client in milliseconds (99.9th percentile)",
+							"isDeprecated": false,
+							"name": "requestDurationMsP999",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
