@@ -42,13 +42,30 @@
 	<li>Direct experience with Cloudflare's Zero Trust solutions (Access, Gateway, Browser Isolation) is a significant plus.</li>
 	<li>Strong project management skills, with the ability to work to deadlines and prioritize effectively among competing goals.</li>
 </ul>
-<h3 data-path-to-node="0"><strong data-path-to-node="0" data-index-in-node="0">Compensation</strong></h3>
+<h3 class="" data-path-to-node="0"><strong data-path-to-node="0" data-index-in-node="0">Compensation</strong></h3>
 <ul data-path-to-node="1">
 	<li>
-		<p data-path-to-node="1,0,0">For Germany based hires: Estimated annual salary is between €116,000 - €165,000.</p>
+		<p data-path-to-node="1,0,0">For Spain based hires: Estimated annual salary is between €79,000 - €124,000.</p>
+	</li>
+	<li>
+		<p data-path-to-node="1,2,0">For Germany based hires: Estimated annual salary is between €116,000 - €182,000.</p>
+	</li>
+	<li>
+		<p data-path-to-node="1,3,0">For Netherlands based hires: Estimated annual salary is between €111,000 - €174,000.</p>
+	</li>
+	<li>
+		<p data-path-to-node="1,4,0">For Portugal based hires: Estimated annual salary is between €74,000 - €117,000.</p>
+	</li>
+	<li>
+		<p data-path-to-node="1,5,0">For France based hires: Estimated annual salary is between €102,000 - €161,000.</p>
+		<ul data-path-to-node="1,5,1">
+			<li>
+				<p data-path-to-node="1,5,1,0,0">This role is labelled CSP Position 3-1 and has a coefficient of 170, as per the SYNTEC Collective Bargaining Agreement.</p>
+			</li>
+		</ul>
 	</li>
 </ul>
-<h3 data-path-to-node="2"><strong data-path-to-node="2" data-index-in-node="0">Equity</strong></h3>
+<h3 class="" data-path-to-node="2"><strong data-path-to-node="2" data-index-in-node="0">Equity</strong></h3>
 <ul data-path-to-node="3">
 	<li>
 		<p data-path-to-node="3,0,0">This role is eligible to participate in Cloudflare's equity plan.</p>

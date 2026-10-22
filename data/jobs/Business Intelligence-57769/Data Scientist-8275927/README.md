@@ -3,50 +3,37 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p>You will work closely with Cloudflare's Infrastructure team as well as with external vendors and partners to support the rapid growth and maintenance of our data center infrastructure. You will be responsible for coordinating the distribution and delivery of data center hardware to and from our data centers within the region. You will participate in the development and implementation of consistent processes and performance measurements, utilizing business intelligence and AI tools.</p>
-<p>You will support the team globally on infrastructure projects such as data center expansions, hardware renewals, reverse logistics and spare parts fulfillment.&nbsp;</p>
-<p>This is a role that requires understanding of warehousing, transportation, and requires experience with data analysis and AI tools. You will support our partners within a complex and fast moving global supply chain.</p>
-<p>This is a highly collaborative position that will require coordinating with:</p>
+<h4><strong>Available Location - Bengaluru, India</strong></h4>
+<h4><strong>About the team</strong></h4>
+<p>The Data Intelligence &amp; Analytics organization builds the core data platform and internal products that power decision-making across the company. We design and operate large-scale data systems, own the company’s data lake, ingestion infrastructure, and platform tooling, and develop end-to-end applications that transform complex datasets into fast, reliable, business-critical products used daily by go-to-market, product, and engineering teams. Our work sits at the intersection of data platforms, distributed systems, and product development, giving engineers the opportunity to own meaningful problems across the stack and build systems that truly run the business.</p>
+<h4><strong>About the role</strong></h4>
+<p>We are looking for an experienced data scientist to join our Bangalore team and help scale the next generation of our AI/ML models. In this role, you will train predictive models and the workflows behind AI-driven applications, Agents, Chatbots that power teams across the company, including go-to-market, engineering, and product. Because the products we build are initiated and owned by the team, you will be involved end-to-end — from shaping requirements and designing systems to implementation, deployment, and long-term ownership.</p>
+<p>You will focus on building scalable, reliable AI/ML models, services and GenAI powered application backends,&nbsp; partnering closely with data and full-stack engineers to deliver new features and operate the pipelines and platforms behind our products. Our stack spans multiple languages and technologies, including Python, React, and TypeScript, and continues to evolve. Many of our applications also incorporate strong AI components, giving you opportunities to work with modern AI infrastructure and tools such as vector databases, MCP-based services, and Workers AI.</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>
-		<p>Warehousing providers, freight forwarders, importer of record partners, customs brokers and data center partners to plan and execute on the delivery of data center hardware.</p>
-	</li>
-	<li>
-		<p>External vendors including hardware manufacturers, rack integrators and contract vendors, across time zones, in support of our 200+ and growing data center locations.</p>
-	</li>
-	<li>
-		<p>Internal teams such as Data Center Engineering, Capacity Planning, Trade Compliance, Hardware Sourcing, and Procurement.</p>
-	</li>
+	<li>Partner and align with business leaders, stakeholders, product managers and internal teams to understand the business and product challenges and goals and address them using predictive analytics in a globally distributed environment.</li>
+	<li>Understand data landscape i.e tooling, tech stack, source systems etc. and work closely with the data engineering team to improve the data collection and quality.</li>
+	<li>Understand business/product strategy and high-level roadmap and align analysis efforts to enable them with data insights and help achieve their strategic goals.</li>
+	<li>Strong audience focused presentation and storytelling skills focused on key takeaways in a crisp and concise manner.</li>
+	<li>Define, implement, and train statistical, machine learning, deep learning and generative AI models.</li>
+	<li>Use software engineering best practices to publish model scores/insights/learnings at scale within the company.</li>
+	<li>Ability to define and spot macro and micro levels trends with statistical significance on a regular basis and understand key drivers driving those trends.</li>
+	<li>Active role in hiring, growing, and mentoring the data scientist team in Bengaluru.</li>
 </ul>
-<p>Examples of desirable skills, knowledge and experience:</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>
-		<p>Post-secondary degree in a technical or business management field.</p>
-	</li>
-	<li>
-		<p>A minimum of 3 years of experience working with global supply chains and logistics is necessary.</p>
-	</li>
-	<li>
-		<p>Ability to be proactive with ability to learn fast and execute on multiple tasks simultaneously.</p>
-	</li>
-	<li>
-		<p>Ability to recognize areas for improvements in operational processes in a rapidly changing environment.</p>
-	</li>
-	<li>
-		<p>Python, LLM usage and AI tooling experience.</p>
-	</li>
-	<li>
-		<p>Possess strong verbal and written communication skills, problem-solving skills, attention to detail, and interpersonal skills.</p>
-	</li>
-</ul>
-<p>Desirable, but not required:</p>
-<ul>
-	<li>
-		<p>Experience supporting data centers or other Networking/IT hardware and infrastructure.</p>
-	</li>
-	<li>
-		<p>Multi-lingual, preferably in Spanish.</p>
-	</li>
+	<li>Bachelors or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields.</li>
+	<li>5+ years of data scientist experience with proven industry experience in a large scale environment (PBs scale &amp; globally distributed teams).&nbsp;fast-growing SaaS business based company is preferred.</li>
+	<li>Strong experience working with business functions such as Finance, Sales, and Marketing to build models and drive impactful business outcomes (eg: customer and revenue growth)</li>
+	<li>Strong experience in scientific computing using Python</li>
+	<li>Experience with Spark, SQL, Tableau, Google Analytics, BigQuery (or any other Big data/Cloud equivalent) etc.</li>
+	<li>Experience working with and processing structured, unstructured, and semi-structured data.&nbsp;</li>
+	<li>Strong cross-functional collaboration experience with data engineering and data analysts teams within the function.</li>
+	<li>Proven track record of applying data insights and machine learning in order to address business needs and drive revenue.</li>
+	<li>Proficiency in large language models and the frameworks (Langchain, Langgraph, etc.) necessary for implementing GenAI applications, such as AI Agents, chatbots and related use cases.</li>
+	<li>Strong communication and presentation skills catered to different audiences within the company.</li>
+	<li>Capable of working closely with business, engineering, and product teams to ensure data initiatives are aligned with business needs.</li>
+	<li>Experience in hiring data scientists and establishing team best practices is preferred.</li>
 </ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>

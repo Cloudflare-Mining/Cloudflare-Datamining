@@ -4,37 +4,27 @@
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
 <p><strong>Available Location: Singapore</strong></p>
-<p><strong>Role summary</strong></p>
-<p>We are seeking a People Operations Specialist for a 6-month contract to support day-to-day HR operations with a strong emphasis on process automation, AI-assisted workflows, and scalable service delivery. Partnering closely with People Operations Manager, Specialists and cross-functional teams, you will execute core administrative tasks while actively identifying, testing, and implementing efficiency gains to reduce manual effort and improve data quality across the team.</p>
-<p><strong>What this role will do</strong></p>
-<p>Core Operations &amp; Service Delivery</p>
+<p><strong>What You Would Do Here:</strong></p>
+<p>Our focus is getting the best people to work at Cloudflare and then allowing them to do their best work. We are looking for a passionate and detail-oriented People Operations Specialist to join our team and champion this mission within the APJC region. In this vital role, you will be the first point of contact for our employees, ensuring their journey is smooth and positive. You will be instrumental in creating a seamless experience by resolving inquiries, managing data with precision, and ensuring our People processes are efficient and effective. This is an exciting opportunity to provide exceptional support to our internal teams and contribute to building a world-class employee experience as our organization expands.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Support end-to-end employee lifecycle processes, including onboarding, internal transfers, organizational changes, and offboarding, ensuring a positive experience for employees throughout the APJC region.</li>
-	<li>Maintain high data accuracy across HR systems, complete transactions with strict attention to detail, and escalate complex exceptions appropriately.</li>
-	<li>Collaborate with internal stakeholders across the regions to ensure consistent and timely execution of HR processes.</li>
+	<li><strong>Champion key employee lifecycle process:</strong> Take ownership of end-to-end employee lifecycle processes across APJC, including onboarding, internal transfers, organizational changes, and offboarding, ensuring a smooth, consistent, and positive experience for employees throughout the APJC region.</li>
+	<li><strong>Be a subject-matter expert for employee inquiries:</strong> Provide timely, high-quality support to employee inquiries through Zendesk. Act as a trusted liaison between employees and People/Payroll teams, resolving issues efficiently with empathy and accuracy.</li>
+	<li><strong>Elevate the employee experience through cross-functional collaboration:</strong> Act as a proactive liaison between employees and specialized teams such as Payroll, Benefits, and Legal to address and resolve complex issues efficiently and effectively.</li>
+	<li><strong>Ensure data integrity and governance: </strong>Maintain and update employee records across People/Payroll systems, performing regular and ad hoc audits to guarantee 100% data accuracy and compliance with regulatory requirements.</li>
+	<li><strong>Drive continuous improvement and operational excellence:</strong> Analyze employee feedback and process metrics to identify opportunities for process enhancements. Partner with regional teams to implement scalable solutions that improve the overall People Operations function across APJC.</li>
+	<li><strong>Support strategic HR initiatives and projects:</strong> Contribute to HR system implementations, vendor management, and regional programs such as annual performance and compensation cycles, benefits enrollment, and year-end Payroll preparation, making them easy to understand and navigate for our employees.</li>
 </ul>
-<p>Automation &amp; Continuous Improvement</p>
-<ul>
-	<li>Identify repetitive, manual tasks across People Operations workflows and leverage AI tools, automation, and templates to improve turnaround times.</li>
-	<li>Assist in testing, validating, and refining new automation opportunities and AI-driven solutions.</li>
-	<li>Monitor, track, and analyze operational data to identify process bottlenecks and recommend continuous improvement initiatives.</li>
-</ul>
-<p>Process Standardization &amp; Knowledge Management</p>
-<ul>
-	<li>Standardize and maintain SOPs, knowledge base content, templates, and onboarding checklists.</li>
-	<li>Develop self-service resources and clear communications that enhance the overall employee experience.</li>
-</ul>
-<h4><strong>Requirement</strong></h4>
+<p><strong><br></strong><strong>Skills/experience</strong>&nbsp;</p>
 <ul>
 	<li>Relevant experience in HR operations, shared services, or similar administrative support roles.</li>
-	<li>Highly organized with strong attention to detail, excellent problem-solving abilities, and effective time management skills.</li>
+	<li>Highly organized with strong attention to detail, excellent problem-solving abilities, and effective time management skills.&nbsp;</li>
 	<li>Proficient in working with data and skilled in Excel or Google Sheets for analysis and reporting.</li>
 	<li>Customer-focused mindset with a genuine passion for supporting colleagues and delivering exceptional service.</li>
 	<li>Effective communicator, able to clearly articulate information both verbally and in writing to employees across the APJC region.</li>
 	<li>Adaptable and thrives in a fast-paced, dynamic environment, with the ability to manage shifting priorities efficiently.</li>
 	<li>Familiarity with Workday or Zendesk would be an advantage.</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
