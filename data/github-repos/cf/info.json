@@ -22,19 +22,22 @@
 	"default_branch": "main",
 	"branches": [
 		"WC-5985-preview-secret-transforms",
+		"automation/update-forge",
 		"changeset-release/main",
 		"codex/api-error-messages",
 		"codex/expand-secrets-file-dotenv",
 		"codex/fix-177-multipart-files",
+		"codex/fix-193-local-version",
 		"codex/fix-204-shared-registry",
 		"codex/fix-223-vite-dev-args",
+		"codex/fix-345-worker-identifiers",
 		"codex/fix-nested-union-validation",
 		"codex/update-workers-sdk-packages",
 		"dario/cfify-messages-followup",
 		"edmundhung/autoconfig-prerelease",
 		"edmundhung/local-r2-single-delete-preview",
 		"factory",
-		"feat/telemetry-delegation-versions",
+		"gh-readonly-queue/main/pr-388-dcab54dc20a51fa3b20e23c8ccb98e3d90ca6187",
 		"investigate/issue-20",
 		"investigate/issue-21",
 		"investigate/issue-69",
@@ -44,6 +47,7 @@
 		"penalosa/regression-testing",
 		"penalosa/rust-generator",
 		"remove-x-forge-globals",
+		"renovate/workers-sdk",
 		"sk/update-forge"
 	]
 }
