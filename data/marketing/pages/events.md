@@ -22,8 +22,6 @@ April 15 · London, UK
 
 July 30 · Sydney, AU
 
-[  Cloudflare Connect 2026  Register now — October 19-21, 2026 · San Francisco, CA  Register → ](https://www.cloudflare.com/connect/) 
-
 ### All Scheduled Events
 
 Find Cloudflare at conferences, summits, and Immerse events around the world.
@@ -34,8 +32,6 @@ Browse upcoming Cloudflare events around the world.
 
 AmericasEMEAAPJC
 
-[San Francisco, CACloudflare Global Connect 2026Oct 19–21Learn more](https://www.cloudflare.com/connect/)
-
 Las Vegas, NV
 
 AWS re:Invent
@@ -43,6 +39,10 @@ AWS re:Invent
 Nov 30–Dec 4
 
 Coming soon
+
+Previous events
+
+[San Francisco, CACloudflare Global Connect 2026Oct 19–21Learn more](https://www.cloudflare.com/connect/)
 
 # Build without boundaries
 

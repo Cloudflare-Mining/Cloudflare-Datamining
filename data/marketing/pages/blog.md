@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+October 22, 2026 [<h2>Localizing compliance at scale: achieving South Korea's ISMS certification</h2>](https://blog.cloudflare.com/k-isms/)
+
+Cloudflare has achieved South Korea's ISMS certification following an audit across 80 controls. Learn how we localized user consent flows, adapted social sign-up paths at the edge, and validated our global security program.
+
+![Kabin Calan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5HNPHA836561064Z6XYVR0N.01M5HNPJ33NJ1Y1TXHWX719ZC4.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Kabin Calan](https://blog.cloudflare.com/author/kabin-calan/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5G8JRPS2ZR304ZH695BQBTD.01M5G8JS8D86H6MQHCQERAW2XC.png&w=1999&h=1123&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/k-isms/)
+
 October 21, 2026 [<h2>Introducing full transaction detection for Cloudflare WAF</h2>](https://blog.cloudflare.com/full-transaction-waf/)
 
 Cloudflare's web application firewall can now correlate an HTTP request with its response. Full transaction detection helps every customer find successful exploits, data exposure, and risky misconfigurations that request-only inspection can miss.
@@ -17,8 +27,6 @@ Cloudflare's web application firewall can now correlate an HTTP request with its
 ![Daniele Molteni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464793D50Z8QJQK451PK2A.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Elie Roudninski](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5E1MFPXN6AEQCKTKF2PT9EC.01M5E1MG84X4YD6FVXXZBHBYHV.webp&w=64&h=64&f=webp&fit=cover&position=center)![Nick Downie](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SSXNV3BG1DQNXK5K9FBQ.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Daniele Molteni](https://blog.cloudflare.com/author/daniele/),  [Elie Roudninski](https://blog.cloudflare.com/author/elie-roudninski/), and  [Nick Downie](https://blog.cloudflare.com/author/nick-downie/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5E1HKVR7WJX7KGB4B8MSK75.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/full-transaction-waf/)
 
 October 21, 2026 [<h2>Cloudflare deploys protections against php2shell vulnerability</h2>](https://blog.cloudflare.com/php-vulnerabilities-waf-protection/)
 
@@ -155,14 +163,6 @@ We are expanding the Clef decision model family with Clef-omni, natively process
 ![Michelle Chen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R95PPSQQ82Z92P51M550.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Alex Reneau](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WKWJ94JZDRJM354AYKYXG.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Kevin Jain](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GNE2XZCQVHB7T7FJEJ54.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Michelle Chen](https://blog.cloudflare.com/author/michelle/),  [Alex Reneau](https://blog.cloudflare.com/author/alex-reneau/), and  [Kevin Jain](https://blog.cloudflare.com/author/kevin-jain/)
-
-October 9, 2026 [<h2>Introducing on-demand CPU and memory profiling with flamegraphs for Workers and Durable Objects</h2>](https://blog.cloudflare.com/workers-on-demand-profiling/)
-
-On-demand CPU and memory profiling for Cloudflare Workers and Durable Objects is now available. Now you can generate interactive flamegraphs directly in production to quickly track down memory leaks and performance bottlenecks.
-
-![Dominik Picheta](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P5G8RRA9GKFZA6BYERZ1.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Dominik Picheta](https://blog.cloudflare.com/author/dominik/)
 
 Load more
 
