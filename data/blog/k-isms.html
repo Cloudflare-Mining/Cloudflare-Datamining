@@ -1,0 +1,94 @@
+<p>For ten days, auditors appointed by the Korea Internet &amp; Security Agency (KISA) sat together with us and worked through 80 controls. That is what it took for a company headquartered in the United States, operating a global network serving Korean users, to be certified in South Korea. Cloudflare has now <a href="https://isms-p.or.kr/sttus/cert/selectCrtfctIsueList.do"><u>obtained</u></a>&nbsp;South Korea's Information Security Management System (ISMS) certification under the <a href="https://isms-p.or.kr/sysm/intro/selectSysmCertDetail.do"><u>ISMS-P framework</u></a>.</p>
+<p>For customers in Korea, this is more than a compliance checkbox. It is evidence that Cloudflare's security and privacy program has been examined not only for whether our controls exist, but for how they operate in the context of Korean law, the Korean language, and the particular expectations of Korean regulators.</p>
+<h2>What a Korean user sees when they sign up</h2>
+<p>The most visible result of this work is the Cloudflare account sign-up page. In most parts of the world, the line that sits above the sign-up button reads: "<em>By continuing, I agree to Cloudflare's terms, privacy policy, and cookie policy.</em>"</p>
+<p>A user signing up from South Korea sees something different. The Korean experience is triggered by the country selected at sign-up and by IP geolocation from within South Korea, and it breaks the same agreement into four separately labeled items, each marked required or optional, each linking to its full text, with an option to agree to all of them at once:</p>
+<ul>
+	<li><strong>모두 동의</strong><em>&nbsp;(Agree to all)</em></li>
+	<li><strong>[필수] 서비스 약관</strong><em>&nbsp;([Required] Terms of Service)</em></li>
+	<li><strong>[필수] 개인정보 수집 및 이용</strong><em>&nbsp;([Required] Collection and use of personal information)</em></li>
+	<li><strong>[필수] 제한된 범위의 개인정보 해외 이전</strong><em>&nbsp;([Required] Transfer of a limited amount of personal information overseas)</em></li>
+	<li><strong>[선택] 제한된 범위의 개인정보 제3자 제공</strong><em>&nbsp;([Optional] Sharing a limited amount of personal information with marketing third parties)</em></li>
+</ul>
+<p>The three required items are hard gates. The sign-up button stays disabled until all three are checked, so there is no path through the form that creates an account without an affirmative action on each one. The optional item governs marketing permission only, and leaving it unchecked has no effect on the account creation (it merely opts the user out of receiving marketing communications).</p>
+<h2>The hard part: sign-up paths that never show a form</h2>
+<p>Itemizing consent on a form we control is straightforward. The difficulty was the sign-up paths that skip that form entirely.</p>
+<p>Globally, you can create a Cloudflare account with Google, Apple, or GitHub. Those flows hand the user to an identity provider and return with an authenticated identity, and they never render our own sign-up form, which is precisely where the four consent items live. There is no step in that handoff where we can present three required items, link each to its full Korean text, and require an affirmative action on each before the account exists. The identity provider's screen is not ours to change.</p>
+<p>We could either build a separate post-authentication consent gate for one country, or remove the paths that bypass the gate we already had. We chose the second. Social sign-up is not offered in South Korea, so every account created there goes through Cloudflare’s sign-up form, which enforces the required consents.</p>
+<p>The country signal is the same one available to any Cloudflare customer. Cloudflare derives a two-letter country code from the client IP address and exposes it on the request, as the <code>CF-IPCountry</code><a href="https://developers.cloudflare.com/fundamentals/reference/http-headers/#cf-ipcountry"><u>&nbsp;header</u></a>&nbsp;at the origin and as <code>request.cf.country&nbsp;</code>inside a Worker. Reduced to its essentials, the branch is a string comparison:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Illustrative: the shape of the check, not Cloudflare's own dashboard code.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Two-letter country code derived from the client IP.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Same value as the CF-IPCountry request header.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Cloudflare's network populates this on the incoming request, so there is</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // no geolocation database, lookup service, or extra round trip of our own.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> country</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> request.cf?.country;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (country </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "KR"</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-6f42c1-ffc799"> renderSignUp</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">        locale: </span><span class="sk-032f62-99ffe4">"ko-KR"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        consent: </span><span class="sk-032f62-99ffe4">"itemized"</span><span class="sk-24292e-fff">,  </span><span class="sk-6a737d-8b8b8b94">// four separate items, three of them required</span></span>
+<span class="line"><span class="sk-24292e-fff">        socialLogin: </span><span class="sk-005cc5-ffc799">false</span><span class="sk-24292e-fff">,   </span><span class="sk-6a737d-8b8b8b94">// no path that skips the consent form</span></span>
+<span class="line"><span class="sk-24292e-fff">      });</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> renderSignUp</span><span class="sk-24292e-fff">({ locale: </span><span class="sk-032f62-99ffe4">"en-US"</span><span class="sk-24292e-fff">, consent: </span><span class="sk-032f62-99ffe4">"combined"</span><span class="sk-24292e-fff">, socialLogin: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p>What that does not show is why the country code is not the whole trigger. We document the limits of IP geolocation: it is an estimate rather than an exact science, addresses rotate and change ownership, and it should not be the only signal where the use case is critical to meeting the objectives of a local requirement. A Korean resident traveling abroad, or behind a VPN or a mobile carrier's NAT, may not arrive with a Korean address. So IP-based geolocation decides which form appears by default, but the country a user selects at sign-up overrides that and carries the decision from there. The IP address tells us where a request came from; only the user can tell us where they reside. Keeping those two apart is what makes the consent meaningful rather than presumed.</p>
+<p>It is a small feature. It took a country-level product decision, and a change to the account creation path.</p>
+<h2>What&nbsp;ISMS is and why it matters</h2>
+<p>ISMS&nbsp;is a detailed, localized certification standard. It covers security policy, access control, authentication and permission management, encryption, incident response, risk management, and disaster recovery, all assessed against how personal data actually moves through an organization's systems, and against Korea's Personal Information Protection Act and its associated regulatory guidelines.</p>
+<p>Certification requires an independent audit by an auditor appointed by KISA, a governmental institution affiliated with the Ministry of Science and ICT (MSIT), followed by review from a special committee. It is valid for three years, with an annual audit required to maintain it.</p>
+<p>The ISMS certification is primarily established under Article 47 of Korea's Act on Promotion of Information and Communications Network Utilization and Information Protection, etc., with the certification criteria and procedure set out in its Enforcement Decree and in the public notification on ISMS certification issued by MSIT.</p>
+<h2>What the audit examined</h2>
+<p>Cloudflare is already certified against ISO/IEC 27001, ISO/IEC 27701, ISO/IEC 27017, ISO/IEC 27018 and many other globally recognized frameworks. ISMS does not replace any of them. It is a localization of the same principles, layered with Korean regulatory requirements, and that changes what auditors look for and how they look for it.</p>
+<p>The controls in scope started with the review of data flows. We presented detailed data flow diagrams showing every path by which employees could access personal information that Cloudflare collects, processes, and stores. The flows themselves are not Korea-specific. What was different was the form the evidence had to take: the auditors were not willing to work from a narrative description of how data moves, they wanted diagrams they could read and interrogate. For each one, they examined every access control layer and tested its effectiveness, across our internal systems, our public-facing websites, event pages, and the Cloudflare dashboard, covering the full lifecycle of a user's data from first interaction through to destruction. Those diagrams are not published here due to confidentiality.</p>
+<p>The audit also scrutinized the language and terminology of our consent collection: the exact wording at sign-up, the structure of each notification, and whether the items were presented separately and clearly. That is the kind of detail the ISMS framework is designed to surface.</p>
+<h2>Why the timeline ran to a year and a half</h2>
+<p>Part of the answer is how audit cycles work. An ISMS audit covers a single annual period, and all evidence, documentation, and systems must reflect that period. Our preparation ran past one audit year and into the next, which meant retranslating updated policies for the new audit year, re-collecting and reassessing evidence, republishing an updated privacy policy, and absorbing formatting and design changes our marketing and website teams had introduced in the meantime.</p>
+<h2>What the certificate covers</h2>
+<p>KISA defines the certified scope as a service boundary rather than as an enumerated list of in-scope products. The Statement of Scope submitted to KISA describes that boundary in three parts:</p>
+<ul>
+	<li>the <strong>organizational and operational perimeter</strong>: the Cloudflare entities, teams, and processes that operate the service;</li>
+	<li>the <strong>infrastructure perimeter</strong>: the network and platform the certified service runs on;</li>
+	<li>the <strong>information assets and personal information flows</strong>&nbsp;that fall inside the boundary under the ISMS control set.</li>
+</ul>
+<p>If a customer-consumed Cloudflare product is delivered through that certified service boundary, meaning it runs on the same certified platform, is operated by the same certified teams, and is governed by the same ISMS, it is covered by the certificate. The certificate is held by Cloudflare, Inc.</p>
+<p>That is a different shape from the reports most procurement teams work with. A SOC 2 report or an ISO 27001 certificate describes the system it covers and names the services included, so coverage is confirmed by finding the product in that list. The ISMS certificate carries no such list. Coverage follows the delivery path instead, whether or not a product is named anywhere.</p>
+<h2>What this means for customers</h2>
+<p>For organizations operating in Korea, this gives legal, security, and procurement teams a local assurance benchmark alongside Cloudflare's broader compliance portfolio. ISO/IEC 27001 and SOC 2 demonstrate a general security posture. ISMS reflects Korea-specific legal and regulatory expectations. That distinction matters in third-party risk reviews and in preparing for a team’s own compliance assessments.</p>
+<p>Cloudflare’s entry can be found on&nbsp;<a href="https://isms-p.or.kr/sttus/cert/selectCrtfctIsueList.do"><u>KISA's public register of certified organizations</u></a>, which is the independent, verifiable confirmation to cite in a risk review. Broader privacy and data protection material sits on the Cloudflare&nbsp;<a href="https://www.cloudflare.com/trust-hub"><u>Trust Hub</u></a>.</p>
+<p>The question that usually stalls a vendor review of Cloudflare is whether a particular product in use is in scope. The certificate does not answer that by name, because it lists no products. It answers by boundary, meaning that the product is in scope if it is delivered through the certified service.</p>
+<p>For multinational teams managing security across regions, the certification confirms that Cloudflare's program has been reviewed against local requirements in one of Asia's most important digital markets, not just designed for global scale.</p>
+<h2>Building a better Internet, for everyone</h2>
+<p>ISMS is not a harder certification than the other assurance audits we go through. It is a more nuanced one. It is built around the regulatory needs of one specific region, and it asks for genuine investment in understanding and embedding those needs, rather than mapping them onto a common control framework.</p>
+<p>Going through it made Cloudflare more global, not less. It pushed us to think carefully about what it means to serve users in a specific local context, with local language, local consent expectations, and local data protection requirements, and to put that into how the product behaves rather than only into a document.</p>
+<p>That is consistent with what we are working toward: helping build a better Internet for everyone, not just in the regions where regulatory requirements are straightforward, but everywhere.</p>
+<p>To learn more about Cloudflare's compliance and assurance programs, visit our <a href="https://www.cloudflare.com/trust-hub/compliance-resources"><u>Trust Hub</u></a>.</p>
+<p> </p>
