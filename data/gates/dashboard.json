@@ -1748,6 +1748,9 @@
 			"log-in"
 		]
 	},
+	"logpush-job-health-panel": {
+		"enabled": false
+	},
 	"logpush-transformation-beta": {
 		"enabled": true
 	},
@@ -2155,7 +2158,6 @@
 		"enabled": false,
 		"branches": [
 			"baseline",
-			"experiment",
 			"variant-a",
 			"variant-b"
 		]
