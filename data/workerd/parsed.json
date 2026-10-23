@@ -4573,6 +4573,14 @@
 						"experimental": true
 					},
 					"type": "Bool"
+				},
+				{
+					"name": "connectHandlerStartTls",
+					"annotations": {
+						"compatEnableFlag": "connect_handler_starttls",
+						"experimental": true
+					},
+					"type": "Bool"
 				}
 			]
 		},
@@ -9147,6 +9155,19 @@
 				},
 				{
 					"name": "proxy",
+					"annotations": {}
+				}
+			]
+		},
+		{
+			"name": "workerd/server/workerd.capnp:Socket.TcpTlsMode",
+			"enumerants": [
+				{
+					"name": "implicit",
+					"annotations": {}
+				},
+				{
+					"name": "startTls",
 					"annotations": {}
 				}
 			]
