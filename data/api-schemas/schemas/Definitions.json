@@ -70,10 +70,28 @@
 												"minLength": 1,
 												"pattern": "^[a-zA-Z0-9_-]+$"
 											},
+											"metadata": {
+												"description": "Key-value metadata associated with the flag. Returned only when the flag has metadata.",
+												"type": "object",
+												"additionalProperties": {
+													"anyOf": [
+														{
+															"type": "boolean"
+														},
+														{
+															"type": "string"
+														},
+														{
+															"type": "number"
+														}
+													]
+												},
+												"maxProperties": 32
+											},
 											"rules": {
 												"type": "array",
 												"items": {
-													"additionalProperties": false,
+													"type": "object",
 													"properties": {
 														"conditions": {
 															"description": "Conditions the context must satisfy for this rule to match. An empty array matches all contexts.",
@@ -81,7 +99,7 @@
 															"items": {
 																"anyOf": [
 																	{
-																		"additionalProperties": false,
+																		"type": "object",
 																		"properties": {
 																			"attribute": {
 																				"type": "string",
@@ -129,22 +147,22 @@
 																				]
 																			}
 																		},
+																		"additionalProperties": false,
 																		"required": [
 																			"attribute",
 																			"operator",
 																			"value"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	{
-																		"additionalProperties": false,
+																		"type": "object",
 																		"properties": {
 																			"clauses": {
 																				"type": "array",
 																				"items": {
 																					"anyOf": [
 																						{
-																							"additionalProperties": false,
+																							"type": "object",
 																							"properties": {
 																								"attribute": {
 																									"type": "string",
@@ -192,22 +210,22 @@
 																									]
 																								}
 																							},
+																							"additionalProperties": false,
 																							"required": [
 																								"attribute",
 																								"operator",
 																								"value"
-																							],
-																							"type": "object"
+																							]
 																						},
 																						{
-																							"additionalProperties": false,
+																							"type": "object",
 																							"properties": {
 																								"clauses": {
 																									"type": "array",
 																									"items": {
 																										"anyOf": [
 																											{
-																												"additionalProperties": false,
+																												"type": "object",
 																												"properties": {
 																													"attribute": {
 																														"type": "string",
@@ -255,22 +273,22 @@
 																														]
 																													}
 																												},
+																												"additionalProperties": false,
 																												"required": [
 																													"attribute",
 																													"operator",
 																													"value"
-																												],
-																												"type": "object"
+																												]
 																											},
 																											{
-																												"additionalProperties": false,
+																												"type": "object",
 																												"properties": {
 																													"clauses": {
 																														"type": "array",
 																														"items": {
 																															"anyOf": [
 																																{
-																																	"additionalProperties": false,
+																																	"type": "object",
 																																	"properties": {
 																																		"attribute": {
 																																			"type": "string",
@@ -318,22 +336,22 @@
 																																			]
 																																		}
 																																	},
+																																	"additionalProperties": false,
 																																	"required": [
 																																		"attribute",
 																																		"operator",
 																																		"value"
-																																	],
-																																	"type": "object"
+																																	]
 																																},
 																																{
-																																	"additionalProperties": false,
+																																	"type": "object",
 																																	"properties": {
 																																		"clauses": {
 																																			"type": "array",
 																																			"items": {
 																																				"anyOf": [
 																																					{
-																																						"additionalProperties": false,
+																																						"type": "object",
 																																						"properties": {
 																																							"attribute": {
 																																								"type": "string",
@@ -381,119 +399,72 @@
 																																								]
 																																							}
 																																						},
+																																						"additionalProperties": false,
 																																						"required": [
 																																							"attribute",
 																																							"operator",
 																																							"value"
-																																						],
-																																						"type": "object"
+																																						]
 																																					},
 																																					{
-																																						"additionalProperties": false,
+																																						"type": "object",
 																																						"properties": {
 																																							"clauses": {
 																																								"type": "array",
 																																								"items": {
-																																									"anyOf": [
-																																										{
-																																											"additionalProperties": false,
-																																											"properties": {
-																																												"attribute": {
-																																													"type": "string",
-																																													"maxLength": 64,
-																																													"minLength": 1
-																																												},
-																																												"operator": {
-																																													"type": "string",
-																																													"enum": [
-																																														"equals",
-																																														"not_equals",
-																																														"greater_than",
-																																														"less_than",
-																																														"greater_than_or_equals",
-																																														"less_than_or_equals",
-																																														"contains",
-																																														"starts_with",
-																																														"ends_with",
-																																														"in",
-																																														"not_in",
-																																														"has",
-																																														"not_has"
-																																													]
-																																												},
-																																												"value": {
-																																													"oneOf": [
-																																														{
-																																															"nullable": true,
-																																															"type": "string"
-																																														},
-																																														{
-																																															"type": "number"
-																																														},
-																																														{
-																																															"type": "boolean"
-																																														},
-																																														{
-																																															"additionalProperties": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/definitions.responses.200.content.application/json.schema.properties.flags.additionalProperties.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
-																																															"type": "object"
-																																														},
-																																														{
-																																															"items": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/definitions.responses.200.content.application/json.schema.properties.flags.additionalProperties.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
-																																															"type": "array"
-																																														}
-																																													]
-																																												}
-																																											},
-																																											"required": [
-																																												"attribute",
-																																												"operator",
-																																												"value"
-																																											],
-																																											"type": "object"
+																																									"type": "object",
+																																									"properties": {
+																																										"attribute": {
+																																											"type": "string",
+																																											"maxLength": 64,
+																																											"minLength": 1
 																																										},
-																																										{
-																																											"additionalProperties": false,
-																																											"properties": {
-																																												"clauses": {
-																																													"type": "array",
-																																													"items": {
-																																														"oneOf": [
-																																															{
-																																																"nullable": true,
-																																																"type": "string"
-																																															},
-																																															{
-																																																"type": "number"
-																																															},
-																																															{
-																																																"type": "boolean"
-																																															},
-																																															{
-																																																"additionalProperties": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/definitions.responses.200.content.application/json.schema.properties.flags.additionalProperties.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items]",
-																																																"type": "object"
-																																															},
-																																															{
-																																																"items": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/definitions.responses.200.content.application/json.schema.properties.flags.additionalProperties.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items]",
-																																																"type": "array"
-																																															}
-																																														]
-																																													},
-																																													"minItems": 1
+																																										"operator": {
+																																											"type": "string",
+																																											"enum": [
+																																												"equals",
+																																												"not_equals",
+																																												"greater_than",
+																																												"less_than",
+																																												"greater_than_or_equals",
+																																												"less_than_or_equals",
+																																												"contains",
+																																												"starts_with",
+																																												"ends_with",
+																																												"in",
+																																												"not_in",
+																																												"has",
+																																												"not_has"
+																																											]
+																																										},
+																																										"value": {
+																																											"oneOf": [
+																																												{
+																																													"nullable": true,
+																																													"type": "string"
 																																												},
-																																												"logical_operator": {
-																																													"type": "string",
-																																													"enum": [
-																																														"AND",
-																																														"OR"
-																																													]
+																																												{
+																																													"type": "number"
+																																												},
+																																												{
+																																													"type": "boolean"
+																																												},
+																																												{
+																																													"additionalProperties": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/definitions.responses.200.content.application/json.schema.properties.flags.additionalProperties.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.properties.value]",
+																																													"type": "object"
+																																												},
+																																												{
+																																													"items": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/definitions.responses.200.content.application/json.schema.properties.flags.additionalProperties.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.properties.value]",
+																																													"type": "array"
 																																												}
-																																											},
-																																											"required": [
-																																												"logical_operator",
-																																												"clauses"
-																																											],
-																																											"type": "object"
+																																											]
 																																										}
+																																									},
+																																									"additionalProperties": false,
+																																									"required": [
+																																										"attribute",
+																																										"operator",
+																																										"value"
 																																									]
 																																								},
 																																								"minItems": 1
@@ -506,11 +477,11 @@
 																																								]
 																																							}
 																																						},
+																																						"additionalProperties": false,
 																																						"required": [
 																																							"logical_operator",
 																																							"clauses"
-																																						],
-																																						"type": "object"
+																																						]
 																																					}
 																																				]
 																																			},
@@ -524,11 +495,11 @@
 																																			]
 																																		}
 																																	},
+																																	"additionalProperties": false,
 																																	"required": [
 																																		"logical_operator",
 																																		"clauses"
-																																	],
-																																	"type": "object"
+																																	]
 																																}
 																															]
 																														},
@@ -542,11 +513,11 @@
 																														]
 																													}
 																												},
+																												"additionalProperties": false,
 																												"required": [
 																													"logical_operator",
 																													"clauses"
-																												],
-																												"type": "object"
+																												]
 																											}
 																										]
 																									},
@@ -560,11 +531,11 @@
 																									]
 																								}
 																							},
+																							"additionalProperties": false,
 																							"required": [
 																								"logical_operator",
 																								"clauses"
-																							],
-																							"type": "object"
+																							]
 																						}
 																					]
 																				},
@@ -578,11 +549,11 @@
 																				]
 																			}
 																		},
+																		"additionalProperties": false,
 																		"required": [
 																			"logical_operator",
 																			"clauses"
-																		],
-																		"type": "object"
+																		]
 																	}
 																]
 															}
@@ -615,11 +586,11 @@
 															"minLength": 1
 														}
 													},
+													"additionalProperties": false,
 													"required": [
 														"conditions",
 														"serve_variation"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"variations": {
