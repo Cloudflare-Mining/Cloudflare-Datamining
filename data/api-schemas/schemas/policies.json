@@ -587,6 +587,120 @@
 						}
 					}
 				}
+			},
+			"429": {
+				"description": "Too Many Requests: the request was rate limited. Retry after the number of\nseconds in the `Retry-After` header (always present; 1 when no more specific\ndelay is known).\nErrors contain code 11024 (`posture.api.rate_limited`).",
+				"headers": {
+					"Retry-After": {
+						"description": "Number of seconds to wait before retrying the request.",
+						"schema": {
+							"type": "integer",
+							"minimum": 1
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Common response structure for all API endpoints.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
 			}
 		},
 		"security": [
@@ -1263,6 +1377,120 @@
 									"enum": [
 										false
 									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "Too Many Requests: the request was rate limited. Retry after the number of\nseconds in the `Retry-After` header (always present; 1 when no more specific\ndelay is known).\nErrors contain code 11024 (`posture.api.rate_limited`).",
+				"headers": {
+					"Retry-After": {
+						"description": "Number of seconds to wait before retrying the request.",
+						"schema": {
+							"type": "integer",
+							"minimum": 1
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Common response structure for all API endpoints.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
@@ -2023,6 +2251,120 @@
 						}
 					}
 				}
+			},
+			"429": {
+				"description": "Too Many Requests: the request was rate limited. Retry after the number of\nseconds in the `Retry-After` header (always present; 1 when no more specific\ndelay is known).\nErrors contain code 11024 (`posture.api.rate_limited`).",
+				"headers": {
+					"Retry-After": {
+						"description": "Number of seconds to wait before retrying the request.",
+						"schema": {
+							"type": "integer",
+							"minimum": 1
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Common response structure for all API endpoints.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
 			}
 		},
 		"security": [
@@ -2737,6 +3079,120 @@
 									"enum": [
 										false
 									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "Too Many Requests: the request was rate limited. Retry after the number of\nseconds in the `Retry-After` header (always present; 1 when no more specific\ndelay is known).\nErrors contain code 11024 (`posture.api.rate_limited`).",
+				"headers": {
+					"Retry-After": {
+						"description": "Number of seconds to wait before retrying the request.",
+						"schema": {
+							"type": "integer",
+							"minimum": 1
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Common response structure for all API endpoints.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
@@ -3810,6 +4266,120 @@
 						}
 					}
 				}
+			},
+			"429": {
+				"description": "Too Many Requests: the request was rate limited. Retry after the number of\nseconds in the `Retry-After` header (always present; 1 when no more specific\ndelay is known).\nErrors contain code 11024 (`posture.api.rate_limited`).",
+				"headers": {
+					"Retry-After": {
+						"description": "Number of seconds to wait before retrying the request.",
+						"schema": {
+							"type": "integer",
+							"minimum": 1
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Common response structure for all API endpoints.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
 			}
 		},
 		"security": [
@@ -4648,6 +5218,120 @@
 									"enum": [
 										false
 									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "Too Many Requests: the request was rate limited. Retry after the number of\nseconds in the `Retry-After` header (always present; 1 when no more specific\ndelay is known).\nErrors contain code 11024 (`posture.api.rate_limited`).",
+				"headers": {
+					"Retry-After": {
+						"description": "Number of seconds to wait before retrying the request.",
+						"schema": {
+							"type": "integer",
+							"minimum": 1
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Common response structure for all API endpoints.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"example": 1000,
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"type": "string",
+												"format": "uri",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": "Request processed successfully"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"type": "string",
+														"example": "/data/attributes/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [],
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
