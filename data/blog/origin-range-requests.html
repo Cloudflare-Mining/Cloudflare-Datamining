@@ -1,0 +1,105 @@
+<p>A video player seeking to the middle of a movie asks for a few megabytes. Under our old range caching, that one request could make Cloudflare pull 128 MiB from the origin and move it between data centers, sometimes after the viewer had already left. Range requests are how large files get delivered, and caching them naively easily leads to wasted network bandwidth and wasted disk operations when running a CDN at scale.</p>
+<p>So we rebuilt how our cache handles them. For R2, Cloudflare's object storage, p99 time to first byte dropped by about half, and a follow-up improvement cut <a href="https://developers.cloudflare.com/cache/how-to/tiered-cache"><u>tiered cache</u></a>&nbsp;traffic for R2&nbsp;and similar workloads by about 6%.</p>
+<p>Today, we're making that new implementation available as <a href="https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#origin-range-requests"><u>Origin Range Requests</u></a>, a self-service feature on all plans. There's no range size to tune and no need to contact support. Turn it on with a <a href="https://developers.cloudflare.com/cache/how-to/cache-rules" target="_blank" rel="noopener noreferrer">Cache Rule</a>, and Cloudflare handles the rest.</p>
+<h2>A request for part of a file</h2>
+<p>An HTTP range request asks for part of a resource instead of the whole resource. The client sends a normal <code>GET</code>&nbsp;with a <code>Range</code>&nbsp;header:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>GET /movie.mp4 HTTP/1.1</span></span>
+<span class="line"><span>Host: example.com</span></span>
+<span class="line"><span>Range: bytes=1048576-2097151</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p>If the server supports the request, it returns <code>206 Partial Content</code>&nbsp;and identifies the returned bytes with <code>Content-Range</code>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>HTTP/1.1 206 Partial Content</span></span>
+<span class="line"><span>Content-Range: bytes 1048576-2097151/524288000</span></span>
+<span class="line"><span>Content-Length: 1048576</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>Range requests are common for large objects. A video player can request bytes around a seek position instead of the whole file. A download manager can resume after an interruption. A package manager can fetch part of an artifact. A client can inspect the end of a file without downloading everything before it.</p>
+<p>The client decides whether to request a range, and Cloudflare does not change that request. Instead, Origin Range Requests changes how Cloudflare satisfies it.</p>
+<h2>The range-size problem</h2>
+<p>Cloudflare has supported range-request caching for years via static zone configuration.</p>
+<p>The previous implementation resembled the cache-slicing described in <a href="https://blog.nginx.org/blog/smart-efficient-byte-range-caching-nginx"><u>an nginx blog post</u></a>: each client request was mapped to fixed-size ranges of the file, with the range size and file extensions configured per zone.</p>
+<p>The size of each range created a tradeoff: small ranges led to many small origin requests and memory pressure on Cloudflare from coalescing all of the requests in-memory, while large ranges caused Cloudflare to download much more data than the client requested. Updates to the range size itself would invalidate cache entries, since the size was part of the cache key.</p>
+<p>This design also meant people requesting content through our network could have unpleasant experiences accessing these files. Concurrent requests that fell inside the same range, no matter how far apart each client’s requested range was, could block each other. Our nginx-based cache also couldn’t combine range caching with <a href="https://blog.cloudflare.com/introducing-concurrent-streaming-acceleration"><u>concurrent streaming</u></a>, a feature we built to let multiple clients read a file from cache while it's still being written. Turning both on together cut responses short, so each range had to be fully downloaded before anyone could read it, and popular files needed a separate origin fetch for every range.</p>
+<p>The extra bytes could also cross several parts of our distributed cache: from the origin to one data center, between cache tiers, and then toward the client. Every hop multiplied the waste. No value works equally well for a small seek, a sequential download, a large media file, and every origin and cache topology.</p>
+<p>Our internal cache limitations were directly exposed to customers, who should not need to understand our capabilities in-depth to have files served efficiently.</p>
+<p>Fortunately, our transition from nginx to a <a href="https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet"><u>Pingora</u></a>-based caching server created an opportunity to address the implementation problems that had forced a hard-to-use setting onto customers.</p>
+<h2>Fixed-size cache chunks</h2>
+<p>The fix came from something Pingora was already doing. To make it easy to resume interrupted downloads, it stores every cached file on disk in fixed-size chunks. If the cache already thinks in chunks, the range size doesn't need to be a setting at all, it can just be the chunk!</p>
+<p>For a range request, Cloudflare checks which requested bytes are already cached. It serves those bytes directly. For missing bytes, it fetches origin ranges aligned to the cache's fixed-sized-chunk boundaries, stores the result in the same chunks used for ordinary cache storage, and returns only the bytes requested by the client.</p>
+<p>For example, a request for bytes <code>150-250</code>&nbsp;can cause Cloudflare to fetch the aligned chunk containing those bytes. The downstream response still contains only <code>150-250</code>.</p>
+<p>This does not eliminate extra work for requests smaller than our chunk size — such a request can still require fetching the whole chunk containing it. We also are taking on the cost of more work for non-aligned ranges. The difference is that the extra work is bounded and predictable, and no longer determined by a customer-selected range size that can cause unpredictable effects on us and origins.</p>
+<h2>Coordinating cached and in-flight data</h2>
+<p>Parsing the <code>Range</code>&nbsp;header is straightforward. The harder problem is producing one correct response when the requested bytes are split across cached data, an origin response, and downloads already in progress.</p>
+<p>At a high level, the edge:</p>
+<ol>
+	<li>Looks up the asset headers and range-coverage metadata.</li>
+	<li>Reads whatever part of the asset it can from disk or streaming in memory.</li>
+	<li>Fetches missing coverage from the origin using aligned ranges.</li>
+	<li>Writes the new bytes and records the completed range in metadata.</li>
+	<li>Combines the pieces and sets <code>Content-Range</code>&nbsp;and <code>Content-Length</code>&nbsp;for the client response.</li>
+</ol>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA8Pr/6/T94Or23efz5e7z7fX06/Pv4+rn7/b76fD43+bz2+Lu4unt6vDs6u7o4ubi8PP46u713+Pw29/r4uXo6uzm6uvj4+Te9fb57/D35Obx4OHs5ubp7u3m7uzj5+bg/v//+fr+7u/46uvz8O/w9vXu9vTr7+7n////////+vz/9vf8+/v7///6///3+fjy///////////////////////////////7////////////////////////////////" alt="" width="715" height="477" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5MZP9SNZCFQNMYSE7498YHM.png&amp;w=715&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5MZP9SNZCFQNMYSE7498YHM.png&amp;w=640&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5MZP9SNZCFQNMYSE7498YHM.png&amp;w=715&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5MZP9SNZCFQNMYSE7498YHM.png&amp;w=750&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5MZP9SNZCFQNMYSE7498YHM.png&amp;w=828&amp;h=552&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5MZP9SNZCFQNMYSE7498YHM.png&amp;w=1080&amp;h=721&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5MZP9SNZCFQNMYSE7498YHM.png&amp;w=1280&amp;h=854&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5MZP9SNZCFQNMYSE7498YHM.png&amp;w=1430&amp;h=954&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5MZP9SNZCFQNMYSE7498YHM.png&amp;w=1999&amp;h=1333&amp;q=100&amp;f=webp" data-lightbox-width="1999" data-lightbox-height="1333" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="477" class="pt-portable-image-media"></div>
+</figure>
+<p>This is a coordinator, not a single cache lookup. One request can use a cached prefix, an in-flight download, and a newly fetched suffix. The internal origin response can be larger than the downstream response, but the downstream status and headers describe only the requested range.</p>
+<p>If an existing download covers another request's bytes, the second request can attach to that download instead of starting another origin fetch. This shares work during bursts for popular large files.</p>
+<p>The design uses the existing cache data model. Headers identify the asset version, the body is stored in bounded chunks, and metadata records which ranges were written successfully.</p>
+<h2>Validate before composing</h2>
+<p>Composed range responses are valid only when all bytes belong to the same representation. The coordinator checks that each origin response matches the requested range, that the total asset size is stable, and that the entity tag remains consistent across subrequests.</p>
+<p>The <code>If-Range</code>&nbsp;header lets a client request a range only if the representation still matches a known validator. If it does not match, Cloudflare returns the full representation instead of combining bytes from different versions.</p>
+<p>Cloudflare also avoids composing ranges for a representation it is about to decompress because the range over a set of compressed bytes would be different from those selected by the range in a decompressed response. In these cases, Cloudflare serves the transformed full response rather than advertising a range it cannot honor correctly.</p>
+<p>The resulting behavior is standard HTTP:</p>
+<ul>
+	<li>A satisfiable range receives <code>206 Partial Content</code>&nbsp;with an accurate <code>Content-Range</code>.</li>
+	<li>An unsatisfiable range receives <code>416 Range Not Satisfiable</code>.</li>
+	<li>A response that cannot safely be ranged is served as the complete representation.</li>
+</ul>
+<h2>What changed in production</h2>
+<p>Before opening Origin Range Requests to everyone, we moved existing users of the old range-caching feature onto the new implementation, starting with the workloads that hurt us most.</p>
+<p>Those workloads had a lot of concurrent range requests against very large files, often on very spiky traffic. Configured range sizes on the old system ran from tens of kilobytes to tens of gigabytes. With a large range size, a request that wouldn't fill a floppy disk could make us download a few DVDs' worth of data from the origin and move it across several data centers, sometimes after the client had already given up and gone elsewhere. With a small range size, one request turned into a long line of tiny origin requests, each holding memory while it waited. Both patterns caused real operational incidents for us.</p>
+<p>R2 was the largest internal user. Its configured range size was 64 MiB, so a small read that crossed a range boundary could cost us 128 MiB of transfer between data centers. After moving R2 to the new implementation, we saw:</p>
+<ul>
+	<li><strong>Faster responses. </strong>Across R2's storage regions, p99 time to first byte dropped by roughly half on both cache hits and misses.</li>
+	<li><strong>Fewer bytes on our network. </strong>Our most recent change taught the coordinator to combine bytes already on disk with bytes fetched from upstream in a single response. Before, a request was served either entirely from cache or entirely from upstream. After we turned this on for R2, tiered cache traffic for R2 and similar workloads dropped about 6% week over week, which is&nbsp;petabytes less data moving between our data centers every day.</li>
+</ul>
+<h2>Getting started</h2>
+<p>Once the cache no longer depended on a customer-selected range size, the product configuration could not be simpler. Customers select matching traffic through <a href="https://developers.cloudflare.com/cache/how-to/cache-rules"><u>Cache Rules</u></a>. Cloudflare handles the chunking and cache coordination.</p>
+<p>Origin Range Requests is intended for traffic where clients naturally request parts of a large cacheable object:</p>
+<ul>
+	<li>Progressive and seekable video such as MP4</li>
+	<li>Resumable large downloads</li>
+	<li>Software distributions and package repositories</li>
+	<li>Disk images, archives, and other multi-gigabyte objects</li>
+	<li>AI training and inference workloads that transfer large model files or fetch selected regions of model artifacts</li>
+	<li>Clients that fetch metadata or a small region of a larger file</li>
+</ul>
+<p>We intend to make this the default way certain file types are served on our network, modifiable by cache rules.</p>
+<p>This feature does not change normal cache eligibility. Enabling it does not make an otherwise uncacheable response cacheable. The origin also needs to support byte ranges for partial origin fetches to be useful.</p>
+<p>To turn it on, create a <a href="https://developers.cloudflare.com/cache/how-to/cache-rules"><u>Cache Rule</u></a>&nbsp;that matches your large-file traffic and set Origin Range Requests to On. You can do this in the dashboard under Caching &gt; Cache Rules, or through the API with <code>origin_range_requests: { "mode": "on" }</code>. Customers choose the traffic; the edge handles the cache coordination and correctness requirements.</p>

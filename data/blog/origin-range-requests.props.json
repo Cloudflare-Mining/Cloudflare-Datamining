@@ -1,0 +1,41 @@
+{
+	"initialReadingTime": "9",
+	"locale": "en-us",
+	"post": {
+		"authors": [
+			{
+				"name": "Matthew Gumport",
+				"slug": "matthew-gumport"
+			}
+		],
+		"excerpt": "Naive byte-range caching can waste gigabytes of origin bandwidth on small requests. We rebuilt our cache architecture in Pingora to coordinate partial fetches automatically, cutting R2 p99 latency in half.",
+		"feature_image": "https://blog.cloudflare.com/_emdash/api/media/file/01M5MZPB7A2K0S0V8PAH4CRWG6.png",
+		"published_at": "2026-10-23T18:22:59.215Z",
+		"slug": "origin-range-requests",
+		"tags": [
+			{
+				"name": "Cache",
+				"slug": "cache"
+			},
+			{
+				"name": "Performance",
+				"slug": "performance"
+			},
+			{
+				"name": "Pingora",
+				"slug": "pingora"
+			},
+			{
+				"name": "Product News",
+				"slug": "product-news"
+			},
+			{
+				"name": "Storage",
+				"slug": "storage"
+			}
+		],
+		"title": "Origin Range Requests: Serving large files without range-request tuning",
+		"updated_at": "2026-10-23T18:22:59.215Z",
+		"url": "https://blog.cloudflare.com/origin-range-requests/"
+	}
+}
