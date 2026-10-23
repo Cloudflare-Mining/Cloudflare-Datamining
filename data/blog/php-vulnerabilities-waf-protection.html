@@ -43,13 +43,17 @@
 <p>These flaws are in the PHP runtime, so updating website code or a plugin(s) alone does not fix these vulnerabilities. Administrators need to update the PHP software running their applications. If a hosting provider manages PHP, ask the provider to apply the security update.</p>
 <p>Administrators can follow the PHP advisory for affected versions and remediation instructions. Keep Cloudflare WAF protections enabled while patching. Restricting unnecessary uploads and limiting upload sizes can also reduce exposure, but these measures do not replace the PHP fix.</p>
 <h2>New rules</h2>
-<p>For Free customers, new rules have been released under the Cloudflare Managed Free Ruleset (Ruleset ID 77454fe2d30c4220b5701f6fdfb893ba). Free customers don’t have to take any actions to enable the protection. To override the ruleset behavior you can refer to our <a href="https://developers.cloudflare.com/waf/managed-rules"><u>documentation</u></a>.</p>
+<p>For Free customers, new rules have been released under the Cloudflare Managed Free Ruleset (Ruleset ID 77454fe2d30c4220b5701f6fdfb893ba). Free customers don’t have to take any actions to enable the protection. To override the ruleset behavior, you can refer to our <a href="https://developers.cloudflare.com/waf/managed-rules"><u>documentation</u></a>.</p>
 <div class="emdash-table-wrapper">
-	<table class="emdash-table" style="min-width: 192px;">
+	<table class="emdash-table" style="min-width: 590px;">
+		<colgroup>
+			<col style="width: 308px;">
+			<col style="width: 282px;">
+		</colgroup>
 		<tbody>
 			<tr>
 				<td>
-					<p>Rule Description</p>
+					<p>Rule Description&nbsp;</p>
 				</td>
 				<td>
 					<p>Rule ID</p>
@@ -57,7 +61,7 @@
 			</tr>
 			<tr>
 				<td>
-					<p>Generic Rules - Anomalous Execution - 1</p>
+					<p>PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619)</p>
 				</td>
 				<td>
 					<p>4e315666e8e344cdb64119a3b5ccf32f</p>
@@ -65,7 +69,7 @@
 			</tr>
 			<tr>
 				<td>
-					<p>Generic Rules - Anomalous Execution - 2</p>
+					<p>PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #2</p>
 				</td>
 				<td>
 					<p>00c10e6cc4da4bd08722adeebcd95984</p>
@@ -73,7 +77,7 @@
 			</tr>
 			<tr>
 				<td>
-					<p>Generic Rules - Anomalous Execution - 3</p>
+					<p>PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #3</p>
 				</td>
 				<td>
 					<p>48ddf592361e4fdb97a8a85982dab691</p>
@@ -81,7 +85,7 @@
 			</tr>
 			<tr>
 				<td>
-					<p>Generic Rules - Anomalous Execution - 4</p>
+					<p>PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #4</p>
 				</td>
 				<td>
 					<p>3556683d512a47f2937899c524b1a4c6</p>
@@ -89,7 +93,7 @@
 			</tr>
 			<tr>
 				<td>
-					<p>Generic Rules - Anomalous Execution - 5</p>
+					<p>PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #5</p>
 				</td>
 				<td>
 					<p>da07c85852e34625bb478496302ede46</p>
@@ -97,7 +101,7 @@
 			</tr>
 			<tr>
 				<td>
-					<p>Generic Rules - Anomalous Execution - 6</p>
+					<p>PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #6</p>
 				</td>
 				<td>
 					<p>19373a83abb840e18ab3ce5a7975ce1b</p>
@@ -105,7 +109,7 @@
 			</tr>
 			<tr>
 				<td>
-					<p>Generic Rules - Anomalous Execution - 7</p>
+					<p>PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #7</p>
 				</td>
 				<td>
 					<p>07f0b6ddaabf40b1b2042dade8d613fa</p>
@@ -114,13 +118,17 @@
 		</tbody>
 	</table>
 </div>
-<p>Protection for paid plans has been released as part of the Cloudflare Managed Ruleset (Ruleset ID efb7b8c949ac4650a09736fc376e9aee).&nbsp;If you are on a Professional, Business, or Enterprise plan, review your Managed Ruleset deployment to confirm it’s <a href="https://developers.cloudflare.com/waf/managed-rules/deploy-zone-dashboard"><u>deployed</u></a>&nbsp;block mode.</p>
+<p>Protection for paid plans has been released as part of the Cloudflare Managed Ruleset (Ruleset ID efb7b8c949ac4650a09736fc376e9aee).&nbsp;If you are on a Professional, Business, or Enterprise plan, review your Managed Ruleset deployment to confirm it has <a href="https://developers.cloudflare.com/waf/managed-rules/deploy-zone-dashboard"><u>deployed</u></a>&nbsp;block mode.</p>
 <div class="emdash-table-wrapper">
-	<table class="emdash-table" style="min-width: 192px;">
+	<table class="emdash-table" style="min-width: 591px;">
+		<colgroup>
+			<col style="width: 307px;">
+			<col style="width: 284px;">
+		</colgroup>
 		<tbody>
 			<tr>
 				<td>
-					<p>Rule Description</p>
+					<p>Rule Description&nbsp;</p>
 				</td>
 				<td>
 					<p>Rule ID</p>
@@ -128,7 +136,7 @@
 			</tr>
 			<tr>
 				<td>
-					<p>Generic Rules - Anomalous Execution - 1</p>
+					<p>PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619)</p>
 				</td>
 				<td>
 					<p>c1d409ad838f47f59446f21cc438d5dd</p>
@@ -136,7 +144,7 @@
 			</tr>
 			<tr>
 				<td>
-					<p>Generic Rules - Anomalous Execution - 2</p>
+					<p>PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #2</p>
 				</td>
 				<td>
 					<p>f9a45927414245e3a64bb12d0a0c2f64</p>
@@ -144,7 +152,7 @@
 			</tr>
 			<tr>
 				<td>
-					<p>Generic Rules - Anomalous Execution - 3</p>
+					<p>PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #3</p>
 				</td>
 				<td>
 					<p>771c654ae1154d4daa72f4e1545d163c</p>
@@ -152,7 +160,7 @@
 			</tr>
 			<tr>
 				<td>
-					<p>Generic Rules - Anomalous Execution - 4</p>
+					<p>PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #4</p>
 				</td>
 				<td>
 					<p>217005865f0145f392300bac212afcc9</p>
@@ -160,7 +168,7 @@
 			</tr>
 			<tr>
 				<td>
-					<p>Generic Rules - Anomalous Execution - 5</p>
+					<p>PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #5</p>
 				</td>
 				<td>
 					<p>38efdb17ea594501bb55a1d71867b12e</p>
@@ -168,7 +176,7 @@
 			</tr>
 			<tr>
 				<td>
-					<p>Generic Rules - Anomalous Execution - 6</p>
+					<p>PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #6</p>
 				</td>
 				<td>
 					<p>4148ae686fdb4d01be673fab9d9c073d</p>
@@ -176,7 +184,7 @@
 			</tr>
 			<tr>
 				<td>
-					<p>Generic Rules - Anomalous Execution - 7</p>
+					<p>PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #7</p>
 				</td>
 				<td>
 					<p>1389aa259617437392ce149c48143645</p>
@@ -186,30 +194,11 @@
 	</table>
 </div>
 <p>To better identify exploit attempts, Cloudflare developed full transaction detection, a new WAF capability that analyzes both sides of the same HTTP transaction. While some malicious payloads can be identified using the request alone, the response contains useful signals that can be used to create rules with higher confidence, reducing false positives. A matching full transaction rule can block the origin response before it reaches the requester. Learn how it works in our full transaction detection <a href="http://blog.cloudflare.com/full-transaction-waf" target="_blank" rel="noopener noreferrer"><u>blog post</u></a>.</p>
-<p>The following rules have been deployed to the new Cloudflare Managed Response Firewall Default for customers on all plans, including Free:</p>
-<div class="emdash-table-wrapper">
-	<table class="emdash-table" style="min-width: 192px;">
-		<tbody>
-			<tr>
-				<td>
-					<p>Rule Description</p>
-				</td>
-				<td>
-					<p>Rule ID</p>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<p>Default block for High confidence Signatures</p>
-				</td>
-				<td>
-					<p>afffe22785674c80a31875c848d2242a</p>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-</div>
-<p>Note: rule descriptions will be updated soon.</p>
+<p>The new Cloudflare Managed Response Firewall Default has been automatically deployed for customers on all plans, including Free. To verify that the response rules are active, you can visit the <strong>Security &gt; Security Rules</strong> page. Read the full transaction <a href="http://blog.cloudflare.com/full-transaction-waf" target="_blank" rel="noopener noreferrer"><u>blog</u></a> to learn how to customize its deployment.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAAzs7OysrKwMDAvLy8wMDAxMTEwMDAt7e34ODg3Nzc1NTU0dHR1NTU2NjY1NTUy8vL9vb28vLy6+vr6enp7Ozs7+/v6+vr4+Pj/////////////v7+////////////+Pj4////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////" alt="" width="715" height="94" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5E1HMZJ3JBJW93YQF4G9684.png&amp;w=715&amp;h=94&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5E1HMZJ3JBJW93YQF4G9684.png&amp;w=640&amp;h=84&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5E1HMZJ3JBJW93YQF4G9684.png&amp;w=715&amp;h=94&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5E1HMZJ3JBJW93YQF4G9684.png&amp;w=750&amp;h=99&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5E1HMZJ3JBJW93YQF4G9684.png&amp;w=828&amp;h=109&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5E1HMZJ3JBJW93YQF4G9684.png&amp;w=1080&amp;h=142&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5E1HMZJ3JBJW93YQF4G9684.png&amp;w=1280&amp;h=168&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5E1HMZJ3JBJW93YQF4G9684.png&amp;w=1430&amp;h=188&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image5.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5E1HMZJ3JBJW93YQF4G9684.png&amp;w=1999&amp;h=264&amp;q=100&amp;f=webp" data-lightbox-width="1999" data-lightbox-height="264" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="94" class="pt-portable-image-media"></div>
+	<figcaption>The new Cloudflare Managed Response Firewall Default detection is protecting your traffic.</figcaption>
+</figure>
 <h2>Review events and customize protection</h2>
 <p>To analyze blocked requests, visit <strong>Security &gt; Security Analytics &gt; Events</strong>. Filter by the rule IDs in the table above and inspect the matched request, action, and path. Events identify whether the action came from a managed or custom rule. Customers who need to tailor the protection can <a href="https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/#deploy-in-the-dashboard"><u>update the scope</u></a>&nbsp;of the Managed Ruleset to the parts of an application where it is relevant.</p>
 <h2>Update PHP and keep the protection enabled</h2>
