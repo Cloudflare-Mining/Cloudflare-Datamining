@@ -1,4 +1,327 @@
 {
+	"DELETE /zones/{zone_id}/settings/aegis": {
+		"operationId": "zone-cache-settings-delete-aegis-setting",
+		"summary": "Delete aegis setting",
+		"description": "Aegis provides dedicated egress IPs (from Cloudflare to your origin) for your layer 7 WAF and CDN services. The egress IPs are reserved exclusively for your account so that you can increase your origin security by only allowing traffic from a small list of IP addresses.",
+		"parameters": [
+			{
+				"name": "zone_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Delete aegis setting response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object",
+													"properties": {
+														"editable": {
+															"description": "Whether the setting is editable.",
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"id": {
+															"description": "The identifier of the caching setting.",
+															"type": "string",
+															"x-auditable": true
+														},
+														"modified_on": {
+															"description": "The time when the setting was last modified.",
+															"type": "string",
+															"format": "date-time",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"id",
+														"editable"
+													]
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"result": {
+											"description": "Aegis provides dedicated egress IPs (from Cloudflare to your origin) for your layer 7 WAF and CDN services. The egress IPs are reserved exclusively for your account so that you can increase your origin security by only allowing traffic from a small list of IP addresses.",
+											"type": "object",
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"id": {
+															"description": "Identifier of the zone setting.",
+															"type": "string",
+															"x-auditable": true
+														},
+														"modified_on": {
+															"description": "Last time this setting was modified.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"nullable": true,
+															"readOnly": true,
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"id"
+													]
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "ID of the zone setting.",
+															"type": "string",
+															"example": "aegis",
+															"enum": [
+																"aegis"
+															],
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Value of the zone setting.",
+															"type": "object",
+															"properties": {
+																"enabled": {
+																	"description": "Whether the feature is enabled or not.",
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"pool_id": {
+																	"description": "Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin.",
+																	"type": "string",
+																	"example": "pool-id",
+																	"x-auditable": true
+																}
+															}
+														}
+													},
+													"type": "object"
+												}
+											],
+											"title": "Aegis"
+										}
+									}
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Delete aegis setting response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object"
+									},
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object"
+									},
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Zone Settings"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone_settings:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.aegis",
+		"x-fern-sdk-method-name": "delete"
+	},
 	"GET /zones/{zone_id}/settings": {
 		"operationId": "zone-settings-get-all-zone-settings",
 		"summary": "Get all zone settings",

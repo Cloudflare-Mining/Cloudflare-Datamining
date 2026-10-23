@@ -2,33 +2,159 @@
 	"DELETE /accounts/{account_id}/brand-protection/logos/{logo_id}": {
 		"operationId": "deleteAccountsAccountIdBrandProtectionLogosLogoId",
 		"summary": "Delete saved logo queries by ID",
-		"description": "Return a success message after deleting saved logo queries by ID",
+		"description": "Return a success message after deleting saved logo queries by ID.",
 		"responses": {
 			"204": {
-				"description": "No Content"
+				"description": "No Content."
 			},
-			"default": {
-				"description": "Default error response",
+			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"type": "object",
 							"properties": {
 								"code": {
-									"description": "Error code",
+									"description": "Error code.",
 									"type": "integer"
 								},
 								"errors": {
-									"description": "Errors",
+									"description": "Errors.",
 									"type": "object",
-									"additionalProperties": {}
+									"additionalProperties": {
+										"type": "object"
+									}
 								},
 								"message": {
-									"description": "Error message",
+									"description": "Error message.",
 									"type": "string"
 								},
 								"status": {
-									"description": "Error name",
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Resource not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "Rate limit exceeded.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Default error response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
 									"type": "string"
 								}
 							}
@@ -40,6 +166,10 @@
 		"security": [
 			{
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -48,15 +178,16 @@
 		"x-api-token-group": [
 			"Intel Write"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logos",
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "brand-protection.logos",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/logo-matches": {
 		"operationId": "getAccountsAccountIdBrandProtectionLogoMatches",
 		"summary": "Read matches for logo queries by ID",
-		"description": "Return matches for logo queries based on ID",
+		"description": "Return matches for logo queries based on ID.",
 		"parameters": [
 			{
 				"name": "logo_id",
@@ -87,7 +218,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "OK",
+				"description": "OK.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -96,7 +227,9 @@
 								"matches": {
 									"type": "array",
 									"items": {
-										"additionalProperties": {},
+										"additionalProperties": {
+											"type": "object"
+										},
 										"type": "object"
 									}
 								},
@@ -108,28 +241,30 @@
 					}
 				}
 			},
-			"422": {
-				"description": "Unprocessable Content",
+			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"type": "object",
 							"properties": {
 								"code": {
-									"description": "Error code",
+									"description": "Error code.",
 									"type": "integer"
 								},
 								"errors": {
-									"description": "Errors",
+									"description": "Errors.",
 									"type": "object",
-									"additionalProperties": {}
+									"additionalProperties": {
+										"type": "object"
+									}
 								},
 								"message": {
-									"description": "Error message",
+									"description": "Error message.",
 									"type": "string"
 								},
 								"status": {
-									"description": "Error name",
+									"description": "Error name.",
 									"type": "string"
 								}
 							}
@@ -137,28 +272,154 @@
 					}
 				}
 			},
-			"default": {
-				"description": "Default error response",
+			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"type": "object",
 							"properties": {
 								"code": {
-									"description": "Error code",
+									"description": "Error code.",
 									"type": "integer"
 								},
 								"errors": {
-									"description": "Errors",
+									"description": "Errors.",
 									"type": "object",
-									"additionalProperties": {}
+									"additionalProperties": {
+										"type": "object"
+									}
 								},
 								"message": {
-									"description": "Error message",
+									"description": "Error message.",
 									"type": "string"
 								},
 								"status": {
-									"description": "Error name",
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Resource not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"422": {
+				"description": "Unprocessable Content.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "Rate limit exceeded.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Default error response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
 									"type": "string"
 								}
 							}
@@ -170,6 +431,10 @@
 		"security": [
 			{
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -179,15 +444,16 @@
 			"Intel Write",
 			"Intel Read"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logo-matches",
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "brand-protection.logo-matches",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/logo-matches/download": {
 		"operationId": "getAccountsAccountIdBrandProtectionLogoMatchesDownload",
 		"summary": "Download matches for logo queries by ID",
-		"description": "Return matches as CSV for logo queries based on ID",
+		"description": "Return matches as CSV for logo queries based on ID.",
 		"parameters": [
 			{
 				"name": "logo_id",
@@ -218,7 +484,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "OK",
+				"description": "OK.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -227,7 +493,9 @@
 								"matches": {
 									"type": "array",
 									"items": {
-										"additionalProperties": {},
+										"additionalProperties": {
+											"type": "object"
+										},
 										"type": "object"
 									}
 								},
@@ -239,28 +507,30 @@
 					}
 				}
 			},
-			"422": {
-				"description": "Unprocessable Content",
+			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"type": "object",
 							"properties": {
 								"code": {
-									"description": "Error code",
+									"description": "Error code.",
 									"type": "integer"
 								},
 								"errors": {
-									"description": "Errors",
+									"description": "Errors.",
 									"type": "object",
-									"additionalProperties": {}
+									"additionalProperties": {
+										"type": "object"
+									}
 								},
 								"message": {
-									"description": "Error message",
+									"description": "Error message.",
 									"type": "string"
 								},
 								"status": {
-									"description": "Error name",
+									"description": "Error name.",
 									"type": "string"
 								}
 							}
@@ -268,28 +538,154 @@
 					}
 				}
 			},
-			"default": {
-				"description": "Default error response",
+			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"type": "object",
 							"properties": {
 								"code": {
-									"description": "Error code",
+									"description": "Error code.",
 									"type": "integer"
 								},
 								"errors": {
-									"description": "Errors",
+									"description": "Errors.",
 									"type": "object",
-									"additionalProperties": {}
+									"additionalProperties": {
+										"type": "object"
+									}
 								},
 								"message": {
-									"description": "Error message",
+									"description": "Error message.",
 									"type": "string"
 								},
 								"status": {
-									"description": "Error name",
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Resource not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"422": {
+				"description": "Unprocessable Content.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "Rate limit exceeded.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Default error response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
 									"type": "string"
 								}
 							}
@@ -301,6 +697,10 @@
 		"security": [
 			{
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -310,49 +710,183 @@
 			"Intel Write",
 			"Intel Read"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logo-matches.download",
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "brand-protection.logo-matches",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/logos": {
 		"operationId": "getAccountsAccountIdBrandProtectionLogos",
 		"summary": "Read all saved logo queries",
-		"description": "Return all saved logo queries",
+		"description": "Return all saved logo queries.",
 		"responses": {
-			"default": {
-				"description": "Default error response",
+			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"type": "object",
 							"properties": {
 								"code": {
-									"description": "Error code",
+									"description": "Error code.",
 									"type": "integer"
 								},
 								"errors": {
-									"description": "Errors",
+									"description": "Errors.",
 									"type": "object",
-									"additionalProperties": {}
+									"additionalProperties": {
+										"type": "object"
+									}
 								},
 								"message": {
-									"description": "Error message",
+									"description": "Error message.",
 									"type": "string"
 								},
 								"status": {
-									"description": "Error name",
+									"description": "Error name.",
 									"type": "string"
 								}
 							}
 						}
 					}
 				}
+			},
+			"403": {
+				"description": "Forbidden.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Resource not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "Rate limit exceeded.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Default error response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"2XX": {
+				"description": "Successful response."
 			}
 		},
 		"security": [
 			{
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -362,49 +896,183 @@
 			"Intel Write",
 			"Intel Read"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logos",
-		"x-fern-sdk-method-name": "get",
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "brand-protection.logos",
+		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/logos/{logo_id}": {
 		"operationId": "getAccountsAccountIdBrandProtectionLogosLogoId",
 		"summary": "Read saved logo queries by ID",
-		"description": "Return saved logo queries based on ID",
+		"description": "Return saved logo queries based on ID.",
 		"responses": {
-			"default": {
-				"description": "Default error response",
+			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"type": "object",
 							"properties": {
 								"code": {
-									"description": "Error code",
+									"description": "Error code.",
 									"type": "integer"
 								},
 								"errors": {
-									"description": "Errors",
+									"description": "Errors.",
 									"type": "object",
-									"additionalProperties": {}
+									"additionalProperties": {
+										"type": "object"
+									}
 								},
 								"message": {
-									"description": "Error message",
+									"description": "Error message.",
 									"type": "string"
 								},
 								"status": {
-									"description": "Error name",
+									"description": "Error name.",
 									"type": "string"
 								}
 							}
 						}
 					}
 				}
+			},
+			"403": {
+				"description": "Forbidden.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Resource not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "Rate limit exceeded.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Default error response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"2XX": {
+				"description": "Successful response."
 			}
 		},
 		"security": [
 			{
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -414,8 +1082,9 @@
 			"Intel Write",
 			"Intel Read"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logos",
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "brand-protection.logos",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -424,39 +1093,172 @@
 		"summary": "Internal route for testing signed URLs",
 		"description": "Internal route for testing signed URLs.",
 		"responses": {
-			"default": {
-				"description": "Default error response",
+			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"type": "object",
 							"properties": {
 								"code": {
-									"description": "Error code",
+									"description": "Error code.",
 									"type": "integer"
 								},
 								"errors": {
-									"description": "Errors",
+									"description": "Errors.",
 									"type": "object",
-									"additionalProperties": {}
+									"additionalProperties": {
+										"type": "object"
+									}
 								},
 								"message": {
-									"description": "Error message",
+									"description": "Error message.",
 									"type": "string"
 								},
 								"status": {
-									"description": "Error name",
+									"description": "Error name.",
 									"type": "string"
 								}
 							}
 						}
 					}
 				}
+			},
+			"403": {
+				"description": "Forbidden.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Resource not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "Rate limit exceeded.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Default error response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"2XX": {
+				"description": "Successful response."
 			}
 		},
 		"security": [
 			{
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -470,7 +1272,7 @@
 	"POST /accounts/{account_id}/brand-protection/logos": {
 		"operationId": "postAccountsAccountIdBrandProtectionLogos",
 		"summary": "Create new saved logo queries from image files",
-		"description": "Return new saved logo queries created from image files",
+		"description": "Return new saved logo queries created from image files.",
 		"parameters": [
 			{
 				"name": "tag",
@@ -512,7 +1314,7 @@
 		},
 		"responses": {
 			"201": {
-				"description": "Created",
+				"description": "Created.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -532,28 +1334,30 @@
 					}
 				}
 			},
-			"422": {
-				"description": "Unprocessable Content",
+			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"type": "object",
 							"properties": {
 								"code": {
-									"description": "Error code",
+									"description": "Error code.",
 									"type": "integer"
 								},
 								"errors": {
-									"description": "Errors",
+									"description": "Errors.",
 									"type": "object",
-									"additionalProperties": {}
+									"additionalProperties": {
+										"type": "object"
+									}
 								},
 								"message": {
-									"description": "Error message",
+									"description": "Error message.",
 									"type": "string"
 								},
 								"status": {
-									"description": "Error name",
+									"description": "Error name.",
 									"type": "string"
 								}
 							}
@@ -561,28 +1365,154 @@
 					}
 				}
 			},
-			"default": {
-				"description": "Default error response",
+			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"type": "object",
 							"properties": {
 								"code": {
-									"description": "Error code",
+									"description": "Error code.",
 									"type": "integer"
 								},
 								"errors": {
-									"description": "Errors",
+									"description": "Errors.",
 									"type": "object",
-									"additionalProperties": {}
+									"additionalProperties": {
+										"type": "object"
+									}
 								},
 								"message": {
-									"description": "Error message",
+									"description": "Error message.",
 									"type": "string"
 								},
 								"status": {
-									"description": "Error name",
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Resource not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"422": {
+				"description": "Unprocessable Content.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "Rate limit exceeded.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Default error response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
 									"type": "string"
 								}
 							}
@@ -594,6 +1524,10 @@
 		"security": [
 			{
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -602,49 +1536,183 @@
 		"x-api-token-group": [
 			"Intel Write"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logos",
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "brand-protection.logos",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/brand-protection/scan-logo": {
 		"operationId": "postAccountsAccountIdBrandProtectionScanLogo",
 		"summary": "Create new logo queries from image files",
-		"description": "Return new logo queries created from image files",
+		"description": "Return new logo queries created from image files.",
 		"responses": {
-			"default": {
-				"description": "Default error response",
+			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"type": "object",
 							"properties": {
 								"code": {
-									"description": "Error code",
+									"description": "Error code.",
 									"type": "integer"
 								},
 								"errors": {
-									"description": "Errors",
+									"description": "Errors.",
 									"type": "object",
-									"additionalProperties": {}
+									"additionalProperties": {
+										"type": "object"
+									}
 								},
 								"message": {
-									"description": "Error message",
+									"description": "Error message.",
 									"type": "string"
 								},
 								"status": {
-									"description": "Error name",
+									"description": "Error name.",
 									"type": "string"
 								}
 							}
 						}
 					}
 				}
+			},
+			"403": {
+				"description": "Forbidden.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Resource not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "Rate limit exceeded.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Default error response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"2XX": {
+				"description": "Successful response."
 			}
 		},
 		"security": [
 			{
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -653,49 +1721,183 @@
 		"x-api-token-group": [
 			"Intel Write"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "scan-logo",
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "brand-protection.scan-logo",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/brand-protection/scan-page": {
 		"operationId": "postAccountsAccountIdBrandProtectionScanPage",
 		"summary": "Create new logo queries from URLs",
-		"description": "Return new logo queries created from URLs",
+		"description": "Return new logo queries created from URLs.",
 		"responses": {
-			"default": {
-				"description": "Default error response",
+			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"type": "object",
 							"properties": {
 								"code": {
-									"description": "Error code",
+									"description": "Error code.",
 									"type": "integer"
 								},
 								"errors": {
-									"description": "Errors",
+									"description": "Errors.",
 									"type": "object",
-									"additionalProperties": {}
+									"additionalProperties": {
+										"type": "object"
+									}
 								},
 								"message": {
-									"description": "Error message",
+									"description": "Error message.",
 									"type": "string"
 								},
 								"status": {
-									"description": "Error name",
+									"description": "Error name.",
 									"type": "string"
 								}
 							}
 						}
 					}
 				}
+			},
+			"403": {
+				"description": "Forbidden.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Resource not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "Rate limit exceeded.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Default error response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code.",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors.",
+									"type": "object",
+									"additionalProperties": {
+										"type": "object"
+									}
+								},
+								"message": {
+									"description": "Error message.",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"2XX": {
+				"description": "Successful response."
 			}
 		},
 		"security": [
 			{
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -704,8 +1906,9 @@
 		"x-api-token-group": [
 			"Intel Write"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "scan-page",
+		"x-fern-availability": "deprecated",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "brand-protection.scan-page",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	}
