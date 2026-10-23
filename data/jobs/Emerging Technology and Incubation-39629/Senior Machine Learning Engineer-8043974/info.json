@@ -27,7 +27,9 @@
 			"name": "Job Posting Location",
 			"value": [
 				"Austin, US",
-				"London, UK"
+				"London, UK",
+				"New York, NY",
+				"San Francisco, CA"
 			],
 			"value_type": "multi_select"
 		},
@@ -41,7 +43,7 @@
 		}
 	],
 	"id": 8043974,
-	"updated_at": "2026-10-21T14:43:01-04:00",
+	"updated_at": "2026-10-23T16:54:29-04:00",
 	"requisition_id": "905",
 	"title": "Senior Machine Learning Engineer",
 	"company_name": "Cloudflare",
@@ -70,6 +72,20 @@
 			"location": "London, United Kingdom",
 			"child_ids": [],
 			"parent_id": 74843
+		},
+		{
+			"id": 19990,
+			"name": "New York, NY",
+			"location": "New York, New York, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19991,
+			"name": "San Francisco, CA",
+			"location": "San Francisco, CA, United States",
+			"child_ids": [],
+			"parent_id": 48752
 		}
 	],
 	"ai_disclaimer": null,

@@ -3,7 +3,7 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h3>Available Locations | Austin, US; Seattle, US or London, UK</h3>
+<h3>Available Locations | Austin, US | New York, NY | San Francisco, CA | Seattle, US or London, UK</h3>
 <h3>About the Role</h3>
 <p>Emerging Technologies &amp; Incubation (ETI) builds and launches new products on Cloudflare’s global network. Within ETI, you’ll join the Storage Infrastructure team to build and operate a shared storage platform for the teams behind stateful products such as R2, Workers KV, and Durable Objects.</p>
 <p>We manage the underlying storage hardware, distributed databases, and object storage clusters, including fleet lifecycle automation, capacity, hardware validation, failure-domain planning, observability, and production operations. In this role, you will build platform software and automation that makes these fleet operations safe, repeatable, and scalable.</p>
@@ -35,6 +35,7 @@
 <h3>Compensation</h3>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
+	<li>F<span data-sheets-root="1">or Bay Area based hires: Estimated annual salary of $194,000 - $266,000</span></li>
 	<li>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated annual salary of $185,000 - $254,000</li>
 </ul>
 <h3>Equity</h3>

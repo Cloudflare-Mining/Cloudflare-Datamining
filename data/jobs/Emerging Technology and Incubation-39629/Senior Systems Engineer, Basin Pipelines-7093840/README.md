@@ -6,7 +6,6 @@
 <h3>Available Locations | Austin, TX; Seattle, WA or London, UK</h3>
 <h3><strong>About the Department</strong></h3>
 <p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.&nbsp;</p>
-<h3>&nbsp;</h3>
 <h3><strong>About the project</strong></h3>
 <p><a href="https://blog.cloudflare.com/cloudflare-basin/">Cloudflare Basin</a> became generally available during Birthday Week 2026. We are looking to extend engineering teams working on Basin Pipelines:</p>
 <ul>
@@ -14,7 +13,6 @@
 		<p>Basin Pipelines ingests, transforms, and loads streaming data into Apache Iceberg or Parquet in R2</p>
 	</li>
 </ul>
-<h3>&nbsp;</h3>
 <h3>Is this role a fit for you?</h3>
 <p>We are looking for engineers who build infrastructure software from scratch, not those who operate it.&nbsp;If your core expertise is configuring, managing, scaling, or writing applications on top of existing data platforms like Kafka, Flink, Spark, Databricks, or Snowflake, this role is not the right fit. We are seeking the engineers who can write the code that replaces these tools.</p>
 <h3>Responsibilities</h3>

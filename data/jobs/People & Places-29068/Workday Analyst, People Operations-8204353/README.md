@@ -4,27 +4,36 @@
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
 <p><strong>About the Role</strong></p>
-<p>In this role, you will build and maintain Workday reporting solutions and partner with cross-functional teams to deliver scalable, high-impact reporting that supports business decision-making.&nbsp; You will serve as a subject matter expert in Workday reporting, data governance, and workforce analytics. This role drives the design, development, and enhancement of advanced reporting solutions and dashboards that enable strategic HR decision-making across the enterprise. With a strong understanding of Workday data structures and business processes, you will play a critical role in improving data quality, automating reporting processes, and strengthening the organization’s HR analytics maturity.</p>
-<p><strong>Responsibilities</strong></p>
+<p>Cloudflare is hiring a Workday Analyst, People Operations to support Workday production needs for People teams. This role will handle tier 1 and tier 2 business-as-usual (BAU) tickets, routine Workday updates, EIBs, and HR reporting. You will be a key connection point between HR stakeholders and the HRIS team, helping resolve day-today Workday issues while escalating complex configuration, process, and security questions through the right review paths. This role is a good fit for someone with hands-on Workday experience who wants to grow deeper in Workday reporting, business processes, security, and functional HCM support while helping HR Operations build stronger inteam Workday capability</p>
+<p>What You'll Do (Required)</p>
 <ul>
-	<li><strong>Workday Report Development &amp; Architecture:</strong> Design, build, and optimize complex, enterprise-level Workday reports (Advanced, Matrix, Composite, Discovery Boards, Worksheets, and RaaS) incorporating complex calculated fields and query optimization across Core HR, Payroll, Compensation, Benefits, Talent, and Finance.</li>
-	<li><strong>Strategic Stakeholder Advisory:</strong> Act as a trusted partner to HRBPs, COEs, and executive leaders, translating ambiguous business requirements into scalable reporting solutions and intuitive, self-service dashboards.</li>
-	<li><strong>Governance, Compliance &amp; Security:</strong> Ensure data accuracy, consistency, and strict system security/governance across Workday analytics, supporting audit, regulatory compliance, and external benchmarking requirements.</li>
-	<li><strong>Process Automation &amp; Continuous Improvement:</strong> Lead initiatives to automate recurring workflows, leverage APIs/integrations to enrich reporting datasets, and stay current with Workday releases to continuously improve system capabilities.</li>
-	<li><strong>Documentation &amp; Enablement:</strong> Develop and maintain detailed documentation for reporting logic, calculated field methodologies, and data definitions; manage hypercare, implementation rollouts, and user adoption across technical levels.</li>
-	<li><strong>Leadership &amp; Operational Support:</strong> Mentor junior team members on reporting logic and best practices, conduct quality assurance reviews, and efficiently handle ad-hoc analytics and production troubleshooting.</li>
+	<li>&nbsp;Triage and resolve BAU Workday tickets; escalate complex issues to HRIS with clear documentation</li>
+	<li>Reassign tasks, rescind and cancel transactions, and correct routine transactional errors</li>
+	<li>Create BP notifications and make small BP adjustments under HRIS governance</li>
+	<li>Create, test, and run EIBs for approved HR operational needs Build and maintain HR reports; make minor field additions and route larger reporting work to HRIS</li>
+	<li>Apply Workday security awareness when supporting reports, business processes, EIBs, and data changes</li>
+	<li>Build audit reports that flag missing employee data, compensation anomalies, and potential access or dataquality issues</li>
+	<li>Partner with the HR Data Governance partner on data standards, field classification, audit findings, and appropriate data use</li>
+	<li>Use Workday security, reporting, and process knowledge to strengthen HR Operations team capability and reduce dependency on senior HRIS resources for routine requests</li>
+	<li>Document process corrections, including when and how to resend transactions Support training for international People Ops teams on standard Workday processes and ticket submission</li>
 </ul>
-<p><strong>Requirements</strong></p>
+<p><strong>Experience Required:</strong></p>
 <ul>
-	<li>5–7+ years of experience in Workday Reporting, HR Analytics, or HRIS with increasing responsibility and complexity.</li>
-	<li>Advanced experience with Workday Report Writer, EIBs, Calculated Fields, worksheets, and dashboards; Workday PRISM or other advanced modules a plus.</li>
-	<li>Demonstrated expertise working with large HR data sets and creating scalable, automated reporting solutions.</li>
+	<li>2–4 years of hands-on Workday experience in reporting, production support, business processes, security, and functional HCM support</li>
+	<li>Working knowledge of Workday security concepts, including domain security, security groups, and how security affects report fields and data visibility</li>
+	<li>Experience creating and updating Workday reports Strong troubleshooting skills and clear written communication</li>
+	<li>Ability to explain Workday issues and process requirements to HR stakeholders in a practical, easy-tounderstand way Interest in building deeper</li>
+	<li>Workday expertise across HCM, payroll, time tracking, absence, compensation, and benefits</li>
+</ul>
+<p><strong>Preferred Experience:&nbsp;</strong></p>
+<ul>
+	<li>EIB experience&nbsp;</li>
+	<li>Business process configuration experience, including notifications and approvals</li>
+	<li>Experience building audit and data-quality reports</li>
+	<li>Experience partnering with data governance and compliance teams on standards, access reviews, and audit findings Experience supporting international HR teams</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $xxx-xxx</span></li>
-</ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
