@@ -28,7 +28,7 @@
 </ul>
 <p><strong>Role Requirements</strong></p>
 <ul>
-	<li>5+ years of experience in backend software development with a focus on building&nbsp; secure and highly available distributed systems.</li>
+	<li>8+ years of experience in backend software development with a focus on building&nbsp; secure and highly available distributed systems.</li>
 	<li>Strong programming skills in Go, Rust, C++, or a similar systems-level language.</li>
 	<li>Knowledge of modern Unix/Linux development and runtime environments.</li>
 	<li>Grasp of networking protocols in Layers 3-7 of the OSI Model and experience with network programming.</li>
