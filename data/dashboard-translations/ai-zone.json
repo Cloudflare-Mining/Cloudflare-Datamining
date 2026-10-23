@@ -119,6 +119,7 @@
 	"ai-zone.common.errors.waf.max_rules_toast": "You have used all <b>%{maxRules}</b> security custom rules available on the plan. To enable blocking individual AI Crawlers you need to <0>delete a rule</0> or upgrade your plan.",
 	"ai-zone.common.errors.waf.max_rules_notification": "No security custom rules available. To block individual AI Crawlers you need to <0>delete a rule</0> or upgrade your plan.",
 	"ai-zone.common.errors.waf.custom_response_no_rule": "You must block one or more <0>Crawlers</0> in order to set a custom response.",
+	"ai-zone.common.errors.waf.custom_rule_missing_id": "Could not update the AI Crawl Control rule. Refresh the page and try again.",
 	"ai-zone.common.errors.waf.expression_parse_failed": "Could not update path exclusions — the WAF expression could not be parsed. Your other changes were saved.",
 	"ai-zone.common.errors.price_save_failed": "Failed to save price settings",
 	"ai-zone.common.errors.read_only": "You don't have permissions to change this setting.",

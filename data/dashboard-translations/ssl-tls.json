@@ -648,6 +648,7 @@
 	"ssl-tls.total_tls.card_title": "Total TLS",
 	"ssl-tls.total_tls.card_description": "Cloudflare will issue individual certificates for every proxied hostname. Once enabled, all hostnames in your domain will be covered by a TLS certificate.",
 	"ssl-tls.total_tls.card_enabling_note": "Please allow some time for certificates to be provisioned for each of your DNS records. You can monitor the progress via the Edge Certificates table.",
+	"ssl-tls.total_tls.delete_certificate_warning": "Deleting this certificate stops Total TLS from automatically ordering new certificates for its hostnames, even if you delete and recreate their DNS records.",
 	"ssl-tls.total_tls.default_ca_select_option": "Default CA (Recommended)",
 	"ssl-tls.total_tls.disable_modal_title": "Disable Total TLS",
 	"ssl-tls.total_tls.disable_modal_description": "Immediately after confirming the downgrade, your certificates will be deleted and no longer served to visitors.",
