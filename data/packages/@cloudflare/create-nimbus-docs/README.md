@@ -1,43 +1,36 @@
-# create-nimbus-docs
+# @cloudflare/create-nimbus-docs
 
-Scaffolder for new Nimbus projects.
+Create a [Nimbus](https://nimbus-docs.com) docs site.
+
+Requires Node.js 22.12.0 or later.
 
 ```sh
 npx @cloudflare/create-nimbus-docs@latest my-docs
+cd my-docs
+npm run dev
 ```
 
-Flags:
+It writes an Astro docs site into `my-docs`: layouts, components, styles, routes and example pages, as plain files you can edit. It asks whether the site has an API reference, where you'll deploy and whether to include the example pages.
 
-- `--deploy <cloudflare|other>` — static-output deploy target (default: `cloudflare`).
-- `--adapter <cloudflare|vercel|netlify|node>` — select server output and its Astro adapter.
-- `--content <starter|empty>` — docs content shape (default: `starter`, with example pages).
-- `--yes`, `-y` — accept defaults, skip prompts.
-- `--package-manager <npm|pnpm|yarn|bun>` — override auto-detection.
-- `--skip-install` — don't run the package manager after scaffolding.
-- `--no-git` — don't initialize a git repo.
-- `--template-dir <path>` — scaffold from a local template directory instead of
-  downloading (no network).
+## Options
 
-## Templates & network
+- `--yes`, `-y`: skip the questions. You get the example pages, a static site set up for Cloudflare, a git repository and installed dependencies.
+- `--content <starter|empty>`: example pages, or none.
+- `--api [spec]`: add an API reference at `/api`, from your OpenAPI 3.x file (`.yaml`, `.yml`, `.json`) or a sample. Put the directory first: `my-docs --api`.
+- `--template <docs|api>`: what's at the root (default `docs`); `api` makes a site that is only an API reference, at `/`.
+- `--deploy <cloudflare|other>`: where the static site deploys (default `cloudflare`).
+- `--adapter <cloudflare|netlify|vercel|node>`: render pages on request with that adapter, instead of `--deploy`.
+- `--package-manager <npm|pnpm|yarn|bun>`: override the one that ran the command.
+- `--skip-install`, `--no-git`: skip installing dependencies or creating a git repository.
+- `--template-dir <path>`: scaffold from a local folder instead of downloading the template.
 
-Templates are downloaded at scaffold time from the
-[`nimbus`](https://github.com/cloudflare/nimbus) repo, pinned to the
-tag matching this CLI's version (`@cloudflare/create-nimbus-docs@0.5.0` fetches
-the `templates-v0.5.0` tag) — so a given CLI version always scaffolds the same
-templates, forever. The tag lives on a dedicated `templates` branch that holds
-only the generated variants, so the download stays small. **A scaffold needs
-network access to GitHub** (or `--template-dir`).
+## Templates
 
-- Old CLI versions are unaffected by new releases — each pins its own tag.
-- Anonymous GitHub tarball downloads are rate-limited to 60/hour/IP. On CI farms
-  or NATed networks, set `GIGET_AUTH=<github token>` to authenticate.
-- Fully offline? Generate templates locally (`pnpm build:templates` in the
-  monorepo) and pass `--template-dir <path>`.
+Each version of this package downloads its templates from the matching `templates-v<version>` tag on GitHub, so a version always starts from the same files. That download needs access to GitHub; `--template-dir` skips it.
 
-If a download fails, the error names the repo, the tag it tried, and these two
-escape hatches.
+## Documentation
 
-Project home: [nimbus-docs.com](https://nimbus-docs.com)
+[nimbus-docs.com/quickstart](https://nimbus-docs.com/quickstart)
 
 ## License
 

@@ -1,63 +1,67 @@
-# nimbus-docs
+# @cloudflare/nimbus-docs
 
-Astro integration, content schemas, data helpers (`getSidebar`, `getPrevNext`, `getTOC`, `getBreadcrumbs`, `getEditUrl`), the MDX→markdown primitive (`renderEntryAsMarkdown`), client-side primitives (`@cloudflare/nimbus-docs/client`), package-manager command translator (`@cloudflare/nimbus-docs/lib/pkgm`), and the `nimbus-docs` CLI for installing components, utilities, features, and server-output adapters into your project.
+The Astro integration and CLI for [Nimbus](https://nimbus-docs.com), an authoring tool for docs.
 
-Most users install via the scaffolder:
+Create a site with the scaffolder, which installs and configures this package:
 
 ```sh
 npx @cloudflare/create-nimbus-docs@latest my-docs
 ```
 
-Subpaths:
+## The integration
 
-- `@cloudflare/nimbus-docs` — integration + data helpers + `defineConfig`.
-- `@cloudflare/nimbus-docs/content` — `docsCollection()`, `partialsCollection()` factories.
-- `@cloudflare/nimbus-docs/schemas` — `docsSchema`, `partialsSchema`, `defineDocSchema`.
-- `@cloudflare/nimbus-docs/types` — public type re-exports.
-- `@cloudflare/nimbus-docs/server` — server-runtime helpers.
-- `@cloudflare/nimbus-docs/adapters` — unstable adapter recipes used by the scaffolder.
-- `@cloudflare/nimbus-docs/client` — `mount`, `makeDisclosure`, `initTabs`, `lockScroll`, `codeCopy`, `headingAnchors`, etc.
-- `@cloudflare/nimbus-docs/react` — headless React primitives for interactive diagrams: `<Diagram>` + `useDiagram` / `usePhase` / `useMeasure` / `useTabIndicator` + `diagramRegistry`. `react` and `react-dom` are optional peer deps; only required when this entry is imported.
-- `@cloudflare/nimbus-docs/lib/pkgm` — `getCommand`, `getTabs`, `MANAGERS`.
-- `@cloudflare/nimbus-docs/components/NimbusHead.astro` — `<NimbusHead />` for `<head>` plumbing.
+New sites call `nimbus(config)` in `astro.config.ts`. The integration processes MDX, validates config and content during the build, indexes search, and provides the helpers your routes call. The scaffolder copies content collections, routes, layouts and UI components into your repo. Shared components such as `NimbusHead` and `Icon` come from this package.
 
-Opt an existing static scaffold into server output with an Astro adapter:
+## The CLI
+
+Run commands inside a site with `npx nimbus-docs <command>`.
+
+### Add to your site
+
+`add` copies components and their dependencies into your repo as source. Features are Markdown recipes: a coding agent running the command receives the recipe directly, and `--print` writes it out for any agent, or for you to follow.
 
 ```sh
-pnpm exec nimbus-docs add adapter-cloudflare
+npx nimbus-docs add tabs
+npx nimbus-docs add new-version --print
 ```
 
-Fresh Cloudflare server scaffolds enable request rendering automatically. For an existing project, run the command inside a coding agent to hand off the full setup automatically. From a regular shell, pipe the recipe manually:
+`add` alone lists the registry. `add source github --print` or `add source notion --print` prints the guide for loading pages from another repository or from Notion. `add adapter-<cloudflare|netlify|vercel|node>` installs and configures a server adapter.
+
+### Check your pages
+
+`check` finds problems without building. `lint` catches authoring mistakes; build the site once first, so it has the link map. Both take `--fix`. `check --json` and `lint --format json` give an agent findings it can act on.
 
 ```sh
-pnpm exec nimbus-docs add adapter-cloudflare --print | claude
+npx nimbus-docs check
+npx nimbus-docs lint --fix
 ```
 
-Static output remains deployable to any static host.
+### Keep up with Nimbus
 
-## Interactive diagrams
-
-```tsx
-import { Diagram, usePhase, useMeasure } from "@cloudflare/nimbus-docs/react";
-
-export function MyCard() {
-  return (
-    <Diagram label="My card">
-      {/* your card body */}
-    </Diagram>
-  );
-}
-```
-
-The visible components — action bar, tabs, controls — install on demand:
+Review upstream changes before updating the starter files copied into your repo. `outdated` lists starter files, components and package changes that are behind. `diff <file>` shows a starter file's upstream change, and `--apply` takes it when you haven't edited the file. `migrate` applies the edits a new version needs and lists the ones to review.
 
 ```sh
-pnpm dlx @cloudflare/nimbus-docs add diagram
+npx nimbus-docs outdated
+npx nimbus-docs migrate
 ```
 
-Mount cards via Astro's `client:visible` directive so hydration defers until the diagram enters the viewport.
+A site created before `nimbus.json` existed starts with `npx nimbus-docs init`.
 
-Project home: [nimbus-docs.com](https://nimbus-docs.com)
+## Imports
+
+| Import | For |
+| --- | --- |
+| `@cloudflare/nimbus-docs` | `nimbus()` and `defineConfig` |
+| `@cloudflare/nimbus-docs/runtime` | Page data in your routes: sidebar, breadcrumbs, previous and next |
+| `@cloudflare/nimbus-docs/content` | Content collections |
+| `@cloudflare/nimbus-docs/client` | Browser behaviour for your components |
+| `@cloudflare/nimbus-docs/react` | Headless interactive diagrams |
+
+The [package API](https://nimbus-docs.com/styling/package-api) covers the helpers you'll use most; the TypeScript declarations list every export.
+
+## Documentation
+
+[nimbus-docs.com](https://nimbus-docs.com), with the full CLI reference at [nimbus-docs.com/cli](https://nimbus-docs.com/cli).
 
 ## License
 
