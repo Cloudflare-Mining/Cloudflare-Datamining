@@ -4546,6 +4546,11 @@
 		"x-api-token-group": [
 			"Hyperdrive Write"
 		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.hyperdrive.planetscale.database.create"
+			]
+		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "hyperdrive",
 		"x-fern-sdk-method-name": "create-database-signature",

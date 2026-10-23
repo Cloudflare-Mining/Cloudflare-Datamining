@@ -2033,6 +2033,151 @@
 		"x-fern-sdk-method-name": "aggregate-relevance",
 		"x-stability": "beta"
 	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/severity/aggregate": {
+		"operationId": "rssArticleSeverityAggregate",
+		"summary": "Count Threat Signals articles by severity band",
+		"description": "Beta. Counts the account's Threat Signals articles in each intrinsic severity band. An article's band is the severity level nearest its severity, from informational to critical. Articles without a severity are not counted. min_relevance counts only articles at or above a relevance band for any active Priority Intelligence Requirement. Like the article severity field, severity is reported only while the account has an active Priority Intelligence Requirement, including one the matcher paused; otherwise every count is zero. All counts are read together and are exact.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "published_after",
+				"in": "query",
+				"schema": {
+					"description": "Include articles published at or after this ISO 8601 date-time with Z or a numeric UTC offset; normalized to UTC.",
+					"type": "string",
+					"format": "date-time"
+				}
+			},
+			{
+				"name": "published_before",
+				"in": "query",
+				"schema": {
+					"description": "Include articles published at or before this ISO 8601 date-time with Z or a numeric UTC offset; normalized to UTC.",
+					"type": "string",
+					"format": "date-time"
+				}
+			},
+			{
+				"name": "min_relevance",
+				"in": "query",
+				"schema": {
+					"description": "Beta. Count only articles at or above this relevance band for any active Priority Intelligence Requirement, as the article list's min_relevance does without pir_id. Excludes articles that have not been scored against an active PIR.",
+					"type": "string",
+					"enum": [
+						"low",
+						"medium",
+						"high"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Threat Signals response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"articles": {
+											"description": "Beta. Number of articles in each severity band: the severity level nearest the article's severity. Articles without a severity are not counted, and every count is zero when the account has no active Priority Intelligence Requirements.",
+											"type": "object",
+											"properties": {
+												"critical": {
+													"type": "integer",
+													"minimum": 0
+												},
+												"high": {
+													"type": "integer",
+													"minimum": 0
+												},
+												"informational": {
+													"type": "integer",
+													"minimum": 0
+												},
+												"low": {
+													"type": "integer",
+													"minimum": 0
+												},
+												"medium": {
+													"type": "integer",
+													"minimum": 0
+												}
+											},
+											"required": [
+												"informational",
+												"low",
+												"medium",
+												"high",
+												"critical"
+											]
+										}
+									},
+									"required": [
+										"articles"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Client error response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Threat Signals"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles",
+		"x-fern-sdk-method-name": "aggregate-severity",
+		"x-stability": "beta"
+	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/categories": {
 		"operationId": "rssFeedCategoryList",
 		"summary": "List Threat Signals feed categories",
