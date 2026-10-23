@@ -1,8 +1,8 @@
 {
 	"DELETE /accounts/{account_id}/cloudforce-one/events/dataset/-/groups/{group_id}": {
 		"operationId": "delete_GroupDelete",
-		"summary": "Delete a group for an account",
-		"description": "Delete a group for an account",
+		"summary": "Delete an account group",
+		"description": "Deletes an account group by its ID.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -94,13 +94,13 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.groups",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets.access.groups",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/dataset/-/groups/{group_id}/members/{member_id}": {
 		"operationId": "delete_GroupMemberDelete",
-		"summary": "Delete a group member",
-		"description": "Delete a group member",
+		"summary": "Remove an account from a group",
+		"description": "Removes an account from an account group.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -201,13 +201,13 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.groups.members",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets.access.groups.members",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/-/groups": {
 		"operationId": "get_GroupList",
-		"summary": "List groups for an account",
-		"description": "List groups for an account",
+		"summary": "List account groups",
+		"description": "Lists the account groups. A group is a set of accounts that can be given access to a dataset with `threat-intel datasets access permissions create`.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -317,13 +317,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.groups.get",
-		"x-fern-sdk-method-name": "group"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets.access.groups",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/-/groups/{group_id}": {
 		"operationId": "get_GroupRead",
-		"summary": "Read a group for an account",
-		"description": "Read a group for an account",
+		"summary": "Get an account group",
+		"description": "Returns an account group by its ID.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -474,13 +474,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.groups.get",
-		"x-fern-sdk-method-name": "v2"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets.access.groups",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/-/groups/{group_id}/members": {
 		"operationId": "get_GroupMemberList",
 		"summary": "List group members",
-		"description": "List group members",
+		"description": "Lists the accounts in an account group.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -596,13 +596,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.groups.members",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets.access.groups.members",
+		"x-fern-sdk-method-name": "list"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/-/groups": {
 		"operationId": "post_GroupCreate",
-		"summary": "Create a group",
-		"description": "Create a group",
+		"summary": "Create an account group",
+		"description": "Creates a named group of accounts. To give the group access to a dataset, use `threat-intel datasets access permissions create`.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -732,13 +732,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.groups",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets.access.groups",
 		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/-/groups/{group_id}/members": {
 		"operationId": "post_GroupMemberCreate",
-		"summary": "Create a group member",
-		"description": "Create a group member",
+		"summary": "Add an account to a group",
+		"description": "Adds an account to an account group. Identify the account by `accountId` or `accountTag`.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -871,13 +871,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.groups.members",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets.access.groups.members",
 		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/events/dataset/-/groups/{group_id}": {
 		"operationId": "put_GroupUpdate",
-		"summary": "Update a group",
-		"description": "Update a group",
+		"summary": "Update an account group",
+		"description": "Replaces an account group's `name` and `description`.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1015,7 +1015,7 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.groups",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets.access.groups",
 		"x-fern-sdk-method-name": "update"
 	}
 }

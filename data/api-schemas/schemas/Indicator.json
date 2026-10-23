@@ -1,8 +1,8 @@
 {
 	"DELETE /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/{indicator_id}": {
 		"operationId": "delete_IndicatorDelete",
-		"summary": "Deletes an indicator",
-		"description": "Deletes a specific indicator by its UUID.",
+		"summary": "Delete an indicator",
+		"description": "Deletes an indicator by its UUID.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -105,13 +105,13 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.indicators",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/{indicator_id}/relationships/{rel_uuid}": {
 		"operationId": "delete_IndicatorRelationshipDelete",
-		"summary": "Delete a relationship",
-		"description": "Deletes a relationship by UUID. Idempotent: returns deleted=false if not found.",
+		"summary": "Delete an indicator relationship",
+		"description": "Deletes an indicator relationship by its UUID. Returns `deleted: false` if the relationship doesn't exist.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -231,13 +231,13 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators.relationships",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.indicators.relationships",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators": {
 		"operationId": "get_IndicatorListLegacy",
-		"summary": "Lists indicators",
-		"description": "This method is deprecated. Please use /events/indicators to retrieve a paginated list of indicators.",
+		"summary": "List indicators in a dataset (legacy)",
+		"description": "Legacy. Use `threat-intel indicators list` (`GET /events/indicators`) instead. It supports multiple datasets and cursor pagination.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -500,16 +500,16 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "deprecated",
-		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators.get",
-		"x-fern-sdk-method-name": "indicator-legacy",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.indicators.legacy",
+		"x-fern-sdk-method-name": "list",
 		"x-forge-sunset": {
 			"date": "2030-01-01T00:00:00Z"
 		}
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/{indicator_id}": {
 		"operationId": "get_IndicatorRead",
-		"summary": "Reads an indicator",
-		"description": "Retrieves a specific indicator by its UUID.",
+		"summary": "Get an indicator",
+		"description": "Returns an indicator by its UUID.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -700,13 +700,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators.get",
-		"x-fern-sdk-method-name": "indicator"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.indicators",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/{indicator_id}/relationships": {
 		"operationId": "get_IndicatorRelationshipsList",
-		"summary": "List relationships for an indicator",
-		"description": "Returns sparse relationship edges. Optionally hydrate related entities via `expand`.",
+		"summary": "List indicator relationships",
+		"description": "Lists the relationships that start at an indicator. Use `search` to filter them and `expand` to include the related entities in the response.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -997,13 +997,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators.relationships",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.indicators.relationships",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/tags": {
 		"operationId": "get_IndicatorTagsList",
-		"summary": "List mirrored tags for an indicator dataset",
-		"description": "Returns all mirrored tags from the indicator dataset (DO mirror table). No pagination.",
+		"summary": "List tags on a dataset's indicators",
+		"description": "Lists the tags applied to indicators in a dataset. Results are not paginated.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1169,13 +1169,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators.tags",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.indicators.tags",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/indicators": {
 		"operationId": "get_IndicatorList",
-		"summary": "Lists indicators across multiple datasets",
-		"description": "Retrieves indicators across specified datasets, ordered by createdAt descending then UUID, dataset ID, and shard ID ascending. Use one standalone datasetIds scope value: 'all'/'*' or 'operational' for readable intelligence datasets (isAnalytics=false), or 'analytics' for readable analytics datasets (isAnalytics=true). If no datasetIds are provided, uses the default dataset.",
+		"summary": "List indicators",
+		"description": "Lists indicators across datasets, newest first. `datasetIds` accepts dataset UUIDs or one scope value used alone: `all` (or `*`) and `operational` select the intelligence datasets you can read, and `analytics` selects the analytics datasets you can read. Without `datasetIds`, the default dataset is used.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2001,8 +2001,8 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.indicators",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.indicators",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/indicators/aggregate": {
 		"operationId": "get_IndicatorAggregate",
@@ -2247,8 +2247,8 @@
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/{indicator_id}": {
 		"operationId": "patch_IndicatorUpdate",
-		"summary": "Updates an indicator",
-		"description": "Updates an existing indicator's properties.",
+		"summary": "Update an indicator",
+		"description": "Updates the given fields of an indicator and leaves the other fields unchanged.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2582,13 +2582,13 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators",
-		"x-fern-sdk-method-name": "patch"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.indicators",
+		"x-fern-sdk-method-name": "update"
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/{indicator_id}/relationships/{rel_uuid}": {
 		"operationId": "patch_IndicatorRelationshipUpdate",
-		"summary": "Update a relationship",
-		"description": "Partially updates a relationship by UUID. Only provided fields are changed.",
+		"summary": "Update an indicator relationship",
+		"description": "Updates the given fields of an indicator relationship and leaves the other fields unchanged.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2775,13 +2775,13 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators.relationships",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.indicators.relationships",
 		"x-fern-sdk-method-name": "update"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/{indicator_id}/relationships": {
 		"operationId": "post_IndicatorRelationshipCreate",
-		"summary": "Create a relationship for an indicator",
-		"description": "Creates a new relationship with the indicator as the source entity. Indicator↔indicator relationships are not supported.",
+		"summary": "Create an indicator relationship",
+		"description": "Creates a relationship from an indicator to an event or tag (`targetType`). Relationships between two indicators are not supported.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2972,13 +2972,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators.relationships",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.indicators.relationships",
 		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/bulk": {
 		"operationId": "post_IndicatorCreateBulk",
-		"summary": "Creates multiple indicators in bulk",
-		"description": "Creates multiple indicators at once with their respective types and related datasets.",
+		"summary": "Create indicators in bulk",
+		"description": "Creates multiple indicators in a dataset in one request. Set `autoCreateType` to create any indicator types that don't exist.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3157,13 +3157,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators.bulk",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.indicators",
+		"x-fern-sdk-method-name": "bulk-create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/create": {
 		"operationId": "post_IndicatorCreate",
-		"summary": "Creates a new indicator",
-		"description": "Creates a new indicator with the specified type and related datasets.",
+		"summary": "Create an indicator",
+		"description": "Creates an indicator in a dataset. Set `autoCreateType` to create the indicator type if it doesn't exist.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3421,7 +3421,7 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators.create",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.indicators",
 		"x-fern-sdk-method-name": "create"
 	}
 }

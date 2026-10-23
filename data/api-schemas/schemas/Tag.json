@@ -1,8 +1,8 @@
 {
 	"DELETE /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}": {
 		"operationId": "delete_TagDelete",
-		"summary": "Deletes a tag (SoT)",
-		"description": "Deletes a Source-of-Truth tag by UUID.",
+		"summary": "Delete a tag",
+		"description": "Deletes a tag by its UUID.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -134,13 +134,13 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.tags",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.tags",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}/relationships/{rel_uuid}": {
 		"operationId": "delete_TagRelationshipDelete",
 		"summary": "Delete a tag relationship",
-		"description": "Deletes a relationship by UUID. Idempotent: returns deleted=false if not found. Requires datasetId query param.",
+		"description": "Deletes a tag relationship by its UUID. `datasetId` is required. Returns `deleted: false` if the relationship doesn't exist.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -259,7 +259,7 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.tags.relationships",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.tags.relationships",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/tags/{tag_uuid}/indicators": {
@@ -671,8 +671,8 @@
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/tags": {
 		"operationId": "get_TagList",
-		"summary": "Lists all tags (SoT)",
-		"description": "Returns all Source-of-Truth tags for an account. Supports legacy free-text `search` on tag value and `categoryUuid` exact match, plus a structured `filters` JSON array for filtering by metadata fields (originCountryISO, actorCategory, motive, priority, etc.). The authenticated account owns these account-scoped tags and receives their complete owner projection. Country values may be passed as alpha-2, alpha-3, name, or common alias. Purple TLP remains CFONE-only.",
+		"summary": "List tags",
+		"description": "Lists the account's tags. Use `search` to match tag values, `categoryUuid` to limit results to one category, and `filters` (a JSON array) to filter by fields such as `originCountryISO`, `actorCategory`, `motive`, or `priority`. Country filters accept alpha-2 or alpha-3 codes, names, or common aliases. Tags marked TLP:PURPLE are visible only to Cloudforce One.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1343,13 +1343,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.tags",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.tags",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}": {
 		"operationId": "get_TagDetail",
-		"summary": "Gets a tag by UUID (SoT)",
-		"description": "Returns the complete owner projection of an account-scoped Source-of-Truth tag by UUID, including custom fields (properties). Purple TLP remains CFONE-only.",
+		"summary": "Get a tag",
+		"description": "Returns a tag by its UUID, including its custom fields (`properties`). Tags marked TLP:PURPLE are visible only to Cloudforce One.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1885,13 +1885,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.tags",
-		"x-fern-sdk-method-name": "get-by-id"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.tags",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}/indicators": {
 		"operationId": "get_TagIndicatorsList",
-		"summary": "List indicators related to a tag",
-		"description": "Returns indicators associated with the provided tag UUID, with pagination. By default fans out across every intelligence (isAnalytics=false) indicator dataset the account can read; pass datasetIds to scope to dataset UUIDs or a scope value. Analytics datasets do not expose tag associations, so the analytics scope returns an empty result.",
+		"summary": "List a tag's indicators",
+		"description": "Lists the indicators that carry a tag, with pagination. By default, every intelligence dataset you can read is searched; use `datasetIds` to limit the search to specific datasets or a scope value. Analytics datasets don't store tag associations, so the `analytics` scope returns no results.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2291,13 +2291,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.tags.indicators",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.tags.indicators",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}/relationships": {
 		"operationId": "get_TagRelationshipsList",
-		"summary": "List relationships for a tag",
-		"description": "Returns sparse relationship edges. Optionally hydrate related entities via `expand`. Fans out across accessible intelligence (isAnalytics=false) indicator dataset shards; `all` and `operational` are equivalent. Analytics datasets do not expose tag associations, so the analytics scope returns an empty result.",
+		"summary": "List tag relationships",
+		"description": "Lists the relationships that start at a tag, across the intelligence datasets you can read. Use `datasets` to limit the datasets (`all` and `operational` are equivalent here) and `expand` to include the related entities. Analytics datasets don't store tag associations, so the `analytics` scope returns no results.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2594,13 +2594,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.tags.relationships",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.tags.relationships",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/tags/categories/actors": {
 		"operationId": "get_TaggedActorList",
-		"summary": "Lists all Actors",
-		"description": "Returns all known Actors from the shared CFONE-owned catalog. Accounts other than the catalog owner receive a redacted public projection: identity (`uuid`, `value`, `categoryUuid`, `categoryName`), metadata (`description`, `dateOfDiscovery`, `tlp`, `confidence`, `properties`), origin (`originCountryISO`, `originCountryISO_annotated`), and public aliases/references (`aliasGroupNames`, `aliases`, `externalReferences`, `externalReferences_annotated`). Owner-private fields (internal aliases, attribution, motive, opsec level, etc.) are stripped from non-owner responses.",
+		"summary": "List threat actors",
+		"description": "Lists threat actors from the Cloudforce One actor catalog. Use `value` to match actor names and `filters` to filter by fields such as origin country. Accounts outside Cloudforce One receive only public fields: identity, description, discovery date, TLP, confidence, custom properties, origin country, public aliases, and external references. Fields such as internal aliases, attribution, motive, and OPSEC level are omitted.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3252,13 +3252,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.tags.categories.actors",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.tags.actors",
 		"x-fern-sdk-method-name": "list"
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}": {
 		"operationId": "patch_TagUpdate",
-		"summary": "Updates a tag (SoT)",
-		"description": "Updates an account-owned Source-of-Truth tag by UUID and returns its complete owner projection.",
+		"summary": "Update a tag",
+		"description": "Updates the given fields of a tag and returns the complete tag.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -4285,13 +4285,13 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.tags",
-		"x-fern-sdk-method-name": "patch"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.tags",
+		"x-fern-sdk-method-name": "update"
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}/relationships/{rel_uuid}": {
 		"operationId": "patch_TagRelationshipUpdate",
 		"summary": "Update a tag relationship",
-		"description": "Partially updates a relationship by UUID. Requires datasetId query param.",
+		"description": "Updates the given fields of a tag relationship and leaves the other fields unchanged. `datasetId` is required.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -4477,13 +4477,13 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.tags.relationships",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.tags.relationships",
 		"x-fern-sdk-method-name": "update"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}/relationships": {
 		"operationId": "post_TagRelationshipCreate",
-		"summary": "Create a relationship for a tag",
-		"description": "Creates a new relationship with the tag as the source entity. Requires a datasetId to locate the Indicators DO.",
+		"summary": "Create a tag relationship",
+		"description": "Creates a relationship from a tag to an event or indicator (`targetType`) in the dataset given by `datasetId`. Relationships between two tags are not supported.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -4635,13 +4635,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.tags.relationships",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.tags.relationships",
 		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/tags/create": {
 		"operationId": "post_TagCreate",
-		"summary": "Creates a new tag",
-		"description": "Creates an account-owned tag for threat events and returns its complete owner projection.",
+		"summary": "Create a tag",
+		"description": "Creates a tag in the account and returns the complete tag.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -5663,7 +5663,7 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-events.tags",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.tags",
 		"x-fern-sdk-method-name": "create"
 	}
 }

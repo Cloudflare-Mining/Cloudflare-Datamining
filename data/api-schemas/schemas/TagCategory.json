@@ -1,8 +1,8 @@
 {
 	"DELETE /accounts/{account_id}/cloudforce-one/events/tag-categories/{category_uuid}": {
 		"operationId": "delete_TagCategoryDelete",
-		"summary": "Deletes a tag category (SoT)",
-		"description": "Deletes a Source-of-Truth tag category by UUID.",
+		"summary": "Delete a tag category",
+		"description": "Deletes a tag category by its UUID.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -134,13 +134,13 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.tags.categories",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.tags.categories",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/tags/categories/{category_uuid}": {
 		"operationId": "delete_LegacyTagCategoryDelete",
-		"summary": "Deletes a tag category (SoT)",
-		"description": "Deprecated; use DELETE /events/tag-categories/{category_uuid}. Available through 2026-11-28.",
+		"summary": "Delete a tag category (legacy)",
+		"description": "Legacy. Use `threat-intel tags categories delete` (`DELETE /events/tag-categories/{category_uuid}`) instead. Available through 2026-11-28.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -273,7 +273,7 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "deprecated",
-		"x-fern-sdk-group-name": "cloudforce-one.events.tag-categories.legacy",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.tags.categories.legacy",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-sunset": {
 			"date": "2026-11-28T00:00:00Z"
@@ -282,8 +282,8 @@
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/tag-categories/{category_uuid}": {
 		"operationId": "get_TagCategoryDetail",
-		"summary": "Gets a tag category by UUID (SoT)",
-		"description": "Returns a single Source-of-Truth tag category by UUID, including its full schema.",
+		"summary": "Get a tag category",
+		"description": "Returns a tag category by its UUID, including the custom fields defined in its `schema`.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -518,13 +518,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.tags.categories",
-		"x-fern-sdk-method-name": "get-by-id"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.tags.categories",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/tags/categories": {
 		"operationId": "get_TagCategoryList",
-		"summary": "Lists all tag categories (SoT)",
-		"description": "Returns all Source-of-Truth tag categories for an account.",
+		"summary": "List tag categories",
+		"description": "Lists the account's tag categories. Use `search` to filter them.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -767,13 +767,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.tags.categories",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.tags.categories",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/tags/categories/{category_uuid}": {
 		"operationId": "get_LegacyTagCategoryDetail",
-		"summary": "Gets a tag category by UUID (SoT)",
-		"description": "Deprecated; use GET /events/tag-categories/{category_uuid}. Available through 2026-11-28.",
+		"summary": "Get a tag category (legacy)",
+		"description": "Legacy. Use `threat-intel tags categories get` (`GET /events/tag-categories/{category_uuid}`) instead. Available through 2026-11-28.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1009,7 +1009,7 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "deprecated",
-		"x-fern-sdk-group-name": "cloudforce-one.events.tag-categories.legacy",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.tags.categories.legacy",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-sunset": {
 			"date": "2026-11-28T00:00:00Z"
@@ -1018,8 +1018,8 @@
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/tag-categories/{category_uuid}": {
 		"operationId": "patch_TagCategoryUpdate",
-		"summary": "Updates a tag category (SoT)",
-		"description": "Updates a Source-of-Truth tag category by UUID.",
+		"summary": "Update a tag category",
+		"description": "Updates the given fields of a tag category and leaves the other fields unchanged.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1471,13 +1471,13 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.tags.categories",
-		"x-fern-sdk-method-name": "patch"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.tags.categories",
+		"x-fern-sdk-method-name": "update"
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/tags/categories/{category_uuid}": {
 		"operationId": "patch_LegacyTagCategoryUpdate",
-		"summary": "Updates a tag category (SoT)",
-		"description": "Deprecated; use PATCH /events/tag-categories/{category_uuid}. Available through 2026-11-28.",
+		"summary": "Update a tag category (legacy)",
+		"description": "Legacy. Use `threat-intel tags categories update` (`PATCH /events/tag-categories/{category_uuid}`) instead. Available through 2026-11-28.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1930,7 +1930,7 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "deprecated",
-		"x-fern-sdk-group-name": "cloudforce-one.events.tag-categories.legacy",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.tags.categories.legacy",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-sunset": {
 			"date": "2026-11-28T00:00:00Z"
@@ -1939,8 +1939,8 @@
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/tags/categories/create": {
 		"operationId": "post_TagCategoryCreate",
-		"summary": "Creates a new tag category (SoT)",
-		"description": "Creates a new Source-of-Truth tag category for an account.",
+		"summary": "Create a tag category",
+		"description": "Creates a tag category. Use `schema` to define the custom fields its tags can have.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2349,7 +2349,7 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.tags.categories.create",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.tags.categories",
 		"x-fern-sdk-method-name": "create"
 	}
 }

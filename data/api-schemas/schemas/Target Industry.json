@@ -1,8 +1,8 @@
 {
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/targetIndustries": {
 		"operationId": "get_TargetIndustryListByDataset",
-		"summary": "Lists all target industries for a specific dataset",
-		"description": "Lists all target industries for a specific dataset",
+		"summary": "List target industries in a dataset (legacy)",
+		"description": "Legacy. Use `threat-intel events target-industries list` (`GET /events/targetIndustries`) instead.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -110,14 +110,14 @@
 			"Cloudforce One Write",
 			"Cloudforce One Read"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.target.industries",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.target-industries.legacy",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/targetIndustries": {
 		"operationId": "get_TargetIndustryList",
-		"summary": "Lists target industries across multiple datasets",
-		"description": "Retrieves the catalog of industry classifications used in Cloudforce One threat intelligence.",
+		"summary": "List target industries used in datasets",
+		"description": "Lists the target industries referenced by events in the datasets given by `datasetIds`, or in the default dataset when `datasetIds` is omitted. To list every target industry, use `threat-intel events target-industries catalog list`.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -227,13 +227,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-events.target-industries",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.target-industries",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/targetIndustries/catalog": {
 		"operationId": "get_TargetIndustryListComplete",
-		"summary": "Lists all target industries from industry map catalog",
-		"description": "Lists all target industries from industry map catalog",
+		"summary": "List all target industries",
+		"description": "Lists every predefined target industry, whether or not an event uses it. To list only the industries used in specific datasets, use `threat-intel events target-industries list`.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -331,7 +331,7 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.target.industries.catalog",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.target-industries.catalog",
+		"x-fern-sdk-method-name": "list"
 	}
 }

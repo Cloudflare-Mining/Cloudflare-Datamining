@@ -6753,6 +6753,62 @@
 					}
 				}
 			},
+			"429": {
+				"description": "The submitter is over an enforced intake rate limit; the report was not created",
+				"headers": {
+					"Retry-After": {
+						"description": "Seconds to wait before the next submission can be accepted.",
+						"schema": {
+							"type": "integer",
+							"minimum": 1
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"err_code": {
+									"description": "rate_limited: the submitter is over an enforced intake rate limit for its account or for a reported domain. The report was not created. Retry after the number of seconds in the Retry-After response header.\n",
+									"type": "string"
+								},
+								"error_code": {
+									"description": "rate_limited: the submitter is over an enforced intake rate limit for its account or for a reported domain. The report was not created. Retry after the number of seconds in the Retry-After response header.\n",
+									"type": "string"
+								},
+								"msg": {
+									"description": "The error message for the error",
+									"type": "string"
+								},
+								"request": {
+									"type": "object",
+									"properties": {
+										"act": {
+											"description": "The report type for submitted reports.",
+											"type": "string"
+										}
+									},
+									"required": [
+										"act"
+									]
+								},
+								"result": {
+									"description": "Always 'error'",
+									"type": "string"
+								}
+							},
+							"required": [
+								"request",
+								"result",
+								"msg",
+								"err_code",
+								"error_code"
+							]
+						}
+					}
+				}
+			},
 			"500": {
 				"description": "Report submitted with an error",
 				"content": {

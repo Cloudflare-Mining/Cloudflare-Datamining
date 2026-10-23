@@ -1,8 +1,8 @@
 {
 	"DELETE /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/permissions/{grant_id}": {
 		"operationId": "delete_PermissionDelete",
-		"summary": "Delete a permission for dataset",
-		"description": "Delete a permission",
+		"summary": "Revoke access to a dataset",
+		"description": "Removes an access grant from a dataset.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -143,13 +143,13 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.permissions",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets.access.permissions",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/permissions": {
 		"operationId": "get_PermissionList",
-		"summary": "List permissions for dataset",
-		"description": "List permissions",
+		"summary": "List dataset permissions",
+		"description": "Lists the access grants on a dataset.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -334,13 +334,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.permissions",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets.access.permissions",
+		"x-fern-sdk-method-name": "list"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/permissions": {
 		"operationId": "post_PermissionCreate",
-		"summary": "Create a permission for dataset",
-		"description": "Create a permission",
+		"summary": "Grant access to a dataset",
+		"description": "Gives an account or account group (`subjectType` and `subjectId`) `read` or `write` access to a dataset.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -520,13 +520,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.permissions",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets.access.permissions",
 		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/permissions/{grant_id}": {
 		"operationId": "put_PermissionUpdate",
-		"summary": "Update a permission for dataset",
-		"description": "Update a permission",
+		"summary": "Change a dataset permission",
+		"description": "Changes the `role` of an access grant to `read` or `write`.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -689,7 +689,7 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.permissions",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets.access.permissions",
 		"x-fern-sdk-method-name": "update"
 	}
 }

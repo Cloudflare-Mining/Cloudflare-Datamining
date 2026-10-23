@@ -2,7 +2,7 @@
 	"DELETE /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}": {
 		"operationId": "delete_DatasetDelete",
 		"summary": "Delete a dataset",
-		"description": "Soft-deletes a dataset given a datasetId.",
+		"description": "Deletes a dataset. To see deleted datasets, use `threat-intel datasets list` with `includeDeleted`.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -139,13 +139,13 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.dataset",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset": {
 		"operationId": "get_DatasetList",
-		"summary": "Lists all datasets in an account",
-		"description": "Lists all threat event datasets configured in Cloudforce One.",
+		"summary": "List datasets",
+		"description": "Lists the account's datasets. Set `includeDeleted` to include deleted datasets.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -271,13 +271,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-events.datasets",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}": {
 		"operationId": "get_DatasetRead",
-		"summary": "Reads a dataset",
-		"description": "Retrieves details for a specific threat event dataset.",
+		"summary": "Get a dataset",
+		"description": "Returns a dataset by its ID.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -426,13 +426,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-events.datasets",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets",
 		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}": {
 		"operationId": "patch_DatasetUpdate",
-		"summary": "Updates an existing dataset",
-		"description": "Partially updates a threat event dataset in Cloudforce One, modifying specific fields without replacing the entire dataset configuration.",
+		"summary": "Update a dataset",
+		"description": "Updates a dataset's `name` and `isPublic` setting. Both fields are required.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -566,13 +566,13 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-events.datasets",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets",
+		"x-fern-sdk-method-name": "update"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}": {
 		"operationId": "post_DatasetUpdate",
-		"summary": "Updates an existing dataset",
-		"description": "Updates an existing dataset",
+		"summary": "Update a dataset",
+		"description": "Updates a dataset's `name` and `isPublic` setting. Both fields are required.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -707,13 +707,14 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.dataset",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets",
+		"x-fern-sdk-method-name": "replace"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/create": {
 		"operationId": "post_DatasetCreate",
-		"summary": "Creates a dataset",
-		"description": "Creates a new threat event dataset in Cloudforce One for organizing related threat events.",
+		"summary": "Create a dataset",
+		"description": "Creates a dataset for grouping events. Set `isPublic` to true to let anyone search it; otherwise only the account can.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -837,7 +838,7 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-events.datasets",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets",
 		"x-fern-sdk-method-name": "create"
 	}
 }

@@ -53,8 +53,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network-interconnects.interconnects",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/cni/interconnects": {
 		"operationId": "list_interconnects",
@@ -307,8 +306,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network-interconnects.interconnects",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cni/interconnects/{icon}": {
 		"operationId": "get_interconnect",
@@ -521,8 +519,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network-interconnects.interconnects",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cni/interconnects/{icon}/loa": {
 		"operationId": "get_interconnect_loa",
@@ -589,8 +586,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network-interconnects.interconnects",
-		"x-fern-sdk-method-name": "loa",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "loa"
 	},
 	"GET /accounts/{account_id}/cni/interconnects/{icon}/loa/default": {
 		"operationId": "get_interconnect_loa_default_name",
@@ -664,8 +660,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network-interconnects.interconnects",
-		"x-fern-sdk-method-name": "loa-default-name",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "loa-default-name"
 	},
 	"GET /accounts/{account_id}/cni/interconnects/{icon}/status": {
 		"operationId": "get_interconnect_status",
@@ -801,8 +796,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network-interconnects.interconnects",
-		"x-fern-sdk-method-name": "status",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "status"
 	},
 	"POST /accounts/{account_id}/cni/interconnects": {
 		"operationId": "create_interconnect",
@@ -1109,7 +1103,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network-interconnects.interconnects",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

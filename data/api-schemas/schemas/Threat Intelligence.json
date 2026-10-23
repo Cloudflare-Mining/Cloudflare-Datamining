@@ -1,0 +1,457 @@
+{
+	"POST /accounts/{account_id}/cloudforce-one/v2/search": {
+		"operationId": "searchThreatIntelligence",
+		"summary": "Search threat intelligence",
+		"description": "Searches the articles, actors, tags, events, and indicators you can read and returns one list of typed results, most relevant first. Use `entity_types` to limit the types searched.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"entity_types": {
+								"description": "Entity types to search. Omit to search articles, actors, tags, events, and indicators.",
+								"type": "array",
+								"items": {
+									"enum": [
+										"article",
+										"actor",
+										"tag",
+										"event",
+										"indicator"
+									],
+									"type": "string"
+								},
+								"default": [
+									"article",
+									"actor",
+									"tag",
+									"event",
+									"indicator"
+								],
+								"maxItems": 5,
+								"minItems": 1
+							},
+							"include_analytics_datasets": {
+								"description": "Whether to include Event and Indicator matches from analytics datasets. Defaults to false because these datasets can take longer to search. When omitted or false, those matches are intentionally excluded and source completeness covers only the backends that were queried.",
+								"type": "boolean",
+								"default": false
+							},
+							"limit": {
+								"description": "Maximum number of results to return. Defaults to 20.",
+								"type": "integer",
+								"default": 20,
+								"maximum": 20,
+								"minimum": 1
+							},
+							"query": {
+								"description": "Search text, from 1 to 1000 characters after trimming.",
+								"maxLength": 1000,
+								"minLength": 1,
+								"type": "string"
+							}
+						},
+						"required": [
+							"query"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Threat intelligence search results.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"threat_signals_feed_limit",
+													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"threat_signals_feed_limit",
+													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "integer",
+											"minimum": 0
+										},
+										"items": {
+											"type": "array",
+											"items": {
+												"oneOf": [
+													{
+														"properties": {
+															"article_id": {
+																"type": "string",
+																"format": "uuid"
+															},
+															"feed_id": {
+																"type": "string",
+																"format": "uuid"
+															},
+															"published_at": {
+																"type": "string",
+																"format": "date-time",
+																"nullable": true
+															},
+															"title": {
+																"type": "string",
+																"nullable": true
+															},
+															"type": {
+																"type": "string",
+																"enum": [
+																	"article"
+																]
+															}
+														},
+														"required": [
+															"type",
+															"article_id",
+															"feed_id",
+															"title",
+															"published_at"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"actor_id": {
+																"type": "string",
+																"format": "uuid"
+															},
+															"description": {
+																"type": "string",
+																"nullable": true
+															},
+															"name": {
+																"type": "string"
+															},
+															"retrieval_score": {
+																"description": "Raw hybrid retrieval relevance score. Higher values indicate stronger relevance within the same query; scores are provider- and model-dependent and should not be compared across queries. Omitted for catalog lexical-only matches.",
+																"type": "number"
+															},
+															"type": {
+																"type": "string",
+																"enum": [
+																	"actor"
+																]
+															}
+														},
+														"required": [
+															"type",
+															"actor_id",
+															"name",
+															"description"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"description": {
+																"type": "string",
+																"nullable": true
+															},
+															"tag_id": {
+																"type": "string",
+																"format": "uuid"
+															},
+															"type": {
+																"type": "string",
+																"enum": [
+																	"tag"
+																]
+															},
+															"value": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"type",
+															"tag_id",
+															"value",
+															"description"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"dataset_id": {
+																"type": "string",
+																"format": "uuid"
+															},
+															"event_id": {
+																"type": "string",
+																"format": "uuid"
+															},
+															"title": {
+																"type": "string"
+															},
+															"type": {
+																"type": "string",
+																"enum": [
+																	"event"
+																]
+															}
+														},
+														"required": [
+															"type",
+															"event_id",
+															"dataset_id",
+															"title"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"dataset_id": {
+																"type": "string",
+																"format": "uuid"
+															},
+															"indicator_id": {
+																"type": "string",
+																"format": "uuid"
+															},
+															"indicator_type": {
+																"type": "string"
+															},
+															"tags": {
+																"type": "array",
+																"items": {
+																	"properties": {
+																		"category_name": {
+																			"type": "string"
+																		},
+																		"uuid": {
+																			"type": "string",
+																			"format": "uuid"
+																		},
+																		"value": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"uuid",
+																		"value"
+																	],
+																	"type": "object"
+																}
+															},
+															"type": {
+																"type": "string",
+																"enum": [
+																	"indicator"
+																]
+															},
+															"value": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"type",
+															"indicator_id",
+															"dataset_id",
+															"indicator_type",
+															"value",
+															"tags"
+														],
+														"type": "object"
+													}
+												]
+											}
+										},
+										"partial": {
+											"type": "boolean"
+										},
+										"sources": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"source": {
+														"type": "string",
+														"enum": [
+															"article",
+															"actor",
+															"tag",
+															"event",
+															"indicator"
+														]
+													},
+													"status": {
+														"description": "Completeness of the enabled backends for this entity type. Intentionally excluded analytics datasets do not make the source degraded or the response partial.",
+														"type": "string",
+														"enum": [
+															"complete",
+															"degraded",
+															"unavailable"
+														]
+													}
+												},
+												"required": [
+													"source",
+													"status"
+												],
+												"type": "object"
+											}
+										}
+									},
+									"required": [
+										"items",
+										"count",
+										"partial",
+										"sources"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid search request."
+			},
+			"401": {
+				"description": "Account is not authorized to search threat intelligence."
+			},
+			"429": {
+				"description": "Threat intelligence search rate limit exceeded."
+			},
+			"503": {
+				"description": "Threat intelligence search is temporarily unavailable."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Threat Intelligence"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel",
+		"x-fern-sdk-method-name": "search",
+		"x-stability": "beta"
+	}
+}

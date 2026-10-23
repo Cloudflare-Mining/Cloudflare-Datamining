@@ -779,13 +779,35 @@
 				}
 			},
 			{
+				"name": "pir_id",
+				"in": "query",
+				"schema": {
+					"description": "Beta. Active Priority Intelligence Requirement to report, filter, and sort relevance by. Omit to use each article's most relevant active PIR. Returns a 400 error unless the PIR is active.",
+					"type": "string",
+					"format": "uuid"
+				}
+			},
+			{
+				"name": "min_relevance",
+				"in": "query",
+				"schema": {
+					"description": "Beta. Return only articles at or above this relevance band for pir_id, or for any active PIR when pir_id is omitted. Excludes articles that have not been scored.",
+					"type": "string",
+					"enum": [
+						"low",
+						"medium",
+						"high"
+					]
+				}
+			},
+			{
 				"name": "sort",
 				"in": "query",
 				"schema": {
-					"description": "Sort by fetched_at, published_at, or title. Prefix the field with - for descending order; defaults to -fetched_at.",
+					"description": "Sort by fetched_at, published_at, title, or relevance (beta). Prefix the field with - for descending order; defaults to -fetched_at. -relevance lists the most relevant articles first, by pir_id or by each article's most relevant active PIR, with unscored articles last.",
 					"type": "string",
 					"default": "-fetched_at",
-					"pattern": "^-?(fetched_at|published_at|title)$"
+					"pattern": "^-?(fetched_at|published_at|title|relevance)$"
 				}
 			}
 		],
@@ -858,6 +880,65 @@
 														"type": "string",
 														"nullable": true
 													},
+													"relevance": {
+														"description": "Beta. The article's relevance to the account's active Priority Intelligence Requirements. Null when the article has not been scored against them, including when the account has no active PIRs, or has not been scored against the requested pir_id.",
+														"type": "object",
+														"nullable": true,
+														"properties": {
+															"band": {
+																"description": "Beta. How relevant the article is to a Priority Intelligence Requirement: high, medium, or low. Cloudflare may change the scores behind each band as relevance scoring is calibrated.",
+																"type": "string",
+																"enum": [
+																	"low",
+																	"medium",
+																	"high"
+																]
+															},
+															"pir_id": {
+																"description": "Beta. The pir_id requested from the article list, or otherwise the account's most relevant active PIR for this article.",
+																"type": "string",
+																"format": "uuid"
+															},
+															"pirs": {
+																"description": "Beta. Every active PIR the article was scored against, most relevant first. Draft and deleted PIRs are excluded.",
+																"type": "array",
+																"items": {
+																	"properties": {
+																		"band": {
+																			"description": "Beta. How relevant the article is to a Priority Intelligence Requirement: high, medium, or low. Cloudflare may change the scores behind each band as relevance scoring is calibrated.",
+																			"type": "string",
+																			"enum": [
+																				"low",
+																				"medium",
+																				"high"
+																			]
+																		},
+																		"pir_id": {
+																			"type": "string",
+																			"format": "uuid"
+																		}
+																	},
+																	"required": [
+																		"pir_id",
+																		"band"
+																	],
+																	"type": "object"
+																}
+															}
+														},
+														"required": [
+															"band",
+															"pir_id",
+															"pirs"
+														]
+													},
+													"severity": {
+														"description": "Intrinsic article severity from 1 (informational) to 5 (critical). Null when the account has no active Priority Intelligence Requirements, scoring has not completed, or a historic article has not entered an automatic rescore window.",
+														"type": "number",
+														"maximum": 5,
+														"minimum": 1,
+														"nullable": true
+													},
 													"summary": {
 														"description": "Persisted enrichment summary. Null until enrichment produces a summary.",
 														"type": "string",
@@ -914,8 +995,10 @@
 													"tags",
 													"fetched_at",
 													"summary",
+													"severity",
 													"event_id",
-													"dataset_id"
+													"dataset_id",
+													"relevance"
 												],
 												"type": "object"
 											}
@@ -982,7 +1065,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}": {
 		"operationId": "rssArticleGet",
 		"summary": "Get Threat Signals article",
-		"description": "Retrieves a Threat Signals article with its summary, tags and indicator status.",
+		"description": "Retrieves a Threat Signals article with its summary, tags, indicator status and relevance to the account's Priority Intelligence Requirements.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1097,6 +1180,65 @@
 											"type": "string",
 											"nullable": true
 										},
+										"relevance": {
+											"description": "Beta. The article's relevance to the account's active Priority Intelligence Requirements. Null when the article has not been scored against them, including when the account has no active PIRs, or has not been scored against the requested pir_id.",
+											"type": "object",
+											"nullable": true,
+											"properties": {
+												"band": {
+													"description": "Beta. How relevant the article is to a Priority Intelligence Requirement: high, medium, or low. Cloudflare may change the scores behind each band as relevance scoring is calibrated.",
+													"type": "string",
+													"enum": [
+														"low",
+														"medium",
+														"high"
+													]
+												},
+												"pir_id": {
+													"description": "Beta. The pir_id requested from the article list, or otherwise the account's most relevant active PIR for this article.",
+													"type": "string",
+													"format": "uuid"
+												},
+												"pirs": {
+													"description": "Beta. Every active PIR the article was scored against, most relevant first. Draft and deleted PIRs are excluded.",
+													"type": "array",
+													"items": {
+														"properties": {
+															"band": {
+																"description": "Beta. How relevant the article is to a Priority Intelligence Requirement: high, medium, or low. Cloudflare may change the scores behind each band as relevance scoring is calibrated.",
+																"type": "string",
+																"enum": [
+																	"low",
+																	"medium",
+																	"high"
+																]
+															},
+															"pir_id": {
+																"type": "string",
+																"format": "uuid"
+															}
+														},
+														"required": [
+															"pir_id",
+															"band"
+														],
+														"type": "object"
+													}
+												}
+											},
+											"required": [
+												"band",
+												"pir_id",
+												"pirs"
+											]
+										},
+										"severity": {
+											"description": "Intrinsic article severity from 1 (informational) to 5 (critical). Null when the account has no active Priority Intelligence Requirements, scoring has not completed, or a historic article has not entered an automatic rescore window.",
+											"type": "number",
+											"maximum": 5,
+											"minimum": 1,
+											"nullable": true
+										},
 										"skill_version": {
 											"type": "string",
 											"nullable": true
@@ -1168,12 +1310,14 @@
 										"tags",
 										"fetched_at",
 										"summary",
+										"severity",
 										"content_r2_key",
 										"summary_r2_key",
 										"bullet_points",
 										"metadata",
 										"source_count",
-										"indicator_extraction_status"
+										"indicator_extraction_status",
+										"relevance"
 									]
 								},
 								"success": {
@@ -1716,6 +1860,178 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles.skills",
 		"x-fern-sdk-method-name": "get-output"
+	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/relevance/aggregate": {
+		"operationId": "rssArticleRelevanceAggregate",
+		"summary": "Count Threat Signals articles by relevance band",
+		"description": "Beta. Counts the account's Threat Signals articles in each relevance band, for each active Priority Intelligence Requirement and across all of them. Uses the same PIRs as article relevance: active PIRs, including those the matcher paused; drafts and deleted PIRs are excluded. Articles not scored against a PIR are not counted for it. The combined counts place each article once, in the band of its best score, so they are not the sum of the per-PIR counts. All counts are read together and are exact.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "published_after",
+				"in": "query",
+				"schema": {
+					"description": "Include articles published at or after this ISO 8601 date-time with Z or a numeric UTC offset; normalized to UTC.",
+					"type": "string",
+					"format": "date-time"
+				}
+			},
+			{
+				"name": "published_before",
+				"in": "query",
+				"schema": {
+					"description": "Include articles published at or before this ISO 8601 date-time with Z or a numeric UTC offset; normalized to UTC.",
+					"type": "string",
+					"format": "date-time"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Threat Signals response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"combined": {
+											"type": "object",
+											"properties": {
+												"articles": {
+													"description": "Beta. Number of articles in each band, each counted once, in the band of its best score across the active PIRs. Not the sum of the per-PIR counts: an article can be relevant to several PIRs. Articles not scored against any active PIR are not counted.",
+													"type": "object",
+													"properties": {
+														"high": {
+															"type": "integer",
+															"minimum": 0
+														},
+														"low": {
+															"type": "integer",
+															"minimum": 0
+														},
+														"medium": {
+															"type": "integer",
+															"minimum": 0
+														}
+													},
+													"required": [
+														"high",
+														"medium",
+														"low"
+													]
+												}
+											},
+											"required": [
+												"articles"
+											]
+										},
+										"priorities": {
+											"description": "Beta. Each active PIR, including PIRs the matcher paused, ordered by ID. Drafts and deleted PIRs are excluded.",
+											"type": "array",
+											"items": {
+												"properties": {
+													"articles": {
+														"description": "Beta. Number of articles in each band of their score against this PIR. Articles not scored against it are not counted.",
+														"type": "object",
+														"properties": {
+															"high": {
+																"type": "integer",
+																"minimum": 0
+															},
+															"low": {
+																"type": "integer",
+																"minimum": 0
+															},
+															"medium": {
+																"type": "integer",
+																"minimum": 0
+															}
+														},
+														"required": [
+															"high",
+															"medium",
+															"low"
+														]
+													},
+													"id": {
+														"description": "Active Priority Intelligence Requirement ID.",
+														"type": "string",
+														"format": "uuid"
+													}
+												},
+												"required": [
+													"id",
+													"articles"
+												],
+												"type": "object"
+											}
+										}
+									},
+									"required": [
+										"priorities",
+										"combined"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Client error response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Threat Signals"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles",
+		"x-fern-sdk-method-name": "aggregate-relevance",
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/categories": {
 		"operationId": "rssFeedCategoryList",
@@ -3769,6 +4085,13 @@
 											"type": "string",
 											"nullable": true
 										},
+										"severity": {
+											"description": "Intrinsic article severity from 1 (informational) to 5 (critical). Null when the account has no active Priority Intelligence Requirements, scoring has not completed, or a historic article has not entered an automatic rescore window.",
+											"type": "number",
+											"maximum": 5,
+											"minimum": 1,
+											"nullable": true
+										},
 										"skill_version": {
 											"type": "string",
 											"nullable": true
@@ -3840,6 +4163,7 @@
 										"tags",
 										"fetched_at",
 										"summary",
+										"severity",
 										"content_r2_key",
 										"summary_r2_key",
 										"bullet_points",

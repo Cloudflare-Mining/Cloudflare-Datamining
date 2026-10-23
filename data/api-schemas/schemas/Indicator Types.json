@@ -1,8 +1,8 @@
 {
 	"GET /accounts/{account_id}/cloudforce-one/events/indicator-types": {
 		"operationId": "get_IndicatorTypesList",
-		"summary": "Lists indicator types across multiple datasets",
-		"description": "Lists indicator types across multiple datasets",
+		"summary": "List indicator types",
+		"description": "Lists the indicator types used in the datasets given by `datasetIds`, which accepts dataset UUIDs or one scope value used alone. Without `datasetIds`, every dataset you can read is included, analytics datasets too.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -112,13 +112,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.indicator.types",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.indicators.types",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/indicatorTypes": {
 		"operationId": "get_LegacyIndicatorTypesList",
-		"summary": "Lists all indicator types",
-		"description": "This Method is deprecated. Please use /events/dataset/:dataset_id/indicatorTypes instead.",
+		"summary": "List indicator types (legacy)",
+		"description": "Legacy. Use `threat-intel indicators types list` (`GET /events/indicator-types`) instead.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -216,8 +216,8 @@
 			"Cloudforce One Write",
 			"Cloudforce One Read"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-events.indicator-types",
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.indicators.types.legacy",
 		"x-fern-sdk-method-name": "list"
 	}
 }

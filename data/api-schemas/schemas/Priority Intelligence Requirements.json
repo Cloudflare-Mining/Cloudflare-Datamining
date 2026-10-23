@@ -96,6 +96,45 @@
 		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.interests",
 		"x-fern-sdk-method-name": "delete"
 	},
+	"DELETE /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/profile": {
+		"operationId": "delete_PirProfileDelete",
+		"summary": "Delete the organization profile",
+		"description": "Deletes the account's organization profile. Succeeds when the account has no profile.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Organization profile deleted"
+			},
+			"4XX": {
+				"description": "Client error response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Priority Intelligence Requirements"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.profile",
+		"x-fern-sdk-method-name": "delete",
+		"x-stability": "beta"
+	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/priority-intelligence": {
 		"operationId": "get_PirList",
 		"summary": "List priority intelligence requirements for an account",
@@ -290,6 +329,550 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.matches",
 		"x-fern-sdk-method-name": "list",
+		"x-stability": "beta"
+	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/{priority_id}/matches/aggregate": {
+		"operationId": "get_PirMatchAggregates",
+		"summary": "Count a priority intelligence requirement's matched events",
+		"description": "Counts the PIR's matches by tag, attacker, attacker country, target industry, primary indicator, or indicator type: the top values, the number of distinct values, and the matches without a value. Covers the same matches as the matches list, in datasets the account can read now. Tags are grouped case-insensitively and shown with their most common spelling; an event counts once for each of its tags. `indicator` is the first indicator each event was created with. Field values are copied when an event matches; matches still being copied are reported in `matches.pending` and not counted, and matches whose event was already gone when its fields were copied in `matches.missing`. Counts keep the copied values, so an event deleted later stays counted. Requires the Threat Events entitlement.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			},
+			{
+				"name": "priority_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid"
+				}
+			},
+			{
+				"name": "aggregate_by",
+				"in": "query",
+				"description": "Comma-separated fields to count: tags, attacker, attacker_country, target_industry, indicator, indicator_type. `indicator` is each event's primary indicator, the first one it was created with.",
+				"required": true,
+				"schema": {
+					"description": "Comma-separated fields to count: tags, attacker, attacker_country, target_industry, indicator, indicator_type. `indicator` is each event's primary indicator, the first one it was created with.",
+					"type": "string",
+					"maxLength": 200,
+					"minLength": 1
+				}
+			},
+			{
+				"name": "limit",
+				"in": "query",
+				"description": "Top values returned per field.",
+				"schema": {
+					"description": "Top values returned per field.",
+					"type": "integer",
+					"default": 10,
+					"maximum": 100,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "since",
+				"in": "query",
+				"description": "Only matches first matched at or after this ISO 8601 time.",
+				"schema": {
+					"description": "Only matches first matched at or after this ISO 8601 time.",
+					"type": "string",
+					"format": "date-time"
+				}
+			},
+			{
+				"name": "triage_state",
+				"in": "query",
+				"description": "Only matches in this triage state.",
+				"schema": {
+					"description": "Only matches in this triage state.",
+					"type": "string",
+					"enum": [
+						"new",
+						"relevant",
+						"not_relevant"
+					]
+				}
+			},
+			{
+				"name": "include_backfill",
+				"in": "query",
+				"description": "Include matches from the 30 days before activation. Defaults to true.",
+				"schema": {
+					"description": "Include matches from the 30 days before activation. Defaults to true.",
+					"type": "string",
+					"default": "true",
+					"enum": [
+						"true",
+						"false"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Match counts per requested field",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"fields": {
+									"description": "One entry per requested field. For `tags`, a match counts once for each of its tags, so tag counts can add up to more than `matches.counted`.",
+									"type": "object",
+									"properties": {
+										"attacker": {
+											"type": "object",
+											"properties": {
+												"buckets": {
+													"description": "Top values, most matches first; ties in ascending value order.",
+													"type": "array",
+													"items": {
+														"properties": {
+															"count": {
+																"type": "integer"
+															},
+															"value": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"value",
+															"count"
+														],
+														"type": "object"
+													}
+												},
+												"distinct_values": {
+													"description": "Distinct values among counted matches.",
+													"type": "integer"
+												},
+												"without_value": {
+													"description": "Counted matches with no value for this field.",
+													"type": "integer"
+												}
+											},
+											"required": [
+												"buckets",
+												"distinct_values",
+												"without_value"
+											]
+										},
+										"attacker_country": {
+											"type": "object",
+											"properties": {
+												"buckets": {
+													"description": "Top values, most matches first; ties in ascending value order.",
+													"type": "array",
+													"items": {
+														"properties": {
+															"count": {
+																"type": "integer"
+															},
+															"value": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"value",
+															"count"
+														],
+														"type": "object"
+													}
+												},
+												"distinct_values": {
+													"description": "Distinct values among counted matches.",
+													"type": "integer"
+												},
+												"without_value": {
+													"description": "Counted matches with no value for this field.",
+													"type": "integer"
+												}
+											},
+											"required": [
+												"buckets",
+												"distinct_values",
+												"without_value"
+											]
+										},
+										"indicator": {
+											"type": "object",
+											"properties": {
+												"buckets": {
+													"description": "Top values, most matches first; ties in ascending value order.",
+													"type": "array",
+													"items": {
+														"properties": {
+															"count": {
+																"type": "integer"
+															},
+															"value": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"value",
+															"count"
+														],
+														"type": "object"
+													}
+												},
+												"distinct_values": {
+													"description": "Distinct values among counted matches.",
+													"type": "integer"
+												},
+												"without_value": {
+													"description": "Counted matches with no value for this field.",
+													"type": "integer"
+												}
+											},
+											"required": [
+												"buckets",
+												"distinct_values",
+												"without_value"
+											]
+										},
+										"indicator_type": {
+											"type": "object",
+											"properties": {
+												"buckets": {
+													"description": "Top values, most matches first; ties in ascending value order.",
+													"type": "array",
+													"items": {
+														"properties": {
+															"count": {
+																"type": "integer"
+															},
+															"value": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"value",
+															"count"
+														],
+														"type": "object"
+													}
+												},
+												"distinct_values": {
+													"description": "Distinct values among counted matches.",
+													"type": "integer"
+												},
+												"without_value": {
+													"description": "Counted matches with no value for this field.",
+													"type": "integer"
+												}
+											},
+											"required": [
+												"buckets",
+												"distinct_values",
+												"without_value"
+											]
+										},
+										"tags": {
+											"type": "object",
+											"properties": {
+												"buckets": {
+													"description": "Top values, most matches first; ties in ascending value order.",
+													"type": "array",
+													"items": {
+														"properties": {
+															"count": {
+																"type": "integer"
+															},
+															"value": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"value",
+															"count"
+														],
+														"type": "object"
+													}
+												},
+												"distinct_values": {
+													"description": "Distinct values among counted matches.",
+													"type": "integer"
+												},
+												"without_value": {
+													"description": "Counted matches with no value for this field.",
+													"type": "integer"
+												}
+											},
+											"required": [
+												"buckets",
+												"distinct_values",
+												"without_value"
+											]
+										},
+										"target_industry": {
+											"type": "object",
+											"properties": {
+												"buckets": {
+													"description": "Top values, most matches first; ties in ascending value order.",
+													"type": "array",
+													"items": {
+														"properties": {
+															"count": {
+																"type": "integer"
+															},
+															"value": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"value",
+															"count"
+														],
+														"type": "object"
+													}
+												},
+												"distinct_values": {
+													"description": "Distinct values among counted matches.",
+													"type": "integer"
+												},
+												"without_value": {
+													"description": "Counted matches with no value for this field.",
+													"type": "integer"
+												}
+											},
+											"required": [
+												"buckets",
+												"distinct_values",
+												"without_value"
+											]
+										}
+									}
+								},
+								"matches": {
+									"type": "object",
+									"properties": {
+										"counted": {
+											"description": "Matches whose fields are counted below.",
+											"type": "integer"
+										},
+										"missing": {
+											"description": "Matches whose event was already gone when its fields were copied; never counted.",
+											"type": "integer"
+										},
+										"pending": {
+											"description": "Matches whose fields are still being copied; not counted yet.",
+											"type": "integer"
+										},
+										"total": {
+											"description": "Matches in readable datasets that pass the filters, like the feed's total_count.",
+											"type": "integer"
+										}
+									},
+									"required": [
+										"total",
+										"counted",
+										"pending",
+										"missing"
+									]
+								}
+							},
+							"required": [
+								"matches",
+								"fields"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid query"
+			},
+			"404": {
+				"description": "PIR not found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Priority Intelligence Requirements"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.matches",
+		"x-fern-sdk-method-name": "aggregate",
+		"x-stability": "beta"
+	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/{priority_id}/matches/series": {
+		"operationId": "get_PirMatchSeries",
+		"summary": "Count a priority intelligence requirement's matched events per day",
+		"description": "Returns the PIR's matches per UTC day of when each matched event was added to its dataset, over the same matches as the matches list, in datasets the account can read now. Every day in the range is listed, including days with no matches. The range defaults to the last 30 days and is at most 90 days, because matches are kept for 90 days. Days before the PIR was activated hold only the most recent backfill matches. Requires the Threat Events entitlement.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			},
+			{
+				"name": "priority_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid"
+				}
+			},
+			{
+				"name": "since",
+				"in": "query",
+				"description": "Start of the range, inclusive, on when each matched event was added to its dataset. ISO 8601; defaults to 30 days before `until`.",
+				"schema": {
+					"description": "Start of the range, inclusive, on when each matched event was added to its dataset. ISO 8601; defaults to 30 days before `until`.",
+					"type": "string",
+					"format": "date-time"
+				}
+			},
+			{
+				"name": "until",
+				"in": "query",
+				"description": "End of the range, exclusive. ISO 8601; defaults to now. The range is at most 90 days.",
+				"schema": {
+					"description": "End of the range, exclusive. ISO 8601; defaults to now. The range is at most 90 days.",
+					"type": "string",
+					"format": "date-time"
+				}
+			},
+			{
+				"name": "triage_state",
+				"in": "query",
+				"description": "Only matches in this triage state.",
+				"schema": {
+					"description": "Only matches in this triage state.",
+					"type": "string",
+					"enum": [
+						"new",
+						"relevant",
+						"not_relevant"
+					]
+				}
+			},
+			{
+				"name": "include_backfill",
+				"in": "query",
+				"description": "Include matches from the 30 days before activation. Defaults to true.",
+				"schema": {
+					"description": "Include matches from the 30 days before activation. Defaults to true.",
+					"type": "string",
+					"default": "true",
+					"enum": [
+						"true",
+						"false"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Matches per day",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"days": {
+									"description": "Every UTC day overlapping the range, oldest first, including days with no matches.",
+									"type": "array",
+									"items": {
+										"properties": {
+											"count": {
+												"description": "Matches whose event was added to its dataset that day.",
+												"type": "integer"
+											},
+											"date": {
+												"description": "UTC day, YYYY-MM-DD.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"date",
+											"count"
+										],
+										"type": "object"
+									}
+								},
+								"interval": {
+									"type": "string",
+									"enum": [
+										"day"
+									]
+								},
+								"since": {
+									"description": "Start of the range, inclusive.",
+									"type": "string",
+									"format": "date-time"
+								},
+								"total": {
+									"description": "Matches in the range; the sum of `days[].count`.",
+									"type": "integer"
+								},
+								"until": {
+									"description": "End of the range, exclusive.",
+									"type": "string",
+									"format": "date-time"
+								},
+								"without_created_at": {
+									"description": "Matches that pass the other filters but have no record of when their event was added, so they are on no day. Not limited to the range.",
+									"type": "integer"
+								}
+							},
+							"required": [
+								"interval",
+								"since",
+								"until",
+								"days",
+								"total",
+								"without_created_at"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid query"
+			},
+			"404": {
+				"description": "PIR not found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Priority Intelligence Requirements"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.matches",
+		"x-fern-sdk-method-name": "series",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/constants": {
@@ -501,6 +1084,568 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.interests.evaluations",
 		"x-fern-sdk-method-name": "get"
+	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/matches/aggregate": {
+		"operationId": "get_PirAllMatchAggregates",
+		"summary": "Count matched events across the account's priority intelligence requirements",
+		"description": "Returns each active PIR's match counts, with the same fields and filters as a single PIR's aggregate, and the number of distinct values of each field across all of them, each value counted once. Counts are not summed across PIRs: an event can match several PIRs. Drafts are left out; PIRs the matcher paused are included. A PIR whose matches cannot be counted is returned with `error` and left out of `combined`. Requires the Threat Events entitlement.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			},
+			{
+				"name": "aggregate_by",
+				"in": "query",
+				"description": "Comma-separated fields to count: tags, attacker, attacker_country, target_industry, indicator, indicator_type. `indicator` is each event's primary indicator, the first one it was created with.",
+				"required": true,
+				"schema": {
+					"description": "Comma-separated fields to count: tags, attacker, attacker_country, target_industry, indicator, indicator_type. `indicator` is each event's primary indicator, the first one it was created with.",
+					"type": "string",
+					"maxLength": 200,
+					"minLength": 1
+				}
+			},
+			{
+				"name": "limit",
+				"in": "query",
+				"description": "Top values returned per field.",
+				"schema": {
+					"description": "Top values returned per field.",
+					"type": "integer",
+					"default": 10,
+					"maximum": 100,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "since",
+				"in": "query",
+				"description": "Only matches first matched at or after this ISO 8601 time.",
+				"schema": {
+					"description": "Only matches first matched at or after this ISO 8601 time.",
+					"type": "string",
+					"format": "date-time"
+				}
+			},
+			{
+				"name": "triage_state",
+				"in": "query",
+				"description": "Only matches in this triage state.",
+				"schema": {
+					"description": "Only matches in this triage state.",
+					"type": "string",
+					"enum": [
+						"new",
+						"relevant",
+						"not_relevant"
+					]
+				}
+			},
+			{
+				"name": "include_backfill",
+				"in": "query",
+				"description": "Include matches from the 30 days before activation. Defaults to true.",
+				"schema": {
+					"description": "Include matches from the 30 days before activation. Defaults to true.",
+					"type": "string",
+					"default": "true",
+					"enum": [
+						"true",
+						"false"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Each active PIR's match counts and distinct values across them",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"combined": {
+									"type": "object",
+									"properties": {
+										"fields": {
+											"type": "object",
+											"properties": {
+												"attacker": {
+													"type": "object",
+													"properties": {
+														"distinct_values": {
+															"description": "Distinct values across the listed priorities, each counted once. Null when a priority has more distinct values than can be merged.",
+															"type": "integer",
+															"nullable": true
+														},
+														"distinct_values_truncated": {
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"distinct_values",
+														"distinct_values_truncated"
+													]
+												},
+												"attacker_country": {
+													"type": "object",
+													"properties": {
+														"distinct_values": {
+															"description": "Distinct values across the listed priorities, each counted once. Null when a priority has more distinct values than can be merged.",
+															"type": "integer",
+															"nullable": true
+														},
+														"distinct_values_truncated": {
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"distinct_values",
+														"distinct_values_truncated"
+													]
+												},
+												"indicator": {
+													"type": "object",
+													"properties": {
+														"distinct_values": {
+															"description": "Distinct values across the listed priorities, each counted once. Null when a priority has more distinct values than can be merged.",
+															"type": "integer",
+															"nullable": true
+														},
+														"distinct_values_truncated": {
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"distinct_values",
+														"distinct_values_truncated"
+													]
+												},
+												"indicator_type": {
+													"type": "object",
+													"properties": {
+														"distinct_values": {
+															"description": "Distinct values across the listed priorities, each counted once. Null when a priority has more distinct values than can be merged.",
+															"type": "integer",
+															"nullable": true
+														},
+														"distinct_values_truncated": {
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"distinct_values",
+														"distinct_values_truncated"
+													]
+												},
+												"tags": {
+													"type": "object",
+													"properties": {
+														"distinct_values": {
+															"description": "Distinct values across the listed priorities, each counted once. Null when a priority has more distinct values than can be merged.",
+															"type": "integer",
+															"nullable": true
+														},
+														"distinct_values_truncated": {
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"distinct_values",
+														"distinct_values_truncated"
+													]
+												},
+												"target_industry": {
+													"type": "object",
+													"properties": {
+														"distinct_values": {
+															"description": "Distinct values across the listed priorities, each counted once. Null when a priority has more distinct values than can be merged.",
+															"type": "integer",
+															"nullable": true
+														},
+														"distinct_values_truncated": {
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"distinct_values",
+														"distinct_values_truncated"
+													]
+												}
+											}
+										},
+										"partial": {
+											"description": "True when a priority could not be counted, so the distinct values leave out its matches.",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"partial",
+										"fields"
+									]
+								},
+								"priorities": {
+									"description": "Each active priority's own counts, newest priority first. Counts are never summed.",
+									"type": "array",
+									"items": {
+										"properties": {
+											"error": {
+												"description": "Set when this priority's matches could not be counted; it is left out of combined.",
+												"type": "string",
+												"enum": [
+													"unavailable"
+												]
+											},
+											"fields": {
+												"type": "object",
+												"properties": {
+													"attacker": {
+														"type": "object",
+														"properties": {
+															"buckets": {
+																"description": "Top values, most matches first; ties in ascending value order.",
+																"type": "array",
+																"items": {
+																	"properties": {
+																		"count": {
+																			"type": "integer"
+																		},
+																		"value": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"value",
+																		"count"
+																	],
+																	"type": "object"
+																}
+															},
+															"distinct_values": {
+																"description": "Distinct values among counted matches.",
+																"type": "integer"
+															},
+															"without_value": {
+																"description": "Counted matches with no value for this field.",
+																"type": "integer"
+															}
+														},
+														"required": [
+															"buckets",
+															"distinct_values",
+															"without_value"
+														]
+													},
+													"attacker_country": {
+														"type": "object",
+														"properties": {
+															"buckets": {
+																"description": "Top values, most matches first; ties in ascending value order.",
+																"type": "array",
+																"items": {
+																	"properties": {
+																		"count": {
+																			"type": "integer"
+																		},
+																		"value": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"value",
+																		"count"
+																	],
+																	"type": "object"
+																}
+															},
+															"distinct_values": {
+																"description": "Distinct values among counted matches.",
+																"type": "integer"
+															},
+															"without_value": {
+																"description": "Counted matches with no value for this field.",
+																"type": "integer"
+															}
+														},
+														"required": [
+															"buckets",
+															"distinct_values",
+															"without_value"
+														]
+													},
+													"indicator": {
+														"type": "object",
+														"properties": {
+															"buckets": {
+																"description": "Top values, most matches first; ties in ascending value order.",
+																"type": "array",
+																"items": {
+																	"properties": {
+																		"count": {
+																			"type": "integer"
+																		},
+																		"value": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"value",
+																		"count"
+																	],
+																	"type": "object"
+																}
+															},
+															"distinct_values": {
+																"description": "Distinct values among counted matches.",
+																"type": "integer"
+															},
+															"without_value": {
+																"description": "Counted matches with no value for this field.",
+																"type": "integer"
+															}
+														},
+														"required": [
+															"buckets",
+															"distinct_values",
+															"without_value"
+														]
+													},
+													"indicator_type": {
+														"type": "object",
+														"properties": {
+															"buckets": {
+																"description": "Top values, most matches first; ties in ascending value order.",
+																"type": "array",
+																"items": {
+																	"properties": {
+																		"count": {
+																			"type": "integer"
+																		},
+																		"value": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"value",
+																		"count"
+																	],
+																	"type": "object"
+																}
+															},
+															"distinct_values": {
+																"description": "Distinct values among counted matches.",
+																"type": "integer"
+															},
+															"without_value": {
+																"description": "Counted matches with no value for this field.",
+																"type": "integer"
+															}
+														},
+														"required": [
+															"buckets",
+															"distinct_values",
+															"without_value"
+														]
+													},
+													"tags": {
+														"type": "object",
+														"properties": {
+															"buckets": {
+																"description": "Top values, most matches first; ties in ascending value order.",
+																"type": "array",
+																"items": {
+																	"properties": {
+																		"count": {
+																			"type": "integer"
+																		},
+																		"value": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"value",
+																		"count"
+																	],
+																	"type": "object"
+																}
+															},
+															"distinct_values": {
+																"description": "Distinct values among counted matches.",
+																"type": "integer"
+															},
+															"without_value": {
+																"description": "Counted matches with no value for this field.",
+																"type": "integer"
+															}
+														},
+														"required": [
+															"buckets",
+															"distinct_values",
+															"without_value"
+														]
+													},
+													"target_industry": {
+														"type": "object",
+														"properties": {
+															"buckets": {
+																"description": "Top values, most matches first; ties in ascending value order.",
+																"type": "array",
+																"items": {
+																	"properties": {
+																		"count": {
+																			"type": "integer"
+																		},
+																		"value": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"value",
+																		"count"
+																	],
+																	"type": "object"
+																}
+															},
+															"distinct_values": {
+																"description": "Distinct values among counted matches.",
+																"type": "integer"
+															},
+															"without_value": {
+																"description": "Counted matches with no value for this field.",
+																"type": "integer"
+															}
+														},
+														"required": [
+															"buckets",
+															"distinct_values",
+															"without_value"
+														]
+													}
+												}
+											},
+											"id": {
+												"type": "string",
+												"format": "uuid"
+											},
+											"matches": {
+												"type": "object",
+												"properties": {
+													"counted": {
+														"description": "Matches whose fields are counted below.",
+														"type": "integer"
+													},
+													"missing": {
+														"description": "Matches whose event was already gone when its fields were copied; never counted.",
+														"type": "integer"
+													},
+													"pending": {
+														"description": "Matches whose fields are still being copied; not counted yet.",
+														"type": "integer"
+													},
+													"total": {
+														"description": "Matches in readable datasets that pass the filters, like the feed's total_count.",
+														"type": "integer"
+													}
+												},
+												"required": [
+													"total",
+													"counted",
+													"pending",
+													"missing"
+												]
+											},
+											"pause_reason": {
+												"type": "string",
+												"nullable": true
+											},
+											"title": {
+												"type": "string",
+												"nullable": true
+											}
+										},
+										"required": [
+											"id",
+											"title",
+											"pause_reason"
+										],
+										"type": "object"
+									}
+								}
+							},
+							"required": [
+								"priorities",
+								"combined"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid query"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Priority Intelligence Requirements"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.matches",
+		"x-fern-sdk-method-name": "aggregate-all",
+		"x-stability": "beta"
+	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/profile": {
+		"operationId": "get_PirProfileGet",
+		"summary": "Get the organization profile",
+		"description": "Returns the account's organization profile, which all of its Priority Intelligence Requirements share to judge how relevant intelligence is to the organization. `result` is null when the account has no profile.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "The organization profile, or null"
+			},
+			"4XX": {
+				"description": "Client error response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Priority Intelligence Requirements"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.profile",
+		"x-fern-sdk-method-name": "get",
+		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/{priority_id}/matches": {
 		"operationId": "patch_PirMatchesTriage",
@@ -2983,6 +4128,66 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence",
+		"x-fern-sdk-method-name": "update",
+		"x-stability": "beta"
+	},
+	"PUT /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/profile": {
+		"operationId": "put_PirProfilePut",
+		"summary": "Create or replace the organization profile",
+		"description": "Creates or replaces the account's organization profile: who the organization is, such as its name, brands, domains, sector, regions, key systems and suppliers. All of the account's Priority Intelligence Requirements share it. An account has at most one profile, and it does not count against the PIR quota.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"profile": {
+								"description": "Who the organization is: its name, brands, domains, sector, regions, key systems and suppliers. Shared by all of the account's PIRs to judge how relevant intelligence is to the organization.",
+								"type": "string",
+								"maxLength": 4000,
+								"minLength": 1
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"profile"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Organization profile saved"
+			},
+			"400": {
+				"description": "Invalid profile, such as blank or longer than 4,000 characters"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Priority Intelligence Requirements"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.profile",
 		"x-fern-sdk-method-name": "update",
 		"x-stability": "beta"
 	}

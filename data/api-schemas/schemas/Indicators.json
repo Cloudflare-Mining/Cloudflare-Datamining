@@ -1,8 +1,8 @@
 {
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicatorTypes/create": {
 		"operationId": "post_IndicatorTypeCreate",
-		"summary": "Create a new indicator type",
-		"description": "Creates a new indicator type and initializes its dedicated Durable Object",
+		"summary": "Create an indicator type",
+		"description": "Creates an indicator type in a dataset.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -227,7 +227,7 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-events.indicator-types",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.indicators.types",
 		"x-fern-sdk-method-name": "create"
 	}
 }

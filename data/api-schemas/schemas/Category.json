@@ -1,8 +1,8 @@
 {
 	"DELETE /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
 		"operationId": "delete_LegacyCategoryDelete",
-		"summary": "Deletes a category",
-		"description": "Deprecated; use DELETE /events/event-categories/by-id/{category_id}. Available through 2026-11-28.",
+		"summary": "Delete an event category (legacy)",
+		"description": "Legacy. Use `threat-intel events categories delete` (`DELETE /events/event-categories/by-id/{category_id}`) instead. Available through 2026-11-28.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -98,7 +98,7 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "deprecated",
-		"x-fern-sdk-group-name": "cloudforce-one.events.categories.legacy",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.categories.legacy",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-sunset": {
 			"date": "2026-11-28T00:00:00Z"
@@ -107,8 +107,8 @@
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/event-categories/by-id/{category_id}": {
 		"operationId": "delete_CategoryDelete",
-		"summary": "Deletes a category",
-		"description": "Removes a threat event category from Cloudforce One.",
+		"summary": "Delete an event category",
+		"description": "Deletes an event category by its ID.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -203,13 +203,13 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-events.categories",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.categories",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/categories": {
 		"operationId": "get_CategoryList",
-		"summary": "Lists categories across multiple datasets",
-		"description": "Lists all threat event categories configured for classifying and organizing threat events.",
+		"summary": "List event categories used in datasets",
+		"description": "Lists the event categories used by events in the datasets given by `datasetIds`, or in the default dataset when `datasetIds` is omitted. Dataset scope values are not supported. To list every category, use `threat-intel events categories catalog list`.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -336,13 +336,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-events.categories",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.categories",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
 		"operationId": "get_LegacyCategoryRead",
-		"summary": "Reads a category",
-		"description": "Deprecated; use GET /events/event-categories/by-id/{category_id}. Available through 2026-11-28.",
+		"summary": "Get an event category (legacy)",
+		"description": "Legacy. Use `threat-intel events categories get` (`GET /events/event-categories/by-id/{category_id}`) instead. Available through 2026-11-28.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -466,7 +466,7 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "deprecated",
-		"x-fern-sdk-group-name": "cloudforce-one.events.categories.legacy",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.categories.legacy",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-sunset": {
 			"date": "2026-11-28T00:00:00Z"
@@ -475,8 +475,8 @@
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/categories/catalog": {
 		"operationId": "get_CategoryListComplete",
-		"summary": "Lists categories",
-		"description": "Lists categories",
+		"summary": "List all event categories",
+		"description": "Lists every event category in the catalog, whether or not an event uses it. To list only the categories used in specific datasets, use `threat-intel events categories list`.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -591,13 +591,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.categories.catalog",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.categories.catalog",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/event-categories/by-id/{category_id}": {
 		"operationId": "get_CategoryRead",
-		"summary": "Reads a category",
-		"description": "Retrieves details for a specific threat event category.",
+		"summary": "Get an event category",
+		"description": "Returns an event category by its ID.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -720,7 +720,7 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-events.categories",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.categories",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/resource-library/categories": {
@@ -1484,8 +1484,8 @@
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
 		"operationId": "patch_LegacyCategoryUpdate",
-		"summary": "Updates a category",
-		"description": "Deprecated; use PATCH /events/event-categories/by-id/{category_id}. Available through 2026-11-28.",
+		"summary": "Update an event category (legacy)",
+		"description": "Legacy. Use `threat-intel events categories update` (`PATCH /events/event-categories/by-id/{category_id}`) instead. Available through 2026-11-28.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1644,7 +1644,7 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "deprecated",
-		"x-fern-sdk-group-name": "cloudforce-one.events.categories.legacy",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.categories.legacy",
 		"x-fern-sdk-method-name": "update",
 		"x-forge-sunset": {
 			"date": "2026-11-28T00:00:00Z"
@@ -1653,8 +1653,8 @@
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/event-categories/by-id/{category_id}": {
 		"operationId": "patch_CategoryUpdate",
-		"summary": "Updates a category",
-		"description": "Partially updates a threat event category in Cloudforce One, modifying specific fields without replacing the entire category.",
+		"summary": "Update an event category",
+		"description": "Updates the given fields of an event category and leaves the other fields unchanged.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1812,13 +1812,13 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-events.categories",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.categories",
+		"x-fern-sdk-method-name": "update"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
 		"operationId": "post_LegacyCategoryUpdate",
-		"summary": "Updates a category",
-		"description": "Deprecated; use POST /events/event-categories/by-id/{category_id}. Available through 2026-11-28.",
+		"summary": "Update an event category (legacy)",
+		"description": "Legacy. Use `threat-intel events categories update` (`POST /events/event-categories/by-id/{category_id}`) instead. Available through 2026-11-28.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1978,7 +1978,8 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "deprecated",
-		"x-fern-sdk-group-name": "cloudforce-one.events.categories.legacy",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.categories.legacy",
 		"x-fern-sdk-method-name": "replace",
 		"x-forge-sunset": {
 			"date": "2026-11-28T00:00:00Z"
@@ -1987,8 +1988,8 @@
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/categories/create": {
 		"operationId": "post_CategoryCreate",
-		"summary": "Creates a new category",
-		"description": "Creates a new threat event category in Cloudforce One for organizing and classifying threat events.",
+		"summary": "Create an event category",
+		"description": "Creates an event category for classifying events. `name` and `killChain` are required.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2140,13 +2141,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-events.categories",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.categories",
 		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/event-categories/by-id/{category_id}": {
 		"operationId": "post_CategoryUpdate",
-		"summary": "Updates a category",
-		"description": "Updates a category",
+		"summary": "Update an event category",
+		"description": "Updates the given fields of an event category and leaves the other fields unchanged.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2305,7 +2306,8 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.categories",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.categories",
+		"x-fern-sdk-method-name": "replace"
 	}
 }

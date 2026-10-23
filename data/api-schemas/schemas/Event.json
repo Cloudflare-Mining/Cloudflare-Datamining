@@ -1,8 +1,8 @@
 {
 	"DELETE /accounts/{account_id}/cloudforce-one/events/{dataset_id}/delete": {
 		"operationId": "delete_LegacyEventDelete",
-		"summary": "Deletes one or more events",
-		"description": "Deprecated; use DELETE /events/datasets/{dataset_id}/events. Available through 2026-11-28.",
+		"summary": "Delete events (legacy)",
+		"description": "Legacy. Use `threat-intel events delete` (`DELETE /events/datasets/{dataset_id}/events`) instead. Available through 2026-11-28.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -104,7 +104,7 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "deprecated",
-		"x-fern-sdk-group-name": "cloudforce-one.events.legacy",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.legacy",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-sunset": {
 			"date": "2026-11-28T00:00:00Z"
@@ -113,8 +113,8 @@
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/datasets/{dataset_id}/events": {
 		"operationId": "delete_EventDelete",
-		"summary": "Deletes one or more events",
-		"description": "Deletes one or more events",
+		"summary": "Delete events",
+		"description": "Deletes one or more events from a dataset. Pass the event UUIDs in `eventIds`.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -215,13 +215,13 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.delete",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/event_tag/{event_id}": {
 		"operationId": "delete_EventTagDelete",
-		"summary": "Removes a tag from an event",
-		"description": "Removes a tag from a threat event in Cloudforce One.",
+		"summary": "Remove tags from an event (legacy)",
+		"description": "Legacy. Use `threat-intel tags relationships delete` (`DELETE /events/tags/{tag_uuid}/relationships/{rel_uuid}`) instead.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -349,13 +349,13 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-events.event-tags",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.legacy.tags",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/queries/{query_id}": {
 		"operationId": "delete_EventQueryDelete",
 		"summary": "Delete a saved event query",
-		"description": "Delete a saved event query by its ID",
+		"description": "Deletes a saved event query by its ID.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -433,13 +433,13 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.queries",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.queries",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/relate/{event_id}": {
 		"operationId": "delete_EventReferenceDelete",
-		"summary": "Removes an event reference",
-		"description": "Removes a reference link between related threat events in Cloudforce One.",
+		"summary": "Remove event references (legacy)",
+		"description": "Legacy. Removes references created with `threat-intel events legacy references create`. Use `threat-intel events relationships` for new event links.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -567,13 +567,13 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-events.relate",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.legacy.references",
 		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events": {
 		"operationId": "get_EventListGet",
-		"summary": "Filter and list events",
-		"description": "Use one standalone `datasetId` scope value: 'all'/'*' or 'operational' for readable intelligence datasets (isAnalytics=false), or 'analytics' for readable analytics datasets (isAnalytics=true). Scope values query at most 50 datasets and must be used alone. When `datasetId` is unspecified, events are listed from the default Cloudforce One Threat Events dataset. To list existing datasets, use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list/) endpoint.",
+		"summary": "List events",
+		"description": "Lists events, with filters passed as query parameters. `datasetId` accepts dataset UUIDs or one scope value used alone: `all` (or `*`) and `operational` select the intelligence datasets you can read, and `analytics` selects the analytics datasets you can read. A scope value covers at most 50 datasets. Without `datasetId`, the default Cloudforce One Threat Events dataset is used. To send filters in a JSON body instead, use `threat-intel events search`.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1566,13 +1566,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-events",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/{event_id}": {
 		"operationId": "get_EventReadDeprecated",
-		"summary": "Reads an event",
-		"description": "This Method is deprecated. Please use /events/dataset/:dataset_id/events/:event_id instead.",
+		"summary": "Get an event (legacy)",
+		"description": "Legacy. Use `threat-intel events get` (`GET /events/dataset/{dataset_id}/events/{event_id}`) instead.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1819,13 +1819,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-events",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.legacy",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/{event_id}/raw/{raw_id}": {
 		"operationId": "get_EventRawRead",
-		"summary": "Reads data for a raw event",
-		"description": "Retrieves raw threat event data for a specific event in Cloudforce One.",
+		"summary": "Get raw event data by raw ID (legacy)",
+		"description": "Legacy. Returns raw data stored under a `raw_id`, which new events don't use. Use `threat-intel events raw get` (`GET /events/datasets/{dataset_id}/events/{event_id}/raw`) instead.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1954,13 +1954,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-events.raw",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.legacy.raw",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/{event_id}/relationships": {
 		"operationId": "get_LegacyEventRelationships",
-		"summary": "Filter and list events related to specific event",
-		"description": "Deprecated; use GET /events/by-id/{event_id}/relationships. Available through 2026-11-28.",
+		"summary": "List related events (legacy)",
+		"description": "Legacy. Use `threat-intel events relationships list` (`GET /events/by-id/{event_id}/relationships`) instead. Available through 2026-11-28.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2299,8 +2299,8 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "deprecated",
-		"x-fern-sdk-group-name": "cloudforce-one.events.relationships.legacy",
-		"x-fern-sdk-method-name": "get",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.legacy.relationships",
+		"x-fern-sdk-method-name": "list",
 		"x-forge-sunset": {
 			"date": "2026-11-28T00:00:00Z"
 		},
@@ -2308,8 +2308,8 @@
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/aggregate": {
 		"operationId": "get_EventAggregate",
-		"summary": "Aggregate events by single or multiple columns with optional date filtering",
-		"description": "Aggregate threat events by one or more columns (e.g., attacker, targetIndustry) with optional date filtering and daily grouping. Supports multi-dimensional aggregation for cross-analysis.",
+		"summary": "Aggregate events",
+		"description": "Counts events grouped by one or more columns, such as `attacker` or `targetIndustry`. Optionally filter by date range and group the counts by day.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2324,10 +2324,10 @@
 			{
 				"name": "aggregateBy",
 				"in": "query",
-				"description": "Column(s) to aggregate by - single column or comma-separated list (e.g., 'attacker', 'targetIndustry', 'attacker,targetIndustry')",
+				"description": "Column(s) to aggregate by - single column or comma-separated list (e.g., 'attacker', 'targetIndustry', 'attacker,targetIndustry'). With `tags`, an event counts once for each of its tags, in the bucket counts and in `total`, and events without tags count as `Unknown`; `tags` is not supported for analytics datasets.",
 				"required": true,
 				"schema": {
-					"description": "Column(s) to aggregate by - single column or comma-separated list (e.g., 'attacker', 'targetIndustry', 'attacker,targetIndustry')",
+					"description": "Column(s) to aggregate by - single column or comma-separated list (e.g., 'attacker', 'targetIndustry', 'attacker,targetIndustry'). With `tags`, an event counts once for each of its tags, in the bucket counts and in `total`, and events without tags count as `Unknown`; `tags` is not supported for analytics datasets.",
 					"type": "string"
 				}
 			},
@@ -2502,13 +2502,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.aggregate",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events",
+		"x-fern-sdk-method-name": "aggregate"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/by-id/{event_id}/relationships": {
 		"operationId": "get_EventRelationships",
-		"summary": "Filter and list events related to specific event",
-		"description": "The `event_id` must be defined (to list existing events (and their IDs), use the [`Filter and List Events`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/methods/list/) endpoint). Also, must provide query parameters.",
+		"summary": "List related events",
+		"description": "Lists events related to an event by following its relationships. `datasetId` is required. Use `direction`, `maxDepth`, and `relationshipTypes` to control which relationships are followed.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2846,13 +2846,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.relationships",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.relationships",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/events/{event_id}": {
 		"operationId": "get_EventRead",
-		"summary": "Reads an event",
-		"description": "Retrieves a specific event by its UUID.",
+		"summary": "Get an event",
+		"description": "Returns an event from a dataset by its UUID.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3108,13 +3108,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.events",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/datasets/{dataset_id}/events/{event_id}/raw": {
 		"operationId": "get_EventRawReadDS",
-		"summary": "Reads raw data for an event by UUID",
-		"description": "Retrieves the raw data associated with an event. Searches across all shards in the dataset.",
+		"summary": "Get raw data for an event",
+		"description": "Returns the raw source data stored with an event.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3282,13 +3282,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-events.datasets",
-		"x-fern-sdk-method-name": "raw"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.raw",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/queries": {
 		"operationId": "get_EventQueryList",
-		"summary": "List all saved event queries",
-		"description": "Retrieve all saved event queries for the account",
+		"summary": "List saved event queries",
+		"description": "Lists the account's saved event queries.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3443,13 +3443,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.queries.get",
-		"x-fern-sdk-method-name": "event"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.queries",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/queries/{query_id}": {
 		"operationId": "get_EventQueryRead",
-		"summary": "Read a saved event query",
-		"description": "Retrieve a saved event query by its ID",
+		"summary": "Get a saved event query",
+		"description": "Returns a saved event query by its ID.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3608,13 +3608,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.queries.get",
-		"x-fern-sdk-method-name": "v2"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.queries",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/raw/{dataset_id}/{event_id}": {
 		"operationId": "get_LegacyEventRawReadDS",
-		"summary": "Reads raw data for an event by UUID",
-		"description": "Deprecated; use GET /events/datasets/{dataset_id}/events/{event_id}/raw. Available through 2026-11-28.",
+		"summary": "Get raw data for an event (legacy)",
+		"description": "Legacy. Use `threat-intel events raw get` (`GET /events/datasets/{dataset_id}/events/{event_id}/raw`) instead. Available through 2026-11-28.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3783,8 +3783,8 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "deprecated",
-		"x-fern-sdk-group-name": "cloudforce-one.events.raw.legacy",
-		"x-fern-sdk-method-name": "get",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.legacy.raw",
+		"x-fern-sdk-method-name": "get-by-path",
 		"x-forge-sunset": {
 			"date": "2026-11-28T00:00:00Z"
 		},
@@ -3792,8 +3792,8 @@
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/{event_id}": {
 		"operationId": "patch_EventUpdate",
-		"summary": "Updates an event",
-		"description": "Partially updates a threat event in Cloudforce One, modifying specific fields without replacing the entire event.",
+		"summary": "Update an event",
+		"description": "Updates the given fields of an event and leaves the other fields unchanged. `datasetId` is required.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -4126,13 +4126,13 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-events",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events",
+		"x-fern-sdk-method-name": "update"
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/{event_id}/raw/{raw_id}": {
 		"operationId": "patch_EventRawUpdate",
-		"summary": "Updates a raw event",
-		"description": "Partially updates raw threat event data in Cloudforce One, modifying specific fields of the event.",
+		"summary": "Update raw event data by raw ID (legacy)",
+		"description": "Legacy. Updates raw data stored under a `raw_id`, which new events don't use. There is no direct replacement.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -4262,13 +4262,13 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-events.raw",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.legacy.raw",
+		"x-fern-sdk-method-name": "update"
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/queries/{query_id}": {
 		"operationId": "patch_EventQueryUpdate",
 		"summary": "Update a saved event query",
-		"description": "Update an existing saved event query by its ID",
+		"description": "Updates the given fields of a saved event query.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -4503,13 +4503,13 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.queries",
-		"x-fern-sdk-method-name": "patch"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.queries",
+		"x-fern-sdk-method-name": "update"
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/update/bulk": {
 		"operationId": "patch_EventUpdateBulk",
-		"summary": "Bulk update events",
-		"description": "Updates multiple events with the same field values. Maximum 100 events per request.",
+		"summary": "Update events in bulk",
+		"description": "Applies the same field values to up to 100 events in one dataset. The `date` field can't be changed in bulk.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -4725,13 +4725,13 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.update.bulk",
-		"x-fern-sdk-method-name": "patch"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events",
+		"x-fern-sdk-method-name": "bulk-update"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events": {
 		"operationId": "post_EventList",
-		"summary": "Filter and list events",
-		"description": "Use one standalone `datasetId` scope value: 'all'/'*' or 'operational' for readable intelligence datasets (isAnalytics=false), or 'analytics' for readable analytics datasets (isAnalytics=true). Scope values query at most 50 datasets and must be used alone. When `datasetId` is unspecified, events are listed from the default Cloudforce One Threat Events dataset. To list existing datasets, use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list/) endpoint.",
+		"summary": "Search events",
+		"description": "Lists events, with filters sent in a JSON request body. Accepts the same filters as `threat-intel events list` and suits long or complex `search` filters. `datasetId` accepts dataset UUIDs or one scope value used alone: `all` (or `*`) and `operational` select the intelligence datasets you can read, and `analytics` selects the analytics datasets you can read. A scope value covers at most 50 datasets. Without `datasetId`, the default Cloudforce One Threat Events dataset is used.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -5710,13 +5710,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-events",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events",
 		"x-fern-sdk-method-name": "search"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/{event_id}": {
 		"operationId": "post_EventUpdate",
-		"summary": "Updates an event",
-		"description": "Updates an event",
+		"summary": "Update an event",
+		"description": "Updates the given fields of an event and leaves the other fields unchanged. `datasetId` is required.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -6050,13 +6050,14 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events",
+		"x-fern-sdk-method-name": "replace"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/{event_id}/raw/{raw_id}": {
 		"operationId": "post_EventRawUpdate",
-		"summary": "Updates a raw event",
-		"description": "Updates a raw event",
+		"summary": "Update raw event data by raw ID (legacy)",
+		"description": "Legacy. Updates raw data stored under a `raw_id`, which new events don't use. There is no direct replacement.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -6187,13 +6188,14 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.raw",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.legacy.raw",
+		"x-fern-sdk-method-name": "replace"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/create": {
 		"operationId": "post_EventCreate",
-		"summary": "Creates a new event",
-		"description": "To create a dataset, see the [`Create Dataset`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/create/) endpoint. When `datasetId` parameter is unspecified, it will be created in a default dataset named `Cloudforce One Threat Events`.",
+		"summary": "Create an event",
+		"description": "Creates an event. Without `datasetId`, the event is created in the default Cloudforce One Threat Events dataset. To create a dataset, use `threat-intel datasets create`.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -6586,13 +6588,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-events",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events",
 		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/create/bulk": {
 		"operationId": "post_EventCreateBulk",
-		"summary": "Creates bulk events",
-		"description": "The `datasetId` parameter must be defined. To list existing datasets (and their IDs) in your account, use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list/) endpoint.",
+		"summary": "Create events in bulk",
+		"description": "Creates multiple events in one dataset. `datasetId` is required; to find dataset IDs, use `threat-intel datasets list`. Set `includeCreatedEvents` to return the UUIDs of the created events.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -6889,13 +6891,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-events",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events",
 		"x-fern-sdk-method-name": "bulk-create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/create/bulk/relationships": {
 		"operationId": "post_DOSEventCreateBulkWithRelationships",
-		"summary": "Creates bulk DOS event with relationships and indicators",
-		"description": "This method is deprecated. Please use `event_create_bulk` instead",
+		"summary": "Create events with relationships in bulk (legacy)",
+		"description": "Legacy. Use `threat-intel events bulk-create` (`POST /events/create/bulk`) and `threat-intel events relationships create` (`POST /events/relationships/create`) instead.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -7157,16 +7159,16 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "deprecated",
-		"x-fern-sdk-group-name": "cloudforce-one.events.create-bulk.relationships",
-		"x-fern-sdk-method-name": "create",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.legacy",
+		"x-fern-sdk-method-name": "bulk-create-with-relationships",
 		"x-forge-sunset": {
 			"date": "2030-01-01T00:00:00Z"
 		}
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/copy": {
 		"operationId": "post_EventCopyToNewDS",
-		"summary": "Copies specified events from one dataset to another dataset",
-		"description": "Copies specified events from one dataset to another dataset",
+		"summary": "Copy events to another dataset",
+		"description": "Copies events to the dataset given by `destDatasetId` and leaves the originals in place. Raw event data is copied only when `keepRawData` is true.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -7331,13 +7333,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.copy",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events",
+		"x-fern-sdk-method-name": "copy"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/move": {
 		"operationId": "post_EventMoveToNewDS",
-		"summary": "Moves specified events from one dataset to another dataset",
-		"description": "Moves specified events from one dataset to another dataset",
+		"summary": "Move events to another dataset",
+		"description": "Moves events to the dataset given by `destDatasetId` and removes them from the source dataset. Raw event data is always removed from the source and is kept only when `keepRawData` is true.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -7523,13 +7525,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.move",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events",
+		"x-fern-sdk-method-name": "move"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/event_tag/{event_id}/create": {
 		"operationId": "post_EventTagCreate",
-		"summary": "Adds a tag to an event",
-		"description": "Adds a tag to a threat event in Cloudforce One for classification and filtering.",
+		"summary": "Add tags to an event (legacy)",
+		"description": "Legacy. Use `threat-intel tags relationships create` (`POST /events/tags/{tag_uuid}/relationships`) instead.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -7658,13 +7660,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.threat-events.event-tags",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.legacy.tags",
 		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/graphql": {
 		"operationId": "post_EventGraphQL",
-		"summary": "GraphQL endpoint for event aggregation",
-		"description": "Execute GraphQL aggregations over threat events. Supports multi-dimensional group-bys, optional date range filtering, and multi-dataset aggregation.",
+		"summary": "Run a GraphQL aggregation over events",
+		"description": "Runs a GraphQL aggregation query over events. Supports grouping by multiple fields, date range filters, and aggregation across datasets.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -7753,13 +7755,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.graphql.create.graph",
-		"x-fern-sdk-method-name": "ql"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events",
+		"x-fern-sdk-method-name": "graphql"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/queries/{query_id}": {
 		"operationId": "post_EventQueryUpdate",
 		"summary": "Update a saved event query",
-		"description": "Update an existing saved event query by its ID",
+		"description": "Updates the given fields of a saved event query.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -7995,13 +7997,14 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.queries",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.queries",
+		"x-fern-sdk-method-name": "replace"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/queries/create": {
 		"operationId": "post_EventQueryCreate",
 		"summary": "Create a saved event query",
-		"description": "Create a new saved event query for the account",
+		"description": "Saves an event query under a unique `name`. `query_json` holds the query parameters as a JSON string.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -8196,13 +8199,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.queries",
-		"x-fern-sdk-method-name": "create-create"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.queries",
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/relate/{event_id}/create": {
 		"operationId": "post_EventReferenceCreate",
-		"summary": "Creates event references for a event",
-		"description": "Creates event references for a event",
+		"summary": "Add event references (legacy)",
+		"description": "Legacy. Use `threat-intel events relationships create` (`POST /events/relationships/create`) instead.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -8331,13 +8334,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.relate.create",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.legacy.references",
 		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/relationships/create": {
 		"operationId": "post_CreateEventRelationship",
-		"summary": "Create a relationship between two events",
-		"description": "Creates a directed relationship between two events. The relationship is from parent to child with a specified type.",
+		"summary": "Create event relationships",
+		"description": "Creates directed relationships of type `relationshipType` from a parent event to one or more child events in the same dataset.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -8553,13 +8556,13 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.relationships.create",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.relationships",
 		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/events/graphql": {
 		"operationId": "post_EventGraphQLV2",
-		"summary": "GraphQL endpoint for event aggregation",
-		"description": "Execute GraphQL aggregations over threat events. Supports multi-dimensional group-bys, optional date range filtering, and multi-dataset aggregation.",
+		"summary": "Run a GraphQL aggregation over events (legacy)",
+		"description": "Legacy. Use `threat-intel events graphql` (`POST /events/graphql`) instead. Both commands run the same query.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -8647,7 +8650,7 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cloudforce-one.events.graphql.create.graph",
-		"x-fern-sdk-method-name": "qlv2"
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.legacy",
+		"x-fern-sdk-method-name": "graphql"
 	}
 }
