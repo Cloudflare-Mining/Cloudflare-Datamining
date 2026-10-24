@@ -4891,6 +4891,11 @@
 					"name": "fullyQualifiedName",
 					"annotations": {},
 					"type": "Text"
+				},
+				{
+					"name": "tsName",
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -4931,6 +4936,16 @@
 					"name": "name",
 					"annotations": {},
 					"type": "Text"
+				},
+				{
+					"name": "allowsNull",
+					"annotations": {},
+					"type": "Bool"
+				},
+				{
+					"name": "allowsUndefined",
+					"annotations": {},
+					"type": "Bool"
 				}
 			]
 		},
@@ -5166,6 +5181,11 @@
 					"name": "fastApiCompatible",
 					"annotations": {},
 					"type": "Bool"
+				},
+				{
+					"name": "argNames",
+					"annotations": {},
+					"type": "List(Text)"
 				}
 			]
 		},
@@ -5276,6 +5296,11 @@
 					"name": "asyncDispose",
 					"annotations": {},
 					"type": "workerd/src/workerd/jsg/rtti.capnp:Method"
+				},
+				{
+					"name": "tsName",
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -5331,6 +5356,11 @@
 					"name": "value",
 					"annotations": {},
 					"type": "Int64"
+				},
+				{
+					"name": "numberValue",
+					"annotations": {},
+					"type": "Float64"
 				}
 			]
 		},
@@ -5341,6 +5371,11 @@
 					"name": "args",
 					"annotations": {},
 					"type": "List(workerd/src/workerd/jsg/rtti.capnp:Type)"
+				},
+				{
+					"name": "argNames",
+					"annotations": {},
+					"type": "List(Text)"
 				}
 			]
 		},
@@ -8979,6 +9014,58 @@
 				},
 				{
 					"name": "v8ArrayBuffer",
+					"annotations": {}
+				},
+				{
+					"name": "v8Uint16Array",
+					"annotations": {}
+				},
+				{
+					"name": "v8Uint32Array",
+					"annotations": {}
+				},
+				{
+					"name": "v8Int8Array",
+					"annotations": {}
+				},
+				{
+					"name": "v8Int16Array",
+					"annotations": {}
+				},
+				{
+					"name": "v8Int32Array",
+					"annotations": {}
+				},
+				{
+					"name": "v8Float32Array",
+					"annotations": {}
+				},
+				{
+					"name": "v8Float64Array",
+					"annotations": {}
+				},
+				{
+					"name": "v8BigInt64Array",
+					"annotations": {}
+				},
+				{
+					"name": "v8BigUint64Array",
+					"annotations": {}
+				},
+				{
+					"name": "v8Uint8ClampedArray",
+					"annotations": {}
+				},
+				{
+					"name": "v8Symbol",
+					"annotations": {}
+				},
+				{
+					"name": "v8TypedArray",
+					"annotations": {}
+				},
+				{
+					"name": "jsgError",
 					"annotations": {}
 				}
 			]
