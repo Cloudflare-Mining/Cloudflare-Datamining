@@ -103,9 +103,17 @@
 											"description": "HTTP status code of the error.",
 											"type": "number"
 										},
+										"details": {
+											"description": "Additional context about the error, when available."
+										},
 										"message": {
 											"description": "Error message describing what went wrong.",
 											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
 										}
 									},
 									"required": [
@@ -144,6 +152,279 @@
 		"x-fern-sdk-group-name": "realtime.kit.meetings.participants",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-require-confirmation": "This operation removes the participant from the meeting and revokes their authentication token."
+	},
+	"DELETE /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants/{participant_id}/token": {
+		"operationId": "revoke_token",
+		"summary": "Revoke participant's authentication token",
+		"description": "Revokes a previously issued participant authentication token without deleting the participant. Other tokens issued to the participant remain valid.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "app_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"type": "string",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543"
+				}
+			},
+			{
+				"name": "meeting_id",
+				"in": "path",
+				"description": "ID of the meeting. You can fetch the meeting ID using the create a meeting API.",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid"
+				}
+			},
+			{
+				"name": "participant_id",
+				"in": "path",
+				"description": "ID of the participant. You can fetch the participant ID using the add a participant API.",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"token": {
+								"description": "The participant authentication token to revoke.",
+								"type": "string",
+								"x-sensitive": true
+							}
+						},
+						"required": [
+							"token"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"description": "Success response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"data": {
+											"description": "Data returned by the operation",
+											"type": "object"
+										},
+										"success": {
+											"description": "Success status of the operation",
+											"type": "boolean",
+											"default": true
+										}
+									},
+									"required": [
+										"success"
+									],
+									"title": "GenericSuccessResponse"
+								},
+								{
+									"properties": {
+										"data": {
+											"type": "object",
+											"properties": {
+												"token": {
+													"description": "The revoked participant authentication token.",
+													"type": "string",
+													"x-sensitive": true
+												}
+											},
+											"required": [
+												"token"
+											]
+										}
+									},
+									"required": [
+										"data"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available."
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available."
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available."
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Meetings"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "realtime.kit.meetings.participants.tokens",
+		"x-fern-sdk-method-name": "revoke"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/meetings": {
 		"operationId": "get_all_meetings",
@@ -1546,9 +1827,17 @@
 											"description": "HTTP status code of the error.",
 											"type": "number"
 										},
+										"details": {
+											"description": "Additional context about the error, when available."
+										},
 										"message": {
 											"description": "Error message describing what went wrong.",
 											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
 										}
 									},
 									"required": [
@@ -1772,9 +2061,17 @@
 											"description": "HTTP status code of the error.",
 											"type": "number"
 										},
+										"details": {
+											"description": "Additional context about the error, when available."
+										},
 										"message": {
 											"description": "Error message describing what went wrong.",
 											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
 										}
 									},
 									"required": [
@@ -1938,9 +2235,17 @@
 											"description": "HTTP status code of the error.",
 											"type": "number"
 										},
+										"details": {
+											"description": "Additional context about the error, when available."
+										},
 										"message": {
 											"description": "Error message describing what went wrong.",
 											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
 										}
 									},
 									"required": [
@@ -3271,9 +3576,17 @@
 											"description": "HTTP status code of the error.",
 											"type": "number"
 										},
+										"details": {
+											"description": "Additional context about the error, when available."
+										},
 										"message": {
 											"description": "Error message describing what went wrong.",
 											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
 										}
 									},
 									"required": [
@@ -3445,6 +3758,18 @@
 												},
 												{
 													"properties": {
+														"expires_on": {
+															"description": "Time at which the token stops being valid, in UTC. Returned when adding a participant.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2026-10-01T11:00:00Z"
+														},
+														"not_before": {
+															"description": "Time from which the token is valid, in UTC. Returned when adding a participant.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2026-10-01T09:00:00Z"
+														},
 														"token": {
 															"description": "The participant's auth token that can be used for joining a meeting from the client side.",
 															"type": "string",
@@ -3480,9 +3805,17 @@
 											"description": "HTTP status code of the error.",
 											"type": "number"
 										},
+										"details": {
+											"description": "Additional context about the error, when available."
+										},
 										"message": {
 											"description": "Error message describing what went wrong.",
 											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
 										}
 									},
 									"required": [
@@ -4893,6 +5226,24 @@
 								"description": "Name of the preset to apply to this participant.",
 								"type": "string",
 								"default": "group_call_host"
+							},
+							"token": {
+								"description": "Validity window of the participant authentication token. The window is [not_before, expires_on) and cannot be longer than 100 days. Defaults to a token valid from now for 100 days.",
+								"type": "object",
+								"properties": {
+									"expires_on": {
+										"description": "RFC 3339 timestamp with a timezone at or after which the token cannot be used. Must be in the future. Defaults to not_before plus 100 days.",
+										"type": "string",
+										"format": "date-time",
+										"example": "2026-10-01T11:00:00Z"
+									},
+									"not_before": {
+										"description": "RFC 3339 timestamp with a timezone before which the token cannot be used. Defaults to the current time. May be in the past.",
+										"type": "string",
+										"format": "date-time",
+										"example": "2026-10-01T09:00:00Z"
+									}
+								}
 							}
 						},
 						"required": [
@@ -4983,6 +5334,18 @@
 												},
 												{
 													"properties": {
+														"expires_on": {
+															"description": "Time at which the token stops being valid, in UTC. Returned when adding a participant.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2026-10-01T11:00:00Z"
+														},
+														"not_before": {
+															"description": "Time from which the token is valid, in UTC. Returned when adding a participant.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2026-10-01T09:00:00Z"
+														},
 														"token": {
 															"description": "The participant's auth token that can be used for joining a meeting from the client side.",
 															"type": "string",
@@ -5004,6 +5367,52 @@
 					}
 				}
 			},
+			"400": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available."
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
 			"500": {
 				"description": "Failure response",
 				"content": {
@@ -5018,9 +5427,17 @@
 											"description": "HTTP status code of the error.",
 											"type": "number"
 										},
+										"details": {
+											"description": "Additional context about the error, when available."
+										},
 										"message": {
 											"description": "Error message describing what went wrong.",
 											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
 										}
 									},
 									"required": [
@@ -5106,6 +5523,30 @@
 				}
 			}
 		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "Validity window of the participant authentication token. The window is [not_before, expires_on) and cannot be longer than 100 days. Defaults to a token valid from now for 100 days.",
+						"type": "object",
+						"properties": {
+							"expires_on": {
+								"description": "RFC 3339 timestamp with a timezone at or after which the token cannot be used. Must be in the future. Defaults to not_before plus 100 days.",
+								"type": "string",
+								"format": "date-time",
+								"example": "2026-10-01T11:00:00Z"
+							},
+							"not_before": {
+								"description": "RFC 3339 timestamp with a timezone before which the token cannot be used. Defaults to the current time. May be in the past.",
+								"type": "string",
+								"format": "date-time",
+								"example": "2026-10-01T09:00:00Z"
+							}
+						}
+					}
+				}
+			}
+		},
 		"responses": {
 			"200": {
 				"description": "Example response",
@@ -5136,6 +5577,18 @@
 										"data": {
 											"type": "object",
 											"properties": {
+												"expires_on": {
+													"description": "Time at which the token stops being valid, in UTC.",
+													"type": "string",
+													"format": "date-time",
+													"example": "2026-10-01T11:00:00Z"
+												},
+												"not_before": {
+													"description": "Time from which the token is valid, in UTC.",
+													"type": "string",
+													"format": "date-time",
+													"example": "2026-10-01T09:00:00Z"
+												},
 												"token": {
 													"description": "Regenerated participant's authentication token.",
 													"type": "string",
@@ -5143,7 +5596,9 @@
 												}
 											},
 											"required": [
-												"token"
+												"token",
+												"not_before",
+												"expires_on"
 											]
 										}
 									},
@@ -5152,6 +5607,52 @@
 									],
 									"type": "object"
 								}
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available."
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
 							]
 						}
 					}
@@ -5171,9 +5672,17 @@
 											"description": "HTTP status code of the error.",
 											"type": "number"
 										},
+										"details": {
+											"description": "Additional context about the error, when available."
+										},
 										"message": {
 											"description": "Error message describing what went wrong.",
 											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
 										}
 									},
 									"required": [
@@ -6647,6 +7156,18 @@
 												},
 												{
 													"properties": {
+														"expires_on": {
+															"description": "Time at which the token stops being valid, in UTC. Returned when adding a participant.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2026-10-01T11:00:00Z"
+														},
+														"not_before": {
+															"description": "Time from which the token is valid, in UTC. Returned when adding a participant.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2026-10-01T09:00:00Z"
+														},
 														"token": {
 															"description": "The participant's auth token that can be used for joining a meeting from the client side.",
 															"type": "string",
@@ -6682,9 +7203,17 @@
 											"description": "HTTP status code of the error.",
 											"type": "number"
 										},
+										"details": {
+											"description": "Additional context about the error, when available."
+										},
 										"message": {
 											"description": "Error message describing what went wrong.",
 											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
 										}
 									},
 									"required": [

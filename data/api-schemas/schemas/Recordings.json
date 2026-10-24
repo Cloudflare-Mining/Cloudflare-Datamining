@@ -1475,9 +1475,17 @@
 											"description": "HTTP status code of the error.",
 											"type": "number"
 										},
+										"details": {
+											"description": "Additional context about the error, when available."
+										},
 										"message": {
 											"description": "Error message describing what went wrong.",
 											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
 										}
 									},
 									"required": [
