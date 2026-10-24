@@ -50,7 +50,7 @@
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<h4><strong>Time Off</strong></h4>
+<h3><strong>Time Off</strong></h3>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>

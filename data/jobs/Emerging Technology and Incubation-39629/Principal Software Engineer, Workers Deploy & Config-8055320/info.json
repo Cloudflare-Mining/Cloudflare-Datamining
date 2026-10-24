@@ -26,7 +26,9 @@
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Austin, US"
+				"Austin, US",
+				"New York, NY",
+				"San Francisco, CA"
 			],
 			"value_type": "multi_select"
 		},
@@ -40,7 +42,7 @@
 		}
 	],
 	"id": 8055320,
-	"updated_at": "2026-10-21T14:43:01-04:00",
+	"updated_at": "2026-10-24T06:30:04-04:00",
 	"requisition_id": "716",
 	"title": "Principal Software Engineer, Workers Deploy & Config",
 	"company_name": "Cloudflare",
@@ -60,6 +62,20 @@
 			"id": 19983,
 			"name": "Austin, TX",
 			"location": "Austin, TX, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19990,
+			"name": "New York, NY",
+			"location": "New York, New York, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19991,
+			"name": "San Francisco, CA",
+			"location": "San Francisco, CA, United States",
 			"child_ids": [],
 			"parent_id": 48752
 		}

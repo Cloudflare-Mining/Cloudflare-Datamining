@@ -3,7 +3,7 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h3><strong>Available Locations: Austin, TX or San Francisco, CA</strong></h3>
+<h3><strong>Available Locations: Austin, TX | New York, NY | San Francisco, CA</strong></h3>
 <h3><strong>About the Role</strong></h3>
 <p>AI inference is becoming core infrastructure. Every serious application will need access to many models, across many providers, with reliability, observability, security, cost control, and routing built in from the start. AI Gateway is Cloudflare’s bet that this layer should exist at the network edge: close to users, close to compute, and simple enough that a developer can adopt it with one API change.</p>
 <p>We are looking for a Senior Systems Engineer to help build that layer. This is a deeply hands-on individual contributor role for someone who can move from a half-formed product idea to a working, production-ready system quickly. You will work across the stack — from distributed systems and high-throughput APIs to developer-facing workflows, dashboards, SDKs, and docs — helping define how developers build and operate AI applications on Cloudflare.</p>
@@ -48,7 +48,8 @@
 <h3><strong>Compensation</strong></h3>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $194,000-266,000</span></li>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $194,000 - $266,000</span></li>
+	<li><span data-sheets-root="1">For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated annual salary of $185,000 - $254,000</span></li>
 </ul>
 <h3><strong>Equity</strong></h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
@@ -72,7 +73,7 @@
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<h3><strong>Time Off</strong></h3>
+<h4><strong>Time Off</strong></h4>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
