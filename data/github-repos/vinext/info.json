@@ -248,6 +248,7 @@
 		"fix/css-wrapped-async-render-order",
 		"fix/dev-basepath-outside-requests",
 		"fix/dev-cold-start-threshold",
+		"fix/dev-lock-stale-after-restart",
 		"fix/dev-overlay-build-error-recovery-flake",
 		"fix/dynamic-pages-loadable",
 		"fix/dynamic-params-route-miss-not-found",
@@ -397,6 +398,8 @@
 		"t3/app-router-auto-prefetch-dynamic-routes",
 		"t3/app-router-dynamic-prefetch-learning-only",
 		"t3/app-router-intercept-prefetch-dynamic",
+		"t3/cache-components-minimal-support",
+		"t3/memory-cache-tag-profiles",
 		"t3/prefetch-no-loading-route-tree",
 		"t3/prefetch-revalidation-cooldown",
 		"web/benchmarks-swr-revalidate"
