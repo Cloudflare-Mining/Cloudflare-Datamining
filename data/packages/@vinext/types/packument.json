@@ -1,7 +1,7 @@
 {
 	"name": "@vinext/types",
 	"dist-tags": {
-		"latest": "1.0.1"
+		"latest": "1.0.2"
 	},
 	"versions": {
 		"1.0.0-beta.1": {
@@ -94,8 +94,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIEOKw0ANzQtz0khGGbtM0xj94B4yrs2ny28/gXaPtgZFAiBGEm+P0JMWr022ZlUvYxjY72t9Jg/rQ9c74oLlYEvbCA=="
+						"sig": "MEQCIEOKw0ANzQtz0khGGbtM0xj94B4yrs2ny28/gXaPtgZFAiBGEm+P0JMWr022ZlUvYxjY72t9Jg/rQ9c74oLlYEvbCA==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -105,6 +105,36 @@
 					}
 				},
 				"unpackedSize": 1646672
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"1.0.2": {
+			"name": "@vinext/types",
+			"version": "1.0.2",
+			"dist": {
+				"shasum": "5f28d5b51c1aa622c60cf69d2d3f25d38754c2f3",
+				"tarball": "https://registry.npmjs.org/@vinext/types/-/types-1.0.2.tgz",
+				"fileCount": 360,
+				"integrity": "sha512-ORcuy4DNiT2EFsLsCh2FtZz1I7Q3HGf1PSu80ALqwlq+en7UJeLKQE7FmKgvW0cJL79GvZuZe4jddzGpqDMw/Q==",
+				"signatures": [
+					{
+						"sig": "MEUCICqIumxuaOQSWw+Kn3SUiNLs11ytZhiMK1LKnRsF9q9LAiEAyVo0VjiyBAOaUCkIqkhlx8caKU/bM/L34aAwZ+21FtQ=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIB2fFbtHWig6f2ahr8FMGS9tzRBcqdiJr/Rcv5ghdNUtAiBO71noiLJRNoAUobo5RGAlqrZWkd0jsf+6RT0XRPGeTA=="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@vinext%2ftypes@1.0.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 1645845
 			},
 			"engines": {
 				"node": ">=22"
