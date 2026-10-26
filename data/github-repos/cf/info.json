@@ -22,9 +22,9 @@
 	"default_branch": "main",
 	"branches": [
 		"WC-5985-preview-secret-transforms",
+		"automation/update-forge",
 		"changeset-release/main",
 		"codex/expand-secrets-file-dotenv",
-		"codex/fix-177-multipart-files",
 		"codex/fix-204-shared-registry",
 		"codex/fix-223-vite-dev-args",
 		"codex/fix-345-worker-identifiers",
@@ -44,7 +44,6 @@
 		"penalosa/regression-testing",
 		"penalosa/rust-generator",
 		"remove-x-forge-globals",
-		"renovate/all-minor-patch",
 		"sk/update-forge"
 	]
 }
