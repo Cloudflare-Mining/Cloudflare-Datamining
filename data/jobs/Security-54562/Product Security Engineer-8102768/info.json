@@ -26,6 +26,7 @@
 			"name": "Job Posting Location",
 			"value": [
 				"Austin, US",
+				"Germany",
 				"London, UK"
 			],
 			"value_type": "multi_select"
@@ -40,7 +41,7 @@
 		}
 	],
 	"id": 8102768,
-	"updated_at": "2026-10-21T14:43:01-04:00",
+	"updated_at": "2026-10-26T10:55:26-04:00",
 	"requisition_id": null,
 	"title": "Product Security Engineer",
 	"company_name": "Cloudflare",
@@ -67,6 +68,13 @@
 			"id": 19988,
 			"name": "London, United Kingdom",
 			"location": "London, United Kingdom",
+			"child_ids": [],
+			"parent_id": 74843
+		},
+		{
+			"id": 82439,
+			"name": "Remote Germany",
+			"location": null,
 			"child_ids": [],
 			"parent_id": 74843
 		}
